@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given parent. These modules are enabled by default.
@@ -129,12 +128,6 @@ func (i *OrganizationSecurityHealthAnalyticsSettingCustomModule) ToOrganizationS
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityHealthAnalyticsSettingCustomModuleOutput)
 }
 
-func (i *OrganizationSecurityHealthAnalyticsSettingCustomModule) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityHealthAnalyticsSettingCustomModule] {
-	return pulumix.Output[*OrganizationSecurityHealthAnalyticsSettingCustomModule]{
-		OutputState: i.ToOrganizationSecurityHealthAnalyticsSettingCustomModuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationSecurityHealthAnalyticsSettingCustomModuleOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSecurityHealthAnalyticsSettingCustomModuleOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleOutput) ToOrganiza
 
 func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleOutput) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleOutputWithContext(ctx context.Context) OrganizationSecurityHealthAnalyticsSettingCustomModuleOutput {
 	return o
-}
-
-func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityHealthAnalyticsSettingCustomModule] {
-	return pulumix.Output[*OrganizationSecurityHealthAnalyticsSettingCustomModule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If empty, indicates that the custom module was created in the organization, folder, or project in which you are viewing the custom module. Otherwise, `ancestor_module` specifies the organization or folder from which the custom module is inherited.

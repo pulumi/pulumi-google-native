@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -142,12 +141,6 @@ func (i *OrganizationPartnerTenantBrowserDlpRuleIamPolicy) ToOrganizationPartner
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPartnerTenantBrowserDlpRuleIamPolicyOutput)
 }
 
-func (i *OrganizationPartnerTenantBrowserDlpRuleIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*OrganizationPartnerTenantBrowserDlpRuleIamPolicy] {
-	return pulumix.Output[*OrganizationPartnerTenantBrowserDlpRuleIamPolicy]{
-		OutputState: i.ToOrganizationPartnerTenantBrowserDlpRuleIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationPartnerTenantBrowserDlpRuleIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPartnerTenantBrowserDlpRuleIamPolicyOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o OrganizationPartnerTenantBrowserDlpRuleIamPolicyOutput) ToOrganizationPa
 
 func (o OrganizationPartnerTenantBrowserDlpRuleIamPolicyOutput) ToOrganizationPartnerTenantBrowserDlpRuleIamPolicyOutputWithContext(ctx context.Context) OrganizationPartnerTenantBrowserDlpRuleIamPolicyOutput {
 	return o
-}
-
-func (o OrganizationPartnerTenantBrowserDlpRuleIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationPartnerTenantBrowserDlpRuleIamPolicy] {
-	return pulumix.Output[*OrganizationPartnerTenantBrowserDlpRuleIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

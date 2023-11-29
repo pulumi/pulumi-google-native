@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new bare metal node pool in a given project, location and Bare Metal cluster.
@@ -165,12 +164,6 @@ func (i *BareMetalNodePool) ToBareMetalNodePoolOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolOutput)
 }
 
-func (i *BareMetalNodePool) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePool] {
-	return pulumix.Output[*BareMetalNodePool]{
-		OutputState: i.ToBareMetalNodePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalNodePoolOutput struct{ *pulumi.OutputState }
 
 func (BareMetalNodePoolOutput) ElementType() reflect.Type {
@@ -183,12 +176,6 @@ func (o BareMetalNodePoolOutput) ToBareMetalNodePoolOutput() BareMetalNodePoolOu
 
 func (o BareMetalNodePoolOutput) ToBareMetalNodePoolOutputWithContext(ctx context.Context) BareMetalNodePoolOutput {
 	return o
-}
-
-func (o BareMetalNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePool] {
-	return pulumix.Output[*BareMetalNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations on the bare metal node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.

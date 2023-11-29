@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a NotebookRuntimeTemplate.
@@ -97,12 +96,6 @@ func (o LookupNotebookRuntimeTemplateResultOutput) ToLookupNotebookRuntimeTempla
 
 func (o LookupNotebookRuntimeTemplateResultOutput) ToLookupNotebookRuntimeTemplateResultOutputWithContext(ctx context.Context) LookupNotebookRuntimeTemplateResultOutput {
 	return o
-}
-
-func (o LookupNotebookRuntimeTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotebookRuntimeTemplateResult] {
-	return pulumix.Output[LookupNotebookRuntimeTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this NotebookRuntimeTemplate was created.

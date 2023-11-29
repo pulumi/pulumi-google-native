@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a tag.
@@ -131,12 +130,6 @@ func (i *Tag) ToTagOutputWithContext(ctx context.Context) TagOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagOutput)
 }
 
-func (i *Tag) ToOutput(ctx context.Context) pulumix.Output[*Tag] {
-	return pulumix.Output[*Tag]{
-		OutputState: i.ToTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagOutput struct{ *pulumi.OutputState }
 
 func (TagOutput) ElementType() reflect.Type {
@@ -149,12 +142,6 @@ func (o TagOutput) ToTagOutput() TagOutput {
 
 func (o TagOutput) ToTagOutputWithContext(ctx context.Context) TagOutput {
 	return o
-}
-
-func (o TagOutput) ToOutput(ctx context.Context) pulumix.Output[*Tag] {
-	return pulumix.Output[*Tag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagOutput) Location() pulumi.StringOutput {

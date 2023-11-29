@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single CustomConnector.
@@ -83,12 +82,6 @@ func (o LookupCustomConnectorResultOutput) ToLookupCustomConnectorResultOutput()
 
 func (o LookupCustomConnectorResultOutput) ToLookupCustomConnectorResultOutputWithContext(ctx context.Context) LookupCustomConnectorResultOutput {
 	return o
-}
-
-func (o LookupCustomConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomConnectorResult] {
-	return pulumix.Output[LookupCustomConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Created time.

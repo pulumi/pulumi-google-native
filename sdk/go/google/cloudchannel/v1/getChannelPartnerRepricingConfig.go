@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns an error.
@@ -73,12 +72,6 @@ func (o LookupChannelPartnerRepricingConfigResultOutput) ToLookupChannelPartnerR
 
 func (o LookupChannelPartnerRepricingConfigResultOutput) ToLookupChannelPartnerRepricingConfigResultOutputWithContext(ctx context.Context) LookupChannelPartnerRepricingConfigResultOutput {
 	return o
-}
-
-func (o LookupChannelPartnerRepricingConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupChannelPartnerRepricingConfigResult] {
-	return pulumix.Output[LookupChannelPartnerRepricingConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.

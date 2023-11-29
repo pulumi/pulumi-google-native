@@ -103,12 +103,6 @@ func (o AcceleratorConfigTypeOutput) ToAcceleratorConfigTypePtrOutputWithContext
 	}).(AcceleratorConfigTypePtrOutput)
 }
 
-func (o AcceleratorConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AcceleratorConfigType] {
-	return pulumix.Output[AcceleratorConfigType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AcceleratorConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -142,12 +136,6 @@ func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutput() Accel
 
 func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
 	return o
-}
-
-func (o AcceleratorConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfigType] {
-	return pulumix.Output[*AcceleratorConfigType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AcceleratorConfigTypePtrOutput) Elem() AcceleratorConfigTypeOutput {
@@ -290,12 +278,6 @@ func (o ExecutionTemplateJobTypeOutput) ToExecutionTemplateJobTypePtrOutputWithC
 	}).(ExecutionTemplateJobTypePtrOutput)
 }
 
-func (o ExecutionTemplateJobTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionTemplateJobType] {
-	return pulumix.Output[ExecutionTemplateJobType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExecutionTemplateJobTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -329,12 +311,6 @@ func (o ExecutionTemplateJobTypePtrOutput) ToExecutionTemplateJobTypePtrOutput()
 
 func (o ExecutionTemplateJobTypePtrOutput) ToExecutionTemplateJobTypePtrOutputWithContext(ctx context.Context) ExecutionTemplateJobTypePtrOutput {
 	return o
-}
-
-func (o ExecutionTemplateJobTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecutionTemplateJobType] {
-	return pulumix.Output[*ExecutionTemplateJobType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecutionTemplateJobTypePtrOutput) Elem() ExecutionTemplateJobTypeOutput {
@@ -485,12 +461,6 @@ func (o ExecutionTemplateScaleTierOutput) ToExecutionTemplateScaleTierPtrOutputW
 	}).(ExecutionTemplateScaleTierPtrOutput)
 }
 
-func (o ExecutionTemplateScaleTierOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionTemplateScaleTier] {
-	return pulumix.Output[ExecutionTemplateScaleTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExecutionTemplateScaleTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -524,12 +494,6 @@ func (o ExecutionTemplateScaleTierPtrOutput) ToExecutionTemplateScaleTierPtrOutp
 
 func (o ExecutionTemplateScaleTierPtrOutput) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
 	return o
-}
-
-func (o ExecutionTemplateScaleTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecutionTemplateScaleTier] {
-	return pulumix.Output[*ExecutionTemplateScaleTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecutionTemplateScaleTierPtrOutput) Elem() ExecutionTemplateScaleTierOutput {
@@ -676,12 +640,6 @@ func (o InstanceBootDiskTypeOutput) ToInstanceBootDiskTypePtrOutputWithContext(c
 	}).(InstanceBootDiskTypePtrOutput)
 }
 
-func (o InstanceBootDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceBootDiskType] {
-	return pulumix.Output[InstanceBootDiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceBootDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -715,12 +673,6 @@ func (o InstanceBootDiskTypePtrOutput) ToInstanceBootDiskTypePtrOutput() Instanc
 
 func (o InstanceBootDiskTypePtrOutput) ToInstanceBootDiskTypePtrOutputWithContext(ctx context.Context) InstanceBootDiskTypePtrOutput {
 	return o
-}
-
-func (o InstanceBootDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceBootDiskType] {
-	return pulumix.Output[*InstanceBootDiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceBootDiskTypePtrOutput) Elem() InstanceBootDiskTypeOutput {
@@ -867,12 +819,6 @@ func (o InstanceDataDiskTypeOutput) ToInstanceDataDiskTypePtrOutputWithContext(c
 	}).(InstanceDataDiskTypePtrOutput)
 }
 
-func (o InstanceDataDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDataDiskType] {
-	return pulumix.Output[InstanceDataDiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceDataDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -906,12 +852,6 @@ func (o InstanceDataDiskTypePtrOutput) ToInstanceDataDiskTypePtrOutput() Instanc
 
 func (o InstanceDataDiskTypePtrOutput) ToInstanceDataDiskTypePtrOutputWithContext(ctx context.Context) InstanceDataDiskTypePtrOutput {
 	return o
-}
-
-func (o InstanceDataDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDataDiskType] {
-	return pulumix.Output[*InstanceDataDiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceDataDiskTypePtrOutput) Elem() InstanceDataDiskTypeOutput {
@@ -1054,12 +994,6 @@ func (o InstanceDiskEncryptionOutput) ToInstanceDiskEncryptionPtrOutputWithConte
 	}).(InstanceDiskEncryptionPtrOutput)
 }
 
-func (o InstanceDiskEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDiskEncryption] {
-	return pulumix.Output[InstanceDiskEncryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceDiskEncryptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1093,12 +1027,6 @@ func (o InstanceDiskEncryptionPtrOutput) ToInstanceDiskEncryptionPtrOutput() Ins
 
 func (o InstanceDiskEncryptionPtrOutput) ToInstanceDiskEncryptionPtrOutputWithContext(ctx context.Context) InstanceDiskEncryptionPtrOutput {
 	return o
-}
-
-func (o InstanceDiskEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDiskEncryption] {
-	return pulumix.Output[*InstanceDiskEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceDiskEncryptionPtrOutput) Elem() InstanceDiskEncryptionOutput {
@@ -1241,12 +1169,6 @@ func (o InstanceNicTypeOutput) ToInstanceNicTypePtrOutputWithContext(ctx context
 	}).(InstanceNicTypePtrOutput)
 }
 
-func (o InstanceNicTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceNicType] {
-	return pulumix.Output[InstanceNicType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceNicTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1280,12 +1202,6 @@ func (o InstanceNicTypePtrOutput) ToInstanceNicTypePtrOutput() InstanceNicTypePt
 
 func (o InstanceNicTypePtrOutput) ToInstanceNicTypePtrOutputWithContext(ctx context.Context) InstanceNicTypePtrOutput {
 	return o
-}
-
-func (o InstanceNicTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceNicType] {
-	return pulumix.Output[*InstanceNicType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceNicTypePtrOutput) Elem() InstanceNicTypeOutput {
@@ -1432,12 +1348,6 @@ func (o LocalDiskInitializeParamsDiskTypeOutput) ToLocalDiskInitializeParamsDisk
 	}).(LocalDiskInitializeParamsDiskTypePtrOutput)
 }
 
-func (o LocalDiskInitializeParamsDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LocalDiskInitializeParamsDiskType] {
-	return pulumix.Output[LocalDiskInitializeParamsDiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LocalDiskInitializeParamsDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1471,12 +1381,6 @@ func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToLocalDiskInitializeParamsD
 
 func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToLocalDiskInitializeParamsDiskTypePtrOutputWithContext(ctx context.Context) LocalDiskInitializeParamsDiskTypePtrOutput {
 	return o
-}
-
-func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalDiskInitializeParamsDiskType] {
-	return pulumix.Output[*LocalDiskInitializeParamsDiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalDiskInitializeParamsDiskTypePtrOutput) Elem() LocalDiskInitializeParamsDiskTypeOutput {
@@ -1621,12 +1525,6 @@ func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityCo
 	}).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
-func (o ReservationAffinityConsumeReservationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReservationAffinityConsumeReservationType] {
-	return pulumix.Output[ReservationAffinityConsumeReservationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReservationAffinityConsumeReservationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1660,12 +1558,6 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinit
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return o
-}
-
-func (o ReservationAffinityConsumeReservationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
-	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
@@ -1828,12 +1720,6 @@ func (o RuntimeAcceleratorConfigTypeOutput) ToRuntimeAcceleratorConfigTypePtrOut
 	}).(RuntimeAcceleratorConfigTypePtrOutput)
 }
 
-func (o RuntimeAcceleratorConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeAcceleratorConfigType] {
-	return pulumix.Output[RuntimeAcceleratorConfigType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RuntimeAcceleratorConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1867,12 +1753,6 @@ func (o RuntimeAcceleratorConfigTypePtrOutput) ToRuntimeAcceleratorConfigTypePtr
 
 func (o RuntimeAcceleratorConfigTypePtrOutput) ToRuntimeAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) RuntimeAcceleratorConfigTypePtrOutput {
 	return o
-}
-
-func (o RuntimeAcceleratorConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeAcceleratorConfigType] {
-	return pulumix.Output[*RuntimeAcceleratorConfigType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuntimeAcceleratorConfigTypePtrOutput) Elem() RuntimeAcceleratorConfigTypeOutput {
@@ -2015,12 +1895,6 @@ func (o RuntimeAccessConfigAccessTypeOutput) ToRuntimeAccessConfigAccessTypePtrO
 	}).(RuntimeAccessConfigAccessTypePtrOutput)
 }
 
-func (o RuntimeAccessConfigAccessTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeAccessConfigAccessType] {
-	return pulumix.Output[RuntimeAccessConfigAccessType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RuntimeAccessConfigAccessTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2054,12 +1928,6 @@ func (o RuntimeAccessConfigAccessTypePtrOutput) ToRuntimeAccessConfigAccessTypeP
 
 func (o RuntimeAccessConfigAccessTypePtrOutput) ToRuntimeAccessConfigAccessTypePtrOutputWithContext(ctx context.Context) RuntimeAccessConfigAccessTypePtrOutput {
 	return o
-}
-
-func (o RuntimeAccessConfigAccessTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeAccessConfigAccessType] {
-	return pulumix.Output[*RuntimeAccessConfigAccessType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuntimeAccessConfigAccessTypePtrOutput) Elem() RuntimeAccessConfigAccessTypeOutput {
@@ -2202,12 +2070,6 @@ func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToRuntimeSoftwareC
 	}).(RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput)
 }
 
-func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeSoftwareConfigPostStartupScriptBehavior] {
-	return pulumix.Output[RuntimeSoftwareConfigPostStartupScriptBehavior]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2241,12 +2103,6 @@ func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToRuntimeSoftwa
 
 func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
 	return o
-}
-
-func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeSoftwareConfigPostStartupScriptBehavior] {
-	return pulumix.Output[*RuntimeSoftwareConfigPostStartupScriptBehavior]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) Elem() RuntimeSoftwareConfigPostStartupScriptBehaviorOutput {
@@ -2396,12 +2252,6 @@ func (o ScheduleStateEnumOutput) ToScheduleStateEnumPtrOutputWithContext(ctx con
 	}).(ScheduleStateEnumPtrOutput)
 }
 
-func (o ScheduleStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleStateEnum] {
-	return pulumix.Output[ScheduleStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScheduleStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2435,12 +2285,6 @@ func (o ScheduleStateEnumPtrOutput) ToScheduleStateEnumPtrOutput() ScheduleState
 
 func (o ScheduleStateEnumPtrOutput) ToScheduleStateEnumPtrOutputWithContext(ctx context.Context) ScheduleStateEnumPtrOutput {
 	return o
-}
-
-func (o ScheduleStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduleStateEnum] {
-	return pulumix.Output[*ScheduleStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduleStateEnumPtrOutput) Elem() ScheduleStateEnumOutput {
@@ -2595,12 +2439,6 @@ func (o SchedulerAcceleratorConfigTypeOutput) ToSchedulerAcceleratorConfigTypePt
 	}).(SchedulerAcceleratorConfigTypePtrOutput)
 }
 
-func (o SchedulerAcceleratorConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulerAcceleratorConfigType] {
-	return pulumix.Output[SchedulerAcceleratorConfigType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SchedulerAcceleratorConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2634,12 +2472,6 @@ func (o SchedulerAcceleratorConfigTypePtrOutput) ToSchedulerAcceleratorConfigTyp
 
 func (o SchedulerAcceleratorConfigTypePtrOutput) ToSchedulerAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigTypePtrOutput {
 	return o
-}
-
-func (o SchedulerAcceleratorConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulerAcceleratorConfigType] {
-	return pulumix.Output[*SchedulerAcceleratorConfigType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchedulerAcceleratorConfigTypePtrOutput) Elem() SchedulerAcceleratorConfigTypeOutput {
@@ -2782,12 +2614,6 @@ func (o UpgradeHistoryEntryActionOutput) ToUpgradeHistoryEntryActionPtrOutputWit
 	}).(UpgradeHistoryEntryActionPtrOutput)
 }
 
-func (o UpgradeHistoryEntryActionOutput) ToOutput(ctx context.Context) pulumix.Output[UpgradeHistoryEntryAction] {
-	return pulumix.Output[UpgradeHistoryEntryAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UpgradeHistoryEntryActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2821,12 +2647,6 @@ func (o UpgradeHistoryEntryActionPtrOutput) ToUpgradeHistoryEntryActionPtrOutput
 
 func (o UpgradeHistoryEntryActionPtrOutput) ToUpgradeHistoryEntryActionPtrOutputWithContext(ctx context.Context) UpgradeHistoryEntryActionPtrOutput {
 	return o
-}
-
-func (o UpgradeHistoryEntryActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpgradeHistoryEntryAction] {
-	return pulumix.Output[*UpgradeHistoryEntryAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UpgradeHistoryEntryActionPtrOutput) Elem() UpgradeHistoryEntryActionOutput {
@@ -2971,12 +2791,6 @@ func (o UpgradeHistoryEntryStateOutput) ToUpgradeHistoryEntryStatePtrOutputWithC
 	}).(UpgradeHistoryEntryStatePtrOutput)
 }
 
-func (o UpgradeHistoryEntryStateOutput) ToOutput(ctx context.Context) pulumix.Output[UpgradeHistoryEntryState] {
-	return pulumix.Output[UpgradeHistoryEntryState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UpgradeHistoryEntryStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3010,12 +2824,6 @@ func (o UpgradeHistoryEntryStatePtrOutput) ToUpgradeHistoryEntryStatePtrOutput()
 
 func (o UpgradeHistoryEntryStatePtrOutput) ToUpgradeHistoryEntryStatePtrOutputWithContext(ctx context.Context) UpgradeHistoryEntryStatePtrOutput {
 	return o
-}
-
-func (o UpgradeHistoryEntryStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpgradeHistoryEntryState] {
-	return pulumix.Output[*UpgradeHistoryEntryState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UpgradeHistoryEntryStatePtrOutput) Elem() UpgradeHistoryEntryStateOutput {
@@ -3158,12 +2966,6 @@ func (o VirtualMachineConfigNicTypeOutput) ToVirtualMachineConfigNicTypePtrOutpu
 	}).(VirtualMachineConfigNicTypePtrOutput)
 }
 
-func (o VirtualMachineConfigNicTypeOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineConfigNicType] {
-	return pulumix.Output[VirtualMachineConfigNicType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualMachineConfigNicTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3197,12 +2999,6 @@ func (o VirtualMachineConfigNicTypePtrOutput) ToVirtualMachineConfigNicTypePtrOu
 
 func (o VirtualMachineConfigNicTypePtrOutput) ToVirtualMachineConfigNicTypePtrOutputWithContext(ctx context.Context) VirtualMachineConfigNicTypePtrOutput {
 	return o
-}
-
-func (o VirtualMachineConfigNicTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineConfigNicType] {
-	return pulumix.Output[*VirtualMachineConfigNicType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineConfigNicTypePtrOutput) Elem() VirtualMachineConfigNicTypeOutput {

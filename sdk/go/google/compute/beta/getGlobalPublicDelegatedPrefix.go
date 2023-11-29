@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified global PublicDelegatedPrefix resource.
@@ -91,12 +90,6 @@ func (o LookupGlobalPublicDelegatedPrefixResultOutput) ToLookupGlobalPublicDeleg
 
 func (o LookupGlobalPublicDelegatedPrefixResultOutput) ToLookupGlobalPublicDelegatedPrefixResultOutputWithContext(ctx context.Context) LookupGlobalPublicDelegatedPrefixResultOutput {
 	return o
-}
-
-func (o LookupGlobalPublicDelegatedPrefixResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlobalPublicDelegatedPrefixResult] {
-	return pulumix.Output[LookupGlobalPublicDelegatedPrefixResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The version of BYOIP API.

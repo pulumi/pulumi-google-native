@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a specified regional persistent disk.
@@ -181,12 +180,6 @@ func (o LookupRegionDiskResultOutput) ToLookupRegionDiskResultOutput() LookupReg
 
 func (o LookupRegionDiskResultOutput) ToLookupRegionDiskResultOutputWithContext(ctx context.Context) LookupRegionDiskResultOutput {
 	return o
-}
-
-func (o LookupRegionDiskResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionDiskResult] {
-	return pulumix.Output[LookupRegionDiskResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.

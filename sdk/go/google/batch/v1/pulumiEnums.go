@@ -85,12 +85,6 @@ func (o InstancePolicyProvisioningModelOutput) ToInstancePolicyProvisioningModel
 	}).(InstancePolicyProvisioningModelPtrOutput)
 }
 
-func (o InstancePolicyProvisioningModelOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePolicyProvisioningModel] {
-	return pulumix.Output[InstancePolicyProvisioningModel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstancePolicyProvisioningModelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o InstancePolicyProvisioningModelPtrOutput) ToInstancePolicyProvisioningMo
 
 func (o InstancePolicyProvisioningModelPtrOutput) ToInstancePolicyProvisioningModelPtrOutputWithContext(ctx context.Context) InstancePolicyProvisioningModelPtrOutput {
 	return o
-}
-
-func (o InstancePolicyProvisioningModelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePolicyProvisioningModel] {
-	return pulumix.Output[*InstancePolicyProvisioningModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstancePolicyProvisioningModelPtrOutput) Elem() InstancePolicyProvisioningModelOutput {
@@ -272,12 +260,6 @@ func (o LifecyclePolicyActionOutput) ToLifecyclePolicyActionPtrOutputWithContext
 	}).(LifecyclePolicyActionPtrOutput)
 }
 
-func (o LifecyclePolicyActionOutput) ToOutput(ctx context.Context) pulumix.Output[LifecyclePolicyAction] {
-	return pulumix.Output[LifecyclePolicyAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LifecyclePolicyActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o LifecyclePolicyActionPtrOutput) ToLifecyclePolicyActionPtrOutput() Lifec
 
 func (o LifecyclePolicyActionPtrOutput) ToLifecyclePolicyActionPtrOutputWithContext(ctx context.Context) LifecyclePolicyActionPtrOutput {
 	return o
-}
-
-func (o LifecyclePolicyActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LifecyclePolicyAction] {
-	return pulumix.Output[*LifecyclePolicyAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LifecyclePolicyActionPtrOutput) Elem() LifecyclePolicyActionOutput {
@@ -459,12 +435,6 @@ func (o LogsPolicyDestinationOutput) ToLogsPolicyDestinationPtrOutputWithContext
 	}).(LogsPolicyDestinationPtrOutput)
 }
 
-func (o LogsPolicyDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[LogsPolicyDestination] {
-	return pulumix.Output[LogsPolicyDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LogsPolicyDestinationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,12 +468,6 @@ func (o LogsPolicyDestinationPtrOutput) ToLogsPolicyDestinationPtrOutput() LogsP
 
 func (o LogsPolicyDestinationPtrOutput) ToLogsPolicyDestinationPtrOutputWithContext(ctx context.Context) LogsPolicyDestinationPtrOutput {
 	return o
-}
-
-func (o LogsPolicyDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogsPolicyDestination] {
-	return pulumix.Output[*LogsPolicyDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogsPolicyDestinationPtrOutput) Elem() LogsPolicyDestinationOutput {
@@ -654,12 +618,6 @@ func (o MessageNewJobStateOutput) ToMessageNewJobStatePtrOutputWithContext(ctx c
 	}).(MessageNewJobStatePtrOutput)
 }
 
-func (o MessageNewJobStateOutput) ToOutput(ctx context.Context) pulumix.Output[MessageNewJobState] {
-	return pulumix.Output[MessageNewJobState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MessageNewJobStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -693,12 +651,6 @@ func (o MessageNewJobStatePtrOutput) ToMessageNewJobStatePtrOutput() MessageNewJ
 
 func (o MessageNewJobStatePtrOutput) ToMessageNewJobStatePtrOutputWithContext(ctx context.Context) MessageNewJobStatePtrOutput {
 	return o
-}
-
-func (o MessageNewJobStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MessageNewJobState] {
-	return pulumix.Output[*MessageNewJobState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MessageNewJobStatePtrOutput) Elem() MessageNewJobStateOutput {
@@ -849,12 +801,6 @@ func (o MessageNewTaskStateOutput) ToMessageNewTaskStatePtrOutputWithContext(ctx
 	}).(MessageNewTaskStatePtrOutput)
 }
 
-func (o MessageNewTaskStateOutput) ToOutput(ctx context.Context) pulumix.Output[MessageNewTaskState] {
-	return pulumix.Output[MessageNewTaskState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MessageNewTaskStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -888,12 +834,6 @@ func (o MessageNewTaskStatePtrOutput) ToMessageNewTaskStatePtrOutput() MessageNe
 
 func (o MessageNewTaskStatePtrOutput) ToMessageNewTaskStatePtrOutputWithContext(ctx context.Context) MessageNewTaskStatePtrOutput {
 	return o
-}
-
-func (o MessageNewTaskStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MessageNewTaskState] {
-	return pulumix.Output[*MessageNewTaskState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MessageNewTaskStatePtrOutput) Elem() MessageNewTaskStateOutput {
@@ -1036,12 +976,6 @@ func (o MessageTypeOutput) ToMessageTypePtrOutputWithContext(ctx context.Context
 	}).(MessageTypePtrOutput)
 }
 
-func (o MessageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MessageType] {
-	return pulumix.Output[MessageType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MessageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1075,12 +1009,6 @@ func (o MessageTypePtrOutput) ToMessageTypePtrOutput() MessageTypePtrOutput {
 
 func (o MessageTypePtrOutput) ToMessageTypePtrOutputWithContext(ctx context.Context) MessageTypePtrOutput {
 	return o
-}
-
-func (o MessageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MessageType] {
-	return pulumix.Output[*MessageType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MessageTypePtrOutput) Elem() MessageTypeOutput {
@@ -1223,12 +1151,6 @@ func (o TaskGroupSchedulingPolicyOutput) ToTaskGroupSchedulingPolicyPtrOutputWit
 	}).(TaskGroupSchedulingPolicyPtrOutput)
 }
 
-func (o TaskGroupSchedulingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[TaskGroupSchedulingPolicy] {
-	return pulumix.Output[TaskGroupSchedulingPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TaskGroupSchedulingPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1262,12 +1184,6 @@ func (o TaskGroupSchedulingPolicyPtrOutput) ToTaskGroupSchedulingPolicyPtrOutput
 
 func (o TaskGroupSchedulingPolicyPtrOutput) ToTaskGroupSchedulingPolicyPtrOutputWithContext(ctx context.Context) TaskGroupSchedulingPolicyPtrOutput {
 	return o
-}
-
-func (o TaskGroupSchedulingPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TaskGroupSchedulingPolicy] {
-	return pulumix.Output[*TaskGroupSchedulingPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TaskGroupSchedulingPolicyPtrOutput) Elem() TaskGroupSchedulingPolicyOutput {

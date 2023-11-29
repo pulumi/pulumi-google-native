@@ -87,12 +87,6 @@ func (o CapacityCommitmentPlanOutput) ToCapacityCommitmentPlanPtrOutputWithConte
 	}).(CapacityCommitmentPlanPtrOutput)
 }
 
-func (o CapacityCommitmentPlanOutput) ToOutput(ctx context.Context) pulumix.Output[CapacityCommitmentPlan] {
-	return pulumix.Output[CapacityCommitmentPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CapacityCommitmentPlanOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -126,12 +120,6 @@ func (o CapacityCommitmentPlanPtrOutput) ToCapacityCommitmentPlanPtrOutput() Cap
 
 func (o CapacityCommitmentPlanPtrOutput) ToCapacityCommitmentPlanPtrOutputWithContext(ctx context.Context) CapacityCommitmentPlanPtrOutput {
 	return o
-}
-
-func (o CapacityCommitmentPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitmentPlan] {
-	return pulumix.Output[*CapacityCommitmentPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CapacityCommitmentPlanPtrOutput) Elem() CapacityCommitmentPlanOutput {
@@ -278,12 +266,6 @@ func (o CapacityCommitmentRenewalPlanOutput) ToCapacityCommitmentRenewalPlanPtrO
 	}).(CapacityCommitmentRenewalPlanPtrOutput)
 }
 
-func (o CapacityCommitmentRenewalPlanOutput) ToOutput(ctx context.Context) pulumix.Output[CapacityCommitmentRenewalPlan] {
-	return pulumix.Output[CapacityCommitmentRenewalPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CapacityCommitmentRenewalPlanOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -317,12 +299,6 @@ func (o CapacityCommitmentRenewalPlanPtrOutput) ToCapacityCommitmentRenewalPlanP
 
 func (o CapacityCommitmentRenewalPlanPtrOutput) ToCapacityCommitmentRenewalPlanPtrOutputWithContext(ctx context.Context) CapacityCommitmentRenewalPlanPtrOutput {
 	return o
-}
-
-func (o CapacityCommitmentRenewalPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitmentRenewalPlan] {
-	return pulumix.Output[*CapacityCommitmentRenewalPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CapacityCommitmentRenewalPlanPtrOutput) Elem() CapacityCommitmentRenewalPlanOutput {

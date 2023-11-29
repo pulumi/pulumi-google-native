@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a single waiter.
@@ -81,12 +80,6 @@ func (o LookupWaiterResultOutput) ToLookupWaiterResultOutput() LookupWaiterResul
 
 func (o LookupWaiterResultOutput) ToLookupWaiterResultOutputWithContext(ctx context.Context) LookupWaiterResultOutput {
 	return o
-}
-
-func (o LookupWaiterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWaiterResult] {
-	return pulumix.Output[LookupWaiterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.

@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -136,12 +135,6 @@ func (i *NodeGroupIamBinding) ToNodeGroupIamBindingOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIamBindingOutput)
 }
 
-func (i *NodeGroupIamBinding) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupIamBinding] {
-	return pulumix.Output[*NodeGroupIamBinding]{
-		OutputState: i.ToNodeGroupIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeGroupIamBindingOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o NodeGroupIamBindingOutput) ToNodeGroupIamBindingOutput() NodeGroupIamBin
 
 func (o NodeGroupIamBindingOutput) ToNodeGroupIamBindingOutputWithContext(ctx context.Context) NodeGroupIamBindingOutput {
 	return o
-}
-
-func (o NodeGroupIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupIamBinding] {
-	return pulumix.Output[*NodeGroupIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Schema.
@@ -143,12 +142,6 @@ func (i *Schema) ToSchemaOutputWithContext(ctx context.Context) SchemaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SchemaOutput)
 }
 
-func (i *Schema) ToOutput(ctx context.Context) pulumix.Output[*Schema] {
-	return pulumix.Output[*Schema]{
-		OutputState: i.ToSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SchemaOutput struct{ *pulumi.OutputState }
 
 func (SchemaOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o SchemaOutput) ToSchemaOutput() SchemaOutput {
 
 func (o SchemaOutput) ToSchemaOutputWithContext(ctx context.Context) SchemaOutput {
 	return o
-}
-
-func (o SchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*Schema] {
-	return pulumix.Output[*Schema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchemaOutput) CollectionId() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a batch workload that executes asynchronously.
@@ -173,12 +172,6 @@ func (i *Batch) ToBatchOutputWithContext(ctx context.Context) BatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BatchOutput)
 }
 
-func (i *Batch) ToOutput(ctx context.Context) pulumix.Output[*Batch] {
-	return pulumix.Output[*Batch]{
-		OutputState: i.ToBatchOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BatchOutput struct{ *pulumi.OutputState }
 
 func (BatchOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o BatchOutput) ToBatchOutput() BatchOutput {
 
 func (o BatchOutput) ToBatchOutputWithContext(ctx context.Context) BatchOutput {
 	return o
-}
-
-func (o BatchOutput) ToOutput(ctx context.Context) pulumix.Output[*Batch] {
-	return pulumix.Output[*Batch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.

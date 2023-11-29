@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Cloud Spanner database and starts to prepare it for serving. The returned long-running operation will have a name of the format `/operations/` and can be used to track preparation of the database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if successful.
@@ -150,12 +149,6 @@ func (i *Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseOutput)
 }
 
-func (i *Database) ToOutput(ctx context.Context) pulumix.Output[*Database] {
-	return pulumix.Output[*Database]{
-		OutputState: i.ToDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseOutput struct{ *pulumi.OutputState }
 
 func (DatabaseOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o DatabaseOutput) ToDatabaseOutput() DatabaseOutput {
 
 func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
 	return o
-}
-
-func (o DatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*Database] {
-	return pulumix.Output[*Database]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If exists, the time at which the database creation started.

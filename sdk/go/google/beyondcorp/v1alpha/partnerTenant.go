@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new BeyondCorp Enterprise partnerTenant in a given organization and can only be called by onboarded BeyondCorp Enterprise partner.
@@ -129,12 +128,6 @@ func (i *PartnerTenant) ToPartnerTenantOutputWithContext(ctx context.Context) Pa
 	return pulumi.ToOutputWithContext(ctx, i).(PartnerTenantOutput)
 }
 
-func (i *PartnerTenant) ToOutput(ctx context.Context) pulumix.Output[*PartnerTenant] {
-	return pulumix.Output[*PartnerTenant]{
-		OutputState: i.ToPartnerTenantOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PartnerTenantOutput struct{ *pulumi.OutputState }
 
 func (PartnerTenantOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o PartnerTenantOutput) ToPartnerTenantOutput() PartnerTenantOutput {
 
 func (o PartnerTenantOutput) ToPartnerTenantOutputWithContext(ctx context.Context) PartnerTenantOutput {
 	return o
-}
-
-func (o PartnerTenantOutput) ToOutput(ctx context.Context) pulumix.Output[*PartnerTenant] {
-	return pulumix.Output[*PartnerTenant]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when the resource was created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an Event Threat Detection custom module.
@@ -81,12 +80,6 @@ func (o LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput) T
 
 func (o LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput) ToLookupOrganizationEventThreatDetectionSettingCustomModuleResultOutputWithContext(ctx context.Context) LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput {
 	return o
-}
-
-func (o LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationEventThreatDetectionSettingCustomModuleResult] {
-	return pulumix.Output[LookupOrganizationEventThreatDetectionSettingCustomModuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.

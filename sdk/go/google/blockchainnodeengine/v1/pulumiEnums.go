@@ -81,12 +81,6 @@ func (o BlockchainNodeBlockchainTypeOutput) ToBlockchainNodeBlockchainTypePtrOut
 	}).(BlockchainNodeBlockchainTypePtrOutput)
 }
 
-func (o BlockchainNodeBlockchainTypeOutput) ToOutput(ctx context.Context) pulumix.Output[BlockchainNodeBlockchainType] {
-	return pulumix.Output[BlockchainNodeBlockchainType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlockchainNodeBlockchainTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o BlockchainNodeBlockchainTypePtrOutput) ToBlockchainNodeBlockchainTypePtr
 
 func (o BlockchainNodeBlockchainTypePtrOutput) ToBlockchainNodeBlockchainTypePtrOutputWithContext(ctx context.Context) BlockchainNodeBlockchainTypePtrOutput {
 	return o
-}
-
-func (o BlockchainNodeBlockchainTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlockchainNodeBlockchainType] {
-	return pulumix.Output[*BlockchainNodeBlockchainType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlockchainNodeBlockchainTypePtrOutput) Elem() BlockchainNodeBlockchainTypeOutput {
@@ -268,12 +256,6 @@ func (o EthereumDetailsConsensusClientOutput) ToEthereumDetailsConsensusClientPt
 	}).(EthereumDetailsConsensusClientPtrOutput)
 }
 
-func (o EthereumDetailsConsensusClientOutput) ToOutput(ctx context.Context) pulumix.Output[EthereumDetailsConsensusClient] {
-	return pulumix.Output[EthereumDetailsConsensusClient]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EthereumDetailsConsensusClientOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -307,12 +289,6 @@ func (o EthereumDetailsConsensusClientPtrOutput) ToEthereumDetailsConsensusClien
 
 func (o EthereumDetailsConsensusClientPtrOutput) ToEthereumDetailsConsensusClientPtrOutputWithContext(ctx context.Context) EthereumDetailsConsensusClientPtrOutput {
 	return o
-}
-
-func (o EthereumDetailsConsensusClientPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EthereumDetailsConsensusClient] {
-	return pulumix.Output[*EthereumDetailsConsensusClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EthereumDetailsConsensusClientPtrOutput) Elem() EthereumDetailsConsensusClientOutput {
@@ -455,12 +431,6 @@ func (o EthereumDetailsExecutionClientOutput) ToEthereumDetailsExecutionClientPt
 	}).(EthereumDetailsExecutionClientPtrOutput)
 }
 
-func (o EthereumDetailsExecutionClientOutput) ToOutput(ctx context.Context) pulumix.Output[EthereumDetailsExecutionClient] {
-	return pulumix.Output[EthereumDetailsExecutionClient]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EthereumDetailsExecutionClientOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -494,12 +464,6 @@ func (o EthereumDetailsExecutionClientPtrOutput) ToEthereumDetailsExecutionClien
 
 func (o EthereumDetailsExecutionClientPtrOutput) ToEthereumDetailsExecutionClientPtrOutputWithContext(ctx context.Context) EthereumDetailsExecutionClientPtrOutput {
 	return o
-}
-
-func (o EthereumDetailsExecutionClientPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EthereumDetailsExecutionClient] {
-	return pulumix.Output[*EthereumDetailsExecutionClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EthereumDetailsExecutionClientPtrOutput) Elem() EthereumDetailsExecutionClientOutput {
@@ -646,12 +610,6 @@ func (o EthereumDetailsNetworkOutput) ToEthereumDetailsNetworkPtrOutputWithConte
 	}).(EthereumDetailsNetworkPtrOutput)
 }
 
-func (o EthereumDetailsNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[EthereumDetailsNetwork] {
-	return pulumix.Output[EthereumDetailsNetwork]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EthereumDetailsNetworkOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -685,12 +643,6 @@ func (o EthereumDetailsNetworkPtrOutput) ToEthereumDetailsNetworkPtrOutput() Eth
 
 func (o EthereumDetailsNetworkPtrOutput) ToEthereumDetailsNetworkPtrOutputWithContext(ctx context.Context) EthereumDetailsNetworkPtrOutput {
 	return o
-}
-
-func (o EthereumDetailsNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EthereumDetailsNetwork] {
-	return pulumix.Output[*EthereumDetailsNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EthereumDetailsNetworkPtrOutput) Elem() EthereumDetailsNetworkOutput {
@@ -835,12 +787,6 @@ func (o EthereumDetailsNodeTypeOutput) ToEthereumDetailsNodeTypePtrOutputWithCon
 	}).(EthereumDetailsNodeTypePtrOutput)
 }
 
-func (o EthereumDetailsNodeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EthereumDetailsNodeType] {
-	return pulumix.Output[EthereumDetailsNodeType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EthereumDetailsNodeTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -874,12 +820,6 @@ func (o EthereumDetailsNodeTypePtrOutput) ToEthereumDetailsNodeTypePtrOutput() E
 
 func (o EthereumDetailsNodeTypePtrOutput) ToEthereumDetailsNodeTypePtrOutputWithContext(ctx context.Context) EthereumDetailsNodeTypePtrOutput {
 	return o
-}
-
-func (o EthereumDetailsNodeTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EthereumDetailsNodeType] {
-	return pulumix.Output[*EthereumDetailsNodeType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EthereumDetailsNodeTypePtrOutput) Elem() EthereumDetailsNodeTypeOutput {
@@ -1022,12 +962,6 @@ func (o GethDetailsGarbageCollectionModeOutput) ToGethDetailsGarbageCollectionMo
 	}).(GethDetailsGarbageCollectionModePtrOutput)
 }
 
-func (o GethDetailsGarbageCollectionModeOutput) ToOutput(ctx context.Context) pulumix.Output[GethDetailsGarbageCollectionMode] {
-	return pulumix.Output[GethDetailsGarbageCollectionMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GethDetailsGarbageCollectionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1061,12 +995,6 @@ func (o GethDetailsGarbageCollectionModePtrOutput) ToGethDetailsGarbageCollectio
 
 func (o GethDetailsGarbageCollectionModePtrOutput) ToGethDetailsGarbageCollectionModePtrOutputWithContext(ctx context.Context) GethDetailsGarbageCollectionModePtrOutput {
 	return o
-}
-
-func (o GethDetailsGarbageCollectionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GethDetailsGarbageCollectionMode] {
-	return pulumix.Output[*GethDetailsGarbageCollectionMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GethDetailsGarbageCollectionModePtrOutput) Elem() GethDetailsGarbageCollectionModeOutput {

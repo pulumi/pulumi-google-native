@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an API category.
@@ -77,12 +76,6 @@ func (o GetApicategoryResultOutput) ToGetApicategoryResultOutput() GetApicategor
 
 func (o GetApicategoryResultOutput) ToGetApicategoryResultOutputWithContext(ctx context.Context) GetApicategoryResultOutput {
 	return o
-}
-
-func (o GetApicategoryResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApicategoryResult] {
-	return pulumix.Output[GetApicategoryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The API category resource.

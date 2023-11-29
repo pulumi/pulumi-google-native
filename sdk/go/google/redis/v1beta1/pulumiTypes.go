@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o DiscoveryEndpointResponseOutput) ToDiscoveryEndpointResponseOutputWithCo
 	return o
 }
 
-func (o DiscoveryEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiscoveryEndpointResponse] {
-	return pulumix.Output[DiscoveryEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
 func (o DiscoveryEndpointResponseOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v DiscoveryEndpointResponse) string { return v.Address }).(pulumi.StringOutput)
@@ -72,12 +65,6 @@ func (o DiscoveryEndpointResponseArrayOutput) ToDiscoveryEndpointResponseArrayOu
 
 func (o DiscoveryEndpointResponseArrayOutput) ToDiscoveryEndpointResponseArrayOutputWithContext(ctx context.Context) DiscoveryEndpointResponseArrayOutput {
 	return o
-}
-
-func (o DiscoveryEndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiscoveryEndpointResponse] {
-	return pulumix.Output[[]DiscoveryEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiscoveryEndpointResponseArrayOutput) Index(i pulumi.IntInput) DiscoveryEndpointResponseOutput {
@@ -125,12 +112,6 @@ func (i MaintenancePolicyArgs) ToMaintenancePolicyOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyOutput)
 }
 
-func (i MaintenancePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[MaintenancePolicy] {
-	return pulumix.Output[MaintenancePolicy]{
-		OutputState: i.ToMaintenancePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MaintenancePolicyArgs) ToMaintenancePolicyPtrOutput() MaintenancePolicyPtrOutput {
 	return i.ToMaintenancePolicyPtrOutputWithContext(context.Background())
 }
@@ -172,12 +153,6 @@ func (i *maintenancePolicyPtrType) ToMaintenancePolicyPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyPtrOutput)
 }
 
-func (i *maintenancePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*MaintenancePolicy] {
-	return pulumix.Output[*MaintenancePolicy]{
-		OutputState: i.ToMaintenancePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Maintenance policy for an instance.
 type MaintenancePolicyOutput struct{ *pulumi.OutputState }
 
@@ -203,12 +178,6 @@ func (o MaintenancePolicyOutput) ToMaintenancePolicyPtrOutputWithContext(ctx con
 	}).(MaintenancePolicyPtrOutput)
 }
 
-func (o MaintenancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenancePolicy] {
-	return pulumix.Output[MaintenancePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
 func (o MaintenancePolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaintenancePolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -231,12 +200,6 @@ func (o MaintenancePolicyPtrOutput) ToMaintenancePolicyPtrOutput() MaintenancePo
 
 func (o MaintenancePolicyPtrOutput) ToMaintenancePolicyPtrOutputWithContext(ctx context.Context) MaintenancePolicyPtrOutput {
 	return o
-}
-
-func (o MaintenancePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenancePolicy] {
-	return pulumix.Output[*MaintenancePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MaintenancePolicyPtrOutput) Elem() MaintenancePolicyOutput {
@@ -296,12 +259,6 @@ func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponseOutputWithCo
 	return o
 }
 
-func (o MaintenancePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenancePolicyResponse] {
-	return pulumix.Output[MaintenancePolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The time when the policy was created.
 func (o MaintenancePolicyResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenancePolicyResponse) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -349,12 +306,6 @@ func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutputWi
 	return o
 }
 
-func (o MaintenanceScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceScheduleResponse] {
-	return pulumix.Output[MaintenanceScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If the scheduled maintenance can be rescheduled, default is true.
 func (o MaintenanceScheduleResponseOutput) CanReschedule() pulumi.BoolOutput {
 	return o.ApplyT(func(v MaintenanceScheduleResponse) bool { return v.CanReschedule }).(pulumi.BoolOutput)
@@ -396,12 +347,6 @@ func (o NodeInfoResponseOutput) ToNodeInfoResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o NodeInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeInfoResponse] {
-	return pulumix.Output[NodeInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Location of the node.
 func (o NodeInfoResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeInfoResponse) string { return v.Zone }).(pulumi.StringOutput)
@@ -419,12 +364,6 @@ func (o NodeInfoResponseArrayOutput) ToNodeInfoResponseArrayOutput() NodeInfoRes
 
 func (o NodeInfoResponseArrayOutput) ToNodeInfoResponseArrayOutputWithContext(ctx context.Context) NodeInfoResponseArrayOutput {
 	return o
-}
-
-func (o NodeInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeInfoResponse] {
-	return pulumix.Output[[]NodeInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeInfoResponseArrayOutput) Index(i pulumi.IntInput) NodeInfoResponseOutput {
@@ -476,12 +415,6 @@ func (i PersistenceConfigArgs) ToPersistenceConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigOutput)
 }
 
-func (i PersistenceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PersistenceConfig] {
-	return pulumix.Output[PersistenceConfig]{
-		OutputState: i.ToPersistenceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PersistenceConfigArgs) ToPersistenceConfigPtrOutput() PersistenceConfigPtrOutput {
 	return i.ToPersistenceConfigPtrOutputWithContext(context.Background())
 }
@@ -523,12 +456,6 @@ func (i *persistenceConfigPtrType) ToPersistenceConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigPtrOutput)
 }
 
-func (i *persistenceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PersistenceConfig] {
-	return pulumix.Output[*PersistenceConfig]{
-		OutputState: i.ToPersistenceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration of the persistence functionality.
 type PersistenceConfigOutput struct{ *pulumi.OutputState }
 
@@ -552,12 +479,6 @@ func (o PersistenceConfigOutput) ToPersistenceConfigPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PersistenceConfig) *PersistenceConfig {
 		return &v
 	}).(PersistenceConfigPtrOutput)
-}
-
-func (o PersistenceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PersistenceConfig] {
-	return pulumix.Output[PersistenceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
@@ -587,12 +508,6 @@ func (o PersistenceConfigPtrOutput) ToPersistenceConfigPtrOutput() PersistenceCo
 
 func (o PersistenceConfigPtrOutput) ToPersistenceConfigPtrOutputWithContext(ctx context.Context) PersistenceConfigPtrOutput {
 	return o
-}
-
-func (o PersistenceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PersistenceConfig] {
-	return pulumix.Output[*PersistenceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PersistenceConfigPtrOutput) Elem() PersistenceConfigOutput {
@@ -662,12 +577,6 @@ func (o PersistenceConfigResponseOutput) ToPersistenceConfigResponseOutputWithCo
 	return o
 }
 
-func (o PersistenceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PersistenceConfigResponse] {
-	return pulumix.Output[PersistenceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
 func (o PersistenceConfigResponseOutput) PersistenceMode() pulumi.StringOutput {
 	return o.ApplyT(func(v PersistenceConfigResponse) string { return v.PersistenceMode }).(pulumi.StringOutput)
@@ -721,12 +630,6 @@ func (i PscConfigArgs) ToPscConfigOutputWithContext(ctx context.Context) PscConf
 	return pulumi.ToOutputWithContext(ctx, i).(PscConfigOutput)
 }
 
-func (i PscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PscConfig] {
-	return pulumix.Output[PscConfig]{
-		OutputState: i.ToPscConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PscConfigArrayInput is an input type that accepts PscConfigArray and PscConfigArrayOutput values.
 // You can construct a concrete instance of `PscConfigArrayInput` via:
 //
@@ -752,12 +655,6 @@ func (i PscConfigArray) ToPscConfigArrayOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PscConfigArrayOutput)
 }
 
-func (i PscConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]PscConfig] {
-	return pulumix.Output[[]PscConfig]{
-		OutputState: i.ToPscConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PscConfigOutput struct{ *pulumi.OutputState }
 
 func (PscConfigOutput) ElementType() reflect.Type {
@@ -770,12 +667,6 @@ func (o PscConfigOutput) ToPscConfigOutput() PscConfigOutput {
 
 func (o PscConfigOutput) ToPscConfigOutputWithContext(ctx context.Context) PscConfigOutput {
 	return o
-}
-
-func (o PscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfig] {
-	return pulumix.Output[PscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
@@ -795,12 +686,6 @@ func (o PscConfigArrayOutput) ToPscConfigArrayOutput() PscConfigArrayOutput {
 
 func (o PscConfigArrayOutput) ToPscConfigArrayOutputWithContext(ctx context.Context) PscConfigArrayOutput {
 	return o
-}
-
-func (o PscConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PscConfig] {
-	return pulumix.Output[[]PscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PscConfigArrayOutput) Index(i pulumi.IntInput) PscConfigOutput {
@@ -828,12 +713,6 @@ func (o PscConfigResponseOutput) ToPscConfigResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o PscConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfigResponse] {
-	return pulumix.Output[PscConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
 func (o PscConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v PscConfigResponse) string { return v.Network }).(pulumi.StringOutput)
@@ -851,12 +730,6 @@ func (o PscConfigResponseArrayOutput) ToPscConfigResponseArrayOutput() PscConfig
 
 func (o PscConfigResponseArrayOutput) ToPscConfigResponseArrayOutputWithContext(ctx context.Context) PscConfigResponseArrayOutput {
 	return o
-}
-
-func (o PscConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PscConfigResponse] {
-	return pulumix.Output[[]PscConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PscConfigResponseArrayOutput) Index(i pulumi.IntInput) PscConfigResponseOutput {
@@ -892,12 +765,6 @@ func (o PscConnectionResponseOutput) ToPscConnectionResponseOutput() PscConnecti
 
 func (o PscConnectionResponseOutput) ToPscConnectionResponseOutputWithContext(ctx context.Context) PscConnectionResponseOutput {
 	return o
-}
-
-func (o PscConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PscConnectionResponse] {
-	return pulumix.Output[PscConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP allocated on the consumer network for the PSC forwarding rule.
@@ -939,12 +806,6 @@ func (o PscConnectionResponseArrayOutput) ToPscConnectionResponseArrayOutputWith
 	return o
 }
 
-func (o PscConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PscConnectionResponse] {
-	return pulumix.Output[[]PscConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PscConnectionResponseArrayOutput) Index(i pulumi.IntInput) PscConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PscConnectionResponse {
 		return vs[0].([]PscConnectionResponse)[vs[1].(int)]
@@ -970,12 +831,6 @@ func (o StateInfoResponseOutput) ToStateInfoResponseOutput() StateInfoResponseOu
 
 func (o StateInfoResponseOutput) ToStateInfoResponseOutputWithContext(ctx context.Context) StateInfoResponseOutput {
 	return o
-}
-
-func (o StateInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StateInfoResponse] {
-	return pulumix.Output[StateInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes ongoing update on the cluster when cluster state is UPDATING.
@@ -1030,12 +885,6 @@ func (i TimeOfDayArgs) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfD
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayOutput)
 }
 
-func (i TimeOfDayArgs) ToOutput(ctx context.Context) pulumix.Output[TimeOfDay] {
-	return pulumix.Output[TimeOfDay]{
-		OutputState: i.ToTimeOfDayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type TimeOfDayOutput struct{ *pulumi.OutputState }
 
@@ -1049,12 +898,6 @@ func (o TimeOfDayOutput) ToTimeOfDayOutput() TimeOfDayOutput {
 
 func (o TimeOfDayOutput) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfDayOutput {
 	return o
-}
-
-func (o TimeOfDayOutput) ToOutput(ctx context.Context) pulumix.Output[TimeOfDay] {
-	return pulumix.Output[TimeOfDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1102,12 +945,6 @@ func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutput() TimeOfDayResponseOu
 
 func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
 	return o
-}
-
-func (o TimeOfDayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeOfDayResponse] {
-	return pulumix.Output[TimeOfDayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1159,12 +996,6 @@ func (o TlsCertificateResponseOutput) ToTlsCertificateResponseOutputWithContext(
 	return o
 }
 
-func (o TlsCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TlsCertificateResponse] {
-	return pulumix.Output[TlsCertificateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PEM representation.
 func (o TlsCertificateResponseOutput) Cert() pulumi.StringOutput {
 	return o.ApplyT(func(v TlsCertificateResponse) string { return v.Cert }).(pulumi.StringOutput)
@@ -1204,12 +1035,6 @@ func (o TlsCertificateResponseArrayOutput) ToTlsCertificateResponseArrayOutputWi
 	return o
 }
 
-func (o TlsCertificateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TlsCertificateResponse] {
-	return pulumix.Output[[]TlsCertificateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TlsCertificateResponseArrayOutput) Index(i pulumi.IntInput) TlsCertificateResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TlsCertificateResponse {
 		return vs[0].([]TlsCertificateResponse)[vs[1].(int)]
@@ -1237,12 +1062,6 @@ func (o UpdateInfoResponseOutput) ToUpdateInfoResponseOutput() UpdateInfoRespons
 
 func (o UpdateInfoResponseOutput) ToUpdateInfoResponseOutputWithContext(ctx context.Context) UpdateInfoResponseOutput {
 	return o
-}
-
-func (o UpdateInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateInfoResponse] {
-	return pulumix.Output[UpdateInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target number of replica nodes per shard.
@@ -1294,12 +1113,6 @@ func (i WeeklyMaintenanceWindowArgs) ToWeeklyMaintenanceWindowOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowOutput)
 }
 
-func (i WeeklyMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[WeeklyMaintenanceWindow] {
-	return pulumix.Output[WeeklyMaintenanceWindow]{
-		OutputState: i.ToWeeklyMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WeeklyMaintenanceWindowArrayInput is an input type that accepts WeeklyMaintenanceWindowArray and WeeklyMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `WeeklyMaintenanceWindowArrayInput` via:
 //
@@ -1325,12 +1138,6 @@ func (i WeeklyMaintenanceWindowArray) ToWeeklyMaintenanceWindowArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowArrayOutput)
 }
 
-func (i WeeklyMaintenanceWindowArray) ToOutput(ctx context.Context) pulumix.Output[[]WeeklyMaintenanceWindow] {
-	return pulumix.Output[[]WeeklyMaintenanceWindow]{
-		OutputState: i.ToWeeklyMaintenanceWindowArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
 type WeeklyMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
@@ -1344,12 +1151,6 @@ func (o WeeklyMaintenanceWindowOutput) ToWeeklyMaintenanceWindowOutput() WeeklyM
 
 func (o WeeklyMaintenanceWindowOutput) ToWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowOutput {
 	return o
-}
-
-func (o WeeklyMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyMaintenanceWindow] {
-	return pulumix.Output[WeeklyMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The day of week that maintenance updates occur.
@@ -1374,12 +1175,6 @@ func (o WeeklyMaintenanceWindowArrayOutput) ToWeeklyMaintenanceWindowArrayOutput
 
 func (o WeeklyMaintenanceWindowArrayOutput) ToWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowArrayOutput {
 	return o
-}
-
-func (o WeeklyMaintenanceWindowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WeeklyMaintenanceWindow] {
-	return pulumix.Output[[]WeeklyMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WeeklyMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) WeeklyMaintenanceWindowOutput {
@@ -1413,12 +1208,6 @@ func (o WeeklyMaintenanceWindowResponseOutput) ToWeeklyMaintenanceWindowResponse
 	return o
 }
 
-func (o WeeklyMaintenanceWindowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyMaintenanceWindowResponse] {
-	return pulumix.Output[WeeklyMaintenanceWindowResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The day of week that maintenance updates occur.
 func (o WeeklyMaintenanceWindowResponseOutput) Day() pulumi.StringOutput {
 	return o.ApplyT(func(v WeeklyMaintenanceWindowResponse) string { return v.Day }).(pulumi.StringOutput)
@@ -1446,12 +1235,6 @@ func (o WeeklyMaintenanceWindowResponseArrayOutput) ToWeeklyMaintenanceWindowRes
 
 func (o WeeklyMaintenanceWindowResponseArrayOutput) ToWeeklyMaintenanceWindowResponseArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowResponseArrayOutput {
 	return o
-}
-
-func (o WeeklyMaintenanceWindowResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WeeklyMaintenanceWindowResponse] {
-	return pulumix.Output[[]WeeklyMaintenanceWindowResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WeeklyMaintenanceWindowResponseArrayOutput) Index(i pulumi.IntInput) WeeklyMaintenanceWindowResponseOutput {

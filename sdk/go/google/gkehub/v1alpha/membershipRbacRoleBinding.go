@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Membership RBACRoleBinding.
@@ -160,12 +159,6 @@ func (i *MembershipRbacRoleBinding) ToMembershipRbacRoleBindingOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingOutput)
 }
 
-func (i *MembershipRbacRoleBinding) ToOutput(ctx context.Context) pulumix.Output[*MembershipRbacRoleBinding] {
-	return pulumix.Output[*MembershipRbacRoleBinding]{
-		OutputState: i.ToMembershipRbacRoleBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipRbacRoleBindingOutput struct{ *pulumi.OutputState }
 
 func (MembershipRbacRoleBindingOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o MembershipRbacRoleBindingOutput) ToMembershipRbacRoleBindingOutput() Mem
 
 func (o MembershipRbacRoleBindingOutput) ToMembershipRbacRoleBindingOutputWithContext(ctx context.Context) MembershipRbacRoleBindingOutput {
 	return o
-}
-
-func (o MembershipRbacRoleBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipRbacRoleBinding] {
-	return pulumix.Output[*MembershipRbacRoleBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the rbacrolebinding was created.

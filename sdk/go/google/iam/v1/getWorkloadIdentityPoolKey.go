@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an individual WorkloadIdentityPoolProviderKey.
@@ -81,12 +80,6 @@ func (o LookupWorkloadIdentityPoolKeyResultOutput) ToLookupWorkloadIdentityPoolK
 
 func (o LookupWorkloadIdentityPoolKeyResultOutput) ToLookupWorkloadIdentityPoolKeyResultOutputWithContext(ctx context.Context) LookupWorkloadIdentityPoolKeyResultOutput {
 	return o
-}
-
-func (o LookupWorkloadIdentityPoolKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadIdentityPoolKeyResult] {
-	return pulumix.Output[LookupWorkloadIdentityPoolKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time after which the key will be permanently purged and cannot be recovered. Note that the key may get purged before this timestamp if the total limit of keys per provider is crossed.

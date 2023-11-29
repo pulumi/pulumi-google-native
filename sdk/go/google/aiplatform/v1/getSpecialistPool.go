@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a SpecialistPool.
@@ -79,12 +78,6 @@ func (o LookupSpecialistPoolResultOutput) ToLookupSpecialistPoolResultOutput() L
 
 func (o LookupSpecialistPoolResultOutput) ToLookupSpecialistPoolResultOutputWithContext(ctx context.Context) LookupSpecialistPoolResultOutput {
 	return o
-}
-
-func (o LookupSpecialistPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSpecialistPoolResult] {
-	return pulumix.Output[LookupSpecialistPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-defined name of the SpecialistPool. The name can be up to 128 characters long and can consist of any UTF-8 characters. This field should be unique on project-level.

@@ -86,12 +86,6 @@ func (o WorkerPoolRegionsItemOutput) ToWorkerPoolRegionsItemPtrOutputWithContext
 	}).(WorkerPoolRegionsItemPtrOutput)
 }
 
-func (o WorkerPoolRegionsItemOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerPoolRegionsItem] {
-	return pulumix.Output[WorkerPoolRegionsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkerPoolRegionsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -125,12 +119,6 @@ func (o WorkerPoolRegionsItemPtrOutput) ToWorkerPoolRegionsItemPtrOutput() Worke
 
 func (o WorkerPoolRegionsItemPtrOutput) ToWorkerPoolRegionsItemPtrOutputWithContext(ctx context.Context) WorkerPoolRegionsItemPtrOutput {
 	return o
-}
-
-func (o WorkerPoolRegionsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolRegionsItem] {
-	return pulumix.Output[*WorkerPoolRegionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkerPoolRegionsItemPtrOutput) Elem() WorkerPoolRegionsItemOutput {
@@ -226,12 +214,6 @@ func (i WorkerPoolRegionsItemArray) ToWorkerPoolRegionsItemArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolRegionsItemArrayOutput)
 }
 
-func (i WorkerPoolRegionsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkerPoolRegionsItem] {
-	return pulumix.Output[[]WorkerPoolRegionsItem]{
-		OutputState: i.ToWorkerPoolRegionsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkerPoolRegionsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolRegionsItemArrayOutput) ElementType() reflect.Type {
@@ -244,12 +226,6 @@ func (o WorkerPoolRegionsItemArrayOutput) ToWorkerPoolRegionsItemArrayOutput() W
 
 func (o WorkerPoolRegionsItemArrayOutput) ToWorkerPoolRegionsItemArrayOutputWithContext(ctx context.Context) WorkerPoolRegionsItemArrayOutput {
 	return o
-}
-
-func (o WorkerPoolRegionsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkerPoolRegionsItem] {
-	return pulumix.Output[[]WorkerPoolRegionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkerPoolRegionsItemArrayOutput) Index(i pulumi.IntInput) WorkerPoolRegionsItemOutput {

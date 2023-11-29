@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the resource.
@@ -79,12 +78,6 @@ func (o LookupLakeContentIamPolicyResultOutput) ToLookupLakeContentIamPolicyResu
 
 func (o LookupLakeContentIamPolicyResultOutput) ToLookupLakeContentIamPolicyResultOutputWithContext(ctx context.Context) LookupLakeContentIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupLakeContentIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLakeContentIamPolicyResult] {
-	return pulumix.Output[LookupLakeContentIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

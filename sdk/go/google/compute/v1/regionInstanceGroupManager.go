@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
@@ -208,12 +207,6 @@ func (i *RegionInstanceGroupManager) ToRegionInstanceGroupManagerOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerOutput)
 }
 
-func (i *RegionInstanceGroupManager) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManager] {
-	return pulumix.Output[*RegionInstanceGroupManager]{
-		OutputState: i.ToRegionInstanceGroupManagerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionInstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (RegionInstanceGroupManagerOutput) ElementType() reflect.Type {
@@ -226,12 +219,6 @@ func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutput() R
 
 func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutputWithContext(ctx context.Context) RegionInstanceGroupManagerOutput {
 	return o
-}
-
-func (o RegionInstanceGroupManagerOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManager] {
-	return pulumix.Output[*RegionInstanceGroupManager]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The autohealing policy for this managed instance group. You can specify only one value.

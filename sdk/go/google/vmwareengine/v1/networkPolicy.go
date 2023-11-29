@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new network policy in a given VMware Engine network of a project and location (region). A new network policy cannot be created if another network policy already exists in the same scope.
@@ -159,12 +158,6 @@ func (i *NetworkPolicy) ToNetworkPolicyOutputWithContext(ctx context.Context) Ne
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyOutput)
 }
 
-func (i *NetworkPolicy) ToOutput(ctx context.Context) pulumix.Output[*NetworkPolicy] {
-	return pulumix.Output[*NetworkPolicy]{
-		OutputState: i.ToNetworkPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkPolicyOutput struct{ *pulumi.OutputState }
 
 func (NetworkPolicyOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o NetworkPolicyOutput) ToNetworkPolicyOutput() NetworkPolicyOutput {
 
 func (o NetworkPolicyOutput) ToNetworkPolicyOutputWithContext(ctx context.Context) NetworkPolicyOutput {
 	return o
-}
-
-func (o NetworkPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPolicy] {
-	return pulumix.Output[*NetworkPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

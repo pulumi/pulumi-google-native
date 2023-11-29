@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single blockchain node.
@@ -85,12 +84,6 @@ func (o LookupBlockchainNodeResultOutput) ToLookupBlockchainNodeResultOutput() L
 
 func (o LookupBlockchainNodeResultOutput) ToLookupBlockchainNodeResultOutputWithContext(ctx context.Context) LookupBlockchainNodeResultOutput {
 	return o
-}
-
-func (o LookupBlockchainNodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBlockchainNodeResult] {
-	return pulumix.Output[LookupBlockchainNodeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The blockchain type of the node.

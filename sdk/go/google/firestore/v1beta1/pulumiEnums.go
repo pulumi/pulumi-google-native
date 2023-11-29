@@ -85,12 +85,6 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldModeOutput) ToGoogleFirestoreAdminV
 	}).(GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput)
 }
 
-func (o GoogleFirestoreAdminV1beta1IndexFieldModeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta1IndexFieldMode] {
-	return pulumix.Output[GoogleFirestoreAdminV1beta1IndexFieldMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleFirestoreAdminV1beta1IndexFieldModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) ToGoogleFirestoreAdm
 
 func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) ToGoogleFirestoreAdminV1beta1IndexFieldModePtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1beta1IndexFieldMode] {
-	return pulumix.Output[*GoogleFirestoreAdminV1beta1IndexFieldMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) Elem() GoogleFirestoreAdminV1beta1IndexFieldModeOutput {
@@ -274,12 +262,6 @@ func (o IndexStateEnumOutput) ToIndexStateEnumPtrOutputWithContext(ctx context.C
 	}).(IndexStateEnumPtrOutput)
 }
 
-func (o IndexStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[IndexStateEnum] {
-	return pulumix.Output[IndexStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IndexStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -313,12 +295,6 @@ func (o IndexStateEnumPtrOutput) ToIndexStateEnumPtrOutput() IndexStateEnumPtrOu
 
 func (o IndexStateEnumPtrOutput) ToIndexStateEnumPtrOutputWithContext(ctx context.Context) IndexStateEnumPtrOutput {
 	return o
-}
-
-func (o IndexStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IndexStateEnum] {
-	return pulumix.Output[*IndexStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndexStateEnumPtrOutput) Elem() IndexStateEnumOutput {

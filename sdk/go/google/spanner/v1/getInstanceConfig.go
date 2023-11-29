@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a particular instance configuration.
@@ -89,12 +88,6 @@ func (o LookupInstanceConfigResultOutput) ToLookupInstanceConfigResultOutput() L
 
 func (o LookupInstanceConfigResultOutput) ToLookupInstanceConfigResultOutputWithContext(ctx context.Context) LookupInstanceConfigResultOutput {
 	return o
-}
-
-func (o LookupInstanceConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceConfigResult] {
-	return pulumix.Output[LookupInstanceConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base configuration name, e.g. projects//instanceConfigs/nam3, based on which this configuration is created. Only set for user managed configurations. `base_config` must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single CertificateIssuanceConfig.
@@ -85,12 +84,6 @@ func (o LookupCertificateIssuanceConfigResultOutput) ToLookupCertificateIssuance
 
 func (o LookupCertificateIssuanceConfigResultOutput) ToLookupCertificateIssuanceConfigResultOutputWithContext(ctx context.Context) LookupCertificateIssuanceConfigResultOutput {
 	return o
-}
-
-func (o LookupCertificateIssuanceConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCertificateIssuanceConfigResult] {
-	return pulumix.Output[LookupCertificateIssuanceConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates new autoscaling policy.
@@ -127,12 +126,6 @@ func (i *AutoscalingPolicy) ToAutoscalingPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyOutput)
 }
 
-func (i *AutoscalingPolicy) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicy] {
-	return pulumix.Output[*AutoscalingPolicy]{
-		OutputState: i.ToAutoscalingPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalingPolicyOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyOutput) ElementType() reflect.Type {
@@ -145,12 +138,6 @@ func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutput() AutoscalingPolicyOu
 
 func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutputWithContext(ctx context.Context) AutoscalingPolicyOutput {
 	return o
-}
-
-func (o AutoscalingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicy] {
-	return pulumix.Output[*AutoscalingPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyOutput) BasicAlgorithm() BasicAutoscalingAlgorithmResponseOutput {

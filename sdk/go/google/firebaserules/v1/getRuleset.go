@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a `Ruleset` by name including the full `Source` contents.
@@ -73,12 +72,6 @@ func (o LookupRulesetResultOutput) ToLookupRulesetResultOutput() LookupRulesetRe
 
 func (o LookupRulesetResultOutput) ToLookupRulesetResultOutputWithContext(ctx context.Context) LookupRulesetResultOutput {
 	return o
-}
-
-func (o LookupRulesetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRulesetResult] {
-	return pulumix.Output[LookupRulesetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the `Ruleset` was created.

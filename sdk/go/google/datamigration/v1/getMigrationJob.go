@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single migration job.
@@ -115,12 +114,6 @@ func (o LookupMigrationJobResultOutput) ToLookupMigrationJobResultOutput() Looku
 
 func (o LookupMigrationJobResultOutput) ToLookupMigrationJobResultOutputWithContext(ctx context.Context) LookupMigrationJobResultOutput {
 	return o
-}
-
-func (o LookupMigrationJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMigrationJobResult] {
-	return pulumix.Output[LookupMigrationJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]

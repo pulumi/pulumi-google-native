@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified flow.
@@ -89,12 +88,6 @@ func (o LookupFlowResultOutput) ToLookupFlowResultOutput() LookupFlowResultOutpu
 
 func (o LookupFlowResultOutput) ToLookupFlowResultOutputWithContext(ctx context.Context) LookupFlowResultOutput {
 	return o
-}
-
-func (o LookupFlowResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFlowResult] {
-	return pulumix.Output[LookupFlowResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.

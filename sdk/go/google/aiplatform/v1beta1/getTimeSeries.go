@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a TensorboardTimeSeries.
@@ -93,12 +92,6 @@ func (o LookupTimeSeriesResultOutput) ToLookupTimeSeriesResultOutput() LookupTim
 
 func (o LookupTimeSeriesResultOutput) ToLookupTimeSeriesResultOutputWithContext(ctx context.Context) LookupTimeSeriesResultOutput {
 	return o
-}
-
-func (o LookupTimeSeriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTimeSeriesResult] {
-	return pulumix.Output[LookupTimeSeriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this TensorboardTimeSeries was created.

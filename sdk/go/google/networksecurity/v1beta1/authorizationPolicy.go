@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new AuthorizationPolicy in a given project and location.
@@ -146,12 +145,6 @@ func (i *AuthorizationPolicy) ToAuthorizationPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPolicyOutput)
 }
 
-func (i *AuthorizationPolicy) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationPolicy] {
-	return pulumix.Output[*AuthorizationPolicy]{
-		OutputState: i.ToAuthorizationPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizationPolicyOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationPolicyOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o AuthorizationPolicyOutput) ToAuthorizationPolicyOutput() AuthorizationPo
 
 func (o AuthorizationPolicyOutput) ToAuthorizationPolicyOutputWithContext(ctx context.Context) AuthorizationPolicyOutput {
 	return o
-}
-
-func (o AuthorizationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationPolicy] {
-	return pulumix.Output[*AuthorizationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".

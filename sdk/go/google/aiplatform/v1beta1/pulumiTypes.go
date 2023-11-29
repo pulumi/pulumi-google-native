@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -61,12 +60,6 @@ func (i GoogleCloudAiplatformV1beta1ActiveLearningConfigArgs) ToGoogleCloudAipla
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ActiveLearningConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ActiveLearningConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ActiveLearningConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ActiveLearningConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ActiveLearningConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ActiveLearningConfigArgs) ToGoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutput() GoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutputWithContext(context.Background())
 }
@@ -108,12 +101,6 @@ func (i *googleCloudAiplatformV1beta1ActiveLearningConfigPtrType) ToGoogleCloudA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ActiveLearningConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ActiveLearningConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ActiveLearningConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Parameters that configure the active learning pipeline. Active learning will label the data incrementally by several iterations. For every iteration, it will select a batch of data based on the sampling strategy.
 type GoogleCloudAiplatformV1beta1ActiveLearningConfigOutput struct{ *pulumi.OutputState }
 
@@ -137,12 +124,6 @@ func (o GoogleCloudAiplatformV1beta1ActiveLearningConfigOutput) ToGoogleCloudAip
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ActiveLearningConfig) *GoogleCloudAiplatformV1beta1ActiveLearningConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ActiveLearningConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ActiveLearningConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ActiveLearningConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Max number of human labeled DataItems.
@@ -181,12 +162,6 @@ func (o GoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ActiveLearningConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ActiveLearningConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ActiveLearningConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1ActiveLearningConfigOutput {
@@ -266,12 +241,6 @@ func (o GoogleCloudAiplatformV1beta1ActiveLearningConfigResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ActiveLearningConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ActiveLearningConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ActiveLearningConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Max number of human labeled DataItems.
 func (o GoogleCloudAiplatformV1beta1ActiveLearningConfigResponseOutput) MaxDataItemCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ActiveLearningConfigResponse) string { return v.MaxDataItemCount }).(pulumi.StringOutput)
@@ -317,12 +286,6 @@ func (o GoogleCloudAiplatformV1beta1AutomaticResourcesResponseOutput) ToGoogleCl
 
 func (o GoogleCloudAiplatformV1beta1AutomaticResourcesResponseOutput) ToGoogleCloudAiplatformV1beta1AutomaticResourcesResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1AutomaticResourcesResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1AutomaticResourcesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1AutomaticResourcesResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1AutomaticResourcesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
@@ -374,12 +337,6 @@ func (i GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArgs) ToGoogleCloudAipl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1AutoscalingMetricSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1AutoscalingMetricSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1AutoscalingMetricSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1AutoscalingMetricSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArray and GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayInput` via:
 //
@@ -405,12 +362,6 @@ func (i GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArray) ToGoogleCloudAip
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1AutoscalingMetricSpec] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1AutoscalingMetricSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The metric specification that defines the target resource utilization (CPU utilization, accelerator's duty cycle, and so on) for calculating the desired replica count.
 type GoogleCloudAiplatformV1beta1AutoscalingMetricSpecOutput struct{ *pulumi.OutputState }
 
@@ -424,12 +375,6 @@ func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecOutput) ToGoogleCloudAi
 
 func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecOutput) ToGoogleCloudAiplatformV1beta1AutoscalingMetricSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1AutoscalingMetricSpecOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1AutoscalingMetricSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1AutoscalingMetricSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
@@ -454,12 +399,6 @@ func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayOutput) ToGoogleCl
 
 func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayOutput) ToGoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1AutoscalingMetricSpec] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1AutoscalingMetricSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1AutoscalingMetricSpecOutput {
@@ -491,12 +430,6 @@ func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
 func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse) string { return v.MetricName }).(pulumi.StringOutput)
@@ -519,12 +452,6 @@ func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseArrayOutput) To
 
 func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseArrayOutput) ToGoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseOutput {
@@ -576,12 +503,6 @@ func (i GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgs) ToGoogleCloudAi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BatchDedicatedResourcesOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchDedicatedResources] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchDedicatedResources]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BatchDedicatedResourcesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgs) ToGoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutput() GoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutputWithContext(context.Background())
 }
@@ -623,12 +544,6 @@ func (i *googleCloudAiplatformV1beta1BatchDedicatedResourcesPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1BatchDedicatedResourcesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1BatchDedicatedResources] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1BatchDedicatedResources]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A description of resources that are used for performing batch operations, are dedicated to a Model, and need manual configuration.
 type GoogleCloudAiplatformV1beta1BatchDedicatedResourcesOutput struct{ *pulumi.OutputState }
 
@@ -652,12 +567,6 @@ func (o GoogleCloudAiplatformV1beta1BatchDedicatedResourcesOutput) ToGoogleCloud
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1BatchDedicatedResources) *GoogleCloudAiplatformV1beta1BatchDedicatedResources {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1BatchDedicatedResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchDedicatedResources] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchDedicatedResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The specification of a single machine.
@@ -689,12 +598,6 @@ func (o GoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutput) ToGoogleCl
 
 func (o GoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutput) ToGoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1BatchDedicatedResources] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1BatchDedicatedResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1BatchDedicatedResourcesPtrOutput) Elem() GoogleCloudAiplatformV1beta1BatchDedicatedResourcesOutput {
@@ -762,12 +665,6 @@ func (o GoogleCloudAiplatformV1beta1BatchDedicatedResourcesResponseOutput) ToGoo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1BatchDedicatedResourcesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchDedicatedResourcesResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchDedicatedResourcesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The specification of a single machine.
 func (o GoogleCloudAiplatformV1beta1BatchDedicatedResourcesResponseOutput) MachineSpec() GoogleCloudAiplatformV1beta1MachineSpecResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BatchDedicatedResourcesResponse) GoogleCloudAiplatformV1beta1MachineSpecResponse {
@@ -828,12 +725,6 @@ func (i GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgs) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configures the input to BatchPredictionJob. See Model.supported_input_storage_formats for Model's supported input formats, and how instances should be expressed via any of them.
 type GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigOutput struct{ *pulumi.OutputState }
 
@@ -847,12 +738,6 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigOutput) ToGoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The BigQuery location of the input table. The schema of the table should be in the format described by the given context OpenAPI Schema, if one is provided. The table may contain additional columns that are not described by the schema, and they will be ignored.
@@ -897,12 +782,6 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigResponseOutput)
 
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigResponseOutput) ToGoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The BigQuery location of the input table. The schema of the table should be in the format described by the given context OpenAPI Schema, if one is provided. The table may contain additional columns that are not described by the schema, and they will be ignored.
@@ -973,12 +852,6 @@ func (i GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgs) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgs) ToGoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput() GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -1020,12 +893,6 @@ func (i *googleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration defining how to transform batch prediction input instances to the instances that the Model accepts.
 type GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigOutput struct{ *pulumi.OutputState }
 
@@ -1049,12 +916,6 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigOutput) ToGo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig) *GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
@@ -1089,12 +950,6 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput) T
 
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput) ToGoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigOutput {
@@ -1174,12 +1029,6 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponseOutp
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponseOutput) ExcludedFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse) []string {
@@ -1249,12 +1098,6 @@ func (i GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgs) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configures the output of BatchPredictionJob. See Model.supported_output_storage_formats for supported output formats, and how predictions are expressed via any of them.
 type GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigOutput struct{ *pulumi.OutputState }
 
@@ -1268,12 +1111,6 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigOutput) ToGoog
 
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigOutput) ToGoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The BigQuery project or dataset location where the output is to be written to. If project is provided, a new dataset is created with name `prediction__` where is made BigQuery-dataset-name compatible (for example, most special characters become underscores), and timestamp is in YYYY_MM_DDThh_mm_ss_sssZ "based on ISO-8601" format. In the dataset two tables will be created, `predictions`, and `errors`. If the Model has both instance and prediction schemata defined then the tables have columns as follows: The `predictions` table contains instances for which the prediction succeeded, it has columns as per a concatenation of the Model's instance and prediction schemata. The `errors` table contains rows for which the prediction has failed, it has instance columns, as per the instance schema, followed by a single "errors" column, which as values has google.rpc.Status represented as a STRUCT, and containing only `code` and `message`.
@@ -1320,12 +1157,6 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigResponseOutput
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The BigQuery project or dataset location where the output is to be written to. If project is provided, a new dataset is created with name `prediction__` where is made BigQuery-dataset-name compatible (for example, most special characters become underscores), and timestamp is in YYYY_MM_DDThh_mm_ss_sssZ "based on ISO-8601" format. In the dataset two tables will be created, `predictions`, and `errors`. If the Model has both instance and prediction schemata defined then the tables have columns as follows: The `predictions` table contains instances for which the prediction succeeded, it has columns as per a concatenation of the Model's instance and prediction schemata. The `errors` table contains rows for which the prediction has failed, it has instance columns, as per the instance schema, followed by a single "errors" column, which as values has google.rpc.Status represented as a STRUCT, and containing only `code` and `message`.
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigResponseOutput) BigqueryDestination() GoogleCloudAiplatformV1beta1BigQueryDestinationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigResponse) GoogleCloudAiplatformV1beta1BigQueryDestinationResponse {
@@ -1370,12 +1201,6 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobOutputInfoResponseOutput) 
 
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobOutputInfoResponseOutput) ToGoogleCloudAiplatformV1beta1BatchPredictionJobOutputInfoResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BatchPredictionJobOutputInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1BatchPredictionJobOutputInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobOutputInfoResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BatchPredictionJobOutputInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path of the BigQuery dataset created, in `bq://projectId.bqDatasetId` format, into which the prediction output is written.
@@ -1434,12 +1259,6 @@ func (i GoogleCloudAiplatformV1beta1BigQueryDestinationArgs) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BigQueryDestinationOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1BigQueryDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BigQueryDestination] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BigQueryDestination]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BigQueryDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1BigQueryDestinationArgs) ToGoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutput() GoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutputWithContext(context.Background())
 }
@@ -1481,12 +1300,6 @@ func (i *googleCloudAiplatformV1beta1BigQueryDestinationPtrType) ToGoogleCloudAi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1BigQueryDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1BigQueryDestination] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1BigQueryDestination]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The BigQuery location for the output content.
 type GoogleCloudAiplatformV1beta1BigQueryDestinationOutput struct{ *pulumi.OutputState }
 
@@ -1512,12 +1325,6 @@ func (o GoogleCloudAiplatformV1beta1BigQueryDestinationOutput) ToGoogleCloudAipl
 	}).(GoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1BigQueryDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BigQueryDestination] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BigQueryDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 // BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: * BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
 func (o GoogleCloudAiplatformV1beta1BigQueryDestinationOutput) OutputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BigQueryDestination) string { return v.OutputUri }).(pulumi.StringOutput)
@@ -1535,12 +1342,6 @@ func (o GoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutput) ToGoogleCloudA
 
 func (o GoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutput) ToGoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1BigQueryDestination] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1BigQueryDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1BigQueryDestinationPtrOutput) Elem() GoogleCloudAiplatformV1beta1BigQueryDestinationOutput {
@@ -1584,12 +1385,6 @@ func (o GoogleCloudAiplatformV1beta1BigQueryDestinationResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1BigQueryDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BigQueryDestinationResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BigQueryDestinationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: * BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
 func (o GoogleCloudAiplatformV1beta1BigQueryDestinationResponseOutput) OutputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BigQueryDestinationResponse) string { return v.OutputUri }).(pulumi.StringOutput)
@@ -1628,12 +1423,6 @@ func (i GoogleCloudAiplatformV1beta1BigQuerySourceArgs) ToGoogleCloudAiplatformV
 
 func (i GoogleCloudAiplatformV1beta1BigQuerySourceArgs) ToGoogleCloudAiplatformV1beta1BigQuerySourceOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BigQuerySourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BigQuerySourceOutput)
-}
-
-func (i GoogleCloudAiplatformV1beta1BigQuerySourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BigQuerySource] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BigQuerySource]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BigQuerySourceOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudAiplatformV1beta1BigQuerySourceArgs) ToGoogleCloudAiplatformV1beta1BigQuerySourcePtrOutput() GoogleCloudAiplatformV1beta1BigQuerySourcePtrOutput {
@@ -1677,12 +1466,6 @@ func (i *googleCloudAiplatformV1beta1BigQuerySourcePtrType) ToGoogleCloudAiplatf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BigQuerySourcePtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1BigQuerySourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1BigQuerySource] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1BigQuerySource]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BigQuerySourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The BigQuery location for the input content.
 type GoogleCloudAiplatformV1beta1BigQuerySourceOutput struct{ *pulumi.OutputState }
 
@@ -1708,12 +1491,6 @@ func (o GoogleCloudAiplatformV1beta1BigQuerySourceOutput) ToGoogleCloudAiplatfor
 	}).(GoogleCloudAiplatformV1beta1BigQuerySourcePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1BigQuerySourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BigQuerySource] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BigQuerySource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // BigQuery URI to a table, up to 2000 characters long. Accepted forms: * BigQuery path. For example: `bq://projectId.bqDatasetId.bqTableId`.
 func (o GoogleCloudAiplatformV1beta1BigQuerySourceOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BigQuerySource) string { return v.InputUri }).(pulumi.StringOutput)
@@ -1731,12 +1508,6 @@ func (o GoogleCloudAiplatformV1beta1BigQuerySourcePtrOutput) ToGoogleCloudAiplat
 
 func (o GoogleCloudAiplatformV1beta1BigQuerySourcePtrOutput) ToGoogleCloudAiplatformV1beta1BigQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BigQuerySourcePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1BigQuerySourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1BigQuerySource] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1BigQuerySource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1BigQuerySourcePtrOutput) Elem() GoogleCloudAiplatformV1beta1BigQuerySourceOutput {
@@ -1780,12 +1551,6 @@ func (o GoogleCloudAiplatformV1beta1BigQuerySourceResponseOutput) ToGoogleCloudA
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1BigQuerySourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BigQuerySourceResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BigQuerySourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // BigQuery URI to a table, up to 2000 characters long. Accepted forms: * BigQuery path. For example: `bq://projectId.bqDatasetId.bqTableId`.
 func (o GoogleCloudAiplatformV1beta1BigQuerySourceResponseOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BigQuerySourceResponse) string { return v.InputUri }).(pulumi.StringOutput)
@@ -1824,12 +1589,6 @@ func (i GoogleCloudAiplatformV1beta1BlurBaselineConfigArgs) ToGoogleCloudAiplatf
 
 func (i GoogleCloudAiplatformV1beta1BlurBaselineConfigArgs) ToGoogleCloudAiplatformV1beta1BlurBaselineConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BlurBaselineConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BlurBaselineConfigOutput)
-}
-
-func (i GoogleCloudAiplatformV1beta1BlurBaselineConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BlurBaselineConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BlurBaselineConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BlurBaselineConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudAiplatformV1beta1BlurBaselineConfigArgs) ToGoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutput() GoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutput {
@@ -1873,12 +1632,6 @@ func (i *googleCloudAiplatformV1beta1BlurBaselineConfigPtrType) ToGoogleCloudAip
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1BlurBaselineConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1BlurBaselineConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1BlurBaselineConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Config for blur baseline. When enabled, a linear path from the maximally blurred image to the input image is created. Using a blurred baseline instead of zero (black image) is motivated by the BlurIG approach explained here: https://arxiv.org/abs/2004.03383
 type GoogleCloudAiplatformV1beta1BlurBaselineConfigOutput struct{ *pulumi.OutputState }
 
@@ -1904,12 +1657,6 @@ func (o GoogleCloudAiplatformV1beta1BlurBaselineConfigOutput) ToGoogleCloudAipla
 	}).(GoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1BlurBaselineConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BlurBaselineConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BlurBaselineConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The standard deviation of the blur kernel for the blurred baseline. The same blurring parameter is used for both the height and the width dimension. If not set, the method defaults to the zero (i.e. black for images) baseline.
 func (o GoogleCloudAiplatformV1beta1BlurBaselineConfigOutput) MaxBlurSigma() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BlurBaselineConfig) *float64 { return v.MaxBlurSigma }).(pulumi.Float64PtrOutput)
@@ -1927,12 +1674,6 @@ func (o GoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutput) ToGoogleCloudAi
 
 func (o GoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutput) ToGoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1BlurBaselineConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1BlurBaselineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1BlurBaselineConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1BlurBaselineConfigOutput {
@@ -1976,12 +1717,6 @@ func (o GoogleCloudAiplatformV1beta1BlurBaselineConfigResponseOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1BlurBaselineConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The standard deviation of the blur kernel for the blurred baseline. The same blurring parameter is used for both the height and the width dimension. If not set, the method defaults to the zero (i.e. black for images) baseline.
 func (o GoogleCloudAiplatformV1beta1BlurBaselineConfigResponseOutput) MaxBlurSigma() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse) float64 { return v.MaxBlurSigma }).(pulumi.Float64Output)
@@ -2012,12 +1747,6 @@ func (o GoogleCloudAiplatformV1beta1CompletionStatsResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudAiplatformV1beta1CompletionStatsResponseOutput) ToGoogleCloudAiplatformV1beta1CompletionStatsResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1CompletionStatsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1CompletionStatsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1CompletionStatsResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1CompletionStatsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of entities for which any error was encountered.
@@ -2089,12 +1818,6 @@ func (i GoogleCloudAiplatformV1beta1ContainerSpecArgs) ToGoogleCloudAiplatformV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ContainerSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ContainerSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ContainerSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ContainerSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ContainerSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ContainerSpecArgs) ToGoogleCloudAiplatformV1beta1ContainerSpecPtrOutput() GoogleCloudAiplatformV1beta1ContainerSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ContainerSpecPtrOutputWithContext(context.Background())
 }
@@ -2136,12 +1859,6 @@ func (i *googleCloudAiplatformV1beta1ContainerSpecPtrType) ToGoogleCloudAiplatfo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ContainerSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ContainerSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ContainerSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ContainerSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ContainerSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The spec of a Container.
 type GoogleCloudAiplatformV1beta1ContainerSpecOutput struct{ *pulumi.OutputState }
 
@@ -2165,12 +1882,6 @@ func (o GoogleCloudAiplatformV1beta1ContainerSpecOutput) ToGoogleCloudAiplatform
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ContainerSpec) *GoogleCloudAiplatformV1beta1ContainerSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ContainerSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ContainerSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ContainerSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ContainerSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The arguments to be passed when starting the container.
@@ -2205,12 +1916,6 @@ func (o GoogleCloudAiplatformV1beta1ContainerSpecPtrOutput) ToGoogleCloudAiplatf
 
 func (o GoogleCloudAiplatformV1beta1ContainerSpecPtrOutput) ToGoogleCloudAiplatformV1beta1ContainerSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ContainerSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ContainerSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ContainerSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ContainerSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ContainerSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1ContainerSpecOutput {
@@ -2290,12 +1995,6 @@ func (o GoogleCloudAiplatformV1beta1ContainerSpecResponseOutput) ToGoogleCloudAi
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ContainerSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ContainerSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ContainerSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The arguments to be passed when starting the container.
 func (o GoogleCloudAiplatformV1beta1ContainerSpecResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ContainerSpecResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
@@ -2357,12 +2056,6 @@ func (o GoogleCloudAiplatformV1beta1ContextResponseOutput) ToGoogleCloudAiplatfo
 
 func (o GoogleCloudAiplatformV1beta1ContextResponseOutput) ToGoogleCloudAiplatformV1beta1ContextResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ContextResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ContextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ContextResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ContextResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this Context was created.
@@ -2463,12 +2156,6 @@ func (i GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgs) ToGoogleCloudA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1CreatePipelineJobRequestOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1CreatePipelineJobRequest] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1CreatePipelineJobRequest]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1CreatePipelineJobRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgs) ToGoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutput() GoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutputWithContext(context.Background())
 }
@@ -2510,12 +2197,6 @@ func (i *googleCloudAiplatformV1beta1CreatePipelineJobRequestPtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1CreatePipelineJobRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1CreatePipelineJobRequest] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1CreatePipelineJobRequest]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Request message for PipelineService.CreatePipelineJob.
 type GoogleCloudAiplatformV1beta1CreatePipelineJobRequestOutput struct{ *pulumi.OutputState }
 
@@ -2539,12 +2220,6 @@ func (o GoogleCloudAiplatformV1beta1CreatePipelineJobRequestOutput) ToGoogleClou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1CreatePipelineJobRequest) *GoogleCloudAiplatformV1beta1CreatePipelineJobRequest {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1CreatePipelineJobRequestOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1CreatePipelineJobRequest] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1CreatePipelineJobRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
@@ -2576,12 +2251,6 @@ func (o GoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutput) ToGoogleC
 
 func (o GoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutput) ToGoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1CreatePipelineJobRequest] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1CreatePipelineJobRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1CreatePipelineJobRequestPtrOutput) Elem() GoogleCloudAiplatformV1beta1CreatePipelineJobRequestOutput {
@@ -2647,12 +2316,6 @@ func (o GoogleCloudAiplatformV1beta1CreatePipelineJobRequestResponseOutput) ToGo
 
 func (o GoogleCloudAiplatformV1beta1CreatePipelineJobRequestResponseOutput) ToGoogleCloudAiplatformV1beta1CreatePipelineJobRequestResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1CreatePipelineJobRequestResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1CreatePipelineJobRequestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1CreatePipelineJobRequestResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1CreatePipelineJobRequestResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
@@ -2755,12 +2418,6 @@ func (i GoogleCloudAiplatformV1beta1CustomJobSpecArgs) ToGoogleCloudAiplatformV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1CustomJobSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1CustomJobSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1CustomJobSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1CustomJobSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1CustomJobSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1CustomJobSpecArgs) ToGoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput() GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1CustomJobSpecPtrOutputWithContext(context.Background())
 }
@@ -2802,12 +2459,6 @@ func (i *googleCloudAiplatformV1beta1CustomJobSpecPtrType) ToGoogleCloudAiplatfo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1CustomJobSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1CustomJobSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1CustomJobSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1CustomJobSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the spec of a CustomJob.
 type GoogleCloudAiplatformV1beta1CustomJobSpecOutput struct{ *pulumi.OutputState }
 
@@ -2831,12 +2482,6 @@ func (o GoogleCloudAiplatformV1beta1CustomJobSpecOutput) ToGoogleCloudAiplatform
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1CustomJobSpec) *GoogleCloudAiplatformV1beta1CustomJobSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1CustomJobSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1CustomJobSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1CustomJobSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob. For HyperparameterTuningJob, the baseOutputDirectory of each child CustomJob backing a Trial is set to a subdirectory of name id under its parent HyperparameterTuningJob's baseOutputDirectory. The following Vertex AI environment variables will be passed to containers or python modules when this field is set: For CustomJob: * AIP_MODEL_DIR = `/model/` * AIP_CHECKPOINT_DIR = `/checkpoints/` * AIP_TENSORBOARD_LOG_DIR = `/logs/` For CustomJob backing a Trial of HyperparameterTuningJob: * AIP_MODEL_DIR = `//model/` * AIP_CHECKPOINT_DIR = `//checkpoints/` * AIP_TENSORBOARD_LOG_DIR = `//logs/`
@@ -2922,12 +2567,6 @@ func (o GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput) ToGoogleCloudAiplatf
 
 func (o GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput) ToGoogleCloudAiplatformV1beta1CustomJobSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1CustomJobSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1CustomJobSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1CustomJobSpecOutput {
@@ -3115,12 +2754,6 @@ func (o GoogleCloudAiplatformV1beta1CustomJobSpecResponseOutput) ToGoogleCloudAi
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1CustomJobSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1CustomJobSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1CustomJobSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob. For HyperparameterTuningJob, the baseOutputDirectory of each child CustomJob backing a Trial is set to a subdirectory of name id under its parent HyperparameterTuningJob's baseOutputDirectory. The following Vertex AI environment variables will be passed to containers or python modules when this field is set: For CustomJob: * AIP_MODEL_DIR = `/model/` * AIP_CHECKPOINT_DIR = `/checkpoints/` * AIP_TENSORBOARD_LOG_DIR = `/logs/` For CustomJob backing a Trial of HyperparameterTuningJob: * AIP_MODEL_DIR = `//model/` * AIP_CHECKPOINT_DIR = `//checkpoints/` * AIP_TENSORBOARD_LOG_DIR = `//logs/`
 func (o GoogleCloudAiplatformV1beta1CustomJobSpecResponseOutput) BaseOutputDirectory() GoogleCloudAiplatformV1beta1GcsDestinationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1CustomJobSpecResponse) GoogleCloudAiplatformV1beta1GcsDestinationResponse {
@@ -3239,12 +2872,6 @@ func (i GoogleCloudAiplatformV1beta1DedicatedResourcesArgs) ToGoogleCloudAiplatf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1DedicatedResourcesOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1DedicatedResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DedicatedResources] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DedicatedResources]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1DedicatedResourcesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A description of resources that are dedicated to a DeployedModel, and that need a higher degree of manual configuration.
 type GoogleCloudAiplatformV1beta1DedicatedResourcesOutput struct{ *pulumi.OutputState }
 
@@ -3258,12 +2885,6 @@ func (o GoogleCloudAiplatformV1beta1DedicatedResourcesOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1DedicatedResourcesOutput) ToGoogleCloudAiplatformV1beta1DedicatedResourcesOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1DedicatedResourcesOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1DedicatedResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DedicatedResources] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DedicatedResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
@@ -3317,12 +2938,6 @@ func (o GoogleCloudAiplatformV1beta1DedicatedResourcesResponseOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1DedicatedResourcesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DedicatedResourcesResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DedicatedResourcesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
 func (o GoogleCloudAiplatformV1beta1DedicatedResourcesResponseOutput) AutoscalingMetricSpecs() GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1DedicatedResourcesResponse) []GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse {
@@ -3370,12 +2985,6 @@ func (o GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponseO
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: `service-account-name@project-id.iam.gserviceaccount.com`
 func (o GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponseOutput) AllowedIssuers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse) []string {
@@ -3411,12 +3020,6 @@ func (o GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponseOutput) ToGoo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the authentication provider that the DeployedIndex uses.
 func (o GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponseOutput) AuthProvider() GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse) GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse {
@@ -3447,12 +3050,6 @@ func (o GoogleCloudAiplatformV1beta1DeployedIndexRefResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1DeployedIndexRefResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DeployedIndexRefResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DeployedIndexRefResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The ID of the DeployedIndex in the above IndexEndpoint.
 func (o GoogleCloudAiplatformV1beta1DeployedIndexRefResponseOutput) DeployedIndexId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1DeployedIndexRefResponse) string { return v.DeployedIndexId }).(pulumi.StringOutput)
@@ -3475,12 +3072,6 @@ func (o GoogleCloudAiplatformV1beta1DeployedIndexRefResponseArrayOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1DeployedIndexRefResponseArrayOutput) ToGoogleCloudAiplatformV1beta1DeployedIndexRefResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1DeployedIndexRefResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1DeployedIndexRefResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1DeployedIndexRefResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1DeployedIndexRefResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1DeployedIndexRefResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1DeployedIndexRefResponseOutput {
@@ -3528,12 +3119,6 @@ func (o GoogleCloudAiplatformV1beta1DeployedIndexResponseOutput) ToGoogleCloudAi
 
 func (o GoogleCloudAiplatformV1beta1DeployedIndexResponseOutput) ToGoogleCloudAiplatformV1beta1DeployedIndexResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1DeployedIndexResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1DeployedIndexResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DeployedIndexResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DeployedIndexResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration. If min_replica_count is not set, the default value is 2 (we don't provide SLA when min_replica_count=1). If max_replica_count is not set, the default value is min_replica_count. The max allowed replica count is 1000.
@@ -3613,12 +3198,6 @@ func (o GoogleCloudAiplatformV1beta1DeployedIndexResponseArrayOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1DeployedIndexResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1DeployedIndexResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1DeployedIndexResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1DeployedIndexResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1DeployedIndexResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1DeployedIndexResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1DeployedIndexResponse)[vs[1].(int)]
@@ -3648,12 +3227,6 @@ func (o GoogleCloudAiplatformV1beta1DeployedModelRefResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1DeployedModelRefResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DeployedModelRefResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DeployedModelRefResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. An ID of a DeployedModel in the above Endpoint.
 func (o GoogleCloudAiplatformV1beta1DeployedModelRefResponseOutput) DeployedModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1DeployedModelRefResponse) string { return v.DeployedModelId }).(pulumi.StringOutput)
@@ -3676,12 +3249,6 @@ func (o GoogleCloudAiplatformV1beta1DeployedModelRefResponseArrayOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1DeployedModelRefResponseArrayOutput) ToGoogleCloudAiplatformV1beta1DeployedModelRefResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1DeployedModelRefResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1DeployedModelRefResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1DeployedModelRefResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1DeployedModelRefResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1DeployedModelRefResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1DeployedModelRefResponseOutput {
@@ -3733,12 +3300,6 @@ func (o GoogleCloudAiplatformV1beta1DeployedModelResponseOutput) ToGoogleCloudAi
 
 func (o GoogleCloudAiplatformV1beta1DeployedModelResponseOutput) ToGoogleCloudAiplatformV1beta1DeployedModelResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1DeployedModelResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1DeployedModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DeployedModelResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DeployedModelResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
@@ -3828,12 +3389,6 @@ func (o GoogleCloudAiplatformV1beta1DeployedModelResponseArrayOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1DeployedModelResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1DeployedModelResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1DeployedModelResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1DeployedModelResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1DeployedModelResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1DeployedModelResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1DeployedModelResponse)[vs[1].(int)]
@@ -3879,12 +3434,6 @@ func (i GoogleCloudAiplatformV1beta1DiskSpecArgs) ToGoogleCloudAiplatformV1beta1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1DiskSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1DiskSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DiskSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DiskSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1DiskSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1DiskSpecArgs) ToGoogleCloudAiplatformV1beta1DiskSpecPtrOutput() GoogleCloudAiplatformV1beta1DiskSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1DiskSpecPtrOutputWithContext(context.Background())
 }
@@ -3926,12 +3475,6 @@ func (i *googleCloudAiplatformV1beta1DiskSpecPtrType) ToGoogleCloudAiplatformV1b
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1DiskSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1DiskSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1DiskSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1DiskSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1DiskSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the spec of disk options.
 type GoogleCloudAiplatformV1beta1DiskSpecOutput struct{ *pulumi.OutputState }
 
@@ -3957,12 +3500,6 @@ func (o GoogleCloudAiplatformV1beta1DiskSpecOutput) ToGoogleCloudAiplatformV1bet
 	}).(GoogleCloudAiplatformV1beta1DiskSpecPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1DiskSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DiskSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DiskSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Size in GB of the boot disk (default is 100GB).
 func (o GoogleCloudAiplatformV1beta1DiskSpecOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1DiskSpec) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
@@ -3985,12 +3522,6 @@ func (o GoogleCloudAiplatformV1beta1DiskSpecPtrOutput) ToGoogleCloudAiplatformV1
 
 func (o GoogleCloudAiplatformV1beta1DiskSpecPtrOutput) ToGoogleCloudAiplatformV1beta1DiskSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1DiskSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1DiskSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1DiskSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1DiskSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1DiskSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1DiskSpecOutput {
@@ -4046,12 +3577,6 @@ func (o GoogleCloudAiplatformV1beta1DiskSpecResponseOutput) ToGoogleCloudAiplatf
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1DiskSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1DiskSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1DiskSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Size in GB of the boot disk (default is 100GB).
 func (o GoogleCloudAiplatformV1beta1DiskSpecResponseOutput) BootDiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1DiskSpecResponse) int { return v.BootDiskSizeGb }).(pulumi.IntOutput)
@@ -4097,12 +3622,6 @@ func (i GoogleCloudAiplatformV1beta1EncryptionSpecArgs) ToGoogleCloudAiplatformV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1EncryptionSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1EncryptionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1EncryptionSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1EncryptionSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1EncryptionSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1EncryptionSpecArgs) ToGoogleCloudAiplatformV1beta1EncryptionSpecPtrOutput() GoogleCloudAiplatformV1beta1EncryptionSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1EncryptionSpecPtrOutputWithContext(context.Background())
 }
@@ -4144,12 +3663,6 @@ func (i *googleCloudAiplatformV1beta1EncryptionSpecPtrType) ToGoogleCloudAiplatf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1EncryptionSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1EncryptionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1EncryptionSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1EncryptionSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1EncryptionSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a customer-managed encryption key spec that can be applied to a top-level resource.
 type GoogleCloudAiplatformV1beta1EncryptionSpecOutput struct{ *pulumi.OutputState }
 
@@ -4175,12 +3688,6 @@ func (o GoogleCloudAiplatformV1beta1EncryptionSpecOutput) ToGoogleCloudAiplatfor
 	}).(GoogleCloudAiplatformV1beta1EncryptionSpecPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1EncryptionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1EncryptionSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1EncryptionSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
 func (o GoogleCloudAiplatformV1beta1EncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1EncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -4198,12 +3705,6 @@ func (o GoogleCloudAiplatformV1beta1EncryptionSpecPtrOutput) ToGoogleCloudAiplat
 
 func (o GoogleCloudAiplatformV1beta1EncryptionSpecPtrOutput) ToGoogleCloudAiplatformV1beta1EncryptionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1EncryptionSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1EncryptionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1EncryptionSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1EncryptionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1EncryptionSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1EncryptionSpecOutput {
@@ -4245,12 +3746,6 @@ func (o GoogleCloudAiplatformV1beta1EncryptionSpecResponseOutput) ToGoogleCloudA
 
 func (o GoogleCloudAiplatformV1beta1EncryptionSpecResponseOutput) ToGoogleCloudAiplatformV1beta1EncryptionSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1EncryptionSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1EncryptionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1EncryptionSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1EncryptionSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
@@ -4297,12 +3792,6 @@ func (i GoogleCloudAiplatformV1beta1EnvVarArgs) ToGoogleCloudAiplatformV1beta1En
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1EnvVarOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1EnvVarArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1EnvVar] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1EnvVar]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1EnvVarOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1EnvVarArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1EnvVarArray and GoogleCloudAiplatformV1beta1EnvVarArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1EnvVarArrayInput` via:
 //
@@ -4328,12 +3817,6 @@ func (i GoogleCloudAiplatformV1beta1EnvVarArray) ToGoogleCloudAiplatformV1beta1E
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1EnvVarArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1EnvVarArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1EnvVar] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1EnvVar]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1EnvVarArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an environment variable present in a Container or Python Module.
 type GoogleCloudAiplatformV1beta1EnvVarOutput struct{ *pulumi.OutputState }
 
@@ -4347,12 +3830,6 @@ func (o GoogleCloudAiplatformV1beta1EnvVarOutput) ToGoogleCloudAiplatformV1beta1
 
 func (o GoogleCloudAiplatformV1beta1EnvVarOutput) ToGoogleCloudAiplatformV1beta1EnvVarOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1EnvVarOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1EnvVarOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1EnvVar] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1EnvVar]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the environment variable. Must be a valid C identifier.
@@ -4377,12 +3854,6 @@ func (o GoogleCloudAiplatformV1beta1EnvVarArrayOutput) ToGoogleCloudAiplatformV1
 
 func (o GoogleCloudAiplatformV1beta1EnvVarArrayOutput) ToGoogleCloudAiplatformV1beta1EnvVarArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1EnvVarArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1EnvVarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1EnvVar] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1EnvVar]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1EnvVarArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1EnvVarOutput {
@@ -4414,12 +3885,6 @@ func (o GoogleCloudAiplatformV1beta1EnvVarResponseOutput) ToGoogleCloudAiplatfor
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1EnvVarResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1EnvVarResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1EnvVarResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the environment variable. Must be a valid C identifier.
 func (o GoogleCloudAiplatformV1beta1EnvVarResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1EnvVarResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4442,12 +3907,6 @@ func (o GoogleCloudAiplatformV1beta1EnvVarResponseArrayOutput) ToGoogleCloudAipl
 
 func (o GoogleCloudAiplatformV1beta1EnvVarResponseArrayOutput) ToGoogleCloudAiplatformV1beta1EnvVarResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1EnvVarResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1EnvVarResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1EnvVarResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1EnvVarResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1EnvVarResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1EnvVarResponseOutput {
@@ -4507,12 +3966,6 @@ func (i GoogleCloudAiplatformV1beta1ExamplesArgs) ToGoogleCloudAiplatformV1beta1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ExamplesOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ExamplesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Examples] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Examples]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ExamplesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ExamplesArgs) ToGoogleCloudAiplatformV1beta1ExamplesPtrOutput() GoogleCloudAiplatformV1beta1ExamplesPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ExamplesPtrOutputWithContext(context.Background())
 }
@@ -4554,12 +4007,6 @@ func (i *googleCloudAiplatformV1beta1ExamplesPtrType) ToGoogleCloudAiplatformV1b
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ExamplesPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ExamplesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1Examples] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1Examples]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ExamplesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Example-based explainability that returns the nearest neighbors from the provided dataset.
 type GoogleCloudAiplatformV1beta1ExamplesOutput struct{ *pulumi.OutputState }
 
@@ -4583,12 +4030,6 @@ func (o GoogleCloudAiplatformV1beta1ExamplesOutput) ToGoogleCloudAiplatformV1bet
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1Examples) *GoogleCloudAiplatformV1beta1Examples {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ExamplesPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ExamplesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Examples] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Examples]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Cloud Storage input instances.
@@ -4632,12 +4073,6 @@ func (o GoogleCloudAiplatformV1beta1ExamplesPtrOutput) ToGoogleCloudAiplatformV1
 
 func (o GoogleCloudAiplatformV1beta1ExamplesPtrOutput) ToGoogleCloudAiplatformV1beta1ExamplesPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ExamplesPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ExamplesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1Examples] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1Examples]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ExamplesPtrOutput) Elem() GoogleCloudAiplatformV1beta1ExamplesOutput {
@@ -4739,12 +4174,6 @@ func (i GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceArgs) ToGoogleCloudA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceArgs) ToGoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutput() GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutputWithContext(context.Background())
 }
@@ -4786,12 +4215,6 @@ func (i *googleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Cloud Storage input instances.
 type GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceOutput struct{ *pulumi.OutputState }
 
@@ -4815,12 +4238,6 @@ func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceOutput) ToGoogleClou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource) *GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
@@ -4849,12 +4266,6 @@ func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutput) ToGoogleC
 
 func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutput) ToGoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourcePtrOutput) Elem() GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceOutput {
@@ -4910,12 +4321,6 @@ func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponseOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
 func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponseOutput) DataFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse) string { return v.DataFormat }).(pulumi.StringOutput)
@@ -4955,12 +4360,6 @@ func (o GoogleCloudAiplatformV1beta1ExamplesResponseOutput) ToGoogleCloudAiplatf
 
 func (o GoogleCloudAiplatformV1beta1ExamplesResponseOutput) ToGoogleCloudAiplatformV1beta1ExamplesResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ExamplesResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ExamplesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExamplesResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExamplesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Cloud Storage input instances.
@@ -5033,12 +4432,6 @@ func (o GoogleCloudAiplatformV1beta1ExecutionResponseOutput) ToGoogleCloudAiplat
 
 func (o GoogleCloudAiplatformV1beta1ExecutionResponseOutput) ToGoogleCloudAiplatformV1beta1ExecutionResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ExecutionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ExecutionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExecutionResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExecutionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this Execution was created.
@@ -5143,12 +4536,6 @@ func (i GoogleCloudAiplatformV1beta1ExplanationMetadataArgs) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ExplanationMetadataOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ExplanationMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationMetadata] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationMetadata]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ExplanationMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ExplanationMetadataArgs) ToGoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutput() GoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutputWithContext(context.Background())
 }
@@ -5190,12 +4577,6 @@ func (i *googleCloudAiplatformV1beta1ExplanationMetadataPtrType) ToGoogleCloudAi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ExplanationMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationMetadata] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationMetadata]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata describing the Model's input and output for explanation.
 type GoogleCloudAiplatformV1beta1ExplanationMetadataOutput struct{ *pulumi.OutputState }
 
@@ -5219,12 +4600,6 @@ func (o GoogleCloudAiplatformV1beta1ExplanationMetadataOutput) ToGoogleCloudAipl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ExplanationMetadata) *GoogleCloudAiplatformV1beta1ExplanationMetadata {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ExplanationMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationMetadata] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Points to a YAML file stored on Google Cloud Storage describing the format of the feature attributions. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML tabular Models always have this field populated by Vertex AI. Note: The URI given on output may be different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
@@ -5259,12 +4634,6 @@ func (o GoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutput) ToGoogleCloudA
 
 func (o GoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutput) ToGoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationMetadata] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ExplanationMetadataPtrOutput) Elem() GoogleCloudAiplatformV1beta1ExplanationMetadataOutput {
@@ -5344,12 +4713,6 @@ func (o GoogleCloudAiplatformV1beta1ExplanationMetadataResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ExplanationMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationMetadataResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Points to a YAML file stored on Google Cloud Storage describing the format of the feature attributions. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML tabular Models always have this field populated by Vertex AI. Note: The URI given on output may be different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
 func (o GoogleCloudAiplatformV1beta1ExplanationMetadataResponseOutput) FeatureAttributionsSchemaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ExplanationMetadataResponse) string {
@@ -5427,12 +4790,6 @@ func (i GoogleCloudAiplatformV1beta1ExplanationParametersArgs) ToGoogleCloudAipl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ExplanationParametersOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ExplanationParametersArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationParameters] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationParameters]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ExplanationParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ExplanationParametersArgs) ToGoogleCloudAiplatformV1beta1ExplanationParametersPtrOutput() GoogleCloudAiplatformV1beta1ExplanationParametersPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ExplanationParametersPtrOutputWithContext(context.Background())
 }
@@ -5474,12 +4831,6 @@ func (i *googleCloudAiplatformV1beta1ExplanationParametersPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ExplanationParametersPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ExplanationParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationParameters] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationParameters]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ExplanationParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Parameters to configure explaining for Model's predictions.
 type GoogleCloudAiplatformV1beta1ExplanationParametersOutput struct{ *pulumi.OutputState }
 
@@ -5503,12 +4854,6 @@ func (o GoogleCloudAiplatformV1beta1ExplanationParametersOutput) ToGoogleCloudAi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ExplanationParameters) *GoogleCloudAiplatformV1beta1ExplanationParameters {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ExplanationParametersPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ExplanationParametersOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationParameters] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Example-based explanations that returns the nearest neighbors from the provided dataset.
@@ -5561,12 +4906,6 @@ func (o GoogleCloudAiplatformV1beta1ExplanationParametersPtrOutput) ToGoogleClou
 
 func (o GoogleCloudAiplatformV1beta1ExplanationParametersPtrOutput) ToGoogleCloudAiplatformV1beta1ExplanationParametersPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ExplanationParametersPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ExplanationParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationParameters] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ExplanationParametersPtrOutput) Elem() GoogleCloudAiplatformV1beta1ExplanationParametersOutput {
@@ -5670,12 +5009,6 @@ func (o GoogleCloudAiplatformV1beta1ExplanationParametersResponseOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ExplanationParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationParametersResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationParametersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Example-based explanations that returns the nearest neighbors from the provided dataset.
 func (o GoogleCloudAiplatformV1beta1ExplanationParametersResponseOutput) Examples() GoogleCloudAiplatformV1beta1ExamplesResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ExplanationParametersResponse) GoogleCloudAiplatformV1beta1ExamplesResponse {
@@ -5755,12 +5088,6 @@ func (i GoogleCloudAiplatformV1beta1ExplanationSpecArgs) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ExplanationSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ExplanationSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ExplanationSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ExplanationSpecArgs) ToGoogleCloudAiplatformV1beta1ExplanationSpecPtrOutput() GoogleCloudAiplatformV1beta1ExplanationSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ExplanationSpecPtrOutputWithContext(context.Background())
 }
@@ -5802,12 +5129,6 @@ func (i *googleCloudAiplatformV1beta1ExplanationSpecPtrType) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ExplanationSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ExplanationSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ExplanationSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specification of Model explanation.
 type GoogleCloudAiplatformV1beta1ExplanationSpecOutput struct{ *pulumi.OutputState }
 
@@ -5831,12 +5152,6 @@ func (o GoogleCloudAiplatformV1beta1ExplanationSpecOutput) ToGoogleCloudAiplatfo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ExplanationSpec) *GoogleCloudAiplatformV1beta1ExplanationSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ExplanationSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ExplanationSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Metadata describing the Model's input and output for explanation.
@@ -5865,12 +5180,6 @@ func (o GoogleCloudAiplatformV1beta1ExplanationSpecPtrOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1ExplanationSpecPtrOutput) ToGoogleCloudAiplatformV1beta1ExplanationSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ExplanationSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ExplanationSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ExplanationSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ExplanationSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1ExplanationSpecOutput {
@@ -5926,12 +5235,6 @@ func (o GoogleCloudAiplatformV1beta1ExplanationSpecResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ExplanationSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExplanationSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Metadata describing the Model's input and output for explanation.
 func (o GoogleCloudAiplatformV1beta1ExplanationSpecResponseOutput) Metadata() GoogleCloudAiplatformV1beta1ExplanationMetadataResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ExplanationSpecResponse) GoogleCloudAiplatformV1beta1ExplanationMetadataResponse {
@@ -5985,12 +5288,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureGroupBigQueryArgs) ToGoogleCloudAipla
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureGroupBigQueryOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureGroupBigQueryArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureGroupBigQuery] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureGroupBigQuery]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureGroupBigQueryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureGroupBigQueryArgs) ToGoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput() GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutputWithContext(context.Background())
 }
@@ -6032,12 +5329,6 @@ func (i *googleCloudAiplatformV1beta1FeatureGroupBigQueryPtrType) ToGoogleCloudA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureGroupBigQueryPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureGroupBigQuery] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureGroupBigQuery]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Input source type for BigQuery Tables and Views.
 type GoogleCloudAiplatformV1beta1FeatureGroupBigQueryOutput struct{ *pulumi.OutputState }
 
@@ -6061,12 +5352,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryOutput) ToGoogleCloudAip
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeatureGroupBigQuery) *GoogleCloudAiplatformV1beta1FeatureGroupBigQuery {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureGroupBigQuery] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureGroupBigQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
@@ -6093,12 +5378,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureGroupBigQuery] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureGroupBigQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureGroupBigQueryOutput {
@@ -6154,12 +5433,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
 func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponseOutput) BigQuerySource() GoogleCloudAiplatformV1beta1BigQuerySourceResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse) GoogleCloudAiplatformV1beta1BigQuerySourceResponse {
@@ -6195,12 +5468,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseOutput)
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The stats and anomalies generated at specific timestamp.
 func (o GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseOutput) FeatureStatsAnomaly() GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponse) GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse {
@@ -6225,12 +5492,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseArrayOu
 
 func (o GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseArrayOutput) ToGoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseOutput {
@@ -6274,12 +5535,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureNoiseSigmaArgs) ToGoogleCloudAiplatfo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureNoiseSigmaOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureNoiseSigmaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigma] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigma]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureNoiseSigmaOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureNoiseSigmaArgs) ToGoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutput() GoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutputWithContext(context.Background())
 }
@@ -6321,12 +5576,6 @@ func (i *googleCloudAiplatformV1beta1FeatureNoiseSigmaPtrType) ToGoogleCloudAipl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureNoiseSigmaPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureNoiseSigma] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureNoiseSigma]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Noise sigma by features. Noise sigma represents the standard deviation of the gaussian kernel that will be used to add noise to interpolated inputs prior to computing gradients.
 type GoogleCloudAiplatformV1beta1FeatureNoiseSigmaOutput struct{ *pulumi.OutputState }
 
@@ -6352,12 +5601,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaOutput) ToGoogleCloudAiplat
 	}).(GoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigma] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigma]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Noise sigma per feature. No noise is added to features that are not set.
 func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaOutput) NoiseSigma() GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureNoiseSigma) []GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature {
@@ -6377,12 +5620,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutput) ToGoogleCloudAip
 
 func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureNoiseSigma] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureNoiseSigma]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureNoiseSigmaOutput {
@@ -6444,12 +5681,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArray and GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayInput` via:
 //
@@ -6475,12 +5706,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Noise sigma for a single feature.
 type GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureOutput struct{ *pulumi.OutputState }
 
@@ -6494,12 +5719,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureOutput)
 
 func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureOutput) ToGoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the input feature for which noise sigma is provided. The features are defined in explanation metadata inputs.
@@ -6524,12 +5743,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayOu
 
 func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayOutput) ToGoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureOutput {
@@ -6561,12 +5774,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureRespons
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the input feature for which noise sigma is provided. The features are defined in explanation metadata inputs.
 func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse) string {
@@ -6595,12 +5802,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureRespons
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeatureResponse)[vs[1].(int)]
@@ -6626,12 +5827,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponseOutput) ToGoogleClo
 
 func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Noise sigma per feature. No noise is added to features that are not set.
@@ -6672,12 +5867,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs) ToGoogleClou
 
 func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableOutput)
-}
-
-func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutput() GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutput {
@@ -6721,12 +5910,6 @@ func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableOutput) ElementType() reflect.Type {
@@ -6751,12 +5934,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableOutput) ToGoogleCl
 	}).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Autoscaling config applied to Bigtable Instance.
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableOutput) AutoScaling() GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable) GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling {
@@ -6776,12 +5953,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutput) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtablePtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableOutput {
@@ -6845,12 +6016,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingArgs) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutput() GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(context.Background())
 }
@@ -6892,12 +6057,6 @@ func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingOutput) ElementType() reflect.Type {
@@ -6920,12 +6079,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling) *GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
@@ -6957,12 +6110,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutp
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingOutput {
@@ -7028,12 +6175,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingRespons
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponseOutput) CpuUtilizationTarget() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponse) int {
@@ -7072,12 +6213,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponseOutput) To
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Autoscaling config applied to Bigtable Instance.
@@ -7122,12 +6257,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointAr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput() GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(context.Background())
 }
@@ -7169,12 +6298,6 @@ func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointP
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutput struct{ *pulumi.OutputState }
 
@@ -7200,12 +6323,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOu
 	}).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutput) PrivateServiceConnectConfig() GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint) *GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig {
@@ -7225,12 +6342,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPt
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutput {
@@ -7276,12 +6387,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointRe
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
@@ -7340,12 +6445,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutput() GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(context.Background())
 }
@@ -7387,12 +6486,6 @@ func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains settings for embedding management.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutput struct{ *pulumi.OutputState }
 
@@ -7418,12 +6511,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutput)
 	}).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -7441,12 +6528,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutp
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutput {
@@ -7490,12 +6571,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementRespons
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse) bool {
@@ -7532,12 +6607,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs) ToGoogleClo
 
 func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedOutput)
-}
-
-func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput() GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput {
@@ -7581,12 +6650,6 @@ func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optimized storage type
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedOutput struct{ *pulumi.OutputState }
 
@@ -7612,12 +6675,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedOutput) ToGoogleC
 	}).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput) ElementType() reflect.Type {
@@ -7630,12 +6687,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput) ToGoog
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimized]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedOutput {
@@ -7665,12 +6716,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedResponseOutput) T
 
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Stats and Anomaly generated at specific timestamp for specific Feature. The start_time and end_time are used to define the time range of the dataset that current stats belongs to, e.g. prediction traffic is bucketed into prediction datasets by time window. If the Dataset is not defined by time window, start_time = end_time. Timestamp of the stats and anomalies always refers to end_time. Raw stats and anomalies are stored in stats_uri or anomaly_uri in the tensorflow defined protos. Field data_stats contains almost identical information with the raw stats in Vertex AI defined proto, for UI to display.
@@ -7732,12 +6777,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArgs) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureStatsAnomalyOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureStatsAnomaly] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureStatsAnomaly]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureStatsAnomalyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArgs) ToGoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutput() GoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutputWithContext(context.Background())
 }
@@ -7779,12 +6818,6 @@ func (i *googleCloudAiplatformV1beta1FeatureStatsAnomalyPtrType) ToGoogleCloudAi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureStatsAnomalyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureStatsAnomaly] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureStatsAnomaly]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArray and GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArrayInput` via:
 //
@@ -7810,12 +6843,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArray) ToGoogleCloudAipla
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureStatsAnomaly] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureStatsAnomaly]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureStatsAnomalyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Stats and Anomaly generated at specific timestamp for specific Feature. The start_time and end_time are used to define the time range of the dataset that current stats belongs to, e.g. prediction traffic is bucketed into prediction datasets by time window. If the Dataset is not defined by time window, start_time = end_time. Timestamp of the stats and anomalies always refers to end_time. Raw stats and anomalies are stored in stats_uri or anomaly_uri in the tensorflow defined protos. Field data_stats contains almost identical information with the raw stats in Vertex AI defined proto, for UI to display.
 type GoogleCloudAiplatformV1beta1FeatureStatsAnomalyOutput struct{ *pulumi.OutputState }
 
@@ -7839,12 +6866,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyOutput) ToGoogleCloudAipl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeatureStatsAnomaly) *GoogleCloudAiplatformV1beta1FeatureStatsAnomaly {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureStatsAnomaly] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureStatsAnomaly]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the threshold used when detecting anomalies. The threshold can be changed by user, so this one might be different from ThresholdConfig.value.
@@ -7894,12 +6915,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutput) ToGoogleCloudA
 
 func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureStatsAnomaly] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureStatsAnomaly]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureStatsAnomalyOutput {
@@ -7996,12 +7011,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArrayOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureStatsAnomaly] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureStatsAnomaly]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1FeatureStatsAnomalyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1FeatureStatsAnomaly {
 		return vs[0].([]GoogleCloudAiplatformV1beta1FeatureStatsAnomaly)[vs[1].(int)]
@@ -8039,12 +7048,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseOutput) ToGoogleC
 
 func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the threshold used when detecting anomalies. The threshold can be changed by user, so this one might be different from ThresholdConfig.value.
@@ -8100,12 +7103,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseArrayOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse)[vs[1].(int)]
@@ -8149,12 +7146,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgs) ToGoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput() GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutputWithContext(context.Background())
 }
@@ -8196,12 +7187,6 @@ func (i *googleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutput) ElementType() reflect.Type {
@@ -8226,12 +7211,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutput) ToGoogleClo
 	}).(GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Columns to construct entity_id / row keys. Start by supporting 1 only.
 func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutput) EntityIdColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource) []string { return v.EntityIdColumns }).(pulumi.StringArrayOutput)
@@ -8254,12 +7233,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput) ToGoogle
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutput {
@@ -8313,12 +7286,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponseOutput) ToG
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Columns to construct entity_id / row keys. Start by supporting 1 only.
 func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponseOutput) EntityIdColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse) []string {
@@ -8366,12 +7333,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs) ToGoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput() GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutputWithContext(context.Background())
 }
@@ -8413,12 +7374,6 @@ func (i *googleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A Feature Registry source for features that need to be synced to Online Store.
 type GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceOutput struct{ *pulumi.OutputState }
 
@@ -8444,12 +7399,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceOutput) ToGo
 	}).(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of features that need to be synced to Online Store.
 func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceOutput) FeatureGroups() GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource) []GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup {
@@ -8469,12 +7418,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput) T
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceOutput {
@@ -8536,12 +7479,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArray and GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayInput` via:
 //
@@ -8567,12 +7504,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Features belonging to a single feature group that will be synced to Online Store.
 type GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupOutput struct{ *pulumi.OutputState }
 
@@ -8586,12 +7517,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupOutput) ToGoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier of the feature group.
@@ -8620,12 +7545,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutput) ToGoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupOutput {
@@ -8657,12 +7576,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Identifier of the feature group.
 func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponseOutput) FeatureGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse) string {
@@ -8691,12 +7604,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse)[vs[1].(int)]
@@ -8722,12 +7629,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponseOutp
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of features that need to be synced to Online Store.
@@ -8768,12 +7669,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs) ToGoogleCloudAipl
 
 func (i GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput)
-}
-
-func (i GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewSyncConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewSyncConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput {
@@ -8817,12 +7712,6 @@ func (i *googleCloudAiplatformV1beta1FeatureViewSyncConfigPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureViewSyncConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewSyncConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewSyncConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput) ElementType() reflect.Type {
@@ -8847,12 +7736,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput) ToGoogleCloudAi
 	}).(GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewSyncConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewSyncConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput) Cron() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewSyncConfig) *string { return v.Cron }).(pulumi.StringPtrOutput)
@@ -8870,12 +7753,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput) ToGoogleClou
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewSyncConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewSyncConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput {
@@ -8915,12 +7792,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponseOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
@@ -8987,12 +7858,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutputWithContext(context.Background())
 }
@@ -9034,12 +7899,6 @@ func (i *googleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for vector search.
 type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutput struct{ *pulumi.OutputState }
 
@@ -9063,12 +7922,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutput) ToGoogl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig) *GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
@@ -9124,12 +7977,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput) ToGo
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutput {
@@ -9241,12 +8088,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutputWithContext(context.Background())
 }
@@ -9288,12 +8129,6 @@ func (i *googleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigOutput) ElementType() reflect.Type {
@@ -9318,12 +8153,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfi
 	}).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput) ElementType() reflect.Type {
@@ -9336,12 +8165,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfi
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigOutput {
@@ -9369,12 +8192,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfi
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for vector search.
@@ -9408,12 +8225,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponseOutput)
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
@@ -9498,12 +8309,6 @@ func (i GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigArg
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutputWithContext(context.Background())
 }
@@ -9545,12 +8350,6 @@ func (i *googleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigOutput) ElementType() reflect.Type {
@@ -9575,12 +8374,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigOut
 	}).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigOutput) LeafNodeEmbeddingCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig) *string {
@@ -9600,12 +8393,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtr
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigOutput {
@@ -9645,12 +8432,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigRes
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
@@ -9707,12 +8488,6 @@ func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutput() GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutputWithContext(context.Background())
 }
@@ -9754,12 +8529,6 @@ func (i *googleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrType) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration of how features in Featurestore are monitored.
 type GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigOutput struct{ *pulumi.OutputState }
 
@@ -9783,12 +8552,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigOutput) ToGoogle
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig) *GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
@@ -9831,12 +8594,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutput) ToGoo
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigOutput {
@@ -9928,12 +8685,6 @@ func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAn
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisArgs) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutput() GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(context.Background())
 }
@@ -9975,12 +8726,6 @@ func (i *googleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration of the Featurestore's ImportFeature Analysis Based Monitoring. This type of analysis generates statistics for values of each Feature imported by every ImportFeatureValues operation.
 type GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisOutput struct{ *pulumi.OutputState }
 
@@ -10004,12 +8749,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAn
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis) *GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The baseline used to do anomaly detection for the statistics generated by import features analysis.
@@ -10038,12 +8777,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAn
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisOutput {
@@ -10099,12 +8832,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAn
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The baseline used to do anomaly detection for the statistics generated by import features analysis.
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisResponseOutput) AnomalyDetectionBaseline() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisResponse) string {
@@ -10144,12 +8871,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponseOutput) 
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
@@ -10227,12 +8948,6 @@ func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisArgs) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutput() GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutputWithContext(context.Background())
 }
@@ -10274,12 +8989,6 @@ func (i *googleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration of the Featurestore's Snapshot Analysis Based Monitoring. This type of analysis generates statistics for each Feature based on a snapshot of the latest feature value of each entities every monitoring_interval.
 type GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisOutput struct{ *pulumi.OutputState }
 
@@ -10303,12 +9012,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis) *GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoring_interval for Features under it. Feature-level config: disabled = true indicates disabled regardless of the EntityType-level config; unset monitoring_interval indicates going with EntityType-level config; otherwise run snapshot analysis monitoring with monitoring_interval regardless of the EntityType-level config. Explicitly Disable the snapshot analysis based monitoring.
@@ -10351,12 +9054,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisOutput {
@@ -10436,12 +9133,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoring_interval for Features under it. Feature-level config: disabled = true indicates disabled regardless of the EntityType-level config; unset monitoring_interval indicates going with EntityType-level config; otherwise run snapshot analysis monitoring with monitoring_interval regardless of the EntityType-level config. Explicitly Disable the snapshot analysis based monitoring.
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisResponseOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysisResponse) bool {
@@ -10505,12 +9196,6 @@ func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigArgs) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutput() GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutputWithContext(context.Background())
 }
@@ -10552,12 +9237,6 @@ func (i *googleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The config for Featurestore Monitoring threshold.
 type GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigOutput struct{ *pulumi.OutputState }
 
@@ -10583,12 +9262,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigO
 	}).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specify a threshold value that can trigger the alert. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature.
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigOutput) Value() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig) *float64 {
@@ -10608,12 +9281,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigP
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigOutput {
@@ -10655,12 +9322,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigR
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specify a threshold value that can trigger the alert. 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature.
@@ -10709,12 +9370,6 @@ func (i GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgs) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgs) ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutput() GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutputWithContext(context.Background())
 }
@@ -10756,12 +9411,6 @@ func (i *googleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrType) ToG
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OnlineServingConfig specifies the details for provisioning online serving resources.
 type GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigOutput struct{ *pulumi.OutputState }
 
@@ -10785,12 +9434,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigOutput) ToGoo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig) *GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of nodes for the online store. The number of nodes doesn't scale automatically, but you can manually update the number of nodes. If set to 0, the featurestore will not have an online store and cannot be used for online serving.
@@ -10817,12 +9460,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutput) To
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigOutput {
@@ -10876,12 +9513,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponseOutpu
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of nodes for the online store. The number of nodes doesn't scale automatically, but you can manually update the number of nodes. If set to 0, the featurestore will not have an online store and cannot be used for online serving.
@@ -10941,12 +9572,6 @@ func (i GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingArgs) ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutput() GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutputWithContext(context.Background())
 }
@@ -10988,12 +9613,6 @@ func (i *googleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Online serving scaling configuration. If min_node_count and max_node_count are set to the same value, the cluster will be configured with the fixed number of node (no auto-scaling).
 type GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingOutput struct{ *pulumi.OutputState }
 
@@ -11017,12 +9636,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling) *GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set or set to 0, default to 50.
@@ -11054,12 +9667,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOut
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingOutput {
@@ -11127,12 +9734,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingRespon
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set or set to 0, default to 50.
 func (o GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingResponseOutput) CpuUtilizationTarget() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScalingResponse) int {
@@ -11197,12 +9798,6 @@ func (i GoogleCloudAiplatformV1beta1FilterSplitArgs) ToGoogleCloudAiplatformV1be
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FilterSplitOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FilterSplitArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FilterSplit] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FilterSplit]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FilterSplitOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FilterSplitArgs) ToGoogleCloudAiplatformV1beta1FilterSplitPtrOutput() GoogleCloudAiplatformV1beta1FilterSplitPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FilterSplitPtrOutputWithContext(context.Background())
 }
@@ -11244,12 +9839,6 @@ func (i *googleCloudAiplatformV1beta1FilterSplitPtrType) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FilterSplitPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FilterSplitPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FilterSplit] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FilterSplit]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FilterSplitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Assigns input data to training, validation, and test sets based on the given filters, data pieces not matched by any filter are ignored. Currently only supported for Datasets containing DataItems. If any of the filters in this message are to match nothing, then they can be set as '-' (the minus sign). Supported only for unstructured Datasets.
 type GoogleCloudAiplatformV1beta1FilterSplitOutput struct{ *pulumi.OutputState }
 
@@ -11273,12 +9862,6 @@ func (o GoogleCloudAiplatformV1beta1FilterSplitOutput) ToGoogleCloudAiplatformV1
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FilterSplit) *GoogleCloudAiplatformV1beta1FilterSplit {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FilterSplitPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FilterSplitOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FilterSplit] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FilterSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A filter on DataItems of the Dataset. DataItems that match this filter are used to test the Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that applies to it in the training, validation, test order.
@@ -11308,12 +9891,6 @@ func (o GoogleCloudAiplatformV1beta1FilterSplitPtrOutput) ToGoogleCloudAiplatfor
 
 func (o GoogleCloudAiplatformV1beta1FilterSplitPtrOutput) ToGoogleCloudAiplatformV1beta1FilterSplitPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FilterSplitPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FilterSplitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FilterSplit] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FilterSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FilterSplitPtrOutput) Elem() GoogleCloudAiplatformV1beta1FilterSplitOutput {
@@ -11381,12 +9958,6 @@ func (o GoogleCloudAiplatformV1beta1FilterSplitResponseOutput) ToGoogleCloudAipl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FilterSplitResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FilterSplitResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FilterSplitResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A filter on DataItems of the Dataset. DataItems that match this filter are used to test the Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that applies to it in the training, validation, test order.
 func (o GoogleCloudAiplatformV1beta1FilterSplitResponseOutput) TestFilter() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FilterSplitResponse) string { return v.TestFilter }).(pulumi.StringOutput)
@@ -11445,12 +10016,6 @@ func (i GoogleCloudAiplatformV1beta1FractionSplitArgs) ToGoogleCloudAiplatformV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FractionSplitOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1FractionSplitArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FractionSplit] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FractionSplit]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FractionSplitOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1FractionSplitArgs) ToGoogleCloudAiplatformV1beta1FractionSplitPtrOutput() GoogleCloudAiplatformV1beta1FractionSplitPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1FractionSplitPtrOutputWithContext(context.Background())
 }
@@ -11492,12 +10057,6 @@ func (i *googleCloudAiplatformV1beta1FractionSplitPtrType) ToGoogleCloudAiplatfo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FractionSplitPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1FractionSplitPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FractionSplit] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FractionSplit]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1FractionSplitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Assigns the input data to training, validation, and test sets as per the given fractions. Any of `training_fraction`, `validation_fraction` and `test_fraction` may optionally be provided, they must sum to up to 1. If the provided ones sum to less than 1, the remainder is assigned to sets as decided by Vertex AI. If none of the fractions are set, by default roughly 80% of data is used for training, 10% for validation, and 10% for test.
 type GoogleCloudAiplatformV1beta1FractionSplitOutput struct{ *pulumi.OutputState }
 
@@ -11521,12 +10080,6 @@ func (o GoogleCloudAiplatformV1beta1FractionSplitOutput) ToGoogleCloudAiplatform
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FractionSplit) *GoogleCloudAiplatformV1beta1FractionSplit {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1FractionSplitPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1FractionSplitOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FractionSplit] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FractionSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fraction of the input data that is to be used to evaluate the Model.
@@ -11556,12 +10109,6 @@ func (o GoogleCloudAiplatformV1beta1FractionSplitPtrOutput) ToGoogleCloudAiplatf
 
 func (o GoogleCloudAiplatformV1beta1FractionSplitPtrOutput) ToGoogleCloudAiplatformV1beta1FractionSplitPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FractionSplitPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FractionSplitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FractionSplit] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FractionSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FractionSplitPtrOutput) Elem() GoogleCloudAiplatformV1beta1FractionSplitOutput {
@@ -11629,12 +10176,6 @@ func (o GoogleCloudAiplatformV1beta1FractionSplitResponseOutput) ToGoogleCloudAi
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1FractionSplitResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FractionSplitResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FractionSplitResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fraction of the input data that is to be used to evaluate the Model.
 func (o GoogleCloudAiplatformV1beta1FractionSplitResponseOutput) TestFraction() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FractionSplitResponse) float64 { return v.TestFraction }).(pulumi.Float64Output)
@@ -11685,12 +10226,6 @@ func (i GoogleCloudAiplatformV1beta1GcsDestinationArgs) ToGoogleCloudAiplatformV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1GcsDestinationOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1GcsDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1GcsDestination] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1GcsDestination]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1GcsDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1GcsDestinationArgs) ToGoogleCloudAiplatformV1beta1GcsDestinationPtrOutput() GoogleCloudAiplatformV1beta1GcsDestinationPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1GcsDestinationPtrOutputWithContext(context.Background())
 }
@@ -11732,12 +10267,6 @@ func (i *googleCloudAiplatformV1beta1GcsDestinationPtrType) ToGoogleCloudAiplatf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1GcsDestinationPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1GcsDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1GcsDestination] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1GcsDestination]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1GcsDestinationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Google Cloud Storage location where the output is to be written to.
 type GoogleCloudAiplatformV1beta1GcsDestinationOutput struct{ *pulumi.OutputState }
 
@@ -11763,12 +10292,6 @@ func (o GoogleCloudAiplatformV1beta1GcsDestinationOutput) ToGoogleCloudAiplatfor
 	}).(GoogleCloudAiplatformV1beta1GcsDestinationPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1GcsDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1GcsDestination] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1GcsDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Google Cloud Storage URI to output directory. If the uri doesn't end with '/', a '/' will be automatically appended. The directory is created if it doesn't exist.
 func (o GoogleCloudAiplatformV1beta1GcsDestinationOutput) OutputUriPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1GcsDestination) string { return v.OutputUriPrefix }).(pulumi.StringOutput)
@@ -11786,12 +10309,6 @@ func (o GoogleCloudAiplatformV1beta1GcsDestinationPtrOutput) ToGoogleCloudAiplat
 
 func (o GoogleCloudAiplatformV1beta1GcsDestinationPtrOutput) ToGoogleCloudAiplatformV1beta1GcsDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1GcsDestinationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1GcsDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1GcsDestination] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1GcsDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1GcsDestinationPtrOutput) Elem() GoogleCloudAiplatformV1beta1GcsDestinationOutput {
@@ -11835,12 +10352,6 @@ func (o GoogleCloudAiplatformV1beta1GcsDestinationResponseOutput) ToGoogleCloudA
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1GcsDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1GcsDestinationResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1GcsDestinationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Google Cloud Storage URI to output directory. If the uri doesn't end with '/', a '/' will be automatically appended. The directory is created if it doesn't exist.
 func (o GoogleCloudAiplatformV1beta1GcsDestinationResponseOutput) OutputUriPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1GcsDestinationResponse) string { return v.OutputUriPrefix }).(pulumi.StringOutput)
@@ -11879,12 +10390,6 @@ func (i GoogleCloudAiplatformV1beta1GcsSourceArgs) ToGoogleCloudAiplatformV1beta
 
 func (i GoogleCloudAiplatformV1beta1GcsSourceArgs) ToGoogleCloudAiplatformV1beta1GcsSourceOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1GcsSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1GcsSourceOutput)
-}
-
-func (i GoogleCloudAiplatformV1beta1GcsSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1GcsSource] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1GcsSource]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1GcsSourceOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudAiplatformV1beta1GcsSourceArgs) ToGoogleCloudAiplatformV1beta1GcsSourcePtrOutput() GoogleCloudAiplatformV1beta1GcsSourcePtrOutput {
@@ -11928,12 +10433,6 @@ func (i *googleCloudAiplatformV1beta1GcsSourcePtrType) ToGoogleCloudAiplatformV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1GcsSourcePtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1GcsSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1GcsSource] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1GcsSource]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1GcsSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Google Cloud Storage location for the input content.
 type GoogleCloudAiplatformV1beta1GcsSourceOutput struct{ *pulumi.OutputState }
 
@@ -11959,12 +10458,6 @@ func (o GoogleCloudAiplatformV1beta1GcsSourceOutput) ToGoogleCloudAiplatformV1be
 	}).(GoogleCloudAiplatformV1beta1GcsSourcePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1GcsSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1GcsSource] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1GcsSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Google Cloud Storage URI(-s) to the input file(s). May contain wildcards. For more information on wildcards, see https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames.
 func (o GoogleCloudAiplatformV1beta1GcsSourceOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1GcsSource) []string { return v.Uris }).(pulumi.StringArrayOutput)
@@ -11982,12 +10475,6 @@ func (o GoogleCloudAiplatformV1beta1GcsSourcePtrOutput) ToGoogleCloudAiplatformV
 
 func (o GoogleCloudAiplatformV1beta1GcsSourcePtrOutput) ToGoogleCloudAiplatformV1beta1GcsSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1GcsSourcePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1GcsSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1GcsSource] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1GcsSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1GcsSourcePtrOutput) Elem() GoogleCloudAiplatformV1beta1GcsSourceOutput {
@@ -12031,12 +10518,6 @@ func (o GoogleCloudAiplatformV1beta1GcsSourceResponseOutput) ToGoogleCloudAiplat
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1GcsSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1GcsSourceResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1GcsSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Google Cloud Storage URI(-s) to the input file(s). May contain wildcards. For more information on wildcards, see https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames.
 func (o GoogleCloudAiplatformV1beta1GcsSourceResponseOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1GcsSourceResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
@@ -12063,12 +10544,6 @@ func (o GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponseOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponseOutput) ToGoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ip address used to send match gRPC requests.
@@ -12102,12 +10577,6 @@ func (o GoogleCloudAiplatformV1beta1IndexStatsResponseOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1IndexStatsResponseOutput) ToGoogleCloudAiplatformV1beta1IndexStatsResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1IndexStatsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1IndexStatsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1IndexStatsResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1IndexStatsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of shards in the Index.
@@ -12199,12 +10668,6 @@ func (i GoogleCloudAiplatformV1beta1InputDataConfigArgs) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1InputDataConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1InputDataConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1InputDataConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1InputDataConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1InputDataConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1InputDataConfigArgs) ToGoogleCloudAiplatformV1beta1InputDataConfigPtrOutput() GoogleCloudAiplatformV1beta1InputDataConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1InputDataConfigPtrOutputWithContext(context.Background())
 }
@@ -12246,12 +10709,6 @@ func (i *googleCloudAiplatformV1beta1InputDataConfigPtrType) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1InputDataConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1InputDataConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1InputDataConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1InputDataConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1InputDataConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies Vertex AI owned input data to be used for training, and possibly evaluating, the Model.
 type GoogleCloudAiplatformV1beta1InputDataConfigOutput struct{ *pulumi.OutputState }
 
@@ -12275,12 +10732,6 @@ func (o GoogleCloudAiplatformV1beta1InputDataConfigOutput) ToGoogleCloudAiplatfo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1InputDataConfig) *GoogleCloudAiplatformV1beta1InputDataConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1InputDataConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1InputDataConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1InputDataConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1InputDataConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/annotation/ , note that the chosen schema must be consistent with metadata of the Dataset specified by dataset_id. Only Annotations that both match this schema and belong to DataItems not ignored by the split method are used in respectively training, validation or test role, depending on the role of the DataItem they are on. When used in conjunction with annotations_filter, the Annotations used for training are filtered by both annotations_filter and annotation_schema_uri.
@@ -12369,12 +10820,6 @@ func (o GoogleCloudAiplatformV1beta1InputDataConfigPtrOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1InputDataConfigPtrOutput) ToGoogleCloudAiplatformV1beta1InputDataConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1InputDataConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1InputDataConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1InputDataConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1InputDataConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1InputDataConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1InputDataConfigOutput {
@@ -12550,12 +10995,6 @@ func (o GoogleCloudAiplatformV1beta1InputDataConfigResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1InputDataConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1InputDataConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1InputDataConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Applicable only to custom training with Datasets that have DataItems and Annotations. Cloud Storage URI that points to a YAML file describing the annotation schema. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/annotation/ , note that the chosen schema must be consistent with metadata of the Dataset specified by dataset_id. Only Annotations that both match this schema and belong to DataItems not ignored by the split method are used in respectively training, validation or test role, depending on the role of the DataItem they are on. When used in conjunction with annotations_filter, the Annotations used for training are filtered by both annotations_filter and annotation_schema_uri.
 func (o GoogleCloudAiplatformV1beta1InputDataConfigResponseOutput) AnnotationSchemaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1InputDataConfigResponse) string { return v.AnnotationSchemaUri }).(pulumi.StringOutput)
@@ -12673,12 +11112,6 @@ func (i GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionArgs) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1IntegratedGradientsAttributionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionArgs) ToGoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutput() GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutputWithContext(context.Background())
 }
@@ -12720,12 +11153,6 @@ func (i *googleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrType) ToGo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An attribution method that computes the Aumann-Shapley value taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365
 type GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionOutput struct{ *pulumi.OutputState }
 
@@ -12749,12 +11176,6 @@ func (o GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionOutput) ToGoog
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution) *GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Config for IG with blur baseline. When enabled, a linear path from the maximally blurred image to the input image is created. Using a blurred baseline instead of zero (black image) is motivated by the BlurIG approach explained here: https://arxiv.org/abs/2004.03383
@@ -12788,12 +11209,6 @@ func (o GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutput) ToG
 
 func (o GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutput) ToGoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionPtrOutput) Elem() GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionOutput {
@@ -12859,12 +11274,6 @@ func (o GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionResponseOutput
 
 func (o GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionResponseOutput) ToGoogleCloudAiplatformV1beta1IntegratedGradientsAttributionResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Config for IG with blur baseline. When enabled, a linear path from the maximally blurred image to the input image is created. Using a blurred baseline instead of zero (black image) is motivated by the BlurIG approach explained here: https://arxiv.org/abs/2004.03383
@@ -12933,12 +11342,6 @@ func (i GoogleCloudAiplatformV1beta1MachineSpecArgs) ToGoogleCloudAiplatformV1be
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1MachineSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1MachineSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1MachineSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1MachineSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1MachineSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1MachineSpecArgs) ToGoogleCloudAiplatformV1beta1MachineSpecPtrOutput() GoogleCloudAiplatformV1beta1MachineSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1MachineSpecPtrOutputWithContext(context.Background())
 }
@@ -12980,12 +11383,6 @@ func (i *googleCloudAiplatformV1beta1MachineSpecPtrType) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1MachineSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1MachineSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1MachineSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1MachineSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1MachineSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specification of a single machine.
 type GoogleCloudAiplatformV1beta1MachineSpecOutput struct{ *pulumi.OutputState }
 
@@ -13009,12 +11406,6 @@ func (o GoogleCloudAiplatformV1beta1MachineSpecOutput) ToGoogleCloudAiplatformV1
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1MachineSpec) *GoogleCloudAiplatformV1beta1MachineSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1MachineSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1MachineSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1MachineSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1MachineSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of accelerators to attach to the machine.
@@ -13051,12 +11442,6 @@ func (o GoogleCloudAiplatformV1beta1MachineSpecPtrOutput) ToGoogleCloudAiplatfor
 
 func (o GoogleCloudAiplatformV1beta1MachineSpecPtrOutput) ToGoogleCloudAiplatformV1beta1MachineSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1MachineSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1MachineSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1MachineSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1MachineSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1MachineSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1MachineSpecOutput {
@@ -13136,12 +11521,6 @@ func (o GoogleCloudAiplatformV1beta1MachineSpecResponseOutput) ToGoogleCloudAipl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1MachineSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1MachineSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1MachineSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of accelerators to attach to the machine.
 func (o GoogleCloudAiplatformV1beta1MachineSpecResponseOutput) AcceleratorCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1MachineSpecResponse) int { return v.AcceleratorCount }).(pulumi.IntOutput)
@@ -13197,12 +11576,6 @@ func (i GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgs) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ManualBatchTuningParametersOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ManualBatchTuningParameters] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ManualBatchTuningParameters]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ManualBatchTuningParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgs) ToGoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutput() GoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutputWithContext(context.Background())
 }
@@ -13244,12 +11617,6 @@ func (i *googleCloudAiplatformV1beta1ManualBatchTuningParametersPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ManualBatchTuningParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ManualBatchTuningParameters] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ManualBatchTuningParameters]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Manual batch tuning parameters.
 type GoogleCloudAiplatformV1beta1ManualBatchTuningParametersOutput struct{ *pulumi.OutputState }
 
@@ -13275,12 +11642,6 @@ func (o GoogleCloudAiplatformV1beta1ManualBatchTuningParametersOutput) ToGoogleC
 	}).(GoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1ManualBatchTuningParametersOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ManualBatchTuningParameters] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ManualBatchTuningParameters]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The number of the records (e.g. instances) of the operation given in each batch to a machine replica. Machine type, and size of a single record should be considered when setting this parameter, higher value speeds up the batch operation's execution, but too high value will result in a whole batch not fitting in a machine's memory, and the whole operation will fail. The default value is 64.
 func (o GoogleCloudAiplatformV1beta1ManualBatchTuningParametersOutput) BatchSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ManualBatchTuningParameters) *int { return v.BatchSize }).(pulumi.IntPtrOutput)
@@ -13298,12 +11659,6 @@ func (o GoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutput) ToGoog
 
 func (o GoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutput) ToGoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ManualBatchTuningParameters] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ManualBatchTuningParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrOutput) Elem() GoogleCloudAiplatformV1beta1ManualBatchTuningParametersOutput {
@@ -13347,12 +11702,6 @@ func (o GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponseOutput) T
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The number of the records (e.g. instances) of the operation given in each batch to a machine replica. Machine type, and size of a single record should be considered when setting this parameter, higher value speeds up the batch operation's execution, but too high value will result in a whole batch not fitting in a machine's memory, and the whole operation will fail. The default value is 64.
 func (o GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponseOutput) BatchSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponse) int { return v.BatchSize }).(pulumi.IntOutput)
@@ -13381,12 +11730,6 @@ func (o GoogleCloudAiplatformV1beta1MeasurementMetricResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1MeasurementMetricResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1MeasurementMetricResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1MeasurementMetricResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID of the Metric. The Metric should be defined in StudySpec's Metrics.
 func (o GoogleCloudAiplatformV1beta1MeasurementMetricResponseOutput) MetricId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1MeasurementMetricResponse) string { return v.MetricId }).(pulumi.StringOutput)
@@ -13409,12 +11752,6 @@ func (o GoogleCloudAiplatformV1beta1MeasurementMetricResponseArrayOutput) ToGoog
 
 func (o GoogleCloudAiplatformV1beta1MeasurementMetricResponseArrayOutput) ToGoogleCloudAiplatformV1beta1MeasurementMetricResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1MeasurementMetricResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1MeasurementMetricResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1MeasurementMetricResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1MeasurementMetricResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1MeasurementMetricResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1MeasurementMetricResponseOutput {
@@ -13448,12 +11785,6 @@ func (o GoogleCloudAiplatformV1beta1MeasurementResponseOutput) ToGoogleCloudAipl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1MeasurementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1MeasurementResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1MeasurementResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Time that the Trial has been running at the point of this Measurement.
 func (o GoogleCloudAiplatformV1beta1MeasurementResponseOutput) ElapsedDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1MeasurementResponse) string { return v.ElapsedDuration }).(pulumi.StringOutput)
@@ -13485,12 +11816,6 @@ func (o GoogleCloudAiplatformV1beta1MeasurementResponseArrayOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1MeasurementResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1MeasurementResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1MeasurementResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1MeasurementResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1MeasurementResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1MeasurementResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1MeasurementResponse)[vs[1].(int)]
@@ -13516,12 +11841,6 @@ func (o GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponseOutpu
 
 func (o GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponseOutput) ToGoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The disk utilization of the MetadataStore in bytes.
@@ -13618,12 +11937,6 @@ func (i GoogleCloudAiplatformV1beta1ModelArgs) ToGoogleCloudAiplatformV1beta1Mod
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Model] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Model]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelArgs) ToGoogleCloudAiplatformV1beta1ModelPtrOutput() GoogleCloudAiplatformV1beta1ModelPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelPtrOutputWithContext(context.Background())
 }
@@ -13665,12 +11978,6 @@ func (i *googleCloudAiplatformV1beta1ModelPtrType) ToGoogleCloudAiplatformV1beta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1Model] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1Model]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A trained machine learning Model.
 type GoogleCloudAiplatformV1beta1ModelOutput struct{ *pulumi.OutputState }
 
@@ -13694,12 +12001,6 @@ func (o GoogleCloudAiplatformV1beta1ModelOutput) ToGoogleCloudAiplatformV1beta1M
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1Model) *GoogleCloudAiplatformV1beta1Model {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ModelPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Model] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Model]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
@@ -13792,12 +12093,6 @@ func (o GoogleCloudAiplatformV1beta1ModelPtrOutput) ToGoogleCloudAiplatformV1bet
 
 func (o GoogleCloudAiplatformV1beta1ModelPtrOutput) ToGoogleCloudAiplatformV1beta1ModelPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1Model] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1Model]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelOutput {
@@ -14025,12 +12320,6 @@ func (i GoogleCloudAiplatformV1beta1ModelContainerSpecArgs) ToGoogleCloudAiplatf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelContainerSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelContainerSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelContainerSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelContainerSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelContainerSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelContainerSpecArgs) ToGoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput() GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutputWithContext(context.Background())
 }
@@ -14072,12 +12361,6 @@ func (i *googleCloudAiplatformV1beta1ModelContainerSpecPtrType) ToGoogleCloudAip
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelContainerSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelContainerSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelContainerSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specification of a container for serving predictions. Some fields in this message correspond to fields in the [Kubernetes Container v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 type GoogleCloudAiplatformV1beta1ModelContainerSpecOutput struct{ *pulumi.OutputState }
 
@@ -14101,12 +12384,6 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecOutput) ToGoogleCloudAipla
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelContainerSpec) *GoogleCloudAiplatformV1beta1ModelContainerSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelContainerSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelContainerSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelContainerSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `command` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
@@ -14184,12 +12461,6 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) ToGoogleCloudAi
 
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) ToGoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelContainerSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelContainerSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelContainerSpecOutput {
@@ -14353,12 +12624,6 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelContainerSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelContainerSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `command` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpecResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
@@ -14447,12 +12712,6 @@ func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableRespon
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The created BigQuery table to store logs. Customer could do their own query & analysis. Format: `bq://.model_deployment_monitoring_._`
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponseOutput) BigqueryTablePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse) string {
@@ -14488,12 +12747,6 @@ func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableRespon
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse)[vs[1].(int)]
@@ -14521,12 +12774,6 @@ func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoring
 
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponseOutput) ToGoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time that most recent monitoring pipelines that is related to this run.
@@ -14582,12 +12829,6 @@ func (i GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgs
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArray and GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayInput` via:
 //
@@ -14613,12 +12854,6 @@ func (i GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArra
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ModelDeploymentMonitoringObjectiveConfig contains the pair of deployed_model_id to ModelMonitoringObjectiveConfig.
 type GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigOutput struct{ *pulumi.OutputState }
 
@@ -14632,12 +12867,6 @@ func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigOutp
 
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigOutput) ToGoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The DeployedModel ID of the objective config.
@@ -14666,12 +12895,6 @@ func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArra
 
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayOutput) ToGoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigOutput {
@@ -14703,12 +12926,6 @@ func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResp
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The DeployedModel ID of the objective config.
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponseOutput) DeployedModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse) string {
@@ -14735,12 +12952,6 @@ func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResp
 
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponseArrayOutput) ToGoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponseOutput {
@@ -14788,12 +12999,6 @@ func (i GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The config for scheduling monitoring job.
 type GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigOutput struct{ *pulumi.OutputState }
 
@@ -14807,12 +13012,6 @@ func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigOutpu
 
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigOutput) ToGoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The model monitoring job scheduling interval. It will be rounded up to next full hour. This defines how often the monitoring jobs are triggered.
@@ -14852,12 +13051,6 @@ func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigRespo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The model monitoring job scheduling interval. It will be rounded up to next full hour. This defines how often the monitoring jobs are triggered.
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponseOutput) MonitorInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse) string {
@@ -14893,12 +13086,6 @@ func (o GoogleCloudAiplatformV1beta1ModelExportFormatResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelExportFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelExportFormatResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelExportFormatResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The content of this Model that may be exported.
 func (o GoogleCloudAiplatformV1beta1ModelExportFormatResponseOutput) ExportableContents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelExportFormatResponse) []string { return v.ExportableContents }).(pulumi.StringArrayOutput)
@@ -14916,12 +13103,6 @@ func (o GoogleCloudAiplatformV1beta1ModelExportFormatResponseArrayOutput) ToGoog
 
 func (o GoogleCloudAiplatformV1beta1ModelExportFormatResponseArrayOutput) ToGoogleCloudAiplatformV1beta1ModelExportFormatResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelExportFormatResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelExportFormatResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelExportFormatResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelExportFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelExportFormatResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ModelExportFormatResponseOutput {
@@ -14971,12 +13152,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs) ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput() GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutputWithContext(context.Background())
 }
@@ -15018,12 +13193,6 @@ func (i *googleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutput) ElementType() reflect.Type {
@@ -15046,12 +13215,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutput) ToGoogleCl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig) *GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email alert config.
@@ -15083,12 +13246,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutput {
@@ -15166,12 +13323,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigAr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigArgs) ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutput() GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutputWithContext(context.Background())
 }
@@ -15213,12 +13364,6 @@ func (i *googleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigP
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The config for email alert.
 type GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigOutput struct{ *pulumi.OutputState }
 
@@ -15244,12 +13389,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigOu
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The email addresses to send the alert.
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigOutput) UserEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig) []string {
@@ -15269,12 +13408,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPt
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigOutput {
@@ -15318,12 +13451,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigRe
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The email addresses to send the alert.
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponseOutput) UserEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponse) []string {
@@ -15352,12 +13479,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponseOutput) To
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponseOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email alert config.
@@ -15426,12 +13547,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgs) ToGoogleCloudAipl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgs) ToGoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutput() GoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutputWithContext(context.Background())
 }
@@ -15473,12 +13588,6 @@ func (i *googleCloudAiplatformV1beta1ModelMonitoringConfigPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelMonitoringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The model monitoring configuration used for Batch Prediction Job.
 type GoogleCloudAiplatformV1beta1ModelMonitoringConfigOutput struct{ *pulumi.OutputState }
 
@@ -15502,12 +13611,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringConfigOutput) ToGoogleCloudAi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelMonitoringConfig) *GoogleCloudAiplatformV1beta1ModelMonitoringConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Model monitoring alert config.
@@ -15548,12 +13651,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutput) ToGoogleClou
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringConfigOutput {
@@ -15633,12 +13730,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponseOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Model monitoring alert config.
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponseOutput) AlertConfig() GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponse) GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse {
@@ -15714,12 +13805,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArgs) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArgs) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutput() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutputWithContext(context.Background())
 }
@@ -15761,12 +13846,6 @@ func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrType) ToGo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArray and GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArrayInput` via:
 //
@@ -15792,12 +13871,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArray) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The objective configuration for model monitoring, including the information needed to detect anomalies for one particular model.
 type GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigOutput struct{ *pulumi.OutputState }
 
@@ -15821,12 +13894,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigOutput) ToGoog
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig) *GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The config for integrating with Vertex Explainable AI.
@@ -15869,12 +13936,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutput) ToG
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigOutput {
@@ -15941,12 +14002,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArrayOutput) T
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig {
 		return vs[0].([]GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig)[vs[1].(int)]
@@ -15992,12 +14047,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigArgs) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutput() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutputWithContext(context.Background())
 }
@@ -16039,12 +14088,6 @@ func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The config for integrating with Vertex Explainable AI. Only applicable if the Model has explanation_spec populated.
 type GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigOutput struct{ *pulumi.OutputState }
 
@@ -16068,12 +14111,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig) *GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If want to analyze the Vertex Explainable AI feature attribute scores or not. If set to true, Vertex AI will log the feature attributions from explain response and do the skew/drift detection for them.
@@ -16102,12 +14139,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigOutput {
@@ -16183,12 +14214,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineArgs) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutput() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutputWithContext(context.Background())
 }
@@ -16230,12 +14255,6 @@ func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Output from BatchPredictionJob for Model Monitoring baseline dataset, which can be used to generate baseline attribution scores.
 type GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineOutput struct{ *pulumi.OutputState }
 
@@ -16259,12 +14278,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline) *GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BigQuery location for BatchExplain output.
@@ -16300,12 +14313,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineOutput {
@@ -16373,12 +14380,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // BigQuery location for BatchExplain output.
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponseOutput) Bigquery() GoogleCloudAiplatformV1beta1BigQueryDestinationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineResponse) GoogleCloudAiplatformV1beta1BigQueryDestinationResponse {
@@ -16421,12 +14422,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponseOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If want to analyze the Vertex Explainable AI feature attribute scores or not. If set to true, Vertex AI will log the feature attributions from explain response and do the skew/drift detection for them.
@@ -16486,12 +14481,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDrif
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigArgs) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutputWithContext(context.Background())
 }
@@ -16533,12 +14522,6 @@ func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDri
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The config for Prediction data drift detection.
 type GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigOutput struct{ *pulumi.OutputState }
 
@@ -16562,12 +14545,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDrif
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig) *GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
@@ -16603,12 +14580,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDrif
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigOutput {
@@ -16676,12 +14647,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDrif
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponseOutput) AttributionScoreDriftThresholds() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse) map[string]string {
@@ -16730,12 +14695,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponseOutput
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The config for integrating with Vertex Explainable AI.
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponseOutput) ExplanationConfig() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse {
@@ -16776,12 +14735,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponseArrayO
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponseArrayOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponseOutput {
@@ -16845,12 +14798,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatase
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetArgs) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutput() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutputWithContext(context.Background())
 }
@@ -16892,12 +14839,6 @@ func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatas
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Training Dataset information.
 type GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetOutput struct{ *pulumi.OutputState }
 
@@ -16921,12 +14862,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatase
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset) *GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The BigQuery table of the unmanaged Dataset used to train this Model.
@@ -16983,12 +14918,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatase
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetOutput {
@@ -17092,12 +15021,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatase
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The BigQuery table of the unmanaged Dataset used to train this Model.
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponseOutput) BigquerySource() GoogleCloudAiplatformV1beta1BigQuerySourceResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse) GoogleCloudAiplatformV1beta1BigQuerySourceResponse {
@@ -17183,12 +15106,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredic
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigArgs) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutputWithContext(context.Background())
 }
@@ -17230,12 +15147,6 @@ func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The config for Training & Prediction data skew detection. It specifies the training dataset sources and the skew detection parameters.
 type GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigOutput struct{ *pulumi.OutputState }
 
@@ -17259,12 +15170,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredic
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig) *GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
@@ -17300,12 +15205,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredic
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigOutput {
@@ -17371,12 +15270,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredic
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponseOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
@@ -17447,12 +15340,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgs) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArray and GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayInput` via:
 //
@@ -17478,12 +15365,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArray) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Statistics and anomalies generated by Model Monitoring.
 type GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesOutput struct{ *pulumi.OutputState }
 
@@ -17497,12 +15378,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of anomalies within all stats.
@@ -17541,12 +15416,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayOutput) To
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesOutput {
@@ -17602,12 +15471,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoric
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesArray and GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesArrayInput` via:
 //
@@ -17633,12 +15496,6 @@ func (i GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoric
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Historical Stats (and Anomalies) for a specific Feature.
 type GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesOutput struct{ *pulumi.OutputState }
 
@@ -17652,12 +15509,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoric
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display Name of the Feature.
@@ -17702,12 +15553,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoric
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies {
 		return vs[0].([]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies)[vs[1].(int)]
@@ -17739,12 +15584,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoric
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponseOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display Name of the Feature.
@@ -17789,12 +15628,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoric
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse)[vs[1].(int)]
@@ -17826,12 +15659,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponseOutput)
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponseOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of anomalies within all stats.
@@ -17872,12 +15699,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponseArrayOu
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse)[vs[1].(int)]
@@ -17903,12 +15724,6 @@ func (o GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponseOutput) ToGoog
 
 func (o GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponseOutput) ToGoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name of the Model this Model is a copy of, including the revision. Format: `projects/{project}/locations/{location}/models/{model_id}@{version_id}`
@@ -17989,12 +15804,6 @@ func (o GoogleCloudAiplatformV1beta1ModelResponseOutput) ToGoogleCloudAiplatform
 
 func (o GoogleCloudAiplatformV1beta1ModelResponseOutput) ToGoogleCloudAiplatformV1beta1ModelResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
@@ -18176,12 +15985,6 @@ func (o GoogleCloudAiplatformV1beta1ModelSourceInfoResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelSourceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelSourceInfoResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelSourceInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If this Model is copy of another Model. If true then source_type pertains to the original.
 func (o GoogleCloudAiplatformV1beta1ModelSourceInfoResponseOutput) Copy() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelSourceInfoResponse) bool { return v.Copy }).(pulumi.BoolOutput)
@@ -18213,12 +16016,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobOutputMultiTrialJobOutputResponseOutpu
 
 func (o GoogleCloudAiplatformV1beta1NasJobOutputMultiTrialJobOutputResponseOutput) ToGoogleCloudAiplatformV1beta1NasJobOutputMultiTrialJobOutputResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasJobOutputMultiTrialJobOutputResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobOutputMultiTrialJobOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobOutputMultiTrialJobOutputResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobOutputMultiTrialJobOutputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of NasTrials that were started as part of search stage.
@@ -18254,12 +16051,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobOutputResponseOutput) ToGoogleCloudAip
 
 func (o GoogleCloudAiplatformV1beta1NasJobOutputResponseOutput) ToGoogleCloudAiplatformV1beta1NasJobOutputResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasJobOutputResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobOutputResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobOutputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The output of this multi-trial Neural Architecture Search (NAS) job.
@@ -18312,12 +16103,6 @@ func (i GoogleCloudAiplatformV1beta1NasJobSpecArgs) ToGoogleCloudAiplatformV1bet
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NasJobSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1NasJobSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NasJobSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the spec of a NasJob.
 type GoogleCloudAiplatformV1beta1NasJobSpecOutput struct{ *pulumi.OutputState }
 
@@ -18331,12 +16116,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecOutput) ToGoogleCloudAiplatformV1b
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecOutput) ToGoogleCloudAiplatformV1beta1NasJobSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasJobSpecOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The spec of multi-trial algorithms.
@@ -18403,12 +16182,6 @@ func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecArgs) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecArgs) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutput() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutputWithContext(context.Background())
 }
@@ -18450,12 +16223,6 @@ func (i *googleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The spec of multi-trial Neural Architecture Search (NAS).
 type GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecOutput struct{ *pulumi.OutputState }
 
@@ -18479,12 +16246,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecOutput) ToG
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec) *GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Metric specs for the NAS job. Validation for this field is done at `multi_trial_algorithm_spec` field.
@@ -18527,12 +16288,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutput) 
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutput) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecOutput {
@@ -18624,12 +16379,6 @@ func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecArgs) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutput() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutputWithContext(context.Background())
 }
@@ -18671,12 +16420,6 @@ func (i *googleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a metric to optimize.
 type GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecOutput struct{ *pulumi.OutputState }
 
@@ -18700,12 +16443,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec) *GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The optimization goal of the metric.
@@ -18734,12 +16471,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecP
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutput) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecOutput {
@@ -18795,12 +16526,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecR
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The optimization goal of the metric.
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponseOutput) Goal() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse) string {
@@ -18840,12 +16565,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponseOut
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponseOutput) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Metric specs for the NAS job. Validation for this field is done at `multi_trial_algorithm_spec` field.
@@ -18923,12 +16642,6 @@ func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrial
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecArgs) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutput() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutputWithContext(context.Background())
 }
@@ -18970,12 +16683,6 @@ func (i *googleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTria
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represent spec for search trials.
 type GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecOutput struct{ *pulumi.OutputState }
 
@@ -18999,12 +16706,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrial
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec) *GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of failed trials that need to be seen before failing the NasJob. If set to 0, Vertex AI decides how many trials must fail before the whole job fails.
@@ -19047,12 +16748,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrial
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutput) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecOutput {
@@ -19132,12 +16827,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrial
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of failed trials that need to be seen before failing the NasJob. If set to 0, Vertex AI decides how many trials must fail before the whole job fails.
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponseOutput) MaxFailedTrialCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse) int {
@@ -19209,12 +16898,6 @@ func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialS
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecArgs) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutput() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutputWithContext(context.Background())
 }
@@ -19256,12 +16939,6 @@ func (i *googleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrial
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represent spec for train trials.
 type GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecOutput struct{ *pulumi.OutputState }
 
@@ -19285,12 +16962,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec) *GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Frequency of search trials to start train stage. Top N [TrainTrialSpec.max_parallel_trial_count] search trials will be trained for every M [TrainTrialSpec.frequency] trials searched.
@@ -19326,12 +16997,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialS
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutput) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecOutput {
@@ -19399,12 +17064,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialS
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Frequency of search trials to start train stage. Top N [TrainTrialSpec.max_parallel_trial_count] search trials will be trained for every M [TrainTrialSpec.frequency] trials searched.
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponseOutput) Frequency() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse) int {
@@ -19451,12 +17110,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecResponseOutput) ToGoogleCloudAipla
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1NasJobSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The spec of multi-trial algorithms.
 func (o GoogleCloudAiplatformV1beta1NasJobSpecResponseOutput) MultiTrialAlgorithmSpec() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NasJobSpecResponse) GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponse {
@@ -19501,12 +17154,6 @@ func (o GoogleCloudAiplatformV1beta1NasTrialResponseOutput) ToGoogleCloudAiplatf
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1NasTrialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasTrialResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasTrialResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Time when the NasTrial's status changed to `SUCCEEDED` or `INFEASIBLE`.
 func (o GoogleCloudAiplatformV1beta1NasTrialResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NasTrialResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -19541,12 +17188,6 @@ func (o GoogleCloudAiplatformV1beta1NasTrialResponseArrayOutput) ToGoogleCloudAi
 
 func (o GoogleCloudAiplatformV1beta1NasTrialResponseArrayOutput) ToGoogleCloudAiplatformV1beta1NasTrialResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasTrialResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasTrialResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1NasTrialResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1NasTrialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NasTrialResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1NasTrialResponseOutput {
@@ -19598,12 +17239,6 @@ func (i GoogleCloudAiplatformV1beta1NetworkSpecArgs) ToGoogleCloudAiplatformV1be
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NetworkSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1NetworkSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NetworkSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NetworkSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NetworkSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1NetworkSpecArgs) ToGoogleCloudAiplatformV1beta1NetworkSpecPtrOutput() GoogleCloudAiplatformV1beta1NetworkSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1NetworkSpecPtrOutputWithContext(context.Background())
 }
@@ -19645,12 +17280,6 @@ func (i *googleCloudAiplatformV1beta1NetworkSpecPtrType) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NetworkSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1NetworkSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NetworkSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NetworkSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NetworkSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network spec.
 type GoogleCloudAiplatformV1beta1NetworkSpecOutput struct{ *pulumi.OutputState }
 
@@ -19674,12 +17303,6 @@ func (o GoogleCloudAiplatformV1beta1NetworkSpecOutput) ToGoogleCloudAiplatformV1
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1NetworkSpec) *GoogleCloudAiplatformV1beta1NetworkSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1NetworkSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1NetworkSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NetworkSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NetworkSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable public internet access. Default false.
@@ -19709,12 +17332,6 @@ func (o GoogleCloudAiplatformV1beta1NetworkSpecPtrOutput) ToGoogleCloudAiplatfor
 
 func (o GoogleCloudAiplatformV1beta1NetworkSpecPtrOutput) ToGoogleCloudAiplatformV1beta1NetworkSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NetworkSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NetworkSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NetworkSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NetworkSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NetworkSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1NetworkSpecOutput {
@@ -19782,12 +17399,6 @@ func (o GoogleCloudAiplatformV1beta1NetworkSpecResponseOutput) ToGoogleCloudAipl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1NetworkSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NetworkSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NetworkSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable public internet access. Default false.
 func (o GoogleCloudAiplatformV1beta1NetworkSpecResponseOutput) EnableInternetAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NetworkSpecResponse) bool { return v.EnableInternetAccess }).(pulumi.BoolOutput)
@@ -19846,12 +17457,6 @@ func (i GoogleCloudAiplatformV1beta1NfsMountArgs) ToGoogleCloudAiplatformV1beta1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NfsMountOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1NfsMountArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NfsMount] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NfsMount]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NfsMountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1NfsMountArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1NfsMountArray and GoogleCloudAiplatformV1beta1NfsMountArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1NfsMountArrayInput` via:
 //
@@ -19877,12 +17482,6 @@ func (i GoogleCloudAiplatformV1beta1NfsMountArray) ToGoogleCloudAiplatformV1beta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NfsMountArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1NfsMountArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1NfsMount] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1NfsMount]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NfsMountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a mount configuration for Network File System (NFS) to mount.
 type GoogleCloudAiplatformV1beta1NfsMountOutput struct{ *pulumi.OutputState }
 
@@ -19896,12 +17495,6 @@ func (o GoogleCloudAiplatformV1beta1NfsMountOutput) ToGoogleCloudAiplatformV1bet
 
 func (o GoogleCloudAiplatformV1beta1NfsMountOutput) ToGoogleCloudAiplatformV1beta1NfsMountOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NfsMountOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NfsMountOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NfsMount] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NfsMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Destination mount path. The NFS will be mounted for the user under /mnt/nfs/
@@ -19931,12 +17524,6 @@ func (o GoogleCloudAiplatformV1beta1NfsMountArrayOutput) ToGoogleCloudAiplatform
 
 func (o GoogleCloudAiplatformV1beta1NfsMountArrayOutput) ToGoogleCloudAiplatformV1beta1NfsMountArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NfsMountArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NfsMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1NfsMount] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1NfsMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NfsMountArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1NfsMountOutput {
@@ -19970,12 +17557,6 @@ func (o GoogleCloudAiplatformV1beta1NfsMountResponseOutput) ToGoogleCloudAiplatf
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1NfsMountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NfsMountResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NfsMountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Destination mount path. The NFS will be mounted for the user under /mnt/nfs/
 func (o GoogleCloudAiplatformV1beta1NfsMountResponseOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NfsMountResponse) string { return v.MountPoint }).(pulumi.StringOutput)
@@ -20003,12 +17584,6 @@ func (o GoogleCloudAiplatformV1beta1NfsMountResponseArrayOutput) ToGoogleCloudAi
 
 func (o GoogleCloudAiplatformV1beta1NfsMountResponseArrayOutput) ToGoogleCloudAiplatformV1beta1NfsMountResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NfsMountResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NfsMountResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1NfsMountResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1NfsMountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NfsMountResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1NfsMountResponseOutput {
@@ -20052,12 +17627,6 @@ func (i GoogleCloudAiplatformV1beta1NotebookEucConfigArgs) ToGoogleCloudAiplatfo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NotebookEucConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1NotebookEucConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NotebookEucConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NotebookEucConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NotebookEucConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1NotebookEucConfigArgs) ToGoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutput() GoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutputWithContext(context.Background())
 }
@@ -20099,12 +17668,6 @@ func (i *googleCloudAiplatformV1beta1NotebookEucConfigPtrType) ToGoogleCloudAipl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1NotebookEucConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NotebookEucConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NotebookEucConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The euc configuration of NotebookRuntimeTemplate.
 type GoogleCloudAiplatformV1beta1NotebookEucConfigOutput struct{ *pulumi.OutputState }
 
@@ -20130,12 +17693,6 @@ func (o GoogleCloudAiplatformV1beta1NotebookEucConfigOutput) ToGoogleCloudAiplat
 	}).(GoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1NotebookEucConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NotebookEucConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NotebookEucConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input only. Whether EUC is disabled in this NotebookRuntimeTemplate. In proto3, the default value of a boolean is false. In this way, by default EUC will be enabled for NotebookRuntimeTemplate.
 func (o GoogleCloudAiplatformV1beta1NotebookEucConfigOutput) EucDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NotebookEucConfig) *bool { return v.EucDisabled }).(pulumi.BoolPtrOutput)
@@ -20153,12 +17710,6 @@ func (o GoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutput) ToGoogleCloudAip
 
 func (o GoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutput) ToGoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NotebookEucConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NotebookEucConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NotebookEucConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1NotebookEucConfigOutput {
@@ -20202,12 +17753,6 @@ func (o GoogleCloudAiplatformV1beta1NotebookEucConfigResponseOutput) ToGoogleClo
 
 func (o GoogleCloudAiplatformV1beta1NotebookEucConfigResponseOutput) ToGoogleCloudAiplatformV1beta1NotebookEucConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookEucConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NotebookEucConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NotebookEucConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NotebookEucConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether ActAs check is bypassed for service account attached to the VM. If false, we need ActAs check for the default Compute Engine Service account. When a Runtime is created, a VM is allocated using Default Compute Engine Service Account. Any user requesting to use this Runtime requires Service Account User (ActAs) permission over this SA. If true, Runtime owner is using EUC and does not require the above permission as VM no longer use default Compute Engine SA, but a P4SA.
@@ -20259,12 +17804,6 @@ func (i GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs) ToGoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutput() GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutputWithContext(context.Background())
 }
@@ -20306,12 +17845,6 @@ func (i *googleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The idle shutdown configuration of NotebookRuntimeTemplate, which contains the idle_timeout as required field.
 type GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigOutput struct{ *pulumi.OutputState }
 
@@ -20337,12 +17870,6 @@ func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigOutput) ToGoogleCl
 	}).(GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether Idle Shutdown is disabled in this NotebookRuntimeTemplate.
 func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigOutput) IdleShutdownDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig) *bool { return v.IdleShutdownDisabled }).(pulumi.BoolPtrOutput)
@@ -20365,12 +17892,6 @@ func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutput) ToGoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigOutput {
@@ -20426,12 +17947,6 @@ func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponseOutput) To
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether Idle Shutdown is disabled in this NotebookRuntimeTemplate.
 func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponseOutput) IdleShutdownDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse) bool {
@@ -20483,12 +17998,6 @@ func (i GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs) ToGoogleCloudAiplatf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PersistentDiskSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PersistentDiskSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PersistentDiskSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PersistentDiskSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs) ToGoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutput() GoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutputWithContext(context.Background())
 }
@@ -20530,12 +18039,6 @@ func (i *googleCloudAiplatformV1beta1PersistentDiskSpecPtrType) ToGoogleCloudAip
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1PersistentDiskSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PersistentDiskSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PersistentDiskSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the spec of persistent disk options.
 type GoogleCloudAiplatformV1beta1PersistentDiskSpecOutput struct{ *pulumi.OutputState }
 
@@ -20561,12 +18064,6 @@ func (o GoogleCloudAiplatformV1beta1PersistentDiskSpecOutput) ToGoogleCloudAipla
 	}).(GoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1PersistentDiskSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PersistentDiskSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PersistentDiskSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Size in GB of the disk (default is 100GB).
 func (o GoogleCloudAiplatformV1beta1PersistentDiskSpecOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PersistentDiskSpec) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
@@ -20589,12 +18086,6 @@ func (o GoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutput) ToGoogleCloudAi
 
 func (o GoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutput) ToGoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PersistentDiskSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PersistentDiskSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1PersistentDiskSpecOutput {
@@ -20648,12 +18139,6 @@ func (o GoogleCloudAiplatformV1beta1PersistentDiskSpecResponseOutput) ToGoogleCl
 
 func (o GoogleCloudAiplatformV1beta1PersistentDiskSpecResponseOutput) ToGoogleCloudAiplatformV1beta1PersistentDiskSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PersistentDiskSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PersistentDiskSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PersistentDiskSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PersistentDiskSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size in GB of the disk (default is 100GB).
@@ -20733,12 +18218,6 @@ func (i GoogleCloudAiplatformV1beta1PipelineJobArgs) ToGoogleCloudAiplatformV1be
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PipelineJobOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PipelineJobArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJob] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJob]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PipelineJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1PipelineJobArgs) ToGoogleCloudAiplatformV1beta1PipelineJobPtrOutput() GoogleCloudAiplatformV1beta1PipelineJobPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1PipelineJobPtrOutputWithContext(context.Background())
 }
@@ -20780,12 +18259,6 @@ func (i *googleCloudAiplatformV1beta1PipelineJobPtrType) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PipelineJobPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1PipelineJobPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PipelineJob] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PipelineJob]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PipelineJobPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An instance of a machine learning PipelineJob.
 type GoogleCloudAiplatformV1beta1PipelineJobOutput struct{ *pulumi.OutputState }
 
@@ -20809,12 +18282,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobOutput) ToGoogleCloudAiplatformV1
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1PipelineJob) *GoogleCloudAiplatformV1beta1PipelineJob {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1PipelineJobPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1PipelineJobOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJob] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -20878,12 +18345,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobPtrOutput) ToGoogleCloudAiplatfor
 
 func (o GoogleCloudAiplatformV1beta1PipelineJobPtrOutput) ToGoogleCloudAiplatformV1beta1PipelineJobPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PipelineJobPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PipelineJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PipelineJob] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PipelineJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PipelineJobPtrOutput) Elem() GoogleCloudAiplatformV1beta1PipelineJobOutput {
@@ -21011,12 +18472,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobDetailResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PipelineJobDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobDetailResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobDetailResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The context of the pipeline.
 func (o GoogleCloudAiplatformV1beta1PipelineJobDetailResponseOutput) PipelineContext() GoogleCloudAiplatformV1beta1ContextResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PipelineJobDetailResponse) GoogleCloudAiplatformV1beta1ContextResponse {
@@ -21093,12 +18548,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobResponseOutput) ToGoogleCloudAipl
 
 func (o GoogleCloudAiplatformV1beta1PipelineJobResponseOutput) ToGoogleCloudAiplatformV1beta1PipelineJobResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PipelineJobResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PipelineJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Pipeline creation time.
@@ -21259,12 +18708,6 @@ func (i GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs) ToGoogleCloudA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs) ToGoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutput() GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutputWithContext(context.Background())
 }
@@ -21306,12 +18749,6 @@ func (i *googleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The runtime config of a PipelineJob.
 type GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigOutput struct{ *pulumi.OutputState }
 
@@ -21335,12 +18772,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigOutput) ToGoogleClou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig) *GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW. However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks when a task has failed. Any scheduled tasks will continue to completion.
@@ -21388,12 +18819,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutput) ToGoogleC
 
 func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutput) ToGoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigOutput {
@@ -21489,12 +18914,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponseOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW. However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks when a task has failed. Any scheduled tasks will continue to completion.
 func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponseOutput) FailurePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse) string { return v.FailurePolicy }).(pulumi.StringOutput)
@@ -21555,12 +18974,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The error that occurred during the state. May be set when the state is any of the non-final state (PENDING/RUNNING/CANCELLING) or FAILED state. If the state is FAILED, the error here is final and not going to be retried. If the state is a non-final state, the error indicates a system-error being retried.
 func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponseOutput) Error() GoogleRpcStatusResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse) GoogleRpcStatusResponse {
@@ -21594,12 +19007,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse
 
 func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponseArrayOutput) ToGoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponseOutput {
@@ -21651,12 +19058,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailResponseOutput) ToGoogleCl
 
 func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailResponseOutput) ToGoogleCloudAiplatformV1beta1PipelineTaskDetailResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PipelineTaskDetailResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Task create time.
@@ -21744,12 +19145,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailResponseArrayOutput) ToGoo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1PipelineTaskDetailResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1PipelineTaskDetailResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1PipelineTaskDetailResponse)[vs[1].(int)]
@@ -21781,12 +19176,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailRes
 
 func (o GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponseOutput) ToGoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The names of the previously failed CustomJob for the main container executions. The list includes the all attempts in chronological order.
@@ -21840,12 +19229,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailRes
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The names of the previously failed CustomJob. The list includes the all attempts in chronological order.
 func (o GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponseOutput) FailedJobs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse) []string {
@@ -21883,12 +19266,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponseOutput) To
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The detailed info for a container executor.
 func (o GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponseOutput) ContainerDetail() GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse) GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse {
@@ -21922,12 +19299,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponseOutput) ToGo
 
 func (o GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponseOutput) ToGoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The version_name in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
@@ -21970,12 +19341,6 @@ func (i GoogleCloudAiplatformV1beta1PortArgs) ToGoogleCloudAiplatformV1beta1Port
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PortOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PortArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Port] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Port]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1PortArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1PortArray and GoogleCloudAiplatformV1beta1PortArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1PortArrayInput` via:
 //
@@ -22001,12 +19366,6 @@ func (i GoogleCloudAiplatformV1beta1PortArray) ToGoogleCloudAiplatformV1beta1Por
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PortArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PortArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1Port] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1Port]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a network port in a container.
 type GoogleCloudAiplatformV1beta1PortOutput struct{ *pulumi.OutputState }
 
@@ -22020,12 +19379,6 @@ func (o GoogleCloudAiplatformV1beta1PortOutput) ToGoogleCloudAiplatformV1beta1Po
 
 func (o GoogleCloudAiplatformV1beta1PortOutput) ToGoogleCloudAiplatformV1beta1PortOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PortOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PortOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Port] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Port]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of the port to expose on the pod's IP address. Must be a valid port number, between 1 and 65535 inclusive.
@@ -22045,12 +19398,6 @@ func (o GoogleCloudAiplatformV1beta1PortArrayOutput) ToGoogleCloudAiplatformV1be
 
 func (o GoogleCloudAiplatformV1beta1PortArrayOutput) ToGoogleCloudAiplatformV1beta1PortArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PortArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1Port] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1Port]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PortArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1PortOutput {
@@ -22080,12 +19427,6 @@ func (o GoogleCloudAiplatformV1beta1PortResponseOutput) ToGoogleCloudAiplatformV
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PortResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PortResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PortResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of the port to expose on the pod's IP address. Must be a valid port number, between 1 and 65535 inclusive.
 func (o GoogleCloudAiplatformV1beta1PortResponseOutput) ContainerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PortResponse) int { return v.ContainerPort }).(pulumi.IntOutput)
@@ -22103,12 +19444,6 @@ func (o GoogleCloudAiplatformV1beta1PortResponseArrayOutput) ToGoogleCloudAiplat
 
 func (o GoogleCloudAiplatformV1beta1PortResponseArrayOutput) ToGoogleCloudAiplatformV1beta1PortResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PortResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PortResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1PortResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1PortResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PortResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1PortResponseOutput {
@@ -22152,12 +19487,6 @@ func (i GoogleCloudAiplatformV1beta1PredefinedSplitArgs) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PredefinedSplitOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PredefinedSplitArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PredefinedSplit] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PredefinedSplit]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PredefinedSplitOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1PredefinedSplitArgs) ToGoogleCloudAiplatformV1beta1PredefinedSplitPtrOutput() GoogleCloudAiplatformV1beta1PredefinedSplitPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1PredefinedSplitPtrOutputWithContext(context.Background())
 }
@@ -22199,12 +19528,6 @@ func (i *googleCloudAiplatformV1beta1PredefinedSplitPtrType) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PredefinedSplitPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1PredefinedSplitPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PredefinedSplit] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PredefinedSplit]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PredefinedSplitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Assigns input data to training, validation, and test sets based on the value of a provided key. Supported only for tabular Datasets.
 type GoogleCloudAiplatformV1beta1PredefinedSplitOutput struct{ *pulumi.OutputState }
 
@@ -22230,12 +19553,6 @@ func (o GoogleCloudAiplatformV1beta1PredefinedSplitOutput) ToGoogleCloudAiplatfo
 	}).(GoogleCloudAiplatformV1beta1PredefinedSplitPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1PredefinedSplitOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PredefinedSplit] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PredefinedSplit]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The key is a name of one of the Dataset's data columns. The value of the key (either the label's value or value in the column) must be one of {`training`, `validation`, `test`}, and it defines to which set the given piece of data is assigned. If for a piece of data the key is not present or has an invalid value, that piece is ignored by the pipeline.
 func (o GoogleCloudAiplatformV1beta1PredefinedSplitOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PredefinedSplit) string { return v.Key }).(pulumi.StringOutput)
@@ -22253,12 +19570,6 @@ func (o GoogleCloudAiplatformV1beta1PredefinedSplitPtrOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1PredefinedSplitPtrOutput) ToGoogleCloudAiplatformV1beta1PredefinedSplitPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PredefinedSplitPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PredefinedSplitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PredefinedSplit] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PredefinedSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PredefinedSplitPtrOutput) Elem() GoogleCloudAiplatformV1beta1PredefinedSplitOutput {
@@ -22300,12 +19611,6 @@ func (o GoogleCloudAiplatformV1beta1PredefinedSplitResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudAiplatformV1beta1PredefinedSplitResponseOutput) ToGoogleCloudAiplatformV1beta1PredefinedSplitResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PredefinedSplitResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PredefinedSplitResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PredefinedSplitResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PredefinedSplitResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key is a name of one of the Dataset's data columns. The value of the key (either the label's value or value in the column) must be one of {`training`, `validation`, `test`}, and it defines to which set the given piece of data is assigned. If for a piece of data the key is not present or has an invalid value, that piece is ignored by the pipeline.
@@ -22356,12 +19661,6 @@ func (i GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigArgs) ToG
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigArgs) ToGoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutput() GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -22403,12 +19702,6 @@ func (i *googleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrType)
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for logging request-response to a BigQuery table.
 type GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigOutput struct{ *pulumi.OutputState }
 
@@ -22432,12 +19725,6 @@ func (o GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigOutput) T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig) *GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BigQuery table for logging. If only given a project, a new dataset will be created with name `logging__` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
@@ -22471,12 +19758,6 @@ func (o GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutput
 
 func (o GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutput) ToGoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigOutput {
@@ -22544,12 +19825,6 @@ func (o GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponseO
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // BigQuery table for logging. If only given a project, a new dataset will be created with name `logging__` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
 func (o GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponseOutput) BigqueryDestination() GoogleCloudAiplatformV1beta1BigQueryDestinationResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponse) GoogleCloudAiplatformV1beta1BigQueryDestinationResponse {
@@ -22612,12 +19887,6 @@ func (i GoogleCloudAiplatformV1beta1PredictSchemataArgs) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PredictSchemataOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PredictSchemataArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PredictSchemata] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PredictSchemata]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PredictSchemataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1PredictSchemataArgs) ToGoogleCloudAiplatformV1beta1PredictSchemataPtrOutput() GoogleCloudAiplatformV1beta1PredictSchemataPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1PredictSchemataPtrOutputWithContext(context.Background())
 }
@@ -22659,12 +19928,6 @@ func (i *googleCloudAiplatformV1beta1PredictSchemataPtrType) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PredictSchemataPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1PredictSchemataPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PredictSchemata] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PredictSchemata]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PredictSchemataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains the schemata used in Model's predictions and explanations via PredictionService.Predict, PredictionService.Explain and BatchPredictionJob.
 type GoogleCloudAiplatformV1beta1PredictSchemataOutput struct{ *pulumi.OutputState }
 
@@ -22688,12 +19951,6 @@ func (o GoogleCloudAiplatformV1beta1PredictSchemataOutput) ToGoogleCloudAiplatfo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1PredictSchemata) *GoogleCloudAiplatformV1beta1PredictSchemata {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1PredictSchemataPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1PredictSchemataOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PredictSchemata] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PredictSchemata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Points to a YAML file stored on Google Cloud Storage describing the format of a single instance, which are used in PredictRequest.instances, ExplainRequest.instances and BatchPredictionJob.input_config. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML Models always have this field populated by Vertex AI. Note: The URI given on output will be immutable and probably different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
@@ -22723,12 +19980,6 @@ func (o GoogleCloudAiplatformV1beta1PredictSchemataPtrOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1PredictSchemataPtrOutput) ToGoogleCloudAiplatformV1beta1PredictSchemataPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PredictSchemataPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PredictSchemataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PredictSchemata] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PredictSchemata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PredictSchemataPtrOutput) Elem() GoogleCloudAiplatformV1beta1PredictSchemataOutput {
@@ -22796,12 +20047,6 @@ func (o GoogleCloudAiplatformV1beta1PredictSchemataResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PredictSchemataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PredictSchemataResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PredictSchemataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. Points to a YAML file stored on Google Cloud Storage describing the format of a single instance, which are used in PredictRequest.instances, ExplainRequest.instances and BatchPredictionJob.input_config. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML Models always have this field populated by Vertex AI. Note: The URI given on output will be immutable and probably different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
 func (o GoogleCloudAiplatformV1beta1PredictSchemataResponseOutput) InstanceSchemaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PredictSchemataResponse) string { return v.InstanceSchemaUri }).(pulumi.StringOutput)
@@ -22856,12 +20101,6 @@ func (i GoogleCloudAiplatformV1beta1PresetsArgs) ToGoogleCloudAiplatformV1beta1P
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PresetsOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PresetsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Presets] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Presets]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PresetsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1PresetsArgs) ToGoogleCloudAiplatformV1beta1PresetsPtrOutput() GoogleCloudAiplatformV1beta1PresetsPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1PresetsPtrOutputWithContext(context.Background())
 }
@@ -22903,12 +20142,6 @@ func (i *googleCloudAiplatformV1beta1PresetsPtrType) ToGoogleCloudAiplatformV1be
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PresetsPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1PresetsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1Presets] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1Presets]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PresetsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Preset configuration for example-based explanations
 type GoogleCloudAiplatformV1beta1PresetsOutput struct{ *pulumi.OutputState }
 
@@ -22932,12 +20165,6 @@ func (o GoogleCloudAiplatformV1beta1PresetsOutput) ToGoogleCloudAiplatformV1beta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1Presets) *GoogleCloudAiplatformV1beta1Presets {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1PresetsPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1PresetsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Presets] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Presets]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The modality of the uploaded model, which automatically configures the distance measurement and feature normalization for the underlying example index and queries. If your model does not precisely fit one of these types, it is okay to choose the closest type.
@@ -22964,12 +20191,6 @@ func (o GoogleCloudAiplatformV1beta1PresetsPtrOutput) ToGoogleCloudAiplatformV1b
 
 func (o GoogleCloudAiplatformV1beta1PresetsPtrOutput) ToGoogleCloudAiplatformV1beta1PresetsPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PresetsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PresetsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1Presets] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1Presets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PresetsPtrOutput) Elem() GoogleCloudAiplatformV1beta1PresetsOutput {
@@ -23025,12 +20246,6 @@ func (o GoogleCloudAiplatformV1beta1PresetsResponseOutput) ToGoogleCloudAiplatfo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PresetsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PresetsResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PresetsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The modality of the uploaded model, which automatically configures the distance measurement and feature normalization for the underlying example index and queries. If your model does not precisely fit one of these types, it is okay to choose the closest type.
 func (o GoogleCloudAiplatformV1beta1PresetsResponseOutput) Modality() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PresetsResponse) string { return v.Modality }).(pulumi.StringOutput)
@@ -23066,12 +20281,6 @@ func (o GoogleCloudAiplatformV1beta1PrivateEndpointsResponseOutput) ToGoogleClou
 
 func (o GoogleCloudAiplatformV1beta1PrivateEndpointsResponseOutput) ToGoogleCloudAiplatformV1beta1PrivateEndpointsResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PrivateEndpointsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PrivateEndpointsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PrivateEndpointsResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PrivateEndpointsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Http(s) path to send explain requests.
@@ -23133,12 +20342,6 @@ func (i GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgs) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PrivateServiceConnectConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgs) ToGoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput() GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutputWithContext(context.Background())
 }
@@ -23180,12 +20383,6 @@ func (i *googleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents configuration for private service connect.
 type GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigOutput struct{ *pulumi.OutputState }
 
@@ -23209,12 +20406,6 @@ func (o GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigOutput) ToGoogleC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig) *GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, expose the IndexEndpoint via private service connect.
@@ -23241,12 +20432,6 @@ func (o GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput) ToGoog
 
 func (o GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput) ToGoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigOutput {
@@ -23300,12 +20485,6 @@ func (o GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponseOutput) T
 
 func (o GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponseOutput) ToGoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, expose the IndexEndpoint via private service connect.
@@ -23365,12 +20544,6 @@ func (i GoogleCloudAiplatformV1beta1ProbeArgs) ToGoogleCloudAiplatformV1beta1Pro
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ProbeOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ProbeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Probe] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Probe]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ProbeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ProbeArgs) ToGoogleCloudAiplatformV1beta1ProbePtrOutput() GoogleCloudAiplatformV1beta1ProbePtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ProbePtrOutputWithContext(context.Background())
 }
@@ -23412,12 +20585,6 @@ func (i *googleCloudAiplatformV1beta1ProbePtrType) ToGoogleCloudAiplatformV1beta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ProbePtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ProbePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1Probe] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1Probe]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ProbePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type GoogleCloudAiplatformV1beta1ProbeOutput struct{ *pulumi.OutputState }
 
@@ -23441,12 +20608,6 @@ func (o GoogleCloudAiplatformV1beta1ProbeOutput) ToGoogleCloudAiplatformV1beta1P
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1Probe) *GoogleCloudAiplatformV1beta1Probe {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ProbePtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ProbeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Probe] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Probe]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Exec specifies the action to take.
@@ -23476,12 +20637,6 @@ func (o GoogleCloudAiplatformV1beta1ProbePtrOutput) ToGoogleCloudAiplatformV1bet
 
 func (o GoogleCloudAiplatformV1beta1ProbePtrOutput) ToGoogleCloudAiplatformV1beta1ProbePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ProbePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ProbePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1Probe] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1Probe]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ProbePtrOutput) Elem() GoogleCloudAiplatformV1beta1ProbeOutput {
@@ -23559,12 +20714,6 @@ func (i GoogleCloudAiplatformV1beta1ProbeExecActionArgs) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ProbeExecActionOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ProbeExecActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ProbeExecAction] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ProbeExecAction]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ProbeExecActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ProbeExecActionArgs) ToGoogleCloudAiplatformV1beta1ProbeExecActionPtrOutput() GoogleCloudAiplatformV1beta1ProbeExecActionPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ProbeExecActionPtrOutputWithContext(context.Background())
 }
@@ -23606,12 +20755,6 @@ func (i *googleCloudAiplatformV1beta1ProbeExecActionPtrType) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ProbeExecActionPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ProbeExecActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ProbeExecAction] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ProbeExecAction]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ProbeExecActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExecAction specifies a command to execute.
 type GoogleCloudAiplatformV1beta1ProbeExecActionOutput struct{ *pulumi.OutputState }
 
@@ -23637,12 +20780,6 @@ func (o GoogleCloudAiplatformV1beta1ProbeExecActionOutput) ToGoogleCloudAiplatfo
 	}).(GoogleCloudAiplatformV1beta1ProbeExecActionPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1ProbeExecActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ProbeExecAction] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ProbeExecAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 func (o GoogleCloudAiplatformV1beta1ProbeExecActionOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ProbeExecAction) []string { return v.Command }).(pulumi.StringArrayOutput)
@@ -23660,12 +20797,6 @@ func (o GoogleCloudAiplatformV1beta1ProbeExecActionPtrOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1ProbeExecActionPtrOutput) ToGoogleCloudAiplatformV1beta1ProbeExecActionPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ProbeExecActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ProbeExecActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ProbeExecAction] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ProbeExecAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ProbeExecActionPtrOutput) Elem() GoogleCloudAiplatformV1beta1ProbeExecActionOutput {
@@ -23709,12 +20840,6 @@ func (o GoogleCloudAiplatformV1beta1ProbeExecActionResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ProbeExecActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ProbeExecActionResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ProbeExecActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 func (o GoogleCloudAiplatformV1beta1ProbeExecActionResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ProbeExecActionResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
@@ -23743,12 +20868,6 @@ func (o GoogleCloudAiplatformV1beta1ProbeResponseOutput) ToGoogleCloudAiplatform
 
 func (o GoogleCloudAiplatformV1beta1ProbeResponseOutput) ToGoogleCloudAiplatformV1beta1ProbeResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ProbeResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ProbeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ProbeResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ProbeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Exec specifies the action to take.
@@ -23819,12 +20938,6 @@ func (i GoogleCloudAiplatformV1beta1PythonPackageSpecArgs) ToGoogleCloudAiplatfo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PythonPackageSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1PythonPackageSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PythonPackageSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PythonPackageSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PythonPackageSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1PythonPackageSpecArgs) ToGoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutput() GoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutputWithContext(context.Background())
 }
@@ -23866,12 +20979,6 @@ func (i *googleCloudAiplatformV1beta1PythonPackageSpecPtrType) ToGoogleCloudAipl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1PythonPackageSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PythonPackageSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PythonPackageSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The spec of a Python packaged code.
 type GoogleCloudAiplatformV1beta1PythonPackageSpecOutput struct{ *pulumi.OutputState }
 
@@ -23895,12 +21002,6 @@ func (o GoogleCloudAiplatformV1beta1PythonPackageSpecOutput) ToGoogleCloudAiplat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1PythonPackageSpec) *GoogleCloudAiplatformV1beta1PythonPackageSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1PythonPackageSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PythonPackageSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PythonPackageSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Command line arguments to be passed to the Python task.
@@ -23942,12 +21043,6 @@ func (o GoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutput) ToGoogleCloudAip
 
 func (o GoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutput) ToGoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PythonPackageSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PythonPackageSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1PythonPackageSpecOutput {
@@ -24039,12 +21134,6 @@ func (o GoogleCloudAiplatformV1beta1PythonPackageSpecResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1PythonPackageSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PythonPackageSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PythonPackageSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Command line arguments to be passed to the Python task.
 func (o GoogleCloudAiplatformV1beta1PythonPackageSpecResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PythonPackageSpecResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
@@ -24115,12 +21204,6 @@ func (i GoogleCloudAiplatformV1beta1RaySpecArgs) ToGoogleCloudAiplatformV1beta1R
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1RaySpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1RaySpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1RaySpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1RaySpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1RaySpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1RaySpecArgs) ToGoogleCloudAiplatformV1beta1RaySpecPtrOutput() GoogleCloudAiplatformV1beta1RaySpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1RaySpecPtrOutputWithContext(context.Background())
 }
@@ -24162,12 +21245,6 @@ func (i *googleCloudAiplatformV1beta1RaySpecPtrType) ToGoogleCloudAiplatformV1be
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1RaySpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1RaySpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1RaySpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1RaySpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1RaySpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration information for the Ray cluster. For experimental launch, Ray cluster creation and Persistent cluster creation are 1:1 mapping: We will provision all the nodes within the Persistent cluster as Ray nodes.
 type GoogleCloudAiplatformV1beta1RaySpecOutput struct{ *pulumi.OutputState }
 
@@ -24191,12 +21268,6 @@ func (o GoogleCloudAiplatformV1beta1RaySpecOutput) ToGoogleCloudAiplatformV1beta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1RaySpec) *GoogleCloudAiplatformV1beta1RaySpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1RaySpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1RaySpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1RaySpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1RaySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node within that pool). Will use the machine from the first workerpool as the head node by default if this field isn't set.
@@ -24226,12 +21297,6 @@ func (o GoogleCloudAiplatformV1beta1RaySpecPtrOutput) ToGoogleCloudAiplatformV1b
 
 func (o GoogleCloudAiplatformV1beta1RaySpecPtrOutput) ToGoogleCloudAiplatformV1beta1RaySpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1RaySpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1RaySpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1RaySpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1RaySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1RaySpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1RaySpecOutput {
@@ -24297,12 +21362,6 @@ func (o GoogleCloudAiplatformV1beta1RaySpecResponseOutput) ToGoogleCloudAiplatfo
 
 func (o GoogleCloudAiplatformV1beta1RaySpecResponseOutput) ToGoogleCloudAiplatformV1beta1RaySpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1RaySpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1RaySpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1RaySpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1RaySpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node within that pool). Will use the machine from the first workerpool as the head node by default if this field isn't set.
@@ -24371,12 +21430,6 @@ func (i GoogleCloudAiplatformV1beta1ResourcePoolArgs) ToGoogleCloudAiplatformV1b
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ResourcePoolOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ResourcePoolArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePool] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePool]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ResourcePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1ResourcePoolArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1ResourcePoolArray and GoogleCloudAiplatformV1beta1ResourcePoolArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ResourcePoolArrayInput` via:
 //
@@ -24402,12 +21455,6 @@ func (i GoogleCloudAiplatformV1beta1ResourcePoolArray) ToGoogleCloudAiplatformV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ResourcePoolArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ResourcePoolArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ResourcePool] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ResourcePool]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ResourcePoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the spec of a group of resources of the same type, for example machine type, disk, and accelerators, in a PersistentResource.
 type GoogleCloudAiplatformV1beta1ResourcePoolOutput struct{ *pulumi.OutputState }
 
@@ -24421,12 +21468,6 @@ func (o GoogleCloudAiplatformV1beta1ResourcePoolOutput) ToGoogleCloudAiplatformV
 
 func (o GoogleCloudAiplatformV1beta1ResourcePoolOutput) ToGoogleCloudAiplatformV1beta1ResourcePoolOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ResourcePoolOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ResourcePoolOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePool] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Optional spec to configure GKE autoscaling
@@ -24474,12 +21515,6 @@ func (o GoogleCloudAiplatformV1beta1ResourcePoolArrayOutput) ToGoogleCloudAiplat
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ResourcePoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ResourcePool] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ResourcePool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1ResourcePoolArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ResourcePoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1ResourcePool {
 		return vs[0].([]GoogleCloudAiplatformV1beta1ResourcePool)[vs[1].(int)]
@@ -24525,12 +21560,6 @@ func (i GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecArgs) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecArgs) ToGoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutput() GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutputWithContext(context.Background())
 }
@@ -24572,12 +21601,6 @@ func (i *googleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The min/max number of replicas allowed if enabling autoscaling
 type GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecOutput struct{ *pulumi.OutputState }
 
@@ -24603,12 +21626,6 @@ func (o GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecOutput) ToGoogleC
 	}).(GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. max replicas in the node pool, must be ≥ replica_count and > min_replica_count or will throw error
 func (o GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecOutput) MaxReplicaCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec) *string { return v.MaxReplicaCount }).(pulumi.StringPtrOutput)
@@ -24631,12 +21648,6 @@ func (o GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutput) ToGoog
 
 func (o GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutput) ToGoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecOutput {
@@ -24692,12 +21703,6 @@ func (o GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponseOutput) T
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. max replicas in the node pool, must be ≥ replica_count and > min_replica_count or will throw error
 func (o GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponseOutput) MaxReplicaCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse) string {
@@ -24739,12 +21744,6 @@ func (o GoogleCloudAiplatformV1beta1ResourcePoolResponseOutput) ToGoogleCloudAip
 
 func (o GoogleCloudAiplatformV1beta1ResourcePoolResponseOutput) ToGoogleCloudAiplatformV1beta1ResourcePoolResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ResourcePoolResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ResourcePoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePoolResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourcePoolResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Optional spec to configure GKE autoscaling
@@ -24792,12 +21791,6 @@ func (o GoogleCloudAiplatformV1beta1ResourcePoolResponseArrayOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ResourcePoolResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1ResourcePoolResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1ResourcePoolResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1ResourcePoolResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1ResourcePoolResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1ResourcePoolResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1ResourcePoolResponse)[vs[1].(int)]
@@ -24825,12 +21818,6 @@ func (o GoogleCloudAiplatformV1beta1ResourceRuntimeResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudAiplatformV1beta1ResourceRuntimeResponseOutput) ToGoogleCloudAiplatformV1beta1ResourceRuntimeResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ResourceRuntimeResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ResourceRuntimeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourceRuntimeResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourceRuntimeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URIs for user to connect to the Cluster. Example: { "RAY_HEAD_NODE_INTERNAL_IP": "head-node-IP:10001" "RAY_DASHBOARD_URI": "ray-dashboard-address:8888" }
@@ -24882,12 +21869,6 @@ func (i GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgs) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ResourceRuntimeSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourceRuntimeSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourceRuntimeSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ResourceRuntimeSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgs) ToGoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutput() GoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutputWithContext(context.Background())
 }
@@ -24929,12 +21910,6 @@ func (i *googleCloudAiplatformV1beta1ResourceRuntimeSpecPtrType) ToGoogleCloudAi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ResourceRuntimeSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ResourceRuntimeSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ResourceRuntimeSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for the runtime on a PersistentResource instance, including but not limited to: * Service accounts used to run the workloads. * Whether to make it a dedicated Ray Cluster.
 type GoogleCloudAiplatformV1beta1ResourceRuntimeSpecOutput struct{ *pulumi.OutputState }
 
@@ -24958,12 +21933,6 @@ func (o GoogleCloudAiplatformV1beta1ResourceRuntimeSpecOutput) ToGoogleCloudAipl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ResourceRuntimeSpec) *GoogleCloudAiplatformV1beta1ResourceRuntimeSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1ResourceRuntimeSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourceRuntimeSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourceRuntimeSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the PersistentResource.
@@ -24992,12 +21961,6 @@ func (o GoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutput) ToGoogleCloudA
 
 func (o GoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutput) ToGoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ResourceRuntimeSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ResourceRuntimeSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ResourceRuntimeSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1ResourceRuntimeSpecOutput {
@@ -25053,12 +22016,6 @@ func (o GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the PersistentResource.
 func (o GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponseOutput) RaySpec() GoogleCloudAiplatformV1beta1RaySpecResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse) GoogleCloudAiplatformV1beta1RaySpecResponse {
@@ -25092,12 +22049,6 @@ func (o GoogleCloudAiplatformV1beta1ResourcesConsumedResponseOutput) ToGoogleClo
 
 func (o GoogleCloudAiplatformV1beta1ResourcesConsumedResponseOutput) ToGoogleCloudAiplatformV1beta1ResourcesConsumedResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ResourcesConsumedResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ResourcesConsumedResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ResourcesConsumedResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ResourcesConsumedResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of replica hours used. Note that many replicas may run in parallel, and additionally any given work may be queued for some time. Therefore this value is not strictly related to wall time.
@@ -25148,12 +22099,6 @@ func (i GoogleCloudAiplatformV1beta1SampleConfigArgs) ToGoogleCloudAiplatformV1b
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SampleConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1SampleConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SampleConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SampleConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SampleConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1SampleConfigArgs) ToGoogleCloudAiplatformV1beta1SampleConfigPtrOutput() GoogleCloudAiplatformV1beta1SampleConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1SampleConfigPtrOutputWithContext(context.Background())
 }
@@ -25195,12 +22140,6 @@ func (i *googleCloudAiplatformV1beta1SampleConfigPtrType) ToGoogleCloudAiplatfor
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SampleConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1SampleConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SampleConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SampleConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SampleConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Active learning data sampling config. For every active learning labeling iteration, it will select a batch of data based on the sampling strategy.
 type GoogleCloudAiplatformV1beta1SampleConfigOutput struct{ *pulumi.OutputState }
 
@@ -25224,12 +22163,6 @@ func (o GoogleCloudAiplatformV1beta1SampleConfigOutput) ToGoogleCloudAiplatformV
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1SampleConfig) *GoogleCloudAiplatformV1beta1SampleConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1SampleConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1SampleConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SampleConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SampleConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The percentage of data needed to be labeled in each following batch (except the first batch).
@@ -25261,12 +22194,6 @@ func (o GoogleCloudAiplatformV1beta1SampleConfigPtrOutput) ToGoogleCloudAiplatfo
 
 func (o GoogleCloudAiplatformV1beta1SampleConfigPtrOutput) ToGoogleCloudAiplatformV1beta1SampleConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SampleConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SampleConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SampleConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SampleConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1SampleConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1SampleConfigOutput {
@@ -25334,12 +22261,6 @@ func (o GoogleCloudAiplatformV1beta1SampleConfigResponseOutput) ToGoogleCloudAip
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1SampleConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SampleConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SampleConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The percentage of data needed to be labeled in each following batch (except the first batch).
 func (o GoogleCloudAiplatformV1beta1SampleConfigResponseOutput) FollowingBatchSamplePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1SampleConfigResponse) int { return v.FollowingBatchSamplePercentage }).(pulumi.IntOutput)
@@ -25390,12 +22311,6 @@ func (i GoogleCloudAiplatformV1beta1SampledShapleyAttributionArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SampledShapleyAttributionOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1SampledShapleyAttributionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SampledShapleyAttribution] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SampledShapleyAttribution]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SampledShapleyAttributionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1SampledShapleyAttributionArgs) ToGoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutput() GoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutputWithContext(context.Background())
 }
@@ -25437,12 +22352,6 @@ func (i *googleCloudAiplatformV1beta1SampledShapleyAttributionPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1SampledShapleyAttributionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SampledShapleyAttribution] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SampledShapleyAttribution]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An attribution method that approximates Shapley values for features that contribute to the label being predicted. A sampling strategy is used to approximate the value rather than considering all subsets of features.
 type GoogleCloudAiplatformV1beta1SampledShapleyAttributionOutput struct{ *pulumi.OutputState }
 
@@ -25468,12 +22377,6 @@ func (o GoogleCloudAiplatformV1beta1SampledShapleyAttributionOutput) ToGoogleClo
 	}).(GoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1SampledShapleyAttributionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SampledShapleyAttribution] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SampledShapleyAttribution]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of feature permutations to consider when approximating the Shapley values. Valid range of its value is [1, 50], inclusively.
 func (o GoogleCloudAiplatformV1beta1SampledShapleyAttributionOutput) PathCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1SampledShapleyAttribution) int { return v.PathCount }).(pulumi.IntOutput)
@@ -25491,12 +22394,6 @@ func (o GoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutput) ToGoogle
 
 func (o GoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutput) ToGoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SampledShapleyAttribution] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SampledShapleyAttribution]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1SampledShapleyAttributionPtrOutput) Elem() GoogleCloudAiplatformV1beta1SampledShapleyAttributionOutput {
@@ -25540,12 +22437,6 @@ func (o GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponseOutput) ToG
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of feature permutations to consider when approximating the Shapley values. Valid range of its value is [1, 50], inclusively.
 func (o GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponseOutput) PathCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse) int { return v.PathCount }).(pulumi.IntOutput)
@@ -25584,12 +22475,6 @@ func (i GoogleCloudAiplatformV1beta1SamplingStrategyArgs) ToGoogleCloudAiplatfor
 
 func (i GoogleCloudAiplatformV1beta1SamplingStrategyArgs) ToGoogleCloudAiplatformV1beta1SamplingStrategyOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SamplingStrategyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SamplingStrategyOutput)
-}
-
-func (i GoogleCloudAiplatformV1beta1SamplingStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategy] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategy]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SamplingStrategyOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudAiplatformV1beta1SamplingStrategyArgs) ToGoogleCloudAiplatformV1beta1SamplingStrategyPtrOutput() GoogleCloudAiplatformV1beta1SamplingStrategyPtrOutput {
@@ -25633,12 +22518,6 @@ func (i *googleCloudAiplatformV1beta1SamplingStrategyPtrType) ToGoogleCloudAipla
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SamplingStrategyPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1SamplingStrategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SamplingStrategy] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SamplingStrategy]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SamplingStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sampling Strategy for logging, can be for both training and prediction dataset.
 type GoogleCloudAiplatformV1beta1SamplingStrategyOutput struct{ *pulumi.OutputState }
 
@@ -25664,12 +22543,6 @@ func (o GoogleCloudAiplatformV1beta1SamplingStrategyOutput) ToGoogleCloudAiplatf
 	}).(GoogleCloudAiplatformV1beta1SamplingStrategyPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1SamplingStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategy] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Random sample config. Will support more sampling strategies later.
 func (o GoogleCloudAiplatformV1beta1SamplingStrategyOutput) RandomSampleConfig() GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1SamplingStrategy) *GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig {
@@ -25689,12 +22562,6 @@ func (o GoogleCloudAiplatformV1beta1SamplingStrategyPtrOutput) ToGoogleCloudAipl
 
 func (o GoogleCloudAiplatformV1beta1SamplingStrategyPtrOutput) ToGoogleCloudAiplatformV1beta1SamplingStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SamplingStrategyPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SamplingStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SamplingStrategy] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SamplingStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1SamplingStrategyPtrOutput) Elem() GoogleCloudAiplatformV1beta1SamplingStrategyOutput {
@@ -25752,12 +22619,6 @@ func (i GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigArgs) ToGo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigArgs) ToGoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutput() GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutputWithContext(context.Background())
 }
@@ -25799,12 +22660,6 @@ func (i *googleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Requests are randomly selected.
 type GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigOutput struct{ *pulumi.OutputState }
 
@@ -25830,12 +22685,6 @@ func (o GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigOutput) To
 	}).(GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Sample rate (0, 1]
 func (o GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigOutput) SampleRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig) *float64 { return v.SampleRate }).(pulumi.Float64PtrOutput)
@@ -25853,12 +22702,6 @@ func (o GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutput)
 
 func (o GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutput) ToGoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigOutput {
@@ -25902,12 +22745,6 @@ func (o GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponseOu
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Sample rate (0, 1]
 func (o GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponseOutput) SampleRate() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponse) float64 {
@@ -25934,12 +22771,6 @@ func (o GoogleCloudAiplatformV1beta1SamplingStrategyResponseOutput) ToGoogleClou
 
 func (o GoogleCloudAiplatformV1beta1SamplingStrategyResponseOutput) ToGoogleCloudAiplatformV1beta1SamplingStrategyResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SamplingStrategyResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SamplingStrategyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategyResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SamplingStrategyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Random sample config. Will support more sampling strategies later.
@@ -25996,12 +22827,6 @@ func (i GoogleCloudAiplatformV1beta1SavedQueryArgs) ToGoogleCloudAiplatformV1bet
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SavedQueryOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1SavedQueryArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SavedQuery] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SavedQuery]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SavedQueryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1SavedQueryArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1SavedQueryArray and GoogleCloudAiplatformV1beta1SavedQueryArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1SavedQueryArrayInput` via:
 //
@@ -26027,12 +22852,6 @@ func (i GoogleCloudAiplatformV1beta1SavedQueryArray) ToGoogleCloudAiplatformV1be
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SavedQueryArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1SavedQueryArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1SavedQuery] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1SavedQuery]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SavedQueryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A SavedQuery is a view of the dataset. It references a subset of annotations by problem type and filters.
 type GoogleCloudAiplatformV1beta1SavedQueryOutput struct{ *pulumi.OutputState }
 
@@ -26046,12 +22865,6 @@ func (o GoogleCloudAiplatformV1beta1SavedQueryOutput) ToGoogleCloudAiplatformV1b
 
 func (o GoogleCloudAiplatformV1beta1SavedQueryOutput) ToGoogleCloudAiplatformV1beta1SavedQueryOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SavedQueryOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SavedQueryOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SavedQuery] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SavedQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-defined name of the SavedQuery. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -26086,12 +22899,6 @@ func (o GoogleCloudAiplatformV1beta1SavedQueryArrayOutput) ToGoogleCloudAiplatfo
 
 func (o GoogleCloudAiplatformV1beta1SavedQueryArrayOutput) ToGoogleCloudAiplatformV1beta1SavedQueryArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SavedQueryArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SavedQueryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1SavedQuery] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1SavedQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1SavedQueryArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1SavedQueryOutput {
@@ -26137,12 +22944,6 @@ func (o GoogleCloudAiplatformV1beta1SavedQueryResponseOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1SavedQueryResponseOutput) ToGoogleCloudAiplatformV1beta1SavedQueryResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SavedQueryResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SavedQueryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SavedQueryResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SavedQueryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Filters on the Annotations in the dataset.
@@ -26209,12 +23010,6 @@ func (o GoogleCloudAiplatformV1beta1SavedQueryResponseArrayOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1SavedQueryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1SavedQueryResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1SavedQueryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1SavedQueryResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1SavedQueryResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1SavedQueryResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1SavedQueryResponse)[vs[1].(int)]
@@ -26242,12 +23037,6 @@ func (o GoogleCloudAiplatformV1beta1ScheduleRunResponseResponseOutput) ToGoogleC
 
 func (o GoogleCloudAiplatformV1beta1ScheduleRunResponseResponseOutput) ToGoogleCloudAiplatformV1beta1ScheduleRunResponseResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ScheduleRunResponseResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ScheduleRunResponseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The response of the scheduled run.
@@ -26303,12 +23092,6 @@ func (i GoogleCloudAiplatformV1beta1SchedulingArgs) ToGoogleCloudAiplatformV1bet
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SchedulingOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1SchedulingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Scheduling] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Scheduling]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SchedulingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1SchedulingArgs) ToGoogleCloudAiplatformV1beta1SchedulingPtrOutput() GoogleCloudAiplatformV1beta1SchedulingPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1SchedulingPtrOutputWithContext(context.Background())
 }
@@ -26350,12 +23133,6 @@ func (i *googleCloudAiplatformV1beta1SchedulingPtrType) ToGoogleCloudAiplatformV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SchedulingPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1SchedulingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1Scheduling] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1Scheduling]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SchedulingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // All parameters related to queuing and scheduling of custom jobs.
 type GoogleCloudAiplatformV1beta1SchedulingOutput struct{ *pulumi.OutputState }
 
@@ -26379,12 +23156,6 @@ func (o GoogleCloudAiplatformV1beta1SchedulingOutput) ToGoogleCloudAiplatformV1b
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1Scheduling) *GoogleCloudAiplatformV1beta1Scheduling {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1SchedulingPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1SchedulingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1Scheduling] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1Scheduling]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Indicates if the job should retry for internal errors after the job starts running. If true, overrides `Scheduling.restart_job_on_worker_restart` to false.
@@ -26414,12 +23185,6 @@ func (o GoogleCloudAiplatformV1beta1SchedulingPtrOutput) ToGoogleCloudAiplatform
 
 func (o GoogleCloudAiplatformV1beta1SchedulingPtrOutput) ToGoogleCloudAiplatformV1beta1SchedulingPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SchedulingPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SchedulingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1Scheduling] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1Scheduling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1SchedulingPtrOutput) Elem() GoogleCloudAiplatformV1beta1SchedulingOutput {
@@ -26487,12 +23252,6 @@ func (o GoogleCloudAiplatformV1beta1SchedulingResponseOutput) ToGoogleCloudAipla
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1SchedulingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SchedulingResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SchedulingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Indicates if the job should retry for internal errors after the job starts running. If true, overrides `Scheduling.restart_job_on_worker_restart` to false.
 func (o GoogleCloudAiplatformV1beta1SchedulingResponseOutput) DisableRetries() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1SchedulingResponse) bool { return v.DisableRetries }).(pulumi.BoolOutput)
@@ -26547,12 +23306,6 @@ func (i GoogleCloudAiplatformV1beta1ServiceAccountSpecArgs) ToGoogleCloudAiplatf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ServiceAccountSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ServiceAccountSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ServiceAccountSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ServiceAccountSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ServiceAccountSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ServiceAccountSpecArgs) ToGoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutput() GoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutputWithContext(context.Background())
 }
@@ -26594,12 +23347,6 @@ func (i *googleCloudAiplatformV1beta1ServiceAccountSpecPtrType) ToGoogleCloudAip
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ServiceAccountSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ServiceAccountSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ServiceAccountSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for the use of custom service account to run the workloads.
 type GoogleCloudAiplatformV1beta1ServiceAccountSpecOutput struct{ *pulumi.OutputState }
 
@@ -26625,12 +23372,6 @@ func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecOutput) ToGoogleCloudAipla
 	}).(GoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ServiceAccountSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ServiceAccountSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If true, custom user-managed service account is enforced to run any workloads (for example, Vertex Jobs) on the resource. Otherwise, uses the [Vertex AI Custom Code Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
 func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecOutput) EnableCustomServiceAccount() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ServiceAccountSpec) bool { return v.EnableCustomServiceAccount }).(pulumi.BoolOutput)
@@ -26653,12 +23394,6 @@ func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutput) ToGoogleCloudAi
 
 func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutput) ToGoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ServiceAccountSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ServiceAccountSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1ServiceAccountSpecOutput {
@@ -26712,12 +23447,6 @@ func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecResponseOutput) ToGoogleCl
 
 func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecResponseOutput) ToGoogleCloudAiplatformV1beta1ServiceAccountSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ServiceAccountSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ServiceAccountSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ServiceAccountSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, custom user-managed service account is enforced to run any workloads (for example, Vertex Jobs) on the resource. Otherwise, uses the [Vertex AI Custom Code Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
@@ -26775,12 +23504,6 @@ func (i GoogleCloudAiplatformV1beta1SmoothGradConfigArgs) ToGoogleCloudAiplatfor
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SmoothGradConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1SmoothGradConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SmoothGradConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SmoothGradConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SmoothGradConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1SmoothGradConfigArgs) ToGoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutput() GoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutputWithContext(context.Background())
 }
@@ -26822,12 +23545,6 @@ func (i *googleCloudAiplatformV1beta1SmoothGradConfigPtrType) ToGoogleCloudAipla
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1SmoothGradConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SmoothGradConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SmoothGradConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Config for SmoothGrad approximation of gradients. When enabled, the gradients are approximated by averaging the gradients from noisy samples in the vicinity of the inputs. Adding noise can help improve the computed gradients. Refer to this paper for more details: https://arxiv.org/pdf/1706.03825.pdf
 type GoogleCloudAiplatformV1beta1SmoothGradConfigOutput struct{ *pulumi.OutputState }
 
@@ -26851,12 +23568,6 @@ func (o GoogleCloudAiplatformV1beta1SmoothGradConfigOutput) ToGoogleCloudAiplatf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1SmoothGradConfig) *GoogleCloudAiplatformV1beta1SmoothGradConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1SmoothGradConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SmoothGradConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SmoothGradConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is similar to noise_sigma, but provides additional flexibility. A separate noise sigma can be provided for each feature, which is useful if their distributions are different. No noise is added to features that are not set. If this field is unset, noise_sigma will be used for all features.
@@ -26888,12 +23599,6 @@ func (o GoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutput) ToGoogleCloudAipl
 
 func (o GoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutput) ToGoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SmoothGradConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SmoothGradConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1SmoothGradConfigOutput {
@@ -26961,12 +23666,6 @@ func (o GoogleCloudAiplatformV1beta1SmoothGradConfigResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1SmoothGradConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SmoothGradConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SmoothGradConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // This is similar to noise_sigma, but provides additional flexibility. A separate noise sigma can be provided for each feature, which is useful if their distributions are different. No noise is added to features that are not set. If this field is unset, noise_sigma will be used for all features.
 func (o GoogleCloudAiplatformV1beta1SmoothGradConfigResponseOutput) FeatureNoiseSigma() GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1SmoothGradConfigResponse) GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponse {
@@ -27031,12 +23730,6 @@ func (i GoogleCloudAiplatformV1beta1StratifiedSplitArgs) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StratifiedSplitOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StratifiedSplitArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StratifiedSplit] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StratifiedSplit]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StratifiedSplitOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StratifiedSplitArgs) ToGoogleCloudAiplatformV1beta1StratifiedSplitPtrOutput() GoogleCloudAiplatformV1beta1StratifiedSplitPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StratifiedSplitPtrOutputWithContext(context.Background())
 }
@@ -27078,12 +23771,6 @@ func (i *googleCloudAiplatformV1beta1StratifiedSplitPtrType) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StratifiedSplitPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StratifiedSplitPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StratifiedSplit] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StratifiedSplit]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StratifiedSplitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Assigns input data to the training, validation, and test sets so that the distribution of values found in the categorical column (as specified by the `key` field) is mirrored within each split. The fraction values determine the relative sizes of the splits. For example, if the specified column has three values, with 50% of the rows having value "A", 25% value "B", and 25% value "C", and the split fractions are specified as 80/10/10, then the training set will constitute 80% of the training data, with about 50% of the training set rows having the value "A" for the specified column, about 25% having the value "B", and about 25% having the value "C". Only the top 500 occurring values are used; any values not in the top 500 values are randomly assigned to a split. If less than three rows contain a specific value, those rows are randomly assigned. Supported only for tabular Datasets.
 type GoogleCloudAiplatformV1beta1StratifiedSplitOutput struct{ *pulumi.OutputState }
 
@@ -27107,12 +23794,6 @@ func (o GoogleCloudAiplatformV1beta1StratifiedSplitOutput) ToGoogleCloudAiplatfo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1StratifiedSplit) *GoogleCloudAiplatformV1beta1StratifiedSplit {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1StratifiedSplitPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1StratifiedSplitOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StratifiedSplit] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StratifiedSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key is a name of one of the Dataset's data columns. The key provided must be for a categorical column.
@@ -27147,12 +23828,6 @@ func (o GoogleCloudAiplatformV1beta1StratifiedSplitPtrOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1StratifiedSplitPtrOutput) ToGoogleCloudAiplatformV1beta1StratifiedSplitPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StratifiedSplitPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StratifiedSplitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StratifiedSplit] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StratifiedSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StratifiedSplitPtrOutput) Elem() GoogleCloudAiplatformV1beta1StratifiedSplitOutput {
@@ -27230,12 +23905,6 @@ func (o GoogleCloudAiplatformV1beta1StratifiedSplitResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudAiplatformV1beta1StratifiedSplitResponseOutput) ToGoogleCloudAiplatformV1beta1StratifiedSplitResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StratifiedSplitResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StratifiedSplitResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StratifiedSplitResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StratifiedSplitResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key is a name of one of the Dataset's data columns. The key provided must be for a categorical column.
@@ -27337,12 +24006,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecArgs) ToGoogleCloudAiplatformV1beta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents specification of a Study.
 type GoogleCloudAiplatformV1beta1StudySpecOutput struct{ *pulumi.OutputState }
 
@@ -27356,12 +24019,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecOutput) ToGoogleCloudAiplatformV1be
 
 func (o GoogleCloudAiplatformV1beta1StudySpecOutput) ToGoogleCloudAiplatformV1beta1StudySpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The search algorithm specified for the Study.
@@ -27498,12 +24155,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecArgs) ToGoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutput() GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutputWithContext(context.Background())
 }
@@ -27545,12 +24196,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for ConvexAutomatedStoppingSpec. When there are enough completed trials (configured by min_measurement_count), for pending trials with enough measurements and steps, the policy first computes an overestimate of the objective value at max_num_steps according to the slope of the incomplete objective value curve. No prediction can be made if the curve is completely flat. If the overestimation is worse than the best objective value of the completed trials, this pending trial will be early-stopped, but a last measurement will be added to the pending trial with max_num_steps and predicted objective value from the autoregression model.
 type GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecOutput struct{ *pulumi.OutputState }
 
@@ -27574,12 +24219,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecOutput) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec) *GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The hyper-parameter name used in the tuning job that stands for learning rate. Leave it blank if learning rate is not in a parameter in tuning. The learning_rate is used to estimate the objective value of the ongoing trial.
@@ -27636,12 +24275,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutpu
 
 func (o GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecOutput {
@@ -27745,12 +24378,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecResponse
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The hyper-parameter name used in the tuning job that stands for learning rate. Leave it blank if learning rate is not in a parameter in tuning. The learning_rate is used to estimate the objective value of the ongoing trial.
 func (o GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecResponseOutput) LearningRateParameterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecResponse) string {
@@ -27844,12 +24471,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecConvexStopConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigArgs) ToGoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutput() GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutputWithContext(context.Background())
 }
@@ -27891,12 +24512,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for ConvexStopPolicy.
 type GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigOutput struct{ *pulumi.OutputState }
 
@@ -27920,12 +24535,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigOutput) ToGoogleClo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig) *GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of Trial measurements used in autoregressive model for value prediction. A trial won't be considered early stopping if has fewer measurement points.
@@ -27967,12 +24576,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutput) ToGoogle
 
 func (o GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigOutput {
@@ -28064,12 +24667,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigResponseOutput) ToG
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of Trial measurements used in autoregressive model for value prediction. A trial won't be considered early stopping if has fewer measurement points.
 func (o GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigResponseOutput) AutoregressiveOrder() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigResponse) string {
@@ -28134,12 +24731,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecArgs
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecArgs) ToGoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutput() GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutputWithContext(context.Background())
 }
@@ -28181,12 +24772,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The decay curve automated stopping rule builds a Gaussian Process Regressor to predict the final objective value of a Trial based on the already completed Trials and the intermediate measurements of the current Trial. Early stopping is requested for the current Trial if there is very low probability to exceed the optimal value found so far.
 type GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecOutput struct{ *pulumi.OutputState }
 
@@ -28212,12 +24797,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecOutp
 	}).(GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // True if Measurement.elapsed_duration is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.step_count will be used as the x-axis.
 func (o GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecOutput) UseElapsedDuration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec) *bool {
@@ -28237,12 +24816,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrO
 
 func (o GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecOutput {
@@ -28284,12 +24857,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecResp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // True if Measurement.elapsed_duration is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.step_count will be used as the x-axis.
@@ -28334,12 +24901,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecArgs) ToGoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutput() GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutputWithContext(context.Background())
 }
@@ -28381,12 +24942,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The median automated stopping rule stops a pending Trial if the Trial's best objective_value is strictly below the median 'performance' of all completed Trials reported up to the Trial's last measurement. Currently, 'performance' refers to the running average of the objective values reported by the Trial in each measurement.
 type GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecOutput struct{ *pulumi.OutputState }
 
@@ -28412,12 +24967,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecOutput) 
 	}).(GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // True if median automated stopping rule applies on Measurement.elapsed_duration. It means that elapsed_duration field of latest measurement of current Trial is used to compute median objective value for each completed Trials.
 func (o GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecOutput) UseElapsedDuration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec) *bool {
@@ -28437,12 +24986,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutpu
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecOutput {
@@ -28484,12 +25027,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecResponse
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // True if median automated stopping rule applies on Measurement.elapsed_duration. It means that elapsed_duration field of latest measurement of current Trial is used to compute median objective value for each completed Trials.
@@ -28542,12 +25079,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecMetricSpecArgs) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecMetricSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecMetricSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1StudySpecMetricSpecArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1StudySpecMetricSpecArray and GoogleCloudAiplatformV1beta1StudySpecMetricSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1StudySpecMetricSpecArrayInput` via:
 //
@@ -28573,12 +25104,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecMetricSpecArray) ToGoogleCloudAipla
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecMetricSpecArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecMetricSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecMetricSpec] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecMetricSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a metric to optimize.
 type GoogleCloudAiplatformV1beta1StudySpecMetricSpecOutput struct{ *pulumi.OutputState }
 
@@ -28592,12 +25117,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecOutput) ToGoogleCloudAipl
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecOutput) ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecMetricSpecOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The optimization goal of the metric.
@@ -28633,12 +25152,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecArrayOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecMetricSpec] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecMetricSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1StudySpecMetricSpecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1StudySpecMetricSpec {
 		return vs[0].([]GoogleCloudAiplatformV1beta1StudySpecMetricSpec)[vs[1].(int)]
@@ -28670,12 +25183,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The optimization goal of the metric.
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponseOutput) Goal() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponse) string { return v.Goal }).(pulumi.StringOutput)
@@ -28705,12 +25212,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponseArrayOutput) ToGo
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponseArrayOutput) ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1StudySpecMetricSpecResponseOutput {
@@ -28758,12 +25259,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigArgs) ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutput() GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutputWithContext(context.Background())
 }
@@ -28805,12 +25300,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Used in safe optimization to specify threshold levels and risk tolerance.
 type GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigOutput struct{ *pulumi.OutputState }
 
@@ -28834,12 +25323,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig) *GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Desired minimum fraction of safe trials (over total number of trials) that should be targeted by the algorithm at any time during the study (best effort). This should be between 0.0 and 1.0 and a value of 0.0 means that there is no minimum and an algorithm proceeds without targeting any specific fraction. A value of 1.0 means that the algorithm attempts to only Suggest safe Trials.
@@ -28868,12 +25351,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigOutput {
@@ -28927,12 +25404,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigRespons
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Desired minimum fraction of safe trials (over total number of trials) that should be targeted by the algorithm at any time during the study (best effort). This should be between 0.0 and 1.0 and a value of 0.0 means that there is no minimum and an algorithm proceeds without targeting any specific fraction. A value of 1.0 means that the algorithm attempts to only Suggest safe Trials.
@@ -29008,12 +25479,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecArgs) ToGoogleCloudAip
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1StudySpecParameterSpecArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1StudySpecParameterSpecArray and GoogleCloudAiplatformV1beta1StudySpecParameterSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1StudySpecParameterSpecArrayInput` via:
 //
@@ -29039,12 +25504,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecArray) ToGoogleCloudAi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpec] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a single parameter to optimize.
 type GoogleCloudAiplatformV1beta1StudySpecParameterSpecOutput struct{ *pulumi.OutputState }
 
@@ -29058,12 +25517,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecOutput) ToGoogleCloudA
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value spec for a 'CATEGORICAL' parameter.
@@ -29127,12 +25580,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecArrayOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpec] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1StudySpecParameterSpecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1StudySpecParameterSpec {
 		return vs[0].([]GoogleCloudAiplatformV1beta1StudySpecParameterSpec)[vs[1].(int)]
@@ -29178,12 +25625,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecAr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecArgs) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutput() GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutputWithContext(context.Background())
 }
@@ -29225,12 +25666,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecP
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Value specification for a parameter in `CATEGORICAL` type.
 type GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecOutput struct{ *pulumi.OutputState }
 
@@ -29254,12 +25689,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec) *GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A default value for a `CATEGORICAL` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
@@ -29288,12 +25717,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPt
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecOutput {
@@ -29347,12 +25770,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecRe
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A default value for a `CATEGORICAL` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
@@ -29416,12 +25833,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecArray and GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecArrayInput` via:
 //
@@ -29447,12 +25858,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a parameter spec with condition from its parent parameter.
 type GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecOutput struct{ *pulumi.OutputState }
 
@@ -29466,12 +25871,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The spec for a conditional parameter.
@@ -29516,12 +25915,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec {
 		return vs[0].([]GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec)[vs[1].(int)]
@@ -29561,12 +25954,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 
 func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionArgs) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionOutput)
-}
-
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionArgs) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrOutput() GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrOutput {
@@ -29610,12 +25997,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterS
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the spec to match categorical values from parent parameter.
 type GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionOutput struct{ *pulumi.OutputState }
 
@@ -29641,12 +26022,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 	}).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Matches values of the parent parameter of 'CATEGORICAL' type. All values must exist in `categorical_value_spec` of parent parameter.
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition) []string {
@@ -29666,12 +26041,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionOutput {
@@ -29713,12 +26082,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Matches values of the parent parameter of 'CATEGORICAL' type. All values must exist in `categorical_value_spec` of parent parameter.
@@ -29763,12 +26126,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionArgs) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutput() GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutputWithContext(context.Background())
 }
@@ -29810,12 +26167,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterS
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the spec to match discrete values from parent parameter.
 type GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionOutput struct{ *pulumi.OutputState }
 
@@ -29841,12 +26192,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 	}).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Matches values of the parent parameter of 'DISCRETE' type. All values must exist in `discrete_value_spec` of parent parameter. The Epsilon of the value matching is 1e-10.
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionOutput) Values() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition) []float64 {
@@ -29866,12 +26211,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionOutput {
@@ -29913,12 +26252,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Matches values of the parent parameter of 'DISCRETE' type. All values must exist in `discrete_value_spec` of parent parameter. The Epsilon of the value matching is 1e-10.
@@ -29963,12 +26296,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionArgs) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutput() GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutputWithContext(context.Background())
 }
@@ -30010,12 +26337,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterS
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the spec to match integer values from parent parameter.
 type GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionOutput struct{ *pulumi.OutputState }
 
@@ -30041,12 +26362,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 	}).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Matches values of the parent parameter of 'INTEGER' type. All values must lie in `integer_value_spec` of parent parameter.
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition) []string {
@@ -30066,12 +26381,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionOutput {
@@ -30115,12 +26424,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Matches values of the parent parameter of 'INTEGER' type. All values must lie in `integer_value_spec` of parent parameter.
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse) []string {
@@ -30153,12 +26456,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The spec for a conditional parameter.
@@ -30201,12 +26498,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponseArrayOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponseOutput {
@@ -30254,12 +26545,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecArgs) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutput() GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutputWithContext(context.Background())
 }
@@ -30301,12 +26586,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Value specification for a parameter in `DISCRETE` type.
 type GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecOutput struct{ *pulumi.OutputState }
 
@@ -30330,12 +26609,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec) *GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A default value for a `DISCRETE` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. It automatically rounds to the nearest feasible discrete point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
@@ -30362,12 +26635,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOu
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecOutput {
@@ -30421,12 +26688,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecRespo
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A default value for a `DISCRETE` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. It automatically rounds to the nearest feasible discrete point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
@@ -30486,12 +26747,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecArgs) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutput() GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutputWithContext(context.Background())
 }
@@ -30533,12 +26788,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Value specification for a parameter in `DOUBLE` type.
 type GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecOutput struct{ *pulumi.OutputState }
 
@@ -30562,12 +26811,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec) *GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A default value for a `DOUBLE` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
@@ -30599,12 +26842,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutp
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecOutput {
@@ -30672,12 +26909,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecRespons
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A default value for a `DOUBLE` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponseOutput) DefaultValue() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpecResponse) float64 {
@@ -30742,12 +26973,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecArgs) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutput() GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutputWithContext(context.Background())
 }
@@ -30789,12 +27014,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Value specification for a parameter in `INTEGER` type.
 type GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecOutput struct{ *pulumi.OutputState }
 
@@ -30818,12 +27037,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec) *GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A default value for an `INTEGER` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
@@ -30855,12 +27068,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOut
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecOutput {
@@ -30928,12 +27135,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecRespon
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A default value for an `INTEGER` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponseOutput) DefaultValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpecResponse) string {
@@ -30986,12 +27187,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponseOutput) ToGoog
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value spec for a 'CATEGORICAL' parameter.
@@ -31053,12 +27248,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponseArrayOutput) T
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1StudySpecParameterSpecResponse)[vs[1].(int)]
@@ -31106,12 +27295,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecResponseOutput) ToGoogleCloudAiplat
 
 func (o GoogleCloudAiplatformV1beta1StudySpecResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The search algorithm specified for the Study.
@@ -31246,12 +27429,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigArgs) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigArgs) ToGoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutput() GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutputWithContext(context.Background())
 }
@@ -31293,12 +27470,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrType) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration (stopping conditions) for automated stopping of a Study. Conditions include trial budgets, time budgets, and convergence detection.
 type GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigOutput struct{ *pulumi.OutputState }
 
@@ -31322,12 +27493,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigOutput) ToGoogle
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig) *GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the objective value has not improved for this much time, stop the study. WARNING: Effective only for single-objective studies.
@@ -31383,12 +27548,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutput) ToGoo
 
 func (o GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigOutput {
@@ -31504,12 +27663,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponseOutput) 
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If the objective value has not improved for this much time, stop the study. WARNING: Effective only for single-objective studies.
 func (o GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponseOutput) MaxDurationNoProgress() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfigResponse) string {
@@ -31588,12 +27741,6 @@ func (i GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigArgs) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigArgs) ToGoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutput() GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutputWithContext(context.Background())
 }
@@ -31635,12 +27782,6 @@ func (i *googleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrType) ToG
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This contains flag for manually disabling transfer learning for a study. The names of prior studies being used for transfer learning (if any) are also listed here.
 type GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigOutput struct{ *pulumi.OutputState }
 
@@ -31666,12 +27807,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigOutput) ToGoo
 	}).(GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Flag to to manually prevent vizier from using transfer learning on a new study. Otherwise, vizier will automatically determine whether or not to use transfer learning.
 func (o GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigOutput) DisableTransferLearning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig) *bool {
@@ -31691,12 +27826,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutput) To
 
 func (o GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigOutput {
@@ -31740,12 +27869,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponseOutpu
 
 func (o GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponseOutput) ToGoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Flag to to manually prevent vizier from using transfer learning on a new study. Otherwise, vizier will automatically determine whether or not to use transfer learning.
@@ -31801,12 +27924,6 @@ func (i GoogleCloudAiplatformV1beta1StudyTimeConstraintArgs) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudyTimeConstraintOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1StudyTimeConstraintArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudyTimeConstraint] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudyTimeConstraint]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudyTimeConstraintOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1StudyTimeConstraintArgs) ToGoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutput() GoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutputWithContext(context.Background())
 }
@@ -31848,12 +27965,6 @@ func (i *googleCloudAiplatformV1beta1StudyTimeConstraintPtrType) ToGoogleCloudAi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1StudyTimeConstraintPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudyTimeConstraint] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudyTimeConstraint]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Time-based Constraint for Study
 type GoogleCloudAiplatformV1beta1StudyTimeConstraintOutput struct{ *pulumi.OutputState }
 
@@ -31879,12 +27990,6 @@ func (o GoogleCloudAiplatformV1beta1StudyTimeConstraintOutput) ToGoogleCloudAipl
 	}).(GoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudyTimeConstraintOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudyTimeConstraint] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudyTimeConstraint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Compares the wallclock time to this time. Must use UTC timezone.
 func (o GoogleCloudAiplatformV1beta1StudyTimeConstraintOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudyTimeConstraint) *string { return v.EndTime }).(pulumi.StringPtrOutput)
@@ -31907,12 +28012,6 @@ func (o GoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutput) ToGoogleCloudA
 
 func (o GoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutput) ToGoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudyTimeConstraint] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudyTimeConstraint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudyTimeConstraintPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudyTimeConstraintOutput {
@@ -31968,12 +28067,6 @@ func (o GoogleCloudAiplatformV1beta1StudyTimeConstraintResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1StudyTimeConstraintResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Compares the wallclock time to this time. Must use UTC timezone.
 func (o GoogleCloudAiplatformV1beta1StudyTimeConstraintResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -32007,12 +28100,6 @@ func (o GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponseOutput)
 
 func (o GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponseOutput) ToGoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The largest blob sequence length (number of blobs) of all data points in this time series, if its ValueType is BLOB_SEQUENCE.
@@ -32067,12 +28154,6 @@ func (i GoogleCloudAiplatformV1beta1ThresholdConfigArgs) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ThresholdConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1ThresholdConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ThresholdConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ThresholdConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ThresholdConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1ThresholdConfigArgs) ToGoogleCloudAiplatformV1beta1ThresholdConfigPtrOutput() GoogleCloudAiplatformV1beta1ThresholdConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1ThresholdConfigPtrOutputWithContext(context.Background())
 }
@@ -32114,12 +28195,6 @@ func (i *googleCloudAiplatformV1beta1ThresholdConfigPtrType) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ThresholdConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1ThresholdConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ThresholdConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ThresholdConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1ThresholdConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The config for feature monitoring threshold.
 type GoogleCloudAiplatformV1beta1ThresholdConfigOutput struct{ *pulumi.OutputState }
 
@@ -32145,12 +28220,6 @@ func (o GoogleCloudAiplatformV1beta1ThresholdConfigOutput) ToGoogleCloudAiplatfo
 	}).(GoogleCloudAiplatformV1beta1ThresholdConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1ThresholdConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ThresholdConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ThresholdConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specify a threshold value that can trigger the alert. If this threshold config is for feature distribution distance: 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature.
 func (o GoogleCloudAiplatformV1beta1ThresholdConfigOutput) Value() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ThresholdConfig) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
@@ -32168,12 +28237,6 @@ func (o GoogleCloudAiplatformV1beta1ThresholdConfigPtrOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1ThresholdConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ThresholdConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ThresholdConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ThresholdConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ThresholdConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ThresholdConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ThresholdConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1ThresholdConfigOutput {
@@ -32215,12 +28278,6 @@ func (o GoogleCloudAiplatformV1beta1ThresholdConfigResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudAiplatformV1beta1ThresholdConfigResponseOutput) ToGoogleCloudAiplatformV1beta1ThresholdConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ThresholdConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ThresholdConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ThresholdConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ThresholdConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specify a threshold value that can trigger the alert. If this threshold config is for feature distribution distance: 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature.
@@ -32275,12 +28332,6 @@ func (i GoogleCloudAiplatformV1beta1TimestampSplitArgs) ToGoogleCloudAiplatformV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1TimestampSplitOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1TimestampSplitArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1TimestampSplit] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1TimestampSplit]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1TimestampSplitOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1TimestampSplitArgs) ToGoogleCloudAiplatformV1beta1TimestampSplitPtrOutput() GoogleCloudAiplatformV1beta1TimestampSplitPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1TimestampSplitPtrOutputWithContext(context.Background())
 }
@@ -32322,12 +28373,6 @@ func (i *googleCloudAiplatformV1beta1TimestampSplitPtrType) ToGoogleCloudAiplatf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1TimestampSplitPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1TimestampSplitPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1TimestampSplit] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1TimestampSplit]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1TimestampSplitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Assigns input data to training, validation, and test sets based on a provided timestamps. The youngest data pieces are assigned to training set, next to validation set, and the oldest to the test set. Supported only for tabular Datasets.
 type GoogleCloudAiplatformV1beta1TimestampSplitOutput struct{ *pulumi.OutputState }
 
@@ -32351,12 +28396,6 @@ func (o GoogleCloudAiplatformV1beta1TimestampSplitOutput) ToGoogleCloudAiplatfor
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1TimestampSplit) *GoogleCloudAiplatformV1beta1TimestampSplit {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1TimestampSplitPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1TimestampSplitOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1TimestampSplit] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1TimestampSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key is a name of one of the Dataset's data columns. The values of the key (the values in the column) must be in RFC 3339 `date-time` format, where `time-offset` = `"Z"` (e.g. 1985-04-12T23:20:50.52Z). If for a piece of data the key is not present or has an invalid value, that piece is ignored by the pipeline.
@@ -32391,12 +28430,6 @@ func (o GoogleCloudAiplatformV1beta1TimestampSplitPtrOutput) ToGoogleCloudAiplat
 
 func (o GoogleCloudAiplatformV1beta1TimestampSplitPtrOutput) ToGoogleCloudAiplatformV1beta1TimestampSplitPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1TimestampSplitPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1TimestampSplitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1TimestampSplit] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1TimestampSplit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1TimestampSplitPtrOutput) Elem() GoogleCloudAiplatformV1beta1TimestampSplitOutput {
@@ -32476,12 +28509,6 @@ func (o GoogleCloudAiplatformV1beta1TimestampSplitResponseOutput) ToGoogleCloudA
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1TimestampSplitResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1TimestampSplitResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1TimestampSplitResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The key is a name of one of the Dataset's data columns. The values of the key (the values in the column) must be in RFC 3339 `date-time` format, where `time-offset` = `"Z"` (e.g. 1985-04-12T23:20:50.52Z). If for a piece of data the key is not present or has an invalid value, that piece is ignored by the pipeline.
 func (o GoogleCloudAiplatformV1beta1TimestampSplitResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1TimestampSplitResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -32537,12 +28564,6 @@ func (i GoogleCloudAiplatformV1beta1TrainingConfigArgs) ToGoogleCloudAiplatformV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1TrainingConfigOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1TrainingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1TrainingConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1TrainingConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1TrainingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1TrainingConfigArgs) ToGoogleCloudAiplatformV1beta1TrainingConfigPtrOutput() GoogleCloudAiplatformV1beta1TrainingConfigPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1TrainingConfigPtrOutputWithContext(context.Background())
 }
@@ -32584,12 +28605,6 @@ func (i *googleCloudAiplatformV1beta1TrainingConfigPtrType) ToGoogleCloudAiplatf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1TrainingConfigPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1TrainingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1TrainingConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1TrainingConfig]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1TrainingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CMLE training config. For every active learning labeling iteration, system will train a machine learning model on CMLE. The trained model will be used by data sampling algorithm to select DataItems.
 type GoogleCloudAiplatformV1beta1TrainingConfigOutput struct{ *pulumi.OutputState }
 
@@ -32615,12 +28630,6 @@ func (o GoogleCloudAiplatformV1beta1TrainingConfigOutput) ToGoogleCloudAiplatfor
 	}).(GoogleCloudAiplatformV1beta1TrainingConfigPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1TrainingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1TrainingConfig] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1TrainingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timeout hours for the CMLE training job, expressed in milli hours i.e. 1,000 value in this field means 1 hour.
 func (o GoogleCloudAiplatformV1beta1TrainingConfigOutput) TimeoutTrainingMilliHours() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1TrainingConfig) *string { return v.TimeoutTrainingMilliHours }).(pulumi.StringPtrOutput)
@@ -32638,12 +28647,6 @@ func (o GoogleCloudAiplatformV1beta1TrainingConfigPtrOutput) ToGoogleCloudAiplat
 
 func (o GoogleCloudAiplatformV1beta1TrainingConfigPtrOutput) ToGoogleCloudAiplatformV1beta1TrainingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1TrainingConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1TrainingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1TrainingConfig] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1TrainingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1TrainingConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1TrainingConfigOutput {
@@ -32687,12 +28690,6 @@ func (o GoogleCloudAiplatformV1beta1TrainingConfigResponseOutput) ToGoogleCloudA
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1TrainingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1TrainingConfigResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1TrainingConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timeout hours for the CMLE training job, expressed in milli hours i.e. 1,000 value in this field means 1 hour.
 func (o GoogleCloudAiplatformV1beta1TrainingConfigResponseOutput) TimeoutTrainingMilliHours() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1TrainingConfigResponse) string { return v.TimeoutTrainingMilliHours }).(pulumi.StringOutput)
@@ -32721,12 +28718,6 @@ func (o GoogleCloudAiplatformV1beta1TrialParameterResponseOutput) ToGoogleCloudA
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1TrialParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1TrialParameterResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1TrialParameterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID of the parameter. The parameter should be defined in StudySpec's Parameters.
 func (o GoogleCloudAiplatformV1beta1TrialParameterResponseOutput) ParameterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1TrialParameterResponse) string { return v.ParameterId }).(pulumi.StringOutput)
@@ -32749,12 +28740,6 @@ func (o GoogleCloudAiplatformV1beta1TrialParameterResponseArrayOutput) ToGoogleC
 
 func (o GoogleCloudAiplatformV1beta1TrialParameterResponseArrayOutput) ToGoogleCloudAiplatformV1beta1TrialParameterResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1TrialParameterResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1TrialParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1TrialParameterResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1TrialParameterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1TrialParameterResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1TrialParameterResponseOutput {
@@ -32802,12 +28787,6 @@ func (o GoogleCloudAiplatformV1beta1TrialResponseOutput) ToGoogleCloudAiplatform
 
 func (o GoogleCloudAiplatformV1beta1TrialResponseOutput) ToGoogleCloudAiplatformV1beta1TrialResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1TrialResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1TrialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1TrialResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1TrialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier of the client that originally requested this Trial. Each client is identified by a unique client_id. When a client asks for a suggestion, Vertex AI Vizier will assign it a Trial. The client should evaluate the Trial, complete it, and report back to Vertex AI Vizier. If suggestion is asked again by same client_id before the Trial is completed, the same Trial will be returned. Multiple clients with different client_ids can ask for suggestions simultaneously, each of them will get their own Trial.
@@ -32885,12 +28864,6 @@ func (o GoogleCloudAiplatformV1beta1TrialResponseArrayOutput) ToGoogleCloudAipla
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1TrialResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1TrialResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1TrialResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1TrialResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1TrialResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1TrialResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1TrialResponse)[vs[1].(int)]
@@ -32940,12 +28913,6 @@ func (i GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs) ToGoogleCloudAi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1UnmanagedContainerModelOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1UnmanagedContainerModel] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1UnmanagedContainerModel]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1UnmanagedContainerModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs) ToGoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutput() GoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutputWithContext(context.Background())
 }
@@ -32987,12 +28954,6 @@ func (i *googleCloudAiplatformV1beta1UnmanagedContainerModelPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1UnmanagedContainerModelPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1UnmanagedContainerModel] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1UnmanagedContainerModel]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains model information necessary to perform batch prediction without requiring a full model import.
 type GoogleCloudAiplatformV1beta1UnmanagedContainerModelOutput struct{ *pulumi.OutputState }
 
@@ -33016,12 +28977,6 @@ func (o GoogleCloudAiplatformV1beta1UnmanagedContainerModelOutput) ToGoogleCloud
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1UnmanagedContainerModel) *GoogleCloudAiplatformV1beta1UnmanagedContainerModel {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1UnmanagedContainerModelOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1UnmanagedContainerModel] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1UnmanagedContainerModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path to the directory containing the Model artifact and any of its supporting files.
@@ -33055,12 +29010,6 @@ func (o GoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutput) ToGoogleCl
 
 func (o GoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutput) ToGoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1UnmanagedContainerModel] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1UnmanagedContainerModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1UnmanagedContainerModelPtrOutput) Elem() GoogleCloudAiplatformV1beta1UnmanagedContainerModelOutput {
@@ -33126,12 +29075,6 @@ func (o GoogleCloudAiplatformV1beta1UnmanagedContainerModelResponseOutput) ToGoo
 
 func (o GoogleCloudAiplatformV1beta1UnmanagedContainerModelResponseOutput) ToGoogleCloudAiplatformV1beta1UnmanagedContainerModelResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1UnmanagedContainerModelResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1UnmanagedContainerModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1UnmanagedContainerModelResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1UnmanagedContainerModelResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path to the directory containing the Model artifact and any of its supporting files.
@@ -33208,12 +29151,6 @@ func (i GoogleCloudAiplatformV1beta1WorkerPoolSpecArgs) ToGoogleCloudAiplatformV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1WorkerPoolSpecOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1WorkerPoolSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1WorkerPoolSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1WorkerPoolSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1WorkerPoolSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAiplatformV1beta1WorkerPoolSpecArrayInput is an input type that accepts GoogleCloudAiplatformV1beta1WorkerPoolSpecArray and GoogleCloudAiplatformV1beta1WorkerPoolSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAiplatformV1beta1WorkerPoolSpecArrayInput` via:
 //
@@ -33239,12 +29176,6 @@ func (i GoogleCloudAiplatformV1beta1WorkerPoolSpecArray) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1WorkerPoolSpecArrayOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1WorkerPoolSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1WorkerPoolSpec] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1WorkerPoolSpec]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1WorkerPoolSpecArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the spec of a worker pool in a job.
 type GoogleCloudAiplatformV1beta1WorkerPoolSpecOutput struct{ *pulumi.OutputState }
 
@@ -33258,12 +29189,6 @@ func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecOutput) ToGoogleCloudAiplatfor
 
 func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecOutput) ToGoogleCloudAiplatformV1beta1WorkerPoolSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1WorkerPoolSpecOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1WorkerPoolSpec] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1WorkerPoolSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The custom container task.
@@ -33320,12 +29245,6 @@ func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecArrayOutput) ToGoogleCloudAipl
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1WorkerPoolSpec] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1WorkerPoolSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1WorkerPoolSpecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1WorkerPoolSpec {
 		return vs[0].([]GoogleCloudAiplatformV1beta1WorkerPoolSpec)[vs[1].(int)]
@@ -33361,12 +29280,6 @@ func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecResponseOutput) ToGoogleCloudA
 
 func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecResponseOutput) ToGoogleCloudAiplatformV1beta1WorkerPoolSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1WorkerPoolSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The custom container task.
@@ -33423,12 +29336,6 @@ func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecResponseArrayOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse] {
-	return pulumix.Output[[]GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1WorkerPoolSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1WorkerPoolSpecResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse {
 		return vs[0].([]GoogleCloudAiplatformV1beta1WorkerPoolSpecResponse)[vs[1].(int)]
@@ -33478,12 +29385,6 @@ func (i GoogleCloudAiplatformV1beta1XraiAttributionArgs) ToGoogleCloudAiplatform
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1XraiAttributionOutput)
 }
 
-func (i GoogleCloudAiplatformV1beta1XraiAttributionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1XraiAttribution] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1XraiAttribution]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1XraiAttributionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAiplatformV1beta1XraiAttributionArgs) ToGoogleCloudAiplatformV1beta1XraiAttributionPtrOutput() GoogleCloudAiplatformV1beta1XraiAttributionPtrOutput {
 	return i.ToGoogleCloudAiplatformV1beta1XraiAttributionPtrOutputWithContext(context.Background())
 }
@@ -33525,12 +29426,6 @@ func (i *googleCloudAiplatformV1beta1XraiAttributionPtrType) ToGoogleCloudAiplat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1XraiAttributionPtrOutput)
 }
 
-func (i *googleCloudAiplatformV1beta1XraiAttributionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1XraiAttribution] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1XraiAttribution]{
-		OutputState: i.ToGoogleCloudAiplatformV1beta1XraiAttributionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An explanation method that redistributes Integrated Gradients attributions to segmented regions, taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1906.02825 Supported only by image Models.
 type GoogleCloudAiplatformV1beta1XraiAttributionOutput struct{ *pulumi.OutputState }
 
@@ -33554,12 +29449,6 @@ func (o GoogleCloudAiplatformV1beta1XraiAttributionOutput) ToGoogleCloudAiplatfo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1XraiAttribution) *GoogleCloudAiplatformV1beta1XraiAttribution {
 		return &v
 	}).(GoogleCloudAiplatformV1beta1XraiAttributionPtrOutput)
-}
-
-func (o GoogleCloudAiplatformV1beta1XraiAttributionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1XraiAttribution] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1XraiAttribution]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Config for XRAI with blur baseline. When enabled, a linear path from the maximally blurred image to the input image is created. Using a blurred baseline instead of zero (black image) is motivated by the BlurIG approach explained here: https://arxiv.org/abs/2004.03383
@@ -33593,12 +29482,6 @@ func (o GoogleCloudAiplatformV1beta1XraiAttributionPtrOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1XraiAttributionPtrOutput) ToGoogleCloudAiplatformV1beta1XraiAttributionPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1XraiAttributionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1XraiAttributionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1XraiAttribution] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1XraiAttribution]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1XraiAttributionPtrOutput) Elem() GoogleCloudAiplatformV1beta1XraiAttributionOutput {
@@ -33666,12 +29549,6 @@ func (o GoogleCloudAiplatformV1beta1XraiAttributionResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudAiplatformV1beta1XraiAttributionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1XraiAttributionResponse] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1XraiAttributionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Config for XRAI with blur baseline. When enabled, a linear path from the maximally blurred image to the input image is created. Using a blurred baseline instead of zero (black image) is motivated by the BlurIG approach explained here: https://arxiv.org/abs/2004.03383
 func (o GoogleCloudAiplatformV1beta1XraiAttributionResponseOutput) BlurBaselineConfig() GoogleCloudAiplatformV1beta1BlurBaselineConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1XraiAttributionResponse) GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse {
@@ -33734,12 +29611,6 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingOutput)
 }
 
-func (i GoogleIamV1BindingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
-	return pulumix.Output[GoogleIamV1Binding]{
-		OutputState: i.ToGoogleIamV1BindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
@@ -33765,12 +29636,6 @@ func (i GoogleIamV1BindingArray) ToGoogleIamV1BindingArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingArrayOutput)
 }
 
-func (i GoogleIamV1BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
-	return pulumix.Output[[]GoogleIamV1Binding]{
-		OutputState: i.ToGoogleIamV1BindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type GoogleIamV1BindingOutput struct{ *pulumi.OutputState }
 
@@ -33784,12 +29649,6 @@ func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutput() GoogleIamV1Bindin
 
 func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutputWithContext(ctx context.Context) GoogleIamV1BindingOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
-	return pulumix.Output[GoogleIamV1Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -33819,12 +29678,6 @@ func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutput() GoogleI
 
 func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
-	return pulumix.Output[[]GoogleIamV1Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingOutput {
@@ -33858,12 +29711,6 @@ func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutputWith
 	return o
 }
 
-func (o GoogleIamV1BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1BindingResponse] {
-	return pulumix.Output[GoogleIamV1BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
@@ -33891,12 +29738,6 @@ func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArray
 
 func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1BindingResponse] {
-	return pulumix.Output[[]GoogleIamV1BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingResponseOutput {
@@ -33930,12 +29771,6 @@ func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponseOutputWithContex
 	return o
 }
 
-func (o GoogleRpcStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleRpcStatusResponse] {
-	return pulumix.Output[GoogleRpcStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o GoogleRpcStatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleRpcStatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -33963,12 +29798,6 @@ func (o GoogleRpcStatusResponseArrayOutput) ToGoogleRpcStatusResponseArrayOutput
 
 func (o GoogleRpcStatusResponseArrayOutput) ToGoogleRpcStatusResponseArrayOutputWithContext(ctx context.Context) GoogleRpcStatusResponseArrayOutput {
 	return o
-}
-
-func (o GoogleRpcStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleRpcStatusResponse] {
-	return pulumix.Output[[]GoogleRpcStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleRpcStatusResponseArrayOutput) Index(i pulumi.IntInput) GoogleRpcStatusResponseOutput {
@@ -34024,12 +29853,6 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput)
 }
 
-func (i GoogleTypeExprArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
 	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
 }
@@ -34071,12 +29894,6 @@ func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprPtrOutput)
 }
 
-func (i *googleTypeExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type GoogleTypeExprOutput struct{ *pulumi.OutputState }
 
@@ -34100,12 +29917,6 @@ func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
 		return &v
 	}).(GoogleTypeExprPtrOutput)
-}
-
-func (o GoogleTypeExprOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -34140,12 +29951,6 @@ func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOu
 
 func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
 	return o
-}
-
-func (o GoogleTypeExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
@@ -34225,12 +30030,6 @@ func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(
 	return o
 }
 
-func (o GoogleTypeExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExprResponse] {
-	return pulumix.Output[GoogleTypeExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o GoogleTypeExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -34274,12 +30073,6 @@ func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponseOutput() GoogleT
 
 func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponseOutputWithContext(ctx context.Context) GoogleTypeMoneyResponseOutput {
 	return o
-}
-
-func (o GoogleTypeMoneyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeMoneyResponse] {
-	return pulumix.Output[GoogleTypeMoneyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The three-letter currency code defined in ISO 4217.

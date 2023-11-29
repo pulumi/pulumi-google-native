@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -147,12 +146,6 @@ func (i *LakeAssetIamPolicy) ToLakeAssetIamPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(LakeAssetIamPolicyOutput)
 }
 
-func (i *LakeAssetIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*LakeAssetIamPolicy] {
-	return pulumix.Output[*LakeAssetIamPolicy]{
-		OutputState: i.ToLakeAssetIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LakeAssetIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (LakeAssetIamPolicyOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o LakeAssetIamPolicyOutput) ToLakeAssetIamPolicyOutput() LakeAssetIamPolic
 
 func (o LakeAssetIamPolicyOutput) ToLakeAssetIamPolicyOutputWithContext(ctx context.Context) LakeAssetIamPolicyOutput {
 	return o
-}
-
-func (o LakeAssetIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*LakeAssetIamPolicy] {
-	return pulumix.Output[*LakeAssetIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LakeAssetIamPolicyOutput) AssetId() pulumi.StringOutput {

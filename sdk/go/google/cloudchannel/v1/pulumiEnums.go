@@ -87,12 +87,6 @@ func (o ChannelPartnerLinkLinkStateOutput) ToChannelPartnerLinkLinkStatePtrOutpu
 	}).(ChannelPartnerLinkLinkStatePtrOutput)
 }
 
-func (o ChannelPartnerLinkLinkStateOutput) ToOutput(ctx context.Context) pulumix.Output[ChannelPartnerLinkLinkState] {
-	return pulumix.Output[ChannelPartnerLinkLinkState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ChannelPartnerLinkLinkStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -126,12 +120,6 @@ func (o ChannelPartnerLinkLinkStatePtrOutput) ToChannelPartnerLinkLinkStatePtrOu
 
 func (o ChannelPartnerLinkLinkStatePtrOutput) ToChannelPartnerLinkLinkStatePtrOutputWithContext(ctx context.Context) ChannelPartnerLinkLinkStatePtrOutput {
 	return o
-}
-
-func (o ChannelPartnerLinkLinkStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ChannelPartnerLinkLinkState] {
-	return pulumix.Output[*ChannelPartnerLinkLinkState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ChannelPartnerLinkLinkStatePtrOutput) Elem() ChannelPartnerLinkLinkStateOutput {
@@ -274,12 +262,6 @@ func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToGoogleClo
 	}).(GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput)
 }
 
-func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1ConditionalOverrideRebillingBasis] {
-	return pulumix.Output[GoogleCloudChannelV1ConditionalOverrideRebillingBasis]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -313,12 +295,6 @@ func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) ToGoogle
 
 func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput {
 	return o
-}
-
-func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1ConditionalOverrideRebillingBasis] {
-	return pulumix.Output[*GoogleCloudChannelV1ConditionalOverrideRebillingBasis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) Elem() GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput {
@@ -463,12 +439,6 @@ func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToGoogleCloudChannelV1Period
 	}).(GoogleCloudChannelV1PeriodPeriodTypePtrOutput)
 }
 
-func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1PeriodPeriodType] {
-	return pulumix.Output[GoogleCloudChannelV1PeriodPeriodType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -502,12 +472,6 @@ func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToGoogleCloudChannelV1Per
 
 func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1PeriodPeriodType] {
-	return pulumix.Output[*GoogleCloudChannelV1PeriodPeriodType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) Elem() GoogleCloudChannelV1PeriodPeriodTypeOutput {
@@ -656,12 +620,6 @@ func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToGoogleCloudChann
 	}).(GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput)
 }
 
-func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RenewalSettingsPaymentPlan] {
-	return pulumix.Output[GoogleCloudChannelV1RenewalSettingsPaymentPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -695,12 +653,6 @@ func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToGoogleCloudCh
 
 func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
 	return o
-}
-
-func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1RenewalSettingsPaymentPlan] {
-	return pulumix.Output[*GoogleCloudChannelV1RenewalSettingsPaymentPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) Elem() GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput {
@@ -843,12 +795,6 @@ func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToGoogleCloudCh
 	}).(GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput)
 }
 
-func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudChannelV1RepricingConfigRebillingBasis] {
-	return pulumix.Output[GoogleCloudChannelV1RepricingConfigRebillingBasis]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -882,12 +828,6 @@ func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) ToGoogleClou
 
 func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput {
 	return o
-}
-
-func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1RepricingConfigRebillingBasis] {
-	return pulumix.Output[*GoogleCloudChannelV1RepricingConfigRebillingBasis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) Elem() GoogleCloudChannelV1RepricingConfigRebillingBasisOutput {

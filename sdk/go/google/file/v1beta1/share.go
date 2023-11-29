@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a share.
@@ -159,12 +158,6 @@ func (i *Share) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareOutput)
 }
 
-func (i *Share) ToOutput(ctx context.Context) pulumix.Output[*Share] {
-	return pulumix.Output[*Share]{
-		OutputState: i.ToShareOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ShareOutput struct{ *pulumi.OutputState }
 
 func (ShareOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o ShareOutput) ToShareOutput() ShareOutput {
 
 func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
-}
-
-func (o ShareOutput) ToOutput(ctx context.Context) pulumix.Output[*Share] {
-	return pulumix.Output[*Share]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.

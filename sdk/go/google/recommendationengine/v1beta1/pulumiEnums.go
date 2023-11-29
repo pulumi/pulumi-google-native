@@ -87,12 +87,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput)
 }
 
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -126,12 +120,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOut
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState] {
-	return pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput {

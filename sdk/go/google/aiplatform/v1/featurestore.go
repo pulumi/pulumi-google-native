@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Featurestore in a given project and location.
@@ -148,12 +147,6 @@ func (i *Featurestore) ToFeaturestoreOutputWithContext(ctx context.Context) Feat
 	return pulumi.ToOutputWithContext(ctx, i).(FeaturestoreOutput)
 }
 
-func (i *Featurestore) ToOutput(ctx context.Context) pulumix.Output[*Featurestore] {
-	return pulumix.Output[*Featurestore]{
-		OutputState: i.ToFeaturestoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeaturestoreOutput struct{ *pulumi.OutputState }
 
 func (FeaturestoreOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o FeaturestoreOutput) ToFeaturestoreOutput() FeaturestoreOutput {
 
 func (o FeaturestoreOutput) ToFeaturestoreOutputWithContext(ctx context.Context) FeaturestoreOutput {
 	return o
-}
-
-func (o FeaturestoreOutput) ToOutput(ctx context.Context) pulumix.Output[*Featurestore] {
-	return pulumix.Output[*Featurestore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this Featurestore was created.

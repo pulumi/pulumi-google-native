@@ -86,12 +86,6 @@ func (o ScanConfigTargetPlatformsItemOutput) ToScanConfigTargetPlatformsItemPtrO
 	}).(ScanConfigTargetPlatformsItemPtrOutput)
 }
 
-func (o ScanConfigTargetPlatformsItemOutput) ToOutput(ctx context.Context) pulumix.Output[ScanConfigTargetPlatformsItem] {
-	return pulumix.Output[ScanConfigTargetPlatformsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScanConfigTargetPlatformsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -125,12 +119,6 @@ func (o ScanConfigTargetPlatformsItemPtrOutput) ToScanConfigTargetPlatformsItemP
 
 func (o ScanConfigTargetPlatformsItemPtrOutput) ToScanConfigTargetPlatformsItemPtrOutputWithContext(ctx context.Context) ScanConfigTargetPlatformsItemPtrOutput {
 	return o
-}
-
-func (o ScanConfigTargetPlatformsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigTargetPlatformsItem] {
-	return pulumix.Output[*ScanConfigTargetPlatformsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScanConfigTargetPlatformsItemPtrOutput) Elem() ScanConfigTargetPlatformsItemOutput {
@@ -226,12 +214,6 @@ func (i ScanConfigTargetPlatformsItemArray) ToScanConfigTargetPlatformsItemArray
 	return pulumi.ToOutputWithContext(ctx, i).(ScanConfigTargetPlatformsItemArrayOutput)
 }
 
-func (i ScanConfigTargetPlatformsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ScanConfigTargetPlatformsItem] {
-	return pulumix.Output[[]ScanConfigTargetPlatformsItem]{
-		OutputState: i.ToScanConfigTargetPlatformsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScanConfigTargetPlatformsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigTargetPlatformsItemArrayOutput) ElementType() reflect.Type {
@@ -244,12 +226,6 @@ func (o ScanConfigTargetPlatformsItemArrayOutput) ToScanConfigTargetPlatformsIte
 
 func (o ScanConfigTargetPlatformsItemArrayOutput) ToScanConfigTargetPlatformsItemArrayOutputWithContext(ctx context.Context) ScanConfigTargetPlatformsItemArrayOutput {
 	return o
-}
-
-func (o ScanConfigTargetPlatformsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScanConfigTargetPlatformsItem] {
-	return pulumix.Output[[]ScanConfigTargetPlatformsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScanConfigTargetPlatformsItemArrayOutput) Index(i pulumi.IntInput) ScanConfigTargetPlatformsItemOutput {
@@ -332,12 +308,6 @@ func (o ScanConfigUserAgentOutput) ToScanConfigUserAgentPtrOutputWithContext(ctx
 	}).(ScanConfigUserAgentPtrOutput)
 }
 
-func (o ScanConfigUserAgentOutput) ToOutput(ctx context.Context) pulumix.Output[ScanConfigUserAgent] {
-	return pulumix.Output[ScanConfigUserAgent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScanConfigUserAgentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -371,12 +341,6 @@ func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutput() ScanConfi
 
 func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutputWithContext(ctx context.Context) ScanConfigUserAgentPtrOutput {
 	return o
-}
-
-func (o ScanConfigUserAgentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigUserAgent] {
-	return pulumix.Output[*ScanConfigUserAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScanConfigUserAgentPtrOutput) Elem() ScanConfigUserAgentOutput {
@@ -521,12 +485,6 @@ func (o ScanRunExecutionStateOutput) ToScanRunExecutionStatePtrOutputWithContext
 	}).(ScanRunExecutionStatePtrOutput)
 }
 
-func (o ScanRunExecutionStateOutput) ToOutput(ctx context.Context) pulumix.Output[ScanRunExecutionState] {
-	return pulumix.Output[ScanRunExecutionState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScanRunExecutionStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -560,12 +518,6 @@ func (o ScanRunExecutionStatePtrOutput) ToScanRunExecutionStatePtrOutput() ScanR
 
 func (o ScanRunExecutionStatePtrOutput) ToScanRunExecutionStatePtrOutputWithContext(ctx context.Context) ScanRunExecutionStatePtrOutput {
 	return o
-}
-
-func (o ScanRunExecutionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScanRunExecutionState] {
-	return pulumix.Output[*ScanRunExecutionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScanRunExecutionStatePtrOutput) Elem() ScanRunExecutionStateOutput {
@@ -710,12 +662,6 @@ func (o ScanRunResultStateOutput) ToScanRunResultStatePtrOutputWithContext(ctx c
 	}).(ScanRunResultStatePtrOutput)
 }
 
-func (o ScanRunResultStateOutput) ToOutput(ctx context.Context) pulumix.Output[ScanRunResultState] {
-	return pulumix.Output[ScanRunResultState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScanRunResultStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -749,12 +695,6 @@ func (o ScanRunResultStatePtrOutput) ToScanRunResultStatePtrOutput() ScanRunResu
 
 func (o ScanRunResultStatePtrOutput) ToScanRunResultStatePtrOutputWithContext(ctx context.Context) ScanRunResultStatePtrOutput {
 	return o
-}
-
-func (o ScanRunResultStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScanRunResultState] {
-	return pulumix.Output[*ScanRunResultState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScanRunResultStatePtrOutput) Elem() ScanRunResultStateOutput {

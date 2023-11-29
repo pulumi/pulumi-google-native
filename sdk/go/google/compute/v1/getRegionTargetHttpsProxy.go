@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified TargetHttpsProxy resource in the specified region.
@@ -99,12 +98,6 @@ func (o LookupRegionTargetHttpsProxyResultOutput) ToLookupRegionTargetHttpsProxy
 
 func (o LookupRegionTargetHttpsProxyResultOutput) ToLookupRegionTargetHttpsProxyResultOutputWithContext(ctx context.Context) LookupRegionTargetHttpsProxyResultOutput {
 	return o
-}
-
-func (o LookupRegionTargetHttpsProxyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionTargetHttpsProxyResult] {
-	return pulumix.Output[LookupRegionTargetHttpsProxyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.

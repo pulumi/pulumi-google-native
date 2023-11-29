@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a keystore or truststore.
@@ -71,12 +70,6 @@ func (o LookupKeystoreResultOutput) ToLookupKeystoreResultOutput() LookupKeystor
 
 func (o LookupKeystoreResultOutput) ToLookupKeystoreResultOutputWithContext(ctx context.Context) LookupKeystoreResultOutput {
 	return o
-}
-
-func (o LookupKeystoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKeystoreResult] {
-	return pulumix.Output[LookupKeystoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Aliases in this keystore.

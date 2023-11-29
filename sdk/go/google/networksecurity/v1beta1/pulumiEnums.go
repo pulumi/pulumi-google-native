@@ -83,12 +83,6 @@ func (o AddressGroupTypeOutput) ToAddressGroupTypePtrOutputWithContext(ctx conte
 	}).(AddressGroupTypePtrOutput)
 }
 
-func (o AddressGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AddressGroupType] {
-	return pulumix.Output[AddressGroupType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AddressGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o AddressGroupTypePtrOutput) ToAddressGroupTypePtrOutput() AddressGroupTyp
 
 func (o AddressGroupTypePtrOutput) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
 	return o
-}
-
-func (o AddressGroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressGroupType] {
-	return pulumix.Output[*AddressGroupType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AddressGroupTypePtrOutput) Elem() AddressGroupTypeOutput {
@@ -270,12 +258,6 @@ func (o AuthorizationPolicyActionOutput) ToAuthorizationPolicyActionPtrOutputWit
 	}).(AuthorizationPolicyActionPtrOutput)
 }
 
-func (o AuthorizationPolicyActionOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationPolicyAction] {
-	return pulumix.Output[AuthorizationPolicyAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthorizationPolicyActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o AuthorizationPolicyActionPtrOutput) ToAuthorizationPolicyActionPtrOutput
 
 func (o AuthorizationPolicyActionPtrOutput) ToAuthorizationPolicyActionPtrOutputWithContext(ctx context.Context) AuthorizationPolicyActionPtrOutput {
 	return o
-}
-
-func (o AuthorizationPolicyActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationPolicyAction] {
-	return pulumix.Output[*AuthorizationPolicyAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationPolicyActionPtrOutput) Elem() AuthorizationPolicyActionOutput {
@@ -459,12 +435,6 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
-func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,12 +468,6 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
@@ -646,12 +610,6 @@ func (o MTLSPolicyClientValidationModeOutput) ToMTLSPolicyClientValidationModePt
 	}).(MTLSPolicyClientValidationModePtrOutput)
 }
 
-func (o MTLSPolicyClientValidationModeOutput) ToOutput(ctx context.Context) pulumix.Output[MTLSPolicyClientValidationMode] {
-	return pulumix.Output[MTLSPolicyClientValidationMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MTLSPolicyClientValidationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -685,12 +643,6 @@ func (o MTLSPolicyClientValidationModePtrOutput) ToMTLSPolicyClientValidationMod
 
 func (o MTLSPolicyClientValidationModePtrOutput) ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx context.Context) MTLSPolicyClientValidationModePtrOutput {
 	return o
-}
-
-func (o MTLSPolicyClientValidationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MTLSPolicyClientValidationMode] {
-	return pulumix.Output[*MTLSPolicyClientValidationMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MTLSPolicyClientValidationModePtrOutput) Elem() MTLSPolicyClientValidationModeOutput {
@@ -833,12 +785,6 @@ func (o OrganizationAddressGroupTypeOutput) ToOrganizationAddressGroupTypePtrOut
 	}).(OrganizationAddressGroupTypePtrOutput)
 }
 
-func (o OrganizationAddressGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationAddressGroupType] {
-	return pulumix.Output[OrganizationAddressGroupType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationAddressGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -872,12 +818,6 @@ func (o OrganizationAddressGroupTypePtrOutput) ToOrganizationAddressGroupTypePtr
 
 func (o OrganizationAddressGroupTypePtrOutput) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
 	return o
-}
-
-func (o OrganizationAddressGroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationAddressGroupType] {
-	return pulumix.Output[*OrganizationAddressGroupType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationAddressGroupTypePtrOutput) Elem() OrganizationAddressGroupTypeOutput {
@@ -1020,12 +960,6 @@ func (o RuleBasicProfileOutput) ToRuleBasicProfilePtrOutputWithContext(ctx conte
 	}).(RuleBasicProfilePtrOutput)
 }
 
-func (o RuleBasicProfileOutput) ToOutput(ctx context.Context) pulumix.Output[RuleBasicProfile] {
-	return pulumix.Output[RuleBasicProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RuleBasicProfileOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1059,12 +993,6 @@ func (o RuleBasicProfilePtrOutput) ToRuleBasicProfilePtrOutput() RuleBasicProfil
 
 func (o RuleBasicProfilePtrOutput) ToRuleBasicProfilePtrOutputWithContext(ctx context.Context) RuleBasicProfilePtrOutput {
 	return o
-}
-
-func (o RuleBasicProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleBasicProfile] {
-	return pulumix.Output[*RuleBasicProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuleBasicProfilePtrOutput) Elem() RuleBasicProfileOutput {
@@ -1205,12 +1133,6 @@ func (o SecurityProfileTypeOutput) ToSecurityProfileTypePtrOutputWithContext(ctx
 	}).(SecurityProfileTypePtrOutput)
 }
 
-func (o SecurityProfileTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityProfileType] {
-	return pulumix.Output[SecurityProfileType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecurityProfileTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1244,12 +1166,6 @@ func (o SecurityProfileTypePtrOutput) ToSecurityProfileTypePtrOutput() SecurityP
 
 func (o SecurityProfileTypePtrOutput) ToSecurityProfileTypePtrOutputWithContext(ctx context.Context) SecurityProfileTypePtrOutput {
 	return o
-}
-
-func (o SecurityProfileTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityProfileType] {
-	return pulumix.Output[*SecurityProfileType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityProfileTypePtrOutput) Elem() SecurityProfileTypeOutput {
@@ -1396,12 +1312,6 @@ func (o SeverityOverrideActionOutput) ToSeverityOverrideActionPtrOutputWithConte
 	}).(SeverityOverrideActionPtrOutput)
 }
 
-func (o SeverityOverrideActionOutput) ToOutput(ctx context.Context) pulumix.Output[SeverityOverrideAction] {
-	return pulumix.Output[SeverityOverrideAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SeverityOverrideActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1435,12 +1345,6 @@ func (o SeverityOverrideActionPtrOutput) ToSeverityOverrideActionPtrOutput() Sev
 
 func (o SeverityOverrideActionPtrOutput) ToSeverityOverrideActionPtrOutputWithContext(ctx context.Context) SeverityOverrideActionPtrOutput {
 	return o
-}
-
-func (o SeverityOverrideActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SeverityOverrideAction] {
-	return pulumix.Output[*SeverityOverrideAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SeverityOverrideActionPtrOutput) Elem() SeverityOverrideActionOutput {
@@ -1589,12 +1493,6 @@ func (o SeverityOverrideSeverityOutput) ToSeverityOverrideSeverityPtrOutputWithC
 	}).(SeverityOverrideSeverityPtrOutput)
 }
 
-func (o SeverityOverrideSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[SeverityOverrideSeverity] {
-	return pulumix.Output[SeverityOverrideSeverity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SeverityOverrideSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1628,12 +1526,6 @@ func (o SeverityOverrideSeverityPtrOutput) ToSeverityOverrideSeverityPtrOutput()
 
 func (o SeverityOverrideSeverityPtrOutput) ToSeverityOverrideSeverityPtrOutputWithContext(ctx context.Context) SeverityOverrideSeverityPtrOutput {
 	return o
-}
-
-func (o SeverityOverrideSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SeverityOverrideSeverity] {
-	return pulumix.Output[*SeverityOverrideSeverity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SeverityOverrideSeverityPtrOutput) Elem() SeverityOverrideSeverityOutput {
@@ -1780,12 +1672,6 @@ func (o ThreatOverrideActionOutput) ToThreatOverrideActionPtrOutputWithContext(c
 	}).(ThreatOverrideActionPtrOutput)
 }
 
-func (o ThreatOverrideActionOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatOverrideAction] {
-	return pulumix.Output[ThreatOverrideAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ThreatOverrideActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1819,12 +1705,6 @@ func (o ThreatOverrideActionPtrOutput) ToThreatOverrideActionPtrOutput() ThreatO
 
 func (o ThreatOverrideActionPtrOutput) ToThreatOverrideActionPtrOutputWithContext(ctx context.Context) ThreatOverrideActionPtrOutput {
 	return o
-}
-
-func (o ThreatOverrideActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ThreatOverrideAction] {
-	return pulumix.Output[*ThreatOverrideAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThreatOverrideActionPtrOutput) Elem() ThreatOverrideActionOutput {
@@ -1971,12 +1851,6 @@ func (o TlsInspectionPolicyMinTlsVersionOutput) ToTlsInspectionPolicyMinTlsVersi
 	}).(TlsInspectionPolicyMinTlsVersionPtrOutput)
 }
 
-func (o TlsInspectionPolicyMinTlsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[TlsInspectionPolicyMinTlsVersion] {
-	return pulumix.Output[TlsInspectionPolicyMinTlsVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TlsInspectionPolicyMinTlsVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2010,12 +1884,6 @@ func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToTlsInspectionPolicyMinTlsVe
 
 func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput {
 	return o
-}
-
-func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyMinTlsVersion] {
-	return pulumix.Output[*TlsInspectionPolicyMinTlsVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsInspectionPolicyMinTlsVersionPtrOutput) Elem() TlsInspectionPolicyMinTlsVersionOutput {
@@ -2162,12 +2030,6 @@ func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToTlsInspectionPolicyTlsFeat
 	}).(TlsInspectionPolicyTlsFeatureProfilePtrOutput)
 }
 
-func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToOutput(ctx context.Context) pulumix.Output[TlsInspectionPolicyTlsFeatureProfile] {
-	return pulumix.Output[TlsInspectionPolicyTlsFeatureProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2201,12 +2063,6 @@ func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToTlsInspectionPolicyTlsF
 
 func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput {
 	return o
-}
-
-func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile] {
-	return pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) Elem() TlsInspectionPolicyTlsFeatureProfileOutput {

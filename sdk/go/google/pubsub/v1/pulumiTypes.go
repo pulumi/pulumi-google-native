@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AvroConfigArgs) ToAvroConfigOutput() AvroConfigOutput {
 
 func (i AvroConfigArgs) ToAvroConfigOutputWithContext(ctx context.Context) AvroConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AvroConfigOutput)
-}
-
-func (i AvroConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AvroConfig] {
-	return pulumix.Output[AvroConfig]{
-		OutputState: i.ToAvroConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AvroConfigArgs) ToAvroConfigPtrOutput() AvroConfigPtrOutput {
@@ -96,12 +89,6 @@ func (i *avroConfigPtrType) ToAvroConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AvroConfigPtrOutput)
 }
 
-func (i *avroConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AvroConfig] {
-	return pulumix.Output[*AvroConfig]{
-		OutputState: i.ToAvroConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as an Avro binary.
 type AvroConfigOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o AvroConfigOutput) ToAvroConfigPtrOutputWithContext(ctx context.Context) 
 	}).(AvroConfigPtrOutput)
 }
 
-func (o AvroConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AvroConfig] {
-	return pulumix.Output[AvroConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output. The subscription name, message_id, and publish_time fields are put in their own fields while all other message properties other than data (for example, an ordering_key, if present) are added as entries in the attributes map.
 func (o AvroConfigOutput) WriteMetadata() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AvroConfig) *bool { return v.WriteMetadata }).(pulumi.BoolPtrOutput)
@@ -150,12 +131,6 @@ func (o AvroConfigPtrOutput) ToAvroConfigPtrOutput() AvroConfigPtrOutput {
 
 func (o AvroConfigPtrOutput) ToAvroConfigPtrOutputWithContext(ctx context.Context) AvroConfigPtrOutput {
 	return o
-}
-
-func (o AvroConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AvroConfig] {
-	return pulumix.Output[*AvroConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AvroConfigPtrOutput) Elem() AvroConfigOutput {
@@ -197,12 +172,6 @@ func (o AvroConfigResponseOutput) ToAvroConfigResponseOutput() AvroConfigRespons
 
 func (o AvroConfigResponseOutput) ToAvroConfigResponseOutputWithContext(ctx context.Context) AvroConfigResponseOutput {
 	return o
-}
-
-func (o AvroConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AvroConfigResponse] {
-	return pulumix.Output[AvroConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output. The subscription name, message_id, and publish_time fields are put in their own fields while all other message properties other than data (for example, an ordering_key, if present) are added as entries in the attributes map.
@@ -257,12 +226,6 @@ func (i BigQueryConfigArgs) ToBigQueryConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryConfigOutput)
 }
 
-func (i BigQueryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BigQueryConfig] {
-	return pulumix.Output[BigQueryConfig]{
-		OutputState: i.ToBigQueryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BigQueryConfigArgs) ToBigQueryConfigPtrOutput() BigQueryConfigPtrOutput {
 	return i.ToBigQueryConfigPtrOutputWithContext(context.Background())
 }
@@ -304,12 +267,6 @@ func (i *bigQueryConfigPtrType) ToBigQueryConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryConfigPtrOutput)
 }
 
-func (i *bigQueryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BigQueryConfig] {
-	return pulumix.Output[*BigQueryConfig]{
-		OutputState: i.ToBigQueryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for a BigQuery subscription.
 type BigQueryConfigOutput struct{ *pulumi.OutputState }
 
@@ -333,12 +290,6 @@ func (o BigQueryConfigOutput) ToBigQueryConfigPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryConfig) *BigQueryConfig {
 		return &v
 	}).(BigQueryConfigPtrOutput)
-}
-
-func (o BigQueryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryConfig] {
-	return pulumix.Output[BigQueryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
@@ -373,12 +324,6 @@ func (o BigQueryConfigPtrOutput) ToBigQueryConfigPtrOutput() BigQueryConfigPtrOu
 
 func (o BigQueryConfigPtrOutput) ToBigQueryConfigPtrOutputWithContext(ctx context.Context) BigQueryConfigPtrOutput {
 	return o
-}
-
-func (o BigQueryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BigQueryConfig] {
-	return pulumix.Output[*BigQueryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BigQueryConfigPtrOutput) Elem() BigQueryConfigOutput {
@@ -460,12 +405,6 @@ func (o BigQueryConfigResponseOutput) ToBigQueryConfigResponseOutputWithContext(
 	return o
 }
 
-func (o BigQueryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryConfigResponse] {
-	return pulumix.Output[BigQueryConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
 func (o BigQueryConfigResponseOutput) DropUnknownFields() pulumi.BoolOutput {
 	return o.ApplyT(func(v BigQueryConfigResponse) bool { return v.DropUnknownFields }).(pulumi.BoolOutput)
@@ -534,12 +473,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -565,12 +498,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -584,12 +511,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -619,12 +540,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -658,12 +573,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -691,12 +600,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -764,12 +667,6 @@ func (i CloudStorageConfigArgs) ToCloudStorageConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageConfigOutput)
 }
 
-func (i CloudStorageConfigArgs) ToOutput(ctx context.Context) pulumix.Output[CloudStorageConfig] {
-	return pulumix.Output[CloudStorageConfig]{
-		OutputState: i.ToCloudStorageConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CloudStorageConfigArgs) ToCloudStorageConfigPtrOutput() CloudStorageConfigPtrOutput {
 	return i.ToCloudStorageConfigPtrOutputWithContext(context.Background())
 }
@@ -811,12 +708,6 @@ func (i *cloudStorageConfigPtrType) ToCloudStorageConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageConfigPtrOutput)
 }
 
-func (i *cloudStorageConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudStorageConfig] {
-	return pulumix.Output[*CloudStorageConfig]{
-		OutputState: i.ToCloudStorageConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for a Cloud Storage subscription.
 type CloudStorageConfigOutput struct{ *pulumi.OutputState }
 
@@ -840,12 +731,6 @@ func (o CloudStorageConfigOutput) ToCloudStorageConfigPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageConfig) *CloudStorageConfig {
 		return &v
 	}).(CloudStorageConfigPtrOutput)
-}
-
-func (o CloudStorageConfigOutput) ToOutput(ctx context.Context) pulumix.Output[CloudStorageConfig] {
-	return pulumix.Output[CloudStorageConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set, message data will be written to Cloud Storage in Avro format.
@@ -895,12 +780,6 @@ func (o CloudStorageConfigPtrOutput) ToCloudStorageConfigPtrOutput() CloudStorag
 
 func (o CloudStorageConfigPtrOutput) ToCloudStorageConfigPtrOutputWithContext(ctx context.Context) CloudStorageConfigPtrOutput {
 	return o
-}
-
-func (o CloudStorageConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudStorageConfig] {
-	return pulumix.Output[*CloudStorageConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudStorageConfigPtrOutput) Elem() CloudStorageConfigOutput {
@@ -1018,12 +897,6 @@ func (o CloudStorageConfigResponseOutput) ToCloudStorageConfigResponseOutputWith
 	return o
 }
 
-func (o CloudStorageConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudStorageConfigResponse] {
-	return pulumix.Output[CloudStorageConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If set, message data will be written to Cloud Storage in Avro format.
 func (o CloudStorageConfigResponseOutput) AvroConfig() AvroConfigResponseOutput {
 	return o.ApplyT(func(v CloudStorageConfigResponse) AvroConfigResponse { return v.AvroConfig }).(AvroConfigResponseOutput)
@@ -1103,12 +976,6 @@ func (i DeadLetterPolicyArgs) ToDeadLetterPolicyOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DeadLetterPolicyOutput)
 }
 
-func (i DeadLetterPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[DeadLetterPolicy] {
-	return pulumix.Output[DeadLetterPolicy]{
-		OutputState: i.ToDeadLetterPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeadLetterPolicyArgs) ToDeadLetterPolicyPtrOutput() DeadLetterPolicyPtrOutput {
 	return i.ToDeadLetterPolicyPtrOutputWithContext(context.Background())
 }
@@ -1150,12 +1017,6 @@ func (i *deadLetterPolicyPtrType) ToDeadLetterPolicyPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DeadLetterPolicyPtrOutput)
 }
 
-func (i *deadLetterPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeadLetterPolicy] {
-	return pulumix.Output[*DeadLetterPolicy]{
-		OutputState: i.ToDeadLetterPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Dead lettering is done on a best effort basis. The same message might be dead lettered multiple times. If validation on any of the fields fails at subscription creation/updation, the create/update subscription request will fail.
 type DeadLetterPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1181,12 +1042,6 @@ func (o DeadLetterPolicyOutput) ToDeadLetterPolicyPtrOutputWithContext(ctx conte
 	}).(DeadLetterPolicyPtrOutput)
 }
 
-func (o DeadLetterPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[DeadLetterPolicy] {
-	return pulumix.Output[DeadLetterPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.The Pub/Sub service account associated with the enclosing subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic. The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.
 func (o DeadLetterPolicyOutput) DeadLetterTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeadLetterPolicy) *string { return v.DeadLetterTopic }).(pulumi.StringPtrOutput)
@@ -1209,12 +1064,6 @@ func (o DeadLetterPolicyPtrOutput) ToDeadLetterPolicyPtrOutput() DeadLetterPolic
 
 func (o DeadLetterPolicyPtrOutput) ToDeadLetterPolicyPtrOutputWithContext(ctx context.Context) DeadLetterPolicyPtrOutput {
 	return o
-}
-
-func (o DeadLetterPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeadLetterPolicy] {
-	return pulumix.Output[*DeadLetterPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeadLetterPolicyPtrOutput) Elem() DeadLetterPolicyOutput {
@@ -1270,12 +1119,6 @@ func (o DeadLetterPolicyResponseOutput) ToDeadLetterPolicyResponseOutputWithCont
 	return o
 }
 
-func (o DeadLetterPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeadLetterPolicyResponse] {
-	return pulumix.Output[DeadLetterPolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.The Pub/Sub service account associated with the enclosing subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic. The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.
 func (o DeadLetterPolicyResponseOutput) DeadLetterTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v DeadLetterPolicyResponse) string { return v.DeadLetterTopic }).(pulumi.StringOutput)
@@ -1321,12 +1164,6 @@ func (i ExpirationPolicyArgs) ToExpirationPolicyOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExpirationPolicyOutput)
 }
 
-func (i ExpirationPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ExpirationPolicy] {
-	return pulumix.Output[ExpirationPolicy]{
-		OutputState: i.ToExpirationPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExpirationPolicyArgs) ToExpirationPolicyPtrOutput() ExpirationPolicyPtrOutput {
 	return i.ToExpirationPolicyPtrOutputWithContext(context.Background())
 }
@@ -1368,12 +1205,6 @@ func (i *expirationPolicyPtrType) ToExpirationPolicyPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ExpirationPolicyPtrOutput)
 }
 
-func (i *expirationPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExpirationPolicy] {
-	return pulumix.Output[*ExpirationPolicy]{
-		OutputState: i.ToExpirationPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A policy that specifies the conditions for resource expiration (i.e., automatic resource deletion).
 type ExpirationPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1399,12 +1230,6 @@ func (o ExpirationPolicyOutput) ToExpirationPolicyPtrOutputWithContext(ctx conte
 	}).(ExpirationPolicyPtrOutput)
 }
 
-func (o ExpirationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ExpirationPolicy] {
-	return pulumix.Output[ExpirationPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires.
 func (o ExpirationPolicyOutput) Ttl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExpirationPolicy) *string { return v.Ttl }).(pulumi.StringPtrOutput)
@@ -1422,12 +1247,6 @@ func (o ExpirationPolicyPtrOutput) ToExpirationPolicyPtrOutput() ExpirationPolic
 
 func (o ExpirationPolicyPtrOutput) ToExpirationPolicyPtrOutputWithContext(ctx context.Context) ExpirationPolicyPtrOutput {
 	return o
-}
-
-func (o ExpirationPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpirationPolicy] {
-	return pulumix.Output[*ExpirationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpirationPolicyPtrOutput) Elem() ExpirationPolicyOutput {
@@ -1469,12 +1288,6 @@ func (o ExpirationPolicyResponseOutput) ToExpirationPolicyResponseOutput() Expir
 
 func (o ExpirationPolicyResponseOutput) ToExpirationPolicyResponseOutputWithContext(ctx context.Context) ExpirationPolicyResponseOutput {
 	return o
-}
-
-func (o ExpirationPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpirationPolicyResponse] {
-	return pulumix.Output[ExpirationPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires.
@@ -1529,12 +1342,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1576,12 +1383,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1605,12 +1406,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1645,12 +1440,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1730,12 +1519,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1795,12 +1578,6 @@ func (i MessageStoragePolicyArgs) ToMessageStoragePolicyOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MessageStoragePolicyOutput)
 }
 
-func (i MessageStoragePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[MessageStoragePolicy] {
-	return pulumix.Output[MessageStoragePolicy]{
-		OutputState: i.ToMessageStoragePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MessageStoragePolicyArgs) ToMessageStoragePolicyPtrOutput() MessageStoragePolicyPtrOutput {
 	return i.ToMessageStoragePolicyPtrOutputWithContext(context.Background())
 }
@@ -1842,12 +1619,6 @@ func (i *messageStoragePolicyPtrType) ToMessageStoragePolicyPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(MessageStoragePolicyPtrOutput)
 }
 
-func (i *messageStoragePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*MessageStoragePolicy] {
-	return pulumix.Output[*MessageStoragePolicy]{
-		OutputState: i.ToMessageStoragePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A policy constraining the storage of messages published to the topic.
 type MessageStoragePolicyOutput struct{ *pulumi.OutputState }
 
@@ -1873,12 +1644,6 @@ func (o MessageStoragePolicyOutput) ToMessageStoragePolicyPtrOutputWithContext(c
 	}).(MessageStoragePolicyPtrOutput)
 }
 
-func (o MessageStoragePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[MessageStoragePolicy] {
-	return pulumix.Output[MessageStoragePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A list of IDs of Google Cloud regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed Google Cloud regions (or running outside of Google Cloud altogether) are routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
 func (o MessageStoragePolicyOutput) AllowedPersistenceRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MessageStoragePolicy) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
@@ -1901,12 +1666,6 @@ func (o MessageStoragePolicyPtrOutput) ToMessageStoragePolicyPtrOutput() Message
 
 func (o MessageStoragePolicyPtrOutput) ToMessageStoragePolicyPtrOutputWithContext(ctx context.Context) MessageStoragePolicyPtrOutput {
 	return o
-}
-
-func (o MessageStoragePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MessageStoragePolicy] {
-	return pulumix.Output[*MessageStoragePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MessageStoragePolicyPtrOutput) Elem() MessageStoragePolicyOutput {
@@ -1962,12 +1721,6 @@ func (o MessageStoragePolicyResponseOutput) ToMessageStoragePolicyResponseOutput
 	return o
 }
 
-func (o MessageStoragePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MessageStoragePolicyResponse] {
-	return pulumix.Output[MessageStoragePolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A list of IDs of Google Cloud regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed Google Cloud regions (or running outside of Google Cloud altogether) are routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
 func (o MessageStoragePolicyResponseOutput) AllowedPersistenceRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MessageStoragePolicyResponse) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
@@ -2013,12 +1766,6 @@ func (i NoWrapperArgs) ToNoWrapperOutputWithContext(ctx context.Context) NoWrapp
 	return pulumi.ToOutputWithContext(ctx, i).(NoWrapperOutput)
 }
 
-func (i NoWrapperArgs) ToOutput(ctx context.Context) pulumix.Output[NoWrapper] {
-	return pulumix.Output[NoWrapper]{
-		OutputState: i.ToNoWrapperOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NoWrapperArgs) ToNoWrapperPtrOutput() NoWrapperPtrOutput {
 	return i.ToNoWrapperPtrOutputWithContext(context.Background())
 }
@@ -2060,12 +1807,6 @@ func (i *noWrapperPtrType) ToNoWrapperPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(NoWrapperPtrOutput)
 }
 
-func (i *noWrapperPtrType) ToOutput(ctx context.Context) pulumix.Output[*NoWrapper] {
-	return pulumix.Output[*NoWrapper]{
-		OutputState: i.ToNoWrapperPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets the `data` field as the HTTP body for delivery.
 type NoWrapperOutput struct{ *pulumi.OutputState }
 
@@ -2091,12 +1832,6 @@ func (o NoWrapperOutput) ToNoWrapperPtrOutputWithContext(ctx context.Context) No
 	}).(NoWrapperPtrOutput)
 }
 
-func (o NoWrapperOutput) ToOutput(ctx context.Context) pulumix.Output[NoWrapper] {
-	return pulumix.Output[NoWrapper]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:` headers of the HTTP request. Writes the Pub/Sub message attributes to `:` headers of the HTTP request.
 func (o NoWrapperOutput) WriteMetadata() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NoWrapper) *bool { return v.WriteMetadata }).(pulumi.BoolPtrOutput)
@@ -2114,12 +1849,6 @@ func (o NoWrapperPtrOutput) ToNoWrapperPtrOutput() NoWrapperPtrOutput {
 
 func (o NoWrapperPtrOutput) ToNoWrapperPtrOutputWithContext(ctx context.Context) NoWrapperPtrOutput {
 	return o
-}
-
-func (o NoWrapperPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NoWrapper] {
-	return pulumix.Output[*NoWrapper]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NoWrapperPtrOutput) Elem() NoWrapperOutput {
@@ -2161,12 +1890,6 @@ func (o NoWrapperResponseOutput) ToNoWrapperResponseOutput() NoWrapperResponseOu
 
 func (o NoWrapperResponseOutput) ToNoWrapperResponseOutputWithContext(ctx context.Context) NoWrapperResponseOutput {
 	return o
-}
-
-func (o NoWrapperResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NoWrapperResponse] {
-	return pulumix.Output[NoWrapperResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:` headers of the HTTP request. Writes the Pub/Sub message attributes to `:` headers of the HTTP request.
@@ -2213,12 +1936,6 @@ func (i OidcTokenArgs) ToOidcTokenOutputWithContext(ctx context.Context) OidcTok
 	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenOutput)
 }
 
-func (i OidcTokenArgs) ToOutput(ctx context.Context) pulumix.Output[OidcToken] {
-	return pulumix.Output[OidcToken]{
-		OutputState: i.ToOidcTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OidcTokenArgs) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
 	return i.ToOidcTokenPtrOutputWithContext(context.Background())
 }
@@ -2260,12 +1977,6 @@ func (i *oidcTokenPtrType) ToOidcTokenPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenPtrOutput)
 }
 
-func (i *oidcTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*OidcToken] {
-	return pulumix.Output[*OidcToken]{
-		OutputState: i.ToOidcTokenPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 type OidcTokenOutput struct{ *pulumi.OutputState }
 
@@ -2291,12 +2002,6 @@ func (o OidcTokenOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) Oi
 	}).(OidcTokenPtrOutput)
 }
 
-func (o OidcTokenOutput) ToOutput(ctx context.Context) pulumix.Output[OidcToken] {
-	return pulumix.Output[OidcToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
 func (o OidcTokenOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
@@ -2319,12 +2024,6 @@ func (o OidcTokenPtrOutput) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
 
 func (o OidcTokenPtrOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
 	return o
-}
-
-func (o OidcTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OidcToken] {
-	return pulumix.Output[*OidcToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OidcTokenPtrOutput) Elem() OidcTokenOutput {
@@ -2380,12 +2079,6 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o OidcTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OidcTokenResponse] {
-	return pulumix.Output[OidcTokenResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
 func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
@@ -2425,12 +2118,6 @@ func (i PubsubWrapperArgs) ToPubsubWrapperOutput() PubsubWrapperOutput {
 
 func (i PubsubWrapperArgs) ToPubsubWrapperOutputWithContext(ctx context.Context) PubsubWrapperOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubWrapperOutput)
-}
-
-func (i PubsubWrapperArgs) ToOutput(ctx context.Context) pulumix.Output[PubsubWrapper] {
-	return pulumix.Output[PubsubWrapper]{
-		OutputState: i.ToPubsubWrapperOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i PubsubWrapperArgs) ToPubsubWrapperPtrOutput() PubsubWrapperPtrOutput {
@@ -2474,12 +2161,6 @@ func (i *pubsubWrapperPtrType) ToPubsubWrapperPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubWrapperPtrOutput)
 }
 
-func (i *pubsubWrapperPtrType) ToOutput(ctx context.Context) pulumix.Output[*PubsubWrapper] {
-	return pulumix.Output[*PubsubWrapper]{
-		OutputState: i.ToPubsubWrapperPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The payload to the push endpoint is in the form of the JSON representation of a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
 type PubsubWrapperOutput struct{ *pulumi.OutputState }
 
@@ -2505,12 +2186,6 @@ func (o PubsubWrapperOutput) ToPubsubWrapperPtrOutputWithContext(ctx context.Con
 	}).(PubsubWrapperPtrOutput)
 }
 
-func (o PubsubWrapperOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubWrapper] {
-	return pulumix.Output[PubsubWrapper]{
-		OutputState: o.OutputState,
-	}
-}
-
 type PubsubWrapperPtrOutput struct{ *pulumi.OutputState }
 
 func (PubsubWrapperPtrOutput) ElementType() reflect.Type {
@@ -2523,12 +2198,6 @@ func (o PubsubWrapperPtrOutput) ToPubsubWrapperPtrOutput() PubsubWrapperPtrOutpu
 
 func (o PubsubWrapperPtrOutput) ToPubsubWrapperPtrOutputWithContext(ctx context.Context) PubsubWrapperPtrOutput {
 	return o
-}
-
-func (o PubsubWrapperPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PubsubWrapper] {
-	return pulumix.Output[*PubsubWrapper]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PubsubWrapperPtrOutput) Elem() PubsubWrapperOutput {
@@ -2558,12 +2227,6 @@ func (o PubsubWrapperResponseOutput) ToPubsubWrapperResponseOutput() PubsubWrapp
 
 func (o PubsubWrapperResponseOutput) ToPubsubWrapperResponseOutputWithContext(ctx context.Context) PubsubWrapperResponseOutput {
 	return o
-}
-
-func (o PubsubWrapperResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubWrapperResponse] {
-	return pulumix.Output[PubsubWrapperResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for a push delivery endpoint.
@@ -2617,12 +2280,6 @@ func (i PushConfigArgs) ToPushConfigOutputWithContext(ctx context.Context) PushC
 	return pulumi.ToOutputWithContext(ctx, i).(PushConfigOutput)
 }
 
-func (i PushConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PushConfig] {
-	return pulumix.Output[PushConfig]{
-		OutputState: i.ToPushConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PushConfigArgs) ToPushConfigPtrOutput() PushConfigPtrOutput {
 	return i.ToPushConfigPtrOutputWithContext(context.Background())
 }
@@ -2664,12 +2321,6 @@ func (i *pushConfigPtrType) ToPushConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PushConfigPtrOutput)
 }
 
-func (i *pushConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PushConfig] {
-	return pulumix.Output[*PushConfig]{
-		OutputState: i.ToPushConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for a push delivery endpoint.
 type PushConfigOutput struct{ *pulumi.OutputState }
 
@@ -2693,12 +2344,6 @@ func (o PushConfigOutput) ToPushConfigPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushConfig) *PushConfig {
 		return &v
 	}).(PushConfigPtrOutput)
-}
-
-func (o PushConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PushConfig] {
-	return pulumix.Output[PushConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Endpoint configuration attributes that can be used to control different aspects of the message delivery. The only currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the pushed message (i.e., its fields and metadata). If not present during the `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call. If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The only supported values for the `x-goog-version` attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: `attributes { "x-goog-version": "v1" }`
@@ -2738,12 +2383,6 @@ func (o PushConfigPtrOutput) ToPushConfigPtrOutput() PushConfigPtrOutput {
 
 func (o PushConfigPtrOutput) ToPushConfigPtrOutputWithContext(ctx context.Context) PushConfigPtrOutput {
 	return o
-}
-
-func (o PushConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PushConfig] {
-	return pulumix.Output[*PushConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PushConfigPtrOutput) Elem() PushConfigOutput {
@@ -2835,12 +2474,6 @@ func (o PushConfigResponseOutput) ToPushConfigResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o PushConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PushConfigResponse] {
-	return pulumix.Output[PushConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Endpoint configuration attributes that can be used to control different aspects of the message delivery. The only currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the pushed message (i.e., its fields and metadata). If not present during the `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call. If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The only supported values for the `x-goog-version` attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: `attributes { "x-goog-version": "v1" }`
 func (o PushConfigResponseOutput) Attributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PushConfigResponse) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
@@ -2905,12 +2538,6 @@ func (i RetryPolicyArgs) ToRetryPolicyOutputWithContext(ctx context.Context) Ret
 	return pulumi.ToOutputWithContext(ctx, i).(RetryPolicyOutput)
 }
 
-func (i RetryPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[RetryPolicy] {
-	return pulumix.Output[RetryPolicy]{
-		OutputState: i.ToRetryPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RetryPolicyArgs) ToRetryPolicyPtrOutput() RetryPolicyPtrOutput {
 	return i.ToRetryPolicyPtrOutputWithContext(context.Background())
 }
@@ -2952,12 +2579,6 @@ func (i *retryPolicyPtrType) ToRetryPolicyPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RetryPolicyPtrOutput)
 }
 
-func (i *retryPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*RetryPolicy] {
-	return pulumix.Output[*RetryPolicy]{
-		OutputState: i.ToRetryPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A policy that specifies how Pub/Sub retries message delivery. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message. Retry Policy is implemented on a best effort basis. At times, the delay between consecutive deliveries may not match the configuration. That is, delay can be more or less than configured backoff.
 type RetryPolicyOutput struct{ *pulumi.OutputState }
 
@@ -2983,12 +2604,6 @@ func (o RetryPolicyOutput) ToRetryPolicyPtrOutputWithContext(ctx context.Context
 	}).(RetryPolicyPtrOutput)
 }
 
-func (o RetryPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RetryPolicy] {
-	return pulumix.Output[RetryPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
 func (o RetryPolicyOutput) MaximumBackoff() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetryPolicy) *string { return v.MaximumBackoff }).(pulumi.StringPtrOutput)
@@ -3011,12 +2626,6 @@ func (o RetryPolicyPtrOutput) ToRetryPolicyPtrOutput() RetryPolicyPtrOutput {
 
 func (o RetryPolicyPtrOutput) ToRetryPolicyPtrOutputWithContext(ctx context.Context) RetryPolicyPtrOutput {
 	return o
-}
-
-func (o RetryPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetryPolicy] {
-	return pulumix.Output[*RetryPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RetryPolicyPtrOutput) Elem() RetryPolicyOutput {
@@ -3070,12 +2679,6 @@ func (o RetryPolicyResponseOutput) ToRetryPolicyResponseOutput() RetryPolicyResp
 
 func (o RetryPolicyResponseOutput) ToRetryPolicyResponseOutputWithContext(ctx context.Context) RetryPolicyResponseOutput {
 	return o
-}
-
-func (o RetryPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetryPolicyResponse] {
-	return pulumix.Output[RetryPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
@@ -3135,12 +2738,6 @@ func (i SchemaSettingsArgs) ToSchemaSettingsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SchemaSettingsOutput)
 }
 
-func (i SchemaSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SchemaSettings] {
-	return pulumix.Output[SchemaSettings]{
-		OutputState: i.ToSchemaSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SchemaSettingsArgs) ToSchemaSettingsPtrOutput() SchemaSettingsPtrOutput {
 	return i.ToSchemaSettingsPtrOutputWithContext(context.Background())
 }
@@ -3182,12 +2779,6 @@ func (i *schemaSettingsPtrType) ToSchemaSettingsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SchemaSettingsPtrOutput)
 }
 
-func (i *schemaSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SchemaSettings] {
-	return pulumix.Output[*SchemaSettings]{
-		OutputState: i.ToSchemaSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings for validating messages published against a schema.
 type SchemaSettingsOutput struct{ *pulumi.OutputState }
 
@@ -3211,12 +2802,6 @@ func (o SchemaSettingsOutput) ToSchemaSettingsPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaSettings) *SchemaSettings {
 		return &v
 	}).(SchemaSettingsPtrOutput)
-}
-
-func (o SchemaSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaSettings] {
-	return pulumix.Output[SchemaSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The encoding of messages validated against `schema`.
@@ -3251,12 +2836,6 @@ func (o SchemaSettingsPtrOutput) ToSchemaSettingsPtrOutput() SchemaSettingsPtrOu
 
 func (o SchemaSettingsPtrOutput) ToSchemaSettingsPtrOutputWithContext(ctx context.Context) SchemaSettingsPtrOutput {
 	return o
-}
-
-func (o SchemaSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchemaSettings] {
-	return pulumix.Output[*SchemaSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchemaSettingsPtrOutput) Elem() SchemaSettingsOutput {
@@ -3336,12 +2915,6 @@ func (o SchemaSettingsResponseOutput) ToSchemaSettingsResponseOutputWithContext(
 	return o
 }
 
-func (o SchemaSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaSettingsResponse] {
-	return pulumix.Output[SchemaSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The encoding of messages validated against `schema`.
 func (o SchemaSettingsResponseOutput) Encoding() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaSettingsResponse) string { return v.Encoding }).(pulumi.StringOutput)
@@ -3393,12 +2966,6 @@ func (i TextConfigArgs) ToTextConfigOutputWithContext(ctx context.Context) TextC
 	return pulumi.ToOutputWithContext(ctx, i).(TextConfigOutput)
 }
 
-func (i TextConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TextConfig] {
-	return pulumix.Output[TextConfig]{
-		OutputState: i.ToTextConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TextConfigArgs) ToTextConfigPtrOutput() TextConfigPtrOutput {
 	return i.ToTextConfigPtrOutputWithContext(context.Background())
 }
@@ -3440,12 +3007,6 @@ func (i *textConfigPtrType) ToTextConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TextConfigPtrOutput)
 }
 
-func (i *textConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TextConfig] {
-	return pulumix.Output[*TextConfig]{
-		OutputState: i.ToTextConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for writing message data in text format. Message payloads will be written to files as raw text, separated by a newline.
 type TextConfigOutput struct{ *pulumi.OutputState }
 
@@ -3471,12 +3032,6 @@ func (o TextConfigOutput) ToTextConfigPtrOutputWithContext(ctx context.Context) 
 	}).(TextConfigPtrOutput)
 }
 
-func (o TextConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TextConfig] {
-	return pulumix.Output[TextConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 type TextConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (TextConfigPtrOutput) ElementType() reflect.Type {
@@ -3489,12 +3044,6 @@ func (o TextConfigPtrOutput) ToTextConfigPtrOutput() TextConfigPtrOutput {
 
 func (o TextConfigPtrOutput) ToTextConfigPtrOutputWithContext(ctx context.Context) TextConfigPtrOutput {
 	return o
-}
-
-func (o TextConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextConfig] {
-	return pulumix.Output[*TextConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextConfigPtrOutput) Elem() TextConfigOutput {
@@ -3524,12 +3073,6 @@ func (o TextConfigResponseOutput) ToTextConfigResponseOutput() TextConfigRespons
 
 func (o TextConfigResponseOutput) ToTextConfigResponseOutputWithContext(ctx context.Context) TextConfigResponseOutput {
 	return o
-}
-
-func (o TextConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TextConfigResponse] {
-	return pulumix.Output[TextConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func init() {

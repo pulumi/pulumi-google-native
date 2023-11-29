@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i EmailPreferencesArgs) ToEmailPreferencesOutput() EmailPreferencesOutput 
 
 func (i EmailPreferencesArgs) ToEmailPreferencesOutputWithContext(ctx context.Context) EmailPreferencesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailPreferencesOutput)
-}
-
-func (i EmailPreferencesArgs) ToOutput(ctx context.Context) pulumix.Output[EmailPreferences] {
-	return pulumix.Output[EmailPreferences]{
-		OutputState: i.ToEmailPreferencesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i EmailPreferencesArgs) ToEmailPreferencesPtrOutput() EmailPreferencesPtrOutput {
@@ -96,12 +89,6 @@ func (i *emailPreferencesPtrType) ToEmailPreferencesPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EmailPreferencesPtrOutput)
 }
 
-func (i *emailPreferencesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EmailPreferences] {
-	return pulumix.Output[*EmailPreferences]{
-		OutputState: i.ToEmailPreferencesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents preferences for sending email notifications for transfer run events.
 type EmailPreferencesOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o EmailPreferencesOutput) ToEmailPreferencesPtrOutputWithContext(ctx conte
 	}).(EmailPreferencesPtrOutput)
 }
 
-func (o EmailPreferencesOutput) ToOutput(ctx context.Context) pulumix.Output[EmailPreferences] {
-	return pulumix.Output[EmailPreferences]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If true, email notifications will be sent on transfer run failures.
 func (o EmailPreferencesOutput) EnableFailureEmail() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EmailPreferences) *bool { return v.EnableFailureEmail }).(pulumi.BoolPtrOutput)
@@ -150,12 +131,6 @@ func (o EmailPreferencesPtrOutput) ToEmailPreferencesPtrOutput() EmailPreference
 
 func (o EmailPreferencesPtrOutput) ToEmailPreferencesPtrOutputWithContext(ctx context.Context) EmailPreferencesPtrOutput {
 	return o
-}
-
-func (o EmailPreferencesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailPreferences] {
-	return pulumix.Output[*EmailPreferences]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmailPreferencesPtrOutput) Elem() EmailPreferencesOutput {
@@ -199,12 +174,6 @@ func (o EmailPreferencesResponseOutput) ToEmailPreferencesResponseOutputWithCont
 	return o
 }
 
-func (o EmailPreferencesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EmailPreferencesResponse] {
-	return pulumix.Output[EmailPreferencesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If true, email notifications will be sent on transfer run failures.
 func (o EmailPreferencesResponseOutput) EnableFailureEmail() pulumi.BoolOutput {
 	return o.ApplyT(func(v EmailPreferencesResponse) bool { return v.EnableFailureEmail }).(pulumi.BoolOutput)
@@ -243,12 +212,6 @@ func (i EncryptionConfigurationArgs) ToEncryptionConfigurationOutput() Encryptio
 
 func (i EncryptionConfigurationArgs) ToEncryptionConfigurationOutputWithContext(ctx context.Context) EncryptionConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigurationOutput)
-}
-
-func (i EncryptionConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfiguration] {
-	return pulumix.Output[EncryptionConfiguration]{
-		OutputState: i.ToEncryptionConfigurationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i EncryptionConfigurationArgs) ToEncryptionConfigurationPtrOutput() EncryptionConfigurationPtrOutput {
@@ -292,12 +255,6 @@ func (i *encryptionConfigurationPtrType) ToEncryptionConfigurationPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigurationPtrOutput)
 }
 
-func (i *encryptionConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfiguration] {
-	return pulumix.Output[*EncryptionConfiguration]{
-		OutputState: i.ToEncryptionConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the encryption configuration for a transfer.
 type EncryptionConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -323,12 +280,6 @@ func (o EncryptionConfigurationOutput) ToEncryptionConfigurationPtrOutputWithCon
 	}).(EncryptionConfigurationPtrOutput)
 }
 
-func (o EncryptionConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfiguration] {
-	return pulumix.Output[EncryptionConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the KMS key used for encrypting BigQuery data.
 func (o EncryptionConfigurationOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfiguration) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -346,12 +297,6 @@ func (o EncryptionConfigurationPtrOutput) ToEncryptionConfigurationPtrOutput() E
 
 func (o EncryptionConfigurationPtrOutput) ToEncryptionConfigurationPtrOutputWithContext(ctx context.Context) EncryptionConfigurationPtrOutput {
 	return o
-}
-
-func (o EncryptionConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfiguration] {
-	return pulumix.Output[*EncryptionConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionConfigurationPtrOutput) Elem() EncryptionConfigurationOutput {
@@ -393,12 +338,6 @@ func (o EncryptionConfigurationResponseOutput) ToEncryptionConfigurationResponse
 
 func (o EncryptionConfigurationResponseOutput) ToEncryptionConfigurationResponseOutputWithContext(ctx context.Context) EncryptionConfigurationResponseOutput {
 	return o
-}
-
-func (o EncryptionConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfigurationResponse] {
-	return pulumix.Output[EncryptionConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the KMS key used for encrypting BigQuery data.
@@ -449,12 +388,6 @@ func (i ScheduleOptionsArgs) ToScheduleOptionsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOptionsOutput)
 }
 
-func (i ScheduleOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[ScheduleOptions] {
-	return pulumix.Output[ScheduleOptions]{
-		OutputState: i.ToScheduleOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScheduleOptionsArgs) ToScheduleOptionsPtrOutput() ScheduleOptionsPtrOutput {
 	return i.ToScheduleOptionsPtrOutputWithContext(context.Background())
 }
@@ -496,12 +429,6 @@ func (i *scheduleOptionsPtrType) ToScheduleOptionsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOptionsPtrOutput)
 }
 
-func (i *scheduleOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScheduleOptions] {
-	return pulumix.Output[*ScheduleOptions]{
-		OutputState: i.ToScheduleOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Options customizing the data transfer schedule.
 type ScheduleOptionsOutput struct{ *pulumi.OutputState }
 
@@ -525,12 +452,6 @@ func (o ScheduleOptionsOutput) ToScheduleOptionsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleOptions) *ScheduleOptions {
 		return &v
 	}).(ScheduleOptionsPtrOutput)
-}
-
-func (o ScheduleOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleOptions] {
-	return pulumix.Output[ScheduleOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored.
@@ -560,12 +481,6 @@ func (o ScheduleOptionsPtrOutput) ToScheduleOptionsPtrOutput() ScheduleOptionsPt
 
 func (o ScheduleOptionsPtrOutput) ToScheduleOptionsPtrOutputWithContext(ctx context.Context) ScheduleOptionsPtrOutput {
 	return o
-}
-
-func (o ScheduleOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduleOptions] {
-	return pulumix.Output[*ScheduleOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduleOptionsPtrOutput) Elem() ScheduleOptionsOutput {
@@ -633,12 +548,6 @@ func (o ScheduleOptionsResponseOutput) ToScheduleOptionsResponseOutputWithContex
 	return o
 }
 
-func (o ScheduleOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleOptionsResponse] {
-	return pulumix.Output[ScheduleOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored.
 func (o ScheduleOptionsResponseOutput) DisableAutoScheduling() pulumi.BoolOutput {
 	return o.ApplyT(func(v ScheduleOptionsResponse) bool { return v.DisableAutoScheduling }).(pulumi.BoolOutput)
@@ -673,12 +582,6 @@ func (o UserInfoResponseOutput) ToUserInfoResponseOutput() UserInfoResponseOutpu
 
 func (o UserInfoResponseOutput) ToUserInfoResponseOutputWithContext(ctx context.Context) UserInfoResponseOutput {
 	return o
-}
-
-func (o UserInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserInfoResponse] {
-	return pulumix.Output[UserInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // E-mail address of the user.

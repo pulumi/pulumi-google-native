@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received.
@@ -165,12 +164,6 @@ func (i *Message) ToMessageOutputWithContext(ctx context.Context) MessageOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(MessageOutput)
 }
 
-func (i *Message) ToOutput(ctx context.Context) pulumix.Output[*Message] {
-	return pulumix.Output[*Message]{
-		OutputState: i.ToMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MessageOutput struct{ *pulumi.OutputState }
 
 func (MessageOutput) ElementType() reflect.Type {
@@ -183,12 +176,6 @@ func (o MessageOutput) ToMessageOutput() MessageOutput {
 
 func (o MessageOutput) ToMessageOutputWithContext(ctx context.Context) MessageOutput {
 	return o
-}
-
-func (o MessageOutput) ToOutput(ctx context.Context) pulumix.Output[*Message] {
-	return pulumix.Output[*Message]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The datetime when the message was created. Set by the server.

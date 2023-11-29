@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a TensorboardRun.
@@ -157,12 +156,6 @@ func (i *Run) ToRunOutputWithContext(ctx context.Context) RunOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RunOutput)
 }
 
-func (i *Run) ToOutput(ctx context.Context) pulumix.Output[*Run] {
-	return pulumix.Output[*Run]{
-		OutputState: i.ToRunOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RunOutput struct{ *pulumi.OutputState }
 
 func (RunOutput) ElementType() reflect.Type {
@@ -175,12 +168,6 @@ func (o RunOutput) ToRunOutput() RunOutput {
 
 func (o RunOutput) ToRunOutputWithContext(ctx context.Context) RunOutput {
 	return o
-}
-
-func (o RunOutput) ToOutput(ctx context.Context) pulumix.Output[*Run] {
-	return pulumix.Output[*Run]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this TensorboardRun was created.

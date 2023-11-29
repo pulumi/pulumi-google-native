@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an import data file.
@@ -150,12 +149,6 @@ func (i *ImportDataFile) ToImportDataFileOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ImportDataFileOutput)
 }
 
-func (i *ImportDataFile) ToOutput(ctx context.Context) pulumix.Output[*ImportDataFile] {
-	return pulumix.Output[*ImportDataFile]{
-		OutputState: i.ToImportDataFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImportDataFileOutput struct{ *pulumi.OutputState }
 
 func (ImportDataFileOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o ImportDataFileOutput) ToImportDataFileOutput() ImportDataFileOutput {
 
 func (o ImportDataFileOutput) ToImportDataFileOutputWithContext(ctx context.Context) ImportDataFileOutput {
 	return o
-}
-
-func (o ImportDataFileOutput) ToOutput(ctx context.Context) pulumix.Output[*ImportDataFile] {
-	return pulumix.Output[*ImportDataFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the file was created.

@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified contentitem resource. Replaces any existing policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
@@ -141,12 +140,6 @@ func (i *LakeContentitemIamBinding) ToLakeContentitemIamBindingOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(LakeContentitemIamBindingOutput)
 }
 
-func (i *LakeContentitemIamBinding) ToOutput(ctx context.Context) pulumix.Output[*LakeContentitemIamBinding] {
-	return pulumix.Output[*LakeContentitemIamBinding]{
-		OutputState: i.ToLakeContentitemIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LakeContentitemIamBindingOutput struct{ *pulumi.OutputState }
 
 func (LakeContentitemIamBindingOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o LakeContentitemIamBindingOutput) ToLakeContentitemIamBindingOutput() Lak
 
 func (o LakeContentitemIamBindingOutput) ToLakeContentitemIamBindingOutputWithContext(ctx context.Context) LakeContentitemIamBindingOutput {
 	return o
-}
-
-func (o LakeContentitemIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*LakeContentitemIamBinding] {
-	return pulumix.Output[*LakeContentitemIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

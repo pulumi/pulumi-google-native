@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step does not exist
@@ -99,12 +98,6 @@ func (o LookupStepResultOutput) ToLookupStepResultOutput() LookupStepResultOutpu
 
 func (o LookupStepResultOutput) ToLookupStepResultOutputWithContext(ctx context.Context) LookupStepResultOutput {
 	return o
-}
-
-func (o LookupStepResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStepResult] {
-	return pulumix.Output[LookupStepResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the step status was set to complete. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set

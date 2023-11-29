@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a model in Firebase ML. The longrunning operation will eventually return a Model
@@ -138,12 +137,6 @@ func (i *Model) ToModelOutputWithContext(ctx context.Context) ModelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ModelOutput)
 }
 
-func (i *Model) ToOutput(ctx context.Context) pulumix.Output[*Model] {
-	return pulumix.Output[*Model]{
-		OutputState: i.ToModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ModelOutput struct{ *pulumi.OutputState }
 
 func (ModelOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o ModelOutput) ToModelOutput() ModelOutput {
 
 func (o ModelOutput) ToModelOutputWithContext(ctx context.Context) ModelOutput {
 	return o
-}
-
-func (o ModelOutput) ToOutput(ctx context.Context) pulumix.Output[*Model] {
-	return pulumix.Output[*Model]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Lists operation ids associated with this model whose status is NOT done.

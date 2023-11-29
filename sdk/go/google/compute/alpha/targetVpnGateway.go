@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a target VPN gateway in the specified project and region using the data included in the request.
@@ -146,12 +145,6 @@ func (i *TargetVpnGateway) ToTargetVpnGatewayOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TargetVpnGatewayOutput)
 }
 
-func (i *TargetVpnGateway) ToOutput(ctx context.Context) pulumix.Output[*TargetVpnGateway] {
-	return pulumix.Output[*TargetVpnGateway]{
-		OutputState: i.ToTargetVpnGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetVpnGatewayOutput struct{ *pulumi.OutputState }
 
 func (TargetVpnGatewayOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o TargetVpnGatewayOutput) ToTargetVpnGatewayOutput() TargetVpnGatewayOutpu
 
 func (o TargetVpnGatewayOutput) ToTargetVpnGatewayOutputWithContext(ctx context.Context) TargetVpnGatewayOutput {
 	return o
-}
-
-func (o TargetVpnGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetVpnGateway] {
-	return pulumix.Output[*TargetVpnGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new data policy under a project with the given `dataPolicyId` (used as the display name), policy tag, and data policy type.
@@ -125,12 +124,6 @@ func (i *DataPolicy) ToDataPolicyOutputWithContext(ctx context.Context) DataPoli
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyOutput)
 }
 
-func (i *DataPolicy) ToOutput(ctx context.Context) pulumix.Output[*DataPolicy] {
-	return pulumix.Output[*DataPolicy]{
-		OutputState: i.ToDataPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataPolicyOutput struct{ *pulumi.OutputState }
 
 func (DataPolicyOutput) ElementType() reflect.Type {
@@ -143,12 +136,6 @@ func (o DataPolicyOutput) ToDataPolicyOutput() DataPolicyOutput {
 
 func (o DataPolicyOutput) ToDataPolicyOutputWithContext(ctx context.Context) DataPolicyOutput {
 	return o
-}
-
-func (o DataPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPolicy] {
-	return pulumix.Output[*DataPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The data masking policy that specifies the data masking rule to use.

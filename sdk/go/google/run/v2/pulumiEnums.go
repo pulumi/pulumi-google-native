@@ -81,12 +81,6 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToGoogleCloudRunV2Empt
 	}).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
 }
 
-func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EmptyDirVolumeSourceMedium] {
-	return pulumix.Output[GoogleCloudRunV2EmptyDirVolumeSourceMedium]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToGoogleCloudRunV2E
 
 func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSourceMedium] {
-	return pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSourceMedium]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) Elem() GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput {
@@ -268,12 +256,6 @@ func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToGoogleClou
 	}).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
 }
 
-func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2RevisionTemplateExecutionEnvironment] {
-	return pulumix.Output[GoogleCloudRunV2RevisionTemplateExecutionEnvironment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -307,12 +289,6 @@ func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToGoogleC
 
 func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2RevisionTemplateExecutionEnvironment] {
-	return pulumix.Output[*GoogleCloudRunV2RevisionTemplateExecutionEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) Elem() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput {
@@ -455,12 +431,6 @@ func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToGoogleCloudRun
 	}).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput)
 }
 
-func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TaskTemplateExecutionEnvironment] {
-	return pulumix.Output[GoogleCloudRunV2TaskTemplateExecutionEnvironment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -494,12 +464,6 @@ func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2TaskTemplateExecutionEnvironment] {
-	return pulumix.Output[*GoogleCloudRunV2TaskTemplateExecutionEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) Elem() GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput {
@@ -642,12 +606,6 @@ func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToGoogleCloudRunV2TrafficTarget
 	}).(GoogleCloudRunV2TrafficTargetTypePtrOutput)
 }
 
-func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TrafficTargetType] {
-	return pulumix.Output[GoogleCloudRunV2TrafficTargetType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -681,12 +639,6 @@ func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToGoogleCloudRunV2TrafficTar
 
 func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2TrafficTargetType] {
-	return pulumix.Output[*GoogleCloudRunV2TrafficTargetType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) Elem() GoogleCloudRunV2TrafficTargetTypeOutput {
@@ -829,12 +781,6 @@ func (o GoogleCloudRunV2VpcAccessEgressOutput) ToGoogleCloudRunV2VpcAccessEgress
 	}).(GoogleCloudRunV2VpcAccessEgressPtrOutput)
 }
 
-func (o GoogleCloudRunV2VpcAccessEgressOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VpcAccessEgress] {
-	return pulumix.Output[GoogleCloudRunV2VpcAccessEgress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRunV2VpcAccessEgressOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -868,12 +814,6 @@ func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToGoogleCloudRunV2VpcAccessEgr
 
 func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessEgressPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2VpcAccessEgress] {
-	return pulumix.Output[*GoogleCloudRunV2VpcAccessEgress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) Elem() GoogleCloudRunV2VpcAccessEgressOutput {
@@ -1018,12 +958,6 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
-func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1057,12 +991,6 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
@@ -1215,12 +1143,6 @@ func (o JobLaunchStageOutput) ToJobLaunchStagePtrOutputWithContext(ctx context.C
 	}).(JobLaunchStagePtrOutput)
 }
 
-func (o JobLaunchStageOutput) ToOutput(ctx context.Context) pulumix.Output[JobLaunchStage] {
-	return pulumix.Output[JobLaunchStage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1254,12 +1176,6 @@ func (o JobLaunchStagePtrOutput) ToJobLaunchStagePtrOutput() JobLaunchStagePtrOu
 
 func (o JobLaunchStagePtrOutput) ToJobLaunchStagePtrOutputWithContext(ctx context.Context) JobLaunchStagePtrOutput {
 	return o
-}
-
-func (o JobLaunchStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobLaunchStage] {
-	return pulumix.Output[*JobLaunchStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobLaunchStagePtrOutput) Elem() JobLaunchStageOutput {
@@ -1404,12 +1320,6 @@ func (o ServiceIngressOutput) ToServiceIngressPtrOutputWithContext(ctx context.C
 	}).(ServiceIngressPtrOutput)
 }
 
-func (o ServiceIngressOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceIngress] {
-	return pulumix.Output[ServiceIngress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceIngressOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1443,12 +1353,6 @@ func (o ServiceIngressPtrOutput) ToServiceIngressPtrOutput() ServiceIngressPtrOu
 
 func (o ServiceIngressPtrOutput) ToServiceIngressPtrOutputWithContext(ctx context.Context) ServiceIngressPtrOutput {
 	return o
-}
-
-func (o ServiceIngressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIngress] {
-	return pulumix.Output[*ServiceIngress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceIngressPtrOutput) Elem() ServiceIngressOutput {
@@ -1601,12 +1505,6 @@ func (o ServiceLaunchStageOutput) ToServiceLaunchStagePtrOutputWithContext(ctx c
 	}).(ServiceLaunchStagePtrOutput)
 }
 
-func (o ServiceLaunchStageOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceLaunchStage] {
-	return pulumix.Output[ServiceLaunchStage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1640,12 +1538,6 @@ func (o ServiceLaunchStagePtrOutput) ToServiceLaunchStagePtrOutput() ServiceLaun
 
 func (o ServiceLaunchStagePtrOutput) ToServiceLaunchStagePtrOutputWithContext(ctx context.Context) ServiceLaunchStagePtrOutput {
 	return o
-}
-
-func (o ServiceLaunchStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceLaunchStage] {
-	return pulumix.Output[*ServiceLaunchStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceLaunchStagePtrOutput) Elem() ServiceLaunchStageOutput {

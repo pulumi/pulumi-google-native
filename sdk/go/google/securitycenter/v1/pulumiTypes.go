@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -133,12 +114,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -170,12 +145,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -198,12 +167,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -251,12 +214,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -282,12 +239,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -301,12 +252,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -331,12 +276,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -368,12 +307,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -396,12 +329,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -453,12 +380,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -484,12 +405,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -503,12 +418,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -538,12 +447,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -577,12 +480,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -610,12 +507,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -671,12 +562,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -718,12 +603,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -747,12 +626,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -787,12 +660,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -872,12 +739,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -953,12 +814,6 @@ func (i GoogleCloudSecuritycenterV1CustomConfigArgs) ToGoogleCloudSecuritycenter
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudSecuritycenterV1CustomConfigOutput)
 }
 
-func (i GoogleCloudSecuritycenterV1CustomConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1CustomConfig] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1CustomConfig]{
-		OutputState: i.ToGoogleCloudSecuritycenterV1CustomConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudSecuritycenterV1CustomConfigArgs) ToGoogleCloudSecuritycenterV1CustomConfigPtrOutput() GoogleCloudSecuritycenterV1CustomConfigPtrOutput {
 	return i.ToGoogleCloudSecuritycenterV1CustomConfigPtrOutputWithContext(context.Background())
 }
@@ -1000,12 +855,6 @@ func (i *googleCloudSecuritycenterV1CustomConfigPtrType) ToGoogleCloudSecurityce
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudSecuritycenterV1CustomConfigPtrOutput)
 }
 
-func (i *googleCloudSecuritycenterV1CustomConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudSecuritycenterV1CustomConfig] {
-	return pulumix.Output[*GoogleCloudSecuritycenterV1CustomConfig]{
-		OutputState: i.ToGoogleCloudSecuritycenterV1CustomConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the properties in a custom module configuration for Security Health Analytics. Use the custom module configuration to create custom detectors that generate custom findings for resources that you specify.
 type GoogleCloudSecuritycenterV1CustomConfigOutput struct{ *pulumi.OutputState }
 
@@ -1029,12 +878,6 @@ func (o GoogleCloudSecuritycenterV1CustomConfigOutput) ToGoogleCloudSecuritycent
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudSecuritycenterV1CustomConfig) *GoogleCloudSecuritycenterV1CustomConfig {
 		return &v
 	}).(GoogleCloudSecuritycenterV1CustomConfigPtrOutput)
-}
-
-func (o GoogleCloudSecuritycenterV1CustomConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1CustomConfig] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1CustomConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom output properties.
@@ -1085,12 +928,6 @@ func (o GoogleCloudSecuritycenterV1CustomConfigPtrOutput) ToGoogleCloudSecurityc
 
 func (o GoogleCloudSecuritycenterV1CustomConfigPtrOutput) ToGoogleCloudSecuritycenterV1CustomConfigPtrOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudSecuritycenterV1CustomConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudSecuritycenterV1CustomConfig] {
-	return pulumix.Output[*GoogleCloudSecuritycenterV1CustomConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudSecuritycenterV1CustomConfigPtrOutput) Elem() GoogleCloudSecuritycenterV1CustomConfigOutput {
@@ -1194,12 +1031,6 @@ func (o GoogleCloudSecuritycenterV1CustomConfigResponseOutput) ToGoogleCloudSecu
 	return o
 }
 
-func (o GoogleCloudSecuritycenterV1CustomConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1CustomConfigResponse] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1CustomConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom output properties.
 func (o GoogleCloudSecuritycenterV1CustomConfigResponseOutput) CustomOutput() GoogleCloudSecuritycenterV1CustomOutputSpecResponseOutput {
 	return o.ApplyT(func(v GoogleCloudSecuritycenterV1CustomConfigResponse) GoogleCloudSecuritycenterV1CustomOutputSpecResponse {
@@ -1269,12 +1100,6 @@ func (i GoogleCloudSecuritycenterV1CustomOutputSpecArgs) ToGoogleCloudSecurityce
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudSecuritycenterV1CustomOutputSpecOutput)
 }
 
-func (i GoogleCloudSecuritycenterV1CustomOutputSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1CustomOutputSpec] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1CustomOutputSpec]{
-		OutputState: i.ToGoogleCloudSecuritycenterV1CustomOutputSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudSecuritycenterV1CustomOutputSpecArgs) ToGoogleCloudSecuritycenterV1CustomOutputSpecPtrOutput() GoogleCloudSecuritycenterV1CustomOutputSpecPtrOutput {
 	return i.ToGoogleCloudSecuritycenterV1CustomOutputSpecPtrOutputWithContext(context.Background())
 }
@@ -1316,12 +1141,6 @@ func (i *googleCloudSecuritycenterV1CustomOutputSpecPtrType) ToGoogleCloudSecuri
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudSecuritycenterV1CustomOutputSpecPtrOutput)
 }
 
-func (i *googleCloudSecuritycenterV1CustomOutputSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudSecuritycenterV1CustomOutputSpec] {
-	return pulumix.Output[*GoogleCloudSecuritycenterV1CustomOutputSpec]{
-		OutputState: i.ToGoogleCloudSecuritycenterV1CustomOutputSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A set of optional name-value pairs that define custom source properties to return with each finding that is generated by the custom module. The custom source properties that are defined here are included in the finding JSON under `sourceProperties`.
 type GoogleCloudSecuritycenterV1CustomOutputSpecOutput struct{ *pulumi.OutputState }
 
@@ -1347,12 +1166,6 @@ func (o GoogleCloudSecuritycenterV1CustomOutputSpecOutput) ToGoogleCloudSecurity
 	}).(GoogleCloudSecuritycenterV1CustomOutputSpecPtrOutput)
 }
 
-func (o GoogleCloudSecuritycenterV1CustomOutputSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1CustomOutputSpec] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1CustomOutputSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of custom output properties to add to the finding.
 func (o GoogleCloudSecuritycenterV1CustomOutputSpecOutput) Properties() GoogleCloudSecuritycenterV1PropertyArrayOutput {
 	return o.ApplyT(func(v GoogleCloudSecuritycenterV1CustomOutputSpec) []GoogleCloudSecuritycenterV1Property {
@@ -1372,12 +1185,6 @@ func (o GoogleCloudSecuritycenterV1CustomOutputSpecPtrOutput) ToGoogleCloudSecur
 
 func (o GoogleCloudSecuritycenterV1CustomOutputSpecPtrOutput) ToGoogleCloudSecuritycenterV1CustomOutputSpecPtrOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomOutputSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudSecuritycenterV1CustomOutputSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudSecuritycenterV1CustomOutputSpec] {
-	return pulumix.Output[*GoogleCloudSecuritycenterV1CustomOutputSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudSecuritycenterV1CustomOutputSpecPtrOutput) Elem() GoogleCloudSecuritycenterV1CustomOutputSpecOutput {
@@ -1419,12 +1226,6 @@ func (o GoogleCloudSecuritycenterV1CustomOutputSpecResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudSecuritycenterV1CustomOutputSpecResponseOutput) ToGoogleCloudSecuritycenterV1CustomOutputSpecResponseOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomOutputSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudSecuritycenterV1CustomOutputSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1CustomOutputSpecResponse] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1CustomOutputSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of custom output properties to add to the finding.
@@ -1473,12 +1274,6 @@ func (i GoogleCloudSecuritycenterV1PropertyArgs) ToGoogleCloudSecuritycenterV1Pr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudSecuritycenterV1PropertyOutput)
 }
 
-func (i GoogleCloudSecuritycenterV1PropertyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1Property] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1Property]{
-		OutputState: i.ToGoogleCloudSecuritycenterV1PropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudSecuritycenterV1PropertyArrayInput is an input type that accepts GoogleCloudSecuritycenterV1PropertyArray and GoogleCloudSecuritycenterV1PropertyArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudSecuritycenterV1PropertyArrayInput` via:
 //
@@ -1504,12 +1299,6 @@ func (i GoogleCloudSecuritycenterV1PropertyArray) ToGoogleCloudSecuritycenterV1P
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudSecuritycenterV1PropertyArrayOutput)
 }
 
-func (i GoogleCloudSecuritycenterV1PropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudSecuritycenterV1Property] {
-	return pulumix.Output[[]GoogleCloudSecuritycenterV1Property]{
-		OutputState: i.ToGoogleCloudSecuritycenterV1PropertyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An individual name-value pair that defines a custom source property.
 type GoogleCloudSecuritycenterV1PropertyOutput struct{ *pulumi.OutputState }
 
@@ -1523,12 +1312,6 @@ func (o GoogleCloudSecuritycenterV1PropertyOutput) ToGoogleCloudSecuritycenterV1
 
 func (o GoogleCloudSecuritycenterV1PropertyOutput) ToGoogleCloudSecuritycenterV1PropertyOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1PropertyOutput {
 	return o
-}
-
-func (o GoogleCloudSecuritycenterV1PropertyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1Property] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1Property]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the property for the custom output.
@@ -1553,12 +1336,6 @@ func (o GoogleCloudSecuritycenterV1PropertyArrayOutput) ToGoogleCloudSecuritycen
 
 func (o GoogleCloudSecuritycenterV1PropertyArrayOutput) ToGoogleCloudSecuritycenterV1PropertyArrayOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1PropertyArrayOutput {
 	return o
-}
-
-func (o GoogleCloudSecuritycenterV1PropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudSecuritycenterV1Property] {
-	return pulumix.Output[[]GoogleCloudSecuritycenterV1Property]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudSecuritycenterV1PropertyArrayOutput) Index(i pulumi.IntInput) GoogleCloudSecuritycenterV1PropertyOutput {
@@ -1590,12 +1367,6 @@ func (o GoogleCloudSecuritycenterV1PropertyResponseOutput) ToGoogleCloudSecurity
 	return o
 }
 
-func (o GoogleCloudSecuritycenterV1PropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1PropertyResponse] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1PropertyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the property for the custom output.
 func (o GoogleCloudSecuritycenterV1PropertyResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudSecuritycenterV1PropertyResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1618,12 +1389,6 @@ func (o GoogleCloudSecuritycenterV1PropertyResponseArrayOutput) ToGoogleCloudSec
 
 func (o GoogleCloudSecuritycenterV1PropertyResponseArrayOutput) ToGoogleCloudSecuritycenterV1PropertyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1PropertyResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudSecuritycenterV1PropertyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudSecuritycenterV1PropertyResponse] {
-	return pulumix.Output[[]GoogleCloudSecuritycenterV1PropertyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudSecuritycenterV1PropertyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudSecuritycenterV1PropertyResponseOutput {
@@ -1667,12 +1432,6 @@ func (i GoogleCloudSecuritycenterV1ResourceSelectorArgs) ToGoogleCloudSecurityce
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudSecuritycenterV1ResourceSelectorOutput)
 }
 
-func (i GoogleCloudSecuritycenterV1ResourceSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1ResourceSelector] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1ResourceSelector]{
-		OutputState: i.ToGoogleCloudSecuritycenterV1ResourceSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudSecuritycenterV1ResourceSelectorArgs) ToGoogleCloudSecuritycenterV1ResourceSelectorPtrOutput() GoogleCloudSecuritycenterV1ResourceSelectorPtrOutput {
 	return i.ToGoogleCloudSecuritycenterV1ResourceSelectorPtrOutputWithContext(context.Background())
 }
@@ -1714,12 +1473,6 @@ func (i *googleCloudSecuritycenterV1ResourceSelectorPtrType) ToGoogleCloudSecuri
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudSecuritycenterV1ResourceSelectorPtrOutput)
 }
 
-func (i *googleCloudSecuritycenterV1ResourceSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudSecuritycenterV1ResourceSelector] {
-	return pulumix.Output[*GoogleCloudSecuritycenterV1ResourceSelector]{
-		OutputState: i.ToGoogleCloudSecuritycenterV1ResourceSelectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Resource for selecting resource type.
 type GoogleCloudSecuritycenterV1ResourceSelectorOutput struct{ *pulumi.OutputState }
 
@@ -1745,12 +1498,6 @@ func (o GoogleCloudSecuritycenterV1ResourceSelectorOutput) ToGoogleCloudSecurity
 	}).(GoogleCloudSecuritycenterV1ResourceSelectorPtrOutput)
 }
 
-func (o GoogleCloudSecuritycenterV1ResourceSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1ResourceSelector] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1ResourceSelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource types to run the detector on.
 func (o GoogleCloudSecuritycenterV1ResourceSelectorOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudSecuritycenterV1ResourceSelector) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
@@ -1768,12 +1515,6 @@ func (o GoogleCloudSecuritycenterV1ResourceSelectorPtrOutput) ToGoogleCloudSecur
 
 func (o GoogleCloudSecuritycenterV1ResourceSelectorPtrOutput) ToGoogleCloudSecuritycenterV1ResourceSelectorPtrOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1ResourceSelectorPtrOutput {
 	return o
-}
-
-func (o GoogleCloudSecuritycenterV1ResourceSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudSecuritycenterV1ResourceSelector] {
-	return pulumix.Output[*GoogleCloudSecuritycenterV1ResourceSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudSecuritycenterV1ResourceSelectorPtrOutput) Elem() GoogleCloudSecuritycenterV1ResourceSelectorOutput {
@@ -1817,12 +1558,6 @@ func (o GoogleCloudSecuritycenterV1ResourceSelectorResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudSecuritycenterV1ResourceSelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1ResourceSelectorResponse] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1ResourceSelectorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource types to run the detector on.
 func (o GoogleCloudSecuritycenterV1ResourceSelectorResponseOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudSecuritycenterV1ResourceSelectorResponse) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
@@ -1861,12 +1596,6 @@ func (i StreamingConfigArgs) ToStreamingConfigOutput() StreamingConfigOutput {
 
 func (i StreamingConfigArgs) ToStreamingConfigOutputWithContext(ctx context.Context) StreamingConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingConfigOutput)
-}
-
-func (i StreamingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StreamingConfig] {
-	return pulumix.Output[StreamingConfig]{
-		OutputState: i.ToStreamingConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StreamingConfigArgs) ToStreamingConfigPtrOutput() StreamingConfigPtrOutput {
@@ -1910,12 +1639,6 @@ func (i *streamingConfigPtrType) ToStreamingConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(StreamingConfigPtrOutput)
 }
 
-func (i *streamingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamingConfig] {
-	return pulumix.Output[*StreamingConfig]{
-		OutputState: i.ToStreamingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The config for streaming-based notifications, which send each event as soon as it is detected.
 type StreamingConfigOutput struct{ *pulumi.OutputState }
 
@@ -1941,12 +1664,6 @@ func (o StreamingConfigOutput) ToStreamingConfigPtrOutputWithContext(ctx context
 	}).(StreamingConfigPtrOutput)
 }
 
-func (o StreamingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingConfig] {
-	return pulumix.Output[StreamingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Expression that defines the filter to apply across create/update events of assets or findings as specified by the event type. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.
 func (o StreamingConfigOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamingConfig) *string { return v.Filter }).(pulumi.StringPtrOutput)
@@ -1964,12 +1681,6 @@ func (o StreamingConfigPtrOutput) ToStreamingConfigPtrOutput() StreamingConfigPt
 
 func (o StreamingConfigPtrOutput) ToStreamingConfigPtrOutputWithContext(ctx context.Context) StreamingConfigPtrOutput {
 	return o
-}
-
-func (o StreamingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamingConfig] {
-	return pulumix.Output[*StreamingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamingConfigPtrOutput) Elem() StreamingConfigOutput {
@@ -2011,12 +1722,6 @@ func (o StreamingConfigResponseOutput) ToStreamingConfigResponseOutput() Streami
 
 func (o StreamingConfigResponseOutput) ToStreamingConfigResponseOutputWithContext(ctx context.Context) StreamingConfigResponseOutput {
 	return o
-}
-
-func (o StreamingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamingConfigResponse] {
-	return pulumix.Output[StreamingConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Expression that defines the filter to apply across create/update events of assets or findings as specified by the event type. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.

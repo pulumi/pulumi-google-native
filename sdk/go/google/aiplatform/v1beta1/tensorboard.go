@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Tensorboard.
@@ -149,12 +148,6 @@ func (i *Tensorboard) ToTensorboardOutputWithContext(ctx context.Context) Tensor
 	return pulumi.ToOutputWithContext(ctx, i).(TensorboardOutput)
 }
 
-func (i *Tensorboard) ToOutput(ctx context.Context) pulumix.Output[*Tensorboard] {
-	return pulumix.Output[*Tensorboard]{
-		OutputState: i.ToTensorboardOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TensorboardOutput struct{ *pulumi.OutputState }
 
 func (TensorboardOutput) ElementType() reflect.Type {
@@ -167,12 +160,6 @@ func (o TensorboardOutput) ToTensorboardOutput() TensorboardOutput {
 
 func (o TensorboardOutput) ToTensorboardOutputWithContext(ctx context.Context) TensorboardOutput {
 	return o
-}
-
-func (o TensorboardOutput) ToOutput(ctx context.Context) pulumix.Output[*Tensorboard] {
-	return pulumix.Output[*Tensorboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.

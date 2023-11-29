@@ -81,12 +81,6 @@ func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToBuildOptionsDefaultLogsBu
 	}).(BuildOptionsDefaultLogsBucketBehaviorPtrOutput)
 }
 
-func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[BuildOptionsDefaultLogsBucketBehavior] {
-	return pulumix.Output[BuildOptionsDefaultLogsBucketBehavior]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o BuildOptionsDefaultLogsBucketBehaviorPtrOutput) ToBuildOptionsDefaultLog
 
 func (o BuildOptionsDefaultLogsBucketBehaviorPtrOutput) ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(ctx context.Context) BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
 	return o
-}
-
-func (o BuildOptionsDefaultLogsBucketBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsDefaultLogsBucketBehavior] {
-	return pulumix.Output[*BuildOptionsDefaultLogsBucketBehavior]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuildOptionsDefaultLogsBucketBehaviorPtrOutput) Elem() BuildOptionsDefaultLogsBucketBehaviorOutput {
@@ -268,12 +256,6 @@ func (o BuildOptionsLogStreamingOptionOutput) ToBuildOptionsLogStreamingOptionPt
 	}).(BuildOptionsLogStreamingOptionPtrOutput)
 }
 
-func (o BuildOptionsLogStreamingOptionOutput) ToOutput(ctx context.Context) pulumix.Output[BuildOptionsLogStreamingOption] {
-	return pulumix.Output[BuildOptionsLogStreamingOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BuildOptionsLogStreamingOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -307,12 +289,6 @@ func (o BuildOptionsLogStreamingOptionPtrOutput) ToBuildOptionsLogStreamingOptio
 
 func (o BuildOptionsLogStreamingOptionPtrOutput) ToBuildOptionsLogStreamingOptionPtrOutputWithContext(ctx context.Context) BuildOptionsLogStreamingOptionPtrOutput {
 	return o
-}
-
-func (o BuildOptionsLogStreamingOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsLogStreamingOption] {
-	return pulumix.Output[*BuildOptionsLogStreamingOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuildOptionsLogStreamingOptionPtrOutput) Elem() BuildOptionsLogStreamingOptionOutput {
@@ -461,12 +437,6 @@ func (o BuildOptionsLoggingOutput) ToBuildOptionsLoggingPtrOutputWithContext(ctx
 	}).(BuildOptionsLoggingPtrOutput)
 }
 
-func (o BuildOptionsLoggingOutput) ToOutput(ctx context.Context) pulumix.Output[BuildOptionsLogging] {
-	return pulumix.Output[BuildOptionsLogging]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BuildOptionsLoggingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -500,12 +470,6 @@ func (o BuildOptionsLoggingPtrOutput) ToBuildOptionsLoggingPtrOutput() BuildOpti
 
 func (o BuildOptionsLoggingPtrOutput) ToBuildOptionsLoggingPtrOutputWithContext(ctx context.Context) BuildOptionsLoggingPtrOutput {
 	return o
-}
-
-func (o BuildOptionsLoggingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsLogging] {
-	return pulumix.Output[*BuildOptionsLogging]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuildOptionsLoggingPtrOutput) Elem() BuildOptionsLoggingOutput {
@@ -654,12 +618,6 @@ func (o BuildOptionsMachineTypeOutput) ToBuildOptionsMachineTypePtrOutputWithCon
 	}).(BuildOptionsMachineTypePtrOutput)
 }
 
-func (o BuildOptionsMachineTypeOutput) ToOutput(ctx context.Context) pulumix.Output[BuildOptionsMachineType] {
-	return pulumix.Output[BuildOptionsMachineType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BuildOptionsMachineTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -693,12 +651,6 @@ func (o BuildOptionsMachineTypePtrOutput) ToBuildOptionsMachineTypePtrOutput() B
 
 func (o BuildOptionsMachineTypePtrOutput) ToBuildOptionsMachineTypePtrOutputWithContext(ctx context.Context) BuildOptionsMachineTypePtrOutput {
 	return o
-}
-
-func (o BuildOptionsMachineTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsMachineType] {
-	return pulumix.Output[*BuildOptionsMachineType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuildOptionsMachineTypePtrOutput) Elem() BuildOptionsMachineTypeOutput {
@@ -839,12 +791,6 @@ func (o BuildOptionsRequestedVerifyOptionOutput) ToBuildOptionsRequestedVerifyOp
 	}).(BuildOptionsRequestedVerifyOptionPtrOutput)
 }
 
-func (o BuildOptionsRequestedVerifyOptionOutput) ToOutput(ctx context.Context) pulumix.Output[BuildOptionsRequestedVerifyOption] {
-	return pulumix.Output[BuildOptionsRequestedVerifyOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BuildOptionsRequestedVerifyOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -878,12 +824,6 @@ func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToBuildOptionsRequestedVerif
 
 func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(ctx context.Context) BuildOptionsRequestedVerifyOptionPtrOutput {
 	return o
-}
-
-func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsRequestedVerifyOption] {
-	return pulumix.Output[*BuildOptionsRequestedVerifyOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuildOptionsRequestedVerifyOptionPtrOutput) Elem() BuildOptionsRequestedVerifyOptionOutput {
@@ -1027,12 +967,6 @@ func (o BuildOptionsSourceProvenanceHashItemOutput) ToBuildOptionsSourceProvenan
 	}).(BuildOptionsSourceProvenanceHashItemPtrOutput)
 }
 
-func (o BuildOptionsSourceProvenanceHashItemOutput) ToOutput(ctx context.Context) pulumix.Output[BuildOptionsSourceProvenanceHashItem] {
-	return pulumix.Output[BuildOptionsSourceProvenanceHashItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BuildOptionsSourceProvenanceHashItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1066,12 +1000,6 @@ func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToBuildOptionsSourceProve
 
 func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(ctx context.Context) BuildOptionsSourceProvenanceHashItemPtrOutput {
 	return o
-}
-
-func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsSourceProvenanceHashItem] {
-	return pulumix.Output[*BuildOptionsSourceProvenanceHashItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuildOptionsSourceProvenanceHashItemPtrOutput) Elem() BuildOptionsSourceProvenanceHashItemOutput {
@@ -1167,12 +1095,6 @@ func (i BuildOptionsSourceProvenanceHashItemArray) ToBuildOptionsSourceProvenanc
 	return pulumi.ToOutputWithContext(ctx, i).(BuildOptionsSourceProvenanceHashItemArrayOutput)
 }
 
-func (i BuildOptionsSourceProvenanceHashItemArray) ToOutput(ctx context.Context) pulumix.Output[[]BuildOptionsSourceProvenanceHashItem] {
-	return pulumix.Output[[]BuildOptionsSourceProvenanceHashItem]{
-		OutputState: i.ToBuildOptionsSourceProvenanceHashItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BuildOptionsSourceProvenanceHashItemArrayOutput struct{ *pulumi.OutputState }
 
 func (BuildOptionsSourceProvenanceHashItemArrayOutput) ElementType() reflect.Type {
@@ -1185,12 +1107,6 @@ func (o BuildOptionsSourceProvenanceHashItemArrayOutput) ToBuildOptionsSourcePro
 
 func (o BuildOptionsSourceProvenanceHashItemArrayOutput) ToBuildOptionsSourceProvenanceHashItemArrayOutputWithContext(ctx context.Context) BuildOptionsSourceProvenanceHashItemArrayOutput {
 	return o
-}
-
-func (o BuildOptionsSourceProvenanceHashItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BuildOptionsSourceProvenanceHashItem] {
-	return pulumix.Output[[]BuildOptionsSourceProvenanceHashItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuildOptionsSourceProvenanceHashItemArrayOutput) Index(i pulumi.IntInput) BuildOptionsSourceProvenanceHashItemOutput {
@@ -1269,12 +1185,6 @@ func (o BuildOptionsSubstitutionOptionOutput) ToBuildOptionsSubstitutionOptionPt
 	}).(BuildOptionsSubstitutionOptionPtrOutput)
 }
 
-func (o BuildOptionsSubstitutionOptionOutput) ToOutput(ctx context.Context) pulumix.Output[BuildOptionsSubstitutionOption] {
-	return pulumix.Output[BuildOptionsSubstitutionOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BuildOptionsSubstitutionOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1308,12 +1218,6 @@ func (o BuildOptionsSubstitutionOptionPtrOutput) ToBuildOptionsSubstitutionOptio
 
 func (o BuildOptionsSubstitutionOptionPtrOutput) ToBuildOptionsSubstitutionOptionPtrOutputWithContext(ctx context.Context) BuildOptionsSubstitutionOptionPtrOutput {
 	return o
-}
-
-func (o BuildOptionsSubstitutionOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsSubstitutionOption] {
-	return pulumix.Output[*BuildOptionsSubstitutionOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuildOptionsSubstitutionOptionPtrOutput) Elem() BuildOptionsSubstitutionOptionOutput {
@@ -1460,12 +1364,6 @@ func (o GitFileSourceRepoTypeOutput) ToGitFileSourceRepoTypePtrOutputWithContext
 	}).(GitFileSourceRepoTypePtrOutput)
 }
 
-func (o GitFileSourceRepoTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GitFileSourceRepoType] {
-	return pulumix.Output[GitFileSourceRepoType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GitFileSourceRepoTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1499,12 +1397,6 @@ func (o GitFileSourceRepoTypePtrOutput) ToGitFileSourceRepoTypePtrOutput() GitFi
 
 func (o GitFileSourceRepoTypePtrOutput) ToGitFileSourceRepoTypePtrOutputWithContext(ctx context.Context) GitFileSourceRepoTypePtrOutput {
 	return o
-}
-
-func (o GitFileSourceRepoTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitFileSourceRepoType] {
-	return pulumix.Output[*GitFileSourceRepoType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitFileSourceRepoTypePtrOutput) Elem() GitFileSourceRepoTypeOutput {
@@ -1651,12 +1543,6 @@ func (o GitRepoSourceRepoTypeOutput) ToGitRepoSourceRepoTypePtrOutputWithContext
 	}).(GitRepoSourceRepoTypePtrOutput)
 }
 
-func (o GitRepoSourceRepoTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GitRepoSourceRepoType] {
-	return pulumix.Output[GitRepoSourceRepoType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GitRepoSourceRepoTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1690,12 +1576,6 @@ func (o GitRepoSourceRepoTypePtrOutput) ToGitRepoSourceRepoTypePtrOutput() GitRe
 
 func (o GitRepoSourceRepoTypePtrOutput) ToGitRepoSourceRepoTypePtrOutputWithContext(ctx context.Context) GitRepoSourceRepoTypePtrOutput {
 	return o
-}
-
-func (o GitRepoSourceRepoTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitRepoSourceRepoType] {
-	return pulumix.Output[*GitRepoSourceRepoType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitRepoSourceRepoTypePtrOutput) Elem() GitRepoSourceRepoTypeOutput {
@@ -1838,12 +1718,6 @@ func (o NetworkConfigEgressOptionOutput) ToNetworkConfigEgressOptionPtrOutputWit
 	}).(NetworkConfigEgressOptionPtrOutput)
 }
 
-func (o NetworkConfigEgressOptionOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigEgressOption] {
-	return pulumix.Output[NetworkConfigEgressOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkConfigEgressOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1877,12 +1751,6 @@ func (o NetworkConfigEgressOptionPtrOutput) ToNetworkConfigEgressOptionPtrOutput
 
 func (o NetworkConfigEgressOptionPtrOutput) ToNetworkConfigEgressOptionPtrOutputWithContext(ctx context.Context) NetworkConfigEgressOptionPtrOutput {
 	return o
-}
-
-func (o NetworkConfigEgressOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigEgressOption] {
-	return pulumix.Output[*NetworkConfigEgressOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigEgressOptionPtrOutput) Elem() NetworkConfigEgressOptionOutput {
@@ -2029,12 +1897,6 @@ func (o PubsubConfigStateOutput) ToPubsubConfigStatePtrOutputWithContext(ctx con
 	}).(PubsubConfigStatePtrOutput)
 }
 
-func (o PubsubConfigStateOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubConfigState] {
-	return pulumix.Output[PubsubConfigState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PubsubConfigStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2068,12 +1930,6 @@ func (o PubsubConfigStatePtrOutput) ToPubsubConfigStatePtrOutput() PubsubConfigS
 
 func (o PubsubConfigStatePtrOutput) ToPubsubConfigStatePtrOutputWithContext(ctx context.Context) PubsubConfigStatePtrOutput {
 	return o
-}
-
-func (o PubsubConfigStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PubsubConfigState] {
-	return pulumix.Output[*PubsubConfigState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PubsubConfigStatePtrOutput) Elem() PubsubConfigStateOutput {
@@ -2216,12 +2072,6 @@ func (o PullRequestFilterCommentControlOutput) ToPullRequestFilterCommentControl
 	}).(PullRequestFilterCommentControlPtrOutput)
 }
 
-func (o PullRequestFilterCommentControlOutput) ToOutput(ctx context.Context) pulumix.Output[PullRequestFilterCommentControl] {
-	return pulumix.Output[PullRequestFilterCommentControl]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PullRequestFilterCommentControlOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2255,12 +2105,6 @@ func (o PullRequestFilterCommentControlPtrOutput) ToPullRequestFilterCommentCont
 
 func (o PullRequestFilterCommentControlPtrOutput) ToPullRequestFilterCommentControlPtrOutputWithContext(ctx context.Context) PullRequestFilterCommentControlPtrOutput {
 	return o
-}
-
-func (o PullRequestFilterCommentControlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PullRequestFilterCommentControl] {
-	return pulumix.Output[*PullRequestFilterCommentControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PullRequestFilterCommentControlPtrOutput) Elem() PullRequestFilterCommentControlOutput {
@@ -2403,12 +2247,6 @@ func (o StorageSourceSourceFetcherOutput) ToStorageSourceSourceFetcherPtrOutputW
 	}).(StorageSourceSourceFetcherPtrOutput)
 }
 
-func (o StorageSourceSourceFetcherOutput) ToOutput(ctx context.Context) pulumix.Output[StorageSourceSourceFetcher] {
-	return pulumix.Output[StorageSourceSourceFetcher]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StorageSourceSourceFetcherOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2442,12 +2280,6 @@ func (o StorageSourceSourceFetcherPtrOutput) ToStorageSourceSourceFetcherPtrOutp
 
 func (o StorageSourceSourceFetcherPtrOutput) ToStorageSourceSourceFetcherPtrOutputWithContext(ctx context.Context) StorageSourceSourceFetcherPtrOutput {
 	return o
-}
-
-func (o StorageSourceSourceFetcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageSourceSourceFetcher] {
-	return pulumix.Output[*StorageSourceSourceFetcher]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageSourceSourceFetcherPtrOutput) Elem() StorageSourceSourceFetcherOutput {
@@ -2594,12 +2426,6 @@ func (o TriggerEventTypeOutput) ToTriggerEventTypePtrOutputWithContext(ctx conte
 	}).(TriggerEventTypePtrOutput)
 }
 
-func (o TriggerEventTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerEventType] {
-	return pulumix.Output[TriggerEventType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TriggerEventTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2633,12 +2459,6 @@ func (o TriggerEventTypePtrOutput) ToTriggerEventTypePtrOutput() TriggerEventTyp
 
 func (o TriggerEventTypePtrOutput) ToTriggerEventTypePtrOutputWithContext(ctx context.Context) TriggerEventTypePtrOutput {
 	return o
-}
-
-func (o TriggerEventTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerEventType] {
-	return pulumix.Output[*TriggerEventType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TriggerEventTypePtrOutput) Elem() TriggerEventTypeOutput {
@@ -2779,12 +2599,6 @@ func (o TriggerIncludeBuildLogsOutput) ToTriggerIncludeBuildLogsPtrOutputWithCon
 	}).(TriggerIncludeBuildLogsPtrOutput)
 }
 
-func (o TriggerIncludeBuildLogsOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerIncludeBuildLogs] {
-	return pulumix.Output[TriggerIncludeBuildLogs]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TriggerIncludeBuildLogsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2818,12 +2632,6 @@ func (o TriggerIncludeBuildLogsPtrOutput) ToTriggerIncludeBuildLogsPtrOutput() T
 
 func (o TriggerIncludeBuildLogsPtrOutput) ToTriggerIncludeBuildLogsPtrOutputWithContext(ctx context.Context) TriggerIncludeBuildLogsPtrOutput {
 	return o
-}
-
-func (o TriggerIncludeBuildLogsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerIncludeBuildLogs] {
-	return pulumix.Output[*TriggerIncludeBuildLogs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TriggerIncludeBuildLogsPtrOutput) Elem() TriggerIncludeBuildLogsOutput {
@@ -2966,12 +2774,6 @@ func (o WebhookConfigStateOutput) ToWebhookConfigStatePtrOutputWithContext(ctx c
 	}).(WebhookConfigStatePtrOutput)
 }
 
-func (o WebhookConfigStateOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookConfigState] {
-	return pulumix.Output[WebhookConfigState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WebhookConfigStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3005,12 +2807,6 @@ func (o WebhookConfigStatePtrOutput) ToWebhookConfigStatePtrOutput() WebhookConf
 
 func (o WebhookConfigStatePtrOutput) ToWebhookConfigStatePtrOutputWithContext(ctx context.Context) WebhookConfigStatePtrOutput {
 	return o
-}
-
-func (o WebhookConfigStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebhookConfigState] {
-	return pulumix.Output[*WebhookConfigState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookConfigStatePtrOutput) Elem() WebhookConfigStateOutput {

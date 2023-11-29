@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a storage pool in the specified project using the data in the request.
@@ -174,12 +173,6 @@ func (i *StoragePool) ToStoragePoolOutputWithContext(ctx context.Context) Storag
 	return pulumi.ToOutputWithContext(ctx, i).(StoragePoolOutput)
 }
 
-func (i *StoragePool) ToOutput(ctx context.Context) pulumix.Output[*StoragePool] {
-	return pulumix.Output[*StoragePool]{
-		OutputState: i.ToStoragePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StoragePoolOutput struct{ *pulumi.OutputState }
 
 func (StoragePoolOutput) ElementType() reflect.Type {
@@ -192,12 +185,6 @@ func (o StoragePoolOutput) ToStoragePoolOutput() StoragePoolOutput {
 
 func (o StoragePoolOutput) ToStoragePoolOutputWithContext(ctx context.Context) StoragePoolOutput {
 	return o
-}
-
-func (o StoragePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*StoragePool] {
-	return pulumix.Output[*StoragePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Provisioning type of the byte capacity of the pool.

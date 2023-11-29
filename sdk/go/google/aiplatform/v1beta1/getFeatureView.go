@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single FeatureView.
@@ -87,12 +86,6 @@ func (o LookupFeatureViewResultOutput) ToLookupFeatureViewResultOutput() LookupF
 
 func (o LookupFeatureViewResultOutput) ToLookupFeatureViewResultOutputWithContext(ctx context.Context) LookupFeatureViewResultOutput {
 	return o
-}
-
-func (o LookupFeatureViewResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFeatureViewResult] {
-	return pulumix.Output[LookupFeatureViewResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.

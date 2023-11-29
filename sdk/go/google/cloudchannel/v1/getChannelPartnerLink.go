@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return value: The ChannelPartnerLink resource.
@@ -83,12 +82,6 @@ func (o LookupChannelPartnerLinkResultOutput) ToLookupChannelPartnerLinkResultOu
 
 func (o LookupChannelPartnerLinkResultOutput) ToLookupChannelPartnerLinkResultOutputWithContext(ctx context.Context) LookupChannelPartnerLinkResultOutput {
 	return o
-}
-
-func (o LookupChannelPartnerLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupChannelPartnerLinkResult] {
-	return pulumix.Output[LookupChannelPartnerLinkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Identity info of the channel partner (IR).

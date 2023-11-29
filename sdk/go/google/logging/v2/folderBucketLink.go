@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read the logs stored in the log bucket. A log bucket may currently only contain one link.
@@ -142,12 +141,6 @@ func (i *FolderBucketLink) ToFolderBucketLinkOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketLinkOutput)
 }
 
-func (i *FolderBucketLink) ToOutput(ctx context.Context) pulumix.Output[*FolderBucketLink] {
-	return pulumix.Output[*FolderBucketLink]{
-		OutputState: i.ToFolderBucketLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderBucketLinkOutput struct{ *pulumi.OutputState }
 
 func (FolderBucketLinkOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o FolderBucketLinkOutput) ToFolderBucketLinkOutput() FolderBucketLinkOutpu
 
 func (o FolderBucketLinkOutput) ToFolderBucketLinkOutputWithContext(ctx context.Context) FolderBucketLinkOutput {
 	return o
-}
-
-func (o FolderBucketLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderBucketLink] {
-	return pulumix.Output[*FolderBucketLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.

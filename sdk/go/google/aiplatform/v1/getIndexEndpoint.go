@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an IndexEndpoint.
@@ -97,12 +96,6 @@ func (o LookupIndexEndpointResultOutput) ToLookupIndexEndpointResultOutput() Loo
 
 func (o LookupIndexEndpointResultOutput) ToLookupIndexEndpointResultOutputWithContext(ctx context.Context) LookupIndexEndpointResultOutput {
 	return o
-}
-
-func (o LookupIndexEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIndexEndpointResult] {
-	return pulumix.Output[LookupIndexEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this IndexEndpoint was created.

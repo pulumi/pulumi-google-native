@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ActorArgs) ToActorOutputWithContext(ctx context.Context) ActorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActorOutput)
 }
 
-func (i ActorArgs) ToOutput(ctx context.Context) pulumix.Output[Actor] {
-	return pulumix.Output[Actor]{
-		OutputState: i.ToActorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActorArgs) ToActorPtrOutput() ActorPtrOutput {
 	return i.ToActorPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *actorPtrType) ToActorPtrOutputWithContext(ctx context.Context) ActorPtr
 	return pulumi.ToOutputWithContext(ctx, i).(ActorPtrOutput)
 }
 
-func (i *actorPtrType) ToOutput(ctx context.Context) pulumix.Output[*Actor] {
-	return pulumix.Output[*Actor]{
-		OutputState: i.ToActorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An object containing information about the effective user and authenticated principal responsible for an action.
 type ActorOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o ActorOutput) ToActorPtrOutputWithContext(ctx context.Context) ActorPtrOu
 	}).(ActorPtrOutput)
 }
 
-func (o ActorOutput) ToOutput(ctx context.Context) pulumix.Output[Actor] {
-	return pulumix.Output[Actor]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent.
 func (o ActorOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Actor) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o ActorPtrOutput) ToActorPtrOutput() ActorPtrOutput {
 
 func (o ActorPtrOutput) ToActorPtrOutputWithContext(ctx context.Context) ActorPtrOutput {
 	return o
-}
-
-func (o ActorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Actor] {
-	return pulumix.Output[*Actor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActorPtrOutput) Elem() ActorOutput {
@@ -222,12 +197,6 @@ func (o ActorResponseOutput) ToActorResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ActorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActorResponse] {
-	return pulumix.Output[ActorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent.
 func (o ActorResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ActorResponse) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -282,12 +251,6 @@ func (i CaseClassificationArgs) ToCaseClassificationOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CaseClassificationOutput)
 }
 
-func (i CaseClassificationArgs) ToOutput(ctx context.Context) pulumix.Output[CaseClassification] {
-	return pulumix.Output[CaseClassification]{
-		OutputState: i.ToCaseClassificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CaseClassificationArgs) ToCaseClassificationPtrOutput() CaseClassificationPtrOutput {
 	return i.ToCaseClassificationPtrOutputWithContext(context.Background())
 }
@@ -329,12 +292,6 @@ func (i *caseClassificationPtrType) ToCaseClassificationPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(CaseClassificationPtrOutput)
 }
 
-func (i *caseClassificationPtrType) ToOutput(ctx context.Context) pulumix.Output[*CaseClassification] {
-	return pulumix.Output[*CaseClassification]{
-		OutputState: i.ToCaseClassificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A classification object with a product type and value.
 type CaseClassificationOutput struct{ *pulumi.OutputState }
 
@@ -360,12 +317,6 @@ func (o CaseClassificationOutput) ToCaseClassificationPtrOutputWithContext(ctx c
 	}).(CaseClassificationPtrOutput)
 }
 
-func (o CaseClassificationOutput) ToOutput(ctx context.Context) pulumix.Output[CaseClassification] {
-	return pulumix.Output[CaseClassification]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
 func (o CaseClassificationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaseClassification) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -388,12 +339,6 @@ func (o CaseClassificationPtrOutput) ToCaseClassificationPtrOutput() CaseClassif
 
 func (o CaseClassificationPtrOutput) ToCaseClassificationPtrOutputWithContext(ctx context.Context) CaseClassificationPtrOutput {
 	return o
-}
-
-func (o CaseClassificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CaseClassification] {
-	return pulumix.Output[*CaseClassification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CaseClassificationPtrOutput) Elem() CaseClassificationOutput {
@@ -445,12 +390,6 @@ func (o CaseClassificationResponseOutput) ToCaseClassificationResponseOutput() C
 
 func (o CaseClassificationResponseOutput) ToCaseClassificationResponseOutputWithContext(ctx context.Context) CaseClassificationResponseOutput {
 	return o
-}
-
-func (o CaseClassificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CaseClassificationResponse] {
-	return pulumix.Output[CaseClassificationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.

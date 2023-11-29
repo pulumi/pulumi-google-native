@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a specific Context.
@@ -91,12 +90,6 @@ func (o LookupContextResultOutput) ToLookupContextResultOutput() LookupContextRe
 
 func (o LookupContextResultOutput) ToLookupContextResultOutputWithContext(ctx context.Context) LookupContextResultOutput {
 	return o
-}
-
-func (o LookupContextResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContextResult] {
-	return pulumix.Output[LookupContextResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this Context was created.

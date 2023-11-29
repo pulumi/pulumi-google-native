@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified VPN gateway.
@@ -89,12 +88,6 @@ func (o LookupVpnGatewayResultOutput) ToLookupVpnGatewayResultOutput() LookupVpn
 
 func (o LookupVpnGatewayResultOutput) ToLookupVpnGatewayResultOutputWithContext(ctx context.Context) LookupVpnGatewayResultOutput {
 	return o
-}
-
-func (o LookupVpnGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVpnGatewayResult] {
-	return pulumix.Output[LookupVpnGatewayResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

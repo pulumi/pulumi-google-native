@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Release in a given project and location.
@@ -206,12 +205,6 @@ func (i *Release) ToReleaseOutputWithContext(ctx context.Context) ReleaseOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ReleaseOutput)
 }
 
-func (i *Release) ToOutput(ctx context.Context) pulumix.Output[*Release] {
-	return pulumix.Output[*Release]{
-		OutputState: i.ToReleaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReleaseOutput struct{ *pulumi.OutputState }
 
 func (ReleaseOutput) ElementType() reflect.Type {
@@ -224,12 +217,6 @@ func (o ReleaseOutput) ToReleaseOutput() ReleaseOutput {
 
 func (o ReleaseOutput) ToReleaseOutputWithContext(ctx context.Context) ReleaseOutput {
 	return o
-}
-
-func (o ReleaseOutput) ToOutput(ctx context.Context) pulumix.Output[*Release] {
-	return pulumix.Output[*Release]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether this is an abandoned release.

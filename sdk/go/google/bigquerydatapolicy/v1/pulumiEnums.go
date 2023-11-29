@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -282,12 +270,6 @@ func (o DataMaskingPolicyPredefinedExpressionOutput) ToDataMaskingPolicyPredefin
 	}).(DataMaskingPolicyPredefinedExpressionPtrOutput)
 }
 
-func (o DataMaskingPolicyPredefinedExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[DataMaskingPolicyPredefinedExpression] {
-	return pulumix.Output[DataMaskingPolicyPredefinedExpression]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataMaskingPolicyPredefinedExpressionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -321,12 +303,6 @@ func (o DataMaskingPolicyPredefinedExpressionPtrOutput) ToDataMaskingPolicyPrede
 
 func (o DataMaskingPolicyPredefinedExpressionPtrOutput) ToDataMaskingPolicyPredefinedExpressionPtrOutputWithContext(ctx context.Context) DataMaskingPolicyPredefinedExpressionPtrOutput {
 	return o
-}
-
-func (o DataMaskingPolicyPredefinedExpressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataMaskingPolicyPredefinedExpression] {
-	return pulumix.Output[*DataMaskingPolicyPredefinedExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataMaskingPolicyPredefinedExpressionPtrOutput) Elem() DataMaskingPolicyPredefinedExpressionOutput {
@@ -469,12 +445,6 @@ func (o DataPolicyDataPolicyTypeOutput) ToDataPolicyDataPolicyTypePtrOutputWithC
 	}).(DataPolicyDataPolicyTypePtrOutput)
 }
 
-func (o DataPolicyDataPolicyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DataPolicyDataPolicyType] {
-	return pulumix.Output[DataPolicyDataPolicyType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataPolicyDataPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -508,12 +478,6 @@ func (o DataPolicyDataPolicyTypePtrOutput) ToDataPolicyDataPolicyTypePtrOutput()
 
 func (o DataPolicyDataPolicyTypePtrOutput) ToDataPolicyDataPolicyTypePtrOutputWithContext(ctx context.Context) DataPolicyDataPolicyTypePtrOutput {
 	return o
-}
-
-func (o DataPolicyDataPolicyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyDataPolicyType] {
-	return pulumix.Output[*DataPolicyDataPolicyType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPolicyDataPolicyTypePtrOutput) Elem() DataPolicyDataPolicyTypeOutput {

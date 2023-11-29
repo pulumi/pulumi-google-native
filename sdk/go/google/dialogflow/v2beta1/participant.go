@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new participant in a conversation.
@@ -132,12 +131,6 @@ func (i *Participant) ToParticipantOutputWithContext(ctx context.Context) Partic
 	return pulumi.ToOutputWithContext(ctx, i).(ParticipantOutput)
 }
 
-func (i *Participant) ToOutput(ctx context.Context) pulumix.Output[*Participant] {
-	return pulumix.Output[*Participant]{
-		OutputState: i.ToParticipantOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ParticipantOutput struct{ *pulumi.OutputState }
 
 func (ParticipantOutput) ElementType() reflect.Type {
@@ -150,12 +143,6 @@ func (o ParticipantOutput) ToParticipantOutput() ParticipantOutput {
 
 func (o ParticipantOutput) ToParticipantOutputWithContext(ctx context.Context) ParticipantOutput {
 	return o
-}
-
-func (o ParticipantOutput) ToOutput(ctx context.Context) pulumix.Output[*Participant] {
-	return pulumix.Output[*Participant]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParticipantOutput) ConversationId() pulumi.StringOutput {

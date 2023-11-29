@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Initiates a Clone of a specific migrating VM.
@@ -158,12 +157,6 @@ func (i *CloneJob) ToCloneJobOutputWithContext(ctx context.Context) CloneJobOutp
 	return pulumi.ToOutputWithContext(ctx, i).(CloneJobOutput)
 }
 
-func (i *CloneJob) ToOutput(ctx context.Context) pulumix.Output[*CloneJob] {
-	return pulumix.Output[*CloneJob]{
-		OutputState: i.ToCloneJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CloneJobOutput struct{ *pulumi.OutputState }
 
 func (CloneJobOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o CloneJobOutput) ToCloneJobOutput() CloneJobOutput {
 
 func (o CloneJobOutput) ToCloneJobOutputWithContext(ctx context.Context) CloneJobOutput {
 	return o
-}
-
-func (o CloneJobOutput) ToOutput(ctx context.Context) pulumix.Output[*CloneJob] {
-	return pulumix.Output[*CloneJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The clone job identifier.

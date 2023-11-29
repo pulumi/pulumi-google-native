@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the details for an AppGroup app.
@@ -91,12 +90,6 @@ func (o LookupAppGroupAppResultOutput) ToLookupAppGroupAppResultOutput() LookupA
 
 func (o LookupAppGroupAppResultOutput) ToLookupAppGroupAppResultOutputWithContext(ctx context.Context) LookupAppGroupAppResultOutput {
 	return o
-}
-
-func (o LookupAppGroupAppResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppGroupAppResult] {
-	return pulumix.Output[LookupAppGroupAppResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of API products associated with the AppGroup app.

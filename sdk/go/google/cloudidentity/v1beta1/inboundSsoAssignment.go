@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an InboundSsoAssignment for users and devices in a `Customer` under a given `Group` or `OrgUnit`.
@@ -132,12 +131,6 @@ func (i *InboundSsoAssignment) ToInboundSsoAssignmentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSsoAssignmentOutput)
 }
 
-func (i *InboundSsoAssignment) ToOutput(ctx context.Context) pulumix.Output[*InboundSsoAssignment] {
-	return pulumix.Output[*InboundSsoAssignment]{
-		OutputState: i.ToInboundSsoAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InboundSsoAssignmentOutput struct{ *pulumi.OutputState }
 
 func (InboundSsoAssignmentOutput) ElementType() reflect.Type {
@@ -150,12 +143,6 @@ func (o InboundSsoAssignmentOutput) ToInboundSsoAssignmentOutput() InboundSsoAss
 
 func (o InboundSsoAssignmentOutput) ToInboundSsoAssignmentOutputWithContext(ctx context.Context) InboundSsoAssignmentOutput {
 	return o
-}
-
-func (o InboundSsoAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*InboundSsoAssignment] {
-	return pulumix.Output[*InboundSsoAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The customer. For example: `customers/C0123abc`.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the default object ACL entry for the specified entity on the specified bucket.
@@ -102,12 +101,6 @@ func (o LookupDefaultObjectAccessControlResultOutput) ToLookupDefaultObjectAcces
 
 func (o LookupDefaultObjectAccessControlResultOutput) ToLookupDefaultObjectAccessControlResultOutputWithContext(ctx context.Context) LookupDefaultObjectAccessControlResultOutput {
 	return o
-}
-
-func (o LookupDefaultObjectAccessControlResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDefaultObjectAccessControlResult] {
-	return pulumix.Output[LookupDefaultObjectAccessControlResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the bucket.

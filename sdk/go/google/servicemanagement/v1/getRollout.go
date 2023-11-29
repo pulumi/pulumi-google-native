@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a service configuration rollout.
@@ -79,12 +78,6 @@ func (o LookupRolloutResultOutput) ToLookupRolloutResultOutput() LookupRolloutRe
 
 func (o LookupRolloutResultOutput) ToLookupRolloutResultOutputWithContext(ctx context.Context) LookupRolloutResultOutput {
 	return o
-}
-
-func (o LookupRolloutResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRolloutResult] {
-	return pulumix.Output[LookupRolloutResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of the rollout. Readonly.

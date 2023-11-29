@@ -93,12 +93,6 @@ func (o InstanceConfigInstanceSizeOutput) ToInstanceConfigInstanceSizePtrOutputW
 	}).(InstanceConfigInstanceSizePtrOutput)
 }
 
-func (o InstanceConfigInstanceSizeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceConfigInstanceSize] {
-	return pulumix.Output[InstanceConfigInstanceSize]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceConfigInstanceSizeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -132,12 +126,6 @@ func (o InstanceConfigInstanceSizePtrOutput) ToInstanceConfigInstanceSizePtrOutp
 
 func (o InstanceConfigInstanceSizePtrOutput) ToInstanceConfigInstanceSizePtrOutputWithContext(ctx context.Context) InstanceConfigInstanceSizePtrOutput {
 	return o
-}
-
-func (o InstanceConfigInstanceSizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfigInstanceSize] {
-	return pulumix.Output[*InstanceConfigInstanceSize]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceConfigInstanceSizePtrOutput) Elem() InstanceConfigInstanceSizeOutput {

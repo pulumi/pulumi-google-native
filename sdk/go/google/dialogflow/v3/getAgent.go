@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified agent.
@@ -103,12 +102,6 @@ func (o LookupAgentResultOutput) ToLookupAgentResultOutput() LookupAgentResultOu
 
 func (o LookupAgentResultOutput) ToLookupAgentResultOutputWithContext(ctx context.Context) LookupAgentResultOutput {
 	return o
-}
-
-func (o LookupAgentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAgentResult] {
-	return pulumix.Output[LookupAgentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.

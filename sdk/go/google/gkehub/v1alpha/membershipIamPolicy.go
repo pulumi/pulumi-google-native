@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *MembershipIamPolicy) ToMembershipIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamPolicyOutput)
 }
 
-func (i *MembershipIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamPolicy] {
-	return pulumix.Output[*MembershipIamPolicy]{
-		OutputState: i.ToMembershipIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (MembershipIamPolicyOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o MembershipIamPolicyOutput) ToMembershipIamPolicyOutput() MembershipIamPo
 
 func (o MembershipIamPolicyOutput) ToMembershipIamPolicyOutputWithContext(ctx context.Context) MembershipIamPolicyOutput {
 	return o
-}
-
-func (o MembershipIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamPolicy] {
-	return pulumix.Output[*MembershipIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

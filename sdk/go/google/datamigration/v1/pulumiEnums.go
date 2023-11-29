@@ -83,12 +83,6 @@ func (o AlloyDbSettingsDatabaseVersionOutput) ToAlloyDbSettingsDatabaseVersionPt
 	}).(AlloyDbSettingsDatabaseVersionPtrOutput)
 }
 
-func (o AlloyDbSettingsDatabaseVersionOutput) ToOutput(ctx context.Context) pulumix.Output[AlloyDbSettingsDatabaseVersion] {
-	return pulumix.Output[AlloyDbSettingsDatabaseVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AlloyDbSettingsDatabaseVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o AlloyDbSettingsDatabaseVersionPtrOutput) ToAlloyDbSettingsDatabaseVersio
 
 func (o AlloyDbSettingsDatabaseVersionPtrOutput) ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) AlloyDbSettingsDatabaseVersionPtrOutput {
 	return o
-}
-
-func (o AlloyDbSettingsDatabaseVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlloyDbSettingsDatabaseVersion] {
-	return pulumix.Output[*AlloyDbSettingsDatabaseVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlloyDbSettingsDatabaseVersionPtrOutput) Elem() AlloyDbSettingsDatabaseVersionOutput {
@@ -272,12 +260,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -459,12 +435,6 @@ func (o CloudSqlSettingsActivationPolicyOutput) ToCloudSqlSettingsActivationPoli
 	}).(CloudSqlSettingsActivationPolicyPtrOutput)
 }
 
-func (o CloudSqlSettingsActivationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettingsActivationPolicy] {
-	return pulumix.Output[CloudSqlSettingsActivationPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CloudSqlSettingsActivationPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,12 +468,6 @@ func (o CloudSqlSettingsActivationPolicyPtrOutput) ToCloudSqlSettingsActivationP
 
 func (o CloudSqlSettingsActivationPolicyPtrOutput) ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyPtrOutput {
 	return o
-}
-
-func (o CloudSqlSettingsActivationPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsActivationPolicy] {
-	return pulumix.Output[*CloudSqlSettingsActivationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudSqlSettingsActivationPolicyPtrOutput) Elem() CloudSqlSettingsActivationPolicyOutput {
@@ -646,12 +610,6 @@ func (o CloudSqlSettingsAvailabilityTypeOutput) ToCloudSqlSettingsAvailabilityTy
 	}).(CloudSqlSettingsAvailabilityTypePtrOutput)
 }
 
-func (o CloudSqlSettingsAvailabilityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettingsAvailabilityType] {
-	return pulumix.Output[CloudSqlSettingsAvailabilityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CloudSqlSettingsAvailabilityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -685,12 +643,6 @@ func (o CloudSqlSettingsAvailabilityTypePtrOutput) ToCloudSqlSettingsAvailabilit
 
 func (o CloudSqlSettingsAvailabilityTypePtrOutput) ToCloudSqlSettingsAvailabilityTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsAvailabilityTypePtrOutput {
 	return o
-}
-
-func (o CloudSqlSettingsAvailabilityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsAvailabilityType] {
-	return pulumix.Output[*CloudSqlSettingsAvailabilityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudSqlSettingsAvailabilityTypePtrOutput) Elem() CloudSqlSettingsAvailabilityTypeOutput {
@@ -833,12 +785,6 @@ func (o CloudSqlSettingsDataDiskTypeOutput) ToCloudSqlSettingsDataDiskTypePtrOut
 	}).(CloudSqlSettingsDataDiskTypePtrOutput)
 }
 
-func (o CloudSqlSettingsDataDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettingsDataDiskType] {
-	return pulumix.Output[CloudSqlSettingsDataDiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CloudSqlSettingsDataDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -872,12 +818,6 @@ func (o CloudSqlSettingsDataDiskTypePtrOutput) ToCloudSqlSettingsDataDiskTypePtr
 
 func (o CloudSqlSettingsDataDiskTypePtrOutput) ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypePtrOutput {
 	return o
-}
-
-func (o CloudSqlSettingsDataDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDataDiskType] {
-	return pulumix.Output[*CloudSqlSettingsDataDiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudSqlSettingsDataDiskTypePtrOutput) Elem() CloudSqlSettingsDataDiskTypeOutput {
@@ -1054,12 +994,6 @@ func (o CloudSqlSettingsDatabaseVersionOutput) ToCloudSqlSettingsDatabaseVersion
 	}).(CloudSqlSettingsDatabaseVersionPtrOutput)
 }
 
-func (o CloudSqlSettingsDatabaseVersionOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettingsDatabaseVersion] {
-	return pulumix.Output[CloudSqlSettingsDatabaseVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CloudSqlSettingsDatabaseVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1093,12 +1027,6 @@ func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToCloudSqlSettingsDatabaseVers
 
 func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsDatabaseVersionPtrOutput {
 	return o
-}
-
-func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDatabaseVersion] {
-	return pulumix.Output[*CloudSqlSettingsDatabaseVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudSqlSettingsDatabaseVersionPtrOutput) Elem() CloudSqlSettingsDatabaseVersionOutput {
@@ -1241,12 +1169,6 @@ func (o CloudSqlSettingsEditionOutput) ToCloudSqlSettingsEditionPtrOutputWithCon
 	}).(CloudSqlSettingsEditionPtrOutput)
 }
 
-func (o CloudSqlSettingsEditionOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlSettingsEdition] {
-	return pulumix.Output[CloudSqlSettingsEdition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CloudSqlSettingsEditionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1280,12 +1202,6 @@ func (o CloudSqlSettingsEditionPtrOutput) ToCloudSqlSettingsEditionPtrOutput() C
 
 func (o CloudSqlSettingsEditionPtrOutput) ToCloudSqlSettingsEditionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsEditionPtrOutput {
 	return o
-}
-
-func (o CloudSqlSettingsEditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsEdition] {
-	return pulumix.Output[*CloudSqlSettingsEdition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudSqlSettingsEditionPtrOutput) Elem() CloudSqlSettingsEditionOutput {
@@ -1432,12 +1348,6 @@ func (o ConnectionProfileProviderOutput) ToConnectionProfileProviderPtrOutputWit
 	}).(ConnectionProfileProviderPtrOutput)
 }
 
-func (o ConnectionProfileProviderOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileProvider] {
-	return pulumix.Output[ConnectionProfileProvider]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionProfileProviderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1471,12 +1381,6 @@ func (o ConnectionProfileProviderPtrOutput) ToConnectionProfileProviderPtrOutput
 
 func (o ConnectionProfileProviderPtrOutput) ToConnectionProfileProviderPtrOutputWithContext(ctx context.Context) ConnectionProfileProviderPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileProviderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileProvider] {
-	return pulumix.Output[*ConnectionProfileProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileProviderPtrOutput) Elem() ConnectionProfileProviderOutput {
@@ -1629,12 +1533,6 @@ func (o ConnectionProfileStateEnumOutput) ToConnectionProfileStateEnumPtrOutputW
 	}).(ConnectionProfileStateEnumPtrOutput)
 }
 
-func (o ConnectionProfileStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileStateEnum] {
-	return pulumix.Output[ConnectionProfileStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionProfileStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1668,12 +1566,6 @@ func (o ConnectionProfileStateEnumPtrOutput) ToConnectionProfileStateEnumPtrOutp
 
 func (o ConnectionProfileStateEnumPtrOutput) ToConnectionProfileStateEnumPtrOutputWithContext(ctx context.Context) ConnectionProfileStateEnumPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileStateEnum] {
-	return pulumix.Output[*ConnectionProfileStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileStateEnumPtrOutput) Elem() ConnectionProfileStateEnumOutput {
@@ -1818,12 +1710,6 @@ func (o DatabaseEngineInfoEngineOutput) ToDatabaseEngineInfoEnginePtrOutputWithC
 	}).(DatabaseEngineInfoEnginePtrOutput)
 }
 
-func (o DatabaseEngineInfoEngineOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseEngineInfoEngine] {
-	return pulumix.Output[DatabaseEngineInfoEngine]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseEngineInfoEngineOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1857,12 +1743,6 @@ func (o DatabaseEngineInfoEnginePtrOutput) ToDatabaseEngineInfoEnginePtrOutput()
 
 func (o DatabaseEngineInfoEnginePtrOutput) ToDatabaseEngineInfoEnginePtrOutputWithContext(ctx context.Context) DatabaseEngineInfoEnginePtrOutput {
 	return o
-}
-
-func (o DatabaseEngineInfoEnginePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseEngineInfoEngine] {
-	return pulumix.Output[*DatabaseEngineInfoEngine]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseEngineInfoEnginePtrOutput) Elem() DatabaseEngineInfoEngineOutput {
@@ -2007,12 +1887,6 @@ func (o DatabaseTypeEngineOutput) ToDatabaseTypeEnginePtrOutputWithContext(ctx c
 	}).(DatabaseTypeEnginePtrOutput)
 }
 
-func (o DatabaseTypeEngineOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseTypeEngine] {
-	return pulumix.Output[DatabaseTypeEngine]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseTypeEngineOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2046,12 +1920,6 @@ func (o DatabaseTypeEnginePtrOutput) ToDatabaseTypeEnginePtrOutput() DatabaseTyp
 
 func (o DatabaseTypeEnginePtrOutput) ToDatabaseTypeEnginePtrOutputWithContext(ctx context.Context) DatabaseTypeEnginePtrOutput {
 	return o
-}
-
-func (o DatabaseTypeEnginePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTypeEngine] {
-	return pulumix.Output[*DatabaseTypeEngine]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseTypeEnginePtrOutput) Elem() DatabaseTypeEngineOutput {
@@ -2198,12 +2066,6 @@ func (o DatabaseTypeProviderOutput) ToDatabaseTypeProviderPtrOutputWithContext(c
 	}).(DatabaseTypeProviderPtrOutput)
 }
 
-func (o DatabaseTypeProviderOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseTypeProvider] {
-	return pulumix.Output[DatabaseTypeProvider]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseTypeProviderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2237,12 +2099,6 @@ func (o DatabaseTypeProviderPtrOutput) ToDatabaseTypeProviderPtrOutput() Databas
 
 func (o DatabaseTypeProviderPtrOutput) ToDatabaseTypeProviderPtrOutputWithContext(ctx context.Context) DatabaseTypeProviderPtrOutput {
 	return o
-}
-
-func (o DatabaseTypeProviderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTypeProvider] {
-	return pulumix.Output[*DatabaseTypeProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseTypeProviderPtrOutput) Elem() DatabaseTypeProviderOutput {
@@ -2389,12 +2245,6 @@ func (o DoubleComparisonFilterValueComparisonOutput) ToDoubleComparisonFilterVal
 	}).(DoubleComparisonFilterValueComparisonPtrOutput)
 }
 
-func (o DoubleComparisonFilterValueComparisonOutput) ToOutput(ctx context.Context) pulumix.Output[DoubleComparisonFilterValueComparison] {
-	return pulumix.Output[DoubleComparisonFilterValueComparison]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DoubleComparisonFilterValueComparisonOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2428,12 +2278,6 @@ func (o DoubleComparisonFilterValueComparisonPtrOutput) ToDoubleComparisonFilter
 
 func (o DoubleComparisonFilterValueComparisonPtrOutput) ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) DoubleComparisonFilterValueComparisonPtrOutput {
 	return o
-}
-
-func (o DoubleComparisonFilterValueComparisonPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DoubleComparisonFilterValueComparison] {
-	return pulumix.Output[*DoubleComparisonFilterValueComparison]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DoubleComparisonFilterValueComparisonPtrOutput) Elem() DoubleComparisonFilterValueComparisonOutput {
@@ -2580,12 +2424,6 @@ func (o IntComparisonFilterValueComparisonOutput) ToIntComparisonFilterValueComp
 	}).(IntComparisonFilterValueComparisonPtrOutput)
 }
 
-func (o IntComparisonFilterValueComparisonOutput) ToOutput(ctx context.Context) pulumix.Output[IntComparisonFilterValueComparison] {
-	return pulumix.Output[IntComparisonFilterValueComparison]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IntComparisonFilterValueComparisonOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2619,12 +2457,6 @@ func (o IntComparisonFilterValueComparisonPtrOutput) ToIntComparisonFilterValueC
 
 func (o IntComparisonFilterValueComparisonPtrOutput) ToIntComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) IntComparisonFilterValueComparisonPtrOutput {
 	return o
-}
-
-func (o IntComparisonFilterValueComparisonPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntComparisonFilterValueComparison] {
-	return pulumix.Output[*IntComparisonFilterValueComparison]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntComparisonFilterValueComparisonPtrOutput) Elem() IntComparisonFilterValueComparisonOutput {
@@ -2793,12 +2625,6 @@ func (o MappingRuleRuleScopeOutput) ToMappingRuleRuleScopePtrOutputWithContext(c
 	}).(MappingRuleRuleScopePtrOutput)
 }
 
-func (o MappingRuleRuleScopeOutput) ToOutput(ctx context.Context) pulumix.Output[MappingRuleRuleScope] {
-	return pulumix.Output[MappingRuleRuleScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MappingRuleRuleScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2832,12 +2658,6 @@ func (o MappingRuleRuleScopePtrOutput) ToMappingRuleRuleScopePtrOutput() Mapping
 
 func (o MappingRuleRuleScopePtrOutput) ToMappingRuleRuleScopePtrOutputWithContext(ctx context.Context) MappingRuleRuleScopePtrOutput {
 	return o
-}
-
-func (o MappingRuleRuleScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MappingRuleRuleScope] {
-	return pulumix.Output[*MappingRuleRuleScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MappingRuleRuleScopePtrOutput) Elem() MappingRuleRuleScopeOutput {
@@ -2982,12 +2802,6 @@ func (o MappingRuleStateEnumOutput) ToMappingRuleStateEnumPtrOutputWithContext(c
 	}).(MappingRuleStateEnumPtrOutput)
 }
 
-func (o MappingRuleStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[MappingRuleStateEnum] {
-	return pulumix.Output[MappingRuleStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MappingRuleStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3021,12 +2835,6 @@ func (o MappingRuleStateEnumPtrOutput) ToMappingRuleStateEnumPtrOutput() Mapping
 
 func (o MappingRuleStateEnumPtrOutput) ToMappingRuleStateEnumPtrOutputWithContext(ctx context.Context) MappingRuleStateEnumPtrOutput {
 	return o
-}
-
-func (o MappingRuleStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MappingRuleStateEnum] {
-	return pulumix.Output[*MappingRuleStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MappingRuleStateEnumPtrOutput) Elem() MappingRuleStateEnumOutput {
@@ -3195,12 +3003,6 @@ func (o MigrationJobStateEnumOutput) ToMigrationJobStateEnumPtrOutputWithContext
 	}).(MigrationJobStateEnumPtrOutput)
 }
 
-func (o MigrationJobStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationJobStateEnum] {
-	return pulumix.Output[MigrationJobStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MigrationJobStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3234,12 +3036,6 @@ func (o MigrationJobStateEnumPtrOutput) ToMigrationJobStateEnumPtrOutput() Migra
 
 func (o MigrationJobStateEnumPtrOutput) ToMigrationJobStateEnumPtrOutputWithContext(ctx context.Context) MigrationJobStateEnumPtrOutput {
 	return o
-}
-
-func (o MigrationJobStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationJobStateEnum] {
-	return pulumix.Output[*MigrationJobStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MigrationJobStateEnumPtrOutput) Elem() MigrationJobStateEnumOutput {
@@ -3382,12 +3178,6 @@ func (o MigrationJobTypeOutput) ToMigrationJobTypePtrOutputWithContext(ctx conte
 	}).(MigrationJobTypePtrOutput)
 }
 
-func (o MigrationJobTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationJobType] {
-	return pulumix.Output[MigrationJobType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MigrationJobTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3421,12 +3211,6 @@ func (o MigrationJobTypePtrOutput) ToMigrationJobTypePtrOutput() MigrationJobTyp
 
 func (o MigrationJobTypePtrOutput) ToMigrationJobTypePtrOutputWithContext(ctx context.Context) MigrationJobTypePtrOutput {
 	return o
-}
-
-func (o MigrationJobTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationJobType] {
-	return pulumix.Output[*MigrationJobType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MigrationJobTypePtrOutput) Elem() MigrationJobTypeOutput {
@@ -3573,12 +3357,6 @@ func (o MultiEntityRenameSourceNameTransformationOutput) ToMultiEntityRenameSour
 	}).(MultiEntityRenameSourceNameTransformationPtrOutput)
 }
 
-func (o MultiEntityRenameSourceNameTransformationOutput) ToOutput(ctx context.Context) pulumix.Output[MultiEntityRenameSourceNameTransformation] {
-	return pulumix.Output[MultiEntityRenameSourceNameTransformation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MultiEntityRenameSourceNameTransformationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3612,12 +3390,6 @@ func (o MultiEntityRenameSourceNameTransformationPtrOutput) ToMultiEntityRenameS
 
 func (o MultiEntityRenameSourceNameTransformationPtrOutput) ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(ctx context.Context) MultiEntityRenameSourceNameTransformationPtrOutput {
 	return o
-}
-
-func (o MultiEntityRenameSourceNameTransformationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiEntityRenameSourceNameTransformation] {
-	return pulumix.Output[*MultiEntityRenameSourceNameTransformation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MultiEntityRenameSourceNameTransformationPtrOutput) Elem() MultiEntityRenameSourceNameTransformationOutput {
@@ -3762,12 +3534,6 @@ func (o PerformanceConfigDumpParallelLevelOutput) ToPerformanceConfigDumpParalle
 	}).(PerformanceConfigDumpParallelLevelPtrOutput)
 }
 
-func (o PerformanceConfigDumpParallelLevelOutput) ToOutput(ctx context.Context) pulumix.Output[PerformanceConfigDumpParallelLevel] {
-	return pulumix.Output[PerformanceConfigDumpParallelLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PerformanceConfigDumpParallelLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3801,12 +3567,6 @@ func (o PerformanceConfigDumpParallelLevelPtrOutput) ToPerformanceConfigDumpPara
 
 func (o PerformanceConfigDumpParallelLevelPtrOutput) ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(ctx context.Context) PerformanceConfigDumpParallelLevelPtrOutput {
 	return o
-}
-
-func (o PerformanceConfigDumpParallelLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PerformanceConfigDumpParallelLevel] {
-	return pulumix.Output[*PerformanceConfigDumpParallelLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PerformanceConfigDumpParallelLevelPtrOutput) Elem() PerformanceConfigDumpParallelLevelOutput {
@@ -3951,12 +3711,6 @@ func (o SourceNumericFilterNumericFilterOptionOutput) ToSourceNumericFilterNumer
 	}).(SourceNumericFilterNumericFilterOptionPtrOutput)
 }
 
-func (o SourceNumericFilterNumericFilterOptionOutput) ToOutput(ctx context.Context) pulumix.Output[SourceNumericFilterNumericFilterOption] {
-	return pulumix.Output[SourceNumericFilterNumericFilterOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SourceNumericFilterNumericFilterOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3990,12 +3744,6 @@ func (o SourceNumericFilterNumericFilterOptionPtrOutput) ToSourceNumericFilterNu
 
 func (o SourceNumericFilterNumericFilterOptionPtrOutput) ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(ctx context.Context) SourceNumericFilterNumericFilterOptionPtrOutput {
 	return o
-}
-
-func (o SourceNumericFilterNumericFilterOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceNumericFilterNumericFilterOption] {
-	return pulumix.Output[*SourceNumericFilterNumericFilterOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceNumericFilterNumericFilterOptionPtrOutput) Elem() SourceNumericFilterNumericFilterOptionOutput {
@@ -4138,12 +3886,6 @@ func (o ValueListFilterValuePresentListOutput) ToValueListFilterValuePresentList
 	}).(ValueListFilterValuePresentListPtrOutput)
 }
 
-func (o ValueListFilterValuePresentListOutput) ToOutput(ctx context.Context) pulumix.Output[ValueListFilterValuePresentList] {
-	return pulumix.Output[ValueListFilterValuePresentList]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ValueListFilterValuePresentListOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4177,12 +3919,6 @@ func (o ValueListFilterValuePresentListPtrOutput) ToValueListFilterValuePresentL
 
 func (o ValueListFilterValuePresentListPtrOutput) ToValueListFilterValuePresentListPtrOutputWithContext(ctx context.Context) ValueListFilterValuePresentListPtrOutput {
 	return o
-}
-
-func (o ValueListFilterValuePresentListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ValueListFilterValuePresentList] {
-	return pulumix.Output[*ValueListFilterValuePresentList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ValueListFilterValuePresentListPtrOutput) Elem() ValueListFilterValuePresentListOutput {

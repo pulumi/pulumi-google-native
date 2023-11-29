@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a phrase matcher.
@@ -152,12 +151,6 @@ func (i *PhraseMatcher) ToPhraseMatcherOutputWithContext(ctx context.Context) Ph
 	return pulumi.ToOutputWithContext(ctx, i).(PhraseMatcherOutput)
 }
 
-func (i *PhraseMatcher) ToOutput(ctx context.Context) pulumix.Output[*PhraseMatcher] {
-	return pulumix.Output[*PhraseMatcher]{
-		OutputState: i.ToPhraseMatcherOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PhraseMatcherOutput struct{ *pulumi.OutputState }
 
 func (PhraseMatcherOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o PhraseMatcherOutput) ToPhraseMatcherOutput() PhraseMatcherOutput {
 
 func (o PhraseMatcherOutput) ToPhraseMatcherOutputWithContext(ctx context.Context) PhraseMatcherOutput {
 	return o
-}
-
-func (o PhraseMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[*PhraseMatcher] {
-	return pulumix.Output[*PhraseMatcher]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The most recent time at which the activation status was updated.

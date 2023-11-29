@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new RuntimeConfig resource. The configuration name must be unique within project.
@@ -112,12 +111,6 @@ func (i *Config) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigOutput)
 }
 
-func (i *Config) ToOutput(ctx context.Context) pulumix.Output[*Config] {
-	return pulumix.Output[*Config]{
-		OutputState: i.ToConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigOutput struct{ *pulumi.OutputState }
 
 func (ConfigOutput) ElementType() reflect.Type {
@@ -130,12 +123,6 @@ func (o ConfigOutput) ToConfigOutput() ConfigOutput {
 
 func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 	return o
-}
-
-func (o ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*Config] {
-	return pulumix.Output[*Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description of the RuntimeConfig object.

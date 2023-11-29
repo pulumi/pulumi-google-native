@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or Recommendation use case, an Engine needs to be created separately.
@@ -159,12 +158,6 @@ func (i *DataStore) ToDataStoreOutputWithContext(ctx context.Context) DataStoreO
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreOutput)
 }
 
-func (i *DataStore) ToOutput(ctx context.Context) pulumix.Output[*DataStore] {
-	return pulumix.Output[*DataStore]{
-		OutputState: i.ToDataStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataStoreOutput struct{ *pulumi.OutputState }
 
 func (DataStoreOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o DataStoreOutput) ToDataStoreOutput() DataStoreOutput {
 
 func (o DataStoreOutput) ToDataStoreOutputWithContext(ctx context.Context) DataStoreOutput {
 	return o
-}
-
-func (o DataStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*DataStore] {
-	return pulumix.Output[*DataStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataStoreOutput) CollectionId() pulumi.StringOutput {

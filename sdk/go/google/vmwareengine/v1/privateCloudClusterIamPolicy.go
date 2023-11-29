@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -143,12 +142,6 @@ func (i *PrivateCloudClusterIamPolicy) ToPrivateCloudClusterIamPolicyOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudClusterIamPolicyOutput)
 }
 
-func (i *PrivateCloudClusterIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudClusterIamPolicy] {
-	return pulumix.Output[*PrivateCloudClusterIamPolicy]{
-		OutputState: i.ToPrivateCloudClusterIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateCloudClusterIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudClusterIamPolicyOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o PrivateCloudClusterIamPolicyOutput) ToPrivateCloudClusterIamPolicyOutput
 
 func (o PrivateCloudClusterIamPolicyOutput) ToPrivateCloudClusterIamPolicyOutputWithContext(ctx context.Context) PrivateCloudClusterIamPolicyOutput {
 	return o
-}
-
-func (o PrivateCloudClusterIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudClusterIamPolicy] {
-	return pulumix.Output[*PrivateCloudClusterIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

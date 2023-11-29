@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a SynonymSet for a particular context. Throws a NOT_FOUND exception if the Synonymset does not exist
@@ -73,12 +72,6 @@ func (o LookupSynonymSetResultOutput) ToLookupSynonymSetResultOutput() LookupSyn
 
 func (o LookupSynonymSetResultOutput) ToLookupSynonymSetResultOutputWithContext(ctx context.Context) LookupSynonymSetResultOutput {
 	return o
-}
-
-func (o LookupSynonymSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSynonymSetResult] {
-	return pulumix.Output[LookupSynonymSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.

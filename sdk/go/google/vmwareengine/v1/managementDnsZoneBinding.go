@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new `ManagementDnsZoneBinding` resource in a private cloud. This RPC creates the DNS binding and the resource that represents the DNS binding of the consumer VPC network to the management DNS zone. A management DNS zone is the Cloud DNS cross-project binding zone that VMware Engine creates for each private cloud. It contains FQDNs and corresponding IP addresses for the private cloud's ESXi hosts and management VM appliances like vCenter and NSX Manager.
@@ -151,12 +150,6 @@ func (i *ManagementDnsZoneBinding) ToManagementDnsZoneBindingOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementDnsZoneBindingOutput)
 }
 
-func (i *ManagementDnsZoneBinding) ToOutput(ctx context.Context) pulumix.Output[*ManagementDnsZoneBinding] {
-	return pulumix.Output[*ManagementDnsZoneBinding]{
-		OutputState: i.ToManagementDnsZoneBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagementDnsZoneBindingOutput struct{ *pulumi.OutputState }
 
 func (ManagementDnsZoneBindingOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o ManagementDnsZoneBindingOutput) ToManagementDnsZoneBindingOutput() Manag
 
 func (o ManagementDnsZoneBindingOutput) ToManagementDnsZoneBindingOutputWithContext(ctx context.Context) ManagementDnsZoneBindingOutput {
 	return o
-}
-
-func (o ManagementDnsZoneBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementDnsZoneBinding] {
-	return pulumix.Output[*ManagementDnsZoneBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

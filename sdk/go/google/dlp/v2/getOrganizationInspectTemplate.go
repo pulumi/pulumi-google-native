@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
@@ -79,12 +78,6 @@ func (o LookupOrganizationInspectTemplateResultOutput) ToLookupOrganizationInspe
 
 func (o LookupOrganizationInspectTemplateResultOutput) ToLookupOrganizationInspectTemplateResultOutputWithContext(ctx context.Context) LookupOrganizationInspectTemplateResultOutput {
 	return o
-}
-
-func (o LookupOrganizationInspectTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationInspectTemplateResult] {
-	return pulumix.Output[LookupOrganizationInspectTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of an inspectTemplate.

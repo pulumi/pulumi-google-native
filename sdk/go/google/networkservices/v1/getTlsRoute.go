@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single TlsRoute.
@@ -85,12 +84,6 @@ func (o LookupTlsRouteResultOutput) ToLookupTlsRouteResultOutput() LookupTlsRout
 
 func (o LookupTlsRouteResultOutput) ToLookupTlsRouteResultOutputWithContext(ctx context.Context) LookupTlsRouteResultOutput {
 	return o
-}
-
-func (o LookupTlsRouteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTlsRouteResult] {
-	return pulumix.Output[LookupTlsRouteResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.

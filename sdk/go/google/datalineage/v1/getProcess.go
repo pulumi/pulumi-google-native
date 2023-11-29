@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the specified process.
@@ -75,12 +74,6 @@ func (o LookupProcessResultOutput) ToLookupProcessResultOutput() LookupProcessRe
 
 func (o LookupProcessResultOutput) ToLookupProcessResultOutputWithContext(ctx context.Context) LookupProcessResultOutput {
 	return o
-}
-
-func (o LookupProcessResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProcessResult] {
-	return pulumix.Output[LookupProcessResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.

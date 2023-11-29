@@ -105,12 +105,6 @@ func (o AggregationCrossSeriesReducerOutput) ToAggregationCrossSeriesReducerPtrO
 	}).(AggregationCrossSeriesReducerPtrOutput)
 }
 
-func (o AggregationCrossSeriesReducerOutput) ToOutput(ctx context.Context) pulumix.Output[AggregationCrossSeriesReducer] {
-	return pulumix.Output[AggregationCrossSeriesReducer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AggregationCrossSeriesReducerOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -144,12 +138,6 @@ func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerP
 
 func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
 	return o
-}
-
-func (o AggregationCrossSeriesReducerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AggregationCrossSeriesReducer] {
-	return pulumix.Output[*AggregationCrossSeriesReducer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AggregationCrossSeriesReducerPtrOutput) Elem() AggregationCrossSeriesReducerOutput {
@@ -324,12 +312,6 @@ func (o AggregationPerSeriesAlignerOutput) ToAggregationPerSeriesAlignerPtrOutpu
 	}).(AggregationPerSeriesAlignerPtrOutput)
 }
 
-func (o AggregationPerSeriesAlignerOutput) ToOutput(ctx context.Context) pulumix.Output[AggregationPerSeriesAligner] {
-	return pulumix.Output[AggregationPerSeriesAligner]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AggregationPerSeriesAlignerOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -363,12 +345,6 @@ func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOu
 
 func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
 	return o
-}
-
-func (o AggregationPerSeriesAlignerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AggregationPerSeriesAligner] {
-	return pulumix.Output[*AggregationPerSeriesAligner]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AggregationPerSeriesAlignerPtrOutput) Elem() AggregationPerSeriesAlignerOutput {
@@ -511,12 +487,6 @@ func (o AxisScaleOutput) ToAxisScalePtrOutputWithContext(ctx context.Context) Ax
 	}).(AxisScalePtrOutput)
 }
 
-func (o AxisScaleOutput) ToOutput(ctx context.Context) pulumix.Output[AxisScale] {
-	return pulumix.Output[AxisScale]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AxisScaleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -550,12 +520,6 @@ func (o AxisScalePtrOutput) ToAxisScalePtrOutput() AxisScalePtrOutput {
 
 func (o AxisScalePtrOutput) ToAxisScalePtrOutputWithContext(ctx context.Context) AxisScalePtrOutput {
 	return o
-}
-
-func (o AxisScalePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AxisScale] {
-	return pulumix.Output[*AxisScale]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AxisScalePtrOutput) Elem() AxisScaleOutput {
@@ -700,12 +664,6 @@ func (o BreakdownSortOrderOutput) ToBreakdownSortOrderPtrOutputWithContext(ctx c
 	}).(BreakdownSortOrderPtrOutput)
 }
 
-func (o BreakdownSortOrderOutput) ToOutput(ctx context.Context) pulumix.Output[BreakdownSortOrder] {
-	return pulumix.Output[BreakdownSortOrder]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BreakdownSortOrderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -739,12 +697,6 @@ func (o BreakdownSortOrderPtrOutput) ToBreakdownSortOrderPtrOutput() BreakdownSo
 
 func (o BreakdownSortOrderPtrOutput) ToBreakdownSortOrderPtrOutputWithContext(ctx context.Context) BreakdownSortOrderPtrOutput {
 	return o
-}
-
-func (o BreakdownSortOrderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BreakdownSortOrder] {
-	return pulumix.Output[*BreakdownSortOrder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BreakdownSortOrderPtrOutput) Elem() BreakdownSortOrderOutput {
@@ -889,12 +841,6 @@ func (o ChartOptionsModeOutput) ToChartOptionsModePtrOutputWithContext(ctx conte
 	}).(ChartOptionsModePtrOutput)
 }
 
-func (o ChartOptionsModeOutput) ToOutput(ctx context.Context) pulumix.Output[ChartOptionsMode] {
-	return pulumix.Output[ChartOptionsMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ChartOptionsModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -928,12 +874,6 @@ func (o ChartOptionsModePtrOutput) ToChartOptionsModePtrOutput() ChartOptionsMod
 
 func (o ChartOptionsModePtrOutput) ToChartOptionsModePtrOutputWithContext(ctx context.Context) ChartOptionsModePtrOutput {
 	return o
-}
-
-func (o ChartOptionsModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ChartOptionsMode] {
-	return pulumix.Output[*ChartOptionsMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ChartOptionsModePtrOutput) Elem() ChartOptionsModeOutput {
@@ -1082,12 +1022,6 @@ func (o DashboardFilterFilterTypeOutput) ToDashboardFilterFilterTypePtrOutputWit
 	}).(DashboardFilterFilterTypePtrOutput)
 }
 
-func (o DashboardFilterFilterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardFilterFilterType] {
-	return pulumix.Output[DashboardFilterFilterType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DashboardFilterFilterTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1121,12 +1055,6 @@ func (o DashboardFilterFilterTypePtrOutput) ToDashboardFilterFilterTypePtrOutput
 
 func (o DashboardFilterFilterTypePtrOutput) ToDashboardFilterFilterTypePtrOutputWithContext(ctx context.Context) DashboardFilterFilterTypePtrOutput {
 	return o
-}
-
-func (o DashboardFilterFilterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DashboardFilterFilterType] {
-	return pulumix.Output[*DashboardFilterFilterType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardFilterFilterTypePtrOutput) Elem() DashboardFilterFilterTypeOutput {
@@ -1273,12 +1201,6 @@ func (o DataSetPlotTypeOutput) ToDataSetPlotTypePtrOutputWithContext(ctx context
 	}).(DataSetPlotTypePtrOutput)
 }
 
-func (o DataSetPlotTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DataSetPlotType] {
-	return pulumix.Output[DataSetPlotType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataSetPlotTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1312,12 +1234,6 @@ func (o DataSetPlotTypePtrOutput) ToDataSetPlotTypePtrOutput() DataSetPlotTypePt
 
 func (o DataSetPlotTypePtrOutput) ToDataSetPlotTypePtrOutputWithContext(ctx context.Context) DataSetPlotTypePtrOutput {
 	return o
-}
-
-func (o DataSetPlotTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataSetPlotType] {
-	return pulumix.Output[*DataSetPlotType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataSetPlotTypePtrOutput) Elem() DataSetPlotTypeOutput {
@@ -1460,12 +1376,6 @@ func (o DataSetTargetAxisOutput) ToDataSetTargetAxisPtrOutputWithContext(ctx con
 	}).(DataSetTargetAxisPtrOutput)
 }
 
-func (o DataSetTargetAxisOutput) ToOutput(ctx context.Context) pulumix.Output[DataSetTargetAxis] {
-	return pulumix.Output[DataSetTargetAxis]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataSetTargetAxisOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1499,12 +1409,6 @@ func (o DataSetTargetAxisPtrOutput) ToDataSetTargetAxisPtrOutput() DataSetTarget
 
 func (o DataSetTargetAxisPtrOutput) ToDataSetTargetAxisPtrOutputWithContext(ctx context.Context) DataSetTargetAxisPtrOutput {
 	return o
-}
-
-func (o DataSetTargetAxisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataSetTargetAxis] {
-	return pulumix.Output[*DataSetTargetAxis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataSetTargetAxisPtrOutput) Elem() DataSetTargetAxisOutput {
@@ -1649,12 +1553,6 @@ func (o DimensionSortOrderOutput) ToDimensionSortOrderPtrOutputWithContext(ctx c
 	}).(DimensionSortOrderPtrOutput)
 }
 
-func (o DimensionSortOrderOutput) ToOutput(ctx context.Context) pulumix.Output[DimensionSortOrder] {
-	return pulumix.Output[DimensionSortOrder]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DimensionSortOrderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1688,12 +1586,6 @@ func (o DimensionSortOrderPtrOutput) ToDimensionSortOrderPtrOutput() DimensionSo
 
 func (o DimensionSortOrderPtrOutput) ToDimensionSortOrderPtrOutputWithContext(ctx context.Context) DimensionSortOrderPtrOutput {
 	return o
-}
-
-func (o DimensionSortOrderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DimensionSortOrder] {
-	return pulumix.Output[*DimensionSortOrder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DimensionSortOrderPtrOutput) Elem() DimensionSortOrderOutput {
@@ -1836,12 +1728,6 @@ func (o PickTimeSeriesFilterDirectionOutput) ToPickTimeSeriesFilterDirectionPtrO
 	}).(PickTimeSeriesFilterDirectionPtrOutput)
 }
 
-func (o PickTimeSeriesFilterDirectionOutput) ToOutput(ctx context.Context) pulumix.Output[PickTimeSeriesFilterDirection] {
-	return pulumix.Output[PickTimeSeriesFilterDirection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PickTimeSeriesFilterDirectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1875,12 +1761,6 @@ func (o PickTimeSeriesFilterDirectionPtrOutput) ToPickTimeSeriesFilterDirectionP
 
 func (o PickTimeSeriesFilterDirectionPtrOutput) ToPickTimeSeriesFilterDirectionPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterDirectionPtrOutput {
 	return o
-}
-
-func (o PickTimeSeriesFilterDirectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PickTimeSeriesFilterDirection] {
-	return pulumix.Output[*PickTimeSeriesFilterDirection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PickTimeSeriesFilterDirectionPtrOutput) Elem() PickTimeSeriesFilterDirectionOutput {
@@ -2029,12 +1909,6 @@ func (o PickTimeSeriesFilterRankingMethodOutput) ToPickTimeSeriesFilterRankingMe
 	}).(PickTimeSeriesFilterRankingMethodPtrOutput)
 }
 
-func (o PickTimeSeriesFilterRankingMethodOutput) ToOutput(ctx context.Context) pulumix.Output[PickTimeSeriesFilterRankingMethod] {
-	return pulumix.Output[PickTimeSeriesFilterRankingMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PickTimeSeriesFilterRankingMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2068,12 +1942,6 @@ func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToPickTimeSeriesFilterRankin
 
 func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterRankingMethodPtrOutput {
 	return o
-}
-
-func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PickTimeSeriesFilterRankingMethod] {
-	return pulumix.Output[*PickTimeSeriesFilterRankingMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PickTimeSeriesFilterRankingMethodPtrOutput) Elem() PickTimeSeriesFilterRankingMethodOutput {
@@ -2216,12 +2084,6 @@ func (o PieChartChartTypeOutput) ToPieChartChartTypePtrOutputWithContext(ctx con
 	}).(PieChartChartTypePtrOutput)
 }
 
-func (o PieChartChartTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PieChartChartType] {
-	return pulumix.Output[PieChartChartType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PieChartChartTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2255,12 +2117,6 @@ func (o PieChartChartTypePtrOutput) ToPieChartChartTypePtrOutput() PieChartChart
 
 func (o PieChartChartTypePtrOutput) ToPieChartChartTypePtrOutputWithContext(ctx context.Context) PieChartChartTypePtrOutput {
 	return o
-}
-
-func (o PieChartChartTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PieChartChartType] {
-	return pulumix.Output[*PieChartChartType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PieChartChartTypePtrOutput) Elem() PieChartChartTypeOutput {
@@ -2403,12 +2259,6 @@ func (o SparkChartViewSparkChartTypeOutput) ToSparkChartViewSparkChartTypePtrOut
 	}).(SparkChartViewSparkChartTypePtrOutput)
 }
 
-func (o SparkChartViewSparkChartTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SparkChartViewSparkChartType] {
-	return pulumix.Output[SparkChartViewSparkChartType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SparkChartViewSparkChartTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2442,12 +2292,6 @@ func (o SparkChartViewSparkChartTypePtrOutput) ToSparkChartViewSparkChartTypePtr
 
 func (o SparkChartViewSparkChartTypePtrOutput) ToSparkChartViewSparkChartTypePtrOutputWithContext(ctx context.Context) SparkChartViewSparkChartTypePtrOutput {
 	return o
-}
-
-func (o SparkChartViewSparkChartTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SparkChartViewSparkChartType] {
-	return pulumix.Output[*SparkChartViewSparkChartType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SparkChartViewSparkChartTypePtrOutput) Elem() SparkChartViewSparkChartTypeOutput {
@@ -2588,12 +2432,6 @@ func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToStatisticalTimeSeriesF
 	}).(StatisticalTimeSeriesFilterRankingMethodPtrOutput)
 }
 
-func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToOutput(ctx context.Context) pulumix.Output[StatisticalTimeSeriesFilterRankingMethod] {
-	return pulumix.Output[StatisticalTimeSeriesFilterRankingMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2627,12 +2465,6 @@ func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) ToStatisticalTimeSeri
 
 func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterRankingMethodPtrOutput {
 	return o
-}
-
-func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatisticalTimeSeriesFilterRankingMethod] {
-	return pulumix.Output[*StatisticalTimeSeriesFilterRankingMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) Elem() StatisticalTimeSeriesFilterRankingMethodOutput {
@@ -2775,12 +2607,6 @@ func (o TextFormatOutput) ToTextFormatPtrOutputWithContext(ctx context.Context) 
 	}).(TextFormatPtrOutput)
 }
 
-func (o TextFormatOutput) ToOutput(ctx context.Context) pulumix.Output[TextFormat] {
-	return pulumix.Output[TextFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TextFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2814,12 +2640,6 @@ func (o TextFormatPtrOutput) ToTextFormatPtrOutput() TextFormatPtrOutput {
 
 func (o TextFormatPtrOutput) ToTextFormatPtrOutputWithContext(ctx context.Context) TextFormatPtrOutput {
 	return o
-}
-
-func (o TextFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextFormat] {
-	return pulumix.Output[*TextFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextFormatPtrOutput) Elem() TextFormatOutput {
@@ -2968,12 +2788,6 @@ func (o TextStyleFontSizeOutput) ToTextStyleFontSizePtrOutputWithContext(ctx con
 	}).(TextStyleFontSizePtrOutput)
 }
 
-func (o TextStyleFontSizeOutput) ToOutput(ctx context.Context) pulumix.Output[TextStyleFontSize] {
-	return pulumix.Output[TextStyleFontSize]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TextStyleFontSizeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3007,12 +2821,6 @@ func (o TextStyleFontSizePtrOutput) ToTextStyleFontSizePtrOutput() TextStyleFont
 
 func (o TextStyleFontSizePtrOutput) ToTextStyleFontSizePtrOutputWithContext(ctx context.Context) TextStyleFontSizePtrOutput {
 	return o
-}
-
-func (o TextStyleFontSizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStyleFontSize] {
-	return pulumix.Output[*TextStyleFontSize]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextStyleFontSizePtrOutput) Elem() TextStyleFontSizeOutput {
@@ -3157,12 +2965,6 @@ func (o TextStyleHorizontalAlignmentOutput) ToTextStyleHorizontalAlignmentPtrOut
 	}).(TextStyleHorizontalAlignmentPtrOutput)
 }
 
-func (o TextStyleHorizontalAlignmentOutput) ToOutput(ctx context.Context) pulumix.Output[TextStyleHorizontalAlignment] {
-	return pulumix.Output[TextStyleHorizontalAlignment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TextStyleHorizontalAlignmentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3196,12 +2998,6 @@ func (o TextStyleHorizontalAlignmentPtrOutput) ToTextStyleHorizontalAlignmentPtr
 
 func (o TextStyleHorizontalAlignmentPtrOutput) ToTextStyleHorizontalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleHorizontalAlignmentPtrOutput {
 	return o
-}
-
-func (o TextStyleHorizontalAlignmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStyleHorizontalAlignment] {
-	return pulumix.Output[*TextStyleHorizontalAlignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextStyleHorizontalAlignmentPtrOutput) Elem() TextStyleHorizontalAlignmentOutput {
@@ -3350,12 +3146,6 @@ func (o TextStylePaddingOutput) ToTextStylePaddingPtrOutputWithContext(ctx conte
 	}).(TextStylePaddingPtrOutput)
 }
 
-func (o TextStylePaddingOutput) ToOutput(ctx context.Context) pulumix.Output[TextStylePadding] {
-	return pulumix.Output[TextStylePadding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TextStylePaddingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3389,12 +3179,6 @@ func (o TextStylePaddingPtrOutput) ToTextStylePaddingPtrOutput() TextStylePaddin
 
 func (o TextStylePaddingPtrOutput) ToTextStylePaddingPtrOutputWithContext(ctx context.Context) TextStylePaddingPtrOutput {
 	return o
-}
-
-func (o TextStylePaddingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStylePadding] {
-	return pulumix.Output[*TextStylePadding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextStylePaddingPtrOutput) Elem() TextStylePaddingOutput {
@@ -3557,12 +3341,6 @@ func (o TextStylePointerLocationOutput) ToTextStylePointerLocationPtrOutputWithC
 	}).(TextStylePointerLocationPtrOutput)
 }
 
-func (o TextStylePointerLocationOutput) ToOutput(ctx context.Context) pulumix.Output[TextStylePointerLocation] {
-	return pulumix.Output[TextStylePointerLocation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TextStylePointerLocationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3596,12 +3374,6 @@ func (o TextStylePointerLocationPtrOutput) ToTextStylePointerLocationPtrOutput()
 
 func (o TextStylePointerLocationPtrOutput) ToTextStylePointerLocationPtrOutputWithContext(ctx context.Context) TextStylePointerLocationPtrOutput {
 	return o
-}
-
-func (o TextStylePointerLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStylePointerLocation] {
-	return pulumix.Output[*TextStylePointerLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextStylePointerLocationPtrOutput) Elem() TextStylePointerLocationOutput {
@@ -3746,12 +3518,6 @@ func (o TextStyleVerticalAlignmentOutput) ToTextStyleVerticalAlignmentPtrOutputW
 	}).(TextStyleVerticalAlignmentPtrOutput)
 }
 
-func (o TextStyleVerticalAlignmentOutput) ToOutput(ctx context.Context) pulumix.Output[TextStyleVerticalAlignment] {
-	return pulumix.Output[TextStyleVerticalAlignment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TextStyleVerticalAlignmentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3785,12 +3551,6 @@ func (o TextStyleVerticalAlignmentPtrOutput) ToTextStyleVerticalAlignmentPtrOutp
 
 func (o TextStyleVerticalAlignmentPtrOutput) ToTextStyleVerticalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleVerticalAlignmentPtrOutput {
 	return o
-}
-
-func (o TextStyleVerticalAlignmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStyleVerticalAlignment] {
-	return pulumix.Output[*TextStyleVerticalAlignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextStyleVerticalAlignmentPtrOutput) Elem() TextStyleVerticalAlignmentOutput {
@@ -3933,12 +3693,6 @@ func (o ThresholdColorOutput) ToThresholdColorPtrOutputWithContext(ctx context.C
 	}).(ThresholdColorPtrOutput)
 }
 
-func (o ThresholdColorOutput) ToOutput(ctx context.Context) pulumix.Output[ThresholdColor] {
-	return pulumix.Output[ThresholdColor]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ThresholdColorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3972,12 +3726,6 @@ func (o ThresholdColorPtrOutput) ToThresholdColorPtrOutput() ThresholdColorPtrOu
 
 func (o ThresholdColorPtrOutput) ToThresholdColorPtrOutputWithContext(ctx context.Context) ThresholdColorPtrOutput {
 	return o
-}
-
-func (o ThresholdColorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ThresholdColor] {
-	return pulumix.Output[*ThresholdColor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThresholdColorPtrOutput) Elem() ThresholdColorOutput {
@@ -4120,12 +3868,6 @@ func (o ThresholdDirectionOutput) ToThresholdDirectionPtrOutputWithContext(ctx c
 	}).(ThresholdDirectionPtrOutput)
 }
 
-func (o ThresholdDirectionOutput) ToOutput(ctx context.Context) pulumix.Output[ThresholdDirection] {
-	return pulumix.Output[ThresholdDirection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ThresholdDirectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4159,12 +3901,6 @@ func (o ThresholdDirectionPtrOutput) ToThresholdDirectionPtrOutput() ThresholdDi
 
 func (o ThresholdDirectionPtrOutput) ToThresholdDirectionPtrOutputWithContext(ctx context.Context) ThresholdDirectionPtrOutput {
 	return o
-}
-
-func (o ThresholdDirectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ThresholdDirection] {
-	return pulumix.Output[*ThresholdDirection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThresholdDirectionPtrOutput) Elem() ThresholdDirectionOutput {
@@ -4307,12 +4043,6 @@ func (o ThresholdTargetAxisOutput) ToThresholdTargetAxisPtrOutputWithContext(ctx
 	}).(ThresholdTargetAxisPtrOutput)
 }
 
-func (o ThresholdTargetAxisOutput) ToOutput(ctx context.Context) pulumix.Output[ThresholdTargetAxis] {
-	return pulumix.Output[ThresholdTargetAxis]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ThresholdTargetAxisOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4346,12 +4076,6 @@ func (o ThresholdTargetAxisPtrOutput) ToThresholdTargetAxisPtrOutput() Threshold
 
 func (o ThresholdTargetAxisPtrOutput) ToThresholdTargetAxisPtrOutputWithContext(ctx context.Context) ThresholdTargetAxisPtrOutput {
 	return o
-}
-
-func (o ThresholdTargetAxisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ThresholdTargetAxis] {
-	return pulumix.Output[*ThresholdTargetAxis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThresholdTargetAxisPtrOutput) Elem() ThresholdTargetAxisOutput {
@@ -4494,12 +4218,6 @@ func (o TimeSeriesTableMetricVisualizationOutput) ToTimeSeriesTableMetricVisuali
 	}).(TimeSeriesTableMetricVisualizationPtrOutput)
 }
 
-func (o TimeSeriesTableMetricVisualizationOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesTableMetricVisualization] {
-	return pulumix.Output[TimeSeriesTableMetricVisualization]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TimeSeriesTableMetricVisualizationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4533,12 +4251,6 @@ func (o TimeSeriesTableMetricVisualizationPtrOutput) ToTimeSeriesTableMetricVisu
 
 func (o TimeSeriesTableMetricVisualizationPtrOutput) ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(ctx context.Context) TimeSeriesTableMetricVisualizationPtrOutput {
 	return o
-}
-
-func (o TimeSeriesTableMetricVisualizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesTableMetricVisualization] {
-	return pulumix.Output[*TimeSeriesTableMetricVisualization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeSeriesTableMetricVisualizationPtrOutput) Elem() TimeSeriesTableMetricVisualizationOutput {

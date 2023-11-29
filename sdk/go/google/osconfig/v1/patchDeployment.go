@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create an OS Config patch deployment.
@@ -170,12 +169,6 @@ func (i *PatchDeployment) ToPatchDeploymentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentOutput)
 }
 
-func (i *PatchDeployment) ToOutput(ctx context.Context) pulumix.Output[*PatchDeployment] {
-	return pulumix.Output[*PatchDeployment]{
-		OutputState: i.ToPatchDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o PatchDeploymentOutput) ToPatchDeploymentOutput() PatchDeploymentOutput {
 
 func (o PatchDeploymentOutput) ToPatchDeploymentOutputWithContext(ctx context.Context) PatchDeploymentOutput {
 	return o
-}
-
-func (o PatchDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeployment] {
-	return pulumix.Output[*PatchDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.

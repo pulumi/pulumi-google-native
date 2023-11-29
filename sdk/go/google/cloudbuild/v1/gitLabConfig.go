@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new `GitLabConfig`. This API is experimental
@@ -142,12 +141,6 @@ func (i *GitLabConfig) ToGitLabConfigOutputWithContext(ctx context.Context) GitL
 	return pulumi.ToOutputWithContext(ctx, i).(GitLabConfigOutput)
 }
 
-func (i *GitLabConfig) ToOutput(ctx context.Context) pulumix.Output[*GitLabConfig] {
-	return pulumix.Output[*GitLabConfig]{
-		OutputState: i.ToGitLabConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GitLabConfigOutput struct{ *pulumi.OutputState }
 
 func (GitLabConfigOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o GitLabConfigOutput) ToGitLabConfigOutput() GitLabConfigOutput {
 
 func (o GitLabConfigOutput) ToGitLabConfigOutputWithContext(ctx context.Context) GitLabConfigOutput {
 	return o
-}
-
-func (o GitLabConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*GitLabConfig] {
-	return pulumix.Output[*GitLabConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Connected GitLab.com or GitLabEnterprise repositories for this config.

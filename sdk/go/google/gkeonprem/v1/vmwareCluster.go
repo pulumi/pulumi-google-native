@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new VMware user cluster in a given project and location.
@@ -249,12 +248,6 @@ func (i *VmwareCluster) ToVmwareClusterOutputWithContext(ctx context.Context) Vm
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareClusterOutput)
 }
 
-func (i *VmwareCluster) ToOutput(ctx context.Context) pulumix.Output[*VmwareCluster] {
-	return pulumix.Output[*VmwareCluster]{
-		OutputState: i.ToVmwareClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VmwareClusterOutput struct{ *pulumi.OutputState }
 
 func (VmwareClusterOutput) ElementType() reflect.Type {
@@ -267,12 +260,6 @@ func (o VmwareClusterOutput) ToVmwareClusterOutput() VmwareClusterOutput {
 
 func (o VmwareClusterOutput) ToVmwareClusterOutputWithContext(ctx context.Context) VmwareClusterOutput {
 	return o
-}
-
-func (o VmwareClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareCluster] {
-	return pulumix.Output[*VmwareCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The admin cluster this VMware user cluster belongs to. This is the full resource name of the admin cluster's fleet membership. In the future, references to other resource types might be allowed if admin clusters are modeled as their own resources.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new TlsInspectionPolicy in a given project and location.
@@ -164,12 +163,6 @@ func (i *TlsInspectionPolicy) ToTlsInspectionPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(TlsInspectionPolicyOutput)
 }
 
-func (i *TlsInspectionPolicy) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicy] {
-	return pulumix.Output[*TlsInspectionPolicy]{
-		OutputState: i.ToTlsInspectionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TlsInspectionPolicyOutput struct{ *pulumi.OutputState }
 
 func (TlsInspectionPolicyOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o TlsInspectionPolicyOutput) ToTlsInspectionPolicyOutput() TlsInspectionPo
 
 func (o TlsInspectionPolicyOutput) ToTlsInspectionPolicyOutputWithContext(ctx context.Context) TlsInspectionPolicyOutput {
 	return o
-}
-
-func (o TlsInspectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicy] {
-	return pulumix.Output[*TlsInspectionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A CA pool resource used to issue interception certificates. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".

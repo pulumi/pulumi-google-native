@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified consent store.
@@ -77,12 +76,6 @@ func (o LookupConsentStoreResultOutput) ToLookupConsentStoreResultOutput() Looku
 
 func (o LookupConsentStoreResultOutput) ToLookupConsentStoreResultOutputWithContext(ctx context.Context) LookupConsentStoreResultOutput {
 	return o
-}
-
-func (o LookupConsentStoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConsentStoreResult] {
-	return pulumix.Output[LookupConsentStoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.

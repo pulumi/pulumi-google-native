@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Featurestore.
@@ -85,12 +84,6 @@ func (o LookupFeaturestoreResultOutput) ToLookupFeaturestoreResultOutput() Looku
 
 func (o LookupFeaturestoreResultOutput) ToLookupFeaturestoreResultOutputWithContext(ctx context.Context) LookupFeaturestoreResultOutput {
 	return o
-}
-
-func (o LookupFeaturestoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFeaturestoreResult] {
-	return pulumix.Output[LookupFeaturestoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this Featurestore was created.

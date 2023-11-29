@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single AppConnector.
@@ -85,12 +84,6 @@ func (o LookupAppConnectorResultOutput) ToLookupAppConnectorResultOutput() Looku
 
 func (o LookupAppConnectorResultOutput) ToLookupAppConnectorResultOutputWithContext(ctx context.Context) LookupAppConnectorResultOutput {
 	return o
-}
-
-func (o LookupAppConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppConnectorResult] {
-	return pulumix.Output[LookupAppConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when the resource was created.

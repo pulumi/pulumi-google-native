@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a glossary and returns the long-running operation. Returns NOT_FOUND, if the project doesn't exist.
@@ -132,12 +131,6 @@ func (i *Glossary) ToGlossaryOutputWithContext(ctx context.Context) GlossaryOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryOutput)
 }
 
-func (i *Glossary) ToOutput(ctx context.Context) pulumix.Output[*Glossary] {
-	return pulumix.Output[*Glossary]{
-		OutputState: i.ToGlossaryOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlossaryOutput struct{ *pulumi.OutputState }
 
 func (GlossaryOutput) ElementType() reflect.Type {
@@ -150,12 +143,6 @@ func (o GlossaryOutput) ToGlossaryOutput() GlossaryOutput {
 
 func (o GlossaryOutput) ToGlossaryOutputWithContext(ctx context.Context) GlossaryOutput {
 	return o
-}
-
-func (o GlossaryOutput) ToOutput(ctx context.Context) pulumix.Output[*Glossary] {
-	return pulumix.Output[*Glossary]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the glossary creation was finished.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -37,12 +36,6 @@ func (o GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The alias in the form of `processor_version` resource name.
 func (o GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseOutput) Alias() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse) string { return v.Alias }).(pulumi.StringOutput)
@@ -65,12 +58,6 @@ func (o GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseArrayOutput) To
 
 func (o GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseArrayOutput) ToGoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponseOutput {

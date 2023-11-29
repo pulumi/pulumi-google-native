@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets metadata information about the specified table.
@@ -85,12 +84,6 @@ func (o LookupTableResultOutput) ToLookupTableResultOutput() LookupTableResultOu
 
 func (o LookupTableResultOutput) ToLookupTableResultOutputWithContext(ctx context.Context) LookupTableResultOutput {
 	return o
-}
-
-func (o LookupTableResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTableResult] {
-	return pulumix.Output[LookupTableResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.

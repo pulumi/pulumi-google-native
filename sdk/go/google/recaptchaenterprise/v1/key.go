@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new reCAPTCHA Enterprise key.
@@ -148,12 +147,6 @@ func (i *Key) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyOutput)
 }
 
-func (i *Key) ToOutput(ctx context.Context) pulumix.Output[*Key] {
-	return pulumix.Output[*Key]{
-		OutputState: i.ToKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeyOutput struct{ *pulumi.OutputState }
 
 func (KeyOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o KeyOutput) ToKeyOutput() KeyOutput {
 
 func (o KeyOutput) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 	return o
-}
-
-func (o KeyOutput) ToOutput(ctx context.Context) pulumix.Output[*Key] {
-	return pulumix.Output[*Key]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Settings for keys that can be used by Android apps.

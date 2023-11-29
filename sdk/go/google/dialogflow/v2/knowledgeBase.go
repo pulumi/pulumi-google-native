@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a knowledge base.
@@ -120,12 +119,6 @@ func (i *KnowledgeBase) ToKnowledgeBaseOutputWithContext(ctx context.Context) Kn
 	return pulumi.ToOutputWithContext(ctx, i).(KnowledgeBaseOutput)
 }
 
-func (i *KnowledgeBase) ToOutput(ctx context.Context) pulumix.Output[*KnowledgeBase] {
-	return pulumix.Output[*KnowledgeBase]{
-		OutputState: i.ToKnowledgeBaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KnowledgeBaseOutput struct{ *pulumi.OutputState }
 
 func (KnowledgeBaseOutput) ElementType() reflect.Type {
@@ -138,12 +131,6 @@ func (o KnowledgeBaseOutput) ToKnowledgeBaseOutput() KnowledgeBaseOutput {
 
 func (o KnowledgeBaseOutput) ToKnowledgeBaseOutputWithContext(ctx context.Context) KnowledgeBaseOutput {
 	return o
-}
-
-func (o KnowledgeBaseOutput) ToOutput(ctx context.Context) pulumix.Output[*KnowledgeBase] {
-	return pulumix.Output[*KnowledgeBase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.

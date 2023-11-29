@@ -81,12 +81,6 @@ func (o AppConnectionTypeOutput) ToAppConnectionTypePtrOutputWithContext(ctx con
 	}).(AppConnectionTypePtrOutput)
 }
 
-func (o AppConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AppConnectionType] {
-	return pulumix.Output[AppConnectionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o AppConnectionTypePtrOutput) ToAppConnectionTypePtrOutput() AppConnection
 
 func (o AppConnectionTypePtrOutput) ToAppConnectionTypePtrOutputWithContext(ctx context.Context) AppConnectionTypePtrOutput {
 	return o
-}
-
-func (o AppConnectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppConnectionType] {
-	return pulumix.Output[*AppConnectionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppConnectionTypePtrOutput) Elem() AppConnectionTypeOutput {
@@ -266,12 +254,6 @@ func (o AppGatewayHostTypeOutput) ToAppGatewayHostTypePtrOutputWithContext(ctx c
 	}).(AppGatewayHostTypePtrOutput)
 }
 
-func (o AppGatewayHostTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AppGatewayHostType] {
-	return pulumix.Output[AppGatewayHostType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppGatewayHostTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -305,12 +287,6 @@ func (o AppGatewayHostTypePtrOutput) ToAppGatewayHostTypePtrOutput() AppGatewayH
 
 func (o AppGatewayHostTypePtrOutput) ToAppGatewayHostTypePtrOutputWithContext(ctx context.Context) AppGatewayHostTypePtrOutput {
 	return o
-}
-
-func (o AppGatewayHostTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppGatewayHostType] {
-	return pulumix.Output[*AppGatewayHostType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppGatewayHostTypePtrOutput) Elem() AppGatewayHostTypeOutput {
@@ -451,12 +427,6 @@ func (o AppGatewayTypeOutput) ToAppGatewayTypePtrOutputWithContext(ctx context.C
 	}).(AppGatewayTypePtrOutput)
 }
 
-func (o AppGatewayTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AppGatewayType] {
-	return pulumix.Output[AppGatewayType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppGatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -490,12 +460,6 @@ func (o AppGatewayTypePtrOutput) ToAppGatewayTypePtrOutput() AppGatewayTypePtrOu
 
 func (o AppGatewayTypePtrOutput) ToAppGatewayTypePtrOutputWithContext(ctx context.Context) AppGatewayTypePtrOutput {
 	return o
-}
-
-func (o AppGatewayTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppGatewayType] {
-	return pulumix.Output[*AppGatewayType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppGatewayTypePtrOutput) Elem() AppGatewayTypeOutput {
@@ -636,12 +600,6 @@ func (o ConnectionTypeOutput) ToConnectionTypePtrOutputWithContext(ctx context.C
 	}).(ConnectionTypePtrOutput)
 }
 
-func (o ConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionType] {
-	return pulumix.Output[ConnectionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -675,12 +633,6 @@ func (o ConnectionTypePtrOutput) ToConnectionTypePtrOutput() ConnectionTypePtrOu
 
 func (o ConnectionTypePtrOutput) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return o
-}
-
-func (o ConnectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
-	return pulumix.Output[*ConnectionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionTypePtrOutput) Elem() ConnectionTypeOutput {
@@ -821,12 +773,6 @@ func (o GatewayTypeOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context
 	}).(GatewayTypePtrOutput)
 }
 
-func (o GatewayTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayType] {
-	return pulumix.Output[GatewayType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -860,12 +806,6 @@ func (o GatewayTypePtrOutput) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
 
 func (o GatewayTypePtrOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
 	return o
-}
-
-func (o GatewayTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayType] {
-	return pulumix.Output[*GatewayType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayTypePtrOutput) Elem() GatewayTypeOutput {
@@ -1006,12 +946,6 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeOutput
 	}).(GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput)
 }
 
-func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1045,12 +979,6 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOut
 
 func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput) ToGoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType] {
-	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOutput) Elem() GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeOutput {
@@ -1197,12 +1125,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusOutput) ToGoo
 	}).(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput)
 }
 
-func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1236,12 +1158,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput) To
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput) ToGoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus] {
-	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput) Elem() GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusOutput {
@@ -1386,12 +1302,6 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
-func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1425,12 +1335,6 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
@@ -1577,12 +1481,6 @@ func (o ResourceInfoStatusOutput) ToResourceInfoStatusPtrOutputWithContext(ctx c
 	}).(ResourceInfoStatusPtrOutput)
 }
 
-func (o ResourceInfoStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceInfoStatus] {
-	return pulumix.Output[ResourceInfoStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceInfoStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1616,12 +1514,6 @@ func (o ResourceInfoStatusPtrOutput) ToResourceInfoStatusPtrOutput() ResourceInf
 
 func (o ResourceInfoStatusPtrOutput) ToResourceInfoStatusPtrOutputWithContext(ctx context.Context) ResourceInfoStatusPtrOutput {
 	return o
-}
-
-func (o ResourceInfoStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceInfoStatus] {
-	return pulumix.Output[*ResourceInfoStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceInfoStatusPtrOutput) Elem() ResourceInfoStatusOutput {
@@ -1762,12 +1654,6 @@ func (o SubscriptionSkuOutput) ToSubscriptionSkuPtrOutputWithContext(ctx context
 	}).(SubscriptionSkuPtrOutput)
 }
 
-func (o SubscriptionSkuOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionSku] {
-	return pulumix.Output[SubscriptionSku]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubscriptionSkuOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1801,12 +1687,6 @@ func (o SubscriptionSkuPtrOutput) ToSubscriptionSkuPtrOutput() SubscriptionSkuPt
 
 func (o SubscriptionSkuPtrOutput) ToSubscriptionSkuPtrOutputWithContext(ctx context.Context) SubscriptionSkuPtrOutput {
 	return o
-}
-
-func (o SubscriptionSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionSku] {
-	return pulumix.Output[*SubscriptionSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionSkuPtrOutput) Elem() SubscriptionSkuOutput {
@@ -1951,12 +1831,6 @@ func (o SubscriptionTypeOutput) ToSubscriptionTypePtrOutputWithContext(ctx conte
 	}).(SubscriptionTypePtrOutput)
 }
 
-func (o SubscriptionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionType] {
-	return pulumix.Output[SubscriptionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubscriptionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1990,12 +1864,6 @@ func (o SubscriptionTypePtrOutput) ToSubscriptionTypePtrOutput() SubscriptionTyp
 
 func (o SubscriptionTypePtrOutput) ToSubscriptionTypePtrOutputWithContext(ctx context.Context) SubscriptionTypePtrOutput {
 	return o
-}
-
-func (o SubscriptionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionType] {
-	return pulumix.Output[*SubscriptionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionTypePtrOutput) Elem() SubscriptionTypeOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i GoogleCloudDiscoveryengineV1alphaConversationContextArgs) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaConversationContextOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaConversationContextArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationContext] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationContext]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaConversationContextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaConversationContextArgs) ToGoogleCloudDiscoveryengineV1alphaConversationContextPtrOutput() GoogleCloudDiscoveryengineV1alphaConversationContextPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaConversationContextPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *googleCloudDiscoveryengineV1alphaConversationContextPtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaConversationContextPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaConversationContextPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaConversationContext] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaConversationContext]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaConversationContextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines context of the conversation
 type GoogleCloudDiscoveryengineV1alphaConversationContextOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o GoogleCloudDiscoveryengineV1alphaConversationContextOutput) ToGoogleClou
 	}).(GoogleCloudDiscoveryengineV1alphaConversationContextPtrOutput)
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaConversationContextOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationContext] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationContext]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The current active document the user opened. It contains the document resource reference.
 func (o GoogleCloudDiscoveryengineV1alphaConversationContextOutput) ActiveDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaConversationContext) *string { return v.ActiveDocument }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o GoogleCloudDiscoveryengineV1alphaConversationContextPtrOutput) ToGoogleC
 
 func (o GoogleCloudDiscoveryengineV1alphaConversationContextPtrOutput) ToGoogleCloudDiscoveryengineV1alphaConversationContextPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaConversationContextPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaConversationContextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaConversationContext] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaConversationContext]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaConversationContextPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaConversationContextOutput {
@@ -220,12 +195,6 @@ func (o GoogleCloudDiscoveryengineV1alphaConversationContextResponseOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaConversationContextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationContextResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationContextResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The current active document the user opened. It contains the document resource reference.
 func (o GoogleCloudDiscoveryengineV1alphaConversationContextResponseOutput) ActiveDocument() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaConversationContextResponse) string { return v.ActiveDocument }).(pulumi.StringOutput)
@@ -277,12 +246,6 @@ func (i GoogleCloudDiscoveryengineV1alphaConversationMessageArgs) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaConversationMessageOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaConversationMessageArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationMessage] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationMessage]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaConversationMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDiscoveryengineV1alphaConversationMessageArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1alphaConversationMessageArray and GoogleCloudDiscoveryengineV1alphaConversationMessageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDiscoveryengineV1alphaConversationMessageArrayInput` via:
 //
@@ -308,12 +271,6 @@ func (i GoogleCloudDiscoveryengineV1alphaConversationMessageArray) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaConversationMessageArrayOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaConversationMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaConversationMessage] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaConversationMessage]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaConversationMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a conversation message.
 type GoogleCloudDiscoveryengineV1alphaConversationMessageOutput struct{ *pulumi.OutputState }
 
@@ -327,12 +284,6 @@ func (o GoogleCloudDiscoveryengineV1alphaConversationMessageOutput) ToGoogleClou
 
 func (o GoogleCloudDiscoveryengineV1alphaConversationMessageOutput) ToGoogleCloudDiscoveryengineV1alphaConversationMessageOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaConversationMessageOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaConversationMessageOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationMessage] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Search reply.
@@ -361,12 +312,6 @@ func (o GoogleCloudDiscoveryengineV1alphaConversationMessageArrayOutput) ToGoogl
 
 func (o GoogleCloudDiscoveryengineV1alphaConversationMessageArrayOutput) ToGoogleCloudDiscoveryengineV1alphaConversationMessageArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaConversationMessageArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaConversationMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaConversationMessage] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaConversationMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaConversationMessageArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1alphaConversationMessageOutput {
@@ -400,12 +345,6 @@ func (o GoogleCloudDiscoveryengineV1alphaConversationMessageResponseOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaConversationMessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationMessageResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaConversationMessageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Message creation timestamp.
 func (o GoogleCloudDiscoveryengineV1alphaConversationMessageResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaConversationMessageResponse) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -437,12 +376,6 @@ func (o GoogleCloudDiscoveryengineV1alphaConversationMessageResponseArrayOutput)
 
 func (o GoogleCloudDiscoveryengineV1alphaConversationMessageResponseArrayOutput) ToGoogleCloudDiscoveryengineV1alphaConversationMessageResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaConversationMessageResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaConversationMessageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaConversationMessageResponse] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaConversationMessageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaConversationMessageResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1alphaConversationMessageResponseOutput {
@@ -494,12 +427,6 @@ func (i GoogleCloudDiscoveryengineV1alphaDocumentContentArgs) ToGoogleCloudDisco
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaDocumentContentOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaDocumentContentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaDocumentContent] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaDocumentContent]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaDocumentContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaDocumentContentArgs) ToGoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutput() GoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutputWithContext(context.Background())
 }
@@ -541,12 +468,6 @@ func (i *googleCloudDiscoveryengineV1alphaDocumentContentPtrType) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaDocumentContentPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaDocumentContent] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaDocumentContent]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Unstructured data linked to this document.
 type GoogleCloudDiscoveryengineV1alphaDocumentContentOutput struct{ *pulumi.OutputState }
 
@@ -570,12 +491,6 @@ func (o GoogleCloudDiscoveryengineV1alphaDocumentContentOutput) ToGoogleCloudDis
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1alphaDocumentContent) *GoogleCloudDiscoveryengineV1alphaDocumentContent {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaDocumentContentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaDocumentContent] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaDocumentContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The MIME type of the content. Supported types: * `application/pdf` (PDF, only native PDFs are supported for now) * `text/html` (HTML) * `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) * `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/plain` (TXT) See https://www.iana.org/assignments/media-types/media-types.xhtml.
@@ -605,12 +520,6 @@ func (o GoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutput) ToGoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaDocumentContent] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaDocumentContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaDocumentContentPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaDocumentContentOutput {
@@ -678,12 +587,6 @@ func (o GoogleCloudDiscoveryengineV1alphaDocumentContentResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaDocumentContentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaDocumentContentResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaDocumentContentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The MIME type of the content. Supported types: * `application/pdf` (PDF, only native PDFs are supported for now) * `text/html` (HTML) * `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) * `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/plain` (TXT) See https://www.iana.org/assignments/media-types/media-types.xhtml.
 func (o GoogleCloudDiscoveryengineV1alphaDocumentContentResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaDocumentContentResponse) string { return v.MimeType }).(pulumi.StringOutput)
@@ -738,12 +641,6 @@ func (i GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgs) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgs) ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutputWithContext(context.Background())
 }
@@ -785,12 +682,6 @@ func (i *googleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for a Chat Engine.
 type GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigOutput struct{ *pulumi.OutputState }
 
@@ -814,12 +705,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigOutput) ToGoogleC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig) *GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
@@ -848,12 +733,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutput) ToGoog
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutput) ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigOutput {
@@ -929,12 +808,6 @@ func (i GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConf
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigArgs) ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutput() GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(context.Background())
 }
@@ -976,12 +849,6 @@ func (i *googleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationCon
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
 type GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigOutput struct{ *pulumi.OutputState }
 
@@ -1005,12 +872,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig) *GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
@@ -1046,12 +907,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConf
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutput) ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigOutput {
@@ -1119,12 +974,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConf
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
 func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigResponseOutput) Business() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigResponse) string {
@@ -1169,12 +1018,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponseOutput) T
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
 func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponseOutput) AgentCreationConfig() GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse) GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigResponse {
@@ -1208,12 +1051,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponseOutput)
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponseOutput) ToGoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name of a Dialogflow agent, that this Chat Engine refers to. Format: `projects//locations//agents/`.
@@ -1258,12 +1095,6 @@ func (i GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgs) ToGoogleCloudDi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineCommonConfigOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineCommonConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineCommonConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineCommonConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgs) ToGoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutput() GoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutputWithContext(context.Background())
 }
@@ -1305,12 +1136,6 @@ func (i *googleCloudDiscoveryengineV1alphaEngineCommonConfigPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaEngineCommonConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineCommonConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineCommonConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Common configurations for an Engine.
 type GoogleCloudDiscoveryengineV1alphaEngineCommonConfigOutput struct{ *pulumi.OutputState }
 
@@ -1336,12 +1161,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineCommonConfigOutput) ToGoogleCloud
 	}).(GoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutput)
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaEngineCommonConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineCommonConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineCommonConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
 func (o GoogleCloudDiscoveryengineV1alphaEngineCommonConfigOutput) CompanyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaEngineCommonConfig) *string { return v.CompanyName }).(pulumi.StringPtrOutput)
@@ -1359,12 +1178,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutput) ToGoogleCl
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutput) ToGoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineCommonConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineCommonConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineCommonConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaEngineCommonConfigOutput {
@@ -1406,12 +1219,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponseOutput) ToGoo
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponseOutput) ToGoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
@@ -1466,12 +1273,6 @@ func (i GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigAr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgs) ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutputWithContext(context.Background())
 }
@@ -1513,12 +1314,6 @@ func (i *googleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigP
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional config specs for a Media Recommendation engine.
 type GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOutput struct{ *pulumi.OutputState }
 
@@ -1542,12 +1337,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig) *GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The optimization objective e.g. `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr`
@@ -1588,12 +1377,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPt
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutput) ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOutput {
@@ -1685,12 +1468,6 @@ func (i GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs) ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput() GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(context.Background())
 }
@@ -1732,12 +1509,6 @@ func (i *googleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigO
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom threshold for `cvr` optimization_objective.
 type GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput struct{ *pulumi.OutputState }
 
@@ -1761,12 +1532,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig) *GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
@@ -1795,12 +1560,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOp
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput) ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput {
@@ -1856,12 +1615,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOp
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
 func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponseOutput) TargetField() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse) string {
@@ -1901,12 +1654,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigRe
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponseOutput) ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The optimization objective e.g. `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr`
@@ -1962,12 +1709,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponseOut
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponseOutput) ToGoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The state of data requirements for this engine: `DATA_OK` and `DATA_ERROR`. Engine cannot be trained if the data is in `DATA_ERROR` state. Engine can have `DATA_ERROR` state even if serving state is `ACTIVE`: engines were trained successfully before, but cannot be refreshed because the underlying engine no longer has sufficient data for training.
@@ -2037,12 +1778,6 @@ func (i GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgs) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgs) ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutputWithContext(context.Background())
 }
@@ -2084,12 +1819,6 @@ func (i *googleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for a Search Engine.
 type GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigOutput struct{ *pulumi.OutputState }
 
@@ -2113,12 +1842,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigOutput) ToGoogl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig) *GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The add-on that this search engine enables.
@@ -2147,12 +1870,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutput) ToGo
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutput) ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigOutput {
@@ -2208,12 +1925,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponseOutput)
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The add-on that this search engine enables.
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponseOutput) SearchAddOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse) []string {
@@ -2257,12 +1968,6 @@ func (i GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgs) ToGoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutputWithContext(context.Background())
 }
@@ -2304,12 +2009,6 @@ func (i *googleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional config specs for a `similar-items` engine.
 type GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigOutput struct{ *pulumi.OutputState }
 
@@ -2335,12 +2034,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigOutpu
 	}).(GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutput)
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutput) ElementType() reflect.Type {
@@ -2353,12 +2046,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOu
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutput) ToGoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigOutput {
@@ -2388,12 +2075,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigRespo
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigResponseOutput) ToGoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configurations for fields of a schema. For example, configuring a field is indexable, or searchable.
@@ -2431,12 +2112,6 @@ func (o GoogleCloudDiscoveryengineV1alphaFieldConfigResponseOutput) ToGoogleClou
 
 func (o GoogleCloudDiscoveryengineV1alphaFieldConfigResponseOutput) ToGoogleCloudDiscoveryengineV1alphaFieldConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaFieldConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaFieldConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaFieldConfigResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaFieldConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If completable_option is COMPLETABLE_ENABLED, field values are directly used and returned as suggestions for Autocomplete in CompletionService.CompleteQuery. If completable_option is unset, the server behavior defaults to COMPLETABLE_DISABLED for fields that support setting completable options, which are just `string` fields. For those fields that do not support setting completable options, the server will skip completable option setting, and setting completable_option for those fields will throw `INVALID_ARGUMENT` error.
@@ -2498,12 +2173,6 @@ func (o GoogleCloudDiscoveryengineV1alphaFieldConfigResponseArrayOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaFieldConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaFieldConfigResponse] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaFieldConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDiscoveryengineV1alphaFieldConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1alphaFieldConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1alphaFieldConfigResponse {
 		return vs[0].([]GoogleCloudDiscoveryengineV1alphaFieldConfigResponse)[vs[1].(int)]
@@ -2557,12 +2226,6 @@ func (i GoogleCloudDiscoveryengineV1alphaReplyArgs) ToGoogleCloudDiscoveryengine
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaReplyOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaReplyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaReply] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaReply]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaReplyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaReplyArgs) ToGoogleCloudDiscoveryengineV1alphaReplyPtrOutput() GoogleCloudDiscoveryengineV1alphaReplyPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaReplyPtrOutputWithContext(context.Background())
 }
@@ -2604,12 +2267,6 @@ func (i *googleCloudDiscoveryengineV1alphaReplyPtrType) ToGoogleCloudDiscoveryen
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaReplyPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaReplyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaReply] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaReply]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaReplyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a reply message to user.
 type GoogleCloudDiscoveryengineV1alphaReplyOutput struct{ *pulumi.OutputState }
 
@@ -2633,12 +2290,6 @@ func (o GoogleCloudDiscoveryengineV1alphaReplyOutput) ToGoogleCloudDiscoveryengi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1alphaReply) *GoogleCloudDiscoveryengineV1alphaReply {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1alphaReplyPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaReplyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaReply] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaReply]{
-		OutputState: o.OutputState,
-	}
 }
 
 // References in the reply.
@@ -2674,12 +2325,6 @@ func (o GoogleCloudDiscoveryengineV1alphaReplyPtrOutput) ToGoogleCloudDiscoverye
 
 func (o GoogleCloudDiscoveryengineV1alphaReplyPtrOutput) ToGoogleCloudDiscoveryengineV1alphaReplyPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaReplyPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaReplyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaReply] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaReply]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaReplyPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaReplyOutput {
@@ -2771,12 +2416,6 @@ func (i GoogleCloudDiscoveryengineV1alphaReplyReferenceArgs) ToGoogleCloudDiscov
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaReplyReferenceOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaReplyReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaReplyReference] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaReplyReference]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaReplyReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDiscoveryengineV1alphaReplyReferenceArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1alphaReplyReferenceArray and GoogleCloudDiscoveryengineV1alphaReplyReferenceArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDiscoveryengineV1alphaReplyReferenceArrayInput` via:
 //
@@ -2802,12 +2441,6 @@ func (i GoogleCloudDiscoveryengineV1alphaReplyReferenceArray) ToGoogleCloudDisco
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaReplyReferenceArrayOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaReplyReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaReplyReference] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaReplyReference]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaReplyReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines reference in reply.
 type GoogleCloudDiscoveryengineV1alphaReplyReferenceOutput struct{ *pulumi.OutputState }
 
@@ -2821,12 +2454,6 @@ func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceOutput) ToGoogleCloudDisc
 
 func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceOutput) ToGoogleCloudDiscoveryengineV1alphaReplyReferenceOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaReplyReferenceOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaReplyReference] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaReplyReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Anchor text.
@@ -2863,12 +2490,6 @@ func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceArrayOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaReplyReference] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaReplyReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1alphaReplyReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1alphaReplyReference {
 		return vs[0].([]GoogleCloudDiscoveryengineV1alphaReplyReference)[vs[1].(int)]
@@ -2900,12 +2521,6 @@ func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceResponseOutput) ToGoogleC
 
 func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceResponseOutput) ToGoogleCloudDiscoveryengineV1alphaReplyReferenceResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaReplyReferenceResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Anchor text.
@@ -2942,12 +2557,6 @@ func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceResponseArrayOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDiscoveryengineV1alphaReplyReferenceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1alphaReplyReferenceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse {
 		return vs[0].([]GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse)[vs[1].(int)]
@@ -2979,12 +2588,6 @@ func (o GoogleCloudDiscoveryengineV1alphaReplyResponseOutput) ToGoogleCloudDisco
 
 func (o GoogleCloudDiscoveryengineV1alphaReplyResponseOutput) ToGoogleCloudDiscoveryengineV1alphaReplyResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaReplyResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaReplyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaReplyResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaReplyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // References in the reply.
@@ -3051,12 +2654,6 @@ func (i GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummary] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummary]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummaryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryArgs) ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutput() GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutputWithContext(context.Background())
 }
@@ -3098,12 +2695,6 @@ func (i *googleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummary] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummary]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Summary of the top N search result specified by the summary spec.
 type GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryOutput struct{ *pulumi.OutputState }
 
@@ -3127,12 +2718,6 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryOutput) ToGoogleCl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1alphaSearchResponseSummary) *GoogleCloudDiscoveryengineV1alphaSearchResponseSummary {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummary] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummary]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A collection of Safety Attribute categories and their associated confidence scores.
@@ -3166,12 +2751,6 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutput) ToGoogl
 
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutput) ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummary] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummary]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryOutput {
@@ -3239,12 +2818,6 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponseOutput) To
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A collection of Safety Attribute categories and their associated confidence scores.
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponseOutput) SafetyAttributes() GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse) GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse {
@@ -3303,12 +2876,6 @@ func (i GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesAr
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesArgs) ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutput() GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutputWithContext(context.Background())
 }
@@ -3350,12 +2917,6 @@ func (i *googleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesP
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Safety Attribute categories and their associated confidence scores.
 type GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesOutput struct{ *pulumi.OutputState }
 
@@ -3379,12 +2940,6 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes) *GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display names of Safety Attribute categories associated with the generated content. Order matches the Scores.
@@ -3413,12 +2968,6 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPt
 
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutput) ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesOutput {
@@ -3474,12 +3023,6 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesRe
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The display names of Safety Attribute categories associated with the generated content. Order matches the Scores.
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponseOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse) []string {
@@ -3533,12 +3076,6 @@ func (i GoogleCloudDiscoveryengineV1alphaTextInputArgs) ToGoogleCloudDiscoveryen
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaTextInputOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaTextInputArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaTextInput] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaTextInput]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaTextInputOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1alphaTextInputArgs) ToGoogleCloudDiscoveryengineV1alphaTextInputPtrOutput() GoogleCloudDiscoveryengineV1alphaTextInputPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1alphaTextInputPtrOutputWithContext(context.Background())
 }
@@ -3580,12 +3117,6 @@ func (i *googleCloudDiscoveryengineV1alphaTextInputPtrType) ToGoogleCloudDiscove
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaTextInputPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1alphaTextInputPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaTextInput] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaTextInput]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaTextInputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines text input.
 type GoogleCloudDiscoveryengineV1alphaTextInputOutput struct{ *pulumi.OutputState }
 
@@ -3609,12 +3140,6 @@ func (o GoogleCloudDiscoveryengineV1alphaTextInputOutput) ToGoogleCloudDiscovery
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1alphaTextInput) *GoogleCloudDiscoveryengineV1alphaTextInput {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1alphaTextInputPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaTextInputOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaTextInput] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaTextInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conversation context of the input.
@@ -3641,12 +3166,6 @@ func (o GoogleCloudDiscoveryengineV1alphaTextInputPtrOutput) ToGoogleCloudDiscov
 
 func (o GoogleCloudDiscoveryengineV1alphaTextInputPtrOutput) ToGoogleCloudDiscoveryengineV1alphaTextInputPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaTextInputPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaTextInputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaTextInput] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaTextInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaTextInputPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaTextInputOutput {
@@ -3700,12 +3219,6 @@ func (o GoogleCloudDiscoveryengineV1alphaTextInputResponseOutput) ToGoogleCloudD
 
 func (o GoogleCloudDiscoveryengineV1alphaTextInputResponseOutput) ToGoogleCloudDiscoveryengineV1alphaTextInputResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaTextInputResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaTextInputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaTextInputResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaTextInputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conversation context of the input.

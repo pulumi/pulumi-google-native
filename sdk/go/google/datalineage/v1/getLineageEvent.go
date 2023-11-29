@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a specified lineage event.
@@ -79,12 +78,6 @@ func (o LookupLineageEventResultOutput) ToLookupLineageEventResultOutput() Looku
 
 func (o LookupLineageEventResultOutput) ToLookupLineageEventResultOutputWithContext(ctx context.Context) LookupLineageEventResultOutput {
 	return o
-}
-
-func (o LookupLineageEventResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLineageEventResult] {
-	return pulumix.Output[LookupLineageEventResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The end of the transformation which resulted in this lineage event. For streaming scenarios, it should be the end of the period from which the lineage is being reported.

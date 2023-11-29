@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a conversation.
@@ -188,12 +187,6 @@ func (i *Conversation) ToConversationOutputWithContext(ctx context.Context) Conv
 	return pulumi.ToOutputWithContext(ctx, i).(ConversationOutput)
 }
 
-func (i *Conversation) ToOutput(ctx context.Context) pulumix.Output[*Conversation] {
-	return pulumix.Output[*Conversation]{
-		OutputState: i.ToConversationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConversationOutput struct{ *pulumi.OutputState }
 
 func (ConversationOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o ConversationOutput) ToConversationOutput() ConversationOutput {
 
 func (o ConversationOutput) ToConversationOutputWithContext(ctx context.Context) ConversationOutput {
 	return o
-}
-
-func (o ConversationOutput) ToOutput(ctx context.Context) pulumix.Output[*Conversation] {
-	return pulumix.Output[*Conversation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An opaque, user-specified string representing the human agent who handled the conversation.

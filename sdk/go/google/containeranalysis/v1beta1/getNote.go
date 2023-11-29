@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified note.
@@ -111,12 +110,6 @@ func (o LookupNoteResultOutput) ToLookupNoteResultOutput() LookupNoteResultOutpu
 
 func (o LookupNoteResultOutput) ToLookupNoteResultOutputWithContext(ctx context.Context) LookupNoteResultOutput {
 	return o
-}
-
-func (o LookupNoteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNoteResult] {
-	return pulumix.Output[LookupNoteResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A note describing an attestation role.

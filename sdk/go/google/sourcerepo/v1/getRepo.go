@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns information about a repo.
@@ -75,12 +74,6 @@ func (o LookupRepoResultOutput) ToLookupRepoResultOutput() LookupRepoResultOutpu
 
 func (o LookupRepoResultOutput) ToLookupRepoResultOutputWithContext(ctx context.Context) LookupRepoResultOutput {
 	return o
-}
-
-func (o LookupRepoResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRepoResult] {
-	return pulumix.Output[LookupRepoResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How this repository mirrors a repository managed by another service. Read-only field.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the IAM Access Control policy currently in effect for the given job. This result does not include any inherited policies.
@@ -77,12 +76,6 @@ func (o LookupJobIamPolicyResultOutput) ToLookupJobIamPolicyResultOutput() Looku
 
 func (o LookupJobIamPolicyResultOutput) ToLookupJobIamPolicyResultOutputWithContext(ctx context.Context) LookupJobIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupJobIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobIamPolicyResult] {
-	return pulumix.Output[LookupJobIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

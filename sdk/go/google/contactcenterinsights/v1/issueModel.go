@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an issue model.
@@ -138,12 +137,6 @@ func (i *IssueModel) ToIssueModelOutputWithContext(ctx context.Context) IssueMod
 	return pulumi.ToOutputWithContext(ctx, i).(IssueModelOutput)
 }
 
-func (i *IssueModel) ToOutput(ctx context.Context) pulumix.Output[*IssueModel] {
-	return pulumix.Output[*IssueModel]{
-		OutputState: i.ToIssueModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IssueModelOutput struct{ *pulumi.OutputState }
 
 func (IssueModelOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o IssueModelOutput) ToIssueModelOutput() IssueModelOutput {
 
 func (o IssueModelOutput) ToIssueModelOutputWithContext(ctx context.Context) IssueModelOutput {
 	return o
-}
-
-func (o IssueModelOutput) ToOutput(ctx context.Context) pulumix.Output[*IssueModel] {
-	return pulumix.Output[*IssueModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which this issue model was created.

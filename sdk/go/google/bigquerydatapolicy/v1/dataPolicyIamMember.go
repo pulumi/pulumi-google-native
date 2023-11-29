@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM policy for the specified data policy.
@@ -136,12 +135,6 @@ func (i *DataPolicyIamMember) ToDataPolicyIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyIamMemberOutput)
 }
 
-func (i *DataPolicyIamMember) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyIamMember] {
-	return pulumix.Output[*DataPolicyIamMember]{
-		OutputState: i.ToDataPolicyIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataPolicyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DataPolicyIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o DataPolicyIamMemberOutput) ToDataPolicyIamMemberOutput() DataPolicyIamMe
 
 func (o DataPolicyIamMemberOutput) ToDataPolicyIamMemberOutputWithContext(ctx context.Context) DataPolicyIamMemberOutput {
 	return o
-}
-
-func (o DataPolicyIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyIamMember] {
-	return pulumix.Output[*DataPolicyIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

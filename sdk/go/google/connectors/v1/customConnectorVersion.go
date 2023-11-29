@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new CustomConnectorVersion in a given project and location.
@@ -164,12 +163,6 @@ func (i *CustomConnectorVersion) ToCustomConnectorVersionOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(CustomConnectorVersionOutput)
 }
 
-func (i *CustomConnectorVersion) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorVersion] {
-	return pulumix.Output[*CustomConnectorVersion]{
-		OutputState: i.ToCustomConnectorVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomConnectorVersionOutput struct{ *pulumi.OutputState }
 
 func (CustomConnectorVersionOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o CustomConnectorVersionOutput) ToCustomConnectorVersionOutput() CustomCon
 
 func (o CustomConnectorVersionOutput) ToCustomConnectorVersionOutputWithContext(ctx context.Context) CustomConnectorVersionOutput {
 	return o
-}
-
-func (o CustomConnectorVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorVersion] {
-	return pulumix.Output[*CustomConnectorVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for establishing the authentication to the connector destination.

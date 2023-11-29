@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an address resource in the specified project by using the data included in the request.
@@ -194,12 +193,6 @@ func (i *Address) ToAddressOutputWithContext(ctx context.Context) AddressOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AddressOutput)
 }
 
-func (i *Address) ToOutput(ctx context.Context) pulumix.Output[*Address] {
-	return pulumix.Output[*Address]{
-		OutputState: i.ToAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AddressOutput struct{ *pulumi.OutputState }
 
 func (AddressOutput) ElementType() reflect.Type {
@@ -212,12 +205,6 @@ func (o AddressOutput) ToAddressOutput() AddressOutput {
 
 func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOutput {
 	return o
-}
-
-func (o AddressOutput) ToOutput(ctx context.Context) pulumix.Output[*Address] {
-	return pulumix.Output[*Address]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The static IP address represented by this resource.

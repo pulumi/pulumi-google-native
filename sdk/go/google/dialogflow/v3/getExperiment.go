@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified Experiment.
@@ -101,12 +100,6 @@ func (o LookupExperimentResultOutput) ToLookupExperimentResultOutput() LookupExp
 
 func (o LookupExperimentResultOutput) ToLookupExperimentResultOutputWithContext(ctx context.Context) LookupExperimentResultOutput {
 	return o
-}
-
-func (o LookupExperimentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExperimentResult] {
-	return pulumix.Output[LookupExperimentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this experiment.

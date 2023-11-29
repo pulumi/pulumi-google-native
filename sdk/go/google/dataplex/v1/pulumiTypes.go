@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -69,12 +68,6 @@ func (i GoogleCloudDataplexV1AssetDiscoverySpecArgs) ToGoogleCloudDataplexV1Asse
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AssetDiscoverySpecOutput)
 }
 
-func (i GoogleCloudDataplexV1AssetDiscoverySpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpec] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpec]{
-		OutputState: i.ToGoogleCloudDataplexV1AssetDiscoverySpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1AssetDiscoverySpecArgs) ToGoogleCloudDataplexV1AssetDiscoverySpecPtrOutput() GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput {
 	return i.ToGoogleCloudDataplexV1AssetDiscoverySpecPtrOutputWithContext(context.Background())
 }
@@ -116,12 +109,6 @@ func (i *googleCloudDataplexV1AssetDiscoverySpecPtrType) ToGoogleCloudDataplexV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput)
 }
 
-func (i *googleCloudDataplexV1AssetDiscoverySpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpec]{
-		OutputState: i.ToGoogleCloudDataplexV1AssetDiscoverySpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings to manage the metadata discovery and publishing for an asset.
 type GoogleCloudDataplexV1AssetDiscoverySpecOutput struct{ *pulumi.OutputState }
 
@@ -145,12 +132,6 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecOutput) ToGoogleCloudDataplexV1As
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1AssetDiscoverySpec) *GoogleCloudDataplexV1AssetDiscoverySpec {
 		return &v
 	}).(GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1AssetDiscoverySpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpec] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configuration for CSV data.
@@ -199,12 +180,6 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput) ToGoogleCloudDataplexV
 
 func (o GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput) ToGoogleCloudDataplexV1AssetDiscoverySpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput) Elem() GoogleCloudDataplexV1AssetDiscoverySpecOutput {
@@ -324,12 +299,6 @@ func (i GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs) ToGoogleCloudData
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsOutput)
 }
 
-func (i GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs) ToGoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutput() GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutput {
 	return i.ToGoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutputWithContext(context.Background())
 }
@@ -371,12 +340,6 @@ func (i *googleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutput)
 }
 
-func (i *googleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describe CSV and similar semi-structured data formats.
 type GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsOutput struct{ *pulumi.OutputState }
 
@@ -400,12 +363,6 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsOutput) ToGoogleCloudDa
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions) *GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions {
 		return &v
 	}).(GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The delimiter being used to separate values. This defaults to ','.
@@ -440,12 +397,6 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutput) ToGoogleClou
 
 func (o GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutput) ToGoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutput) Elem() GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsOutput {
@@ -525,12 +476,6 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponseOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The delimiter being used to separate values. This defaults to ','.
 func (o GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponseOutput) Delimiter() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse) string { return v.Delimiter }).(pulumi.StringOutput)
@@ -590,12 +535,6 @@ func (i GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs) ToGoogleCloudDat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsOutput)
 }
 
-func (i GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs) ToGoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput() GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput {
 	return i.ToGoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutputWithContext(context.Background())
 }
@@ -637,12 +576,6 @@ func (i *googleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput)
 }
 
-func (i *googleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describe JSON data format.
 type GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsOutput struct{ *pulumi.OutputState }
 
@@ -668,12 +601,6 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsOutput) ToGoogleCloudD
 	}).(GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
 func (o GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsOutput) DisableTypeInference() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions) *bool { return v.DisableTypeInference }).(pulumi.BoolPtrOutput)
@@ -696,12 +623,6 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput) ToGoogleClo
 
 func (o GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput) ToGoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput) Elem() GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsOutput {
@@ -757,12 +678,6 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponseOutput) ToGoog
 	return o
 }
 
-func (o GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
 func (o GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponseOutput) DisableTypeInference() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponse) bool { return v.DisableTypeInference }).(pulumi.BoolOutput)
@@ -802,12 +717,6 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecResponseOutput) ToGoogleCloudData
 
 func (o GoogleCloudDataplexV1AssetDiscoverySpecResponseOutput) ToGoogleCloudDataplexV1AssetDiscoverySpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetDiscoverySpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1AssetDiscoverySpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoverySpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configuration for CSV data.
@@ -875,12 +784,6 @@ func (o GoogleCloudDataplexV1AssetDiscoveryStatusResponseOutput) ToGoogleCloudDa
 	return o
 }
 
-func (o GoogleCloudDataplexV1AssetDiscoveryStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoveryStatusResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoveryStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The duration of the last discovery run.
 func (o GoogleCloudDataplexV1AssetDiscoveryStatusResponseOutput) LastRunDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetDiscoveryStatusResponse) string { return v.LastRunDuration }).(pulumi.StringOutput)
@@ -938,12 +841,6 @@ func (o GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponseOutput) ToGoogleCl
 
 func (o GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponseOutput) ToGoogleCloudDataplexV1AssetDiscoveryStatusStatsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The count of data items within the referenced resource.
@@ -1009,12 +906,6 @@ func (i GoogleCloudDataplexV1AssetResourceSpecArgs) ToGoogleCloudDataplexV1Asset
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AssetResourceSpecOutput)
 }
 
-func (i GoogleCloudDataplexV1AssetResourceSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetResourceSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetResourceSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1AssetResourceSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identifies the cloud resource that is referenced by this asset.
 type GoogleCloudDataplexV1AssetResourceSpecOutput struct{ *pulumi.OutputState }
 
@@ -1028,12 +919,6 @@ func (o GoogleCloudDataplexV1AssetResourceSpecOutput) ToGoogleCloudDataplexV1Ass
 
 func (o GoogleCloudDataplexV1AssetResourceSpecOutput) ToGoogleCloudDataplexV1AssetResourceSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1AssetResourceSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetResourceSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetResourceSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
@@ -1080,12 +965,6 @@ func (o GoogleCloudDataplexV1AssetResourceSpecResponseOutput) ToGoogleCloudDatap
 	return o
 }
 
-func (o GoogleCloudDataplexV1AssetResourceSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetResourceSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetResourceSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
 func (o GoogleCloudDataplexV1AssetResourceSpecResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetResourceSpecResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1126,12 +1005,6 @@ func (o GoogleCloudDataplexV1AssetResourceStatusResponseOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDataplexV1AssetResourceStatusResponseOutput) ToGoogleCloudDataplexV1AssetResourceStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceStatusResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1AssetResourceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetResourceStatusResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetResourceStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Service account associated with the BigQuery Connection.
@@ -1179,12 +1052,6 @@ func (o GoogleCloudDataplexV1AssetSecurityStatusResponseOutput) ToGoogleCloudDat
 	return o
 }
 
-func (o GoogleCloudDataplexV1AssetSecurityStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetSecurityStatusResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetSecurityStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Additional information about the current state.
 func (o GoogleCloudDataplexV1AssetSecurityStatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetSecurityStatusResponse) string { return v.Message }).(pulumi.StringOutput)
@@ -1223,12 +1090,6 @@ func (o GoogleCloudDataplexV1AssetStatusResponseOutput) ToGoogleCloudDataplexV1A
 
 func (o GoogleCloudDataplexV1AssetStatusResponseOutput) ToGoogleCloudDataplexV1AssetStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetStatusResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1AssetStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1AssetStatusResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1AssetStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of active assets.
@@ -1281,12 +1142,6 @@ func (i GoogleCloudDataplexV1ContentNotebookArgs) ToGoogleCloudDataplexV1Content
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ContentNotebookOutput)
 }
 
-func (i GoogleCloudDataplexV1ContentNotebookArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ContentNotebook] {
-	return pulumix.Output[GoogleCloudDataplexV1ContentNotebook]{
-		OutputState: i.ToGoogleCloudDataplexV1ContentNotebookOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1ContentNotebookArgs) ToGoogleCloudDataplexV1ContentNotebookPtrOutput() GoogleCloudDataplexV1ContentNotebookPtrOutput {
 	return i.ToGoogleCloudDataplexV1ContentNotebookPtrOutputWithContext(context.Background())
 }
@@ -1328,12 +1183,6 @@ func (i *googleCloudDataplexV1ContentNotebookPtrType) ToGoogleCloudDataplexV1Con
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ContentNotebookPtrOutput)
 }
 
-func (i *googleCloudDataplexV1ContentNotebookPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ContentNotebook] {
-	return pulumix.Output[*GoogleCloudDataplexV1ContentNotebook]{
-		OutputState: i.ToGoogleCloudDataplexV1ContentNotebookPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for Notebook content.
 type GoogleCloudDataplexV1ContentNotebookOutput struct{ *pulumi.OutputState }
 
@@ -1359,12 +1208,6 @@ func (o GoogleCloudDataplexV1ContentNotebookOutput) ToGoogleCloudDataplexV1Conte
 	}).(GoogleCloudDataplexV1ContentNotebookPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1ContentNotebookOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ContentNotebook] {
-	return pulumix.Output[GoogleCloudDataplexV1ContentNotebook]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Kernel Type of the notebook.
 func (o GoogleCloudDataplexV1ContentNotebookOutput) KernelType() GoogleCloudDataplexV1ContentNotebookKernelTypeOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ContentNotebook) GoogleCloudDataplexV1ContentNotebookKernelType {
@@ -1384,12 +1227,6 @@ func (o GoogleCloudDataplexV1ContentNotebookPtrOutput) ToGoogleCloudDataplexV1Co
 
 func (o GoogleCloudDataplexV1ContentNotebookPtrOutput) ToGoogleCloudDataplexV1ContentNotebookPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ContentNotebookPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1ContentNotebookPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ContentNotebook] {
-	return pulumix.Output[*GoogleCloudDataplexV1ContentNotebook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1ContentNotebookPtrOutput) Elem() GoogleCloudDataplexV1ContentNotebookOutput {
@@ -1433,12 +1270,6 @@ func (o GoogleCloudDataplexV1ContentNotebookResponseOutput) ToGoogleCloudDataple
 	return o
 }
 
-func (o GoogleCloudDataplexV1ContentNotebookResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ContentNotebookResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1ContentNotebookResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Kernel Type of the notebook.
 func (o GoogleCloudDataplexV1ContentNotebookResponseOutput) KernelType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ContentNotebookResponse) string { return v.KernelType }).(pulumi.StringOutput)
@@ -1477,12 +1308,6 @@ func (i GoogleCloudDataplexV1ContentSqlScriptArgs) ToGoogleCloudDataplexV1Conten
 
 func (i GoogleCloudDataplexV1ContentSqlScriptArgs) ToGoogleCloudDataplexV1ContentSqlScriptOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ContentSqlScriptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ContentSqlScriptOutput)
-}
-
-func (i GoogleCloudDataplexV1ContentSqlScriptArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ContentSqlScript] {
-	return pulumix.Output[GoogleCloudDataplexV1ContentSqlScript]{
-		OutputState: i.ToGoogleCloudDataplexV1ContentSqlScriptOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudDataplexV1ContentSqlScriptArgs) ToGoogleCloudDataplexV1ContentSqlScriptPtrOutput() GoogleCloudDataplexV1ContentSqlScriptPtrOutput {
@@ -1526,12 +1351,6 @@ func (i *googleCloudDataplexV1ContentSqlScriptPtrType) ToGoogleCloudDataplexV1Co
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ContentSqlScriptPtrOutput)
 }
 
-func (i *googleCloudDataplexV1ContentSqlScriptPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ContentSqlScript] {
-	return pulumix.Output[*GoogleCloudDataplexV1ContentSqlScript]{
-		OutputState: i.ToGoogleCloudDataplexV1ContentSqlScriptPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for the Sql Script content.
 type GoogleCloudDataplexV1ContentSqlScriptOutput struct{ *pulumi.OutputState }
 
@@ -1557,12 +1376,6 @@ func (o GoogleCloudDataplexV1ContentSqlScriptOutput) ToGoogleCloudDataplexV1Cont
 	}).(GoogleCloudDataplexV1ContentSqlScriptPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1ContentSqlScriptOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ContentSqlScript] {
-	return pulumix.Output[GoogleCloudDataplexV1ContentSqlScript]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Query Engine to be used for the Sql Query.
 func (o GoogleCloudDataplexV1ContentSqlScriptOutput) Engine() GoogleCloudDataplexV1ContentSqlScriptEngineOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ContentSqlScript) GoogleCloudDataplexV1ContentSqlScriptEngine {
@@ -1582,12 +1395,6 @@ func (o GoogleCloudDataplexV1ContentSqlScriptPtrOutput) ToGoogleCloudDataplexV1C
 
 func (o GoogleCloudDataplexV1ContentSqlScriptPtrOutput) ToGoogleCloudDataplexV1ContentSqlScriptPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ContentSqlScriptPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1ContentSqlScriptPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ContentSqlScript] {
-	return pulumix.Output[*GoogleCloudDataplexV1ContentSqlScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1ContentSqlScriptPtrOutput) Elem() GoogleCloudDataplexV1ContentSqlScriptOutput {
@@ -1631,12 +1438,6 @@ func (o GoogleCloudDataplexV1ContentSqlScriptResponseOutput) ToGoogleCloudDatapl
 	return o
 }
 
-func (o GoogleCloudDataplexV1ContentSqlScriptResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ContentSqlScriptResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1ContentSqlScriptResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Query Engine to be used for the Sql Query.
 func (o GoogleCloudDataplexV1ContentSqlScriptResponseOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ContentSqlScriptResponse) string { return v.Engine }).(pulumi.StringOutput)
@@ -1675,12 +1476,6 @@ func (i GoogleCloudDataplexV1DataAccessSpecArgs) ToGoogleCloudDataplexV1DataAcce
 
 func (i GoogleCloudDataplexV1DataAccessSpecArgs) ToGoogleCloudDataplexV1DataAccessSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAccessSpecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataAccessSpecOutput)
-}
-
-func (i GoogleCloudDataplexV1DataAccessSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataAccessSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1DataAccessSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1DataAccessSpecOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudDataplexV1DataAccessSpecArgs) ToGoogleCloudDataplexV1DataAccessSpecPtrOutput() GoogleCloudDataplexV1DataAccessSpecPtrOutput {
@@ -1724,12 +1519,6 @@ func (i *googleCloudDataplexV1DataAccessSpecPtrType) ToGoogleCloudDataplexV1Data
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataAccessSpecPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataAccessSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataAccessSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataAccessSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows, columns in BigQuery Tables). When associated with data, the data is only accessible to principals explicitly granted access through the DataAccessSpec. Principals with access to the containing resource are not implicitly granted access.
 type GoogleCloudDataplexV1DataAccessSpecOutput struct{ *pulumi.OutputState }
 
@@ -1755,12 +1544,6 @@ func (o GoogleCloudDataplexV1DataAccessSpecOutput) ToGoogleCloudDataplexV1DataAc
 	}).(GoogleCloudDataplexV1DataAccessSpecPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataAccessSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataAccessSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1DataAccessSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
 func (o GoogleCloudDataplexV1DataAccessSpecOutput) Readers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataAccessSpec) []string { return v.Readers }).(pulumi.StringArrayOutput)
@@ -1778,12 +1561,6 @@ func (o GoogleCloudDataplexV1DataAccessSpecPtrOutput) ToGoogleCloudDataplexV1Dat
 
 func (o GoogleCloudDataplexV1DataAccessSpecPtrOutput) ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAccessSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataAccessSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataAccessSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataAccessSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataAccessSpecPtrOutput) Elem() GoogleCloudDataplexV1DataAccessSpecOutput {
@@ -1825,12 +1602,6 @@ func (o GoogleCloudDataplexV1DataAccessSpecResponseOutput) ToGoogleCloudDataplex
 
 func (o GoogleCloudDataplexV1DataAccessSpecResponseOutput) ToGoogleCloudDataplexV1DataAccessSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAccessSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataAccessSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataAccessSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataAccessSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
@@ -1877,12 +1648,6 @@ func (i GoogleCloudDataplexV1DataAttributeBindingPathArgs) ToGoogleCloudDataplex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataAttributeBindingPathOutput)
 }
 
-func (i GoogleCloudDataplexV1DataAttributeBindingPathArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataAttributeBindingPath] {
-	return pulumix.Output[GoogleCloudDataplexV1DataAttributeBindingPath]{
-		OutputState: i.ToGoogleCloudDataplexV1DataAttributeBindingPathOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDataplexV1DataAttributeBindingPathArrayInput is an input type that accepts GoogleCloudDataplexV1DataAttributeBindingPathArray and GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1DataAttributeBindingPathArrayInput` via:
 //
@@ -1908,12 +1673,6 @@ func (i GoogleCloudDataplexV1DataAttributeBindingPathArray) ToGoogleCloudDataple
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput)
 }
 
-func (i GoogleCloudDataplexV1DataAttributeBindingPathArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataAttributeBindingPath] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataAttributeBindingPath]{
-		OutputState: i.ToGoogleCloudDataplexV1DataAttributeBindingPathArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.
 type GoogleCloudDataplexV1DataAttributeBindingPathOutput struct{ *pulumi.OutputState }
 
@@ -1927,12 +1686,6 @@ func (o GoogleCloudDataplexV1DataAttributeBindingPathOutput) ToGoogleCloudDatapl
 
 func (o GoogleCloudDataplexV1DataAttributeBindingPathOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAttributeBindingPathOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataAttributeBindingPathOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataAttributeBindingPath] {
-	return pulumix.Output[GoogleCloudDataplexV1DataAttributeBindingPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
@@ -1957,12 +1710,6 @@ func (o GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput) ToGoogleCloudD
 
 func (o GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataAttributeBindingPath] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataAttributeBindingPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataAttributeBindingPathOutput {
@@ -1994,12 +1741,6 @@ func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataAttributeBindingPathResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataAttributeBindingPathResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
 func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) Attributes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataAttributeBindingPathResponse) []string { return v.Attributes }).(pulumi.StringArrayOutput)
@@ -2022,12 +1763,6 @@ func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput) ToGoog
 
 func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataAttributeBindingPathResponse] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataAttributeBindingPathResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput {
@@ -2057,12 +1792,6 @@ func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExpor
 
 func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput) ToGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional information about the BigQuery exporting.
@@ -2100,12 +1829,6 @@ func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutpu
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The result of BigQuery export post scan action.
 func (o GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponseOutput) BigqueryExportResult() GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse) GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse {
@@ -2140,12 +1863,6 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleField
 
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Average of non-null values in the scanned data. NaN, if the field has a NaN.
@@ -2212,12 +1929,6 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFiel
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Average of non-null values in the scanned data. NaN, if the field has a NaN.
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) Average() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse) float64 {
@@ -2282,12 +1993,6 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOut
 
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
@@ -2357,12 +2062,6 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringField
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Average length of non-null values in the scanned data.
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput) AverageLength() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse) float64 {
@@ -2409,12 +2108,6 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueRe
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Count of the corresponding value in the scanned data.
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput) Count() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse) string {
@@ -2450,12 +2143,6 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueRe
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse {
 		return vs[0].([]GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse)[vs[1].(int)]
@@ -2487,12 +2174,6 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) ToGoog
 
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileFieldResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The mode of the field. Possible values include: REQUIRED, if it is a required field. NULLABLE, if it is an optional field. REPEATED, if it is a repeated field.
@@ -2531,12 +2212,6 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput) T
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataProfileResultProfileFieldResponse] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataProfileResultProfileFieldResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataProfileResultProfileFieldResponse {
 		return vs[0].([]GoogleCloudDataplexV1DataProfileResultProfileFieldResponse)[vs[1].(int)]
@@ -2562,12 +2237,6 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileResponseOutput) ToGoogleClo
 
 func (o GoogleCloudDataplexV1DataProfileResultProfileResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileResultProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of fields with structural and profile information for each field.
@@ -2602,12 +2271,6 @@ func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) ToGoogleCloudDatap
 
 func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) ToGoogleCloudDataplexV1DataProfileResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileResultResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The result of post scan actions.
@@ -2687,12 +2350,6 @@ func (i GoogleCloudDataplexV1DataProfileSpecArgs) ToGoogleCloudDataplexV1DataPro
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecOutput)
 }
 
-func (i GoogleCloudDataplexV1DataProfileSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataProfileSpecArgs) ToGoogleCloudDataplexV1DataProfileSpecPtrOutput() GoogleCloudDataplexV1DataProfileSpecPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(context.Background())
 }
@@ -2734,12 +2391,6 @@ func (i *googleCloudDataplexV1DataProfileSpecPtrType) ToGoogleCloudDataplexV1Dat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataProfileSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataProfileScan related setting.
 type GoogleCloudDataplexV1DataProfileSpecOutput struct{ *pulumi.OutputState }
 
@@ -2763,12 +2414,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecOutput) ToGoogleCloudDataplexV1DataP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataProfileSpec) *GoogleCloudDataplexV1DataProfileSpec {
 		return &v
 	}).(GoogleCloudDataplexV1DataProfileSpecPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1DataProfileSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
@@ -2814,12 +2459,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) ToGoogleCloudDataplexV1Da
 
 func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) Elem() GoogleCloudDataplexV1DataProfileSpecOutput {
@@ -2917,12 +2556,6 @@ func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs) ToGoogleCloudDa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput)
 }
 
-func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActions] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActions]{
-		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsArgs) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(context.Background())
 }
@@ -2964,12 +2597,6 @@ func (i *googleCloudDataplexV1DataProfileSpecPostScanActionsPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataProfileSpecPostScanActionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActions] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActions]{
-		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration of post scan actions of DataProfileScan job.
 type GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput struct{ *pulumi.OutputState }
 
@@ -2995,12 +2622,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput) ToGoogleCloud
 	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActions] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If set, results will be exported to the provided BigQuery table.
 func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput) BigqueryExport() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecPostScanActions) *GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
@@ -3020,12 +2641,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput) ToGoogleCl
 
 func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActions] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsPtrOutput) Elem() GoogleCloudDataplexV1DataProfileSpecPostScanActionsOutput {
@@ -3083,12 +2698,6 @@ func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput)
 }
 
-func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport]{
-		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportArgs) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(context.Background())
 }
@@ -3130,12 +2739,6 @@ func (i *googleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport]{
-		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration of BigQuery export post scan action.
 type GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput struct{ *pulumi.OutputState }
 
@@ -3161,12 +2764,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput)
 	}).(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
 func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput) ResultsTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport) *string {
@@ -3186,12 +2783,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutp
 
 func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportPtrOutput) Elem() GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportOutput {
@@ -3235,12 +2826,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportRespons
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
 func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponseOutput) ResultsTable() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExportResponse) string {
@@ -3267,12 +2852,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput) ToGoo
 
 func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set, results will be exported to the provided BigQuery table.
@@ -3309,12 +2888,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ToGoogleCloudDataple
 
 func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data profile, regardless of include_fields value.
@@ -3383,12 +2956,6 @@ func (i GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs) ToGoogleCloudDat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput)
 }
 
-func (i GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFields] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFields]{
-		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataProfileSpecSelectedFieldsArgs) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(context.Background())
 }
@@ -3430,12 +2997,6 @@ func (i *googleCloudDataplexV1DataProfileSpecSelectedFieldsPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataProfileSpecSelectedFieldsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecSelectedFields] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecSelectedFields]{
-		OutputState: i.ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specification for fields to include or exclude in data profile scan.
 type GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput struct{ *pulumi.OutputState }
 
@@ -3461,12 +3022,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput) ToGoogleCloudD
 	}).(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFields] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFields]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
 func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput) FieldNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecSelectedFields) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
@@ -3484,12 +3039,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput) ToGoogleClo
 
 func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecSelectedFields] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataProfileSpecSelectedFields]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput) Elem() GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput {
@@ -3533,12 +3082,6 @@ func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput) ToGoog
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
 func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput) FieldNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
@@ -3567,12 +3110,6 @@ func (o GoogleCloudDataplexV1DataQualityColumnResultResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataQualityColumnResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityColumnResultResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityColumnResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The column specified in the DataQualityRule.
 func (o GoogleCloudDataplexV1DataQualityColumnResultResponseOutput) Column() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityColumnResultResponse) string { return v.Column }).(pulumi.StringOutput)
@@ -3595,12 +3132,6 @@ func (o GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput) ToGoogl
 
 func (o GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput) ToGoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataQualityColumnResultResponse] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataQualityColumnResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataQualityColumnResultResponseOutput {
@@ -3628,12 +3159,6 @@ func (o GoogleCloudDataplexV1DataQualityDimensionResponseOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDataplexV1DataQualityDimensionResponseOutput) ToGoogleCloudDataplexV1DataQualityDimensionResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityDimensionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityDimensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityDimensionResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityDimensionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
@@ -3664,12 +3189,6 @@ func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) ToGoogleC
 
 func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) ToGoogleCloudDataplexV1DataQualityDimensionResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityDimensionResultResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityDimensionResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dimension config specified in the DataQualitySpec, as is.
@@ -3703,12 +3222,6 @@ func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataQualityDimensionResultResponse] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataQualityDimensionResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataQualityDimensionResultResponse {
 		return vs[0].([]GoogleCloudDataplexV1DataQualityDimensionResultResponse)[vs[1].(int)]
@@ -3736,12 +3249,6 @@ func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExpor
 
 func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput) ToGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional information about the BigQuery exporting.
@@ -3777,12 +3284,6 @@ func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutpu
 
 func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput) ToGoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The result of BigQuery export post scan action.
@@ -3825,12 +3326,6 @@ func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) ToGoogleCloudDatap
 
 func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) ToGoogleCloudDataplexV1DataQualityResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityResultResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityResultResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of results at the column level.A column will have a corresponding DataQualityColumnResult if and only if there is at least one rule with the 'column' field set to it.
@@ -3970,12 +3465,6 @@ func (i GoogleCloudDataplexV1DataQualityRuleArgs) ToGoogleCloudDataplexV1DataQua
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleOutput)
 }
 
-func (i GoogleCloudDataplexV1DataQualityRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRule] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRule]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDataplexV1DataQualityRuleArrayInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleArray and GoogleCloudDataplexV1DataQualityRuleArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleArrayInput` via:
 //
@@ -4001,12 +3490,6 @@ func (i GoogleCloudDataplexV1DataQualityRuleArray) ToGoogleCloudDataplexV1DataQu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleArrayOutput)
 }
 
-func (i GoogleCloudDataplexV1DataQualityRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataQualityRule] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataQualityRule]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A rule captures data quality intent about a data source.
 type GoogleCloudDataplexV1DataQualityRuleOutput struct{ *pulumi.OutputState }
 
@@ -4020,12 +3503,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleOutput) ToGoogleCloudDataplexV1DataQ
 
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) ToGoogleCloudDataplexV1DataQualityRuleOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRule] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The unnested column which this rule is evaluated against.
@@ -4128,12 +3605,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleArrayOutput) ToGoogleCloudDataplexV1
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataQualityRule] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataQualityRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDataplexV1DataQualityRuleArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataQualityRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataQualityRule {
 		return vs[0].([]GoogleCloudDataplexV1DataQualityRule)[vs[1].(int)]
@@ -4169,12 +3640,6 @@ func (i GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs) ToGoogleClou
 
 func (i GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput)
-}
-
-func (i GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleNonNullExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleNonNullExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
@@ -4218,12 +3683,6 @@ func (i *googleCloudDataplexV1DataQualityRuleNonNullExpectationPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualityRuleNonNullExpectationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleNonNullExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleNonNullExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Evaluates whether each column value is null.
 type GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput struct{ *pulumi.OutputState }
 
@@ -4249,12 +3708,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput) ToGoogleCl
 	}).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleNonNullExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleNonNullExpectation]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput) ElementType() reflect.Type {
@@ -4267,12 +3720,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput) ToGoogl
 
 func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleNonNullExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleNonNullExpectation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput {
@@ -4302,12 +3749,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput) To
 
 func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Evaluates whether each column value lies between a specified range.
@@ -4357,12 +3798,6 @@ func (i GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput)
 }
 
-func (i GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRangeExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRangeExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(context.Background())
 }
@@ -4404,12 +3839,6 @@ func (i *googleCloudDataplexV1DataQualityRuleRangeExpectationPtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualityRuleRangeExpectationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRangeExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRangeExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Evaluates whether each column value lies between a specified range.
 type GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput struct{ *pulumi.OutputState }
 
@@ -4433,12 +3862,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) ToGoogleClou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleRangeExpectation) *GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
 		return &v
 	}).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRangeExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRangeExpectation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
@@ -4473,12 +3896,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) ToGoogleC
 
 func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRangeExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRangeExpectation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput {
@@ -4558,12 +3975,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
 func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) MaxValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse) string { return v.MaxValue }).(pulumi.StringOutput)
@@ -4619,12 +4030,6 @@ func (i GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput)
 }
 
-func (i GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRegexExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRegexExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(context.Background())
 }
@@ -4666,12 +4071,6 @@ func (i *googleCloudDataplexV1DataQualityRuleRegexExpectationPtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualityRuleRegexExpectationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRegexExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRegexExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Evaluates whether each column value matches a specified regex.
 type GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput struct{ *pulumi.OutputState }
 
@@ -4697,12 +4096,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) ToGoogleClou
 	}).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRegexExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRegexExpectation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A regular expression the column value is expected to match.
 func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRegexExpectation) *string { return v.Regex }).(pulumi.StringPtrOutput)
@@ -4720,12 +4113,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) ToGoogleC
 
 func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRegexExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRegexExpectation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput {
@@ -4767,12 +4154,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput) ToGo
 
 func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A regular expression the column value is expected to match.
@@ -4825,12 +4206,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) ToGoogleCloudDataple
 
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The unnested column which this rule is evaluated against.
@@ -4933,12 +4308,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput) ToGoogleCloudDa
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataQualityRuleResponse] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataQualityRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataQualityRuleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataQualityRuleResponse {
 		return vs[0].([]GoogleCloudDataplexV1DataQualityRuleResponse)[vs[1].(int)]
@@ -4976,12 +4345,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) ToGoogleCloudD
 
 func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleResultResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleResultResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
@@ -5035,12 +4398,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataQualityRuleResultResponse] {
-	return pulumix.Output[[]GoogleCloudDataplexV1DataQualityRuleResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataQualityRuleResultResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataQualityRuleResultResponse {
 		return vs[0].([]GoogleCloudDataplexV1DataQualityRuleResultResponse)[vs[1].(int)]
@@ -5080,12 +4437,6 @@ func (i GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs) ToGoogl
 
 func (i GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput)
-}
-
-func (i GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
@@ -5129,12 +4480,6 @@ func (i *googleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrType) ToG
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
 type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput struct{ *pulumi.OutputState }
 
@@ -5160,12 +4505,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) ToGoo
 	}).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The SQL expression.
 func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) SqlExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation) *string { return v.SqlExpression }).(pulumi.StringPtrOutput)
@@ -5183,12 +4522,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) To
 
 func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput {
@@ -5230,12 +4563,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutpu
 
 func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The SQL expression.
@@ -5280,12 +4607,6 @@ func (i GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs) ToGoogleCloudDat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput)
 }
 
-func (i GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleSetExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleSetExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleSetExpectationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(context.Background())
 }
@@ -5327,12 +4648,6 @@ func (i *googleCloudDataplexV1DataQualityRuleSetExpectationPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualityRuleSetExpectationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleSetExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleSetExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Evaluates whether each column value is contained by a specified set.
 type GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput struct{ *pulumi.OutputState }
 
@@ -5358,12 +4673,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) ToGoogleCloudD
 	}).(GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleSetExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleSetExpectation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Expected values for the column value.
 func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleSetExpectation) []string { return v.Values }).(pulumi.StringArrayOutput)
@@ -5381,12 +4690,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) ToGoogleClo
 
 func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleSetExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleSetExpectation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput {
@@ -5428,12 +4731,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) ToGoog
 
 func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Expected values for the column value.
@@ -5492,12 +4789,6 @@ func (i GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput)
 }
 
-func (i GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(context.Background())
 }
@@ -5539,12 +4830,6 @@ func (i *googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Evaluates whether the column aggregate statistic lies between a specified range.
 type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput struct{ *pulumi.OutputState }
 
@@ -5568,12 +4853,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) ToG
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
 		return &v
 	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
@@ -5615,12 +4894,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) 
 
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput {
@@ -5712,12 +4985,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOut
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) MaxValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) string {
@@ -5788,12 +5055,6 @@ func (i GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput)
 }
 
-func (i GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(context.Background())
 }
@@ -5835,12 +5096,6 @@ func (i *googleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
 type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput struct{ *pulumi.OutputState }
 
@@ -5866,12 +5121,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) ToG
 	}).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The SQL expression.
 func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) SqlExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation) *string { return v.SqlExpression }).(pulumi.StringPtrOutput)
@@ -5889,12 +5138,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) 
 
 func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput {
@@ -5938,12 +5181,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOut
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The SQL expression.
 func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput) SqlExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse) string {
@@ -5980,12 +5217,6 @@ func (i GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs) ToGoogleC
 
 func (i GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput)
-}
-
-func (i GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
@@ -6029,12 +5260,6 @@ func (i *googleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Evaluates whether the column has duplicates.
 type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput struct{ *pulumi.OutputState }
 
@@ -6060,12 +5285,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput) ToGoogl
 	}).(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput) ElementType() reflect.Type {
@@ -6078,12 +5297,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput) ToGo
 
 func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput {
@@ -6113,12 +5326,6 @@ func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput)
 
 func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DataQualityScan related setting.
@@ -6168,12 +5375,6 @@ func (i GoogleCloudDataplexV1DataQualitySpecArgs) ToGoogleCloudDataplexV1DataQua
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecOutput)
 }
 
-func (i GoogleCloudDataplexV1DataQualitySpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpec] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpec]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualitySpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataQualitySpecArgs) ToGoogleCloudDataplexV1DataQualitySpecPtrOutput() GoogleCloudDataplexV1DataQualitySpecPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(context.Background())
 }
@@ -6215,12 +5416,6 @@ func (i *googleCloudDataplexV1DataQualitySpecPtrType) ToGoogleCloudDataplexV1Dat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualitySpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualitySpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualitySpec]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataQualityScan related setting.
 type GoogleCloudDataplexV1DataQualitySpecOutput struct{ *pulumi.OutputState }
 
@@ -6244,12 +5439,6 @@ func (o GoogleCloudDataplexV1DataQualitySpecOutput) ToGoogleCloudDataplexV1DataQ
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualitySpec) *GoogleCloudDataplexV1DataQualitySpec {
 		return &v
 	}).(GoogleCloudDataplexV1DataQualitySpecPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1DataQualitySpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpec] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Actions to take upon job completion.
@@ -6286,12 +5475,6 @@ func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) ToGoogleCloudDataplexV1Da
 
 func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualitySpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualitySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecOutput {
@@ -6379,12 +5562,6 @@ func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) ToGoogleCloudDa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput)
 }
 
-func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActions] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActions]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(context.Background())
 }
@@ -6426,12 +5603,6 @@ func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActions] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActions]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration of post scan actions of DataQualityScan.
 type GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput struct{ *pulumi.OutputState }
 
@@ -6457,12 +5628,6 @@ func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) ToGoogleCloud
 	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActions] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If set, results will be exported to the provided BigQuery table.
 func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) BigqueryExport() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActions) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport {
@@ -6482,12 +5647,6 @@ func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) ToGoogleCl
 
 func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActions] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput {
@@ -6545,12 +5704,6 @@ func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput)
 }
 
-func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(context.Background())
 }
@@ -6592,12 +5745,6 @@ func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport]{
-		OutputState: i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration of BigQuery export post scan action.
 type GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput struct{ *pulumi.OutputState }
 
@@ -6623,12 +5770,6 @@ func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput)
 	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
 func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput) ResultsTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport) *string {
@@ -6648,12 +5789,6 @@ func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutp
 
 func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput {
@@ -6697,12 +5832,6 @@ func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportRespons
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
 func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput) ResultsTable() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse) string {
@@ -6729,12 +5858,6 @@ func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput) ToGoo
 
 func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set, results will be exported to the provided BigQuery table.
@@ -6769,12 +5892,6 @@ func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) ToGoogleCloudDataple
 
 func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualitySpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataQualitySpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Actions to take upon job completion.
@@ -6840,12 +5957,6 @@ func (i GoogleCloudDataplexV1DataScanExecutionSpecArgs) ToGoogleCloudDataplexV1D
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataScanExecutionSpecOutput)
 }
 
-func (i GoogleCloudDataplexV1DataScanExecutionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataScanExecutionSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1DataScanExecutionSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1DataScanExecutionSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1DataScanExecutionSpecArgs) ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutput() GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput {
 	return i.ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(context.Background())
 }
@@ -6887,12 +5998,6 @@ func (i *googleCloudDataplexV1DataScanExecutionSpecPtrType) ToGoogleCloudDataple
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput)
 }
 
-func (i *googleCloudDataplexV1DataScanExecutionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataScanExecutionSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataScanExecutionSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataScan execution settings.
 type GoogleCloudDataplexV1DataScanExecutionSpecOutput struct{ *pulumi.OutputState }
 
@@ -6918,12 +6023,6 @@ func (o GoogleCloudDataplexV1DataScanExecutionSpecOutput) ToGoogleCloudDataplexV
 	}).(GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1DataScanExecutionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataScanExecutionSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1DataScanExecutionSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
 func (o GoogleCloudDataplexV1DataScanExecutionSpecOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataScanExecutionSpec) *string { return v.Field }).(pulumi.StringPtrOutput)
@@ -6946,12 +6045,6 @@ func (o GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput) ToGoogleCloudDatapl
 
 func (o GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput) ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1DataScanExecutionSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1DataScanExecutionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput) Elem() GoogleCloudDataplexV1DataScanExecutionSpecOutput {
@@ -7007,12 +6100,6 @@ func (o GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput) ToGoogleCloudD
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataScanExecutionSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataScanExecutionSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
 func (o GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput) Field() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataScanExecutionSpecResponse) string { return v.Field }).(pulumi.StringOutput)
@@ -7046,12 +6133,6 @@ func (o GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput) ToGoogleClou
 
 func (o GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput) ToGoogleCloudDataplexV1DataScanExecutionStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataScanExecutionStatusResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataScanExecutionStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the latest DataScanJob ended.
@@ -7103,12 +6184,6 @@ func (i GoogleCloudDataplexV1DataSourceArgs) ToGoogleCloudDataplexV1DataSourceOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataSourceOutput)
 }
 
-func (i GoogleCloudDataplexV1DataSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataSource] {
-	return pulumix.Output[GoogleCloudDataplexV1DataSource]{
-		OutputState: i.ToGoogleCloudDataplexV1DataSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The data source for DataScan.
 type GoogleCloudDataplexV1DataSourceOutput struct{ *pulumi.OutputState }
 
@@ -7122,12 +6197,6 @@ func (o GoogleCloudDataplexV1DataSourceOutput) ToGoogleCloudDataplexV1DataSource
 
 func (o GoogleCloudDataplexV1DataSourceOutput) ToGoogleCloudDataplexV1DataSourceOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataSourceOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1DataSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataSource] {
-	return pulumix.Output[GoogleCloudDataplexV1DataSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
@@ -7163,12 +6232,6 @@ func (o GoogleCloudDataplexV1DataSourceResponseOutput) ToGoogleCloudDataplexV1Da
 	return o
 }
 
-func (o GoogleCloudDataplexV1DataSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataSourceResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1DataSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
 func (o GoogleCloudDataplexV1DataSourceResponseOutput) Entity() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataSourceResponse) string { return v.Entity }).(pulumi.StringOutput)
@@ -7202,12 +6265,6 @@ func (o GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponseOutpu
 	return o
 }
 
-func (o GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether the entity is compatible and can be represented in the metadata store.
 func (o GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponseOutput) Compatible() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse) bool { return v.Compatible }).(pulumi.BoolOutput)
@@ -7239,12 +6296,6 @@ func (o GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput) ToGoogleCl
 
 func (o GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput) ToGoogleCloudDataplexV1EntityCompatibilityStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EntityCompatibilityStatusResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1EntityCompatibilityStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether this entity is compatible with BigQuery.
@@ -7282,12 +6333,6 @@ func (o GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput) ToGoogleCloudDataplexV1EnvironmentEndpointsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentEndpointsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentEndpointsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URI to serve notebook APIs
@@ -7339,12 +6384,6 @@ func (i GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs) ToGoogleCloudDat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EnvironmentInfrastructureSpecOutput)
 }
 
-func (i GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for the underlying infrastructure used to run workloads.
 type GoogleCloudDataplexV1EnvironmentInfrastructureSpecOutput struct{ *pulumi.OutputState }
 
@@ -7358,12 +6397,6 @@ func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecOutput) ToGoogleCloudD
 
 func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecOutput) ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EnvironmentInfrastructureSpecOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Compute resources needed for analyze interactive workloads.
@@ -7423,12 +6456,6 @@ func (i GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesOutput)
 }
 
-func (i GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources]{
-		OutputState: i.ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs) ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutput() GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutput {
 	return i.ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutputWithContext(context.Background())
 }
@@ -7470,12 +6497,6 @@ func (i *googleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutput)
 }
 
-func (i *googleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources] {
-	return pulumix.Output[*GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources]{
-		OutputState: i.ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Compute resources associated with the analyze interactive workloads.
 type GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesOutput struct{ *pulumi.OutputState }
 
@@ -7499,12 +6520,6 @@ func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources) *GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources {
 		return &v
 	}).(GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Size in GB of the disk. Default is 100 GB.
@@ -7534,12 +6549,6 @@ func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOut
 
 func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutput) ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources] {
-	return pulumix.Output[*GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutput) Elem() GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesOutput {
@@ -7605,12 +6614,6 @@ func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesRespon
 
 func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponseOutput) ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Size in GB of the disk. Default is 100 GB.
@@ -7681,12 +6684,6 @@ func (i GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeOutput)
 }
 
-func (i GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime]{
-		OutputState: i.ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Software Runtime Configuration to run Analyze.
 type GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeOutput struct{ *pulumi.OutputState }
 
@@ -7700,12 +6697,6 @@ func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeOutput) 
 
 func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeOutput) ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dataplex Image version.
@@ -7761,12 +6752,6 @@ func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse
 	return o
 }
 
-func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Dataplex Image version.
 func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponseOutput) ImageVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse) string {
@@ -7816,12 +6801,6 @@ func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput) ToGoog
 
 func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput) ToGoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Compute resources needed for analyze interactive workloads.
@@ -7877,12 +6856,6 @@ func (i GoogleCloudDataplexV1EnvironmentSessionSpecArgs) ToGoogleCloudDataplexV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EnvironmentSessionSpecOutput)
 }
 
-func (i GoogleCloudDataplexV1EnvironmentSessionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentSessionSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentSessionSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1EnvironmentSessionSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1EnvironmentSessionSpecArgs) ToGoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput() GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput {
 	return i.ToGoogleCloudDataplexV1EnvironmentSessionSpecPtrOutputWithContext(context.Background())
 }
@@ -7924,12 +6897,6 @@ func (i *googleCloudDataplexV1EnvironmentSessionSpecPtrType) ToGoogleCloudDatapl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput)
 }
 
-func (i *googleCloudDataplexV1EnvironmentSessionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1EnvironmentSessionSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1EnvironmentSessionSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1EnvironmentSessionSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for sessions created for this environment.
 type GoogleCloudDataplexV1EnvironmentSessionSpecOutput struct{ *pulumi.OutputState }
 
@@ -7955,12 +6922,6 @@ func (o GoogleCloudDataplexV1EnvironmentSessionSpecOutput) ToGoogleCloudDataplex
 	}).(GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1EnvironmentSessionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentSessionSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentSessionSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
 func (o GoogleCloudDataplexV1EnvironmentSessionSpecOutput) EnableFastStartup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1EnvironmentSessionSpec) *bool { return v.EnableFastStartup }).(pulumi.BoolPtrOutput)
@@ -7983,12 +6944,6 @@ func (o GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput) ToGoogleCloudDatap
 
 func (o GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput) ToGoogleCloudDataplexV1EnvironmentSessionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1EnvironmentSessionSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1EnvironmentSessionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput) Elem() GoogleCloudDataplexV1EnvironmentSessionSpecOutput {
@@ -8044,12 +6999,6 @@ func (o GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentSessionSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentSessionSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
 func (o GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput) EnableFastStartup() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1EnvironmentSessionSpecResponse) bool { return v.EnableFastStartup }).(pulumi.BoolOutput)
@@ -8079,12 +7028,6 @@ func (o GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput) ToGoogleClo
 
 func (o GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput) ToGoogleCloudDataplexV1EnvironmentSessionStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1EnvironmentSessionStatusResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1EnvironmentSessionStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Queries over sessions to mark whether the environment is currently active or not
@@ -8133,12 +7076,6 @@ func (o GoogleCloudDataplexV1JobResponseOutput) ToGoogleCloudDataplexV1JobRespon
 
 func (o GoogleCloudDataplexV1JobResponseOutput) ToGoogleCloudDataplexV1JobResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1JobResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1JobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1JobResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1JobResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the job ended.
@@ -8238,12 +7175,6 @@ func (i GoogleCloudDataplexV1LakeMetastoreArgs) ToGoogleCloudDataplexV1LakeMetas
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1LakeMetastoreOutput)
 }
 
-func (i GoogleCloudDataplexV1LakeMetastoreArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1LakeMetastore] {
-	return pulumix.Output[GoogleCloudDataplexV1LakeMetastore]{
-		OutputState: i.ToGoogleCloudDataplexV1LakeMetastoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1LakeMetastoreArgs) ToGoogleCloudDataplexV1LakeMetastorePtrOutput() GoogleCloudDataplexV1LakeMetastorePtrOutput {
 	return i.ToGoogleCloudDataplexV1LakeMetastorePtrOutputWithContext(context.Background())
 }
@@ -8285,12 +7216,6 @@ func (i *googleCloudDataplexV1LakeMetastorePtrType) ToGoogleCloudDataplexV1LakeM
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1LakeMetastorePtrOutput)
 }
 
-func (i *googleCloudDataplexV1LakeMetastorePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1LakeMetastore] {
-	return pulumix.Output[*GoogleCloudDataplexV1LakeMetastore]{
-		OutputState: i.ToGoogleCloudDataplexV1LakeMetastorePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings to manage association of Dataproc Metastore with a lake.
 type GoogleCloudDataplexV1LakeMetastoreOutput struct{ *pulumi.OutputState }
 
@@ -8316,12 +7241,6 @@ func (o GoogleCloudDataplexV1LakeMetastoreOutput) ToGoogleCloudDataplexV1LakeMet
 	}).(GoogleCloudDataplexV1LakeMetastorePtrOutput)
 }
 
-func (o GoogleCloudDataplexV1LakeMetastoreOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1LakeMetastore] {
-	return pulumix.Output[GoogleCloudDataplexV1LakeMetastore]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: projects/{project_id}/locations/{location_id}/services/{service_id}
 func (o GoogleCloudDataplexV1LakeMetastoreOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1LakeMetastore) *string { return v.Service }).(pulumi.StringPtrOutput)
@@ -8339,12 +7258,6 @@ func (o GoogleCloudDataplexV1LakeMetastorePtrOutput) ToGoogleCloudDataplexV1Lake
 
 func (o GoogleCloudDataplexV1LakeMetastorePtrOutput) ToGoogleCloudDataplexV1LakeMetastorePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1LakeMetastorePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1LakeMetastorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1LakeMetastore] {
-	return pulumix.Output[*GoogleCloudDataplexV1LakeMetastore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1LakeMetastorePtrOutput) Elem() GoogleCloudDataplexV1LakeMetastoreOutput {
@@ -8388,12 +7301,6 @@ func (o GoogleCloudDataplexV1LakeMetastoreResponseOutput) ToGoogleCloudDataplexV
 	return o
 }
 
-func (o GoogleCloudDataplexV1LakeMetastoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1LakeMetastoreResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1LakeMetastoreResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: projects/{project_id}/locations/{location_id}/services/{service_id}
 func (o GoogleCloudDataplexV1LakeMetastoreResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1LakeMetastoreResponse) string { return v.Service }).(pulumi.StringOutput)
@@ -8424,12 +7331,6 @@ func (o GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput) ToGoogleCloudDataplexV1LakeMetastoreStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1LakeMetastoreStatusResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1LakeMetastoreStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URI of the endpoint used to access the Metastore service.
@@ -8495,12 +7396,6 @@ func (i GoogleCloudDataplexV1ResourceAccessSpecArgs) ToGoogleCloudDataplexV1Reso
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ResourceAccessSpecOutput)
 }
 
-func (i GoogleCloudDataplexV1ResourceAccessSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ResourceAccessSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1ResourceAccessSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1ResourceAccessSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1ResourceAccessSpecArgs) ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutput() GoogleCloudDataplexV1ResourceAccessSpecPtrOutput {
 	return i.ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(context.Background())
 }
@@ -8542,12 +7437,6 @@ func (i *googleCloudDataplexV1ResourceAccessSpecPtrType) ToGoogleCloudDataplexV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ResourceAccessSpecPtrOutput)
 }
 
-func (i *googleCloudDataplexV1ResourceAccessSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ResourceAccessSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1ResourceAccessSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceAccessSpec holds the access control configuration to be enforced on the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery table.
 type GoogleCloudDataplexV1ResourceAccessSpecOutput struct{ *pulumi.OutputState }
 
@@ -8571,12 +7460,6 @@ func (o GoogleCloudDataplexV1ResourceAccessSpecOutput) ToGoogleCloudDataplexV1Re
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1ResourceAccessSpec) *GoogleCloudDataplexV1ResourceAccessSpec {
 		return &v
 	}).(GoogleCloudDataplexV1ResourceAccessSpecPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1ResourceAccessSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ResourceAccessSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1ResourceAccessSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The set of principals to be granted owner role on the resource.
@@ -8606,12 +7489,6 @@ func (o GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) ToGoogleCloudDataplexV
 
 func (o GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ResourceAccessSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ResourceAccessSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1ResourceAccessSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) Elem() GoogleCloudDataplexV1ResourceAccessSpecOutput {
@@ -8679,12 +7556,6 @@ func (o GoogleCloudDataplexV1ResourceAccessSpecResponseOutput) ToGoogleCloudData
 	return o
 }
 
-func (o GoogleCloudDataplexV1ResourceAccessSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ResourceAccessSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1ResourceAccessSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The set of principals to be granted owner role on the resource.
 func (o GoogleCloudDataplexV1ResourceAccessSpecResponseOutput) Owners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ResourceAccessSpecResponse) []string { return v.Owners }).(pulumi.StringArrayOutput)
@@ -8725,12 +7596,6 @@ func (o GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Value that marks the end of the range.
 func (o GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput) End() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse) string { return v.End }).(pulumi.StringOutput)
@@ -8765,12 +7630,6 @@ func (o GoogleCloudDataplexV1ScannedDataResponseOutput) ToGoogleCloudDataplexV1S
 
 func (o GoogleCloudDataplexV1ScannedDataResponseOutput) ToGoogleCloudDataplexV1ScannedDataResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ScannedDataResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1ScannedDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ScannedDataResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1ScannedDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The range denoted by values of an incremental field
@@ -8827,12 +7686,6 @@ func (i GoogleCloudDataplexV1SchemaArgs) ToGoogleCloudDataplexV1SchemaOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1SchemaOutput)
 }
 
-func (i GoogleCloudDataplexV1SchemaArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1Schema] {
-	return pulumix.Output[GoogleCloudDataplexV1Schema]{
-		OutputState: i.ToGoogleCloudDataplexV1SchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Schema information describing the structure and layout of the data.
 type GoogleCloudDataplexV1SchemaOutput struct{ *pulumi.OutputState }
 
@@ -8846,12 +7699,6 @@ func (o GoogleCloudDataplexV1SchemaOutput) ToGoogleCloudDataplexV1SchemaOutput()
 
 func (o GoogleCloudDataplexV1SchemaOutput) ToGoogleCloudDataplexV1SchemaOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1SchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1Schema] {
-	return pulumix.Output[GoogleCloudDataplexV1Schema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
@@ -8917,12 +7764,6 @@ func (i GoogleCloudDataplexV1SchemaPartitionFieldArgs) ToGoogleCloudDataplexV1Sc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1SchemaPartitionFieldOutput)
 }
 
-func (i GoogleCloudDataplexV1SchemaPartitionFieldArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaPartitionField] {
-	return pulumix.Output[GoogleCloudDataplexV1SchemaPartitionField]{
-		OutputState: i.ToGoogleCloudDataplexV1SchemaPartitionFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDataplexV1SchemaPartitionFieldArrayInput is an input type that accepts GoogleCloudDataplexV1SchemaPartitionFieldArray and GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaPartitionFieldArrayInput` via:
 //
@@ -8948,12 +7789,6 @@ func (i GoogleCloudDataplexV1SchemaPartitionFieldArray) ToGoogleCloudDataplexV1S
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput)
 }
 
-func (i GoogleCloudDataplexV1SchemaPartitionFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1SchemaPartitionField] {
-	return pulumix.Output[[]GoogleCloudDataplexV1SchemaPartitionField]{
-		OutputState: i.ToGoogleCloudDataplexV1SchemaPartitionFieldArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration. Note: Partition fields are immutable.
 type GoogleCloudDataplexV1SchemaPartitionFieldOutput struct{ *pulumi.OutputState }
 
@@ -8967,12 +7802,6 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldOutput) ToGoogleCloudDataplexV1
 
 func (o GoogleCloudDataplexV1SchemaPartitionFieldOutput) ToGoogleCloudDataplexV1SchemaPartitionFieldOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaPartitionFieldOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1SchemaPartitionFieldOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaPartitionField] {
-	return pulumix.Output[GoogleCloudDataplexV1SchemaPartitionField]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
@@ -8999,12 +7828,6 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput) ToGoogleCloudDatap
 
 func (o GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput) ToGoogleCloudDataplexV1SchemaPartitionFieldArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1SchemaPartitionField] {
-	return pulumix.Output[[]GoogleCloudDataplexV1SchemaPartitionField]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1SchemaPartitionFieldOutput {
@@ -9036,12 +7859,6 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldResponseOutput) ToGoogleCloudDa
 	return o
 }
 
-func (o GoogleCloudDataplexV1SchemaPartitionFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaPartitionFieldResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1SchemaPartitionFieldResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
 func (o GoogleCloudDataplexV1SchemaPartitionFieldResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1SchemaPartitionFieldResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -9064,12 +7881,6 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldResponseArrayOutput) ToGoogleCl
 
 func (o GoogleCloudDataplexV1SchemaPartitionFieldResponseArrayOutput) ToGoogleCloudDataplexV1SchemaPartitionFieldResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaPartitionFieldResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1SchemaPartitionFieldResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1SchemaPartitionFieldResponse] {
-	return pulumix.Output[[]GoogleCloudDataplexV1SchemaPartitionFieldResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1SchemaPartitionFieldResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1SchemaPartitionFieldResponseOutput {
@@ -9103,12 +7914,6 @@ func (o GoogleCloudDataplexV1SchemaResponseOutput) ToGoogleCloudDataplexV1Schema
 
 func (o GoogleCloudDataplexV1SchemaResponseOutput) ToGoogleCloudDataplexV1SchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1SchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1SchemaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
@@ -9186,12 +7991,6 @@ func (i GoogleCloudDataplexV1SchemaSchemaFieldArgs) ToGoogleCloudDataplexV1Schem
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1SchemaSchemaFieldOutput)
 }
 
-func (i GoogleCloudDataplexV1SchemaSchemaFieldArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaSchemaField] {
-	return pulumix.Output[GoogleCloudDataplexV1SchemaSchemaField]{
-		OutputState: i.ToGoogleCloudDataplexV1SchemaSchemaFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDataplexV1SchemaSchemaFieldArrayInput is an input type that accepts GoogleCloudDataplexV1SchemaSchemaFieldArray and GoogleCloudDataplexV1SchemaSchemaFieldArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaSchemaFieldArrayInput` via:
 //
@@ -9217,12 +8016,6 @@ func (i GoogleCloudDataplexV1SchemaSchemaFieldArray) ToGoogleCloudDataplexV1Sche
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1SchemaSchemaFieldArrayOutput)
 }
 
-func (i GoogleCloudDataplexV1SchemaSchemaFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1SchemaSchemaField] {
-	return pulumix.Output[[]GoogleCloudDataplexV1SchemaSchemaField]{
-		OutputState: i.ToGoogleCloudDataplexV1SchemaSchemaFieldArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a column field within a table schema.
 type GoogleCloudDataplexV1SchemaSchemaFieldOutput struct{ *pulumi.OutputState }
 
@@ -9236,12 +8029,6 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldOutput) ToGoogleCloudDataplexV1Sch
 
 func (o GoogleCloudDataplexV1SchemaSchemaFieldOutput) ToGoogleCloudDataplexV1SchemaSchemaFieldOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaSchemaFieldOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1SchemaSchemaFieldOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaSchemaField] {
-	return pulumix.Output[GoogleCloudDataplexV1SchemaSchemaField]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. User friendly field description. Must be less than or equal to 1024 characters.
@@ -9289,12 +8076,6 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldArrayOutput) ToGoogleCloudDataplex
 	return o
 }
 
-func (o GoogleCloudDataplexV1SchemaSchemaFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1SchemaSchemaField] {
-	return pulumix.Output[[]GoogleCloudDataplexV1SchemaSchemaField]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDataplexV1SchemaSchemaFieldArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1SchemaSchemaFieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1SchemaSchemaField {
 		return vs[0].([]GoogleCloudDataplexV1SchemaSchemaField)[vs[1].(int)]
@@ -9328,12 +8109,6 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldResponseOutput) ToGoogleCloudDatap
 
 func (o GoogleCloudDataplexV1SchemaSchemaFieldResponseOutput) ToGoogleCloudDataplexV1SchemaSchemaFieldResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1SchemaSchemaFieldResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1SchemaSchemaFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1SchemaSchemaFieldResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1SchemaSchemaFieldResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. User friendly field description. Must be less than or equal to 1024 characters.
@@ -9377,12 +8152,6 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldResponseArrayOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudDataplexV1SchemaSchemaFieldResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1SchemaSchemaFieldResponse] {
-	return pulumix.Output[[]GoogleCloudDataplexV1SchemaSchemaFieldResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDataplexV1SchemaSchemaFieldResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1SchemaSchemaFieldResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1SchemaSchemaFieldResponse {
 		return vs[0].([]GoogleCloudDataplexV1SchemaSchemaFieldResponse)[vs[1].(int)]
@@ -9408,12 +8177,6 @@ func (o GoogleCloudDataplexV1StorageAccessResponseOutput) ToGoogleCloudDataplexV
 
 func (o GoogleCloudDataplexV1StorageAccessResponseOutput) ToGoogleCloudDataplexV1StorageAccessResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageAccessResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1StorageAccessResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageAccessResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageAccessResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes the read access mechanism of the data. Not user settable.
@@ -9472,12 +8235,6 @@ func (i GoogleCloudDataplexV1StorageFormatArgs) ToGoogleCloudDataplexV1StorageFo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1StorageFormatOutput)
 }
 
-func (i GoogleCloudDataplexV1StorageFormatArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormat] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormat]{
-		OutputState: i.ToGoogleCloudDataplexV1StorageFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the format of the data within its storage location.
 type GoogleCloudDataplexV1StorageFormatOutput struct{ *pulumi.OutputState }
 
@@ -9491,12 +8248,6 @@ func (o GoogleCloudDataplexV1StorageFormatOutput) ToGoogleCloudDataplexV1Storage
 
 func (o GoogleCloudDataplexV1StorageFormatOutput) ToGoogleCloudDataplexV1StorageFormatOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1StorageFormatOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormat] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed.
@@ -9577,12 +8328,6 @@ func (i GoogleCloudDataplexV1StorageFormatCsvOptionsArgs) ToGoogleCloudDataplexV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1StorageFormatCsvOptionsOutput)
 }
 
-func (i GoogleCloudDataplexV1StorageFormatCsvOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatCsvOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormatCsvOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1StorageFormatCsvOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1StorageFormatCsvOptionsArgs) ToGoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput() GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput {
 	return i.ToGoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutputWithContext(context.Background())
 }
@@ -9624,12 +8369,6 @@ func (i *googleCloudDataplexV1StorageFormatCsvOptionsPtrType) ToGoogleCloudDatap
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput)
 }
 
-func (i *googleCloudDataplexV1StorageFormatCsvOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1StorageFormatCsvOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1StorageFormatCsvOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes CSV and similar semi-structured data formats.
 type GoogleCloudDataplexV1StorageFormatCsvOptionsOutput struct{ *pulumi.OutputState }
 
@@ -9653,12 +8392,6 @@ func (o GoogleCloudDataplexV1StorageFormatCsvOptionsOutput) ToGoogleCloudDataple
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1StorageFormatCsvOptions) *GoogleCloudDataplexV1StorageFormatCsvOptions {
 		return &v
 	}).(GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1StorageFormatCsvOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatCsvOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormatCsvOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The delimiter used to separate values. Defaults to ','.
@@ -9693,12 +8426,6 @@ func (o GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput) ToGoogleCloudData
 
 func (o GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput) ToGoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1StorageFormatCsvOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1StorageFormatCsvOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput) Elem() GoogleCloudDataplexV1StorageFormatCsvOptionsOutput {
@@ -9778,12 +8505,6 @@ func (o GoogleCloudDataplexV1StorageFormatCsvOptionsResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudDataplexV1StorageFormatCsvOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatCsvOptionsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormatCsvOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The delimiter used to separate values. Defaults to ','.
 func (o GoogleCloudDataplexV1StorageFormatCsvOptionsResponseOutput) Delimiter() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatCsvOptionsResponse) string { return v.Delimiter }).(pulumi.StringOutput)
@@ -9839,12 +8560,6 @@ func (i GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs) ToGoogleCloudDatap
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput)
 }
 
-func (i GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatIcebergOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormatIcebergOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1StorageFormatIcebergOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput() GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
 	return i.ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(context.Background())
 }
@@ -9886,12 +8601,6 @@ func (i *googleCloudDataplexV1StorageFormatIcebergOptionsPtrType) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput)
 }
 
-func (i *googleCloudDataplexV1StorageFormatIcebergOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1StorageFormatIcebergOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1StorageFormatIcebergOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes Iceberg data format.
 type GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput struct{ *pulumi.OutputState }
 
@@ -9917,12 +8626,6 @@ func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput) ToGoogleCloudDat
 	}).(GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatIcebergOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormatIcebergOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The location of where the iceberg metadata is present, must be within the table path
 func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput) MetadataLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatIcebergOptions) *string { return v.MetadataLocation }).(pulumi.StringPtrOutput)
@@ -9940,12 +8643,6 @@ func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1StorageFormatIcebergOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1StorageFormatIcebergOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput) Elem() GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput {
@@ -9989,12 +8686,6 @@ func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The location of where the iceberg metadata is present, must be within the table path
 func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput) MetadataLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse) string { return v.MetadataLocation }).(pulumi.StringOutput)
@@ -10033,12 +8724,6 @@ func (i GoogleCloudDataplexV1StorageFormatJsonOptionsArgs) ToGoogleCloudDataplex
 
 func (i GoogleCloudDataplexV1StorageFormatJsonOptionsArgs) ToGoogleCloudDataplexV1StorageFormatJsonOptionsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatJsonOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1StorageFormatJsonOptionsOutput)
-}
-
-func (i GoogleCloudDataplexV1StorageFormatJsonOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatJsonOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormatJsonOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1StorageFormatJsonOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudDataplexV1StorageFormatJsonOptionsArgs) ToGoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput() GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput {
@@ -10082,12 +8767,6 @@ func (i *googleCloudDataplexV1StorageFormatJsonOptionsPtrType) ToGoogleCloudData
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput)
 }
 
-func (i *googleCloudDataplexV1StorageFormatJsonOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1StorageFormatJsonOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1StorageFormatJsonOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes JSON data format.
 type GoogleCloudDataplexV1StorageFormatJsonOptionsOutput struct{ *pulumi.OutputState }
 
@@ -10113,12 +8792,6 @@ func (o GoogleCloudDataplexV1StorageFormatJsonOptionsOutput) ToGoogleCloudDatapl
 	}).(GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1StorageFormatJsonOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatJsonOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormatJsonOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8" and "ISO-8859-1". Defaults to UTF-8 if not specified.
 func (o GoogleCloudDataplexV1StorageFormatJsonOptionsOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatJsonOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
@@ -10136,12 +8809,6 @@ func (o GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput) ToGoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1StorageFormatJsonOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1StorageFormatJsonOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput) Elem() GoogleCloudDataplexV1StorageFormatJsonOptionsOutput {
@@ -10185,12 +8852,6 @@ func (o GoogleCloudDataplexV1StorageFormatJsonOptionsResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudDataplexV1StorageFormatJsonOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatJsonOptionsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormatJsonOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8" and "ISO-8859-1". Defaults to UTF-8 if not specified.
 func (o GoogleCloudDataplexV1StorageFormatJsonOptionsResponseOutput) Encoding() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatJsonOptionsResponse) string { return v.Encoding }).(pulumi.StringOutput)
@@ -10225,12 +8886,6 @@ func (o GoogleCloudDataplexV1StorageFormatResponseOutput) ToGoogleCloudDataplexV
 
 func (o GoogleCloudDataplexV1StorageFormatResponseOutput) ToGoogleCloudDataplexV1StorageFormatResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1StorageFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1StorageFormatResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1StorageFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed.
@@ -10320,12 +8975,6 @@ func (i GoogleCloudDataplexV1TaskExecutionSpecArgs) ToGoogleCloudDataplexV1TaskE
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskExecutionSpecOutput)
 }
 
-func (i GoogleCloudDataplexV1TaskExecutionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskExecutionSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskExecutionSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskExecutionSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Execution related settings, like retry and service_account.
 type GoogleCloudDataplexV1TaskExecutionSpecOutput struct{ *pulumi.OutputState }
 
@@ -10339,12 +8988,6 @@ func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) ToGoogleCloudDataplexV1Tas
 
 func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) ToGoogleCloudDataplexV1TaskExecutionSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskExecutionSpecOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskExecutionSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskExecutionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
@@ -10401,12 +9044,6 @@ func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) ToGoogleCloudDatap
 	return o
 }
 
-func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskExecutionSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskExecutionSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
 func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) Args() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpecResponse) map[string]string { return v.Args }).(pulumi.StringMapOutput)
@@ -10453,12 +9090,6 @@ func (o GoogleCloudDataplexV1TaskExecutionStatusResponseOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDataplexV1TaskExecutionStatusResponseOutput) ToGoogleCloudDataplexV1TaskExecutionStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskExecutionStatusResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskExecutionStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskExecutionStatusResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskExecutionStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // latest job execution
@@ -10516,12 +9147,6 @@ func (i GoogleCloudDataplexV1TaskInfrastructureSpecArgs) ToGoogleCloudDataplexV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskInfrastructureSpecOutput)
 }
 
-func (i GoogleCloudDataplexV1TaskInfrastructureSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskInfrastructureSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1TaskInfrastructureSpecArgs) ToGoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput() GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput {
 	return i.ToGoogleCloudDataplexV1TaskInfrastructureSpecPtrOutputWithContext(context.Background())
 }
@@ -10563,12 +9188,6 @@ func (i *googleCloudDataplexV1TaskInfrastructureSpecPtrType) ToGoogleCloudDatapl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput)
 }
 
-func (i *googleCloudDataplexV1TaskInfrastructureSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskInfrastructureSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for the underlying infrastructure used to run workloads.
 type GoogleCloudDataplexV1TaskInfrastructureSpecOutput struct{ *pulumi.OutputState }
 
@@ -10592,12 +9211,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecOutput) ToGoogleCloudDataplex
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1TaskInfrastructureSpec) *GoogleCloudDataplexV1TaskInfrastructureSpec {
 		return &v
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Compute resources needed for a Task when using Dataproc Serverless.
@@ -10633,12 +9246,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput) ToGoogleCloudDatap
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput) ToGoogleCloudDataplexV1TaskInfrastructureSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput) Elem() GoogleCloudDataplexV1TaskInfrastructureSpecOutput {
@@ -10720,12 +9327,6 @@ func (i GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput)
 }
 
-func (i GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs) ToGoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput() GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput {
 	return i.ToGoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutputWithContext(context.Background())
 }
@@ -10767,12 +9368,6 @@ func (i *googleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput)
 }
 
-func (i *googleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Batch compute resources associated with the task.
 type GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput struct{ *pulumi.OutputState }
 
@@ -10796,12 +9391,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources) *GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources {
 		return &v
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
@@ -10828,12 +9417,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutpu
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput) ToGoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput) Elem() GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput {
@@ -10887,12 +9470,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponseOutput) ToGoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
@@ -10956,12 +9533,6 @@ func (i GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutput)
 }
 
-func (i GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs) ToGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput() GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput {
 	return i.ToGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutputWithContext(context.Background())
 }
@@ -11003,12 +9574,6 @@ func (i *googleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrType
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput)
 }
 
-func (i *googleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Container Image Runtime Configuration used with Batch execution.
 type GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutput struct{ *pulumi.OutputState }
 
@@ -11032,12 +9597,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutput) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime) *GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime {
 		return &v
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput)
-}
-
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Container image to use.
@@ -11076,12 +9635,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutpu
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput) ToGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput) Elem() GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutput {
@@ -11161,12 +9714,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse
 	return o
 }
 
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Container image to use.
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse) string {
@@ -11218,12 +9765,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecResponseOutput) ToGoogleCloudDataplexV1TaskInfrastructureSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskInfrastructureSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Compute resources needed for a Task when using Dataproc Serverless.
@@ -11290,12 +9831,6 @@ func (i GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkOutput)
 }
 
-func (i GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs) ToGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput() GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput {
 	return i.ToGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutputWithContext(context.Background())
 }
@@ -11337,12 +9872,6 @@ func (i *googleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput)
 }
 
-func (i *googleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cloud VPC Network used to run the infrastructure.
 type GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkOutput struct{ *pulumi.OutputState }
 
@@ -11366,12 +9895,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkOutput) ToGoogleClo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork) *GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork {
 		return &v
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
@@ -11401,12 +9924,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput) ToGoogle
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput) ToGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput) Elem() GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkOutput {
@@ -11474,12 +9991,6 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponseOutput) ToG
 	return o
 }
 
-func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse) string { return v.Network }).(pulumi.StringOutput)
@@ -11542,12 +10053,6 @@ func (i GoogleCloudDataplexV1TaskNotebookTaskConfigArgs) ToGoogleCloudDataplexV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskNotebookTaskConfigOutput)
 }
 
-func (i GoogleCloudDataplexV1TaskNotebookTaskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskNotebookTaskConfig] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskNotebookTaskConfig]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskNotebookTaskConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1TaskNotebookTaskConfigArgs) ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput() GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput {
 	return i.ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(context.Background())
 }
@@ -11589,12 +10094,6 @@ func (i *googleCloudDataplexV1TaskNotebookTaskConfigPtrType) ToGoogleCloudDatapl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput)
 }
 
-func (i *googleCloudDataplexV1TaskNotebookTaskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskNotebookTaskConfig] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskNotebookTaskConfig]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Config for running scheduled notebooks.
 type GoogleCloudDataplexV1TaskNotebookTaskConfigOutput struct{ *pulumi.OutputState }
 
@@ -11618,12 +10117,6 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) ToGoogleCloudDataplex
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1TaskNotebookTaskConfig) *GoogleCloudDataplexV1TaskNotebookTaskConfig {
 		return &v
 	}).(GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskNotebookTaskConfig] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskNotebookTaskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -11660,12 +10153,6 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) ToGoogleCloudDatap
 
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskNotebookTaskConfig] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskNotebookTaskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) Elem() GoogleCloudDataplexV1TaskNotebookTaskConfigOutput {
@@ -11743,12 +10230,6 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) ToGoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskNotebookTaskConfigResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskNotebookTaskConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -11836,12 +10317,6 @@ func (i GoogleCloudDataplexV1TaskSparkTaskConfigArgs) ToGoogleCloudDataplexV1Tas
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskSparkTaskConfigOutput)
 }
 
-func (i GoogleCloudDataplexV1TaskSparkTaskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskSparkTaskConfig] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskSparkTaskConfig]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskSparkTaskConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1TaskSparkTaskConfigArgs) ToGoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput() GoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput {
 	return i.ToGoogleCloudDataplexV1TaskSparkTaskConfigPtrOutputWithContext(context.Background())
 }
@@ -11883,12 +10358,6 @@ func (i *googleCloudDataplexV1TaskSparkTaskConfigPtrType) ToGoogleCloudDataplexV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput)
 }
 
-func (i *googleCloudDataplexV1TaskSparkTaskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskSparkTaskConfig] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskSparkTaskConfig]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskSparkTaskConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // User-specified config for running a Spark task.
 type GoogleCloudDataplexV1TaskSparkTaskConfigOutput struct{ *pulumi.OutputState }
 
@@ -11912,12 +10381,6 @@ func (o GoogleCloudDataplexV1TaskSparkTaskConfigOutput) ToGoogleCloudDataplexV1T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1TaskSparkTaskConfig) *GoogleCloudDataplexV1TaskSparkTaskConfig {
 		return &v
 	}).(GoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1TaskSparkTaskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskSparkTaskConfig] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskSparkTaskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -11974,12 +10437,6 @@ func (o GoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput) ToGoogleCloudDataplex
 
 func (o GoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput) ToGoogleCloudDataplexV1TaskSparkTaskConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TaskSparkTaskConfig] {
-	return pulumix.Output[*GoogleCloudDataplexV1TaskSparkTaskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput) Elem() GoogleCloudDataplexV1TaskSparkTaskConfigOutput {
@@ -12107,12 +10564,6 @@ func (o GoogleCloudDataplexV1TaskSparkTaskConfigResponseOutput) ToGoogleCloudDat
 	return o
 }
 
-func (o GoogleCloudDataplexV1TaskSparkTaskConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskSparkTaskConfigResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskSparkTaskConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 func (o GoogleCloudDataplexV1TaskSparkTaskConfigResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskSparkTaskConfigResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
@@ -12206,12 +10657,6 @@ func (i GoogleCloudDataplexV1TaskTriggerSpecArgs) ToGoogleCloudDataplexV1TaskTri
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskTriggerSpecOutput)
 }
 
-func (i GoogleCloudDataplexV1TaskTriggerSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskTriggerSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskTriggerSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1TaskTriggerSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Task scheduling and trigger settings.
 type GoogleCloudDataplexV1TaskTriggerSpecOutput struct{ *pulumi.OutputState }
 
@@ -12225,12 +10670,6 @@ func (o GoogleCloudDataplexV1TaskTriggerSpecOutput) ToGoogleCloudDataplexV1TaskT
 
 func (o GoogleCloudDataplexV1TaskTriggerSpecOutput) ToGoogleCloudDataplexV1TaskTriggerSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskTriggerSpecOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskTriggerSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskTriggerSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskTriggerSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
@@ -12285,12 +10724,6 @@ func (o GoogleCloudDataplexV1TaskTriggerSpecResponseOutput) ToGoogleCloudDataple
 
 func (o GoogleCloudDataplexV1TaskTriggerSpecResponseOutput) ToGoogleCloudDataplexV1TaskTriggerSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskTriggerSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TaskTriggerSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TaskTriggerSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TaskTriggerSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
@@ -12357,12 +10790,6 @@ func (i GoogleCloudDataplexV1TriggerArgs) ToGoogleCloudDataplexV1TriggerOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerOutput)
 }
 
-func (i GoogleCloudDataplexV1TriggerArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1Trigger] {
-	return pulumix.Output[GoogleCloudDataplexV1Trigger]{
-		OutputState: i.ToGoogleCloudDataplexV1TriggerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1TriggerArgs) ToGoogleCloudDataplexV1TriggerPtrOutput() GoogleCloudDataplexV1TriggerPtrOutput {
 	return i.ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(context.Background())
 }
@@ -12404,12 +10831,6 @@ func (i *googleCloudDataplexV1TriggerPtrType) ToGoogleCloudDataplexV1TriggerPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerPtrOutput)
 }
 
-func (i *googleCloudDataplexV1TriggerPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1Trigger] {
-	return pulumix.Output[*GoogleCloudDataplexV1Trigger]{
-		OutputState: i.ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataScan scheduling and trigger settings.
 type GoogleCloudDataplexV1TriggerOutput struct{ *pulumi.OutputState }
 
@@ -12435,12 +10856,6 @@ func (o GoogleCloudDataplexV1TriggerOutput) ToGoogleCloudDataplexV1TriggerPtrOut
 	}).(GoogleCloudDataplexV1TriggerPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1TriggerOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1Trigger] {
-	return pulumix.Output[GoogleCloudDataplexV1Trigger]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The scan runs once via RunDataScan API.
 func (o GoogleCloudDataplexV1TriggerOutput) OnDemand() GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1Trigger) *GoogleCloudDataplexV1TriggerOnDemand { return v.OnDemand }).(GoogleCloudDataplexV1TriggerOnDemandPtrOutput)
@@ -12463,12 +10878,6 @@ func (o GoogleCloudDataplexV1TriggerPtrOutput) ToGoogleCloudDataplexV1TriggerPtr
 
 func (o GoogleCloudDataplexV1TriggerPtrOutput) ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TriggerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1Trigger] {
-	return pulumix.Output[*GoogleCloudDataplexV1Trigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1TriggerPtrOutput) Elem() GoogleCloudDataplexV1TriggerOutput {
@@ -12532,12 +10941,6 @@ func (i GoogleCloudDataplexV1TriggerOnDemandArgs) ToGoogleCloudDataplexV1Trigger
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerOnDemandOutput)
 }
 
-func (i GoogleCloudDataplexV1TriggerOnDemandArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TriggerOnDemand] {
-	return pulumix.Output[GoogleCloudDataplexV1TriggerOnDemand]{
-		OutputState: i.ToGoogleCloudDataplexV1TriggerOnDemandOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1TriggerOnDemandArgs) ToGoogleCloudDataplexV1TriggerOnDemandPtrOutput() GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
 	return i.ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(context.Background())
 }
@@ -12579,12 +10982,6 @@ func (i *googleCloudDataplexV1TriggerOnDemandPtrType) ToGoogleCloudDataplexV1Tri
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerOnDemandPtrOutput)
 }
 
-func (i *googleCloudDataplexV1TriggerOnDemandPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TriggerOnDemand] {
-	return pulumix.Output[*GoogleCloudDataplexV1TriggerOnDemand]{
-		OutputState: i.ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The scan runs once via RunDataScan API.
 type GoogleCloudDataplexV1TriggerOnDemandOutput struct{ *pulumi.OutputState }
 
@@ -12610,12 +11007,6 @@ func (o GoogleCloudDataplexV1TriggerOnDemandOutput) ToGoogleCloudDataplexV1Trigg
 	}).(GoogleCloudDataplexV1TriggerOnDemandPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1TriggerOnDemandOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TriggerOnDemand] {
-	return pulumix.Output[GoogleCloudDataplexV1TriggerOnDemand]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudDataplexV1TriggerOnDemandPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1TriggerOnDemandPtrOutput) ElementType() reflect.Type {
@@ -12628,12 +11019,6 @@ func (o GoogleCloudDataplexV1TriggerOnDemandPtrOutput) ToGoogleCloudDataplexV1Tr
 
 func (o GoogleCloudDataplexV1TriggerOnDemandPtrOutput) ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TriggerOnDemandPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TriggerOnDemand] {
-	return pulumix.Output[*GoogleCloudDataplexV1TriggerOnDemand]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1TriggerOnDemandPtrOutput) Elem() GoogleCloudDataplexV1TriggerOnDemandOutput {
@@ -12665,12 +11050,6 @@ func (o GoogleCloudDataplexV1TriggerOnDemandResponseOutput) ToGoogleCloudDataple
 	return o
 }
 
-func (o GoogleCloudDataplexV1TriggerOnDemandResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TriggerOnDemandResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TriggerOnDemandResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DataScan scheduling and trigger settings.
 type GoogleCloudDataplexV1TriggerResponse struct {
 	// The scan runs once via RunDataScan API.
@@ -12692,12 +11071,6 @@ func (o GoogleCloudDataplexV1TriggerResponseOutput) ToGoogleCloudDataplexV1Trigg
 
 func (o GoogleCloudDataplexV1TriggerResponseOutput) ToGoogleCloudDataplexV1TriggerResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TriggerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TriggerResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TriggerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The scan runs once via RunDataScan API.
@@ -12749,12 +11122,6 @@ func (i GoogleCloudDataplexV1TriggerScheduleArgs) ToGoogleCloudDataplexV1Trigger
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerScheduleOutput)
 }
 
-func (i GoogleCloudDataplexV1TriggerScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TriggerSchedule] {
-	return pulumix.Output[GoogleCloudDataplexV1TriggerSchedule]{
-		OutputState: i.ToGoogleCloudDataplexV1TriggerScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1TriggerScheduleArgs) ToGoogleCloudDataplexV1TriggerSchedulePtrOutput() GoogleCloudDataplexV1TriggerSchedulePtrOutput {
 	return i.ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(context.Background())
 }
@@ -12796,12 +11163,6 @@ func (i *googleCloudDataplexV1TriggerSchedulePtrType) ToGoogleCloudDataplexV1Tri
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerSchedulePtrOutput)
 }
 
-func (i *googleCloudDataplexV1TriggerSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TriggerSchedule] {
-	return pulumix.Output[*GoogleCloudDataplexV1TriggerSchedule]{
-		OutputState: i.ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The scan is scheduled to run periodically.
 type GoogleCloudDataplexV1TriggerScheduleOutput struct{ *pulumi.OutputState }
 
@@ -12827,12 +11188,6 @@ func (o GoogleCloudDataplexV1TriggerScheduleOutput) ToGoogleCloudDataplexV1Trigg
 	}).(GoogleCloudDataplexV1TriggerSchedulePtrOutput)
 }
 
-func (o GoogleCloudDataplexV1TriggerScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TriggerSchedule] {
-	return pulumix.Output[GoogleCloudDataplexV1TriggerSchedule]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans.
 func (o GoogleCloudDataplexV1TriggerScheduleOutput) Cron() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TriggerSchedule) string { return v.Cron }).(pulumi.StringOutput)
@@ -12850,12 +11205,6 @@ func (o GoogleCloudDataplexV1TriggerSchedulePtrOutput) ToGoogleCloudDataplexV1Tr
 
 func (o GoogleCloudDataplexV1TriggerSchedulePtrOutput) ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerSchedulePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TriggerSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1TriggerSchedule] {
-	return pulumix.Output[*GoogleCloudDataplexV1TriggerSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1TriggerSchedulePtrOutput) Elem() GoogleCloudDataplexV1TriggerScheduleOutput {
@@ -12897,12 +11246,6 @@ func (o GoogleCloudDataplexV1TriggerScheduleResponseOutput) ToGoogleCloudDataple
 
 func (o GoogleCloudDataplexV1TriggerScheduleResponseOutput) ToGoogleCloudDataplexV1TriggerScheduleResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerScheduleResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1TriggerScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1TriggerScheduleResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1TriggerScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans.
@@ -12965,12 +11308,6 @@ func (i GoogleCloudDataplexV1ZoneDiscoverySpecArgs) ToGoogleCloudDataplexV1ZoneD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ZoneDiscoverySpecOutput)
 }
 
-func (i GoogleCloudDataplexV1ZoneDiscoverySpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpec] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpec]{
-		OutputState: i.ToGoogleCloudDataplexV1ZoneDiscoverySpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1ZoneDiscoverySpecArgs) ToGoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput() GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput {
 	return i.ToGoogleCloudDataplexV1ZoneDiscoverySpecPtrOutputWithContext(context.Background())
 }
@@ -13012,12 +11349,6 @@ func (i *googleCloudDataplexV1ZoneDiscoverySpecPtrType) ToGoogleCloudDataplexV1Z
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput)
 }
 
-func (i *googleCloudDataplexV1ZoneDiscoverySpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpec]{
-		OutputState: i.ToGoogleCloudDataplexV1ZoneDiscoverySpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings to manage the metadata discovery and publishing in a zone.
 type GoogleCloudDataplexV1ZoneDiscoverySpecOutput struct{ *pulumi.OutputState }
 
@@ -13041,12 +11372,6 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecOutput) ToGoogleCloudDataplexV1Zon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1ZoneDiscoverySpec) *GoogleCloudDataplexV1ZoneDiscoverySpec {
 		return &v
 	}).(GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1ZoneDiscoverySpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpec] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configuration for CSV data.
@@ -13095,12 +11420,6 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput) ToGoogleCloudDataplexV1
 
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput) ToGoogleCloudDataplexV1ZoneDiscoverySpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpec] {
-	return pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput) Elem() GoogleCloudDataplexV1ZoneDiscoverySpecOutput {
@@ -13220,12 +11539,6 @@ func (i GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs) ToGoogleCloudDatap
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsOutput)
 }
 
-func (i GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs) ToGoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutput() GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutput {
 	return i.ToGoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutputWithContext(context.Background())
 }
@@ -13267,12 +11580,6 @@ func (i *googleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrType) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutput)
 }
 
-func (i *googleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describe CSV and similar semi-structured data formats.
 type GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsOutput struct{ *pulumi.OutputState }
 
@@ -13296,12 +11603,6 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsOutput) ToGoogleCloudDat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions) *GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions {
 		return &v
 	}).(GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutput)
-}
-
-func (o GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The delimiter being used to separate values. This defaults to ','.
@@ -13336,12 +11637,6 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutput) ToGoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutput) Elem() GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsOutput {
@@ -13421,12 +11716,6 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The delimiter being used to separate values. This defaults to ','.
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponseOutput) Delimiter() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse) string { return v.Delimiter }).(pulumi.StringOutput)
@@ -13486,12 +11775,6 @@ func (i GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs) ToGoogleCloudData
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsOutput)
 }
 
-func (i GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs) ToGoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput() GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput {
 	return i.ToGoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutputWithContext(context.Background())
 }
@@ -13533,12 +11816,6 @@ func (i *googleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput)
 }
 
-func (i *googleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions]{
-		OutputState: i.ToGoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describe JSON data format.
 type GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsOutput struct{ *pulumi.OutputState }
 
@@ -13564,12 +11841,6 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsOutput) ToGoogleCloudDa
 	}).(GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput)
 }
 
-func (o GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsOutput) DisableTypeInference() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions) *bool { return v.DisableTypeInference }).(pulumi.BoolPtrOutput)
@@ -13592,12 +11863,6 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput) ToGoogleClou
 
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput) ToGoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions] {
-	return pulumix.Output[*GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput) Elem() GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsOutput {
@@ -13653,12 +11918,6 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponseOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponseOutput) DisableTypeInference() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponse) bool { return v.DisableTypeInference }).(pulumi.BoolOutput)
@@ -13698,12 +11957,6 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecResponseOutput) ToGoogleCloudDatap
 
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecResponseOutput) ToGoogleCloudDataplexV1ZoneDiscoverySpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ZoneDiscoverySpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1ZoneDiscoverySpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneDiscoverySpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configuration for CSV data.
@@ -13775,12 +12028,6 @@ func (i GoogleCloudDataplexV1ZoneResourceSpecArgs) ToGoogleCloudDataplexV1ZoneRe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ZoneResourceSpecOutput)
 }
 
-func (i GoogleCloudDataplexV1ZoneResourceSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneResourceSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneResourceSpec]{
-		OutputState: i.ToGoogleCloudDataplexV1ZoneResourceSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings for resources attached as assets within a zone.
 type GoogleCloudDataplexV1ZoneResourceSpecOutput struct{ *pulumi.OutputState }
 
@@ -13794,12 +12041,6 @@ func (o GoogleCloudDataplexV1ZoneResourceSpecOutput) ToGoogleCloudDataplexV1Zone
 
 func (o GoogleCloudDataplexV1ZoneResourceSpecOutput) ToGoogleCloudDataplexV1ZoneResourceSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ZoneResourceSpecOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1ZoneResourceSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneResourceSpec] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneResourceSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The location type of the resources that are allowed to be attached to the assets within this zone.
@@ -13828,12 +12069,6 @@ func (o GoogleCloudDataplexV1ZoneResourceSpecResponseOutput) ToGoogleCloudDatapl
 
 func (o GoogleCloudDataplexV1ZoneResourceSpecResponseOutput) ToGoogleCloudDataplexV1ZoneResourceSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ZoneResourceSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDataplexV1ZoneResourceSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1ZoneResourceSpecResponse] {
-	return pulumix.Output[GoogleCloudDataplexV1ZoneResourceSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The location type of the resources that are allowed to be attached to the assets within this zone.
@@ -13880,12 +12115,6 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigOutput)
 }
 
-func (i GoogleIamV1AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
-	return pulumix.Output[GoogleIamV1AuditConfig]{
-		OutputState: i.ToGoogleIamV1AuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
@@ -13911,12 +12140,6 @@ func (i GoogleIamV1AuditConfigArray) ToGoogleIamV1AuditConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigArrayOutput)
 }
 
-func (i GoogleIamV1AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditConfig]{
-		OutputState: i.ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs.If there are AuditConfigs for both allServices and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted.Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type GoogleIamV1AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -13930,12 +12153,6 @@ func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutput() GoogleIam
 
 func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
-	return pulumix.Output[GoogleIamV1AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -13960,12 +12177,6 @@ func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutput()
 
 func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigOutput {
@@ -13997,12 +12208,6 @@ func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOu
 	return o
 }
 
-func (o GoogleIamV1AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfigResponse] {
-	return pulumix.Output[GoogleIamV1AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o GoogleIamV1AuditConfigResponseOutput) AuditLogConfigs() GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) []GoogleIamV1AuditLogConfigResponse { return v.AuditLogConfigs }).(GoogleIamV1AuditLogConfigResponseArrayOutput)
@@ -14025,12 +12230,6 @@ func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigRespo
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfigResponse] {
-	return pulumix.Output[[]GoogleIamV1AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigResponseOutput {
@@ -14078,12 +12277,6 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigOutput)
 }
 
-func (i GoogleIamV1AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[GoogleIamV1AuditLogConfig]{
-		OutputState: i.ToGoogleIamV1AuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
@@ -14109,12 +12302,6 @@ func (i GoogleIamV1AuditLogConfigArray) ToGoogleIamV1AuditLogConfigArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigArrayOutput)
 }
 
-func (i GoogleIamV1AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
-		OutputState: i.ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type GoogleIamV1AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -14128,12 +12315,6 @@ func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutput() Goo
 
 func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[GoogleIamV1AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -14158,12 +12339,6 @@ func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOu
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigOutput {
@@ -14195,12 +12370,6 @@ func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResp
 	return o
 }
 
-func (o GoogleIamV1AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigResponse] {
-	return pulumix.Output[GoogleIamV1AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o GoogleIamV1AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -14223,12 +12392,6 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfi
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfigResponse] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigResponseOutput {
@@ -14280,12 +12443,6 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingOutput)
 }
 
-func (i GoogleIamV1BindingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
-	return pulumix.Output[GoogleIamV1Binding]{
-		OutputState: i.ToGoogleIamV1BindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
@@ -14311,12 +12468,6 @@ func (i GoogleIamV1BindingArray) ToGoogleIamV1BindingArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingArrayOutput)
 }
 
-func (i GoogleIamV1BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
-	return pulumix.Output[[]GoogleIamV1Binding]{
-		OutputState: i.ToGoogleIamV1BindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates members, or principals, with a role.
 type GoogleIamV1BindingOutput struct{ *pulumi.OutputState }
 
@@ -14330,12 +12481,6 @@ func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutput() GoogleIamV1Bindin
 
 func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutputWithContext(ctx context.Context) GoogleIamV1BindingOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
-	return pulumix.Output[GoogleIamV1Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -14365,12 +12510,6 @@ func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutput() GoogleI
 
 func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
-	return pulumix.Output[[]GoogleIamV1Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingOutput {
@@ -14404,12 +12543,6 @@ func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutputWith
 	return o
 }
 
-func (o GoogleIamV1BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1BindingResponse] {
-	return pulumix.Output[GoogleIamV1BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
@@ -14437,12 +12570,6 @@ func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArray
 
 func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1BindingResponse] {
-	return pulumix.Output[[]GoogleIamV1BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingResponseOutput {
@@ -14498,12 +12625,6 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput)
 }
 
-func (i GoogleTypeExprArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
 	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
 }
@@ -14545,12 +12666,6 @@ func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprPtrOutput)
 }
 
-func (i *googleTypeExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type GoogleTypeExprOutput struct{ *pulumi.OutputState }
 
@@ -14574,12 +12689,6 @@ func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
 		return &v
 	}).(GoogleTypeExprPtrOutput)
-}
-
-func (o GoogleTypeExprOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -14614,12 +12723,6 @@ func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOu
 
 func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
 	return o
-}
-
-func (o GoogleTypeExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
@@ -14697,12 +12800,6 @@ func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutput() GoogleTyp
 
 func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(ctx context.Context) GoogleTypeExprResponseOutput {
 	return o
-}
-
-func (o GoogleTypeExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExprResponse] {
-	return pulumix.Output[GoogleTypeExprResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

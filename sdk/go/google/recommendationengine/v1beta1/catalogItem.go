@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a catalog item.
@@ -174,12 +173,6 @@ func (i *CatalogItem) ToCatalogItemOutputWithContext(ctx context.Context) Catalo
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogItemOutput)
 }
 
-func (i *CatalogItem) ToOutput(ctx context.Context) pulumix.Output[*CatalogItem] {
-	return pulumix.Output[*CatalogItem]{
-		OutputState: i.ToCatalogItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CatalogItemOutput struct{ *pulumi.OutputState }
 
 func (CatalogItemOutput) ElementType() reflect.Type {
@@ -192,12 +185,6 @@ func (o CatalogItemOutput) ToCatalogItemOutput() CatalogItemOutput {
 
 func (o CatalogItemOutput) ToCatalogItemOutputWithContext(ctx context.Context) CatalogItemOutput {
 	return o
-}
-
-func (o CatalogItemOutput) ToOutput(ctx context.Context) pulumix.Output[*CatalogItem] {
-	return pulumix.Output[*CatalogItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CatalogItemOutput) CatalogId() pulumi.StringOutput {

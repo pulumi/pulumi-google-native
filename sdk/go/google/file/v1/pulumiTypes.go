@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -61,12 +60,6 @@ func (i FileShareConfigArgs) ToFileShareConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FileShareConfigOutput)
 }
 
-func (i FileShareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FileShareConfig] {
-	return pulumix.Output[FileShareConfig]{
-		OutputState: i.ToFileShareConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FileShareConfigArrayInput is an input type that accepts FileShareConfigArray and FileShareConfigArrayOutput values.
 // You can construct a concrete instance of `FileShareConfigArrayInput` via:
 //
@@ -92,12 +85,6 @@ func (i FileShareConfigArray) ToFileShareConfigArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(FileShareConfigArrayOutput)
 }
 
-func (i FileShareConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]FileShareConfig] {
-	return pulumix.Output[[]FileShareConfig]{
-		OutputState: i.ToFileShareConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // File share configuration for the instance.
 type FileShareConfigOutput struct{ *pulumi.OutputState }
 
@@ -111,12 +98,6 @@ func (o FileShareConfigOutput) ToFileShareConfigOutput() FileShareConfigOutput {
 
 func (o FileShareConfigOutput) ToFileShareConfigOutputWithContext(ctx context.Context) FileShareConfigOutput {
 	return o
-}
-
-func (o FileShareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FileShareConfig] {
-	return pulumix.Output[FileShareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
@@ -153,12 +134,6 @@ func (o FileShareConfigArrayOutput) ToFileShareConfigArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o FileShareConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FileShareConfig] {
-	return pulumix.Output[[]FileShareConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FileShareConfigArrayOutput) Index(i pulumi.IntInput) FileShareConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileShareConfig {
 		return vs[0].([]FileShareConfig)[vs[1].(int)]
@@ -190,12 +165,6 @@ func (o FileShareConfigResponseOutput) ToFileShareConfigResponseOutput() FileSha
 
 func (o FileShareConfigResponseOutput) ToFileShareConfigResponseOutputWithContext(ctx context.Context) FileShareConfigResponseOutput {
 	return o
-}
-
-func (o FileShareConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FileShareConfigResponse] {
-	return pulumix.Output[FileShareConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
@@ -230,12 +199,6 @@ func (o FileShareConfigResponseArrayOutput) ToFileShareConfigResponseArrayOutput
 
 func (o FileShareConfigResponseArrayOutput) ToFileShareConfigResponseArrayOutputWithContext(ctx context.Context) FileShareConfigResponseArrayOutput {
 	return o
-}
-
-func (o FileShareConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FileShareConfigResponse] {
-	return pulumix.Output[[]FileShareConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileShareConfigResponseArrayOutput) Index(i pulumi.IntInput) FileShareConfigResponseOutput {
@@ -291,12 +254,6 @@ func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput)
 }
 
-func (i NetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: i.ToNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkConfigArrayInput is an input type that accepts NetworkConfigArray and NetworkConfigArrayOutput values.
 // You can construct a concrete instance of `NetworkConfigArrayInput` via:
 //
@@ -322,12 +279,6 @@ func (i NetworkConfigArray) ToNetworkConfigArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigArrayOutput)
 }
 
-func (i NetworkConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]NetworkConfig] {
-	return pulumix.Output[[]NetworkConfig]{
-		OutputState: i.ToNetworkConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network configuration for the instance.
 type NetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -341,12 +292,6 @@ func (o NetworkConfigOutput) ToNetworkConfigOutput() NetworkConfigOutput {
 
 func (o NetworkConfigOutput) ToNetworkConfigOutputWithContext(ctx context.Context) NetworkConfigOutput {
 	return o
-}
-
-func (o NetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
@@ -383,12 +328,6 @@ func (o NetworkConfigArrayOutput) ToNetworkConfigArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o NetworkConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkConfig] {
-	return pulumix.Output[[]NetworkConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkConfigArrayOutput) Index(i pulumi.IntInput) NetworkConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkConfig {
 		return vs[0].([]NetworkConfig)[vs[1].(int)]
@@ -422,12 +361,6 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutput() NetworkConf
 
 func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
 	return o
-}
-
-func (o NetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigResponse] {
-	return pulumix.Output[NetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
@@ -467,12 +400,6 @@ func (o NetworkConfigResponseArrayOutput) ToNetworkConfigResponseArrayOutput() N
 
 func (o NetworkConfigResponseArrayOutput) ToNetworkConfigResponseArrayOutputWithContext(ctx context.Context) NetworkConfigResponseArrayOutput {
 	return o
-}
-
-func (o NetworkConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkConfigResponse] {
-	return pulumix.Output[[]NetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigResponseArrayOutput) Index(i pulumi.IntInput) NetworkConfigResponseOutput {
@@ -532,12 +459,6 @@ func (i NfsExportOptionsArgs) ToNfsExportOptionsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NfsExportOptionsOutput)
 }
 
-func (i NfsExportOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[NfsExportOptions] {
-	return pulumix.Output[NfsExportOptions]{
-		OutputState: i.ToNfsExportOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NfsExportOptionsArrayInput is an input type that accepts NfsExportOptionsArray and NfsExportOptionsArrayOutput values.
 // You can construct a concrete instance of `NfsExportOptionsArrayInput` via:
 //
@@ -563,12 +484,6 @@ func (i NfsExportOptionsArray) ToNfsExportOptionsArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NfsExportOptionsArrayOutput)
 }
 
-func (i NfsExportOptionsArray) ToOutput(ctx context.Context) pulumix.Output[[]NfsExportOptions] {
-	return pulumix.Output[[]NfsExportOptions]{
-		OutputState: i.ToNfsExportOptionsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NFS export options specifications.
 type NfsExportOptionsOutput struct{ *pulumi.OutputState }
 
@@ -582,12 +497,6 @@ func (o NfsExportOptionsOutput) ToNfsExportOptionsOutput() NfsExportOptionsOutpu
 
 func (o NfsExportOptionsOutput) ToNfsExportOptionsOutputWithContext(ctx context.Context) NfsExportOptionsOutput {
 	return o
-}
-
-func (o NfsExportOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[NfsExportOptions] {
-	return pulumix.Output[NfsExportOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
@@ -629,12 +538,6 @@ func (o NfsExportOptionsArrayOutput) ToNfsExportOptionsArrayOutputWithContext(ct
 	return o
 }
 
-func (o NfsExportOptionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NfsExportOptions] {
-	return pulumix.Output[[]NfsExportOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NfsExportOptionsArrayOutput) Index(i pulumi.IntInput) NfsExportOptionsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NfsExportOptions {
 		return vs[0].([]NfsExportOptions)[vs[1].(int)]
@@ -668,12 +571,6 @@ func (o NfsExportOptionsResponseOutput) ToNfsExportOptionsResponseOutput() NfsEx
 
 func (o NfsExportOptionsResponseOutput) ToNfsExportOptionsResponseOutputWithContext(ctx context.Context) NfsExportOptionsResponseOutput {
 	return o
-}
-
-func (o NfsExportOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NfsExportOptionsResponse] {
-	return pulumix.Output[NfsExportOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
@@ -713,12 +610,6 @@ func (o NfsExportOptionsResponseArrayOutput) ToNfsExportOptionsResponseArrayOutp
 
 func (o NfsExportOptionsResponseArrayOutput) ToNfsExportOptionsResponseArrayOutputWithContext(ctx context.Context) NfsExportOptionsResponseArrayOutput {
 	return o
-}
-
-func (o NfsExportOptionsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NfsExportOptionsResponse] {
-	return pulumix.Output[[]NfsExportOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NfsExportOptionsResponseArrayOutput) Index(i pulumi.IntInput) NfsExportOptionsResponseOutput {

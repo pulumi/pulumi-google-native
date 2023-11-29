@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *PrivateCloudHcxActivationKeyIamBinding) ToPrivateCloudHcxActivationKeyI
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudHcxActivationKeyIamBindingOutput)
 }
 
-func (i *PrivateCloudHcxActivationKeyIamBinding) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudHcxActivationKeyIamBinding] {
-	return pulumix.Output[*PrivateCloudHcxActivationKeyIamBinding]{
-		OutputState: i.ToPrivateCloudHcxActivationKeyIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateCloudHcxActivationKeyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudHcxActivationKeyIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o PrivateCloudHcxActivationKeyIamBindingOutput) ToPrivateCloudHcxActivatio
 
 func (o PrivateCloudHcxActivationKeyIamBindingOutput) ToPrivateCloudHcxActivationKeyIamBindingOutputWithContext(ctx context.Context) PrivateCloudHcxActivationKeyIamBindingOutput {
 	return o
-}
-
-func (o PrivateCloudHcxActivationKeyIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudHcxActivationKeyIamBinding] {
-	return pulumix.Output[*PrivateCloudHcxActivationKeyIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

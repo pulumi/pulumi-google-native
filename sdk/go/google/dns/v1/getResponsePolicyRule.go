@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches the representation of an existing Response Policy Rule.
@@ -78,12 +77,6 @@ func (o GetResponsePolicyRuleResultOutput) ToGetResponsePolicyRuleResultOutput()
 
 func (o GetResponsePolicyRuleResultOutput) ToGetResponsePolicyRuleResultOutputWithContext(ctx context.Context) GetResponsePolicyRuleResultOutput {
 	return o
-}
-
-func (o GetResponsePolicyRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetResponsePolicyRuleResult] {
-	return pulumix.Output[GetResponsePolicyRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Answer this query with a behavior rather than DNS data.

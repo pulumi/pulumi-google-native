@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a complete auth config. If the auth config doesn't exist, Code.NOT_FOUND exception will be thrown. Returns the decrypted auth config.
@@ -103,12 +102,6 @@ func (o LookupAuthConfigResultOutput) ToLookupAuthConfigResultOutput() LookupAut
 
 func (o LookupAuthConfigResultOutput) ToLookupAuthConfigResultOutputWithContext(ctx context.Context) LookupAuthConfigResultOutput {
 	return o
-}
-
-func (o LookupAuthConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAuthConfigResult] {
-	return pulumix.Output[LookupAuthConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Certificate id for client certificate

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new TunnelDestGroup.
@@ -127,12 +126,6 @@ func (i *DestGroup) ToDestGroupOutputWithContext(ctx context.Context) DestGroupO
 	return pulumi.ToOutputWithContext(ctx, i).(DestGroupOutput)
 }
 
-func (i *DestGroup) ToOutput(ctx context.Context) pulumix.Output[*DestGroup] {
-	return pulumix.Output[*DestGroup]{
-		OutputState: i.ToDestGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DestGroupOutput struct{ *pulumi.OutputState }
 
 func (DestGroupOutput) ElementType() reflect.Type {
@@ -145,12 +138,6 @@ func (o DestGroupOutput) ToDestGroupOutput() DestGroupOutput {
 
 func (o DestGroupOutput) ToDestGroupOutputWithContext(ctx context.Context) DestGroupOutput {
 	return o
-}
-
-func (o DestGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DestGroup] {
-	return pulumix.Output[*DestGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unordered list. List of CIDRs that this group applies to.

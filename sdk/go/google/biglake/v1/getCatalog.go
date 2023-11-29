@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the catalog specified by the resource name.
@@ -77,12 +76,6 @@ func (o LookupCatalogResultOutput) ToLookupCatalogResultOutput() LookupCatalogRe
 
 func (o LookupCatalogResultOutput) ToLookupCatalogResultOutputWithContext(ctx context.Context) LookupCatalogResultOutput {
 	return o
-}
-
-func (o LookupCatalogResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCatalogResult] {
-	return pulumix.Output[LookupCatalogResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the catalog.

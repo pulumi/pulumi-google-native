@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Connector in a given project and location.
@@ -152,12 +151,6 @@ func (i *Connector) ToConnectorOutputWithContext(ctx context.Context) ConnectorO
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOutput)
 }
 
-func (i *Connector) ToOutput(ctx context.Context) pulumix.Output[*Connector] {
-	return pulumix.Output[*Connector]{
-		OutputState: i.ToConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorOutput struct{ *pulumi.OutputState }
 
 func (ConnectorOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o ConnectorOutput) ToConnectorOutput() ConnectorOutput {
 
 func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput {
 	return o
-}
-
-func (o ConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*Connector] {
-	return pulumix.Output[*Connector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.

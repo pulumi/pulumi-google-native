@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified machine image.
@@ -97,12 +96,6 @@ func (o LookupMachineImageResultOutput) ToLookupMachineImageResultOutput() Looku
 
 func (o LookupMachineImageResultOutput) ToLookupMachineImageResultOutputWithContext(ctx context.Context) LookupMachineImageResultOutput {
 	return o
-}
-
-func (o LookupMachineImageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMachineImageResult] {
-	return pulumix.Output[LookupMachineImageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp for this machine image in RFC3339 text format.

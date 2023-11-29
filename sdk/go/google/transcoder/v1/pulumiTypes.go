@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i AdBreakArgs) ToAdBreakOutputWithContext(ctx context.Context) AdBreakOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AdBreakOutput)
 }
 
-func (i AdBreakArgs) ToOutput(ctx context.Context) pulumix.Output[AdBreak] {
-	return pulumix.Output[AdBreak]{
-		OutputState: i.ToAdBreakOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AdBreakArrayInput is an input type that accepts AdBreakArray and AdBreakArrayOutput values.
 // You can construct a concrete instance of `AdBreakArrayInput` via:
 //
@@ -80,12 +73,6 @@ func (i AdBreakArray) ToAdBreakArrayOutputWithContext(ctx context.Context) AdBre
 	return pulumi.ToOutputWithContext(ctx, i).(AdBreakArrayOutput)
 }
 
-func (i AdBreakArray) ToOutput(ctx context.Context) pulumix.Output[[]AdBreak] {
-	return pulumix.Output[[]AdBreak]{
-		OutputState: i.ToAdBreakArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ad break.
 type AdBreakOutput struct{ *pulumi.OutputState }
 
@@ -99,12 +86,6 @@ func (o AdBreakOutput) ToAdBreakOutput() AdBreakOutput {
 
 func (o AdBreakOutput) ToAdBreakOutputWithContext(ctx context.Context) AdBreakOutput {
 	return o
-}
-
-func (o AdBreakOutput) ToOutput(ctx context.Context) pulumix.Output[AdBreak] {
-	return pulumix.Output[AdBreak]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.
@@ -124,12 +105,6 @@ func (o AdBreakArrayOutput) ToAdBreakArrayOutput() AdBreakArrayOutput {
 
 func (o AdBreakArrayOutput) ToAdBreakArrayOutputWithContext(ctx context.Context) AdBreakArrayOutput {
 	return o
-}
-
-func (o AdBreakArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdBreak] {
-	return pulumix.Output[[]AdBreak]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdBreakArrayOutput) Index(i pulumi.IntInput) AdBreakOutput {
@@ -159,12 +134,6 @@ func (o AdBreakResponseOutput) ToAdBreakResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AdBreakResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdBreakResponse] {
-	return pulumix.Output[AdBreakResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.
 func (o AdBreakResponseOutput) StartTimeOffset() pulumi.StringOutput {
 	return o.ApplyT(func(v AdBreakResponse) string { return v.StartTimeOffset }).(pulumi.StringOutput)
@@ -182,12 +151,6 @@ func (o AdBreakResponseArrayOutput) ToAdBreakResponseArrayOutput() AdBreakRespon
 
 func (o AdBreakResponseArrayOutput) ToAdBreakResponseArrayOutputWithContext(ctx context.Context) AdBreakResponseArrayOutput {
 	return o
-}
-
-func (o AdBreakResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdBreakResponse] {
-	return pulumix.Output[[]AdBreakResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdBreakResponseArrayOutput) Index(i pulumi.IntInput) AdBreakResponseOutput {
@@ -225,12 +188,6 @@ func (i Aes128EncryptionArgs) ToAes128EncryptionOutput() Aes128EncryptionOutput 
 
 func (i Aes128EncryptionArgs) ToAes128EncryptionOutputWithContext(ctx context.Context) Aes128EncryptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Aes128EncryptionOutput)
-}
-
-func (i Aes128EncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[Aes128Encryption] {
-	return pulumix.Output[Aes128Encryption]{
-		OutputState: i.ToAes128EncryptionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i Aes128EncryptionArgs) ToAes128EncryptionPtrOutput() Aes128EncryptionPtrOutput {
@@ -274,12 +231,6 @@ func (i *aes128EncryptionPtrType) ToAes128EncryptionPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(Aes128EncryptionPtrOutput)
 }
 
-func (i *aes128EncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*Aes128Encryption] {
-	return pulumix.Output[*Aes128Encryption]{
-		OutputState: i.ToAes128EncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for AES-128 encryption.
 type Aes128EncryptionOutput struct{ *pulumi.OutputState }
 
@@ -305,12 +256,6 @@ func (o Aes128EncryptionOutput) ToAes128EncryptionPtrOutputWithContext(ctx conte
 	}).(Aes128EncryptionPtrOutput)
 }
 
-func (o Aes128EncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[Aes128Encryption] {
-	return pulumix.Output[Aes128Encryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 type Aes128EncryptionPtrOutput struct{ *pulumi.OutputState }
 
 func (Aes128EncryptionPtrOutput) ElementType() reflect.Type {
@@ -323,12 +268,6 @@ func (o Aes128EncryptionPtrOutput) ToAes128EncryptionPtrOutput() Aes128Encryptio
 
 func (o Aes128EncryptionPtrOutput) ToAes128EncryptionPtrOutputWithContext(ctx context.Context) Aes128EncryptionPtrOutput {
 	return o
-}
-
-func (o Aes128EncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Aes128Encryption] {
-	return pulumix.Output[*Aes128Encryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Aes128EncryptionPtrOutput) Elem() Aes128EncryptionOutput {
@@ -358,12 +297,6 @@ func (o Aes128EncryptionResponseOutput) ToAes128EncryptionResponseOutput() Aes12
 
 func (o Aes128EncryptionResponseOutput) ToAes128EncryptionResponseOutputWithContext(ctx context.Context) Aes128EncryptionResponseOutput {
 	return o
-}
-
-func (o Aes128EncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Aes128EncryptionResponse] {
-	return pulumix.Output[Aes128EncryptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Animation types.
@@ -409,12 +342,6 @@ func (i AnimationArgs) ToAnimationOutputWithContext(ctx context.Context) Animati
 	return pulumi.ToOutputWithContext(ctx, i).(AnimationOutput)
 }
 
-func (i AnimationArgs) ToOutput(ctx context.Context) pulumix.Output[Animation] {
-	return pulumix.Output[Animation]{
-		OutputState: i.ToAnimationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AnimationArrayInput is an input type that accepts AnimationArray and AnimationArrayOutput values.
 // You can construct a concrete instance of `AnimationArrayInput` via:
 //
@@ -440,12 +367,6 @@ func (i AnimationArray) ToAnimationArrayOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AnimationArrayOutput)
 }
 
-func (i AnimationArray) ToOutput(ctx context.Context) pulumix.Output[[]Animation] {
-	return pulumix.Output[[]Animation]{
-		OutputState: i.ToAnimationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Animation types.
 type AnimationOutput struct{ *pulumi.OutputState }
 
@@ -459,12 +380,6 @@ func (o AnimationOutput) ToAnimationOutput() AnimationOutput {
 
 func (o AnimationOutput) ToAnimationOutputWithContext(ctx context.Context) AnimationOutput {
 	return o
-}
-
-func (o AnimationOutput) ToOutput(ctx context.Context) pulumix.Output[Animation] {
-	return pulumix.Output[Animation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // End previous animation.
@@ -494,12 +409,6 @@ func (o AnimationArrayOutput) ToAnimationArrayOutput() AnimationArrayOutput {
 
 func (o AnimationArrayOutput) ToAnimationArrayOutputWithContext(ctx context.Context) AnimationArrayOutput {
 	return o
-}
-
-func (o AnimationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Animation] {
-	return pulumix.Output[[]Animation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AnimationArrayOutput) Index(i pulumi.IntInput) AnimationOutput {
@@ -543,12 +452,6 @@ func (i AnimationEndArgs) ToAnimationEndOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AnimationEndOutput)
 }
 
-func (i AnimationEndArgs) ToOutput(ctx context.Context) pulumix.Output[AnimationEnd] {
-	return pulumix.Output[AnimationEnd]{
-		OutputState: i.ToAnimationEndOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AnimationEndArgs) ToAnimationEndPtrOutput() AnimationEndPtrOutput {
 	return i.ToAnimationEndPtrOutputWithContext(context.Background())
 }
@@ -590,12 +493,6 @@ func (i *animationEndPtrType) ToAnimationEndPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AnimationEndPtrOutput)
 }
 
-func (i *animationEndPtrType) ToOutput(ctx context.Context) pulumix.Output[*AnimationEnd] {
-	return pulumix.Output[*AnimationEnd]{
-		OutputState: i.ToAnimationEndPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.
 type AnimationEndOutput struct{ *pulumi.OutputState }
 
@@ -621,12 +518,6 @@ func (o AnimationEndOutput) ToAnimationEndPtrOutputWithContext(ctx context.Conte
 	}).(AnimationEndPtrOutput)
 }
 
-func (o AnimationEndOutput) ToOutput(ctx context.Context) pulumix.Output[AnimationEnd] {
-	return pulumix.Output[AnimationEnd]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The time to end overlay object, in seconds. Default: 0
 func (o AnimationEndOutput) StartTimeOffset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AnimationEnd) *string { return v.StartTimeOffset }).(pulumi.StringPtrOutput)
@@ -644,12 +535,6 @@ func (o AnimationEndPtrOutput) ToAnimationEndPtrOutput() AnimationEndPtrOutput {
 
 func (o AnimationEndPtrOutput) ToAnimationEndPtrOutputWithContext(ctx context.Context) AnimationEndPtrOutput {
 	return o
-}
-
-func (o AnimationEndPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AnimationEnd] {
-	return pulumix.Output[*AnimationEnd]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AnimationEndPtrOutput) Elem() AnimationEndOutput {
@@ -691,12 +576,6 @@ func (o AnimationEndResponseOutput) ToAnimationEndResponseOutput() AnimationEndR
 
 func (o AnimationEndResponseOutput) ToAnimationEndResponseOutputWithContext(ctx context.Context) AnimationEndResponseOutput {
 	return o
-}
-
-func (o AnimationEndResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AnimationEndResponse] {
-	return pulumix.Output[AnimationEndResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time to end overlay object, in seconds. Default: 0
@@ -751,12 +630,6 @@ func (i AnimationFadeArgs) ToAnimationFadeOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AnimationFadeOutput)
 }
 
-func (i AnimationFadeArgs) ToOutput(ctx context.Context) pulumix.Output[AnimationFade] {
-	return pulumix.Output[AnimationFade]{
-		OutputState: i.ToAnimationFadeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AnimationFadeArgs) ToAnimationFadePtrOutput() AnimationFadePtrOutput {
 	return i.ToAnimationFadePtrOutputWithContext(context.Background())
 }
@@ -798,12 +671,6 @@ func (i *animationFadePtrType) ToAnimationFadePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AnimationFadePtrOutput)
 }
 
-func (i *animationFadePtrType) ToOutput(ctx context.Context) pulumix.Output[*AnimationFade] {
-	return pulumix.Output[*AnimationFade]{
-		OutputState: i.ToAnimationFadePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Display overlay object with fade animation.
 type AnimationFadeOutput struct{ *pulumi.OutputState }
 
@@ -827,12 +694,6 @@ func (o AnimationFadeOutput) ToAnimationFadePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnimationFade) *AnimationFade {
 		return &v
 	}).(AnimationFadePtrOutput)
-}
-
-func (o AnimationFadeOutput) ToOutput(ctx context.Context) pulumix.Output[AnimationFade] {
-	return pulumix.Output[AnimationFade]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
@@ -867,12 +728,6 @@ func (o AnimationFadePtrOutput) ToAnimationFadePtrOutput() AnimationFadePtrOutpu
 
 func (o AnimationFadePtrOutput) ToAnimationFadePtrOutputWithContext(ctx context.Context) AnimationFadePtrOutput {
 	return o
-}
-
-func (o AnimationFadePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AnimationFade] {
-	return pulumix.Output[*AnimationFade]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AnimationFadePtrOutput) Elem() AnimationFadeOutput {
@@ -952,12 +807,6 @@ func (o AnimationFadeResponseOutput) ToAnimationFadeResponseOutputWithContext(ct
 	return o
 }
 
-func (o AnimationFadeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AnimationFadeResponse] {
-	return pulumix.Output[AnimationFadeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
 func (o AnimationFadeResponseOutput) EndTimeOffset() pulumi.StringOutput {
 	return o.ApplyT(func(v AnimationFadeResponse) string { return v.EndTimeOffset }).(pulumi.StringOutput)
@@ -1003,12 +852,6 @@ func (o AnimationResponseOutput) ToAnimationResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o AnimationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AnimationResponse] {
-	return pulumix.Output[AnimationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // End previous animation.
 func (o AnimationResponseOutput) AnimationEnd() AnimationEndResponseOutput {
 	return o.ApplyT(func(v AnimationResponse) AnimationEndResponse { return v.AnimationEnd }).(AnimationEndResponseOutput)
@@ -1036,12 +879,6 @@ func (o AnimationResponseArrayOutput) ToAnimationResponseArrayOutput() Animation
 
 func (o AnimationResponseArrayOutput) ToAnimationResponseArrayOutputWithContext(ctx context.Context) AnimationResponseArrayOutput {
 	return o
-}
-
-func (o AnimationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AnimationResponse] {
-	return pulumix.Output[[]AnimationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AnimationResponseArrayOutput) Index(i pulumi.IntInput) AnimationResponseOutput {
@@ -1089,12 +926,6 @@ func (i AnimationStaticArgs) ToAnimationStaticOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AnimationStaticOutput)
 }
 
-func (i AnimationStaticArgs) ToOutput(ctx context.Context) pulumix.Output[AnimationStatic] {
-	return pulumix.Output[AnimationStatic]{
-		OutputState: i.ToAnimationStaticOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AnimationStaticArgs) ToAnimationStaticPtrOutput() AnimationStaticPtrOutput {
 	return i.ToAnimationStaticPtrOutputWithContext(context.Background())
 }
@@ -1136,12 +967,6 @@ func (i *animationStaticPtrType) ToAnimationStaticPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AnimationStaticPtrOutput)
 }
 
-func (i *animationStaticPtrType) ToOutput(ctx context.Context) pulumix.Output[*AnimationStatic] {
-	return pulumix.Output[*AnimationStatic]{
-		OutputState: i.ToAnimationStaticPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Display static overlay object.
 type AnimationStaticOutput struct{ *pulumi.OutputState }
 
@@ -1167,12 +992,6 @@ func (o AnimationStaticOutput) ToAnimationStaticPtrOutputWithContext(ctx context
 	}).(AnimationStaticPtrOutput)
 }
 
-func (o AnimationStaticOutput) ToOutput(ctx context.Context) pulumix.Output[AnimationStatic] {
-	return pulumix.Output[AnimationStatic]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The time to start displaying the overlay object, in seconds. Default: 0
 func (o AnimationStaticOutput) StartTimeOffset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AnimationStatic) *string { return v.StartTimeOffset }).(pulumi.StringPtrOutput)
@@ -1195,12 +1014,6 @@ func (o AnimationStaticPtrOutput) ToAnimationStaticPtrOutput() AnimationStaticPt
 
 func (o AnimationStaticPtrOutput) ToAnimationStaticPtrOutputWithContext(ctx context.Context) AnimationStaticPtrOutput {
 	return o
-}
-
-func (o AnimationStaticPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AnimationStatic] {
-	return pulumix.Output[*AnimationStatic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AnimationStaticPtrOutput) Elem() AnimationStaticOutput {
@@ -1256,12 +1069,6 @@ func (o AnimationStaticResponseOutput) ToAnimationStaticResponseOutputWithContex
 	return o
 }
 
-func (o AnimationStaticResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AnimationStaticResponse] {
-	return pulumix.Output[AnimationStaticResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The time to start displaying the overlay object, in seconds. Default: 0
 func (o AnimationStaticResponseOutput) StartTimeOffset() pulumi.StringOutput {
 	return o.ApplyT(func(v AnimationStaticResponse) string { return v.StartTimeOffset }).(pulumi.StringOutput)
@@ -1315,12 +1122,6 @@ func (i AudioArgs) ToAudioOutputWithContext(ctx context.Context) AudioOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AudioOutput)
 }
 
-func (i AudioArgs) ToOutput(ctx context.Context) pulumix.Output[Audio] {
-	return pulumix.Output[Audio]{
-		OutputState: i.ToAudioOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AudioArgs) ToAudioPtrOutput() AudioPtrOutput {
 	return i.ToAudioPtrOutputWithContext(context.Background())
 }
@@ -1362,12 +1163,6 @@ func (i *audioPtrType) ToAudioPtrOutputWithContext(ctx context.Context) AudioPtr
 	return pulumi.ToOutputWithContext(ctx, i).(AudioPtrOutput)
 }
 
-func (i *audioPtrType) ToOutput(ctx context.Context) pulumix.Output[*Audio] {
-	return pulumix.Output[*Audio]{
-		OutputState: i.ToAudioPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Audio preprocessing configuration.
 type AudioOutput struct{ *pulumi.OutputState }
 
@@ -1391,12 +1186,6 @@ func (o AudioOutput) ToAudioPtrOutputWithContext(ctx context.Context) AudioPtrOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Audio) *Audio {
 		return &v
 	}).(AudioPtrOutput)
-}
-
-func (o AudioOutput) ToOutput(ctx context.Context) pulumix.Output[Audio] {
-	return pulumix.Output[Audio]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
@@ -1426,12 +1215,6 @@ func (o AudioPtrOutput) ToAudioPtrOutput() AudioPtrOutput {
 
 func (o AudioPtrOutput) ToAudioPtrOutputWithContext(ctx context.Context) AudioPtrOutput {
 	return o
-}
-
-func (o AudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Audio] {
-	return pulumix.Output[*Audio]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AudioPtrOutput) Elem() AudioOutput {
@@ -1529,12 +1312,6 @@ func (i AudioMappingArgs) ToAudioMappingOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AudioMappingOutput)
 }
 
-func (i AudioMappingArgs) ToOutput(ctx context.Context) pulumix.Output[AudioMapping] {
-	return pulumix.Output[AudioMapping]{
-		OutputState: i.ToAudioMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AudioMappingArrayInput is an input type that accepts AudioMappingArray and AudioMappingArrayOutput values.
 // You can construct a concrete instance of `AudioMappingArrayInput` via:
 //
@@ -1560,12 +1337,6 @@ func (i AudioMappingArray) ToAudioMappingArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AudioMappingArrayOutput)
 }
 
-func (i AudioMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]AudioMapping] {
-	return pulumix.Output[[]AudioMapping]{
-		OutputState: i.ToAudioMappingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 type AudioMappingOutput struct{ *pulumi.OutputState }
 
@@ -1579,12 +1350,6 @@ func (o AudioMappingOutput) ToAudioMappingOutput() AudioMappingOutput {
 
 func (o AudioMappingOutput) ToAudioMappingOutputWithContext(ctx context.Context) AudioMappingOutput {
 	return o
-}
-
-func (o AudioMappingOutput) ToOutput(ctx context.Context) pulumix.Output[AudioMapping] {
-	return pulumix.Output[AudioMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
@@ -1631,12 +1396,6 @@ func (o AudioMappingArrayOutput) ToAudioMappingArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AudioMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AudioMapping] {
-	return pulumix.Output[[]AudioMapping]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AudioMappingArrayOutput) Index(i pulumi.IntInput) AudioMappingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AudioMapping {
 		return vs[0].([]AudioMapping)[vs[1].(int)]
@@ -1672,12 +1431,6 @@ func (o AudioMappingResponseOutput) ToAudioMappingResponseOutput() AudioMappingR
 
 func (o AudioMappingResponseOutput) ToAudioMappingResponseOutputWithContext(ctx context.Context) AudioMappingResponseOutput {
 	return o
-}
-
-func (o AudioMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AudioMappingResponse] {
-	return pulumix.Output[AudioMappingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
@@ -1724,12 +1477,6 @@ func (o AudioMappingResponseArrayOutput) ToAudioMappingResponseArrayOutputWithCo
 	return o
 }
 
-func (o AudioMappingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AudioMappingResponse] {
-	return pulumix.Output[[]AudioMappingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AudioMappingResponseArrayOutput) Index(i pulumi.IntInput) AudioMappingResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AudioMappingResponse {
 		return vs[0].([]AudioMappingResponse)[vs[1].(int)]
@@ -1759,12 +1506,6 @@ func (o AudioResponseOutput) ToAudioResponseOutput() AudioResponseOutput {
 
 func (o AudioResponseOutput) ToAudioResponseOutputWithContext(ctx context.Context) AudioResponseOutput {
 	return o
-}
-
-func (o AudioResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AudioResponse] {
-	return pulumix.Output[AudioResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
@@ -1845,12 +1586,6 @@ func (i AudioStreamArgs) ToAudioStreamOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AudioStreamOutput)
 }
 
-func (i AudioStreamArgs) ToOutput(ctx context.Context) pulumix.Output[AudioStream] {
-	return pulumix.Output[AudioStream]{
-		OutputState: i.ToAudioStreamOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AudioStreamArgs) ToAudioStreamPtrOutput() AudioStreamPtrOutput {
 	return i.ToAudioStreamPtrOutputWithContext(context.Background())
 }
@@ -1892,12 +1627,6 @@ func (i *audioStreamPtrType) ToAudioStreamPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AudioStreamPtrOutput)
 }
 
-func (i *audioStreamPtrType) ToOutput(ctx context.Context) pulumix.Output[*AudioStream] {
-	return pulumix.Output[*AudioStream]{
-		OutputState: i.ToAudioStreamPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Audio stream resource.
 type AudioStreamOutput struct{ *pulumi.OutputState }
 
@@ -1921,12 +1650,6 @@ func (o AudioStreamOutput) ToAudioStreamPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AudioStream) *AudioStream {
 		return &v
 	}).(AudioStreamPtrOutput)
-}
-
-func (o AudioStreamOutput) ToOutput(ctx context.Context) pulumix.Output[AudioStream] {
-	return pulumix.Output[AudioStream]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Audio bitrate in bits per second. Must be between 1 and 10,000,000.
@@ -1981,12 +1704,6 @@ func (o AudioStreamPtrOutput) ToAudioStreamPtrOutput() AudioStreamPtrOutput {
 
 func (o AudioStreamPtrOutput) ToAudioStreamPtrOutputWithContext(ctx context.Context) AudioStreamPtrOutput {
 	return o
-}
-
-func (o AudioStreamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AudioStream] {
-	return pulumix.Output[*AudioStream]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AudioStreamPtrOutput) Elem() AudioStreamOutput {
@@ -2114,12 +1831,6 @@ func (o AudioStreamResponseOutput) ToAudioStreamResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AudioStreamResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AudioStreamResponse] {
-	return pulumix.Output[AudioStreamResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Audio bitrate in bits per second. Must be between 1 and 10,000,000.
 func (o AudioStreamResponseOutput) BitrateBps() pulumi.IntOutput {
 	return o.ApplyT(func(v AudioStreamResponse) int { return v.BitrateBps }).(pulumi.IntOutput)
@@ -2203,12 +1914,6 @@ func (i BwdifConfigArgs) ToBwdifConfigOutputWithContext(ctx context.Context) Bwd
 	return pulumi.ToOutputWithContext(ctx, i).(BwdifConfigOutput)
 }
 
-func (i BwdifConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BwdifConfig] {
-	return pulumix.Output[BwdifConfig]{
-		OutputState: i.ToBwdifConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BwdifConfigArgs) ToBwdifConfigPtrOutput() BwdifConfigPtrOutput {
 	return i.ToBwdifConfigPtrOutputWithContext(context.Background())
 }
@@ -2250,12 +1955,6 @@ func (i *bwdifConfigPtrType) ToBwdifConfigPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BwdifConfigPtrOutput)
 }
 
-func (i *bwdifConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BwdifConfig] {
-	return pulumix.Output[*BwdifConfig]{
-		OutputState: i.ToBwdifConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Bob Weaver Deinterlacing Filter Configuration.
 type BwdifConfigOutput struct{ *pulumi.OutputState }
 
@@ -2279,12 +1978,6 @@ func (o BwdifConfigOutput) ToBwdifConfigPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BwdifConfig) *BwdifConfig {
 		return &v
 	}).(BwdifConfigPtrOutput)
-}
-
-func (o BwdifConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BwdifConfig] {
-	return pulumix.Output[BwdifConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
@@ -2314,12 +2007,6 @@ func (o BwdifConfigPtrOutput) ToBwdifConfigPtrOutput() BwdifConfigPtrOutput {
 
 func (o BwdifConfigPtrOutput) ToBwdifConfigPtrOutputWithContext(ctx context.Context) BwdifConfigPtrOutput {
 	return o
-}
-
-func (o BwdifConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BwdifConfig] {
-	return pulumix.Output[*BwdifConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BwdifConfigPtrOutput) Elem() BwdifConfigOutput {
@@ -2387,12 +2074,6 @@ func (o BwdifConfigResponseOutput) ToBwdifConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o BwdifConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BwdifConfigResponse] {
-	return pulumix.Output[BwdifConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
 func (o BwdifConfigResponseOutput) DeinterlaceAllFrames() pulumi.BoolOutput {
 	return o.ApplyT(func(v BwdifConfigResponse) bool { return v.DeinterlaceAllFrames }).(pulumi.BoolOutput)
@@ -2439,12 +2120,6 @@ func (i ClearkeyArgs) ToClearkeyOutputWithContext(ctx context.Context) ClearkeyO
 	return pulumi.ToOutputWithContext(ctx, i).(ClearkeyOutput)
 }
 
-func (i ClearkeyArgs) ToOutput(ctx context.Context) pulumix.Output[Clearkey] {
-	return pulumix.Output[Clearkey]{
-		OutputState: i.ToClearkeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClearkeyArgs) ToClearkeyPtrOutput() ClearkeyPtrOutput {
 	return i.ToClearkeyPtrOutputWithContext(context.Background())
 }
@@ -2486,12 +2161,6 @@ func (i *clearkeyPtrType) ToClearkeyPtrOutputWithContext(ctx context.Context) Cl
 	return pulumi.ToOutputWithContext(ctx, i).(ClearkeyPtrOutput)
 }
 
-func (i *clearkeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*Clearkey] {
-	return pulumix.Output[*Clearkey]{
-		OutputState: i.ToClearkeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Clearkey configuration.
 type ClearkeyOutput struct{ *pulumi.OutputState }
 
@@ -2517,12 +2186,6 @@ func (o ClearkeyOutput) ToClearkeyPtrOutputWithContext(ctx context.Context) Clea
 	}).(ClearkeyPtrOutput)
 }
 
-func (o ClearkeyOutput) ToOutput(ctx context.Context) pulumix.Output[Clearkey] {
-	return pulumix.Output[Clearkey]{
-		OutputState: o.OutputState,
-	}
-}
-
 type ClearkeyPtrOutput struct{ *pulumi.OutputState }
 
 func (ClearkeyPtrOutput) ElementType() reflect.Type {
@@ -2535,12 +2198,6 @@ func (o ClearkeyPtrOutput) ToClearkeyPtrOutput() ClearkeyPtrOutput {
 
 func (o ClearkeyPtrOutput) ToClearkeyPtrOutputWithContext(ctx context.Context) ClearkeyPtrOutput {
 	return o
-}
-
-func (o ClearkeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Clearkey] {
-	return pulumix.Output[*Clearkey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClearkeyPtrOutput) Elem() ClearkeyOutput {
@@ -2570,12 +2227,6 @@ func (o ClearkeyResponseOutput) ToClearkeyResponseOutput() ClearkeyResponseOutpu
 
 func (o ClearkeyResponseOutput) ToClearkeyResponseOutputWithContext(ctx context.Context) ClearkeyResponseOutput {
 	return o
-}
-
-func (o ClearkeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClearkeyResponse] {
-	return pulumix.Output[ClearkeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Color preprocessing configuration. **Note:** This configuration is not supported.
@@ -2621,12 +2272,6 @@ func (i ColorArgs) ToColorOutputWithContext(ctx context.Context) ColorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ColorOutput)
 }
 
-func (i ColorArgs) ToOutput(ctx context.Context) pulumix.Output[Color] {
-	return pulumix.Output[Color]{
-		OutputState: i.ToColorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ColorArgs) ToColorPtrOutput() ColorPtrOutput {
 	return i.ToColorPtrOutputWithContext(context.Background())
 }
@@ -2668,12 +2313,6 @@ func (i *colorPtrType) ToColorPtrOutputWithContext(ctx context.Context) ColorPtr
 	return pulumi.ToOutputWithContext(ctx, i).(ColorPtrOutput)
 }
 
-func (i *colorPtrType) ToOutput(ctx context.Context) pulumix.Output[*Color] {
-	return pulumix.Output[*Color]{
-		OutputState: i.ToColorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Color preprocessing configuration. **Note:** This configuration is not supported.
 type ColorOutput struct{ *pulumi.OutputState }
 
@@ -2697,12 +2336,6 @@ func (o ColorOutput) ToColorPtrOutputWithContext(ctx context.Context) ColorPtrOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Color) *Color {
 		return &v
 	}).(ColorPtrOutput)
-}
-
-func (o ColorOutput) ToOutput(ctx context.Context) pulumix.Output[Color] {
-	return pulumix.Output[Color]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
@@ -2732,12 +2365,6 @@ func (o ColorPtrOutput) ToColorPtrOutput() ColorPtrOutput {
 
 func (o ColorPtrOutput) ToColorPtrOutputWithContext(ctx context.Context) ColorPtrOutput {
 	return o
-}
-
-func (o ColorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Color] {
-	return pulumix.Output[*Color]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ColorPtrOutput) Elem() ColorOutput {
@@ -2805,12 +2432,6 @@ func (o ColorResponseOutput) ToColorResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ColorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ColorResponse] {
-	return pulumix.Output[ColorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
 func (o ColorResponseOutput) Brightness() pulumi.Float64Output {
 	return o.ApplyT(func(v ColorResponse) float64 { return v.Brightness }).(pulumi.Float64Output)
@@ -2873,12 +2494,6 @@ func (i CropArgs) ToCropOutputWithContext(ctx context.Context) CropOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CropOutput)
 }
 
-func (i CropArgs) ToOutput(ctx context.Context) pulumix.Output[Crop] {
-	return pulumix.Output[Crop]{
-		OutputState: i.ToCropOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CropArgs) ToCropPtrOutput() CropPtrOutput {
 	return i.ToCropPtrOutputWithContext(context.Background())
 }
@@ -2920,12 +2535,6 @@ func (i *cropPtrType) ToCropPtrOutputWithContext(ctx context.Context) CropPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(CropPtrOutput)
 }
 
-func (i *cropPtrType) ToOutput(ctx context.Context) pulumix.Output[*Crop] {
-	return pulumix.Output[*Crop]{
-		OutputState: i.ToCropPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution.
 type CropOutput struct{ *pulumi.OutputState }
 
@@ -2949,12 +2558,6 @@ func (o CropOutput) ToCropPtrOutputWithContext(ctx context.Context) CropPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Crop) *Crop {
 		return &v
 	}).(CropPtrOutput)
-}
-
-func (o CropOutput) ToOutput(ctx context.Context) pulumix.Output[Crop] {
-	return pulumix.Output[Crop]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of pixels to crop from the bottom. The default is 0.
@@ -2989,12 +2592,6 @@ func (o CropPtrOutput) ToCropPtrOutput() CropPtrOutput {
 
 func (o CropPtrOutput) ToCropPtrOutputWithContext(ctx context.Context) CropPtrOutput {
 	return o
-}
-
-func (o CropPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Crop] {
-	return pulumix.Output[*Crop]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CropPtrOutput) Elem() CropOutput {
@@ -3074,12 +2671,6 @@ func (o CropResponseOutput) ToCropResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o CropResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CropResponse] {
-	return pulumix.Output[CropResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of pixels to crop from the bottom. The default is 0.
 func (o CropResponseOutput) BottomPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v CropResponse) int { return v.BottomPixels }).(pulumi.IntOutput)
@@ -3135,12 +2726,6 @@ func (i DashConfigArgs) ToDashConfigOutputWithContext(ctx context.Context) DashC
 	return pulumi.ToOutputWithContext(ctx, i).(DashConfigOutput)
 }
 
-func (i DashConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DashConfig] {
-	return pulumix.Output[DashConfig]{
-		OutputState: i.ToDashConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DashConfigArgs) ToDashConfigPtrOutput() DashConfigPtrOutput {
 	return i.ToDashConfigPtrOutputWithContext(context.Background())
 }
@@ -3182,12 +2767,6 @@ func (i *dashConfigPtrType) ToDashConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DashConfigPtrOutput)
 }
 
-func (i *dashConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DashConfig] {
-	return pulumix.Output[*DashConfig]{
-		OutputState: i.ToDashConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // `DASH` manifest configuration.
 type DashConfigOutput struct{ *pulumi.OutputState }
 
@@ -3213,12 +2792,6 @@ func (o DashConfigOutput) ToDashConfigPtrOutputWithContext(ctx context.Context) 
 	}).(DashConfigPtrOutput)
 }
 
-func (o DashConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DashConfig] {
-	return pulumix.Output[DashConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
 func (o DashConfigOutput) SegmentReferenceScheme() DashConfigSegmentReferenceSchemePtrOutput {
 	return o.ApplyT(func(v DashConfig) *DashConfigSegmentReferenceScheme { return v.SegmentReferenceScheme }).(DashConfigSegmentReferenceSchemePtrOutput)
@@ -3236,12 +2809,6 @@ func (o DashConfigPtrOutput) ToDashConfigPtrOutput() DashConfigPtrOutput {
 
 func (o DashConfigPtrOutput) ToDashConfigPtrOutputWithContext(ctx context.Context) DashConfigPtrOutput {
 	return o
-}
-
-func (o DashConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DashConfig] {
-	return pulumix.Output[*DashConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashConfigPtrOutput) Elem() DashConfigOutput {
@@ -3283,12 +2850,6 @@ func (o DashConfigResponseOutput) ToDashConfigResponseOutput() DashConfigRespons
 
 func (o DashConfigResponseOutput) ToDashConfigResponseOutputWithContext(ctx context.Context) DashConfigResponseOutput {
 	return o
-}
-
-func (o DashConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DashConfigResponse] {
-	return pulumix.Output[DashConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
@@ -3335,12 +2896,6 @@ func (i DeblockArgs) ToDeblockOutputWithContext(ctx context.Context) DeblockOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DeblockOutput)
 }
 
-func (i DeblockArgs) ToOutput(ctx context.Context) pulumix.Output[Deblock] {
-	return pulumix.Output[Deblock]{
-		OutputState: i.ToDeblockOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeblockArgs) ToDeblockPtrOutput() DeblockPtrOutput {
 	return i.ToDeblockPtrOutputWithContext(context.Background())
 }
@@ -3382,12 +2937,6 @@ func (i *deblockPtrType) ToDeblockPtrOutputWithContext(ctx context.Context) Debl
 	return pulumi.ToOutputWithContext(ctx, i).(DeblockPtrOutput)
 }
 
-func (i *deblockPtrType) ToOutput(ctx context.Context) pulumix.Output[*Deblock] {
-	return pulumix.Output[*Deblock]{
-		OutputState: i.ToDeblockPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Deblock preprocessing configuration. **Note:** This configuration is not supported.
 type DeblockOutput struct{ *pulumi.OutputState }
 
@@ -3413,12 +2962,6 @@ func (o DeblockOutput) ToDeblockPtrOutputWithContext(ctx context.Context) Debloc
 	}).(DeblockPtrOutput)
 }
 
-func (o DeblockOutput) ToOutput(ctx context.Context) pulumix.Output[Deblock] {
-	return pulumix.Output[Deblock]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enable deblocker. The default is `false`.
 func (o DeblockOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Deblock) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -3441,12 +2984,6 @@ func (o DeblockPtrOutput) ToDeblockPtrOutput() DeblockPtrOutput {
 
 func (o DeblockPtrOutput) ToDeblockPtrOutputWithContext(ctx context.Context) DeblockPtrOutput {
 	return o
-}
-
-func (o DeblockPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Deblock] {
-	return pulumix.Output[*Deblock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeblockPtrOutput) Elem() DeblockOutput {
@@ -3502,12 +3039,6 @@ func (o DeblockResponseOutput) ToDeblockResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DeblockResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeblockResponse] {
-	return pulumix.Output[DeblockResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enable deblocker. The default is `false`.
 func (o DeblockResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v DeblockResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -3557,12 +3088,6 @@ func (i DeinterlaceArgs) ToDeinterlaceOutputWithContext(ctx context.Context) Dei
 	return pulumi.ToOutputWithContext(ctx, i).(DeinterlaceOutput)
 }
 
-func (i DeinterlaceArgs) ToOutput(ctx context.Context) pulumix.Output[Deinterlace] {
-	return pulumix.Output[Deinterlace]{
-		OutputState: i.ToDeinterlaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DeinterlaceArgs) ToDeinterlacePtrOutput() DeinterlacePtrOutput {
 	return i.ToDeinterlacePtrOutputWithContext(context.Background())
 }
@@ -3604,12 +3129,6 @@ func (i *deinterlacePtrType) ToDeinterlacePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DeinterlacePtrOutput)
 }
 
-func (i *deinterlacePtrType) ToOutput(ctx context.Context) pulumix.Output[*Deinterlace] {
-	return pulumix.Output[*Deinterlace]{
-		OutputState: i.ToDeinterlacePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Deinterlace configuration for input video.
 type DeinterlaceOutput struct{ *pulumi.OutputState }
 
@@ -3635,12 +3154,6 @@ func (o DeinterlaceOutput) ToDeinterlacePtrOutputWithContext(ctx context.Context
 	}).(DeinterlacePtrOutput)
 }
 
-func (o DeinterlaceOutput) ToOutput(ctx context.Context) pulumix.Output[Deinterlace] {
-	return pulumix.Output[Deinterlace]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the Bob Weaver Deinterlacing Filter Configuration.
 func (o DeinterlaceOutput) Bwdif() BwdifConfigPtrOutput {
 	return o.ApplyT(func(v Deinterlace) *BwdifConfig { return v.Bwdif }).(BwdifConfigPtrOutput)
@@ -3663,12 +3176,6 @@ func (o DeinterlacePtrOutput) ToDeinterlacePtrOutput() DeinterlacePtrOutput {
 
 func (o DeinterlacePtrOutput) ToDeinterlacePtrOutputWithContext(ctx context.Context) DeinterlacePtrOutput {
 	return o
-}
-
-func (o DeinterlacePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Deinterlace] {
-	return pulumix.Output[*Deinterlace]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeinterlacePtrOutput) Elem() DeinterlaceOutput {
@@ -3724,12 +3231,6 @@ func (o DeinterlaceResponseOutput) ToDeinterlaceResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o DeinterlaceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeinterlaceResponse] {
-	return pulumix.Output[DeinterlaceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the Bob Weaver Deinterlacing Filter Configuration.
 func (o DeinterlaceResponseOutput) Bwdif() BwdifConfigResponseOutput {
 	return o.ApplyT(func(v DeinterlaceResponse) BwdifConfigResponse { return v.Bwdif }).(BwdifConfigResponseOutput)
@@ -3779,12 +3280,6 @@ func (i DenoiseArgs) ToDenoiseOutputWithContext(ctx context.Context) DenoiseOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DenoiseOutput)
 }
 
-func (i DenoiseArgs) ToOutput(ctx context.Context) pulumix.Output[Denoise] {
-	return pulumix.Output[Denoise]{
-		OutputState: i.ToDenoiseOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DenoiseArgs) ToDenoisePtrOutput() DenoisePtrOutput {
 	return i.ToDenoisePtrOutputWithContext(context.Background())
 }
@@ -3826,12 +3321,6 @@ func (i *denoisePtrType) ToDenoisePtrOutputWithContext(ctx context.Context) Deno
 	return pulumi.ToOutputWithContext(ctx, i).(DenoisePtrOutput)
 }
 
-func (i *denoisePtrType) ToOutput(ctx context.Context) pulumix.Output[*Denoise] {
-	return pulumix.Output[*Denoise]{
-		OutputState: i.ToDenoisePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Denoise preprocessing configuration. **Note:** This configuration is not supported.
 type DenoiseOutput struct{ *pulumi.OutputState }
 
@@ -3857,12 +3346,6 @@ func (o DenoiseOutput) ToDenoisePtrOutputWithContext(ctx context.Context) Denois
 	}).(DenoisePtrOutput)
 }
 
-func (o DenoiseOutput) ToOutput(ctx context.Context) pulumix.Output[Denoise] {
-	return pulumix.Output[Denoise]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
 func (o DenoiseOutput) Strength() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Denoise) *float64 { return v.Strength }).(pulumi.Float64PtrOutput)
@@ -3885,12 +3368,6 @@ func (o DenoisePtrOutput) ToDenoisePtrOutput() DenoisePtrOutput {
 
 func (o DenoisePtrOutput) ToDenoisePtrOutputWithContext(ctx context.Context) DenoisePtrOutput {
 	return o
-}
-
-func (o DenoisePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Denoise] {
-	return pulumix.Output[*Denoise]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DenoisePtrOutput) Elem() DenoiseOutput {
@@ -3944,12 +3421,6 @@ func (o DenoiseResponseOutput) ToDenoiseResponseOutput() DenoiseResponseOutput {
 
 func (o DenoiseResponseOutput) ToDenoiseResponseOutputWithContext(ctx context.Context) DenoiseResponseOutput {
 	return o
-}
-
-func (o DenoiseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DenoiseResponse] {
-	return pulumix.Output[DenoiseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
@@ -4009,12 +3480,6 @@ func (i DrmSystemsArgs) ToDrmSystemsOutputWithContext(ctx context.Context) DrmSy
 	return pulumi.ToOutputWithContext(ctx, i).(DrmSystemsOutput)
 }
 
-func (i DrmSystemsArgs) ToOutput(ctx context.Context) pulumix.Output[DrmSystems] {
-	return pulumix.Output[DrmSystems]{
-		OutputState: i.ToDrmSystemsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines configuration for DRM systems in use.
 type DrmSystemsOutput struct{ *pulumi.OutputState }
 
@@ -4028,12 +3493,6 @@ func (o DrmSystemsOutput) ToDrmSystemsOutput() DrmSystemsOutput {
 
 func (o DrmSystemsOutput) ToDrmSystemsOutputWithContext(ctx context.Context) DrmSystemsOutput {
 	return o
-}
-
-func (o DrmSystemsOutput) ToOutput(ctx context.Context) pulumix.Output[DrmSystems] {
-	return pulumix.Output[DrmSystems]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Clearkey configuration.
@@ -4081,12 +3540,6 @@ func (o DrmSystemsResponseOutput) ToDrmSystemsResponseOutput() DrmSystemsRespons
 
 func (o DrmSystemsResponseOutput) ToDrmSystemsResponseOutputWithContext(ctx context.Context) DrmSystemsResponseOutput {
 	return o
-}
-
-func (o DrmSystemsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DrmSystemsResponse] {
-	return pulumix.Output[DrmSystemsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Clearkey configuration.
@@ -4156,12 +3609,6 @@ func (i EditAtomArgs) ToEditAtomOutputWithContext(ctx context.Context) EditAtomO
 	return pulumi.ToOutputWithContext(ctx, i).(EditAtomOutput)
 }
 
-func (i EditAtomArgs) ToOutput(ctx context.Context) pulumix.Output[EditAtom] {
-	return pulumix.Output[EditAtom]{
-		OutputState: i.ToEditAtomOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EditAtomArrayInput is an input type that accepts EditAtomArray and EditAtomArrayOutput values.
 // You can construct a concrete instance of `EditAtomArrayInput` via:
 //
@@ -4187,12 +3634,6 @@ func (i EditAtomArray) ToEditAtomArrayOutputWithContext(ctx context.Context) Edi
 	return pulumi.ToOutputWithContext(ctx, i).(EditAtomArrayOutput)
 }
 
-func (i EditAtomArray) ToOutput(ctx context.Context) pulumix.Output[[]EditAtom] {
-	return pulumix.Output[[]EditAtom]{
-		OutputState: i.ToEditAtomArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Edit atom.
 type EditAtomOutput struct{ *pulumi.OutputState }
 
@@ -4206,12 +3647,6 @@ func (o EditAtomOutput) ToEditAtomOutput() EditAtomOutput {
 
 func (o EditAtomOutput) ToEditAtomOutputWithContext(ctx context.Context) EditAtomOutput {
 	return o
-}
-
-func (o EditAtomOutput) ToOutput(ctx context.Context) pulumix.Output[EditAtom] {
-	return pulumix.Output[EditAtom]{
-		OutputState: o.OutputState,
-	}
 }
 
 // End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
@@ -4248,12 +3683,6 @@ func (o EditAtomArrayOutput) ToEditAtomArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o EditAtomArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EditAtom] {
-	return pulumix.Output[[]EditAtom]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EditAtomArrayOutput) Index(i pulumi.IntInput) EditAtomOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EditAtom {
 		return vs[0].([]EditAtom)[vs[1].(int)]
@@ -4285,12 +3714,6 @@ func (o EditAtomResponseOutput) ToEditAtomResponseOutput() EditAtomResponseOutpu
 
 func (o EditAtomResponseOutput) ToEditAtomResponseOutputWithContext(ctx context.Context) EditAtomResponseOutput {
 	return o
-}
-
-func (o EditAtomResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EditAtomResponse] {
-	return pulumix.Output[EditAtomResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
@@ -4325,12 +3748,6 @@ func (o EditAtomResponseArrayOutput) ToEditAtomResponseArrayOutput() EditAtomRes
 
 func (o EditAtomResponseArrayOutput) ToEditAtomResponseArrayOutputWithContext(ctx context.Context) EditAtomResponseArrayOutput {
 	return o
-}
-
-func (o EditAtomResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EditAtomResponse] {
-	return pulumix.Output[[]EditAtomResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EditAtomResponseArrayOutput) Index(i pulumi.IntInput) EditAtomResponseOutput {
@@ -4386,12 +3803,6 @@ func (i ElementaryStreamArgs) ToElementaryStreamOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ElementaryStreamOutput)
 }
 
-func (i ElementaryStreamArgs) ToOutput(ctx context.Context) pulumix.Output[ElementaryStream] {
-	return pulumix.Output[ElementaryStream]{
-		OutputState: i.ToElementaryStreamOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElementaryStreamArrayInput is an input type that accepts ElementaryStreamArray and ElementaryStreamArrayOutput values.
 // You can construct a concrete instance of `ElementaryStreamArrayInput` via:
 //
@@ -4417,12 +3828,6 @@ func (i ElementaryStreamArray) ToElementaryStreamArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ElementaryStreamArrayOutput)
 }
 
-func (i ElementaryStreamArray) ToOutput(ctx context.Context) pulumix.Output[[]ElementaryStream] {
-	return pulumix.Output[[]ElementaryStream]{
-		OutputState: i.ToElementaryStreamArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.
 type ElementaryStreamOutput struct{ *pulumi.OutputState }
 
@@ -4436,12 +3841,6 @@ func (o ElementaryStreamOutput) ToElementaryStreamOutput() ElementaryStreamOutpu
 
 func (o ElementaryStreamOutput) ToElementaryStreamOutputWithContext(ctx context.Context) ElementaryStreamOutput {
 	return o
-}
-
-func (o ElementaryStreamOutput) ToOutput(ctx context.Context) pulumix.Output[ElementaryStream] {
-	return pulumix.Output[ElementaryStream]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Encoding of an audio stream.
@@ -4478,12 +3877,6 @@ func (o ElementaryStreamArrayOutput) ToElementaryStreamArrayOutputWithContext(ct
 	return o
 }
 
-func (o ElementaryStreamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElementaryStream] {
-	return pulumix.Output[[]ElementaryStream]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ElementaryStreamArrayOutput) Index(i pulumi.IntInput) ElementaryStreamOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElementaryStream {
 		return vs[0].([]ElementaryStream)[vs[1].(int)]
@@ -4515,12 +3908,6 @@ func (o ElementaryStreamResponseOutput) ToElementaryStreamResponseOutput() Eleme
 
 func (o ElementaryStreamResponseOutput) ToElementaryStreamResponseOutputWithContext(ctx context.Context) ElementaryStreamResponseOutput {
 	return o
-}
-
-func (o ElementaryStreamResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ElementaryStreamResponse] {
-	return pulumix.Output[ElementaryStreamResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Encoding of an audio stream.
@@ -4555,12 +3942,6 @@ func (o ElementaryStreamResponseArrayOutput) ToElementaryStreamResponseArrayOutp
 
 func (o ElementaryStreamResponseArrayOutput) ToElementaryStreamResponseArrayOutputWithContext(ctx context.Context) ElementaryStreamResponseArrayOutput {
 	return o
-}
-
-func (o ElementaryStreamResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElementaryStreamResponse] {
-	return pulumix.Output[[]ElementaryStreamResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElementaryStreamResponseArrayOutput) Index(i pulumi.IntInput) ElementaryStreamResponseOutput {
@@ -4624,12 +4005,6 @@ func (i EncryptionArgs) ToEncryptionOutputWithContext(ctx context.Context) Encry
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput)
 }
 
-func (i EncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
-	return pulumix.Output[Encryption]{
-		OutputState: i.ToEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EncryptionArrayInput is an input type that accepts EncryptionArray and EncryptionArrayOutput values.
 // You can construct a concrete instance of `EncryptionArrayInput` via:
 //
@@ -4655,12 +4030,6 @@ func (i EncryptionArray) ToEncryptionArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionArrayOutput)
 }
 
-func (i EncryptionArray) ToOutput(ctx context.Context) pulumix.Output[[]Encryption] {
-	return pulumix.Output[[]Encryption]{
-		OutputState: i.ToEncryptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encryption settings.
 type EncryptionOutput struct{ *pulumi.OutputState }
 
@@ -4674,12 +4043,6 @@ func (o EncryptionOutput) ToEncryptionOutput() EncryptionOutput {
 
 func (o EncryptionOutput) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
 	return o
-}
-
-func (o EncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
-	return pulumix.Output[Encryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for AES-128 encryption.
@@ -4726,12 +4089,6 @@ func (o EncryptionArrayOutput) ToEncryptionArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o EncryptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Encryption] {
-	return pulumix.Output[[]Encryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EncryptionArrayOutput) Index(i pulumi.IntInput) EncryptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Encryption {
 		return vs[0].([]Encryption)[vs[1].(int)]
@@ -4765,12 +4122,6 @@ func (o EncryptionResponseOutput) ToEncryptionResponseOutput() EncryptionRespons
 
 func (o EncryptionResponseOutput) ToEncryptionResponseOutputWithContext(ctx context.Context) EncryptionResponseOutput {
 	return o
-}
-
-func (o EncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionResponse] {
-	return pulumix.Output[EncryptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for AES-128 encryption.
@@ -4812,12 +4163,6 @@ func (o EncryptionResponseArrayOutput) ToEncryptionResponseArrayOutputWithContex
 	return o
 }
 
-func (o EncryptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EncryptionResponse] {
-	return pulumix.Output[[]EncryptionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EncryptionResponseArrayOutput) Index(i pulumi.IntInput) EncryptionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EncryptionResponse {
 		return vs[0].([]EncryptionResponse)[vs[1].(int)]
@@ -4853,12 +4198,6 @@ func (i FairplayArgs) ToFairplayOutput() FairplayOutput {
 
 func (i FairplayArgs) ToFairplayOutputWithContext(ctx context.Context) FairplayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FairplayOutput)
-}
-
-func (i FairplayArgs) ToOutput(ctx context.Context) pulumix.Output[Fairplay] {
-	return pulumix.Output[Fairplay]{
-		OutputState: i.ToFairplayOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i FairplayArgs) ToFairplayPtrOutput() FairplayPtrOutput {
@@ -4902,12 +4241,6 @@ func (i *fairplayPtrType) ToFairplayPtrOutputWithContext(ctx context.Context) Fa
 	return pulumi.ToOutputWithContext(ctx, i).(FairplayPtrOutput)
 }
 
-func (i *fairplayPtrType) ToOutput(ctx context.Context) pulumix.Output[*Fairplay] {
-	return pulumix.Output[*Fairplay]{
-		OutputState: i.ToFairplayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Fairplay configuration.
 type FairplayOutput struct{ *pulumi.OutputState }
 
@@ -4933,12 +4266,6 @@ func (o FairplayOutput) ToFairplayPtrOutputWithContext(ctx context.Context) Fair
 	}).(FairplayPtrOutput)
 }
 
-func (o FairplayOutput) ToOutput(ctx context.Context) pulumix.Output[Fairplay] {
-	return pulumix.Output[Fairplay]{
-		OutputState: o.OutputState,
-	}
-}
-
 type FairplayPtrOutput struct{ *pulumi.OutputState }
 
 func (FairplayPtrOutput) ElementType() reflect.Type {
@@ -4951,12 +4278,6 @@ func (o FairplayPtrOutput) ToFairplayPtrOutput() FairplayPtrOutput {
 
 func (o FairplayPtrOutput) ToFairplayPtrOutputWithContext(ctx context.Context) FairplayPtrOutput {
 	return o
-}
-
-func (o FairplayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Fairplay] {
-	return pulumix.Output[*Fairplay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FairplayPtrOutput) Elem() FairplayOutput {
@@ -4986,12 +4307,6 @@ func (o FairplayResponseOutput) ToFairplayResponseOutput() FairplayResponseOutpu
 
 func (o FairplayResponseOutput) ToFairplayResponseOutputWithContext(ctx context.Context) FairplayResponseOutput {
 	return o
-}
-
-func (o FairplayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FairplayResponse] {
-	return pulumix.Output[FairplayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // `fmp4` container configuration.
@@ -5027,12 +4342,6 @@ func (i Fmp4ConfigArgs) ToFmp4ConfigOutput() Fmp4ConfigOutput {
 
 func (i Fmp4ConfigArgs) ToFmp4ConfigOutputWithContext(ctx context.Context) Fmp4ConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Fmp4ConfigOutput)
-}
-
-func (i Fmp4ConfigArgs) ToOutput(ctx context.Context) pulumix.Output[Fmp4Config] {
-	return pulumix.Output[Fmp4Config]{
-		OutputState: i.ToFmp4ConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i Fmp4ConfigArgs) ToFmp4ConfigPtrOutput() Fmp4ConfigPtrOutput {
@@ -5076,12 +4385,6 @@ func (i *fmp4ConfigPtrType) ToFmp4ConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(Fmp4ConfigPtrOutput)
 }
 
-func (i *fmp4ConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*Fmp4Config] {
-	return pulumix.Output[*Fmp4Config]{
-		OutputState: i.ToFmp4ConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // `fmp4` container configuration.
 type Fmp4ConfigOutput struct{ *pulumi.OutputState }
 
@@ -5107,12 +4410,6 @@ func (o Fmp4ConfigOutput) ToFmp4ConfigPtrOutputWithContext(ctx context.Context) 
 	}).(Fmp4ConfigPtrOutput)
 }
 
-func (o Fmp4ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Fmp4Config] {
-	return pulumix.Output[Fmp4Config]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
 func (o Fmp4ConfigOutput) CodecTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Fmp4Config) *string { return v.CodecTag }).(pulumi.StringPtrOutput)
@@ -5130,12 +4427,6 @@ func (o Fmp4ConfigPtrOutput) ToFmp4ConfigPtrOutput() Fmp4ConfigPtrOutput {
 
 func (o Fmp4ConfigPtrOutput) ToFmp4ConfigPtrOutputWithContext(ctx context.Context) Fmp4ConfigPtrOutput {
 	return o
-}
-
-func (o Fmp4ConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Fmp4Config] {
-	return pulumix.Output[*Fmp4Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Fmp4ConfigPtrOutput) Elem() Fmp4ConfigOutput {
@@ -5177,12 +4468,6 @@ func (o Fmp4ConfigResponseOutput) ToFmp4ConfigResponseOutput() Fmp4ConfigRespons
 
 func (o Fmp4ConfigResponseOutput) ToFmp4ConfigResponseOutputWithContext(ctx context.Context) Fmp4ConfigResponseOutput {
 	return o
-}
-
-func (o Fmp4ConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Fmp4ConfigResponse] {
-	return pulumix.Output[Fmp4ConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
@@ -5301,12 +4586,6 @@ func (i H264CodecSettingsArgs) ToH264CodecSettingsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(H264CodecSettingsOutput)
 }
 
-func (i H264CodecSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[H264CodecSettings] {
-	return pulumix.Output[H264CodecSettings]{
-		OutputState: i.ToH264CodecSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i H264CodecSettingsArgs) ToH264CodecSettingsPtrOutput() H264CodecSettingsPtrOutput {
 	return i.ToH264CodecSettingsPtrOutputWithContext(context.Background())
 }
@@ -5348,12 +4627,6 @@ func (i *h264codecSettingsPtrType) ToH264CodecSettingsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(H264CodecSettingsPtrOutput)
 }
 
-func (i *h264codecSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*H264CodecSettings] {
-	return pulumix.Output[*H264CodecSettings]{
-		OutputState: i.ToH264CodecSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // H264 codec settings.
 type H264CodecSettingsOutput struct{ *pulumi.OutputState }
 
@@ -5377,12 +4650,6 @@ func (o H264CodecSettingsOutput) ToH264CodecSettingsPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v H264CodecSettings) *H264CodecSettings {
 		return &v
 	}).(H264CodecSettingsPtrOutput)
-}
-
-func (o H264CodecSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[H264CodecSettings] {
-	return pulumix.Output[H264CodecSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
@@ -5497,12 +4764,6 @@ func (o H264CodecSettingsPtrOutput) ToH264CodecSettingsPtrOutput() H264CodecSett
 
 func (o H264CodecSettingsPtrOutput) ToH264CodecSettingsPtrOutputWithContext(ctx context.Context) H264CodecSettingsPtrOutput {
 	return o
-}
-
-func (o H264CodecSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*H264CodecSettings] {
-	return pulumix.Output[*H264CodecSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o H264CodecSettingsPtrOutput) Elem() H264CodecSettingsOutput {
@@ -5774,12 +5035,6 @@ func (o H264CodecSettingsResponseOutput) ToH264CodecSettingsResponseOutputWithCo
 	return o
 }
 
-func (o H264CodecSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[H264CodecSettingsResponse] {
-	return pulumix.Output[H264CodecSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
 func (o H264CodecSettingsResponseOutput) AllowOpenGop() pulumi.BoolOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) bool { return v.AllowOpenGop }).(pulumi.BoolOutput)
@@ -5987,12 +5242,6 @@ func (i H265CodecSettingsArgs) ToH265CodecSettingsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(H265CodecSettingsOutput)
 }
 
-func (i H265CodecSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[H265CodecSettings] {
-	return pulumix.Output[H265CodecSettings]{
-		OutputState: i.ToH265CodecSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i H265CodecSettingsArgs) ToH265CodecSettingsPtrOutput() H265CodecSettingsPtrOutput {
 	return i.ToH265CodecSettingsPtrOutputWithContext(context.Background())
 }
@@ -6034,12 +5283,6 @@ func (i *h265codecSettingsPtrType) ToH265CodecSettingsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(H265CodecSettingsPtrOutput)
 }
 
-func (i *h265codecSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*H265CodecSettings] {
-	return pulumix.Output[*H265CodecSettings]{
-		OutputState: i.ToH265CodecSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // H265 codec settings.
 type H265CodecSettingsOutput struct{ *pulumi.OutputState }
 
@@ -6063,12 +5306,6 @@ func (o H265CodecSettingsOutput) ToH265CodecSettingsPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v H265CodecSettings) *H265CodecSettings {
 		return &v
 	}).(H265CodecSettingsPtrOutput)
-}
-
-func (o H265CodecSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[H265CodecSettings] {
-	return pulumix.Output[H265CodecSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
@@ -6178,12 +5415,6 @@ func (o H265CodecSettingsPtrOutput) ToH265CodecSettingsPtrOutput() H265CodecSett
 
 func (o H265CodecSettingsPtrOutput) ToH265CodecSettingsPtrOutputWithContext(ctx context.Context) H265CodecSettingsPtrOutput {
 	return o
-}
-
-func (o H265CodecSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*H265CodecSettings] {
-	return pulumix.Output[*H265CodecSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o H265CodecSettingsPtrOutput) Elem() H265CodecSettingsOutput {
@@ -6443,12 +5674,6 @@ func (o H265CodecSettingsResponseOutput) ToH265CodecSettingsResponseOutputWithCo
 	return o
 }
 
-func (o H265CodecSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[H265CodecSettingsResponse] {
-	return pulumix.Output[H265CodecSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
 func (o H265CodecSettingsResponseOutput) AllowOpenGop() pulumi.BoolOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) bool { return v.AllowOpenGop }).(pulumi.BoolOutput)
@@ -6587,12 +5812,6 @@ func (i ImageArgs) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageOutput)
 }
 
-func (i ImageArgs) ToOutput(ctx context.Context) pulumix.Output[Image] {
-	return pulumix.Output[Image]{
-		OutputState: i.ToImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ImageArgs) ToImagePtrOutput() ImagePtrOutput {
 	return i.ToImagePtrOutputWithContext(context.Background())
 }
@@ -6634,12 +5853,6 @@ func (i *imagePtrType) ToImagePtrOutputWithContext(ctx context.Context) ImagePtr
 	return pulumi.ToOutputWithContext(ctx, i).(ImagePtrOutput)
 }
 
-func (i *imagePtrType) ToOutput(ctx context.Context) pulumix.Output[*Image] {
-	return pulumix.Output[*Image]{
-		OutputState: i.ToImagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Overlaid image.
 type ImageOutput struct{ *pulumi.OutputState }
 
@@ -6663,12 +5876,6 @@ func (o ImageOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Image) *Image {
 		return &v
 	}).(ImagePtrOutput)
-}
-
-func (o ImageOutput) ToOutput(ctx context.Context) pulumix.Output[Image] {
-	return pulumix.Output[Image]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
@@ -6698,12 +5905,6 @@ func (o ImagePtrOutput) ToImagePtrOutput() ImagePtrOutput {
 
 func (o ImagePtrOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutput {
 	return o
-}
-
-func (o ImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Image] {
-	return pulumix.Output[*Image]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImagePtrOutput) Elem() ImageOutput {
@@ -6771,12 +5972,6 @@ func (o ImageResponseOutput) ToImageResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImageResponse] {
-	return pulumix.Output[ImageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 func (o ImageResponseOutput) Alpha() pulumi.Float64Output {
 	return o.ApplyT(func(v ImageResponse) float64 { return v.Alpha }).(pulumi.Float64Output)
@@ -6835,12 +6030,6 @@ func (i InputArgs) ToInputOutputWithContext(ctx context.Context) InputOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InputOutput)
 }
 
-func (i InputArgs) ToOutput(ctx context.Context) pulumix.Output[Input] {
-	return pulumix.Output[Input]{
-		OutputState: i.ToInputOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InputArrayInput is an input type that accepts InputArray and InputArrayOutput values.
 // You can construct a concrete instance of `InputArrayInput` via:
 //
@@ -6866,12 +6055,6 @@ func (i InputArray) ToInputArrayOutputWithContext(ctx context.Context) InputArra
 	return pulumi.ToOutputWithContext(ctx, i).(InputArrayOutput)
 }
 
-func (i InputArray) ToOutput(ctx context.Context) pulumix.Output[[]Input] {
-	return pulumix.Output[[]Input]{
-		OutputState: i.ToInputArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Input asset.
 type InputOutput struct{ *pulumi.OutputState }
 
@@ -6885,12 +6068,6 @@ func (o InputOutput) ToInputOutput() InputOutput {
 
 func (o InputOutput) ToInputOutputWithContext(ctx context.Context) InputOutput {
 	return o
-}
-
-func (o InputOutput) ToOutput(ctx context.Context) pulumix.Output[Input] {
-	return pulumix.Output[Input]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A unique key for this input. Must be specified when using advanced mapping and edit lists.
@@ -6920,12 +6097,6 @@ func (o InputArrayOutput) ToInputArrayOutput() InputArrayOutput {
 
 func (o InputArrayOutput) ToInputArrayOutputWithContext(ctx context.Context) InputArrayOutput {
 	return o
-}
-
-func (o InputArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Input] {
-	return pulumix.Output[[]Input]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InputArrayOutput) Index(i pulumi.IntInput) InputOutput {
@@ -6959,12 +6130,6 @@ func (o InputResponseOutput) ToInputResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o InputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InputResponse] {
-	return pulumix.Output[InputResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A unique key for this input. Must be specified when using advanced mapping and edit lists.
 func (o InputResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v InputResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -6992,12 +6157,6 @@ func (o InputResponseArrayOutput) ToInputResponseArrayOutput() InputResponseArra
 
 func (o InputResponseArrayOutput) ToInputResponseArrayOutputWithContext(ctx context.Context) InputResponseArrayOutput {
 	return o
-}
-
-func (o InputResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InputResponse] {
-	return pulumix.Output[[]InputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InputResponseArrayOutput) Index(i pulumi.IntInput) InputResponseOutput {
@@ -7081,12 +6240,6 @@ func (i JobConfigArgs) ToJobConfigOutputWithContext(ctx context.Context) JobConf
 	return pulumi.ToOutputWithContext(ctx, i).(JobConfigOutput)
 }
 
-func (i JobConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobConfig] {
-	return pulumix.Output[JobConfig]{
-		OutputState: i.ToJobConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobConfigArgs) ToJobConfigPtrOutput() JobConfigPtrOutput {
 	return i.ToJobConfigPtrOutputWithContext(context.Background())
 }
@@ -7128,12 +6281,6 @@ func (i *jobConfigPtrType) ToJobConfigPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(JobConfigPtrOutput)
 }
 
-func (i *jobConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobConfig] {
-	return pulumix.Output[*JobConfig]{
-		OutputState: i.ToJobConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Job configuration
 type JobConfigOutput struct{ *pulumi.OutputState }
 
@@ -7157,12 +6304,6 @@ func (o JobConfigOutput) ToJobConfigPtrOutputWithContext(ctx context.Context) Jo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfig) *JobConfig {
 		return &v
 	}).(JobConfigPtrOutput)
-}
-
-func (o JobConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobConfig] {
-	return pulumix.Output[JobConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of ad breaks. Specifies where to insert ad break tags in the output manifests.
@@ -7232,12 +6373,6 @@ func (o JobConfigPtrOutput) ToJobConfigPtrOutput() JobConfigPtrOutput {
 
 func (o JobConfigPtrOutput) ToJobConfigPtrOutputWithContext(ctx context.Context) JobConfigPtrOutput {
 	return o
-}
-
-func (o JobConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobConfig] {
-	return pulumix.Output[*JobConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobConfigPtrOutput) Elem() JobConfigOutput {
@@ -7401,12 +6536,6 @@ func (o JobConfigResponseOutput) ToJobConfigResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o JobConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobConfigResponse] {
-	return pulumix.Output[JobConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of ad breaks. Specifies where to insert ad break tags in the output manifests.
 func (o JobConfigResponseOutput) AdBreaks() AdBreakResponseArrayOutput {
 	return o.ApplyT(func(v JobConfigResponse) []AdBreakResponse { return v.AdBreaks }).(AdBreakResponseArrayOutput)
@@ -7509,12 +6638,6 @@ func (i ManifestArgs) ToManifestOutputWithContext(ctx context.Context) ManifestO
 	return pulumi.ToOutputWithContext(ctx, i).(ManifestOutput)
 }
 
-func (i ManifestArgs) ToOutput(ctx context.Context) pulumix.Output[Manifest] {
-	return pulumix.Output[Manifest]{
-		OutputState: i.ToManifestOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManifestArrayInput is an input type that accepts ManifestArray and ManifestArrayOutput values.
 // You can construct a concrete instance of `ManifestArrayInput` via:
 //
@@ -7540,12 +6663,6 @@ func (i ManifestArray) ToManifestArrayOutputWithContext(ctx context.Context) Man
 	return pulumi.ToOutputWithContext(ctx, i).(ManifestArrayOutput)
 }
 
-func (i ManifestArray) ToOutput(ctx context.Context) pulumix.Output[[]Manifest] {
-	return pulumix.Output[[]Manifest]{
-		OutputState: i.ToManifestArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Manifest configuration.
 type ManifestOutput struct{ *pulumi.OutputState }
 
@@ -7559,12 +6676,6 @@ func (o ManifestOutput) ToManifestOutput() ManifestOutput {
 
 func (o ManifestOutput) ToManifestOutputWithContext(ctx context.Context) ManifestOutput {
 	return o
-}
-
-func (o ManifestOutput) ToOutput(ctx context.Context) pulumix.Output[Manifest] {
-	return pulumix.Output[Manifest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // `DASH` manifest configuration.
@@ -7601,12 +6712,6 @@ func (o ManifestArrayOutput) ToManifestArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ManifestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Manifest] {
-	return pulumix.Output[[]Manifest]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManifestArrayOutput) Index(i pulumi.IntInput) ManifestOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Manifest {
 		return vs[0].([]Manifest)[vs[1].(int)]
@@ -7638,12 +6743,6 @@ func (o ManifestResponseOutput) ToManifestResponseOutput() ManifestResponseOutpu
 
 func (o ManifestResponseOutput) ToManifestResponseOutputWithContext(ctx context.Context) ManifestResponseOutput {
 	return o
-}
-
-func (o ManifestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManifestResponse] {
-	return pulumix.Output[ManifestResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // `DASH` manifest configuration.
@@ -7678,12 +6777,6 @@ func (o ManifestResponseArrayOutput) ToManifestResponseArrayOutput() ManifestRes
 
 func (o ManifestResponseArrayOutput) ToManifestResponseArrayOutputWithContext(ctx context.Context) ManifestResponseArrayOutput {
 	return o
-}
-
-func (o ManifestResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManifestResponse] {
-	return pulumix.Output[[]ManifestResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManifestResponseArrayOutput) Index(i pulumi.IntInput) ManifestResponseOutput {
@@ -7727,12 +6820,6 @@ func (i MpegCommonEncryptionArgs) ToMpegCommonEncryptionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MpegCommonEncryptionOutput)
 }
 
-func (i MpegCommonEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[MpegCommonEncryption] {
-	return pulumix.Output[MpegCommonEncryption]{
-		OutputState: i.ToMpegCommonEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MpegCommonEncryptionArgs) ToMpegCommonEncryptionPtrOutput() MpegCommonEncryptionPtrOutput {
 	return i.ToMpegCommonEncryptionPtrOutputWithContext(context.Background())
 }
@@ -7774,12 +6861,6 @@ func (i *mpegCommonEncryptionPtrType) ToMpegCommonEncryptionPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(MpegCommonEncryptionPtrOutput)
 }
 
-func (i *mpegCommonEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MpegCommonEncryption] {
-	return pulumix.Output[*MpegCommonEncryption]{
-		OutputState: i.ToMpegCommonEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for MPEG Common Encryption (MPEG-CENC).
 type MpegCommonEncryptionOutput struct{ *pulumi.OutputState }
 
@@ -7805,12 +6886,6 @@ func (o MpegCommonEncryptionOutput) ToMpegCommonEncryptionPtrOutputWithContext(c
 	}).(MpegCommonEncryptionPtrOutput)
 }
 
-func (o MpegCommonEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[MpegCommonEncryption] {
-	return pulumix.Output[MpegCommonEncryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
 func (o MpegCommonEncryptionOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v MpegCommonEncryption) string { return v.Scheme }).(pulumi.StringOutput)
@@ -7828,12 +6903,6 @@ func (o MpegCommonEncryptionPtrOutput) ToMpegCommonEncryptionPtrOutput() MpegCom
 
 func (o MpegCommonEncryptionPtrOutput) ToMpegCommonEncryptionPtrOutputWithContext(ctx context.Context) MpegCommonEncryptionPtrOutput {
 	return o
-}
-
-func (o MpegCommonEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MpegCommonEncryption] {
-	return pulumix.Output[*MpegCommonEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MpegCommonEncryptionPtrOutput) Elem() MpegCommonEncryptionOutput {
@@ -7875,12 +6944,6 @@ func (o MpegCommonEncryptionResponseOutput) ToMpegCommonEncryptionResponseOutput
 
 func (o MpegCommonEncryptionResponseOutput) ToMpegCommonEncryptionResponseOutputWithContext(ctx context.Context) MpegCommonEncryptionResponseOutput {
 	return o
-}
-
-func (o MpegCommonEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MpegCommonEncryptionResponse] {
-	return pulumix.Output[MpegCommonEncryptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
@@ -7947,12 +7010,6 @@ func (i MuxStreamArgs) ToMuxStreamOutputWithContext(ctx context.Context) MuxStre
 	return pulumi.ToOutputWithContext(ctx, i).(MuxStreamOutput)
 }
 
-func (i MuxStreamArgs) ToOutput(ctx context.Context) pulumix.Output[MuxStream] {
-	return pulumix.Output[MuxStream]{
-		OutputState: i.ToMuxStreamOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MuxStreamArrayInput is an input type that accepts MuxStreamArray and MuxStreamArrayOutput values.
 // You can construct a concrete instance of `MuxStreamArrayInput` via:
 //
@@ -7978,12 +7035,6 @@ func (i MuxStreamArray) ToMuxStreamArrayOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, i).(MuxStreamArrayOutput)
 }
 
-func (i MuxStreamArray) ToOutput(ctx context.Context) pulumix.Output[[]MuxStream] {
-	return pulumix.Output[[]MuxStream]{
-		OutputState: i.ToMuxStreamArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Multiplexing settings for output stream.
 type MuxStreamOutput struct{ *pulumi.OutputState }
 
@@ -7997,12 +7048,6 @@ func (o MuxStreamOutput) ToMuxStreamOutput() MuxStreamOutput {
 
 func (o MuxStreamOutput) ToMuxStreamOutputWithContext(ctx context.Context) MuxStreamOutput {
 	return o
-}
-
-func (o MuxStreamOutput) ToOutput(ctx context.Context) pulumix.Output[MuxStream] {
-	return pulumix.Output[MuxStream]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
@@ -8054,12 +7099,6 @@ func (o MuxStreamArrayOutput) ToMuxStreamArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o MuxStreamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MuxStream] {
-	return pulumix.Output[[]MuxStream]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MuxStreamArrayOutput) Index(i pulumi.IntInput) MuxStreamOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MuxStream {
 		return vs[0].([]MuxStream)[vs[1].(int)]
@@ -8097,12 +7136,6 @@ func (o MuxStreamResponseOutput) ToMuxStreamResponseOutput() MuxStreamResponseOu
 
 func (o MuxStreamResponseOutput) ToMuxStreamResponseOutputWithContext(ctx context.Context) MuxStreamResponseOutput {
 	return o
-}
-
-func (o MuxStreamResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MuxStreamResponse] {
-	return pulumix.Output[MuxStreamResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
@@ -8154,12 +7187,6 @@ func (o MuxStreamResponseArrayOutput) ToMuxStreamResponseArrayOutputWithContext(
 	return o
 }
 
-func (o MuxStreamResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MuxStreamResponse] {
-	return pulumix.Output[[]MuxStreamResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MuxStreamResponseArrayOutput) Index(i pulumi.IntInput) MuxStreamResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MuxStreamResponse {
 		return vs[0].([]MuxStreamResponse)[vs[1].(int)]
@@ -8205,12 +7232,6 @@ func (i NormalizedCoordinateArgs) ToNormalizedCoordinateOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(NormalizedCoordinateOutput)
 }
 
-func (i NormalizedCoordinateArgs) ToOutput(ctx context.Context) pulumix.Output[NormalizedCoordinate] {
-	return pulumix.Output[NormalizedCoordinate]{
-		OutputState: i.ToNormalizedCoordinateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NormalizedCoordinateArgs) ToNormalizedCoordinatePtrOutput() NormalizedCoordinatePtrOutput {
 	return i.ToNormalizedCoordinatePtrOutputWithContext(context.Background())
 }
@@ -8252,12 +7273,6 @@ func (i *normalizedCoordinatePtrType) ToNormalizedCoordinatePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NormalizedCoordinatePtrOutput)
 }
 
-func (i *normalizedCoordinatePtrType) ToOutput(ctx context.Context) pulumix.Output[*NormalizedCoordinate] {
-	return pulumix.Output[*NormalizedCoordinate]{
-		OutputState: i.ToNormalizedCoordinatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // 2D normalized coordinates. Default: `{0.0, 0.0}`
 type NormalizedCoordinateOutput struct{ *pulumi.OutputState }
 
@@ -8283,12 +7298,6 @@ func (o NormalizedCoordinateOutput) ToNormalizedCoordinatePtrOutputWithContext(c
 	}).(NormalizedCoordinatePtrOutput)
 }
 
-func (o NormalizedCoordinateOutput) ToOutput(ctx context.Context) pulumix.Output[NormalizedCoordinate] {
-	return pulumix.Output[NormalizedCoordinate]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Normalized x coordinate.
 func (o NormalizedCoordinateOutput) X() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v NormalizedCoordinate) *float64 { return v.X }).(pulumi.Float64PtrOutput)
@@ -8311,12 +7320,6 @@ func (o NormalizedCoordinatePtrOutput) ToNormalizedCoordinatePtrOutput() Normali
 
 func (o NormalizedCoordinatePtrOutput) ToNormalizedCoordinatePtrOutputWithContext(ctx context.Context) NormalizedCoordinatePtrOutput {
 	return o
-}
-
-func (o NormalizedCoordinatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NormalizedCoordinate] {
-	return pulumix.Output[*NormalizedCoordinate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NormalizedCoordinatePtrOutput) Elem() NormalizedCoordinateOutput {
@@ -8372,12 +7375,6 @@ func (o NormalizedCoordinateResponseOutput) ToNormalizedCoordinateResponseOutput
 	return o
 }
 
-func (o NormalizedCoordinateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NormalizedCoordinateResponse] {
-	return pulumix.Output[NormalizedCoordinateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Normalized x coordinate.
 func (o NormalizedCoordinateResponseOutput) X() pulumi.Float64Output {
 	return o.ApplyT(func(v NormalizedCoordinateResponse) float64 { return v.X }).(pulumi.Float64Output)
@@ -8423,12 +7420,6 @@ func (i OutputArgs) ToOutputOutputWithContext(ctx context.Context) OutputOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(OutputOutput)
 }
 
-func (i OutputArgs) ToOutput(ctx context.Context) pulumix.Output[Output] {
-	return pulumix.Output[Output]{
-		OutputState: i.ToOutputOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OutputArgs) ToOutputPtrOutput() OutputPtrOutput {
 	return i.ToOutputPtrOutputWithContext(context.Background())
 }
@@ -8470,12 +7461,6 @@ func (i *outputPtrType) ToOutputPtrOutputWithContext(ctx context.Context) Output
 	return pulumi.ToOutputWithContext(ctx, i).(OutputPtrOutput)
 }
 
-func (i *outputPtrType) ToOutput(ctx context.Context) pulumix.Output[*Output] {
-	return pulumix.Output[*Output]{
-		OutputState: i.ToOutputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Location of output file(s) in a Cloud Storage bucket.
 type OutputOutput struct{ *pulumi.OutputState }
 
@@ -8501,12 +7486,6 @@ func (o OutputOutput) ToOutputPtrOutputWithContext(ctx context.Context) OutputPt
 	}).(OutputPtrOutput)
 }
 
-func (o OutputOutput) ToOutput(ctx context.Context) pulumix.Output[Output] {
-	return pulumix.Output[Output]{
-		OutputState: o.OutputState,
-	}
-}
-
 // URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o OutputOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Output) *string { return v.Uri }).(pulumi.StringPtrOutput)
@@ -8524,12 +7503,6 @@ func (o OutputPtrOutput) ToOutputPtrOutput() OutputPtrOutput {
 
 func (o OutputPtrOutput) ToOutputPtrOutputWithContext(ctx context.Context) OutputPtrOutput {
 	return o
-}
-
-func (o OutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Output] {
-	return pulumix.Output[*Output]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OutputPtrOutput) Elem() OutputOutput {
@@ -8571,12 +7544,6 @@ func (o OutputResponseOutput) ToOutputResponseOutput() OutputResponseOutput {
 
 func (o OutputResponseOutput) ToOutputResponseOutputWithContext(ctx context.Context) OutputResponseOutput {
 	return o
-}
-
-func (o OutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OutputResponse] {
-	return pulumix.Output[OutputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -8623,12 +7590,6 @@ func (i OverlayArgs) ToOverlayOutputWithContext(ctx context.Context) OverlayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OverlayOutput)
 }
 
-func (i OverlayArgs) ToOutput(ctx context.Context) pulumix.Output[Overlay] {
-	return pulumix.Output[Overlay]{
-		OutputState: i.ToOverlayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OverlayArrayInput is an input type that accepts OverlayArray and OverlayArrayOutput values.
 // You can construct a concrete instance of `OverlayArrayInput` via:
 //
@@ -8654,12 +7615,6 @@ func (i OverlayArray) ToOverlayArrayOutputWithContext(ctx context.Context) Overl
 	return pulumi.ToOutputWithContext(ctx, i).(OverlayArrayOutput)
 }
 
-func (i OverlayArray) ToOutput(ctx context.Context) pulumix.Output[[]Overlay] {
-	return pulumix.Output[[]Overlay]{
-		OutputState: i.ToOverlayArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Overlay configuration.
 type OverlayOutput struct{ *pulumi.OutputState }
 
@@ -8673,12 +7628,6 @@ func (o OverlayOutput) ToOverlayOutput() OverlayOutput {
 
 func (o OverlayOutput) ToOverlayOutputWithContext(ctx context.Context) OverlayOutput {
 	return o
-}
-
-func (o OverlayOutput) ToOutput(ctx context.Context) pulumix.Output[Overlay] {
-	return pulumix.Output[Overlay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of animations. The list should be chronological, without any time overlap.
@@ -8703,12 +7652,6 @@ func (o OverlayArrayOutput) ToOverlayArrayOutput() OverlayArrayOutput {
 
 func (o OverlayArrayOutput) ToOverlayArrayOutputWithContext(ctx context.Context) OverlayArrayOutput {
 	return o
-}
-
-func (o OverlayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Overlay] {
-	return pulumix.Output[[]Overlay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OverlayArrayOutput) Index(i pulumi.IntInput) OverlayOutput {
@@ -8740,12 +7683,6 @@ func (o OverlayResponseOutput) ToOverlayResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o OverlayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OverlayResponse] {
-	return pulumix.Output[OverlayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of animations. The list should be chronological, without any time overlap.
 func (o OverlayResponseOutput) Animations() AnimationResponseArrayOutput {
 	return o.ApplyT(func(v OverlayResponse) []AnimationResponse { return v.Animations }).(AnimationResponseArrayOutput)
@@ -8768,12 +7705,6 @@ func (o OverlayResponseArrayOutput) ToOverlayResponseArrayOutput() OverlayRespon
 
 func (o OverlayResponseArrayOutput) ToOverlayResponseArrayOutputWithContext(ctx context.Context) OverlayResponseArrayOutput {
 	return o
-}
-
-func (o OverlayResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OverlayResponse] {
-	return pulumix.Output[[]OverlayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OverlayResponseArrayOutput) Index(i pulumi.IntInput) OverlayResponseOutput {
@@ -8829,12 +7760,6 @@ func (i PadArgs) ToPadOutputWithContext(ctx context.Context) PadOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PadOutput)
 }
 
-func (i PadArgs) ToOutput(ctx context.Context) pulumix.Output[Pad] {
-	return pulumix.Output[Pad]{
-		OutputState: i.ToPadOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PadArgs) ToPadPtrOutput() PadPtrOutput {
 	return i.ToPadPtrOutputWithContext(context.Background())
 }
@@ -8876,12 +7801,6 @@ func (i *padPtrType) ToPadPtrOutputWithContext(ctx context.Context) PadPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PadPtrOutput)
 }
 
-func (i *padPtrType) ToOutput(ctx context.Context) pulumix.Output[*Pad] {
-	return pulumix.Output[*Pad]{
-		OutputState: i.ToPadPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
 type PadOutput struct{ *pulumi.OutputState }
 
@@ -8905,12 +7824,6 @@ func (o PadOutput) ToPadPtrOutputWithContext(ctx context.Context) PadPtrOutput {
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Pad) *Pad {
 		return &v
 	}).(PadPtrOutput)
-}
-
-func (o PadOutput) ToOutput(ctx context.Context) pulumix.Output[Pad] {
-	return pulumix.Output[Pad]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of pixels to add to the bottom. The default is 0.
@@ -8945,12 +7858,6 @@ func (o PadPtrOutput) ToPadPtrOutput() PadPtrOutput {
 
 func (o PadPtrOutput) ToPadPtrOutputWithContext(ctx context.Context) PadPtrOutput {
 	return o
-}
-
-func (o PadPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Pad] {
-	return pulumix.Output[*Pad]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PadPtrOutput) Elem() PadOutput {
@@ -9030,12 +7937,6 @@ func (o PadResponseOutput) ToPadResponseOutputWithContext(ctx context.Context) P
 	return o
 }
 
-func (o PadResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PadResponse] {
-	return pulumix.Output[PadResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of pixels to add to the bottom. The default is 0.
 func (o PadResponseOutput) BottomPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v PadResponse) int { return v.BottomPixels }).(pulumi.IntOutput)
@@ -9087,12 +7988,6 @@ func (i PlayreadyArgs) ToPlayreadyOutputWithContext(ctx context.Context) Playrea
 	return pulumi.ToOutputWithContext(ctx, i).(PlayreadyOutput)
 }
 
-func (i PlayreadyArgs) ToOutput(ctx context.Context) pulumix.Output[Playready] {
-	return pulumix.Output[Playready]{
-		OutputState: i.ToPlayreadyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PlayreadyArgs) ToPlayreadyPtrOutput() PlayreadyPtrOutput {
 	return i.ToPlayreadyPtrOutputWithContext(context.Background())
 }
@@ -9134,12 +8029,6 @@ func (i *playreadyPtrType) ToPlayreadyPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PlayreadyPtrOutput)
 }
 
-func (i *playreadyPtrType) ToOutput(ctx context.Context) pulumix.Output[*Playready] {
-	return pulumix.Output[*Playready]{
-		OutputState: i.ToPlayreadyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Playready configuration.
 type PlayreadyOutput struct{ *pulumi.OutputState }
 
@@ -9165,12 +8054,6 @@ func (o PlayreadyOutput) ToPlayreadyPtrOutputWithContext(ctx context.Context) Pl
 	}).(PlayreadyPtrOutput)
 }
 
-func (o PlayreadyOutput) ToOutput(ctx context.Context) pulumix.Output[Playready] {
-	return pulumix.Output[Playready]{
-		OutputState: o.OutputState,
-	}
-}
-
 type PlayreadyPtrOutput struct{ *pulumi.OutputState }
 
 func (PlayreadyPtrOutput) ElementType() reflect.Type {
@@ -9183,12 +8066,6 @@ func (o PlayreadyPtrOutput) ToPlayreadyPtrOutput() PlayreadyPtrOutput {
 
 func (o PlayreadyPtrOutput) ToPlayreadyPtrOutputWithContext(ctx context.Context) PlayreadyPtrOutput {
 	return o
-}
-
-func (o PlayreadyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Playready] {
-	return pulumix.Output[*Playready]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PlayreadyPtrOutput) Elem() PlayreadyOutput {
@@ -9218,12 +8095,6 @@ func (o PlayreadyResponseOutput) ToPlayreadyResponseOutput() PlayreadyResponseOu
 
 func (o PlayreadyResponseOutput) ToPlayreadyResponseOutputWithContext(ctx context.Context) PlayreadyResponseOutput {
 	return o
-}
-
-func (o PlayreadyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PlayreadyResponse] {
-	return pulumix.Output[PlayreadyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Preprocessing configurations.
@@ -9285,12 +8156,6 @@ func (i PreprocessingConfigArgs) ToPreprocessingConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PreprocessingConfigOutput)
 }
 
-func (i PreprocessingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PreprocessingConfig] {
-	return pulumix.Output[PreprocessingConfig]{
-		OutputState: i.ToPreprocessingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PreprocessingConfigArgs) ToPreprocessingConfigPtrOutput() PreprocessingConfigPtrOutput {
 	return i.ToPreprocessingConfigPtrOutputWithContext(context.Background())
 }
@@ -9332,12 +8197,6 @@ func (i *preprocessingConfigPtrType) ToPreprocessingConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PreprocessingConfigPtrOutput)
 }
 
-func (i *preprocessingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PreprocessingConfig] {
-	return pulumix.Output[*PreprocessingConfig]{
-		OutputState: i.ToPreprocessingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Preprocessing configurations.
 type PreprocessingConfigOutput struct{ *pulumi.OutputState }
 
@@ -9361,12 +8220,6 @@ func (o PreprocessingConfigOutput) ToPreprocessingConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreprocessingConfig) *PreprocessingConfig {
 		return &v
 	}).(PreprocessingConfigPtrOutput)
-}
-
-func (o PreprocessingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PreprocessingConfig] {
-	return pulumix.Output[PreprocessingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Audio preprocessing configuration.
@@ -9416,12 +8269,6 @@ func (o PreprocessingConfigPtrOutput) ToPreprocessingConfigPtrOutput() Preproces
 
 func (o PreprocessingConfigPtrOutput) ToPreprocessingConfigPtrOutputWithContext(ctx context.Context) PreprocessingConfigPtrOutput {
 	return o
-}
-
-func (o PreprocessingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PreprocessingConfig] {
-	return pulumix.Output[*PreprocessingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PreprocessingConfigPtrOutput) Elem() PreprocessingConfigOutput {
@@ -9537,12 +8384,6 @@ func (o PreprocessingConfigResponseOutput) ToPreprocessingConfigResponseOutputWi
 	return o
 }
 
-func (o PreprocessingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PreprocessingConfigResponse] {
-	return pulumix.Output[PreprocessingConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Audio preprocessing configuration.
 func (o PreprocessingConfigResponseOutput) Audio() AudioResponseOutput {
 	return o.ApplyT(func(v PreprocessingConfigResponse) AudioResponse { return v.Audio }).(AudioResponseOutput)
@@ -9613,12 +8454,6 @@ func (i PubsubDestinationArgs) ToPubsubDestinationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationOutput)
 }
 
-func (i PubsubDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[PubsubDestination] {
-	return pulumix.Output[PubsubDestination]{
-		OutputState: i.ToPubsubDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PubsubDestinationArgs) ToPubsubDestinationPtrOutput() PubsubDestinationPtrOutput {
 	return i.ToPubsubDestinationPtrOutputWithContext(context.Background())
 }
@@ -9660,12 +8495,6 @@ func (i *pubsubDestinationPtrType) ToPubsubDestinationPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationPtrOutput)
 }
 
-func (i *pubsubDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*PubsubDestination] {
-	return pulumix.Output[*PubsubDestination]{
-		OutputState: i.ToPubsubDestinationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A Pub/Sub destination.
 type PubsubDestinationOutput struct{ *pulumi.OutputState }
 
@@ -9691,12 +8520,6 @@ func (o PubsubDestinationOutput) ToPubsubDestinationPtrOutputWithContext(ctx con
 	}).(PubsubDestinationPtrOutput)
 }
 
-func (o PubsubDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubDestination] {
-	return pulumix.Output[PubsubDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
 func (o PubsubDestinationOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PubsubDestination) *string { return v.Topic }).(pulumi.StringPtrOutput)
@@ -9714,12 +8537,6 @@ func (o PubsubDestinationPtrOutput) ToPubsubDestinationPtrOutput() PubsubDestina
 
 func (o PubsubDestinationPtrOutput) ToPubsubDestinationPtrOutputWithContext(ctx context.Context) PubsubDestinationPtrOutput {
 	return o
-}
-
-func (o PubsubDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PubsubDestination] {
-	return pulumix.Output[*PubsubDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PubsubDestinationPtrOutput) Elem() PubsubDestinationOutput {
@@ -9763,12 +8580,6 @@ func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponseOutputWithCo
 	return o
 }
 
-func (o PubsubDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubDestinationResponse] {
-	return pulumix.Output[PubsubDestinationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
 func (o PubsubDestinationResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubDestinationResponse) string { return v.Topic }).(pulumi.StringOutput)
@@ -9803,12 +8614,6 @@ func (i SampleAesEncryptionArgs) ToSampleAesEncryptionOutput() SampleAesEncrypti
 
 func (i SampleAesEncryptionArgs) ToSampleAesEncryptionOutputWithContext(ctx context.Context) SampleAesEncryptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SampleAesEncryptionOutput)
-}
-
-func (i SampleAesEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[SampleAesEncryption] {
-	return pulumix.Output[SampleAesEncryption]{
-		OutputState: i.ToSampleAesEncryptionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i SampleAesEncryptionArgs) ToSampleAesEncryptionPtrOutput() SampleAesEncryptionPtrOutput {
@@ -9852,12 +8657,6 @@ func (i *sampleAesEncryptionPtrType) ToSampleAesEncryptionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SampleAesEncryptionPtrOutput)
 }
 
-func (i *sampleAesEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SampleAesEncryption] {
-	return pulumix.Output[*SampleAesEncryption]{
-		OutputState: i.ToSampleAesEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for SAMPLE-AES encryption.
 type SampleAesEncryptionOutput struct{ *pulumi.OutputState }
 
@@ -9883,12 +8682,6 @@ func (o SampleAesEncryptionOutput) ToSampleAesEncryptionPtrOutputWithContext(ctx
 	}).(SampleAesEncryptionPtrOutput)
 }
 
-func (o SampleAesEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[SampleAesEncryption] {
-	return pulumix.Output[SampleAesEncryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 type SampleAesEncryptionPtrOutput struct{ *pulumi.OutputState }
 
 func (SampleAesEncryptionPtrOutput) ElementType() reflect.Type {
@@ -9901,12 +8694,6 @@ func (o SampleAesEncryptionPtrOutput) ToSampleAesEncryptionPtrOutput() SampleAes
 
 func (o SampleAesEncryptionPtrOutput) ToSampleAesEncryptionPtrOutputWithContext(ctx context.Context) SampleAesEncryptionPtrOutput {
 	return o
-}
-
-func (o SampleAesEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SampleAesEncryption] {
-	return pulumix.Output[*SampleAesEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SampleAesEncryptionPtrOutput) Elem() SampleAesEncryptionOutput {
@@ -9936,12 +8723,6 @@ func (o SampleAesEncryptionResponseOutput) ToSampleAesEncryptionResponseOutput()
 
 func (o SampleAesEncryptionResponseOutput) ToSampleAesEncryptionResponseOutputWithContext(ctx context.Context) SampleAesEncryptionResponseOutput {
 	return o
-}
-
-func (o SampleAesEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SampleAesEncryptionResponse] {
-	return pulumix.Output[SampleAesEncryptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for secrets stored in Google Secret Manager.
@@ -9977,12 +8758,6 @@ func (i SecretManagerSourceArgs) ToSecretManagerSourceOutput() SecretManagerSour
 
 func (i SecretManagerSourceArgs) ToSecretManagerSourceOutputWithContext(ctx context.Context) SecretManagerSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSourceOutput)
-}
-
-func (i SecretManagerSourceArgs) ToOutput(ctx context.Context) pulumix.Output[SecretManagerSource] {
-	return pulumix.Output[SecretManagerSource]{
-		OutputState: i.ToSecretManagerSourceOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i SecretManagerSourceArgs) ToSecretManagerSourcePtrOutput() SecretManagerSourcePtrOutput {
@@ -10026,12 +8801,6 @@ func (i *secretManagerSourcePtrType) ToSecretManagerSourcePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSourcePtrOutput)
 }
 
-func (i *secretManagerSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretManagerSource] {
-	return pulumix.Output[*SecretManagerSource]{
-		OutputState: i.ToSecretManagerSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for secrets stored in Google Secret Manager.
 type SecretManagerSourceOutput struct{ *pulumi.OutputState }
 
@@ -10057,12 +8826,6 @@ func (o SecretManagerSourceOutput) ToSecretManagerSourcePtrOutputWithContext(ctx
 	}).(SecretManagerSourcePtrOutput)
 }
 
-func (o SecretManagerSourceOutput) ToOutput(ctx context.Context) pulumix.Output[SecretManagerSource] {
-	return pulumix.Output[SecretManagerSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
 func (o SecretManagerSourceOutput) SecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretManagerSource) string { return v.SecretVersion }).(pulumi.StringOutput)
@@ -10080,12 +8843,6 @@ func (o SecretManagerSourcePtrOutput) ToSecretManagerSourcePtrOutput() SecretMan
 
 func (o SecretManagerSourcePtrOutput) ToSecretManagerSourcePtrOutputWithContext(ctx context.Context) SecretManagerSourcePtrOutput {
 	return o
-}
-
-func (o SecretManagerSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretManagerSource] {
-	return pulumix.Output[*SecretManagerSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretManagerSourcePtrOutput) Elem() SecretManagerSourceOutput {
@@ -10127,12 +8884,6 @@ func (o SecretManagerSourceResponseOutput) ToSecretManagerSourceResponseOutput()
 
 func (o SecretManagerSourceResponseOutput) ToSecretManagerSourceResponseOutputWithContext(ctx context.Context) SecretManagerSourceResponseOutput {
 	return o
-}
-
-func (o SecretManagerSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretManagerSourceResponse] {
-	return pulumix.Output[SecretManagerSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
@@ -10179,12 +8930,6 @@ func (i SegmentSettingsArgs) ToSegmentSettingsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SegmentSettingsOutput)
 }
 
-func (i SegmentSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SegmentSettings] {
-	return pulumix.Output[SegmentSettings]{
-		OutputState: i.ToSegmentSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SegmentSettingsArgs) ToSegmentSettingsPtrOutput() SegmentSettingsPtrOutput {
 	return i.ToSegmentSettingsPtrOutputWithContext(context.Background())
 }
@@ -10226,12 +8971,6 @@ func (i *segmentSettingsPtrType) ToSegmentSettingsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SegmentSettingsPtrOutput)
 }
 
-func (i *segmentSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SegmentSettings] {
-	return pulumix.Output[*SegmentSettings]{
-		OutputState: i.ToSegmentSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Segment settings for `ts`, `fmp4` and `vtt`.
 type SegmentSettingsOutput struct{ *pulumi.OutputState }
 
@@ -10257,12 +8996,6 @@ func (o SegmentSettingsOutput) ToSegmentSettingsPtrOutputWithContext(ctx context
 	}).(SegmentSettingsPtrOutput)
 }
 
-func (o SegmentSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SegmentSettings] {
-	return pulumix.Output[SegmentSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Create an individual segment file. The default is `false`.
 func (o SegmentSettingsOutput) IndividualSegments() pulumi.BoolOutput {
 	return o.ApplyT(func(v SegmentSettings) bool { return v.IndividualSegments }).(pulumi.BoolOutput)
@@ -10285,12 +9018,6 @@ func (o SegmentSettingsPtrOutput) ToSegmentSettingsPtrOutput() SegmentSettingsPt
 
 func (o SegmentSettingsPtrOutput) ToSegmentSettingsPtrOutputWithContext(ctx context.Context) SegmentSettingsPtrOutput {
 	return o
-}
-
-func (o SegmentSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SegmentSettings] {
-	return pulumix.Output[*SegmentSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SegmentSettingsPtrOutput) Elem() SegmentSettingsOutput {
@@ -10344,12 +9071,6 @@ func (o SegmentSettingsResponseOutput) ToSegmentSettingsResponseOutput() Segment
 
 func (o SegmentSettingsResponseOutput) ToSegmentSettingsResponseOutputWithContext(ctx context.Context) SegmentSettingsResponseOutput {
 	return o
-}
-
-func (o SegmentSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SegmentSettingsResponse] {
-	return pulumix.Output[SegmentSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Create an individual segment file. The default is `false`.
@@ -10437,12 +9158,6 @@ func (i SpriteSheetArgs) ToSpriteSheetOutputWithContext(ctx context.Context) Spr
 	return pulumi.ToOutputWithContext(ctx, i).(SpriteSheetOutput)
 }
 
-func (i SpriteSheetArgs) ToOutput(ctx context.Context) pulumix.Output[SpriteSheet] {
-	return pulumix.Output[SpriteSheet]{
-		OutputState: i.ToSpriteSheetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SpriteSheetArrayInput is an input type that accepts SpriteSheetArray and SpriteSheetArrayOutput values.
 // You can construct a concrete instance of `SpriteSheetArrayInput` via:
 //
@@ -10468,12 +9183,6 @@ func (i SpriteSheetArray) ToSpriteSheetArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SpriteSheetArrayOutput)
 }
 
-func (i SpriteSheetArray) ToOutput(ctx context.Context) pulumix.Output[[]SpriteSheet] {
-	return pulumix.Output[[]SpriteSheet]{
-		OutputState: i.ToSpriteSheetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sprite sheet configuration.
 type SpriteSheetOutput struct{ *pulumi.OutputState }
 
@@ -10487,12 +9196,6 @@ func (o SpriteSheetOutput) ToSpriteSheetOutput() SpriteSheetOutput {
 
 func (o SpriteSheetOutput) ToSpriteSheetOutputWithContext(ctx context.Context) SpriteSheetOutput {
 	return o
-}
-
-func (o SpriteSheetOutput) ToOutput(ctx context.Context) pulumix.Output[SpriteSheet] {
-	return pulumix.Output[SpriteSheet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit.
@@ -10564,12 +9267,6 @@ func (o SpriteSheetArrayOutput) ToSpriteSheetArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o SpriteSheetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpriteSheet] {
-	return pulumix.Output[[]SpriteSheet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SpriteSheetArrayOutput) Index(i pulumi.IntInput) SpriteSheetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpriteSheet {
 		return vs[0].([]SpriteSheet)[vs[1].(int)]
@@ -10615,12 +9312,6 @@ func (o SpriteSheetResponseOutput) ToSpriteSheetResponseOutput() SpriteSheetResp
 
 func (o SpriteSheetResponseOutput) ToSpriteSheetResponseOutputWithContext(ctx context.Context) SpriteSheetResponseOutput {
 	return o
-}
-
-func (o SpriteSheetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SpriteSheetResponse] {
-	return pulumix.Output[SpriteSheetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit.
@@ -10692,12 +9383,6 @@ func (o SpriteSheetResponseArrayOutput) ToSpriteSheetResponseArrayOutputWithCont
 	return o
 }
 
-func (o SpriteSheetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpriteSheetResponse] {
-	return pulumix.Output[[]SpriteSheetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SpriteSheetResponseArrayOutput) Index(i pulumi.IntInput) SpriteSheetResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpriteSheetResponse {
 		return vs[0].([]SpriteSheetResponse)[vs[1].(int)]
@@ -10727,12 +9412,6 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
-}
-
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -10793,12 +9472,6 @@ func (i TextMappingArgs) ToTextMappingOutputWithContext(ctx context.Context) Tex
 	return pulumi.ToOutputWithContext(ctx, i).(TextMappingOutput)
 }
 
-func (i TextMappingArgs) ToOutput(ctx context.Context) pulumix.Output[TextMapping] {
-	return pulumix.Output[TextMapping]{
-		OutputState: i.ToTextMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TextMappingArrayInput is an input type that accepts TextMappingArray and TextMappingArrayOutput values.
 // You can construct a concrete instance of `TextMappingArrayInput` via:
 //
@@ -10824,12 +9497,6 @@ func (i TextMappingArray) ToTextMappingArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TextMappingArrayOutput)
 }
 
-func (i TextMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]TextMapping] {
-	return pulumix.Output[[]TextMapping]{
-		OutputState: i.ToTextMappingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 type TextMappingOutput struct{ *pulumi.OutputState }
 
@@ -10843,12 +9510,6 @@ func (o TextMappingOutput) ToTextMappingOutput() TextMappingOutput {
 
 func (o TextMappingOutput) ToTextMappingOutputWithContext(ctx context.Context) TextMappingOutput {
 	return o
-}
-
-func (o TextMappingOutput) ToOutput(ctx context.Context) pulumix.Output[TextMapping] {
-	return pulumix.Output[TextMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
@@ -10878,12 +9539,6 @@ func (o TextMappingArrayOutput) ToTextMappingArrayOutput() TextMappingArrayOutpu
 
 func (o TextMappingArrayOutput) ToTextMappingArrayOutputWithContext(ctx context.Context) TextMappingArrayOutput {
 	return o
-}
-
-func (o TextMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TextMapping] {
-	return pulumix.Output[[]TextMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextMappingArrayOutput) Index(i pulumi.IntInput) TextMappingOutput {
@@ -10917,12 +9572,6 @@ func (o TextMappingResponseOutput) ToTextMappingResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o TextMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TextMappingResponse] {
-	return pulumix.Output[TextMappingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
 func (o TextMappingResponseOutput) AtomKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TextMappingResponse) string { return v.AtomKey }).(pulumi.StringOutput)
@@ -10950,12 +9599,6 @@ func (o TextMappingResponseArrayOutput) ToTextMappingResponseArrayOutput() TextM
 
 func (o TextMappingResponseArrayOutput) ToTextMappingResponseArrayOutputWithContext(ctx context.Context) TextMappingResponseArrayOutput {
 	return o
-}
-
-func (o TextMappingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TextMappingResponse] {
-	return pulumix.Output[[]TextMappingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextMappingResponseArrayOutput) Index(i pulumi.IntInput) TextMappingResponseOutput {
@@ -11011,12 +9654,6 @@ func (i TextStreamArgs) ToTextStreamOutputWithContext(ctx context.Context) TextS
 	return pulumi.ToOutputWithContext(ctx, i).(TextStreamOutput)
 }
 
-func (i TextStreamArgs) ToOutput(ctx context.Context) pulumix.Output[TextStream] {
-	return pulumix.Output[TextStream]{
-		OutputState: i.ToTextStreamOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TextStreamArgs) ToTextStreamPtrOutput() TextStreamPtrOutput {
 	return i.ToTextStreamPtrOutputWithContext(context.Background())
 }
@@ -11058,12 +9695,6 @@ func (i *textStreamPtrType) ToTextStreamPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TextStreamPtrOutput)
 }
 
-func (i *textStreamPtrType) ToOutput(ctx context.Context) pulumix.Output[*TextStream] {
-	return pulumix.Output[*TextStream]{
-		OutputState: i.ToTextStreamPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encoding of a text stream. For example, closed captions or subtitles.
 type TextStreamOutput struct{ *pulumi.OutputState }
 
@@ -11087,12 +9718,6 @@ func (o TextStreamOutput) ToTextStreamPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextStream) *TextStream {
 		return &v
 	}).(TextStreamPtrOutput)
-}
-
-func (o TextStreamOutput) ToOutput(ctx context.Context) pulumix.Output[TextStream] {
-	return pulumix.Output[TextStream]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
@@ -11127,12 +9752,6 @@ func (o TextStreamPtrOutput) ToTextStreamPtrOutput() TextStreamPtrOutput {
 
 func (o TextStreamPtrOutput) ToTextStreamPtrOutputWithContext(ctx context.Context) TextStreamPtrOutput {
 	return o
-}
-
-func (o TextStreamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStream] {
-	return pulumix.Output[*TextStream]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextStreamPtrOutput) Elem() TextStreamOutput {
@@ -11212,12 +9831,6 @@ func (o TextStreamResponseOutput) ToTextStreamResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o TextStreamResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TextStreamResponse] {
-	return pulumix.Output[TextStreamResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
 func (o TextStreamResponseOutput) Codec() pulumi.StringOutput {
 	return o.ApplyT(func(v TextStreamResponse) string { return v.Codec }).(pulumi.StringOutput)
@@ -11281,12 +9894,6 @@ func (i VideoStreamArgs) ToVideoStreamOutputWithContext(ctx context.Context) Vid
 	return pulumi.ToOutputWithContext(ctx, i).(VideoStreamOutput)
 }
 
-func (i VideoStreamArgs) ToOutput(ctx context.Context) pulumix.Output[VideoStream] {
-	return pulumix.Output[VideoStream]{
-		OutputState: i.ToVideoStreamOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VideoStreamArgs) ToVideoStreamPtrOutput() VideoStreamPtrOutput {
 	return i.ToVideoStreamPtrOutputWithContext(context.Background())
 }
@@ -11328,12 +9935,6 @@ func (i *videoStreamPtrType) ToVideoStreamPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(VideoStreamPtrOutput)
 }
 
-func (i *videoStreamPtrType) ToOutput(ctx context.Context) pulumix.Output[*VideoStream] {
-	return pulumix.Output[*VideoStream]{
-		OutputState: i.ToVideoStreamPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Video stream resource.
 type VideoStreamOutput struct{ *pulumi.OutputState }
 
@@ -11357,12 +9958,6 @@ func (o VideoStreamOutput) ToVideoStreamPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VideoStream) *VideoStream {
 		return &v
 	}).(VideoStreamPtrOutput)
-}
-
-func (o VideoStreamOutput) ToOutput(ctx context.Context) pulumix.Output[VideoStream] {
-	return pulumix.Output[VideoStream]{
-		OutputState: o.OutputState,
-	}
 }
 
 // H264 codec settings.
@@ -11392,12 +9987,6 @@ func (o VideoStreamPtrOutput) ToVideoStreamPtrOutput() VideoStreamPtrOutput {
 
 func (o VideoStreamPtrOutput) ToVideoStreamPtrOutputWithContext(ctx context.Context) VideoStreamPtrOutput {
 	return o
-}
-
-func (o VideoStreamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VideoStream] {
-	return pulumix.Output[*VideoStream]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VideoStreamPtrOutput) Elem() VideoStreamOutput {
@@ -11463,12 +10052,6 @@ func (o VideoStreamResponseOutput) ToVideoStreamResponseOutput() VideoStreamResp
 
 func (o VideoStreamResponseOutput) ToVideoStreamResponseOutputWithContext(ctx context.Context) VideoStreamResponseOutput {
 	return o
-}
-
-func (o VideoStreamResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VideoStreamResponse] {
-	return pulumix.Output[VideoStreamResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // H264 codec settings.
@@ -11557,12 +10140,6 @@ func (i Vp9CodecSettingsArgs) ToVp9CodecSettingsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(Vp9CodecSettingsOutput)
 }
 
-func (i Vp9CodecSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[Vp9CodecSettings] {
-	return pulumix.Output[Vp9CodecSettings]{
-		OutputState: i.ToVp9CodecSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i Vp9CodecSettingsArgs) ToVp9CodecSettingsPtrOutput() Vp9CodecSettingsPtrOutput {
 	return i.ToVp9CodecSettingsPtrOutputWithContext(context.Background())
 }
@@ -11604,12 +10181,6 @@ func (i *vp9CodecSettingsPtrType) ToVp9CodecSettingsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(Vp9CodecSettingsPtrOutput)
 }
 
-func (i *vp9CodecSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*Vp9CodecSettings] {
-	return pulumix.Output[*Vp9CodecSettings]{
-		OutputState: i.ToVp9CodecSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VP9 codec settings.
 type Vp9CodecSettingsOutput struct{ *pulumi.OutputState }
 
@@ -11633,12 +10204,6 @@ func (o Vp9CodecSettingsOutput) ToVp9CodecSettingsPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vp9CodecSettings) *Vp9CodecSettings {
 		return &v
 	}).(Vp9CodecSettingsPtrOutput)
-}
-
-func (o Vp9CodecSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[Vp9CodecSettings] {
-	return pulumix.Output[Vp9CodecSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
@@ -11703,12 +10268,6 @@ func (o Vp9CodecSettingsPtrOutput) ToVp9CodecSettingsPtrOutput() Vp9CodecSetting
 
 func (o Vp9CodecSettingsPtrOutput) ToVp9CodecSettingsPtrOutputWithContext(ctx context.Context) Vp9CodecSettingsPtrOutput {
 	return o
-}
-
-func (o Vp9CodecSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Vp9CodecSettings] {
-	return pulumix.Output[*Vp9CodecSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Vp9CodecSettingsPtrOutput) Elem() Vp9CodecSettingsOutput {
@@ -11860,12 +10419,6 @@ func (o Vp9CodecSettingsResponseOutput) ToVp9CodecSettingsResponseOutputWithCont
 	return o
 }
 
-func (o Vp9CodecSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Vp9CodecSettingsResponse] {
-	return pulumix.Output[Vp9CodecSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
 func (o Vp9CodecSettingsResponseOutput) BitrateBps() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.BitrateBps }).(pulumi.IntOutput)
@@ -11947,12 +10500,6 @@ func (i WidevineArgs) ToWidevineOutputWithContext(ctx context.Context) WidevineO
 	return pulumi.ToOutputWithContext(ctx, i).(WidevineOutput)
 }
 
-func (i WidevineArgs) ToOutput(ctx context.Context) pulumix.Output[Widevine] {
-	return pulumix.Output[Widevine]{
-		OutputState: i.ToWidevineOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WidevineArgs) ToWidevinePtrOutput() WidevinePtrOutput {
 	return i.ToWidevinePtrOutputWithContext(context.Background())
 }
@@ -11994,12 +10541,6 @@ func (i *widevinePtrType) ToWidevinePtrOutputWithContext(ctx context.Context) Wi
 	return pulumi.ToOutputWithContext(ctx, i).(WidevinePtrOutput)
 }
 
-func (i *widevinePtrType) ToOutput(ctx context.Context) pulumix.Output[*Widevine] {
-	return pulumix.Output[*Widevine]{
-		OutputState: i.ToWidevinePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Widevine configuration.
 type WidevineOutput struct{ *pulumi.OutputState }
 
@@ -12025,12 +10566,6 @@ func (o WidevineOutput) ToWidevinePtrOutputWithContext(ctx context.Context) Wide
 	}).(WidevinePtrOutput)
 }
 
-func (o WidevineOutput) ToOutput(ctx context.Context) pulumix.Output[Widevine] {
-	return pulumix.Output[Widevine]{
-		OutputState: o.OutputState,
-	}
-}
-
 type WidevinePtrOutput struct{ *pulumi.OutputState }
 
 func (WidevinePtrOutput) ElementType() reflect.Type {
@@ -12043,12 +10578,6 @@ func (o WidevinePtrOutput) ToWidevinePtrOutput() WidevinePtrOutput {
 
 func (o WidevinePtrOutput) ToWidevinePtrOutputWithContext(ctx context.Context) WidevinePtrOutput {
 	return o
-}
-
-func (o WidevinePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Widevine] {
-	return pulumix.Output[*Widevine]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WidevinePtrOutput) Elem() WidevineOutput {
@@ -12078,12 +10607,6 @@ func (o WidevineResponseOutput) ToWidevineResponseOutput() WidevineResponseOutpu
 
 func (o WidevineResponseOutput) ToWidevineResponseOutputWithContext(ctx context.Context) WidevineResponseOutput {
 	return o
-}
-
-func (o WidevineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WidevineResponse] {
-	return pulumix.Output[WidevineResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Yet Another Deinterlacing Filter Configuration.
@@ -12133,12 +10656,6 @@ func (i YadifConfigArgs) ToYadifConfigOutputWithContext(ctx context.Context) Yad
 	return pulumi.ToOutputWithContext(ctx, i).(YadifConfigOutput)
 }
 
-func (i YadifConfigArgs) ToOutput(ctx context.Context) pulumix.Output[YadifConfig] {
-	return pulumix.Output[YadifConfig]{
-		OutputState: i.ToYadifConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i YadifConfigArgs) ToYadifConfigPtrOutput() YadifConfigPtrOutput {
 	return i.ToYadifConfigPtrOutputWithContext(context.Background())
 }
@@ -12180,12 +10697,6 @@ func (i *yadifConfigPtrType) ToYadifConfigPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(YadifConfigPtrOutput)
 }
 
-func (i *yadifConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*YadifConfig] {
-	return pulumix.Output[*YadifConfig]{
-		OutputState: i.ToYadifConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Yet Another Deinterlacing Filter Configuration.
 type YadifConfigOutput struct{ *pulumi.OutputState }
 
@@ -12209,12 +10720,6 @@ func (o YadifConfigOutput) ToYadifConfigPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v YadifConfig) *YadifConfig {
 		return &v
 	}).(YadifConfigPtrOutput)
-}
-
-func (o YadifConfigOutput) ToOutput(ctx context.Context) pulumix.Output[YadifConfig] {
-	return pulumix.Output[YadifConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
@@ -12249,12 +10754,6 @@ func (o YadifConfigPtrOutput) ToYadifConfigPtrOutput() YadifConfigPtrOutput {
 
 func (o YadifConfigPtrOutput) ToYadifConfigPtrOutputWithContext(ctx context.Context) YadifConfigPtrOutput {
 	return o
-}
-
-func (o YadifConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*YadifConfig] {
-	return pulumix.Output[*YadifConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o YadifConfigPtrOutput) Elem() YadifConfigOutput {
@@ -12332,12 +10831,6 @@ func (o YadifConfigResponseOutput) ToYadifConfigResponseOutput() YadifConfigResp
 
 func (o YadifConfigResponseOutput) ToYadifConfigResponseOutputWithContext(ctx context.Context) YadifConfigResponseOutput {
 	return o
-}
-
-func (o YadifConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[YadifConfigResponse] {
-	return pulumix.Output[YadifConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.

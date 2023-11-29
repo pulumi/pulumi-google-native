@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ArchiveDeployment.
@@ -129,12 +128,6 @@ func (i *ArchiveDeployment) ToArchiveDeploymentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ArchiveDeploymentOutput)
 }
 
-func (i *ArchiveDeployment) ToOutput(ctx context.Context) pulumix.Output[*ArchiveDeployment] {
-	return pulumix.Output[*ArchiveDeployment]{
-		OutputState: i.ToArchiveDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ArchiveDeploymentOutput struct{ *pulumi.OutputState }
 
 func (ArchiveDeploymentOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o ArchiveDeploymentOutput) ToArchiveDeploymentOutput() ArchiveDeploymentOu
 
 func (o ArchiveDeploymentOutput) ToArchiveDeploymentOutputWithContext(ctx context.Context) ArchiveDeploymentOutput {
 	return o
-}
-
-func (o ArchiveDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*ArchiveDeployment] {
-	return pulumix.Output[*ArchiveDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the Archive Deployment was created in milliseconds since the epoch.

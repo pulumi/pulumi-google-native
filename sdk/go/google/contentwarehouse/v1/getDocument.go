@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a document. Returns NOT_FOUND if the document does not exist.
@@ -109,12 +108,6 @@ func (o LookupDocumentResultOutput) ToLookupDocumentResultOutput() LookupDocumen
 
 func (o LookupDocumentResultOutput) ToLookupDocumentResultOutputWithContext(ctx context.Context) LookupDocumentResultOutput {
 	return o
-}
-
-func (o LookupDocumentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDocumentResult] {
-	return pulumix.Output[LookupDocumentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Document AI format to save the structured content, including OCR.

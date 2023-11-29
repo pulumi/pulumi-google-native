@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified document.
@@ -89,12 +88,6 @@ func (o LookupDocumentResultOutput) ToLookupDocumentResultOutput() LookupDocumen
 
 func (o LookupDocumentResultOutput) ToLookupDocumentResultOutputWithContext(ctx context.Context) LookupDocumentResultOutput {
 	return o
-}
-
-func (o LookupDocumentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDocumentResult] {
-	return pulumix.Output[LookupDocumentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.

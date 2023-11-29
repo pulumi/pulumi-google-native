@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM Policy for a resource
@@ -136,12 +135,6 @@ func (i *NamespaceWorkloadIamBinding) ToNamespaceWorkloadIamBindingOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceWorkloadIamBindingOutput)
 }
 
-func (i *NamespaceWorkloadIamBinding) ToOutput(ctx context.Context) pulumix.Output[*NamespaceWorkloadIamBinding] {
-	return pulumix.Output[*NamespaceWorkloadIamBinding]{
-		OutputState: i.ToNamespaceWorkloadIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NamespaceWorkloadIamBindingOutput struct{ *pulumi.OutputState }
 
 func (NamespaceWorkloadIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o NamespaceWorkloadIamBindingOutput) ToNamespaceWorkloadIamBindingOutput()
 
 func (o NamespaceWorkloadIamBindingOutput) ToNamespaceWorkloadIamBindingOutputWithContext(ctx context.Context) NamespaceWorkloadIamBindingOutput {
 	return o
-}
-
-func (o NamespaceWorkloadIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceWorkloadIamBinding] {
-	return pulumix.Output[*NamespaceWorkloadIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

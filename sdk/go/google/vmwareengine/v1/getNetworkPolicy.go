@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a `NetworkPolicy` resource by its resource name.
@@ -87,12 +86,6 @@ func (o LookupNetworkPolicyResultOutput) ToLookupNetworkPolicyResultOutput() Loo
 
 func (o LookupNetworkPolicyResultOutput) ToLookupNetworkPolicyResultOutputWithContext(ctx context.Context) LookupNetworkPolicyResultOutput {
 	return o
-}
-
-func (o LookupNetworkPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkPolicyResult] {
-	return pulumix.Output[LookupNetworkPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

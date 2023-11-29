@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -133,12 +132,6 @@ func (i *BareMetalClusterBareMetalNodePoolIamPolicy) ToBareMetalClusterBareMetal
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterBareMetalNodePoolIamPolicyOutput)
 }
 
-func (i *BareMetalClusterBareMetalNodePoolIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterBareMetalNodePoolIamPolicy] {
-	return pulumix.Output[*BareMetalClusterBareMetalNodePoolIamPolicy]{
-		OutputState: i.ToBareMetalClusterBareMetalNodePoolIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterBareMetalNodePoolIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterBareMetalNodePoolIamPolicyOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o BareMetalClusterBareMetalNodePoolIamPolicyOutput) ToBareMetalClusterBare
 
 func (o BareMetalClusterBareMetalNodePoolIamPolicyOutput) ToBareMetalClusterBareMetalNodePoolIamPolicyOutputWithContext(ctx context.Context) BareMetalClusterBareMetalNodePoolIamPolicyOutput {
 	return o
-}
-
-func (o BareMetalClusterBareMetalNodePoolIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterBareMetalNodePoolIamPolicy] {
-	return pulumix.Output[*BareMetalClusterBareMetalNodePoolIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterBareMetalNodePoolIamPolicyOutput) BareMetalClusterId() pulumi.StringOutput {

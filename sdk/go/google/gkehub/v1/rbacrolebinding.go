@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Scope RBACRoleBinding.
@@ -160,12 +159,6 @@ func (i *Rbacrolebinding) ToRbacrolebindingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RbacrolebindingOutput)
 }
 
-func (i *Rbacrolebinding) ToOutput(ctx context.Context) pulumix.Output[*Rbacrolebinding] {
-	return pulumix.Output[*Rbacrolebinding]{
-		OutputState: i.ToRbacrolebindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RbacrolebindingOutput struct{ *pulumi.OutputState }
 
 func (RbacrolebindingOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o RbacrolebindingOutput) ToRbacrolebindingOutput() RbacrolebindingOutput {
 
 func (o RbacrolebindingOutput) ToRbacrolebindingOutputWithContext(ctx context.Context) RbacrolebindingOutput {
 	return o
-}
-
-func (o RbacrolebindingOutput) ToOutput(ctx context.Context) pulumix.Output[*Rbacrolebinding] {
-	return pulumix.Output[*Rbacrolebinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the rbacrolebinding was created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i GoogleCloudRunV2BinaryAuthorizationArgs) ToGoogleCloudRunV2BinaryAuthori
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2BinaryAuthorizationOutput)
 }
 
-func (i GoogleCloudRunV2BinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2BinaryAuthorization] {
-	return pulumix.Output[GoogleCloudRunV2BinaryAuthorization]{
-		OutputState: i.ToGoogleCloudRunV2BinaryAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2BinaryAuthorizationArgs) ToGoogleCloudRunV2BinaryAuthorizationPtrOutput() GoogleCloudRunV2BinaryAuthorizationPtrOutput {
 	return i.ToGoogleCloudRunV2BinaryAuthorizationPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *googleCloudRunV2BinaryAuthorizationPtrType) ToGoogleCloudRunV2BinaryAut
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2BinaryAuthorizationPtrOutput)
 }
 
-func (i *googleCloudRunV2BinaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2BinaryAuthorization] {
-	return pulumix.Output[*GoogleCloudRunV2BinaryAuthorization]{
-		OutputState: i.ToGoogleCloudRunV2BinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings for Binary Authorization feature.
 type GoogleCloudRunV2BinaryAuthorizationOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o GoogleCloudRunV2BinaryAuthorizationOutput) ToGoogleCloudRunV2BinaryAutho
 	}).(GoogleCloudRunV2BinaryAuthorizationPtrOutput)
 }
 
-func (o GoogleCloudRunV2BinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2BinaryAuthorization] {
-	return pulumix.Output[GoogleCloudRunV2BinaryAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o GoogleCloudRunV2BinaryAuthorizationOutput) BreakglassJustification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorization) *string { return v.BreakglassJustification }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) ToGoogleCloudRunV2BinaryAu
 
 func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) ToGoogleCloudRunV2BinaryAuthorizationPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2BinaryAuthorizationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2BinaryAuthorization] {
-	return pulumix.Output[*GoogleCloudRunV2BinaryAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) Elem() GoogleCloudRunV2BinaryAuthorizationOutput {
@@ -220,12 +195,6 @@ func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) ToGoogleCloudRunV2Bin
 	return o
 }
 
-func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2BinaryAuthorizationResponse] {
-	return pulumix.Output[GoogleCloudRunV2BinaryAuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) BreakglassJustification() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorizationResponse) string { return v.BreakglassJustification }).(pulumi.StringOutput)
@@ -271,12 +240,6 @@ func (i GoogleCloudRunV2CloudSqlInstanceArgs) ToGoogleCloudRunV2CloudSqlInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2CloudSqlInstanceOutput)
 }
 
-func (i GoogleCloudRunV2CloudSqlInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2CloudSqlInstance] {
-	return pulumix.Output[GoogleCloudRunV2CloudSqlInstance]{
-		OutputState: i.ToGoogleCloudRunV2CloudSqlInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2CloudSqlInstanceArgs) ToGoogleCloudRunV2CloudSqlInstancePtrOutput() GoogleCloudRunV2CloudSqlInstancePtrOutput {
 	return i.ToGoogleCloudRunV2CloudSqlInstancePtrOutputWithContext(context.Background())
 }
@@ -318,12 +281,6 @@ func (i *googleCloudRunV2CloudSqlInstancePtrType) ToGoogleCloudRunV2CloudSqlInst
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2CloudSqlInstancePtrOutput)
 }
 
-func (i *googleCloudRunV2CloudSqlInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2CloudSqlInstance] {
-	return pulumix.Output[*GoogleCloudRunV2CloudSqlInstance]{
-		OutputState: i.ToGoogleCloudRunV2CloudSqlInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 type GoogleCloudRunV2CloudSqlInstanceOutput struct{ *pulumi.OutputState }
 
@@ -349,12 +306,6 @@ func (o GoogleCloudRunV2CloudSqlInstanceOutput) ToGoogleCloudRunV2CloudSqlInstan
 	}).(GoogleCloudRunV2CloudSqlInstancePtrOutput)
 }
 
-func (o GoogleCloudRunV2CloudSqlInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2CloudSqlInstance] {
-	return pulumix.Output[GoogleCloudRunV2CloudSqlInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o GoogleCloudRunV2CloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2CloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
@@ -372,12 +323,6 @@ func (o GoogleCloudRunV2CloudSqlInstancePtrOutput) ToGoogleCloudRunV2CloudSqlIns
 
 func (o GoogleCloudRunV2CloudSqlInstancePtrOutput) ToGoogleCloudRunV2CloudSqlInstancePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2CloudSqlInstancePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2CloudSqlInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2CloudSqlInstance] {
-	return pulumix.Output[*GoogleCloudRunV2CloudSqlInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2CloudSqlInstancePtrOutput) Elem() GoogleCloudRunV2CloudSqlInstanceOutput {
@@ -421,12 +366,6 @@ func (o GoogleCloudRunV2CloudSqlInstanceResponseOutput) ToGoogleCloudRunV2CloudS
 	return o
 }
 
-func (o GoogleCloudRunV2CloudSqlInstanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2CloudSqlInstanceResponse] {
-	return pulumix.Output[GoogleCloudRunV2CloudSqlInstanceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o GoogleCloudRunV2CloudSqlInstanceResponseOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2CloudSqlInstanceResponse) []string { return v.Instances }).(pulumi.StringArrayOutput)
@@ -465,12 +404,6 @@ func (o GoogleCloudRunV2ConditionResponseOutput) ToGoogleCloudRunV2ConditionResp
 
 func (o GoogleCloudRunV2ConditionResponseOutput) ToGoogleCloudRunV2ConditionResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2ConditionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ConditionResponse] {
-	return pulumix.Output[GoogleCloudRunV2ConditionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A reason for the execution condition.
@@ -525,12 +458,6 @@ func (o GoogleCloudRunV2ConditionResponseArrayOutput) ToGoogleCloudRunV2Conditio
 
 func (o GoogleCloudRunV2ConditionResponseArrayOutput) ToGoogleCloudRunV2ConditionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2ConditionResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2ConditionResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2ConditionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2ConditionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2ConditionResponseOutput {
@@ -618,12 +545,6 @@ func (i GoogleCloudRunV2ContainerArgs) ToGoogleCloudRunV2ContainerOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ContainerOutput)
 }
 
-func (i GoogleCloudRunV2ContainerArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2Container] {
-	return pulumix.Output[GoogleCloudRunV2Container]{
-		OutputState: i.ToGoogleCloudRunV2ContainerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRunV2ContainerArrayInput is an input type that accepts GoogleCloudRunV2ContainerArray and GoogleCloudRunV2ContainerArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2ContainerArrayInput` via:
 //
@@ -649,12 +570,6 @@ func (i GoogleCloudRunV2ContainerArray) ToGoogleCloudRunV2ContainerArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ContainerArrayOutput)
 }
 
-func (i GoogleCloudRunV2ContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2Container] {
-	return pulumix.Output[[]GoogleCloudRunV2Container]{
-		OutputState: i.ToGoogleCloudRunV2ContainerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
 type GoogleCloudRunV2ContainerOutput struct{ *pulumi.OutputState }
 
@@ -668,12 +583,6 @@ func (o GoogleCloudRunV2ContainerOutput) ToGoogleCloudRunV2ContainerOutput() Goo
 
 func (o GoogleCloudRunV2ContainerOutput) ToGoogleCloudRunV2ContainerOutputWithContext(ctx context.Context) GoogleCloudRunV2ContainerOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ContainerOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2Container] {
-	return pulumix.Output[GoogleCloudRunV2Container]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
@@ -750,12 +659,6 @@ func (o GoogleCloudRunV2ContainerArrayOutput) ToGoogleCloudRunV2ContainerArrayOu
 	return o
 }
 
-func (o GoogleCloudRunV2ContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2Container] {
-	return pulumix.Output[[]GoogleCloudRunV2Container]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRunV2ContainerArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2ContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV2Container {
 		return vs[0].([]GoogleCloudRunV2Container)[vs[1].(int)]
@@ -801,12 +704,6 @@ func (i GoogleCloudRunV2ContainerPortArgs) ToGoogleCloudRunV2ContainerPortOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ContainerPortOutput)
 }
 
-func (i GoogleCloudRunV2ContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ContainerPort] {
-	return pulumix.Output[GoogleCloudRunV2ContainerPort]{
-		OutputState: i.ToGoogleCloudRunV2ContainerPortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRunV2ContainerPortArrayInput is an input type that accepts GoogleCloudRunV2ContainerPortArray and GoogleCloudRunV2ContainerPortArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2ContainerPortArrayInput` via:
 //
@@ -832,12 +729,6 @@ func (i GoogleCloudRunV2ContainerPortArray) ToGoogleCloudRunV2ContainerPortArray
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ContainerPortArrayOutput)
 }
 
-func (i GoogleCloudRunV2ContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2ContainerPort] {
-	return pulumix.Output[[]GoogleCloudRunV2ContainerPort]{
-		OutputState: i.ToGoogleCloudRunV2ContainerPortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContainerPort represents a network port in a single container.
 type GoogleCloudRunV2ContainerPortOutput struct{ *pulumi.OutputState }
 
@@ -851,12 +742,6 @@ func (o GoogleCloudRunV2ContainerPortOutput) ToGoogleCloudRunV2ContainerPortOutp
 
 func (o GoogleCloudRunV2ContainerPortOutput) ToGoogleCloudRunV2ContainerPortOutputWithContext(ctx context.Context) GoogleCloudRunV2ContainerPortOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ContainerPort] {
-	return pulumix.Output[GoogleCloudRunV2ContainerPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Port number the container listens on. This must be a valid TCP port number, 0 < container_port < 65536.
@@ -881,12 +766,6 @@ func (o GoogleCloudRunV2ContainerPortArrayOutput) ToGoogleCloudRunV2ContainerPor
 
 func (o GoogleCloudRunV2ContainerPortArrayOutput) ToGoogleCloudRunV2ContainerPortArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2ContainerPortArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2ContainerPort] {
-	return pulumix.Output[[]GoogleCloudRunV2ContainerPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2ContainerPortArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2ContainerPortOutput {
@@ -918,12 +797,6 @@ func (o GoogleCloudRunV2ContainerPortResponseOutput) ToGoogleCloudRunV2Container
 	return o
 }
 
-func (o GoogleCloudRunV2ContainerPortResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ContainerPortResponse] {
-	return pulumix.Output[GoogleCloudRunV2ContainerPortResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Port number the container listens on. This must be a valid TCP port number, 0 < container_port < 65536.
 func (o GoogleCloudRunV2ContainerPortResponseOutput) ContainerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerPortResponse) int { return v.ContainerPort }).(pulumi.IntOutput)
@@ -946,12 +819,6 @@ func (o GoogleCloudRunV2ContainerPortResponseArrayOutput) ToGoogleCloudRunV2Cont
 
 func (o GoogleCloudRunV2ContainerPortResponseArrayOutput) ToGoogleCloudRunV2ContainerPortResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2ContainerPortResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ContainerPortResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2ContainerPortResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2ContainerPortResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2ContainerPortResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2ContainerPortResponseOutput {
@@ -1001,12 +868,6 @@ func (o GoogleCloudRunV2ContainerResponseOutput) ToGoogleCloudRunV2ContainerResp
 
 func (o GoogleCloudRunV2ContainerResponseOutput) ToGoogleCloudRunV2ContainerResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2ContainerResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ContainerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ContainerResponse] {
-	return pulumix.Output[GoogleCloudRunV2ContainerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
@@ -1085,12 +946,6 @@ func (o GoogleCloudRunV2ContainerResponseArrayOutput) ToGoogleCloudRunV2Containe
 	return o
 }
 
-func (o GoogleCloudRunV2ContainerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2ContainerResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2ContainerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRunV2ContainerResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2ContainerResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV2ContainerResponse {
 		return vs[0].([]GoogleCloudRunV2ContainerResponse)[vs[1].(int)]
@@ -1136,12 +991,6 @@ func (i GoogleCloudRunV2EmptyDirVolumeSourceArgs) ToGoogleCloudRunV2EmptyDirVolu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2EmptyDirVolumeSourceOutput)
 }
 
-func (i GoogleCloudRunV2EmptyDirVolumeSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EmptyDirVolumeSource] {
-	return pulumix.Output[GoogleCloudRunV2EmptyDirVolumeSource]{
-		OutputState: i.ToGoogleCloudRunV2EmptyDirVolumeSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2EmptyDirVolumeSourceArgs) ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutput() GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
 	return i.ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(context.Background())
 }
@@ -1183,12 +1032,6 @@ func (i *googleCloudRunV2EmptyDirVolumeSourcePtrType) ToGoogleCloudRunV2EmptyDir
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput)
 }
 
-func (i *googleCloudRunV2EmptyDirVolumeSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSource] {
-	return pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSource]{
-		OutputState: i.ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 type GoogleCloudRunV2EmptyDirVolumeSourceOutput struct{ *pulumi.OutputState }
 
@@ -1212,12 +1055,6 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourceOutput) ToGoogleCloudRunV2EmptyDirVo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2EmptyDirVolumeSource) *GoogleCloudRunV2EmptyDirVolumeSource {
 		return &v
 	}).(GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput)
-}
-
-func (o GoogleCloudRunV2EmptyDirVolumeSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EmptyDirVolumeSource] {
-	return pulumix.Output[GoogleCloudRunV2EmptyDirVolumeSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
@@ -1244,12 +1081,6 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) ToGoogleCloudRunV2EmptyDi
 
 func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSource] {
-	return pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) Elem() GoogleCloudRunV2EmptyDirVolumeSourceOutput {
@@ -1305,12 +1136,6 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) ToGoogleCloudRunV2Em
 	return o
 }
 
-func (o GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EmptyDirVolumeSourceResponse] {
-	return pulumix.Output[GoogleCloudRunV2EmptyDirVolumeSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
 func (o GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) Medium() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2EmptyDirVolumeSourceResponse) string { return v.Medium }).(pulumi.StringOutput)
@@ -1364,12 +1189,6 @@ func (i GoogleCloudRunV2EnvVarArgs) ToGoogleCloudRunV2EnvVarOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2EnvVarOutput)
 }
 
-func (i GoogleCloudRunV2EnvVarArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EnvVar] {
-	return pulumix.Output[GoogleCloudRunV2EnvVar]{
-		OutputState: i.ToGoogleCloudRunV2EnvVarOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRunV2EnvVarArrayInput is an input type that accepts GoogleCloudRunV2EnvVarArray and GoogleCloudRunV2EnvVarArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2EnvVarArrayInput` via:
 //
@@ -1395,12 +1214,6 @@ func (i GoogleCloudRunV2EnvVarArray) ToGoogleCloudRunV2EnvVarArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2EnvVarArrayOutput)
 }
 
-func (i GoogleCloudRunV2EnvVarArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2EnvVar] {
-	return pulumix.Output[[]GoogleCloudRunV2EnvVar]{
-		OutputState: i.ToGoogleCloudRunV2EnvVarArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvVar represents an environment variable present in a Container.
 type GoogleCloudRunV2EnvVarOutput struct{ *pulumi.OutputState }
 
@@ -1414,12 +1227,6 @@ func (o GoogleCloudRunV2EnvVarOutput) ToGoogleCloudRunV2EnvVarOutput() GoogleClo
 
 func (o GoogleCloudRunV2EnvVarOutput) ToGoogleCloudRunV2EnvVarOutputWithContext(ctx context.Context) GoogleCloudRunV2EnvVarOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2EnvVarOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EnvVar] {
-	return pulumix.Output[GoogleCloudRunV2EnvVar]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the environment variable. Must not exceed 32768 characters.
@@ -1449,12 +1256,6 @@ func (o GoogleCloudRunV2EnvVarArrayOutput) ToGoogleCloudRunV2EnvVarArrayOutput()
 
 func (o GoogleCloudRunV2EnvVarArrayOutput) ToGoogleCloudRunV2EnvVarArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2EnvVarArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2EnvVarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2EnvVar] {
-	return pulumix.Output[[]GoogleCloudRunV2EnvVar]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2EnvVarArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2EnvVarOutput {
@@ -1488,12 +1289,6 @@ func (o GoogleCloudRunV2EnvVarResponseOutput) ToGoogleCloudRunV2EnvVarResponseOu
 	return o
 }
 
-func (o GoogleCloudRunV2EnvVarResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EnvVarResponse] {
-	return pulumix.Output[GoogleCloudRunV2EnvVarResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the environment variable. Must not exceed 32768 characters.
 func (o GoogleCloudRunV2EnvVarResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2EnvVarResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1521,12 +1316,6 @@ func (o GoogleCloudRunV2EnvVarResponseArrayOutput) ToGoogleCloudRunV2EnvVarRespo
 
 func (o GoogleCloudRunV2EnvVarResponseArrayOutput) ToGoogleCloudRunV2EnvVarResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2EnvVarResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2EnvVarResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2EnvVarResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2EnvVarResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2EnvVarResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2EnvVarResponseOutput {
@@ -1570,12 +1359,6 @@ func (i GoogleCloudRunV2EnvVarSourceArgs) ToGoogleCloudRunV2EnvVarSourceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2EnvVarSourceOutput)
 }
 
-func (i GoogleCloudRunV2EnvVarSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EnvVarSource] {
-	return pulumix.Output[GoogleCloudRunV2EnvVarSource]{
-		OutputState: i.ToGoogleCloudRunV2EnvVarSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2EnvVarSourceArgs) ToGoogleCloudRunV2EnvVarSourcePtrOutput() GoogleCloudRunV2EnvVarSourcePtrOutput {
 	return i.ToGoogleCloudRunV2EnvVarSourcePtrOutputWithContext(context.Background())
 }
@@ -1617,12 +1400,6 @@ func (i *googleCloudRunV2EnvVarSourcePtrType) ToGoogleCloudRunV2EnvVarSourcePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2EnvVarSourcePtrOutput)
 }
 
-func (i *googleCloudRunV2EnvVarSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2EnvVarSource] {
-	return pulumix.Output[*GoogleCloudRunV2EnvVarSource]{
-		OutputState: i.ToGoogleCloudRunV2EnvVarSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvVarSource represents a source for the value of an EnvVar.
 type GoogleCloudRunV2EnvVarSourceOutput struct{ *pulumi.OutputState }
 
@@ -1648,12 +1425,6 @@ func (o GoogleCloudRunV2EnvVarSourceOutput) ToGoogleCloudRunV2EnvVarSourcePtrOut
 	}).(GoogleCloudRunV2EnvVarSourcePtrOutput)
 }
 
-func (o GoogleCloudRunV2EnvVarSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EnvVarSource] {
-	return pulumix.Output[GoogleCloudRunV2EnvVarSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Selects a secret and a specific version from Cloud Secret Manager.
 func (o GoogleCloudRunV2EnvVarSourceOutput) SecretKeyRef() GoogleCloudRunV2SecretKeySelectorPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2EnvVarSource) *GoogleCloudRunV2SecretKeySelector { return v.SecretKeyRef }).(GoogleCloudRunV2SecretKeySelectorPtrOutput)
@@ -1671,12 +1442,6 @@ func (o GoogleCloudRunV2EnvVarSourcePtrOutput) ToGoogleCloudRunV2EnvVarSourcePtr
 
 func (o GoogleCloudRunV2EnvVarSourcePtrOutput) ToGoogleCloudRunV2EnvVarSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EnvVarSourcePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2EnvVarSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2EnvVarSource] {
-	return pulumix.Output[*GoogleCloudRunV2EnvVarSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2EnvVarSourcePtrOutput) Elem() GoogleCloudRunV2EnvVarSourceOutput {
@@ -1720,12 +1485,6 @@ func (o GoogleCloudRunV2EnvVarSourceResponseOutput) ToGoogleCloudRunV2EnvVarSour
 	return o
 }
 
-func (o GoogleCloudRunV2EnvVarSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2EnvVarSourceResponse] {
-	return pulumix.Output[GoogleCloudRunV2EnvVarSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Selects a secret and a specific version from Cloud Secret Manager.
 func (o GoogleCloudRunV2EnvVarSourceResponseOutput) SecretKeyRef() GoogleCloudRunV2SecretKeySelectorResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2EnvVarSourceResponse) GoogleCloudRunV2SecretKeySelectorResponse {
@@ -1756,12 +1515,6 @@ func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) ToGoogleCloudRunV2Exec
 
 func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) ToGoogleCloudRunV2ExecutionReferenceResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2ExecutionReferenceResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ExecutionReferenceResponse] {
-	return pulumix.Output[GoogleCloudRunV2ExecutionReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp of the execution.
@@ -1830,12 +1583,6 @@ func (i GoogleCloudRunV2ExecutionTemplateArgs) ToGoogleCloudRunV2ExecutionTempla
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ExecutionTemplateOutput)
 }
 
-func (i GoogleCloudRunV2ExecutionTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ExecutionTemplate] {
-	return pulumix.Output[GoogleCloudRunV2ExecutionTemplate]{
-		OutputState: i.ToGoogleCloudRunV2ExecutionTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExecutionTemplate describes the data an execution should have when created from a template.
 type GoogleCloudRunV2ExecutionTemplateOutput struct{ *pulumi.OutputState }
 
@@ -1849,12 +1596,6 @@ func (o GoogleCloudRunV2ExecutionTemplateOutput) ToGoogleCloudRunV2ExecutionTemp
 
 func (o GoogleCloudRunV2ExecutionTemplateOutput) ToGoogleCloudRunV2ExecutionTemplateOutputWithContext(ctx context.Context) GoogleCloudRunV2ExecutionTemplateOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ExecutionTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ExecutionTemplate] {
-	return pulumix.Output[GoogleCloudRunV2ExecutionTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
@@ -1909,12 +1650,6 @@ func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) ToGoogleCloudRunV2Execu
 
 func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) ToGoogleCloudRunV2ExecutionTemplateResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2ExecutionTemplateResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ExecutionTemplateResponse] {
-	return pulumix.Output[GoogleCloudRunV2ExecutionTemplateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
@@ -1983,12 +1718,6 @@ func (i GoogleCloudRunV2GRPCActionArgs) ToGoogleCloudRunV2GRPCActionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GRPCActionOutput)
 }
 
-func (i GoogleCloudRunV2GRPCActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2GRPCAction] {
-	return pulumix.Output[GoogleCloudRunV2GRPCAction]{
-		OutputState: i.ToGoogleCloudRunV2GRPCActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2GRPCActionArgs) ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput {
 	return i.ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(context.Background())
 }
@@ -2030,12 +1759,6 @@ func (i *googleCloudRunV2GRPCActionPtrType) ToGoogleCloudRunV2GRPCActionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GRPCActionPtrOutput)
 }
 
-func (i *googleCloudRunV2GRPCActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2GRPCAction] {
-	return pulumix.Output[*GoogleCloudRunV2GRPCAction]{
-		OutputState: i.ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GRPCAction describes an action involving a GRPC port.
 type GoogleCloudRunV2GRPCActionOutput struct{ *pulumi.OutputState }
 
@@ -2061,12 +1784,6 @@ func (o GoogleCloudRunV2GRPCActionOutput) ToGoogleCloudRunV2GRPCActionPtrOutputW
 	}).(GoogleCloudRunV2GRPCActionPtrOutput)
 }
 
-func (o GoogleCloudRunV2GRPCActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2GRPCAction] {
-	return pulumix.Output[GoogleCloudRunV2GRPCAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 func (o GoogleCloudRunV2GRPCActionOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2GRPCAction) *int { return v.Port }).(pulumi.IntPtrOutput)
@@ -2089,12 +1806,6 @@ func (o GoogleCloudRunV2GRPCActionPtrOutput) ToGoogleCloudRunV2GRPCActionPtrOutp
 
 func (o GoogleCloudRunV2GRPCActionPtrOutput) ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2GRPCActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2GRPCAction] {
-	return pulumix.Output[*GoogleCloudRunV2GRPCAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2GRPCActionPtrOutput) Elem() GoogleCloudRunV2GRPCActionOutput {
@@ -2150,12 +1861,6 @@ func (o GoogleCloudRunV2GRPCActionResponseOutput) ToGoogleCloudRunV2GRPCActionRe
 	return o
 }
 
-func (o GoogleCloudRunV2GRPCActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2GRPCActionResponse] {
-	return pulumix.Output[GoogleCloudRunV2GRPCActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 func (o GoogleCloudRunV2GRPCActionResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2GRPCActionResponse) int { return v.Port }).(pulumi.IntOutput)
@@ -2209,12 +1914,6 @@ func (i GoogleCloudRunV2HTTPGetActionArgs) ToGoogleCloudRunV2HTTPGetActionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2HTTPGetActionOutput)
 }
 
-func (i GoogleCloudRunV2HTTPGetActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2HTTPGetAction] {
-	return pulumix.Output[GoogleCloudRunV2HTTPGetAction]{
-		OutputState: i.ToGoogleCloudRunV2HTTPGetActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2HTTPGetActionArgs) ToGoogleCloudRunV2HTTPGetActionPtrOutput() GoogleCloudRunV2HTTPGetActionPtrOutput {
 	return i.ToGoogleCloudRunV2HTTPGetActionPtrOutputWithContext(context.Background())
 }
@@ -2256,12 +1955,6 @@ func (i *googleCloudRunV2HTTPGetActionPtrType) ToGoogleCloudRunV2HTTPGetActionPt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2HTTPGetActionPtrOutput)
 }
 
-func (i *googleCloudRunV2HTTPGetActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2HTTPGetAction] {
-	return pulumix.Output[*GoogleCloudRunV2HTTPGetAction]{
-		OutputState: i.ToGoogleCloudRunV2HTTPGetActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HTTPGetAction describes an action based on HTTP Get requests.
 type GoogleCloudRunV2HTTPGetActionOutput struct{ *pulumi.OutputState }
 
@@ -2285,12 +1978,6 @@ func (o GoogleCloudRunV2HTTPGetActionOutput) ToGoogleCloudRunV2HTTPGetActionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2HTTPGetAction) *GoogleCloudRunV2HTTPGetAction {
 		return &v
 	}).(GoogleCloudRunV2HTTPGetActionPtrOutput)
-}
-
-func (o GoogleCloudRunV2HTTPGetActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2HTTPGetAction] {
-	return pulumix.Output[GoogleCloudRunV2HTTPGetAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom headers to set in the request. HTTP allows repeated headers.
@@ -2320,12 +2007,6 @@ func (o GoogleCloudRunV2HTTPGetActionPtrOutput) ToGoogleCloudRunV2HTTPGetActionP
 
 func (o GoogleCloudRunV2HTTPGetActionPtrOutput) ToGoogleCloudRunV2HTTPGetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2HTTPGetActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2HTTPGetActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2HTTPGetAction] {
-	return pulumix.Output[*GoogleCloudRunV2HTTPGetAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2HTTPGetActionPtrOutput) Elem() GoogleCloudRunV2HTTPGetActionOutput {
@@ -2393,12 +2074,6 @@ func (o GoogleCloudRunV2HTTPGetActionResponseOutput) ToGoogleCloudRunV2HTTPGetAc
 	return o
 }
 
-func (o GoogleCloudRunV2HTTPGetActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2HTTPGetActionResponse] {
-	return pulumix.Output[GoogleCloudRunV2HTTPGetActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom headers to set in the request. HTTP allows repeated headers.
 func (o GoogleCloudRunV2HTTPGetActionResponseOutput) HttpHeaders() GoogleCloudRunV2HTTPHeaderResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetActionResponse) []GoogleCloudRunV2HTTPHeaderResponse {
@@ -2455,12 +2130,6 @@ func (i GoogleCloudRunV2HTTPHeaderArgs) ToGoogleCloudRunV2HTTPHeaderOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2HTTPHeaderOutput)
 }
 
-func (i GoogleCloudRunV2HTTPHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2HTTPHeader] {
-	return pulumix.Output[GoogleCloudRunV2HTTPHeader]{
-		OutputState: i.ToGoogleCloudRunV2HTTPHeaderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRunV2HTTPHeaderArrayInput is an input type that accepts GoogleCloudRunV2HTTPHeaderArray and GoogleCloudRunV2HTTPHeaderArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2HTTPHeaderArrayInput` via:
 //
@@ -2486,12 +2155,6 @@ func (i GoogleCloudRunV2HTTPHeaderArray) ToGoogleCloudRunV2HTTPHeaderArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2HTTPHeaderArrayOutput)
 }
 
-func (i GoogleCloudRunV2HTTPHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2HTTPHeader] {
-	return pulumix.Output[[]GoogleCloudRunV2HTTPHeader]{
-		OutputState: i.ToGoogleCloudRunV2HTTPHeaderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HTTPHeader describes a custom header to be used in HTTP probes
 type GoogleCloudRunV2HTTPHeaderOutput struct{ *pulumi.OutputState }
 
@@ -2505,12 +2168,6 @@ func (o GoogleCloudRunV2HTTPHeaderOutput) ToGoogleCloudRunV2HTTPHeaderOutput() G
 
 func (o GoogleCloudRunV2HTTPHeaderOutput) ToGoogleCloudRunV2HTTPHeaderOutputWithContext(ctx context.Context) GoogleCloudRunV2HTTPHeaderOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2HTTPHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2HTTPHeader] {
-	return pulumix.Output[GoogleCloudRunV2HTTPHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The header field name
@@ -2535,12 +2192,6 @@ func (o GoogleCloudRunV2HTTPHeaderArrayOutput) ToGoogleCloudRunV2HTTPHeaderArray
 
 func (o GoogleCloudRunV2HTTPHeaderArrayOutput) ToGoogleCloudRunV2HTTPHeaderArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2HTTPHeaderArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2HTTPHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2HTTPHeader] {
-	return pulumix.Output[[]GoogleCloudRunV2HTTPHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2HTTPHeaderArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2HTTPHeaderOutput {
@@ -2572,12 +2223,6 @@ func (o GoogleCloudRunV2HTTPHeaderResponseOutput) ToGoogleCloudRunV2HTTPHeaderRe
 	return o
 }
 
-func (o GoogleCloudRunV2HTTPHeaderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2HTTPHeaderResponse] {
-	return pulumix.Output[GoogleCloudRunV2HTTPHeaderResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The header field name
 func (o GoogleCloudRunV2HTTPHeaderResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2HTTPHeaderResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -2600,12 +2245,6 @@ func (o GoogleCloudRunV2HTTPHeaderResponseArrayOutput) ToGoogleCloudRunV2HTTPHea
 
 func (o GoogleCloudRunV2HTTPHeaderResponseArrayOutput) ToGoogleCloudRunV2HTTPHeaderResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2HTTPHeaderResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2HTTPHeaderResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2HTTPHeaderResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2HTTPHeaderResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2HTTPHeaderResponseOutput {
@@ -2657,12 +2296,6 @@ func (i GoogleCloudRunV2NetworkInterfaceArgs) ToGoogleCloudRunV2NetworkInterface
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2NetworkInterfaceOutput)
 }
 
-func (i GoogleCloudRunV2NetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2NetworkInterface] {
-	return pulumix.Output[GoogleCloudRunV2NetworkInterface]{
-		OutputState: i.ToGoogleCloudRunV2NetworkInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRunV2NetworkInterfaceArrayInput is an input type that accepts GoogleCloudRunV2NetworkInterfaceArray and GoogleCloudRunV2NetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2NetworkInterfaceArrayInput` via:
 //
@@ -2688,12 +2321,6 @@ func (i GoogleCloudRunV2NetworkInterfaceArray) ToGoogleCloudRunV2NetworkInterfac
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2NetworkInterfaceArrayOutput)
 }
 
-func (i GoogleCloudRunV2NetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2NetworkInterface] {
-	return pulumix.Output[[]GoogleCloudRunV2NetworkInterface]{
-		OutputState: i.ToGoogleCloudRunV2NetworkInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Direct VPC egress settings.
 type GoogleCloudRunV2NetworkInterfaceOutput struct{ *pulumi.OutputState }
 
@@ -2707,12 +2334,6 @@ func (o GoogleCloudRunV2NetworkInterfaceOutput) ToGoogleCloudRunV2NetworkInterfa
 
 func (o GoogleCloudRunV2NetworkInterfaceOutput) ToGoogleCloudRunV2NetworkInterfaceOutputWithContext(ctx context.Context) GoogleCloudRunV2NetworkInterfaceOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2NetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2NetworkInterface] {
-	return pulumix.Output[GoogleCloudRunV2NetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
@@ -2742,12 +2363,6 @@ func (o GoogleCloudRunV2NetworkInterfaceArrayOutput) ToGoogleCloudRunV2NetworkIn
 
 func (o GoogleCloudRunV2NetworkInterfaceArrayOutput) ToGoogleCloudRunV2NetworkInterfaceArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2NetworkInterfaceArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2NetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2NetworkInterface] {
-	return pulumix.Output[[]GoogleCloudRunV2NetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2NetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2NetworkInterfaceOutput {
@@ -2781,12 +2396,6 @@ func (o GoogleCloudRunV2NetworkInterfaceResponseOutput) ToGoogleCloudRunV2Networ
 	return o
 }
 
-func (o GoogleCloudRunV2NetworkInterfaceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2NetworkInterfaceResponse] {
-	return pulumix.Output[GoogleCloudRunV2NetworkInterfaceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
 func (o GoogleCloudRunV2NetworkInterfaceResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2NetworkInterfaceResponse) string { return v.Network }).(pulumi.StringOutput)
@@ -2814,12 +2423,6 @@ func (o GoogleCloudRunV2NetworkInterfaceResponseArrayOutput) ToGoogleCloudRunV2N
 
 func (o GoogleCloudRunV2NetworkInterfaceResponseArrayOutput) ToGoogleCloudRunV2NetworkInterfaceResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2NetworkInterfaceResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2NetworkInterfaceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2NetworkInterfaceResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2NetworkInterfaceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2NetworkInterfaceResponseOutput {
@@ -2887,12 +2490,6 @@ func (i GoogleCloudRunV2ProbeArgs) ToGoogleCloudRunV2ProbeOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ProbeOutput)
 }
 
-func (i GoogleCloudRunV2ProbeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2Probe] {
-	return pulumix.Output[GoogleCloudRunV2Probe]{
-		OutputState: i.ToGoogleCloudRunV2ProbeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2ProbeArgs) ToGoogleCloudRunV2ProbePtrOutput() GoogleCloudRunV2ProbePtrOutput {
 	return i.ToGoogleCloudRunV2ProbePtrOutputWithContext(context.Background())
 }
@@ -2934,12 +2531,6 @@ func (i *googleCloudRunV2ProbePtrType) ToGoogleCloudRunV2ProbePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ProbePtrOutput)
 }
 
-func (i *googleCloudRunV2ProbePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2Probe] {
-	return pulumix.Output[*GoogleCloudRunV2Probe]{
-		OutputState: i.ToGoogleCloudRunV2ProbePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type GoogleCloudRunV2ProbeOutput struct{ *pulumi.OutputState }
 
@@ -2963,12 +2554,6 @@ func (o GoogleCloudRunV2ProbeOutput) ToGoogleCloudRunV2ProbePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2Probe) *GoogleCloudRunV2Probe {
 		return &v
 	}).(GoogleCloudRunV2ProbePtrOutput)
-}
-
-func (o GoogleCloudRunV2ProbeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2Probe] {
-	return pulumix.Output[GoogleCloudRunV2Probe]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -3018,12 +2603,6 @@ func (o GoogleCloudRunV2ProbePtrOutput) ToGoogleCloudRunV2ProbePtrOutput() Googl
 
 func (o GoogleCloudRunV2ProbePtrOutput) ToGoogleCloudRunV2ProbePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2ProbePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ProbePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2Probe] {
-	return pulumix.Output[*GoogleCloudRunV2Probe]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2ProbePtrOutput) Elem() GoogleCloudRunV2ProbeOutput {
@@ -3139,12 +2718,6 @@ func (o GoogleCloudRunV2ProbeResponseOutput) ToGoogleCloudRunV2ProbeResponseOutp
 	return o
 }
 
-func (o GoogleCloudRunV2ProbeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ProbeResponse] {
-	return pulumix.Output[GoogleCloudRunV2ProbeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 func (o GoogleCloudRunV2ProbeResponseOutput) FailureThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) int { return v.FailureThreshold }).(pulumi.IntOutput)
@@ -3223,12 +2796,6 @@ func (i GoogleCloudRunV2ResourceRequirementsArgs) ToGoogleCloudRunV2ResourceRequ
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ResourceRequirementsOutput)
 }
 
-func (i GoogleCloudRunV2ResourceRequirementsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ResourceRequirements] {
-	return pulumix.Output[GoogleCloudRunV2ResourceRequirements]{
-		OutputState: i.ToGoogleCloudRunV2ResourceRequirementsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2ResourceRequirementsArgs) ToGoogleCloudRunV2ResourceRequirementsPtrOutput() GoogleCloudRunV2ResourceRequirementsPtrOutput {
 	return i.ToGoogleCloudRunV2ResourceRequirementsPtrOutputWithContext(context.Background())
 }
@@ -3270,12 +2837,6 @@ func (i *googleCloudRunV2ResourceRequirementsPtrType) ToGoogleCloudRunV2Resource
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ResourceRequirementsPtrOutput)
 }
 
-func (i *googleCloudRunV2ResourceRequirementsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2ResourceRequirements] {
-	return pulumix.Output[*GoogleCloudRunV2ResourceRequirements]{
-		OutputState: i.ToGoogleCloudRunV2ResourceRequirementsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceRequirements describes the compute resource requirements.
 type GoogleCloudRunV2ResourceRequirementsOutput struct{ *pulumi.OutputState }
 
@@ -3299,12 +2860,6 @@ func (o GoogleCloudRunV2ResourceRequirementsOutput) ToGoogleCloudRunV2ResourceRe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2ResourceRequirements) *GoogleCloudRunV2ResourceRequirements {
 		return &v
 	}).(GoogleCloudRunV2ResourceRequirementsPtrOutput)
-}
-
-func (o GoogleCloudRunV2ResourceRequirementsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ResourceRequirements] {
-	return pulumix.Output[GoogleCloudRunV2ResourceRequirements]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines whether CPU should be throttled or not outside of requests.
@@ -3334,12 +2889,6 @@ func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) ToGoogleCloudRunV2Resourc
 
 func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) ToGoogleCloudRunV2ResourceRequirementsPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2ResourceRequirementsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2ResourceRequirements] {
-	return pulumix.Output[*GoogleCloudRunV2ResourceRequirements]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) Elem() GoogleCloudRunV2ResourceRequirementsOutput {
@@ -3407,12 +2956,6 @@ func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) ToGoogleCloudRunV2Re
 	return o
 }
 
-func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ResourceRequirementsResponse] {
-	return pulumix.Output[GoogleCloudRunV2ResourceRequirementsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Determines whether CPU should be throttled or not outside of requests.
 func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) CpuIdle() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirementsResponse) bool { return v.CpuIdle }).(pulumi.BoolOutput)
@@ -3467,12 +3010,6 @@ func (i GoogleCloudRunV2RevisionScalingArgs) ToGoogleCloudRunV2RevisionScalingOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2RevisionScalingOutput)
 }
 
-func (i GoogleCloudRunV2RevisionScalingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2RevisionScaling] {
-	return pulumix.Output[GoogleCloudRunV2RevisionScaling]{
-		OutputState: i.ToGoogleCloudRunV2RevisionScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2RevisionScalingArgs) ToGoogleCloudRunV2RevisionScalingPtrOutput() GoogleCloudRunV2RevisionScalingPtrOutput {
 	return i.ToGoogleCloudRunV2RevisionScalingPtrOutputWithContext(context.Background())
 }
@@ -3514,12 +3051,6 @@ func (i *googleCloudRunV2RevisionScalingPtrType) ToGoogleCloudRunV2RevisionScali
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2RevisionScalingPtrOutput)
 }
 
-func (i *googleCloudRunV2RevisionScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2RevisionScaling] {
-	return pulumix.Output[*GoogleCloudRunV2RevisionScaling]{
-		OutputState: i.ToGoogleCloudRunV2RevisionScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings for revision-level scaling settings.
 type GoogleCloudRunV2RevisionScalingOutput struct{ *pulumi.OutputState }
 
@@ -3545,12 +3076,6 @@ func (o GoogleCloudRunV2RevisionScalingOutput) ToGoogleCloudRunV2RevisionScaling
 	}).(GoogleCloudRunV2RevisionScalingPtrOutput)
 }
 
-func (o GoogleCloudRunV2RevisionScalingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2RevisionScaling] {
-	return pulumix.Output[GoogleCloudRunV2RevisionScaling]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of serving instances that this resource should have.
 func (o GoogleCloudRunV2RevisionScalingOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionScaling) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
@@ -3573,12 +3098,6 @@ func (o GoogleCloudRunV2RevisionScalingPtrOutput) ToGoogleCloudRunV2RevisionScal
 
 func (o GoogleCloudRunV2RevisionScalingPtrOutput) ToGoogleCloudRunV2RevisionScalingPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionScalingPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2RevisionScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2RevisionScaling] {
-	return pulumix.Output[*GoogleCloudRunV2RevisionScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2RevisionScalingPtrOutput) Elem() GoogleCloudRunV2RevisionScalingOutput {
@@ -3632,12 +3151,6 @@ func (o GoogleCloudRunV2RevisionScalingResponseOutput) ToGoogleCloudRunV2Revisio
 
 func (o GoogleCloudRunV2RevisionScalingResponseOutput) ToGoogleCloudRunV2RevisionScalingResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionScalingResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2RevisionScalingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2RevisionScalingResponse] {
-	return pulumix.Output[GoogleCloudRunV2RevisionScalingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number of serving instances that this resource should have.
@@ -3733,12 +3246,6 @@ func (i GoogleCloudRunV2RevisionTemplateArgs) ToGoogleCloudRunV2RevisionTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2RevisionTemplateOutput)
 }
 
-func (i GoogleCloudRunV2RevisionTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2RevisionTemplate] {
-	return pulumix.Output[GoogleCloudRunV2RevisionTemplate]{
-		OutputState: i.ToGoogleCloudRunV2RevisionTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RevisionTemplate describes the data a revision should have when created from a template.
 type GoogleCloudRunV2RevisionTemplateOutput struct{ *pulumi.OutputState }
 
@@ -3752,12 +3259,6 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) ToGoogleCloudRunV2RevisionTempla
 
 func (o GoogleCloudRunV2RevisionTemplateOutput) ToGoogleCloudRunV2RevisionTemplateOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionTemplateOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2RevisionTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2RevisionTemplate] {
-	return pulumix.Output[GoogleCloudRunV2RevisionTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
@@ -3872,12 +3373,6 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ToGoogleCloudRunV2Revisi
 	return o
 }
 
-func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2RevisionTemplateResponse] {
-	return pulumix.Output[GoogleCloudRunV2RevisionTemplateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
@@ -3986,12 +3481,6 @@ func (i GoogleCloudRunV2SecretKeySelectorArgs) ToGoogleCloudRunV2SecretKeySelect
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2SecretKeySelectorOutput)
 }
 
-func (i GoogleCloudRunV2SecretKeySelectorArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2SecretKeySelector] {
-	return pulumix.Output[GoogleCloudRunV2SecretKeySelector]{
-		OutputState: i.ToGoogleCloudRunV2SecretKeySelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2SecretKeySelectorArgs) ToGoogleCloudRunV2SecretKeySelectorPtrOutput() GoogleCloudRunV2SecretKeySelectorPtrOutput {
 	return i.ToGoogleCloudRunV2SecretKeySelectorPtrOutputWithContext(context.Background())
 }
@@ -4033,12 +3522,6 @@ func (i *googleCloudRunV2SecretKeySelectorPtrType) ToGoogleCloudRunV2SecretKeySe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2SecretKeySelectorPtrOutput)
 }
 
-func (i *googleCloudRunV2SecretKeySelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2SecretKeySelector] {
-	return pulumix.Output[*GoogleCloudRunV2SecretKeySelector]{
-		OutputState: i.ToGoogleCloudRunV2SecretKeySelectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecretEnvVarSource represents a source for the value of an EnvVar.
 type GoogleCloudRunV2SecretKeySelectorOutput struct{ *pulumi.OutputState }
 
@@ -4064,12 +3547,6 @@ func (o GoogleCloudRunV2SecretKeySelectorOutput) ToGoogleCloudRunV2SecretKeySele
 	}).(GoogleCloudRunV2SecretKeySelectorPtrOutput)
 }
 
-func (o GoogleCloudRunV2SecretKeySelectorOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2SecretKeySelector] {
-	return pulumix.Output[GoogleCloudRunV2SecretKeySelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
 func (o GoogleCloudRunV2SecretKeySelectorOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2SecretKeySelector) string { return v.Secret }).(pulumi.StringOutput)
@@ -4092,12 +3569,6 @@ func (o GoogleCloudRunV2SecretKeySelectorPtrOutput) ToGoogleCloudRunV2SecretKeyS
 
 func (o GoogleCloudRunV2SecretKeySelectorPtrOutput) ToGoogleCloudRunV2SecretKeySelectorPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2SecretKeySelectorPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2SecretKeySelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2SecretKeySelector] {
-	return pulumix.Output[*GoogleCloudRunV2SecretKeySelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2SecretKeySelectorPtrOutput) Elem() GoogleCloudRunV2SecretKeySelectorOutput {
@@ -4153,12 +3624,6 @@ func (o GoogleCloudRunV2SecretKeySelectorResponseOutput) ToGoogleCloudRunV2Secre
 	return o
 }
 
-func (o GoogleCloudRunV2SecretKeySelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2SecretKeySelectorResponse] {
-	return pulumix.Output[GoogleCloudRunV2SecretKeySelectorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
 func (o GoogleCloudRunV2SecretKeySelectorResponseOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2SecretKeySelectorResponse) string { return v.Secret }).(pulumi.StringOutput)
@@ -4212,12 +3677,6 @@ func (i GoogleCloudRunV2SecretVolumeSourceArgs) ToGoogleCloudRunV2SecretVolumeSo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2SecretVolumeSourceOutput)
 }
 
-func (i GoogleCloudRunV2SecretVolumeSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2SecretVolumeSource] {
-	return pulumix.Output[GoogleCloudRunV2SecretVolumeSource]{
-		OutputState: i.ToGoogleCloudRunV2SecretVolumeSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2SecretVolumeSourceArgs) ToGoogleCloudRunV2SecretVolumeSourcePtrOutput() GoogleCloudRunV2SecretVolumeSourcePtrOutput {
 	return i.ToGoogleCloudRunV2SecretVolumeSourcePtrOutputWithContext(context.Background())
 }
@@ -4259,12 +3718,6 @@ func (i *googleCloudRunV2SecretVolumeSourcePtrType) ToGoogleCloudRunV2SecretVolu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2SecretVolumeSourcePtrOutput)
 }
 
-func (i *googleCloudRunV2SecretVolumeSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2SecretVolumeSource] {
-	return pulumix.Output[*GoogleCloudRunV2SecretVolumeSource]{
-		OutputState: i.ToGoogleCloudRunV2SecretVolumeSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
 type GoogleCloudRunV2SecretVolumeSourceOutput struct{ *pulumi.OutputState }
 
@@ -4288,12 +3741,6 @@ func (o GoogleCloudRunV2SecretVolumeSourceOutput) ToGoogleCloudRunV2SecretVolume
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2SecretVolumeSource) *GoogleCloudRunV2SecretVolumeSource {
 		return &v
 	}).(GoogleCloudRunV2SecretVolumeSourcePtrOutput)
-}
-
-func (o GoogleCloudRunV2SecretVolumeSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2SecretVolumeSource] {
-	return pulumix.Output[GoogleCloudRunV2SecretVolumeSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
@@ -4323,12 +3770,6 @@ func (o GoogleCloudRunV2SecretVolumeSourcePtrOutput) ToGoogleCloudRunV2SecretVol
 
 func (o GoogleCloudRunV2SecretVolumeSourcePtrOutput) ToGoogleCloudRunV2SecretVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2SecretVolumeSourcePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2SecretVolumeSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2SecretVolumeSource] {
-	return pulumix.Output[*GoogleCloudRunV2SecretVolumeSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2SecretVolumeSourcePtrOutput) Elem() GoogleCloudRunV2SecretVolumeSourceOutput {
@@ -4396,12 +3837,6 @@ func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) ToGoogleCloudRunV2Secr
 	return o
 }
 
-func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2SecretVolumeSourceResponse] {
-	return pulumix.Output[GoogleCloudRunV2SecretVolumeSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
 func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2SecretVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
@@ -4454,12 +3889,6 @@ func (i GoogleCloudRunV2ServiceScalingArgs) ToGoogleCloudRunV2ServiceScalingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ServiceScalingOutput)
 }
 
-func (i GoogleCloudRunV2ServiceScalingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ServiceScaling] {
-	return pulumix.Output[GoogleCloudRunV2ServiceScaling]{
-		OutputState: i.ToGoogleCloudRunV2ServiceScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2ServiceScalingArgs) ToGoogleCloudRunV2ServiceScalingPtrOutput() GoogleCloudRunV2ServiceScalingPtrOutput {
 	return i.ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(context.Background())
 }
@@ -4501,12 +3930,6 @@ func (i *googleCloudRunV2ServiceScalingPtrType) ToGoogleCloudRunV2ServiceScaling
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ServiceScalingPtrOutput)
 }
 
-func (i *googleCloudRunV2ServiceScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2ServiceScaling] {
-	return pulumix.Output[*GoogleCloudRunV2ServiceScaling]{
-		OutputState: i.ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Scaling settings applied at the service level rather than at the revision level.
 type GoogleCloudRunV2ServiceScalingOutput struct{ *pulumi.OutputState }
 
@@ -4532,12 +3955,6 @@ func (o GoogleCloudRunV2ServiceScalingOutput) ToGoogleCloudRunV2ServiceScalingPt
 	}).(GoogleCloudRunV2ServiceScalingPtrOutput)
 }
 
-func (o GoogleCloudRunV2ServiceScalingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ServiceScaling] {
-	return pulumix.Output[GoogleCloudRunV2ServiceScaling]{
-		OutputState: o.OutputState,
-	}
-}
-
 // total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
 func (o GoogleCloudRunV2ServiceScalingOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ServiceScaling) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
@@ -4555,12 +3972,6 @@ func (o GoogleCloudRunV2ServiceScalingPtrOutput) ToGoogleCloudRunV2ServiceScalin
 
 func (o GoogleCloudRunV2ServiceScalingPtrOutput) ToGoogleCloudRunV2ServiceScalingPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2ServiceScalingPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2ServiceScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2ServiceScaling] {
-	return pulumix.Output[*GoogleCloudRunV2ServiceScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2ServiceScalingPtrOutput) Elem() GoogleCloudRunV2ServiceScalingOutput {
@@ -4604,12 +4015,6 @@ func (o GoogleCloudRunV2ServiceScalingResponseOutput) ToGoogleCloudRunV2ServiceS
 	return o
 }
 
-func (o GoogleCloudRunV2ServiceScalingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2ServiceScalingResponse] {
-	return pulumix.Output[GoogleCloudRunV2ServiceScalingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
 func (o GoogleCloudRunV2ServiceScalingResponseOutput) MinInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ServiceScalingResponse) int { return v.MinInstanceCount }).(pulumi.IntOutput)
@@ -4648,12 +4053,6 @@ func (i GoogleCloudRunV2TCPSocketActionArgs) ToGoogleCloudRunV2TCPSocketActionOu
 
 func (i GoogleCloudRunV2TCPSocketActionArgs) ToGoogleCloudRunV2TCPSocketActionOutputWithContext(ctx context.Context) GoogleCloudRunV2TCPSocketActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2TCPSocketActionOutput)
-}
-
-func (i GoogleCloudRunV2TCPSocketActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TCPSocketAction] {
-	return pulumix.Output[GoogleCloudRunV2TCPSocketAction]{
-		OutputState: i.ToGoogleCloudRunV2TCPSocketActionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudRunV2TCPSocketActionArgs) ToGoogleCloudRunV2TCPSocketActionPtrOutput() GoogleCloudRunV2TCPSocketActionPtrOutput {
@@ -4697,12 +4096,6 @@ func (i *googleCloudRunV2TCPSocketActionPtrType) ToGoogleCloudRunV2TCPSocketActi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2TCPSocketActionPtrOutput)
 }
 
-func (i *googleCloudRunV2TCPSocketActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2TCPSocketAction] {
-	return pulumix.Output[*GoogleCloudRunV2TCPSocketAction]{
-		OutputState: i.ToGoogleCloudRunV2TCPSocketActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TCPSocketAction describes an action based on opening a socket
 type GoogleCloudRunV2TCPSocketActionOutput struct{ *pulumi.OutputState }
 
@@ -4728,12 +4121,6 @@ func (o GoogleCloudRunV2TCPSocketActionOutput) ToGoogleCloudRunV2TCPSocketAction
 	}).(GoogleCloudRunV2TCPSocketActionPtrOutput)
 }
 
-func (o GoogleCloudRunV2TCPSocketActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TCPSocketAction] {
-	return pulumix.Output[GoogleCloudRunV2TCPSocketAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 func (o GoogleCloudRunV2TCPSocketActionOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2TCPSocketAction) *int { return v.Port }).(pulumi.IntPtrOutput)
@@ -4751,12 +4138,6 @@ func (o GoogleCloudRunV2TCPSocketActionPtrOutput) ToGoogleCloudRunV2TCPSocketAct
 
 func (o GoogleCloudRunV2TCPSocketActionPtrOutput) ToGoogleCloudRunV2TCPSocketActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TCPSocketActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2TCPSocketActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2TCPSocketAction] {
-	return pulumix.Output[*GoogleCloudRunV2TCPSocketAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2TCPSocketActionPtrOutput) Elem() GoogleCloudRunV2TCPSocketActionOutput {
@@ -4798,12 +4179,6 @@ func (o GoogleCloudRunV2TCPSocketActionResponseOutput) ToGoogleCloudRunV2TCPSock
 
 func (o GoogleCloudRunV2TCPSocketActionResponseOutput) ToGoogleCloudRunV2TCPSocketActionResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2TCPSocketActionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2TCPSocketActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TCPSocketActionResponse] {
-	return pulumix.Output[GoogleCloudRunV2TCPSocketActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -4874,12 +4249,6 @@ func (i GoogleCloudRunV2TaskTemplateArgs) ToGoogleCloudRunV2TaskTemplateOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2TaskTemplateOutput)
 }
 
-func (i GoogleCloudRunV2TaskTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TaskTemplate] {
-	return pulumix.Output[GoogleCloudRunV2TaskTemplate]{
-		OutputState: i.ToGoogleCloudRunV2TaskTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TaskTemplate describes the data a task should have when created from a template.
 type GoogleCloudRunV2TaskTemplateOutput struct{ *pulumi.OutputState }
 
@@ -4893,12 +4262,6 @@ func (o GoogleCloudRunV2TaskTemplateOutput) ToGoogleCloudRunV2TaskTemplateOutput
 
 func (o GoogleCloudRunV2TaskTemplateOutput) ToGoogleCloudRunV2TaskTemplateOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2TaskTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TaskTemplate] {
-	return pulumix.Output[GoogleCloudRunV2TaskTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Holds the single container that defines the unit of execution for this task.
@@ -4976,12 +4339,6 @@ func (o GoogleCloudRunV2TaskTemplateResponseOutput) ToGoogleCloudRunV2TaskTempla
 
 func (o GoogleCloudRunV2TaskTemplateResponseOutput) ToGoogleCloudRunV2TaskTemplateResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2TaskTemplateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TaskTemplateResponse] {
-	return pulumix.Output[GoogleCloudRunV2TaskTemplateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Holds the single container that defines the unit of execution for this task.
@@ -5071,12 +4428,6 @@ func (i GoogleCloudRunV2TrafficTargetArgs) ToGoogleCloudRunV2TrafficTargetOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2TrafficTargetOutput)
 }
 
-func (i GoogleCloudRunV2TrafficTargetArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TrafficTarget] {
-	return pulumix.Output[GoogleCloudRunV2TrafficTarget]{
-		OutputState: i.ToGoogleCloudRunV2TrafficTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRunV2TrafficTargetArrayInput is an input type that accepts GoogleCloudRunV2TrafficTargetArray and GoogleCloudRunV2TrafficTargetArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2TrafficTargetArrayInput` via:
 //
@@ -5102,12 +4453,6 @@ func (i GoogleCloudRunV2TrafficTargetArray) ToGoogleCloudRunV2TrafficTargetArray
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2TrafficTargetArrayOutput)
 }
 
-func (i GoogleCloudRunV2TrafficTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2TrafficTarget] {
-	return pulumix.Output[[]GoogleCloudRunV2TrafficTarget]{
-		OutputState: i.ToGoogleCloudRunV2TrafficTargetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
 type GoogleCloudRunV2TrafficTargetOutput struct{ *pulumi.OutputState }
 
@@ -5121,12 +4466,6 @@ func (o GoogleCloudRunV2TrafficTargetOutput) ToGoogleCloudRunV2TrafficTargetOutp
 
 func (o GoogleCloudRunV2TrafficTargetOutput) ToGoogleCloudRunV2TrafficTargetOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2TrafficTargetOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TrafficTarget] {
-	return pulumix.Output[GoogleCloudRunV2TrafficTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
@@ -5163,12 +4502,6 @@ func (o GoogleCloudRunV2TrafficTargetArrayOutput) ToGoogleCloudRunV2TrafficTarge
 	return o
 }
 
-func (o GoogleCloudRunV2TrafficTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2TrafficTarget] {
-	return pulumix.Output[[]GoogleCloudRunV2TrafficTarget]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRunV2TrafficTargetArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2TrafficTargetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV2TrafficTarget {
 		return vs[0].([]GoogleCloudRunV2TrafficTarget)[vs[1].(int)]
@@ -5200,12 +4533,6 @@ func (o GoogleCloudRunV2TrafficTargetResponseOutput) ToGoogleCloudRunV2TrafficTa
 
 func (o GoogleCloudRunV2TrafficTargetResponseOutput) ToGoogleCloudRunV2TrafficTargetResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2TrafficTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TrafficTargetResponse] {
-	return pulumix.Output[GoogleCloudRunV2TrafficTargetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
@@ -5242,12 +4569,6 @@ func (o GoogleCloudRunV2TrafficTargetResponseArrayOutput) ToGoogleCloudRunV2Traf
 	return o
 }
 
-func (o GoogleCloudRunV2TrafficTargetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2TrafficTargetResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2TrafficTargetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRunV2TrafficTargetResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2TrafficTargetResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV2TrafficTargetResponse {
 		return vs[0].([]GoogleCloudRunV2TrafficTargetResponse)[vs[1].(int)]
@@ -5281,12 +4602,6 @@ func (o GoogleCloudRunV2TrafficTargetStatusResponseOutput) ToGoogleCloudRunV2Tra
 
 func (o GoogleCloudRunV2TrafficTargetStatusResponseOutput) ToGoogleCloudRunV2TrafficTargetStatusResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetStatusResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2TrafficTargetStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2TrafficTargetStatusResponse] {
-	return pulumix.Output[GoogleCloudRunV2TrafficTargetStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies percent of the traffic to this Revision.
@@ -5326,12 +4641,6 @@ func (o GoogleCloudRunV2TrafficTargetStatusResponseArrayOutput) ToGoogleCloudRun
 
 func (o GoogleCloudRunV2TrafficTargetStatusResponseArrayOutput) ToGoogleCloudRunV2TrafficTargetStatusResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetStatusResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2TrafficTargetStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2TrafficTargetStatusResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2TrafficTargetStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2TrafficTargetStatusResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2TrafficTargetStatusResponseOutput {
@@ -5383,12 +4692,6 @@ func (i GoogleCloudRunV2VersionToPathArgs) ToGoogleCloudRunV2VersionToPathOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2VersionToPathOutput)
 }
 
-func (i GoogleCloudRunV2VersionToPathArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VersionToPath] {
-	return pulumix.Output[GoogleCloudRunV2VersionToPath]{
-		OutputState: i.ToGoogleCloudRunV2VersionToPathOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRunV2VersionToPathArrayInput is an input type that accepts GoogleCloudRunV2VersionToPathArray and GoogleCloudRunV2VersionToPathArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VersionToPathArrayInput` via:
 //
@@ -5414,12 +4717,6 @@ func (i GoogleCloudRunV2VersionToPathArray) ToGoogleCloudRunV2VersionToPathArray
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2VersionToPathArrayOutput)
 }
 
-func (i GoogleCloudRunV2VersionToPathArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2VersionToPath] {
-	return pulumix.Output[[]GoogleCloudRunV2VersionToPath]{
-		OutputState: i.ToGoogleCloudRunV2VersionToPathArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VersionToPath maps a specific version of a secret to a relative file to mount to, relative to VolumeMount's mount_path.
 type GoogleCloudRunV2VersionToPathOutput struct{ *pulumi.OutputState }
 
@@ -5433,12 +4730,6 @@ func (o GoogleCloudRunV2VersionToPathOutput) ToGoogleCloudRunV2VersionToPathOutp
 
 func (o GoogleCloudRunV2VersionToPathOutput) ToGoogleCloudRunV2VersionToPathOutputWithContext(ctx context.Context) GoogleCloudRunV2VersionToPathOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VersionToPathOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VersionToPath] {
-	return pulumix.Output[GoogleCloudRunV2VersionToPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
@@ -5468,12 +4759,6 @@ func (o GoogleCloudRunV2VersionToPathArrayOutput) ToGoogleCloudRunV2VersionToPat
 
 func (o GoogleCloudRunV2VersionToPathArrayOutput) ToGoogleCloudRunV2VersionToPathArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2VersionToPathArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VersionToPathArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2VersionToPath] {
-	return pulumix.Output[[]GoogleCloudRunV2VersionToPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2VersionToPathArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2VersionToPathOutput {
@@ -5507,12 +4792,6 @@ func (o GoogleCloudRunV2VersionToPathResponseOutput) ToGoogleCloudRunV2VersionTo
 	return o
 }
 
-func (o GoogleCloudRunV2VersionToPathResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VersionToPathResponse] {
-	return pulumix.Output[GoogleCloudRunV2VersionToPathResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o GoogleCloudRunV2VersionToPathResponseOutput) Mode() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VersionToPathResponse) int { return v.Mode }).(pulumi.IntOutput)
@@ -5540,12 +4819,6 @@ func (o GoogleCloudRunV2VersionToPathResponseArrayOutput) ToGoogleCloudRunV2Vers
 
 func (o GoogleCloudRunV2VersionToPathResponseArrayOutput) ToGoogleCloudRunV2VersionToPathResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2VersionToPathResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VersionToPathResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2VersionToPathResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2VersionToPathResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2VersionToPathResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2VersionToPathResponseOutput {
@@ -5601,12 +4874,6 @@ func (i GoogleCloudRunV2VolumeArgs) ToGoogleCloudRunV2VolumeOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2VolumeOutput)
 }
 
-func (i GoogleCloudRunV2VolumeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2Volume] {
-	return pulumix.Output[GoogleCloudRunV2Volume]{
-		OutputState: i.ToGoogleCloudRunV2VolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRunV2VolumeArrayInput is an input type that accepts GoogleCloudRunV2VolumeArray and GoogleCloudRunV2VolumeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VolumeArrayInput` via:
 //
@@ -5632,12 +4899,6 @@ func (i GoogleCloudRunV2VolumeArray) ToGoogleCloudRunV2VolumeArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2VolumeArrayOutput)
 }
 
-func (i GoogleCloudRunV2VolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2Volume] {
-	return pulumix.Output[[]GoogleCloudRunV2Volume]{
-		OutputState: i.ToGoogleCloudRunV2VolumeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Volume represents a named volume in a container.
 type GoogleCloudRunV2VolumeOutput struct{ *pulumi.OutputState }
 
@@ -5651,12 +4912,6 @@ func (o GoogleCloudRunV2VolumeOutput) ToGoogleCloudRunV2VolumeOutput() GoogleClo
 
 func (o GoogleCloudRunV2VolumeOutput) ToGoogleCloudRunV2VolumeOutputWithContext(ctx context.Context) GoogleCloudRunV2VolumeOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VolumeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2Volume] {
-	return pulumix.Output[GoogleCloudRunV2Volume]{
-		OutputState: o.OutputState,
-	}
 }
 
 // For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -5691,12 +4946,6 @@ func (o GoogleCloudRunV2VolumeArrayOutput) ToGoogleCloudRunV2VolumeArrayOutput()
 
 func (o GoogleCloudRunV2VolumeArrayOutput) ToGoogleCloudRunV2VolumeArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2VolumeArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2Volume] {
-	return pulumix.Output[[]GoogleCloudRunV2Volume]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2VolumeArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2VolumeOutput {
@@ -5744,12 +4993,6 @@ func (i GoogleCloudRunV2VolumeMountArgs) ToGoogleCloudRunV2VolumeMountOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2VolumeMountOutput)
 }
 
-func (i GoogleCloudRunV2VolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VolumeMount] {
-	return pulumix.Output[GoogleCloudRunV2VolumeMount]{
-		OutputState: i.ToGoogleCloudRunV2VolumeMountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRunV2VolumeMountArrayInput is an input type that accepts GoogleCloudRunV2VolumeMountArray and GoogleCloudRunV2VolumeMountArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VolumeMountArrayInput` via:
 //
@@ -5775,12 +5018,6 @@ func (i GoogleCloudRunV2VolumeMountArray) ToGoogleCloudRunV2VolumeMountArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2VolumeMountArrayOutput)
 }
 
-func (i GoogleCloudRunV2VolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2VolumeMount] {
-	return pulumix.Output[[]GoogleCloudRunV2VolumeMount]{
-		OutputState: i.ToGoogleCloudRunV2VolumeMountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeMount describes a mounting of a Volume within a container.
 type GoogleCloudRunV2VolumeMountOutput struct{ *pulumi.OutputState }
 
@@ -5794,12 +5031,6 @@ func (o GoogleCloudRunV2VolumeMountOutput) ToGoogleCloudRunV2VolumeMountOutput()
 
 func (o GoogleCloudRunV2VolumeMountOutput) ToGoogleCloudRunV2VolumeMountOutputWithContext(ctx context.Context) GoogleCloudRunV2VolumeMountOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VolumeMount] {
-	return pulumix.Output[GoogleCloudRunV2VolumeMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
@@ -5824,12 +5055,6 @@ func (o GoogleCloudRunV2VolumeMountArrayOutput) ToGoogleCloudRunV2VolumeMountArr
 
 func (o GoogleCloudRunV2VolumeMountArrayOutput) ToGoogleCloudRunV2VolumeMountArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2VolumeMountArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2VolumeMount] {
-	return pulumix.Output[[]GoogleCloudRunV2VolumeMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2VolumeMountArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2VolumeMountOutput {
@@ -5861,12 +5086,6 @@ func (o GoogleCloudRunV2VolumeMountResponseOutput) ToGoogleCloudRunV2VolumeMount
 	return o
 }
 
-func (o GoogleCloudRunV2VolumeMountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VolumeMountResponse] {
-	return pulumix.Output[GoogleCloudRunV2VolumeMountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 func (o GoogleCloudRunV2VolumeMountResponseOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VolumeMountResponse) string { return v.MountPath }).(pulumi.StringOutput)
@@ -5889,12 +5108,6 @@ func (o GoogleCloudRunV2VolumeMountResponseArrayOutput) ToGoogleCloudRunV2Volume
 
 func (o GoogleCloudRunV2VolumeMountResponseArrayOutput) ToGoogleCloudRunV2VolumeMountResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2VolumeMountResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VolumeMountResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2VolumeMountResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2VolumeMountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2VolumeMountResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2VolumeMountResponseOutput {
@@ -5928,12 +5141,6 @@ func (o GoogleCloudRunV2VolumeResponseOutput) ToGoogleCloudRunV2VolumeResponseOu
 
 func (o GoogleCloudRunV2VolumeResponseOutput) ToGoogleCloudRunV2VolumeResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2VolumeResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VolumeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VolumeResponse] {
-	return pulumix.Output[GoogleCloudRunV2VolumeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -5970,12 +5177,6 @@ func (o GoogleCloudRunV2VolumeResponseArrayOutput) ToGoogleCloudRunV2VolumeRespo
 
 func (o GoogleCloudRunV2VolumeResponseArrayOutput) ToGoogleCloudRunV2VolumeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV2VolumeResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VolumeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRunV2VolumeResponse] {
-	return pulumix.Output[[]GoogleCloudRunV2VolumeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2VolumeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV2VolumeResponseOutput {
@@ -6027,12 +5228,6 @@ func (i GoogleCloudRunV2VpcAccessArgs) ToGoogleCloudRunV2VpcAccessOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2VpcAccessOutput)
 }
 
-func (i GoogleCloudRunV2VpcAccessArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VpcAccess] {
-	return pulumix.Output[GoogleCloudRunV2VpcAccess]{
-		OutputState: i.ToGoogleCloudRunV2VpcAccessOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRunV2VpcAccessArgs) ToGoogleCloudRunV2VpcAccessPtrOutput() GoogleCloudRunV2VpcAccessPtrOutput {
 	return i.ToGoogleCloudRunV2VpcAccessPtrOutputWithContext(context.Background())
 }
@@ -6074,12 +5269,6 @@ func (i *googleCloudRunV2VpcAccessPtrType) ToGoogleCloudRunV2VpcAccessPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2VpcAccessPtrOutput)
 }
 
-func (i *googleCloudRunV2VpcAccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2VpcAccess] {
-	return pulumix.Output[*GoogleCloudRunV2VpcAccess]{
-		OutputState: i.ToGoogleCloudRunV2VpcAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 type GoogleCloudRunV2VpcAccessOutput struct{ *pulumi.OutputState }
 
@@ -6103,12 +5292,6 @@ func (o GoogleCloudRunV2VpcAccessOutput) ToGoogleCloudRunV2VpcAccessPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2VpcAccess) *GoogleCloudRunV2VpcAccess {
 		return &v
 	}).(GoogleCloudRunV2VpcAccessPtrOutput)
-}
-
-func (o GoogleCloudRunV2VpcAccessOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VpcAccess] {
-	return pulumix.Output[GoogleCloudRunV2VpcAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
@@ -6138,12 +5321,6 @@ func (o GoogleCloudRunV2VpcAccessPtrOutput) ToGoogleCloudRunV2VpcAccessPtrOutput
 
 func (o GoogleCloudRunV2VpcAccessPtrOutput) ToGoogleCloudRunV2VpcAccessPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRunV2VpcAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2VpcAccess] {
-	return pulumix.Output[*GoogleCloudRunV2VpcAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRunV2VpcAccessPtrOutput) Elem() GoogleCloudRunV2VpcAccessOutput {
@@ -6211,12 +5388,6 @@ func (o GoogleCloudRunV2VpcAccessResponseOutput) ToGoogleCloudRunV2VpcAccessResp
 	return o
 }
 
-func (o GoogleCloudRunV2VpcAccessResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRunV2VpcAccessResponse] {
-	return pulumix.Output[GoogleCloudRunV2VpcAccessResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
 func (o GoogleCloudRunV2VpcAccessResponseOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VpcAccessResponse) string { return v.Connector }).(pulumi.StringOutput)
@@ -6273,12 +5444,6 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigOutput)
 }
 
-func (i GoogleIamV1AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
-	return pulumix.Output[GoogleIamV1AuditConfig]{
-		OutputState: i.ToGoogleIamV1AuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
@@ -6304,12 +5469,6 @@ func (i GoogleIamV1AuditConfigArray) ToGoogleIamV1AuditConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigArrayOutput)
 }
 
-func (i GoogleIamV1AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditConfig]{
-		OutputState: i.ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -6323,12 +5482,6 @@ func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutput() GoogleIam
 
 func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
-	return pulumix.Output[GoogleIamV1AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -6353,12 +5506,6 @@ func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutput()
 
 func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigOutput {
@@ -6390,12 +5537,6 @@ func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOu
 	return o
 }
 
-func (o GoogleIamV1AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfigResponse] {
-	return pulumix.Output[GoogleIamV1AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o GoogleIamV1AuditConfigResponseOutput) AuditLogConfigs() GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) []GoogleIamV1AuditLogConfigResponse { return v.AuditLogConfigs }).(GoogleIamV1AuditLogConfigResponseArrayOutput)
@@ -6418,12 +5559,6 @@ func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigRespo
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfigResponse] {
-	return pulumix.Output[[]GoogleIamV1AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigResponseOutput {
@@ -6471,12 +5606,6 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigOutput)
 }
 
-func (i GoogleIamV1AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[GoogleIamV1AuditLogConfig]{
-		OutputState: i.ToGoogleIamV1AuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
@@ -6502,12 +5631,6 @@ func (i GoogleIamV1AuditLogConfigArray) ToGoogleIamV1AuditLogConfigArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigArrayOutput)
 }
 
-func (i GoogleIamV1AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
-		OutputState: i.ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type GoogleIamV1AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -6521,12 +5644,6 @@ func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutput() Goo
 
 func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[GoogleIamV1AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -6551,12 +5668,6 @@ func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOu
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigOutput {
@@ -6588,12 +5699,6 @@ func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResp
 	return o
 }
 
-func (o GoogleIamV1AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigResponse] {
-	return pulumix.Output[GoogleIamV1AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o GoogleIamV1AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -6616,12 +5721,6 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfi
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfigResponse] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigResponseOutput {
@@ -6673,12 +5772,6 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingOutput)
 }
 
-func (i GoogleIamV1BindingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
-	return pulumix.Output[GoogleIamV1Binding]{
-		OutputState: i.ToGoogleIamV1BindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
@@ -6704,12 +5797,6 @@ func (i GoogleIamV1BindingArray) ToGoogleIamV1BindingArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingArrayOutput)
 }
 
-func (i GoogleIamV1BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
-	return pulumix.Output[[]GoogleIamV1Binding]{
-		OutputState: i.ToGoogleIamV1BindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type GoogleIamV1BindingOutput struct{ *pulumi.OutputState }
 
@@ -6723,12 +5810,6 @@ func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutput() GoogleIamV1Bindin
 
 func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutputWithContext(ctx context.Context) GoogleIamV1BindingOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
-	return pulumix.Output[GoogleIamV1Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -6758,12 +5839,6 @@ func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutput() GoogleI
 
 func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
-	return pulumix.Output[[]GoogleIamV1Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingOutput {
@@ -6797,12 +5872,6 @@ func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutputWith
 	return o
 }
 
-func (o GoogleIamV1BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1BindingResponse] {
-	return pulumix.Output[GoogleIamV1BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
@@ -6830,12 +5899,6 @@ func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArray
 
 func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1BindingResponse] {
-	return pulumix.Output[[]GoogleIamV1BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingResponseOutput {
@@ -6891,12 +5954,6 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput)
 }
 
-func (i GoogleTypeExprArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
 	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
 }
@@ -6938,12 +5995,6 @@ func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprPtrOutput)
 }
 
-func (i *googleTypeExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type GoogleTypeExprOutput struct{ *pulumi.OutputState }
 
@@ -6967,12 +6018,6 @@ func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
 		return &v
 	}).(GoogleTypeExprPtrOutput)
-}
-
-func (o GoogleTypeExprOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -7007,12 +6052,6 @@ func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOu
 
 func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
 	return o
-}
-
-func (o GoogleTypeExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
@@ -7090,12 +6129,6 @@ func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutput() GoogleTyp
 
 func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(ctx context.Context) GoogleTypeExprResponseOutput {
 	return o
-}
-
-func (o GoogleTypeExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExprResponse] {
-	return pulumix.Output[GoogleTypeExprResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

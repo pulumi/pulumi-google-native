@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an AccessPolicy by name.
@@ -69,12 +68,6 @@ func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutput() Looku
 
 func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutputWithContext(ctx context.Context) LookupAccessPolicyResultOutput {
 	return o
-}
-
-func (o LookupAccessPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessPolicyResult] {
-	return pulumix.Output[LookupAccessPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`

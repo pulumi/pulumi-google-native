@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single external access rule.
@@ -95,12 +94,6 @@ func (o LookupExternalAccessRuleResultOutput) ToLookupExternalAccessRuleResultOu
 
 func (o LookupExternalAccessRuleResultOutput) ToLookupExternalAccessRuleResultOutputWithContext(ctx context.Context) LookupExternalAccessRuleResultOutput {
 	return o
-}
-
-func (o LookupExternalAccessRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExternalAccessRuleResult] {
-	return pulumix.Output[LookupExternalAccessRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action that the external access rule performs.

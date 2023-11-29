@@ -83,12 +83,6 @@ func (o ConversationStateEnumOutput) ToConversationStateEnumPtrOutputWithContext
 	}).(ConversationStateEnumPtrOutput)
 }
 
-func (o ConversationStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ConversationStateEnum] {
-	return pulumix.Output[ConversationStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConversationStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o ConversationStateEnumPtrOutput) ToConversationStateEnumPtrOutput() Conve
 
 func (o ConversationStateEnumPtrOutput) ToConversationStateEnumPtrOutputWithContext(ctx context.Context) ConversationStateEnumPtrOutput {
 	return o
-}
-
-func (o ConversationStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConversationStateEnum] {
-	return pulumix.Output[*ConversationStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConversationStateEnumPtrOutput) Elem() ConversationStateEnumOutput {
@@ -272,12 +260,6 @@ func (o DataStoreContentConfigOutput) ToDataStoreContentConfigPtrOutputWithConte
 	}).(DataStoreContentConfigPtrOutput)
 }
 
-func (o DataStoreContentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DataStoreContentConfig] {
-	return pulumix.Output[DataStoreContentConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataStoreContentConfigOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o DataStoreContentConfigPtrOutput) ToDataStoreContentConfigPtrOutput() Dat
 
 func (o DataStoreContentConfigPtrOutput) ToDataStoreContentConfigPtrOutputWithContext(ctx context.Context) DataStoreContentConfigPtrOutput {
 	return o
-}
-
-func (o DataStoreContentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataStoreContentConfig] {
-	return pulumix.Output[*DataStoreContentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataStoreContentConfigPtrOutput) Elem() DataStoreContentConfigOutput {
@@ -459,12 +435,6 @@ func (o DataStoreIndustryVerticalOutput) ToDataStoreIndustryVerticalPtrOutputWit
 	}).(DataStoreIndustryVerticalPtrOutput)
 }
 
-func (o DataStoreIndustryVerticalOutput) ToOutput(ctx context.Context) pulumix.Output[DataStoreIndustryVertical] {
-	return pulumix.Output[DataStoreIndustryVertical]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataStoreIndustryVerticalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,12 +468,6 @@ func (o DataStoreIndustryVerticalPtrOutput) ToDataStoreIndustryVerticalPtrOutput
 
 func (o DataStoreIndustryVerticalPtrOutput) ToDataStoreIndustryVerticalPtrOutputWithContext(ctx context.Context) DataStoreIndustryVerticalPtrOutput {
 	return o
-}
-
-func (o DataStoreIndustryVerticalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataStoreIndustryVertical] {
-	return pulumix.Output[*DataStoreIndustryVertical]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataStoreIndustryVerticalPtrOutput) Elem() DataStoreIndustryVerticalOutput {
@@ -647,12 +611,6 @@ func (o DataStoreSolutionTypesItemOutput) ToDataStoreSolutionTypesItemPtrOutputW
 	}).(DataStoreSolutionTypesItemPtrOutput)
 }
 
-func (o DataStoreSolutionTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[DataStoreSolutionTypesItem] {
-	return pulumix.Output[DataStoreSolutionTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataStoreSolutionTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -686,12 +644,6 @@ func (o DataStoreSolutionTypesItemPtrOutput) ToDataStoreSolutionTypesItemPtrOutp
 
 func (o DataStoreSolutionTypesItemPtrOutput) ToDataStoreSolutionTypesItemPtrOutputWithContext(ctx context.Context) DataStoreSolutionTypesItemPtrOutput {
 	return o
-}
-
-func (o DataStoreSolutionTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataStoreSolutionTypesItem] {
-	return pulumix.Output[*DataStoreSolutionTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataStoreSolutionTypesItemPtrOutput) Elem() DataStoreSolutionTypesItemOutput {
@@ -787,12 +739,6 @@ func (i DataStoreSolutionTypesItemArray) ToDataStoreSolutionTypesItemArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreSolutionTypesItemArrayOutput)
 }
 
-func (i DataStoreSolutionTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]DataStoreSolutionTypesItem] {
-	return pulumix.Output[[]DataStoreSolutionTypesItem]{
-		OutputState: i.ToDataStoreSolutionTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataStoreSolutionTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (DataStoreSolutionTypesItemArrayOutput) ElementType() reflect.Type {
@@ -805,12 +751,6 @@ func (o DataStoreSolutionTypesItemArrayOutput) ToDataStoreSolutionTypesItemArray
 
 func (o DataStoreSolutionTypesItemArrayOutput) ToDataStoreSolutionTypesItemArrayOutputWithContext(ctx context.Context) DataStoreSolutionTypesItemArrayOutput {
 	return o
-}
-
-func (o DataStoreSolutionTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataStoreSolutionTypesItem] {
-	return pulumix.Output[[]DataStoreSolutionTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataStoreSolutionTypesItemArrayOutput) Index(i pulumi.IntInput) DataStoreSolutionTypesItemOutput {
@@ -891,12 +831,6 @@ func (o EngineIndustryVerticalOutput) ToEngineIndustryVerticalPtrOutputWithConte
 	}).(EngineIndustryVerticalPtrOutput)
 }
 
-func (o EngineIndustryVerticalOutput) ToOutput(ctx context.Context) pulumix.Output[EngineIndustryVertical] {
-	return pulumix.Output[EngineIndustryVertical]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EngineIndustryVerticalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -930,12 +864,6 @@ func (o EngineIndustryVerticalPtrOutput) ToEngineIndustryVerticalPtrOutput() Eng
 
 func (o EngineIndustryVerticalPtrOutput) ToEngineIndustryVerticalPtrOutputWithContext(ctx context.Context) EngineIndustryVerticalPtrOutput {
 	return o
-}
-
-func (o EngineIndustryVerticalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EngineIndustryVertical] {
-	return pulumix.Output[*EngineIndustryVertical]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EngineIndustryVerticalPtrOutput) Elem() EngineIndustryVerticalOutput {
@@ -1080,12 +1008,6 @@ func (o EngineSolutionTypeOutput) ToEngineSolutionTypePtrOutputWithContext(ctx c
 	}).(EngineSolutionTypePtrOutput)
 }
 
-func (o EngineSolutionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EngineSolutionType] {
-	return pulumix.Output[EngineSolutionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EngineSolutionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1119,12 +1041,6 @@ func (o EngineSolutionTypePtrOutput) ToEngineSolutionTypePtrOutput() EngineSolut
 
 func (o EngineSolutionTypePtrOutput) ToEngineSolutionTypePtrOutputWithContext(ctx context.Context) EngineSolutionTypePtrOutput {
 	return o
-}
-
-func (o EngineSolutionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EngineSolutionType] {
-	return pulumix.Output[*EngineSolutionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EngineSolutionTypePtrOutput) Elem() EngineSolutionTypeOutput {
@@ -1267,12 +1183,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTr
 	}).(GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStatePtrOutput)
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1306,12 +1216,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTr
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStatePtrOutput) ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStatePtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStatePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStatePtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateOutput {
@@ -1451,12 +1355,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsIte
 	}).(GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtrOutput)
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1490,12 +1388,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsIte
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtrOutput) ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemOutput {
@@ -1591,12 +1483,6 @@ func (i GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsIte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayOutput) ElementType() reflect.Type {
@@ -1609,12 +1495,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsIte
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayOutput) ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemOutput {
@@ -1695,12 +1575,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierOutpu
 	}).(GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtrOutput)
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1734,12 +1608,6 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtrOu
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtrOutput) ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierOutput {
@@ -1887,12 +1755,6 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReas
 	}).(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutput)
 }
 
-func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1926,12 +1788,6 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReas
 
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutput) ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutput) Elem() GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemOutput {
@@ -2027,12 +1883,6 @@ func (i GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReas
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutput) ElementType() reflect.Type {
@@ -2045,12 +1895,6 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReas
 
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutput) ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the requested node pool.
@@ -117,12 +116,6 @@ func (o LookupNodePoolResultOutput) ToLookupNodePoolResultOutput() LookupNodePoo
 
 func (o LookupNodePoolResultOutput) ToLookupNodePoolResultOutputWithContext(ctx context.Context) LookupNodePoolResultOutput {
 	return o
-}
-
-func (o LookupNodePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodePoolResult] {
-	return pulumix.Output[LookupNodePoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.

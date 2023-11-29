@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
@@ -226,12 +225,6 @@ func (i *Occurrence) ToOccurrenceOutputWithContext(ctx context.Context) Occurren
 	return pulumi.ToOutputWithContext(ctx, i).(OccurrenceOutput)
 }
 
-func (i *Occurrence) ToOutput(ctx context.Context) pulumix.Output[*Occurrence] {
-	return pulumix.Output[*Occurrence]{
-		OutputState: i.ToOccurrenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OccurrenceOutput struct{ *pulumi.OutputState }
 
 func (OccurrenceOutput) ElementType() reflect.Type {
@@ -244,12 +237,6 @@ func (o OccurrenceOutput) ToOccurrenceOutput() OccurrenceOutput {
 
 func (o OccurrenceOutput) ToOccurrenceOutputWithContext(ctx context.Context) OccurrenceOutput {
 	return o
-}
-
-func (o OccurrenceOutput) ToOutput(ctx context.Context) pulumix.Output[*Occurrence] {
-	return pulumix.Output[*Occurrence]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes an attestation of an artifact.

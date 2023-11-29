@@ -83,12 +83,6 @@ func (o ApiConfigHandlerAuthFailActionOutput) ToApiConfigHandlerAuthFailActionPt
 	}).(ApiConfigHandlerAuthFailActionPtrOutput)
 }
 
-func (o ApiConfigHandlerAuthFailActionOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigHandlerAuthFailAction] {
-	return pulumix.Output[ApiConfigHandlerAuthFailAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiConfigHandlerAuthFailActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o ApiConfigHandlerAuthFailActionPtrOutput) ToApiConfigHandlerAuthFailActio
 
 func (o ApiConfigHandlerAuthFailActionPtrOutput) ToApiConfigHandlerAuthFailActionPtrOutputWithContext(ctx context.Context) ApiConfigHandlerAuthFailActionPtrOutput {
 	return o
-}
-
-func (o ApiConfigHandlerAuthFailActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerAuthFailAction] {
-	return pulumix.Output[*ApiConfigHandlerAuthFailAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigHandlerAuthFailActionPtrOutput) Elem() ApiConfigHandlerAuthFailActionOutput {
@@ -272,12 +260,6 @@ func (o ApiConfigHandlerLoginOutput) ToApiConfigHandlerLoginPtrOutputWithContext
 	}).(ApiConfigHandlerLoginPtrOutput)
 }
 
-func (o ApiConfigHandlerLoginOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigHandlerLogin] {
-	return pulumix.Output[ApiConfigHandlerLogin]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiConfigHandlerLoginOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o ApiConfigHandlerLoginPtrOutput) ToApiConfigHandlerLoginPtrOutput() ApiCo
 
 func (o ApiConfigHandlerLoginPtrOutput) ToApiConfigHandlerLoginPtrOutputWithContext(ctx context.Context) ApiConfigHandlerLoginPtrOutput {
 	return o
-}
-
-func (o ApiConfigHandlerLoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerLogin] {
-	return pulumix.Output[*ApiConfigHandlerLogin]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigHandlerLoginPtrOutput) Elem() ApiConfigHandlerLoginOutput {
@@ -463,12 +439,6 @@ func (o ApiConfigHandlerSecurityLevelOutput) ToApiConfigHandlerSecurityLevelPtrO
 	}).(ApiConfigHandlerSecurityLevelPtrOutput)
 }
 
-func (o ApiConfigHandlerSecurityLevelOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigHandlerSecurityLevel] {
-	return pulumix.Output[ApiConfigHandlerSecurityLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiConfigHandlerSecurityLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -502,12 +472,6 @@ func (o ApiConfigHandlerSecurityLevelPtrOutput) ToApiConfigHandlerSecurityLevelP
 
 func (o ApiConfigHandlerSecurityLevelPtrOutput) ToApiConfigHandlerSecurityLevelPtrOutputWithContext(ctx context.Context) ApiConfigHandlerSecurityLevelPtrOutput {
 	return o
-}
-
-func (o ApiConfigHandlerSecurityLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerSecurityLevel] {
-	return pulumix.Output[*ApiConfigHandlerSecurityLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigHandlerSecurityLevelPtrOutput) Elem() ApiConfigHandlerSecurityLevelOutput {
@@ -652,12 +616,6 @@ func (o AppDatabaseTypeOutput) ToAppDatabaseTypePtrOutputWithContext(ctx context
 	}).(AppDatabaseTypePtrOutput)
 }
 
-func (o AppDatabaseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AppDatabaseType] {
-	return pulumix.Output[AppDatabaseType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppDatabaseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -691,12 +649,6 @@ func (o AppDatabaseTypePtrOutput) ToAppDatabaseTypePtrOutput() AppDatabaseTypePt
 
 func (o AppDatabaseTypePtrOutput) ToAppDatabaseTypePtrOutputWithContext(ctx context.Context) AppDatabaseTypePtrOutput {
 	return o
-}
-
-func (o AppDatabaseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppDatabaseType] {
-	return pulumix.Output[*AppDatabaseType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppDatabaseTypePtrOutput) Elem() AppDatabaseTypeOutput {
@@ -841,12 +793,6 @@ func (o AppServingStatusOutput) ToAppServingStatusPtrOutputWithContext(ctx conte
 	}).(AppServingStatusPtrOutput)
 }
 
-func (o AppServingStatusOutput) ToOutput(ctx context.Context) pulumix.Output[AppServingStatus] {
-	return pulumix.Output[AppServingStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppServingStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -880,12 +826,6 @@ func (o AppServingStatusPtrOutput) ToAppServingStatusPtrOutput() AppServingStatu
 
 func (o AppServingStatusPtrOutput) ToAppServingStatusPtrOutputWithContext(ctx context.Context) AppServingStatusPtrOutput {
 	return o
-}
-
-func (o AppServingStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppServingStatus] {
-	return pulumix.Output[*AppServingStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppServingStatusPtrOutput) Elem() AppServingStatusOutput {
@@ -1028,12 +968,6 @@ func (o EndpointsApiServiceRolloutStrategyOutput) ToEndpointsApiServiceRolloutSt
 	}).(EndpointsApiServiceRolloutStrategyPtrOutput)
 }
 
-func (o EndpointsApiServiceRolloutStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointsApiServiceRolloutStrategy] {
-	return pulumix.Output[EndpointsApiServiceRolloutStrategy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EndpointsApiServiceRolloutStrategyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1067,12 +1001,6 @@ func (o EndpointsApiServiceRolloutStrategyPtrOutput) ToEndpointsApiServiceRollou
 
 func (o EndpointsApiServiceRolloutStrategyPtrOutput) ToEndpointsApiServiceRolloutStrategyPtrOutputWithContext(ctx context.Context) EndpointsApiServiceRolloutStrategyPtrOutput {
 	return o
-}
-
-func (o EndpointsApiServiceRolloutStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointsApiServiceRolloutStrategy] {
-	return pulumix.Output[*EndpointsApiServiceRolloutStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointsApiServiceRolloutStrategyPtrOutput) Elem() EndpointsApiServiceRolloutStrategyOutput {
@@ -1219,12 +1147,6 @@ func (o ErrorHandlerErrorCodeOutput) ToErrorHandlerErrorCodePtrOutputWithContext
 	}).(ErrorHandlerErrorCodePtrOutput)
 }
 
-func (o ErrorHandlerErrorCodeOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorHandlerErrorCode] {
-	return pulumix.Output[ErrorHandlerErrorCode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ErrorHandlerErrorCodeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1258,12 +1180,6 @@ func (o ErrorHandlerErrorCodePtrOutput) ToErrorHandlerErrorCodePtrOutput() Error
 
 func (o ErrorHandlerErrorCodePtrOutput) ToErrorHandlerErrorCodePtrOutputWithContext(ctx context.Context) ErrorHandlerErrorCodePtrOutput {
 	return o
-}
-
-func (o ErrorHandlerErrorCodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorHandlerErrorCode] {
-	return pulumix.Output[*ErrorHandlerErrorCode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorHandlerErrorCodePtrOutput) Elem() ErrorHandlerErrorCodeOutput {
@@ -1405,12 +1321,6 @@ func (o IngressRuleActionOutput) ToIngressRuleActionPtrOutputWithContext(ctx con
 	}).(IngressRuleActionPtrOutput)
 }
 
-func (o IngressRuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[IngressRuleAction] {
-	return pulumix.Output[IngressRuleAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IngressRuleActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1444,12 +1354,6 @@ func (o IngressRuleActionPtrOutput) ToIngressRuleActionPtrOutput() IngressRuleAc
 
 func (o IngressRuleActionPtrOutput) ToIngressRuleActionPtrOutputWithContext(ctx context.Context) IngressRuleActionPtrOutput {
 	return o
-}
-
-func (o IngressRuleActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IngressRuleAction] {
-	return pulumix.Output[*IngressRuleAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IngressRuleActionPtrOutput) Elem() IngressRuleActionOutput {
@@ -1592,12 +1496,6 @@ func (o NetworkInstanceIpModeOutput) ToNetworkInstanceIpModePtrOutputWithContext
 	}).(NetworkInstanceIpModePtrOutput)
 }
 
-func (o NetworkInstanceIpModeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInstanceIpMode] {
-	return pulumix.Output[NetworkInstanceIpMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkInstanceIpModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1631,12 +1529,6 @@ func (o NetworkInstanceIpModePtrOutput) ToNetworkInstanceIpModePtrOutput() Netwo
 
 func (o NetworkInstanceIpModePtrOutput) ToNetworkInstanceIpModePtrOutputWithContext(ctx context.Context) NetworkInstanceIpModePtrOutput {
 	return o
-}
-
-func (o NetworkInstanceIpModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkInstanceIpMode] {
-	return pulumix.Output[*NetworkInstanceIpMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkInstanceIpModePtrOutput) Elem() NetworkInstanceIpModeOutput {
@@ -1777,12 +1669,6 @@ func (o SslSettingsSslManagementTypeOutput) ToSslSettingsSslManagementTypePtrOut
 	}).(SslSettingsSslManagementTypePtrOutput)
 }
 
-func (o SslSettingsSslManagementTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SslSettingsSslManagementType] {
-	return pulumix.Output[SslSettingsSslManagementType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SslSettingsSslManagementTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1816,12 +1702,6 @@ func (o SslSettingsSslManagementTypePtrOutput) ToSslSettingsSslManagementTypePtr
 
 func (o SslSettingsSslManagementTypePtrOutput) ToSslSettingsSslManagementTypePtrOutputWithContext(ctx context.Context) SslSettingsSslManagementTypePtrOutput {
 	return o
-}
-
-func (o SslSettingsSslManagementTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslSettingsSslManagementType] {
-	return pulumix.Output[*SslSettingsSslManagementType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SslSettingsSslManagementTypePtrOutput) Elem() SslSettingsSslManagementTypeOutput {
@@ -1964,12 +1844,6 @@ func (o UrlMapAuthFailActionOutput) ToUrlMapAuthFailActionPtrOutputWithContext(c
 	}).(UrlMapAuthFailActionPtrOutput)
 }
 
-func (o UrlMapAuthFailActionOutput) ToOutput(ctx context.Context) pulumix.Output[UrlMapAuthFailAction] {
-	return pulumix.Output[UrlMapAuthFailAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UrlMapAuthFailActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2003,12 +1877,6 @@ func (o UrlMapAuthFailActionPtrOutput) ToUrlMapAuthFailActionPtrOutput() UrlMapA
 
 func (o UrlMapAuthFailActionPtrOutput) ToUrlMapAuthFailActionPtrOutputWithContext(ctx context.Context) UrlMapAuthFailActionPtrOutput {
 	return o
-}
-
-func (o UrlMapAuthFailActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlMapAuthFailAction] {
-	return pulumix.Output[*UrlMapAuthFailAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UrlMapAuthFailActionPtrOutput) Elem() UrlMapAuthFailActionOutput {
@@ -2153,12 +2021,6 @@ func (o UrlMapLoginOutput) ToUrlMapLoginPtrOutputWithContext(ctx context.Context
 	}).(UrlMapLoginPtrOutput)
 }
 
-func (o UrlMapLoginOutput) ToOutput(ctx context.Context) pulumix.Output[UrlMapLogin] {
-	return pulumix.Output[UrlMapLogin]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UrlMapLoginOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2192,12 +2054,6 @@ func (o UrlMapLoginPtrOutput) ToUrlMapLoginPtrOutput() UrlMapLoginPtrOutput {
 
 func (o UrlMapLoginPtrOutput) ToUrlMapLoginPtrOutputWithContext(ctx context.Context) UrlMapLoginPtrOutput {
 	return o
-}
-
-func (o UrlMapLoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlMapLogin] {
-	return pulumix.Output[*UrlMapLogin]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UrlMapLoginPtrOutput) Elem() UrlMapLoginOutput {
@@ -2344,12 +2200,6 @@ func (o UrlMapRedirectHttpResponseCodeOutput) ToUrlMapRedirectHttpResponseCodePt
 	}).(UrlMapRedirectHttpResponseCodePtrOutput)
 }
 
-func (o UrlMapRedirectHttpResponseCodeOutput) ToOutput(ctx context.Context) pulumix.Output[UrlMapRedirectHttpResponseCode] {
-	return pulumix.Output[UrlMapRedirectHttpResponseCode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UrlMapRedirectHttpResponseCodeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2383,12 +2233,6 @@ func (o UrlMapRedirectHttpResponseCodePtrOutput) ToUrlMapRedirectHttpResponseCod
 
 func (o UrlMapRedirectHttpResponseCodePtrOutput) ToUrlMapRedirectHttpResponseCodePtrOutputWithContext(ctx context.Context) UrlMapRedirectHttpResponseCodePtrOutput {
 	return o
-}
-
-func (o UrlMapRedirectHttpResponseCodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlMapRedirectHttpResponseCode] {
-	return pulumix.Output[*UrlMapRedirectHttpResponseCode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UrlMapRedirectHttpResponseCodePtrOutput) Elem() UrlMapRedirectHttpResponseCodeOutput {
@@ -2535,12 +2379,6 @@ func (o UrlMapSecurityLevelOutput) ToUrlMapSecurityLevelPtrOutputWithContext(ctx
 	}).(UrlMapSecurityLevelPtrOutput)
 }
 
-func (o UrlMapSecurityLevelOutput) ToOutput(ctx context.Context) pulumix.Output[UrlMapSecurityLevel] {
-	return pulumix.Output[UrlMapSecurityLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UrlMapSecurityLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2574,12 +2412,6 @@ func (o UrlMapSecurityLevelPtrOutput) ToUrlMapSecurityLevelPtrOutput() UrlMapSec
 
 func (o UrlMapSecurityLevelPtrOutput) ToUrlMapSecurityLevelPtrOutputWithContext(ctx context.Context) UrlMapSecurityLevelPtrOutput {
 	return o
-}
-
-func (o UrlMapSecurityLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlMapSecurityLevel] {
-	return pulumix.Output[*UrlMapSecurityLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UrlMapSecurityLevelPtrOutput) Elem() UrlMapSecurityLevelOutput {
@@ -2733,12 +2565,6 @@ func (o VersionInboundServicesItemOutput) ToVersionInboundServicesItemPtrOutputW
 	}).(VersionInboundServicesItemPtrOutput)
 }
 
-func (o VersionInboundServicesItemOutput) ToOutput(ctx context.Context) pulumix.Output[VersionInboundServicesItem] {
-	return pulumix.Output[VersionInboundServicesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VersionInboundServicesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2772,12 +2598,6 @@ func (o VersionInboundServicesItemPtrOutput) ToVersionInboundServicesItemPtrOutp
 
 func (o VersionInboundServicesItemPtrOutput) ToVersionInboundServicesItemPtrOutputWithContext(ctx context.Context) VersionInboundServicesItemPtrOutput {
 	return o
-}
-
-func (o VersionInboundServicesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VersionInboundServicesItem] {
-	return pulumix.Output[*VersionInboundServicesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VersionInboundServicesItemPtrOutput) Elem() VersionInboundServicesItemOutput {
@@ -2873,12 +2693,6 @@ func (i VersionInboundServicesItemArray) ToVersionInboundServicesItemArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(VersionInboundServicesItemArrayOutput)
 }
 
-func (i VersionInboundServicesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]VersionInboundServicesItem] {
-	return pulumix.Output[[]VersionInboundServicesItem]{
-		OutputState: i.ToVersionInboundServicesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VersionInboundServicesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (VersionInboundServicesItemArrayOutput) ElementType() reflect.Type {
@@ -2891,12 +2705,6 @@ func (o VersionInboundServicesItemArrayOutput) ToVersionInboundServicesItemArray
 
 func (o VersionInboundServicesItemArrayOutput) ToVersionInboundServicesItemArrayOutputWithContext(ctx context.Context) VersionInboundServicesItemArrayOutput {
 	return o
-}
-
-func (o VersionInboundServicesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VersionInboundServicesItem] {
-	return pulumix.Output[[]VersionInboundServicesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VersionInboundServicesItemArrayOutput) Index(i pulumi.IntInput) VersionInboundServicesItemOutput {
@@ -2977,12 +2785,6 @@ func (o VersionServingStatusOutput) ToVersionServingStatusPtrOutputWithContext(c
 	}).(VersionServingStatusPtrOutput)
 }
 
-func (o VersionServingStatusOutput) ToOutput(ctx context.Context) pulumix.Output[VersionServingStatus] {
-	return pulumix.Output[VersionServingStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VersionServingStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3016,12 +2818,6 @@ func (o VersionServingStatusPtrOutput) ToVersionServingStatusPtrOutput() Version
 
 func (o VersionServingStatusPtrOutput) ToVersionServingStatusPtrOutputWithContext(ctx context.Context) VersionServingStatusPtrOutput {
 	return o
-}
-
-func (o VersionServingStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VersionServingStatus] {
-	return pulumix.Output[*VersionServingStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VersionServingStatusPtrOutput) Elem() VersionServingStatusOutput {
@@ -3163,12 +2959,6 @@ func (o VpcAccessConnectorEgressSettingOutput) ToVpcAccessConnectorEgressSetting
 	}).(VpcAccessConnectorEgressSettingPtrOutput)
 }
 
-func (o VpcAccessConnectorEgressSettingOutput) ToOutput(ctx context.Context) pulumix.Output[VpcAccessConnectorEgressSetting] {
-	return pulumix.Output[VpcAccessConnectorEgressSetting]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VpcAccessConnectorEgressSettingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3202,12 +2992,6 @@ func (o VpcAccessConnectorEgressSettingPtrOutput) ToVpcAccessConnectorEgressSett
 
 func (o VpcAccessConnectorEgressSettingPtrOutput) ToVpcAccessConnectorEgressSettingPtrOutputWithContext(ctx context.Context) VpcAccessConnectorEgressSettingPtrOutput {
 	return o
-}
-
-func (o VpcAccessConnectorEgressSettingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcAccessConnectorEgressSetting] {
-	return pulumix.Output[*VpcAccessConnectorEgressSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VpcAccessConnectorEgressSettingPtrOutput) Elem() VpcAccessConnectorEgressSettingOutput {

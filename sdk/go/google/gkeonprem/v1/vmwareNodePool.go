@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new VMware node pool in a given project, location and VMWare cluster.
@@ -171,12 +170,6 @@ func (i *VmwareNodePool) ToVmwareNodePoolOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareNodePoolOutput)
 }
 
-func (i *VmwareNodePool) ToOutput(ctx context.Context) pulumix.Output[*VmwareNodePool] {
-	return pulumix.Output[*VmwareNodePool]{
-		OutputState: i.ToVmwareNodePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VmwareNodePoolOutput struct{ *pulumi.OutputState }
 
 func (VmwareNodePoolOutput) ElementType() reflect.Type {
@@ -189,12 +182,6 @@ func (o VmwareNodePoolOutput) ToVmwareNodePoolOutput() VmwareNodePoolOutput {
 
 func (o VmwareNodePoolOutput) ToVmwareNodePoolOutputWithContext(ctx context.Context) VmwareNodePoolOutput {
 	return o
-}
-
-func (o VmwareNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareNodePool] {
-	return pulumix.Output[*VmwareNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.

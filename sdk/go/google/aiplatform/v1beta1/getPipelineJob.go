@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a PipelineJob.
@@ -105,12 +104,6 @@ func (o LookupPipelineJobResultOutput) ToLookupPipelineJobResultOutput() LookupP
 
 func (o LookupPipelineJobResultOutput) ToLookupPipelineJobResultOutputWithContext(ctx context.Context) LookupPipelineJobResultOutput {
 	return o
-}
-
-func (o LookupPipelineJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPipelineJobResult] {
-	return pulumix.Output[LookupPipelineJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Pipeline creation time.

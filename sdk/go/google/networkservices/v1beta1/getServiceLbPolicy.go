@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ServiceLbPolicy.
@@ -83,12 +82,6 @@ func (o LookupServiceLbPolicyResultOutput) ToLookupServiceLbPolicyResultOutput()
 
 func (o LookupServiceLbPolicyResultOutput) ToLookupServiceLbPolicyResultOutputWithContext(ctx context.Context) LookupServiceLbPolicyResultOutput {
 	return o
-}
-
-func (o LookupServiceLbPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceLbPolicyResult] {
-	return pulumix.Output[LookupServiceLbPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configuration to automatically move traffic away for unhealthy IG/NEG for the associated Backend Service.

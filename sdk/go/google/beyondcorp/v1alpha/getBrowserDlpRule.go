@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single BrowserDlpRule.
@@ -73,12 +72,6 @@ func (o LookupBrowserDlpRuleResultOutput) ToLookupBrowserDlpRuleResultOutput() L
 
 func (o LookupBrowserDlpRuleResultOutput) ToLookupBrowserDlpRuleResultOutputWithContext(ctx context.Context) LookupBrowserDlpRuleResultOutput {
 	return o
-}
-
-func (o LookupBrowserDlpRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBrowserDlpRuleResult] {
-	return pulumix.Output[LookupBrowserDlpRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group to which this Rule should be applied to.

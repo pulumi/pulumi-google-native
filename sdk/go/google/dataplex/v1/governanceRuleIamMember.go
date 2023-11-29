@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -141,12 +140,6 @@ func (i *GovernanceRuleIamMember) ToGovernanceRuleIamMemberOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceRuleIamMemberOutput)
 }
 
-func (i *GovernanceRuleIamMember) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleIamMember] {
-	return pulumix.Output[*GovernanceRuleIamMember]{
-		OutputState: i.ToGovernanceRuleIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GovernanceRuleIamMemberOutput struct{ *pulumi.OutputState }
 
 func (GovernanceRuleIamMemberOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o GovernanceRuleIamMemberOutput) ToGovernanceRuleIamMemberOutput() Governa
 
 func (o GovernanceRuleIamMemberOutput) ToGovernanceRuleIamMemberOutputWithContext(ctx context.Context) GovernanceRuleIamMemberOutput {
 	return o
-}
-
-func (o GovernanceRuleIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleIamMember] {
-	return pulumix.Output[*GovernanceRuleIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

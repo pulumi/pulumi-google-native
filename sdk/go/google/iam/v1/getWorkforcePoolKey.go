@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a WorkforcePoolProviderKey.
@@ -79,12 +78,6 @@ func (o LookupWorkforcePoolKeyResultOutput) ToLookupWorkforcePoolKeyResultOutput
 
 func (o LookupWorkforcePoolKeyResultOutput) ToLookupWorkforcePoolKeyResultOutputWithContext(ctx context.Context) LookupWorkforcePoolKeyResultOutput {
 	return o
-}
-
-func (o LookupWorkforcePoolKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkforcePoolKeyResult] {
-	return pulumix.Output[LookupWorkforcePoolKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time after which the key will be permanently deleted and cannot be recovered. Note that the key may get purged before this time if the total limit of keys per provider is exceeded.

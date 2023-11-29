@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the details of a MembershipBinding.
@@ -85,12 +84,6 @@ func (o LookupBindingResultOutput) ToLookupBindingResultOutput() LookupBindingRe
 
 func (o LookupBindingResultOutput) ToLookupBindingResultOutputWithContext(ctx context.Context) LookupBindingResultOutput {
 	return o
-}
-
-func (o LookupBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBindingResult] {
-	return pulumix.Output[LookupBindingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the membership binding was created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AttestationAuthenticatorArgs) ToAttestationAuthenticatorOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AttestationAuthenticatorOutput)
 }
 
-func (i AttestationAuthenticatorArgs) ToOutput(ctx context.Context) pulumix.Output[AttestationAuthenticator] {
-	return pulumix.Output[AttestationAuthenticator]{
-		OutputState: i.ToAttestationAuthenticatorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AttestationAuthenticatorArrayInput is an input type that accepts AttestationAuthenticatorArray and AttestationAuthenticatorArrayOutput values.
 // You can construct a concrete instance of `AttestationAuthenticatorArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AttestationAuthenticatorArray) ToAttestationAuthenticatorArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AttestationAuthenticatorArrayOutput)
 }
 
-func (i AttestationAuthenticatorArray) ToOutput(ctx context.Context) pulumix.Output[[]AttestationAuthenticator] {
-	return pulumix.Output[[]AttestationAuthenticator]{
-		OutputState: i.ToAttestationAuthenticatorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An attestation authenticator that will be used to verify attestations. Typically this is just a set of public keys. Conceptually, an authenticator can be treated as always returning either "authenticated" or "not authenticated" when presented with a signed attestation (almost always assumed to be a [DSSE](https://github.com/secure-systems-lab/dsse) attestation). The details of how an authenticator makes this decision are specific to the type of 'authenticator' that this message wraps.
 type AttestationAuthenticatorOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AttestationAuthenticatorOutput) ToAttestationAuthenticatorOutput() Attes
 
 func (o AttestationAuthenticatorOutput) ToAttestationAuthenticatorOutputWithContext(ctx context.Context) AttestationAuthenticatorOutput {
 	return o
-}
-
-func (o AttestationAuthenticatorOutput) ToOutput(ctx context.Context) pulumix.Output[AttestationAuthenticator] {
-	return pulumix.Output[AttestationAuthenticator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
@@ -133,12 +114,6 @@ func (o AttestationAuthenticatorArrayOutput) ToAttestationAuthenticatorArrayOutp
 
 func (o AttestationAuthenticatorArrayOutput) ToAttestationAuthenticatorArrayOutputWithContext(ctx context.Context) AttestationAuthenticatorArrayOutput {
 	return o
-}
-
-func (o AttestationAuthenticatorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttestationAuthenticator] {
-	return pulumix.Output[[]AttestationAuthenticator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttestationAuthenticatorArrayOutput) Index(i pulumi.IntInput) AttestationAuthenticatorOutput {
@@ -170,12 +145,6 @@ func (o AttestationAuthenticatorResponseOutput) ToAttestationAuthenticatorRespon
 	return o
 }
 
-func (o AttestationAuthenticatorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AttestationAuthenticatorResponse] {
-	return pulumix.Output[AttestationAuthenticatorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
 func (o AttestationAuthenticatorResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v AttestationAuthenticatorResponse) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -198,12 +167,6 @@ func (o AttestationAuthenticatorResponseArrayOutput) ToAttestationAuthenticatorR
 
 func (o AttestationAuthenticatorResponseArrayOutput) ToAttestationAuthenticatorResponseArrayOutputWithContext(ctx context.Context) AttestationAuthenticatorResponseArrayOutput {
 	return o
-}
-
-func (o AttestationAuthenticatorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttestationAuthenticatorResponse] {
-	return pulumix.Output[[]AttestationAuthenticatorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttestationAuthenticatorResponseArrayOutput) Index(i pulumi.IntInput) AttestationAuthenticatorResponseOutput {
@@ -247,12 +210,6 @@ func (i AttestationSourceArgs) ToAttestationSourceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AttestationSourceOutput)
 }
 
-func (i AttestationSourceArgs) ToOutput(ctx context.Context) pulumix.Output[AttestationSource] {
-	return pulumix.Output[AttestationSource]{
-		OutputState: i.ToAttestationSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AttestationSourceArgs) ToAttestationSourcePtrOutput() AttestationSourcePtrOutput {
 	return i.ToAttestationSourcePtrOutputWithContext(context.Background())
 }
@@ -294,12 +251,6 @@ func (i *attestationSourcePtrType) ToAttestationSourcePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AttestationSourcePtrOutput)
 }
 
-func (i *attestationSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*AttestationSource] {
-	return pulumix.Output[*AttestationSource]{
-		OutputState: i.ToAttestationSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the locations for fetching the provenance attestations.
 type AttestationSourceOutput struct{ *pulumi.OutputState }
 
@@ -325,12 +276,6 @@ func (o AttestationSourceOutput) ToAttestationSourcePtrOutputWithContext(ctx con
 	}).(AttestationSourcePtrOutput)
 }
 
-func (o AttestationSourceOutput) ToOutput(ctx context.Context) pulumix.Output[AttestationSource] {
-	return pulumix.Output[AttestationSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
 func (o AttestationSourceOutput) ContainerAnalysisAttestationProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttestationSource) []string { return v.ContainerAnalysisAttestationProjects }).(pulumi.StringArrayOutput)
@@ -348,12 +293,6 @@ func (o AttestationSourcePtrOutput) ToAttestationSourcePtrOutput() AttestationSo
 
 func (o AttestationSourcePtrOutput) ToAttestationSourcePtrOutputWithContext(ctx context.Context) AttestationSourcePtrOutput {
 	return o
-}
-
-func (o AttestationSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttestationSource] {
-	return pulumix.Output[*AttestationSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttestationSourcePtrOutput) Elem() AttestationSourceOutput {
@@ -395,12 +334,6 @@ func (o AttestationSourceResponseOutput) ToAttestationSourceResponseOutput() Att
 
 func (o AttestationSourceResponseOutput) ToAttestationSourceResponseOutputWithContext(ctx context.Context) AttestationSourceResponseOutput {
 	return o
-}
-
-func (o AttestationSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AttestationSourceResponse] {
-	return pulumix.Output[AttestationSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
@@ -455,12 +388,6 @@ func (i AttestorPublicKeyArgs) ToAttestorPublicKeyOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorPublicKeyOutput)
 }
 
-func (i AttestorPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[AttestorPublicKey] {
-	return pulumix.Output[AttestorPublicKey]{
-		OutputState: i.ToAttestorPublicKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AttestorPublicKeyArrayInput is an input type that accepts AttestorPublicKeyArray and AttestorPublicKeyArrayOutput values.
 // You can construct a concrete instance of `AttestorPublicKeyArrayInput` via:
 //
@@ -486,12 +413,6 @@ func (i AttestorPublicKeyArray) ToAttestorPublicKeyArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorPublicKeyArrayOutput)
 }
 
-func (i AttestorPublicKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]AttestorPublicKey] {
-	return pulumix.Output[[]AttestorPublicKey]{
-		OutputState: i.ToAttestorPublicKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An attestor public key that will be used to verify attestations signed by this attestor.
 type AttestorPublicKeyOutput struct{ *pulumi.OutputState }
 
@@ -505,12 +426,6 @@ func (o AttestorPublicKeyOutput) ToAttestorPublicKeyOutput() AttestorPublicKeyOu
 
 func (o AttestorPublicKeyOutput) ToAttestorPublicKeyOutputWithContext(ctx context.Context) AttestorPublicKeyOutput {
 	return o
-}
-
-func (o AttestorPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[AttestorPublicKey] {
-	return pulumix.Output[AttestorPublicKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The Binary Authorization API handlers will calculate the ID and fill it in automatically. Binary Authorization computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
@@ -547,12 +462,6 @@ func (o AttestorPublicKeyArrayOutput) ToAttestorPublicKeyArrayOutputWithContext(
 	return o
 }
 
-func (o AttestorPublicKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttestorPublicKey] {
-	return pulumix.Output[[]AttestorPublicKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AttestorPublicKeyArrayOutput) Index(i pulumi.IntInput) AttestorPublicKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttestorPublicKey {
 		return vs[0].([]AttestorPublicKey)[vs[1].(int)]
@@ -584,12 +493,6 @@ func (o AttestorPublicKeyResponseOutput) ToAttestorPublicKeyResponseOutputWithCo
 	return o
 }
 
-func (o AttestorPublicKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AttestorPublicKeyResponse] {
-	return pulumix.Output[AttestorPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The Binary Authorization API handlers will calculate the ID and fill it in automatically. Binary Authorization computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
 func (o AttestorPublicKeyResponseOutput) AsciiArmoredPgpPublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AttestorPublicKeyResponse) string { return v.AsciiArmoredPgpPublicKey }).(pulumi.StringOutput)
@@ -617,12 +520,6 @@ func (o AttestorPublicKeyResponseArrayOutput) ToAttestorPublicKeyResponseArrayOu
 
 func (o AttestorPublicKeyResponseArrayOutput) ToAttestorPublicKeyResponseArrayOutputWithContext(ctx context.Context) AttestorPublicKeyResponseArrayOutput {
 	return o
-}
-
-func (o AttestorPublicKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttestorPublicKeyResponse] {
-	return pulumix.Output[[]AttestorPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttestorPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) AttestorPublicKeyResponseOutput {
@@ -674,12 +571,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -705,12 +596,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -724,12 +609,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -759,12 +638,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -798,12 +671,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -831,12 +698,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -908,12 +769,6 @@ func (i CheckArgs) ToCheckOutputWithContext(ctx context.Context) CheckOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CheckOutput)
 }
 
-func (i CheckArgs) ToOutput(ctx context.Context) pulumix.Output[Check] {
-	return pulumix.Output[Check]{
-		OutputState: i.ToCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CheckArrayInput is an input type that accepts CheckArray and CheckArrayOutput values.
 // You can construct a concrete instance of `CheckArrayInput` via:
 //
@@ -939,12 +794,6 @@ func (i CheckArray) ToCheckArrayOutputWithContext(ctx context.Context) CheckArra
 	return pulumi.ToOutputWithContext(ctx, i).(CheckArrayOutput)
 }
 
-func (i CheckArray) ToOutput(ctx context.Context) pulumix.Output[[]Check] {
-	return pulumix.Output[[]Check]{
-		OutputState: i.ToCheckArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A single check to perform against a Pod. Checks are grouped into `CheckSet` objects, which are defined by the top-level policy.
 type CheckOutput struct{ *pulumi.OutputState }
 
@@ -958,12 +807,6 @@ func (o CheckOutput) ToCheckOutput() CheckOutput {
 
 func (o CheckOutput) ToCheckOutputWithContext(ctx context.Context) CheckOutput {
 	return o
-}
-
-func (o CheckOutput) ToOutput(ctx context.Context) pulumix.Output[Check] {
-	return pulumix.Output[Check]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A special-case check that always denies. Note that this still only applies when the scope of the `CheckSet` applies and the image isn't exempted by an image allowlist. This check is primarily useful for testing, or to set the default behavior for all unmatched scopes to "deny".
@@ -1020,12 +863,6 @@ func (o CheckArrayOutput) ToCheckArrayOutputWithContext(ctx context.Context) Che
 	return o
 }
 
-func (o CheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Check] {
-	return pulumix.Output[[]Check]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CheckArrayOutput) Index(i pulumi.IntInput) CheckOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Check {
 		return vs[0].([]Check)[vs[1].(int)]
@@ -1065,12 +902,6 @@ func (o CheckResponseOutput) ToCheckResponseOutput() CheckResponseOutput {
 
 func (o CheckResponseOutput) ToCheckResponseOutputWithContext(ctx context.Context) CheckResponseOutput {
 	return o
-}
-
-func (o CheckResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CheckResponse] {
-	return pulumix.Output[CheckResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A special-case check that always denies. Note that this still only applies when the scope of the `CheckSet` applies and the image isn't exempted by an image allowlist. This check is primarily useful for testing, or to set the default behavior for all unmatched scopes to "deny".
@@ -1127,12 +958,6 @@ func (o CheckResponseArrayOutput) ToCheckResponseArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o CheckResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CheckResponse] {
-	return pulumix.Output[[]CheckResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CheckResponseArrayOutput) Index(i pulumi.IntInput) CheckResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CheckResponse {
 		return vs[0].([]CheckResponse)[vs[1].(int)]
@@ -1186,12 +1011,6 @@ func (i CheckSetArgs) ToCheckSetOutputWithContext(ctx context.Context) CheckSetO
 	return pulumi.ToOutputWithContext(ctx, i).(CheckSetOutput)
 }
 
-func (i CheckSetArgs) ToOutput(ctx context.Context) pulumix.Output[CheckSet] {
-	return pulumix.Output[CheckSet]{
-		OutputState: i.ToCheckSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CheckSetArrayInput is an input type that accepts CheckSetArray and CheckSetArrayOutput values.
 // You can construct a concrete instance of `CheckSetArrayInput` via:
 //
@@ -1217,12 +1036,6 @@ func (i CheckSetArray) ToCheckSetArrayOutputWithContext(ctx context.Context) Che
 	return pulumi.ToOutputWithContext(ctx, i).(CheckSetArrayOutput)
 }
 
-func (i CheckSetArray) ToOutput(ctx context.Context) pulumix.Output[[]CheckSet] {
-	return pulumix.Output[[]CheckSet]{
-		OutputState: i.ToCheckSetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A conjunction of policy checks, scoped to a particular namespace or Kubernetes service account. In order for evaluation of a `CheckSet` to return "allowed" for a given image in a given Pod, one of the following conditions must be satisfied: * The image is explicitly exempted by an entry in `image_allowlist`, OR * ALL of the `checks` evaluate to "allowed".
 type CheckSetOutput struct{ *pulumi.OutputState }
 
@@ -1236,12 +1049,6 @@ func (o CheckSetOutput) ToCheckSetOutput() CheckSetOutput {
 
 func (o CheckSetOutput) ToCheckSetOutputWithContext(ctx context.Context) CheckSetOutput {
 	return o
-}
-
-func (o CheckSetOutput) ToOutput(ctx context.Context) pulumix.Output[CheckSet] {
-	return pulumix.Output[CheckSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The checks to apply. The ultimate result of evaluating the check set will be "allow" if and only if every check in `checks` evaluates to "allow". If `checks` is empty, the default behavior is "always allow".
@@ -1278,12 +1085,6 @@ func (o CheckSetArrayOutput) ToCheckSetArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o CheckSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CheckSet] {
-	return pulumix.Output[[]CheckSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CheckSetArrayOutput) Index(i pulumi.IntInput) CheckSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CheckSet {
 		return vs[0].([]CheckSet)[vs[1].(int)]
@@ -1315,12 +1116,6 @@ func (o CheckSetResponseOutput) ToCheckSetResponseOutput() CheckSetResponseOutpu
 
 func (o CheckSetResponseOutput) ToCheckSetResponseOutputWithContext(ctx context.Context) CheckSetResponseOutput {
 	return o
-}
-
-func (o CheckSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CheckSetResponse] {
-	return pulumix.Output[CheckSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The checks to apply. The ultimate result of evaluating the check set will be "allow" if and only if every check in `checks` evaluates to "allow". If `checks` is empty, the default behavior is "always allow".
@@ -1355,12 +1150,6 @@ func (o CheckSetResponseArrayOutput) ToCheckSetResponseArrayOutput() CheckSetRes
 
 func (o CheckSetResponseArrayOutput) ToCheckSetResponseArrayOutputWithContext(ctx context.Context) CheckSetResponseArrayOutput {
 	return o
-}
-
-func (o CheckSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CheckSetResponse] {
-	return pulumix.Output[[]CheckSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CheckSetResponseArrayOutput) Index(i pulumi.IntInput) CheckSetResponseOutput {
@@ -1416,12 +1205,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1463,12 +1246,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1492,12 +1269,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1532,12 +1303,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1617,12 +1382,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1682,12 +1441,6 @@ func (i GkePolicyArgs) ToGkePolicyOutputWithContext(ctx context.Context) GkePoli
 	return pulumi.ToOutputWithContext(ctx, i).(GkePolicyOutput)
 }
 
-func (i GkePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GkePolicy] {
-	return pulumix.Output[GkePolicy]{
-		OutputState: i.ToGkePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GkePolicyArgs) ToGkePolicyPtrOutput() GkePolicyPtrOutput {
 	return i.ToGkePolicyPtrOutputWithContext(context.Background())
 }
@@ -1729,12 +1482,6 @@ func (i *gkePolicyPtrType) ToGkePolicyPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GkePolicyPtrOutput)
 }
 
-func (i *gkePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GkePolicy] {
-	return pulumix.Output[*GkePolicy]{
-		OutputState: i.ToGkePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A Binary Authorization policy for a GKE cluster. This is one type of policy that can occur as a `PlatformPolicy`.
 type GkePolicyOutput struct{ *pulumi.OutputState }
 
@@ -1760,12 +1507,6 @@ func (o GkePolicyOutput) ToGkePolicyPtrOutputWithContext(ctx context.Context) Gk
 	}).(GkePolicyPtrOutput)
 }
 
-func (o GkePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GkePolicy] {
-	return pulumix.Output[GkePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The `CheckSet` objects to apply, scoped by namespace or namespace and service account. Exactly one `CheckSet` will be evaluated for a given Pod (unless the list is empty, in which case the behavior is "always allow"). If multiple `CheckSet` objects have scopes that match the namespace and service account of the Pod being evaluated, only the `CheckSet` with the MOST SPECIFIC scope will match. `CheckSet` objects must be listed in order of decreasing specificity, i.e. if a scope matches a given service account (which must include the namespace), it must come before a `CheckSet` with a scope matching just that namespace. This property is enforced by server-side validation. The purpose of this restriction is to ensure that if more than one `CheckSet` matches a given Pod, the `CheckSet` that will be evaluated will always be the first in the list to match (because if any other matches, it must be less specific). If `check_sets` is empty, the default behavior is to allow all images. If `check_sets` is non-empty, the last `check_sets` entry must always be a `CheckSet` with no scope set, i.e. a catchall to handle any situation not caught by the preceding `CheckSet` objects.
 func (o GkePolicyOutput) CheckSets() CheckSetArrayOutput {
 	return o.ApplyT(func(v GkePolicy) []CheckSet { return v.CheckSets }).(CheckSetArrayOutput)
@@ -1788,12 +1529,6 @@ func (o GkePolicyPtrOutput) ToGkePolicyPtrOutput() GkePolicyPtrOutput {
 
 func (o GkePolicyPtrOutput) ToGkePolicyPtrOutputWithContext(ctx context.Context) GkePolicyPtrOutput {
 	return o
-}
-
-func (o GkePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GkePolicy] {
-	return pulumix.Output[*GkePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GkePolicyPtrOutput) Elem() GkePolicyOutput {
@@ -1849,12 +1584,6 @@ func (o GkePolicyResponseOutput) ToGkePolicyResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o GkePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GkePolicyResponse] {
-	return pulumix.Output[GkePolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The `CheckSet` objects to apply, scoped by namespace or namespace and service account. Exactly one `CheckSet` will be evaluated for a given Pod (unless the list is empty, in which case the behavior is "always allow"). If multiple `CheckSet` objects have scopes that match the namespace and service account of the Pod being evaluated, only the `CheckSet` with the MOST SPECIFIC scope will match. `CheckSet` objects must be listed in order of decreasing specificity, i.e. if a scope matches a given service account (which must include the namespace), it must come before a `CheckSet` with a scope matching just that namespace. This property is enforced by server-side validation. The purpose of this restriction is to ensure that if more than one `CheckSet` matches a given Pod, the `CheckSet` that will be evaluated will always be the first in the list to match (because if any other matches, it must be less specific). If `check_sets` is empty, the default behavior is to allow all images. If `check_sets` is non-empty, the last `check_sets` entry must always be a `CheckSet` with no scope set, i.e. a catchall to handle any situation not caught by the preceding `CheckSet` objects.
 func (o GkePolicyResponseOutput) CheckSets() CheckSetResponseArrayOutput {
 	return o.ApplyT(func(v GkePolicyResponse) []CheckSetResponse { return v.CheckSets }).(CheckSetResponseArrayOutput)
@@ -1900,12 +1629,6 @@ func (i ImageAllowlistArgs) ToImageAllowlistOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAllowlistOutput)
 }
 
-func (i ImageAllowlistArgs) ToOutput(ctx context.Context) pulumix.Output[ImageAllowlist] {
-	return pulumix.Output[ImageAllowlist]{
-		OutputState: i.ToImageAllowlistOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ImageAllowlistArgs) ToImageAllowlistPtrOutput() ImageAllowlistPtrOutput {
 	return i.ToImageAllowlistPtrOutputWithContext(context.Background())
 }
@@ -1947,12 +1670,6 @@ func (i *imageAllowlistPtrType) ToImageAllowlistPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAllowlistPtrOutput)
 }
 
-func (i *imageAllowlistPtrType) ToOutput(ctx context.Context) pulumix.Output[*ImageAllowlist] {
-	return pulumix.Output[*ImageAllowlist]{
-		OutputState: i.ToImageAllowlistPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Images that are exempted from normal checks based on name pattern only.
 type ImageAllowlistOutput struct{ *pulumi.OutputState }
 
@@ -1978,12 +1695,6 @@ func (o ImageAllowlistOutput) ToImageAllowlistPtrOutputWithContext(ctx context.C
 	}).(ImageAllowlistPtrOutput)
 }
 
-func (o ImageAllowlistOutput) ToOutput(ctx context.Context) pulumix.Output[ImageAllowlist] {
-	return pulumix.Output[ImageAllowlist]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A disjunction of image patterns to allow. If any of these patterns match, then the image is considered exempted by this allowlist.
 func (o ImageAllowlistOutput) AllowPattern() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ImageAllowlist) []string { return v.AllowPattern }).(pulumi.StringArrayOutput)
@@ -2001,12 +1712,6 @@ func (o ImageAllowlistPtrOutput) ToImageAllowlistPtrOutput() ImageAllowlistPtrOu
 
 func (o ImageAllowlistPtrOutput) ToImageAllowlistPtrOutputWithContext(ctx context.Context) ImageAllowlistPtrOutput {
 	return o
-}
-
-func (o ImageAllowlistPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageAllowlist] {
-	return pulumix.Output[*ImageAllowlist]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageAllowlistPtrOutput) Elem() ImageAllowlistOutput {
@@ -2050,12 +1755,6 @@ func (o ImageAllowlistResponseOutput) ToImageAllowlistResponseOutputWithContext(
 	return o
 }
 
-func (o ImageAllowlistResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImageAllowlistResponse] {
-	return pulumix.Output[ImageAllowlistResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A disjunction of image patterns to allow. If any of these patterns match, then the image is considered exempted by this allowlist.
 func (o ImageAllowlistResponseOutput) AllowPattern() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ImageAllowlistResponse) []string { return v.AllowPattern }).(pulumi.StringArrayOutput)
@@ -2094,12 +1793,6 @@ func (i ImageFreshnessCheckArgs) ToImageFreshnessCheckOutput() ImageFreshnessChe
 
 func (i ImageFreshnessCheckArgs) ToImageFreshnessCheckOutputWithContext(ctx context.Context) ImageFreshnessCheckOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageFreshnessCheckOutput)
-}
-
-func (i ImageFreshnessCheckArgs) ToOutput(ctx context.Context) pulumix.Output[ImageFreshnessCheck] {
-	return pulumix.Output[ImageFreshnessCheck]{
-		OutputState: i.ToImageFreshnessCheckOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ImageFreshnessCheckArgs) ToImageFreshnessCheckPtrOutput() ImageFreshnessCheckPtrOutput {
@@ -2143,12 +1836,6 @@ func (i *imageFreshnessCheckPtrType) ToImageFreshnessCheckPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ImageFreshnessCheckPtrOutput)
 }
 
-func (i *imageFreshnessCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*ImageFreshnessCheck] {
-	return pulumix.Output[*ImageFreshnessCheck]{
-		OutputState: i.ToImageFreshnessCheckPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An image freshness check, which rejects images that were uploaded before the set number of days ago to the supported repositories.
 type ImageFreshnessCheckOutput struct{ *pulumi.OutputState }
 
@@ -2174,12 +1861,6 @@ func (o ImageFreshnessCheckOutput) ToImageFreshnessCheckPtrOutputWithContext(ctx
 	}).(ImageFreshnessCheckPtrOutput)
 }
 
-func (o ImageFreshnessCheckOutput) ToOutput(ctx context.Context) pulumix.Output[ImageFreshnessCheck] {
-	return pulumix.Output[ImageFreshnessCheck]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The max number of days that is allowed since the image was uploaded. Must be greater than zero.
 func (o ImageFreshnessCheckOutput) MaxUploadAgeDays() pulumi.IntOutput {
 	return o.ApplyT(func(v ImageFreshnessCheck) int { return v.MaxUploadAgeDays }).(pulumi.IntOutput)
@@ -2197,12 +1878,6 @@ func (o ImageFreshnessCheckPtrOutput) ToImageFreshnessCheckPtrOutput() ImageFres
 
 func (o ImageFreshnessCheckPtrOutput) ToImageFreshnessCheckPtrOutputWithContext(ctx context.Context) ImageFreshnessCheckPtrOutput {
 	return o
-}
-
-func (o ImageFreshnessCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageFreshnessCheck] {
-	return pulumix.Output[*ImageFreshnessCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageFreshnessCheckPtrOutput) Elem() ImageFreshnessCheckOutput {
@@ -2244,12 +1919,6 @@ func (o ImageFreshnessCheckResponseOutput) ToImageFreshnessCheckResponseOutput()
 
 func (o ImageFreshnessCheckResponseOutput) ToImageFreshnessCheckResponseOutputWithContext(ctx context.Context) ImageFreshnessCheckResponseOutput {
 	return o
-}
-
-func (o ImageFreshnessCheckResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImageFreshnessCheckResponse] {
-	return pulumix.Output[ImageFreshnessCheckResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The max number of days that is allowed since the image was uploaded. Must be greater than zero.
@@ -2300,12 +1969,6 @@ func (i PkixPublicKeyArgs) ToPkixPublicKeyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PkixPublicKeyOutput)
 }
 
-func (i PkixPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKey] {
-	return pulumix.Output[PkixPublicKey]{
-		OutputState: i.ToPkixPublicKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PkixPublicKeyArgs) ToPkixPublicKeyPtrOutput() PkixPublicKeyPtrOutput {
 	return i.ToPkixPublicKeyPtrOutputWithContext(context.Background())
 }
@@ -2347,12 +2010,6 @@ func (i *pkixPublicKeyPtrType) ToPkixPublicKeyPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PkixPublicKeyPtrOutput)
 }
 
-func (i *pkixPublicKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PkixPublicKey] {
-	return pulumix.Output[*PkixPublicKey]{
-		OutputState: i.ToPkixPublicKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PkixPublicKeyArrayInput is an input type that accepts PkixPublicKeyArray and PkixPublicKeyArrayOutput values.
 // You can construct a concrete instance of `PkixPublicKeyArrayInput` via:
 //
@@ -2378,12 +2035,6 @@ func (i PkixPublicKeyArray) ToPkixPublicKeyArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PkixPublicKeyArrayOutput)
 }
 
-func (i PkixPublicKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]PkixPublicKey] {
-	return pulumix.Output[[]PkixPublicKey]{
-		OutputState: i.ToPkixPublicKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A public key in the PkixPublicKey [format](https://tools.ietf.org/html/rfc5280#section-4.1.2.7). Public keys of this type are typically textually encoded using the PEM format.
 type PkixPublicKeyOutput struct{ *pulumi.OutputState }
 
@@ -2407,12 +2058,6 @@ func (o PkixPublicKeyOutput) ToPkixPublicKeyPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PkixPublicKey) *PkixPublicKey {
 		return &v
 	}).(PkixPublicKeyPtrOutput)
-}
-
-func (o PkixPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKey] {
-	return pulumix.Output[PkixPublicKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The ID of this public key. Signatures verified by Binary Authorization must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. This may be explicitly provided by the caller, but it MUST be a valid RFC3986 URI. If `key_id` is left blank and this `PkixPublicKey` is not used in the context of a wrapper (see next paragraph), a default key ID will be computed based on the digest of the DER encoding of the public key. If this `PkixPublicKey` is used in the context of a wrapper that has its own notion of key ID (e.g. `AttestorPublicKey`), then this field can either: * Match that value exactly. * Or be left blank, in which case it behaves exactly as though it is equal to that wrapper value.
@@ -2442,12 +2087,6 @@ func (o PkixPublicKeyPtrOutput) ToPkixPublicKeyPtrOutput() PkixPublicKeyPtrOutpu
 
 func (o PkixPublicKeyPtrOutput) ToPkixPublicKeyPtrOutputWithContext(ctx context.Context) PkixPublicKeyPtrOutput {
 	return o
-}
-
-func (o PkixPublicKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PkixPublicKey] {
-	return pulumix.Output[*PkixPublicKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PkixPublicKeyPtrOutput) Elem() PkixPublicKeyOutput {
@@ -2504,12 +2143,6 @@ func (o PkixPublicKeyArrayOutput) ToPkixPublicKeyArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o PkixPublicKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PkixPublicKey] {
-	return pulumix.Output[[]PkixPublicKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PkixPublicKeyArrayOutput) Index(i pulumi.IntInput) PkixPublicKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PkixPublicKey {
 		return vs[0].([]PkixPublicKey)[vs[1].(int)]
@@ -2541,12 +2174,6 @@ func (o PkixPublicKeyResponseOutput) ToPkixPublicKeyResponseOutputWithContext(ct
 	return o
 }
 
-func (o PkixPublicKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKeyResponse] {
-	return pulumix.Output[PkixPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The ID of this public key. Signatures verified by Binary Authorization must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. This may be explicitly provided by the caller, but it MUST be a valid RFC3986 URI. If `key_id` is left blank and this `PkixPublicKey` is not used in the context of a wrapper (see next paragraph), a default key ID will be computed based on the digest of the DER encoding of the public key. If this `PkixPublicKey` is used in the context of a wrapper that has its own notion of key ID (e.g. `AttestorPublicKey`), then this field can either: * Match that value exactly. * Or be left blank, in which case it behaves exactly as though it is equal to that wrapper value.
 func (o PkixPublicKeyResponseOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v PkixPublicKeyResponse) string { return v.KeyId }).(pulumi.StringOutput)
@@ -2574,12 +2201,6 @@ func (o PkixPublicKeyResponseArrayOutput) ToPkixPublicKeyResponseArrayOutput() P
 
 func (o PkixPublicKeyResponseArrayOutput) ToPkixPublicKeyResponseArrayOutputWithContext(ctx context.Context) PkixPublicKeyResponseArrayOutput {
 	return o
-}
-
-func (o PkixPublicKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PkixPublicKeyResponse] {
-	return pulumix.Output[[]PkixPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PkixPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) PkixPublicKeyResponseOutput {
@@ -2623,12 +2244,6 @@ func (i PkixPublicKeySetArgs) ToPkixPublicKeySetOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PkixPublicKeySetOutput)
 }
 
-func (i PkixPublicKeySetArgs) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKeySet] {
-	return pulumix.Output[PkixPublicKeySet]{
-		OutputState: i.ToPkixPublicKeySetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PkixPublicKeySetArgs) ToPkixPublicKeySetPtrOutput() PkixPublicKeySetPtrOutput {
 	return i.ToPkixPublicKeySetPtrOutputWithContext(context.Background())
 }
@@ -2670,12 +2285,6 @@ func (i *pkixPublicKeySetPtrType) ToPkixPublicKeySetPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PkixPublicKeySetPtrOutput)
 }
 
-func (i *pkixPublicKeySetPtrType) ToOutput(ctx context.Context) pulumix.Output[*PkixPublicKeySet] {
-	return pulumix.Output[*PkixPublicKeySet]{
-		OutputState: i.ToPkixPublicKeySetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A bundle of PKIX public keys, used to authenticate attestation signatures. Generally, a signature is considered to be authenticated by a `PkixPublicKeySet` if any of the public keys verify it (i.e. it is an "OR" of the keys).
 type PkixPublicKeySetOutput struct{ *pulumi.OutputState }
 
@@ -2701,12 +2310,6 @@ func (o PkixPublicKeySetOutput) ToPkixPublicKeySetPtrOutputWithContext(ctx conte
 	}).(PkixPublicKeySetPtrOutput)
 }
 
-func (o PkixPublicKeySetOutput) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKeySet] {
-	return pulumix.Output[PkixPublicKeySet]{
-		OutputState: o.OutputState,
-	}
-}
-
 // `pkix_public_keys` must have at least one entry.
 func (o PkixPublicKeySetOutput) PkixPublicKeys() PkixPublicKeyArrayOutput {
 	return o.ApplyT(func(v PkixPublicKeySet) []PkixPublicKey { return v.PkixPublicKeys }).(PkixPublicKeyArrayOutput)
@@ -2724,12 +2327,6 @@ func (o PkixPublicKeySetPtrOutput) ToPkixPublicKeySetPtrOutput() PkixPublicKeySe
 
 func (o PkixPublicKeySetPtrOutput) ToPkixPublicKeySetPtrOutputWithContext(ctx context.Context) PkixPublicKeySetPtrOutput {
 	return o
-}
-
-func (o PkixPublicKeySetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PkixPublicKeySet] {
-	return pulumix.Output[*PkixPublicKeySet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PkixPublicKeySetPtrOutput) Elem() PkixPublicKeySetOutput {
@@ -2771,12 +2368,6 @@ func (o PkixPublicKeySetResponseOutput) ToPkixPublicKeySetResponseOutput() PkixP
 
 func (o PkixPublicKeySetResponseOutput) ToPkixPublicKeySetResponseOutputWithContext(ctx context.Context) PkixPublicKeySetResponseOutput {
 	return o
-}
-
-func (o PkixPublicKeySetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKeySetResponse] {
-	return pulumix.Output[PkixPublicKeySetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // `pkix_public_keys` must have at least one entry.
@@ -2823,12 +2414,6 @@ func (i ScopeArgs) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeOutput)
 }
 
-func (i ScopeArgs) ToOutput(ctx context.Context) pulumix.Output[Scope] {
-	return pulumix.Output[Scope]{
-		OutputState: i.ToScopeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScopeArgs) ToScopePtrOutput() ScopePtrOutput {
 	return i.ToScopePtrOutputWithContext(context.Background())
 }
@@ -2870,12 +2455,6 @@ func (i *scopePtrType) ToScopePtrOutputWithContext(ctx context.Context) ScopePtr
 	return pulumi.ToOutputWithContext(ctx, i).(ScopePtrOutput)
 }
 
-func (i *scopePtrType) ToOutput(ctx context.Context) pulumix.Output[*Scope] {
-	return pulumix.Output[*Scope]{
-		OutputState: i.ToScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A scope specifier for `CheckSet` objects.
 type ScopeOutput struct{ *pulumi.OutputState }
 
@@ -2901,12 +2480,6 @@ func (o ScopeOutput) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOu
 	}).(ScopePtrOutput)
 }
 
-func (o ScopeOutput) ToOutput(ctx context.Context) pulumix.Output[Scope] {
-	return pulumix.Output[Scope]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Matches all Kubernetes service accounts in the provided namespace, unless a more specific `kubernetes_service_account` scope already matched.
 func (o ScopeOutput) KubernetesNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Scope) *string { return v.KubernetesNamespace }).(pulumi.StringPtrOutput)
@@ -2929,12 +2502,6 @@ func (o ScopePtrOutput) ToScopePtrOutput() ScopePtrOutput {
 
 func (o ScopePtrOutput) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOutput {
 	return o
-}
-
-func (o ScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Scope] {
-	return pulumix.Output[*Scope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopePtrOutput) Elem() ScopeOutput {
@@ -2990,12 +2557,6 @@ func (o ScopeResponseOutput) ToScopeResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ScopeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeResponse] {
-	return pulumix.Output[ScopeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Matches all Kubernetes service accounts in the provided namespace, unless a more specific `kubernetes_service_account` scope already matched.
 func (o ScopeResponseOutput) KubernetesNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v ScopeResponse) string { return v.KubernetesNamespace }).(pulumi.StringOutput)
@@ -3045,12 +2606,6 @@ func (i SimpleSigningAttestationCheckArgs) ToSimpleSigningAttestationCheckOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SimpleSigningAttestationCheckOutput)
 }
 
-func (i SimpleSigningAttestationCheckArgs) ToOutput(ctx context.Context) pulumix.Output[SimpleSigningAttestationCheck] {
-	return pulumix.Output[SimpleSigningAttestationCheck]{
-		OutputState: i.ToSimpleSigningAttestationCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SimpleSigningAttestationCheckArgs) ToSimpleSigningAttestationCheckPtrOutput() SimpleSigningAttestationCheckPtrOutput {
 	return i.ToSimpleSigningAttestationCheckPtrOutputWithContext(context.Background())
 }
@@ -3092,12 +2647,6 @@ func (i *simpleSigningAttestationCheckPtrType) ToSimpleSigningAttestationCheckPt
 	return pulumi.ToOutputWithContext(ctx, i).(SimpleSigningAttestationCheckPtrOutput)
 }
 
-func (i *simpleSigningAttestationCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*SimpleSigningAttestationCheck] {
-	return pulumix.Output[*SimpleSigningAttestationCheck]{
-		OutputState: i.ToSimpleSigningAttestationCheckPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Require a signed [DSSE](https://github.com/secure-systems-lab/dsse) attestation with type SimpleSigning.
 type SimpleSigningAttestationCheckOutput struct{ *pulumi.OutputState }
 
@@ -3123,12 +2672,6 @@ func (o SimpleSigningAttestationCheckOutput) ToSimpleSigningAttestationCheckPtrO
 	}).(SimpleSigningAttestationCheckPtrOutput)
 }
 
-func (o SimpleSigningAttestationCheckOutput) ToOutput(ctx context.Context) pulumix.Output[SimpleSigningAttestationCheck] {
-	return pulumix.Output[SimpleSigningAttestationCheck]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The authenticators required by this check to verify an attestation. Typically this is one or more PKIX public keys for signature verification. Only one authenticator needs to consider an attestation verified in order for an attestation to be considered fully authenticated. In otherwords, this list of authenticators is an "OR" of the authenticator results. At least one authenticator is required.
 func (o SimpleSigningAttestationCheckOutput) AttestationAuthenticators() AttestationAuthenticatorArrayOutput {
 	return o.ApplyT(func(v SimpleSigningAttestationCheck) []AttestationAuthenticator { return v.AttestationAuthenticators }).(AttestationAuthenticatorArrayOutput)
@@ -3151,12 +2694,6 @@ func (o SimpleSigningAttestationCheckPtrOutput) ToSimpleSigningAttestationCheckP
 
 func (o SimpleSigningAttestationCheckPtrOutput) ToSimpleSigningAttestationCheckPtrOutputWithContext(ctx context.Context) SimpleSigningAttestationCheckPtrOutput {
 	return o
-}
-
-func (o SimpleSigningAttestationCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SimpleSigningAttestationCheck] {
-	return pulumix.Output[*SimpleSigningAttestationCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SimpleSigningAttestationCheckPtrOutput) Elem() SimpleSigningAttestationCheckOutput {
@@ -3212,12 +2749,6 @@ func (o SimpleSigningAttestationCheckResponseOutput) ToSimpleSigningAttestationC
 	return o
 }
 
-func (o SimpleSigningAttestationCheckResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SimpleSigningAttestationCheckResponse] {
-	return pulumix.Output[SimpleSigningAttestationCheckResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The authenticators required by this check to verify an attestation. Typically this is one or more PKIX public keys for signature verification. Only one authenticator needs to consider an attestation verified in order for an attestation to be considered fully authenticated. In otherwords, this list of authenticators is an "OR" of the authenticator results. At least one authenticator is required.
 func (o SimpleSigningAttestationCheckResponseOutput) AttestationAuthenticators() AttestationAuthenticatorResponseArrayOutput {
 	return o.ApplyT(func(v SimpleSigningAttestationCheckResponse) []AttestationAuthenticatorResponse {
@@ -3265,12 +2796,6 @@ func (i SlsaCheckArgs) ToSlsaCheckOutputWithContext(ctx context.Context) SlsaChe
 	return pulumi.ToOutputWithContext(ctx, i).(SlsaCheckOutput)
 }
 
-func (i SlsaCheckArgs) ToOutput(ctx context.Context) pulumix.Output[SlsaCheck] {
-	return pulumix.Output[SlsaCheck]{
-		OutputState: i.ToSlsaCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SlsaCheckArgs) ToSlsaCheckPtrOutput() SlsaCheckPtrOutput {
 	return i.ToSlsaCheckPtrOutputWithContext(context.Background())
 }
@@ -3312,12 +2837,6 @@ func (i *slsaCheckPtrType) ToSlsaCheckPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SlsaCheckPtrOutput)
 }
 
-func (i *slsaCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*SlsaCheck] {
-	return pulumix.Output[*SlsaCheck]{
-		OutputState: i.ToSlsaCheckPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A SLSA provenance attestation check, which ensures that images are built by a trusted builder using source code from its trusted repositories only.
 type SlsaCheckOutput struct{ *pulumi.OutputState }
 
@@ -3343,12 +2862,6 @@ func (o SlsaCheckOutput) ToSlsaCheckPtrOutputWithContext(ctx context.Context) Sl
 	}).(SlsaCheckPtrOutput)
 }
 
-func (o SlsaCheckOutput) ToOutput(ctx context.Context) pulumix.Output[SlsaCheck] {
-	return pulumix.Output[SlsaCheck]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies a list of verification rules for the SLSA attestations. An image is considered compliant with the SlsaCheck if any of the rules are satisfied.
 func (o SlsaCheckOutput) Rules() VerificationRuleArrayOutput {
 	return o.ApplyT(func(v SlsaCheck) []VerificationRule { return v.Rules }).(VerificationRuleArrayOutput)
@@ -3366,12 +2879,6 @@ func (o SlsaCheckPtrOutput) ToSlsaCheckPtrOutput() SlsaCheckPtrOutput {
 
 func (o SlsaCheckPtrOutput) ToSlsaCheckPtrOutputWithContext(ctx context.Context) SlsaCheckPtrOutput {
 	return o
-}
-
-func (o SlsaCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SlsaCheck] {
-	return pulumix.Output[*SlsaCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SlsaCheckPtrOutput) Elem() SlsaCheckOutput {
@@ -3415,12 +2922,6 @@ func (o SlsaCheckResponseOutput) ToSlsaCheckResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o SlsaCheckResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SlsaCheckResponse] {
-	return pulumix.Output[SlsaCheckResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies a list of verification rules for the SLSA attestations. An image is considered compliant with the SlsaCheck if any of the rules are satisfied.
 func (o SlsaCheckResponseOutput) Rules() VerificationRuleResponseArrayOutput {
 	return o.ApplyT(func(v SlsaCheckResponse) []VerificationRuleResponse { return v.Rules }).(VerificationRuleResponseArrayOutput)
@@ -3459,12 +2960,6 @@ func (i TrustedDirectoryCheckArgs) ToTrustedDirectoryCheckOutput() TrustedDirect
 
 func (i TrustedDirectoryCheckArgs) ToTrustedDirectoryCheckOutputWithContext(ctx context.Context) TrustedDirectoryCheckOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrustedDirectoryCheckOutput)
-}
-
-func (i TrustedDirectoryCheckArgs) ToOutput(ctx context.Context) pulumix.Output[TrustedDirectoryCheck] {
-	return pulumix.Output[TrustedDirectoryCheck]{
-		OutputState: i.ToTrustedDirectoryCheckOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i TrustedDirectoryCheckArgs) ToTrustedDirectoryCheckPtrOutput() TrustedDirectoryCheckPtrOutput {
@@ -3508,12 +3003,6 @@ func (i *trustedDirectoryCheckPtrType) ToTrustedDirectoryCheckPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TrustedDirectoryCheckPtrOutput)
 }
 
-func (i *trustedDirectoryCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*TrustedDirectoryCheck] {
-	return pulumix.Output[*TrustedDirectoryCheck]{
-		OutputState: i.ToTrustedDirectoryCheckPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A trusted directory check, which rejects images that do not come from the set of user-configured trusted directories.
 type TrustedDirectoryCheckOutput struct{ *pulumi.OutputState }
 
@@ -3539,12 +3028,6 @@ func (o TrustedDirectoryCheckOutput) ToTrustedDirectoryCheckPtrOutputWithContext
 	}).(TrustedDirectoryCheckPtrOutput)
 }
 
-func (o TrustedDirectoryCheckOutput) ToOutput(ctx context.Context) pulumix.Output[TrustedDirectoryCheck] {
-	return pulumix.Output[TrustedDirectoryCheck]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of trusted directory patterns. A pattern is in the form "registry/path/to/directory". The registry domain part is defined as two or more dot-separated words, e.g., `us.pkg.dev`, or `gcr.io`. Additionally, `*` can be used in three ways as wildcards: 1. leading `*` to match varying prefixes in registry subdomain (useful for location prefixes); 2. trailing `*` after registry/ to match varying endings; 3. trailing `**` after registry/ to match "/" as well. For example: -- `gcr.io/my-project/my-repo` is valid to match a single directory -- `*-docker.pkg.dev/my-project/my-repo` or `*.gcr.io/my-project` are valid to match varying prefixes -- `gcr.io/my-project/*` will match all direct directories in `my-project` -- `gcr.io/my-project/**` would match all directories in `my-project` -- `gcr.i*` is not allowed since the registry is not completely specified -- `sub*domain.gcr.io/nginx` is not valid because only leading `*` or trailing `*` are allowed. -- `*pkg.dev/my-project/my-repo` is not valid because leading `*` can only match subdomain -- `**-docker.pkg.dev` is not valid because one leading `*` is allowed, and that it cannot match `/`
 func (o TrustedDirectoryCheckOutput) TrustedDirPatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TrustedDirectoryCheck) []string { return v.TrustedDirPatterns }).(pulumi.StringArrayOutput)
@@ -3562,12 +3045,6 @@ func (o TrustedDirectoryCheckPtrOutput) ToTrustedDirectoryCheckPtrOutput() Trust
 
 func (o TrustedDirectoryCheckPtrOutput) ToTrustedDirectoryCheckPtrOutputWithContext(ctx context.Context) TrustedDirectoryCheckPtrOutput {
 	return o
-}
-
-func (o TrustedDirectoryCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrustedDirectoryCheck] {
-	return pulumix.Output[*TrustedDirectoryCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrustedDirectoryCheckPtrOutput) Elem() TrustedDirectoryCheckOutput {
@@ -3609,12 +3086,6 @@ func (o TrustedDirectoryCheckResponseOutput) ToTrustedDirectoryCheckResponseOutp
 
 func (o TrustedDirectoryCheckResponseOutput) ToTrustedDirectoryCheckResponseOutputWithContext(ctx context.Context) TrustedDirectoryCheckResponseOutput {
 	return o
-}
-
-func (o TrustedDirectoryCheckResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrustedDirectoryCheckResponse] {
-	return pulumix.Output[TrustedDirectoryCheckResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of trusted directory patterns. A pattern is in the form "registry/path/to/directory". The registry domain part is defined as two or more dot-separated words, e.g., `us.pkg.dev`, or `gcr.io`. Additionally, `*` can be used in three ways as wildcards: 1. leading `*` to match varying prefixes in registry subdomain (useful for location prefixes); 2. trailing `*` after registry/ to match varying endings; 3. trailing `**` after registry/ to match "/" as well. For example: -- `gcr.io/my-project/my-repo` is valid to match a single directory -- `*-docker.pkg.dev/my-project/my-repo` or `*.gcr.io/my-project` are valid to match varying prefixes -- `gcr.io/my-project/*` will match all direct directories in `my-project` -- `gcr.io/my-project/**` would match all directories in `my-project` -- `gcr.i*` is not allowed since the registry is not completely specified -- `sub*domain.gcr.io/nginx` is not valid because only leading `*` or trailing `*` are allowed. -- `*pkg.dev/my-project/my-repo` is not valid because leading `*` can only match subdomain -- `**-docker.pkg.dev` is not valid because one leading `*` is allowed, and that it cannot match `/`
@@ -3661,12 +3132,6 @@ func (i UserOwnedGrafeasNoteArgs) ToUserOwnedGrafeasNoteOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedGrafeasNoteOutput)
 }
 
-func (i UserOwnedGrafeasNoteArgs) ToOutput(ctx context.Context) pulumix.Output[UserOwnedGrafeasNote] {
-	return pulumix.Output[UserOwnedGrafeasNote]{
-		OutputState: i.ToUserOwnedGrafeasNoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserOwnedGrafeasNoteArgs) ToUserOwnedGrafeasNotePtrOutput() UserOwnedGrafeasNotePtrOutput {
 	return i.ToUserOwnedGrafeasNotePtrOutputWithContext(context.Background())
 }
@@ -3708,12 +3173,6 @@ func (i *userOwnedGrafeasNotePtrType) ToUserOwnedGrafeasNotePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedGrafeasNotePtrOutput)
 }
 
-func (i *userOwnedGrafeasNotePtrType) ToOutput(ctx context.Context) pulumix.Output[*UserOwnedGrafeasNote] {
-	return pulumix.Output[*UserOwnedGrafeasNote]{
-		OutputState: i.ToUserOwnedGrafeasNotePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An user owned Grafeas note references a Grafeas Attestation.Authority Note created by the user.
 type UserOwnedGrafeasNoteOutput struct{ *pulumi.OutputState }
 
@@ -3739,12 +3198,6 @@ func (o UserOwnedGrafeasNoteOutput) ToUserOwnedGrafeasNotePtrOutputWithContext(c
 	}).(UserOwnedGrafeasNotePtrOutput)
 }
 
-func (o UserOwnedGrafeasNoteOutput) ToOutput(ctx context.Context) pulumix.Output[UserOwnedGrafeasNote] {
-	return pulumix.Output[UserOwnedGrafeasNote]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
 func (o UserOwnedGrafeasNoteOutput) NoteReference() pulumi.StringOutput {
 	return o.ApplyT(func(v UserOwnedGrafeasNote) string { return v.NoteReference }).(pulumi.StringOutput)
@@ -3767,12 +3220,6 @@ func (o UserOwnedGrafeasNotePtrOutput) ToUserOwnedGrafeasNotePtrOutput() UserOwn
 
 func (o UserOwnedGrafeasNotePtrOutput) ToUserOwnedGrafeasNotePtrOutputWithContext(ctx context.Context) UserOwnedGrafeasNotePtrOutput {
 	return o
-}
-
-func (o UserOwnedGrafeasNotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserOwnedGrafeasNote] {
-	return pulumix.Output[*UserOwnedGrafeasNote]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserOwnedGrafeasNotePtrOutput) Elem() UserOwnedGrafeasNoteOutput {
@@ -3828,12 +3275,6 @@ func (o UserOwnedGrafeasNoteResponseOutput) ToUserOwnedGrafeasNoteResponseOutput
 
 func (o UserOwnedGrafeasNoteResponseOutput) ToUserOwnedGrafeasNoteResponseOutputWithContext(ctx context.Context) UserOwnedGrafeasNoteResponseOutput {
 	return o
-}
-
-func (o UserOwnedGrafeasNoteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserOwnedGrafeasNoteResponse] {
-	return pulumix.Output[UserOwnedGrafeasNoteResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This field will contain the service account email address that this attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
@@ -3898,12 +3339,6 @@ func (i VerificationRuleArgs) ToVerificationRuleOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VerificationRuleOutput)
 }
 
-func (i VerificationRuleArgs) ToOutput(ctx context.Context) pulumix.Output[VerificationRule] {
-	return pulumix.Output[VerificationRule]{
-		OutputState: i.ToVerificationRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VerificationRuleArrayInput is an input type that accepts VerificationRuleArray and VerificationRuleArrayOutput values.
 // You can construct a concrete instance of `VerificationRuleArrayInput` via:
 //
@@ -3929,12 +3364,6 @@ func (i VerificationRuleArray) ToVerificationRuleArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VerificationRuleArrayOutput)
 }
 
-func (i VerificationRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]VerificationRule] {
-	return pulumix.Output[[]VerificationRule]{
-		OutputState: i.ToVerificationRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies verification rules for evaluating the SLSA attestations including: which builders to trust, where to fetch the SLSA attestations generated by those builders, and other builder-specific evaluation rules such as which source repositories are trusted. An image is considered verified by the rule if any of the fetched SLSA attestations is verified.
 type VerificationRuleOutput struct{ *pulumi.OutputState }
 
@@ -3948,12 +3377,6 @@ func (o VerificationRuleOutput) ToVerificationRuleOutput() VerificationRuleOutpu
 
 func (o VerificationRuleOutput) ToVerificationRuleOutputWithContext(ctx context.Context) VerificationRuleOutput {
 	return o
-}
-
-func (o VerificationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[VerificationRule] {
-	return pulumix.Output[VerificationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies where to fetch the provenances attestations generated by the builder (group).
@@ -3990,12 +3413,6 @@ func (o VerificationRuleArrayOutput) ToVerificationRuleArrayOutputWithContext(ct
 	return o
 }
 
-func (o VerificationRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VerificationRule] {
-	return pulumix.Output[[]VerificationRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VerificationRuleArrayOutput) Index(i pulumi.IntInput) VerificationRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationRule {
 		return vs[0].([]VerificationRule)[vs[1].(int)]
@@ -4027,12 +3444,6 @@ func (o VerificationRuleResponseOutput) ToVerificationRuleResponseOutput() Verif
 
 func (o VerificationRuleResponseOutput) ToVerificationRuleResponseOutputWithContext(ctx context.Context) VerificationRuleResponseOutput {
 	return o
-}
-
-func (o VerificationRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VerificationRuleResponse] {
-	return pulumix.Output[VerificationRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies where to fetch the provenances attestations generated by the builder (group).
@@ -4067,12 +3478,6 @@ func (o VerificationRuleResponseArrayOutput) ToVerificationRuleResponseArrayOutp
 
 func (o VerificationRuleResponseArrayOutput) ToVerificationRuleResponseArrayOutputWithContext(ctx context.Context) VerificationRuleResponseArrayOutput {
 	return o
-}
-
-func (o VerificationRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VerificationRuleResponse] {
-	return pulumix.Output[[]VerificationRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VerificationRuleResponseArrayOutput) Index(i pulumi.IntInput) VerificationRuleResponseOutput {
@@ -4132,12 +3537,6 @@ func (i VulnerabilityCheckArgs) ToVulnerabilityCheckOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityCheckOutput)
 }
 
-func (i VulnerabilityCheckArgs) ToOutput(ctx context.Context) pulumix.Output[VulnerabilityCheck] {
-	return pulumix.Output[VulnerabilityCheck]{
-		OutputState: i.ToVulnerabilityCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VulnerabilityCheckArgs) ToVulnerabilityCheckPtrOutput() VulnerabilityCheckPtrOutput {
 	return i.ToVulnerabilityCheckPtrOutputWithContext(context.Background())
 }
@@ -4179,12 +3578,6 @@ func (i *vulnerabilityCheckPtrType) ToVulnerabilityCheckPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityCheckPtrOutput)
 }
 
-func (i *vulnerabilityCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*VulnerabilityCheck] {
-	return pulumix.Output[*VulnerabilityCheck]{
-		OutputState: i.ToVulnerabilityCheckPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An image vulnerability check, which rejects images that violate the configured vulnerability rules.
 type VulnerabilityCheckOutput struct{ *pulumi.OutputState }
 
@@ -4208,12 +3601,6 @@ func (o VulnerabilityCheckOutput) ToVulnerabilityCheckPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityCheck) *VulnerabilityCheck {
 		return &v
 	}).(VulnerabilityCheckPtrOutput)
-}
-
-func (o VulnerabilityCheckOutput) ToOutput(ctx context.Context) pulumix.Output[VulnerabilityCheck] {
-	return pulumix.Output[VulnerabilityCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A list of specific CVEs to ignore even if the vulnerability level violates `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will allow vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
@@ -4255,12 +3642,6 @@ func (o VulnerabilityCheckPtrOutput) ToVulnerabilityCheckPtrOutput() Vulnerabili
 
 func (o VulnerabilityCheckPtrOutput) ToVulnerabilityCheckPtrOutputWithContext(ctx context.Context) VulnerabilityCheckPtrOutput {
 	return o
-}
-
-func (o VulnerabilityCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VulnerabilityCheck] {
-	return pulumix.Output[*VulnerabilityCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VulnerabilityCheckPtrOutput) Elem() VulnerabilityCheckOutput {
@@ -4350,12 +3731,6 @@ func (o VulnerabilityCheckResponseOutput) ToVulnerabilityCheckResponseOutput() V
 
 func (o VulnerabilityCheckResponseOutput) ToVulnerabilityCheckResponseOutputWithContext(ctx context.Context) VulnerabilityCheckResponseOutput {
 	return o
-}
-
-func (o VulnerabilityCheckResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VulnerabilityCheckResponse] {
-	return pulumix.Output[VulnerabilityCheckResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A list of specific CVEs to ignore even if the vulnerability level violates `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will allow vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.

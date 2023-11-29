@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified network endpoint group.
@@ -114,12 +113,6 @@ func (o LookupNetworkEndpointGroupResultOutput) ToLookupNetworkEndpointGroupResu
 
 func (o LookupNetworkEndpointGroupResultOutput) ToLookupNetworkEndpointGroupResultOutputWithContext(ctx context.Context) LookupNetworkEndpointGroupResultOutput {
 	return o
-}
-
-func (o LookupNetworkEndpointGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkEndpointGroupResult] {
-	return pulumix.Output[LookupNetworkEndpointGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Metadata defined as annotations on the network endpoint group.

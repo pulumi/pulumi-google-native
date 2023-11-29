@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates Assured Workload.
@@ -238,12 +237,6 @@ func (i *Workload) ToWorkloadOutputWithContext(ctx context.Context) WorkloadOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadOutput)
 }
 
-func (i *Workload) ToOutput(ctx context.Context) pulumix.Output[*Workload] {
-	return pulumix.Output[*Workload]{
-		OutputState: i.ToWorkloadOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadOutput struct{ *pulumi.OutputState }
 
 func (WorkloadOutput) ElementType() reflect.Type {
@@ -256,12 +249,6 @@ func (o WorkloadOutput) ToWorkloadOutput() WorkloadOutput {
 
 func (o WorkloadOutput) ToWorkloadOutputWithContext(ctx context.Context) WorkloadOutput {
 	return o
-}
-
-func (o WorkloadOutput) ToOutput(ctx context.Context) pulumix.Output[*Workload] {
-	return pulumix.Output[*Workload]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.

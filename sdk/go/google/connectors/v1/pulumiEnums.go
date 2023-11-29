@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -278,12 +266,6 @@ func (o AuthConfigAuthTypeOutput) ToAuthConfigAuthTypePtrOutputWithContext(ctx c
 	}).(AuthConfigAuthTypePtrOutput)
 }
 
-func (o AuthConfigAuthTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuthConfigAuthType] {
-	return pulumix.Output[AuthConfigAuthType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthConfigAuthTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -317,12 +299,6 @@ func (o AuthConfigAuthTypePtrOutput) ToAuthConfigAuthTypePtrOutput() AuthConfigA
 
 func (o AuthConfigAuthTypePtrOutput) ToAuthConfigAuthTypePtrOutputWithContext(ctx context.Context) AuthConfigAuthTypePtrOutput {
 	return o
-}
-
-func (o AuthConfigAuthTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigAuthType] {
-	return pulumix.Output[*AuthConfigAuthType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthConfigAuthTypePtrOutput) Elem() AuthConfigAuthTypeOutput {
@@ -465,12 +441,6 @@ func (o ConnectionEventingEnablementTypeOutput) ToConnectionEventingEnablementTy
 	}).(ConnectionEventingEnablementTypePtrOutput)
 }
 
-func (o ConnectionEventingEnablementTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionEventingEnablementType] {
-	return pulumix.Output[ConnectionEventingEnablementType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionEventingEnablementTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -504,12 +474,6 @@ func (o ConnectionEventingEnablementTypePtrOutput) ToConnectionEventingEnablemen
 
 func (o ConnectionEventingEnablementTypePtrOutput) ToConnectionEventingEnablementTypePtrOutputWithContext(ctx context.Context) ConnectionEventingEnablementTypePtrOutput {
 	return o
-}
-
-func (o ConnectionEventingEnablementTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionEventingEnablementType] {
-	return pulumix.Output[*ConnectionEventingEnablementType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionEventingEnablementTypePtrOutput) Elem() ConnectionEventingEnablementTypeOutput {
@@ -652,12 +616,6 @@ func (o CustomConnectorCustomConnectorTypeOutput) ToCustomConnectorCustomConnect
 	}).(CustomConnectorCustomConnectorTypePtrOutput)
 }
 
-func (o CustomConnectorCustomConnectorTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CustomConnectorCustomConnectorType] {
-	return pulumix.Output[CustomConnectorCustomConnectorType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomConnectorCustomConnectorTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -691,12 +649,6 @@ func (o CustomConnectorCustomConnectorTypePtrOutput) ToCustomConnectorCustomConn
 
 func (o CustomConnectorCustomConnectorTypePtrOutput) ToCustomConnectorCustomConnectorTypePtrOutputWithContext(ctx context.Context) CustomConnectorCustomConnectorTypePtrOutput {
 	return o
-}
-
-func (o CustomConnectorCustomConnectorTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorCustomConnectorType] {
-	return pulumix.Output[*CustomConnectorCustomConnectorType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomConnectorCustomConnectorTypePtrOutput) Elem() CustomConnectorCustomConnectorTypeOutput {
@@ -839,12 +791,6 @@ func (o CustomConnectorVersionTypeOutput) ToCustomConnectorVersionTypePtrOutputW
 	}).(CustomConnectorVersionTypePtrOutput)
 }
 
-func (o CustomConnectorVersionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CustomConnectorVersionType] {
-	return pulumix.Output[CustomConnectorVersionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomConnectorVersionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -878,12 +824,6 @@ func (o CustomConnectorVersionTypePtrOutput) ToCustomConnectorVersionTypePtrOutp
 
 func (o CustomConnectorVersionTypePtrOutput) ToCustomConnectorVersionTypePtrOutputWithContext(ctx context.Context) CustomConnectorVersionTypePtrOutput {
 	return o
-}
-
-func (o CustomConnectorVersionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorVersionType] {
-	return pulumix.Output[*CustomConnectorVersionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomConnectorVersionTypePtrOutput) Elem() CustomConnectorVersionTypeOutput {
@@ -1026,12 +966,6 @@ func (o EncryptionKeyTypeOutput) ToEncryptionKeyTypePtrOutputWithContext(ctx con
 	}).(EncryptionKeyTypePtrOutput)
 }
 
-func (o EncryptionKeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionKeyType] {
-	return pulumix.Output[EncryptionKeyType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EncryptionKeyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1065,12 +999,6 @@ func (o EncryptionKeyTypePtrOutput) ToEncryptionKeyTypePtrOutput() EncryptionKey
 
 func (o EncryptionKeyTypePtrOutput) ToEncryptionKeyTypePtrOutputWithContext(ctx context.Context) EncryptionKeyTypePtrOutput {
 	return o
-}
-
-func (o EncryptionKeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeyType] {
-	return pulumix.Output[*EncryptionKeyType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionKeyTypePtrOutput) Elem() EncryptionKeyTypeOutput {
@@ -1211,12 +1139,6 @@ func (o EventSubscriptionDestinationTypeOutput) ToEventSubscriptionDestinationTy
 	}).(EventSubscriptionDestinationTypePtrOutput)
 }
 
-func (o EventSubscriptionDestinationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EventSubscriptionDestinationType] {
-	return pulumix.Output[EventSubscriptionDestinationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EventSubscriptionDestinationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1250,12 +1172,6 @@ func (o EventSubscriptionDestinationTypePtrOutput) ToEventSubscriptionDestinatio
 
 func (o EventSubscriptionDestinationTypePtrOutput) ToEventSubscriptionDestinationTypePtrOutputWithContext(ctx context.Context) EventSubscriptionDestinationTypePtrOutput {
 	return o
-}
-
-func (o EventSubscriptionDestinationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventSubscriptionDestinationType] {
-	return pulumix.Output[*EventSubscriptionDestinationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EventSubscriptionDestinationTypePtrOutput) Elem() EventSubscriptionDestinationTypeOutput {
@@ -1398,12 +1314,6 @@ func (o JMSTypeOutput) ToJMSTypePtrOutputWithContext(ctx context.Context) JMSTyp
 	}).(JMSTypePtrOutput)
 }
 
-func (o JMSTypeOutput) ToOutput(ctx context.Context) pulumix.Output[JMSType] {
-	return pulumix.Output[JMSType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JMSTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1437,12 +1347,6 @@ func (o JMSTypePtrOutput) ToJMSTypePtrOutput() JMSTypePtrOutput {
 
 func (o JMSTypePtrOutput) ToJMSTypePtrOutputWithContext(ctx context.Context) JMSTypePtrOutput {
 	return o
-}
-
-func (o JMSTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JMSType] {
-	return pulumix.Output[*JMSType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JMSTypePtrOutput) Elem() JMSTypeOutput {
@@ -1583,12 +1487,6 @@ func (o SslConfigClientCertTypeOutput) ToSslConfigClientCertTypePtrOutputWithCon
 	}).(SslConfigClientCertTypePtrOutput)
 }
 
-func (o SslConfigClientCertTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SslConfigClientCertType] {
-	return pulumix.Output[SslConfigClientCertType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SslConfigClientCertTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1622,12 +1520,6 @@ func (o SslConfigClientCertTypePtrOutput) ToSslConfigClientCertTypePtrOutput() S
 
 func (o SslConfigClientCertTypePtrOutput) ToSslConfigClientCertTypePtrOutputWithContext(ctx context.Context) SslConfigClientCertTypePtrOutput {
 	return o
-}
-
-func (o SslConfigClientCertTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslConfigClientCertType] {
-	return pulumix.Output[*SslConfigClientCertType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SslConfigClientCertTypePtrOutput) Elem() SslConfigClientCertTypeOutput {
@@ -1768,12 +1660,6 @@ func (o SslConfigServerCertTypeOutput) ToSslConfigServerCertTypePtrOutputWithCon
 	}).(SslConfigServerCertTypePtrOutput)
 }
 
-func (o SslConfigServerCertTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SslConfigServerCertType] {
-	return pulumix.Output[SslConfigServerCertType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SslConfigServerCertTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1807,12 +1693,6 @@ func (o SslConfigServerCertTypePtrOutput) ToSslConfigServerCertTypePtrOutput() S
 
 func (o SslConfigServerCertTypePtrOutput) ToSslConfigServerCertTypePtrOutputWithContext(ctx context.Context) SslConfigServerCertTypePtrOutput {
 	return o
-}
-
-func (o SslConfigServerCertTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslConfigServerCertType] {
-	return pulumix.Output[*SslConfigServerCertType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SslConfigServerCertTypePtrOutput) Elem() SslConfigServerCertTypeOutput {
@@ -1955,12 +1835,6 @@ func (o SslConfigTrustModelOutput) ToSslConfigTrustModelPtrOutputWithContext(ctx
 	}).(SslConfigTrustModelPtrOutput)
 }
 
-func (o SslConfigTrustModelOutput) ToOutput(ctx context.Context) pulumix.Output[SslConfigTrustModel] {
-	return pulumix.Output[SslConfigTrustModel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SslConfigTrustModelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1994,12 +1868,6 @@ func (o SslConfigTrustModelPtrOutput) ToSslConfigTrustModelPtrOutput() SslConfig
 
 func (o SslConfigTrustModelPtrOutput) ToSslConfigTrustModelPtrOutputWithContext(ctx context.Context) SslConfigTrustModelPtrOutput {
 	return o
-}
-
-func (o SslConfigTrustModelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslConfigTrustModel] {
-	return pulumix.Output[*SslConfigTrustModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SslConfigTrustModelPtrOutput) Elem() SslConfigTrustModelOutput {
@@ -2142,12 +2010,6 @@ func (o SslConfigTypeOutput) ToSslConfigTypePtrOutputWithContext(ctx context.Con
 	}).(SslConfigTypePtrOutput)
 }
 
-func (o SslConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SslConfigType] {
-	return pulumix.Output[SslConfigType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SslConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2181,12 +2043,6 @@ func (o SslConfigTypePtrOutput) ToSslConfigTypePtrOutput() SslConfigTypePtrOutpu
 
 func (o SslConfigTypePtrOutput) ToSslConfigTypePtrOutputWithContext(ctx context.Context) SslConfigTypePtrOutput {
 	return o
-}
-
-func (o SslConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslConfigType] {
-	return pulumix.Output[*SslConfigType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SslConfigTypePtrOutput) Elem() SslConfigTypeOutput {

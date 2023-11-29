@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a TensorboardTimeSeries.
@@ -177,12 +176,6 @@ func (i *TimeSeries) ToTimeSeriesOutputWithContext(ctx context.Context) TimeSeri
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesOutput)
 }
 
-func (i *TimeSeries) ToOutput(ctx context.Context) pulumix.Output[*TimeSeries] {
-	return pulumix.Output[*TimeSeries]{
-		OutputState: i.ToTimeSeriesOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeSeriesOutput struct{ *pulumi.OutputState }
 
 func (TimeSeriesOutput) ElementType() reflect.Type {
@@ -195,12 +188,6 @@ func (o TimeSeriesOutput) ToTimeSeriesOutput() TimeSeriesOutput {
 
 func (o TimeSeriesOutput) ToTimeSeriesOutputWithContext(ctx context.Context) TimeSeriesOutput {
 	return o
-}
-
-func (o TimeSeriesOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeSeries] {
-	return pulumix.Output[*TimeSeries]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this TensorboardTimeSeries was created.

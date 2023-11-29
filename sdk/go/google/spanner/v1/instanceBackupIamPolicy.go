@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource.
@@ -129,12 +128,6 @@ func (i *InstanceBackupIamPolicy) ToInstanceBackupIamPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupIamPolicyOutput)
 }
 
-func (i *InstanceBackupIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*InstanceBackupIamPolicy] {
-	return pulumix.Output[*InstanceBackupIamPolicy]{
-		OutputState: i.ToInstanceBackupIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceBackupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceBackupIamPolicyOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o InstanceBackupIamPolicyOutput) ToInstanceBackupIamPolicyOutput() Instanc
 
 func (o InstanceBackupIamPolicyOutput) ToInstanceBackupIamPolicyOutputWithContext(ctx context.Context) InstanceBackupIamPolicyOutput {
 	return o
-}
-
-func (o InstanceBackupIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceBackupIamPolicy] {
-	return pulumix.Output[*InstanceBackupIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceBackupIamPolicyOutput) BackupId() pulumi.StringOutput {

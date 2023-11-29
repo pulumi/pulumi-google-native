@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Adds a user provided trial to a study.
@@ -143,12 +142,6 @@ func (i *Trial) ToTrialOutputWithContext(ctx context.Context) TrialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrialOutput)
 }
 
-func (i *Trial) ToOutput(ctx context.Context) pulumix.Output[*Trial] {
-	return pulumix.Output[*Trial]{
-		OutputState: i.ToTrialOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrialOutput struct{ *pulumi.OutputState }
 
 func (TrialOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o TrialOutput) ToTrialOutput() TrialOutput {
 
 func (o TrialOutput) ToTrialOutputWithContext(ctx context.Context) TrialOutput {
 	return o
-}
-
-func (o TrialOutput) ToOutput(ctx context.Context) pulumix.Output[*Trial] {
-	return pulumix.Output[*Trial]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier of the client that originally requested this trial.

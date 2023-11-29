@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new WorkflowInvocation in a given Repository.
@@ -133,12 +132,6 @@ func (i *WorkflowInvocation) ToWorkflowInvocationOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowInvocationOutput)
 }
 
-func (i *WorkflowInvocation) ToOutput(ctx context.Context) pulumix.Output[*WorkflowInvocation] {
-	return pulumix.Output[*WorkflowInvocation]{
-		OutputState: i.ToWorkflowInvocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowInvocationOutput struct{ *pulumi.OutputState }
 
 func (WorkflowInvocationOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o WorkflowInvocationOutput) ToWorkflowInvocationOutput() WorkflowInvocatio
 
 func (o WorkflowInvocationOutput) ToWorkflowInvocationOutputWithContext(ctx context.Context) WorkflowInvocationOutput {
 	return o
-}
-
-func (o WorkflowInvocationOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowInvocation] {
-	return pulumix.Output[*WorkflowInvocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.

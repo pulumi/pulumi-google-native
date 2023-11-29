@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a debug session for a deployed API Proxy revision.
@@ -159,12 +158,6 @@ func (i *DebugSession) ToDebugSessionOutputWithContext(ctx context.Context) Debu
 	return pulumi.ToOutputWithContext(ctx, i).(DebugSessionOutput)
 }
 
-func (i *DebugSession) ToOutput(ctx context.Context) pulumix.Output[*DebugSession] {
-	return pulumix.Output[*DebugSession]{
-		OutputState: i.ToDebugSessionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DebugSessionOutput struct{ *pulumi.OutputState }
 
 func (DebugSessionOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o DebugSessionOutput) ToDebugSessionOutput() DebugSessionOutput {
 
 func (o DebugSessionOutput) ToDebugSessionOutputWithContext(ctx context.Context) DebugSessionOutput {
 	return o
-}
-
-func (o DebugSessionOutput) ToOutput(ctx context.Context) pulumix.Output[*DebugSession] {
-	return pulumix.Output[*DebugSession]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DebugSessionOutput) ApiId() pulumi.StringOutput {

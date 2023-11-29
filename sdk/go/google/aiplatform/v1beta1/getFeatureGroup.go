@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single FeatureGroup.
@@ -81,12 +80,6 @@ func (o LookupFeatureGroupResultOutput) ToLookupFeatureGroupResultOutput() Looku
 
 func (o LookupFeatureGroupResultOutput) ToLookupFeatureGroupResultOutputWithContext(ctx context.Context) LookupFeatureGroupResultOutput {
 	return o
-}
-
-func (o LookupFeatureGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFeatureGroupResult] {
-	return pulumix.Output[LookupFeatureGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entity_id and a feature_timestamp column in the source.

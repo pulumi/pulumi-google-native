@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i ApplicationInfoArgs) ToApplicationInfoOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInfoOutput)
 }
 
-func (i ApplicationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationInfo] {
-	return pulumix.Output[ApplicationInfo]{
-		OutputState: i.ToApplicationInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Application related details of a job posting.
 type ApplicationInfoOutput struct{ *pulumi.OutputState }
 
@@ -76,12 +69,6 @@ func (o ApplicationInfoOutput) ToApplicationInfoOutput() ApplicationInfoOutput {
 
 func (o ApplicationInfoOutput) ToApplicationInfoOutputWithContext(ctx context.Context) ApplicationInfoOutput {
 	return o
-}
-
-func (o ApplicationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInfo] {
-	return pulumix.Output[ApplicationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional but at least one of uris, emails or instruction must be specified. Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255.
@@ -124,12 +111,6 @@ func (o ApplicationInfoResponseOutput) ToApplicationInfoResponseOutputWithContex
 	return o
 }
 
-func (o ApplicationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInfoResponse] {
-	return pulumix.Output[ApplicationInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional but at least one of uris, emails or instruction must be specified. Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255.
 func (o ApplicationInfoResponseOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationInfoResponse) []string { return v.Emails }).(pulumi.StringArrayOutput)
@@ -164,12 +145,6 @@ func (o CompanyDerivedInfoResponseOutput) ToCompanyDerivedInfoResponseOutput() C
 
 func (o CompanyDerivedInfoResponseOutput) ToCompanyDerivedInfoResponseOutputWithContext(ctx context.Context) CompanyDerivedInfoResponseOutput {
 	return o
-}
-
-func (o CompanyDerivedInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CompanyDerivedInfoResponse] {
-	return pulumix.Output[CompanyDerivedInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A structured headquarters location of the company, resolved from Company.hq_location if provided.
@@ -232,12 +207,6 @@ func (i CompensationEntryArgs) ToCompensationEntryOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CompensationEntryOutput)
 }
 
-func (i CompensationEntryArgs) ToOutput(ctx context.Context) pulumix.Output[CompensationEntry] {
-	return pulumix.Output[CompensationEntry]{
-		OutputState: i.ToCompensationEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CompensationEntryArrayInput is an input type that accepts CompensationEntryArray and CompensationEntryArrayOutput values.
 // You can construct a concrete instance of `CompensationEntryArrayInput` via:
 //
@@ -263,12 +232,6 @@ func (i CompensationEntryArray) ToCompensationEntryArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CompensationEntryArrayOutput)
 }
 
-func (i CompensationEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]CompensationEntry] {
-	return pulumix.Output[[]CompensationEntry]{
-		OutputState: i.ToCompensationEntryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
 type CompensationEntryOutput struct{ *pulumi.OutputState }
 
@@ -282,12 +245,6 @@ func (o CompensationEntryOutput) ToCompensationEntryOutput() CompensationEntryOu
 
 func (o CompensationEntryOutput) ToCompensationEntryOutputWithContext(ctx context.Context) CompensationEntryOutput {
 	return o
-}
-
-func (o CompensationEntryOutput) ToOutput(ctx context.Context) pulumix.Output[CompensationEntry] {
-	return pulumix.Output[CompensationEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Compensation amount.
@@ -334,12 +291,6 @@ func (o CompensationEntryArrayOutput) ToCompensationEntryArrayOutputWithContext(
 	return o
 }
 
-func (o CompensationEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CompensationEntry] {
-	return pulumix.Output[[]CompensationEntry]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CompensationEntryArrayOutput) Index(i pulumi.IntInput) CompensationEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompensationEntry {
 		return vs[0].([]CompensationEntry)[vs[1].(int)]
@@ -375,12 +326,6 @@ func (o CompensationEntryResponseOutput) ToCompensationEntryResponseOutput() Com
 
 func (o CompensationEntryResponseOutput) ToCompensationEntryResponseOutputWithContext(ctx context.Context) CompensationEntryResponseOutput {
 	return o
-}
-
-func (o CompensationEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CompensationEntryResponse] {
-	return pulumix.Output[CompensationEntryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Compensation amount.
@@ -427,12 +372,6 @@ func (o CompensationEntryResponseArrayOutput) ToCompensationEntryResponseArrayOu
 	return o
 }
 
-func (o CompensationEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CompensationEntryResponse] {
-	return pulumix.Output[[]CompensationEntryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CompensationEntryResponseArrayOutput) Index(i pulumi.IntInput) CompensationEntryResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompensationEntryResponse {
 		return vs[0].([]CompensationEntryResponse)[vs[1].(int)]
@@ -472,12 +411,6 @@ func (i CompensationInfoArgs) ToCompensationInfoOutput() CompensationInfoOutput 
 
 func (i CompensationInfoArgs) ToCompensationInfoOutputWithContext(ctx context.Context) CompensationInfoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CompensationInfoOutput)
-}
-
-func (i CompensationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[CompensationInfo] {
-	return pulumix.Output[CompensationInfo]{
-		OutputState: i.ToCompensationInfoOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CompensationInfoArgs) ToCompensationInfoPtrOutput() CompensationInfoPtrOutput {
@@ -521,12 +454,6 @@ func (i *compensationInfoPtrType) ToCompensationInfoPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(CompensationInfoPtrOutput)
 }
 
-func (i *compensationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*CompensationInfo] {
-	return pulumix.Output[*CompensationInfo]{
-		OutputState: i.ToCompensationInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Job compensation details.
 type CompensationInfoOutput struct{ *pulumi.OutputState }
 
@@ -552,12 +479,6 @@ func (o CompensationInfoOutput) ToCompensationInfoPtrOutputWithContext(ctx conte
 	}).(CompensationInfoPtrOutput)
 }
 
-func (o CompensationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[CompensationInfo] {
-	return pulumix.Output[CompensationInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.
 func (o CompensationInfoOutput) Entries() CompensationEntryArrayOutput {
 	return o.ApplyT(func(v CompensationInfo) []CompensationEntry { return v.Entries }).(CompensationEntryArrayOutput)
@@ -575,12 +496,6 @@ func (o CompensationInfoPtrOutput) ToCompensationInfoPtrOutput() CompensationInf
 
 func (o CompensationInfoPtrOutput) ToCompensationInfoPtrOutputWithContext(ctx context.Context) CompensationInfoPtrOutput {
 	return o
-}
-
-func (o CompensationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompensationInfo] {
-	return pulumix.Output[*CompensationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompensationInfoPtrOutput) Elem() CompensationInfoOutput {
@@ -626,12 +541,6 @@ func (o CompensationInfoResponseOutput) ToCompensationInfoResponseOutput() Compe
 
 func (o CompensationInfoResponseOutput) ToCompensationInfoResponseOutputWithContext(ctx context.Context) CompensationInfoResponseOutput {
 	return o
-}
-
-func (o CompensationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CompensationInfoResponse] {
-	return pulumix.Output[CompensationInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
@@ -688,12 +597,6 @@ func (i CompensationRangeArgs) ToCompensationRangeOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CompensationRangeOutput)
 }
 
-func (i CompensationRangeArgs) ToOutput(ctx context.Context) pulumix.Output[CompensationRange] {
-	return pulumix.Output[CompensationRange]{
-		OutputState: i.ToCompensationRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CompensationRangeArgs) ToCompensationRangePtrOutput() CompensationRangePtrOutput {
 	return i.ToCompensationRangePtrOutputWithContext(context.Background())
 }
@@ -735,12 +638,6 @@ func (i *compensationRangePtrType) ToCompensationRangePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(CompensationRangePtrOutput)
 }
 
-func (i *compensationRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*CompensationRange] {
-	return pulumix.Output[*CompensationRange]{
-		OutputState: i.ToCompensationRangePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Compensation range.
 type CompensationRangeOutput struct{ *pulumi.OutputState }
 
@@ -766,12 +663,6 @@ func (o CompensationRangeOutput) ToCompensationRangePtrOutputWithContext(ctx con
 	}).(CompensationRangePtrOutput)
 }
 
-func (o CompensationRangeOutput) ToOutput(ctx context.Context) pulumix.Output[CompensationRange] {
-	return pulumix.Output[CompensationRange]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
 func (o CompensationRangeOutput) MaxCompensation() MoneyPtrOutput {
 	return o.ApplyT(func(v CompensationRange) *Money { return v.MaxCompensation }).(MoneyPtrOutput)
@@ -794,12 +685,6 @@ func (o CompensationRangePtrOutput) ToCompensationRangePtrOutput() CompensationR
 
 func (o CompensationRangePtrOutput) ToCompensationRangePtrOutputWithContext(ctx context.Context) CompensationRangePtrOutput {
 	return o
-}
-
-func (o CompensationRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompensationRange] {
-	return pulumix.Output[*CompensationRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompensationRangePtrOutput) Elem() CompensationRangeOutput {
@@ -855,12 +740,6 @@ func (o CompensationRangeResponseOutput) ToCompensationRangeResponseOutputWithCo
 	return o
 }
 
-func (o CompensationRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CompensationRangeResponse] {
-	return pulumix.Output[CompensationRangeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
 func (o CompensationRangeResponseOutput) MaxCompensation() MoneyResponseOutput {
 	return o.ApplyT(func(v CompensationRangeResponse) MoneyResponse { return v.MaxCompensation }).(MoneyResponseOutput)
@@ -894,12 +773,6 @@ func (o JobDerivedInfoResponseOutput) ToJobDerivedInfoResponseOutputWithContext(
 	return o
 }
 
-func (o JobDerivedInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobDerivedInfoResponse] {
-	return pulumix.Output[JobDerivedInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Job categories derived from Job.title and Job.description.
 func (o JobDerivedInfoResponseOutput) JobCategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobDerivedInfoResponse) []string { return v.JobCategories }).(pulumi.StringArrayOutput)
@@ -931,12 +804,6 @@ func (o LatLngResponseOutput) ToLatLngResponseOutput() LatLngResponseOutput {
 
 func (o LatLngResponseOutput) ToLatLngResponseOutputWithContext(ctx context.Context) LatLngResponseOutput {
 	return o
-}
-
-func (o LatLngResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LatLngResponse] {
-	return pulumix.Output[LatLngResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The latitude in degrees. It must be in the range [-90.0, +90.0].
@@ -976,12 +843,6 @@ func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o LocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LocationResponse] {
-	return pulumix.Output[LocationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An object representing a latitude/longitude pair.
 func (o LocationResponseOutput) LatLng() LatLngResponseOutput {
 	return o.ApplyT(func(v LocationResponse) LatLngResponse { return v.LatLng }).(LatLngResponseOutput)
@@ -1014,12 +875,6 @@ func (o LocationResponseArrayOutput) ToLocationResponseArrayOutput() LocationRes
 
 func (o LocationResponseArrayOutput) ToLocationResponseArrayOutputWithContext(ctx context.Context) LocationResponseArrayOutput {
 	return o
-}
-
-func (o LocationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LocationResponse] {
-	return pulumix.Output[[]LocationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOutput {
@@ -1071,12 +926,6 @@ func (i MoneyArgs) ToMoneyOutputWithContext(ctx context.Context) MoneyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MoneyOutput)
 }
 
-func (i MoneyArgs) ToOutput(ctx context.Context) pulumix.Output[Money] {
-	return pulumix.Output[Money]{
-		OutputState: i.ToMoneyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MoneyArgs) ToMoneyPtrOutput() MoneyPtrOutput {
 	return i.ToMoneyPtrOutputWithContext(context.Background())
 }
@@ -1118,12 +967,6 @@ func (i *moneyPtrType) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPtr
 	return pulumi.ToOutputWithContext(ctx, i).(MoneyPtrOutput)
 }
 
-func (i *moneyPtrType) ToOutput(ctx context.Context) pulumix.Output[*Money] {
-	return pulumix.Output[*Money]{
-		OutputState: i.ToMoneyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an amount of money with its currency type.
 type MoneyOutput struct{ *pulumi.OutputState }
 
@@ -1147,12 +990,6 @@ func (o MoneyOutput) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPtrOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Money) *Money {
 		return &v
 	}).(MoneyPtrOutput)
-}
-
-func (o MoneyOutput) ToOutput(ctx context.Context) pulumix.Output[Money] {
-	return pulumix.Output[Money]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -1182,12 +1019,6 @@ func (o MoneyPtrOutput) ToMoneyPtrOutput() MoneyPtrOutput {
 
 func (o MoneyPtrOutput) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPtrOutput {
 	return o
-}
-
-func (o MoneyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Money] {
-	return pulumix.Output[*Money]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MoneyPtrOutput) Elem() MoneyOutput {
@@ -1255,12 +1086,6 @@ func (o MoneyResponseOutput) ToMoneyResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o MoneyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MoneyResponse] {
-	return pulumix.Output[MoneyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The three-letter currency code defined in ISO 4217.
 func (o MoneyResponseOutput) CurrencyCode() pulumi.StringOutput {
 	return o.ApplyT(func(v MoneyResponse) string { return v.CurrencyCode }).(pulumi.StringOutput)
@@ -1315,12 +1140,6 @@ func (o PostalAddressResponseOutput) ToPostalAddressResponseOutput() PostalAddre
 
 func (o PostalAddressResponseOutput) ToPostalAddressResponseOutputWithContext(ctx context.Context) PostalAddressResponseOutput {
 	return o
-}
-
-func (o PostalAddressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PostalAddressResponse] {
-	return pulumix.Output[PostalAddressResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -1417,12 +1236,6 @@ func (i ProcessingOptionsArgs) ToProcessingOptionsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProcessingOptionsOutput)
 }
 
-func (i ProcessingOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[ProcessingOptions] {
-	return pulumix.Output[ProcessingOptions]{
-		OutputState: i.ToProcessingOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProcessingOptionsArgs) ToProcessingOptionsPtrOutput() ProcessingOptionsPtrOutput {
 	return i.ToProcessingOptionsPtrOutputWithContext(context.Background())
 }
@@ -1464,12 +1277,6 @@ func (i *processingOptionsPtrType) ToProcessingOptionsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ProcessingOptionsPtrOutput)
 }
 
-func (i *processingOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProcessingOptions] {
-	return pulumix.Output[*ProcessingOptions]{
-		OutputState: i.ToProcessingOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Input only. Options for job processing.
 type ProcessingOptionsOutput struct{ *pulumi.OutputState }
 
@@ -1495,12 +1302,6 @@ func (o ProcessingOptionsOutput) ToProcessingOptionsPtrOutputWithContext(ctx con
 	}).(ProcessingOptionsPtrOutput)
 }
 
-func (o ProcessingOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[ProcessingOptions] {
-	return pulumix.Output[ProcessingOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
 func (o ProcessingOptionsOutput) DisableStreetAddressResolution() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProcessingOptions) *bool { return v.DisableStreetAddressResolution }).(pulumi.BoolPtrOutput)
@@ -1523,12 +1324,6 @@ func (o ProcessingOptionsPtrOutput) ToProcessingOptionsPtrOutput() ProcessingOpt
 
 func (o ProcessingOptionsPtrOutput) ToProcessingOptionsPtrOutputWithContext(ctx context.Context) ProcessingOptionsPtrOutput {
 	return o
-}
-
-func (o ProcessingOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProcessingOptions] {
-	return pulumix.Output[*ProcessingOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProcessingOptionsPtrOutput) Elem() ProcessingOptionsOutput {
@@ -1582,12 +1377,6 @@ func (o ProcessingOptionsResponseOutput) ToProcessingOptionsResponseOutput() Pro
 
 func (o ProcessingOptionsResponseOutput) ToProcessingOptionsResponseOutputWithContext(ctx context.Context) ProcessingOptionsResponseOutput {
 	return o
-}
-
-func (o ProcessingOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProcessingOptionsResponse] {
-	return pulumix.Output[ProcessingOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.

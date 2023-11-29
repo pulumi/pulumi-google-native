@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a QueuedResource.
@@ -140,12 +139,6 @@ func (i *ZoneQueuedResource) ToZoneQueuedResourceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneQueuedResourceOutput)
 }
 
-func (i *ZoneQueuedResource) ToOutput(ctx context.Context) pulumix.Output[*ZoneQueuedResource] {
-	return pulumix.Output[*ZoneQueuedResource]{
-		OutputState: i.ToZoneQueuedResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ZoneQueuedResourceOutput struct{ *pulumi.OutputState }
 
 func (ZoneQueuedResourceOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o ZoneQueuedResourceOutput) ToZoneQueuedResourceOutput() ZoneQueuedResourc
 
 func (o ZoneQueuedResourceOutput) ToZoneQueuedResourceOutputWithContext(ctx context.Context) ZoneQueuedResourceOutput {
 	return o
-}
-
-func (o ZoneQueuedResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneQueuedResource] {
-	return pulumix.Output[*ZoneQueuedResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specification of VM instances to create.

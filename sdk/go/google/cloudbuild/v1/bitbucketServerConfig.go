@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new `BitbucketServerConfig`. This API is experimental.
@@ -172,12 +171,6 @@ func (i *BitbucketServerConfig) ToBitbucketServerConfigOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigOutput)
 }
 
-func (i *BitbucketServerConfig) ToOutput(ctx context.Context) pulumix.Output[*BitbucketServerConfig] {
-	return pulumix.Output[*BitbucketServerConfig]{
-		OutputState: i.ToBitbucketServerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BitbucketServerConfigOutput struct{ *pulumi.OutputState }
 
 func (BitbucketServerConfigOutput) ElementType() reflect.Type {
@@ -190,12 +183,6 @@ func (o BitbucketServerConfigOutput) ToBitbucketServerConfigOutput() BitbucketSe
 
 func (o BitbucketServerConfigOutput) ToBitbucketServerConfigOutputWithContext(ctx context.Context) BitbucketServerConfigOutput {
 	return o
-}
-
-func (o BitbucketServerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*BitbucketServerConfig] {
-	return pulumix.Output[*BitbucketServerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.

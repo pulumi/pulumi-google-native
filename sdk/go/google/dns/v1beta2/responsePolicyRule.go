@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Response Policy Rule.
@@ -136,12 +135,6 @@ func (i *ResponsePolicyRule) ToResponsePolicyRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleOutput)
 }
 
-func (i *ResponsePolicyRule) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicyRule] {
-	return pulumix.Output[*ResponsePolicyRule]{
-		OutputState: i.ToResponsePolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResponsePolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyRuleOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o ResponsePolicyRuleOutput) ToResponsePolicyRuleOutput() ResponsePolicyRul
 
 func (o ResponsePolicyRuleOutput) ToResponsePolicyRuleOutputWithContext(ctx context.Context) ResponsePolicyRuleOutput {
 	return o
-}
-
-func (o ResponsePolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicyRule] {
-	return pulumix.Output[*ResponsePolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Answer this query with a behavior rather than DNS data.

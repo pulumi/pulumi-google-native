@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Endpoint.
@@ -85,12 +84,6 @@ func (o LookupFirewallEndpointResultOutput) ToLookupFirewallEndpointResultOutput
 
 func (o LookupFirewallEndpointResultOutput) ToLookupFirewallEndpointResultOutputWithContext(ctx context.Context) LookupFirewallEndpointResultOutput {
 	return o
-}
-
-func (o LookupFirewallEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFirewallEndpointResult] {
-	return pulumix.Output[LookupFirewallEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of networks that are associated with this endpoint in the local zone. This is a projection of the FirewallEndpointAssociations pointing at this endpoint. A network will only appear in this list after traffic routing is fully configured. Format: projects/{project}/global/networks/{name}.

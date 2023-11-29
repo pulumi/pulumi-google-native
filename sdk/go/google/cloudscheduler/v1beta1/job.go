@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a job.
@@ -168,12 +167,6 @@ func (i *Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutput)
 }
 
-func (i *Job) ToOutput(ctx context.Context) pulumix.Output[*Job] {
-	return pulumix.Output[*Job]{
-		OutputState: i.ToJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobOutput struct{ *pulumi.OutputState }
 
 func (JobOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o JobOutput) ToJobOutput() JobOutput {
 
 func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
-}
-
-func (o JobOutput) ToOutput(ctx context.Context) pulumix.Output[*Job] {
-	return pulumix.Output[*Job]{
-		OutputState: o.OutputState,
-	}
 }
 
 // App Engine HTTP target.

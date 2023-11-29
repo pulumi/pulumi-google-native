@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Snooze that will prevent alerts, which match the provided criteria, from being opened. The Snooze applies for a specific time interval.
@@ -130,12 +129,6 @@ func (i *Snooze) ToSnoozeOutputWithContext(ctx context.Context) SnoozeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnoozeOutput)
 }
 
-func (i *Snooze) ToOutput(ctx context.Context) pulumix.Output[*Snooze] {
-	return pulumix.Output[*Snooze]{
-		OutputState: i.ToSnoozeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SnoozeOutput struct{ *pulumi.OutputState }
 
 func (SnoozeOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o SnoozeOutput) ToSnoozeOutput() SnoozeOutput {
 
 func (o SnoozeOutput) ToSnoozeOutputWithContext(ctx context.Context) SnoozeOutput {
 	return o
-}
-
-func (o SnoozeOutput) ToOutput(ctx context.Context) pulumix.Output[*Snooze] {
-	return pulumix.Output[*Snooze]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This defines the criteria for applying the Snooze. See Criteria for more information.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a single contact.
@@ -77,12 +76,6 @@ func (o LookupOrganizationContactResultOutput) ToLookupOrganizationContactResult
 
 func (o LookupOrganizationContactResultOutput) ToLookupOrganizationContactResultOutputWithContext(ctx context.Context) LookupOrganizationContactResultOutput {
 	return o
-}
-
-func (o LookupOrganizationContactResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationContactResult] {
-	return pulumix.Output[LookupOrganizationContactResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email address to send notifications to. The email address does not need to be a Google Account.

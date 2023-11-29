@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Source in a given project and location.
@@ -160,12 +159,6 @@ func (i *Source) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceOutput)
 }
 
-func (i *Source) ToOutput(ctx context.Context) pulumix.Output[*Source] {
-	return pulumix.Output[*Source]{
-		OutputState: i.ToSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SourceOutput struct{ *pulumi.OutputState }
 
 func (SourceOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o SourceOutput) ToSourceOutput() SourceOutput {
 
 func (o SourceOutput) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 	return o
-}
-
-func (o SourceOutput) ToOutput(ctx context.Context) pulumix.Output[*Source] {
-	return pulumix.Output[*Source]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AWS type source details.

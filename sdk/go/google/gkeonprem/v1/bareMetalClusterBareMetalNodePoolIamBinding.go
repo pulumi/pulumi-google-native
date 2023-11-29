@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *BareMetalClusterBareMetalNodePoolIamBinding) ToBareMetalClusterBareMeta
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterBareMetalNodePoolIamBindingOutput)
 }
 
-func (i *BareMetalClusterBareMetalNodePoolIamBinding) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterBareMetalNodePoolIamBinding] {
-	return pulumix.Output[*BareMetalClusterBareMetalNodePoolIamBinding]{
-		OutputState: i.ToBareMetalClusterBareMetalNodePoolIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterBareMetalNodePoolIamBindingOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterBareMetalNodePoolIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o BareMetalClusterBareMetalNodePoolIamBindingOutput) ToBareMetalClusterBar
 
 func (o BareMetalClusterBareMetalNodePoolIamBindingOutput) ToBareMetalClusterBareMetalNodePoolIamBindingOutputWithContext(ctx context.Context) BareMetalClusterBareMetalNodePoolIamBindingOutput {
 	return o
-}
-
-func (o BareMetalClusterBareMetalNodePoolIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterBareMetalNodePoolIamBinding] {
-	return pulumix.Output[*BareMetalClusterBareMetalNodePoolIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new TrustConfig in a given project and location.
@@ -143,12 +142,6 @@ func (i *TrustConfig) ToTrustConfigOutputWithContext(ctx context.Context) TrustC
 	return pulumi.ToOutputWithContext(ctx, i).(TrustConfigOutput)
 }
 
-func (i *TrustConfig) ToOutput(ctx context.Context) pulumix.Output[*TrustConfig] {
-	return pulumix.Output[*TrustConfig]{
-		OutputState: i.ToTrustConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrustConfigOutput struct{ *pulumi.OutputState }
 
 func (TrustConfigOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o TrustConfigOutput) ToTrustConfigOutput() TrustConfigOutput {
 
 func (o TrustConfigOutput) ToTrustConfigOutputWithContext(ctx context.Context) TrustConfigOutput {
 	return o
-}
-
-func (o TrustConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*TrustConfig] {
-	return pulumix.Output[*TrustConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of a TrustConfig.

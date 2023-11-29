@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (o AndroidAttributesResponseOutput) ToAndroidAttributesResponseOutput() And
 
 func (o AndroidAttributesResponseOutput) ToAndroidAttributesResponseOutputWithContext(ctx context.Context) AndroidAttributesResponseOutput {
 	return o
-}
-
-func (o AndroidAttributesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidAttributesResponse] {
-	return pulumix.Output[AndroidAttributesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the device passes Android CTS compliance.
@@ -132,12 +125,6 @@ func (o CertificateAttributesResponseOutput) ToCertificateAttributesResponseOutp
 	return o
 }
 
-func (o CertificateAttributesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateAttributesResponse] {
-	return pulumix.Output[CertificateAttributesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The X.509 extension for CertificateTemplate.
 func (o CertificateAttributesResponseOutput) CertificateTemplate() CertificateTemplateResponseOutput {
 	return o.ApplyT(func(v CertificateAttributesResponse) CertificateTemplateResponse { return v.CertificateTemplate }).(CertificateTemplateResponseOutput)
@@ -197,12 +184,6 @@ func (o CertificateAttributesResponseArrayOutput) ToCertificateAttributesRespons
 	return o
 }
 
-func (o CertificateAttributesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertificateAttributesResponse] {
-	return pulumix.Output[[]CertificateAttributesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateAttributesResponseArrayOutput) Index(i pulumi.IntInput) CertificateAttributesResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateAttributesResponse {
 		return vs[0].([]CertificateAttributesResponse)[vs[1].(int)]
@@ -230,12 +211,6 @@ func (o CertificateTemplateResponseOutput) ToCertificateTemplateResponseOutput()
 
 func (o CertificateTemplateResponseOutput) ToCertificateTemplateResponseOutputWithContext(ctx context.Context) CertificateTemplateResponseOutput {
 	return o
-}
-
-func (o CertificateTemplateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateTemplateResponse] {
-	return pulumix.Output[CertificateTemplateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Major version of the template. Example: 100.
@@ -283,12 +258,6 @@ func (i DynamicGroupMetadataArgs) ToDynamicGroupMetadataOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataOutput)
 }
 
-func (i DynamicGroupMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[DynamicGroupMetadata] {
-	return pulumix.Output[DynamicGroupMetadata]{
-		OutputState: i.ToDynamicGroupMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DynamicGroupMetadataArgs) ToDynamicGroupMetadataPtrOutput() DynamicGroupMetadataPtrOutput {
 	return i.ToDynamicGroupMetadataPtrOutputWithContext(context.Background())
 }
@@ -330,12 +299,6 @@ func (i *dynamicGroupMetadataPtrType) ToDynamicGroupMetadataPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataPtrOutput)
 }
 
-func (i *dynamicGroupMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*DynamicGroupMetadata] {
-	return pulumix.Output[*DynamicGroupMetadata]{
-		OutputState: i.ToDynamicGroupMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Dynamic group metadata like queries and status.
 type DynamicGroupMetadataOutput struct{ *pulumi.OutputState }
 
@@ -361,12 +324,6 @@ func (o DynamicGroupMetadataOutput) ToDynamicGroupMetadataPtrOutputWithContext(c
 	}).(DynamicGroupMetadataPtrOutput)
 }
 
-func (o DynamicGroupMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[DynamicGroupMetadata] {
-	return pulumix.Output[DynamicGroupMetadata]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
 func (o DynamicGroupMetadataOutput) Queries() DynamicGroupQueryArrayOutput {
 	return o.ApplyT(func(v DynamicGroupMetadata) []DynamicGroupQuery { return v.Queries }).(DynamicGroupQueryArrayOutput)
@@ -384,12 +341,6 @@ func (o DynamicGroupMetadataPtrOutput) ToDynamicGroupMetadataPtrOutput() Dynamic
 
 func (o DynamicGroupMetadataPtrOutput) ToDynamicGroupMetadataPtrOutputWithContext(ctx context.Context) DynamicGroupMetadataPtrOutput {
 	return o
-}
-
-func (o DynamicGroupMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DynamicGroupMetadata] {
-	return pulumix.Output[*DynamicGroupMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DynamicGroupMetadataPtrOutput) Elem() DynamicGroupMetadataOutput {
@@ -433,12 +384,6 @@ func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponseOutput
 
 func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponseOutputWithContext(ctx context.Context) DynamicGroupMetadataResponseOutput {
 	return o
-}
-
-func (o DynamicGroupMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DynamicGroupMetadataResponse] {
-	return pulumix.Output[DynamicGroupMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
@@ -488,12 +433,6 @@ func (i DynamicGroupQueryArgs) ToDynamicGroupQueryOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupQueryOutput)
 }
 
-func (i DynamicGroupQueryArgs) ToOutput(ctx context.Context) pulumix.Output[DynamicGroupQuery] {
-	return pulumix.Output[DynamicGroupQuery]{
-		OutputState: i.ToDynamicGroupQueryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DynamicGroupQueryArrayInput is an input type that accepts DynamicGroupQueryArray and DynamicGroupQueryArrayOutput values.
 // You can construct a concrete instance of `DynamicGroupQueryArrayInput` via:
 //
@@ -519,12 +458,6 @@ func (i DynamicGroupQueryArray) ToDynamicGroupQueryArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupQueryArrayOutput)
 }
 
-func (i DynamicGroupQueryArray) ToOutput(ctx context.Context) pulumix.Output[[]DynamicGroupQuery] {
-	return pulumix.Output[[]DynamicGroupQuery]{
-		OutputState: i.ToDynamicGroupQueryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a query on a resource.
 type DynamicGroupQueryOutput struct{ *pulumi.OutputState }
 
@@ -538,12 +471,6 @@ func (o DynamicGroupQueryOutput) ToDynamicGroupQueryOutput() DynamicGroupQueryOu
 
 func (o DynamicGroupQueryOutput) ToDynamicGroupQueryOutputWithContext(ctx context.Context) DynamicGroupQueryOutput {
 	return o
-}
-
-func (o DynamicGroupQueryOutput) ToOutput(ctx context.Context) pulumix.Output[DynamicGroupQuery] {
-	return pulumix.Output[DynamicGroupQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
@@ -567,12 +494,6 @@ func (o DynamicGroupQueryArrayOutput) ToDynamicGroupQueryArrayOutput() DynamicGr
 
 func (o DynamicGroupQueryArrayOutput) ToDynamicGroupQueryArrayOutputWithContext(ctx context.Context) DynamicGroupQueryArrayOutput {
 	return o
-}
-
-func (o DynamicGroupQueryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DynamicGroupQuery] {
-	return pulumix.Output[[]DynamicGroupQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DynamicGroupQueryArrayOutput) Index(i pulumi.IntInput) DynamicGroupQueryOutput {
@@ -603,12 +524,6 @@ func (o DynamicGroupQueryResponseOutput) ToDynamicGroupQueryResponseOutputWithCo
 	return o
 }
 
-func (o DynamicGroupQueryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DynamicGroupQueryResponse] {
-	return pulumix.Output[DynamicGroupQueryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
 func (o DynamicGroupQueryResponseOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v DynamicGroupQueryResponse) string { return v.Query }).(pulumi.StringOutput)
@@ -630,12 +545,6 @@ func (o DynamicGroupQueryResponseArrayOutput) ToDynamicGroupQueryResponseArrayOu
 
 func (o DynamicGroupQueryResponseArrayOutput) ToDynamicGroupQueryResponseArrayOutputWithContext(ctx context.Context) DynamicGroupQueryResponseArrayOutput {
 	return o
-}
-
-func (o DynamicGroupQueryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DynamicGroupQueryResponse] {
-	return pulumix.Output[[]DynamicGroupQueryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DynamicGroupQueryResponseArrayOutput) Index(i pulumi.IntInput) DynamicGroupQueryResponseOutput {
@@ -667,12 +576,6 @@ func (o DynamicGroupStatusResponseOutput) ToDynamicGroupStatusResponseOutputWith
 	return o
 }
 
-func (o DynamicGroupStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DynamicGroupStatusResponse] {
-	return pulumix.Output[DynamicGroupStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Status of the dynamic group.
 func (o DynamicGroupStatusResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v DynamicGroupStatusResponse) string { return v.Status }).(pulumi.StringOutput)
@@ -702,12 +605,6 @@ func (o EndpointVerificationSpecificAttributesResponseOutput) ToEndpointVerifica
 
 func (o EndpointVerificationSpecificAttributesResponseOutput) ToEndpointVerificationSpecificAttributesResponseOutputWithContext(ctx context.Context) EndpointVerificationSpecificAttributesResponseOutput {
 	return o
-}
-
-func (o EndpointVerificationSpecificAttributesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointVerificationSpecificAttributesResponse] {
-	return pulumix.Output[EndpointVerificationSpecificAttributesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Details of certificates.
@@ -756,12 +653,6 @@ func (i EntityKeyArgs) ToEntityKeyOutputWithContext(ctx context.Context) EntityK
 	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyOutput)
 }
 
-func (i EntityKeyArgs) ToOutput(ctx context.Context) pulumix.Output[EntityKey] {
-	return pulumix.Output[EntityKey]{
-		OutputState: i.ToEntityKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EntityKeyArgs) ToEntityKeyPtrOutput() EntityKeyPtrOutput {
 	return i.ToEntityKeyPtrOutputWithContext(context.Background())
 }
@@ -803,12 +694,6 @@ func (i *entityKeyPtrType) ToEntityKeyPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyPtrOutput)
 }
 
-func (i *entityKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*EntityKey] {
-	return pulumix.Output[*EntityKey]{
-		OutputState: i.ToEntityKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyOutput struct{ *pulumi.OutputState }
 
@@ -834,12 +719,6 @@ func (o EntityKeyOutput) ToEntityKeyPtrOutputWithContext(ctx context.Context) En
 	}).(EntityKeyPtrOutput)
 }
 
-func (o EntityKeyOutput) ToOutput(ctx context.Context) pulumix.Output[EntityKey] {
-	return pulumix.Output[EntityKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
 func (o EntityKeyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityKey) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -862,12 +741,6 @@ func (o EntityKeyPtrOutput) ToEntityKeyPtrOutput() EntityKeyPtrOutput {
 
 func (o EntityKeyPtrOutput) ToEntityKeyPtrOutputWithContext(ctx context.Context) EntityKeyPtrOutput {
 	return o
-}
-
-func (o EntityKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityKey] {
-	return pulumix.Output[*EntityKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntityKeyPtrOutput) Elem() EntityKeyOutput {
@@ -921,12 +794,6 @@ func (o EntityKeyResponseOutput) ToEntityKeyResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o EntityKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EntityKeyResponse] {
-	return pulumix.Output[EntityKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 func (o EntityKeyResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v EntityKeyResponse) string { return v.Namespace }).(pulumi.StringOutput)
@@ -944,12 +811,6 @@ func (o EntityKeyResponseArrayOutput) ToEntityKeyResponseArrayOutput() EntityKey
 
 func (o EntityKeyResponseArrayOutput) ToEntityKeyResponseArrayOutputWithContext(ctx context.Context) EntityKeyResponseArrayOutput {
 	return o
-}
-
-func (o EntityKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntityKeyResponse] {
-	return pulumix.Output[[]EntityKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntityKeyResponseArrayOutput) Index(i pulumi.IntInput) EntityKeyResponseOutput {
@@ -993,12 +854,6 @@ func (i ExpiryDetailArgs) ToExpiryDetailOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(ExpiryDetailOutput)
 }
 
-func (i ExpiryDetailArgs) ToOutput(ctx context.Context) pulumix.Output[ExpiryDetail] {
-	return pulumix.Output[ExpiryDetail]{
-		OutputState: i.ToExpiryDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExpiryDetailArgs) ToExpiryDetailPtrOutput() ExpiryDetailPtrOutput {
 	return i.ToExpiryDetailPtrOutputWithContext(context.Background())
 }
@@ -1040,12 +895,6 @@ func (i *expiryDetailPtrType) ToExpiryDetailPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ExpiryDetailPtrOutput)
 }
 
-func (i *expiryDetailPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExpiryDetail] {
-	return pulumix.Output[*ExpiryDetail]{
-		OutputState: i.ToExpiryDetailPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The `MembershipRole` expiry details.
 type ExpiryDetailOutput struct{ *pulumi.OutputState }
 
@@ -1071,12 +920,6 @@ func (o ExpiryDetailOutput) ToExpiryDetailPtrOutputWithContext(ctx context.Conte
 	}).(ExpiryDetailPtrOutput)
 }
 
-func (o ExpiryDetailOutput) ToOutput(ctx context.Context) pulumix.Output[ExpiryDetail] {
-	return pulumix.Output[ExpiryDetail]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The time at which the `MembershipRole` will expire.
 func (o ExpiryDetailOutput) ExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExpiryDetail) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
@@ -1094,12 +937,6 @@ func (o ExpiryDetailPtrOutput) ToExpiryDetailPtrOutput() ExpiryDetailPtrOutput {
 
 func (o ExpiryDetailPtrOutput) ToExpiryDetailPtrOutputWithContext(ctx context.Context) ExpiryDetailPtrOutput {
 	return o
-}
-
-func (o ExpiryDetailPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpiryDetail] {
-	return pulumix.Output[*ExpiryDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpiryDetailPtrOutput) Elem() ExpiryDetailOutput {
@@ -1141,12 +978,6 @@ func (o ExpiryDetailResponseOutput) ToExpiryDetailResponseOutput() ExpiryDetailR
 
 func (o ExpiryDetailResponseOutput) ToExpiryDetailResponseOutputWithContext(ctx context.Context) ExpiryDetailResponseOutput {
 	return o
-}
-
-func (o ExpiryDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpiryDetailResponse] {
-	return pulumix.Output[ExpiryDetailResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the `MembershipRole` will expire.
@@ -1197,12 +1028,6 @@ func (i MembershipRoleArgs) ToMembershipRoleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleOutput)
 }
 
-func (i MembershipRoleArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipRole] {
-	return pulumix.Output[MembershipRole]{
-		OutputState: i.ToMembershipRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MembershipRoleArrayInput is an input type that accepts MembershipRoleArray and MembershipRoleArrayOutput values.
 // You can construct a concrete instance of `MembershipRoleArrayInput` via:
 //
@@ -1228,12 +1053,6 @@ func (i MembershipRoleArray) ToMembershipRoleArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleArrayOutput)
 }
 
-func (i MembershipRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]MembershipRole] {
-	return pulumix.Output[[]MembershipRole]{
-		OutputState: i.ToMembershipRoleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
 type MembershipRoleOutput struct{ *pulumi.OutputState }
 
@@ -1247,12 +1066,6 @@ func (o MembershipRoleOutput) ToMembershipRoleOutput() MembershipRoleOutput {
 
 func (o MembershipRoleOutput) ToMembershipRoleOutputWithContext(ctx context.Context) MembershipRoleOutput {
 	return o
-}
-
-func (o MembershipRoleOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipRole] {
-	return pulumix.Output[MembershipRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
@@ -1282,12 +1095,6 @@ func (o MembershipRoleArrayOutput) ToMembershipRoleArrayOutput() MembershipRoleA
 
 func (o MembershipRoleArrayOutput) ToMembershipRoleArrayOutputWithContext(ctx context.Context) MembershipRoleArrayOutput {
 	return o
-}
-
-func (o MembershipRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MembershipRole] {
-	return pulumix.Output[[]MembershipRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipRoleArrayOutput) Index(i pulumi.IntInput) MembershipRoleOutput {
@@ -1321,12 +1128,6 @@ func (o MembershipRoleResponseOutput) ToMembershipRoleResponseOutputWithContext(
 	return o
 }
 
-func (o MembershipRoleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipRoleResponse] {
-	return pulumix.Output[MembershipRoleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
 func (o MembershipRoleResponseOutput) ExpiryDetail() ExpiryDetailResponseOutput {
 	return o.ApplyT(func(v MembershipRoleResponse) ExpiryDetailResponse { return v.ExpiryDetail }).(ExpiryDetailResponseOutput)
@@ -1354,12 +1155,6 @@ func (o MembershipRoleResponseArrayOutput) ToMembershipRoleResponseArrayOutput()
 
 func (o MembershipRoleResponseArrayOutput) ToMembershipRoleResponseArrayOutputWithContext(ctx context.Context) MembershipRoleResponseArrayOutput {
 	return o
-}
-
-func (o MembershipRoleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MembershipRoleResponse] {
-	return pulumix.Output[[]MembershipRoleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipRoleResponseArrayOutput) Index(i pulumi.IntInput) MembershipRoleResponseOutput {
@@ -1397,12 +1192,6 @@ func (i MembershipRoleRestrictionEvaluationArgs) ToMembershipRoleRestrictionEval
 
 func (i MembershipRoleRestrictionEvaluationArgs) ToMembershipRoleRestrictionEvaluationOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleRestrictionEvaluationOutput)
-}
-
-func (i MembershipRoleRestrictionEvaluationArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipRoleRestrictionEvaluation] {
-	return pulumix.Output[MembershipRoleRestrictionEvaluation]{
-		OutputState: i.ToMembershipRoleRestrictionEvaluationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i MembershipRoleRestrictionEvaluationArgs) ToMembershipRoleRestrictionEvaluationPtrOutput() MembershipRoleRestrictionEvaluationPtrOutput {
@@ -1446,12 +1235,6 @@ func (i *membershipRoleRestrictionEvaluationPtrType) ToMembershipRoleRestriction
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleRestrictionEvaluationPtrOutput)
 }
 
-func (i *membershipRoleRestrictionEvaluationPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipRoleRestrictionEvaluation] {
-	return pulumix.Output[*MembershipRoleRestrictionEvaluation]{
-		OutputState: i.ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The evaluated state of this restriction.
 type MembershipRoleRestrictionEvaluationOutput struct{ *pulumi.OutputState }
 
@@ -1477,12 +1260,6 @@ func (o MembershipRoleRestrictionEvaluationOutput) ToMembershipRoleRestrictionEv
 	}).(MembershipRoleRestrictionEvaluationPtrOutput)
 }
 
-func (o MembershipRoleRestrictionEvaluationOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipRoleRestrictionEvaluation] {
-	return pulumix.Output[MembershipRoleRestrictionEvaluation]{
-		OutputState: o.OutputState,
-	}
-}
-
 type MembershipRoleRestrictionEvaluationPtrOutput struct{ *pulumi.OutputState }
 
 func (MembershipRoleRestrictionEvaluationPtrOutput) ElementType() reflect.Type {
@@ -1495,12 +1272,6 @@ func (o MembershipRoleRestrictionEvaluationPtrOutput) ToMembershipRoleRestrictio
 
 func (o MembershipRoleRestrictionEvaluationPtrOutput) ToMembershipRoleRestrictionEvaluationPtrOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationPtrOutput {
 	return o
-}
-
-func (o MembershipRoleRestrictionEvaluationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipRoleRestrictionEvaluation] {
-	return pulumix.Output[*MembershipRoleRestrictionEvaluation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipRoleRestrictionEvaluationPtrOutput) Elem() MembershipRoleRestrictionEvaluationOutput {
@@ -1532,12 +1303,6 @@ func (o MembershipRoleRestrictionEvaluationResponseOutput) ToMembershipRoleRestr
 
 func (o MembershipRoleRestrictionEvaluationResponseOutput) ToMembershipRoleRestrictionEvaluationResponseOutputWithContext(ctx context.Context) MembershipRoleRestrictionEvaluationResponseOutput {
 	return o
-}
-
-func (o MembershipRoleRestrictionEvaluationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipRoleRestrictionEvaluationResponse] {
-	return pulumix.Output[MembershipRoleRestrictionEvaluationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The current state of the restriction
@@ -1588,12 +1353,6 @@ func (i PosixGroupArgs) ToPosixGroupOutputWithContext(ctx context.Context) Posix
 	return pulumi.ToOutputWithContext(ctx, i).(PosixGroupOutput)
 }
 
-func (i PosixGroupArgs) ToOutput(ctx context.Context) pulumix.Output[PosixGroup] {
-	return pulumix.Output[PosixGroup]{
-		OutputState: i.ToPosixGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PosixGroupArrayInput is an input type that accepts PosixGroupArray and PosixGroupArrayOutput values.
 // You can construct a concrete instance of `PosixGroupArrayInput` via:
 //
@@ -1619,12 +1378,6 @@ func (i PosixGroupArray) ToPosixGroupArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PosixGroupArrayOutput)
 }
 
-func (i PosixGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]PosixGroup] {
-	return pulumix.Output[[]PosixGroup]{
-		OutputState: i.ToPosixGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // POSIX Group definition to represent a group in a POSIX compliant system.
 type PosixGroupOutput struct{ *pulumi.OutputState }
 
@@ -1638,12 +1391,6 @@ func (o PosixGroupOutput) ToPosixGroupOutput() PosixGroupOutput {
 
 func (o PosixGroupOutput) ToPosixGroupOutputWithContext(ctx context.Context) PosixGroupOutput {
 	return o
-}
-
-func (o PosixGroupOutput) ToOutput(ctx context.Context) pulumix.Output[PosixGroup] {
-	return pulumix.Output[PosixGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // GID of the POSIX group.
@@ -1673,12 +1420,6 @@ func (o PosixGroupArrayOutput) ToPosixGroupArrayOutput() PosixGroupArrayOutput {
 
 func (o PosixGroupArrayOutput) ToPosixGroupArrayOutputWithContext(ctx context.Context) PosixGroupArrayOutput {
 	return o
-}
-
-func (o PosixGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PosixGroup] {
-	return pulumix.Output[[]PosixGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PosixGroupArrayOutput) Index(i pulumi.IntInput) PosixGroupOutput {
@@ -1712,12 +1453,6 @@ func (o PosixGroupResponseOutput) ToPosixGroupResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o PosixGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PosixGroupResponse] {
-	return pulumix.Output[PosixGroupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // GID of the POSIX group.
 func (o PosixGroupResponseOutput) Gid() pulumi.StringOutput {
 	return o.ApplyT(func(v PosixGroupResponse) string { return v.Gid }).(pulumi.StringOutput)
@@ -1745,12 +1480,6 @@ func (o PosixGroupResponseArrayOutput) ToPosixGroupResponseArrayOutput() PosixGr
 
 func (o PosixGroupResponseArrayOutput) ToPosixGroupResponseArrayOutputWithContext(ctx context.Context) PosixGroupResponseArrayOutput {
 	return o
-}
-
-func (o PosixGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PosixGroupResponse] {
-	return pulumix.Output[[]PosixGroupResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PosixGroupResponseArrayOutput) Index(i pulumi.IntInput) PosixGroupResponseOutput {
@@ -1794,12 +1523,6 @@ func (i RestrictionEvaluationsArgs) ToRestrictionEvaluationsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RestrictionEvaluationsOutput)
 }
 
-func (i RestrictionEvaluationsArgs) ToOutput(ctx context.Context) pulumix.Output[RestrictionEvaluations] {
-	return pulumix.Output[RestrictionEvaluations]{
-		OutputState: i.ToRestrictionEvaluationsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RestrictionEvaluationsArgs) ToRestrictionEvaluationsPtrOutput() RestrictionEvaluationsPtrOutput {
 	return i.ToRestrictionEvaluationsPtrOutputWithContext(context.Background())
 }
@@ -1841,12 +1564,6 @@ func (i *restrictionEvaluationsPtrType) ToRestrictionEvaluationsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RestrictionEvaluationsPtrOutput)
 }
 
-func (i *restrictionEvaluationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestrictionEvaluations] {
-	return pulumix.Output[*RestrictionEvaluations]{
-		OutputState: i.ToRestrictionEvaluationsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Evaluations of restrictions applied to parent group on this membership.
 type RestrictionEvaluationsOutput struct{ *pulumi.OutputState }
 
@@ -1872,12 +1589,6 @@ func (o RestrictionEvaluationsOutput) ToRestrictionEvaluationsPtrOutputWithConte
 	}).(RestrictionEvaluationsPtrOutput)
 }
 
-func (o RestrictionEvaluationsOutput) ToOutput(ctx context.Context) pulumix.Output[RestrictionEvaluations] {
-	return pulumix.Output[RestrictionEvaluations]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
 func (o RestrictionEvaluationsOutput) MemberRestrictionEvaluation() MembershipRoleRestrictionEvaluationPtrOutput {
 	return o.ApplyT(func(v RestrictionEvaluations) *MembershipRoleRestrictionEvaluation {
@@ -1897,12 +1608,6 @@ func (o RestrictionEvaluationsPtrOutput) ToRestrictionEvaluationsPtrOutput() Res
 
 func (o RestrictionEvaluationsPtrOutput) ToRestrictionEvaluationsPtrOutputWithContext(ctx context.Context) RestrictionEvaluationsPtrOutput {
 	return o
-}
-
-func (o RestrictionEvaluationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestrictionEvaluations] {
-	return pulumix.Output[*RestrictionEvaluations]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestrictionEvaluationsPtrOutput) Elem() RestrictionEvaluationsOutput {
@@ -1944,12 +1649,6 @@ func (o RestrictionEvaluationsResponseOutput) ToRestrictionEvaluationsResponseOu
 
 func (o RestrictionEvaluationsResponseOutput) ToRestrictionEvaluationsResponseOutputWithContext(ctx context.Context) RestrictionEvaluationsResponseOutput {
 	return o
-}
-
-func (o RestrictionEvaluationsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestrictionEvaluationsResponse] {
-	return pulumix.Output[RestrictionEvaluationsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
@@ -2006,12 +1705,6 @@ func (i SamlIdpConfigArgs) ToSamlIdpConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SamlIdpConfigOutput)
 }
 
-func (i SamlIdpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SamlIdpConfig] {
-	return pulumix.Output[SamlIdpConfig]{
-		OutputState: i.ToSamlIdpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SamlIdpConfigArgs) ToSamlIdpConfigPtrOutput() SamlIdpConfigPtrOutput {
 	return i.ToSamlIdpConfigPtrOutputWithContext(context.Background())
 }
@@ -2053,12 +1746,6 @@ func (i *samlIdpConfigPtrType) ToSamlIdpConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SamlIdpConfigPtrOutput)
 }
 
-func (i *samlIdpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SamlIdpConfig] {
-	return pulumix.Output[*SamlIdpConfig]{
-		OutputState: i.ToSamlIdpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SAML IDP (identity provider) configuration.
 type SamlIdpConfigOutput struct{ *pulumi.OutputState }
 
@@ -2082,12 +1769,6 @@ func (o SamlIdpConfigOutput) ToSamlIdpConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SamlIdpConfig) *SamlIdpConfig {
 		return &v
 	}).(SamlIdpConfigPtrOutput)
-}
-
-func (o SamlIdpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SamlIdpConfig] {
-	return pulumix.Output[SamlIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
@@ -2122,12 +1803,6 @@ func (o SamlIdpConfigPtrOutput) ToSamlIdpConfigPtrOutput() SamlIdpConfigPtrOutpu
 
 func (o SamlIdpConfigPtrOutput) ToSamlIdpConfigPtrOutputWithContext(ctx context.Context) SamlIdpConfigPtrOutput {
 	return o
-}
-
-func (o SamlIdpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SamlIdpConfig] {
-	return pulumix.Output[*SamlIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SamlIdpConfigPtrOutput) Elem() SamlIdpConfigOutput {
@@ -2207,12 +1882,6 @@ func (o SamlIdpConfigResponseOutput) ToSamlIdpConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o SamlIdpConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SamlIdpConfigResponse] {
-	return pulumix.Output[SamlIdpConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
 func (o SamlIdpConfigResponseOutput) ChangePasswordUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SamlIdpConfigResponse) string { return v.ChangePasswordUri }).(pulumi.StringOutput)
@@ -2264,12 +1933,6 @@ func (i SamlSpConfigArgs) ToSamlSpConfigOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SamlSpConfigOutput)
 }
 
-func (i SamlSpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SamlSpConfig] {
-	return pulumix.Output[SamlSpConfig]{
-		OutputState: i.ToSamlSpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SamlSpConfigArgs) ToSamlSpConfigPtrOutput() SamlSpConfigPtrOutput {
 	return i.ToSamlSpConfigPtrOutputWithContext(context.Background())
 }
@@ -2311,12 +1974,6 @@ func (i *samlSpConfigPtrType) ToSamlSpConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SamlSpConfigPtrOutput)
 }
 
-func (i *samlSpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SamlSpConfig] {
-	return pulumix.Output[*SamlSpConfig]{
-		OutputState: i.ToSamlSpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SAML SP (service provider) configuration.
 type SamlSpConfigOutput struct{ *pulumi.OutputState }
 
@@ -2342,12 +1999,6 @@ func (o SamlSpConfigOutput) ToSamlSpConfigPtrOutputWithContext(ctx context.Conte
 	}).(SamlSpConfigPtrOutput)
 }
 
-func (o SamlSpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SamlSpConfig] {
-	return pulumix.Output[SamlSpConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 type SamlSpConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SamlSpConfigPtrOutput) ElementType() reflect.Type {
@@ -2360,12 +2011,6 @@ func (o SamlSpConfigPtrOutput) ToSamlSpConfigPtrOutput() SamlSpConfigPtrOutput {
 
 func (o SamlSpConfigPtrOutput) ToSamlSpConfigPtrOutputWithContext(ctx context.Context) SamlSpConfigPtrOutput {
 	return o
-}
-
-func (o SamlSpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SamlSpConfig] {
-	return pulumix.Output[*SamlSpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SamlSpConfigPtrOutput) Elem() SamlSpConfigOutput {
@@ -2399,12 +2044,6 @@ func (o SamlSpConfigResponseOutput) ToSamlSpConfigResponseOutput() SamlSpConfigR
 
 func (o SamlSpConfigResponseOutput) ToSamlSpConfigResponseOutputWithContext(ctx context.Context) SamlSpConfigResponseOutput {
 	return o
-}
-
-func (o SamlSpConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SamlSpConfigResponse] {
-	return pulumix.Output[SamlSpConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
@@ -2452,12 +2091,6 @@ func (i SamlSsoInfoArgs) ToSamlSsoInfoOutputWithContext(ctx context.Context) Sam
 	return pulumi.ToOutputWithContext(ctx, i).(SamlSsoInfoOutput)
 }
 
-func (i SamlSsoInfoArgs) ToOutput(ctx context.Context) pulumix.Output[SamlSsoInfo] {
-	return pulumix.Output[SamlSsoInfo]{
-		OutputState: i.ToSamlSsoInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SamlSsoInfoArgs) ToSamlSsoInfoPtrOutput() SamlSsoInfoPtrOutput {
 	return i.ToSamlSsoInfoPtrOutputWithContext(context.Background())
 }
@@ -2499,12 +2132,6 @@ func (i *samlSsoInfoPtrType) ToSamlSsoInfoPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SamlSsoInfoPtrOutput)
 }
 
-func (i *samlSsoInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*SamlSsoInfo] {
-	return pulumix.Output[*SamlSsoInfo]{
-		OutputState: i.ToSamlSsoInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details that are applicable when `sso_mode` == `SAML_SSO`.
 type SamlSsoInfoOutput struct{ *pulumi.OutputState }
 
@@ -2530,12 +2157,6 @@ func (o SamlSsoInfoOutput) ToSamlSsoInfoPtrOutputWithContext(ctx context.Context
 	}).(SamlSsoInfoPtrOutput)
 }
 
-func (o SamlSsoInfoOutput) ToOutput(ctx context.Context) pulumix.Output[SamlSsoInfo] {
-	return pulumix.Output[SamlSsoInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
 func (o SamlSsoInfoOutput) InboundSamlSsoProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v SamlSsoInfo) string { return v.InboundSamlSsoProfile }).(pulumi.StringOutput)
@@ -2553,12 +2174,6 @@ func (o SamlSsoInfoPtrOutput) ToSamlSsoInfoPtrOutput() SamlSsoInfoPtrOutput {
 
 func (o SamlSsoInfoPtrOutput) ToSamlSsoInfoPtrOutputWithContext(ctx context.Context) SamlSsoInfoPtrOutput {
 	return o
-}
-
-func (o SamlSsoInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SamlSsoInfo] {
-	return pulumix.Output[*SamlSsoInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SamlSsoInfoPtrOutput) Elem() SamlSsoInfoOutput {
@@ -2602,12 +2217,6 @@ func (o SamlSsoInfoResponseOutput) ToSamlSsoInfoResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SamlSsoInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SamlSsoInfoResponse] {
-	return pulumix.Output[SamlSsoInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
 func (o SamlSsoInfoResponseOutput) InboundSamlSsoProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v SamlSsoInfoResponse) string { return v.InboundSamlSsoProfile }).(pulumi.StringOutput)
@@ -2646,12 +2255,6 @@ func (i SignInBehaviorArgs) ToSignInBehaviorOutput() SignInBehaviorOutput {
 
 func (i SignInBehaviorArgs) ToSignInBehaviorOutputWithContext(ctx context.Context) SignInBehaviorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SignInBehaviorOutput)
-}
-
-func (i SignInBehaviorArgs) ToOutput(ctx context.Context) pulumix.Output[SignInBehavior] {
-	return pulumix.Output[SignInBehavior]{
-		OutputState: i.ToSignInBehaviorOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i SignInBehaviorArgs) ToSignInBehaviorPtrOutput() SignInBehaviorPtrOutput {
@@ -2695,12 +2298,6 @@ func (i *signInBehaviorPtrType) ToSignInBehaviorPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SignInBehaviorPtrOutput)
 }
 
-func (i *signInBehaviorPtrType) ToOutput(ctx context.Context) pulumix.Output[*SignInBehavior] {
-	return pulumix.Output[*SignInBehavior]{
-		OutputState: i.ToSignInBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Controls sign-in behavior.
 type SignInBehaviorOutput struct{ *pulumi.OutputState }
 
@@ -2726,12 +2323,6 @@ func (o SignInBehaviorOutput) ToSignInBehaviorPtrOutputWithContext(ctx context.C
 	}).(SignInBehaviorPtrOutput)
 }
 
-func (o SignInBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[SignInBehavior] {
-	return pulumix.Output[SignInBehavior]{
-		OutputState: o.OutputState,
-	}
-}
-
 // When to redirect sign-ins to the IdP.
 func (o SignInBehaviorOutput) RedirectCondition() SignInBehaviorRedirectConditionPtrOutput {
 	return o.ApplyT(func(v SignInBehavior) *SignInBehaviorRedirectCondition { return v.RedirectCondition }).(SignInBehaviorRedirectConditionPtrOutput)
@@ -2749,12 +2340,6 @@ func (o SignInBehaviorPtrOutput) ToSignInBehaviorPtrOutput() SignInBehaviorPtrOu
 
 func (o SignInBehaviorPtrOutput) ToSignInBehaviorPtrOutputWithContext(ctx context.Context) SignInBehaviorPtrOutput {
 	return o
-}
-
-func (o SignInBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SignInBehavior] {
-	return pulumix.Output[*SignInBehavior]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SignInBehaviorPtrOutput) Elem() SignInBehaviorOutput {
@@ -2796,12 +2381,6 @@ func (o SignInBehaviorResponseOutput) ToSignInBehaviorResponseOutput() SignInBeh
 
 func (o SignInBehaviorResponseOutput) ToSignInBehaviorResponseOutputWithContext(ctx context.Context) SignInBehaviorResponseOutput {
 	return o
-}
-
-func (o SignInBehaviorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SignInBehaviorResponse] {
-	return pulumix.Output[SignInBehaviorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When to redirect sign-ins to the IdP.

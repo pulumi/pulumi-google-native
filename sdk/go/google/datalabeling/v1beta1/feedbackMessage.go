@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a FeedbackMessage object.
@@ -146,12 +145,6 @@ func (i *FeedbackMessage) ToFeedbackMessageOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FeedbackMessageOutput)
 }
 
-func (i *FeedbackMessage) ToOutput(ctx context.Context) pulumix.Output[*FeedbackMessage] {
-	return pulumix.Output[*FeedbackMessage]{
-		OutputState: i.ToFeedbackMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeedbackMessageOutput struct{ *pulumi.OutputState }
 
 func (FeedbackMessageOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o FeedbackMessageOutput) ToFeedbackMessageOutput() FeedbackMessageOutput {
 
 func (o FeedbackMessageOutput) ToFeedbackMessageOutputWithContext(ctx context.Context) FeedbackMessageOutput {
 	return o
-}
-
-func (o FeedbackMessageOutput) ToOutput(ctx context.Context) pulumix.Output[*FeedbackMessage] {
-	return pulumix.Output[*FeedbackMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeedbackMessageOutput) AnnotatedDatasetId() pulumi.StringOutput {

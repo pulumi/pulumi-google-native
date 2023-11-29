@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Replay. Each `Replay` is available for at least 7 days.
@@ -75,12 +74,6 @@ func (o LookupFolderReplayResultOutput) ToLookupFolderReplayResultOutput() Looku
 
 func (o LookupFolderReplayResultOutput) ToLookupFolderReplayResultOutputWithContext(ctx context.Context) LookupFolderReplayResultOutput {
 	return o
-}
-
-func (o LookupFolderReplayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFolderReplayResult] {
-	return pulumix.Output[LookupFolderReplayResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration used for the `Replay`.

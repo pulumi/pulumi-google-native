@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *ServiceConnectionMapIamMember) ToServiceConnectionMapIamMemberOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionMapIamMemberOutput)
 }
 
-func (i *ServiceConnectionMapIamMember) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionMapIamMember] {
-	return pulumix.Output[*ServiceConnectionMapIamMember]{
-		OutputState: i.ToServiceConnectionMapIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceConnectionMapIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionMapIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o ServiceConnectionMapIamMemberOutput) ToServiceConnectionMapIamMemberOutp
 
 func (o ServiceConnectionMapIamMemberOutput) ToServiceConnectionMapIamMemberOutputWithContext(ctx context.Context) ServiceConnectionMapIamMemberOutput {
 	return o
-}
-
-func (o ServiceConnectionMapIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionMapIamMember] {
-	return pulumix.Output[*ServiceConnectionMapIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

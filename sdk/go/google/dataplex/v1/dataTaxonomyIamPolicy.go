@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -136,12 +135,6 @@ func (i *DataTaxonomyIamPolicy) ToDataTaxonomyIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DataTaxonomyIamPolicyOutput)
 }
 
-func (i *DataTaxonomyIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*DataTaxonomyIamPolicy] {
-	return pulumix.Output[*DataTaxonomyIamPolicy]{
-		OutputState: i.ToDataTaxonomyIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataTaxonomyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DataTaxonomyIamPolicyOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o DataTaxonomyIamPolicyOutput) ToDataTaxonomyIamPolicyOutput() DataTaxonom
 
 func (o DataTaxonomyIamPolicyOutput) ToDataTaxonomyIamPolicyOutputWithContext(ctx context.Context) DataTaxonomyIamPolicyOutput {
 	return o
-}
-
-func (o DataTaxonomyIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DataTaxonomyIamPolicy] {
-	return pulumix.Output[*DataTaxonomyIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

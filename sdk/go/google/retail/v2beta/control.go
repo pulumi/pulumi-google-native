@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Control. If the Control to create already exists, an ALREADY_EXISTS error is returned.
@@ -161,12 +160,6 @@ func (i *Control) ToControlOutputWithContext(ctx context.Context) ControlOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ControlOutput)
 }
 
-func (i *Control) ToOutput(ctx context.Context) pulumix.Output[*Control] {
-	return pulumix.Output[*Control]{
-		OutputState: i.ToControlOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ControlOutput struct{ *pulumi.OutputState }
 
 func (ControlOutput) ElementType() reflect.Type {
@@ -179,12 +172,6 @@ func (o ControlOutput) ToControlOutput() ControlOutput {
 
 func (o ControlOutput) ToControlOutputWithContext(ctx context.Context) ControlOutput {
 	return o
-}
-
-func (o ControlOutput) ToOutput(ctx context.Context) pulumix.Output[*Control] {
-	return pulumix.Output[*Control]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of serving config ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.

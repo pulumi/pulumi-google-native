@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a logs-based metric.
@@ -91,12 +90,6 @@ func (o LookupMetricResultOutput) ToLookupMetricResultOutput() LookupMetricResul
 
 func (o LookupMetricResultOutput) ToLookupMetricResultOutputWithContext(ctx context.Context) LookupMetricResultOutput {
 	return o
-}
-
-func (o LookupMetricResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMetricResult] {
-	return pulumix.Output[LookupMetricResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects are supported. The bucket has to be in the same project as the metric.For example:projects/my-project/locations/global/buckets/my-bucketIf empty, then the Log Metric is considered a non-Bucket Log Metric.

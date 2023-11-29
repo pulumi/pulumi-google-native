@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new FeatureView in a given FeatureOnlineStore.
@@ -159,12 +158,6 @@ func (i *FeatureView) ToFeatureViewOutputWithContext(ctx context.Context) Featur
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureViewOutput)
 }
 
-func (i *FeatureView) ToOutput(ctx context.Context) pulumix.Output[*FeatureView] {
-	return pulumix.Output[*FeatureView]{
-		OutputState: i.ToFeatureViewOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureViewOutput struct{ *pulumi.OutputState }
 
 func (FeatureViewOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o FeatureViewOutput) ToFeatureViewOutput() FeatureViewOutput {
 
 func (o FeatureViewOutput) ToFeatureViewOutputWithContext(ctx context.Context) FeatureViewOutput {
 	return o
-}
-
-func (o FeatureViewOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureView] {
-	return pulumix.Output[*FeatureView]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.

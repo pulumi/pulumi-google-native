@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -136,12 +135,6 @@ func (i *ImageIamMember) ToImageIamMemberOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamMemberOutput)
 }
 
-func (i *ImageIamMember) ToOutput(ctx context.Context) pulumix.Output[*ImageIamMember] {
-	return pulumix.Output[*ImageIamMember]{
-		OutputState: i.ToImageIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImageIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ImageIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o ImageIamMemberOutput) ToImageIamMemberOutput() ImageIamMemberOutput {
 
 func (o ImageIamMemberOutput) ToImageIamMemberOutputWithContext(ctx context.Context) ImageIamMemberOutput {
 	return o
-}
-
-func (o ImageIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageIamMember] {
-	return pulumix.Output[*ImageIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

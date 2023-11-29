@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any existing policy. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
@@ -136,12 +135,6 @@ func (i *V1beta1IamBinding) ToV1beta1IamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(V1beta1IamBindingOutput)
 }
 
-func (i *V1beta1IamBinding) ToOutput(ctx context.Context) pulumix.Output[*V1beta1IamBinding] {
-	return pulumix.Output[*V1beta1IamBinding]{
-		OutputState: i.ToV1beta1IamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type V1beta1IamBindingOutput struct{ *pulumi.OutputState }
 
 func (V1beta1IamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o V1beta1IamBindingOutput) ToV1beta1IamBindingOutput() V1beta1IamBindingOu
 
 func (o V1beta1IamBindingOutput) ToV1beta1IamBindingOutputWithContext(ctx context.Context) V1beta1IamBindingOutput {
 	return o
-}
-
-func (o V1beta1IamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*V1beta1IamBinding] {
-	return pulumix.Output[*V1beta1IamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

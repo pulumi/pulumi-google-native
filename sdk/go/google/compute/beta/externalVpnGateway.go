@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a ExternalVpnGateway in the specified project using the data included in the request.
@@ -138,12 +137,6 @@ func (i *ExternalVpnGateway) ToExternalVpnGatewayOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalVpnGatewayOutput)
 }
 
-func (i *ExternalVpnGateway) ToOutput(ctx context.Context) pulumix.Output[*ExternalVpnGateway] {
-	return pulumix.Output[*ExternalVpnGateway]{
-		OutputState: i.ToExternalVpnGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExternalVpnGatewayOutput struct{ *pulumi.OutputState }
 
 func (ExternalVpnGatewayOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o ExternalVpnGatewayOutput) ToExternalVpnGatewayOutput() ExternalVpnGatewa
 
 func (o ExternalVpnGatewayOutput) ToExternalVpnGatewayOutputWithContext(ctx context.Context) ExternalVpnGatewayOutput {
 	return o
-}
-
-func (o ExternalVpnGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalVpnGateway] {
-	return pulumix.Output[*ExternalVpnGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

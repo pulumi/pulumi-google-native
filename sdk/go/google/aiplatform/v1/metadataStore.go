@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Initializes a MetadataStore, including allocation of resources.
@@ -125,12 +124,6 @@ func (i *MetadataStore) ToMetadataStoreOutputWithContext(ctx context.Context) Me
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataStoreOutput)
 }
 
-func (i *MetadataStore) ToOutput(ctx context.Context) pulumix.Output[*MetadataStore] {
-	return pulumix.Output[*MetadataStore]{
-		OutputState: i.ToMetadataStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetadataStoreOutput struct{ *pulumi.OutputState }
 
 func (MetadataStoreOutput) ElementType() reflect.Type {
@@ -143,12 +136,6 @@ func (o MetadataStoreOutput) ToMetadataStoreOutput() MetadataStoreOutput {
 
 func (o MetadataStoreOutput) ToMetadataStoreOutputWithContext(ctx context.Context) MetadataStoreOutput {
 	return o
-}
-
-func (o MetadataStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataStore] {
-	return pulumix.Output[*MetadataStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this MetadataStore was created.

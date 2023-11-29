@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
@@ -136,12 +135,6 @@ func (i *EntryGroupIamBinding) ToEntryGroupIamBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingOutput)
 }
 
-func (i *EntryGroupIamBinding) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamBinding] {
-	return pulumix.Output[*EntryGroupIamBinding]{
-		OutputState: i.ToEntryGroupIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntryGroupIamBindingOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o EntryGroupIamBindingOutput) ToEntryGroupIamBindingOutput() EntryGroupIam
 
 func (o EntryGroupIamBindingOutput) ToEntryGroupIamBindingOutputWithContext(ctx context.Context) EntryGroupIamBindingOutput {
 	return o
-}
-
-func (o EntryGroupIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamBinding] {
-	return pulumix.Output[*EntryGroupIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

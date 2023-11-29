@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a config for discovery to scan and profile storage.
@@ -156,12 +155,6 @@ func (i *DiscoveryConfig) ToDiscoveryConfigOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryConfigOutput)
 }
 
-func (i *DiscoveryConfig) ToOutput(ctx context.Context) pulumix.Output[*DiscoveryConfig] {
-	return pulumix.Output[*DiscoveryConfig]{
-		OutputState: i.ToDiscoveryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DiscoveryConfigOutput struct{ *pulumi.OutputState }
 
 func (DiscoveryConfigOutput) ElementType() reflect.Type {
@@ -174,12 +167,6 @@ func (o DiscoveryConfigOutput) ToDiscoveryConfigOutput() DiscoveryConfigOutput {
 
 func (o DiscoveryConfigOutput) ToDiscoveryConfigOutputWithContext(ctx context.Context) DiscoveryConfigOutput {
 	return o
-}
-
-func (o DiscoveryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*DiscoveryConfig] {
-	return pulumix.Output[*DiscoveryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Actions to execute at the completion of scanning.

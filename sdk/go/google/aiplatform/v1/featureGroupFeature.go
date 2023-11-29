@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Feature in a given FeatureGroup.
@@ -165,12 +164,6 @@ func (i *FeatureGroupFeature) ToFeatureGroupFeatureOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureGroupFeatureOutput)
 }
 
-func (i *FeatureGroupFeature) ToOutput(ctx context.Context) pulumix.Output[*FeatureGroupFeature] {
-	return pulumix.Output[*FeatureGroupFeature]{
-		OutputState: i.ToFeatureGroupFeatureOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureGroupFeatureOutput struct{ *pulumi.OutputState }
 
 func (FeatureGroupFeatureOutput) ElementType() reflect.Type {
@@ -183,12 +176,6 @@ func (o FeatureGroupFeatureOutput) ToFeatureGroupFeatureOutput() FeatureGroupFea
 
 func (o FeatureGroupFeatureOutput) ToFeatureGroupFeatureOutputWithContext(ctx context.Context) FeatureGroupFeatureOutput {
 	return o
-}
-
-func (o FeatureGroupFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureGroupFeature] {
-	return pulumix.Output[*FeatureGroupFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was created.

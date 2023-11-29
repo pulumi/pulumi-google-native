@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified UrlMap resource.
@@ -97,12 +96,6 @@ func (o LookupRegionUrlMapResultOutput) ToLookupRegionUrlMapResultOutput() Looku
 
 func (o LookupRegionUrlMapResultOutput) ToLookupRegionUrlMapResultOutputWithContext(ctx context.Context) LookupRegionUrlMapResultOutput {
 	return o
-}
-
-func (o LookupRegionUrlMapResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionUrlMapResult] {
-	return pulumix.Output[LookupRegionUrlMapResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

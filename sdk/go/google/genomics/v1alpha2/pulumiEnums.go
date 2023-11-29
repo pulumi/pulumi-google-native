@@ -85,12 +85,6 @@ func (o DiskTypeOutput) ToDiskTypePtrOutputWithContext(ctx context.Context) Disk
 	}).(DiskTypePtrOutput)
 }
 
-func (o DiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DiskType] {
-	return pulumix.Output[DiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o DiskTypePtrOutput) ToDiskTypePtrOutput() DiskTypePtrOutput {
 
 func (o DiskTypePtrOutput) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskTypePtrOutput {
 	return o
-}
-
-func (o DiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskType] {
-	return pulumix.Output[*DiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskTypePtrOutput) Elem() DiskTypeOutput {

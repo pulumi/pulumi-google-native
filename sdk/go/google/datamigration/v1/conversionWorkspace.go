@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new conversion workspace in a given project and location.
@@ -161,12 +160,6 @@ func (i *ConversionWorkspace) ToConversionWorkspaceOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ConversionWorkspaceOutput)
 }
 
-func (i *ConversionWorkspace) ToOutput(ctx context.Context) pulumix.Output[*ConversionWorkspace] {
-	return pulumix.Output[*ConversionWorkspace]{
-		OutputState: i.ToConversionWorkspaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConversionWorkspaceOutput struct{ *pulumi.OutputState }
 
 func (ConversionWorkspaceOutput) ElementType() reflect.Type {
@@ -179,12 +172,6 @@ func (o ConversionWorkspaceOutput) ToConversionWorkspaceOutput() ConversionWorks
 
 func (o ConversionWorkspaceOutput) ToConversionWorkspaceOutputWithContext(ctx context.Context) ConversionWorkspaceOutput {
 	return o
-}
-
-func (o ConversionWorkspaceOutput) ToOutput(ctx context.Context) pulumix.Output[*ConversionWorkspace] {
-	return pulumix.Output[*ConversionWorkspace]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The ID of the conversion workspace to create.

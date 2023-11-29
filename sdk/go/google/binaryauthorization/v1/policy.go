@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a platform policy, and returns a copy of it. Returns `NOT_FOUND` if the project or platform doesn't exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the policy already exists, and `INVALID_ARGUMENT` if the policy contains a platform-specific policy that does not match the platform value specified in the URL.
@@ -129,12 +128,6 @@ func (i *Policy) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput)
 }
 
-func (i *Policy) ToOutput(ctx context.Context) pulumix.Output[*Policy] {
-	return pulumix.Output[*Policy]{
-		OutputState: i.ToPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyOutput struct{ *pulumi.OutputState }
 
 func (PolicyOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 
 func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
-}
-
-func (o PolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*Policy] {
-	return pulumix.Output[*Policy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A description comment about the policy.

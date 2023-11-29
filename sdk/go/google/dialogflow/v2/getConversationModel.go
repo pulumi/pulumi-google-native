@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets conversation model.
@@ -83,12 +82,6 @@ func (o LookupConversationModelResultOutput) ToLookupConversationModelResultOutp
 
 func (o LookupConversationModelResultOutput) ToLookupConversationModelResultOutputWithContext(ctx context.Context) LookupConversationModelResultOutput {
 	return o
-}
-
-func (o LookupConversationModelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConversationModelResult] {
-	return pulumix.Output[LookupConversationModelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Metadata for article suggestion models.

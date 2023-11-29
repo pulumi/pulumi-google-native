@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a persistent regional disk in the specified project using the data included in the request.
@@ -364,12 +363,6 @@ func (i *RegionDisk) ToRegionDiskOutputWithContext(ctx context.Context) RegionDi
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskOutput)
 }
 
-func (i *RegionDisk) ToOutput(ctx context.Context) pulumix.Output[*RegionDisk] {
-	return pulumix.Output[*RegionDisk]{
-		OutputState: i.ToRegionDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionDiskOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskOutput) ElementType() reflect.Type {
@@ -382,12 +375,6 @@ func (o RegionDiskOutput) ToRegionDiskOutput() RegionDiskOutput {
 
 func (o RegionDiskOutput) ToRegionDiskOutputWithContext(ctx context.Context) RegionDiskOutput {
 	return o
-}
-
-func (o RegionDiskOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionDisk] {
-	return pulumix.Output[*RegionDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.

@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *RestorePlanRestoreVolumeRestoreIamMember) ToRestorePlanRestoreVolumeRes
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreVolumeRestoreIamMemberOutput)
 }
 
-func (i *RestorePlanRestoreVolumeRestoreIamMember) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreVolumeRestoreIamMember] {
-	return pulumix.Output[*RestorePlanRestoreVolumeRestoreIamMember]{
-		OutputState: i.ToRestorePlanRestoreVolumeRestoreIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanRestoreVolumeRestoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanRestoreVolumeRestoreIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o RestorePlanRestoreVolumeRestoreIamMemberOutput) ToRestorePlanRestoreVolu
 
 func (o RestorePlanRestoreVolumeRestoreIamMemberOutput) ToRestorePlanRestoreVolumeRestoreIamMemberOutputWithContext(ctx context.Context) RestorePlanRestoreVolumeRestoreIamMemberOutput {
 	return o
-}
-
-func (o RestorePlanRestoreVolumeRestoreIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreVolumeRestoreIamMember] {
-	return pulumix.Output[*RestorePlanRestoreVolumeRestoreIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

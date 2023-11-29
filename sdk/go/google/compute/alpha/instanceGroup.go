@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an instance group in the specified project using the parameters that are included in the request.
@@ -140,12 +139,6 @@ func (i *InstanceGroup) ToInstanceGroupOutputWithContext(ctx context.Context) In
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupOutput)
 }
 
-func (i *InstanceGroup) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroup] {
-	return pulumix.Output[*InstanceGroup]{
-		OutputState: i.ToInstanceGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceGroupOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o InstanceGroupOutput) ToInstanceGroupOutput() InstanceGroupOutput {
 
 func (o InstanceGroupOutput) ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput {
 	return o
-}
-
-func (o InstanceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroup] {
-	return pulumix.Output[*InstanceGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp for this instance group in RFC3339 text format.

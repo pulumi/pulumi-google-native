@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a view.
@@ -77,12 +76,6 @@ func (o LookupViewResultOutput) ToLookupViewResultOutput() LookupViewResultOutpu
 
 func (o LookupViewResultOutput) ToLookupViewResultOutputWithContext(ctx context.Context) LookupViewResultOutput {
 	return o
-}
-
-func (o LookupViewResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupViewResult] {
-	return pulumix.Output[LookupViewResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which this view was created.

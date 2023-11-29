@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
@@ -153,12 +152,6 @@ func (o LookupVersionResultOutput) ToLookupVersionResultOutput() LookupVersionRe
 
 func (o LookupVersionResultOutput) ToLookupVersionResultOutputWithContext(ctx context.Context) LookupVersionResultOutput {
 	return o
-}
-
-func (o LookupVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVersionResult] {
-	return pulumix.Output[LookupVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.

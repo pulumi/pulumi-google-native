@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AcceleratorArgs) ToAcceleratorOutputWithContext(ctx context.Context) Acc
 	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorOutput)
 }
 
-func (i AcceleratorArgs) ToOutput(ctx context.Context) pulumix.Output[Accelerator] {
-	return pulumix.Output[Accelerator]{
-		OutputState: i.ToAcceleratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AcceleratorArrayInput is an input type that accepts AcceleratorArray and AcceleratorArrayOutput values.
 // You can construct a concrete instance of `AcceleratorArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AcceleratorArray) ToAcceleratorArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorArrayOutput)
 }
 
-func (i AcceleratorArray) ToOutput(ctx context.Context) pulumix.Output[[]Accelerator] {
-	return pulumix.Output[[]Accelerator]{
-		OutputState: i.ToAcceleratorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An accelerator card attached to the instance.
 type AcceleratorOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AcceleratorOutput) ToAcceleratorOutput() AcceleratorOutput {
 
 func (o AcceleratorOutput) ToAcceleratorOutputWithContext(ctx context.Context) AcceleratorOutput {
 	return o
-}
-
-func (o AcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[Accelerator] {
-	return pulumix.Output[Accelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Number of accelerator cards exposed to the instance.
@@ -133,12 +114,6 @@ func (o AcceleratorArrayOutput) ToAcceleratorArrayOutput() AcceleratorArrayOutpu
 
 func (o AcceleratorArrayOutput) ToAcceleratorArrayOutputWithContext(ctx context.Context) AcceleratorArrayOutput {
 	return o
-}
-
-func (o AcceleratorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Accelerator] {
-	return pulumix.Output[[]Accelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AcceleratorArrayOutput) Index(i pulumi.IntInput) AcceleratorOutput {
@@ -170,12 +145,6 @@ func (o AcceleratorResponseOutput) ToAcceleratorResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AcceleratorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AcceleratorResponse] {
-	return pulumix.Output[AcceleratorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Number of accelerator cards exposed to the instance.
 func (o AcceleratorResponseOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v AcceleratorResponse) int { return v.Count }).(pulumi.IntOutput)
@@ -198,12 +167,6 @@ func (o AcceleratorResponseArrayOutput) ToAcceleratorResponseArrayOutput() Accel
 
 func (o AcceleratorResponseArrayOutput) ToAcceleratorResponseArrayOutputWithContext(ctx context.Context) AcceleratorResponseArrayOutput {
 	return o
-}
-
-func (o AcceleratorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AcceleratorResponse] {
-	return pulumix.Output[[]AcceleratorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AcceleratorResponseArrayOutput) Index(i pulumi.IntInput) AcceleratorResponseOutput {
@@ -251,12 +214,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -282,12 +239,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -301,12 +252,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -331,12 +276,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -368,12 +307,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -396,12 +329,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -449,12 +376,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -480,12 +401,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -499,12 +414,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -529,12 +438,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -566,12 +469,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -594,12 +491,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -651,12 +542,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -682,12 +567,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -701,12 +580,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -736,12 +609,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -775,12 +642,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -808,12 +669,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -877,12 +732,6 @@ func (i ContainerArgs) ToContainerOutputWithContext(ctx context.Context) Contain
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerOutput)
 }
 
-func (i ContainerArgs) ToOutput(ctx context.Context) pulumix.Output[Container] {
-	return pulumix.Output[Container]{
-		OutputState: i.ToContainerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerArgs) ToContainerPtrOutput() ContainerPtrOutput {
 	return i.ToContainerPtrOutputWithContext(context.Background())
 }
@@ -924,12 +773,6 @@ func (i *containerPtrType) ToContainerPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerPtrOutput)
 }
 
-func (i *containerPtrType) ToOutput(ctx context.Context) pulumix.Output[*Container] {
-	return pulumix.Output[*Container]{
-		OutputState: i.ToContainerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A Docker container.
 type ContainerOutput struct{ *pulumi.OutputState }
 
@@ -953,12 +796,6 @@ func (o ContainerOutput) ToContainerPtrOutputWithContext(ctx context.Context) Co
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Container) *Container {
 		return &v
 	}).(ContainerPtrOutput)
-}
-
-func (o ContainerOutput) ToOutput(ctx context.Context) pulumix.Output[Container] {
-	return pulumix.Output[Container]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Arguments passed to the entrypoint.
@@ -1003,12 +840,6 @@ func (o ContainerPtrOutput) ToContainerPtrOutput() ContainerPtrOutput {
 
 func (o ContainerPtrOutput) ToContainerPtrOutputWithContext(ctx context.Context) ContainerPtrOutput {
 	return o
-}
-
-func (o ContainerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Container] {
-	return pulumix.Output[*Container]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerPtrOutput) Elem() ContainerOutput {
@@ -1112,12 +943,6 @@ func (o ContainerResponseOutput) ToContainerResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ContainerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerResponse] {
-	return pulumix.Output[ContainerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Arguments passed to the entrypoint.
 func (o ContainerResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
@@ -1187,12 +1012,6 @@ func (i CustomerEncryptionKeyArgs) ToCustomerEncryptionKeyOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerEncryptionKeyOutput)
 }
 
-func (i CustomerEncryptionKeyArgs) ToOutput(ctx context.Context) pulumix.Output[CustomerEncryptionKey] {
-	return pulumix.Output[CustomerEncryptionKey]{
-		OutputState: i.ToCustomerEncryptionKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CustomerEncryptionKeyArgs) ToCustomerEncryptionKeyPtrOutput() CustomerEncryptionKeyPtrOutput {
 	return i.ToCustomerEncryptionKeyPtrOutputWithContext(context.Background())
 }
@@ -1234,12 +1053,6 @@ func (i *customerEncryptionKeyPtrType) ToCustomerEncryptionKeyPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerEncryptionKeyPtrOutput)
 }
 
-func (i *customerEncryptionKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomerEncryptionKey] {
-	return pulumix.Output[*CustomerEncryptionKey]{
-		OutputState: i.ToCustomerEncryptionKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A customer-managed encryption key (CMEK) for the Compute Engine resources of the associated workstation configuration. Specify the name of your Cloud KMS encryption key and the default service account. We recommend that you use a separate service account and follow [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties).
 type CustomerEncryptionKeyOutput struct{ *pulumi.OutputState }
 
@@ -1265,12 +1078,6 @@ func (o CustomerEncryptionKeyOutput) ToCustomerEncryptionKeyPtrOutputWithContext
 	}).(CustomerEncryptionKeyPtrOutput)
 }
 
-func (o CustomerEncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerEncryptionKey] {
-	return pulumix.Output[CustomerEncryptionKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
 func (o CustomerEncryptionKeyOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
@@ -1293,12 +1100,6 @@ func (o CustomerEncryptionKeyPtrOutput) ToCustomerEncryptionKeyPtrOutput() Custo
 
 func (o CustomerEncryptionKeyPtrOutput) ToCustomerEncryptionKeyPtrOutputWithContext(ctx context.Context) CustomerEncryptionKeyPtrOutput {
 	return o
-}
-
-func (o CustomerEncryptionKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomerEncryptionKey] {
-	return pulumix.Output[*CustomerEncryptionKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomerEncryptionKeyPtrOutput) Elem() CustomerEncryptionKeyOutput {
@@ -1354,12 +1155,6 @@ func (o CustomerEncryptionKeyResponseOutput) ToCustomerEncryptionKeyResponseOutp
 	return o
 }
 
-func (o CustomerEncryptionKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerEncryptionKeyResponse] {
-	return pulumix.Output[CustomerEncryptionKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
 func (o CustomerEncryptionKeyResponseOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKey }).(pulumi.StringOutput)
@@ -1405,12 +1200,6 @@ func (i DomainConfigArgs) ToDomainConfigOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigOutput)
 }
 
-func (i DomainConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DomainConfig] {
-	return pulumix.Output[DomainConfig]{
-		OutputState: i.ToDomainConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DomainConfigArgs) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
 	return i.ToDomainConfigPtrOutputWithContext(context.Background())
 }
@@ -1452,12 +1241,6 @@ func (i *domainConfigPtrType) ToDomainConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigPtrOutput)
 }
 
-func (i *domainConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DomainConfig] {
-	return pulumix.Output[*DomainConfig]{
-		OutputState: i.ToDomainConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration options for a custom domain.
 type DomainConfigOutput struct{ *pulumi.OutputState }
 
@@ -1483,12 +1266,6 @@ func (o DomainConfigOutput) ToDomainConfigPtrOutputWithContext(ctx context.Conte
 	}).(DomainConfigPtrOutput)
 }
 
-func (o DomainConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DomainConfig] {
-	return pulumix.Output[DomainConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. Domain used by Workstations for HTTP ingress.
 func (o DomainConfigOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
@@ -1506,12 +1283,6 @@ func (o DomainConfigPtrOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
 
 func (o DomainConfigPtrOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
 	return o
-}
-
-func (o DomainConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainConfig] {
-	return pulumix.Output[*DomainConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainConfigPtrOutput) Elem() DomainConfigOutput {
@@ -1553,12 +1324,6 @@ func (o DomainConfigResponseOutput) ToDomainConfigResponseOutput() DomainConfigR
 
 func (o DomainConfigResponseOutput) ToDomainConfigResponseOutputWithContext(ctx context.Context) DomainConfigResponseOutput {
 	return o
-}
-
-func (o DomainConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DomainConfigResponse] {
-	return pulumix.Output[DomainConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Domain used by Workstations for HTTP ingress.
@@ -1605,12 +1370,6 @@ func (i EphemeralDirectoryArgs) ToEphemeralDirectoryOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EphemeralDirectoryOutput)
 }
 
-func (i EphemeralDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[EphemeralDirectory] {
-	return pulumix.Output[EphemeralDirectory]{
-		OutputState: i.ToEphemeralDirectoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EphemeralDirectoryArrayInput is an input type that accepts EphemeralDirectoryArray and EphemeralDirectoryArrayOutput values.
 // You can construct a concrete instance of `EphemeralDirectoryArrayInput` via:
 //
@@ -1636,12 +1395,6 @@ func (i EphemeralDirectoryArray) ToEphemeralDirectoryArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EphemeralDirectoryArrayOutput)
 }
 
-func (i EphemeralDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]EphemeralDirectory] {
-	return pulumix.Output[[]EphemeralDirectory]{
-		OutputState: i.ToEphemeralDirectoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
 type EphemeralDirectoryOutput struct{ *pulumi.OutputState }
 
@@ -1655,12 +1408,6 @@ func (o EphemeralDirectoryOutput) ToEphemeralDirectoryOutput() EphemeralDirector
 
 func (o EphemeralDirectoryOutput) ToEphemeralDirectoryOutputWithContext(ctx context.Context) EphemeralDirectoryOutput {
 	return o
-}
-
-func (o EphemeralDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[EphemeralDirectory] {
-	return pulumix.Output[EphemeralDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An EphemeralDirectory backed by a Compute Engine persistent disk.
@@ -1685,12 +1432,6 @@ func (o EphemeralDirectoryArrayOutput) ToEphemeralDirectoryArrayOutput() Ephemer
 
 func (o EphemeralDirectoryArrayOutput) ToEphemeralDirectoryArrayOutputWithContext(ctx context.Context) EphemeralDirectoryArrayOutput {
 	return o
-}
-
-func (o EphemeralDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EphemeralDirectory] {
-	return pulumix.Output[[]EphemeralDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EphemeralDirectoryArrayOutput) Index(i pulumi.IntInput) EphemeralDirectoryOutput {
@@ -1722,12 +1463,6 @@ func (o EphemeralDirectoryResponseOutput) ToEphemeralDirectoryResponseOutputWith
 	return o
 }
 
-func (o EphemeralDirectoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EphemeralDirectoryResponse] {
-	return pulumix.Output[EphemeralDirectoryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An EphemeralDirectory backed by a Compute Engine persistent disk.
 func (o EphemeralDirectoryResponseOutput) GcePd() GcePersistentDiskResponseOutput {
 	return o.ApplyT(func(v EphemeralDirectoryResponse) GcePersistentDiskResponse { return v.GcePd }).(GcePersistentDiskResponseOutput)
@@ -1750,12 +1485,6 @@ func (o EphemeralDirectoryResponseArrayOutput) ToEphemeralDirectoryResponseArray
 
 func (o EphemeralDirectoryResponseArrayOutput) ToEphemeralDirectoryResponseArrayOutputWithContext(ctx context.Context) EphemeralDirectoryResponseArrayOutput {
 	return o
-}
-
-func (o EphemeralDirectoryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EphemeralDirectoryResponse] {
-	return pulumix.Output[[]EphemeralDirectoryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EphemeralDirectoryResponseArrayOutput) Index(i pulumi.IntInput) EphemeralDirectoryResponseOutput {
@@ -1811,12 +1540,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1858,12 +1581,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1887,12 +1604,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1927,12 +1638,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -2012,12 +1717,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -2073,12 +1772,6 @@ func (i GceConfidentialInstanceConfigArgs) ToGceConfidentialInstanceConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GceConfidentialInstanceConfigOutput)
 }
 
-func (i GceConfidentialInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GceConfidentialInstanceConfig] {
-	return pulumix.Output[GceConfidentialInstanceConfig]{
-		OutputState: i.ToGceConfidentialInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GceConfidentialInstanceConfigArgs) ToGceConfidentialInstanceConfigPtrOutput() GceConfidentialInstanceConfigPtrOutput {
 	return i.ToGceConfidentialInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -2120,12 +1813,6 @@ func (i *gceConfidentialInstanceConfigPtrType) ToGceConfidentialInstanceConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(GceConfidentialInstanceConfigPtrOutput)
 }
 
-func (i *gceConfidentialInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GceConfidentialInstanceConfig] {
-	return pulumix.Output[*GceConfidentialInstanceConfig]{
-		OutputState: i.ToGceConfidentialInstanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A set of Compute Engine Confidential VM instance options.
 type GceConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
 
@@ -2151,12 +1838,6 @@ func (o GceConfidentialInstanceConfigOutput) ToGceConfidentialInstanceConfigPtrO
 	}).(GceConfidentialInstanceConfigPtrOutput)
 }
 
-func (o GceConfidentialInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GceConfidentialInstanceConfig] {
-	return pulumix.Output[GceConfidentialInstanceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Whether the instance has confidential compute enabled.
 func (o GceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GceConfidentialInstanceConfig) *bool { return v.EnableConfidentialCompute }).(pulumi.BoolPtrOutput)
@@ -2174,12 +1855,6 @@ func (o GceConfidentialInstanceConfigPtrOutput) ToGceConfidentialInstanceConfigP
 
 func (o GceConfidentialInstanceConfigPtrOutput) ToGceConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) GceConfidentialInstanceConfigPtrOutput {
 	return o
-}
-
-func (o GceConfidentialInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GceConfidentialInstanceConfig] {
-	return pulumix.Output[*GceConfidentialInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GceConfidentialInstanceConfigPtrOutput) Elem() GceConfidentialInstanceConfigOutput {
@@ -2221,12 +1896,6 @@ func (o GceConfidentialInstanceConfigResponseOutput) ToGceConfidentialInstanceCo
 
 func (o GceConfidentialInstanceConfigResponseOutput) ToGceConfidentialInstanceConfigResponseOutputWithContext(ctx context.Context) GceConfidentialInstanceConfigResponseOutput {
 	return o
-}
-
-func (o GceConfidentialInstanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GceConfidentialInstanceConfigResponse] {
-	return pulumix.Output[GceConfidentialInstanceConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Whether the instance has confidential compute enabled.
@@ -2309,12 +1978,6 @@ func (i GceInstanceArgs) ToGceInstanceOutputWithContext(ctx context.Context) Gce
 	return pulumi.ToOutputWithContext(ctx, i).(GceInstanceOutput)
 }
 
-func (i GceInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GceInstance] {
-	return pulumix.Output[GceInstance]{
-		OutputState: i.ToGceInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GceInstanceArgs) ToGceInstancePtrOutput() GceInstancePtrOutput {
 	return i.ToGceInstancePtrOutputWithContext(context.Background())
 }
@@ -2356,12 +2019,6 @@ func (i *gceInstancePtrType) ToGceInstancePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GceInstancePtrOutput)
 }
 
-func (i *gceInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*GceInstance] {
-	return pulumix.Output[*GceInstance]{
-		OutputState: i.ToGceInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A runtime using a Compute Engine instance.
 type GceInstanceOutput struct{ *pulumi.OutputState }
 
@@ -2385,12 +2042,6 @@ func (o GceInstanceOutput) ToGceInstancePtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GceInstance) *GceInstance {
 		return &v
 	}).(GceInstancePtrOutput)
-}
-
-func (o GceInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GceInstance] {
-	return pulumix.Output[GceInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A list of the type and count of accelerator cards attached to the instance.
@@ -2460,12 +2111,6 @@ func (o GceInstancePtrOutput) ToGceInstancePtrOutput() GceInstancePtrOutput {
 
 func (o GceInstancePtrOutput) ToGceInstancePtrOutputWithContext(ctx context.Context) GceInstancePtrOutput {
 	return o
-}
-
-func (o GceInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GceInstance] {
-	return pulumix.Output[*GceInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GceInstancePtrOutput) Elem() GceInstanceOutput {
@@ -2631,12 +2276,6 @@ func (o GceInstanceResponseOutput) ToGceInstanceResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o GceInstanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GceInstanceResponse] {
-	return pulumix.Output[GceInstanceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A list of the type and count of accelerator cards attached to the instance.
 func (o GceInstanceResponseOutput) Accelerators() AcceleratorResponseArrayOutput {
 	return o.ApplyT(func(v GceInstanceResponse) []AcceleratorResponse { return v.Accelerators }).(AcceleratorResponseArrayOutput)
@@ -2744,12 +2383,6 @@ func (i GcePersistentDiskArgs) ToGcePersistentDiskOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GcePersistentDiskOutput)
 }
 
-func (i GcePersistentDiskArgs) ToOutput(ctx context.Context) pulumix.Output[GcePersistentDisk] {
-	return pulumix.Output[GcePersistentDisk]{
-		OutputState: i.ToGcePersistentDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GcePersistentDiskArgs) ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput {
 	return i.ToGcePersistentDiskPtrOutputWithContext(context.Background())
 }
@@ -2791,12 +2424,6 @@ func (i *gcePersistentDiskPtrType) ToGcePersistentDiskPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GcePersistentDiskPtrOutput)
 }
 
-func (i *gcePersistentDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*GcePersistentDisk] {
-	return pulumix.Output[*GcePersistentDisk]{
-		OutputState: i.ToGcePersistentDiskPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An EphemeralDirectory is backed by a Compute Engine persistent disk.
 type GcePersistentDiskOutput struct{ *pulumi.OutputState }
 
@@ -2820,12 +2447,6 @@ func (o GcePersistentDiskOutput) ToGcePersistentDiskPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcePersistentDisk) *GcePersistentDisk {
 		return &v
 	}).(GcePersistentDiskPtrOutput)
-}
-
-func (o GcePersistentDiskOutput) ToOutput(ctx context.Context) pulumix.Output[GcePersistentDisk] {
-	return pulumix.Output[GcePersistentDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Type of the disk to use. Defaults to `"pd-standard"`.
@@ -2860,12 +2481,6 @@ func (o GcePersistentDiskPtrOutput) ToGcePersistentDiskPtrOutput() GcePersistent
 
 func (o GcePersistentDiskPtrOutput) ToGcePersistentDiskPtrOutputWithContext(ctx context.Context) GcePersistentDiskPtrOutput {
 	return o
-}
-
-func (o GcePersistentDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GcePersistentDisk] {
-	return pulumix.Output[*GcePersistentDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GcePersistentDiskPtrOutput) Elem() GcePersistentDiskOutput {
@@ -2945,12 +2560,6 @@ func (o GcePersistentDiskResponseOutput) ToGcePersistentDiskResponseOutputWithCo
 	return o
 }
 
-func (o GcePersistentDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GcePersistentDiskResponse] {
-	return pulumix.Output[GcePersistentDiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Type of the disk to use. Defaults to `"pd-standard"`.
 func (o GcePersistentDiskResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GcePersistentDiskResponse) string { return v.DiskType }).(pulumi.StringOutput)
@@ -3022,12 +2631,6 @@ func (i GceRegionalPersistentDiskArgs) ToGceRegionalPersistentDiskOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GceRegionalPersistentDiskOutput)
 }
 
-func (i GceRegionalPersistentDiskArgs) ToOutput(ctx context.Context) pulumix.Output[GceRegionalPersistentDisk] {
-	return pulumix.Output[GceRegionalPersistentDisk]{
-		OutputState: i.ToGceRegionalPersistentDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GceRegionalPersistentDiskArgs) ToGceRegionalPersistentDiskPtrOutput() GceRegionalPersistentDiskPtrOutput {
 	return i.ToGceRegionalPersistentDiskPtrOutputWithContext(context.Background())
 }
@@ -3069,12 +2672,6 @@ func (i *gceRegionalPersistentDiskPtrType) ToGceRegionalPersistentDiskPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(GceRegionalPersistentDiskPtrOutput)
 }
 
-func (i *gceRegionalPersistentDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*GceRegionalPersistentDisk] {
-	return pulumix.Output[*GceRegionalPersistentDisk]{
-		OutputState: i.ToGceRegionalPersistentDiskPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 type GceRegionalPersistentDiskOutput struct{ *pulumi.OutputState }
 
@@ -3098,12 +2695,6 @@ func (o GceRegionalPersistentDiskOutput) ToGceRegionalPersistentDiskPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GceRegionalPersistentDisk) *GceRegionalPersistentDisk {
 		return &v
 	}).(GceRegionalPersistentDiskPtrOutput)
-}
-
-func (o GceRegionalPersistentDiskOutput) ToOutput(ctx context.Context) pulumix.Output[GceRegionalPersistentDisk] {
-	return pulumix.Output[GceRegionalPersistentDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
@@ -3143,12 +2734,6 @@ func (o GceRegionalPersistentDiskPtrOutput) ToGceRegionalPersistentDiskPtrOutput
 
 func (o GceRegionalPersistentDiskPtrOutput) ToGceRegionalPersistentDiskPtrOutputWithContext(ctx context.Context) GceRegionalPersistentDiskPtrOutput {
 	return o
-}
-
-func (o GceRegionalPersistentDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GceRegionalPersistentDisk] {
-	return pulumix.Output[*GceRegionalPersistentDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GceRegionalPersistentDiskPtrOutput) Elem() GceRegionalPersistentDiskOutput {
@@ -3240,12 +2825,6 @@ func (o GceRegionalPersistentDiskResponseOutput) ToGceRegionalPersistentDiskResp
 	return o
 }
 
-func (o GceRegionalPersistentDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GceRegionalPersistentDiskResponse] {
-	return pulumix.Output[GceRegionalPersistentDiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
 func (o GceRegionalPersistentDiskResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) string { return v.DiskType }).(pulumi.StringOutput)
@@ -3314,12 +2893,6 @@ func (i GceShieldedInstanceConfigArgs) ToGceShieldedInstanceConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GceShieldedInstanceConfigOutput)
 }
 
-func (i GceShieldedInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GceShieldedInstanceConfig] {
-	return pulumix.Output[GceShieldedInstanceConfig]{
-		OutputState: i.ToGceShieldedInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GceShieldedInstanceConfigArgs) ToGceShieldedInstanceConfigPtrOutput() GceShieldedInstanceConfigPtrOutput {
 	return i.ToGceShieldedInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -3361,12 +2934,6 @@ func (i *gceShieldedInstanceConfigPtrType) ToGceShieldedInstanceConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(GceShieldedInstanceConfigPtrOutput)
 }
 
-func (i *gceShieldedInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GceShieldedInstanceConfig] {
-	return pulumix.Output[*GceShieldedInstanceConfig]{
-		OutputState: i.ToGceShieldedInstanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A set of Compute Engine Shielded instance options.
 type GceShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
@@ -3390,12 +2957,6 @@ func (o GceShieldedInstanceConfigOutput) ToGceShieldedInstanceConfigPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GceShieldedInstanceConfig) *GceShieldedInstanceConfig {
 		return &v
 	}).(GceShieldedInstanceConfigPtrOutput)
-}
-
-func (o GceShieldedInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GceShieldedInstanceConfig] {
-	return pulumix.Output[GceShieldedInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Whether the instance has integrity monitoring enabled.
@@ -3425,12 +2986,6 @@ func (o GceShieldedInstanceConfigPtrOutput) ToGceShieldedInstanceConfigPtrOutput
 
 func (o GceShieldedInstanceConfigPtrOutput) ToGceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) GceShieldedInstanceConfigPtrOutput {
 	return o
-}
-
-func (o GceShieldedInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GceShieldedInstanceConfig] {
-	return pulumix.Output[*GceShieldedInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GceShieldedInstanceConfigPtrOutput) Elem() GceShieldedInstanceConfigOutput {
@@ -3498,12 +3053,6 @@ func (o GceShieldedInstanceConfigResponseOutput) ToGceShieldedInstanceConfigResp
 	return o
 }
 
-func (o GceShieldedInstanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GceShieldedInstanceConfigResponse] {
-	return pulumix.Output[GceShieldedInstanceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Whether the instance has integrity monitoring enabled.
 func (o GceShieldedInstanceConfigResponseOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v GceShieldedInstanceConfigResponse) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
@@ -3554,12 +3103,6 @@ func (i HostArgs) ToHostOutputWithContext(ctx context.Context) HostOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostOutput)
 }
 
-func (i HostArgs) ToOutput(ctx context.Context) pulumix.Output[Host] {
-	return pulumix.Output[Host]{
-		OutputState: i.ToHostOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HostArgs) ToHostPtrOutput() HostPtrOutput {
 	return i.ToHostPtrOutputWithContext(context.Background())
 }
@@ -3601,12 +3144,6 @@ func (i *hostPtrType) ToHostPtrOutputWithContext(ctx context.Context) HostPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(HostPtrOutput)
 }
 
-func (i *hostPtrType) ToOutput(ctx context.Context) pulumix.Output[*Host] {
-	return pulumix.Output[*Host]{
-		OutputState: i.ToHostPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Runtime host for a workstation.
 type HostOutput struct{ *pulumi.OutputState }
 
@@ -3632,12 +3169,6 @@ func (o HostOutput) ToHostPtrOutputWithContext(ctx context.Context) HostPtrOutpu
 	}).(HostPtrOutput)
 }
 
-func (o HostOutput) ToOutput(ctx context.Context) pulumix.Output[Host] {
-	return pulumix.Output[Host]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies a Compute Engine instance as the host.
 func (o HostOutput) GceInstance() GceInstancePtrOutput {
 	return o.ApplyT(func(v Host) *GceInstance { return v.GceInstance }).(GceInstancePtrOutput)
@@ -3655,12 +3186,6 @@ func (o HostPtrOutput) ToHostPtrOutput() HostPtrOutput {
 
 func (o HostPtrOutput) ToHostPtrOutputWithContext(ctx context.Context) HostPtrOutput {
 	return o
-}
-
-func (o HostPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Host] {
-	return pulumix.Output[*Host]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostPtrOutput) Elem() HostOutput {
@@ -3702,12 +3227,6 @@ func (o HostResponseOutput) ToHostResponseOutput() HostResponseOutput {
 
 func (o HostResponseOutput) ToHostResponseOutputWithContext(ctx context.Context) HostResponseOutput {
 	return o
-}
-
-func (o HostResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HostResponse] {
-	return pulumix.Output[HostResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies a Compute Engine instance as the host.
@@ -3754,12 +3273,6 @@ func (i PersistentDirectoryArgs) ToPersistentDirectoryOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PersistentDirectoryOutput)
 }
 
-func (i PersistentDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[PersistentDirectory] {
-	return pulumix.Output[PersistentDirectory]{
-		OutputState: i.ToPersistentDirectoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PersistentDirectoryArrayInput is an input type that accepts PersistentDirectoryArray and PersistentDirectoryArrayOutput values.
 // You can construct a concrete instance of `PersistentDirectoryArrayInput` via:
 //
@@ -3785,12 +3298,6 @@ func (i PersistentDirectoryArray) ToPersistentDirectoryArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PersistentDirectoryArrayOutput)
 }
 
-func (i PersistentDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]PersistentDirectory] {
-	return pulumix.Output[[]PersistentDirectory]{
-		OutputState: i.ToPersistentDirectoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A directory to persist across workstation sessions.
 type PersistentDirectoryOutput struct{ *pulumi.OutputState }
 
@@ -3804,12 +3311,6 @@ func (o PersistentDirectoryOutput) ToPersistentDirectoryOutput() PersistentDirec
 
 func (o PersistentDirectoryOutput) ToPersistentDirectoryOutputWithContext(ctx context.Context) PersistentDirectoryOutput {
 	return o
-}
-
-func (o PersistentDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[PersistentDirectory] {
-	return pulumix.Output[PersistentDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A PersistentDirectory backed by a Compute Engine persistent disk.
@@ -3834,12 +3335,6 @@ func (o PersistentDirectoryArrayOutput) ToPersistentDirectoryArrayOutput() Persi
 
 func (o PersistentDirectoryArrayOutput) ToPersistentDirectoryArrayOutputWithContext(ctx context.Context) PersistentDirectoryArrayOutput {
 	return o
-}
-
-func (o PersistentDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PersistentDirectory] {
-	return pulumix.Output[[]PersistentDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PersistentDirectoryArrayOutput) Index(i pulumi.IntInput) PersistentDirectoryOutput {
@@ -3871,12 +3366,6 @@ func (o PersistentDirectoryResponseOutput) ToPersistentDirectoryResponseOutputWi
 	return o
 }
 
-func (o PersistentDirectoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PersistentDirectoryResponse] {
-	return pulumix.Output[PersistentDirectoryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A PersistentDirectory backed by a Compute Engine persistent disk.
 func (o PersistentDirectoryResponseOutput) GcePd() GceRegionalPersistentDiskResponseOutput {
 	return o.ApplyT(func(v PersistentDirectoryResponse) GceRegionalPersistentDiskResponse { return v.GcePd }).(GceRegionalPersistentDiskResponseOutput)
@@ -3899,12 +3388,6 @@ func (o PersistentDirectoryResponseArrayOutput) ToPersistentDirectoryResponseArr
 
 func (o PersistentDirectoryResponseArrayOutput) ToPersistentDirectoryResponseArrayOutputWithContext(ctx context.Context) PersistentDirectoryResponseArrayOutput {
 	return o
-}
-
-func (o PersistentDirectoryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PersistentDirectoryResponse] {
-	return pulumix.Output[[]PersistentDirectoryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PersistentDirectoryResponseArrayOutput) Index(i pulumi.IntInput) PersistentDirectoryResponseOutput {
@@ -3952,12 +3435,6 @@ func (i PrivateClusterConfigArgs) ToPrivateClusterConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateClusterConfigOutput)
 }
 
-func (i PrivateClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateClusterConfig] {
-	return pulumix.Output[PrivateClusterConfig]{
-		OutputState: i.ToPrivateClusterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateClusterConfigArgs) ToPrivateClusterConfigPtrOutput() PrivateClusterConfigPtrOutput {
 	return i.ToPrivateClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -3999,12 +3476,6 @@ func (i *privateClusterConfigPtrType) ToPrivateClusterConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateClusterConfigPtrOutput)
 }
 
-func (i *privateClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateClusterConfig] {
-	return pulumix.Output[*PrivateClusterConfig]{
-		OutputState: i.ToPrivateClusterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration options for private workstation clusters.
 type PrivateClusterConfigOutput struct{ *pulumi.OutputState }
 
@@ -4030,12 +3501,6 @@ func (o PrivateClusterConfigOutput) ToPrivateClusterConfigPtrOutputWithContext(c
 	}).(PrivateClusterConfigPtrOutput)
 }
 
-func (o PrivateClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateClusterConfig] {
-	return pulumix.Output[PrivateClusterConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
 func (o PrivateClusterConfigOutput) AllowedProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivateClusterConfig) []string { return v.AllowedProjects }).(pulumi.StringArrayOutput)
@@ -4058,12 +3523,6 @@ func (o PrivateClusterConfigPtrOutput) ToPrivateClusterConfigPtrOutput() Private
 
 func (o PrivateClusterConfigPtrOutput) ToPrivateClusterConfigPtrOutputWithContext(ctx context.Context) PrivateClusterConfigPtrOutput {
 	return o
-}
-
-func (o PrivateClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateClusterConfig] {
-	return pulumix.Output[*PrivateClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateClusterConfigPtrOutput) Elem() PrivateClusterConfigOutput {
@@ -4121,12 +3580,6 @@ func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponseOutput
 
 func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponseOutputWithContext(ctx context.Context) PrivateClusterConfigResponseOutput {
 	return o
-}
-
-func (o PrivateClusterConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateClusterConfigResponse] {
-	return pulumix.Output[PrivateClusterConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
@@ -4188,12 +3641,6 @@ func (i ReadinessCheckArgs) ToReadinessCheckOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReadinessCheckOutput)
 }
 
-func (i ReadinessCheckArgs) ToOutput(ctx context.Context) pulumix.Output[ReadinessCheck] {
-	return pulumix.Output[ReadinessCheck]{
-		OutputState: i.ToReadinessCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReadinessCheckArrayInput is an input type that accepts ReadinessCheckArray and ReadinessCheckArrayOutput values.
 // You can construct a concrete instance of `ReadinessCheckArrayInput` via:
 //
@@ -4219,12 +3666,6 @@ func (i ReadinessCheckArray) ToReadinessCheckArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ReadinessCheckArrayOutput)
 }
 
-func (i ReadinessCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]ReadinessCheck] {
-	return pulumix.Output[[]ReadinessCheck]{
-		OutputState: i.ToReadinessCheckArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A readiness check to be performed on a workstation.
 type ReadinessCheckOutput struct{ *pulumi.OutputState }
 
@@ -4238,12 +3679,6 @@ func (o ReadinessCheckOutput) ToReadinessCheckOutput() ReadinessCheckOutput {
 
 func (o ReadinessCheckOutput) ToReadinessCheckOutputWithContext(ctx context.Context) ReadinessCheckOutput {
 	return o
-}
-
-func (o ReadinessCheckOutput) ToOutput(ctx context.Context) pulumix.Output[ReadinessCheck] {
-	return pulumix.Output[ReadinessCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Path to which the request should be sent.
@@ -4268,12 +3703,6 @@ func (o ReadinessCheckArrayOutput) ToReadinessCheckArrayOutput() ReadinessCheckA
 
 func (o ReadinessCheckArrayOutput) ToReadinessCheckArrayOutputWithContext(ctx context.Context) ReadinessCheckArrayOutput {
 	return o
-}
-
-func (o ReadinessCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReadinessCheck] {
-	return pulumix.Output[[]ReadinessCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReadinessCheckArrayOutput) Index(i pulumi.IntInput) ReadinessCheckOutput {
@@ -4305,12 +3734,6 @@ func (o ReadinessCheckResponseOutput) ToReadinessCheckResponseOutputWithContext(
 	return o
 }
 
-func (o ReadinessCheckResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReadinessCheckResponse] {
-	return pulumix.Output[ReadinessCheckResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Path to which the request should be sent.
 func (o ReadinessCheckResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ReadinessCheckResponse) string { return v.Path }).(pulumi.StringOutput)
@@ -4333,12 +3756,6 @@ func (o ReadinessCheckResponseArrayOutput) ToReadinessCheckResponseArrayOutput()
 
 func (o ReadinessCheckResponseArrayOutput) ToReadinessCheckResponseArrayOutputWithContext(ctx context.Context) ReadinessCheckResponseArrayOutput {
 	return o
-}
-
-func (o ReadinessCheckResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReadinessCheckResponse] {
-	return pulumix.Output[[]ReadinessCheckResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReadinessCheckResponseArrayOutput) Index(i pulumi.IntInput) ReadinessCheckResponseOutput {
@@ -4372,12 +3789,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -4405,12 +3816,6 @@ func (o StatusResponseArrayOutput) ToStatusResponseArrayOutput() StatusResponseA
 
 func (o StatusResponseArrayOutput) ToStatusResponseArrayOutputWithContext(ctx context.Context) StatusResponseArrayOutput {
 	return o
-}
-
-func (o StatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatusResponse] {
-	return pulumix.Output[[]StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatusResponseArrayOutput) Index(i pulumi.IntInput) StatusResponseOutput {

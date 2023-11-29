@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a `PrivateConnection` resource by its resource name. The resource contains details of the private connection, such as connected network, routing mode and state.
@@ -93,12 +92,6 @@ func (o LookupPrivateConnectionResultOutput) ToLookupPrivateConnectionResultOutp
 
 func (o LookupPrivateConnectionResultOutput) ToLookupPrivateConnectionResultOutputWithContext(ctx context.Context) LookupPrivateConnectionResultOutput {
 	return o
-}
-
-func (o LookupPrivateConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateConnectionResult] {
-	return pulumix.Output[LookupPrivateConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
@@ -87,12 +86,6 @@ func (o GetDeveloperAppKeyResultOutput) ToGetDeveloperAppKeyResultOutput() GetDe
 
 func (o GetDeveloperAppKeyResultOutput) ToGetDeveloperAppKeyResultOutputWithContext(ctx context.Context) GetDeveloperAppKeyResultOutput {
 	return o
-}
-
-func (o GetDeveloperAppKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeveloperAppKeyResult] {
-	return pulumix.Output[GetDeveloperAppKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.

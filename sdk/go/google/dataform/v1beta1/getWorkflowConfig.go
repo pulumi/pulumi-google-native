@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches a single WorkflowConfig.
@@ -81,12 +80,6 @@ func (o LookupWorkflowConfigResultOutput) ToLookupWorkflowConfigResultOutput() L
 
 func (o LookupWorkflowConfigResultOutput) ToLookupWorkflowConfigResultOutputWithContext(ctx context.Context) LookupWorkflowConfigResultOutput {
 	return o
-}
-
-func (o LookupWorkflowConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkflowConfigResult] {
-	return pulumix.Output[LookupWorkflowConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Optional schedule (in cron format) for automatic execution of this workflow config.

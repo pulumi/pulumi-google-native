@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i CompositeFilterArgs) ToCompositeFilterOutput() CompositeFilterOutput {
 
 func (i CompositeFilterArgs) ToCompositeFilterOutputWithContext(ctx context.Context) CompositeFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CompositeFilterOutput)
-}
-
-func (i CompositeFilterArgs) ToOutput(ctx context.Context) pulumix.Output[CompositeFilter] {
-	return pulumix.Output[CompositeFilter]{
-		OutputState: i.ToCompositeFilterOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CompositeFilterArgs) ToCompositeFilterPtrOutput() CompositeFilterPtrOutput {
@@ -98,12 +91,6 @@ func (i *compositeFilterPtrType) ToCompositeFilterPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(CompositeFilterPtrOutput)
 }
 
-func (i *compositeFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*CompositeFilter] {
-	return pulumix.Output[*CompositeFilter]{
-		OutputState: i.ToCompositeFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CompositeFilterOutput struct{ *pulumi.OutputState }
 
 func (CompositeFilterOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o CompositeFilterOutput) ToCompositeFilterPtrOutputWithContext(ctx context
 	}).(CompositeFilterPtrOutput)
 }
 
-func (o CompositeFilterOutput) ToOutput(ctx context.Context) pulumix.Output[CompositeFilter] {
-	return pulumix.Output[CompositeFilter]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The logic operator of the sub filter.
 func (o CompositeFilterOutput) LogicOperator() CompositeFilterLogicOperatorPtrOutput {
 	return o.ApplyT(func(v CompositeFilter) *CompositeFilterLogicOperator { return v.LogicOperator }).(CompositeFilterLogicOperatorPtrOutput)
@@ -156,12 +137,6 @@ func (o CompositeFilterPtrOutput) ToCompositeFilterPtrOutput() CompositeFilterPt
 
 func (o CompositeFilterPtrOutput) ToCompositeFilterPtrOutputWithContext(ctx context.Context) CompositeFilterPtrOutput {
 	return o
-}
-
-func (o CompositeFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompositeFilter] {
-	return pulumix.Output[*CompositeFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompositeFilterPtrOutput) Elem() CompositeFilterOutput {
@@ -215,12 +190,6 @@ func (o CompositeFilterResponseOutput) ToCompositeFilterResponseOutputWithContex
 	return o
 }
 
-func (o CompositeFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CompositeFilterResponse] {
-	return pulumix.Output[CompositeFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The logic operator of the sub filter.
 func (o CompositeFilterResponseOutput) LogicOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v CompositeFilterResponse) string { return v.LogicOperator }).(pulumi.StringOutput)
@@ -270,12 +239,6 @@ func (i DataSourceRestrictionArgs) ToDataSourceRestrictionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DataSourceRestrictionOutput)
 }
 
-func (i DataSourceRestrictionArgs) ToOutput(ctx context.Context) pulumix.Output[DataSourceRestriction] {
-	return pulumix.Output[DataSourceRestriction]{
-		OutputState: i.ToDataSourceRestrictionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataSourceRestrictionArrayInput is an input type that accepts DataSourceRestrictionArray and DataSourceRestrictionArrayOutput values.
 // You can construct a concrete instance of `DataSourceRestrictionArrayInput` via:
 //
@@ -301,12 +264,6 @@ func (i DataSourceRestrictionArray) ToDataSourceRestrictionArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DataSourceRestrictionArrayOutput)
 }
 
-func (i DataSourceRestrictionArray) ToOutput(ctx context.Context) pulumix.Output[[]DataSourceRestriction] {
-	return pulumix.Output[[]DataSourceRestriction]{
-		OutputState: i.ToDataSourceRestrictionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Restriction on Datasource.
 type DataSourceRestrictionOutput struct{ *pulumi.OutputState }
 
@@ -320,12 +277,6 @@ func (o DataSourceRestrictionOutput) ToDataSourceRestrictionOutput() DataSourceR
 
 func (o DataSourceRestrictionOutput) ToDataSourceRestrictionOutputWithContext(ctx context.Context) DataSourceRestrictionOutput {
 	return o
-}
-
-func (o DataSourceRestrictionOutput) ToOutput(ctx context.Context) pulumix.Output[DataSourceRestriction] {
-	return pulumix.Output[DataSourceRestriction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Filter options restricting the results. If multiple filters are present, they are grouped by object type before joining. Filters with the same object type are joined conjunctively, then the resulting expressions are joined disjunctively. The maximum number of elements is 20. NOTE: Suggest API supports only few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be used to filter suggestions.
@@ -350,12 +301,6 @@ func (o DataSourceRestrictionArrayOutput) ToDataSourceRestrictionArrayOutput() D
 
 func (o DataSourceRestrictionArrayOutput) ToDataSourceRestrictionArrayOutputWithContext(ctx context.Context) DataSourceRestrictionArrayOutput {
 	return o
-}
-
-func (o DataSourceRestrictionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataSourceRestriction] {
-	return pulumix.Output[[]DataSourceRestriction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataSourceRestrictionArrayOutput) Index(i pulumi.IntInput) DataSourceRestrictionOutput {
@@ -387,12 +332,6 @@ func (o DataSourceRestrictionResponseOutput) ToDataSourceRestrictionResponseOutp
 	return o
 }
 
-func (o DataSourceRestrictionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataSourceRestrictionResponse] {
-	return pulumix.Output[DataSourceRestrictionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Filter options restricting the results. If multiple filters are present, they are grouped by object type before joining. Filters with the same object type are joined conjunctively, then the resulting expressions are joined disjunctively. The maximum number of elements is 20. NOTE: Suggest API supports only few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be used to filter suggestions.
 func (o DataSourceRestrictionResponseOutput) FilterOptions() FilterOptionsResponseArrayOutput {
 	return o.ApplyT(func(v DataSourceRestrictionResponse) []FilterOptionsResponse { return v.FilterOptions }).(FilterOptionsResponseArrayOutput)
@@ -415,12 +354,6 @@ func (o DataSourceRestrictionResponseArrayOutput) ToDataSourceRestrictionRespons
 
 func (o DataSourceRestrictionResponseArrayOutput) ToDataSourceRestrictionResponseArrayOutputWithContext(ctx context.Context) DataSourceRestrictionResponseArrayOutput {
 	return o
-}
-
-func (o DataSourceRestrictionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataSourceRestrictionResponse] {
-	return pulumix.Output[[]DataSourceRestrictionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataSourceRestrictionResponseArrayOutput) Index(i pulumi.IntInput) DataSourceRestrictionResponseOutput {
@@ -472,12 +405,6 @@ func (i DateArgs) ToDateOutputWithContext(ctx context.Context) DateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DateOutput)
 }
 
-func (i DateArgs) ToOutput(ctx context.Context) pulumix.Output[Date] {
-	return pulumix.Output[Date]{
-		OutputState: i.ToDateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DateArgs) ToDatePtrOutput() DatePtrOutput {
 	return i.ToDatePtrOutputWithContext(context.Background())
 }
@@ -519,12 +446,6 @@ func (i *datePtrType) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DatePtrOutput)
 }
 
-func (i *datePtrType) ToOutput(ctx context.Context) pulumix.Output[*Date] {
-	return pulumix.Output[*Date]{
-		OutputState: i.ToDatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a whole calendar date, for example a date of birth. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date between the year 1 and 9999.
 type DateOutput struct{ *pulumi.OutputState }
 
@@ -548,12 +469,6 @@ func (o DateOutput) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Date) *Date {
 		return &v
 	}).(DatePtrOutput)
-}
-
-func (o DateOutput) ToOutput(ctx context.Context) pulumix.Output[Date] {
-	return pulumix.Output[Date]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
@@ -583,12 +498,6 @@ func (o DatePtrOutput) ToDatePtrOutput() DatePtrOutput {
 
 func (o DatePtrOutput) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOutput {
 	return o
-}
-
-func (o DatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Date] {
-	return pulumix.Output[*Date]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatePtrOutput) Elem() DateOutput {
@@ -654,12 +563,6 @@ func (o DateResponseOutput) ToDateResponseOutput() DateResponseOutput {
 
 func (o DateResponseOutput) ToDateResponseOutputWithContext(ctx context.Context) DateResponseOutput {
 	return o
-}
-
-func (o DateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DateResponse] {
-	return pulumix.Output[DateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
@@ -728,12 +631,6 @@ func (i FacetOptionsArgs) ToFacetOptionsOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(FacetOptionsOutput)
 }
 
-func (i FacetOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[FacetOptions] {
-	return pulumix.Output[FacetOptions]{
-		OutputState: i.ToFacetOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FacetOptionsArrayInput is an input type that accepts FacetOptionsArray and FacetOptionsArrayOutput values.
 // You can construct a concrete instance of `FacetOptionsArrayInput` via:
 //
@@ -759,12 +656,6 @@ func (i FacetOptionsArray) ToFacetOptionsArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FacetOptionsArrayOutput)
 }
 
-func (i FacetOptionsArray) ToOutput(ctx context.Context) pulumix.Output[[]FacetOptions] {
-	return pulumix.Output[[]FacetOptions]{
-		OutputState: i.ToFacetOptionsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
 type FacetOptionsOutput struct{ *pulumi.OutputState }
 
@@ -778,12 +669,6 @@ func (o FacetOptionsOutput) ToFacetOptionsOutput() FacetOptionsOutput {
 
 func (o FacetOptionsOutput) ToFacetOptionsOutputWithContext(ctx context.Context) FacetOptionsOutput {
 	return o
-}
-
-func (o FacetOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[FacetOptions] {
-	return pulumix.Output[FacetOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
@@ -825,12 +710,6 @@ func (o FacetOptionsArrayOutput) ToFacetOptionsArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o FacetOptionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FacetOptions] {
-	return pulumix.Output[[]FacetOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FacetOptionsArrayOutput) Index(i pulumi.IntInput) FacetOptionsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FacetOptions {
 		return vs[0].([]FacetOptions)[vs[1].(int)]
@@ -864,12 +743,6 @@ func (o FacetOptionsResponseOutput) ToFacetOptionsResponseOutput() FacetOptionsR
 
 func (o FacetOptionsResponseOutput) ToFacetOptionsResponseOutputWithContext(ctx context.Context) FacetOptionsResponseOutput {
 	return o
-}
-
-func (o FacetOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FacetOptionsResponse] {
-	return pulumix.Output[FacetOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
@@ -909,12 +782,6 @@ func (o FacetOptionsResponseArrayOutput) ToFacetOptionsResponseArrayOutput() Fac
 
 func (o FacetOptionsResponseArrayOutput) ToFacetOptionsResponseArrayOutputWithContext(ctx context.Context) FacetOptionsResponseArrayOutput {
 	return o
-}
-
-func (o FacetOptionsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FacetOptionsResponse] {
-	return pulumix.Output[[]FacetOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FacetOptionsResponseArrayOutput) Index(i pulumi.IntInput) FacetOptionsResponseOutput {
@@ -958,12 +825,6 @@ func (i FilterArgs) ToFilterOutputWithContext(ctx context.Context) FilterOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(FilterOutput)
 }
 
-func (i FilterArgs) ToOutput(ctx context.Context) pulumix.Output[Filter] {
-	return pulumix.Output[Filter]{
-		OutputState: i.ToFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FilterArgs) ToFilterPtrOutput() FilterPtrOutput {
 	return i.ToFilterPtrOutputWithContext(context.Background())
 }
@@ -1005,12 +866,6 @@ func (i *filterPtrType) ToFilterPtrOutputWithContext(ctx context.Context) Filter
 	return pulumi.ToOutputWithContext(ctx, i).(FilterPtrOutput)
 }
 
-func (i *filterPtrType) ToOutput(ctx context.Context) pulumix.Output[*Filter] {
-	return pulumix.Output[*Filter]{
-		OutputState: i.ToFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FilterArrayInput is an input type that accepts FilterArray and FilterArrayOutput values.
 // You can construct a concrete instance of `FilterArrayInput` via:
 //
@@ -1034,12 +889,6 @@ func (i FilterArray) ToFilterArrayOutput() FilterArrayOutput {
 
 func (i FilterArray) ToFilterArrayOutputWithContext(ctx context.Context) FilterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FilterArrayOutput)
-}
-
-func (i FilterArray) ToOutput(ctx context.Context) pulumix.Output[[]Filter] {
-	return pulumix.Output[[]Filter]{
-		OutputState: i.ToFilterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A generic way of expressing filters in a query, which supports two approaches: **1. Setting a ValueFilter.** The name must match an operator_name defined in the schema for your data source. **2. Setting a CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators can only be either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-level AND.
@@ -1067,12 +916,6 @@ func (o FilterOutput) ToFilterPtrOutputWithContext(ctx context.Context) FilterPt
 	}).(FilterPtrOutput)
 }
 
-func (o FilterOutput) ToOutput(ctx context.Context) pulumix.Output[Filter] {
-	return pulumix.Output[Filter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FilterOutput) CompositeFilter() CompositeFilterPtrOutput {
 	return o.ApplyT(func(v Filter) *CompositeFilter { return v.CompositeFilter }).(CompositeFilterPtrOutput)
 }
@@ -1093,12 +936,6 @@ func (o FilterPtrOutput) ToFilterPtrOutput() FilterPtrOutput {
 
 func (o FilterPtrOutput) ToFilterPtrOutputWithContext(ctx context.Context) FilterPtrOutput {
 	return o
-}
-
-func (o FilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Filter] {
-	return pulumix.Output[*Filter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilterPtrOutput) Elem() FilterOutput {
@@ -1141,12 +978,6 @@ func (o FilterArrayOutput) ToFilterArrayOutput() FilterArrayOutput {
 
 func (o FilterArrayOutput) ToFilterArrayOutputWithContext(ctx context.Context) FilterArrayOutput {
 	return o
-}
-
-func (o FilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Filter] {
-	return pulumix.Output[[]Filter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilterArrayOutput) Index(i pulumi.IntInput) FilterOutput {
@@ -1194,12 +1025,6 @@ func (i FilterOptionsArgs) ToFilterOptionsOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(FilterOptionsOutput)
 }
 
-func (i FilterOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[FilterOptions] {
-	return pulumix.Output[FilterOptions]{
-		OutputState: i.ToFilterOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FilterOptionsArrayInput is an input type that accepts FilterOptionsArray and FilterOptionsArrayOutput values.
 // You can construct a concrete instance of `FilterOptionsArrayInput` via:
 //
@@ -1225,12 +1050,6 @@ func (i FilterOptionsArray) ToFilterOptionsArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FilterOptionsArrayOutput)
 }
 
-func (i FilterOptionsArray) ToOutput(ctx context.Context) pulumix.Output[[]FilterOptions] {
-	return pulumix.Output[[]FilterOptions]{
-		OutputState: i.ToFilterOptionsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Filter options to be applied on query.
 type FilterOptionsOutput struct{ *pulumi.OutputState }
 
@@ -1244,12 +1063,6 @@ func (o FilterOptionsOutput) ToFilterOptionsOutput() FilterOptionsOutput {
 
 func (o FilterOptionsOutput) ToFilterOptionsOutputWithContext(ctx context.Context) FilterOptionsOutput {
 	return o
-}
-
-func (o FilterOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[FilterOptions] {
-	return pulumix.Output[FilterOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Generic filter to restrict the search, such as `lang:en`, `site:xyz`.
@@ -1274,12 +1087,6 @@ func (o FilterOptionsArrayOutput) ToFilterOptionsArrayOutput() FilterOptionsArra
 
 func (o FilterOptionsArrayOutput) ToFilterOptionsArrayOutputWithContext(ctx context.Context) FilterOptionsArrayOutput {
 	return o
-}
-
-func (o FilterOptionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilterOptions] {
-	return pulumix.Output[[]FilterOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilterOptionsArrayOutput) Index(i pulumi.IntInput) FilterOptionsOutput {
@@ -1311,12 +1118,6 @@ func (o FilterOptionsResponseOutput) ToFilterOptionsResponseOutputWithContext(ct
 	return o
 }
 
-func (o FilterOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilterOptionsResponse] {
-	return pulumix.Output[FilterOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Generic filter to restrict the search, such as `lang:en`, `site:xyz`.
 func (o FilterOptionsResponseOutput) Filter() FilterResponseOutput {
 	return o.ApplyT(func(v FilterOptionsResponse) FilterResponse { return v.Filter }).(FilterResponseOutput)
@@ -1339,12 +1140,6 @@ func (o FilterOptionsResponseArrayOutput) ToFilterOptionsResponseArrayOutput() F
 
 func (o FilterOptionsResponseArrayOutput) ToFilterOptionsResponseArrayOutputWithContext(ctx context.Context) FilterOptionsResponseArrayOutput {
 	return o
-}
-
-func (o FilterOptionsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilterOptionsResponse] {
-	return pulumix.Output[[]FilterOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilterOptionsResponseArrayOutput) Index(i pulumi.IntInput) FilterOptionsResponseOutput {
@@ -1374,12 +1169,6 @@ func (o FilterResponseOutput) ToFilterResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o FilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilterResponse] {
-	return pulumix.Output[FilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FilterResponseOutput) CompositeFilter() CompositeFilterResponseOutput {
 	return o.ApplyT(func(v FilterResponse) CompositeFilterResponse { return v.CompositeFilter }).(CompositeFilterResponseOutput)
 }
@@ -1400,12 +1189,6 @@ func (o FilterResponseArrayOutput) ToFilterResponseArrayOutput() FilterResponseA
 
 func (o FilterResponseArrayOutput) ToFilterResponseArrayOutputWithContext(ctx context.Context) FilterResponseArrayOutput {
 	return o
-}
-
-func (o FilterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilterResponse] {
-	return pulumix.Output[[]FilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilterResponseArrayOutput) Index(i pulumi.IntInput) FilterResponseOutput {
@@ -1455,12 +1238,6 @@ func (i GSuitePrincipalArgs) ToGSuitePrincipalOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GSuitePrincipalOutput)
 }
 
-func (i GSuitePrincipalArgs) ToOutput(ctx context.Context) pulumix.Output[GSuitePrincipal] {
-	return pulumix.Output[GSuitePrincipal]{
-		OutputState: i.ToGSuitePrincipalOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GSuitePrincipalArrayInput is an input type that accepts GSuitePrincipalArray and GSuitePrincipalArrayOutput values.
 // You can construct a concrete instance of `GSuitePrincipalArrayInput` via:
 //
@@ -1486,12 +1263,6 @@ func (i GSuitePrincipalArray) ToGSuitePrincipalArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GSuitePrincipalArrayOutput)
 }
 
-func (i GSuitePrincipalArray) ToOutput(ctx context.Context) pulumix.Output[[]GSuitePrincipal] {
-	return pulumix.Output[[]GSuitePrincipal]{
-		OutputState: i.ToGSuitePrincipalArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GSuitePrincipalOutput struct{ *pulumi.OutputState }
 
 func (GSuitePrincipalOutput) ElementType() reflect.Type {
@@ -1504,12 +1275,6 @@ func (o GSuitePrincipalOutput) ToGSuitePrincipalOutput() GSuitePrincipalOutput {
 
 func (o GSuitePrincipalOutput) ToGSuitePrincipalOutputWithContext(ctx context.Context) GSuitePrincipalOutput {
 	return o
-}
-
-func (o GSuitePrincipalOutput) ToOutput(ctx context.Context) pulumix.Output[GSuitePrincipal] {
-	return pulumix.Output[GSuitePrincipal]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This principal represents all users of the Google Workspace domain of the customer.
@@ -1541,12 +1306,6 @@ func (o GSuitePrincipalArrayOutput) ToGSuitePrincipalArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o GSuitePrincipalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GSuitePrincipal] {
-	return pulumix.Output[[]GSuitePrincipal]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GSuitePrincipalArrayOutput) Index(i pulumi.IntInput) GSuitePrincipalOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GSuitePrincipal {
 		return vs[0].([]GSuitePrincipal)[vs[1].(int)]
@@ -1576,12 +1335,6 @@ func (o GSuitePrincipalResponseOutput) ToGSuitePrincipalResponseOutputWithContex
 	return o
 }
 
-func (o GSuitePrincipalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GSuitePrincipalResponse] {
-	return pulumix.Output[GSuitePrincipalResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // This principal represents all users of the Google Workspace domain of the customer.
 func (o GSuitePrincipalResponseOutput) GsuiteDomain() pulumi.BoolOutput {
 	return o.ApplyT(func(v GSuitePrincipalResponse) bool { return v.GsuiteDomain }).(pulumi.BoolOutput)
@@ -1609,12 +1362,6 @@ func (o GSuitePrincipalResponseArrayOutput) ToGSuitePrincipalResponseArrayOutput
 
 func (o GSuitePrincipalResponseArrayOutput) ToGSuitePrincipalResponseArrayOutputWithContext(ctx context.Context) GSuitePrincipalResponseArrayOutput {
 	return o
-}
-
-func (o GSuitePrincipalResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GSuitePrincipalResponse] {
-	return pulumix.Output[[]GSuitePrincipalResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GSuitePrincipalResponseArrayOutput) Index(i pulumi.IntInput) GSuitePrincipalResponseOutput {
@@ -1658,12 +1405,6 @@ func (i IntegerFacetingOptionsArgs) ToIntegerFacetingOptionsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(IntegerFacetingOptionsOutput)
 }
 
-func (i IntegerFacetingOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[IntegerFacetingOptions] {
-	return pulumix.Output[IntegerFacetingOptions]{
-		OutputState: i.ToIntegerFacetingOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IntegerFacetingOptionsArgs) ToIntegerFacetingOptionsPtrOutput() IntegerFacetingOptionsPtrOutput {
 	return i.ToIntegerFacetingOptionsPtrOutputWithContext(context.Background())
 }
@@ -1705,12 +1446,6 @@ func (i *integerFacetingOptionsPtrType) ToIntegerFacetingOptionsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(IntegerFacetingOptionsPtrOutput)
 }
 
-func (i *integerFacetingOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*IntegerFacetingOptions] {
-	return pulumix.Output[*IntegerFacetingOptions]{
-		OutputState: i.ToIntegerFacetingOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Used to specify integer faceting options.
 type IntegerFacetingOptionsOutput struct{ *pulumi.OutputState }
 
@@ -1736,12 +1471,6 @@ func (o IntegerFacetingOptionsOutput) ToIntegerFacetingOptionsPtrOutputWithConte
 	}).(IntegerFacetingOptionsPtrOutput)
 }
 
-func (o IntegerFacetingOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[IntegerFacetingOptions] {
-	return pulumix.Output[IntegerFacetingOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
 func (o IntegerFacetingOptionsOutput) IntegerBuckets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IntegerFacetingOptions) []string { return v.IntegerBuckets }).(pulumi.StringArrayOutput)
@@ -1759,12 +1488,6 @@ func (o IntegerFacetingOptionsPtrOutput) ToIntegerFacetingOptionsPtrOutput() Int
 
 func (o IntegerFacetingOptionsPtrOutput) ToIntegerFacetingOptionsPtrOutputWithContext(ctx context.Context) IntegerFacetingOptionsPtrOutput {
 	return o
-}
-
-func (o IntegerFacetingOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegerFacetingOptions] {
-	return pulumix.Output[*IntegerFacetingOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntegerFacetingOptionsPtrOutput) Elem() IntegerFacetingOptionsOutput {
@@ -1806,12 +1529,6 @@ func (o IntegerFacetingOptionsResponseOutput) ToIntegerFacetingOptionsResponseOu
 
 func (o IntegerFacetingOptionsResponseOutput) ToIntegerFacetingOptionsResponseOutputWithContext(ctx context.Context) IntegerFacetingOptionsResponseOutput {
 	return o
-}
-
-func (o IntegerFacetingOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IntegerFacetingOptionsResponse] {
-	return pulumix.Output[IntegerFacetingOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
@@ -1858,12 +1575,6 @@ func (i QueryInterpretationConfigArgs) ToQueryInterpretationConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigOutput)
 }
 
-func (i QueryInterpretationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[QueryInterpretationConfig] {
-	return pulumix.Output[QueryInterpretationConfig]{
-		OutputState: i.ToQueryInterpretationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i QueryInterpretationConfigArgs) ToQueryInterpretationConfigPtrOutput() QueryInterpretationConfigPtrOutput {
 	return i.ToQueryInterpretationConfigPtrOutputWithContext(context.Background())
 }
@@ -1905,12 +1616,6 @@ func (i *queryInterpretationConfigPtrType) ToQueryInterpretationConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigPtrOutput)
 }
 
-func (i *queryInterpretationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueryInterpretationConfig] {
-	return pulumix.Output[*QueryInterpretationConfig]{
-		OutputState: i.ToQueryInterpretationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Default options to interpret user query.
 type QueryInterpretationConfigOutput struct{ *pulumi.OutputState }
 
@@ -1936,12 +1641,6 @@ func (o QueryInterpretationConfigOutput) ToQueryInterpretationConfigPtrOutputWit
 	}).(QueryInterpretationConfigPtrOutput)
 }
 
-func (o QueryInterpretationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[QueryInterpretationConfig] {
-	return pulumix.Output[QueryInterpretationConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
 func (o QueryInterpretationConfigOutput) ForceDisableSupplementalResults() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v QueryInterpretationConfig) *bool { return v.ForceDisableSupplementalResults }).(pulumi.BoolPtrOutput)
@@ -1964,12 +1663,6 @@ func (o QueryInterpretationConfigPtrOutput) ToQueryInterpretationConfigPtrOutput
 
 func (o QueryInterpretationConfigPtrOutput) ToQueryInterpretationConfigPtrOutputWithContext(ctx context.Context) QueryInterpretationConfigPtrOutput {
 	return o
-}
-
-func (o QueryInterpretationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryInterpretationConfig] {
-	return pulumix.Output[*QueryInterpretationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryInterpretationConfigPtrOutput) Elem() QueryInterpretationConfigOutput {
@@ -2025,12 +1718,6 @@ func (o QueryInterpretationConfigResponseOutput) ToQueryInterpretationConfigResp
 	return o
 }
 
-func (o QueryInterpretationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryInterpretationConfigResponse] {
-	return pulumix.Output[QueryInterpretationConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
 func (o QueryInterpretationConfigResponseOutput) ForceDisableSupplementalResults() pulumi.BoolOutput {
 	return o.ApplyT(func(v QueryInterpretationConfigResponse) bool { return v.ForceDisableSupplementalResults }).(pulumi.BoolOutput)
@@ -2080,12 +1767,6 @@ func (i ScoringConfigArgs) ToScoringConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ScoringConfigOutput)
 }
 
-func (i ScoringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ScoringConfig] {
-	return pulumix.Output[ScoringConfig]{
-		OutputState: i.ToScoringConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScoringConfigArgs) ToScoringConfigPtrOutput() ScoringConfigPtrOutput {
 	return i.ToScoringConfigPtrOutputWithContext(context.Background())
 }
@@ -2127,12 +1808,6 @@ func (i *scoringConfigPtrType) ToScoringConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ScoringConfigPtrOutput)
 }
 
-func (i *scoringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScoringConfig] {
-	return pulumix.Output[*ScoringConfig]{
-		OutputState: i.ToScoringConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Scoring configurations for a source while processing a Search or Suggest request.
 type ScoringConfigOutput struct{ *pulumi.OutputState }
 
@@ -2158,12 +1833,6 @@ func (o ScoringConfigOutput) ToScoringConfigPtrOutputWithContext(ctx context.Con
 	}).(ScoringConfigPtrOutput)
 }
 
-func (o ScoringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ScoringConfig] {
-	return pulumix.Output[ScoringConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
 func (o ScoringConfigOutput) DisableFreshness() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ScoringConfig) *bool { return v.DisableFreshness }).(pulumi.BoolPtrOutput)
@@ -2186,12 +1855,6 @@ func (o ScoringConfigPtrOutput) ToScoringConfigPtrOutput() ScoringConfigPtrOutpu
 
 func (o ScoringConfigPtrOutput) ToScoringConfigPtrOutputWithContext(ctx context.Context) ScoringConfigPtrOutput {
 	return o
-}
-
-func (o ScoringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScoringConfig] {
-	return pulumix.Output[*ScoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScoringConfigPtrOutput) Elem() ScoringConfigOutput {
@@ -2247,12 +1910,6 @@ func (o ScoringConfigResponseOutput) ToScoringConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o ScoringConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScoringConfigResponse] {
-	return pulumix.Output[ScoringConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
 func (o ScoringConfigResponseOutput) DisableFreshness() pulumi.BoolOutput {
 	return o.ApplyT(func(v ScoringConfigResponse) bool { return v.DisableFreshness }).(pulumi.BoolOutput)
@@ -2300,12 +1957,6 @@ func (i SortOptionsArgs) ToSortOptionsOutputWithContext(ctx context.Context) Sor
 	return pulumi.ToOutputWithContext(ctx, i).(SortOptionsOutput)
 }
 
-func (i SortOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[SortOptions] {
-	return pulumix.Output[SortOptions]{
-		OutputState: i.ToSortOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SortOptionsArgs) ToSortOptionsPtrOutput() SortOptionsPtrOutput {
 	return i.ToSortOptionsPtrOutputWithContext(context.Background())
 }
@@ -2347,12 +1998,6 @@ func (i *sortOptionsPtrType) ToSortOptionsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SortOptionsPtrOutput)
 }
 
-func (i *sortOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SortOptions] {
-	return pulumix.Output[*SortOptions]{
-		OutputState: i.ToSortOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SortOptionsOutput struct{ *pulumi.OutputState }
 
 func (SortOptionsOutput) ElementType() reflect.Type {
@@ -2377,12 +2022,6 @@ func (o SortOptionsOutput) ToSortOptionsPtrOutputWithContext(ctx context.Context
 	}).(SortOptionsPtrOutput)
 }
 
-func (o SortOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[SortOptions] {
-	return pulumix.Output[SortOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 func (o SortOptionsOutput) OperatorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SortOptions) *string { return v.OperatorName }).(pulumi.StringPtrOutput)
@@ -2405,12 +2044,6 @@ func (o SortOptionsPtrOutput) ToSortOptionsPtrOutput() SortOptionsPtrOutput {
 
 func (o SortOptionsPtrOutput) ToSortOptionsPtrOutputWithContext(ctx context.Context) SortOptionsPtrOutput {
 	return o
-}
-
-func (o SortOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SortOptions] {
-	return pulumix.Output[*SortOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SortOptionsPtrOutput) Elem() SortOptionsOutput {
@@ -2464,12 +2097,6 @@ func (o SortOptionsResponseOutput) ToSortOptionsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SortOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SortOptionsResponse] {
-	return pulumix.Output[SortOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 func (o SortOptionsResponseOutput) OperatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v SortOptionsResponse) string { return v.OperatorName }).(pulumi.StringOutput)
@@ -2519,12 +2146,6 @@ func (i SourceArgs) ToSourceOutputWithContext(ctx context.Context) SourceOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SourceOutput)
 }
 
-func (i SourceArgs) ToOutput(ctx context.Context) pulumix.Output[Source] {
-	return pulumix.Output[Source]{
-		OutputState: i.ToSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SourceArgs) ToSourcePtrOutput() SourcePtrOutput {
 	return i.ToSourcePtrOutputWithContext(context.Background())
 }
@@ -2566,12 +2187,6 @@ func (i *sourcePtrType) ToSourcePtrOutputWithContext(ctx context.Context) Source
 	return pulumi.ToOutputWithContext(ctx, i).(SourcePtrOutput)
 }
 
-func (i *sourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*Source] {
-	return pulumix.Output[*Source]{
-		OutputState: i.ToSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines sources for the suggest/search APIs.
 type SourceOutput struct{ *pulumi.OutputState }
 
@@ -2597,12 +2212,6 @@ func (o SourceOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePt
 	}).(SourcePtrOutput)
 }
 
-func (o SourceOutput) ToOutput(ctx context.Context) pulumix.Output[Source] {
-	return pulumix.Output[Source]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Source name for content indexed by the Indexing API.
 func (o SourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Source) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2625,12 +2234,6 @@ func (o SourcePtrOutput) ToSourcePtrOutput() SourcePtrOutput {
 
 func (o SourcePtrOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
 	return o
-}
-
-func (o SourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Source] {
-	return pulumix.Output[*Source]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourcePtrOutput) Elem() SourceOutput {
@@ -2706,12 +2309,6 @@ func (i SourceConfigArgs) ToSourceConfigOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigOutput)
 }
 
-func (i SourceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SourceConfig] {
-	return pulumix.Output[SourceConfig]{
-		OutputState: i.ToSourceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SourceConfigArrayInput is an input type that accepts SourceConfigArray and SourceConfigArrayOutput values.
 // You can construct a concrete instance of `SourceConfigArrayInput` via:
 //
@@ -2737,12 +2334,6 @@ func (i SourceConfigArray) ToSourceConfigArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigArrayOutput)
 }
 
-func (i SourceConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]SourceConfig] {
-	return pulumix.Output[[]SourceConfig]{
-		OutputState: i.ToSourceConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for a source while processing a Search or Suggest request.
 type SourceConfigOutput struct{ *pulumi.OutputState }
 
@@ -2756,12 +2347,6 @@ func (o SourceConfigOutput) ToSourceConfigOutput() SourceConfigOutput {
 
 func (o SourceConfigOutput) ToSourceConfigOutputWithContext(ctx context.Context) SourceConfigOutput {
 	return o
-}
-
-func (o SourceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SourceConfig] {
-	return pulumix.Output[SourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The crowding configuration for the source.
@@ -2791,12 +2376,6 @@ func (o SourceConfigArrayOutput) ToSourceConfigArrayOutput() SourceConfigArrayOu
 
 func (o SourceConfigArrayOutput) ToSourceConfigArrayOutputWithContext(ctx context.Context) SourceConfigArrayOutput {
 	return o
-}
-
-func (o SourceConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SourceConfig] {
-	return pulumix.Output[[]SourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceConfigArrayOutput) Index(i pulumi.IntInput) SourceConfigOutput {
@@ -2830,12 +2409,6 @@ func (o SourceConfigResponseOutput) ToSourceConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o SourceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceConfigResponse] {
-	return pulumix.Output[SourceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The crowding configuration for the source.
 func (o SourceConfigResponseOutput) CrowdingConfig() SourceCrowdingConfigResponseOutput {
 	return o.ApplyT(func(v SourceConfigResponse) SourceCrowdingConfigResponse { return v.CrowdingConfig }).(SourceCrowdingConfigResponseOutput)
@@ -2863,12 +2436,6 @@ func (o SourceConfigResponseArrayOutput) ToSourceConfigResponseArrayOutput() Sou
 
 func (o SourceConfigResponseArrayOutput) ToSourceConfigResponseArrayOutputWithContext(ctx context.Context) SourceConfigResponseArrayOutput {
 	return o
-}
-
-func (o SourceConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SourceConfigResponse] {
-	return pulumix.Output[[]SourceConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceConfigResponseArrayOutput) Index(i pulumi.IntInput) SourceConfigResponseOutput {
@@ -2916,12 +2483,6 @@ func (i SourceCrowdingConfigArgs) ToSourceCrowdingConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCrowdingConfigOutput)
 }
 
-func (i SourceCrowdingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SourceCrowdingConfig] {
-	return pulumix.Output[SourceCrowdingConfig]{
-		OutputState: i.ToSourceCrowdingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SourceCrowdingConfigArgs) ToSourceCrowdingConfigPtrOutput() SourceCrowdingConfigPtrOutput {
 	return i.ToSourceCrowdingConfigPtrOutputWithContext(context.Background())
 }
@@ -2963,12 +2524,6 @@ func (i *sourceCrowdingConfigPtrType) ToSourceCrowdingConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCrowdingConfigPtrOutput)
 }
 
-func (i *sourceCrowdingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceCrowdingConfig] {
-	return pulumix.Output[*SourceCrowdingConfig]{
-		OutputState: i.ToSourceCrowdingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set search results crowding limits. Crowding is a situation in which multiple results from the same source or host "crowd out" other results, diminishing the quality of search for users. To foster better search quality and source diversity in search results, you can set a condition to reduce repetitive results by source.
 type SourceCrowdingConfigOutput struct{ *pulumi.OutputState }
 
@@ -2994,12 +2549,6 @@ func (o SourceCrowdingConfigOutput) ToSourceCrowdingConfigPtrOutputWithContext(c
 	}).(SourceCrowdingConfigPtrOutput)
 }
 
-func (o SourceCrowdingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SourceCrowdingConfig] {
-	return pulumix.Output[SourceCrowdingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
 func (o SourceCrowdingConfigOutput) NumResults() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SourceCrowdingConfig) *int { return v.NumResults }).(pulumi.IntPtrOutput)
@@ -3022,12 +2571,6 @@ func (o SourceCrowdingConfigPtrOutput) ToSourceCrowdingConfigPtrOutput() SourceC
 
 func (o SourceCrowdingConfigPtrOutput) ToSourceCrowdingConfigPtrOutputWithContext(ctx context.Context) SourceCrowdingConfigPtrOutput {
 	return o
-}
-
-func (o SourceCrowdingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceCrowdingConfig] {
-	return pulumix.Output[*SourceCrowdingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceCrowdingConfigPtrOutput) Elem() SourceCrowdingConfigOutput {
@@ -3083,12 +2626,6 @@ func (o SourceCrowdingConfigResponseOutput) ToSourceCrowdingConfigResponseOutput
 	return o
 }
 
-func (o SourceCrowdingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceCrowdingConfigResponse] {
-	return pulumix.Output[SourceCrowdingConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
 func (o SourceCrowdingConfigResponseOutput) NumResults() pulumi.IntOutput {
 	return o.ApplyT(func(v SourceCrowdingConfigResponse) int { return v.NumResults }).(pulumi.IntOutput)
@@ -3120,12 +2657,6 @@ func (o SourceResponseOutput) ToSourceResponseOutput() SourceResponseOutput {
 
 func (o SourceResponseOutput) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
 	return o
-}
-
-func (o SourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceResponse] {
-	return pulumix.Output[SourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Source name for content indexed by the Indexing API.
@@ -3173,12 +2704,6 @@ func (i SourceScoringConfigArgs) ToSourceScoringConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SourceScoringConfigOutput)
 }
 
-func (i SourceScoringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SourceScoringConfig] {
-	return pulumix.Output[SourceScoringConfig]{
-		OutputState: i.ToSourceScoringConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SourceScoringConfigArgs) ToSourceScoringConfigPtrOutput() SourceScoringConfigPtrOutput {
 	return i.ToSourceScoringConfigPtrOutputWithContext(context.Background())
 }
@@ -3220,12 +2745,6 @@ func (i *sourceScoringConfigPtrType) ToSourceScoringConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SourceScoringConfigPtrOutput)
 }
 
-func (i *sourceScoringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceScoringConfig] {
-	return pulumix.Output[*SourceScoringConfig]{
-		OutputState: i.ToSourceScoringConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set the scoring configuration. This allows modifying the ranking of results for a source.
 type SourceScoringConfigOutput struct{ *pulumi.OutputState }
 
@@ -3251,12 +2770,6 @@ func (o SourceScoringConfigOutput) ToSourceScoringConfigPtrOutputWithContext(ctx
 	}).(SourceScoringConfigPtrOutput)
 }
 
-func (o SourceScoringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SourceScoringConfig] {
-	return pulumix.Output[SourceScoringConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Importance of the source.
 func (o SourceScoringConfigOutput) SourceImportance() SourceScoringConfigSourceImportancePtrOutput {
 	return o.ApplyT(func(v SourceScoringConfig) *SourceScoringConfigSourceImportance { return v.SourceImportance }).(SourceScoringConfigSourceImportancePtrOutput)
@@ -3274,12 +2787,6 @@ func (o SourceScoringConfigPtrOutput) ToSourceScoringConfigPtrOutput() SourceSco
 
 func (o SourceScoringConfigPtrOutput) ToSourceScoringConfigPtrOutputWithContext(ctx context.Context) SourceScoringConfigPtrOutput {
 	return o
-}
-
-func (o SourceScoringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceScoringConfig] {
-	return pulumix.Output[*SourceScoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceScoringConfigPtrOutput) Elem() SourceScoringConfigOutput {
@@ -3321,12 +2828,6 @@ func (o SourceScoringConfigResponseOutput) ToSourceScoringConfigResponseOutput()
 
 func (o SourceScoringConfigResponseOutput) ToSourceScoringConfigResponseOutputWithContext(ctx context.Context) SourceScoringConfigResponseOutput {
 	return o
-}
-
-func (o SourceScoringConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceScoringConfigResponse] {
-	return pulumix.Output[SourceScoringConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Importance of the source.
@@ -3377,12 +2878,6 @@ func (i ValueArgs) ToValueOutputWithContext(ctx context.Context) ValueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ValueOutput)
 }
 
-func (i ValueArgs) ToOutput(ctx context.Context) pulumix.Output[Value] {
-	return pulumix.Output[Value]{
-		OutputState: i.ToValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ValueArgs) ToValuePtrOutput() ValuePtrOutput {
 	return i.ToValuePtrOutputWithContext(context.Background())
 }
@@ -3424,12 +2919,6 @@ func (i *valuePtrType) ToValuePtrOutputWithContext(ctx context.Context) ValuePtr
 	return pulumi.ToOutputWithContext(ctx, i).(ValuePtrOutput)
 }
 
-func (i *valuePtrType) ToOutput(ctx context.Context) pulumix.Output[*Value] {
-	return pulumix.Output[*Value]{
-		OutputState: i.ToValuePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Definition of a single value with generic type.
 type ValueOutput struct{ *pulumi.OutputState }
 
@@ -3453,12 +2942,6 @@ func (o ValueOutput) ToValuePtrOutputWithContext(ctx context.Context) ValuePtrOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Value) *Value {
 		return &v
 	}).(ValuePtrOutput)
-}
-
-func (o ValueOutput) ToOutput(ctx context.Context) pulumix.Output[Value] {
-	return pulumix.Output[Value]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ValueOutput) BooleanValue() pulumi.BoolPtrOutput {
@@ -3497,12 +2980,6 @@ func (o ValuePtrOutput) ToValuePtrOutput() ValuePtrOutput {
 
 func (o ValuePtrOutput) ToValuePtrOutputWithContext(ctx context.Context) ValuePtrOutput {
 	return o
-}
-
-func (o ValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Value] {
-	return pulumix.Output[*Value]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ValuePtrOutput) Elem() ValueOutput {
@@ -3606,12 +3083,6 @@ func (i ValueFilterArgs) ToValueFilterOutputWithContext(ctx context.Context) Val
 	return pulumi.ToOutputWithContext(ctx, i).(ValueFilterOutput)
 }
 
-func (i ValueFilterArgs) ToOutput(ctx context.Context) pulumix.Output[ValueFilter] {
-	return pulumix.Output[ValueFilter]{
-		OutputState: i.ToValueFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ValueFilterArgs) ToValueFilterPtrOutput() ValueFilterPtrOutput {
 	return i.ToValueFilterPtrOutputWithContext(context.Background())
 }
@@ -3653,12 +3124,6 @@ func (i *valueFilterPtrType) ToValueFilterPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ValueFilterPtrOutput)
 }
 
-func (i *valueFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ValueFilter] {
-	return pulumix.Output[*ValueFilter]{
-		OutputState: i.ToValueFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ValueFilterOutput struct{ *pulumi.OutputState }
 
 func (ValueFilterOutput) ElementType() reflect.Type {
@@ -3683,12 +3148,6 @@ func (o ValueFilterOutput) ToValueFilterPtrOutputWithContext(ctx context.Context
 	}).(ValueFilterPtrOutput)
 }
 
-func (o ValueFilterOutput) ToOutput(ctx context.Context) pulumix.Output[ValueFilter] {
-	return pulumix.Output[ValueFilter]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The `operator_name` applied to the query, such as *price_greater_than*. The filter can work against both types of filters defined in the schema for your data source: 1. `operator_name`, where the query filters results by the property that matches the value. 2. `greater_than_operator_name` or `less_than_operator_name` in your schema. The query filters the results for the property values that are greater than or less than the supplied value in the query.
 func (o ValueFilterOutput) OperatorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ValueFilter) *string { return v.OperatorName }).(pulumi.StringPtrOutput)
@@ -3711,12 +3170,6 @@ func (o ValueFilterPtrOutput) ToValueFilterPtrOutput() ValueFilterPtrOutput {
 
 func (o ValueFilterPtrOutput) ToValueFilterPtrOutputWithContext(ctx context.Context) ValueFilterPtrOutput {
 	return o
-}
-
-func (o ValueFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ValueFilter] {
-	return pulumix.Output[*ValueFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ValueFilterPtrOutput) Elem() ValueFilterOutput {
@@ -3770,12 +3223,6 @@ func (o ValueFilterResponseOutput) ToValueFilterResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ValueFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ValueFilterResponse] {
-	return pulumix.Output[ValueFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The `operator_name` applied to the query, such as *price_greater_than*. The filter can work against both types of filters defined in the schema for your data source: 1. `operator_name`, where the query filters results by the property that matches the value. 2. `greater_than_operator_name` or `less_than_operator_name` in your schema. The query filters the results for the property values that are greater than or less than the supplied value in the query.
 func (o ValueFilterResponseOutput) OperatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v ValueFilterResponse) string { return v.OperatorName }).(pulumi.StringOutput)
@@ -3809,12 +3256,6 @@ func (o ValueResponseOutput) ToValueResponseOutput() ValueResponseOutput {
 
 func (o ValueResponseOutput) ToValueResponseOutputWithContext(ctx context.Context) ValueResponseOutput {
 	return o
-}
-
-func (o ValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ValueResponse] {
-	return pulumix.Output[ValueResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ValueResponseOutput) BooleanValue() pulumi.BoolOutput {

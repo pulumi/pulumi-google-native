@@ -94,12 +94,6 @@ func (o ContactNotificationCategorySubscriptionsItemOutput) ToContactNotificatio
 	}).(ContactNotificationCategorySubscriptionsItemPtrOutput)
 }
 
-func (o ContactNotificationCategorySubscriptionsItemOutput) ToOutput(ctx context.Context) pulumix.Output[ContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[ContactNotificationCategorySubscriptionsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContactNotificationCategorySubscriptionsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -133,12 +127,6 @@ func (o ContactNotificationCategorySubscriptionsItemPtrOutput) ToContactNotifica
 
 func (o ContactNotificationCategorySubscriptionsItemPtrOutput) ToContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx context.Context) ContactNotificationCategorySubscriptionsItemPtrOutput {
 	return o
-}
-
-func (o ContactNotificationCategorySubscriptionsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[*ContactNotificationCategorySubscriptionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContactNotificationCategorySubscriptionsItemPtrOutput) Elem() ContactNotificationCategorySubscriptionsItemOutput {
@@ -234,12 +222,6 @@ func (i ContactNotificationCategorySubscriptionsItemArray) ToContactNotification
 	return pulumi.ToOutputWithContext(ctx, i).(ContactNotificationCategorySubscriptionsItemArrayOutput)
 }
 
-func (i ContactNotificationCategorySubscriptionsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[[]ContactNotificationCategorySubscriptionsItem]{
-		OutputState: i.ToContactNotificationCategorySubscriptionsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContactNotificationCategorySubscriptionsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ContactNotificationCategorySubscriptionsItemArrayOutput) ElementType() reflect.Type {
@@ -252,12 +234,6 @@ func (o ContactNotificationCategorySubscriptionsItemArrayOutput) ToContactNotifi
 
 func (o ContactNotificationCategorySubscriptionsItemArrayOutput) ToContactNotificationCategorySubscriptionsItemArrayOutputWithContext(ctx context.Context) ContactNotificationCategorySubscriptionsItemArrayOutput {
 	return o
-}
-
-func (o ContactNotificationCategorySubscriptionsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[[]ContactNotificationCategorySubscriptionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContactNotificationCategorySubscriptionsItemArrayOutput) Index(i pulumi.IntInput) ContactNotificationCategorySubscriptionsItemOutput {
@@ -338,12 +314,6 @@ func (o ContactValidationStateOutput) ToContactValidationStatePtrOutputWithConte
 	}).(ContactValidationStatePtrOutput)
 }
 
-func (o ContactValidationStateOutput) ToOutput(ctx context.Context) pulumix.Output[ContactValidationState] {
-	return pulumix.Output[ContactValidationState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContactValidationStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -377,12 +347,6 @@ func (o ContactValidationStatePtrOutput) ToContactValidationStatePtrOutput() Con
 
 func (o ContactValidationStatePtrOutput) ToContactValidationStatePtrOutputWithContext(ctx context.Context) ContactValidationStatePtrOutput {
 	return o
-}
-
-func (o ContactValidationStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContactValidationState] {
-	return pulumix.Output[*ContactValidationState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContactValidationStatePtrOutput) Elem() ContactValidationStateOutput {
@@ -536,12 +500,6 @@ func (o FolderContactNotificationCategorySubscriptionsItemOutput) ToFolderContac
 	}).(FolderContactNotificationCategorySubscriptionsItemPtrOutput)
 }
 
-func (o FolderContactNotificationCategorySubscriptionsItemOutput) ToOutput(ctx context.Context) pulumix.Output[FolderContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[FolderContactNotificationCategorySubscriptionsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FolderContactNotificationCategorySubscriptionsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -575,12 +533,6 @@ func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) ToFolderCon
 
 func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) ToFolderContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx context.Context) FolderContactNotificationCategorySubscriptionsItemPtrOutput {
 	return o
-}
-
-func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[*FolderContactNotificationCategorySubscriptionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) Elem() FolderContactNotificationCategorySubscriptionsItemOutput {
@@ -676,12 +628,6 @@ func (i FolderContactNotificationCategorySubscriptionsItemArray) ToFolderContact
 	return pulumi.ToOutputWithContext(ctx, i).(FolderContactNotificationCategorySubscriptionsItemArrayOutput)
 }
 
-func (i FolderContactNotificationCategorySubscriptionsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]FolderContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[[]FolderContactNotificationCategorySubscriptionsItem]{
-		OutputState: i.ToFolderContactNotificationCategorySubscriptionsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderContactNotificationCategorySubscriptionsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (FolderContactNotificationCategorySubscriptionsItemArrayOutput) ElementType() reflect.Type {
@@ -694,12 +640,6 @@ func (o FolderContactNotificationCategorySubscriptionsItemArrayOutput) ToFolderC
 
 func (o FolderContactNotificationCategorySubscriptionsItemArrayOutput) ToFolderContactNotificationCategorySubscriptionsItemArrayOutputWithContext(ctx context.Context) FolderContactNotificationCategorySubscriptionsItemArrayOutput {
 	return o
-}
-
-func (o FolderContactNotificationCategorySubscriptionsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FolderContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[[]FolderContactNotificationCategorySubscriptionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderContactNotificationCategorySubscriptionsItemArrayOutput) Index(i pulumi.IntInput) FolderContactNotificationCategorySubscriptionsItemOutput {
@@ -780,12 +720,6 @@ func (o FolderContactValidationStateOutput) ToFolderContactValidationStatePtrOut
 	}).(FolderContactValidationStatePtrOutput)
 }
 
-func (o FolderContactValidationStateOutput) ToOutput(ctx context.Context) pulumix.Output[FolderContactValidationState] {
-	return pulumix.Output[FolderContactValidationState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FolderContactValidationStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -819,12 +753,6 @@ func (o FolderContactValidationStatePtrOutput) ToFolderContactValidationStatePtr
 
 func (o FolderContactValidationStatePtrOutput) ToFolderContactValidationStatePtrOutputWithContext(ctx context.Context) FolderContactValidationStatePtrOutput {
 	return o
-}
-
-func (o FolderContactValidationStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderContactValidationState] {
-	return pulumix.Output[*FolderContactValidationState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderContactValidationStatePtrOutput) Elem() FolderContactValidationStateOutput {
@@ -978,12 +906,6 @@ func (o OrganizationContactNotificationCategorySubscriptionsItemOutput) ToOrgani
 	}).(OrganizationContactNotificationCategorySubscriptionsItemPtrOutput)
 }
 
-func (o OrganizationContactNotificationCategorySubscriptionsItemOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[OrganizationContactNotificationCategorySubscriptionsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationContactNotificationCategorySubscriptionsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1017,12 +939,6 @@ func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ToOrg
 
 func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ToOrganizationContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx context.Context) OrganizationContactNotificationCategorySubscriptionsItemPtrOutput {
 	return o
-}
-
-func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[*OrganizationContactNotificationCategorySubscriptionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) Elem() OrganizationContactNotificationCategorySubscriptionsItemOutput {
@@ -1118,12 +1034,6 @@ func (i OrganizationContactNotificationCategorySubscriptionsItemArray) ToOrganiz
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationContactNotificationCategorySubscriptionsItemArrayOutput)
 }
 
-func (i OrganizationContactNotificationCategorySubscriptionsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]OrganizationContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[[]OrganizationContactNotificationCategorySubscriptionsItem]{
-		OutputState: i.ToOrganizationContactNotificationCategorySubscriptionsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationContactNotificationCategorySubscriptionsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (OrganizationContactNotificationCategorySubscriptionsItemArrayOutput) ElementType() reflect.Type {
@@ -1136,12 +1046,6 @@ func (o OrganizationContactNotificationCategorySubscriptionsItemArrayOutput) ToO
 
 func (o OrganizationContactNotificationCategorySubscriptionsItemArrayOutput) ToOrganizationContactNotificationCategorySubscriptionsItemArrayOutputWithContext(ctx context.Context) OrganizationContactNotificationCategorySubscriptionsItemArrayOutput {
 	return o
-}
-
-func (o OrganizationContactNotificationCategorySubscriptionsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OrganizationContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[[]OrganizationContactNotificationCategorySubscriptionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationContactNotificationCategorySubscriptionsItemArrayOutput) Index(i pulumi.IntInput) OrganizationContactNotificationCategorySubscriptionsItemOutput {
@@ -1222,12 +1126,6 @@ func (o OrganizationContactValidationStateOutput) ToOrganizationContactValidatio
 	}).(OrganizationContactValidationStatePtrOutput)
 }
 
-func (o OrganizationContactValidationStateOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationContactValidationState] {
-	return pulumix.Output[OrganizationContactValidationState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationContactValidationStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1261,12 +1159,6 @@ func (o OrganizationContactValidationStatePtrOutput) ToOrganizationContactValida
 
 func (o OrganizationContactValidationStatePtrOutput) ToOrganizationContactValidationStatePtrOutputWithContext(ctx context.Context) OrganizationContactValidationStatePtrOutput {
 	return o
-}
-
-func (o OrganizationContactValidationStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationContactValidationState] {
-	return pulumix.Output[*OrganizationContactValidationState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationContactValidationStatePtrOutput) Elem() OrganizationContactValidationStateOutput {

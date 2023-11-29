@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
@@ -93,12 +92,6 @@ func (o LookupRegionSslCertificateResultOutput) ToLookupRegionSslCertificateResu
 
 func (o LookupRegionSslCertificateResultOutput) ToLookupRegionSslCertificateResultOutputWithContext(ctx context.Context) LookupRegionSslCertificateResultOutput {
 	return o
-}
-
-func (o LookupRegionSslCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionSslCertificateResult] {
-	return pulumix.Output[LookupRegionSslCertificateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.

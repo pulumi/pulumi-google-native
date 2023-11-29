@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a target pool in the specified project and region using the data included in the request.
@@ -160,12 +159,6 @@ func (i *TargetPool) ToTargetPoolOutputWithContext(ctx context.Context) TargetPo
 	return pulumi.ToOutputWithContext(ctx, i).(TargetPoolOutput)
 }
 
-func (i *TargetPool) ToOutput(ctx context.Context) pulumix.Output[*TargetPool] {
-	return pulumix.Output[*TargetPool]{
-		OutputState: i.ToTargetPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetPoolOutput struct{ *pulumi.OutputState }
 
 func (TargetPoolOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o TargetPoolOutput) ToTargetPoolOutput() TargetPoolOutput {
 
 func (o TargetPoolOutput) ToTargetPoolOutputWithContext(ctx context.Context) TargetPoolOutput {
 	return o
-}
-
-func (o TargetPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetPool] {
-	return pulumix.Output[*TargetPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The server-defined URL for the resource. This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool, and its failoverRatio field is properly set to a value between [0, 1]. backupPool and failoverRatio together define the fallback behavior of the primary target pool: if the ratio of the healthy instances in the primary pool is at or below failoverRatio, traffic arriving at the load-balanced IP will be directed to the backup pool. In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an Event Threat Detection custom module.
@@ -139,12 +138,6 @@ func (i *OrganizationEventThreatDetectionSettingCustomModule) ToOrganizationEven
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationEventThreatDetectionSettingCustomModuleOutput)
 }
 
-func (i *OrganizationEventThreatDetectionSettingCustomModule) ToOutput(ctx context.Context) pulumix.Output[*OrganizationEventThreatDetectionSettingCustomModule] {
-	return pulumix.Output[*OrganizationEventThreatDetectionSettingCustomModule]{
-		OutputState: i.ToOrganizationEventThreatDetectionSettingCustomModuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationEventThreatDetectionSettingCustomModuleOutput struct{ *pulumi.OutputState }
 
 func (OrganizationEventThreatDetectionSettingCustomModuleOutput) ElementType() reflect.Type {
@@ -157,12 +150,6 @@ func (o OrganizationEventThreatDetectionSettingCustomModuleOutput) ToOrganizatio
 
 func (o OrganizationEventThreatDetectionSettingCustomModuleOutput) ToOrganizationEventThreatDetectionSettingCustomModuleOutputWithContext(ctx context.Context) OrganizationEventThreatDetectionSettingCustomModuleOutput {
 	return o
-}
-
-func (o OrganizationEventThreatDetectionSettingCustomModuleOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationEventThreatDetectionSettingCustomModule] {
-	return pulumix.Output[*OrganizationEventThreatDetectionSettingCustomModule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.

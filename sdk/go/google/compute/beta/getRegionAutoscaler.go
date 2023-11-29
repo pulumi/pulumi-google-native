@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified autoscaler.
@@ -93,12 +92,6 @@ func (o LookupRegionAutoscalerResultOutput) ToLookupRegionAutoscalerResultOutput
 
 func (o LookupRegionAutoscalerResultOutput) ToLookupRegionAutoscalerResultOutputWithContext(ctx context.Context) LookupRegionAutoscalerResultOutput {
 	return o
-}
-
-func (o LookupRegionAutoscalerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionAutoscalerResult] {
-	return pulumix.Output[LookupRegionAutoscalerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.

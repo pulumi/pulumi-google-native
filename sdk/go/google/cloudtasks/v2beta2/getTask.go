@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a task.
@@ -87,12 +86,6 @@ func (o LookupTaskResultOutput) ToLookupTaskResultOutput() LookupTaskResultOutpu
 
 func (o LookupTaskResultOutput) ToLookupTaskResultOutputWithContext(ctx context.Context) LookupTaskResultOutput {
 	return o
-}
-
-func (o LookupTaskResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTaskResult] {
-	return pulumix.Output[LookupTaskResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.

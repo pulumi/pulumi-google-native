@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details for an API product subscription.
@@ -79,12 +78,6 @@ func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutput() Looku
 
 func (o LookupSubscriptionResultOutput) ToLookupSubscriptionResultOutputWithContext(ctx context.Context) LookupSubscriptionResultOutput {
 	return o
-}
-
-func (o LookupSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubscriptionResult] {
-	return pulumix.Output[LookupSubscriptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the API product for which the developer is purchasing a subscription.

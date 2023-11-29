@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -277,12 +265,6 @@ func (o ExecutionConfigUsagesItemOutput) ToExecutionConfigUsagesItemPtrOutputWit
 	}).(ExecutionConfigUsagesItemPtrOutput)
 }
 
-func (o ExecutionConfigUsagesItemOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionConfigUsagesItem] {
-	return pulumix.Output[ExecutionConfigUsagesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExecutionConfigUsagesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -316,12 +298,6 @@ func (o ExecutionConfigUsagesItemPtrOutput) ToExecutionConfigUsagesItemPtrOutput
 
 func (o ExecutionConfigUsagesItemPtrOutput) ToExecutionConfigUsagesItemPtrOutputWithContext(ctx context.Context) ExecutionConfigUsagesItemPtrOutput {
 	return o
-}
-
-func (o ExecutionConfigUsagesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecutionConfigUsagesItem] {
-	return pulumix.Output[*ExecutionConfigUsagesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecutionConfigUsagesItemPtrOutput) Elem() ExecutionConfigUsagesItemOutput {
@@ -417,12 +393,6 @@ func (i ExecutionConfigUsagesItemArray) ToExecutionConfigUsagesItemArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionConfigUsagesItemArrayOutput)
 }
 
-func (i ExecutionConfigUsagesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionConfigUsagesItem] {
-	return pulumix.Output[[]ExecutionConfigUsagesItem]{
-		OutputState: i.ToExecutionConfigUsagesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExecutionConfigUsagesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ExecutionConfigUsagesItemArrayOutput) ElementType() reflect.Type {
@@ -435,12 +405,6 @@ func (o ExecutionConfigUsagesItemArrayOutput) ToExecutionConfigUsagesItemArrayOu
 
 func (o ExecutionConfigUsagesItemArrayOutput) ToExecutionConfigUsagesItemArrayOutputWithContext(ctx context.Context) ExecutionConfigUsagesItemArrayOutput {
 	return o
-}
-
-func (o ExecutionConfigUsagesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionConfigUsagesItem] {
-	return pulumix.Output[[]ExecutionConfigUsagesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecutionConfigUsagesItemArrayOutput) Index(i pulumi.IntInput) ExecutionConfigUsagesItemOutput {
@@ -521,12 +485,6 @@ func (o RetryBackoffModeOutput) ToRetryBackoffModePtrOutputWithContext(ctx conte
 	}).(RetryBackoffModePtrOutput)
 }
 
-func (o RetryBackoffModeOutput) ToOutput(ctx context.Context) pulumix.Output[RetryBackoffMode] {
-	return pulumix.Output[RetryBackoffMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RetryBackoffModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -560,12 +518,6 @@ func (o RetryBackoffModePtrOutput) ToRetryBackoffModePtrOutput() RetryBackoffMod
 
 func (o RetryBackoffModePtrOutput) ToRetryBackoffModePtrOutputWithContext(ctx context.Context) RetryBackoffModePtrOutput {
 	return o
-}
-
-func (o RetryBackoffModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetryBackoffMode] {
-	return pulumix.Output[*RetryBackoffMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RetryBackoffModePtrOutput) Elem() RetryBackoffModeOutput {

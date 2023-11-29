@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -77,12 +76,6 @@ func (i AutomatedBackupPolicyArgs) ToAutomatedBackupPolicyOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AutomatedBackupPolicyOutput)
 }
 
-func (i AutomatedBackupPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[AutomatedBackupPolicy] {
-	return pulumix.Output[AutomatedBackupPolicy]{
-		OutputState: i.ToAutomatedBackupPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutomatedBackupPolicyArgs) ToAutomatedBackupPolicyPtrOutput() AutomatedBackupPolicyPtrOutput {
 	return i.ToAutomatedBackupPolicyPtrOutputWithContext(context.Background())
 }
@@ -124,12 +117,6 @@ func (i *automatedBackupPolicyPtrType) ToAutomatedBackupPolicyPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AutomatedBackupPolicyPtrOutput)
 }
 
-func (i *automatedBackupPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutomatedBackupPolicy] {
-	return pulumix.Output[*AutomatedBackupPolicy]{
-		OutputState: i.ToAutomatedBackupPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Message describing the user-specified automated backup policy. All fields in the automated backup policy are optional. Defaults for each field are provided if they are not set.
 type AutomatedBackupPolicyOutput struct{ *pulumi.OutputState }
 
@@ -153,12 +140,6 @@ func (o AutomatedBackupPolicyOutput) ToAutomatedBackupPolicyPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomatedBackupPolicy) *AutomatedBackupPolicy {
 		return &v
 	}).(AutomatedBackupPolicyPtrOutput)
-}
-
-func (o AutomatedBackupPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[AutomatedBackupPolicy] {
-	return pulumix.Output[AutomatedBackupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed. The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it defaults to 1 hour.
@@ -213,12 +194,6 @@ func (o AutomatedBackupPolicyPtrOutput) ToAutomatedBackupPolicyPtrOutput() Autom
 
 func (o AutomatedBackupPolicyPtrOutput) ToAutomatedBackupPolicyPtrOutputWithContext(ctx context.Context) AutomatedBackupPolicyPtrOutput {
 	return o
-}
-
-func (o AutomatedBackupPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutomatedBackupPolicy] {
-	return pulumix.Output[*AutomatedBackupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutomatedBackupPolicyPtrOutput) Elem() AutomatedBackupPolicyOutput {
@@ -346,12 +321,6 @@ func (o AutomatedBackupPolicyResponseOutput) ToAutomatedBackupPolicyResponseOutp
 	return o
 }
 
-func (o AutomatedBackupPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomatedBackupPolicyResponse] {
-	return pulumix.Output[AutomatedBackupPolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed. The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it defaults to 1 hour.
 func (o AutomatedBackupPolicyResponseOutput) BackupWindow() pulumi.StringOutput {
 	return o.ApplyT(func(v AutomatedBackupPolicyResponse) string { return v.BackupWindow }).(pulumi.StringOutput)
@@ -415,12 +384,6 @@ func (o BackupSourceResponseOutput) ToBackupSourceResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o BackupSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackupSourceResponse] {
-	return pulumix.Output[BackupSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backup_id}
 func (o BackupSourceResponseOutput) BackupName() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupSourceResponse) string { return v.BackupName }).(pulumi.StringOutput)
@@ -470,12 +433,6 @@ func (i ClientConnectionConfigArgs) ToClientConnectionConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ClientConnectionConfigOutput)
 }
 
-func (i ClientConnectionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClientConnectionConfig] {
-	return pulumix.Output[ClientConnectionConfig]{
-		OutputState: i.ToClientConnectionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClientConnectionConfigArgs) ToClientConnectionConfigPtrOutput() ClientConnectionConfigPtrOutput {
 	return i.ToClientConnectionConfigPtrOutputWithContext(context.Background())
 }
@@ -517,12 +474,6 @@ func (i *clientConnectionConfigPtrType) ToClientConnectionConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ClientConnectionConfigPtrOutput)
 }
 
-func (i *clientConnectionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientConnectionConfig] {
-	return pulumix.Output[*ClientConnectionConfig]{
-		OutputState: i.ToClientConnectionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Client connection configuration
 type ClientConnectionConfigOutput struct{ *pulumi.OutputState }
 
@@ -548,12 +499,6 @@ func (o ClientConnectionConfigOutput) ToClientConnectionConfigPtrOutputWithConte
 	}).(ClientConnectionConfigPtrOutput)
 }
 
-func (o ClientConnectionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClientConnectionConfig] {
-	return pulumix.Output[ClientConnectionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
 func (o ClientConnectionConfigOutput) RequireConnectors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientConnectionConfig) *bool { return v.RequireConnectors }).(pulumi.BoolPtrOutput)
@@ -576,12 +521,6 @@ func (o ClientConnectionConfigPtrOutput) ToClientConnectionConfigPtrOutput() Cli
 
 func (o ClientConnectionConfigPtrOutput) ToClientConnectionConfigPtrOutputWithContext(ctx context.Context) ClientConnectionConfigPtrOutput {
 	return o
-}
-
-func (o ClientConnectionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientConnectionConfig] {
-	return pulumix.Output[*ClientConnectionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientConnectionConfigPtrOutput) Elem() ClientConnectionConfigOutput {
@@ -637,12 +576,6 @@ func (o ClientConnectionConfigResponseOutput) ToClientConnectionConfigResponseOu
 	return o
 }
 
-func (o ClientConnectionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClientConnectionConfigResponse] {
-	return pulumix.Output[ClientConnectionConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
 func (o ClientConnectionConfigResponseOutput) RequireConnectors() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClientConnectionConfigResponse) bool { return v.RequireConnectors }).(pulumi.BoolOutput)
@@ -696,12 +629,6 @@ func (i ContinuousBackupConfigArgs) ToContinuousBackupConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ContinuousBackupConfigOutput)
 }
 
-func (i ContinuousBackupConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ContinuousBackupConfig] {
-	return pulumix.Output[ContinuousBackupConfig]{
-		OutputState: i.ToContinuousBackupConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContinuousBackupConfigArgs) ToContinuousBackupConfigPtrOutput() ContinuousBackupConfigPtrOutput {
 	return i.ToContinuousBackupConfigPtrOutputWithContext(context.Background())
 }
@@ -743,12 +670,6 @@ func (i *continuousBackupConfigPtrType) ToContinuousBackupConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ContinuousBackupConfigPtrOutput)
 }
 
-func (i *continuousBackupConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContinuousBackupConfig] {
-	return pulumix.Output[*ContinuousBackupConfig]{
-		OutputState: i.ToContinuousBackupConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContinuousBackupConfig describes the continuous backups recovery configurations of a cluster.
 type ContinuousBackupConfigOutput struct{ *pulumi.OutputState }
 
@@ -772,12 +693,6 @@ func (o ContinuousBackupConfigOutput) ToContinuousBackupConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContinuousBackupConfig) *ContinuousBackupConfig {
 		return &v
 	}).(ContinuousBackupConfigPtrOutput)
-}
-
-func (o ContinuousBackupConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ContinuousBackupConfig] {
-	return pulumix.Output[ContinuousBackupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether ContinuousBackup is enabled.
@@ -807,12 +722,6 @@ func (o ContinuousBackupConfigPtrOutput) ToContinuousBackupConfigPtrOutput() Con
 
 func (o ContinuousBackupConfigPtrOutput) ToContinuousBackupConfigPtrOutputWithContext(ctx context.Context) ContinuousBackupConfigPtrOutput {
 	return o
-}
-
-func (o ContinuousBackupConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContinuousBackupConfig] {
-	return pulumix.Output[*ContinuousBackupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContinuousBackupConfigPtrOutput) Elem() ContinuousBackupConfigOutput {
@@ -880,12 +789,6 @@ func (o ContinuousBackupConfigResponseOutput) ToContinuousBackupConfigResponseOu
 	return o
 }
 
-func (o ContinuousBackupConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContinuousBackupConfigResponse] {
-	return pulumix.Output[ContinuousBackupConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether ContinuousBackup is enabled.
 func (o ContinuousBackupConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ContinuousBackupConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -926,12 +829,6 @@ func (o ContinuousBackupInfoResponseOutput) ToContinuousBackupInfoResponseOutput
 
 func (o ContinuousBackupInfoResponseOutput) ToContinuousBackupInfoResponseOutputWithContext(ctx context.Context) ContinuousBackupInfoResponseOutput {
 	return o
-}
-
-func (o ContinuousBackupInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContinuousBackupInfoResponse] {
-	return pulumix.Output[ContinuousBackupInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The earliest restorable time that can be restored to. Output only field.
@@ -989,12 +886,6 @@ func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
 }
 
-func (i EncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
-	return pulumix.Output[EncryptionConfig]{
-		OutputState: i.ToEncryptionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
 	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -1036,12 +927,6 @@ func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
 }
 
-func (i *encryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
-	return pulumix.Output[*EncryptionConfig]{
-		OutputState: i.ToEncryptionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 type EncryptionConfigOutput struct{ *pulumi.OutputState }
 
@@ -1067,12 +952,6 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx conte
 	}).(EncryptionConfigPtrOutput)
 }
 
-func (o EncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
-	return pulumix.Output[EncryptionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
 func (o EncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -1090,12 +969,6 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfi
 
 func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
 	return o
-}
-
-func (o EncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
-	return pulumix.Output[*EncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
@@ -1139,12 +1012,6 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithCont
 	return o
 }
 
-func (o EncryptionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfigResponse] {
-	return pulumix.Output[EncryptionConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
 func (o EncryptionConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -1171,12 +1038,6 @@ func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponseOutput() Encryptio
 
 func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponseOutputWithContext(ctx context.Context) EncryptionInfoResponseOutput {
 	return o
-}
-
-func (o EncryptionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionInfoResponse] {
-	return pulumix.Output[EncryptionInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of encryption.
@@ -1236,12 +1097,6 @@ func (i GoogleTypeTimeOfDayArgs) ToGoogleTypeTimeOfDayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeTimeOfDayOutput)
 }
 
-func (i GoogleTypeTimeOfDayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeTimeOfDay] {
-	return pulumix.Output[GoogleTypeTimeOfDay]{
-		OutputState: i.ToGoogleTypeTimeOfDayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleTypeTimeOfDayArrayInput is an input type that accepts GoogleTypeTimeOfDayArray and GoogleTypeTimeOfDayArrayOutput values.
 // You can construct a concrete instance of `GoogleTypeTimeOfDayArrayInput` via:
 //
@@ -1267,12 +1122,6 @@ func (i GoogleTypeTimeOfDayArray) ToGoogleTypeTimeOfDayArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeTimeOfDayArrayOutput)
 }
 
-func (i GoogleTypeTimeOfDayArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleTypeTimeOfDay] {
-	return pulumix.Output[[]GoogleTypeTimeOfDay]{
-		OutputState: i.ToGoogleTypeTimeOfDayArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type GoogleTypeTimeOfDayOutput struct{ *pulumi.OutputState }
 
@@ -1286,12 +1135,6 @@ func (o GoogleTypeTimeOfDayOutput) ToGoogleTypeTimeOfDayOutput() GoogleTypeTimeO
 
 func (o GoogleTypeTimeOfDayOutput) ToGoogleTypeTimeOfDayOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayOutput {
 	return o
-}
-
-func (o GoogleTypeTimeOfDayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeTimeOfDay] {
-	return pulumix.Output[GoogleTypeTimeOfDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1328,12 +1171,6 @@ func (o GoogleTypeTimeOfDayArrayOutput) ToGoogleTypeTimeOfDayArrayOutputWithCont
 	return o
 }
 
-func (o GoogleTypeTimeOfDayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleTypeTimeOfDay] {
-	return pulumix.Output[[]GoogleTypeTimeOfDay]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleTypeTimeOfDayArrayOutput) Index(i pulumi.IntInput) GoogleTypeTimeOfDayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleTypeTimeOfDay {
 		return vs[0].([]GoogleTypeTimeOfDay)[vs[1].(int)]
@@ -1365,12 +1202,6 @@ func (o GoogleTypeTimeOfDayResponseOutput) ToGoogleTypeTimeOfDayResponseOutput()
 
 func (o GoogleTypeTimeOfDayResponseOutput) ToGoogleTypeTimeOfDayResponseOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayResponseOutput {
 	return o
-}
-
-func (o GoogleTypeTimeOfDayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeTimeOfDayResponse] {
-	return pulumix.Output[GoogleTypeTimeOfDayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1405,12 +1236,6 @@ func (o GoogleTypeTimeOfDayResponseArrayOutput) ToGoogleTypeTimeOfDayResponseArr
 
 func (o GoogleTypeTimeOfDayResponseArrayOutput) ToGoogleTypeTimeOfDayResponseArrayOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayResponseArrayOutput {
 	return o
-}
-
-func (o GoogleTypeTimeOfDayResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleTypeTimeOfDayResponse] {
-	return pulumix.Output[[]GoogleTypeTimeOfDayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeTimeOfDayResponseArrayOutput) Index(i pulumi.IntInput) GoogleTypeTimeOfDayResponseOutput {
@@ -1454,12 +1279,6 @@ func (i MachineConfigArgs) ToMachineConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigOutput)
 }
 
-func (i MachineConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MachineConfig] {
-	return pulumix.Output[MachineConfig]{
-		OutputState: i.ToMachineConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MachineConfigArgs) ToMachineConfigPtrOutput() MachineConfigPtrOutput {
 	return i.ToMachineConfigPtrOutputWithContext(context.Background())
 }
@@ -1501,12 +1320,6 @@ func (i *machineConfigPtrType) ToMachineConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigPtrOutput)
 }
 
-func (i *machineConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MachineConfig] {
-	return pulumix.Output[*MachineConfig]{
-		OutputState: i.ToMachineConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MachineConfig describes the configuration of a machine.
 type MachineConfigOutput struct{ *pulumi.OutputState }
 
@@ -1532,12 +1345,6 @@ func (o MachineConfigOutput) ToMachineConfigPtrOutputWithContext(ctx context.Con
 	}).(MachineConfigPtrOutput)
 }
 
-func (o MachineConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MachineConfig] {
-	return pulumix.Output[MachineConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of CPU's in the VM instance.
 func (o MachineConfigOutput) CpuCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MachineConfig) *int { return v.CpuCount }).(pulumi.IntPtrOutput)
@@ -1555,12 +1362,6 @@ func (o MachineConfigPtrOutput) ToMachineConfigPtrOutput() MachineConfigPtrOutpu
 
 func (o MachineConfigPtrOutput) ToMachineConfigPtrOutputWithContext(ctx context.Context) MachineConfigPtrOutput {
 	return o
-}
-
-func (o MachineConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineConfig] {
-	return pulumix.Output[*MachineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineConfigPtrOutput) Elem() MachineConfigOutput {
@@ -1604,12 +1405,6 @@ func (o MachineConfigResponseOutput) ToMachineConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o MachineConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MachineConfigResponse] {
-	return pulumix.Output[MachineConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of CPU's in the VM instance.
 func (o MachineConfigResponseOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v MachineConfigResponse) int { return v.CpuCount }).(pulumi.IntOutput)
@@ -1638,12 +1433,6 @@ func (o MigrationSourceResponseOutput) ToMigrationSourceResponseOutput() Migrati
 
 func (o MigrationSourceResponseOutput) ToMigrationSourceResponseOutputWithContext(ctx context.Context) MigrationSourceResponseOutput {
 	return o
-}
-
-func (o MigrationSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationSourceResponse] {
-	return pulumix.Output[MigrationSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The host and port of the on-premises instance in host:port format
@@ -1700,12 +1489,6 @@ func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput)
 }
 
-func (i NetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: i.ToNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkConfigArgs) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
 	return i.ToNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -1747,12 +1530,6 @@ func (i *networkConfigPtrType) ToNetworkConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigPtrOutput)
 }
 
-func (i *networkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
-	return pulumix.Output[*NetworkConfig]{
-		OutputState: i.ToNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata related to network configuration.
 type NetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -1778,12 +1555,6 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Con
 	}).(NetworkConfigPtrOutput)
 }
 
-func (o NetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 func (o NetworkConfigOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
@@ -1806,12 +1577,6 @@ func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutpu
 
 func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
 	return o
-}
-
-func (o NetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
-	return pulumix.Output[*NetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
@@ -1867,12 +1632,6 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o NetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigResponse] {
-	return pulumix.Output[NetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 func (o NetworkConfigResponseOutput) AllocatedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
@@ -1908,12 +1667,6 @@ func (o NodeResponseOutput) ToNodeResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o NodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeResponse] {
-	return pulumix.Output[NodeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The private IP address of the VM e.g. "10.57.0.34".
 func (o NodeResponseOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeResponse) string { return v.Ip }).(pulumi.StringOutput)
@@ -1943,12 +1696,6 @@ func (o NodeResponseArrayOutput) ToNodeResponseArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o NodeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeResponse] {
-	return pulumix.Output[[]NodeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeResponseArrayOutput) Index(i pulumi.IntInput) NodeResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeResponse {
 		return vs[0].([]NodeResponse)[vs[1].(int)]
@@ -1974,12 +1721,6 @@ func (o PrimaryConfigResponseOutput) ToPrimaryConfigResponseOutput() PrimaryConf
 
 func (o PrimaryConfigResponseOutput) ToPrimaryConfigResponseOutputWithContext(ctx context.Context) PrimaryConfigResponseOutput {
 	return o
-}
-
-func (o PrimaryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrimaryConfigResponse] {
-	return pulumix.Output[PrimaryConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Names of the clusters that are replicating from this cluster.
@@ -2020,12 +1761,6 @@ func (i PscConfigArgs) ToPscConfigOutput() PscConfigOutput {
 
 func (i PscConfigArgs) ToPscConfigOutputWithContext(ctx context.Context) PscConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PscConfigOutput)
-}
-
-func (i PscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PscConfig] {
-	return pulumix.Output[PscConfig]{
-		OutputState: i.ToPscConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i PscConfigArgs) ToPscConfigPtrOutput() PscConfigPtrOutput {
@@ -2069,12 +1804,6 @@ func (i *pscConfigPtrType) ToPscConfigPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PscConfigPtrOutput)
 }
 
-func (i *pscConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PscConfig] {
-	return pulumix.Output[*PscConfig]{
-		OutputState: i.ToPscConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PscConfig contains PSC related configuration at a cluster level. NEXT ID: 2
 type PscConfigOutput struct{ *pulumi.OutputState }
 
@@ -2100,12 +1829,6 @@ func (o PscConfigOutput) ToPscConfigPtrOutputWithContext(ctx context.Context) Ps
 	}).(PscConfigPtrOutput)
 }
 
-func (o PscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfig] {
-	return pulumix.Output[PscConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
 func (o PscConfigOutput) PscEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PscConfig) *bool { return v.PscEnabled }).(pulumi.BoolPtrOutput)
@@ -2123,12 +1846,6 @@ func (o PscConfigPtrOutput) ToPscConfigPtrOutput() PscConfigPtrOutput {
 
 func (o PscConfigPtrOutput) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
 	return o
-}
-
-func (o PscConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PscConfig] {
-	return pulumix.Output[*PscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PscConfigPtrOutput) Elem() PscConfigOutput {
@@ -2172,12 +1889,6 @@ func (o PscConfigResponseOutput) ToPscConfigResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o PscConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfigResponse] {
-	return pulumix.Output[PscConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
 func (o PscConfigResponseOutput) PscEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PscConfigResponse) bool { return v.PscEnabled }).(pulumi.BoolOutput)
@@ -2204,12 +1915,6 @@ func (o QuantityBasedExpiryResponseOutput) ToQuantityBasedExpiryResponseOutput()
 
 func (o QuantityBasedExpiryResponseOutput) ToQuantityBasedExpiryResponseOutputWithContext(ctx context.Context) QuantityBasedExpiryResponseOutput {
 	return o
-}
-
-func (o QuantityBasedExpiryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QuantityBasedExpiryResponse] {
-	return pulumix.Output[QuantityBasedExpiryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The backup's position among its backups with the same source cluster and type, by descending chronological order create time(i.e. newest first).
@@ -2257,12 +1962,6 @@ func (i QuantityBasedRetentionArgs) ToQuantityBasedRetentionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(QuantityBasedRetentionOutput)
 }
 
-func (i QuantityBasedRetentionArgs) ToOutput(ctx context.Context) pulumix.Output[QuantityBasedRetention] {
-	return pulumix.Output[QuantityBasedRetention]{
-		OutputState: i.ToQuantityBasedRetentionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i QuantityBasedRetentionArgs) ToQuantityBasedRetentionPtrOutput() QuantityBasedRetentionPtrOutput {
 	return i.ToQuantityBasedRetentionPtrOutputWithContext(context.Background())
 }
@@ -2304,12 +2003,6 @@ func (i *quantityBasedRetentionPtrType) ToQuantityBasedRetentionPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(QuantityBasedRetentionPtrOutput)
 }
 
-func (i *quantityBasedRetentionPtrType) ToOutput(ctx context.Context) pulumix.Output[*QuantityBasedRetention] {
-	return pulumix.Output[*QuantityBasedRetention]{
-		OutputState: i.ToQuantityBasedRetentionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A quantity based policy specifies that a certain number of the most recent successful backups should be retained.
 type QuantityBasedRetentionOutput struct{ *pulumi.OutputState }
 
@@ -2335,12 +2028,6 @@ func (o QuantityBasedRetentionOutput) ToQuantityBasedRetentionPtrOutputWithConte
 	}).(QuantityBasedRetentionPtrOutput)
 }
 
-func (o QuantityBasedRetentionOutput) ToOutput(ctx context.Context) pulumix.Output[QuantityBasedRetention] {
-	return pulumix.Output[QuantityBasedRetention]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of backups to retain.
 func (o QuantityBasedRetentionOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QuantityBasedRetention) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -2358,12 +2045,6 @@ func (o QuantityBasedRetentionPtrOutput) ToQuantityBasedRetentionPtrOutput() Qua
 
 func (o QuantityBasedRetentionPtrOutput) ToQuantityBasedRetentionPtrOutputWithContext(ctx context.Context) QuantityBasedRetentionPtrOutput {
 	return o
-}
-
-func (o QuantityBasedRetentionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QuantityBasedRetention] {
-	return pulumix.Output[*QuantityBasedRetention]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QuantityBasedRetentionPtrOutput) Elem() QuantityBasedRetentionOutput {
@@ -2405,12 +2086,6 @@ func (o QuantityBasedRetentionResponseOutput) ToQuantityBasedRetentionResponseOu
 
 func (o QuantityBasedRetentionResponseOutput) ToQuantityBasedRetentionResponseOutputWithContext(ctx context.Context) QuantityBasedRetentionResponseOutput {
 	return o
-}
-
-func (o QuantityBasedRetentionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QuantityBasedRetentionResponse] {
-	return pulumix.Output[QuantityBasedRetentionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of backups to retain.
@@ -2465,12 +2140,6 @@ func (i QueryInsightsInstanceConfigArgs) ToQueryInsightsInstanceConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(QueryInsightsInstanceConfigOutput)
 }
 
-func (i QueryInsightsInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[QueryInsightsInstanceConfig] {
-	return pulumix.Output[QueryInsightsInstanceConfig]{
-		OutputState: i.ToQueryInsightsInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i QueryInsightsInstanceConfigArgs) ToQueryInsightsInstanceConfigPtrOutput() QueryInsightsInstanceConfigPtrOutput {
 	return i.ToQueryInsightsInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -2512,12 +2181,6 @@ func (i *queryInsightsInstanceConfigPtrType) ToQueryInsightsInstanceConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(QueryInsightsInstanceConfigPtrOutput)
 }
 
-func (i *queryInsightsInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueryInsightsInstanceConfig] {
-	return pulumix.Output[*QueryInsightsInstanceConfig]{
-		OutputState: i.ToQueryInsightsInstanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QueryInsights Instance specific configuration.
 type QueryInsightsInstanceConfigOutput struct{ *pulumi.OutputState }
 
@@ -2541,12 +2204,6 @@ func (o QueryInsightsInstanceConfigOutput) ToQueryInsightsInstanceConfigPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryInsightsInstanceConfig) *QueryInsightsInstanceConfig {
 		return &v
 	}).(QueryInsightsInstanceConfigPtrOutput)
-}
-
-func (o QueryInsightsInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[QueryInsightsInstanceConfig] {
-	return pulumix.Output[QueryInsightsInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
@@ -2581,12 +2238,6 @@ func (o QueryInsightsInstanceConfigPtrOutput) ToQueryInsightsInstanceConfigPtrOu
 
 func (o QueryInsightsInstanceConfigPtrOutput) ToQueryInsightsInstanceConfigPtrOutputWithContext(ctx context.Context) QueryInsightsInstanceConfigPtrOutput {
 	return o
-}
-
-func (o QueryInsightsInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryInsightsInstanceConfig] {
-	return pulumix.Output[*QueryInsightsInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryInsightsInstanceConfigPtrOutput) Elem() QueryInsightsInstanceConfigOutput {
@@ -2666,12 +2317,6 @@ func (o QueryInsightsInstanceConfigResponseOutput) ToQueryInsightsInstanceConfig
 	return o
 }
 
-func (o QueryInsightsInstanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryInsightsInstanceConfigResponse] {
-	return pulumix.Output[QueryInsightsInstanceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
 func (o QueryInsightsInstanceConfigResponseOutput) QueryPlansPerMinute() pulumi.IntOutput {
 	return o.ApplyT(func(v QueryInsightsInstanceConfigResponse) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
@@ -2727,12 +2372,6 @@ func (i ReadPoolConfigArgs) ToReadPoolConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReadPoolConfigOutput)
 }
 
-func (i ReadPoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ReadPoolConfig] {
-	return pulumix.Output[ReadPoolConfig]{
-		OutputState: i.ToReadPoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReadPoolConfigArgs) ToReadPoolConfigPtrOutput() ReadPoolConfigPtrOutput {
 	return i.ToReadPoolConfigPtrOutputWithContext(context.Background())
 }
@@ -2774,12 +2413,6 @@ func (i *readPoolConfigPtrType) ToReadPoolConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ReadPoolConfigPtrOutput)
 }
 
-func (i *readPoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReadPoolConfig] {
-	return pulumix.Output[*ReadPoolConfig]{
-		OutputState: i.ToReadPoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for a read pool instance.
 type ReadPoolConfigOutput struct{ *pulumi.OutputState }
 
@@ -2805,12 +2438,6 @@ func (o ReadPoolConfigOutput) ToReadPoolConfigPtrOutputWithContext(ctx context.C
 	}).(ReadPoolConfigPtrOutput)
 }
 
-func (o ReadPoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ReadPoolConfig] {
-	return pulumix.Output[ReadPoolConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Read capacity, i.e. number of nodes in a read pool instance.
 func (o ReadPoolConfigOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ReadPoolConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
@@ -2828,12 +2455,6 @@ func (o ReadPoolConfigPtrOutput) ToReadPoolConfigPtrOutput() ReadPoolConfigPtrOu
 
 func (o ReadPoolConfigPtrOutput) ToReadPoolConfigPtrOutputWithContext(ctx context.Context) ReadPoolConfigPtrOutput {
 	return o
-}
-
-func (o ReadPoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReadPoolConfig] {
-	return pulumix.Output[*ReadPoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReadPoolConfigPtrOutput) Elem() ReadPoolConfigOutput {
@@ -2877,12 +2498,6 @@ func (o ReadPoolConfigResponseOutput) ToReadPoolConfigResponseOutputWithContext(
 	return o
 }
 
-func (o ReadPoolConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReadPoolConfigResponse] {
-	return pulumix.Output[ReadPoolConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Read capacity, i.e. number of nodes in a read pool instance.
 func (o ReadPoolConfigResponseOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ReadPoolConfigResponse) int { return v.NodeCount }).(pulumi.IntOutput)
@@ -2921,12 +2536,6 @@ func (i SecondaryConfigArgs) ToSecondaryConfigOutput() SecondaryConfigOutput {
 
 func (i SecondaryConfigArgs) ToSecondaryConfigOutputWithContext(ctx context.Context) SecondaryConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecondaryConfigOutput)
-}
-
-func (i SecondaryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SecondaryConfig] {
-	return pulumix.Output[SecondaryConfig]{
-		OutputState: i.ToSecondaryConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i SecondaryConfigArgs) ToSecondaryConfigPtrOutput() SecondaryConfigPtrOutput {
@@ -2970,12 +2579,6 @@ func (i *secondaryConfigPtrType) ToSecondaryConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecondaryConfigPtrOutput)
 }
 
-func (i *secondaryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecondaryConfig] {
-	return pulumix.Output[*SecondaryConfig]{
-		OutputState: i.ToSecondaryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration information for the secondary cluster. This should be set if and only if the cluster is of type SECONDARY.
 type SecondaryConfigOutput struct{ *pulumi.OutputState }
 
@@ -3001,12 +2604,6 @@ func (o SecondaryConfigOutput) ToSecondaryConfigPtrOutputWithContext(ctx context
 	}).(SecondaryConfigPtrOutput)
 }
 
-func (o SecondaryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SecondaryConfig] {
-	return pulumix.Output[SecondaryConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the primary cluster name with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}
 func (o SecondaryConfigOutput) PrimaryClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecondaryConfig) *string { return v.PrimaryClusterName }).(pulumi.StringPtrOutput)
@@ -3024,12 +2621,6 @@ func (o SecondaryConfigPtrOutput) ToSecondaryConfigPtrOutput() SecondaryConfigPt
 
 func (o SecondaryConfigPtrOutput) ToSecondaryConfigPtrOutputWithContext(ctx context.Context) SecondaryConfigPtrOutput {
 	return o
-}
-
-func (o SecondaryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecondaryConfig] {
-	return pulumix.Output[*SecondaryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecondaryConfigPtrOutput) Elem() SecondaryConfigOutput {
@@ -3071,12 +2662,6 @@ func (o SecondaryConfigResponseOutput) ToSecondaryConfigResponseOutput() Seconda
 
 func (o SecondaryConfigResponseOutput) ToSecondaryConfigResponseOutputWithContext(ctx context.Context) SecondaryConfigResponseOutput {
 	return o
-}
-
-func (o SecondaryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecondaryConfigResponse] {
-	return pulumix.Output[SecondaryConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the primary cluster name with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}
@@ -3123,12 +2708,6 @@ func (i SslConfigArgs) ToSslConfigOutputWithContext(ctx context.Context) SslConf
 	return pulumi.ToOutputWithContext(ctx, i).(SslConfigOutput)
 }
 
-func (i SslConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SslConfig] {
-	return pulumix.Output[SslConfig]{
-		OutputState: i.ToSslConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SslConfigArgs) ToSslConfigPtrOutput() SslConfigPtrOutput {
 	return i.ToSslConfigPtrOutputWithContext(context.Background())
 }
@@ -3170,12 +2749,6 @@ func (i *sslConfigPtrType) ToSslConfigPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SslConfigPtrOutput)
 }
 
-func (i *sslConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SslConfig] {
-	return pulumix.Output[*SslConfig]{
-		OutputState: i.ToSslConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SSL configuration.
 type SslConfigOutput struct{ *pulumi.OutputState }
 
@@ -3201,12 +2774,6 @@ func (o SslConfigOutput) ToSslConfigPtrOutputWithContext(ctx context.Context) Ss
 	}).(SslConfigPtrOutput)
 }
 
-func (o SslConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SslConfig] {
-	return pulumix.Output[SslConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
 func (o SslConfigOutput) CaSource() SslConfigCaSourcePtrOutput {
 	return o.ApplyT(func(v SslConfig) *SslConfigCaSource { return v.CaSource }).(SslConfigCaSourcePtrOutput)
@@ -3229,12 +2796,6 @@ func (o SslConfigPtrOutput) ToSslConfigPtrOutput() SslConfigPtrOutput {
 
 func (o SslConfigPtrOutput) ToSslConfigPtrOutputWithContext(ctx context.Context) SslConfigPtrOutput {
 	return o
-}
-
-func (o SslConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslConfig] {
-	return pulumix.Output[*SslConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SslConfigPtrOutput) Elem() SslConfigOutput {
@@ -3290,12 +2851,6 @@ func (o SslConfigResponseOutput) ToSslConfigResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o SslConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SslConfigResponse] {
-	return pulumix.Output[SslConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
 func (o SslConfigResponseOutput) CaSource() pulumi.StringOutput {
 	return o.ApplyT(func(v SslConfigResponse) string { return v.CaSource }).(pulumi.StringOutput)
@@ -3341,12 +2896,6 @@ func (i TimeBasedRetentionArgs) ToTimeBasedRetentionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TimeBasedRetentionOutput)
 }
 
-func (i TimeBasedRetentionArgs) ToOutput(ctx context.Context) pulumix.Output[TimeBasedRetention] {
-	return pulumix.Output[TimeBasedRetention]{
-		OutputState: i.ToTimeBasedRetentionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TimeBasedRetentionArgs) ToTimeBasedRetentionPtrOutput() TimeBasedRetentionPtrOutput {
 	return i.ToTimeBasedRetentionPtrOutputWithContext(context.Background())
 }
@@ -3388,12 +2937,6 @@ func (i *timeBasedRetentionPtrType) ToTimeBasedRetentionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TimeBasedRetentionPtrOutput)
 }
 
-func (i *timeBasedRetentionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeBasedRetention] {
-	return pulumix.Output[*TimeBasedRetention]{
-		OutputState: i.ToTimeBasedRetentionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A time based retention policy specifies that all backups within a certain time period should be retained.
 type TimeBasedRetentionOutput struct{ *pulumi.OutputState }
 
@@ -3419,12 +2962,6 @@ func (o TimeBasedRetentionOutput) ToTimeBasedRetentionPtrOutputWithContext(ctx c
 	}).(TimeBasedRetentionPtrOutput)
 }
 
-func (o TimeBasedRetentionOutput) ToOutput(ctx context.Context) pulumix.Output[TimeBasedRetention] {
-	return pulumix.Output[TimeBasedRetention]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The retention period.
 func (o TimeBasedRetentionOutput) RetentionPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeBasedRetention) *string { return v.RetentionPeriod }).(pulumi.StringPtrOutput)
@@ -3442,12 +2979,6 @@ func (o TimeBasedRetentionPtrOutput) ToTimeBasedRetentionPtrOutput() TimeBasedRe
 
 func (o TimeBasedRetentionPtrOutput) ToTimeBasedRetentionPtrOutputWithContext(ctx context.Context) TimeBasedRetentionPtrOutput {
 	return o
-}
-
-func (o TimeBasedRetentionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeBasedRetention] {
-	return pulumix.Output[*TimeBasedRetention]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeBasedRetentionPtrOutput) Elem() TimeBasedRetentionOutput {
@@ -3491,12 +3022,6 @@ func (o TimeBasedRetentionResponseOutput) ToTimeBasedRetentionResponseOutputWith
 	return o
 }
 
-func (o TimeBasedRetentionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeBasedRetentionResponse] {
-	return pulumix.Output[TimeBasedRetentionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The retention period.
 func (o TimeBasedRetentionResponseOutput) RetentionPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeBasedRetentionResponse) string { return v.RetentionPeriod }).(pulumi.StringOutput)
@@ -3535,12 +3060,6 @@ func (i UpdatePolicyArgs) ToUpdatePolicyOutput() UpdatePolicyOutput {
 
 func (i UpdatePolicyArgs) ToUpdatePolicyOutputWithContext(ctx context.Context) UpdatePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UpdatePolicyOutput)
-}
-
-func (i UpdatePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[UpdatePolicy] {
-	return pulumix.Output[UpdatePolicy]{
-		OutputState: i.ToUpdatePolicyOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i UpdatePolicyArgs) ToUpdatePolicyPtrOutput() UpdatePolicyPtrOutput {
@@ -3584,12 +3103,6 @@ func (i *updatePolicyPtrType) ToUpdatePolicyPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UpdatePolicyPtrOutput)
 }
 
-func (i *updatePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*UpdatePolicy] {
-	return pulumix.Output[*UpdatePolicy]{
-		OutputState: i.ToUpdatePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Policy to be used while updating the instance.
 type UpdatePolicyOutput struct{ *pulumi.OutputState }
 
@@ -3615,12 +3128,6 @@ func (o UpdatePolicyOutput) ToUpdatePolicyPtrOutputWithContext(ctx context.Conte
 	}).(UpdatePolicyPtrOutput)
 }
 
-func (o UpdatePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[UpdatePolicy] {
-	return pulumix.Output[UpdatePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Mode for updating the instance.
 func (o UpdatePolicyOutput) Mode() UpdatePolicyModePtrOutput {
 	return o.ApplyT(func(v UpdatePolicy) *UpdatePolicyMode { return v.Mode }).(UpdatePolicyModePtrOutput)
@@ -3638,12 +3145,6 @@ func (o UpdatePolicyPtrOutput) ToUpdatePolicyPtrOutput() UpdatePolicyPtrOutput {
 
 func (o UpdatePolicyPtrOutput) ToUpdatePolicyPtrOutputWithContext(ctx context.Context) UpdatePolicyPtrOutput {
 	return o
-}
-
-func (o UpdatePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpdatePolicy] {
-	return pulumix.Output[*UpdatePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UpdatePolicyPtrOutput) Elem() UpdatePolicyOutput {
@@ -3685,12 +3186,6 @@ func (o UpdatePolicyResponseOutput) ToUpdatePolicyResponseOutput() UpdatePolicyR
 
 func (o UpdatePolicyResponseOutput) ToUpdatePolicyResponseOutputWithContext(ctx context.Context) UpdatePolicyResponseOutput {
 	return o
-}
-
-func (o UpdatePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdatePolicyResponse] {
-	return pulumix.Output[UpdatePolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Mode for updating the instance.
@@ -3737,12 +3232,6 @@ func (i UserPasswordArgs) ToUserPasswordOutputWithContext(ctx context.Context) U
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordOutput)
 }
 
-func (i UserPasswordArgs) ToOutput(ctx context.Context) pulumix.Output[UserPassword] {
-	return pulumix.Output[UserPassword]{
-		OutputState: i.ToUserPasswordOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserPasswordArgs) ToUserPasswordPtrOutput() UserPasswordPtrOutput {
 	return i.ToUserPasswordPtrOutputWithContext(context.Background())
 }
@@ -3784,12 +3273,6 @@ func (i *userPasswordPtrType) ToUserPasswordPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPtrOutput)
 }
 
-func (i *userPasswordPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserPassword] {
-	return pulumix.Output[*UserPassword]{
-		OutputState: i.ToUserPasswordPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The username/password for a database user. Used for specifying initial users at cluster creation time.
 type UserPasswordOutput struct{ *pulumi.OutputState }
 
@@ -3815,12 +3298,6 @@ func (o UserPasswordOutput) ToUserPasswordPtrOutputWithContext(ctx context.Conte
 	}).(UserPasswordPtrOutput)
 }
 
-func (o UserPasswordOutput) ToOutput(ctx context.Context) pulumix.Output[UserPassword] {
-	return pulumix.Output[UserPassword]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The initial password for the user.
 func (o UserPasswordOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPassword) *string { return v.Password }).(pulumi.StringPtrOutput)
@@ -3843,12 +3320,6 @@ func (o UserPasswordPtrOutput) ToUserPasswordPtrOutput() UserPasswordPtrOutput {
 
 func (o UserPasswordPtrOutput) ToUserPasswordPtrOutputWithContext(ctx context.Context) UserPasswordPtrOutput {
 	return o
-}
-
-func (o UserPasswordPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserPassword] {
-	return pulumix.Output[*UserPassword]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserPasswordPtrOutput) Elem() UserPasswordOutput {
@@ -3904,12 +3375,6 @@ func (o UserPasswordResponseOutput) ToUserPasswordResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o UserPasswordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserPasswordResponse] {
-	return pulumix.Output[UserPasswordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The initial password for the user.
 func (o UserPasswordResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v UserPasswordResponse) string { return v.Password }).(pulumi.StringOutput)
@@ -3959,12 +3424,6 @@ func (i WeeklyScheduleArgs) ToWeeklyScheduleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleOutput)
 }
 
-func (i WeeklyScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[WeeklySchedule] {
-	return pulumix.Output[WeeklySchedule]{
-		OutputState: i.ToWeeklyScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WeeklyScheduleArgs) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
 	return i.ToWeeklySchedulePtrOutputWithContext(context.Background())
 }
@@ -4006,12 +3465,6 @@ func (i *weeklySchedulePtrType) ToWeeklySchedulePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(WeeklySchedulePtrOutput)
 }
 
-func (i *weeklySchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*WeeklySchedule] {
-	return pulumix.Output[*WeeklySchedule]{
-		OutputState: i.ToWeeklySchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A weekly schedule starts a backup at prescribed start times within a day, for the specified days of the week. The weekly schedule message is flexible and can be used to create many types of schedules. For example, to have a daily backup that starts at 22:00, configure the `start_times` field to have one element "22:00" and the `days_of_week` field to have all seven days of the week.
 type WeeklyScheduleOutput struct{ *pulumi.OutputState }
 
@@ -4037,12 +3490,6 @@ func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.C
 	}).(WeeklySchedulePtrOutput)
 }
 
-func (o WeeklyScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklySchedule] {
-	return pulumix.Output[WeeklySchedule]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The days of the week to perform a backup. If this field is left empty, the default of every day of the week is used.
 func (o WeeklyScheduleOutput) DaysOfWeek() WeeklyScheduleDaysOfWeekItemArrayOutput {
 	return o.ApplyT(func(v WeeklySchedule) []WeeklyScheduleDaysOfWeekItem { return v.DaysOfWeek }).(WeeklyScheduleDaysOfWeekItemArrayOutput)
@@ -4065,12 +3512,6 @@ func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOu
 
 func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
 	return o
-}
-
-func (o WeeklySchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeeklySchedule] {
-	return pulumix.Output[*WeeklySchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WeeklySchedulePtrOutput) Elem() WeeklyScheduleOutput {
@@ -4124,12 +3565,6 @@ func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutput() WeeklySch
 
 func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutputWithContext(ctx context.Context) WeeklyScheduleResponseOutput {
 	return o
-}
-
-func (o WeeklyScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyScheduleResponse] {
-	return pulumix.Output[WeeklyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The days of the week to perform a backup. If this field is left empty, the default of every day of the week is used.

@@ -93,12 +93,6 @@ func (o RepositoryFormatOutput) ToRepositoryFormatPtrOutputWithContext(ctx conte
 	}).(RepositoryFormatPtrOutput)
 }
 
-func (o RepositoryFormatOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryFormat] {
-	return pulumix.Output[RepositoryFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -132,12 +126,6 @@ func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutput() RepositoryForma
 
 func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
 	return o
-}
-
-func (o RepositoryFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryFormat] {
-	return pulumix.Output[*RepositoryFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryFormatPtrOutput) Elem() RepositoryFormatOutput {

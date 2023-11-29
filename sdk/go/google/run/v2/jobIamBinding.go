@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM Access control policy for the specified Job. Overwrites any existing policy.
@@ -141,12 +140,6 @@ func (i *JobIamBinding) ToJobIamBindingOutputWithContext(ctx context.Context) Jo
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingOutput)
 }
 
-func (i *JobIamBinding) ToOutput(ctx context.Context) pulumix.Output[*JobIamBinding] {
-	return pulumix.Output[*JobIamBinding]{
-		OutputState: i.ToJobIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobIamBindingOutput struct{ *pulumi.OutputState }
 
 func (JobIamBindingOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o JobIamBindingOutput) ToJobIamBindingOutput() JobIamBindingOutput {
 
 func (o JobIamBindingOutput) ToJobIamBindingOutputWithContext(ctx context.Context) JobIamBindingOutput {
 	return o
-}
-
-func (o JobIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIamBinding] {
-	return pulumix.Output[*JobIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

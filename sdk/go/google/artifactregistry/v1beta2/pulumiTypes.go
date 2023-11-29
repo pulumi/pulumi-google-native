@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -88,12 +81,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -107,12 +94,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -142,12 +123,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -181,12 +156,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -214,12 +183,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -275,12 +238,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -322,12 +279,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -351,12 +302,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -391,12 +336,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -476,12 +415,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -541,12 +474,6 @@ func (i MavenRepositoryConfigArgs) ToMavenRepositoryConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigOutput)
 }
 
-func (i MavenRepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MavenRepositoryConfig] {
-	return pulumix.Output[MavenRepositoryConfig]{
-		OutputState: i.ToMavenRepositoryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MavenRepositoryConfigArgs) ToMavenRepositoryConfigPtrOutput() MavenRepositoryConfigPtrOutput {
 	return i.ToMavenRepositoryConfigPtrOutputWithContext(context.Background())
 }
@@ -588,12 +515,6 @@ func (i *mavenRepositoryConfigPtrType) ToMavenRepositoryConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryConfigPtrOutput)
 }
 
-func (i *mavenRepositoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MavenRepositoryConfig] {
-	return pulumix.Output[*MavenRepositoryConfig]{
-		OutputState: i.ToMavenRepositoryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
 type MavenRepositoryConfigOutput struct{ *pulumi.OutputState }
 
@@ -619,12 +540,6 @@ func (o MavenRepositoryConfigOutput) ToMavenRepositoryConfigPtrOutputWithContext
 	}).(MavenRepositoryConfigPtrOutput)
 }
 
-func (o MavenRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MavenRepositoryConfig] {
-	return pulumix.Output[MavenRepositoryConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The repository with this flag will allow publishing the same snapshot versions.
 func (o MavenRepositoryConfigOutput) AllowSnapshotOverwrites() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MavenRepositoryConfig) *bool { return v.AllowSnapshotOverwrites }).(pulumi.BoolPtrOutput)
@@ -647,12 +562,6 @@ func (o MavenRepositoryConfigPtrOutput) ToMavenRepositoryConfigPtrOutput() Maven
 
 func (o MavenRepositoryConfigPtrOutput) ToMavenRepositoryConfigPtrOutputWithContext(ctx context.Context) MavenRepositoryConfigPtrOutput {
 	return o
-}
-
-func (o MavenRepositoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MavenRepositoryConfig] {
-	return pulumix.Output[*MavenRepositoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MavenRepositoryConfigPtrOutput) Elem() MavenRepositoryConfigOutput {
@@ -706,12 +615,6 @@ func (o MavenRepositoryConfigResponseOutput) ToMavenRepositoryConfigResponseOutp
 
 func (o MavenRepositoryConfigResponseOutput) ToMavenRepositoryConfigResponseOutputWithContext(ctx context.Context) MavenRepositoryConfigResponseOutput {
 	return o
-}
-
-func (o MavenRepositoryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MavenRepositoryConfigResponse] {
-	return pulumix.Output[MavenRepositoryConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The repository with this flag will allow publishing the same snapshot versions.

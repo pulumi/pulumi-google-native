@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -33,12 +32,6 @@ func (o GuestOsScanResponseOutput) ToGuestOsScanResponseOutput() GuestOsScanResp
 
 func (o GuestOsScanResponseOutput) ToGuestOsScanResponseOutputWithContext(ctx context.Context) GuestOsScanResponseOutput {
 	return o
-}
-
-func (o GuestOsScanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GuestOsScanResponse] {
-	return pulumix.Output[GuestOsScanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // reference to the corresponding Guest OS Scan in MC Source.
@@ -65,12 +58,6 @@ func (o VSphereScanResponseOutput) ToVSphereScanResponseOutput() VSphereScanResp
 
 func (o VSphereScanResponseOutput) ToVSphereScanResponseOutputWithContext(ctx context.Context) VSphereScanResponseOutput {
 	return o
-}
-
-func (o VSphereScanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VSphereScanResponse] {
-	return pulumix.Output[VSphereScanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // reference to the corresponding VSphere Scan in MC Source.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a phrase matcher.
@@ -89,12 +88,6 @@ func (o LookupPhraseMatcherResultOutput) ToLookupPhraseMatcherResultOutput() Loo
 
 func (o LookupPhraseMatcherResultOutput) ToLookupPhraseMatcherResultOutputWithContext(ctx context.Context) LookupPhraseMatcherResultOutput {
 	return o
-}
-
-func (o LookupPhraseMatcherResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPhraseMatcherResult] {
-	return pulumix.Output[LookupPhraseMatcherResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The most recent time at which the activation status was updated.

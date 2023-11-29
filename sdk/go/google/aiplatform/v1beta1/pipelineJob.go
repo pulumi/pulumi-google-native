@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a PipelineJob. A PipelineJob will run immediately when created.
@@ -179,12 +178,6 @@ func (i *PipelineJob) ToPipelineJobOutputWithContext(ctx context.Context) Pipeli
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobOutput)
 }
 
-func (i *PipelineJob) ToOutput(ctx context.Context) pulumix.Output[*PipelineJob] {
-	return pulumix.Output[*PipelineJob]{
-		OutputState: i.ToPipelineJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PipelineJobOutput struct{ *pulumi.OutputState }
 
 func (PipelineJobOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o PipelineJobOutput) ToPipelineJobOutput() PipelineJobOutput {
 
 func (o PipelineJobOutput) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
 	return o
-}
-
-func (o PipelineJobOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineJob] {
-	return pulumix.Output[*PipelineJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Pipeline creation time.

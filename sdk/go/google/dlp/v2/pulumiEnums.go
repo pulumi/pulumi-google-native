@@ -83,12 +83,6 @@ func (o DiscoveryConfigStatusOutput) ToDiscoveryConfigStatusPtrOutputWithContext
 	}).(DiscoveryConfigStatusPtrOutput)
 }
 
-func (o DiscoveryConfigStatusOutput) ToOutput(ctx context.Context) pulumix.Output[DiscoveryConfigStatus] {
-	return pulumix.Output[DiscoveryConfigStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiscoveryConfigStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o DiscoveryConfigStatusPtrOutput) ToDiscoveryConfigStatusPtrOutput() Disco
 
 func (o DiscoveryConfigStatusPtrOutput) ToDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) DiscoveryConfigStatusPtrOutput {
 	return o
-}
-
-func (o DiscoveryConfigStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiscoveryConfigStatus] {
-	return pulumix.Output[*DiscoveryConfigStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiscoveryConfigStatusPtrOutput) Elem() DiscoveryConfigStatusOutput {
@@ -268,12 +256,6 @@ func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput) ToGooglePrivacyDlpV
 	}).(GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryOptionsSampleMethod] {
-	return pulumix.Output[GooglePrivacyDlpV2BigQueryOptionsSampleMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -307,12 +289,6 @@ func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) ToGooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryOptionsSampleMethod] {
-	return pulumix.Output[*GooglePrivacyDlpV2BigQueryOptionsSampleMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) Elem() GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput {
@@ -454,12 +430,6 @@ func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToGooglePrivacyDlpV
 	}).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2BigQueryTableTypesTypesItem] {
-	return pulumix.Output[GooglePrivacyDlpV2BigQueryTableTypesTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -493,12 +463,6 @@ func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2BigQueryTableTypesTypesItem] {
-	return pulumix.Output[*GooglePrivacyDlpV2BigQueryTableTypesTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemPtrOutput) Elem() GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput {
@@ -594,12 +558,6 @@ func (i GooglePrivacyDlpV2BigQueryTableTypesTypesItemArray) ToGooglePrivacyDlpV2
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput)
 }
 
-func (i GooglePrivacyDlpV2BigQueryTableTypesTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2BigQueryTableTypesTypesItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2BigQueryTableTypesTypesItem]{
-		OutputState: i.ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput) ElementType() reflect.Type {
@@ -612,12 +570,6 @@ func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput) ToGooglePrivac
 
 func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput) ToGooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2BigQueryTableTypesTypesItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2BigQueryTableTypesTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2BigQueryTableTypesTypesItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2BigQueryTableTypesTypesItemOutput {
@@ -704,12 +656,6 @@ func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput) ToGoogleP
 	}).(GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput)
 }
 
-func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore] {
-	return pulumix.Output[GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -743,12 +689,6 @@ func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) ToGoog
 
 func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) ToGooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore] {
-	return pulumix.Output[*GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) Elem() GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput {
@@ -906,12 +846,6 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput) ToGooglePrivac
 	}).(GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem] {
-	return pulumix.Output[GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -945,12 +879,6 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) ToGooglePri
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) ToGooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem] {
-	return pulumix.Output[*GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) Elem() GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput {
@@ -1046,12 +974,6 @@ func (i GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArray) ToGooglePrivacy
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput)
 }
 
-func (i GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem]{
-		OutputState: i.ToGooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput) ElementType() reflect.Type {
@@ -1064,12 +986,6 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput) ToGoogleP
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput) ToGooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput {
@@ -1148,12 +1064,6 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput) ToGooglePrivacy
 	}).(GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2CloudStorageOptionsSampleMethod] {
-	return pulumix.Output[GooglePrivacyDlpV2CloudStorageOptionsSampleMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1187,12 +1097,6 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) ToGooglePriv
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) ToGooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2CloudStorageOptionsSampleMethod] {
-	return pulumix.Output[*GooglePrivacyDlpV2CloudStorageOptionsSampleMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) Elem() GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput {
@@ -1345,12 +1249,6 @@ func (o GooglePrivacyDlpV2ConditionOperatorOutput) ToGooglePrivacyDlpV2Condition
 	}).(GooglePrivacyDlpV2ConditionOperatorPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2ConditionOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2ConditionOperator] {
-	return pulumix.Output[GooglePrivacyDlpV2ConditionOperator]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2ConditionOperatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1384,12 +1282,6 @@ func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) ToGooglePrivacyDlpV2Condit
 
 func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) ToGooglePrivacyDlpV2ConditionOperatorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ConditionOperatorPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2ConditionOperator] {
-	return pulumix.Output[*GooglePrivacyDlpV2ConditionOperator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) Elem() GooglePrivacyDlpV2ConditionOperatorOutput {
@@ -1536,12 +1428,6 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput) ToGoogl
 	}).(GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet] {
-	return pulumix.Output[GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1575,12 +1461,6 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) ToGo
 
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) ToGooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet] {
-	return pulumix.Output[*GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) Elem() GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput {
@@ -1721,12 +1601,6 @@ func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput) ToGooglePrivacyDlpV
 	}).(GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput)
 }
 
-func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2CustomInfoTypeExclusionType] {
-	return pulumix.Output[GooglePrivacyDlpV2CustomInfoTypeExclusionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1760,12 +1634,6 @@ func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) ToGooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2CustomInfoTypeExclusionType] {
-	return pulumix.Output[*GooglePrivacyDlpV2CustomInfoTypeExclusionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) Elem() GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput {
@@ -1914,12 +1782,6 @@ func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput) ToGooglePrivacyDlpV2Cu
 	}).(GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2CustomInfoTypeLikelihood] {
-	return pulumix.Output[GooglePrivacyDlpV2CustomInfoTypeLikelihood]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1953,12 +1815,6 @@ func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) ToGooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2CustomInfoTypeLikelihood] {
-	return pulumix.Output[*GooglePrivacyDlpV2CustomInfoTypeLikelihood]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput {
@@ -2116,12 +1972,6 @@ func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToGooglePriv
 	}).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem] {
-	return pulumix.Output[GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2155,12 +2005,6 @@ func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) ToGoogleP
 
 func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem] {
-	return pulumix.Output[*GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) Elem() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput {
@@ -2256,12 +2100,6 @@ func (i GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray) ToGooglePriva
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput)
 }
 
-func (i GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem]{
-		OutputState: i.ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput) ElementType() reflect.Type {
@@ -2274,12 +2112,6 @@ func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput) ToGoogl
 
 func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput {
@@ -2360,12 +2192,6 @@ func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToGoo
 	}).(GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection] {
-	return pulumix.Output[GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2399,12 +2225,6 @@ func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) To
 
 func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) ToGooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection] {
-	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionPtrOutput) Elem() GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionOutput {
@@ -2549,12 +2369,6 @@ func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToGoogl
 	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency] {
-	return pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2588,12 +2402,6 @@ func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) ToGo
 
 func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency] {
-	return pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyPtrOutput) Elem() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyOutput {
@@ -2735,12 +2543,6 @@ func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToGoogl
 	}).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem] {
-	return pulumix.Output[GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2774,12 +2576,6 @@ func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) ToGo
 
 func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem] {
-	return pulumix.Output[*GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemPtrOutput) Elem() GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput {
@@ -2875,12 +2671,6 @@ func (i GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArray) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput)
 }
 
-func (i GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem]{
-		OutputState: i.ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput) ElementType() reflect.Type {
@@ -2893,12 +2683,6 @@ func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput) To
 
 func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput) ToGooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemOutput {
@@ -2981,12 +2765,6 @@ func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToGoogle
 	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency] {
-	return pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3020,12 +2798,6 @@ func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) ToGoo
 
 func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency] {
-	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyPtrOutput) Elem() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyOutput {
@@ -3165,12 +2937,6 @@ func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToGoogle
 	}).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem] {
-	return pulumix.Output[GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3204,12 +2970,6 @@ func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) ToGoo
 
 func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem] {
-	return pulumix.Output[*GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemPtrOutput) Elem() GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput {
@@ -3305,12 +3065,6 @@ func (i GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArray) ToGoogleP
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput)
 }
 
-func (i GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem]{
-		OutputState: i.ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput) ElementType() reflect.Type {
@@ -3323,12 +3077,6 @@ func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput) ToG
 
 func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput) ToGooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemOutput {
@@ -3411,12 +3159,6 @@ func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput) ToGooglePrivacyDlpV2E
 	}).(GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput)
 }
 
-func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2ExclusionRuleMatchingType] {
-	return pulumix.Output[GooglePrivacyDlpV2ExclusionRuleMatchingType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3450,12 +3192,6 @@ func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) ToGooglePrivacyDlp
 
 func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) ToGooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2ExclusionRuleMatchingType] {
-	return pulumix.Output[*GooglePrivacyDlpV2ExclusionRuleMatchingType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) Elem() GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput {
@@ -3596,12 +3332,6 @@ func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput) ToGooglePrivacyDlpV2
 	}).(GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2ExpressionsLogicalOperator] {
-	return pulumix.Output[GooglePrivacyDlpV2ExpressionsLogicalOperator]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3635,12 +3365,6 @@ func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) ToGooglePrivacyDl
 
 func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) ToGooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2ExpressionsLogicalOperator] {
-	return pulumix.Output[*GooglePrivacyDlpV2ExpressionsLogicalOperator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) Elem() GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput {
@@ -3789,12 +3513,6 @@ func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToGooglePrivacy
 	}).(GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood] {
-	return pulumix.Output[GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3828,12 +3546,6 @@ func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) ToGooglePriv
 
 func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) ToGooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood] {
-	return pulumix.Output[*GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodOutput {
@@ -3975,12 +3687,6 @@ func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput) ToGooglePrivacy
 	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2InspectConfigContentOptionsItem] {
-	return pulumix.Output[GooglePrivacyDlpV2InspectConfigContentOptionsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4014,12 +3720,6 @@ func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) ToGooglePriv
 
 func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) ToGooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2InspectConfigContentOptionsItem] {
-	return pulumix.Output[*GooglePrivacyDlpV2InspectConfigContentOptionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) Elem() GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput {
@@ -4115,12 +3815,6 @@ func (i GooglePrivacyDlpV2InspectConfigContentOptionsItemArray) ToGooglePrivacyD
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput)
 }
 
-func (i GooglePrivacyDlpV2InspectConfigContentOptionsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2InspectConfigContentOptionsItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2InspectConfigContentOptionsItem]{
-		OutputState: i.ToGooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput) ElementType() reflect.Type {
@@ -4133,12 +3827,6 @@ func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput) ToGooglePr
 
 func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput) ToGooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GooglePrivacyDlpV2InspectConfigContentOptionsItem] {
-	return pulumix.Output[[]GooglePrivacyDlpV2InspectConfigContentOptionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput {
@@ -4225,12 +3913,6 @@ func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput) ToGooglePrivacyDlpV2
 	}).(GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2InspectConfigMinLikelihood] {
-	return pulumix.Output[GooglePrivacyDlpV2InspectConfigMinLikelihood]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4264,12 +3946,6 @@ func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) ToGooglePrivacyDl
 
 func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) ToGooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2InspectConfigMinLikelihood] {
-	return pulumix.Output[*GooglePrivacyDlpV2InspectConfigMinLikelihood]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput {
@@ -4418,12 +4094,6 @@ func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput) ToGooglePri
 	}).(GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood] {
-	return pulumix.Output[GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4457,12 +4127,6 @@ func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) ToGoogle
 
 func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) ToGooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood] {
-	return pulumix.Output[*GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) Elem() GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput {
@@ -4611,12 +4275,6 @@ func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput) ToGooglePrivacy
 	}).(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2OutputStorageConfigOutputSchema] {
-	return pulumix.Output[GooglePrivacyDlpV2OutputStorageConfigOutputSchema]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4650,12 +4308,6 @@ func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) ToGooglePriv
 
 func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) ToGooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2OutputStorageConfigOutputSchema] {
-	return pulumix.Output[*GooglePrivacyDlpV2OutputStorageConfigOutputSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) Elem() GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput {
@@ -4798,12 +4450,6 @@ func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToGooglePrivacy
 	}).(GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput)
 }
 
-func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubConditionMinimumRiskScore] {
-	return pulumix.Output[GooglePrivacyDlpV2PubSubConditionMinimumRiskScore]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4837,12 +4483,6 @@ func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) ToGooglePriv
 
 func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumRiskScore] {
-	return pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumRiskScore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2PubSubConditionMinimumRiskScorePtrOutput) Elem() GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreOutput {
@@ -4985,12 +4625,6 @@ func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToGoogle
 	}).(GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput)
 }
 
-func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore] {
-	return pulumix.Output[GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5024,12 +4658,6 @@ func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) ToGoo
 
 func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) ToGooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore] {
-	return pulumix.Output[*GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScorePtrOutput) Elem() GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreOutput {
@@ -5172,12 +4800,6 @@ func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToGooglePrivac
 	}).(GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubExpressionsLogicalOperator] {
-	return pulumix.Output[GooglePrivacyDlpV2PubSubExpressionsLogicalOperator]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5211,12 +4833,6 @@ func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) ToGooglePri
 
 func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) ToGooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubExpressionsLogicalOperator] {
-	return pulumix.Output[*GooglePrivacyDlpV2PubSubExpressionsLogicalOperator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorPtrOutput) Elem() GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorOutput {
@@ -5359,12 +4975,6 @@ func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToGooglePriva
 	}).(GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput)
 }
 
-func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubNotificationDetailOfMessage] {
-	return pulumix.Output[GooglePrivacyDlpV2PubSubNotificationDetailOfMessage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5398,12 +5008,6 @@ func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) ToGooglePr
 
 func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) ToGooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationDetailOfMessage] {
-	return pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationDetailOfMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2PubSubNotificationDetailOfMessagePtrOutput) Elem() GooglePrivacyDlpV2PubSubNotificationDetailOfMessageOutput {
@@ -5550,12 +5154,6 @@ func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToGooglePrivacyDlpV2Pub
 	}).(GooglePrivacyDlpV2PubSubNotificationEventPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2PubSubNotificationEvent] {
-	return pulumix.Output[GooglePrivacyDlpV2PubSubNotificationEvent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2PubSubNotificationEventOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5589,12 +5187,6 @@ func (o GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) ToGooglePrivacyDlpV2
 
 func (o GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) ToGooglePrivacyDlpV2PubSubNotificationEventPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PubSubNotificationEventPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationEvent] {
-	return pulumix.Output[*GooglePrivacyDlpV2PubSubNotificationEvent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2PubSubNotificationEventPtrOutput) Elem() GooglePrivacyDlpV2PubSubNotificationEventOutput {
@@ -5739,12 +5331,6 @@ func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToGooglePrivacyDlpV2Sensi
 	}).(GooglePrivacyDlpV2SensitivityScoreScorePtrOutput)
 }
 
-func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2SensitivityScoreScore] {
-	return pulumix.Output[GooglePrivacyDlpV2SensitivityScoreScore]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5778,12 +5364,6 @@ func (o GooglePrivacyDlpV2SensitivityScoreScorePtrOutput) ToGooglePrivacyDlpV2Se
 
 func (o GooglePrivacyDlpV2SensitivityScoreScorePtrOutput) ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2SensitivityScoreScorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2SensitivityScoreScore] {
-	return pulumix.Output[*GooglePrivacyDlpV2SensitivityScoreScore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2SensitivityScoreScorePtrOutput) Elem() GooglePrivacyDlpV2SensitivityScoreScoreOutput {
@@ -5934,12 +5514,6 @@ func (o GooglePrivacyDlpV2TimePartConfigPartToExtractOutput) ToGooglePrivacyDlpV
 	}).(GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput)
 }
 
-func (o GooglePrivacyDlpV2TimePartConfigPartToExtractOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2TimePartConfigPartToExtract] {
-	return pulumix.Output[GooglePrivacyDlpV2TimePartConfigPartToExtract]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2TimePartConfigPartToExtractOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5973,12 +5547,6 @@ func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) ToGooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2TimePartConfigPartToExtract] {
-	return pulumix.Output[*GooglePrivacyDlpV2TimePartConfigPartToExtract]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) Elem() GooglePrivacyDlpV2TimePartConfigPartToExtractOutput {
@@ -6131,12 +5699,6 @@ func (o GooglePrivacyDlpV2ValueDayOfWeekValueOutput) ToGooglePrivacyDlpV2ValueDa
 	}).(GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput)
 }
 
-func (o GooglePrivacyDlpV2ValueDayOfWeekValueOutput) ToOutput(ctx context.Context) pulumix.Output[GooglePrivacyDlpV2ValueDayOfWeekValue] {
-	return pulumix.Output[GooglePrivacyDlpV2ValueDayOfWeekValue]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GooglePrivacyDlpV2ValueDayOfWeekValueOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6170,12 +5732,6 @@ func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) ToGooglePrivacyDlpV2Valu
 
 func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) ToGooglePrivacyDlpV2ValueDayOfWeekValuePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooglePrivacyDlpV2ValueDayOfWeekValue] {
-	return pulumix.Output[*GooglePrivacyDlpV2ValueDayOfWeekValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) Elem() GooglePrivacyDlpV2ValueDayOfWeekValueOutput {
@@ -6320,12 +5876,6 @@ func (o JobTriggerStatusOutput) ToJobTriggerStatusPtrOutputWithContext(ctx conte
 	}).(JobTriggerStatusPtrOutput)
 }
 
-func (o JobTriggerStatusOutput) ToOutput(ctx context.Context) pulumix.Output[JobTriggerStatus] {
-	return pulumix.Output[JobTriggerStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobTriggerStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6359,12 +5909,6 @@ func (o JobTriggerStatusPtrOutput) ToJobTriggerStatusPtrOutput() JobTriggerStatu
 
 func (o JobTriggerStatusPtrOutput) ToJobTriggerStatusPtrOutputWithContext(ctx context.Context) JobTriggerStatusPtrOutput {
 	return o
-}
-
-func (o JobTriggerStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTriggerStatus] {
-	return pulumix.Output[*JobTriggerStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTriggerStatusPtrOutput) Elem() JobTriggerStatusOutput {
@@ -6507,12 +6051,6 @@ func (o OrganizationDiscoveryConfigStatusOutput) ToOrganizationDiscoveryConfigSt
 	}).(OrganizationDiscoveryConfigStatusPtrOutput)
 }
 
-func (o OrganizationDiscoveryConfigStatusOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationDiscoveryConfigStatus] {
-	return pulumix.Output[OrganizationDiscoveryConfigStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationDiscoveryConfigStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6546,12 +6084,6 @@ func (o OrganizationDiscoveryConfigStatusPtrOutput) ToOrganizationDiscoveryConfi
 
 func (o OrganizationDiscoveryConfigStatusPtrOutput) ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusPtrOutput {
 	return o
-}
-
-func (o OrganizationDiscoveryConfigStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationDiscoveryConfigStatus] {
-	return pulumix.Output[*OrganizationDiscoveryConfigStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationDiscoveryConfigStatusPtrOutput) Elem() OrganizationDiscoveryConfigStatusOutput {
@@ -6696,12 +6228,6 @@ func (o OrganizationJobTriggerStatusOutput) ToOrganizationJobTriggerStatusPtrOut
 	}).(OrganizationJobTriggerStatusPtrOutput)
 }
 
-func (o OrganizationJobTriggerStatusOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationJobTriggerStatus] {
-	return pulumix.Output[OrganizationJobTriggerStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationJobTriggerStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6735,12 +6261,6 @@ func (o OrganizationJobTriggerStatusPtrOutput) ToOrganizationJobTriggerStatusPtr
 
 func (o OrganizationJobTriggerStatusPtrOutput) ToOrganizationJobTriggerStatusPtrOutputWithContext(ctx context.Context) OrganizationJobTriggerStatusPtrOutput {
 	return o
-}
-
-func (o OrganizationJobTriggerStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationJobTriggerStatus] {
-	return pulumix.Output[*OrganizationJobTriggerStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationJobTriggerStatusPtrOutput) Elem() OrganizationJobTriggerStatusOutput {

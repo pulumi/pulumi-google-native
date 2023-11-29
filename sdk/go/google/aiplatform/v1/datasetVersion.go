@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a version from a Dataset.
@@ -121,12 +120,6 @@ func (i *DatasetVersion) ToDatasetVersionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetVersionOutput)
 }
 
-func (i *DatasetVersion) ToOutput(ctx context.Context) pulumix.Output[*DatasetVersion] {
-	return pulumix.Output[*DatasetVersion]{
-		OutputState: i.ToDatasetVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetVersionOutput struct{ *pulumi.OutputState }
 
 func (DatasetVersionOutput) ElementType() reflect.Type {
@@ -139,12 +132,6 @@ func (o DatasetVersionOutput) ToDatasetVersionOutput() DatasetVersionOutput {
 
 func (o DatasetVersionOutput) ToDatasetVersionOutputWithContext(ctx context.Context) DatasetVersionOutput {
 	return o
-}
-
-func (o DatasetVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetVersion] {
-	return pulumix.Output[*DatasetVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the associated BigQuery dataset.

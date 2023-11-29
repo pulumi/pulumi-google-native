@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a DataAttribute resource.
@@ -169,12 +168,6 @@ func (i *Attribute) ToAttributeOutputWithContext(ctx context.Context) AttributeO
 	return pulumi.ToOutputWithContext(ctx, i).(AttributeOutput)
 }
 
-func (i *Attribute) ToOutput(ctx context.Context) pulumix.Output[*Attribute] {
-	return pulumix.Output[*Attribute]{
-		OutputState: i.ToAttributeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AttributeOutput struct{ *pulumi.OutputState }
 
 func (AttributeOutput) ElementType() reflect.Type {
@@ -187,12 +180,6 @@ func (o AttributeOutput) ToAttributeOutput() AttributeOutput {
 
 func (o AttributeOutput) ToAttributeOutputWithContext(ctx context.Context) AttributeOutput {
 	return o
-}
-
-func (o AttributeOutput) ToOutput(ctx context.Context) pulumix.Output[*Attribute] {
-	return pulumix.Output[*Attribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of child attributes present for this attribute.

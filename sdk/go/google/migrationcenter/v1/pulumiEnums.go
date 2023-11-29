@@ -83,12 +83,6 @@ func (o ComputeEnginePreferencesLicenseTypeOutput) ToComputeEnginePreferencesLic
 	}).(ComputeEnginePreferencesLicenseTypePtrOutput)
 }
 
-func (o ComputeEnginePreferencesLicenseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEnginePreferencesLicenseType] {
-	return pulumix.Output[ComputeEnginePreferencesLicenseType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComputeEnginePreferencesLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o ComputeEnginePreferencesLicenseTypePtrOutput) ToComputeEnginePreferences
 
 func (o ComputeEnginePreferencesLicenseTypePtrOutput) ToComputeEnginePreferencesLicenseTypePtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesLicenseTypePtrOutput {
 	return o
-}
-
-func (o ComputeEnginePreferencesLicenseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeEnginePreferencesLicenseType] {
-	return pulumix.Output[*ComputeEnginePreferencesLicenseType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeEnginePreferencesLicenseTypePtrOutput) Elem() ComputeEnginePreferencesLicenseTypeOutput {
@@ -276,12 +264,6 @@ func (o ImportDataFileFormatOutput) ToImportDataFileFormatPtrOutputWithContext(c
 	}).(ImportDataFileFormatPtrOutput)
 }
 
-func (o ImportDataFileFormatOutput) ToOutput(ctx context.Context) pulumix.Output[ImportDataFileFormat] {
-	return pulumix.Output[ImportDataFileFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ImportDataFileFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -315,12 +297,6 @@ func (o ImportDataFileFormatPtrOutput) ToImportDataFileFormatPtrOutput() ImportD
 
 func (o ImportDataFileFormatPtrOutput) ToImportDataFileFormatPtrOutputWithContext(ctx context.Context) ImportDataFileFormatPtrOutput {
 	return o
-}
-
-func (o ImportDataFileFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImportDataFileFormat] {
-	return pulumix.Output[*ImportDataFileFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImportDataFileFormatPtrOutput) Elem() ImportDataFileFormatOutput {
@@ -465,12 +441,6 @@ func (o ReportStateEnumOutput) ToReportStateEnumPtrOutputWithContext(ctx context
 	}).(ReportStateEnumPtrOutput)
 }
 
-func (o ReportStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ReportStateEnum] {
-	return pulumix.Output[ReportStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReportStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -504,12 +474,6 @@ func (o ReportStateEnumPtrOutput) ToReportStateEnumPtrOutput() ReportStateEnumPt
 
 func (o ReportStateEnumPtrOutput) ToReportStateEnumPtrOutputWithContext(ctx context.Context) ReportStateEnumPtrOutput {
 	return o
-}
-
-func (o ReportStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportStateEnum] {
-	return pulumix.Output[*ReportStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportStateEnumPtrOutput) Elem() ReportStateEnumOutput {
@@ -650,12 +614,6 @@ func (o ReportTypeOutput) ToReportTypePtrOutputWithContext(ctx context.Context) 
 	}).(ReportTypePtrOutput)
 }
 
-func (o ReportTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReportType] {
-	return pulumix.Output[ReportType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReportTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -689,12 +647,6 @@ func (o ReportTypePtrOutput) ToReportTypePtrOutput() ReportTypePtrOutput {
 
 func (o ReportTypePtrOutput) ToReportTypePtrOutputWithContext(ctx context.Context) ReportTypePtrOutput {
 	return o
-}
-
-func (o ReportTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportType] {
-	return pulumix.Output[*ReportType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportTypePtrOutput) Elem() ReportTypeOutput {
@@ -839,12 +791,6 @@ func (o SoleTenancyPreferencesCommitmentPlanOutput) ToSoleTenancyPreferencesComm
 	}).(SoleTenancyPreferencesCommitmentPlanPtrOutput)
 }
 
-func (o SoleTenancyPreferencesCommitmentPlanOutput) ToOutput(ctx context.Context) pulumix.Output[SoleTenancyPreferencesCommitmentPlan] {
-	return pulumix.Output[SoleTenancyPreferencesCommitmentPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SoleTenancyPreferencesCommitmentPlanOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -878,12 +824,6 @@ func (o SoleTenancyPreferencesCommitmentPlanPtrOutput) ToSoleTenancyPreferencesC
 
 func (o SoleTenancyPreferencesCommitmentPlanPtrOutput) ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesCommitmentPlanPtrOutput {
 	return o
-}
-
-func (o SoleTenancyPreferencesCommitmentPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoleTenancyPreferencesCommitmentPlan] {
-	return pulumix.Output[*SoleTenancyPreferencesCommitmentPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoleTenancyPreferencesCommitmentPlanPtrOutput) Elem() SoleTenancyPreferencesCommitmentPlanOutput {
@@ -1028,12 +968,6 @@ func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToSoleTenancyPreferen
 	}).(SoleTenancyPreferencesHostMaintenancePolicyPtrOutput)
 }
 
-func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[SoleTenancyPreferencesHostMaintenancePolicy] {
-	return pulumix.Output[SoleTenancyPreferencesHostMaintenancePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1067,12 +1001,6 @@ func (o SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) ToSoleTenancyPrefe
 
 func (o SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
 	return o
-}
-
-func (o SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoleTenancyPreferencesHostMaintenancePolicy] {
-	return pulumix.Output[*SoleTenancyPreferencesHostMaintenancePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) Elem() SoleTenancyPreferencesHostMaintenancePolicyOutput {
@@ -1219,12 +1147,6 @@ func (o SourceTypeOutput) ToSourceTypePtrOutputWithContext(ctx context.Context) 
 	}).(SourceTypePtrOutput)
 }
 
-func (o SourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SourceType] {
-	return pulumix.Output[SourceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1258,12 +1180,6 @@ func (o SourceTypePtrOutput) ToSourceTypePtrOutput() SourceTypePtrOutput {
 
 func (o SourceTypePtrOutput) ToSourceTypePtrOutputWithContext(ctx context.Context) SourceTypePtrOutput {
 	return o
-}
-
-func (o SourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceType] {
-	return pulumix.Output[*SourceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceTypePtrOutput) Elem() SourceTypeOutput {
@@ -1408,12 +1324,6 @@ func (o VirtualMachinePreferencesCommitmentPlanOutput) ToVirtualMachinePreferenc
 	}).(VirtualMachinePreferencesCommitmentPlanPtrOutput)
 }
 
-func (o VirtualMachinePreferencesCommitmentPlanOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesCommitmentPlan] {
-	return pulumix.Output[VirtualMachinePreferencesCommitmentPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualMachinePreferencesCommitmentPlanOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1447,12 +1357,6 @@ func (o VirtualMachinePreferencesCommitmentPlanPtrOutput) ToVirtualMachinePrefer
 
 func (o VirtualMachinePreferencesCommitmentPlanPtrOutput) ToVirtualMachinePreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesCommitmentPlanPtrOutput {
 	return o
-}
-
-func (o VirtualMachinePreferencesCommitmentPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesCommitmentPlan] {
-	return pulumix.Output[*VirtualMachinePreferencesCommitmentPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachinePreferencesCommitmentPlanPtrOutput) Elem() VirtualMachinePreferencesCommitmentPlanOutput {
@@ -1597,12 +1501,6 @@ func (o VirtualMachinePreferencesSizingOptimizationStrategyOutput) ToVirtualMach
 	}).(VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput)
 }
 
-func (o VirtualMachinePreferencesSizingOptimizationStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesSizingOptimizationStrategy] {
-	return pulumix.Output[VirtualMachinePreferencesSizingOptimizationStrategy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualMachinePreferencesSizingOptimizationStrategyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1636,12 +1534,6 @@ func (o VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput) ToVirtualM
 
 func (o VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput) ToVirtualMachinePreferencesSizingOptimizationStrategyPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput {
 	return o
-}
-
-func (o VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesSizingOptimizationStrategy] {
-	return pulumix.Output[*VirtualMachinePreferencesSizingOptimizationStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput) Elem() VirtualMachinePreferencesSizingOptimizationStrategyOutput {
@@ -1786,12 +1678,6 @@ func (o VirtualMachinePreferencesTargetProductOutput) ToVirtualMachinePreference
 	}).(VirtualMachinePreferencesTargetProductPtrOutput)
 }
 
-func (o VirtualMachinePreferencesTargetProductOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesTargetProduct] {
-	return pulumix.Output[VirtualMachinePreferencesTargetProduct]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualMachinePreferencesTargetProductOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1825,12 +1711,6 @@ func (o VirtualMachinePreferencesTargetProductPtrOutput) ToVirtualMachinePrefere
 
 func (o VirtualMachinePreferencesTargetProductPtrOutput) ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesTargetProductPtrOutput {
 	return o
-}
-
-func (o VirtualMachinePreferencesTargetProductPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesTargetProduct] {
-	return pulumix.Output[*VirtualMachinePreferencesTargetProduct]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachinePreferencesTargetProductPtrOutput) Elem() VirtualMachinePreferencesTargetProductOutput {
@@ -1979,12 +1859,6 @@ func (o VmwareEnginePreferencesCommitmentPlanOutput) ToVmwareEnginePreferencesCo
 	}).(VmwareEnginePreferencesCommitmentPlanPtrOutput)
 }
 
-func (o VmwareEnginePreferencesCommitmentPlanOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareEnginePreferencesCommitmentPlan] {
-	return pulumix.Output[VmwareEnginePreferencesCommitmentPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VmwareEnginePreferencesCommitmentPlanOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2018,12 +1892,6 @@ func (o VmwareEnginePreferencesCommitmentPlanPtrOutput) ToVmwareEnginePreference
 
 func (o VmwareEnginePreferencesCommitmentPlanPtrOutput) ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) VmwareEnginePreferencesCommitmentPlanPtrOutput {
 	return o
-}
-
-func (o VmwareEnginePreferencesCommitmentPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareEnginePreferencesCommitmentPlan] {
-	return pulumix.Output[*VmwareEnginePreferencesCommitmentPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareEnginePreferencesCommitmentPlanPtrOutput) Elem() VmwareEnginePreferencesCommitmentPlanOutput {

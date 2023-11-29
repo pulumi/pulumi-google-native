@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new DnsAuthorization in a given project and location.
@@ -142,12 +141,6 @@ func (i *DnsAuthorization) ToDnsAuthorizationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DnsAuthorizationOutput)
 }
 
-func (i *DnsAuthorization) ToOutput(ctx context.Context) pulumix.Output[*DnsAuthorization] {
-	return pulumix.Output[*DnsAuthorization]{
-		OutputState: i.ToDnsAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DnsAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (DnsAuthorizationOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o DnsAuthorizationOutput) ToDnsAuthorizationOutput() DnsAuthorizationOutpu
 
 func (o DnsAuthorizationOutput) ToDnsAuthorizationOutputWithContext(ctx context.Context) DnsAuthorizationOutput {
 	return o
-}
-
-func (o DnsAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsAuthorization] {
-	return pulumix.Output[*DnsAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of a DnsAuthorization.

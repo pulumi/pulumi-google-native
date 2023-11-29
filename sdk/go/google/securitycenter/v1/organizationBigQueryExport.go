@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a BigQuery export.
@@ -140,12 +139,6 @@ func (i *OrganizationBigQueryExport) ToOrganizationBigQueryExportOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBigQueryExportOutput)
 }
 
-func (i *OrganizationBigQueryExport) ToOutput(ctx context.Context) pulumix.Output[*OrganizationBigQueryExport] {
-	return pulumix.Output[*OrganizationBigQueryExport]{
-		OutputState: i.ToOrganizationBigQueryExportOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationBigQueryExportOutput struct{ *pulumi.OutputState }
 
 func (OrganizationBigQueryExportOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o OrganizationBigQueryExportOutput) ToOrganizationBigQueryExportOutput() O
 
 func (o OrganizationBigQueryExportOutput) ToOrganizationBigQueryExportOutputWithContext(ctx context.Context) OrganizationBigQueryExportOutput {
 	return o
-}
-
-func (o OrganizationBigQueryExportOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationBigQueryExport] {
-	return pulumix.Output[*OrganizationBigQueryExport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts.
@@ -112,12 +111,6 @@ func (i *BillingAccount) ToBillingAccountOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountOutput)
 }
 
-func (i *BillingAccount) ToOutput(ctx context.Context) pulumix.Output[*BillingAccount] {
-	return pulumix.Output[*BillingAccount]{
-		OutputState: i.ToBillingAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BillingAccountOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountOutput) ElementType() reflect.Type {
@@ -130,12 +123,6 @@ func (o BillingAccountOutput) ToBillingAccountOutput() BillingAccountOutput {
 
 func (o BillingAccountOutput) ToBillingAccountOutputWithContext(ctx context.Context) BillingAccountOutput {
 	return o
-}
-
-func (o BillingAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccount] {
-	return pulumix.Output[*BillingAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.

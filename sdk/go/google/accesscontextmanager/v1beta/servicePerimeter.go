@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a Service Perimeter. The longrunning operation from this RPC will have a successful status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing errors will result in an error response for the first error encountered.
@@ -124,12 +123,6 @@ func (i *ServicePerimeter) ToServicePerimeterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterOutput)
 }
 
-func (i *ServicePerimeter) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeter] {
-	return pulumix.Output[*ServicePerimeter]{
-		OutputState: i.ToServicePerimeterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterOutput) ElementType() reflect.Type {
@@ -142,12 +135,6 @@ func (o ServicePerimeterOutput) ToServicePerimeterOutput() ServicePerimeterOutpu
 
 func (o ServicePerimeterOutput) ToServicePerimeterOutputWithContext(ctx context.Context) ServicePerimeterOutput {
 	return o
-}
-
-func (o ServicePerimeterOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeter] {
-	return pulumix.Output[*ServicePerimeter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterOutput) AccessPolicyId() pulumi.StringOutput {

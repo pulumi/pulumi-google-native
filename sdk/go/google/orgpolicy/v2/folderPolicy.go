@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.
@@ -129,12 +128,6 @@ func (i *FolderPolicy) ToFolderPolicyOutputWithContext(ctx context.Context) Fold
 	return pulumi.ToOutputWithContext(ctx, i).(FolderPolicyOutput)
 }
 
-func (i *FolderPolicy) ToOutput(ctx context.Context) pulumix.Output[*FolderPolicy] {
-	return pulumix.Output[*FolderPolicy]{
-		OutputState: i.ToFolderPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderPolicyOutput struct{ *pulumi.OutputState }
 
 func (FolderPolicyOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o FolderPolicyOutput) ToFolderPolicyOutput() FolderPolicyOutput {
 
 func (o FolderPolicyOutput) ToFolderPolicyOutputWithContext(ctx context.Context) FolderPolicyOutput {
 	return o
-}
-
-func (o FolderPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderPolicy] {
-	return pulumix.Output[*FolderPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Deprecated.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
@@ -75,12 +74,6 @@ func (o LookupAttestorResultOutput) ToLookupAttestorResultOutput() LookupAttesto
 
 func (o LookupAttestorResultOutput) ToLookupAttestorResultOutputWithContext(ctx context.Context) LookupAttestorResultOutput {
 	return o
-}
-
-func (o LookupAttestorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttestorResult] {
-	return pulumix.Output[LookupAttestorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.

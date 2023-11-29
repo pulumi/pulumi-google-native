@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AdminSettingsArgs) ToAdminSettingsOutput() AdminSettingsOutput {
 
 func (i AdminSettingsArgs) ToAdminSettingsOutputWithContext(ctx context.Context) AdminSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdminSettingsOutput)
-}
-
-func (i AdminSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AdminSettings] {
-	return pulumix.Output[AdminSettings]{
-		OutputState: i.ToAdminSettingsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AdminSettingsArgs) ToAdminSettingsPtrOutput() AdminSettingsPtrOutput {
@@ -96,12 +89,6 @@ func (i *adminSettingsPtrType) ToAdminSettingsPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AdminSettingsPtrOutput)
 }
 
-func (i *adminSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AdminSettings] {
-	return pulumix.Output[*AdminSettings]{
-		OutputState: i.ToAdminSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Looker instance Admin settings fields.
 type AdminSettingsOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o AdminSettingsOutput) ToAdminSettingsPtrOutputWithContext(ctx context.Con
 	}).(AdminSettingsPtrOutput)
 }
 
-func (o AdminSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AdminSettings] {
-	return pulumix.Output[AdminSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Email domain allowlist for the instance.
 func (o AdminSettingsOutput) AllowedEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AdminSettings) []string { return v.AllowedEmailDomains }).(pulumi.StringArrayOutput)
@@ -150,12 +131,6 @@ func (o AdminSettingsPtrOutput) ToAdminSettingsPtrOutput() AdminSettingsPtrOutpu
 
 func (o AdminSettingsPtrOutput) ToAdminSettingsPtrOutputWithContext(ctx context.Context) AdminSettingsPtrOutput {
 	return o
-}
-
-func (o AdminSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdminSettings] {
-	return pulumix.Output[*AdminSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdminSettingsPtrOutput) Elem() AdminSettingsOutput {
@@ -197,12 +172,6 @@ func (o AdminSettingsResponseOutput) ToAdminSettingsResponseOutput() AdminSettin
 
 func (o AdminSettingsResponseOutput) ToAdminSettingsResponseOutputWithContext(ctx context.Context) AdminSettingsResponseOutput {
 	return o
-}
-
-func (o AdminSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdminSettingsResponse] {
-	return pulumix.Output[AdminSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email domain allowlist for the instance.
@@ -249,12 +218,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -280,12 +243,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -299,12 +256,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -329,12 +280,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -366,12 +311,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -394,12 +333,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -447,12 +380,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -478,12 +405,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -497,12 +418,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -527,12 +442,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -564,12 +473,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -592,12 +495,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -649,12 +546,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -680,12 +571,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -699,12 +584,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -734,12 +613,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -773,12 +646,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -806,12 +673,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -859,12 +720,6 @@ func (i CustomDomainArgs) ToCustomDomainOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainOutput)
 }
 
-func (i CustomDomainArgs) ToOutput(ctx context.Context) pulumix.Output[CustomDomain] {
-	return pulumix.Output[CustomDomain]{
-		OutputState: i.ToCustomDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CustomDomainArgs) ToCustomDomainPtrOutput() CustomDomainPtrOutput {
 	return i.ToCustomDomainPtrOutputWithContext(context.Background())
 }
@@ -906,12 +761,6 @@ func (i *customDomainPtrType) ToCustomDomainPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainPtrOutput)
 }
 
-func (i *customDomainPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomDomain] {
-	return pulumix.Output[*CustomDomain]{
-		OutputState: i.ToCustomDomainPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom domain information.
 type CustomDomainOutput struct{ *pulumi.OutputState }
 
@@ -937,12 +786,6 @@ func (o CustomDomainOutput) ToCustomDomainPtrOutputWithContext(ctx context.Conte
 	}).(CustomDomainPtrOutput)
 }
 
-func (o CustomDomainOutput) ToOutput(ctx context.Context) pulumix.Output[CustomDomain] {
-	return pulumix.Output[CustomDomain]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Domain name.
 func (o CustomDomainOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDomain) *string { return v.Domain }).(pulumi.StringPtrOutput)
@@ -965,12 +808,6 @@ func (o CustomDomainPtrOutput) ToCustomDomainPtrOutput() CustomDomainPtrOutput {
 
 func (o CustomDomainPtrOutput) ToCustomDomainPtrOutputWithContext(ctx context.Context) CustomDomainPtrOutput {
 	return o
-}
-
-func (o CustomDomainPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomDomain] {
-	return pulumix.Output[*CustomDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomDomainPtrOutput) Elem() CustomDomainOutput {
@@ -1026,12 +863,6 @@ func (o CustomDomainResponseOutput) ToCustomDomainResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o CustomDomainResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomDomainResponse] {
-	return pulumix.Output[CustomDomainResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Domain name.
 func (o CustomDomainResponseOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomDomainResponse) string { return v.Domain }).(pulumi.StringOutput)
@@ -1085,12 +916,6 @@ func (i DateArgs) ToDateOutputWithContext(ctx context.Context) DateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DateOutput)
 }
 
-func (i DateArgs) ToOutput(ctx context.Context) pulumix.Output[Date] {
-	return pulumix.Output[Date]{
-		OutputState: i.ToDateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DateArgs) ToDatePtrOutput() DatePtrOutput {
 	return i.ToDatePtrOutputWithContext(context.Background())
 }
@@ -1132,12 +957,6 @@ func (i *datePtrType) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DatePtrOutput)
 }
 
-func (i *datePtrType) ToOutput(ctx context.Context) pulumix.Output[*Date] {
-	return pulumix.Output[*Date]{
-		OutputState: i.ToDatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 type DateOutput struct{ *pulumi.OutputState }
 
@@ -1161,12 +980,6 @@ func (o DateOutput) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Date) *Date {
 		return &v
 	}).(DatePtrOutput)
-}
-
-func (o DateOutput) ToOutput(ctx context.Context) pulumix.Output[Date] {
-	return pulumix.Output[Date]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -1196,12 +1009,6 @@ func (o DatePtrOutput) ToDatePtrOutput() DatePtrOutput {
 
 func (o DatePtrOutput) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOutput {
 	return o
-}
-
-func (o DatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Date] {
-	return pulumix.Output[*Date]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatePtrOutput) Elem() DateOutput {
@@ -1269,12 +1076,6 @@ func (o DateResponseOutput) ToDateResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DateResponse] {
-	return pulumix.Output[DateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
 func (o DateResponseOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v DateResponse) int { return v.Day }).(pulumi.IntOutput)
@@ -1333,12 +1134,6 @@ func (i DenyMaintenancePeriodArgs) ToDenyMaintenancePeriodOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DenyMaintenancePeriodOutput)
 }
 
-func (i DenyMaintenancePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[DenyMaintenancePeriod] {
-	return pulumix.Output[DenyMaintenancePeriod]{
-		OutputState: i.ToDenyMaintenancePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DenyMaintenancePeriodArgs) ToDenyMaintenancePeriodPtrOutput() DenyMaintenancePeriodPtrOutput {
 	return i.ToDenyMaintenancePeriodPtrOutputWithContext(context.Background())
 }
@@ -1380,12 +1175,6 @@ func (i *denyMaintenancePeriodPtrType) ToDenyMaintenancePeriodPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(DenyMaintenancePeriodPtrOutput)
 }
 
-func (i *denyMaintenancePeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*DenyMaintenancePeriod] {
-	return pulumix.Output[*DenyMaintenancePeriod]{
-		OutputState: i.ToDenyMaintenancePeriodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the maintenance denial period.
 type DenyMaintenancePeriodOutput struct{ *pulumi.OutputState }
 
@@ -1409,12 +1198,6 @@ func (o DenyMaintenancePeriodOutput) ToDenyMaintenancePeriodPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DenyMaintenancePeriod) *DenyMaintenancePeriod {
 		return &v
 	}).(DenyMaintenancePeriodPtrOutput)
-}
-
-func (o DenyMaintenancePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[DenyMaintenancePeriod] {
-	return pulumix.Output[DenyMaintenancePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 // End date of the deny maintenance period.
@@ -1444,12 +1227,6 @@ func (o DenyMaintenancePeriodPtrOutput) ToDenyMaintenancePeriodPtrOutput() DenyM
 
 func (o DenyMaintenancePeriodPtrOutput) ToDenyMaintenancePeriodPtrOutputWithContext(ctx context.Context) DenyMaintenancePeriodPtrOutput {
 	return o
-}
-
-func (o DenyMaintenancePeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DenyMaintenancePeriod] {
-	return pulumix.Output[*DenyMaintenancePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DenyMaintenancePeriodPtrOutput) Elem() DenyMaintenancePeriodOutput {
@@ -1517,12 +1294,6 @@ func (o DenyMaintenancePeriodResponseOutput) ToDenyMaintenancePeriodResponseOutp
 	return o
 }
 
-func (o DenyMaintenancePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DenyMaintenancePeriodResponse] {
-	return pulumix.Output[DenyMaintenancePeriodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // End date of the deny maintenance period.
 func (o DenyMaintenancePeriodResponseOutput) EndDate() DateResponseOutput {
 	return o.ApplyT(func(v DenyMaintenancePeriodResponse) DateResponse { return v.EndDate }).(DateResponseOutput)
@@ -1573,12 +1344,6 @@ func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
 }
 
-func (i EncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
-	return pulumix.Output[EncryptionConfig]{
-		OutputState: i.ToEncryptionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
 	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -1620,12 +1385,6 @@ func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
 }
 
-func (i *encryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
-	return pulumix.Output[*EncryptionConfig]{
-		OutputState: i.ToEncryptionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encryption configuration (i.e. CMEK).
 type EncryptionConfigOutput struct{ *pulumi.OutputState }
 
@@ -1651,12 +1410,6 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx conte
 	}).(EncryptionConfigPtrOutput)
 }
 
-func (o EncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
-	return pulumix.Output[EncryptionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the CMEK key in KMS (input parameter).
 func (o EncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -1674,12 +1427,6 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfi
 
 func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
 	return o
-}
-
-func (o EncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
-	return pulumix.Output[*EncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
@@ -1725,12 +1472,6 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutput() Encry
 
 func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
 	return o
-}
-
-func (o EncryptionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfigResponse] {
-	return pulumix.Output[EncryptionConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the CMEK key in KMS (input parameter).
@@ -1795,12 +1536,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1842,12 +1577,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1871,12 +1600,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1911,12 +1634,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1996,12 +1713,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -2061,12 +1772,6 @@ func (i MaintenanceScheduleArgs) ToMaintenanceScheduleOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceScheduleOutput)
 }
 
-func (i MaintenanceScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[MaintenanceSchedule] {
-	return pulumix.Output[MaintenanceSchedule]{
-		OutputState: i.ToMaintenanceScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MaintenanceScheduleArgs) ToMaintenanceSchedulePtrOutput() MaintenanceSchedulePtrOutput {
 	return i.ToMaintenanceSchedulePtrOutputWithContext(context.Background())
 }
@@ -2108,12 +1813,6 @@ func (i *maintenanceSchedulePtrType) ToMaintenanceSchedulePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceSchedulePtrOutput)
 }
 
-func (i *maintenanceSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceSchedule] {
-	return pulumix.Output[*MaintenanceSchedule]{
-		OutputState: i.ToMaintenanceSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Published upcoming future maintenance schedule.
 type MaintenanceScheduleOutput struct{ *pulumi.OutputState }
 
@@ -2139,12 +1838,6 @@ func (o MaintenanceScheduleOutput) ToMaintenanceSchedulePtrOutputWithContext(ctx
 	}).(MaintenanceSchedulePtrOutput)
 }
 
-func (o MaintenanceScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceSchedule] {
-	return pulumix.Output[MaintenanceSchedule]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The scheduled end time for the maintenance.
 func (o MaintenanceScheduleOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaintenanceSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
@@ -2167,12 +1860,6 @@ func (o MaintenanceSchedulePtrOutput) ToMaintenanceSchedulePtrOutput() Maintenan
 
 func (o MaintenanceSchedulePtrOutput) ToMaintenanceSchedulePtrOutputWithContext(ctx context.Context) MaintenanceSchedulePtrOutput {
 	return o
-}
-
-func (o MaintenanceSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceSchedule] {
-	return pulumix.Output[*MaintenanceSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MaintenanceSchedulePtrOutput) Elem() MaintenanceScheduleOutput {
@@ -2228,12 +1915,6 @@ func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutputWi
 	return o
 }
 
-func (o MaintenanceScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceScheduleResponse] {
-	return pulumix.Output[MaintenanceScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The scheduled end time for the maintenance.
 func (o MaintenanceScheduleResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -2283,12 +1964,6 @@ func (i MaintenanceWindowArgs) ToMaintenanceWindowOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput)
 }
 
-func (i MaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
-	return pulumix.Output[MaintenanceWindow]{
-		OutputState: i.ToMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
 	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
 }
@@ -2330,12 +2005,6 @@ func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
 }
 
-func (i *maintenanceWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
-	return pulumix.Output[*MaintenanceWindow]{
-		OutputState: i.ToMaintenanceWindowPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the recurring maintenance window.
 type MaintenanceWindowOutput struct{ *pulumi.OutputState }
 
@@ -2361,12 +2030,6 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx con
 	}).(MaintenanceWindowPtrOutput)
 }
 
-func (o MaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
-	return pulumix.Output[MaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Day of the week for this MaintenanceWindow (in UTC).
 func (o MaintenanceWindowOutput) DayOfWeek() MaintenanceWindowDayOfWeekOutput {
 	return o.ApplyT(func(v MaintenanceWindow) MaintenanceWindowDayOfWeek { return v.DayOfWeek }).(MaintenanceWindowDayOfWeekOutput)
@@ -2389,12 +2052,6 @@ func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutput() MaintenanceWi
 
 func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
 	return o
-}
-
-func (o MaintenanceWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
-	return pulumix.Output[*MaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
@@ -2450,12 +2107,6 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithCo
 	return o
 }
 
-func (o MaintenanceWindowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowResponse] {
-	return pulumix.Output[MaintenanceWindowResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Day of the week for this MaintenanceWindow (in UTC).
 func (o MaintenanceWindowResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
@@ -2505,12 +2156,6 @@ func (i OAuthConfigArgs) ToOAuthConfigOutputWithContext(ctx context.Context) OAu
 	return pulumi.ToOutputWithContext(ctx, i).(OAuthConfigOutput)
 }
 
-func (i OAuthConfigArgs) ToOutput(ctx context.Context) pulumix.Output[OAuthConfig] {
-	return pulumix.Output[OAuthConfig]{
-		OutputState: i.ToOAuthConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OAuthConfigArgs) ToOAuthConfigPtrOutput() OAuthConfigPtrOutput {
 	return i.ToOAuthConfigPtrOutputWithContext(context.Background())
 }
@@ -2552,12 +2197,6 @@ func (i *oauthConfigPtrType) ToOAuthConfigPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OAuthConfigPtrOutput)
 }
 
-func (i *oauthConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*OAuthConfig] {
-	return pulumix.Output[*OAuthConfig]{
-		OutputState: i.ToOAuthConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Looker instance OAuth login settings.
 type OAuthConfigOutput struct{ *pulumi.OutputState }
 
@@ -2583,12 +2222,6 @@ func (o OAuthConfigOutput) ToOAuthConfigPtrOutputWithContext(ctx context.Context
 	}).(OAuthConfigPtrOutput)
 }
 
-func (o OAuthConfigOutput) ToOutput(ctx context.Context) pulumix.Output[OAuthConfig] {
-	return pulumix.Output[OAuthConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
 func (o OAuthConfigOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuthConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -2611,12 +2244,6 @@ func (o OAuthConfigPtrOutput) ToOAuthConfigPtrOutput() OAuthConfigPtrOutput {
 
 func (o OAuthConfigPtrOutput) ToOAuthConfigPtrOutputWithContext(ctx context.Context) OAuthConfigPtrOutput {
 	return o
-}
-
-func (o OAuthConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OAuthConfig] {
-	return pulumix.Output[*OAuthConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OAuthConfigPtrOutput) Elem() OAuthConfigOutput {
@@ -2670,12 +2297,6 @@ func (o OAuthConfigResponseOutput) ToOAuthConfigResponseOutput() OAuthConfigResp
 
 func (o OAuthConfigResponseOutput) ToOAuthConfigResponseOutputWithContext(ctx context.Context) OAuthConfigResponseOutput {
 	return o
-}
-
-func (o OAuthConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OAuthConfigResponse] {
-	return pulumix.Output[OAuthConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
@@ -2735,12 +2356,6 @@ func (i TimeOfDayArgs) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfD
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayOutput)
 }
 
-func (i TimeOfDayArgs) ToOutput(ctx context.Context) pulumix.Output[TimeOfDay] {
-	return pulumix.Output[TimeOfDay]{
-		OutputState: i.ToTimeOfDayOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TimeOfDayArgs) ToTimeOfDayPtrOutput() TimeOfDayPtrOutput {
 	return i.ToTimeOfDayPtrOutputWithContext(context.Background())
 }
@@ -2782,12 +2397,6 @@ func (i *timeOfDayPtrType) ToTimeOfDayPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayPtrOutput)
 }
 
-func (i *timeOfDayPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeOfDay] {
-	return pulumix.Output[*TimeOfDay]{
-		OutputState: i.ToTimeOfDayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type TimeOfDayOutput struct{ *pulumi.OutputState }
 
@@ -2811,12 +2420,6 @@ func (o TimeOfDayOutput) ToTimeOfDayPtrOutputWithContext(ctx context.Context) Ti
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeOfDay) *TimeOfDay {
 		return &v
 	}).(TimeOfDayPtrOutput)
-}
-
-func (o TimeOfDayOutput) ToOutput(ctx context.Context) pulumix.Output[TimeOfDay] {
-	return pulumix.Output[TimeOfDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -2851,12 +2454,6 @@ func (o TimeOfDayPtrOutput) ToTimeOfDayPtrOutput() TimeOfDayPtrOutput {
 
 func (o TimeOfDayPtrOutput) ToTimeOfDayPtrOutputWithContext(ctx context.Context) TimeOfDayPtrOutput {
 	return o
-}
-
-func (o TimeOfDayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeOfDay] {
-	return pulumix.Output[*TimeOfDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeOfDayPtrOutput) Elem() TimeOfDayOutput {
@@ -2936,12 +2533,6 @@ func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o TimeOfDayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeOfDayResponse] {
-	return pulumix.Output[TimeOfDayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 func (o TimeOfDayResponseOutput) Hours() pulumi.IntOutput {
 	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Hours }).(pulumi.IntOutput)
@@ -3005,12 +2596,6 @@ func (i UserMetadataArgs) ToUserMetadataOutputWithContext(ctx context.Context) U
 	return pulumi.ToOutputWithContext(ctx, i).(UserMetadataOutput)
 }
 
-func (i UserMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[UserMetadata] {
-	return pulumix.Output[UserMetadata]{
-		OutputState: i.ToUserMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserMetadataArgs) ToUserMetadataPtrOutput() UserMetadataPtrOutput {
 	return i.ToUserMetadataPtrOutputWithContext(context.Background())
 }
@@ -3052,12 +2637,6 @@ func (i *userMetadataPtrType) ToUserMetadataPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UserMetadataPtrOutput)
 }
 
-func (i *userMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserMetadata] {
-	return pulumix.Output[*UserMetadata]{
-		OutputState: i.ToUserMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata about users for a Looker instance.
 type UserMetadataOutput struct{ *pulumi.OutputState }
 
@@ -3081,12 +2660,6 @@ func (o UserMetadataOutput) ToUserMetadataPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserMetadata) *UserMetadata {
 		return &v
 	}).(UserMetadataPtrOutput)
-}
-
-func (o UserMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[UserMetadata] {
-	return pulumix.Output[UserMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The number of additional developer users the instance owner has purchased.
@@ -3116,12 +2689,6 @@ func (o UserMetadataPtrOutput) ToUserMetadataPtrOutput() UserMetadataPtrOutput {
 
 func (o UserMetadataPtrOutput) ToUserMetadataPtrOutputWithContext(ctx context.Context) UserMetadataPtrOutput {
 	return o
-}
-
-func (o UserMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserMetadata] {
-	return pulumix.Output[*UserMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserMetadataPtrOutput) Elem() UserMetadataOutput {
@@ -3187,12 +2754,6 @@ func (o UserMetadataResponseOutput) ToUserMetadataResponseOutput() UserMetadataR
 
 func (o UserMetadataResponseOutput) ToUserMetadataResponseOutputWithContext(ctx context.Context) UserMetadataResponseOutput {
 	return o
-}
-
-func (o UserMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserMetadataResponse] {
-	return pulumix.Output[UserMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The number of additional developer users the instance owner has purchased.

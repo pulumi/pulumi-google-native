@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a device registry that contains devices.
@@ -144,12 +143,6 @@ func (i *Registry) ToRegistryOutputWithContext(ctx context.Context) RegistryOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryOutput)
 }
 
-func (i *Registry) ToOutput(ctx context.Context) pulumix.Output[*Registry] {
-	return pulumix.Output[*Registry]{
-		OutputState: i.ToRegistryOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistryOutput struct{ *pulumi.OutputState }
 
 func (RegistryOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o RegistryOutput) ToRegistryOutput() RegistryOutput {
 
 func (o RegistryOutput) ToRegistryOutputWithContext(ctx context.Context) RegistryOutput {
 	return o
-}
-
-func (o RegistryOutput) ToOutput(ctx context.Context) pulumix.Output[*Registry] {
-	return pulumix.Output[*Registry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The credentials used to verify the device credentials. No more than 10 credentials can be bound to a single registry at a time. The verification process occurs at the time of device creation or update. If this field is empty, no verification is performed. Otherwise, the credentials of a newly created device or added credentials of an updated device should be signed with one of these registry credentials. Note, however, that existing devices will never be affected by modifications to this list of credentials: after a device has been successfully created in a registry, it should be able to connect even if its registry credentials are revoked, deleted, or modified.

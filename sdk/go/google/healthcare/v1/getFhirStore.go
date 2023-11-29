@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the configuration of the specified FHIR store.
@@ -95,12 +94,6 @@ func (o LookupFhirStoreResultOutput) ToLookupFhirStoreResultOutput() LookupFhirS
 
 func (o LookupFhirStoreResultOutput) ToLookupFhirStoreResultOutputWithContext(ctx context.Context) LookupFhirStoreResultOutput {
 	return o
-}
-
-func (o LookupFhirStoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFhirStoreResult] {
-	return pulumix.Output[LookupFhirStoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.

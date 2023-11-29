@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i ApplianceClusterArgs) ToApplianceClusterOutput() ApplianceClusterOutput 
 
 func (i ApplianceClusterArgs) ToApplianceClusterOutputWithContext(ctx context.Context) ApplianceClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplianceClusterOutput)
-}
-
-func (i ApplianceClusterArgs) ToOutput(ctx context.Context) pulumix.Output[ApplianceCluster] {
-	return pulumix.Output[ApplianceCluster]{
-		OutputState: i.ToApplianceClusterOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ApplianceClusterArgs) ToApplianceClusterPtrOutput() ApplianceClusterPtrOutput {
@@ -96,12 +89,6 @@ func (i *applianceClusterPtrType) ToApplianceClusterPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ApplianceClusterPtrOutput)
 }
 
-func (i *applianceClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplianceCluster] {
-	return pulumix.Output[*ApplianceCluster]{
-		OutputState: i.ToApplianceClusterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
 type ApplianceClusterOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o ApplianceClusterOutput) ToApplianceClusterPtrOutputWithContext(ctx conte
 	}).(ApplianceClusterPtrOutput)
 }
 
-func (o ApplianceClusterOutput) ToOutput(ctx context.Context) pulumix.Output[ApplianceCluster] {
-	return pulumix.Output[ApplianceCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
 func (o ApplianceClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplianceCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
@@ -150,12 +131,6 @@ func (o ApplianceClusterPtrOutput) ToApplianceClusterPtrOutput() ApplianceCluste
 
 func (o ApplianceClusterPtrOutput) ToApplianceClusterPtrOutputWithContext(ctx context.Context) ApplianceClusterPtrOutput {
 	return o
-}
-
-func (o ApplianceClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplianceCluster] {
-	return pulumix.Output[*ApplianceCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplianceClusterPtrOutput) Elem() ApplianceClusterOutput {
@@ -197,12 +172,6 @@ func (o ApplianceClusterResponseOutput) ToApplianceClusterResponseOutput() Appli
 
 func (o ApplianceClusterResponseOutput) ToApplianceClusterResponseOutputWithContext(ctx context.Context) ApplianceClusterResponseOutput {
 	return o
-}
-
-func (o ApplianceClusterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplianceClusterResponse] {
-	return pulumix.Output[ApplianceClusterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
@@ -249,12 +218,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -280,12 +243,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -299,12 +256,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -329,12 +280,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -366,12 +311,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -394,12 +333,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -447,12 +380,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -478,12 +405,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -497,12 +418,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -527,12 +442,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -564,12 +473,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -592,12 +495,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -645,12 +542,6 @@ func (i AuthorityArgs) ToAuthorityOutputWithContext(ctx context.Context) Authori
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityOutput)
 }
 
-func (i AuthorityArgs) ToOutput(ctx context.Context) pulumix.Output[Authority] {
-	return pulumix.Output[Authority]{
-		OutputState: i.ToAuthorityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AuthorityArgs) ToAuthorityPtrOutput() AuthorityPtrOutput {
 	return i.ToAuthorityPtrOutputWithContext(context.Background())
 }
@@ -692,12 +583,6 @@ func (i *authorityPtrType) ToAuthorityPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityPtrOutput)
 }
 
-func (i *authorityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Authority] {
-	return pulumix.Output[*Authority]{
-		OutputState: i.ToAuthorityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 type AuthorityOutput struct{ *pulumi.OutputState }
 
@@ -723,12 +608,6 @@ func (o AuthorityOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) Au
 	}).(AuthorityPtrOutput)
 }
 
-func (o AuthorityOutput) ToOutput(ctx context.Context) pulumix.Output[Authority] {
-	return pulumix.Output[Authority]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer, unless `oidc_jwks` is set. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
 func (o AuthorityOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Authority) *string { return v.Issuer }).(pulumi.StringPtrOutput)
@@ -751,12 +630,6 @@ func (o AuthorityPtrOutput) ToAuthorityPtrOutput() AuthorityPtrOutput {
 
 func (o AuthorityPtrOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
 	return o
-}
-
-func (o AuthorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Authority] {
-	return pulumix.Output[*Authority]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorityPtrOutput) Elem() AuthorityOutput {
@@ -814,12 +687,6 @@ func (o AuthorityResponseOutput) ToAuthorityResponseOutput() AuthorityResponseOu
 
 func (o AuthorityResponseOutput) ToAuthorityResponseOutputWithContext(ctx context.Context) AuthorityResponseOutput {
 	return o
-}
-
-func (o AuthorityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorityResponse] {
-	return pulumix.Output[AuthorityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An identity provider that reflects the `issuer` in the workload identity pool.
@@ -885,12 +752,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -916,12 +777,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -935,12 +790,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -970,12 +819,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -1009,12 +852,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -1042,12 +879,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -1091,12 +922,6 @@ func (i EdgeClusterArgs) ToEdgeClusterOutputWithContext(ctx context.Context) Edg
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeClusterOutput)
 }
 
-func (i EdgeClusterArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCluster] {
-	return pulumix.Output[EdgeCluster]{
-		OutputState: i.ToEdgeClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EdgeClusterArgs) ToEdgeClusterPtrOutput() EdgeClusterPtrOutput {
 	return i.ToEdgeClusterPtrOutputWithContext(context.Background())
 }
@@ -1138,12 +963,6 @@ func (i *edgeClusterPtrType) ToEdgeClusterPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeClusterPtrOutput)
 }
 
-func (i *edgeClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCluster] {
-	return pulumix.Output[*EdgeCluster]{
-		OutputState: i.ToEdgeClusterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EdgeCluster contains information specific to Google Edge Clusters.
 type EdgeClusterOutput struct{ *pulumi.OutputState }
 
@@ -1169,12 +988,6 @@ func (o EdgeClusterOutput) ToEdgeClusterPtrOutputWithContext(ctx context.Context
 	}).(EdgeClusterPtrOutput)
 }
 
-func (o EdgeClusterOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCluster] {
-	return pulumix.Output[EdgeCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
 func (o EdgeClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
@@ -1192,12 +1005,6 @@ func (o EdgeClusterPtrOutput) ToEdgeClusterPtrOutput() EdgeClusterPtrOutput {
 
 func (o EdgeClusterPtrOutput) ToEdgeClusterPtrOutputWithContext(ctx context.Context) EdgeClusterPtrOutput {
 	return o
-}
-
-func (o EdgeClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCluster] {
-	return pulumix.Output[*EdgeCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdgeClusterPtrOutput) Elem() EdgeClusterOutput {
@@ -1239,12 +1046,6 @@ func (o EdgeClusterResponseOutput) ToEdgeClusterResponseOutput() EdgeClusterResp
 
 func (o EdgeClusterResponseOutput) ToEdgeClusterResponseOutputWithContext(ctx context.Context) EdgeClusterResponseOutput {
 	return o
-}
-
-func (o EdgeClusterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeClusterResponse] {
-	return pulumix.Output[EdgeClusterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
@@ -1299,12 +1100,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1346,12 +1141,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1375,12 +1164,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1415,12 +1198,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1500,12 +1277,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1561,12 +1332,6 @@ func (i GkeClusterArgs) ToGkeClusterOutputWithContext(ctx context.Context) GkeCl
 	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterOutput)
 }
 
-func (i GkeClusterArgs) ToOutput(ctx context.Context) pulumix.Output[GkeCluster] {
-	return pulumix.Output[GkeCluster]{
-		OutputState: i.ToGkeClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GkeClusterArgs) ToGkeClusterPtrOutput() GkeClusterPtrOutput {
 	return i.ToGkeClusterPtrOutputWithContext(context.Background())
 }
@@ -1608,12 +1373,6 @@ func (i *gkeClusterPtrType) ToGkeClusterPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterPtrOutput)
 }
 
-func (i *gkeClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*GkeCluster] {
-	return pulumix.Output[*GkeCluster]{
-		OutputState: i.ToGkeClusterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GkeCluster contains information specific to GKE clusters.
 type GkeClusterOutput struct{ *pulumi.OutputState }
 
@@ -1639,12 +1398,6 @@ func (o GkeClusterOutput) ToGkeClusterPtrOutputWithContext(ctx context.Context) 
 	}).(GkeClusterPtrOutput)
 }
 
-func (o GkeClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GkeCluster] {
-	return pulumix.Output[GkeCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 func (o GkeClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GkeCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
@@ -1662,12 +1415,6 @@ func (o GkeClusterPtrOutput) ToGkeClusterPtrOutput() GkeClusterPtrOutput {
 
 func (o GkeClusterPtrOutput) ToGkeClusterPtrOutputWithContext(ctx context.Context) GkeClusterPtrOutput {
 	return o
-}
-
-func (o GkeClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GkeCluster] {
-	return pulumix.Output[*GkeCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GkeClusterPtrOutput) Elem() GkeClusterOutput {
@@ -1713,12 +1460,6 @@ func (o GkeClusterResponseOutput) ToGkeClusterResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o GkeClusterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GkeClusterResponse] {
-	return pulumix.Output[GkeClusterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
 func (o GkeClusterResponseOutput) ClusterMissing() pulumi.BoolOutput {
 	return o.ApplyT(func(v GkeClusterResponse) bool { return v.ClusterMissing }).(pulumi.BoolOutput)
@@ -1758,12 +1499,6 @@ func (o KubernetesMetadataResponseOutput) ToKubernetesMetadataResponseOutput() K
 
 func (o KubernetesMetadataResponseOutput) ToKubernetesMetadataResponseOutputWithContext(ctx context.Context) KubernetesMetadataResponseOutput {
 	return o
-}
-
-func (o KubernetesMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KubernetesMetadataResponse] {
-	return pulumix.Output[KubernetesMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kubernetes API server version string as reported by '/version'.
@@ -1835,12 +1570,6 @@ func (i KubernetesResourceArgs) ToKubernetesResourceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesResourceOutput)
 }
 
-func (i KubernetesResourceArgs) ToOutput(ctx context.Context) pulumix.Output[KubernetesResource] {
-	return pulumix.Output[KubernetesResource]{
-		OutputState: i.ToKubernetesResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KubernetesResourceArgs) ToKubernetesResourcePtrOutput() KubernetesResourcePtrOutput {
 	return i.ToKubernetesResourcePtrOutputWithContext(context.Background())
 }
@@ -1882,12 +1611,6 @@ func (i *kubernetesResourcePtrType) ToKubernetesResourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesResourcePtrOutput)
 }
 
-func (i *kubernetesResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*KubernetesResource] {
-	return pulumix.Output[*KubernetesResource]{
-		OutputState: i.ToKubernetesResourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
 type KubernetesResourceOutput struct{ *pulumi.OutputState }
 
@@ -1913,12 +1636,6 @@ func (o KubernetesResourceOutput) ToKubernetesResourcePtrOutputWithContext(ctx c
 	}).(KubernetesResourcePtrOutput)
 }
 
-func (o KubernetesResourceOutput) ToOutput(ctx context.Context) pulumix.Output[KubernetesResource] {
-	return pulumix.Output[KubernetesResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during Create or Update, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
 func (o KubernetesResourceOutput) MembershipCrManifest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesResource) *string { return v.MembershipCrManifest }).(pulumi.StringPtrOutput)
@@ -1941,12 +1658,6 @@ func (o KubernetesResourcePtrOutput) ToKubernetesResourcePtrOutput() KubernetesR
 
 func (o KubernetesResourcePtrOutput) ToKubernetesResourcePtrOutputWithContext(ctx context.Context) KubernetesResourcePtrOutput {
 	return o
-}
-
-func (o KubernetesResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesResource] {
-	return pulumix.Output[*KubernetesResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubernetesResourcePtrOutput) Elem() KubernetesResourceOutput {
@@ -2004,12 +1715,6 @@ func (o KubernetesResourceResponseOutput) ToKubernetesResourceResponseOutput() K
 
 func (o KubernetesResourceResponseOutput) ToKubernetesResourceResponseOutputWithContext(ctx context.Context) KubernetesResourceResponseOutput {
 	return o
-}
-
-func (o KubernetesResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KubernetesResourceResponse] {
-	return pulumix.Output[KubernetesResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Kubernetes resources for installing the GKE Connect agent. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
@@ -2087,12 +1792,6 @@ func (i MembershipEndpointArgs) ToMembershipEndpointOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipEndpointOutput)
 }
 
-func (i MembershipEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpoint] {
-	return pulumix.Output[MembershipEndpoint]{
-		OutputState: i.ToMembershipEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MembershipEndpointArgs) ToMembershipEndpointPtrOutput() MembershipEndpointPtrOutput {
 	return i.ToMembershipEndpointPtrOutputWithContext(context.Background())
 }
@@ -2134,12 +1833,6 @@ func (i *membershipEndpointPtrType) ToMembershipEndpointPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipEndpointPtrOutput)
 }
 
-func (i *membershipEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipEndpoint] {
-	return pulumix.Output[*MembershipEndpoint]{
-		OutputState: i.ToMembershipEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpointOutput struct{ *pulumi.OutputState }
 
@@ -2163,12 +1856,6 @@ func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipEndpoint) *MembershipEndpoint {
 		return &v
 	}).(MembershipEndpointPtrOutput)
-}
-
-func (o MembershipEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpoint] {
-	return pulumix.Output[MembershipEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Specific information for a GDC Edge Appliance cluster.
@@ -2213,12 +1900,6 @@ func (o MembershipEndpointPtrOutput) ToMembershipEndpointPtrOutput() MembershipE
 
 func (o MembershipEndpointPtrOutput) ToMembershipEndpointPtrOutputWithContext(ctx context.Context) MembershipEndpointPtrOutput {
 	return o
-}
-
-func (o MembershipEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipEndpoint] {
-	return pulumix.Output[*MembershipEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipEndpointPtrOutput) Elem() MembershipEndpointOutput {
@@ -2324,12 +2005,6 @@ func (o MembershipEndpointResponseOutput) ToMembershipEndpointResponseOutputWith
 	return o
 }
 
-func (o MembershipEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpointResponse] {
-	return pulumix.Output[MembershipEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Specific information for a GDC Edge Appliance cluster.
 func (o MembershipEndpointResponseOutput) ApplianceCluster() ApplianceClusterResponseOutput {
 	return o.ApplyT(func(v MembershipEndpointResponse) ApplianceClusterResponse { return v.ApplianceCluster }).(ApplianceClusterResponseOutput)
@@ -2384,12 +2059,6 @@ func (o MembershipStateResponseOutput) ToMembershipStateResponseOutput() Members
 
 func (o MembershipStateResponseOutput) ToMembershipStateResponseOutputWithContext(ctx context.Context) MembershipStateResponseOutput {
 	return o
-}
-
-func (o MembershipStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipStateResponse] {
-	return pulumix.Output[MembershipStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The current state of the Membership resource.
@@ -2448,12 +2117,6 @@ func (i MonitoringConfigArgs) ToMonitoringConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigOutput)
 }
 
-func (i MonitoringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoringConfig] {
-	return pulumix.Output[MonitoringConfig]{
-		OutputState: i.ToMonitoringConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MonitoringConfigArgs) ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput {
 	return i.ToMonitoringConfigPtrOutputWithContext(context.Background())
 }
@@ -2495,12 +2158,6 @@ func (i *monitoringConfigPtrType) ToMonitoringConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigPtrOutput)
 }
 
-func (i *monitoringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitoringConfig] {
-	return pulumix.Output[*MonitoringConfig]{
-		OutputState: i.ToMonitoringConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MonitoringConfig informs Fleet-based applications/services/UIs how the metrics for the underlying cluster is reported to cloud monitoring services. It can be set from empty to non-empty, but can't be mutated directly to prevent accidentally breaking the constinousty of metrics.
 type MonitoringConfigOutput struct{ *pulumi.OutputState }
 
@@ -2524,12 +2181,6 @@ func (o MonitoringConfigOutput) ToMonitoringConfigPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringConfig) *MonitoringConfig {
 		return &v
 	}).(MonitoringConfigPtrOutput)
-}
-
-func (o MonitoringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringConfig] {
-	return pulumix.Output[MonitoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Cluster name used to report metrics. For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1".
@@ -2569,12 +2220,6 @@ func (o MonitoringConfigPtrOutput) ToMonitoringConfigPtrOutput() MonitoringConfi
 
 func (o MonitoringConfigPtrOutput) ToMonitoringConfigPtrOutputWithContext(ctx context.Context) MonitoringConfigPtrOutput {
 	return o
-}
-
-func (o MonitoringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringConfig] {
-	return pulumix.Output[*MonitoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoringConfigPtrOutput) Elem() MonitoringConfigOutput {
@@ -2666,12 +2311,6 @@ func (o MonitoringConfigResponseOutput) ToMonitoringConfigResponseOutputWithCont
 	return o
 }
 
-func (o MonitoringConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringConfigResponse] {
-	return pulumix.Output[MonitoringConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Cluster name used to report metrics. For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1".
 func (o MonitoringConfigResponseOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoringConfigResponse) string { return v.Cluster }).(pulumi.StringOutput)
@@ -2732,12 +2371,6 @@ func (i MultiCloudClusterArgs) ToMultiCloudClusterOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MultiCloudClusterOutput)
 }
 
-func (i MultiCloudClusterArgs) ToOutput(ctx context.Context) pulumix.Output[MultiCloudCluster] {
-	return pulumix.Output[MultiCloudCluster]{
-		OutputState: i.ToMultiCloudClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MultiCloudClusterArgs) ToMultiCloudClusterPtrOutput() MultiCloudClusterPtrOutput {
 	return i.ToMultiCloudClusterPtrOutputWithContext(context.Background())
 }
@@ -2779,12 +2412,6 @@ func (i *multiCloudClusterPtrType) ToMultiCloudClusterPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MultiCloudClusterPtrOutput)
 }
 
-func (i *multiCloudClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*MultiCloudCluster] {
-	return pulumix.Output[*MultiCloudCluster]{
-		OutputState: i.ToMultiCloudClusterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
 type MultiCloudClusterOutput struct{ *pulumi.OutputState }
 
@@ -2810,12 +2437,6 @@ func (o MultiCloudClusterOutput) ToMultiCloudClusterPtrOutputWithContext(ctx con
 	}).(MultiCloudClusterPtrOutput)
 }
 
-func (o MultiCloudClusterOutput) ToOutput(ctx context.Context) pulumix.Output[MultiCloudCluster] {
-	return pulumix.Output[MultiCloudCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 func (o MultiCloudClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MultiCloudCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
@@ -2833,12 +2454,6 @@ func (o MultiCloudClusterPtrOutput) ToMultiCloudClusterPtrOutput() MultiCloudClu
 
 func (o MultiCloudClusterPtrOutput) ToMultiCloudClusterPtrOutputWithContext(ctx context.Context) MultiCloudClusterPtrOutput {
 	return o
-}
-
-func (o MultiCloudClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiCloudCluster] {
-	return pulumix.Output[*MultiCloudCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MultiCloudClusterPtrOutput) Elem() MultiCloudClusterOutput {
@@ -2882,12 +2497,6 @@ func (o MultiCloudClusterResponseOutput) ToMultiCloudClusterResponseOutput() Mul
 
 func (o MultiCloudClusterResponseOutput) ToMultiCloudClusterResponseOutputWithContext(ctx context.Context) MultiCloudClusterResponseOutput {
 	return o
-}
-
-func (o MultiCloudClusterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MultiCloudClusterResponse] {
-	return pulumix.Output[MultiCloudClusterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
@@ -2943,12 +2552,6 @@ func (i OnPremClusterArgs) ToOnPremClusterOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(OnPremClusterOutput)
 }
 
-func (i OnPremClusterArgs) ToOutput(ctx context.Context) pulumix.Output[OnPremCluster] {
-	return pulumix.Output[OnPremCluster]{
-		OutputState: i.ToOnPremClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OnPremClusterArgs) ToOnPremClusterPtrOutput() OnPremClusterPtrOutput {
 	return i.ToOnPremClusterPtrOutputWithContext(context.Background())
 }
@@ -2990,12 +2593,6 @@ func (i *onPremClusterPtrType) ToOnPremClusterPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OnPremClusterPtrOutput)
 }
 
-func (i *onPremClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*OnPremCluster] {
-	return pulumix.Output[*OnPremCluster]{
-		OutputState: i.ToOnPremClusterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OnPremCluster contains information specific to GKE On-Prem clusters.
 type OnPremClusterOutput struct{ *pulumi.OutputState }
 
@@ -3019,12 +2616,6 @@ func (o OnPremClusterOutput) ToOnPremClusterPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnPremCluster) *OnPremCluster {
 		return &v
 	}).(OnPremClusterPtrOutput)
-}
-
-func (o OnPremClusterOutput) ToOutput(ctx context.Context) pulumix.Output[OnPremCluster] {
-	return pulumix.Output[OnPremCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Whether the cluster is an admin cluster.
@@ -3054,12 +2645,6 @@ func (o OnPremClusterPtrOutput) ToOnPremClusterPtrOutput() OnPremClusterPtrOutpu
 
 func (o OnPremClusterPtrOutput) ToOnPremClusterPtrOutputWithContext(ctx context.Context) OnPremClusterPtrOutput {
 	return o
-}
-
-func (o OnPremClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OnPremCluster] {
-	return pulumix.Output[*OnPremCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OnPremClusterPtrOutput) Elem() OnPremClusterOutput {
@@ -3129,12 +2714,6 @@ func (o OnPremClusterResponseOutput) ToOnPremClusterResponseOutputWithContext(ct
 	return o
 }
 
-func (o OnPremClusterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OnPremClusterResponse] {
-	return pulumix.Output[OnPremClusterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. Whether the cluster is an admin cluster.
 func (o OnPremClusterResponseOutput) AdminCluster() pulumi.BoolOutput {
 	return o.ApplyT(func(v OnPremClusterResponse) bool { return v.AdminCluster }).(pulumi.BoolOutput)
@@ -3178,12 +2757,6 @@ func (o ResourceManifestResponseOutput) ToResourceManifestResponseOutputWithCont
 	return o
 }
 
-func (o ResourceManifestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceManifestResponse] {
-	return pulumix.Output[ResourceManifestResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
 func (o ResourceManifestResponseOutput) ClusterScoped() pulumi.BoolOutput {
 	return o.ApplyT(func(v ResourceManifestResponse) bool { return v.ClusterScoped }).(pulumi.BoolOutput)
@@ -3206,12 +2779,6 @@ func (o ResourceManifestResponseArrayOutput) ToResourceManifestResponseArrayOutp
 
 func (o ResourceManifestResponseArrayOutput) ToResourceManifestResponseArrayOutputWithContext(ctx context.Context) ResourceManifestResponseArrayOutput {
 	return o
-}
-
-func (o ResourceManifestResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceManifestResponse] {
-	return pulumix.Output[[]ResourceManifestResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceManifestResponseArrayOutput) Index(i pulumi.IntInput) ResourceManifestResponseOutput {
@@ -3263,12 +2830,6 @@ func (i ResourceOptionsArgs) ToResourceOptionsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceOptionsOutput)
 }
 
-func (i ResourceOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceOptions] {
-	return pulumix.Output[ResourceOptions]{
-		OutputState: i.ToResourceOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceOptionsArgs) ToResourceOptionsPtrOutput() ResourceOptionsPtrOutput {
 	return i.ToResourceOptionsPtrOutputWithContext(context.Background())
 }
@@ -3310,12 +2871,6 @@ func (i *resourceOptionsPtrType) ToResourceOptionsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceOptionsPtrOutput)
 }
 
-func (i *resourceOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceOptions] {
-	return pulumix.Output[*ResourceOptions]{
-		OutputState: i.ToResourceOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceOptions represent options for Kubernetes resource generation.
 type ResourceOptionsOutput struct{ *pulumi.OutputState }
 
@@ -3339,12 +2894,6 @@ func (o ResourceOptionsOutput) ToResourceOptionsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceOptions) *ResourceOptions {
 		return &v
 	}).(ResourceOptionsPtrOutput)
-}
-
-func (o ResourceOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceOptions] {
-	return pulumix.Output[ResourceOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
@@ -3374,12 +2923,6 @@ func (o ResourceOptionsPtrOutput) ToResourceOptionsPtrOutput() ResourceOptionsPt
 
 func (o ResourceOptionsPtrOutput) ToResourceOptionsPtrOutputWithContext(ctx context.Context) ResourceOptionsPtrOutput {
 	return o
-}
-
-func (o ResourceOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceOptions] {
-	return pulumix.Output[*ResourceOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceOptionsPtrOutput) Elem() ResourceOptionsOutput {
@@ -3445,12 +2988,6 @@ func (o ResourceOptionsResponseOutput) ToResourceOptionsResponseOutput() Resourc
 
 func (o ResourceOptionsResponseOutput) ToResourceOptionsResponseOutputWithContext(ctx context.Context) ResourceOptionsResponseOutput {
 	return o
-}
-
-func (o ResourceOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceOptionsResponse] {
-	return pulumix.Output[ResourceOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.

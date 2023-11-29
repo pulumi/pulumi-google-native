@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified context.
@@ -79,12 +78,6 @@ func (o LookupContextResultOutput) ToLookupContextResultOutput() LookupContextRe
 
 func (o LookupContextResultOutput) ToLookupContextResultOutputWithContext(ctx context.Context) LookupContextResultOutput {
 	return o
-}
-
-func (o LookupContextResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContextResult] {
-	return pulumix.Output[LookupContextResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.

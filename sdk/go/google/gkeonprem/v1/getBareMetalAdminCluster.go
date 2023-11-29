@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single bare metal admin cluster.
@@ -127,12 +126,6 @@ func (o LookupBareMetalAdminClusterResultOutput) ToLookupBareMetalAdminClusterRe
 
 func (o LookupBareMetalAdminClusterResultOutput) ToLookupBareMetalAdminClusterResultOutputWithContext(ctx context.Context) LookupBareMetalAdminClusterResultOutput {
 	return o
-}
-
-func (o LookupBareMetalAdminClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBareMetalAdminClusterResult] {
-	return pulumix.Output[LookupBareMetalAdminClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.

@@ -85,12 +85,6 @@ func (o DocumentContentCategoryOutput) ToDocumentContentCategoryPtrOutputWithCon
 	}).(DocumentContentCategoryPtrOutput)
 }
 
-func (o DocumentContentCategoryOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentContentCategory] {
-	return pulumix.Output[DocumentContentCategory]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DocumentContentCategoryOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o DocumentContentCategoryPtrOutput) ToDocumentContentCategoryPtrOutput() D
 
 func (o DocumentContentCategoryPtrOutput) ToDocumentContentCategoryPtrOutputWithContext(ctx context.Context) DocumentContentCategoryPtrOutput {
 	return o
-}
-
-func (o DocumentContentCategoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentContentCategory] {
-	return pulumix.Output[*DocumentContentCategory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentContentCategoryPtrOutput) Elem() DocumentContentCategoryOutput {
@@ -280,12 +268,6 @@ func (o DocumentRawDocumentFileTypeOutput) ToDocumentRawDocumentFileTypePtrOutpu
 	}).(DocumentRawDocumentFileTypePtrOutput)
 }
 
-func (o DocumentRawDocumentFileTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentRawDocumentFileType] {
-	return pulumix.Output[DocumentRawDocumentFileType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DocumentRawDocumentFileTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -319,12 +301,6 @@ func (o DocumentRawDocumentFileTypePtrOutput) ToDocumentRawDocumentFileTypePtrOu
 
 func (o DocumentRawDocumentFileTypePtrOutput) ToDocumentRawDocumentFileTypePtrOutputWithContext(ctx context.Context) DocumentRawDocumentFileTypePtrOutput {
 	return o
-}
-
-func (o DocumentRawDocumentFileTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentRawDocumentFileType] {
-	return pulumix.Output[*DocumentRawDocumentFileType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentRawDocumentFileTypePtrOutput) Elem() DocumentRawDocumentFileTypeOutput {
@@ -469,12 +445,6 @@ func (o GoogleCloudContentwarehouseV1AccessControlActionOperationTypeOutput) ToG
 	}).(GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1AccessControlActionOperationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1AccessControlActionOperationType] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1AccessControlActionOperationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContentwarehouseV1AccessControlActionOperationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -508,12 +478,6 @@ func (o GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutput) 
 
 func (o GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutput) ToGoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1AccessControlActionOperationType] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1AccessControlActionOperationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutput) Elem() GoogleCloudContentwarehouseV1AccessControlActionOperationTypeOutput {
@@ -664,12 +628,6 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput
 	}).(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -703,12 +661,6 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOut
 
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput) Elem() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput {
@@ -855,12 +807,6 @@ func (o GoogleCloudContentwarehouseV1RuleTriggerTypeOutput) ToGoogleCloudContent
 	}).(GoogleCloudContentwarehouseV1RuleTriggerTypePtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1RuleTriggerTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1RuleTriggerType] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1RuleTriggerType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContentwarehouseV1RuleTriggerTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -894,12 +840,6 @@ func (o GoogleCloudContentwarehouseV1RuleTriggerTypePtrOutput) ToGoogleCloudCont
 
 func (o GoogleCloudContentwarehouseV1RuleTriggerTypePtrOutput) ToGoogleCloudContentwarehouseV1RuleTriggerTypePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1RuleTriggerTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1RuleTriggerTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1RuleTriggerType] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1RuleTriggerType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1RuleTriggerTypePtrOutput) Elem() GoogleCloudContentwarehouseV1RuleTriggerTypeOutput {
@@ -1072,12 +1012,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeOutput) ToGoog
 	}).(GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrOutput)
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1111,12 +1045,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrOutput) ToG
 
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrOutput) ToGoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeOutput {
@@ -1263,12 +1191,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageLayoutOrientationOutput) ToGoogleClou
 	}).(GoogleCloudDocumentaiV1DocumentPageLayoutOrientationPtrOutput)
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageLayoutOrientationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLayoutOrientation] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLayoutOrientation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageLayoutOrientationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1302,12 +1224,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageLayoutOrientationPtrOutput) ToGoogleC
 
 func (o GoogleCloudDocumentaiV1DocumentPageLayoutOrientationPtrOutput) ToGoogleCloudDocumentaiV1DocumentPageLayoutOrientationPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageLayoutOrientationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageLayoutOrientationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageLayoutOrientation] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageLayoutOrientation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageLayoutOrientationPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageLayoutOrientationOutput {
@@ -1452,12 +1368,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeOutput) ToGoogl
 	}).(GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutput)
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1491,12 +1401,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutput) ToGo
 
 func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeOutput {
@@ -1649,12 +1553,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenanceTypeOutput) ToGoogleCloudDocume
 	}).(GoogleCloudDocumentaiV1DocumentProvenanceTypePtrOutput)
 }
 
-func (o GoogleCloudDocumentaiV1DocumentProvenanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenanceType] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenanceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentProvenanceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1688,12 +1586,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenanceTypePtrOutput) ToGoogleCloudDoc
 
 func (o GoogleCloudDocumentaiV1DocumentProvenanceTypePtrOutput) ToGoogleCloudDocumentaiV1DocumentProvenanceTypePtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentProvenanceTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentProvenanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentProvenanceType] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentProvenanceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentProvenanceTypePtrOutput) Elem() GoogleCloudDocumentaiV1DocumentProvenanceTypeOutput {
@@ -1838,12 +1730,6 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
-func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1877,12 +1763,6 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {

@@ -85,12 +85,6 @@ func (o EnvironmentConfigEnvironmentSizeOutput) ToEnvironmentConfigEnvironmentSi
 	}).(EnvironmentConfigEnvironmentSizePtrOutput)
 }
 
-func (o EnvironmentConfigEnvironmentSizeOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigEnvironmentSize] {
-	return pulumix.Output[EnvironmentConfigEnvironmentSize]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentConfigEnvironmentSizeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o EnvironmentConfigEnvironmentSizePtrOutput) ToEnvironmentConfigEnvironmen
 
 func (o EnvironmentConfigEnvironmentSizePtrOutput) ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(ctx context.Context) EnvironmentConfigEnvironmentSizePtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigEnvironmentSizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigEnvironmentSize] {
-	return pulumix.Output[*EnvironmentConfigEnvironmentSize]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigEnvironmentSizePtrOutput) Elem() EnvironmentConfigEnvironmentSizeOutput {
@@ -270,12 +258,6 @@ func (o EnvironmentConfigResilienceModeOutput) ToEnvironmentConfigResilienceMode
 	}).(EnvironmentConfigResilienceModePtrOutput)
 }
 
-func (o EnvironmentConfigResilienceModeOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigResilienceMode] {
-	return pulumix.Output[EnvironmentConfigResilienceMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentConfigResilienceModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o EnvironmentConfigResilienceModePtrOutput) ToEnvironmentConfigResilienceM
 
 func (o EnvironmentConfigResilienceModePtrOutput) ToEnvironmentConfigResilienceModePtrOutputWithContext(ctx context.Context) EnvironmentConfigResilienceModePtrOutput {
 	return o
-}
-
-func (o EnvironmentConfigResilienceModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigResilienceMode] {
-	return pulumix.Output[*EnvironmentConfigResilienceMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentConfigResilienceModePtrOutput) Elem() EnvironmentConfigResilienceModeOutput {
@@ -463,12 +439,6 @@ func (o EnvironmentStateEnumOutput) ToEnvironmentStateEnumPtrOutputWithContext(c
 	}).(EnvironmentStateEnumPtrOutput)
 }
 
-func (o EnvironmentStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentStateEnum] {
-	return pulumix.Output[EnvironmentStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvironmentStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -502,12 +472,6 @@ func (o EnvironmentStateEnumPtrOutput) ToEnvironmentStateEnumPtrOutput() Environ
 
 func (o EnvironmentStateEnumPtrOutput) ToEnvironmentStateEnumPtrOutputWithContext(ctx context.Context) EnvironmentStateEnumPtrOutput {
 	return o
-}
-
-func (o EnvironmentStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentStateEnum] {
-	return pulumix.Output[*EnvironmentStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentStateEnumPtrOutput) Elem() EnvironmentStateEnumOutput {
@@ -650,12 +614,6 @@ func (o NetworkingConfigConnectionTypeOutput) ToNetworkingConfigConnectionTypePt
 	}).(NetworkingConfigConnectionTypePtrOutput)
 }
 
-func (o NetworkingConfigConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkingConfigConnectionType] {
-	return pulumix.Output[NetworkingConfigConnectionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkingConfigConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -689,12 +647,6 @@ func (o NetworkingConfigConnectionTypePtrOutput) ToNetworkingConfigConnectionTyp
 
 func (o NetworkingConfigConnectionTypePtrOutput) ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx context.Context) NetworkingConfigConnectionTypePtrOutput {
 	return o
-}
-
-func (o NetworkingConfigConnectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkingConfigConnectionType] {
-	return pulumix.Output[*NetworkingConfigConnectionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkingConfigConnectionTypePtrOutput) Elem() NetworkingConfigConnectionTypeOutput {

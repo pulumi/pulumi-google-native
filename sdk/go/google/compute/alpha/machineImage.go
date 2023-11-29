@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a machine image in the specified project using the data that is included in the request. If you are creating a new machine image to update an existing instance, your new machine image should use the same network or, if applicable, the same subnetwork as the original instance.
@@ -171,12 +170,6 @@ func (i *MachineImage) ToMachineImageOutputWithContext(ctx context.Context) Mach
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageOutput)
 }
 
-func (i *MachineImage) ToOutput(ctx context.Context) pulumix.Output[*MachineImage] {
-	return pulumix.Output[*MachineImage]{
-		OutputState: i.ToMachineImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MachineImageOutput struct{ *pulumi.OutputState }
 
 func (MachineImageOutput) ElementType() reflect.Type {
@@ -189,12 +182,6 @@ func (o MachineImageOutput) ToMachineImageOutput() MachineImageOutput {
 
 func (o MachineImageOutput) ToMachineImageOutputWithContext(ctx context.Context) MachineImageOutput {
 	return o
-}
-
-func (o MachineImageOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineImage] {
-	return pulumix.Output[*MachineImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp for this machine image in RFC3339 text format.

@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -272,12 +260,6 @@ func (o TagKeyPurposeOutput) ToTagKeyPurposePtrOutputWithContext(ctx context.Con
 	}).(TagKeyPurposePtrOutput)
 }
 
-func (o TagKeyPurposeOutput) ToOutput(ctx context.Context) pulumix.Output[TagKeyPurpose] {
-	return pulumix.Output[TagKeyPurpose]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TagKeyPurposeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o TagKeyPurposePtrOutput) ToTagKeyPurposePtrOutput() TagKeyPurposePtrOutpu
 
 func (o TagKeyPurposePtrOutput) ToTagKeyPurposePtrOutputWithContext(ctx context.Context) TagKeyPurposePtrOutput {
 	return o
-}
-
-func (o TagKeyPurposePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagKeyPurpose] {
-	return pulumix.Output[*TagKeyPurpose]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagKeyPurposePtrOutput) Elem() TagKeyPurposeOutput {

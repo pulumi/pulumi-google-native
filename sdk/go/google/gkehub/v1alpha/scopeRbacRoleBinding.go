@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Scope RBACRoleBinding.
@@ -160,12 +159,6 @@ func (i *ScopeRbacRoleBinding) ToScopeRbacRoleBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingOutput)
 }
 
-func (i *ScopeRbacRoleBinding) ToOutput(ctx context.Context) pulumix.Output[*ScopeRbacRoleBinding] {
-	return pulumix.Output[*ScopeRbacRoleBinding]{
-		OutputState: i.ToScopeRbacRoleBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeRbacRoleBindingOutput struct{ *pulumi.OutputState }
 
 func (ScopeRbacRoleBindingOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o ScopeRbacRoleBindingOutput) ToScopeRbacRoleBindingOutput() ScopeRbacRole
 
 func (o ScopeRbacRoleBindingOutput) ToScopeRbacRoleBindingOutputWithContext(ctx context.Context) ScopeRbacRoleBindingOutput {
 	return o
-}
-
-func (o ScopeRbacRoleBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeRbacRoleBinding] {
-	return pulumix.Output[*ScopeRbacRoleBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the rbacrolebinding was created.

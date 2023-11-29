@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -272,12 +260,6 @@ func (o RestoreConfigClusterResourceConflictPolicyOutput) ToRestoreConfigCluster
 	}).(RestoreConfigClusterResourceConflictPolicyPtrOutput)
 }
 
-func (o RestoreConfigClusterResourceConflictPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreConfigClusterResourceConflictPolicy] {
-	return pulumix.Output[RestoreConfigClusterResourceConflictPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RestoreConfigClusterResourceConflictPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o RestoreConfigClusterResourceConflictPolicyPtrOutput) ToRestoreConfigClus
 
 func (o RestoreConfigClusterResourceConflictPolicyPtrOutput) ToRestoreConfigClusterResourceConflictPolicyPtrOutputWithContext(ctx context.Context) RestoreConfigClusterResourceConflictPolicyPtrOutput {
 	return o
-}
-
-func (o RestoreConfigClusterResourceConflictPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestoreConfigClusterResourceConflictPolicy] {
-	return pulumix.Output[*RestoreConfigClusterResourceConflictPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestoreConfigClusterResourceConflictPolicyPtrOutput) Elem() RestoreConfigClusterResourceConflictPolicyOutput {
@@ -459,12 +435,6 @@ func (o RestoreConfigNamespacedResourceRestoreModeOutput) ToRestoreConfigNamespa
 	}).(RestoreConfigNamespacedResourceRestoreModePtrOutput)
 }
 
-func (o RestoreConfigNamespacedResourceRestoreModeOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreConfigNamespacedResourceRestoreMode] {
-	return pulumix.Output[RestoreConfigNamespacedResourceRestoreMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RestoreConfigNamespacedResourceRestoreModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,12 +468,6 @@ func (o RestoreConfigNamespacedResourceRestoreModePtrOutput) ToRestoreConfigName
 
 func (o RestoreConfigNamespacedResourceRestoreModePtrOutput) ToRestoreConfigNamespacedResourceRestoreModePtrOutputWithContext(ctx context.Context) RestoreConfigNamespacedResourceRestoreModePtrOutput {
 	return o
-}
-
-func (o RestoreConfigNamespacedResourceRestoreModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestoreConfigNamespacedResourceRestoreMode] {
-	return pulumix.Output[*RestoreConfigNamespacedResourceRestoreMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestoreConfigNamespacedResourceRestoreModePtrOutput) Elem() RestoreConfigNamespacedResourceRestoreModeOutput {
@@ -648,12 +612,6 @@ func (o RestoreConfigVolumeDataRestorePolicyOutput) ToRestoreConfigVolumeDataRes
 	}).(RestoreConfigVolumeDataRestorePolicyPtrOutput)
 }
 
-func (o RestoreConfigVolumeDataRestorePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreConfigVolumeDataRestorePolicy] {
-	return pulumix.Output[RestoreConfigVolumeDataRestorePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RestoreConfigVolumeDataRestorePolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -687,12 +645,6 @@ func (o RestoreConfigVolumeDataRestorePolicyPtrOutput) ToRestoreConfigVolumeData
 
 func (o RestoreConfigVolumeDataRestorePolicyPtrOutput) ToRestoreConfigVolumeDataRestorePolicyPtrOutputWithContext(ctx context.Context) RestoreConfigVolumeDataRestorePolicyPtrOutput {
 	return o
-}
-
-func (o RestoreConfigVolumeDataRestorePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestoreConfigVolumeDataRestorePolicy] {
-	return pulumix.Output[*RestoreConfigVolumeDataRestorePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestoreConfigVolumeDataRestorePolicyPtrOutput) Elem() RestoreConfigVolumeDataRestorePolicyOutput {
@@ -843,12 +795,6 @@ func (o TransformationRuleActionOpOutput) ToTransformationRuleActionOpPtrOutputW
 	}).(TransformationRuleActionOpPtrOutput)
 }
 
-func (o TransformationRuleActionOpOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationRuleActionOp] {
-	return pulumix.Output[TransformationRuleActionOp]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransformationRuleActionOpOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -882,12 +828,6 @@ func (o TransformationRuleActionOpPtrOutput) ToTransformationRuleActionOpPtrOutp
 
 func (o TransformationRuleActionOpPtrOutput) ToTransformationRuleActionOpPtrOutputWithContext(ctx context.Context) TransformationRuleActionOpPtrOutput {
 	return o
-}
-
-func (o TransformationRuleActionOpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransformationRuleActionOp] {
-	return pulumix.Output[*TransformationRuleActionOp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransformationRuleActionOpPtrOutput) Elem() TransformationRuleActionOpOutput {

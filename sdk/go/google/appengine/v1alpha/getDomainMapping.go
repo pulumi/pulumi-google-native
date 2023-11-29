@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified domain mapping.
@@ -71,12 +70,6 @@ func (o LookupDomainMappingResultOutput) ToLookupDomainMappingResultOutput() Loo
 
 func (o LookupDomainMappingResultOutput) ToLookupDomainMappingResultOutputWithContext(ctx context.Context) LookupDomainMappingResultOutput {
 	return o
-}
-
-func (o LookupDomainMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDomainMappingResult] {
-	return pulumix.Output[LookupDomainMappingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.

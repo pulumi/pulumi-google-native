@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AccountArgs) ToAccountOutput() AccountOutput {
 
 func (i AccountArgs) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountOutput)
-}
-
-func (i AccountArgs) ToOutput(ctx context.Context) pulumix.Output[Account] {
-	return pulumix.Output[Account]{
-		OutputState: i.ToAccountOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AccountArgs) ToAccountPtrOutput() AccountPtrOutput {
@@ -96,12 +89,6 @@ func (i *accountPtrType) ToAccountPtrOutputWithContext(ctx context.Context) Acco
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPtrOutput)
 }
 
-func (i *accountPtrType) ToOutput(ctx context.Context) pulumix.Output[*Account] {
-	return pulumix.Output[*Account]{
-		OutputState: i.ToAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identifies an account and how to log into it.
 type AccountOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o AccountOutput) ToAccountPtrOutputWithContext(ctx context.Context) Accoun
 	}).(AccountPtrOutput)
 }
 
-func (o AccountOutput) ToOutput(ctx context.Context) pulumix.Output[Account] {
-	return pulumix.Output[Account]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An automatic google login account.
 func (o AccountOutput) GoogleAuto() GoogleAutoPtrOutput {
 	return o.ApplyT(func(v Account) *GoogleAuto { return v.GoogleAuto }).(GoogleAutoPtrOutput)
@@ -150,12 +131,6 @@ func (o AccountPtrOutput) ToAccountPtrOutput() AccountPtrOutput {
 
 func (o AccountPtrOutput) ToAccountPtrOutputWithContext(ctx context.Context) AccountPtrOutput {
 	return o
-}
-
-func (o AccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Account] {
-	return pulumix.Output[*Account]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccountPtrOutput) Elem() AccountOutput {
@@ -197,12 +172,6 @@ func (o AccountResponseOutput) ToAccountResponseOutput() AccountResponseOutput {
 
 func (o AccountResponseOutput) ToAccountResponseOutputWithContext(ctx context.Context) AccountResponseOutput {
 	return o
-}
-
-func (o AccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccountResponse] {
-	return pulumix.Output[AccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An automatic google login account.
@@ -257,12 +226,6 @@ func (i AndroidDeviceArgs) ToAndroidDeviceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidDeviceOutput)
 }
 
-func (i AndroidDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[AndroidDevice] {
-	return pulumix.Output[AndroidDevice]{
-		OutputState: i.ToAndroidDeviceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AndroidDeviceArrayInput is an input type that accepts AndroidDeviceArray and AndroidDeviceArrayOutput values.
 // You can construct a concrete instance of `AndroidDeviceArrayInput` via:
 //
@@ -288,12 +251,6 @@ func (i AndroidDeviceArray) ToAndroidDeviceArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidDeviceArrayOutput)
 }
 
-func (i AndroidDeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]AndroidDevice] {
-	return pulumix.Output[[]AndroidDevice]{
-		OutputState: i.ToAndroidDeviceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A single Android device.
 type AndroidDeviceOutput struct{ *pulumi.OutputState }
 
@@ -307,12 +264,6 @@ func (o AndroidDeviceOutput) ToAndroidDeviceOutput() AndroidDeviceOutput {
 
 func (o AndroidDeviceOutput) ToAndroidDeviceOutputWithContext(ctx context.Context) AndroidDeviceOutput {
 	return o
-}
-
-func (o AndroidDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidDevice] {
-	return pulumix.Output[AndroidDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -347,12 +298,6 @@ func (o AndroidDeviceArrayOutput) ToAndroidDeviceArrayOutput() AndroidDeviceArra
 
 func (o AndroidDeviceArrayOutput) ToAndroidDeviceArrayOutputWithContext(ctx context.Context) AndroidDeviceArrayOutput {
 	return o
-}
-
-func (o AndroidDeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AndroidDevice] {
-	return pulumix.Output[[]AndroidDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidDeviceArrayOutput) Index(i pulumi.IntInput) AndroidDeviceOutput {
@@ -396,12 +341,6 @@ func (i AndroidDeviceListArgs) ToAndroidDeviceListOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidDeviceListOutput)
 }
 
-func (i AndroidDeviceListArgs) ToOutput(ctx context.Context) pulumix.Output[AndroidDeviceList] {
-	return pulumix.Output[AndroidDeviceList]{
-		OutputState: i.ToAndroidDeviceListOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AndroidDeviceListArgs) ToAndroidDeviceListPtrOutput() AndroidDeviceListPtrOutput {
 	return i.ToAndroidDeviceListPtrOutputWithContext(context.Background())
 }
@@ -443,12 +382,6 @@ func (i *androidDeviceListPtrType) ToAndroidDeviceListPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidDeviceListPtrOutput)
 }
 
-func (i *androidDeviceListPtrType) ToOutput(ctx context.Context) pulumix.Output[*AndroidDeviceList] {
-	return pulumix.Output[*AndroidDeviceList]{
-		OutputState: i.ToAndroidDeviceListPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A list of Android device configurations in which the test is to be executed.
 type AndroidDeviceListOutput struct{ *pulumi.OutputState }
 
@@ -474,12 +407,6 @@ func (o AndroidDeviceListOutput) ToAndroidDeviceListPtrOutputWithContext(ctx con
 	}).(AndroidDeviceListPtrOutput)
 }
 
-func (o AndroidDeviceListOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidDeviceList] {
-	return pulumix.Output[AndroidDeviceList]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of Android devices.
 func (o AndroidDeviceListOutput) AndroidDevices() AndroidDeviceArrayOutput {
 	return o.ApplyT(func(v AndroidDeviceList) []AndroidDevice { return v.AndroidDevices }).(AndroidDeviceArrayOutput)
@@ -497,12 +424,6 @@ func (o AndroidDeviceListPtrOutput) ToAndroidDeviceListPtrOutput() AndroidDevice
 
 func (o AndroidDeviceListPtrOutput) ToAndroidDeviceListPtrOutputWithContext(ctx context.Context) AndroidDeviceListPtrOutput {
 	return o
-}
-
-func (o AndroidDeviceListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AndroidDeviceList] {
-	return pulumix.Output[*AndroidDeviceList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidDeviceListPtrOutput) Elem() AndroidDeviceListOutput {
@@ -546,12 +467,6 @@ func (o AndroidDeviceListResponseOutput) ToAndroidDeviceListResponseOutputWithCo
 	return o
 }
 
-func (o AndroidDeviceListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidDeviceListResponse] {
-	return pulumix.Output[AndroidDeviceListResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of Android devices.
 func (o AndroidDeviceListResponseOutput) AndroidDevices() AndroidDeviceResponseArrayOutput {
 	return o.ApplyT(func(v AndroidDeviceListResponse) []AndroidDeviceResponse { return v.AndroidDevices }).(AndroidDeviceResponseArrayOutput)
@@ -582,12 +497,6 @@ func (o AndroidDeviceResponseOutput) ToAndroidDeviceResponseOutput() AndroidDevi
 
 func (o AndroidDeviceResponseOutput) ToAndroidDeviceResponseOutputWithContext(ctx context.Context) AndroidDeviceResponseOutput {
 	return o
-}
-
-func (o AndroidDeviceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidDeviceResponse] {
-	return pulumix.Output[AndroidDeviceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -622,12 +531,6 @@ func (o AndroidDeviceResponseArrayOutput) ToAndroidDeviceResponseArrayOutput() A
 
 func (o AndroidDeviceResponseArrayOutput) ToAndroidDeviceResponseArrayOutputWithContext(ctx context.Context) AndroidDeviceResponseArrayOutput {
 	return o
-}
-
-func (o AndroidDeviceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AndroidDeviceResponse] {
-	return pulumix.Output[[]AndroidDeviceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidDeviceResponseArrayOutput) Index(i pulumi.IntInput) AndroidDeviceResponseOutput {
@@ -703,12 +606,6 @@ func (i AndroidInstrumentationTestArgs) ToAndroidInstrumentationTestOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidInstrumentationTestOutput)
 }
 
-func (i AndroidInstrumentationTestArgs) ToOutput(ctx context.Context) pulumix.Output[AndroidInstrumentationTest] {
-	return pulumix.Output[AndroidInstrumentationTest]{
-		OutputState: i.ToAndroidInstrumentationTestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AndroidInstrumentationTestArgs) ToAndroidInstrumentationTestPtrOutput() AndroidInstrumentationTestPtrOutput {
 	return i.ToAndroidInstrumentationTestPtrOutputWithContext(context.Background())
 }
@@ -750,12 +647,6 @@ func (i *androidInstrumentationTestPtrType) ToAndroidInstrumentationTestPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidInstrumentationTestPtrOutput)
 }
 
-func (i *androidInstrumentationTestPtrType) ToOutput(ctx context.Context) pulumix.Output[*AndroidInstrumentationTest] {
-	return pulumix.Output[*AndroidInstrumentationTest]{
-		OutputState: i.ToAndroidInstrumentationTestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A test of an Android application that can control an Android component independently of its normal lifecycle. Android instrumentation tests run an application APK and test APK inside the same process on a virtual or physical AndroidDevice. They also specify a test runner class, such as com.google.GoogleTestRunner, which can vary on the specific instrumentation framework chosen. See for more information on types of Android tests.
 type AndroidInstrumentationTestOutput struct{ *pulumi.OutputState }
 
@@ -779,12 +670,6 @@ func (o AndroidInstrumentationTestOutput) ToAndroidInstrumentationTestPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidInstrumentationTest) *AndroidInstrumentationTest {
 		return &v
 	}).(AndroidInstrumentationTestPtrOutput)
-}
-
-func (o AndroidInstrumentationTestOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidInstrumentationTest] {
-	return pulumix.Output[AndroidInstrumentationTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The APK for the application under test.
@@ -846,12 +731,6 @@ func (o AndroidInstrumentationTestPtrOutput) ToAndroidInstrumentationTestPtrOutp
 
 func (o AndroidInstrumentationTestPtrOutput) ToAndroidInstrumentationTestPtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestPtrOutput {
 	return o
-}
-
-func (o AndroidInstrumentationTestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AndroidInstrumentationTest] {
-	return pulumix.Output[*AndroidInstrumentationTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidInstrumentationTestPtrOutput) Elem() AndroidInstrumentationTestOutput {
@@ -991,12 +870,6 @@ func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestRe
 	return o
 }
 
-func (o AndroidInstrumentationTestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidInstrumentationTestResponse] {
-	return pulumix.Output[AndroidInstrumentationTestResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The APK for the application under test.
 func (o AndroidInstrumentationTestResponseOutput) AppApk() FileReferenceResponseOutput {
 	return o.ApplyT(func(v AndroidInstrumentationTestResponse) FileReferenceResponse { return v.AppApk }).(FileReferenceResponseOutput)
@@ -1089,12 +962,6 @@ func (i AndroidMatrixArgs) ToAndroidMatrixOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidMatrixOutput)
 }
 
-func (i AndroidMatrixArgs) ToOutput(ctx context.Context) pulumix.Output[AndroidMatrix] {
-	return pulumix.Output[AndroidMatrix]{
-		OutputState: i.ToAndroidMatrixOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AndroidMatrixArgs) ToAndroidMatrixPtrOutput() AndroidMatrixPtrOutput {
 	return i.ToAndroidMatrixPtrOutputWithContext(context.Background())
 }
@@ -1136,12 +1003,6 @@ func (i *androidMatrixPtrType) ToAndroidMatrixPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidMatrixPtrOutput)
 }
 
-func (i *androidMatrixPtrType) ToOutput(ctx context.Context) pulumix.Output[*AndroidMatrix] {
-	return pulumix.Output[*AndroidMatrix]{
-		OutputState: i.ToAndroidMatrixPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
 type AndroidMatrixOutput struct{ *pulumi.OutputState }
 
@@ -1165,12 +1026,6 @@ func (o AndroidMatrixOutput) ToAndroidMatrixPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidMatrix) *AndroidMatrix {
 		return &v
 	}).(AndroidMatrixPtrOutput)
-}
-
-func (o AndroidMatrixOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidMatrix] {
-	return pulumix.Output[AndroidMatrix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -1205,12 +1060,6 @@ func (o AndroidMatrixPtrOutput) ToAndroidMatrixPtrOutput() AndroidMatrixPtrOutpu
 
 func (o AndroidMatrixPtrOutput) ToAndroidMatrixPtrOutputWithContext(ctx context.Context) AndroidMatrixPtrOutput {
 	return o
-}
-
-func (o AndroidMatrixPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AndroidMatrix] {
-	return pulumix.Output[*AndroidMatrix]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidMatrixPtrOutput) Elem() AndroidMatrixOutput {
@@ -1288,12 +1137,6 @@ func (o AndroidMatrixResponseOutput) ToAndroidMatrixResponseOutput() AndroidMatr
 
 func (o AndroidMatrixResponseOutput) ToAndroidMatrixResponseOutputWithContext(ctx context.Context) AndroidMatrixResponseOutput {
 	return o
-}
-
-func (o AndroidMatrixResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidMatrixResponse] {
-	return pulumix.Output[AndroidMatrixResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -1387,12 +1230,6 @@ func (i AndroidRoboTestArgs) ToAndroidRoboTestOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidRoboTestOutput)
 }
 
-func (i AndroidRoboTestArgs) ToOutput(ctx context.Context) pulumix.Output[AndroidRoboTest] {
-	return pulumix.Output[AndroidRoboTest]{
-		OutputState: i.ToAndroidRoboTestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AndroidRoboTestArgs) ToAndroidRoboTestPtrOutput() AndroidRoboTestPtrOutput {
 	return i.ToAndroidRoboTestPtrOutputWithContext(context.Background())
 }
@@ -1434,12 +1271,6 @@ func (i *androidRoboTestPtrType) ToAndroidRoboTestPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidRoboTestPtrOutput)
 }
 
-func (i *androidRoboTestPtrType) ToOutput(ctx context.Context) pulumix.Output[*AndroidRoboTest] {
-	return pulumix.Output[*AndroidRoboTest]{
-		OutputState: i.ToAndroidRoboTestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
 type AndroidRoboTestOutput struct{ *pulumi.OutputState }
 
@@ -1463,12 +1294,6 @@ func (o AndroidRoboTestOutput) ToAndroidRoboTestPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidRoboTest) *AndroidRoboTest {
 		return &v
 	}).(AndroidRoboTestPtrOutput)
-}
-
-func (o AndroidRoboTestOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidRoboTest] {
-	return pulumix.Output[AndroidRoboTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The APK for the application under test.
@@ -1533,12 +1358,6 @@ func (o AndroidRoboTestPtrOutput) ToAndroidRoboTestPtrOutput() AndroidRoboTestPt
 
 func (o AndroidRoboTestPtrOutput) ToAndroidRoboTestPtrOutputWithContext(ctx context.Context) AndroidRoboTestPtrOutput {
 	return o
-}
-
-func (o AndroidRoboTestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AndroidRoboTest] {
-	return pulumix.Output[*AndroidRoboTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidRoboTestPtrOutput) Elem() AndroidRoboTestOutput {
@@ -1690,12 +1509,6 @@ func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponseOutputWithContex
 	return o
 }
 
-func (o AndroidRoboTestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidRoboTestResponse] {
-	return pulumix.Output[AndroidRoboTestResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The APK for the application under test.
 func (o AndroidRoboTestResponseOutput) AppApk() FileReferenceResponseOutput {
 	return o.ApplyT(func(v AndroidRoboTestResponse) FileReferenceResponse { return v.AppApk }).(FileReferenceResponseOutput)
@@ -1797,12 +1610,6 @@ func (i AndroidTestLoopArgs) ToAndroidTestLoopOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestLoopOutput)
 }
 
-func (i AndroidTestLoopArgs) ToOutput(ctx context.Context) pulumix.Output[AndroidTestLoop] {
-	return pulumix.Output[AndroidTestLoop]{
-		OutputState: i.ToAndroidTestLoopOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AndroidTestLoopArgs) ToAndroidTestLoopPtrOutput() AndroidTestLoopPtrOutput {
 	return i.ToAndroidTestLoopPtrOutputWithContext(context.Background())
 }
@@ -1844,12 +1651,6 @@ func (i *androidTestLoopPtrType) ToAndroidTestLoopPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestLoopPtrOutput)
 }
 
-func (i *androidTestLoopPtrType) ToOutput(ctx context.Context) pulumix.Output[*AndroidTestLoop] {
-	return pulumix.Output[*AndroidTestLoop]{
-		OutputState: i.ToAndroidTestLoopPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games is the only user of this api, for the time being.
 type AndroidTestLoopOutput struct{ *pulumi.OutputState }
 
@@ -1873,12 +1674,6 @@ func (o AndroidTestLoopOutput) ToAndroidTestLoopPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidTestLoop) *AndroidTestLoop {
 		return &v
 	}).(AndroidTestLoopPtrOutput)
-}
-
-func (o AndroidTestLoopOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidTestLoop] {
-	return pulumix.Output[AndroidTestLoop]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The APK for the application under test.
@@ -1918,12 +1713,6 @@ func (o AndroidTestLoopPtrOutput) ToAndroidTestLoopPtrOutput() AndroidTestLoopPt
 
 func (o AndroidTestLoopPtrOutput) ToAndroidTestLoopPtrOutputWithContext(ctx context.Context) AndroidTestLoopPtrOutput {
 	return o
-}
-
-func (o AndroidTestLoopPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AndroidTestLoop] {
-	return pulumix.Output[*AndroidTestLoop]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidTestLoopPtrOutput) Elem() AndroidTestLoopOutput {
@@ -2015,12 +1804,6 @@ func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponseOutputWithContex
 	return o
 }
 
-func (o AndroidTestLoopResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidTestLoopResponse] {
-	return pulumix.Output[AndroidTestLoopResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The APK for the application under test.
 func (o AndroidTestLoopResponseOutput) AppApk() FileReferenceResponseOutput {
 	return o.ApplyT(func(v AndroidTestLoopResponse) FileReferenceResponse { return v.AppApk }).(FileReferenceResponseOutput)
@@ -2085,12 +1868,6 @@ func (i ApkArgs) ToApkOutputWithContext(ctx context.Context) ApkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApkOutput)
 }
 
-func (i ApkArgs) ToOutput(ctx context.Context) pulumix.Output[Apk] {
-	return pulumix.Output[Apk]{
-		OutputState: i.ToApkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApkArrayInput is an input type that accepts ApkArray and ApkArrayOutput values.
 // You can construct a concrete instance of `ApkArrayInput` via:
 //
@@ -2116,12 +1893,6 @@ func (i ApkArray) ToApkArrayOutputWithContext(ctx context.Context) ApkArrayOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ApkArrayOutput)
 }
 
-func (i ApkArray) ToOutput(ctx context.Context) pulumix.Output[[]Apk] {
-	return pulumix.Output[[]Apk]{
-		OutputState: i.ToApkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Android package file to install.
 type ApkOutput struct{ *pulumi.OutputState }
 
@@ -2135,12 +1906,6 @@ func (o ApkOutput) ToApkOutput() ApkOutput {
 
 func (o ApkOutput) ToApkOutputWithContext(ctx context.Context) ApkOutput {
 	return o
-}
-
-func (o ApkOutput) ToOutput(ctx context.Context) pulumix.Output[Apk] {
-	return pulumix.Output[Apk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path to an APK to be installed on the device before the test begins.
@@ -2165,12 +1930,6 @@ func (o ApkArrayOutput) ToApkArrayOutput() ApkArrayOutput {
 
 func (o ApkArrayOutput) ToApkArrayOutputWithContext(ctx context.Context) ApkArrayOutput {
 	return o
-}
-
-func (o ApkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Apk] {
-	return pulumix.Output[[]Apk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApkArrayOutput) Index(i pulumi.IntInput) ApkOutput {
@@ -2202,12 +1961,6 @@ func (o ApkResponseOutput) ToApkResponseOutputWithContext(ctx context.Context) A
 	return o
 }
 
-func (o ApkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApkResponse] {
-	return pulumix.Output[ApkResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The path to an APK to be installed on the device before the test begins.
 func (o ApkResponseOutput) Location() FileReferenceResponseOutput {
 	return o.ApplyT(func(v ApkResponse) FileReferenceResponse { return v.Location }).(FileReferenceResponseOutput)
@@ -2230,12 +1983,6 @@ func (o ApkResponseArrayOutput) ToApkResponseArrayOutput() ApkResponseArrayOutpu
 
 func (o ApkResponseArrayOutput) ToApkResponseArrayOutputWithContext(ctx context.Context) ApkResponseArrayOutput {
 	return o
-}
-
-func (o ApkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApkResponse] {
-	return pulumix.Output[[]ApkResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApkResponseArrayOutput) Index(i pulumi.IntInput) ApkResponseOutput {
@@ -2279,12 +2026,6 @@ func (i AppBundleArgs) ToAppBundleOutputWithContext(ctx context.Context) AppBund
 	return pulumi.ToOutputWithContext(ctx, i).(AppBundleOutput)
 }
 
-func (i AppBundleArgs) ToOutput(ctx context.Context) pulumix.Output[AppBundle] {
-	return pulumix.Output[AppBundle]{
-		OutputState: i.ToAppBundleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppBundleArgs) ToAppBundlePtrOutput() AppBundlePtrOutput {
 	return i.ToAppBundlePtrOutputWithContext(context.Background())
 }
@@ -2326,12 +2067,6 @@ func (i *appBundlePtrType) ToAppBundlePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AppBundlePtrOutput)
 }
 
-func (i *appBundlePtrType) ToOutput(ctx context.Context) pulumix.Output[*AppBundle] {
-	return pulumix.Output[*AppBundle]{
-		OutputState: i.ToAppBundlePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Android App Bundle file format, containing a BundleConfig.pb file, a base module directory, zero or more dynamic feature module directories. See https://developer.android.com/guide/app-bundle/build for guidance on building App Bundles.
 type AppBundleOutput struct{ *pulumi.OutputState }
 
@@ -2357,12 +2092,6 @@ func (o AppBundleOutput) ToAppBundlePtrOutputWithContext(ctx context.Context) Ap
 	}).(AppBundlePtrOutput)
 }
 
-func (o AppBundleOutput) ToOutput(ctx context.Context) pulumix.Output[AppBundle] {
-	return pulumix.Output[AppBundle]{
-		OutputState: o.OutputState,
-	}
-}
-
 // .aab file representing the app bundle under test.
 func (o AppBundleOutput) BundleLocation() FileReferencePtrOutput {
 	return o.ApplyT(func(v AppBundle) *FileReference { return v.BundleLocation }).(FileReferencePtrOutput)
@@ -2380,12 +2109,6 @@ func (o AppBundlePtrOutput) ToAppBundlePtrOutput() AppBundlePtrOutput {
 
 func (o AppBundlePtrOutput) ToAppBundlePtrOutputWithContext(ctx context.Context) AppBundlePtrOutput {
 	return o
-}
-
-func (o AppBundlePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppBundle] {
-	return pulumix.Output[*AppBundle]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppBundlePtrOutput) Elem() AppBundleOutput {
@@ -2427,12 +2150,6 @@ func (o AppBundleResponseOutput) ToAppBundleResponseOutput() AppBundleResponseOu
 
 func (o AppBundleResponseOutput) ToAppBundleResponseOutputWithContext(ctx context.Context) AppBundleResponseOutput {
 	return o
-}
-
-func (o AppBundleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppBundleResponse] {
-	return pulumix.Output[AppBundleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // .aab file representing the app bundle under test.
@@ -2479,12 +2196,6 @@ func (i ClientInfoArgs) ToClientInfoOutputWithContext(ctx context.Context) Clien
 	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoOutput)
 }
 
-func (i ClientInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ClientInfo] {
-	return pulumix.Output[ClientInfo]{
-		OutputState: i.ToClientInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClientInfoArgs) ToClientInfoPtrOutput() ClientInfoPtrOutput {
 	return i.ToClientInfoPtrOutputWithContext(context.Background())
 }
@@ -2526,12 +2237,6 @@ func (i *clientInfoPtrType) ToClientInfoPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoPtrOutput)
 }
 
-func (i *clientInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientInfo] {
-	return pulumix.Output[*ClientInfo]{
-		OutputState: i.ToClientInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Information about the client which invoked the test.
 type ClientInfoOutput struct{ *pulumi.OutputState }
 
@@ -2557,12 +2262,6 @@ func (o ClientInfoOutput) ToClientInfoPtrOutputWithContext(ctx context.Context) 
 	}).(ClientInfoPtrOutput)
 }
 
-func (o ClientInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ClientInfo] {
-	return pulumix.Output[ClientInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of detailed information about client.
 func (o ClientInfoOutput) ClientInfoDetails() ClientInfoDetailArrayOutput {
 	return o.ApplyT(func(v ClientInfo) []ClientInfoDetail { return v.ClientInfoDetails }).(ClientInfoDetailArrayOutput)
@@ -2585,12 +2284,6 @@ func (o ClientInfoPtrOutput) ToClientInfoPtrOutput() ClientInfoPtrOutput {
 
 func (o ClientInfoPtrOutput) ToClientInfoPtrOutputWithContext(ctx context.Context) ClientInfoPtrOutput {
 	return o
-}
-
-func (o ClientInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientInfo] {
-	return pulumix.Output[*ClientInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientInfoPtrOutput) Elem() ClientInfoOutput {
@@ -2662,12 +2355,6 @@ func (i ClientInfoDetailArgs) ToClientInfoDetailOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoDetailOutput)
 }
 
-func (i ClientInfoDetailArgs) ToOutput(ctx context.Context) pulumix.Output[ClientInfoDetail] {
-	return pulumix.Output[ClientInfoDetail]{
-		OutputState: i.ToClientInfoDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClientInfoDetailArrayInput is an input type that accepts ClientInfoDetailArray and ClientInfoDetailArrayOutput values.
 // You can construct a concrete instance of `ClientInfoDetailArrayInput` via:
 //
@@ -2693,12 +2380,6 @@ func (i ClientInfoDetailArray) ToClientInfoDetailArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ClientInfoDetailArrayOutput)
 }
 
-func (i ClientInfoDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]ClientInfoDetail] {
-	return pulumix.Output[[]ClientInfoDetail]{
-		OutputState: i.ToClientInfoDetailArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
 type ClientInfoDetailOutput struct{ *pulumi.OutputState }
 
@@ -2712,12 +2393,6 @@ func (o ClientInfoDetailOutput) ToClientInfoDetailOutput() ClientInfoDetailOutpu
 
 func (o ClientInfoDetailOutput) ToClientInfoDetailOutputWithContext(ctx context.Context) ClientInfoDetailOutput {
 	return o
-}
-
-func (o ClientInfoDetailOutput) ToOutput(ctx context.Context) pulumix.Output[ClientInfoDetail] {
-	return pulumix.Output[ClientInfoDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of detailed client information.
@@ -2742,12 +2417,6 @@ func (o ClientInfoDetailArrayOutput) ToClientInfoDetailArrayOutput() ClientInfoD
 
 func (o ClientInfoDetailArrayOutput) ToClientInfoDetailArrayOutputWithContext(ctx context.Context) ClientInfoDetailArrayOutput {
 	return o
-}
-
-func (o ClientInfoDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClientInfoDetail] {
-	return pulumix.Output[[]ClientInfoDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientInfoDetailArrayOutput) Index(i pulumi.IntInput) ClientInfoDetailOutput {
@@ -2779,12 +2448,6 @@ func (o ClientInfoDetailResponseOutput) ToClientInfoDetailResponseOutputWithCont
 	return o
 }
 
-func (o ClientInfoDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClientInfoDetailResponse] {
-	return pulumix.Output[ClientInfoDetailResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The key of detailed client information.
 func (o ClientInfoDetailResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientInfoDetailResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -2807,12 +2470,6 @@ func (o ClientInfoDetailResponseArrayOutput) ToClientInfoDetailResponseArrayOutp
 
 func (o ClientInfoDetailResponseArrayOutput) ToClientInfoDetailResponseArrayOutputWithContext(ctx context.Context) ClientInfoDetailResponseArrayOutput {
 	return o
-}
-
-func (o ClientInfoDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClientInfoDetailResponse] {
-	return pulumix.Output[[]ClientInfoDetailResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientInfoDetailResponseArrayOutput) Index(i pulumi.IntInput) ClientInfoDetailResponseOutput {
@@ -2842,12 +2499,6 @@ func (o ClientInfoResponseOutput) ToClientInfoResponseOutput() ClientInfoRespons
 
 func (o ClientInfoResponseOutput) ToClientInfoResponseOutputWithContext(ctx context.Context) ClientInfoResponseOutput {
 	return o
-}
-
-func (o ClientInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClientInfoResponse] {
-	return pulumix.Output[ClientInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of detailed information about client.
@@ -2899,12 +2550,6 @@ func (i DeviceFileArgs) ToDeviceFileOutputWithContext(ctx context.Context) Devic
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceFileOutput)
 }
 
-func (i DeviceFileArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceFile] {
-	return pulumix.Output[DeviceFile]{
-		OutputState: i.ToDeviceFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeviceFileArrayInput is an input type that accepts DeviceFileArray and DeviceFileArrayOutput values.
 // You can construct a concrete instance of `DeviceFileArrayInput` via:
 //
@@ -2930,12 +2575,6 @@ func (i DeviceFileArray) ToDeviceFileArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceFileArrayOutput)
 }
 
-func (i DeviceFileArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceFile] {
-	return pulumix.Output[[]DeviceFile]{
-		OutputState: i.ToDeviceFileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A single device file description.
 type DeviceFileOutput struct{ *pulumi.OutputState }
 
@@ -2949,12 +2588,6 @@ func (o DeviceFileOutput) ToDeviceFileOutput() DeviceFileOutput {
 
 func (o DeviceFileOutput) ToDeviceFileOutputWithContext(ctx context.Context) DeviceFileOutput {
 	return o
-}
-
-func (o DeviceFileOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceFile] {
-	return pulumix.Output[DeviceFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A reference to an opaque binary blob file.
@@ -2979,12 +2612,6 @@ func (o DeviceFileArrayOutput) ToDeviceFileArrayOutput() DeviceFileArrayOutput {
 
 func (o DeviceFileArrayOutput) ToDeviceFileArrayOutputWithContext(ctx context.Context) DeviceFileArrayOutput {
 	return o
-}
-
-func (o DeviceFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceFile] {
-	return pulumix.Output[[]DeviceFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceFileArrayOutput) Index(i pulumi.IntInput) DeviceFileOutput {
@@ -3016,12 +2643,6 @@ func (o DeviceFileResponseOutput) ToDeviceFileResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o DeviceFileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceFileResponse] {
-	return pulumix.Output[DeviceFileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A reference to an opaque binary blob file.
 func (o DeviceFileResponseOutput) ObbFile() ObbFileResponseOutput {
 	return o.ApplyT(func(v DeviceFileResponse) ObbFileResponse { return v.ObbFile }).(ObbFileResponseOutput)
@@ -3044,12 +2665,6 @@ func (o DeviceFileResponseArrayOutput) ToDeviceFileResponseArrayOutput() DeviceF
 
 func (o DeviceFileResponseArrayOutput) ToDeviceFileResponseArrayOutputWithContext(ctx context.Context) DeviceFileResponseArrayOutput {
 	return o
-}
-
-func (o DeviceFileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceFileResponse] {
-	return pulumix.Output[[]DeviceFileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceFileResponseArrayOutput) Index(i pulumi.IntInput) DeviceFileResponseOutput {
@@ -3101,12 +2716,6 @@ func (i EnvironmentMatrixArgs) ToEnvironmentMatrixOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentMatrixOutput)
 }
 
-func (i EnvironmentMatrixArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentMatrix] {
-	return pulumix.Output[EnvironmentMatrix]{
-		OutputState: i.ToEnvironmentMatrixOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The matrix of environments in which the test is to be executed.
 type EnvironmentMatrixOutput struct{ *pulumi.OutputState }
 
@@ -3120,12 +2729,6 @@ func (o EnvironmentMatrixOutput) ToEnvironmentMatrixOutput() EnvironmentMatrixOu
 
 func (o EnvironmentMatrixOutput) ToEnvironmentMatrixOutputWithContext(ctx context.Context) EnvironmentMatrixOutput {
 	return o
-}
-
-func (o EnvironmentMatrixOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentMatrix] {
-	return pulumix.Output[EnvironmentMatrix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Android devices; the test will be run only on the specified devices.
@@ -3168,12 +2771,6 @@ func (o EnvironmentMatrixResponseOutput) ToEnvironmentMatrixResponseOutputWithCo
 	return o
 }
 
-func (o EnvironmentMatrixResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentMatrixResponse] {
-	return pulumix.Output[EnvironmentMatrixResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of Android devices; the test will be run only on the specified devices.
 func (o EnvironmentMatrixResponseOutput) AndroidDeviceList() AndroidDeviceListResponseOutput {
 	return o.ApplyT(func(v EnvironmentMatrixResponse) AndroidDeviceListResponse { return v.AndroidDeviceList }).(AndroidDeviceListResponseOutput)
@@ -3210,12 +2807,6 @@ func (o EnvironmentResponseOutput) ToEnvironmentResponseOutput() EnvironmentResp
 
 func (o EnvironmentResponseOutput) ToEnvironmentResponseOutputWithContext(ctx context.Context) EnvironmentResponseOutput {
 	return o
-}
-
-func (o EnvironmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentResponse] {
-	return pulumix.Output[EnvironmentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An Android device which must be used with an Android test.
@@ -3267,12 +2858,6 @@ func (i EnvironmentVariableArgs) ToEnvironmentVariableOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableOutput)
 }
 
-func (i EnvironmentVariableArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVariable] {
-	return pulumix.Output[EnvironmentVariable]{
-		OutputState: i.ToEnvironmentVariableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvironmentVariableArrayInput is an input type that accepts EnvironmentVariableArray and EnvironmentVariableArrayOutput values.
 // You can construct a concrete instance of `EnvironmentVariableArrayInput` via:
 //
@@ -3298,12 +2883,6 @@ func (i EnvironmentVariableArray) ToEnvironmentVariableArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableArrayOutput)
 }
 
-func (i EnvironmentVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentVariable] {
-	return pulumix.Output[[]EnvironmentVariable]{
-		OutputState: i.ToEnvironmentVariableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A key-value pair passed as an environment variable to the test.
 type EnvironmentVariableOutput struct{ *pulumi.OutputState }
 
@@ -3317,12 +2896,6 @@ func (o EnvironmentVariableOutput) ToEnvironmentVariableOutput() EnvironmentVari
 
 func (o EnvironmentVariableOutput) ToEnvironmentVariableOutputWithContext(ctx context.Context) EnvironmentVariableOutput {
 	return o
-}
-
-func (o EnvironmentVariableOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVariable] {
-	return pulumix.Output[EnvironmentVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key for the environment variable.
@@ -3347,12 +2920,6 @@ func (o EnvironmentVariableArrayOutput) ToEnvironmentVariableArrayOutput() Envir
 
 func (o EnvironmentVariableArrayOutput) ToEnvironmentVariableArrayOutputWithContext(ctx context.Context) EnvironmentVariableArrayOutput {
 	return o
-}
-
-func (o EnvironmentVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentVariable] {
-	return pulumix.Output[[]EnvironmentVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentVariableArrayOutput) Index(i pulumi.IntInput) EnvironmentVariableOutput {
@@ -3384,12 +2951,6 @@ func (o EnvironmentVariableResponseOutput) ToEnvironmentVariableResponseOutputWi
 	return o
 }
 
-func (o EnvironmentVariableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVariableResponse] {
-	return pulumix.Output[EnvironmentVariableResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Key for the environment variable.
 func (o EnvironmentVariableResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentVariableResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -3412,12 +2973,6 @@ func (o EnvironmentVariableResponseArrayOutput) ToEnvironmentVariableResponseArr
 
 func (o EnvironmentVariableResponseArrayOutput) ToEnvironmentVariableResponseArrayOutputWithContext(ctx context.Context) EnvironmentVariableResponseArrayOutput {
 	return o
-}
-
-func (o EnvironmentVariableResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentVariableResponse] {
-	return pulumix.Output[[]EnvironmentVariableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentVariableResponseArrayOutput) Index(i pulumi.IntInput) EnvironmentVariableResponseOutput {
@@ -3461,12 +3016,6 @@ func (i FileReferenceArgs) ToFileReferenceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(FileReferenceOutput)
 }
 
-func (i FileReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[FileReference] {
-	return pulumix.Output[FileReference]{
-		OutputState: i.ToFileReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FileReferenceArgs) ToFileReferencePtrOutput() FileReferencePtrOutput {
 	return i.ToFileReferencePtrOutputWithContext(context.Background())
 }
@@ -3508,12 +3057,6 @@ func (i *fileReferencePtrType) ToFileReferencePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FileReferencePtrOutput)
 }
 
-func (i *fileReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*FileReference] {
-	return pulumix.Output[*FileReference]{
-		OutputState: i.ToFileReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FileReferenceArrayInput is an input type that accepts FileReferenceArray and FileReferenceArrayOutput values.
 // You can construct a concrete instance of `FileReferenceArrayInput` via:
 //
@@ -3537,12 +3080,6 @@ func (i FileReferenceArray) ToFileReferenceArrayOutput() FileReferenceArrayOutpu
 
 func (i FileReferenceArray) ToFileReferenceArrayOutputWithContext(ctx context.Context) FileReferenceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileReferenceArrayOutput)
-}
-
-func (i FileReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]FileReference] {
-	return pulumix.Output[[]FileReference]{
-		OutputState: i.ToFileReferenceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A reference to a file, used for user inputs.
@@ -3570,12 +3107,6 @@ func (o FileReferenceOutput) ToFileReferencePtrOutputWithContext(ctx context.Con
 	}).(FileReferencePtrOutput)
 }
 
-func (o FileReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[FileReference] {
-	return pulumix.Output[FileReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
 func (o FileReferenceOutput) GcsPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileReference) *string { return v.GcsPath }).(pulumi.StringPtrOutput)
@@ -3593,12 +3124,6 @@ func (o FileReferencePtrOutput) ToFileReferencePtrOutput() FileReferencePtrOutpu
 
 func (o FileReferencePtrOutput) ToFileReferencePtrOutputWithContext(ctx context.Context) FileReferencePtrOutput {
 	return o
-}
-
-func (o FileReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileReference] {
-	return pulumix.Output[*FileReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileReferencePtrOutput) Elem() FileReferenceOutput {
@@ -3635,12 +3160,6 @@ func (o FileReferenceArrayOutput) ToFileReferenceArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o FileReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FileReference] {
-	return pulumix.Output[[]FileReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FileReferenceArrayOutput) Index(i pulumi.IntInput) FileReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileReference {
 		return vs[0].([]FileReference)[vs[1].(int)]
@@ -3668,12 +3187,6 @@ func (o FileReferenceResponseOutput) ToFileReferenceResponseOutputWithContext(ct
 	return o
 }
 
-func (o FileReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FileReferenceResponse] {
-	return pulumix.Output[FileReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
 func (o FileReferenceResponseOutput) GcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v FileReferenceResponse) string { return v.GcsPath }).(pulumi.StringOutput)
@@ -3691,12 +3204,6 @@ func (o FileReferenceResponseArrayOutput) ToFileReferenceResponseArrayOutput() F
 
 func (o FileReferenceResponseArrayOutput) ToFileReferenceResponseArrayOutputWithContext(ctx context.Context) FileReferenceResponseArrayOutput {
 	return o
-}
-
-func (o FileReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FileReferenceResponse] {
-	return pulumix.Output[[]FileReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileReferenceResponseArrayOutput) Index(i pulumi.IntInput) FileReferenceResponseOutput {
@@ -3734,12 +3241,6 @@ func (i GoogleAutoArgs) ToGoogleAutoOutput() GoogleAutoOutput {
 
 func (i GoogleAutoArgs) ToGoogleAutoOutputWithContext(ctx context.Context) GoogleAutoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleAutoOutput)
-}
-
-func (i GoogleAutoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleAuto] {
-	return pulumix.Output[GoogleAuto]{
-		OutputState: i.ToGoogleAutoOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleAutoArgs) ToGoogleAutoPtrOutput() GoogleAutoPtrOutput {
@@ -3783,12 +3284,6 @@ func (i *googleAutoPtrType) ToGoogleAutoPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleAutoPtrOutput)
 }
 
-func (i *googleAutoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleAuto] {
-	return pulumix.Output[*GoogleAuto]{
-		OutputState: i.ToGoogleAutoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enables automatic Google account login. If set, the service automatically generates a Google test account and adds it to the device, before executing the test. Note that test accounts might be reused. Many applications show their full set of functionalities when an account is present on the device. Logging into the device with these generated accounts allows testing more functionalities.
 type GoogleAutoOutput struct{ *pulumi.OutputState }
 
@@ -3814,12 +3309,6 @@ func (o GoogleAutoOutput) ToGoogleAutoPtrOutputWithContext(ctx context.Context) 
 	}).(GoogleAutoPtrOutput)
 }
 
-func (o GoogleAutoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleAuto] {
-	return pulumix.Output[GoogleAuto]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleAutoPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleAutoPtrOutput) ElementType() reflect.Type {
@@ -3832,12 +3321,6 @@ func (o GoogleAutoPtrOutput) ToGoogleAutoPtrOutput() GoogleAutoPtrOutput {
 
 func (o GoogleAutoPtrOutput) ToGoogleAutoPtrOutputWithContext(ctx context.Context) GoogleAutoPtrOutput {
 	return o
-}
-
-func (o GoogleAutoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleAuto] {
-	return pulumix.Output[*GoogleAuto]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleAutoPtrOutput) Elem() GoogleAutoOutput {
@@ -3867,12 +3350,6 @@ func (o GoogleAutoResponseOutput) ToGoogleAutoResponseOutput() GoogleAutoRespons
 
 func (o GoogleAutoResponseOutput) ToGoogleAutoResponseOutputWithContext(ctx context.Context) GoogleAutoResponseOutput {
 	return o
-}
-
-func (o GoogleAutoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleAutoResponse] {
-	return pulumix.Output[GoogleAutoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A storage location within Google cloud storage (GCS).
@@ -3910,12 +3387,6 @@ func (i GoogleCloudStorageArgs) ToGoogleCloudStorageOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudStorageOutput)
 }
 
-func (i GoogleCloudStorageArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudStorage] {
-	return pulumix.Output[GoogleCloudStorage]{
-		OutputState: i.ToGoogleCloudStorageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A storage location within Google cloud storage (GCS).
 type GoogleCloudStorageOutput struct{ *pulumi.OutputState }
 
@@ -3929,12 +3400,6 @@ func (o GoogleCloudStorageOutput) ToGoogleCloudStorageOutput() GoogleCloudStorag
 
 func (o GoogleCloudStorageOutput) ToGoogleCloudStorageOutputWithContext(ctx context.Context) GoogleCloudStorageOutput {
 	return o
-}
-
-func (o GoogleCloudStorageOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudStorage] {
-	return pulumix.Output[GoogleCloudStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
@@ -3961,12 +3426,6 @@ func (o GoogleCloudStorageResponseOutput) ToGoogleCloudStorageResponseOutput() G
 
 func (o GoogleCloudStorageResponseOutput) ToGoogleCloudStorageResponseOutputWithContext(ctx context.Context) GoogleCloudStorageResponseOutput {
 	return o
-}
-
-func (o GoogleCloudStorageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudStorageResponse] {
-	return pulumix.Output[GoogleCloudStorageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
@@ -4021,12 +3480,6 @@ func (i IosDeviceArgs) ToIosDeviceOutputWithContext(ctx context.Context) IosDevi
 	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceOutput)
 }
 
-func (i IosDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[IosDevice] {
-	return pulumix.Output[IosDevice]{
-		OutputState: i.ToIosDeviceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IosDeviceArrayInput is an input type that accepts IosDeviceArray and IosDeviceArrayOutput values.
 // You can construct a concrete instance of `IosDeviceArrayInput` via:
 //
@@ -4052,12 +3505,6 @@ func (i IosDeviceArray) ToIosDeviceArrayOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceArrayOutput)
 }
 
-func (i IosDeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]IosDevice] {
-	return pulumix.Output[[]IosDevice]{
-		OutputState: i.ToIosDeviceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A single iOS device.
 type IosDeviceOutput struct{ *pulumi.OutputState }
 
@@ -4071,12 +3518,6 @@ func (o IosDeviceOutput) ToIosDeviceOutput() IosDeviceOutput {
 
 func (o IosDeviceOutput) ToIosDeviceOutputWithContext(ctx context.Context) IosDeviceOutput {
 	return o
-}
-
-func (o IosDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[IosDevice] {
-	return pulumix.Output[IosDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -4111,12 +3552,6 @@ func (o IosDeviceArrayOutput) ToIosDeviceArrayOutput() IosDeviceArrayOutput {
 
 func (o IosDeviceArrayOutput) ToIosDeviceArrayOutputWithContext(ctx context.Context) IosDeviceArrayOutput {
 	return o
-}
-
-func (o IosDeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IosDevice] {
-	return pulumix.Output[[]IosDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IosDeviceArrayOutput) Index(i pulumi.IntInput) IosDeviceOutput {
@@ -4168,12 +3603,6 @@ func (i IosDeviceFileArgs) ToIosDeviceFileOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceFileOutput)
 }
 
-func (i IosDeviceFileArgs) ToOutput(ctx context.Context) pulumix.Output[IosDeviceFile] {
-	return pulumix.Output[IosDeviceFile]{
-		OutputState: i.ToIosDeviceFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IosDeviceFileArrayInput is an input type that accepts IosDeviceFileArray and IosDeviceFileArrayOutput values.
 // You can construct a concrete instance of `IosDeviceFileArrayInput` via:
 //
@@ -4199,12 +3628,6 @@ func (i IosDeviceFileArray) ToIosDeviceFileArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceFileArrayOutput)
 }
 
-func (i IosDeviceFileArray) ToOutput(ctx context.Context) pulumix.Output[[]IosDeviceFile] {
-	return pulumix.Output[[]IosDeviceFile]{
-		OutputState: i.ToIosDeviceFileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A file or directory to install on the device before the test starts.
 type IosDeviceFileOutput struct{ *pulumi.OutputState }
 
@@ -4218,12 +3641,6 @@ func (o IosDeviceFileOutput) ToIosDeviceFileOutput() IosDeviceFileOutput {
 
 func (o IosDeviceFileOutput) ToIosDeviceFileOutputWithContext(ctx context.Context) IosDeviceFileOutput {
 	return o
-}
-
-func (o IosDeviceFileOutput) ToOutput(ctx context.Context) pulumix.Output[IosDeviceFile] {
-	return pulumix.Output[IosDeviceFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files must specify which app installed on the device.
@@ -4253,12 +3670,6 @@ func (o IosDeviceFileArrayOutput) ToIosDeviceFileArrayOutput() IosDeviceFileArra
 
 func (o IosDeviceFileArrayOutput) ToIosDeviceFileArrayOutputWithContext(ctx context.Context) IosDeviceFileArrayOutput {
 	return o
-}
-
-func (o IosDeviceFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IosDeviceFile] {
-	return pulumix.Output[[]IosDeviceFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IosDeviceFileArrayOutput) Index(i pulumi.IntInput) IosDeviceFileOutput {
@@ -4292,12 +3703,6 @@ func (o IosDeviceFileResponseOutput) ToIosDeviceFileResponseOutputWithContext(ct
 	return o
 }
 
-func (o IosDeviceFileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IosDeviceFileResponse] {
-	return pulumix.Output[IosDeviceFileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files must specify which app installed on the device.
 func (o IosDeviceFileResponseOutput) BundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v IosDeviceFileResponse) string { return v.BundleId }).(pulumi.StringOutput)
@@ -4325,12 +3730,6 @@ func (o IosDeviceFileResponseArrayOutput) ToIosDeviceFileResponseArrayOutput() I
 
 func (o IosDeviceFileResponseArrayOutput) ToIosDeviceFileResponseArrayOutputWithContext(ctx context.Context) IosDeviceFileResponseArrayOutput {
 	return o
-}
-
-func (o IosDeviceFileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IosDeviceFileResponse] {
-	return pulumix.Output[[]IosDeviceFileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IosDeviceFileResponseArrayOutput) Index(i pulumi.IntInput) IosDeviceFileResponseOutput {
@@ -4374,12 +3773,6 @@ func (i IosDeviceListArgs) ToIosDeviceListOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceListOutput)
 }
 
-func (i IosDeviceListArgs) ToOutput(ctx context.Context) pulumix.Output[IosDeviceList] {
-	return pulumix.Output[IosDeviceList]{
-		OutputState: i.ToIosDeviceListOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IosDeviceListArgs) ToIosDeviceListPtrOutput() IosDeviceListPtrOutput {
 	return i.ToIosDeviceListPtrOutputWithContext(context.Background())
 }
@@ -4421,12 +3814,6 @@ func (i *iosDeviceListPtrType) ToIosDeviceListPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(IosDeviceListPtrOutput)
 }
 
-func (i *iosDeviceListPtrType) ToOutput(ctx context.Context) pulumix.Output[*IosDeviceList] {
-	return pulumix.Output[*IosDeviceList]{
-		OutputState: i.ToIosDeviceListPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A list of iOS device configurations in which the test is to be executed.
 type IosDeviceListOutput struct{ *pulumi.OutputState }
 
@@ -4452,12 +3839,6 @@ func (o IosDeviceListOutput) ToIosDeviceListPtrOutputWithContext(ctx context.Con
 	}).(IosDeviceListPtrOutput)
 }
 
-func (o IosDeviceListOutput) ToOutput(ctx context.Context) pulumix.Output[IosDeviceList] {
-	return pulumix.Output[IosDeviceList]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of iOS devices.
 func (o IosDeviceListOutput) IosDevices() IosDeviceArrayOutput {
 	return o.ApplyT(func(v IosDeviceList) []IosDevice { return v.IosDevices }).(IosDeviceArrayOutput)
@@ -4475,12 +3856,6 @@ func (o IosDeviceListPtrOutput) ToIosDeviceListPtrOutput() IosDeviceListPtrOutpu
 
 func (o IosDeviceListPtrOutput) ToIosDeviceListPtrOutputWithContext(ctx context.Context) IosDeviceListPtrOutput {
 	return o
-}
-
-func (o IosDeviceListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IosDeviceList] {
-	return pulumix.Output[*IosDeviceList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IosDeviceListPtrOutput) Elem() IosDeviceListOutput {
@@ -4524,12 +3899,6 @@ func (o IosDeviceListResponseOutput) ToIosDeviceListResponseOutputWithContext(ct
 	return o
 }
 
-func (o IosDeviceListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IosDeviceListResponse] {
-	return pulumix.Output[IosDeviceListResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of iOS devices.
 func (o IosDeviceListResponseOutput) IosDevices() IosDeviceResponseArrayOutput {
 	return o.ApplyT(func(v IosDeviceListResponse) []IosDeviceResponse { return v.IosDevices }).(IosDeviceResponseArrayOutput)
@@ -4560,12 +3929,6 @@ func (o IosDeviceResponseOutput) ToIosDeviceResponseOutput() IosDeviceResponseOu
 
 func (o IosDeviceResponseOutput) ToIosDeviceResponseOutputWithContext(ctx context.Context) IosDeviceResponseOutput {
 	return o
-}
-
-func (o IosDeviceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IosDeviceResponse] {
-	return pulumix.Output[IosDeviceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -4600,12 +3963,6 @@ func (o IosDeviceResponseArrayOutput) ToIosDeviceResponseArrayOutput() IosDevice
 
 func (o IosDeviceResponseArrayOutput) ToIosDeviceResponseArrayOutputWithContext(ctx context.Context) IosDeviceResponseArrayOutput {
 	return o
-}
-
-func (o IosDeviceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IosDeviceResponse] {
-	return pulumix.Output[[]IosDeviceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IosDeviceResponseArrayOutput) Index(i pulumi.IntInput) IosDeviceResponseOutput {
@@ -4657,12 +4014,6 @@ func (i IosRoboTestArgs) ToIosRoboTestOutputWithContext(ctx context.Context) Ios
 	return pulumi.ToOutputWithContext(ctx, i).(IosRoboTestOutput)
 }
 
-func (i IosRoboTestArgs) ToOutput(ctx context.Context) pulumix.Output[IosRoboTest] {
-	return pulumix.Output[IosRoboTest]{
-		OutputState: i.ToIosRoboTestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IosRoboTestArgs) ToIosRoboTestPtrOutput() IosRoboTestPtrOutput {
 	return i.ToIosRoboTestPtrOutputWithContext(context.Background())
 }
@@ -4704,12 +4055,6 @@ func (i *iosRoboTestPtrType) ToIosRoboTestPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IosRoboTestPtrOutput)
 }
 
-func (i *iosRoboTestPtrType) ToOutput(ctx context.Context) pulumix.Output[*IosRoboTest] {
-	return pulumix.Output[*IosRoboTest]{
-		OutputState: i.ToIosRoboTestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A test that explores an iOS application on an iOS device.
 type IosRoboTestOutput struct{ *pulumi.OutputState }
 
@@ -4733,12 +4078,6 @@ func (o IosRoboTestOutput) ToIosRoboTestPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosRoboTest) *IosRoboTest {
 		return &v
 	}).(IosRoboTestPtrOutput)
-}
-
-func (o IosRoboTestOutput) ToOutput(ctx context.Context) pulumix.Output[IosRoboTest] {
-	return pulumix.Output[IosRoboTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
@@ -4768,12 +4107,6 @@ func (o IosRoboTestPtrOutput) ToIosRoboTestPtrOutput() IosRoboTestPtrOutput {
 
 func (o IosRoboTestPtrOutput) ToIosRoboTestPtrOutputWithContext(ctx context.Context) IosRoboTestPtrOutput {
 	return o
-}
-
-func (o IosRoboTestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IosRoboTest] {
-	return pulumix.Output[*IosRoboTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IosRoboTestPtrOutput) Elem() IosRoboTestOutput {
@@ -4841,12 +4174,6 @@ func (o IosRoboTestResponseOutput) ToIosRoboTestResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o IosRoboTestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IosRoboTestResponse] {
-	return pulumix.Output[IosRoboTestResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
 func (o IosRoboTestResponseOutput) AppBundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v IosRoboTestResponse) string { return v.AppBundleId }).(pulumi.StringOutput)
@@ -4901,12 +4228,6 @@ func (i IosTestLoopArgs) ToIosTestLoopOutputWithContext(ctx context.Context) Ios
 	return pulumi.ToOutputWithContext(ctx, i).(IosTestLoopOutput)
 }
 
-func (i IosTestLoopArgs) ToOutput(ctx context.Context) pulumix.Output[IosTestLoop] {
-	return pulumix.Output[IosTestLoop]{
-		OutputState: i.ToIosTestLoopOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IosTestLoopArgs) ToIosTestLoopPtrOutput() IosTestLoopPtrOutput {
 	return i.ToIosTestLoopPtrOutputWithContext(context.Background())
 }
@@ -4948,12 +4269,6 @@ func (i *iosTestLoopPtrType) ToIosTestLoopPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IosTestLoopPtrOutput)
 }
 
-func (i *iosTestLoopPtrType) ToOutput(ctx context.Context) pulumix.Output[*IosTestLoop] {
-	return pulumix.Output[*IosTestLoop]{
-		OutputState: i.ToIosTestLoopPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
 type IosTestLoopOutput struct{ *pulumi.OutputState }
 
@@ -4979,12 +4294,6 @@ func (o IosTestLoopOutput) ToIosTestLoopPtrOutputWithContext(ctx context.Context
 	}).(IosTestLoopPtrOutput)
 }
 
-func (o IosTestLoopOutput) ToOutput(ctx context.Context) pulumix.Output[IosTestLoop] {
-	return pulumix.Output[IosTestLoop]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The .ipa of the application to test.
 func (o IosTestLoopOutput) AppIpa() FileReferenceOutput {
 	return o.ApplyT(func(v IosTestLoop) FileReference { return v.AppIpa }).(FileReferenceOutput)
@@ -5007,12 +4316,6 @@ func (o IosTestLoopPtrOutput) ToIosTestLoopPtrOutput() IosTestLoopPtrOutput {
 
 func (o IosTestLoopPtrOutput) ToIosTestLoopPtrOutputWithContext(ctx context.Context) IosTestLoopPtrOutput {
 	return o
-}
-
-func (o IosTestLoopPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IosTestLoop] {
-	return pulumix.Output[*IosTestLoop]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IosTestLoopPtrOutput) Elem() IosTestLoopOutput {
@@ -5068,12 +4371,6 @@ func (o IosTestLoopResponseOutput) ToIosTestLoopResponseOutput() IosTestLoopResp
 
 func (o IosTestLoopResponseOutput) ToIosTestLoopResponseOutputWithContext(ctx context.Context) IosTestLoopResponseOutput {
 	return o
-}
-
-func (o IosTestLoopResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IosTestLoopResponse] {
-	return pulumix.Output[IosTestLoopResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bundle id for the application under test.
@@ -5138,12 +4435,6 @@ func (i IosTestSetupArgs) ToIosTestSetupOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IosTestSetupOutput)
 }
 
-func (i IosTestSetupArgs) ToOutput(ctx context.Context) pulumix.Output[IosTestSetup] {
-	return pulumix.Output[IosTestSetup]{
-		OutputState: i.ToIosTestSetupOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IosTestSetupArgs) ToIosTestSetupPtrOutput() IosTestSetupPtrOutput {
 	return i.ToIosTestSetupPtrOutputWithContext(context.Background())
 }
@@ -5185,12 +4476,6 @@ func (i *iosTestSetupPtrType) ToIosTestSetupPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(IosTestSetupPtrOutput)
 }
 
-func (i *iosTestSetupPtrType) ToOutput(ctx context.Context) pulumix.Output[*IosTestSetup] {
-	return pulumix.Output[*IosTestSetup]{
-		OutputState: i.ToIosTestSetupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A description of how to set up an iOS device prior to running the test.
 type IosTestSetupOutput struct{ *pulumi.OutputState }
 
@@ -5214,12 +4499,6 @@ func (o IosTestSetupOutput) ToIosTestSetupPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosTestSetup) *IosTestSetup {
 		return &v
 	}).(IosTestSetupPtrOutput)
-}
-
-func (o IosTestSetupOutput) ToOutput(ctx context.Context) pulumix.Output[IosTestSetup] {
-	return pulumix.Output[IosTestSetup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // iOS apps to install in addition to those being directly tested.
@@ -5254,12 +4533,6 @@ func (o IosTestSetupPtrOutput) ToIosTestSetupPtrOutput() IosTestSetupPtrOutput {
 
 func (o IosTestSetupPtrOutput) ToIosTestSetupPtrOutputWithContext(ctx context.Context) IosTestSetupPtrOutput {
 	return o
-}
-
-func (o IosTestSetupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IosTestSetup] {
-	return pulumix.Output[*IosTestSetup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IosTestSetupPtrOutput) Elem() IosTestSetupOutput {
@@ -5339,12 +4612,6 @@ func (o IosTestSetupResponseOutput) ToIosTestSetupResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o IosTestSetupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IosTestSetupResponse] {
-	return pulumix.Output[IosTestSetupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // iOS apps to install in addition to those being directly tested.
 func (o IosTestSetupResponseOutput) AdditionalIpas() FileReferenceResponseArrayOutput {
 	return o.ApplyT(func(v IosTestSetupResponse) []FileReferenceResponse { return v.AdditionalIpas }).(FileReferenceResponseArrayOutput)
@@ -5412,12 +4679,6 @@ func (i IosXcTestArgs) ToIosXcTestOutputWithContext(ctx context.Context) IosXcTe
 	return pulumi.ToOutputWithContext(ctx, i).(IosXcTestOutput)
 }
 
-func (i IosXcTestArgs) ToOutput(ctx context.Context) pulumix.Output[IosXcTest] {
-	return pulumix.Output[IosXcTest]{
-		OutputState: i.ToIosXcTestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IosXcTestArgs) ToIosXcTestPtrOutput() IosXcTestPtrOutput {
 	return i.ToIosXcTestPtrOutputWithContext(context.Background())
 }
@@ -5459,12 +4720,6 @@ func (i *iosXcTestPtrType) ToIosXcTestPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(IosXcTestPtrOutput)
 }
 
-func (i *iosXcTestPtrType) ToOutput(ctx context.Context) pulumix.Output[*IosXcTest] {
-	return pulumix.Output[*IosXcTest]{
-		OutputState: i.ToIosXcTestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.
 type IosXcTestOutput struct{ *pulumi.OutputState }
 
@@ -5488,12 +4743,6 @@ func (o IosXcTestOutput) ToIosXcTestPtrOutputWithContext(ctx context.Context) Io
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosXcTest) *IosXcTest {
 		return &v
 	}).(IosXcTestPtrOutput)
-}
-
-func (o IosXcTestOutput) ToOutput(ctx context.Context) pulumix.Output[IosXcTest] {
-	return pulumix.Output[IosXcTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
@@ -5528,12 +4777,6 @@ func (o IosXcTestPtrOutput) ToIosXcTestPtrOutput() IosXcTestPtrOutput {
 
 func (o IosXcTestPtrOutput) ToIosXcTestPtrOutputWithContext(ctx context.Context) IosXcTestPtrOutput {
 	return o
-}
-
-func (o IosXcTestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IosXcTest] {
-	return pulumix.Output[*IosXcTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IosXcTestPtrOutput) Elem() IosXcTestOutput {
@@ -5615,12 +4858,6 @@ func (o IosXcTestResponseOutput) ToIosXcTestResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o IosXcTestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IosXcTestResponse] {
-	return pulumix.Output[IosXcTestResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The bundle id for the application under test.
 func (o IosXcTestResponseOutput) AppBundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v IosXcTestResponse) string { return v.AppBundleId }).(pulumi.StringOutput)
@@ -5677,12 +4914,6 @@ func (i LauncherActivityIntentArgs) ToLauncherActivityIntentOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(LauncherActivityIntentOutput)
 }
 
-func (i LauncherActivityIntentArgs) ToOutput(ctx context.Context) pulumix.Output[LauncherActivityIntent] {
-	return pulumix.Output[LauncherActivityIntent]{
-		OutputState: i.ToLauncherActivityIntentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LauncherActivityIntentArgs) ToLauncherActivityIntentPtrOutput() LauncherActivityIntentPtrOutput {
 	return i.ToLauncherActivityIntentPtrOutputWithContext(context.Background())
 }
@@ -5724,12 +4955,6 @@ func (i *launcherActivityIntentPtrType) ToLauncherActivityIntentPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(LauncherActivityIntentPtrOutput)
 }
 
-func (i *launcherActivityIntentPtrType) ToOutput(ctx context.Context) pulumix.Output[*LauncherActivityIntent] {
-	return pulumix.Output[*LauncherActivityIntent]{
-		OutputState: i.ToLauncherActivityIntentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies an intent that starts the main launcher activity.
 type LauncherActivityIntentOutput struct{ *pulumi.OutputState }
 
@@ -5755,12 +4980,6 @@ func (o LauncherActivityIntentOutput) ToLauncherActivityIntentPtrOutputWithConte
 	}).(LauncherActivityIntentPtrOutput)
 }
 
-func (o LauncherActivityIntentOutput) ToOutput(ctx context.Context) pulumix.Output[LauncherActivityIntent] {
-	return pulumix.Output[LauncherActivityIntent]{
-		OutputState: o.OutputState,
-	}
-}
-
 type LauncherActivityIntentPtrOutput struct{ *pulumi.OutputState }
 
 func (LauncherActivityIntentPtrOutput) ElementType() reflect.Type {
@@ -5773,12 +4992,6 @@ func (o LauncherActivityIntentPtrOutput) ToLauncherActivityIntentPtrOutput() Lau
 
 func (o LauncherActivityIntentPtrOutput) ToLauncherActivityIntentPtrOutputWithContext(ctx context.Context) LauncherActivityIntentPtrOutput {
 	return o
-}
-
-func (o LauncherActivityIntentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LauncherActivityIntent] {
-	return pulumix.Output[*LauncherActivityIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LauncherActivityIntentPtrOutput) Elem() LauncherActivityIntentOutput {
@@ -5808,12 +5021,6 @@ func (o LauncherActivityIntentResponseOutput) ToLauncherActivityIntentResponseOu
 
 func (o LauncherActivityIntentResponseOutput) ToLauncherActivityIntentResponseOutputWithContext(ctx context.Context) LauncherActivityIntentResponseOutput {
 	return o
-}
-
-func (o LauncherActivityIntentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LauncherActivityIntentResponse] {
-	return pulumix.Output[LauncherActivityIntentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
@@ -5849,12 +5056,6 @@ func (i ManualShardingArgs) ToManualShardingOutput() ManualShardingOutput {
 
 func (i ManualShardingArgs) ToManualShardingOutputWithContext(ctx context.Context) ManualShardingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManualShardingOutput)
-}
-
-func (i ManualShardingArgs) ToOutput(ctx context.Context) pulumix.Output[ManualSharding] {
-	return pulumix.Output[ManualSharding]{
-		OutputState: i.ToManualShardingOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ManualShardingArgs) ToManualShardingPtrOutput() ManualShardingPtrOutput {
@@ -5898,12 +5099,6 @@ func (i *manualShardingPtrType) ToManualShardingPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ManualShardingPtrOutput)
 }
 
-func (i *manualShardingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManualSharding] {
-	return pulumix.Output[*ManualSharding]{
-		OutputState: i.ToManualShardingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualShardingOutput struct{ *pulumi.OutputState }
 
@@ -5929,12 +5124,6 @@ func (o ManualShardingOutput) ToManualShardingPtrOutputWithContext(ctx context.C
 	}).(ManualShardingPtrOutput)
 }
 
-func (o ManualShardingOutput) ToOutput(ctx context.Context) pulumix.Output[ManualSharding] {
-	return pulumix.Output[ManualSharding]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 func (o ManualShardingOutput) TestTargetsForShard() TestTargetsForShardArrayOutput {
 	return o.ApplyT(func(v ManualSharding) []TestTargetsForShard { return v.TestTargetsForShard }).(TestTargetsForShardArrayOutput)
@@ -5952,12 +5141,6 @@ func (o ManualShardingPtrOutput) ToManualShardingPtrOutput() ManualShardingPtrOu
 
 func (o ManualShardingPtrOutput) ToManualShardingPtrOutputWithContext(ctx context.Context) ManualShardingPtrOutput {
 	return o
-}
-
-func (o ManualShardingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManualSharding] {
-	return pulumix.Output[*ManualSharding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManualShardingPtrOutput) Elem() ManualShardingOutput {
@@ -6001,12 +5184,6 @@ func (o ManualShardingResponseOutput) ToManualShardingResponseOutputWithContext(
 	return o
 }
 
-func (o ManualShardingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManualShardingResponse] {
-	return pulumix.Output[ManualShardingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 func (o ManualShardingResponseOutput) TestTargetsForShard() TestTargetsForShardResponseArrayOutput {
 	return o.ApplyT(func(v ManualShardingResponse) []TestTargetsForShardResponse { return v.TestTargetsForShard }).(TestTargetsForShardResponseArrayOutput)
@@ -6041,12 +5218,6 @@ func (i NoActivityIntentArgs) ToNoActivityIntentOutput() NoActivityIntentOutput 
 
 func (i NoActivityIntentArgs) ToNoActivityIntentOutputWithContext(ctx context.Context) NoActivityIntentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoActivityIntentOutput)
-}
-
-func (i NoActivityIntentArgs) ToOutput(ctx context.Context) pulumix.Output[NoActivityIntent] {
-	return pulumix.Output[NoActivityIntent]{
-		OutputState: i.ToNoActivityIntentOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i NoActivityIntentArgs) ToNoActivityIntentPtrOutput() NoActivityIntentPtrOutput {
@@ -6090,12 +5261,6 @@ func (i *noActivityIntentPtrType) ToNoActivityIntentPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(NoActivityIntentPtrOutput)
 }
 
-func (i *noActivityIntentPtrType) ToOutput(ctx context.Context) pulumix.Output[*NoActivityIntent] {
-	return pulumix.Output[*NoActivityIntent]{
-		OutputState: i.ToNoActivityIntentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Skips the starting activity
 type NoActivityIntentOutput struct{ *pulumi.OutputState }
 
@@ -6121,12 +5286,6 @@ func (o NoActivityIntentOutput) ToNoActivityIntentPtrOutputWithContext(ctx conte
 	}).(NoActivityIntentPtrOutput)
 }
 
-func (o NoActivityIntentOutput) ToOutput(ctx context.Context) pulumix.Output[NoActivityIntent] {
-	return pulumix.Output[NoActivityIntent]{
-		OutputState: o.OutputState,
-	}
-}
-
 type NoActivityIntentPtrOutput struct{ *pulumi.OutputState }
 
 func (NoActivityIntentPtrOutput) ElementType() reflect.Type {
@@ -6139,12 +5298,6 @@ func (o NoActivityIntentPtrOutput) ToNoActivityIntentPtrOutput() NoActivityInten
 
 func (o NoActivityIntentPtrOutput) ToNoActivityIntentPtrOutputWithContext(ctx context.Context) NoActivityIntentPtrOutput {
 	return o
-}
-
-func (o NoActivityIntentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NoActivityIntent] {
-	return pulumix.Output[*NoActivityIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NoActivityIntentPtrOutput) Elem() NoActivityIntentOutput {
@@ -6174,12 +5327,6 @@ func (o NoActivityIntentResponseOutput) ToNoActivityIntentResponseOutput() NoAct
 
 func (o NoActivityIntentResponseOutput) ToNoActivityIntentResponseOutputWithContext(ctx context.Context) NoActivityIntentResponseOutput {
 	return o
-}
-
-func (o NoActivityIntentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NoActivityIntentResponse] {
-	return pulumix.Output[NoActivityIntentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An opaque binary blob file to install on the device before the test starts.
@@ -6219,12 +5366,6 @@ func (i ObbFileArgs) ToObbFileOutput() ObbFileOutput {
 
 func (i ObbFileArgs) ToObbFileOutputWithContext(ctx context.Context) ObbFileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObbFileOutput)
-}
-
-func (i ObbFileArgs) ToOutput(ctx context.Context) pulumix.Output[ObbFile] {
-	return pulumix.Output[ObbFile]{
-		OutputState: i.ToObbFileOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ObbFileArgs) ToObbFilePtrOutput() ObbFilePtrOutput {
@@ -6268,12 +5409,6 @@ func (i *obbFilePtrType) ToObbFilePtrOutputWithContext(ctx context.Context) ObbF
 	return pulumi.ToOutputWithContext(ctx, i).(ObbFilePtrOutput)
 }
 
-func (i *obbFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ObbFile] {
-	return pulumix.Output[*ObbFile]{
-		OutputState: i.ToObbFilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An opaque binary blob file to install on the device before the test starts.
 type ObbFileOutput struct{ *pulumi.OutputState }
 
@@ -6299,12 +5434,6 @@ func (o ObbFileOutput) ToObbFilePtrOutputWithContext(ctx context.Context) ObbFil
 	}).(ObbFilePtrOutput)
 }
 
-func (o ObbFileOutput) ToOutput(ctx context.Context) pulumix.Output[ObbFile] {
-	return pulumix.Output[ObbFile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Opaque Binary Blob (OBB) file(s) to install on the device.
 func (o ObbFileOutput) Obb() FileReferenceOutput {
 	return o.ApplyT(func(v ObbFile) FileReference { return v.Obb }).(FileReferenceOutput)
@@ -6327,12 +5456,6 @@ func (o ObbFilePtrOutput) ToObbFilePtrOutput() ObbFilePtrOutput {
 
 func (o ObbFilePtrOutput) ToObbFilePtrOutputWithContext(ctx context.Context) ObbFilePtrOutput {
 	return o
-}
-
-func (o ObbFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ObbFile] {
-	return pulumix.Output[*ObbFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ObbFilePtrOutput) Elem() ObbFileOutput {
@@ -6388,12 +5511,6 @@ func (o ObbFileResponseOutput) ToObbFileResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ObbFileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ObbFileResponse] {
-	return pulumix.Output[ObbFileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Opaque Binary Blob (OBB) file(s) to install on the device.
 func (o ObbFileResponseOutput) Obb() FileReferenceResponseOutput {
 	return o.ApplyT(func(v ObbFileResponse) FileReferenceResponse { return v.Obb }).(FileReferenceResponseOutput)
@@ -6443,12 +5560,6 @@ func (i RegularFileArgs) ToRegularFileOutputWithContext(ctx context.Context) Reg
 	return pulumi.ToOutputWithContext(ctx, i).(RegularFileOutput)
 }
 
-func (i RegularFileArgs) ToOutput(ctx context.Context) pulumix.Output[RegularFile] {
-	return pulumix.Output[RegularFile]{
-		OutputState: i.ToRegularFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RegularFileArgs) ToRegularFilePtrOutput() RegularFilePtrOutput {
 	return i.ToRegularFilePtrOutputWithContext(context.Background())
 }
@@ -6490,12 +5601,6 @@ func (i *regularFilePtrType) ToRegularFilePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegularFilePtrOutput)
 }
 
-func (i *regularFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*RegularFile] {
-	return pulumix.Output[*RegularFile]{
-		OutputState: i.ToRegularFilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A file or directory to install on the device before the test starts.
 type RegularFileOutput struct{ *pulumi.OutputState }
 
@@ -6521,12 +5626,6 @@ func (o RegularFileOutput) ToRegularFilePtrOutputWithContext(ctx context.Context
 	}).(RegularFilePtrOutput)
 }
 
-func (o RegularFileOutput) ToOutput(ctx context.Context) pulumix.Output[RegularFile] {
-	return pulumix.Output[RegularFile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The source file.
 func (o RegularFileOutput) Content() FileReferenceOutput {
 	return o.ApplyT(func(v RegularFile) FileReference { return v.Content }).(FileReferenceOutput)
@@ -6549,12 +5648,6 @@ func (o RegularFilePtrOutput) ToRegularFilePtrOutput() RegularFilePtrOutput {
 
 func (o RegularFilePtrOutput) ToRegularFilePtrOutputWithContext(ctx context.Context) RegularFilePtrOutput {
 	return o
-}
-
-func (o RegularFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegularFile] {
-	return pulumix.Output[*RegularFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegularFilePtrOutput) Elem() RegularFileOutput {
@@ -6610,12 +5703,6 @@ func (o RegularFileResponseOutput) ToRegularFileResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o RegularFileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RegularFileResponse] {
-	return pulumix.Output[RegularFileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The source file.
 func (o RegularFileResponseOutput) Content() FileReferenceResponseOutput {
 	return o.ApplyT(func(v RegularFileResponse) FileReferenceResponse { return v.Content }).(FileReferenceResponseOutput)
@@ -6665,12 +5752,6 @@ func (i ResultStorageArgs) ToResultStorageOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResultStorageOutput)
 }
 
-func (i ResultStorageArgs) ToOutput(ctx context.Context) pulumix.Output[ResultStorage] {
-	return pulumix.Output[ResultStorage]{
-		OutputState: i.ToResultStorageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Locations where the results of running the test are stored.
 type ResultStorageOutput struct{ *pulumi.OutputState }
 
@@ -6684,12 +5765,6 @@ func (o ResultStorageOutput) ToResultStorageOutput() ResultStorageOutput {
 
 func (o ResultStorageOutput) ToResultStorageOutputWithContext(ctx context.Context) ResultStorageOutput {
 	return o
-}
-
-func (o ResultStorageOutput) ToOutput(ctx context.Context) pulumix.Output[ResultStorage] {
-	return pulumix.Output[ResultStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required.
@@ -6727,12 +5802,6 @@ func (o ResultStorageResponseOutput) ToResultStorageResponseOutput() ResultStora
 
 func (o ResultStorageResponseOutput) ToResultStorageResponseOutputWithContext(ctx context.Context) ResultStorageResponseOutput {
 	return o
-}
-
-func (o ResultStorageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResultStorageResponse] {
-	return pulumix.Output[ResultStorageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required.
@@ -6798,12 +5867,6 @@ func (i RoboDirectiveArgs) ToRoboDirectiveOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RoboDirectiveOutput)
 }
 
-func (i RoboDirectiveArgs) ToOutput(ctx context.Context) pulumix.Output[RoboDirective] {
-	return pulumix.Output[RoboDirective]{
-		OutputState: i.ToRoboDirectiveOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RoboDirectiveArrayInput is an input type that accepts RoboDirectiveArray and RoboDirectiveArrayOutput values.
 // You can construct a concrete instance of `RoboDirectiveArrayInput` via:
 //
@@ -6829,12 +5892,6 @@ func (i RoboDirectiveArray) ToRoboDirectiveArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RoboDirectiveArrayOutput)
 }
 
-func (i RoboDirectiveArray) ToOutput(ctx context.Context) pulumix.Output[[]RoboDirective] {
-	return pulumix.Output[[]RoboDirective]{
-		OutputState: i.ToRoboDirectiveArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
 type RoboDirectiveOutput struct{ *pulumi.OutputState }
 
@@ -6848,12 +5905,6 @@ func (o RoboDirectiveOutput) ToRoboDirectiveOutput() RoboDirectiveOutput {
 
 func (o RoboDirectiveOutput) ToRoboDirectiveOutputWithContext(ctx context.Context) RoboDirectiveOutput {
 	return o
-}
-
-func (o RoboDirectiveOutput) ToOutput(ctx context.Context) pulumix.Output[RoboDirective] {
-	return pulumix.Output[RoboDirective]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of action that Robo should perform on the specified element.
@@ -6883,12 +5934,6 @@ func (o RoboDirectiveArrayOutput) ToRoboDirectiveArrayOutput() RoboDirectiveArra
 
 func (o RoboDirectiveArrayOutput) ToRoboDirectiveArrayOutputWithContext(ctx context.Context) RoboDirectiveArrayOutput {
 	return o
-}
-
-func (o RoboDirectiveArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoboDirective] {
-	return pulumix.Output[[]RoboDirective]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoboDirectiveArrayOutput) Index(i pulumi.IntInput) RoboDirectiveOutput {
@@ -6922,12 +5967,6 @@ func (o RoboDirectiveResponseOutput) ToRoboDirectiveResponseOutputWithContext(ct
 	return o
 }
 
-func (o RoboDirectiveResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RoboDirectiveResponse] {
-	return pulumix.Output[RoboDirectiveResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of action that Robo should perform on the specified element.
 func (o RoboDirectiveResponseOutput) ActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v RoboDirectiveResponse) string { return v.ActionType }).(pulumi.StringOutput)
@@ -6955,12 +5994,6 @@ func (o RoboDirectiveResponseArrayOutput) ToRoboDirectiveResponseArrayOutput() R
 
 func (o RoboDirectiveResponseArrayOutput) ToRoboDirectiveResponseArrayOutputWithContext(ctx context.Context) RoboDirectiveResponseArrayOutput {
 	return o
-}
-
-func (o RoboDirectiveResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoboDirectiveResponse] {
-	return pulumix.Output[[]RoboDirectiveResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoboDirectiveResponseArrayOutput) Index(i pulumi.IntInput) RoboDirectiveResponseOutput {
@@ -7016,12 +6049,6 @@ func (i RoboStartingIntentArgs) ToRoboStartingIntentOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RoboStartingIntentOutput)
 }
 
-func (i RoboStartingIntentArgs) ToOutput(ctx context.Context) pulumix.Output[RoboStartingIntent] {
-	return pulumix.Output[RoboStartingIntent]{
-		OutputState: i.ToRoboStartingIntentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RoboStartingIntentArrayInput is an input type that accepts RoboStartingIntentArray and RoboStartingIntentArrayOutput values.
 // You can construct a concrete instance of `RoboStartingIntentArrayInput` via:
 //
@@ -7047,12 +6074,6 @@ func (i RoboStartingIntentArray) ToRoboStartingIntentArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RoboStartingIntentArrayOutput)
 }
 
-func (i RoboStartingIntentArray) ToOutput(ctx context.Context) pulumix.Output[[]RoboStartingIntent] {
-	return pulumix.Output[[]RoboStartingIntent]{
-		OutputState: i.ToRoboStartingIntentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Message for specifying the start activities to crawl.
 type RoboStartingIntentOutput struct{ *pulumi.OutputState }
 
@@ -7066,12 +6087,6 @@ func (o RoboStartingIntentOutput) ToRoboStartingIntentOutput() RoboStartingInten
 
 func (o RoboStartingIntentOutput) ToRoboStartingIntentOutputWithContext(ctx context.Context) RoboStartingIntentOutput {
 	return o
-}
-
-func (o RoboStartingIntentOutput) ToOutput(ctx context.Context) pulumix.Output[RoboStartingIntent] {
-	return pulumix.Output[RoboStartingIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An intent that starts the main launcher activity.
@@ -7108,12 +6123,6 @@ func (o RoboStartingIntentArrayOutput) ToRoboStartingIntentArrayOutputWithContex
 	return o
 }
 
-func (o RoboStartingIntentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoboStartingIntent] {
-	return pulumix.Output[[]RoboStartingIntent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoboStartingIntentArrayOutput) Index(i pulumi.IntInput) RoboStartingIntentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoboStartingIntent {
 		return vs[0].([]RoboStartingIntent)[vs[1].(int)]
@@ -7145,12 +6154,6 @@ func (o RoboStartingIntentResponseOutput) ToRoboStartingIntentResponseOutput() R
 
 func (o RoboStartingIntentResponseOutput) ToRoboStartingIntentResponseOutputWithContext(ctx context.Context) RoboStartingIntentResponseOutput {
 	return o
-}
-
-func (o RoboStartingIntentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RoboStartingIntentResponse] {
-	return pulumix.Output[RoboStartingIntentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An intent that starts the main launcher activity.
@@ -7187,12 +6190,6 @@ func (o RoboStartingIntentResponseArrayOutput) ToRoboStartingIntentResponseArray
 	return o
 }
 
-func (o RoboStartingIntentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoboStartingIntentResponse] {
-	return pulumix.Output[[]RoboStartingIntentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoboStartingIntentResponseArrayOutput) Index(i pulumi.IntInput) RoboStartingIntentResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoboStartingIntentResponse {
 		return vs[0].([]RoboStartingIntentResponse)[vs[1].(int)]
@@ -7224,12 +6221,6 @@ func (o SessionStateEventResponseOutput) ToSessionStateEventResponseOutputWithCo
 	return o
 }
 
-func (o SessionStateEventResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SessionStateEventResponse] {
-	return pulumix.Output[SessionStateEventResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The time that the session_state first encountered that state.
 func (o SessionStateEventResponseOutput) EventTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SessionStateEventResponse) string { return v.EventTime }).(pulumi.StringOutput)
@@ -7257,12 +6248,6 @@ func (o SessionStateEventResponseArrayOutput) ToSessionStateEventResponseArrayOu
 
 func (o SessionStateEventResponseArrayOutput) ToSessionStateEventResponseArrayOutputWithContext(ctx context.Context) SessionStateEventResponseArrayOutput {
 	return o
-}
-
-func (o SessionStateEventResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SessionStateEventResponse] {
-	return pulumix.Output[[]SessionStateEventResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SessionStateEventResponseArrayOutput) Index(i pulumi.IntInput) SessionStateEventResponseOutput {
@@ -7296,12 +6281,6 @@ func (o ShardResponseOutput) ToShardResponseOutput() ShardResponseOutput {
 
 func (o ShardResponseOutput) ToShardResponseOutputWithContext(ctx context.Context) ShardResponseOutput {
 	return o
-}
-
-func (o ShardResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ShardResponse] {
-	return pulumix.Output[ShardResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The estimated shard duration based on previous test case timing records, if available.
@@ -7367,12 +6346,6 @@ func (i ShardingOptionArgs) ToShardingOptionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingOptionOutput)
 }
 
-func (i ShardingOptionArgs) ToOutput(ctx context.Context) pulumix.Output[ShardingOption] {
-	return pulumix.Output[ShardingOption]{
-		OutputState: i.ToShardingOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ShardingOptionArgs) ToShardingOptionPtrOutput() ShardingOptionPtrOutput {
 	return i.ToShardingOptionPtrOutputWithContext(context.Background())
 }
@@ -7414,12 +6387,6 @@ func (i *shardingOptionPtrType) ToShardingOptionPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingOptionPtrOutput)
 }
 
-func (i *shardingOptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ShardingOption] {
-	return pulumix.Output[*ShardingOption]{
-		OutputState: i.ToShardingOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Options for enabling sharding.
 type ShardingOptionOutput struct{ *pulumi.OutputState }
 
@@ -7443,12 +6410,6 @@ func (o ShardingOptionOutput) ToShardingOptionPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShardingOption) *ShardingOption {
 		return &v
 	}).(ShardingOptionPtrOutput)
-}
-
-func (o ShardingOptionOutput) ToOutput(ctx context.Context) pulumix.Output[ShardingOption] {
-	return pulumix.Output[ShardingOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Shards test cases into the specified groups of packages, classes, and/or methods.
@@ -7478,12 +6439,6 @@ func (o ShardingOptionPtrOutput) ToShardingOptionPtrOutput() ShardingOptionPtrOu
 
 func (o ShardingOptionPtrOutput) ToShardingOptionPtrOutputWithContext(ctx context.Context) ShardingOptionPtrOutput {
 	return o
-}
-
-func (o ShardingOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ShardingOption] {
-	return pulumix.Output[*ShardingOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ShardingOptionPtrOutput) Elem() ShardingOptionOutput {
@@ -7551,12 +6506,6 @@ func (o ShardingOptionResponseOutput) ToShardingOptionResponseOutputWithContext(
 	return o
 }
 
-func (o ShardingOptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ShardingOptionResponse] {
-	return pulumix.Output[ShardingOptionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Shards test cases into the specified groups of packages, classes, and/or methods.
 func (o ShardingOptionResponseOutput) ManualSharding() ManualShardingResponseOutput {
 	return o.ApplyT(func(v ShardingOptionResponse) ManualShardingResponse { return v.ManualSharding }).(ManualShardingResponseOutput)
@@ -7607,12 +6556,6 @@ func (i SmartShardingArgs) ToSmartShardingOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SmartShardingOutput)
 }
 
-func (i SmartShardingArgs) ToOutput(ctx context.Context) pulumix.Output[SmartSharding] {
-	return pulumix.Output[SmartSharding]{
-		OutputState: i.ToSmartShardingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SmartShardingArgs) ToSmartShardingPtrOutput() SmartShardingPtrOutput {
 	return i.ToSmartShardingPtrOutputWithContext(context.Background())
 }
@@ -7654,12 +6597,6 @@ func (i *smartShardingPtrType) ToSmartShardingPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SmartShardingPtrOutput)
 }
 
-func (i *smartShardingPtrType) ToOutput(ctx context.Context) pulumix.Output[*SmartSharding] {
-	return pulumix.Output[*SmartSharding]{
-		OutputState: i.ToSmartShardingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Shards test based on previous test case timing records.
 type SmartShardingOutput struct{ *pulumi.OutputState }
 
@@ -7685,12 +6622,6 @@ func (o SmartShardingOutput) ToSmartShardingPtrOutputWithContext(ctx context.Con
 	}).(SmartShardingPtrOutput)
 }
 
-func (o SmartShardingOutput) ToOutput(ctx context.Context) pulumix.Output[SmartSharding] {
-	return pulumix.Output[SmartSharding]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.
 func (o SmartShardingOutput) TargetedShardDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SmartSharding) *string { return v.TargetedShardDuration }).(pulumi.StringPtrOutput)
@@ -7708,12 +6639,6 @@ func (o SmartShardingPtrOutput) ToSmartShardingPtrOutput() SmartShardingPtrOutpu
 
 func (o SmartShardingPtrOutput) ToSmartShardingPtrOutputWithContext(ctx context.Context) SmartShardingPtrOutput {
 	return o
-}
-
-func (o SmartShardingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SmartSharding] {
-	return pulumix.Output[*SmartSharding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SmartShardingPtrOutput) Elem() SmartShardingOutput {
@@ -7755,12 +6680,6 @@ func (o SmartShardingResponseOutput) ToSmartShardingResponseOutput() SmartShardi
 
 func (o SmartShardingResponseOutput) ToSmartShardingResponseOutputWithContext(ctx context.Context) SmartShardingResponseOutput {
 	return o
-}
-
-func (o SmartShardingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SmartShardingResponse] {
-	return pulumix.Output[SmartShardingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.
@@ -7811,12 +6730,6 @@ func (i StartActivityIntentArgs) ToStartActivityIntentOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(StartActivityIntentOutput)
 }
 
-func (i StartActivityIntentArgs) ToOutput(ctx context.Context) pulumix.Output[StartActivityIntent] {
-	return pulumix.Output[StartActivityIntent]{
-		OutputState: i.ToStartActivityIntentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StartActivityIntentArgs) ToStartActivityIntentPtrOutput() StartActivityIntentPtrOutput {
 	return i.ToStartActivityIntentPtrOutputWithContext(context.Background())
 }
@@ -7858,12 +6771,6 @@ func (i *startActivityIntentPtrType) ToStartActivityIntentPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(StartActivityIntentPtrOutput)
 }
 
-func (i *startActivityIntentPtrType) ToOutput(ctx context.Context) pulumix.Output[*StartActivityIntent] {
-	return pulumix.Output[*StartActivityIntent]{
-		OutputState: i.ToStartActivityIntentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A starting intent specified by an action, uri, and categories.
 type StartActivityIntentOutput struct{ *pulumi.OutputState }
 
@@ -7887,12 +6794,6 @@ func (o StartActivityIntentOutput) ToStartActivityIntentPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StartActivityIntent) *StartActivityIntent {
 		return &v
 	}).(StartActivityIntentPtrOutput)
-}
-
-func (o StartActivityIntentOutput) ToOutput(ctx context.Context) pulumix.Output[StartActivityIntent] {
-	return pulumix.Output[StartActivityIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action name. Required for START_ACTIVITY.
@@ -7922,12 +6823,6 @@ func (o StartActivityIntentPtrOutput) ToStartActivityIntentPtrOutput() StartActi
 
 func (o StartActivityIntentPtrOutput) ToStartActivityIntentPtrOutputWithContext(ctx context.Context) StartActivityIntentPtrOutput {
 	return o
-}
-
-func (o StartActivityIntentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StartActivityIntent] {
-	return pulumix.Output[*StartActivityIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StartActivityIntentPtrOutput) Elem() StartActivityIntentOutput {
@@ -7995,12 +6890,6 @@ func (o StartActivityIntentResponseOutput) ToStartActivityIntentResponseOutputWi
 	return o
 }
 
-func (o StartActivityIntentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StartActivityIntentResponse] {
-	return pulumix.Output[StartActivityIntentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Action name. Required for START_ACTIVITY.
 func (o StartActivityIntentResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v StartActivityIntentResponse) string { return v.Action }).(pulumi.StringOutput)
@@ -8049,12 +6938,6 @@ func (i SystraceSetupArgs) ToSystraceSetupOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupOutput)
 }
 
-func (i SystraceSetupArgs) ToOutput(ctx context.Context) pulumix.Output[SystraceSetup] {
-	return pulumix.Output[SystraceSetup]{
-		OutputState: i.ToSystraceSetupOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SystraceSetupArgs) ToSystraceSetupPtrOutput() SystraceSetupPtrOutput {
 	return i.ToSystraceSetupPtrOutputWithContext(context.Background())
 }
@@ -8096,12 +6979,6 @@ func (i *systraceSetupPtrType) ToSystraceSetupPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupPtrOutput)
 }
 
-func (i *systraceSetupPtrType) ToOutput(ctx context.Context) pulumix.Output[*SystraceSetup] {
-	return pulumix.Output[*SystraceSetup]{
-		OutputState: i.ToSystraceSetupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SystraceSetupOutput struct{ *pulumi.OutputState }
 
 func (SystraceSetupOutput) ElementType() reflect.Type {
@@ -8126,12 +7003,6 @@ func (o SystraceSetupOutput) ToSystraceSetupPtrOutputWithContext(ctx context.Con
 	}).(SystraceSetupPtrOutput)
 }
 
-func (o SystraceSetupOutput) ToOutput(ctx context.Context) pulumix.Output[SystraceSetup] {
-	return pulumix.Output[SystraceSetup]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
 func (o SystraceSetupOutput) DurationSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SystraceSetup) *int { return v.DurationSeconds }).(pulumi.IntPtrOutput)
@@ -8149,12 +7020,6 @@ func (o SystraceSetupPtrOutput) ToSystraceSetupPtrOutput() SystraceSetupPtrOutpu
 
 func (o SystraceSetupPtrOutput) ToSystraceSetupPtrOutputWithContext(ctx context.Context) SystraceSetupPtrOutput {
 	return o
-}
-
-func (o SystraceSetupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystraceSetup] {
-	return pulumix.Output[*SystraceSetup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystraceSetupPtrOutput) Elem() SystraceSetupOutput {
@@ -8196,12 +7061,6 @@ func (o SystraceSetupResponseOutput) ToSystraceSetupResponseOutputWithContext(ct
 	return o
 }
 
-func (o SystraceSetupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystraceSetupResponse] {
-	return pulumix.Output[SystraceSetupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
 func (o SystraceSetupResponseOutput) DurationSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v SystraceSetupResponse) int { return v.DurationSeconds }).(pulumi.IntOutput)
@@ -8228,12 +7087,6 @@ func (o TestDetailsResponseOutput) ToTestDetailsResponseOutput() TestDetailsResp
 
 func (o TestDetailsResponseOutput) ToTestDetailsResponseOutputWithContext(ctx context.Context) TestDetailsResponseOutput {
 	return o
-}
-
-func (o TestDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TestDetailsResponse] {
-	return pulumix.Output[TestDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the TestState is ERROR, then this string will contain human-readable details about the error.
@@ -8281,12 +7134,6 @@ func (o TestExecutionResponseOutput) ToTestExecutionResponseOutput() TestExecuti
 
 func (o TestExecutionResponseOutput) ToTestExecutionResponseOutputWithContext(ctx context.Context) TestExecutionResponseOutput {
 	return o
-}
-
-func (o TestExecutionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TestExecutionResponse] {
-	return pulumix.Output[TestExecutionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How the host machine(s) are configured.
@@ -8346,12 +7193,6 @@ func (o TestExecutionResponseArrayOutput) ToTestExecutionResponseArrayOutput() T
 
 func (o TestExecutionResponseArrayOutput) ToTestExecutionResponseArrayOutputWithContext(ctx context.Context) TestExecutionResponseArrayOutput {
 	return o
-}
-
-func (o TestExecutionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TestExecutionResponse] {
-	return pulumix.Output[[]TestExecutionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TestExecutionResponseArrayOutput) Index(i pulumi.IntInput) TestExecutionResponseOutput {
@@ -8431,12 +7272,6 @@ func (i TestSetupArgs) ToTestSetupOutputWithContext(ctx context.Context) TestSet
 	return pulumi.ToOutputWithContext(ctx, i).(TestSetupOutput)
 }
 
-func (i TestSetupArgs) ToOutput(ctx context.Context) pulumix.Output[TestSetup] {
-	return pulumix.Output[TestSetup]{
-		OutputState: i.ToTestSetupOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TestSetupArgs) ToTestSetupPtrOutput() TestSetupPtrOutput {
 	return i.ToTestSetupPtrOutputWithContext(context.Background())
 }
@@ -8478,12 +7313,6 @@ func (i *testSetupPtrType) ToTestSetupPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TestSetupPtrOutput)
 }
 
-func (i *testSetupPtrType) ToOutput(ctx context.Context) pulumix.Output[*TestSetup] {
-	return pulumix.Output[*TestSetup]{
-		OutputState: i.ToTestSetupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A description of how to set up the Android device prior to running the test.
 type TestSetupOutput struct{ *pulumi.OutputState }
 
@@ -8507,12 +7336,6 @@ func (o TestSetupOutput) ToTestSetupPtrOutputWithContext(ctx context.Context) Te
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TestSetup) *TestSetup {
 		return &v
 	}).(TestSetupPtrOutput)
-}
-
-func (o TestSetupOutput) ToOutput(ctx context.Context) pulumix.Output[TestSetup] {
-	return pulumix.Output[TestSetup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The device will be logged in on this account for the duration of the test.
@@ -8574,12 +7397,6 @@ func (o TestSetupPtrOutput) ToTestSetupPtrOutput() TestSetupPtrOutput {
 
 func (o TestSetupPtrOutput) ToTestSetupPtrOutputWithContext(ctx context.Context) TestSetupPtrOutput {
 	return o
-}
-
-func (o TestSetupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TestSetup] {
-	return pulumix.Output[*TestSetup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TestSetupPtrOutput) Elem() TestSetupOutput {
@@ -8723,12 +7540,6 @@ func (o TestSetupResponseOutput) ToTestSetupResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o TestSetupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TestSetupResponse] {
-	return pulumix.Output[TestSetupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The device will be logged in on this account for the duration of the test.
 func (o TestSetupResponseOutput) Account() AccountResponseOutput {
 	return o.ApplyT(func(v TestSetupResponse) AccountResponse { return v.Account }).(AccountResponseOutput)
@@ -8851,12 +7662,6 @@ func (i TestSpecificationArgs) ToTestSpecificationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TestSpecificationOutput)
 }
 
-func (i TestSpecificationArgs) ToOutput(ctx context.Context) pulumix.Output[TestSpecification] {
-	return pulumix.Output[TestSpecification]{
-		OutputState: i.ToTestSpecificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A description of how to run the test.
 type TestSpecificationOutput struct{ *pulumi.OutputState }
 
@@ -8870,12 +7675,6 @@ func (o TestSpecificationOutput) ToTestSpecificationOutput() TestSpecificationOu
 
 func (o TestSpecificationOutput) ToTestSpecificationOutputWithContext(ctx context.Context) TestSpecificationOutput {
 	return o
-}
-
-func (o TestSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[TestSpecification] {
-	return pulumix.Output[TestSpecification]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An Android instrumentation test.
@@ -8974,12 +7773,6 @@ func (o TestSpecificationResponseOutput) ToTestSpecificationResponseOutputWithCo
 	return o
 }
 
-func (o TestSpecificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TestSpecificationResponse] {
-	return pulumix.Output[TestSpecificationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An Android instrumentation test.
 func (o TestSpecificationResponseOutput) AndroidInstrumentationTest() AndroidInstrumentationTestResponseOutput {
 	return o.ApplyT(func(v TestSpecificationResponse) AndroidInstrumentationTestResponse {
@@ -9072,12 +7865,6 @@ func (i TestTargetsForShardArgs) ToTestTargetsForShardOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TestTargetsForShardOutput)
 }
 
-func (i TestTargetsForShardArgs) ToOutput(ctx context.Context) pulumix.Output[TestTargetsForShard] {
-	return pulumix.Output[TestTargetsForShard]{
-		OutputState: i.ToTestTargetsForShardOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TestTargetsForShardArrayInput is an input type that accepts TestTargetsForShardArray and TestTargetsForShardArrayOutput values.
 // You can construct a concrete instance of `TestTargetsForShardArrayInput` via:
 //
@@ -9103,12 +7890,6 @@ func (i TestTargetsForShardArray) ToTestTargetsForShardArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TestTargetsForShardArrayOutput)
 }
 
-func (i TestTargetsForShardArray) ToOutput(ctx context.Context) pulumix.Output[[]TestTargetsForShard] {
-	return pulumix.Output[[]TestTargetsForShard]{
-		OutputState: i.ToTestTargetsForShardArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Test targets for a shard.
 type TestTargetsForShardOutput struct{ *pulumi.OutputState }
 
@@ -9122,12 +7903,6 @@ func (o TestTargetsForShardOutput) ToTestTargetsForShardOutput() TestTargetsForS
 
 func (o TestTargetsForShardOutput) ToTestTargetsForShardOutputWithContext(ctx context.Context) TestTargetsForShardOutput {
 	return o
-}
-
-func (o TestTargetsForShardOutput) ToOutput(ctx context.Context) pulumix.Output[TestTargetsForShard] {
-	return pulumix.Output[TestTargetsForShard]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
@@ -9147,12 +7922,6 @@ func (o TestTargetsForShardArrayOutput) ToTestTargetsForShardArrayOutput() TestT
 
 func (o TestTargetsForShardArrayOutput) ToTestTargetsForShardArrayOutputWithContext(ctx context.Context) TestTargetsForShardArrayOutput {
 	return o
-}
-
-func (o TestTargetsForShardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TestTargetsForShard] {
-	return pulumix.Output[[]TestTargetsForShard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TestTargetsForShardArrayOutput) Index(i pulumi.IntInput) TestTargetsForShardOutput {
@@ -9182,12 +7951,6 @@ func (o TestTargetsForShardResponseOutput) ToTestTargetsForShardResponseOutputWi
 	return o
 }
 
-func (o TestTargetsForShardResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TestTargetsForShardResponse] {
-	return pulumix.Output[TestTargetsForShardResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
 func (o TestTargetsForShardResponseOutput) TestTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TestTargetsForShardResponse) []string { return v.TestTargets }).(pulumi.StringArrayOutput)
@@ -9205,12 +7968,6 @@ func (o TestTargetsForShardResponseArrayOutput) ToTestTargetsForShardResponseArr
 
 func (o TestTargetsForShardResponseArrayOutput) ToTestTargetsForShardResponseArrayOutputWithContext(ctx context.Context) TestTargetsForShardResponseArrayOutput {
 	return o
-}
-
-func (o TestTargetsForShardResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TestTargetsForShardResponse] {
-	return pulumix.Output[[]TestTargetsForShardResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TestTargetsForShardResponseArrayOutput) Index(i pulumi.IntInput) TestTargetsForShardResponseOutput {
@@ -9242,12 +7999,6 @@ func (o ToolResultsExecutionResponseOutput) ToToolResultsExecutionResponseOutput
 
 func (o ToolResultsExecutionResponseOutput) ToToolResultsExecutionResponseOutputWithContext(ctx context.Context) ToolResultsExecutionResponseOutput {
 	return o
-}
-
-func (o ToolResultsExecutionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ToolResultsExecutionResponse] {
-	return pulumix.Output[ToolResultsExecutionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A tool results execution ID.
@@ -9304,12 +8055,6 @@ func (i ToolResultsHistoryArgs) ToToolResultsHistoryOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ToolResultsHistoryOutput)
 }
 
-func (i ToolResultsHistoryArgs) ToOutput(ctx context.Context) pulumix.Output[ToolResultsHistory] {
-	return pulumix.Output[ToolResultsHistory]{
-		OutputState: i.ToToolResultsHistoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ToolResultsHistoryArgs) ToToolResultsHistoryPtrOutput() ToolResultsHistoryPtrOutput {
 	return i.ToToolResultsHistoryPtrOutputWithContext(context.Background())
 }
@@ -9351,12 +8096,6 @@ func (i *toolResultsHistoryPtrType) ToToolResultsHistoryPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ToolResultsHistoryPtrOutput)
 }
 
-func (i *toolResultsHistoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*ToolResultsHistory] {
-	return pulumix.Output[*ToolResultsHistory]{
-		OutputState: i.ToToolResultsHistoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a tool results history resource.
 type ToolResultsHistoryOutput struct{ *pulumi.OutputState }
 
@@ -9382,12 +8121,6 @@ func (o ToolResultsHistoryOutput) ToToolResultsHistoryPtrOutputWithContext(ctx c
 	}).(ToolResultsHistoryPtrOutput)
 }
 
-func (o ToolResultsHistoryOutput) ToOutput(ctx context.Context) pulumix.Output[ToolResultsHistory] {
-	return pulumix.Output[ToolResultsHistory]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A tool results history ID.
 func (o ToolResultsHistoryOutput) HistoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v ToolResultsHistory) string { return v.HistoryId }).(pulumi.StringOutput)
@@ -9410,12 +8143,6 @@ func (o ToolResultsHistoryPtrOutput) ToToolResultsHistoryPtrOutput() ToolResults
 
 func (o ToolResultsHistoryPtrOutput) ToToolResultsHistoryPtrOutputWithContext(ctx context.Context) ToolResultsHistoryPtrOutput {
 	return o
-}
-
-func (o ToolResultsHistoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ToolResultsHistory] {
-	return pulumix.Output[*ToolResultsHistory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ToolResultsHistoryPtrOutput) Elem() ToolResultsHistoryOutput {
@@ -9471,12 +8198,6 @@ func (o ToolResultsHistoryResponseOutput) ToToolResultsHistoryResponseOutputWith
 	return o
 }
 
-func (o ToolResultsHistoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ToolResultsHistoryResponse] {
-	return pulumix.Output[ToolResultsHistoryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A tool results history ID.
 func (o ToolResultsHistoryResponseOutput) HistoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v ToolResultsHistoryResponse) string { return v.HistoryId }).(pulumi.StringOutput)
@@ -9512,12 +8233,6 @@ func (o ToolResultsStepResponseOutput) ToToolResultsStepResponseOutput() ToolRes
 
 func (o ToolResultsStepResponseOutput) ToToolResultsStepResponseOutputWithContext(ctx context.Context) ToolResultsStepResponseOutput {
 	return o
-}
-
-func (o ToolResultsStepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ToolResultsStepResponse] {
-	return pulumix.Output[ToolResultsStepResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A tool results execution ID.
@@ -9575,12 +8290,6 @@ func (i UniformShardingArgs) ToUniformShardingOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(UniformShardingOutput)
 }
 
-func (i UniformShardingArgs) ToOutput(ctx context.Context) pulumix.Output[UniformSharding] {
-	return pulumix.Output[UniformSharding]{
-		OutputState: i.ToUniformShardingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UniformShardingArgs) ToUniformShardingPtrOutput() UniformShardingPtrOutput {
 	return i.ToUniformShardingPtrOutputWithContext(context.Background())
 }
@@ -9622,12 +8331,6 @@ func (i *uniformShardingPtrType) ToUniformShardingPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(UniformShardingPtrOutput)
 }
 
-func (i *uniformShardingPtrType) ToOutput(ctx context.Context) pulumix.Output[*UniformSharding] {
-	return pulumix.Output[*UniformSharding]{
-		OutputState: i.ToUniformShardingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
 type UniformShardingOutput struct{ *pulumi.OutputState }
 
@@ -9653,12 +8356,6 @@ func (o UniformShardingOutput) ToUniformShardingPtrOutputWithContext(ctx context
 	}).(UniformShardingPtrOutput)
 }
 
-func (o UniformShardingOutput) ToOutput(ctx context.Context) pulumix.Output[UniformSharding] {
-	return pulumix.Output[UniformSharding]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 func (o UniformShardingOutput) NumShards() pulumi.IntOutput {
 	return o.ApplyT(func(v UniformSharding) int { return v.NumShards }).(pulumi.IntOutput)
@@ -9676,12 +8373,6 @@ func (o UniformShardingPtrOutput) ToUniformShardingPtrOutput() UniformShardingPt
 
 func (o UniformShardingPtrOutput) ToUniformShardingPtrOutputWithContext(ctx context.Context) UniformShardingPtrOutput {
 	return o
-}
-
-func (o UniformShardingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UniformSharding] {
-	return pulumix.Output[*UniformSharding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UniformShardingPtrOutput) Elem() UniformShardingOutput {
@@ -9723,12 +8414,6 @@ func (o UniformShardingResponseOutput) ToUniformShardingResponseOutput() Uniform
 
 func (o UniformShardingResponseOutput) ToUniformShardingResponseOutputWithContext(ctx context.Context) UniformShardingResponseOutput {
 	return o
-}
-
-func (o UniformShardingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UniformShardingResponse] {
-	return pulumix.Output[UniformShardingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.

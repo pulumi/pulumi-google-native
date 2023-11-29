@@ -85,12 +85,6 @@ func (o BootDiskDefaultsDiskTypeOutput) ToBootDiskDefaultsDiskTypePtrOutputWithC
 	}).(BootDiskDefaultsDiskTypePtrOutput)
 }
 
-func (o BootDiskDefaultsDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskDefaultsDiskType] {
-	return pulumix.Output[BootDiskDefaultsDiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BootDiskDefaultsDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o BootDiskDefaultsDiskTypePtrOutput) ToBootDiskDefaultsDiskTypePtrOutput()
 
 func (o BootDiskDefaultsDiskTypePtrOutput) ToBootDiskDefaultsDiskTypePtrOutputWithContext(ctx context.Context) BootDiskDefaultsDiskTypePtrOutput {
 	return o
-}
-
-func (o BootDiskDefaultsDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BootDiskDefaultsDiskType] {
-	return pulumix.Output[*BootDiskDefaultsDiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BootDiskDefaultsDiskTypePtrOutput) Elem() BootDiskDefaultsDiskTypeOutput {
@@ -274,12 +262,6 @@ func (o ComputeEngineTargetDefaultsDiskTypeOutput) ToComputeEngineTargetDefaults
 	}).(ComputeEngineTargetDefaultsDiskTypePtrOutput)
 }
 
-func (o ComputeEngineTargetDefaultsDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEngineTargetDefaultsDiskType] {
-	return pulumix.Output[ComputeEngineTargetDefaultsDiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComputeEngineTargetDefaultsDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -313,12 +295,6 @@ func (o ComputeEngineTargetDefaultsDiskTypePtrOutput) ToComputeEngineTargetDefau
 
 func (o ComputeEngineTargetDefaultsDiskTypePtrOutput) ToComputeEngineTargetDefaultsDiskTypePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsDiskTypePtrOutput {
 	return o
-}
-
-func (o ComputeEngineTargetDefaultsDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeEngineTargetDefaultsDiskType] {
-	return pulumix.Output[*ComputeEngineTargetDefaultsDiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeEngineTargetDefaultsDiskTypePtrOutput) Elem() ComputeEngineTargetDefaultsDiskTypeOutput {
@@ -461,12 +437,6 @@ func (o ComputeEngineTargetDefaultsLicenseTypeOutput) ToComputeEngineTargetDefau
 	}).(ComputeEngineTargetDefaultsLicenseTypePtrOutput)
 }
 
-func (o ComputeEngineTargetDefaultsLicenseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEngineTargetDefaultsLicenseType] {
-	return pulumix.Output[ComputeEngineTargetDefaultsLicenseType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComputeEngineTargetDefaultsLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -500,12 +470,6 @@ func (o ComputeEngineTargetDefaultsLicenseTypePtrOutput) ToComputeEngineTargetDe
 
 func (o ComputeEngineTargetDefaultsLicenseTypePtrOutput) ToComputeEngineTargetDefaultsLicenseTypePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsLicenseTypePtrOutput {
 	return o
-}
-
-func (o ComputeEngineTargetDefaultsLicenseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeEngineTargetDefaultsLicenseType] {
-	return pulumix.Output[*ComputeEngineTargetDefaultsLicenseType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeEngineTargetDefaultsLicenseTypePtrOutput) Elem() ComputeEngineTargetDefaultsLicenseTypeOutput {
@@ -648,12 +612,6 @@ func (o ComputeSchedulingOnHostMaintenanceOutput) ToComputeSchedulingOnHostMaint
 	}).(ComputeSchedulingOnHostMaintenancePtrOutput)
 }
 
-func (o ComputeSchedulingOnHostMaintenanceOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeSchedulingOnHostMaintenance] {
-	return pulumix.Output[ComputeSchedulingOnHostMaintenance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComputeSchedulingOnHostMaintenanceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -687,12 +645,6 @@ func (o ComputeSchedulingOnHostMaintenancePtrOutput) ToComputeSchedulingOnHostMa
 
 func (o ComputeSchedulingOnHostMaintenancePtrOutput) ToComputeSchedulingOnHostMaintenancePtrOutputWithContext(ctx context.Context) ComputeSchedulingOnHostMaintenancePtrOutput {
 	return o
-}
-
-func (o ComputeSchedulingOnHostMaintenancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeSchedulingOnHostMaintenance] {
-	return pulumix.Output[*ComputeSchedulingOnHostMaintenance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeSchedulingOnHostMaintenancePtrOutput) Elem() ComputeSchedulingOnHostMaintenanceOutput {
@@ -835,12 +787,6 @@ func (o ComputeSchedulingRestartTypeOutput) ToComputeSchedulingRestartTypePtrOut
 	}).(ComputeSchedulingRestartTypePtrOutput)
 }
 
-func (o ComputeSchedulingRestartTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeSchedulingRestartType] {
-	return pulumix.Output[ComputeSchedulingRestartType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComputeSchedulingRestartTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -874,12 +820,6 @@ func (o ComputeSchedulingRestartTypePtrOutput) ToComputeSchedulingRestartTypePtr
 
 func (o ComputeSchedulingRestartTypePtrOutput) ToComputeSchedulingRestartTypePtrOutputWithContext(ctx context.Context) ComputeSchedulingRestartTypePtrOutput {
 	return o
-}
-
-func (o ComputeSchedulingRestartTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeSchedulingRestartType] {
-	return pulumix.Output[*ComputeSchedulingRestartType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeSchedulingRestartTypePtrOutput) Elem() ComputeSchedulingRestartTypeOutput {
@@ -1022,12 +962,6 @@ func (o GroupMigrationTargetTypeOutput) ToGroupMigrationTargetTypePtrOutputWithC
 	}).(GroupMigrationTargetTypePtrOutput)
 }
 
-func (o GroupMigrationTargetTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMigrationTargetType] {
-	return pulumix.Output[GroupMigrationTargetType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupMigrationTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1061,12 +995,6 @@ func (o GroupMigrationTargetTypePtrOutput) ToGroupMigrationTargetTypePtrOutput()
 
 func (o GroupMigrationTargetTypePtrOutput) ToGroupMigrationTargetTypePtrOutputWithContext(ctx context.Context) GroupMigrationTargetTypePtrOutput {
 	return o
-}
-
-func (o GroupMigrationTargetTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMigrationTargetType] {
-	return pulumix.Output[*GroupMigrationTargetType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupMigrationTargetTypePtrOutput) Elem() GroupMigrationTargetTypeOutput {
@@ -1211,12 +1139,6 @@ func (o PersistentDiskDefaultsDiskTypeOutput) ToPersistentDiskDefaultsDiskTypePt
 	}).(PersistentDiskDefaultsDiskTypePtrOutput)
 }
 
-func (o PersistentDiskDefaultsDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PersistentDiskDefaultsDiskType] {
-	return pulumix.Output[PersistentDiskDefaultsDiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PersistentDiskDefaultsDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1250,12 +1172,6 @@ func (o PersistentDiskDefaultsDiskTypePtrOutput) ToPersistentDiskDefaultsDiskTyp
 
 func (o PersistentDiskDefaultsDiskTypePtrOutput) ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(ctx context.Context) PersistentDiskDefaultsDiskTypePtrOutput {
 	return o
-}
-
-func (o PersistentDiskDefaultsDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PersistentDiskDefaultsDiskType] {
-	return pulumix.Output[*PersistentDiskDefaultsDiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PersistentDiskDefaultsDiskTypePtrOutput) Elem() PersistentDiskDefaultsDiskTypeOutput {
@@ -1398,12 +1314,6 @@ func (o SchedulingNodeAffinityOperatorOutput) ToSchedulingNodeAffinityOperatorPt
 	}).(SchedulingNodeAffinityOperatorPtrOutput)
 }
 
-func (o SchedulingNodeAffinityOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingNodeAffinityOperator] {
-	return pulumix.Output[SchedulingNodeAffinityOperator]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SchedulingNodeAffinityOperatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1437,12 +1347,6 @@ func (o SchedulingNodeAffinityOperatorPtrOutput) ToSchedulingNodeAffinityOperato
 
 func (o SchedulingNodeAffinityOperatorPtrOutput) ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) SchedulingNodeAffinityOperatorPtrOutput {
 	return o
-}
-
-func (o SchedulingNodeAffinityOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulingNodeAffinityOperator] {
-	return pulumix.Output[*SchedulingNodeAffinityOperator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchedulingNodeAffinityOperatorPtrOutput) Elem() SchedulingNodeAffinityOperatorOutput {
@@ -1587,12 +1491,6 @@ func (o TargetVMDetailsDiskTypeOutput) ToTargetVMDetailsDiskTypePtrOutputWithCon
 	}).(TargetVMDetailsDiskTypePtrOutput)
 }
 
-func (o TargetVMDetailsDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TargetVMDetailsDiskType] {
-	return pulumix.Output[TargetVMDetailsDiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetVMDetailsDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1626,12 +1524,6 @@ func (o TargetVMDetailsDiskTypePtrOutput) ToTargetVMDetailsDiskTypePtrOutput() T
 
 func (o TargetVMDetailsDiskTypePtrOutput) ToTargetVMDetailsDiskTypePtrOutputWithContext(ctx context.Context) TargetVMDetailsDiskTypePtrOutput {
 	return o
-}
-
-func (o TargetVMDetailsDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetVMDetailsDiskType] {
-	return pulumix.Output[*TargetVMDetailsDiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetVMDetailsDiskTypePtrOutput) Elem() TargetVMDetailsDiskTypeOutput {
@@ -1774,12 +1666,6 @@ func (o TargetVMDetailsLicenseTypeOutput) ToTargetVMDetailsLicenseTypePtrOutputW
 	}).(TargetVMDetailsLicenseTypePtrOutput)
 }
 
-func (o TargetVMDetailsLicenseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TargetVMDetailsLicenseType] {
-	return pulumix.Output[TargetVMDetailsLicenseType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetVMDetailsLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1813,12 +1699,6 @@ func (o TargetVMDetailsLicenseTypePtrOutput) ToTargetVMDetailsLicenseTypePtrOutp
 
 func (o TargetVMDetailsLicenseTypePtrOutput) ToTargetVMDetailsLicenseTypePtrOutputWithContext(ctx context.Context) TargetVMDetailsLicenseTypePtrOutput {
 	return o
-}
-
-func (o TargetVMDetailsLicenseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetVMDetailsLicenseType] {
-	return pulumix.Output[*TargetVMDetailsLicenseType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetVMDetailsLicenseTypePtrOutput) Elem() TargetVMDetailsLicenseTypeOutput {
@@ -1963,12 +1843,6 @@ func (o UtilizationReportTimeFrameOutput) ToUtilizationReportTimeFramePtrOutputW
 	}).(UtilizationReportTimeFramePtrOutput)
 }
 
-func (o UtilizationReportTimeFrameOutput) ToOutput(ctx context.Context) pulumix.Output[UtilizationReportTimeFrame] {
-	return pulumix.Output[UtilizationReportTimeFrame]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UtilizationReportTimeFrameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2002,12 +1876,6 @@ func (o UtilizationReportTimeFramePtrOutput) ToUtilizationReportTimeFramePtrOutp
 
 func (o UtilizationReportTimeFramePtrOutput) ToUtilizationReportTimeFramePtrOutputWithContext(ctx context.Context) UtilizationReportTimeFramePtrOutput {
 	return o
-}
-
-func (o UtilizationReportTimeFramePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UtilizationReportTimeFrame] {
-	return pulumix.Output[*UtilizationReportTimeFrame]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UtilizationReportTimeFramePtrOutput) Elem() UtilizationReportTimeFrameOutput {
@@ -2152,12 +2020,6 @@ func (o VmwareVmDetailsPowerStateOutput) ToVmwareVmDetailsPowerStatePtrOutputWit
 	}).(VmwareVmDetailsPowerStatePtrOutput)
 }
 
-func (o VmwareVmDetailsPowerStateOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVmDetailsPowerState] {
-	return pulumix.Output[VmwareVmDetailsPowerState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VmwareVmDetailsPowerStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2191,12 +2053,6 @@ func (o VmwareVmDetailsPowerStatePtrOutput) ToVmwareVmDetailsPowerStatePtrOutput
 
 func (o VmwareVmDetailsPowerStatePtrOutput) ToVmwareVmDetailsPowerStatePtrOutputWithContext(ctx context.Context) VmwareVmDetailsPowerStatePtrOutput {
 	return o
-}
-
-func (o VmwareVmDetailsPowerStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareVmDetailsPowerState] {
-	return pulumix.Output[*VmwareVmDetailsPowerState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareVmDetailsPowerStatePtrOutput) Elem() VmwareVmDetailsPowerStateOutput {

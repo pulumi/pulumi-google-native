@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a CustomJob.
@@ -91,12 +90,6 @@ func (o LookupCustomJobResultOutput) ToLookupCustomJobResultOutput() LookupCusto
 
 func (o LookupCustomJobResultOutput) ToLookupCustomJobResultOutputWithContext(ctx context.Context) LookupCustomJobResultOutput {
 	return o
-}
-
-func (o LookupCustomJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomJobResult] {
-	return pulumix.Output[LookupCustomJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the CustomJob was created.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a DataScan resource.
@@ -173,12 +172,6 @@ func (i *DataScan) ToDataScanOutputWithContext(ctx context.Context) DataScanOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DataScanOutput)
 }
 
-func (i *DataScan) ToOutput(ctx context.Context) pulumix.Output[*DataScan] {
-	return pulumix.Output[*DataScan]{
-		OutputState: i.ToDataScanOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataScanOutput struct{ *pulumi.OutputState }
 
 func (DataScanOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o DataScanOutput) ToDataScanOutput() DataScanOutput {
 
 func (o DataScanOutput) ToDataScanOutputWithContext(ctx context.Context) DataScanOutput {
 	return o
-}
-
-func (o DataScanOutput) ToOutput(ctx context.Context) pulumix.Output[*DataScan] {
-	return pulumix.Output[*DataScan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the scan was created.

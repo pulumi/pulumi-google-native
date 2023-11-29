@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
@@ -133,12 +132,6 @@ func (i *DeidentifyTemplate) ToDeidentifyTemplateOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DeidentifyTemplateOutput)
 }
 
-func (i *DeidentifyTemplate) ToOutput(ctx context.Context) pulumix.Output[*DeidentifyTemplate] {
-	return pulumix.Output[*DeidentifyTemplate]{
-		OutputState: i.ToDeidentifyTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeidentifyTemplateOutput struct{ *pulumi.OutputState }
 
 func (DeidentifyTemplateOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o DeidentifyTemplateOutput) ToDeidentifyTemplateOutput() DeidentifyTemplat
 
 func (o DeidentifyTemplateOutput) ToDeidentifyTemplateOutputWithContext(ctx context.Context) DeidentifyTemplateOutput {
 	return o
-}
-
-func (o DeidentifyTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*DeidentifyTemplate] {
-	return pulumix.Output[*DeidentifyTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of an inspectTemplate.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new health dataset. Results are returned through the Operation interface which returns either an `Operation.response` which contains a Dataset or `Operation.error`. The metadata field type is OperationMetadata.
@@ -116,12 +115,6 @@ func (i *Dataset) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetOutput)
 }
 
-func (i *Dataset) ToOutput(ctx context.Context) pulumix.Output[*Dataset] {
-	return pulumix.Output[*Dataset]{
-		OutputState: i.ToDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetOutput struct{ *pulumi.OutputState }
 
 func (DatasetOutput) ElementType() reflect.Type {
@@ -134,12 +127,6 @@ func (o DatasetOutput) ToDatasetOutput() DatasetOutput {
 
 func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
 	return o
-}
-
-func (o DatasetOutput) ToOutput(ctx context.Context) pulumix.Output[*Dataset] {
-	return pulumix.Output[*Dataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.

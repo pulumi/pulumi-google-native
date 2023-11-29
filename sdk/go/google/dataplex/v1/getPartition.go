@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a metadata partition of an entity.
@@ -81,12 +80,6 @@ func (o LookupPartitionResultOutput) ToLookupPartitionResultOutput() LookupParti
 
 func (o LookupPartitionResultOutput) ToLookupPartitionResultOutputWithContext(ctx context.Context) LookupPartitionResultOutput {
 	return o
-}
-
-func (o LookupPartitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPartitionResult] {
-	return pulumix.Output[LookupPartitionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The etag for this partition.

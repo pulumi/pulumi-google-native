@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i GoogleCloudMemcacheV1MaintenancePolicyArgs) ToGoogleCloudMemcacheV1Maint
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMemcacheV1MaintenancePolicyOutput)
 }
 
-func (i GoogleCloudMemcacheV1MaintenancePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMemcacheV1MaintenancePolicy] {
-	return pulumix.Output[GoogleCloudMemcacheV1MaintenancePolicy]{
-		OutputState: i.ToGoogleCloudMemcacheV1MaintenancePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudMemcacheV1MaintenancePolicyArgs) ToGoogleCloudMemcacheV1MaintenancePolicyPtrOutput() GoogleCloudMemcacheV1MaintenancePolicyPtrOutput {
 	return i.ToGoogleCloudMemcacheV1MaintenancePolicyPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *googleCloudMemcacheV1MaintenancePolicyPtrType) ToGoogleCloudMemcacheV1M
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMemcacheV1MaintenancePolicyPtrOutput)
 }
 
-func (i *googleCloudMemcacheV1MaintenancePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMemcacheV1MaintenancePolicy] {
-	return pulumix.Output[*GoogleCloudMemcacheV1MaintenancePolicy]{
-		OutputState: i.ToGoogleCloudMemcacheV1MaintenancePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Maintenance policy per instance.
 type GoogleCloudMemcacheV1MaintenancePolicyOutput struct{ *pulumi.OutputState }
 
@@ -129,12 +116,6 @@ func (o GoogleCloudMemcacheV1MaintenancePolicyOutput) ToGoogleCloudMemcacheV1Mai
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMemcacheV1MaintenancePolicy) *GoogleCloudMemcacheV1MaintenancePolicy {
 		return &v
 	}).(GoogleCloudMemcacheV1MaintenancePolicyPtrOutput)
-}
-
-func (o GoogleCloudMemcacheV1MaintenancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMemcacheV1MaintenancePolicy] {
-	return pulumix.Output[GoogleCloudMemcacheV1MaintenancePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
@@ -161,12 +142,6 @@ func (o GoogleCloudMemcacheV1MaintenancePolicyPtrOutput) ToGoogleCloudMemcacheV1
 
 func (o GoogleCloudMemcacheV1MaintenancePolicyPtrOutput) ToGoogleCloudMemcacheV1MaintenancePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudMemcacheV1MaintenancePolicyPtrOutput {
 	return o
-}
-
-func (o GoogleCloudMemcacheV1MaintenancePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMemcacheV1MaintenancePolicy] {
-	return pulumix.Output[*GoogleCloudMemcacheV1MaintenancePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudMemcacheV1MaintenancePolicyPtrOutput) Elem() GoogleCloudMemcacheV1MaintenancePolicyOutput {
@@ -224,12 +199,6 @@ func (o GoogleCloudMemcacheV1MaintenancePolicyResponseOutput) ToGoogleCloudMemca
 
 func (o GoogleCloudMemcacheV1MaintenancePolicyResponseOutput) ToGoogleCloudMemcacheV1MaintenancePolicyResponseOutputWithContext(ctx context.Context) GoogleCloudMemcacheV1MaintenancePolicyResponseOutput {
 	return o
-}
-
-func (o GoogleCloudMemcacheV1MaintenancePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudMemcacheV1MaintenancePolicyResponse] {
-	return pulumix.Output[GoogleCloudMemcacheV1MaintenancePolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the policy was created.
@@ -291,12 +260,6 @@ func (i InstanceMessageArgs) ToInstanceMessageOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMessageOutput)
 }
 
-func (i InstanceMessageArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceMessage] {
-	return pulumix.Output[InstanceMessage]{
-		OutputState: i.ToInstanceMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceMessageArrayInput is an input type that accepts InstanceMessageArray and InstanceMessageArrayOutput values.
 // You can construct a concrete instance of `InstanceMessageArrayInput` via:
 //
@@ -322,12 +285,6 @@ func (i InstanceMessageArray) ToInstanceMessageArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMessageArrayOutput)
 }
 
-func (i InstanceMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceMessage] {
-	return pulumix.Output[[]InstanceMessage]{
-		OutputState: i.ToInstanceMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceMessageOutput struct{ *pulumi.OutputState }
 
 func (InstanceMessageOutput) ElementType() reflect.Type {
@@ -340,12 +297,6 @@ func (o InstanceMessageOutput) ToInstanceMessageOutput() InstanceMessageOutput {
 
 func (o InstanceMessageOutput) ToInstanceMessageOutputWithContext(ctx context.Context) InstanceMessageOutput {
 	return o
-}
-
-func (o InstanceMessageOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceMessage] {
-	return pulumix.Output[InstanceMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A code that correspond to one type of user-facing message.
@@ -370,12 +321,6 @@ func (o InstanceMessageArrayOutput) ToInstanceMessageArrayOutput() InstanceMessa
 
 func (o InstanceMessageArrayOutput) ToInstanceMessageArrayOutputWithContext(ctx context.Context) InstanceMessageArrayOutput {
 	return o
-}
-
-func (o InstanceMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceMessage] {
-	return pulumix.Output[[]InstanceMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceMessageArrayOutput) Index(i pulumi.IntInput) InstanceMessageOutput {
@@ -405,12 +350,6 @@ func (o InstanceMessageResponseOutput) ToInstanceMessageResponseOutputWithContex
 	return o
 }
 
-func (o InstanceMessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceMessageResponse] {
-	return pulumix.Output[InstanceMessageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A code that correspond to one type of user-facing message.
 func (o InstanceMessageResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceMessageResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -433,12 +372,6 @@ func (o InstanceMessageResponseArrayOutput) ToInstanceMessageResponseArrayOutput
 
 func (o InstanceMessageResponseArrayOutput) ToInstanceMessageResponseArrayOutputWithContext(ctx context.Context) InstanceMessageResponseArrayOutput {
 	return o
-}
-
-func (o InstanceMessageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceMessageResponse] {
-	return pulumix.Output[[]InstanceMessageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceMessageResponseArrayOutput) Index(i pulumi.IntInput) InstanceMessageResponseOutput {
@@ -470,12 +403,6 @@ func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutput()
 
 func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutputWithContext(ctx context.Context) MaintenanceScheduleResponseOutput {
 	return o
-}
-
-func (o MaintenanceScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceScheduleResponse] {
-	return pulumix.Output[MaintenanceScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end time of any upcoming scheduled maintenance for this instance.
@@ -526,12 +453,6 @@ func (i MemcacheParametersArgs) ToMemcacheParametersOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(MemcacheParametersOutput)
 }
 
-func (i MemcacheParametersArgs) ToOutput(ctx context.Context) pulumix.Output[MemcacheParameters] {
-	return pulumix.Output[MemcacheParameters]{
-		OutputState: i.ToMemcacheParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MemcacheParametersArgs) ToMemcacheParametersPtrOutput() MemcacheParametersPtrOutput {
 	return i.ToMemcacheParametersPtrOutputWithContext(context.Background())
 }
@@ -573,12 +494,6 @@ func (i *memcacheParametersPtrType) ToMemcacheParametersPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(MemcacheParametersPtrOutput)
 }
 
-func (i *memcacheParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*MemcacheParameters] {
-	return pulumix.Output[*MemcacheParameters]{
-		OutputState: i.ToMemcacheParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MemcacheParametersOutput struct{ *pulumi.OutputState }
 
 func (MemcacheParametersOutput) ElementType() reflect.Type {
@@ -603,12 +518,6 @@ func (o MemcacheParametersOutput) ToMemcacheParametersPtrOutputWithContext(ctx c
 	}).(MemcacheParametersPtrOutput)
 }
 
-func (o MemcacheParametersOutput) ToOutput(ctx context.Context) pulumix.Output[MemcacheParameters] {
-	return pulumix.Output[MemcacheParameters]{
-		OutputState: o.OutputState,
-	}
-}
-
 // User defined set of parameters to use in the memcached process.
 func (o MemcacheParametersOutput) Params() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MemcacheParameters) map[string]string { return v.Params }).(pulumi.StringMapOutput)
@@ -626,12 +535,6 @@ func (o MemcacheParametersPtrOutput) ToMemcacheParametersPtrOutput() MemcachePar
 
 func (o MemcacheParametersPtrOutput) ToMemcacheParametersPtrOutputWithContext(ctx context.Context) MemcacheParametersPtrOutput {
 	return o
-}
-
-func (o MemcacheParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MemcacheParameters] {
-	return pulumix.Output[*MemcacheParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MemcacheParametersPtrOutput) Elem() MemcacheParametersOutput {
@@ -671,12 +574,6 @@ func (o MemcacheParametersResponseOutput) ToMemcacheParametersResponseOutput() M
 
 func (o MemcacheParametersResponseOutput) ToMemcacheParametersResponseOutputWithContext(ctx context.Context) MemcacheParametersResponseOutput {
 	return o
-}
-
-func (o MemcacheParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MemcacheParametersResponse] {
-	return pulumix.Output[MemcacheParametersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User defined set of parameters to use in the memcached process.
@@ -723,12 +620,6 @@ func (i NodeConfigArgs) ToNodeConfigOutputWithContext(ctx context.Context) NodeC
 	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigOutput)
 }
 
-func (i NodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NodeConfig] {
-	return pulumix.Output[NodeConfig]{
-		OutputState: i.ToNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for a Memcached Node.
 type NodeConfigOutput struct{ *pulumi.OutputState }
 
@@ -742,12 +633,6 @@ func (o NodeConfigOutput) ToNodeConfigOutput() NodeConfigOutput {
 
 func (o NodeConfigOutput) ToNodeConfigOutputWithContext(ctx context.Context) NodeConfigOutput {
 	return o
-}
-
-func (o NodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NodeConfig] {
-	return pulumix.Output[NodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of cpus per Memcached node.
@@ -781,12 +666,6 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponseOutput() NodeConfigRespons
 
 func (o NodeConfigResponseOutput) ToNodeConfigResponseOutputWithContext(ctx context.Context) NodeConfigResponseOutput {
 	return o
-}
-
-func (o NodeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeConfigResponse] {
-	return pulumix.Output[NodeConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of cpus per Memcached node.
@@ -830,12 +709,6 @@ func (o NodeResponseOutput) ToNodeResponseOutput() NodeResponseOutput {
 
 func (o NodeResponseOutput) ToNodeResponseOutputWithContext(ctx context.Context) NodeResponseOutput {
 	return o
-}
-
-func (o NodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeResponse] {
-	return pulumix.Output[NodeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
@@ -892,12 +765,6 @@ func (o NodeResponseArrayOutput) ToNodeResponseArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o NodeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeResponse] {
-	return pulumix.Output[[]NodeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeResponseArrayOutput) Index(i pulumi.IntInput) NodeResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeResponse {
 		return vs[0].([]NodeResponse)[vs[1].(int)]
@@ -951,12 +818,6 @@ func (i TimeOfDayArgs) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfD
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayOutput)
 }
 
-func (i TimeOfDayArgs) ToOutput(ctx context.Context) pulumix.Output[TimeOfDay] {
-	return pulumix.Output[TimeOfDay]{
-		OutputState: i.ToTimeOfDayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type TimeOfDayOutput struct{ *pulumi.OutputState }
 
@@ -970,12 +831,6 @@ func (o TimeOfDayOutput) ToTimeOfDayOutput() TimeOfDayOutput {
 
 func (o TimeOfDayOutput) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfDayOutput {
 	return o
-}
-
-func (o TimeOfDayOutput) ToOutput(ctx context.Context) pulumix.Output[TimeOfDay] {
-	return pulumix.Output[TimeOfDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1023,12 +878,6 @@ func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutput() TimeOfDayResponseOu
 
 func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
 	return o
-}
-
-func (o TimeOfDayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeOfDayResponse] {
-	return pulumix.Output[TimeOfDayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1094,12 +943,6 @@ func (i WeeklyMaintenanceWindowArgs) ToWeeklyMaintenanceWindowOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowOutput)
 }
 
-func (i WeeklyMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[WeeklyMaintenanceWindow] {
-	return pulumix.Output[WeeklyMaintenanceWindow]{
-		OutputState: i.ToWeeklyMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WeeklyMaintenanceWindowArrayInput is an input type that accepts WeeklyMaintenanceWindowArray and WeeklyMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `WeeklyMaintenanceWindowArrayInput` via:
 //
@@ -1125,12 +968,6 @@ func (i WeeklyMaintenanceWindowArray) ToWeeklyMaintenanceWindowArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowArrayOutput)
 }
 
-func (i WeeklyMaintenanceWindowArray) ToOutput(ctx context.Context) pulumix.Output[[]WeeklyMaintenanceWindow] {
-	return pulumix.Output[[]WeeklyMaintenanceWindow]{
-		OutputState: i.ToWeeklyMaintenanceWindowArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Time window specified for weekly operations.
 type WeeklyMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
@@ -1144,12 +981,6 @@ func (o WeeklyMaintenanceWindowOutput) ToWeeklyMaintenanceWindowOutput() WeeklyM
 
 func (o WeeklyMaintenanceWindowOutput) ToWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowOutput {
 	return o
-}
-
-func (o WeeklyMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyMaintenanceWindow] {
-	return pulumix.Output[WeeklyMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allows to define schedule that runs specified day of the week.
@@ -1179,12 +1010,6 @@ func (o WeeklyMaintenanceWindowArrayOutput) ToWeeklyMaintenanceWindowArrayOutput
 
 func (o WeeklyMaintenanceWindowArrayOutput) ToWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowArrayOutput {
 	return o
-}
-
-func (o WeeklyMaintenanceWindowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WeeklyMaintenanceWindow] {
-	return pulumix.Output[[]WeeklyMaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WeeklyMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) WeeklyMaintenanceWindowOutput {
@@ -1218,12 +1043,6 @@ func (o WeeklyMaintenanceWindowResponseOutput) ToWeeklyMaintenanceWindowResponse
 	return o
 }
 
-func (o WeeklyMaintenanceWindowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyMaintenanceWindowResponse] {
-	return pulumix.Output[WeeklyMaintenanceWindowResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Allows to define schedule that runs specified day of the week.
 func (o WeeklyMaintenanceWindowResponseOutput) Day() pulumi.StringOutput {
 	return o.ApplyT(func(v WeeklyMaintenanceWindowResponse) string { return v.Day }).(pulumi.StringOutput)
@@ -1251,12 +1070,6 @@ func (o WeeklyMaintenanceWindowResponseArrayOutput) ToWeeklyMaintenanceWindowRes
 
 func (o WeeklyMaintenanceWindowResponseArrayOutput) ToWeeklyMaintenanceWindowResponseArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowResponseArrayOutput {
 	return o
-}
-
-func (o WeeklyMaintenanceWindowResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WeeklyMaintenanceWindowResponse] {
-	return pulumix.Output[[]WeeklyMaintenanceWindowResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WeeklyMaintenanceWindowResponseArrayOutput) Index(i pulumi.IntInput) WeeklyMaintenanceWindowResponseOutput {

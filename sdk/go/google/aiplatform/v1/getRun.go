@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a TensorboardRun.
@@ -85,12 +84,6 @@ func (o LookupRunResultOutput) ToLookupRunResultOutput() LookupRunResultOutput {
 
 func (o LookupRunResultOutput) ToLookupRunResultOutputWithContext(ctx context.Context) LookupRunResultOutput {
 	return o
-}
-
-func (o LookupRunResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRunResult] {
-	return pulumix.Output[LookupRunResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this TensorboardRun was created.

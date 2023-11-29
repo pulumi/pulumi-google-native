@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i HiveDatabaseOptionsArgs) ToHiveDatabaseOptionsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(HiveDatabaseOptionsOutput)
 }
 
-func (i HiveDatabaseOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[HiveDatabaseOptions] {
-	return pulumix.Output[HiveDatabaseOptions]{
-		OutputState: i.ToHiveDatabaseOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HiveDatabaseOptionsArgs) ToHiveDatabaseOptionsPtrOutput() HiveDatabaseOptionsPtrOutput {
 	return i.ToHiveDatabaseOptionsPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *hiveDatabaseOptionsPtrType) ToHiveDatabaseOptionsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(HiveDatabaseOptionsPtrOutput)
 }
 
-func (i *hiveDatabaseOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*HiveDatabaseOptions] {
-	return pulumix.Output[*HiveDatabaseOptions]{
-		OutputState: i.ToHiveDatabaseOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Options of a Hive database.
 type HiveDatabaseOptionsOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o HiveDatabaseOptionsOutput) ToHiveDatabaseOptionsPtrOutputWithContext(ctx
 	}).(HiveDatabaseOptionsPtrOutput)
 }
 
-func (o HiveDatabaseOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[HiveDatabaseOptions] {
-	return pulumix.Output[HiveDatabaseOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cloud Storage folder URI where the database data is stored, starting with "gs://".
 func (o HiveDatabaseOptionsOutput) LocationUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HiveDatabaseOptions) *string { return v.LocationUri }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o HiveDatabaseOptionsPtrOutput) ToHiveDatabaseOptionsPtrOutput() HiveDatab
 
 func (o HiveDatabaseOptionsPtrOutput) ToHiveDatabaseOptionsPtrOutputWithContext(ctx context.Context) HiveDatabaseOptionsPtrOutput {
 	return o
-}
-
-func (o HiveDatabaseOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HiveDatabaseOptions] {
-	return pulumix.Output[*HiveDatabaseOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HiveDatabaseOptionsPtrOutput) Elem() HiveDatabaseOptionsOutput {
@@ -220,12 +195,6 @@ func (o HiveDatabaseOptionsResponseOutput) ToHiveDatabaseOptionsResponseOutputWi
 	return o
 }
 
-func (o HiveDatabaseOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HiveDatabaseOptionsResponse] {
-	return pulumix.Output[HiveDatabaseOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cloud Storage folder URI where the database data is stored, starting with "gs://".
 func (o HiveDatabaseOptionsResponseOutput) LocationUri() pulumi.StringOutput {
 	return o.ApplyT(func(v HiveDatabaseOptionsResponse) string { return v.LocationUri }).(pulumi.StringOutput)
@@ -279,12 +248,6 @@ func (i HiveTableOptionsArgs) ToHiveTableOptionsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(HiveTableOptionsOutput)
 }
 
-func (i HiveTableOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[HiveTableOptions] {
-	return pulumix.Output[HiveTableOptions]{
-		OutputState: i.ToHiveTableOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HiveTableOptionsArgs) ToHiveTableOptionsPtrOutput() HiveTableOptionsPtrOutput {
 	return i.ToHiveTableOptionsPtrOutputWithContext(context.Background())
 }
@@ -326,12 +289,6 @@ func (i *hiveTableOptionsPtrType) ToHiveTableOptionsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(HiveTableOptionsPtrOutput)
 }
 
-func (i *hiveTableOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*HiveTableOptions] {
-	return pulumix.Output[*HiveTableOptions]{
-		OutputState: i.ToHiveTableOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Options of a Hive table.
 type HiveTableOptionsOutput struct{ *pulumi.OutputState }
 
@@ -355,12 +312,6 @@ func (o HiveTableOptionsOutput) ToHiveTableOptionsPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveTableOptions) *HiveTableOptions {
 		return &v
 	}).(HiveTableOptionsPtrOutput)
-}
-
-func (o HiveTableOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[HiveTableOptions] {
-	return pulumix.Output[HiveTableOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Stores user supplied Hive table parameters.
@@ -390,12 +341,6 @@ func (o HiveTableOptionsPtrOutput) ToHiveTableOptionsPtrOutput() HiveTableOption
 
 func (o HiveTableOptionsPtrOutput) ToHiveTableOptionsPtrOutputWithContext(ctx context.Context) HiveTableOptionsPtrOutput {
 	return o
-}
-
-func (o HiveTableOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HiveTableOptions] {
-	return pulumix.Output[*HiveTableOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HiveTableOptionsPtrOutput) Elem() HiveTableOptionsOutput {
@@ -463,12 +408,6 @@ func (o HiveTableOptionsResponseOutput) ToHiveTableOptionsResponseOutputWithCont
 	return o
 }
 
-func (o HiveTableOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HiveTableOptionsResponse] {
-	return pulumix.Output[HiveTableOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Stores user supplied Hive table parameters.
 func (o HiveTableOptionsResponseOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveTableOptionsResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
@@ -519,12 +458,6 @@ func (i SerDeInfoArgs) ToSerDeInfoOutputWithContext(ctx context.Context) SerDeIn
 	return pulumi.ToOutputWithContext(ctx, i).(SerDeInfoOutput)
 }
 
-func (i SerDeInfoArgs) ToOutput(ctx context.Context) pulumix.Output[SerDeInfo] {
-	return pulumix.Output[SerDeInfo]{
-		OutputState: i.ToSerDeInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SerDeInfoArgs) ToSerDeInfoPtrOutput() SerDeInfoPtrOutput {
 	return i.ToSerDeInfoPtrOutputWithContext(context.Background())
 }
@@ -566,12 +499,6 @@ func (i *serDeInfoPtrType) ToSerDeInfoPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SerDeInfoPtrOutput)
 }
 
-func (i *serDeInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*SerDeInfo] {
-	return pulumix.Output[*SerDeInfo]{
-		OutputState: i.ToSerDeInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Serializer and deserializer information.
 type SerDeInfoOutput struct{ *pulumi.OutputState }
 
@@ -597,12 +524,6 @@ func (o SerDeInfoOutput) ToSerDeInfoPtrOutputWithContext(ctx context.Context) Se
 	}).(SerDeInfoPtrOutput)
 }
 
-func (o SerDeInfoOutput) ToOutput(ctx context.Context) pulumix.Output[SerDeInfo] {
-	return pulumix.Output[SerDeInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully qualified Java class name of the serialization library.
 func (o SerDeInfoOutput) SerializationLib() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SerDeInfo) *string { return v.SerializationLib }).(pulumi.StringPtrOutput)
@@ -620,12 +541,6 @@ func (o SerDeInfoPtrOutput) ToSerDeInfoPtrOutput() SerDeInfoPtrOutput {
 
 func (o SerDeInfoPtrOutput) ToSerDeInfoPtrOutputWithContext(ctx context.Context) SerDeInfoPtrOutput {
 	return o
-}
-
-func (o SerDeInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SerDeInfo] {
-	return pulumix.Output[*SerDeInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SerDeInfoPtrOutput) Elem() SerDeInfoOutput {
@@ -667,12 +582,6 @@ func (o SerDeInfoResponseOutput) ToSerDeInfoResponseOutput() SerDeInfoResponseOu
 
 func (o SerDeInfoResponseOutput) ToSerDeInfoResponseOutputWithContext(ctx context.Context) SerDeInfoResponseOutput {
 	return o
-}
-
-func (o SerDeInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SerDeInfoResponse] {
-	return pulumix.Output[SerDeInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fully qualified Java class name of the serialization library.
@@ -727,12 +636,6 @@ func (i StorageDescriptorArgs) ToStorageDescriptorOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(StorageDescriptorOutput)
 }
 
-func (i StorageDescriptorArgs) ToOutput(ctx context.Context) pulumix.Output[StorageDescriptor] {
-	return pulumix.Output[StorageDescriptor]{
-		OutputState: i.ToStorageDescriptorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StorageDescriptorArgs) ToStorageDescriptorPtrOutput() StorageDescriptorPtrOutput {
 	return i.ToStorageDescriptorPtrOutputWithContext(context.Background())
 }
@@ -774,12 +677,6 @@ func (i *storageDescriptorPtrType) ToStorageDescriptorPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(StorageDescriptorPtrOutput)
 }
 
-func (i *storageDescriptorPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageDescriptor] {
-	return pulumix.Output[*StorageDescriptor]{
-		OutputState: i.ToStorageDescriptorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Stores physical storage information of the data.
 type StorageDescriptorOutput struct{ *pulumi.OutputState }
 
@@ -803,12 +700,6 @@ func (o StorageDescriptorOutput) ToStorageDescriptorPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageDescriptor) *StorageDescriptor {
 		return &v
 	}).(StorageDescriptorPtrOutput)
-}
-
-func (o StorageDescriptorOutput) ToOutput(ctx context.Context) pulumix.Output[StorageDescriptor] {
-	return pulumix.Output[StorageDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fully qualified Java class name of the input format.
@@ -843,12 +734,6 @@ func (o StorageDescriptorPtrOutput) ToStorageDescriptorPtrOutput() StorageDescri
 
 func (o StorageDescriptorPtrOutput) ToStorageDescriptorPtrOutputWithContext(ctx context.Context) StorageDescriptorPtrOutput {
 	return o
-}
-
-func (o StorageDescriptorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageDescriptor] {
-	return pulumix.Output[*StorageDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageDescriptorPtrOutput) Elem() StorageDescriptorOutput {
@@ -926,12 +811,6 @@ func (o StorageDescriptorResponseOutput) ToStorageDescriptorResponseOutput() Sto
 
 func (o StorageDescriptorResponseOutput) ToStorageDescriptorResponseOutputWithContext(ctx context.Context) StorageDescriptorResponseOutput {
 	return o
-}
-
-func (o StorageDescriptorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageDescriptorResponse] {
-	return pulumix.Output[StorageDescriptorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fully qualified Java class name of the input format.

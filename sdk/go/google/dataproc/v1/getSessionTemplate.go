@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the resource representation for a session template.
@@ -87,12 +86,6 @@ func (o LookupSessionTemplateResultOutput) ToLookupSessionTemplateResultOutput()
 
 func (o LookupSessionTemplateResultOutput) ToLookupSessionTemplateResultOutputWithContext(ctx context.Context) LookupSessionTemplateResultOutput {
 	return o
-}
-
-func (o LookupSessionTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSessionTemplateResult] {
-	return pulumix.Output[LookupSessionTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the template was created.

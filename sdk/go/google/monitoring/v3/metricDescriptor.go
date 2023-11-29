@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new metric descriptor. The creation is executed asynchronously. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics). The metric descriptor is updated if it already exists, except that metric labels are never removed.
@@ -160,12 +159,6 @@ func (i *MetricDescriptor) ToMetricDescriptorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorOutput)
 }
 
-func (i *MetricDescriptor) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptor] {
-	return pulumix.Output[*MetricDescriptor]{
-		OutputState: i.ToMetricDescriptorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricDescriptorOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o MetricDescriptorOutput) ToMetricDescriptorOutput() MetricDescriptorOutpu
 
 func (o MetricDescriptorOutput) ToMetricDescriptorOutputWithContext(ctx context.Context) MetricDescriptorOutput {
 	return o
-}
-
-func (o MetricDescriptorOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptor] {
-	return pulumix.Output[*MetricDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A detailed description of the metric, which can be used in documentation.

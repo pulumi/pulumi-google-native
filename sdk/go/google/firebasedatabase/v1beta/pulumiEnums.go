@@ -83,12 +83,6 @@ func (o InstanceTypeOutput) ToInstanceTypePtrOutputWithContext(ctx context.Conte
 	}).(InstanceTypePtrOutput)
 }
 
-func (o InstanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceType] {
-	return pulumix.Output[InstanceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
 
 func (o InstanceTypePtrOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
 	return o
-}
-
-func (o InstanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceType] {
-	return pulumix.Output[*InstanceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {

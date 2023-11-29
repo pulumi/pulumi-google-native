@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID of the target Cloud Platform project. location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/standard/python/console/).
@@ -161,12 +160,6 @@ func (i *App) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppOutput)
 }
 
-func (i *App) ToOutput(ctx context.Context) pulumix.Output[*App] {
-	return pulumix.Output[*App]{
-		OutputState: i.ToAppOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppOutput struct{ *pulumi.OutputState }
 
 func (AppOutput) ElementType() reflect.Type {
@@ -179,12 +172,6 @@ func (o AppOutput) ToAppOutput() AppOutput {
 
 func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
-}
-
-func (o AppOutput) ToOutput(ctx context.Context) pulumix.Output[*App] {
-	return pulumix.Output[*App]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.

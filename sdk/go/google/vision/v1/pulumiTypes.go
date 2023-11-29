@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i BoundingPolyArgs) ToBoundingPolyOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BoundingPolyOutput)
 }
 
-func (i BoundingPolyArgs) ToOutput(ctx context.Context) pulumix.Output[BoundingPoly] {
-	return pulumix.Output[BoundingPoly]{
-		OutputState: i.ToBoundingPolyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BoundingPolyArrayInput is an input type that accepts BoundingPolyArray and BoundingPolyArrayOutput values.
 // You can construct a concrete instance of `BoundingPolyArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i BoundingPolyArray) ToBoundingPolyArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(BoundingPolyArrayOutput)
 }
 
-func (i BoundingPolyArray) ToOutput(ctx context.Context) pulumix.Output[[]BoundingPoly] {
-	return pulumix.Output[[]BoundingPoly]{
-		OutputState: i.ToBoundingPolyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A bounding polygon for the detected image annotation.
 type BoundingPolyOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o BoundingPolyOutput) ToBoundingPolyOutput() BoundingPolyOutput {
 
 func (o BoundingPolyOutput) ToBoundingPolyOutputWithContext(ctx context.Context) BoundingPolyOutput {
 	return o
-}
-
-func (o BoundingPolyOutput) ToOutput(ctx context.Context) pulumix.Output[BoundingPoly] {
-	return pulumix.Output[BoundingPoly]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bounding polygon normalized vertices.
@@ -133,12 +114,6 @@ func (o BoundingPolyArrayOutput) ToBoundingPolyArrayOutput() BoundingPolyArrayOu
 
 func (o BoundingPolyArrayOutput) ToBoundingPolyArrayOutputWithContext(ctx context.Context) BoundingPolyArrayOutput {
 	return o
-}
-
-func (o BoundingPolyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BoundingPoly] {
-	return pulumix.Output[[]BoundingPoly]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BoundingPolyArrayOutput) Index(i pulumi.IntInput) BoundingPolyOutput {
@@ -170,12 +145,6 @@ func (o BoundingPolyResponseOutput) ToBoundingPolyResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o BoundingPolyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BoundingPolyResponse] {
-	return pulumix.Output[BoundingPolyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The bounding polygon normalized vertices.
 func (o BoundingPolyResponseOutput) NormalizedVertices() NormalizedVertexResponseArrayOutput {
 	return o.ApplyT(func(v BoundingPolyResponse) []NormalizedVertexResponse { return v.NormalizedVertices }).(NormalizedVertexResponseArrayOutput)
@@ -198,12 +167,6 @@ func (o BoundingPolyResponseArrayOutput) ToBoundingPolyResponseArrayOutput() Bou
 
 func (o BoundingPolyResponseArrayOutput) ToBoundingPolyResponseArrayOutputWithContext(ctx context.Context) BoundingPolyResponseArrayOutput {
 	return o
-}
-
-func (o BoundingPolyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BoundingPolyResponse] {
-	return pulumix.Output[[]BoundingPolyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BoundingPolyResponseArrayOutput) Index(i pulumi.IntInput) BoundingPolyResponseOutput {
@@ -251,12 +214,6 @@ func (i KeyValueArgs) ToKeyValueOutputWithContext(ctx context.Context) KeyValueO
 	return pulumi.ToOutputWithContext(ctx, i).(KeyValueOutput)
 }
 
-func (i KeyValueArgs) ToOutput(ctx context.Context) pulumix.Output[KeyValue] {
-	return pulumix.Output[KeyValue]{
-		OutputState: i.ToKeyValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeyValueArrayInput is an input type that accepts KeyValueArray and KeyValueArrayOutput values.
 // You can construct a concrete instance of `KeyValueArrayInput` via:
 //
@@ -282,12 +239,6 @@ func (i KeyValueArray) ToKeyValueArrayOutputWithContext(ctx context.Context) Key
 	return pulumi.ToOutputWithContext(ctx, i).(KeyValueArrayOutput)
 }
 
-func (i KeyValueArray) ToOutput(ctx context.Context) pulumix.Output[[]KeyValue] {
-	return pulumix.Output[[]KeyValue]{
-		OutputState: i.ToKeyValueArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A product label represented as a key-value pair.
 type KeyValueOutput struct{ *pulumi.OutputState }
 
@@ -301,12 +252,6 @@ func (o KeyValueOutput) ToKeyValueOutput() KeyValueOutput {
 
 func (o KeyValueOutput) ToKeyValueOutputWithContext(ctx context.Context) KeyValueOutput {
 	return o
-}
-
-func (o KeyValueOutput) ToOutput(ctx context.Context) pulumix.Output[KeyValue] {
-	return pulumix.Output[KeyValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
@@ -331,12 +276,6 @@ func (o KeyValueArrayOutput) ToKeyValueArrayOutput() KeyValueArrayOutput {
 
 func (o KeyValueArrayOutput) ToKeyValueArrayOutputWithContext(ctx context.Context) KeyValueArrayOutput {
 	return o
-}
-
-func (o KeyValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeyValue] {
-	return pulumix.Output[[]KeyValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyValueArrayOutput) Index(i pulumi.IntInput) KeyValueOutput {
@@ -368,12 +307,6 @@ func (o KeyValueResponseOutput) ToKeyValueResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o KeyValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyValueResponse] {
-	return pulumix.Output[KeyValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
 func (o KeyValueResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyValueResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -396,12 +329,6 @@ func (o KeyValueResponseArrayOutput) ToKeyValueResponseArrayOutput() KeyValueRes
 
 func (o KeyValueResponseArrayOutput) ToKeyValueResponseArrayOutputWithContext(ctx context.Context) KeyValueResponseArrayOutput {
 	return o
-}
-
-func (o KeyValueResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeyValueResponse] {
-	return pulumix.Output[[]KeyValueResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyValueResponseArrayOutput) Index(i pulumi.IntInput) KeyValueResponseOutput {
@@ -449,12 +376,6 @@ func (i NormalizedVertexArgs) ToNormalizedVertexOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NormalizedVertexOutput)
 }
 
-func (i NormalizedVertexArgs) ToOutput(ctx context.Context) pulumix.Output[NormalizedVertex] {
-	return pulumix.Output[NormalizedVertex]{
-		OutputState: i.ToNormalizedVertexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NormalizedVertexArrayInput is an input type that accepts NormalizedVertexArray and NormalizedVertexArrayOutput values.
 // You can construct a concrete instance of `NormalizedVertexArrayInput` via:
 //
@@ -480,12 +401,6 @@ func (i NormalizedVertexArray) ToNormalizedVertexArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NormalizedVertexArrayOutput)
 }
 
-func (i NormalizedVertexArray) ToOutput(ctx context.Context) pulumix.Output[[]NormalizedVertex] {
-	return pulumix.Output[[]NormalizedVertex]{
-		OutputState: i.ToNormalizedVertexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1.
 type NormalizedVertexOutput struct{ *pulumi.OutputState }
 
@@ -499,12 +414,6 @@ func (o NormalizedVertexOutput) ToNormalizedVertexOutput() NormalizedVertexOutpu
 
 func (o NormalizedVertexOutput) ToNormalizedVertexOutputWithContext(ctx context.Context) NormalizedVertexOutput {
 	return o
-}
-
-func (o NormalizedVertexOutput) ToOutput(ctx context.Context) pulumix.Output[NormalizedVertex] {
-	return pulumix.Output[NormalizedVertex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // X coordinate.
@@ -529,12 +438,6 @@ func (o NormalizedVertexArrayOutput) ToNormalizedVertexArrayOutput() NormalizedV
 
 func (o NormalizedVertexArrayOutput) ToNormalizedVertexArrayOutputWithContext(ctx context.Context) NormalizedVertexArrayOutput {
 	return o
-}
-
-func (o NormalizedVertexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NormalizedVertex] {
-	return pulumix.Output[[]NormalizedVertex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NormalizedVertexArrayOutput) Index(i pulumi.IntInput) NormalizedVertexOutput {
@@ -566,12 +469,6 @@ func (o NormalizedVertexResponseOutput) ToNormalizedVertexResponseOutputWithCont
 	return o
 }
 
-func (o NormalizedVertexResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NormalizedVertexResponse] {
-	return pulumix.Output[NormalizedVertexResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // X coordinate.
 func (o NormalizedVertexResponseOutput) X() pulumi.Float64Output {
 	return o.ApplyT(func(v NormalizedVertexResponse) float64 { return v.X }).(pulumi.Float64Output)
@@ -594,12 +491,6 @@ func (o NormalizedVertexResponseArrayOutput) ToNormalizedVertexResponseArrayOutp
 
 func (o NormalizedVertexResponseArrayOutput) ToNormalizedVertexResponseArrayOutputWithContext(ctx context.Context) NormalizedVertexResponseArrayOutput {
 	return o
-}
-
-func (o NormalizedVertexResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NormalizedVertexResponse] {
-	return pulumix.Output[[]NormalizedVertexResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NormalizedVertexResponseArrayOutput) Index(i pulumi.IntInput) NormalizedVertexResponseOutput {
@@ -631,12 +522,6 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
-}
-
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -693,12 +578,6 @@ func (i VertexArgs) ToVertexOutputWithContext(ctx context.Context) VertexOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(VertexOutput)
 }
 
-func (i VertexArgs) ToOutput(ctx context.Context) pulumix.Output[Vertex] {
-	return pulumix.Output[Vertex]{
-		OutputState: i.ToVertexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VertexArrayInput is an input type that accepts VertexArray and VertexArrayOutput values.
 // You can construct a concrete instance of `VertexArrayInput` via:
 //
@@ -724,12 +603,6 @@ func (i VertexArray) ToVertexArrayOutputWithContext(ctx context.Context) VertexA
 	return pulumi.ToOutputWithContext(ctx, i).(VertexArrayOutput)
 }
 
-func (i VertexArray) ToOutput(ctx context.Context) pulumix.Output[[]Vertex] {
-	return pulumix.Output[[]Vertex]{
-		OutputState: i.ToVertexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image.
 type VertexOutput struct{ *pulumi.OutputState }
 
@@ -743,12 +616,6 @@ func (o VertexOutput) ToVertexOutput() VertexOutput {
 
 func (o VertexOutput) ToVertexOutputWithContext(ctx context.Context) VertexOutput {
 	return o
-}
-
-func (o VertexOutput) ToOutput(ctx context.Context) pulumix.Output[Vertex] {
-	return pulumix.Output[Vertex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // X coordinate.
@@ -773,12 +640,6 @@ func (o VertexArrayOutput) ToVertexArrayOutput() VertexArrayOutput {
 
 func (o VertexArrayOutput) ToVertexArrayOutputWithContext(ctx context.Context) VertexArrayOutput {
 	return o
-}
-
-func (o VertexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Vertex] {
-	return pulumix.Output[[]Vertex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VertexArrayOutput) Index(i pulumi.IntInput) VertexOutput {
@@ -810,12 +671,6 @@ func (o VertexResponseOutput) ToVertexResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o VertexResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VertexResponse] {
-	return pulumix.Output[VertexResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // X coordinate.
 func (o VertexResponseOutput) X() pulumi.IntOutput {
 	return o.ApplyT(func(v VertexResponse) int { return v.X }).(pulumi.IntOutput)
@@ -838,12 +693,6 @@ func (o VertexResponseArrayOutput) ToVertexResponseArrayOutput() VertexResponseA
 
 func (o VertexResponseArrayOutput) ToVertexResponseArrayOutputWithContext(ctx context.Context) VertexResponseArrayOutput {
 	return o
-}
-
-func (o VertexResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VertexResponse] {
-	return pulumix.Output[[]VertexResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VertexResponseArrayOutput) Index(i pulumi.IntInput) VertexResponseOutput {

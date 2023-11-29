@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -280,12 +268,6 @@ func (o CustomDomainStateOutput) ToCustomDomainStatePtrOutputWithContext(ctx con
 	}).(CustomDomainStatePtrOutput)
 }
 
-func (o CustomDomainStateOutput) ToOutput(ctx context.Context) pulumix.Output[CustomDomainState] {
-	return pulumix.Output[CustomDomainState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomDomainStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -319,12 +301,6 @@ func (o CustomDomainStatePtrOutput) ToCustomDomainStatePtrOutput() CustomDomainS
 
 func (o CustomDomainStatePtrOutput) ToCustomDomainStatePtrOutputWithContext(ctx context.Context) CustomDomainStatePtrOutput {
 	return o
-}
-
-func (o CustomDomainStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomDomainState] {
-	return pulumix.Output[*CustomDomainState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomDomainStatePtrOutput) Elem() CustomDomainStateOutput {
@@ -473,12 +449,6 @@ func (o InstancePlatformEditionOutput) ToInstancePlatformEditionPtrOutputWithCon
 	}).(InstancePlatformEditionPtrOutput)
 }
 
-func (o InstancePlatformEditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePlatformEdition] {
-	return pulumix.Output[InstancePlatformEdition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstancePlatformEditionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -512,12 +482,6 @@ func (o InstancePlatformEditionPtrOutput) ToInstancePlatformEditionPtrOutput() I
 
 func (o InstancePlatformEditionPtrOutput) ToInstancePlatformEditionPtrOutputWithContext(ctx context.Context) InstancePlatformEditionPtrOutput {
 	return o
-}
-
-func (o InstancePlatformEditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePlatformEdition] {
-	return pulumix.Output[*InstancePlatformEdition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstancePlatformEditionPtrOutput) Elem() InstancePlatformEditionOutput {
@@ -670,12 +634,6 @@ func (o MaintenanceWindowDayOfWeekOutput) ToMaintenanceWindowDayOfWeekPtrOutputW
 	}).(MaintenanceWindowDayOfWeekPtrOutput)
 }
 
-func (o MaintenanceWindowDayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowDayOfWeek] {
-	return pulumix.Output[MaintenanceWindowDayOfWeek]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MaintenanceWindowDayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -709,12 +667,6 @@ func (o MaintenanceWindowDayOfWeekPtrOutput) ToMaintenanceWindowDayOfWeekPtrOutp
 
 func (o MaintenanceWindowDayOfWeekPtrOutput) ToMaintenanceWindowDayOfWeekPtrOutputWithContext(ctx context.Context) MaintenanceWindowDayOfWeekPtrOutput {
 	return o
-}
-
-func (o MaintenanceWindowDayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowDayOfWeek] {
-	return pulumix.Output[*MaintenanceWindowDayOfWeek]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MaintenanceWindowDayOfWeekPtrOutput) Elem() MaintenanceWindowDayOfWeekOutput {

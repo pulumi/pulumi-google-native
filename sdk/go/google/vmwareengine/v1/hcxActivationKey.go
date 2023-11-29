@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new HCX activation key in a given private cloud.
@@ -135,12 +134,6 @@ func (i *HcxActivationKey) ToHcxActivationKeyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(HcxActivationKeyOutput)
 }
 
-func (i *HcxActivationKey) ToOutput(ctx context.Context) pulumix.Output[*HcxActivationKey] {
-	return pulumix.Output[*HcxActivationKey]{
-		OutputState: i.ToHcxActivationKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HcxActivationKeyOutput struct{ *pulumi.OutputState }
 
 func (HcxActivationKeyOutput) ElementType() reflect.Type {
@@ -153,12 +146,6 @@ func (o HcxActivationKeyOutput) ToHcxActivationKeyOutput() HcxActivationKeyOutpu
 
 func (o HcxActivationKeyOutput) ToHcxActivationKeyOutputWithContext(ctx context.Context) HcxActivationKeyOutput {
 	return o
-}
-
-func (o HcxActivationKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*HcxActivationKey] {
-	return pulumix.Output[*HcxActivationKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCX activation key.

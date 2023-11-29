@@ -83,12 +83,6 @@ func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToGoogleDatastoreA
 	}).(GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput)
 }
 
-func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDatastoreAdminV1IndexedPropertyDirection] {
-	return pulumix.Output[GoogleDatastoreAdminV1IndexedPropertyDirection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToGoogleDatasto
 
 func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
 	return o
-}
-
-func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDatastoreAdminV1IndexedPropertyDirection] {
-	return pulumix.Output[*GoogleDatastoreAdminV1IndexedPropertyDirection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) Elem() GoogleDatastoreAdminV1IndexedPropertyDirectionOutput {
@@ -270,12 +258,6 @@ func (o IndexAncestorOutput) ToIndexAncestorPtrOutputWithContext(ctx context.Con
 	}).(IndexAncestorPtrOutput)
 }
 
-func (o IndexAncestorOutput) ToOutput(ctx context.Context) pulumix.Output[IndexAncestor] {
-	return pulumix.Output[IndexAncestor]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IndexAncestorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o IndexAncestorPtrOutput) ToIndexAncestorPtrOutput() IndexAncestorPtrOutpu
 
 func (o IndexAncestorPtrOutput) ToIndexAncestorPtrOutputWithContext(ctx context.Context) IndexAncestorPtrOutput {
 	return o
-}
-
-func (o IndexAncestorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IndexAncestor] {
-	return pulumix.Output[*IndexAncestor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndexAncestorPtrOutput) Elem() IndexAncestorOutput {

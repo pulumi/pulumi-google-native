@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a data collector.
@@ -75,12 +74,6 @@ func (o LookupDataCollectorResultOutput) ToLookupDataCollectorResultOutput() Loo
 
 func (o LookupDataCollectorResultOutput) ToLookupDataCollectorResultOutputWithContext(ctx context.Context) LookupDataCollectorResultOutput {
 	return o
-}
-
-func (o LookupDataCollectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataCollectorResult] {
-	return pulumix.Output[LookupDataCollectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the data collector was created in milliseconds since the epoch.

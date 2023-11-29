@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a node.
@@ -109,12 +108,6 @@ func (o LookupNodeResultOutput) ToLookupNodeResultOutput() LookupNodeResultOutpu
 
 func (o LookupNodeResultOutput) ToLookupNodeResultOutputWithContext(ctx context.Context) LookupNodeResultOutput {
 	return o
-}
-
-func (o LookupNodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodeResult] {
-	return pulumix.Output[LookupNodeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of hardware accelerators associated with this node.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a specific MetadataSchema.
@@ -81,12 +80,6 @@ func (o LookupMetadataSchemaResultOutput) ToLookupMetadataSchemaResultOutput() L
 
 func (o LookupMetadataSchemaResultOutput) ToLookupMetadataSchemaResultOutputWithContext(ctx context.Context) LookupMetadataSchemaResultOutput {
 	return o
-}
-
-func (o LookupMetadataSchemaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMetadataSchemaResult] {
-	return pulumix.Output[LookupMetadataSchemaResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this MetadataSchema was created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified NotificationEndpoint resource in the given region.
@@ -81,12 +80,6 @@ func (o LookupRegionNotificationEndpointResultOutput) ToLookupRegionNotification
 
 func (o LookupRegionNotificationEndpointResultOutput) ToLookupRegionNotificationEndpointResultOutputWithContext(ctx context.Context) LookupRegionNotificationEndpointResultOutput {
 	return o
-}
-
-func (o LookupRegionNotificationEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionNotificationEndpointResult] {
-	return pulumix.Output[LookupRegionNotificationEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

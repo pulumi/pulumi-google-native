@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // GetSecurityProfile gets the specified security profile. Returns NOT_FOUND if security profile is not present for the specified organization.
@@ -89,12 +88,6 @@ func (o LookupSecurityProfileResultOutput) ToLookupSecurityProfileResultOutput()
 
 func (o LookupSecurityProfileResultOutput) ToLookupSecurityProfileResultOutputWithContext(ctx context.Context) LookupSecurityProfileResultOutput {
 	return o
-}
-
-func (o LookupSecurityProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecurityProfileResult] {
-	return pulumix.Output[LookupSecurityProfileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the security profile.

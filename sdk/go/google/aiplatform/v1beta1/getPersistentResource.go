@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a PersistentResource.
@@ -95,12 +94,6 @@ func (o LookupPersistentResourceResultOutput) ToLookupPersistentResourceResultOu
 
 func (o LookupPersistentResourceResultOutput) ToLookupPersistentResourceResultOutputWithContext(ctx context.Context) LookupPersistentResourceResultOutput {
 	return o
-}
-
-func (o LookupPersistentResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPersistentResourceResult] {
-	return pulumix.Output[LookupPersistentResourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the PersistentResource was created.

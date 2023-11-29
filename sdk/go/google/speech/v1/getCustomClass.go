@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a custom class.
@@ -93,12 +92,6 @@ func (o LookupCustomClassResultOutput) ToLookupCustomClassResultOutput() LookupC
 
 func (o LookupCustomClassResultOutput) ToLookupCustomClassResultOutputWithContext(ctx context.Context) LookupCustomClassResultOutput {
 	return o
-}
-
-func (o LookupCustomClassResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomClassResult] {
-	return pulumix.Output[LookupCustomClassResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.

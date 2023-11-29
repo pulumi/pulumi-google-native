@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -136,12 +135,6 @@ func (i *InterconnectAttachmentIamBinding) ToInterconnectAttachmentIamBindingOut
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentIamBindingOutput)
 }
 
-func (i *InterconnectAttachmentIamBinding) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentIamBinding] {
-	return pulumix.Output[*InterconnectAttachmentIamBinding]{
-		OutputState: i.ToInterconnectAttachmentIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InterconnectAttachmentIamBindingOutput struct{ *pulumi.OutputState }
 
 func (InterconnectAttachmentIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o InterconnectAttachmentIamBindingOutput) ToInterconnectAttachmentIamBindi
 
 func (o InterconnectAttachmentIamBindingOutput) ToInterconnectAttachmentIamBindingOutputWithContext(ctx context.Context) InterconnectAttachmentIamBindingOutput {
 	return o
-}
-
-func (o InterconnectAttachmentIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentIamBinding] {
-	return pulumix.Output[*InterconnectAttachmentIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a logging server.
@@ -85,12 +84,6 @@ func (o LookupLoggingServerResultOutput) ToLookupLoggingServerResultOutput() Loo
 
 func (o LookupLoggingServerResultOutput) ToLookupLoggingServerResultOutputWithContext(ctx context.Context) LookupLoggingServerResultOutput {
 	return o
-}
-
-func (o LookupLoggingServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLoggingServerResult] {
-	return pulumix.Output[LookupLoggingServerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

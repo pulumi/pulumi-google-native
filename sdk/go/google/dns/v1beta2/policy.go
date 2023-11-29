@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Policy.
@@ -139,12 +138,6 @@ func (i *Policy) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput)
 }
 
-func (i *Policy) ToOutput(ctx context.Context) pulumix.Output[*Policy] {
-	return pulumix.Output[*Policy]{
-		OutputState: i.ToPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyOutput struct{ *pulumi.OutputState }
 
 func (PolicyOutput) ElementType() reflect.Type {
@@ -157,12 +150,6 @@ func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 
 func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
-}
-
-func (o PolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*Policy] {
-	return pulumix.Output[*Policy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.

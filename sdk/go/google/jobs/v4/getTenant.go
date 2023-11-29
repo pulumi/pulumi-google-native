@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves specified tenant.
@@ -69,12 +68,6 @@ func (o LookupTenantResultOutput) ToLookupTenantResultOutput() LookupTenantResul
 
 func (o LookupTenantResultOutput) ToLookupTenantResultOutputWithContext(ctx context.Context) LookupTenantResultOutput {
 	return o
-}
-
-func (o LookupTenantResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTenantResult] {
-	return pulumix.Output[LookupTenantResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Client side tenant identifier, used to uniquely identify the tenant. The maximum number of allowed characters is 255.

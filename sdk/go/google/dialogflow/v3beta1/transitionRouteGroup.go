@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an TransitionRouteGroup in the specified flow. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
@@ -140,12 +139,6 @@ func (i *TransitionRouteGroup) ToTransitionRouteGroupOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TransitionRouteGroupOutput)
 }
 
-func (i *TransitionRouteGroup) ToOutput(ctx context.Context) pulumix.Output[*TransitionRouteGroup] {
-	return pulumix.Output[*TransitionRouteGroup]{
-		OutputState: i.ToTransitionRouteGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TransitionRouteGroupOutput struct{ *pulumi.OutputState }
 
 func (TransitionRouteGroupOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o TransitionRouteGroupOutput) ToTransitionRouteGroupOutput() TransitionRou
 
 func (o TransitionRouteGroupOutput) ToTransitionRouteGroupOutputWithContext(ctx context.Context) TransitionRouteGroupOutput {
 	return o
-}
-
-func (o TransitionRouteGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitionRouteGroup] {
-	return pulumix.Output[*TransitionRouteGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransitionRouteGroupOutput) AgentId() pulumi.StringOutput {

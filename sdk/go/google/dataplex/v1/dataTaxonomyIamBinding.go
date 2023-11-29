@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -141,12 +140,6 @@ func (i *DataTaxonomyIamBinding) ToDataTaxonomyIamBindingOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DataTaxonomyIamBindingOutput)
 }
 
-func (i *DataTaxonomyIamBinding) ToOutput(ctx context.Context) pulumix.Output[*DataTaxonomyIamBinding] {
-	return pulumix.Output[*DataTaxonomyIamBinding]{
-		OutputState: i.ToDataTaxonomyIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataTaxonomyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DataTaxonomyIamBindingOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o DataTaxonomyIamBindingOutput) ToDataTaxonomyIamBindingOutput() DataTaxon
 
 func (o DataTaxonomyIamBindingOutput) ToDataTaxonomyIamBindingOutputWithContext(ctx context.Context) DataTaxonomyIamBindingOutput {
 	return o
-}
-
-func (o DataTaxonomyIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DataTaxonomyIamBinding] {
-	return pulumix.Output[*DataTaxonomyIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

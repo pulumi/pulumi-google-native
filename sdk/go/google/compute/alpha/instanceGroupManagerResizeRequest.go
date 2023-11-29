@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new resize request that starts provisioning VMs immediately or queues VM creation.
@@ -160,12 +159,6 @@ func (i *InstanceGroupManagerResizeRequest) ToInstanceGroupManagerResizeRequestO
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerResizeRequestOutput)
 }
 
-func (i *InstanceGroupManagerResizeRequest) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerResizeRequest] {
-	return pulumix.Output[*InstanceGroupManagerResizeRequest]{
-		OutputState: i.ToInstanceGroupManagerResizeRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceGroupManagerResizeRequestOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerResizeRequestOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o InstanceGroupManagerResizeRequestOutput) ToInstanceGroupManagerResizeReq
 
 func (o InstanceGroupManagerResizeRequestOutput) ToInstanceGroupManagerResizeRequestOutputWithContext(ctx context.Context) InstanceGroupManagerResizeRequestOutput {
 	return o
-}
-
-func (o InstanceGroupManagerResizeRequestOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerResizeRequest] {
-	return pulumix.Output[*InstanceGroupManagerResizeRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The count of instances to create as part of this resize request.

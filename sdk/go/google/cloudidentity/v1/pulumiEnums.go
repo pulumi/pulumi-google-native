@@ -81,12 +81,6 @@ func (o DynamicGroupQueryResourceTypeOutput) ToDynamicGroupQueryResourceTypePtrO
 	}).(DynamicGroupQueryResourceTypePtrOutput)
 }
 
-func (o DynamicGroupQueryResourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DynamicGroupQueryResourceType] {
-	return pulumix.Output[DynamicGroupQueryResourceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DynamicGroupQueryResourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o DynamicGroupQueryResourceTypePtrOutput) ToDynamicGroupQueryResourceTypeP
 
 func (o DynamicGroupQueryResourceTypePtrOutput) ToDynamicGroupQueryResourceTypePtrOutputWithContext(ctx context.Context) DynamicGroupQueryResourceTypePtrOutput {
 	return o
-}
-
-func (o DynamicGroupQueryResourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DynamicGroupQueryResourceType] {
-	return pulumix.Output[*DynamicGroupQueryResourceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DynamicGroupQueryResourceTypePtrOutput) Elem() DynamicGroupQueryResourceTypeOutput {
@@ -270,12 +258,6 @@ func (o InboundSsoAssignmentSsoModeOutput) ToInboundSsoAssignmentSsoModePtrOutpu
 	}).(InboundSsoAssignmentSsoModePtrOutput)
 }
 
-func (o InboundSsoAssignmentSsoModeOutput) ToOutput(ctx context.Context) pulumix.Output[InboundSsoAssignmentSsoMode] {
-	return pulumix.Output[InboundSsoAssignmentSsoMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InboundSsoAssignmentSsoModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o InboundSsoAssignmentSsoModePtrOutput) ToInboundSsoAssignmentSsoModePtrOu
 
 func (o InboundSsoAssignmentSsoModePtrOutput) ToInboundSsoAssignmentSsoModePtrOutputWithContext(ctx context.Context) InboundSsoAssignmentSsoModePtrOutput {
 	return o
-}
-
-func (o InboundSsoAssignmentSsoModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InboundSsoAssignmentSsoMode] {
-	return pulumix.Output[*InboundSsoAssignmentSsoMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InboundSsoAssignmentSsoModePtrOutput) Elem() InboundSsoAssignmentSsoModeOutput {
@@ -455,12 +431,6 @@ func (o SignInBehaviorRedirectConditionOutput) ToSignInBehaviorRedirectCondition
 	}).(SignInBehaviorRedirectConditionPtrOutput)
 }
 
-func (o SignInBehaviorRedirectConditionOutput) ToOutput(ctx context.Context) pulumix.Output[SignInBehaviorRedirectCondition] {
-	return pulumix.Output[SignInBehaviorRedirectCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SignInBehaviorRedirectConditionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -494,12 +464,6 @@ func (o SignInBehaviorRedirectConditionPtrOutput) ToSignInBehaviorRedirectCondit
 
 func (o SignInBehaviorRedirectConditionPtrOutput) ToSignInBehaviorRedirectConditionPtrOutputWithContext(ctx context.Context) SignInBehaviorRedirectConditionPtrOutput {
 	return o
-}
-
-func (o SignInBehaviorRedirectConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SignInBehaviorRedirectCondition] {
-	return pulumix.Output[*SignInBehaviorRedirectCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SignInBehaviorRedirectConditionPtrOutput) Elem() SignInBehaviorRedirectConditionOutput {

@@ -83,12 +83,6 @@ func (o ArtifactStateEnumOutput) ToArtifactStateEnumPtrOutputWithContext(ctx con
 	}).(ArtifactStateEnumPtrOutput)
 }
 
-func (o ArtifactStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactStateEnum] {
-	return pulumix.Output[ArtifactStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ArtifactStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o ArtifactStateEnumPtrOutput) ToArtifactStateEnumPtrOutput() ArtifactState
 
 func (o ArtifactStateEnumPtrOutput) ToArtifactStateEnumPtrOutputWithContext(ctx context.Context) ArtifactStateEnumPtrOutput {
 	return o
-}
-
-func (o ArtifactStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArtifactStateEnum] {
-	return pulumix.Output[*ArtifactStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArtifactStateEnumPtrOutput) Elem() ArtifactStateEnumOutput {
@@ -278,12 +266,6 @@ func (o ExecutionStateEnumOutput) ToExecutionStateEnumPtrOutputWithContext(ctx c
 	}).(ExecutionStateEnumPtrOutput)
 }
 
-func (o ExecutionStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionStateEnum] {
-	return pulumix.Output[ExecutionStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExecutionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -317,12 +299,6 @@ func (o ExecutionStateEnumPtrOutput) ToExecutionStateEnumPtrOutput() ExecutionSt
 
 func (o ExecutionStateEnumPtrOutput) ToExecutionStateEnumPtrOutputWithContext(ctx context.Context) ExecutionStateEnumPtrOutput {
 	return o
-}
-
-func (o ExecutionStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecutionStateEnum] {
-	return pulumix.Output[*ExecutionStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecutionStateEnumPtrOutput) Elem() ExecutionStateEnumOutput {
@@ -479,12 +455,6 @@ func (o FeatureGroupFeatureValueTypeOutput) ToFeatureGroupFeatureValueTypePtrOut
 	}).(FeatureGroupFeatureValueTypePtrOutput)
 }
 
-func (o FeatureGroupFeatureValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureGroupFeatureValueType] {
-	return pulumix.Output[FeatureGroupFeatureValueType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeatureGroupFeatureValueTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -518,12 +488,6 @@ func (o FeatureGroupFeatureValueTypePtrOutput) ToFeatureGroupFeatureValueTypePtr
 
 func (o FeatureGroupFeatureValueTypePtrOutput) ToFeatureGroupFeatureValueTypePtrOutputWithContext(ctx context.Context) FeatureGroupFeatureValueTypePtrOutput {
 	return o
-}
-
-func (o FeatureGroupFeatureValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureGroupFeatureValueType] {
-	return pulumix.Output[*FeatureGroupFeatureValueType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureGroupFeatureValueTypePtrOutput) Elem() FeatureGroupFeatureValueTypeOutput {
@@ -680,12 +644,6 @@ func (o FeatureStoreFeatureValueTypeOutput) ToFeatureStoreFeatureValueTypePtrOut
 	}).(FeatureStoreFeatureValueTypePtrOutput)
 }
 
-func (o FeatureStoreFeatureValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureStoreFeatureValueType] {
-	return pulumix.Output[FeatureStoreFeatureValueType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeatureStoreFeatureValueTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -719,12 +677,6 @@ func (o FeatureStoreFeatureValueTypePtrOutput) ToFeatureStoreFeatureValueTypePtr
 
 func (o FeatureStoreFeatureValueTypePtrOutput) ToFeatureStoreFeatureValueTypePtrOutputWithContext(ctx context.Context) FeatureStoreFeatureValueTypePtrOutput {
 	return o
-}
-
-func (o FeatureStoreFeatureValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureStoreFeatureValueType] {
-	return pulumix.Output[*FeatureStoreFeatureValueType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureStoreFeatureValueTypePtrOutput) Elem() FeatureStoreFeatureValueTypeOutput {
@@ -865,12 +817,6 @@ func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatOutput) To
 	}).(GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -904,12 +850,6 @@ func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrOutput)
 
 func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrOutput) ToGoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrOutput) Elem() GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatOutput {
@@ -1054,12 +994,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasure
 	}).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1093,12 +1027,6 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasure
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypePtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypePtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeOutput {
@@ -1243,12 +1171,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAn
 	}).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselinePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1282,12 +1204,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAn
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselinePtrOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselinePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselinePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselinePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselinePtrOutput) Elem() GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineOutput {
@@ -1432,12 +1348,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAn
 	}).(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStatePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisState] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1471,12 +1381,6 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAn
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStatePtrOutput) ToGoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStatePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStatePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisState] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStatePtrOutput) Elem() GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateOutput {
@@ -1641,12 +1545,6 @@ func (o GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeOutput) ToGoogleCl
 	}).(GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1680,12 +1578,6 @@ func (o GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypePtrOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypePtrOutput) ToGoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypePtrOutput) Elem() GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeOutput {
@@ -1828,12 +1720,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1867,12 +1753,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatPtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatPtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatOutput {
@@ -2019,12 +1899,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveOutput
 	}).(GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectivePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2058,12 +1932,6 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectivePtrOut
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectivePtrOutput) ToGoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectivePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectivePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectivePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectivePtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveOutput {
@@ -2206,12 +2074,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecG
 	}).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2245,12 +2107,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecG
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalPtrOutput) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalPtrOutput) Elem() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalOutput {
@@ -2393,12 +2249,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialA
 	}).(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2432,12 +2282,6 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialA
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmPtrOutput) ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmPtrOutput) Elem() GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmOutput {
@@ -2580,12 +2424,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyOutput)
 	}).(GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2619,12 +2457,6 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPtrOutp
 
 func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPtrOutput) ToGoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPtrOutput) Elem() GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyOutput {
@@ -2769,12 +2601,6 @@ func (o GoogleCloudAiplatformV1beta1PresetsModalityOutput) ToGoogleCloudAiplatfo
 	}).(GoogleCloudAiplatformV1beta1PresetsModalityPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1PresetsModalityOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PresetsModality] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PresetsModality]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1PresetsModalityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2808,12 +2634,6 @@ func (o GoogleCloudAiplatformV1beta1PresetsModalityPtrOutput) ToGoogleCloudAipla
 
 func (o GoogleCloudAiplatformV1beta1PresetsModalityPtrOutput) ToGoogleCloudAiplatformV1beta1PresetsModalityPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PresetsModalityPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PresetsModalityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PresetsModality] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PresetsModality]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PresetsModalityPtrOutput) Elem() GoogleCloudAiplatformV1beta1PresetsModalityOutput {
@@ -2954,12 +2774,6 @@ func (o GoogleCloudAiplatformV1beta1PresetsQueryOutput) ToGoogleCloudAiplatformV
 	}).(GoogleCloudAiplatformV1beta1PresetsQueryPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1PresetsQueryOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1PresetsQuery] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1PresetsQuery]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1PresetsQueryOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2993,12 +2807,6 @@ func (o GoogleCloudAiplatformV1beta1PresetsQueryPtrOutput) ToGoogleCloudAiplatfo
 
 func (o GoogleCloudAiplatformV1beta1PresetsQueryPtrOutput) ToGoogleCloudAiplatformV1beta1PresetsQueryPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PresetsQueryPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1PresetsQueryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1PresetsQuery] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1PresetsQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1PresetsQueryPtrOutput) Elem() GoogleCloudAiplatformV1beta1PresetsQueryOutput {
@@ -3139,12 +2947,6 @@ func (o GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyOutput) ToGoogleCl
 	}).(GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3178,12 +2980,6 @@ func (o GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyPtrOutput) ToGoogl
 
 func (o GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyPtrOutput) ToGoogleCloudAiplatformV1beta1SampleConfigSampleStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyPtrOutput) Elem() GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyOutput {
@@ -3326,12 +3122,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecAlgorithmOutput) ToGoogleCloudAipla
 	}).(GoogleCloudAiplatformV1beta1StudySpecAlgorithmPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecAlgorithm] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1StudySpecAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3365,12 +3155,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecAlgorithmPtrOutput) ToGoogleCloudAi
 
 func (o GoogleCloudAiplatformV1beta1StudySpecAlgorithmPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecAlgorithmPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecAlgorithmPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecAlgorithm] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecAlgorithmPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecAlgorithmOutput {
@@ -3513,12 +3297,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeOutput) ToG
 	}).(GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3552,12 +3330,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypePtrOutput) 
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypePtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypePtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeOutput {
@@ -3700,12 +3472,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalOutput) ToGoogleCloud
 	}).(GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalPtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoal] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoal]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3739,12 +3505,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalPtrOutput) ToGoogleCl
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalPtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoal] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoal]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalPtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalOutput {
@@ -3887,12 +3647,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecObservationNoiseOutput) ToGoogleClo
 	}).(GoogleCloudAiplatformV1beta1StudySpecObservationNoisePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecObservationNoiseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecObservationNoise] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecObservationNoise]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1StudySpecObservationNoiseOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3926,12 +3680,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecObservationNoisePtrOutput) ToGoogle
 
 func (o GoogleCloudAiplatformV1beta1StudySpecObservationNoisePtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecObservationNoisePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecObservationNoisePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecObservationNoisePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecObservationNoise] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecObservationNoise]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecObservationNoisePtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecObservationNoiseOutput {
@@ -4076,12 +3824,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeOutput) ToGoo
 	}).(GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypePtrOutput)
 }
 
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleType] {
-	return pulumix.Output[GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4115,12 +3857,6 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypePtrOutput) To
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypePtrOutput) ToGoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleType] {
-	return pulumix.Output[*GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypePtrOutput) Elem() GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeOutput {
@@ -4263,12 +3999,6 @@ func (o IndexIndexUpdateMethodOutput) ToIndexIndexUpdateMethodPtrOutputWithConte
 	}).(IndexIndexUpdateMethodPtrOutput)
 }
 
-func (o IndexIndexUpdateMethodOutput) ToOutput(ctx context.Context) pulumix.Output[IndexIndexUpdateMethod] {
-	return pulumix.Output[IndexIndexUpdateMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IndexIndexUpdateMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4302,12 +4032,6 @@ func (o IndexIndexUpdateMethodPtrOutput) ToIndexIndexUpdateMethodPtrOutput() Ind
 
 func (o IndexIndexUpdateMethodPtrOutput) ToIndexIndexUpdateMethodPtrOutputWithContext(ctx context.Context) IndexIndexUpdateMethodPtrOutput {
 	return o
-}
-
-func (o IndexIndexUpdateMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IndexIndexUpdateMethod] {
-	return pulumix.Output[*IndexIndexUpdateMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndexIndexUpdateMethodPtrOutput) Elem() IndexIndexUpdateMethodOutput {
@@ -4452,12 +4176,6 @@ func (o MetadataSchemaSchemaTypeOutput) ToMetadataSchemaSchemaTypePtrOutputWithC
 	}).(MetadataSchemaSchemaTypePtrOutput)
 }
 
-func (o MetadataSchemaSchemaTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataSchemaSchemaType] {
-	return pulumix.Output[MetadataSchemaSchemaType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetadataSchemaSchemaTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4491,12 +4209,6 @@ func (o MetadataSchemaSchemaTypePtrOutput) ToMetadataSchemaSchemaTypePtrOutput()
 
 func (o MetadataSchemaSchemaTypePtrOutput) ToMetadataSchemaSchemaTypePtrOutputWithContext(ctx context.Context) MetadataSchemaSchemaTypePtrOutput {
 	return o
-}
-
-func (o MetadataSchemaSchemaTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataSchemaSchemaType] {
-	return pulumix.Output[*MetadataSchemaSchemaType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetadataSchemaSchemaTypePtrOutput) Elem() MetadataSchemaSchemaTypeOutput {
@@ -4639,12 +4351,6 @@ func (o NotebookRuntimeTemplateNotebookRuntimeTypeOutput) ToNotebookRuntimeTempl
 	}).(NotebookRuntimeTemplateNotebookRuntimeTypePtrOutput)
 }
 
-func (o NotebookRuntimeTemplateNotebookRuntimeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NotebookRuntimeTemplateNotebookRuntimeType] {
-	return pulumix.Output[NotebookRuntimeTemplateNotebookRuntimeType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NotebookRuntimeTemplateNotebookRuntimeTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4678,12 +4384,6 @@ func (o NotebookRuntimeTemplateNotebookRuntimeTypePtrOutput) ToNotebookRuntimeTe
 
 func (o NotebookRuntimeTemplateNotebookRuntimeTypePtrOutput) ToNotebookRuntimeTemplateNotebookRuntimeTypePtrOutputWithContext(ctx context.Context) NotebookRuntimeTemplateNotebookRuntimeTypePtrOutput {
 	return o
-}
-
-func (o NotebookRuntimeTemplateNotebookRuntimeTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotebookRuntimeTemplateNotebookRuntimeType] {
-	return pulumix.Output[*NotebookRuntimeTemplateNotebookRuntimeType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NotebookRuntimeTemplateNotebookRuntimeTypePtrOutput) Elem() NotebookRuntimeTemplateNotebookRuntimeTypeOutput {
@@ -4828,12 +4528,6 @@ func (o TimeSeriesValueTypeOutput) ToTimeSeriesValueTypePtrOutputWithContext(ctx
 	}).(TimeSeriesValueTypePtrOutput)
 }
 
-func (o TimeSeriesValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesValueType] {
-	return pulumix.Output[TimeSeriesValueType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TimeSeriesValueTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4867,12 +4561,6 @@ func (o TimeSeriesValueTypePtrOutput) ToTimeSeriesValueTypePtrOutput() TimeSerie
 
 func (o TimeSeriesValueTypePtrOutput) ToTimeSeriesValueTypePtrOutputWithContext(ctx context.Context) TimeSeriesValueTypePtrOutput {
 	return o
-}
-
-func (o TimeSeriesValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesValueType] {
-	return pulumix.Output[*TimeSeriesValueType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeSeriesValueTypePtrOutput) Elem() TimeSeriesValueTypeOutput {

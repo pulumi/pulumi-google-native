@@ -81,12 +81,6 @@ func (o DatabaseTypeOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Conte
 	}).(DatabaseTypePtrOutput)
 }
 
-func (o DatabaseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseType] {
-	return pulumix.Output[DatabaseType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o DatabaseTypePtrOutput) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
 
 func (o DatabaseTypePtrOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseTypePtrOutput {
 	return o
-}
-
-func (o DatabaseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseType] {
-	return pulumix.Output[*DatabaseType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseTypePtrOutput) Elem() DatabaseTypeOutput {
@@ -266,12 +254,6 @@ func (o TableTypeOutput) ToTableTypePtrOutputWithContext(ctx context.Context) Ta
 	}).(TableTypePtrOutput)
 }
 
-func (o TableTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TableType] {
-	return pulumix.Output[TableType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TableTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -305,12 +287,6 @@ func (o TableTypePtrOutput) ToTableTypePtrOutput() TableTypePtrOutput {
 
 func (o TableTypePtrOutput) ToTableTypePtrOutputWithContext(ctx context.Context) TableTypePtrOutput {
 	return o
-}
-
-func (o TableTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableType] {
-	return pulumix.Output[*TableType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableTypePtrOutput) Elem() TableTypeOutput {

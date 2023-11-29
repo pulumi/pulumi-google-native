@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new alerting policy.Design your application to single-thread API calls that modify the state of alerting policies in a single project. This includes calls to CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy.
@@ -172,12 +171,6 @@ func (i *AlertPolicy) ToAlertPolicyOutputWithContext(ctx context.Context) AlertP
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyOutput)
 }
 
-func (i *AlertPolicy) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicy] {
-	return pulumix.Output[*AlertPolicy]{
-		OutputState: i.ToAlertPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertPolicyOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyOutput) ElementType() reflect.Type {
@@ -190,12 +183,6 @@ func (o AlertPolicyOutput) ToAlertPolicyOutput() AlertPolicyOutput {
 
 func (o AlertPolicyOutput) ToAlertPolicyOutputWithContext(ctx context.Context) AlertPolicyOutput {
 	return o
-}
-
-func (o AlertPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicy] {
-	return pulumix.Output[*AlertPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Control over how this alert policy's notification channels are notified.

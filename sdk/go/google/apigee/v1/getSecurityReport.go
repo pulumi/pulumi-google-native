@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get security report status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
@@ -93,12 +92,6 @@ func (o LookupSecurityReportResultOutput) ToLookupSecurityReportResultOutput() L
 
 func (o LookupSecurityReportResultOutput) ToLookupSecurityReportResultOutputWithContext(ctx context.Context) LookupSecurityReportResultOutput {
 	return o
-}
-
-func (o LookupSecurityReportResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecurityReportResult] {
-	return pulumix.Output[LookupSecurityReportResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of the query.

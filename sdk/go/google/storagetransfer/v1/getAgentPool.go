@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an agent pool.
@@ -73,12 +72,6 @@ func (o LookupAgentPoolResultOutput) ToLookupAgentPoolResultOutput() LookupAgent
 
 func (o LookupAgentPoolResultOutput) ToLookupAgentPoolResultOutputWithContext(ctx context.Context) LookupAgentPoolResultOutput {
 	return o
-}
-
-func (o LookupAgentPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAgentPoolResult] {
-	return pulumix.Output[LookupAgentPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.

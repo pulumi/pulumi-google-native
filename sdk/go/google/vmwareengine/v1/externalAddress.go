@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new `ExternalAddress` resource in a given private cloud. The network policy that corresponds to the private cloud must have the external IP address network service enabled (`NetworkPolicy.external_ip`).
@@ -147,12 +146,6 @@ func (i *ExternalAddress) ToExternalAddressOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalAddressOutput)
 }
 
-func (i *ExternalAddress) ToOutput(ctx context.Context) pulumix.Output[*ExternalAddress] {
-	return pulumix.Output[*ExternalAddress]{
-		OutputState: i.ToExternalAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExternalAddressOutput struct{ *pulumi.OutputState }
 
 func (ExternalAddressOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o ExternalAddressOutput) ToExternalAddressOutput() ExternalAddressOutput {
 
 func (o ExternalAddressOutput) ToExternalAddressOutputWithContext(ctx context.Context) ExternalAddressOutput {
 	return o
-}
-
-func (o ExternalAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalAddress] {
-	return pulumix.Output[*ExternalAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

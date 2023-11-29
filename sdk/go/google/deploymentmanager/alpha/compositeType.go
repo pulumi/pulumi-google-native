@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a composite type.
@@ -127,12 +126,6 @@ func (i *CompositeType) ToCompositeTypeOutputWithContext(ctx context.Context) Co
 	return pulumi.ToOutputWithContext(ctx, i).(CompositeTypeOutput)
 }
 
-func (i *CompositeType) ToOutput(ctx context.Context) pulumix.Output[*CompositeType] {
-	return pulumix.Output[*CompositeType]{
-		OutputState: i.ToCompositeTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CompositeTypeOutput struct{ *pulumi.OutputState }
 
 func (CompositeTypeOutput) ElementType() reflect.Type {
@@ -145,12 +138,6 @@ func (o CompositeTypeOutput) ToCompositeTypeOutput() CompositeTypeOutput {
 
 func (o CompositeTypeOutput) ToCompositeTypeOutputWithContext(ctx context.Context) CompositeTypeOutput {
 	return o
-}
-
-func (o CompositeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*CompositeType] {
-	return pulumix.Output[*CompositeType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional textual description of the resource; provided by the client when the resource is created.

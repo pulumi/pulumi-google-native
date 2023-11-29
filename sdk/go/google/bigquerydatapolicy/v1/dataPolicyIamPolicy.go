@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM policy for the specified data policy.
@@ -136,12 +135,6 @@ func (i *DataPolicyIamPolicy) ToDataPolicyIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyIamPolicyOutput)
 }
 
-func (i *DataPolicyIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyIamPolicy] {
-	return pulumix.Output[*DataPolicyIamPolicy]{
-		OutputState: i.ToDataPolicyIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DataPolicyIamPolicyOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o DataPolicyIamPolicyOutput) ToDataPolicyIamPolicyOutput() DataPolicyIamPo
 
 func (o DataPolicyIamPolicyOutput) ToDataPolicyIamPolicyOutputWithContext(ctx context.Context) DataPolicyIamPolicyOutput {
 	return o
-}
-
-func (o DataPolicyIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyIamPolicy] {
-	return pulumix.Output[*DataPolicyIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

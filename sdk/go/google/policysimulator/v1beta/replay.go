@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates and starts a Replay using the given ReplayConfig.
@@ -117,12 +116,6 @@ func (i *Replay) ToReplayOutputWithContext(ctx context.Context) ReplayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplayOutput)
 }
 
-func (i *Replay) ToOutput(ctx context.Context) pulumix.Output[*Replay] {
-	return pulumix.Output[*Replay]{
-		OutputState: i.ToReplayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReplayOutput struct{ *pulumi.OutputState }
 
 func (ReplayOutput) ElementType() reflect.Type {
@@ -135,12 +128,6 @@ func (o ReplayOutput) ToReplayOutput() ReplayOutput {
 
 func (o ReplayOutput) ToReplayOutputWithContext(ctx context.Context) ReplayOutput {
 	return o
-}
-
-func (o ReplayOutput) ToOutput(ctx context.Context) pulumix.Output[*Replay] {
-	return pulumix.Output[*Replay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration used for the `Replay`.

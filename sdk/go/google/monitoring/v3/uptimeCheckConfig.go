@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Uptime check configuration.
@@ -184,12 +183,6 @@ func (i *UptimeCheckConfig) ToUptimeCheckConfigOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigOutput)
 }
 
-func (i *UptimeCheckConfig) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfig] {
-	return pulumix.Output[*UptimeCheckConfig]{
-		OutputState: i.ToUptimeCheckConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UptimeCheckConfigOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigOutput) ElementType() reflect.Type {
@@ -202,12 +195,6 @@ func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutput() UptimeCheckConfigOu
 
 func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutputWithContext(ctx context.Context) UptimeCheckConfigOutput {
 	return o
-}
-
-func (o UptimeCheckConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfig] {
-	return pulumix.Output[*UptimeCheckConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of checkers to use to execute the Uptime check.

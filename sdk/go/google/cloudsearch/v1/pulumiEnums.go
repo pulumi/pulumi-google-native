@@ -82,12 +82,6 @@ func (o CompositeFilterLogicOperatorOutput) ToCompositeFilterLogicOperatorPtrOut
 	}).(CompositeFilterLogicOperatorPtrOutput)
 }
 
-func (o CompositeFilterLogicOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[CompositeFilterLogicOperator] {
-	return pulumix.Output[CompositeFilterLogicOperator]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CompositeFilterLogicOperatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -121,12 +115,6 @@ func (o CompositeFilterLogicOperatorPtrOutput) ToCompositeFilterLogicOperatorPtr
 
 func (o CompositeFilterLogicOperatorPtrOutput) ToCompositeFilterLogicOperatorPtrOutputWithContext(ctx context.Context) CompositeFilterLogicOperatorPtrOutput {
 	return o
-}
-
-func (o CompositeFilterLogicOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompositeFilterLogicOperator] {
-	return pulumix.Output[*CompositeFilterLogicOperator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompositeFilterLogicOperatorPtrOutput) Elem() CompositeFilterLogicOperatorOutput {
@@ -265,12 +253,6 @@ func (o SortOptionsSortOrderOutput) ToSortOptionsSortOrderPtrOutputWithContext(c
 	}).(SortOptionsSortOrderPtrOutput)
 }
 
-func (o SortOptionsSortOrderOutput) ToOutput(ctx context.Context) pulumix.Output[SortOptionsSortOrder] {
-	return pulumix.Output[SortOptionsSortOrder]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SortOptionsSortOrderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -304,12 +286,6 @@ func (o SortOptionsSortOrderPtrOutput) ToSortOptionsSortOrderPtrOutput() SortOpt
 
 func (o SortOptionsSortOrderPtrOutput) ToSortOptionsSortOrderPtrOutputWithContext(ctx context.Context) SortOptionsSortOrderPtrOutput {
 	return o
-}
-
-func (o SortOptionsSortOrderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SortOptionsSortOrder] {
-	return pulumix.Output[*SortOptionsSortOrder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SortOptionsSortOrderPtrOutput) Elem() SortOptionsSortOrderOutput {
@@ -457,12 +433,6 @@ func (o SourcePredefinedSourceOutput) ToSourcePredefinedSourcePtrOutputWithConte
 	}).(SourcePredefinedSourcePtrOutput)
 }
 
-func (o SourcePredefinedSourceOutput) ToOutput(ctx context.Context) pulumix.Output[SourcePredefinedSource] {
-	return pulumix.Output[SourcePredefinedSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SourcePredefinedSourceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -496,12 +466,6 @@ func (o SourcePredefinedSourcePtrOutput) ToSourcePredefinedSourcePtrOutput() Sou
 
 func (o SourcePredefinedSourcePtrOutput) ToSourcePredefinedSourcePtrOutputWithContext(ctx context.Context) SourcePredefinedSourcePtrOutput {
 	return o
-}
-
-func (o SourcePredefinedSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourcePredefinedSource] {
-	return pulumix.Output[*SourcePredefinedSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourcePredefinedSourcePtrOutput) Elem() SourcePredefinedSourceOutput {
@@ -641,12 +605,6 @@ func (o SourceScoringConfigSourceImportanceOutput) ToSourceScoringConfigSourceIm
 	}).(SourceScoringConfigSourceImportancePtrOutput)
 }
 
-func (o SourceScoringConfigSourceImportanceOutput) ToOutput(ctx context.Context) pulumix.Output[SourceScoringConfigSourceImportance] {
-	return pulumix.Output[SourceScoringConfigSourceImportance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SourceScoringConfigSourceImportanceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -680,12 +638,6 @@ func (o SourceScoringConfigSourceImportancePtrOutput) ToSourceScoringConfigSourc
 
 func (o SourceScoringConfigSourceImportancePtrOutput) ToSourceScoringConfigSourceImportancePtrOutputWithContext(ctx context.Context) SourceScoringConfigSourceImportancePtrOutput {
 	return o
-}
-
-func (o SourceScoringConfigSourceImportancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceScoringConfigSourceImportance] {
-	return pulumix.Output[*SourceScoringConfigSourceImportance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceScoringConfigSourceImportancePtrOutput) Elem() SourceScoringConfigSourceImportanceOutput {

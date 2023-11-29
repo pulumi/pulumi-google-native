@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new ChannelConnection in a particular project and location.
@@ -136,12 +135,6 @@ func (i *ChannelConnection) ToChannelConnectionOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ChannelConnectionOutput)
 }
 
-func (i *ChannelConnection) ToOutput(ctx context.Context) pulumix.Output[*ChannelConnection] {
-	return pulumix.Output[*ChannelConnection]{
-		OutputState: i.ToChannelConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ChannelConnectionOutput struct{ *pulumi.OutputState }
 
 func (ChannelConnectionOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o ChannelConnectionOutput) ToChannelConnectionOutput() ChannelConnectionOu
 
 func (o ChannelConnectionOutput) ToChannelConnectionOutputWithContext(ctx context.Context) ChannelConnectionOutput {
 	return o
-}
-
-func (o ChannelConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*ChannelConnection] {
-	return pulumix.Output[*ChannelConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Input only. Activation token for the channel. The token will be used during the creation of ChannelConnection to bind the channel with the provider project. This field will not be stored in the provider resource.

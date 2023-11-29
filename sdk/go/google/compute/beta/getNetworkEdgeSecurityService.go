@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specified NetworkEdgeSecurityService.
@@ -85,12 +84,6 @@ func (o LookupNetworkEdgeSecurityServiceResultOutput) ToLookupNetworkEdgeSecurit
 
 func (o LookupNetworkEdgeSecurityServiceResultOutput) ToLookupNetworkEdgeSecurityServiceResultOutputWithContext(ctx context.Context) LookupNetworkEdgeSecurityServiceResultOutput {
 	return o
-}
-
-func (o LookupNetworkEdgeSecurityServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkEdgeSecurityServiceResult] {
-	return pulumix.Output[LookupNetworkEdgeSecurityServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new HL7v2 store within the parent dataset.
@@ -148,12 +147,6 @@ func (i *Hl7V2Store) ToHl7V2StoreOutputWithContext(ctx context.Context) Hl7V2Sto
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7V2StoreOutput)
 }
 
-func (i *Hl7V2Store) ToOutput(ctx context.Context) pulumix.Output[*Hl7V2Store] {
-	return pulumix.Output[*Hl7V2Store]{
-		OutputState: i.ToHl7V2StoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Hl7V2StoreOutput struct{ *pulumi.OutputState }
 
 func (Hl7V2StoreOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o Hl7V2StoreOutput) ToHl7V2StoreOutput() Hl7V2StoreOutput {
 
 func (o Hl7V2StoreOutput) ToHl7V2StoreOutputWithContext(ctx context.Context) Hl7V2StoreOutput {
 	return o
-}
-
-func (o Hl7V2StoreOutput) ToOutput(ctx context.Context) pulumix.Output[*Hl7V2Store] {
-	return pulumix.Output[*Hl7V2Store]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7V2StoreOutput) DatasetId() pulumi.StringOutput {

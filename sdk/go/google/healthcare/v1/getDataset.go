@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets any metadata associated with a dataset.
@@ -71,12 +70,6 @@ func (o LookupDatasetResultOutput) ToLookupDatasetResultOutput() LookupDatasetRe
 
 func (o LookupDatasetResultOutput) ToLookupDatasetResultOutputWithContext(ctx context.Context) LookupDatasetResultOutput {
 	return o
-}
-
-func (o LookupDatasetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatasetResult] {
-	return pulumix.Output[LookupDatasetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.

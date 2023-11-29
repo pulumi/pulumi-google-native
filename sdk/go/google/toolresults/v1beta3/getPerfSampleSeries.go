@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist
@@ -83,12 +82,6 @@ func (o LookupPerfSampleSeriesResultOutput) ToLookupPerfSampleSeriesResultOutput
 
 func (o LookupPerfSampleSeriesResultOutput) ToLookupPerfSampleSeriesResultOutputWithContext(ctx context.Context) LookupPerfSampleSeriesResultOutput {
 	return o
-}
-
-func (o LookupPerfSampleSeriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPerfSampleSeriesResult] {
-	return pulumix.Output[LookupPerfSampleSeriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Basic series represented by a line chart

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information associated with a ProductSet. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist.
@@ -75,12 +74,6 @@ func (o LookupProductSetResultOutput) ToLookupProductSetResultOutput() LookupPro
 
 func (o LookupProductSetResultOutput) ToLookupProductSetResultOutputWithContext(ctx context.Context) LookupProductSetResultOutput {
 	return o
-}
-
-func (o LookupProductSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProductSetResult] {
-	return pulumix.Output[LookupProductSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.

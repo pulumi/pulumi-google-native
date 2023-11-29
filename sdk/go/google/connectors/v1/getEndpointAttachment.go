@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single EndpointAttachment.
@@ -81,12 +80,6 @@ func (o LookupEndpointAttachmentResultOutput) ToLookupEndpointAttachmentResultOu
 
 func (o LookupEndpointAttachmentResultOutput) ToLookupEndpointAttachmentResultOutputWithContext(ctx context.Context) LookupEndpointAttachmentResultOutput {
 	return o
-}
-
-func (o LookupEndpointAttachmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEndpointAttachmentResult] {
-	return pulumix.Output[LookupEndpointAttachmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Created time.

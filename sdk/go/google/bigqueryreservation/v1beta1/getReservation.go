@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns information about the reservation.
@@ -81,12 +80,6 @@ func (o LookupReservationResultOutput) ToLookupReservationResultOutput() LookupR
 
 func (o LookupReservationResultOutput) ToLookupReservationResultOutputWithContext(ctx context.Context) LookupReservationResultOutput {
 	return o
-}
-
-func (o LookupReservationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReservationResult] {
-	return pulumix.Output[LookupReservationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.

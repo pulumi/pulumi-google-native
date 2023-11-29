@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM access control policy on the specified function. Replaces any existing policy.
@@ -136,12 +135,6 @@ func (i *FunctionIamPolicy) ToFunctionIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamPolicyOutput)
 }
 
-func (i *FunctionIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*FunctionIamPolicy] {
-	return pulumix.Output[*FunctionIamPolicy]{
-		OutputState: i.ToFunctionIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamPolicyOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o FunctionIamPolicyOutput) ToFunctionIamPolicyOutput() FunctionIamPolicyOu
 
 func (o FunctionIamPolicyOutput) ToFunctionIamPolicyOutputWithContext(ctx context.Context) FunctionIamPolicyOutput {
 	return o
-}
-
-func (o FunctionIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionIamPolicy] {
-	return pulumix.Output[*FunctionIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

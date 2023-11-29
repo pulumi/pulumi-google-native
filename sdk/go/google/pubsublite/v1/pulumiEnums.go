@@ -83,12 +83,6 @@ func (o DeliveryConfigDeliveryRequirementOutput) ToDeliveryConfigDeliveryRequire
 	}).(DeliveryConfigDeliveryRequirementPtrOutput)
 }
 
-func (o DeliveryConfigDeliveryRequirementOutput) ToOutput(ctx context.Context) pulumix.Output[DeliveryConfigDeliveryRequirement] {
-	return pulumix.Output[DeliveryConfigDeliveryRequirement]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeliveryConfigDeliveryRequirementOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o DeliveryConfigDeliveryRequirementPtrOutput) ToDeliveryConfigDeliveryRequ
 
 func (o DeliveryConfigDeliveryRequirementPtrOutput) ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(ctx context.Context) DeliveryConfigDeliveryRequirementPtrOutput {
 	return o
-}
-
-func (o DeliveryConfigDeliveryRequirementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryConfigDeliveryRequirement] {
-	return pulumix.Output[*DeliveryConfigDeliveryRequirement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryConfigDeliveryRequirementPtrOutput) Elem() DeliveryConfigDeliveryRequirementOutput {
@@ -274,12 +262,6 @@ func (o ExportConfigDesiredStateOutput) ToExportConfigDesiredStatePtrOutputWithC
 	}).(ExportConfigDesiredStatePtrOutput)
 }
 
-func (o ExportConfigDesiredStateOutput) ToOutput(ctx context.Context) pulumix.Output[ExportConfigDesiredState] {
-	return pulumix.Output[ExportConfigDesiredState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExportConfigDesiredStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -313,12 +295,6 @@ func (o ExportConfigDesiredStatePtrOutput) ToExportConfigDesiredStatePtrOutput()
 
 func (o ExportConfigDesiredStatePtrOutput) ToExportConfigDesiredStatePtrOutputWithContext(ctx context.Context) ExportConfigDesiredStatePtrOutput {
 	return o
-}
-
-func (o ExportConfigDesiredStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportConfigDesiredState] {
-	return pulumix.Output[*ExportConfigDesiredState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportConfigDesiredStatePtrOutput) Elem() ExportConfigDesiredStateOutput {

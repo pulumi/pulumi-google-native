@@ -83,12 +83,6 @@ func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToAndroidInstrumenta
 	}).(AndroidInstrumentationTestOrchestratorOptionPtrOutput)
 }
 
-func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidInstrumentationTestOrchestratorOption] {
-	return pulumix.Output[AndroidInstrumentationTestOrchestratorOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToAndroidInstrume
 
 func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToAndroidInstrumentationTestOrchestratorOptionPtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestOrchestratorOptionPtrOutput {
 	return o
-}
-
-func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AndroidInstrumentationTestOrchestratorOption] {
-	return pulumix.Output[*AndroidInstrumentationTestOrchestratorOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) Elem() AndroidInstrumentationTestOrchestratorOptionOutput {
@@ -270,12 +258,6 @@ func (o AndroidRoboTestRoboModeOutput) ToAndroidRoboTestRoboModePtrOutputWithCon
 	}).(AndroidRoboTestRoboModePtrOutput)
 }
 
-func (o AndroidRoboTestRoboModeOutput) ToOutput(ctx context.Context) pulumix.Output[AndroidRoboTestRoboMode] {
-	return pulumix.Output[AndroidRoboTestRoboMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AndroidRoboTestRoboModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o AndroidRoboTestRoboModePtrOutput) ToAndroidRoboTestRoboModePtrOutput() A
 
 func (o AndroidRoboTestRoboModePtrOutput) ToAndroidRoboTestRoboModePtrOutputWithContext(ctx context.Context) AndroidRoboTestRoboModePtrOutput {
 	return o
-}
-
-func (o AndroidRoboTestRoboModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AndroidRoboTestRoboMode] {
-	return pulumix.Output[*AndroidRoboTestRoboMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidRoboTestRoboModePtrOutput) Elem() AndroidRoboTestRoboModeOutput {
@@ -459,12 +435,6 @@ func (o RoboDirectiveActionTypeOutput) ToRoboDirectiveActionTypePtrOutputWithCon
 	}).(RoboDirectiveActionTypePtrOutput)
 }
 
-func (o RoboDirectiveActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RoboDirectiveActionType] {
-	return pulumix.Output[RoboDirectiveActionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoboDirectiveActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,12 +468,6 @@ func (o RoboDirectiveActionTypePtrOutput) ToRoboDirectiveActionTypePtrOutput() R
 
 func (o RoboDirectiveActionTypePtrOutput) ToRoboDirectiveActionTypePtrOutputWithContext(ctx context.Context) RoboDirectiveActionTypePtrOutput {
 	return o
-}
-
-func (o RoboDirectiveActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoboDirectiveActionType] {
-	return pulumix.Output[*RoboDirectiveActionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoboDirectiveActionTypePtrOutput) Elem() RoboDirectiveActionTypeOutput {

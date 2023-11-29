@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new FirewallEndpointAssociation in a given project and location.
@@ -152,12 +151,6 @@ func (i *FirewallEndpointAssociation) ToFirewallEndpointAssociationOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointAssociationOutput)
 }
 
-func (i *FirewallEndpointAssociation) ToOutput(ctx context.Context) pulumix.Output[*FirewallEndpointAssociation] {
-	return pulumix.Output[*FirewallEndpointAssociation]{
-		OutputState: i.ToFirewallEndpointAssociationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallEndpointAssociationOutput struct{ *pulumi.OutputState }
 
 func (FirewallEndpointAssociationOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o FirewallEndpointAssociationOutput) ToFirewallEndpointAssociationOutput()
 
 func (o FirewallEndpointAssociationOutput) ToFirewallEndpointAssociationOutputWithContext(ctx context.Context) FirewallEndpointAssociationOutput {
 	return o
-}
-
-func (o FirewallEndpointAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallEndpointAssociation] {
-	return pulumix.Output[*FirewallEndpointAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Create time stamp

@@ -87,12 +87,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput)
 	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput)
 }
 
-func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -126,12 +120,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutp
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType] {
-	return pulumix.Output[*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput {
@@ -306,12 +294,6 @@ func (o WorkloadComplianceRegimeOutput) ToWorkloadComplianceRegimePtrOutputWithC
 	}).(WorkloadComplianceRegimePtrOutput)
 }
 
-func (o WorkloadComplianceRegimeOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadComplianceRegime] {
-	return pulumix.Output[WorkloadComplianceRegime]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkloadComplianceRegimeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -345,12 +327,6 @@ func (o WorkloadComplianceRegimePtrOutput) ToWorkloadComplianceRegimePtrOutput()
 
 func (o WorkloadComplianceRegimePtrOutput) ToWorkloadComplianceRegimePtrOutputWithContext(ctx context.Context) WorkloadComplianceRegimePtrOutput {
 	return o
-}
-
-func (o WorkloadComplianceRegimePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadComplianceRegime] {
-	return pulumix.Output[*WorkloadComplianceRegime]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadComplianceRegimePtrOutput) Elem() WorkloadComplianceRegimeOutput {
@@ -496,12 +472,6 @@ func (o WorkloadPartnerOutput) ToWorkloadPartnerPtrOutputWithContext(ctx context
 	}).(WorkloadPartnerPtrOutput)
 }
 
-func (o WorkloadPartnerOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadPartner] {
-	return pulumix.Output[WorkloadPartner]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkloadPartnerOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -535,12 +505,6 @@ func (o WorkloadPartnerPtrOutput) ToWorkloadPartnerPtrOutput() WorkloadPartnerPt
 
 func (o WorkloadPartnerPtrOutput) ToWorkloadPartnerPtrOutputWithContext(ctx context.Context) WorkloadPartnerPtrOutput {
 	return o
-}
-
-func (o WorkloadPartnerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadPartner] {
-	return pulumix.Output[*WorkloadPartner]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadPartnerPtrOutput) Elem() WorkloadPartnerOutput {

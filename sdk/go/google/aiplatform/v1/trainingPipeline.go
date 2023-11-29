@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a TrainingPipeline. A created TrainingPipeline right away will be attempted to be run.
@@ -179,12 +178,6 @@ func (i *TrainingPipeline) ToTrainingPipelineOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TrainingPipelineOutput)
 }
 
-func (i *TrainingPipeline) ToOutput(ctx context.Context) pulumix.Output[*TrainingPipeline] {
-	return pulumix.Output[*TrainingPipeline]{
-		OutputState: i.ToTrainingPipelineOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrainingPipelineOutput struct{ *pulumi.OutputState }
 
 func (TrainingPipelineOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o TrainingPipelineOutput) ToTrainingPipelineOutput() TrainingPipelineOutpu
 
 func (o TrainingPipelineOutput) ToTrainingPipelineOutputWithContext(ctx context.Context) TrainingPipelineOutput {
 	return o
-}
-
-func (o TrainingPipelineOutput) ToOutput(ctx context.Context) pulumix.Output[*TrainingPipeline] {
-	return pulumix.Output[*TrainingPipeline]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the TrainingPipeline was created.

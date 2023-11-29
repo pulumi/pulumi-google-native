@@ -87,12 +87,6 @@ func (o CustomDomainCertPreferenceOutput) ToCustomDomainCertPreferencePtrOutputW
 	}).(CustomDomainCertPreferencePtrOutput)
 }
 
-func (o CustomDomainCertPreferenceOutput) ToOutput(ctx context.Context) pulumix.Output[CustomDomainCertPreference] {
-	return pulumix.Output[CustomDomainCertPreference]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomDomainCertPreferenceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -126,12 +120,6 @@ func (o CustomDomainCertPreferencePtrOutput) ToCustomDomainCertPreferencePtrOutp
 
 func (o CustomDomainCertPreferencePtrOutput) ToCustomDomainCertPreferencePtrOutputWithContext(ctx context.Context) CustomDomainCertPreferencePtrOutput {
 	return o
-}
-
-func (o CustomDomainCertPreferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomDomainCertPreference] {
-	return pulumix.Output[*CustomDomainCertPreference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomDomainCertPreferencePtrOutput) Elem() CustomDomainCertPreferenceOutput {
@@ -272,12 +260,6 @@ func (o DomainRedirectTypeOutput) ToDomainRedirectTypePtrOutputWithContext(ctx c
 	}).(DomainRedirectTypePtrOutput)
 }
 
-func (o DomainRedirectTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DomainRedirectType] {
-	return pulumix.Output[DomainRedirectType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DomainRedirectTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o DomainRedirectTypePtrOutput) ToDomainRedirectTypePtrOutput() DomainRedir
 
 func (o DomainRedirectTypePtrOutput) ToDomainRedirectTypePtrOutputWithContext(ctx context.Context) DomainRedirectTypePtrOutput {
 	return o
-}
-
-func (o DomainRedirectTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainRedirectType] {
-	return pulumix.Output[*DomainRedirectType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainRedirectTypePtrOutput) Elem() DomainRedirectTypeOutput {
@@ -461,12 +437,6 @@ func (o ReleaseTypeOutput) ToReleaseTypePtrOutputWithContext(ctx context.Context
 	}).(ReleaseTypePtrOutput)
 }
 
-func (o ReleaseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReleaseType] {
-	return pulumix.Output[ReleaseType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReleaseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -500,12 +470,6 @@ func (o ReleaseTypePtrOutput) ToReleaseTypePtrOutput() ReleaseTypePtrOutput {
 
 func (o ReleaseTypePtrOutput) ToReleaseTypePtrOutputWithContext(ctx context.Context) ReleaseTypePtrOutput {
 	return o
-}
-
-func (o ReleaseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReleaseType] {
-	return pulumix.Output[*ReleaseType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReleaseTypePtrOutput) Elem() ReleaseTypeOutput {
@@ -646,12 +610,6 @@ func (o ServingConfigAppAssociationOutput) ToServingConfigAppAssociationPtrOutpu
 	}).(ServingConfigAppAssociationPtrOutput)
 }
 
-func (o ServingConfigAppAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[ServingConfigAppAssociation] {
-	return pulumix.Output[ServingConfigAppAssociation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServingConfigAppAssociationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -685,12 +643,6 @@ func (o ServingConfigAppAssociationPtrOutput) ToServingConfigAppAssociationPtrOu
 
 func (o ServingConfigAppAssociationPtrOutput) ToServingConfigAppAssociationPtrOutputWithContext(ctx context.Context) ServingConfigAppAssociationPtrOutput {
 	return o
-}
-
-func (o ServingConfigAppAssociationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigAppAssociation] {
-	return pulumix.Output[*ServingConfigAppAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServingConfigAppAssociationPtrOutput) Elem() ServingConfigAppAssociationOutput {
@@ -833,12 +785,6 @@ func (o ServingConfigTrailingSlashBehaviorOutput) ToServingConfigTrailingSlashBe
 	}).(ServingConfigTrailingSlashBehaviorPtrOutput)
 }
 
-func (o ServingConfigTrailingSlashBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[ServingConfigTrailingSlashBehavior] {
-	return pulumix.Output[ServingConfigTrailingSlashBehavior]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServingConfigTrailingSlashBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -872,12 +818,6 @@ func (o ServingConfigTrailingSlashBehaviorPtrOutput) ToServingConfigTrailingSlas
 
 func (o ServingConfigTrailingSlashBehaviorPtrOutput) ToServingConfigTrailingSlashBehaviorPtrOutputWithContext(ctx context.Context) ServingConfigTrailingSlashBehaviorPtrOutput {
 	return o
-}
-
-func (o ServingConfigTrailingSlashBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigTrailingSlashBehavior] {
-	return pulumix.Output[*ServingConfigTrailingSlashBehavior]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServingConfigTrailingSlashBehaviorPtrOutput) Elem() ServingConfigTrailingSlashBehaviorOutput {

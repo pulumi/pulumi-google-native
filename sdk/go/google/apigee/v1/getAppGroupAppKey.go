@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details for a consumer key for a AppGroup app, including the key and secret value, associated API products, and other information.
@@ -87,12 +86,6 @@ func (o GetAppGroupAppKeyResultOutput) ToGetAppGroupAppKeyResultOutput() GetAppG
 
 func (o GetAppGroupAppKeyResultOutput) ToGetAppGroupAppKeyResultOutputWithContext(ctx context.Context) GetAppGroupAppKeyResultOutput {
 	return o
-}
-
-func (o GetAppGroupAppKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppGroupAppKeyResult] {
-	return pulumix.Output[GetAppGroupAppKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of API products and its status for which the credential can be used. **Note**: Use UpdateAppGroupAppKeyApiProductRequest API to make the association after the consumer key and secret are created.

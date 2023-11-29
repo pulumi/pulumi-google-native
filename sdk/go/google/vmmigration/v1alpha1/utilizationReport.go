@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new UtilizationReport.
@@ -157,12 +156,6 @@ func (i *UtilizationReport) ToUtilizationReportOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UtilizationReportOutput)
 }
 
-func (i *UtilizationReport) ToOutput(ctx context.Context) pulumix.Output[*UtilizationReport] {
-	return pulumix.Output[*UtilizationReport]{
-		OutputState: i.ToUtilizationReportOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UtilizationReportOutput struct{ *pulumi.OutputState }
 
 func (UtilizationReportOutput) ElementType() reflect.Type {
@@ -175,12 +168,6 @@ func (o UtilizationReportOutput) ToUtilizationReportOutput() UtilizationReportOu
 
 func (o UtilizationReportOutput) ToUtilizationReportOutputWithContext(ctx context.Context) UtilizationReportOutput {
 	return o
-}
-
-func (o UtilizationReportOutput) ToOutput(ctx context.Context) pulumix.Output[*UtilizationReport] {
-	return pulumix.Output[*UtilizationReport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the report was created (this refers to the time of the request, not the time the report creation completed).

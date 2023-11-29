@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
@@ -81,12 +80,6 @@ func (o LookupGlossaryResultOutput) ToLookupGlossaryResultOutput() LookupGlossar
 
 func (o LookupGlossaryResultOutput) ToLookupGlossaryResultOutputWithContext(ctx context.Context) LookupGlossaryResultOutput {
 	return o
-}
-
-func (o LookupGlossaryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlossaryResult] {
-	return pulumix.Output[LookupGlossaryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the glossary creation was finished.

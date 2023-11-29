@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -272,12 +260,6 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBeha
 	}).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput)
 }
 
-func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior] {
-	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBeha
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
 	return o
-}
-
-func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior] {
-	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput {
@@ -459,12 +435,6 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput)
 	}).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput)
 }
 
-func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType] {
-	return pulumix.Output[GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,12 +468,6 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutp
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
 	return o
-}
-
-func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType] {
-	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput {
@@ -648,12 +612,6 @@ func (o KeyDataKeySpecOutput) ToKeyDataKeySpecPtrOutputWithContext(ctx context.C
 	}).(KeyDataKeySpecPtrOutput)
 }
 
-func (o KeyDataKeySpecOutput) ToOutput(ctx context.Context) pulumix.Output[KeyDataKeySpec] {
-	return pulumix.Output[KeyDataKeySpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeyDataKeySpecOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -687,12 +645,6 @@ func (o KeyDataKeySpecPtrOutput) ToKeyDataKeySpecPtrOutput() KeyDataKeySpecPtrOu
 
 func (o KeyDataKeySpecPtrOutput) ToKeyDataKeySpecPtrOutputWithContext(ctx context.Context) KeyDataKeySpecPtrOutput {
 	return o
-}
-
-func (o KeyDataKeySpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyDataKeySpec] {
-	return pulumix.Output[*KeyDataKeySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyDataKeySpecPtrOutput) Elem() KeyDataKeySpecOutput {
@@ -835,12 +787,6 @@ func (o KeyKeyAlgorithmOutput) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context
 	}).(KeyKeyAlgorithmPtrOutput)
 }
 
-func (o KeyKeyAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[KeyKeyAlgorithm] {
-	return pulumix.Output[KeyKeyAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeyKeyAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -874,12 +820,6 @@ func (o KeyKeyAlgorithmPtrOutput) ToKeyKeyAlgorithmPtrOutput() KeyKeyAlgorithmPt
 
 func (o KeyKeyAlgorithmPtrOutput) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context.Context) KeyKeyAlgorithmPtrOutput {
 	return o
-}
-
-func (o KeyKeyAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyKeyAlgorithm] {
-	return pulumix.Output[*KeyKeyAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyKeyAlgorithmPtrOutput) Elem() KeyKeyAlgorithmOutput {
@@ -1022,12 +962,6 @@ func (o KeyPrivateKeyTypeOutput) ToKeyPrivateKeyTypePtrOutputWithContext(ctx con
 	}).(KeyPrivateKeyTypePtrOutput)
 }
 
-func (o KeyPrivateKeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[KeyPrivateKeyType] {
-	return pulumix.Output[KeyPrivateKeyType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeyPrivateKeyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1061,12 +995,6 @@ func (o KeyPrivateKeyTypePtrOutput) ToKeyPrivateKeyTypePtrOutput() KeyPrivateKey
 
 func (o KeyPrivateKeyTypePtrOutput) ToKeyPrivateKeyTypePtrOutputWithContext(ctx context.Context) KeyPrivateKeyTypePtrOutput {
 	return o
-}
-
-func (o KeyPrivateKeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyPrivateKeyType] {
-	return pulumix.Output[*KeyPrivateKeyType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyPrivateKeyTypePtrOutput) Elem() KeyPrivateKeyTypeOutput {
@@ -1215,12 +1143,6 @@ func (o OrganizationRoleStageOutput) ToOrganizationRoleStagePtrOutputWithContext
 	}).(OrganizationRoleStagePtrOutput)
 }
 
-func (o OrganizationRoleStageOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationRoleStage] {
-	return pulumix.Output[OrganizationRoleStage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationRoleStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1254,12 +1176,6 @@ func (o OrganizationRoleStagePtrOutput) ToOrganizationRoleStagePtrOutput() Organ
 
 func (o OrganizationRoleStagePtrOutput) ToOrganizationRoleStagePtrOutputWithContext(ctx context.Context) OrganizationRoleStagePtrOutput {
 	return o
-}
-
-func (o OrganizationRoleStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationRoleStage] {
-	return pulumix.Output[*OrganizationRoleStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationRoleStagePtrOutput) Elem() OrganizationRoleStageOutput {
@@ -1408,12 +1324,6 @@ func (o RoleStageOutput) ToRoleStagePtrOutputWithContext(ctx context.Context) Ro
 	}).(RoleStagePtrOutput)
 }
 
-func (o RoleStageOutput) ToOutput(ctx context.Context) pulumix.Output[RoleStage] {
-	return pulumix.Output[RoleStage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoleStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1447,12 +1357,6 @@ func (o RoleStagePtrOutput) ToRoleStagePtrOutput() RoleStagePtrOutput {
 
 func (o RoleStagePtrOutput) ToRoleStagePtrOutputWithContext(ctx context.Context) RoleStagePtrOutput {
 	return o
-}
-
-func (o RoleStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleStage] {
-	return pulumix.Output[*RoleStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoleStagePtrOutput) Elem() RoleStageOutput {
@@ -1593,12 +1497,6 @@ func (o WorkforcePoolKeyUseOutput) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx
 	}).(WorkforcePoolKeyUsePtrOutput)
 }
 
-func (o WorkforcePoolKeyUseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkforcePoolKeyUse] {
-	return pulumix.Output[WorkforcePoolKeyUse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkforcePoolKeyUseOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1632,12 +1530,6 @@ func (o WorkforcePoolKeyUsePtrOutput) ToWorkforcePoolKeyUsePtrOutput() Workforce
 
 func (o WorkforcePoolKeyUsePtrOutput) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx context.Context) WorkforcePoolKeyUsePtrOutput {
 	return o
-}
-
-func (o WorkforcePoolKeyUsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePoolKeyUse] {
-	return pulumix.Output[*WorkforcePoolKeyUse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkforcePoolKeyUsePtrOutput) Elem() WorkforcePoolKeyUseOutput {
@@ -1778,12 +1670,6 @@ func (o WorkloadIdentityPoolKeyUseOutput) ToWorkloadIdentityPoolKeyUsePtrOutputW
 	}).(WorkloadIdentityPoolKeyUsePtrOutput)
 }
 
-func (o WorkloadIdentityPoolKeyUseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadIdentityPoolKeyUse] {
-	return pulumix.Output[WorkloadIdentityPoolKeyUse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkloadIdentityPoolKeyUseOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1817,12 +1703,6 @@ func (o WorkloadIdentityPoolKeyUsePtrOutput) ToWorkloadIdentityPoolKeyUsePtrOutp
 
 func (o WorkloadIdentityPoolKeyUsePtrOutput) ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyUsePtrOutput {
 	return o
-}
-
-func (o WorkloadIdentityPoolKeyUsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPoolKeyUse] {
-	return pulumix.Output[*WorkloadIdentityPoolKeyUse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadIdentityPoolKeyUsePtrOutput) Elem() WorkloadIdentityPoolKeyUseOutput {

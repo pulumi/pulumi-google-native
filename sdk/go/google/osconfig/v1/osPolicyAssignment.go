@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create an OS policy assignment. This method also creates the first revision of the OS policy assignment. This method returns a long running operation (LRO) that contains the rollout details. The rollout can be cancelled by cancelling the LRO. For more information, see [Method: projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
@@ -168,12 +167,6 @@ func (i *OsPolicyAssignment) ToOsPolicyAssignmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOutput)
 }
 
-func (i *OsPolicyAssignment) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignment] {
-	return pulumix.Output[*OsPolicyAssignment]{
-		OutputState: i.ToOsPolicyAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OsPolicyAssignmentOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentOutput() OsPolicyAssignmen
 
 func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentOutputWithContext(ctx context.Context) OsPolicyAssignmentOutput {
 	return o
-}
-
-func (o OsPolicyAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignment] {
-	return pulumix.Output[*OsPolicyAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.

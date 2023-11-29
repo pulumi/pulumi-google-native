@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -129,12 +128,6 @@ func (i *DomainBackupIamPolicy) ToDomainBackupIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DomainBackupIamPolicyOutput)
 }
 
-func (i *DomainBackupIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*DomainBackupIamPolicy] {
-	return pulumix.Output[*DomainBackupIamPolicy]{
-		OutputState: i.ToDomainBackupIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainBackupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DomainBackupIamPolicyOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o DomainBackupIamPolicyOutput) ToDomainBackupIamPolicyOutput() DomainBacku
 
 func (o DomainBackupIamPolicyOutput) ToDomainBackupIamPolicyOutputWithContext(ctx context.Context) DomainBackupIamPolicyOutput {
 	return o
-}
-
-func (o DomainBackupIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainBackupIamPolicy] {
-	return pulumix.Output[*DomainBackupIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainBackupIamPolicyOutput) BackupId() pulumi.StringOutput {

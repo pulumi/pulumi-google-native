@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a BatchPredictionJob
@@ -127,12 +126,6 @@ func (o LookupBatchPredictionJobResultOutput) ToLookupBatchPredictionJobResultOu
 
 func (o LookupBatchPredictionJobResultOutput) ToLookupBatchPredictionJobResultOutputWithContext(ctx context.Context) LookupBatchPredictionJobResultOutput {
 	return o
-}
-
-func (o LookupBatchPredictionJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBatchPredictionJobResult] {
-	return pulumix.Output[LookupBatchPredictionJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Statistics on completed and failed prediction instances.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Study by name.
@@ -79,12 +78,6 @@ func (o LookupStudyResultOutput) ToLookupStudyResultOutput() LookupStudyResultOu
 
 func (o LookupStudyResultOutput) ToLookupStudyResultOutputWithContext(ctx context.Context) LookupStudyResultOutput {
 	return o
-}
-
-func (o LookupStudyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStudyResult] {
-	return pulumix.Output[LookupStudyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time at which the study was created.

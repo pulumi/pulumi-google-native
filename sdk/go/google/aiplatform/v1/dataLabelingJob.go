@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a DataLabelingJob.
@@ -198,12 +197,6 @@ func (i *DataLabelingJob) ToDataLabelingJobOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DataLabelingJobOutput)
 }
 
-func (i *DataLabelingJob) ToOutput(ctx context.Context) pulumix.Output[*DataLabelingJob] {
-	return pulumix.Output[*DataLabelingJob]{
-		OutputState: i.ToDataLabelingJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataLabelingJobOutput struct{ *pulumi.OutputState }
 
 func (DataLabelingJobOutput) ElementType() reflect.Type {
@@ -216,12 +209,6 @@ func (o DataLabelingJobOutput) ToDataLabelingJobOutput() DataLabelingJobOutput {
 
 func (o DataLabelingJobOutput) ToDataLabelingJobOutputWithContext(ctx context.Context) DataLabelingJobOutput {
 	return o
-}
-
-func (o DataLabelingJobOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLabelingJob] {
-	return pulumix.Output[*DataLabelingJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Parameters that configure the active learning pipeline. Active learning will label the data incrementally via several iterations. For every iteration, it will select a batch of data based on the sampling strategy.

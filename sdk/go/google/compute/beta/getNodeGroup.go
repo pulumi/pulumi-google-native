@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.
@@ -96,12 +95,6 @@ func (o LookupNodeGroupResultOutput) ToLookupNodeGroupResultOutput() LookupNodeG
 
 func (o LookupNodeGroupResultOutput) ToLookupNodeGroupResultOutputWithContext(ctx context.Context) LookupNodeGroupResultOutput {
 	return o
-}
-
-func (o LookupNodeGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodeGroupResult] {
-	return pulumix.Output[LookupNodeGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies how autoscaling should behave.

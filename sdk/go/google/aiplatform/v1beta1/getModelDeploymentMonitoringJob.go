@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a ModelDeploymentMonitoringJob.
@@ -113,12 +112,6 @@ func (o LookupModelDeploymentMonitoringJobResultOutput) ToLookupModelDeploymentM
 
 func (o LookupModelDeploymentMonitoringJobResultOutput) ToLookupModelDeploymentMonitoringJobResultOutputWithContext(ctx context.Context) LookupModelDeploymentMonitoringJobResultOutput {
 	return o
-}
-
-func (o LookupModelDeploymentMonitoringJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupModelDeploymentMonitoringJobResult] {
-	return pulumix.Output[LookupModelDeploymentMonitoringJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // YAML schema file uri describing the format of a single instance that you want Tensorflow Data Validation (TFDV) to analyze. If this field is empty, all the feature data types are inferred from predict_instance_schema_uri, meaning that TFDV will use the data in the exact format(data type) as prediction request/response. If there are any data type differences between predict instance and TFDV instance, this field can be used to override the schema. For models trained with Vertex AI, this field must be set as all the fields in predict instance formatted as string.

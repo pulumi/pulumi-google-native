@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a CertificateTemplate.
@@ -85,12 +84,6 @@ func (o LookupCertificateTemplateResultOutput) ToLookupCertificateTemplateResult
 
 func (o LookupCertificateTemplateResultOutput) ToLookupCertificateTemplateResultOutputWithContext(ctx context.Context) LookupCertificateTemplateResultOutput {
 	return o
-}
-
-func (o LookupCertificateTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCertificateTemplateResult] {
-	return pulumix.Output[LookupCertificateTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which this CertificateTemplate was created.

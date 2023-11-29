@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ServiceConnectionToken in a given project and location.
@@ -148,12 +147,6 @@ func (i *ServiceConnectionToken) ToServiceConnectionTokenOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionTokenOutput)
 }
 
-func (i *ServiceConnectionToken) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionToken] {
-	return pulumix.Output[*ServiceConnectionToken]{
-		OutputState: i.ToServiceConnectionTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceConnectionTokenOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionTokenOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o ServiceConnectionTokenOutput) ToServiceConnectionTokenOutput() ServiceCo
 
 func (o ServiceConnectionTokenOutput) ToServiceConnectionTokenOutputWithContext(ctx context.Context) ServiceConnectionTokenOutput {
 	return o
-}
-
-func (o ServiceConnectionTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionToken] {
-	return pulumix.Output[*ServiceConnectionToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the ServiceConnectionToken was created.

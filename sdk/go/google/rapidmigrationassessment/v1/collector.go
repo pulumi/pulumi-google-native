@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a Collector to manage the on-prem appliance which collects information about Customer assets.
@@ -177,12 +176,6 @@ func (i *Collector) ToCollectorOutputWithContext(ctx context.Context) CollectorO
 	return pulumi.ToOutputWithContext(ctx, i).(CollectorOutput)
 }
 
-func (i *Collector) ToOutput(ctx context.Context) pulumix.Output[*Collector] {
-	return pulumix.Output[*Collector]{
-		OutputState: i.ToCollectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CollectorOutput struct{ *pulumi.OutputState }
 
 func (CollectorOutput) ElementType() reflect.Type {
@@ -195,12 +188,6 @@ func (o CollectorOutput) ToCollectorOutput() CollectorOutput {
 
 func (o CollectorOutput) ToCollectorOutputWithContext(ctx context.Context) CollectorOutput {
 	return o
-}
-
-func (o CollectorOutput) ToOutput(ctx context.Context) pulumix.Output[*Collector] {
-	return pulumix.Output[*Collector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Store cloud storage bucket name (which is a guid) created with this Collector.

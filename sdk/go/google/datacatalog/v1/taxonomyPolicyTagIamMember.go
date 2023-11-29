@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM policy for a policy tag or a taxonomy.
@@ -136,12 +135,6 @@ func (i *TaxonomyPolicyTagIamMember) ToTaxonomyPolicyTagIamMemberOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyPolicyTagIamMemberOutput)
 }
 
-func (i *TaxonomyPolicyTagIamMember) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyPolicyTagIamMember] {
-	return pulumix.Output[*TaxonomyPolicyTagIamMember]{
-		OutputState: i.ToTaxonomyPolicyTagIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TaxonomyPolicyTagIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyPolicyTagIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o TaxonomyPolicyTagIamMemberOutput) ToTaxonomyPolicyTagIamMemberOutput() T
 
 func (o TaxonomyPolicyTagIamMemberOutput) ToTaxonomyPolicyTagIamMemberOutputWithContext(ctx context.Context) TaxonomyPolicyTagIamMemberOutput {
 	return o
-}
-
-func (o TaxonomyPolicyTagIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyPolicyTagIamMember] {
-	return pulumix.Output[*TaxonomyPolicyTagIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i GoogleCloudDiscoveryengineV1betaConversationContextArgs) ToGoogleCloudDi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaConversationContextOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaConversationContextArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationContext] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationContext]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaConversationContextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1betaConversationContextArgs) ToGoogleCloudDiscoveryengineV1betaConversationContextPtrOutput() GoogleCloudDiscoveryengineV1betaConversationContextPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1betaConversationContextPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *googleCloudDiscoveryengineV1betaConversationContextPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaConversationContextPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1betaConversationContextPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaConversationContext] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaConversationContext]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaConversationContextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines context of the conversation
 type GoogleCloudDiscoveryengineV1betaConversationContextOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o GoogleCloudDiscoveryengineV1betaConversationContextOutput) ToGoogleCloud
 	}).(GoogleCloudDiscoveryengineV1betaConversationContextPtrOutput)
 }
 
-func (o GoogleCloudDiscoveryengineV1betaConversationContextOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationContext] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationContext]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The current active document the user opened. It contains the document resource reference.
 func (o GoogleCloudDiscoveryengineV1betaConversationContextOutput) ActiveDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaConversationContext) *string { return v.ActiveDocument }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o GoogleCloudDiscoveryengineV1betaConversationContextPtrOutput) ToGoogleCl
 
 func (o GoogleCloudDiscoveryengineV1betaConversationContextPtrOutput) ToGoogleCloudDiscoveryengineV1betaConversationContextPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaConversationContextPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaConversationContextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaConversationContext] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaConversationContext]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1betaConversationContextPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaConversationContextOutput {
@@ -220,12 +195,6 @@ func (o GoogleCloudDiscoveryengineV1betaConversationContextResponseOutput) ToGoo
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1betaConversationContextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationContextResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationContextResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The current active document the user opened. It contains the document resource reference.
 func (o GoogleCloudDiscoveryengineV1betaConversationContextResponseOutput) ActiveDocument() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaConversationContextResponse) string { return v.ActiveDocument }).(pulumi.StringOutput)
@@ -277,12 +246,6 @@ func (i GoogleCloudDiscoveryengineV1betaConversationMessageArgs) ToGoogleCloudDi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaConversationMessageOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaConversationMessageArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationMessage] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationMessage]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaConversationMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDiscoveryengineV1betaConversationMessageArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1betaConversationMessageArray and GoogleCloudDiscoveryengineV1betaConversationMessageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaConversationMessageArrayInput` via:
 //
@@ -308,12 +271,6 @@ func (i GoogleCloudDiscoveryengineV1betaConversationMessageArray) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaConversationMessageArrayOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaConversationMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1betaConversationMessage] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1betaConversationMessage]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaConversationMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a conversation message.
 type GoogleCloudDiscoveryengineV1betaConversationMessageOutput struct{ *pulumi.OutputState }
 
@@ -327,12 +284,6 @@ func (o GoogleCloudDiscoveryengineV1betaConversationMessageOutput) ToGoogleCloud
 
 func (o GoogleCloudDiscoveryengineV1betaConversationMessageOutput) ToGoogleCloudDiscoveryengineV1betaConversationMessageOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaConversationMessageOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaConversationMessageOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationMessage] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Search reply.
@@ -361,12 +312,6 @@ func (o GoogleCloudDiscoveryengineV1betaConversationMessageArrayOutput) ToGoogle
 
 func (o GoogleCloudDiscoveryengineV1betaConversationMessageArrayOutput) ToGoogleCloudDiscoveryengineV1betaConversationMessageArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaConversationMessageArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaConversationMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1betaConversationMessage] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1betaConversationMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1betaConversationMessageArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaConversationMessageOutput {
@@ -400,12 +345,6 @@ func (o GoogleCloudDiscoveryengineV1betaConversationMessageResponseOutput) ToGoo
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1betaConversationMessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationMessageResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaConversationMessageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Message creation timestamp.
 func (o GoogleCloudDiscoveryengineV1betaConversationMessageResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaConversationMessageResponse) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -437,12 +376,6 @@ func (o GoogleCloudDiscoveryengineV1betaConversationMessageResponseArrayOutput) 
 
 func (o GoogleCloudDiscoveryengineV1betaConversationMessageResponseArrayOutput) ToGoogleCloudDiscoveryengineV1betaConversationMessageResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaConversationMessageResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaConversationMessageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1betaConversationMessageResponse] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1betaConversationMessageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1betaConversationMessageResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaConversationMessageResponseOutput {
@@ -494,12 +427,6 @@ func (i GoogleCloudDiscoveryengineV1betaDocumentContentArgs) ToGoogleCloudDiscov
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentContentOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaDocumentContentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaDocumentContent] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaDocumentContent]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaDocumentContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1betaDocumentContentArgs) ToGoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1betaDocumentContentPtrOutputWithContext(context.Background())
 }
@@ -541,12 +468,6 @@ func (i *googleCloudDiscoveryengineV1betaDocumentContentPtrType) ToGoogleCloudDi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1betaDocumentContentPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaDocumentContent] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaDocumentContent]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaDocumentContentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Unstructured data linked to this document.
 type GoogleCloudDiscoveryengineV1betaDocumentContentOutput struct{ *pulumi.OutputState }
 
@@ -570,12 +491,6 @@ func (o GoogleCloudDiscoveryengineV1betaDocumentContentOutput) ToGoogleCloudDisc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaDocumentContent) *GoogleCloudDiscoveryengineV1betaDocumentContent {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1betaDocumentContentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaDocumentContent] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaDocumentContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The MIME type of the content. Supported types: * `application/pdf` (PDF, only native PDFs are supported for now) * `text/html` (HTML) * `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) * `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/plain` (TXT) See https://www.iana.org/assignments/media-types/media-types.xhtml.
@@ -605,12 +520,6 @@ func (o GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput) ToGoogleCloudD
 
 func (o GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput) ToGoogleCloudDiscoveryengineV1betaDocumentContentPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaDocumentContent] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaDocumentContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaDocumentContentOutput {
@@ -678,12 +587,6 @@ func (o GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaDocumentContentResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaDocumentContentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The MIME type of the content. Supported types: * `application/pdf` (PDF, only native PDFs are supported for now) * `text/html` (HTML) * `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) * `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/plain` (TXT) See https://www.iana.org/assignments/media-types/media-types.xhtml.
 func (o GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentContentResponse) string { return v.MimeType }).(pulumi.StringOutput)
@@ -746,12 +649,6 @@ func (i GoogleCloudDiscoveryengineV1betaReplyArgs) ToGoogleCloudDiscoveryengineV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaReplyOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaReplyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaReply] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaReply]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaReplyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1betaReplyArgs) ToGoogleCloudDiscoveryengineV1betaReplyPtrOutput() GoogleCloudDiscoveryengineV1betaReplyPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1betaReplyPtrOutputWithContext(context.Background())
 }
@@ -793,12 +690,6 @@ func (i *googleCloudDiscoveryengineV1betaReplyPtrType) ToGoogleCloudDiscoveryeng
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaReplyPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1betaReplyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaReply] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaReply]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaReplyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a reply message to user.
 type GoogleCloudDiscoveryengineV1betaReplyOutput struct{ *pulumi.OutputState }
 
@@ -822,12 +713,6 @@ func (o GoogleCloudDiscoveryengineV1betaReplyOutput) ToGoogleCloudDiscoveryengin
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaReply) *GoogleCloudDiscoveryengineV1betaReply {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1betaReplyPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1betaReplyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaReply] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaReply]{
-		OutputState: o.OutputState,
-	}
 }
 
 // References in the reply.
@@ -863,12 +748,6 @@ func (o GoogleCloudDiscoveryengineV1betaReplyPtrOutput) ToGoogleCloudDiscoveryen
 
 func (o GoogleCloudDiscoveryengineV1betaReplyPtrOutput) ToGoogleCloudDiscoveryengineV1betaReplyPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaReplyPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaReplyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaReply] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaReply]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1betaReplyPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaReplyOutput {
@@ -960,12 +839,6 @@ func (i GoogleCloudDiscoveryengineV1betaReplyReferenceArgs) ToGoogleCloudDiscove
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaReplyReferenceOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaReplyReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaReplyReference] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaReplyReference]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaReplyReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDiscoveryengineV1betaReplyReferenceArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1betaReplyReferenceArray and GoogleCloudDiscoveryengineV1betaReplyReferenceArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaReplyReferenceArrayInput` via:
 //
@@ -991,12 +864,6 @@ func (i GoogleCloudDiscoveryengineV1betaReplyReferenceArray) ToGoogleCloudDiscov
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaReplyReferenceArrayOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaReplyReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1betaReplyReference] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1betaReplyReference]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaReplyReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines reference in reply.
 type GoogleCloudDiscoveryengineV1betaReplyReferenceOutput struct{ *pulumi.OutputState }
 
@@ -1010,12 +877,6 @@ func (o GoogleCloudDiscoveryengineV1betaReplyReferenceOutput) ToGoogleCloudDisco
 
 func (o GoogleCloudDiscoveryengineV1betaReplyReferenceOutput) ToGoogleCloudDiscoveryengineV1betaReplyReferenceOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaReplyReferenceOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaReplyReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaReplyReference] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaReplyReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Anchor text.
@@ -1052,12 +913,6 @@ func (o GoogleCloudDiscoveryengineV1betaReplyReferenceArrayOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1betaReplyReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1betaReplyReference] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1betaReplyReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDiscoveryengineV1betaReplyReferenceArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaReplyReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1betaReplyReference {
 		return vs[0].([]GoogleCloudDiscoveryengineV1betaReplyReference)[vs[1].(int)]
@@ -1089,12 +944,6 @@ func (o GoogleCloudDiscoveryengineV1betaReplyReferenceResponseOutput) ToGoogleCl
 
 func (o GoogleCloudDiscoveryengineV1betaReplyReferenceResponseOutput) ToGoogleCloudDiscoveryengineV1betaReplyReferenceResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaReplyReferenceResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaReplyReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaReplyReferenceResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaReplyReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Anchor text.
@@ -1131,12 +980,6 @@ func (o GoogleCloudDiscoveryengineV1betaReplyReferenceResponseArrayOutput) ToGoo
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1betaReplyReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1betaReplyReferenceResponse] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1betaReplyReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDiscoveryengineV1betaReplyReferenceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaReplyReferenceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1betaReplyReferenceResponse {
 		return vs[0].([]GoogleCloudDiscoveryengineV1betaReplyReferenceResponse)[vs[1].(int)]
@@ -1168,12 +1011,6 @@ func (o GoogleCloudDiscoveryengineV1betaReplyResponseOutput) ToGoogleCloudDiscov
 
 func (o GoogleCloudDiscoveryengineV1betaReplyResponseOutput) ToGoogleCloudDiscoveryengineV1betaReplyResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaReplyResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaReplyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaReplyResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaReplyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // References in the reply.
@@ -1240,12 +1077,6 @@ func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummary] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummary]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutputWithContext(context.Background())
 }
@@ -1287,12 +1118,6 @@ func (i *googleCloudDiscoveryengineV1betaSearchResponseSummaryPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1betaSearchResponseSummaryPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummary] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummary]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Summary of the top N search result specified by the summary spec.
 type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryOutput struct{ *pulumi.OutputState }
 
@@ -1316,12 +1141,6 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryOutput) ToGoogleClo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaSearchResponseSummary) *GoogleCloudDiscoveryengineV1betaSearchResponseSummary {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummary] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummary]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A collection of Safety Attribute categories and their associated confidence scores.
@@ -1355,12 +1174,6 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput) ToGoogle
 
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummary] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummary]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryOutput {
@@ -1428,12 +1241,6 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponseOutput) ToG
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A collection of Safety Attribute categories and their associated confidence scores.
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponseOutput) SafetyAttributes() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponse) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse {
@@ -1492,12 +1299,6 @@ func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesArg
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutputWithContext(context.Background())
 }
@@ -1539,12 +1340,6 @@ func (i *googleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Safety Attribute categories and their associated confidence scores.
 type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesOutput struct{ *pulumi.OutputState }
 
@@ -1568,12 +1363,6 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes) *GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display names of Safety Attribute categories associated with the generated content. Order matches the Scores.
@@ -1602,12 +1391,6 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtr
 
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesOutput {
@@ -1663,12 +1446,6 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesRes
 	return o
 }
 
-func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The display names of Safety Attribute categories associated with the generated content. Order matches the Scores.
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponseOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse) []string {
@@ -1722,12 +1499,6 @@ func (i GoogleCloudDiscoveryengineV1betaTextInputArgs) ToGoogleCloudDiscoveryeng
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaTextInputOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaTextInputArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaTextInput] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaTextInput]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaTextInputOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDiscoveryengineV1betaTextInputArgs) ToGoogleCloudDiscoveryengineV1betaTextInputPtrOutput() GoogleCloudDiscoveryengineV1betaTextInputPtrOutput {
 	return i.ToGoogleCloudDiscoveryengineV1betaTextInputPtrOutputWithContext(context.Background())
 }
@@ -1769,12 +1540,6 @@ func (i *googleCloudDiscoveryengineV1betaTextInputPtrType) ToGoogleCloudDiscover
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaTextInputPtrOutput)
 }
 
-func (i *googleCloudDiscoveryengineV1betaTextInputPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaTextInput] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaTextInput]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaTextInputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines text input.
 type GoogleCloudDiscoveryengineV1betaTextInputOutput struct{ *pulumi.OutputState }
 
@@ -1798,12 +1563,6 @@ func (o GoogleCloudDiscoveryengineV1betaTextInputOutput) ToGoogleCloudDiscoverye
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaTextInput) *GoogleCloudDiscoveryengineV1betaTextInput {
 		return &v
 	}).(GoogleCloudDiscoveryengineV1betaTextInputPtrOutput)
-}
-
-func (o GoogleCloudDiscoveryengineV1betaTextInputOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaTextInput] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaTextInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conversation context of the input.
@@ -1830,12 +1589,6 @@ func (o GoogleCloudDiscoveryengineV1betaTextInputPtrOutput) ToGoogleCloudDiscove
 
 func (o GoogleCloudDiscoveryengineV1betaTextInputPtrOutput) ToGoogleCloudDiscoveryengineV1betaTextInputPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaTextInputPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaTextInputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaTextInput] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaTextInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1betaTextInputPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaTextInputOutput {
@@ -1889,12 +1642,6 @@ func (o GoogleCloudDiscoveryengineV1betaTextInputResponseOutput) ToGoogleCloudDi
 
 func (o GoogleCloudDiscoveryengineV1betaTextInputResponseOutput) ToGoogleCloudDiscoveryengineV1betaTextInputResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaTextInputResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaTextInputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaTextInputResponse] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaTextInputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conversation context of the input.

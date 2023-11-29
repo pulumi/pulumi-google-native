@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a SecurityAction by name.
@@ -89,12 +88,6 @@ func (o LookupSecurityActionResultOutput) ToLookupSecurityActionResultOutput() L
 
 func (o LookupSecurityActionResultOutput) ToLookupSecurityActionResultOutputWithContext(ctx context.Context) LookupSecurityActionResultOutput {
 	return o
-}
-
-func (o LookupSecurityActionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecurityActionResult] {
-	return pulumix.Output[LookupSecurityActionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow a request through if it matches this SecurityAction.

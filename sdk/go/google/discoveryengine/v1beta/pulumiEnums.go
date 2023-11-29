@@ -83,12 +83,6 @@ func (o ConversationStateEnumOutput) ToConversationStateEnumPtrOutputWithContext
 	}).(ConversationStateEnumPtrOutput)
 }
 
-func (o ConversationStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ConversationStateEnum] {
-	return pulumix.Output[ConversationStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConversationStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o ConversationStateEnumPtrOutput) ToConversationStateEnumPtrOutput() Conve
 
 func (o ConversationStateEnumPtrOutput) ToConversationStateEnumPtrOutputWithContext(ctx context.Context) ConversationStateEnumPtrOutput {
 	return o
-}
-
-func (o ConversationStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConversationStateEnum] {
-	return pulumix.Output[*ConversationStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConversationStateEnumPtrOutput) Elem() ConversationStateEnumOutput {
@@ -275,12 +263,6 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReaso
 	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtrOutput)
 }
 
-func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem] {
-	return pulumix.Output[GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -314,12 +296,6 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReaso
 
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtrOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemOutput {
@@ -415,12 +391,6 @@ func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReaso
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayOutput)
 }
 
-func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem]{
-		OutputState: i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayOutput) ElementType() reflect.Type {
@@ -433,12 +403,6 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReaso
 
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem] {
-	return pulumix.Output[[]GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemOutput {

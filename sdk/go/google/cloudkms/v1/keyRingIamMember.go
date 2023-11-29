@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *KeyRingIamMember) ToKeyRingIamMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamMemberOutput)
 }
 
-func (i *KeyRingIamMember) ToOutput(ctx context.Context) pulumix.Output[*KeyRingIamMember] {
-	return pulumix.Output[*KeyRingIamMember]{
-		OutputState: i.ToKeyRingIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeyRingIamMemberOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o KeyRingIamMemberOutput) ToKeyRingIamMemberOutput() KeyRingIamMemberOutpu
 
 func (o KeyRingIamMemberOutput) ToKeyRingIamMemberOutputWithContext(ctx context.Context) KeyRingIamMemberOutput {
 	return o
-}
-
-func (o KeyRingIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRingIamMember] {
-	return pulumix.Output[*KeyRingIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a NasJob
@@ -152,12 +151,6 @@ func (i *NasJob) ToNasJobOutputWithContext(ctx context.Context) NasJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NasJobOutput)
 }
 
-func (i *NasJob) ToOutput(ctx context.Context) pulumix.Output[*NasJob] {
-	return pulumix.Output[*NasJob]{
-		OutputState: i.ToNasJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NasJobOutput struct{ *pulumi.OutputState }
 
 func (NasJobOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o NasJobOutput) ToNasJobOutput() NasJobOutput {
 
 func (o NasJobOutput) ToNasJobOutputWithContext(ctx context.Context) NasJobOutput {
 	return o
-}
-
-func (o NasJobOutput) ToOutput(ctx context.Context) pulumix.Output[*NasJob] {
-	return pulumix.Output[*NasJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the NasJob was created.

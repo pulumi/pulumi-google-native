@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a datasource. **Note:** This API requires an admin account to execute.
@@ -83,12 +82,6 @@ func (o LookupDataSourceResultOutput) ToLookupDataSourceResultOutput() LookupDat
 
 func (o LookupDataSourceResultOutput) ToLookupDataSourceResultOutputWithContext(ctx context.Context) LookupDataSourceResultOutput {
 	return o
-}
-
-func (o LookupDataSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataSourceResult] {
-	return pulumix.Output[LookupDataSourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.

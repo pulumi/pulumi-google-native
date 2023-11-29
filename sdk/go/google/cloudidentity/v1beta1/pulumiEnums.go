@@ -88,12 +88,6 @@ func (o DeviceClientTypesItemOutput) ToDeviceClientTypesItemPtrOutputWithContext
 	}).(DeviceClientTypesItemPtrOutput)
 }
 
-func (o DeviceClientTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceClientTypesItem] {
-	return pulumix.Output[DeviceClientTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeviceClientTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -127,12 +121,6 @@ func (o DeviceClientTypesItemPtrOutput) ToDeviceClientTypesItemPtrOutput() Devic
 
 func (o DeviceClientTypesItemPtrOutput) ToDeviceClientTypesItemPtrOutputWithContext(ctx context.Context) DeviceClientTypesItemPtrOutput {
 	return o
-}
-
-func (o DeviceClientTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceClientTypesItem] {
-	return pulumix.Output[*DeviceClientTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceClientTypesItemPtrOutput) Elem() DeviceClientTypesItemOutput {
@@ -228,12 +216,6 @@ func (i DeviceClientTypesItemArray) ToDeviceClientTypesItemArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClientTypesItemArrayOutput)
 }
 
-func (i DeviceClientTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceClientTypesItem] {
-	return pulumix.Output[[]DeviceClientTypesItem]{
-		OutputState: i.ToDeviceClientTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceClientTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (DeviceClientTypesItemArrayOutput) ElementType() reflect.Type {
@@ -246,12 +228,6 @@ func (o DeviceClientTypesItemArrayOutput) ToDeviceClientTypesItemArrayOutput() D
 
 func (o DeviceClientTypesItemArrayOutput) ToDeviceClientTypesItemArrayOutputWithContext(ctx context.Context) DeviceClientTypesItemArrayOutput {
 	return o
-}
-
-func (o DeviceClientTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceClientTypesItem] {
-	return pulumix.Output[[]DeviceClientTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceClientTypesItemArrayOutput) Index(i pulumi.IntInput) DeviceClientTypesItemOutput {
@@ -329,12 +305,6 @@ func (o DynamicGroupQueryResourceTypeOutput) ToDynamicGroupQueryResourceTypePtrO
 	}).(DynamicGroupQueryResourceTypePtrOutput)
 }
 
-func (o DynamicGroupQueryResourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DynamicGroupQueryResourceType] {
-	return pulumix.Output[DynamicGroupQueryResourceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DynamicGroupQueryResourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -368,12 +338,6 @@ func (o DynamicGroupQueryResourceTypePtrOutput) ToDynamicGroupQueryResourceTypeP
 
 func (o DynamicGroupQueryResourceTypePtrOutput) ToDynamicGroupQueryResourceTypePtrOutputWithContext(ctx context.Context) DynamicGroupQueryResourceTypePtrOutput {
 	return o
-}
-
-func (o DynamicGroupQueryResourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DynamicGroupQueryResourceType] {
-	return pulumix.Output[*DynamicGroupQueryResourceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DynamicGroupQueryResourceTypePtrOutput) Elem() DynamicGroupQueryResourceTypeOutput {
@@ -518,12 +482,6 @@ func (o InboundSsoAssignmentSsoModeOutput) ToInboundSsoAssignmentSsoModePtrOutpu
 	}).(InboundSsoAssignmentSsoModePtrOutput)
 }
 
-func (o InboundSsoAssignmentSsoModeOutput) ToOutput(ctx context.Context) pulumix.Output[InboundSsoAssignmentSsoMode] {
-	return pulumix.Output[InboundSsoAssignmentSsoMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InboundSsoAssignmentSsoModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -557,12 +515,6 @@ func (o InboundSsoAssignmentSsoModePtrOutput) ToInboundSsoAssignmentSsoModePtrOu
 
 func (o InboundSsoAssignmentSsoModePtrOutput) ToInboundSsoAssignmentSsoModePtrOutputWithContext(ctx context.Context) InboundSsoAssignmentSsoModePtrOutput {
 	return o
-}
-
-func (o InboundSsoAssignmentSsoModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InboundSsoAssignmentSsoMode] {
-	return pulumix.Output[*InboundSsoAssignmentSsoMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InboundSsoAssignmentSsoModePtrOutput) Elem() InboundSsoAssignmentSsoModeOutput {
@@ -703,12 +655,6 @@ func (o SignInBehaviorRedirectConditionOutput) ToSignInBehaviorRedirectCondition
 	}).(SignInBehaviorRedirectConditionPtrOutput)
 }
 
-func (o SignInBehaviorRedirectConditionOutput) ToOutput(ctx context.Context) pulumix.Output[SignInBehaviorRedirectCondition] {
-	return pulumix.Output[SignInBehaviorRedirectCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SignInBehaviorRedirectConditionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -742,12 +688,6 @@ func (o SignInBehaviorRedirectConditionPtrOutput) ToSignInBehaviorRedirectCondit
 
 func (o SignInBehaviorRedirectConditionPtrOutput) ToSignInBehaviorRedirectConditionPtrOutputWithContext(ctx context.Context) SignInBehaviorRedirectConditionPtrOutput {
 	return o
-}
-
-func (o SignInBehaviorRedirectConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SignInBehaviorRedirectCondition] {
-	return pulumix.Output[*SignInBehaviorRedirectCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SignInBehaviorRedirectConditionPtrOutput) Elem() SignInBehaviorRedirectConditionOutput {

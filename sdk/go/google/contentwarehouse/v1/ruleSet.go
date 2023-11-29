@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a ruleset.
@@ -122,12 +121,6 @@ func (i *RuleSet) ToRuleSetOutputWithContext(ctx context.Context) RuleSetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RuleSetOutput)
 }
 
-func (i *RuleSet) ToOutput(ctx context.Context) pulumix.Output[*RuleSet] {
-	return pulumix.Output[*RuleSet]{
-		OutputState: i.ToRuleSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RuleSetOutput struct{ *pulumi.OutputState }
 
 func (RuleSetOutput) ElementType() reflect.Type {
@@ -140,12 +133,6 @@ func (o RuleSetOutput) ToRuleSetOutput() RuleSetOutput {
 
 func (o RuleSetOutput) ToRuleSetOutputWithContext(ctx context.Context) RuleSetOutput {
 	return o
-}
-
-func (o RuleSetOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleSet] {
-	return pulumix.Output[*RuleSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Short description of the rule-set.

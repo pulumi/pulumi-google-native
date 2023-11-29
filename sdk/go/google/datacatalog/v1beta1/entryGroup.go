@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A maximum of 10,000 entry groups may be created per organization across all locations. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
@@ -129,12 +128,6 @@ func (i *EntryGroup) ToEntryGroupOutputWithContext(ctx context.Context) EntryGro
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupOutput)
 }
 
-func (i *EntryGroup) ToOutput(ctx context.Context) pulumix.Output[*EntryGroup] {
-	return pulumix.Output[*EntryGroup]{
-		OutputState: i.ToEntryGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntryGroupOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o EntryGroupOutput) ToEntryGroupOutput() EntryGroupOutput {
 
 func (o EntryGroupOutput) ToEntryGroupOutputWithContext(ctx context.Context) EntryGroupOutput {
 	return o
-}
-
-func (o EntryGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryGroup] {
-	return pulumix.Output[*EntryGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamps about this EntryGroup. Default value is empty timestamps.

@@ -81,12 +81,6 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput) ToGoogleFirestor
 	}).(GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput)
 }
 
-func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta2IndexFieldArrayConfig] {
-	return pulumix.Output[GoogleFirestoreAdminV1beta2IndexFieldArrayConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput) ToGoogleFires
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput) ToGoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldArrayConfig] {
-	return pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldArrayConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput) Elem() GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput {
@@ -268,12 +256,6 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldOrderOutput) ToGoogleFirestoreAdmin
 	}).(GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput)
 }
 
-func (o GoogleFirestoreAdminV1beta2IndexFieldOrderOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta2IndexFieldOrder] {
-	return pulumix.Output[GoogleFirestoreAdminV1beta2IndexFieldOrder]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleFirestoreAdminV1beta2IndexFieldOrderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -307,12 +289,6 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput) ToGoogleFirestoreAd
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput) ToGoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldOrder] {
-	return pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldOrder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput) Elem() GoogleFirestoreAdminV1beta2IndexFieldOrderOutput {
@@ -455,12 +431,6 @@ func (o IndexQueryScopeOutput) ToIndexQueryScopePtrOutputWithContext(ctx context
 	}).(IndexQueryScopePtrOutput)
 }
 
-func (o IndexQueryScopeOutput) ToOutput(ctx context.Context) pulumix.Output[IndexQueryScope] {
-	return pulumix.Output[IndexQueryScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IndexQueryScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -494,12 +464,6 @@ func (o IndexQueryScopePtrOutput) ToIndexQueryScopePtrOutput() IndexQueryScopePt
 
 func (o IndexQueryScopePtrOutput) ToIndexQueryScopePtrOutputWithContext(ctx context.Context) IndexQueryScopePtrOutput {
 	return o
-}
-
-func (o IndexQueryScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IndexQueryScope] {
-	return pulumix.Output[*IndexQueryScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndexQueryScopePtrOutput) Elem() IndexQueryScopeOutput {

@@ -4,6 +4,9 @@
 package authorization
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -27,4 +30,49 @@ type GetClientConfigResult struct {
 	Region string `pulumi:"region"`
 	// Google Cloud zone
 	Zone *string `pulumi:"zone"`
+}
+
+func GetClientConfigOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetClientConfigResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetClientConfigResult, error) {
+		r, err := GetClientConfig(ctx, opts...)
+		var s GetClientConfigResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetClientConfigResultOutput)
+}
+
+// Configuration values returned by getClientConfig.
+type GetClientConfigResultOutput struct{ *pulumi.OutputState }
+
+func (GetClientConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientConfigResult)(nil)).Elem()
+}
+
+func (o GetClientConfigResultOutput) ToGetClientConfigResultOutput() GetClientConfigResultOutput {
+	return o
+}
+
+func (o GetClientConfigResultOutput) ToGetClientConfigResultOutputWithContext(ctx context.Context) GetClientConfigResultOutput {
+	return o
+}
+
+// Project of the current user.
+func (o GetClientConfigResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientConfigResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Google Cloud region
+func (o GetClientConfigResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientConfigResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Google Cloud zone
+func (o GetClientConfigResultOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClientConfigResult) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetClientConfigResultOutput{})
 }

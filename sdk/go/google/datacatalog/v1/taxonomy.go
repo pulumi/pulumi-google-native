@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a taxonomy in a specified project. The taxonomy is initially empty, that is, it doesn't contain policy tags.
@@ -129,12 +128,6 @@ func (i *Taxonomy) ToTaxonomyOutputWithContext(ctx context.Context) TaxonomyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyOutput)
 }
 
-func (i *Taxonomy) ToOutput(ctx context.Context) pulumix.Output[*Taxonomy] {
-	return pulumix.Output[*Taxonomy]{
-		OutputState: i.ToTaxonomyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TaxonomyOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o TaxonomyOutput) ToTaxonomyOutput() TaxonomyOutput {
 
 func (o TaxonomyOutput) ToTaxonomyOutputWithContext(ctx context.Context) TaxonomyOutput {
 	return o
-}
-
-func (o TaxonomyOutput) ToOutput(ctx context.Context) pulumix.Output[*Taxonomy] {
-	return pulumix.Output[*Taxonomy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.

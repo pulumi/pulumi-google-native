@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information associated with a Product. Possible errors: * Returns NOT_FOUND if the Product does not exist.
@@ -77,12 +76,6 @@ func (o LookupProductResultOutput) ToLookupProductResultOutput() LookupProductRe
 
 func (o LookupProductResultOutput) ToLookupProductResultOutputWithContext(ctx context.Context) LookupProductResultOutput {
 	return o
-}
-
-func (o LookupProductResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProductResult] {
-	return pulumix.Output[LookupProductResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User-provided metadata to be stored with this product. Must be at most 4096 characters long.

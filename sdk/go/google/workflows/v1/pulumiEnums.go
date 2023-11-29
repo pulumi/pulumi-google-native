@@ -85,12 +85,6 @@ func (o WorkflowCallLogLevelOutput) ToWorkflowCallLogLevelPtrOutputWithContext(c
 	}).(WorkflowCallLogLevelPtrOutput)
 }
 
-func (o WorkflowCallLogLevelOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowCallLogLevel] {
-	return pulumix.Output[WorkflowCallLogLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkflowCallLogLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o WorkflowCallLogLevelPtrOutput) ToWorkflowCallLogLevelPtrOutput() Workflo
 
 func (o WorkflowCallLogLevelPtrOutput) ToWorkflowCallLogLevelPtrOutputWithContext(ctx context.Context) WorkflowCallLogLevelPtrOutput {
 	return o
-}
-
-func (o WorkflowCallLogLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowCallLogLevel] {
-	return pulumix.Output[*WorkflowCallLogLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowCallLogLevelPtrOutput) Elem() WorkflowCallLogLevelOutput {

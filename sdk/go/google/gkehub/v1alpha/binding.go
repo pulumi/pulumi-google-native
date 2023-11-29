@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a MembershipBinding.
@@ -145,12 +144,6 @@ func (i *Binding) ToBindingOutputWithContext(ctx context.Context) BindingOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i *Binding) ToOutput(ctx context.Context) pulumix.Output[*Binding] {
-	return pulumix.Output[*Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -163,12 +156,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[*Binding] {
-	return pulumix.Output[*Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the membership binding was created.

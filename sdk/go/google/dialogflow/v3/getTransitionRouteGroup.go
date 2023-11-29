@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified TransitionRouteGroup.
@@ -79,12 +78,6 @@ func (o LookupTransitionRouteGroupResultOutput) ToLookupTransitionRouteGroupResu
 
 func (o LookupTransitionRouteGroupResultOutput) ToLookupTransitionRouteGroupResultOutputWithContext(ctx context.Context) LookupTransitionRouteGroupResultOutput {
 	return o
-}
-
-func (o LookupTransitionRouteGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTransitionRouteGroupResult] {
-	return pulumix.Output[LookupTransitionRouteGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.

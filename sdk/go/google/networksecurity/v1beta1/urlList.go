@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new UrlList in a given project and location.
@@ -134,12 +133,6 @@ func (i *UrlList) ToUrlListOutputWithContext(ctx context.Context) UrlListOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(UrlListOutput)
 }
 
-func (i *UrlList) ToOutput(ctx context.Context) pulumix.Output[*UrlList] {
-	return pulumix.Output[*UrlList]{
-		OutputState: i.ToUrlListOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UrlListOutput struct{ *pulumi.OutputState }
 
 func (UrlListOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o UrlListOutput) ToUrlListOutput() UrlListOutput {
 
 func (o UrlListOutput) ToUrlListOutputWithContext(ctx context.Context) UrlListOutput {
 	return o
-}
-
-func (o UrlListOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlList] {
-	return pulumix.Output[*UrlList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the security policy was created.

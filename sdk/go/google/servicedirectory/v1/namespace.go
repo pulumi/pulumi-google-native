@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a namespace, and returns the new namespace.
@@ -123,12 +122,6 @@ func (i *Namespace) ToNamespaceOutputWithContext(ctx context.Context) NamespaceO
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceOutput)
 }
 
-func (i *Namespace) ToOutput(ctx context.Context) pulumix.Output[*Namespace] {
-	return pulumix.Output[*Namespace]{
-		OutputState: i.ToNamespaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NamespaceOutput struct{ *pulumi.OutputState }
 
 func (NamespaceOutput) ElementType() reflect.Type {
@@ -141,12 +134,6 @@ func (o NamespaceOutput) ToNamespaceOutput() NamespaceOutput {
 
 func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
 	return o
-}
-
-func (o NamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*Namespace] {
-	return pulumix.Output[*Namespace]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.

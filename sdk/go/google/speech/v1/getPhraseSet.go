@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a phrase set.
@@ -93,12 +92,6 @@ func (o LookupPhraseSetResultOutput) ToLookupPhraseSetResultOutput() LookupPhras
 
 func (o LookupPhraseSetResultOutput) ToLookupPhraseSetResultOutputWithContext(ctx context.Context) LookupPhraseSetResultOutput {
 	return o
-}
-
-func (o LookupPhraseSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPhraseSetResult] {
-	return pulumix.Output[LookupPhraseSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.

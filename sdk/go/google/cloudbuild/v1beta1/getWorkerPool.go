@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns details of a `WorkerPool`.
@@ -89,12 +88,6 @@ func (o LookupWorkerPoolResultOutput) ToLookupWorkerPoolResultOutput() LookupWor
 
 func (o LookupWorkerPoolResultOutput) ToLookupWorkerPoolResultOutputWithContext(ctx context.Context) LookupWorkerPoolResultOutput {
 	return o
-}
-
-func (o LookupWorkerPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkerPoolResult] {
-	return pulumix.Output[LookupWorkerPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.

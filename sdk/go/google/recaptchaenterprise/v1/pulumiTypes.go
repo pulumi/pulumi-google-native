@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs) ToGoogleCloudRec
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput)
 }
 
-func (i GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1AndroidKeySettings] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1AndroidKeySettings]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs) ToGoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput() GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput {
 	return i.ToGoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *googleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1AndroidKeySettings] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1AndroidKeySettings]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings specific to keys that can be used by Android apps.
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) ToGoogleCloudR
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) *GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput)
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1AndroidKeySettings] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1AndroidKeySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set to true, allowed_package_names are not enforced.
@@ -170,12 +151,6 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) ToGoogleClo
 
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) ToGoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1AndroidKeySettings] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1AndroidKeySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput {
@@ -243,12 +218,6 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) ToGoog
 	return o
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If set to true, allowed_package_names are not enforced.
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) AllowAllPackageNames() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) bool { return v.AllowAllPackageNames }).(pulumi.BoolOutput)
@@ -311,12 +280,6 @@ func (i GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs) ToGoogleCloudRecap
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput)
 }
 
-func (i GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1AppleDeveloperId] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1AppleDeveloperId]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
 	return i.ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(context.Background())
 }
@@ -358,12 +321,6 @@ func (i *googleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrType) ToGoogleCloudR
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1AppleDeveloperId] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1AppleDeveloperId]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains fields that are required to perform Apple-specific integrity checks.
 type GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput struct{ *pulumi.OutputState }
 
@@ -387,12 +344,6 @@ func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput) ToGoogleCloudRec
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1AppleDeveloperId) *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput)
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1AppleDeveloperId] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1AppleDeveloperId]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Apple developer key ID (10-character string).
@@ -422,12 +373,6 @@ func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1AppleDeveloperId] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1AppleDeveloperId]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput {
@@ -493,12 +438,6 @@ func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput) ToGoogle
 
 func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Apple developer key ID (10-character string).
@@ -567,12 +506,6 @@ func (i GoogleCloudRecaptchaenterpriseV1FirewallActionArgs) ToGoogleCloudRecaptc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionOutput)
 }
 
-func (i GoogleCloudRecaptchaenterpriseV1FirewallActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRecaptchaenterpriseV1FirewallActionArrayInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionArray and GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionArrayInput` via:
 //
@@ -598,12 +531,6 @@ func (i GoogleCloudRecaptchaenterpriseV1FirewallActionArray) ToGoogleCloudRecapt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput)
 }
 
-func (i GoogleCloudRecaptchaenterpriseV1FirewallActionArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRecaptchaenterpriseV1FirewallAction] {
-	return pulumix.Output[[]GoogleCloudRecaptchaenterpriseV1FirewallAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An individual action. Each action represents what to do if a policy matches.
 type GoogleCloudRecaptchaenterpriseV1FirewallActionOutput struct{ *pulumi.OutputState }
 
@@ -617,12 +544,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) ToGoogleCloudRecap
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user request did not match any policy and should be allowed access to the requested resource.
@@ -674,12 +595,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRecaptchaenterpriseV1FirewallAction] {
-	return pulumix.Output[[]GoogleCloudRecaptchaenterpriseV1FirewallAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput) Index(i pulumi.IntInput) GoogleCloudRecaptchaenterpriseV1FirewallActionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRecaptchaenterpriseV1FirewallAction {
 		return vs[0].([]GoogleCloudRecaptchaenterpriseV1FirewallAction)[vs[1].(int)]
@@ -715,12 +630,6 @@ func (i GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs) ToGoogleC
 
 func (i GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput)
-}
-
-func (i GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
@@ -764,12 +673,6 @@ func (i *googleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An allow action continues processing a request unimpeded.
 type GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput struct{ *pulumi.OutputState }
 
@@ -795,12 +698,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput) ToGoogl
 	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput)
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput) ElementType() reflect.Type {
@@ -813,12 +710,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput) ToGo
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput {
@@ -850,12 +741,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput)
 	return o
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A block action serves an HTTP error code a prevents the request from hitting the backend.
 type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction struct {
 }
@@ -885,12 +770,6 @@ func (i GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs) ToGoogleC
 
 func (i GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput)
-}
-
-func (i GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
@@ -934,12 +813,6 @@ func (i *googleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A block action serves an HTTP error code a prevents the request from hitting the backend.
 type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput struct{ *pulumi.OutputState }
 
@@ -965,12 +838,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput) ToGoogl
 	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput)
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput) ElementType() reflect.Type {
@@ -983,12 +850,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput) ToGo
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput {
@@ -1020,12 +881,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput)
 	return o
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
 type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction struct {
 }
@@ -1055,12 +910,6 @@ func (i GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs) ToGoog
 
 func (i GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput)
-}
-
-func (i GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
@@ -1104,12 +953,6 @@ func (i *googleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
 type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput struct{ *pulumi.OutputState }
 
@@ -1135,12 +978,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput) ToGo
 	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput)
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput) ElementType() reflect.Type {
@@ -1153,12 +990,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput) T
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput {
@@ -1190,12 +1021,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutp
 	return o
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An individual action. Each action represents what to do if a policy matches.
 type GoogleCloudRecaptchaenterpriseV1FirewallActionResponse struct {
 	// The user request did not match any policy and should be allowed access to the requested resource.
@@ -1223,12 +1048,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) ToGoogleCl
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user request did not match any policy and should be allowed access to the requested resource.
@@ -1280,12 +1099,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput) ToGoo
 	return o
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRecaptchaenterpriseV1FirewallActionResponse] {
-	return pulumix.Output[[]GoogleCloudRecaptchaenterpriseV1FirewallActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRecaptchaenterpriseV1FirewallActionResponse {
 		return vs[0].([]GoogleCloudRecaptchaenterpriseV1FirewallActionResponse)[vs[1].(int)]
@@ -1331,12 +1144,6 @@ func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput)
 }
 
-func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
 	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(context.Background())
 }
@@ -1378,12 +1185,6 @@ func (i *googleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
 type GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput struct{ *pulumi.OutputState }
 
@@ -1409,12 +1210,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput) ToG
 	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput)
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The header key to set in the request to the backend server.
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -1437,12 +1232,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput) 
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput {
@@ -1498,12 +1287,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOut
 	return o
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The header key to set in the request to the backend server.
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -1549,12 +1332,6 @@ func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs) ToGo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput)
 }
 
-func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
 	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(context.Background())
 }
@@ -1596,12 +1373,6 @@ func (i *googleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A substitute action transparently serves a different page than the one requested.
 type GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput struct{ *pulumi.OutputState }
 
@@ -1627,12 +1398,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput) To
 	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput)
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction) *string { return v.Path }).(pulumi.StringPtrOutput)
@@ -1650,12 +1415,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput)
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput {
@@ -1697,12 +1456,6 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOu
 
 func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
@@ -1753,12 +1506,6 @@ func (i GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs) ToGoogleCloudRecaptc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput)
 }
 
-func (i GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1IOSKeySettings] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1IOSKeySettings]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs) ToGoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput() GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput {
 	return i.ToGoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutputWithContext(context.Background())
 }
@@ -1800,12 +1547,6 @@ func (i *googleCloudRecaptchaenterpriseV1IOSKeySettingsPtrType) ToGoogleCloudRec
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1IOSKeySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1IOSKeySettings] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1IOSKeySettings]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings specific to keys that can be used by iOS apps.
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput struct{ *pulumi.OutputState }
 
@@ -1829,12 +1570,6 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) ToGoogleCloudRecap
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput)
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1IOSKeySettings] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1IOSKeySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set to true, allowed_bundle_ids are not enforced.
@@ -1866,12 +1601,6 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) ToGoogleCloudRe
 
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) ToGoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1IOSKeySettings] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1IOSKeySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput {
@@ -1939,12 +1668,6 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If set to true, allowed_bundle_ids are not enforced.
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) AllowAllBundleIds() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) bool { return v.AllowAllBundleIds }).(pulumi.BoolOutput)
@@ -2001,12 +1724,6 @@ func (i GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs) ToGoogleCloudRecaptc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput)
 }
 
-func (i GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1TestingOptions] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1TestingOptions]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1TestingOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs) ToGoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput() GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput {
 	return i.ToGoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutputWithContext(context.Background())
 }
@@ -2048,12 +1765,6 @@ func (i *googleCloudRecaptchaenterpriseV1TestingOptionsPtrType) ToGoogleCloudRec
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1TestingOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1TestingOptions] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1TestingOptions]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Options for user acceptance testing.
 type GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput struct{ *pulumi.OutputState }
 
@@ -2077,12 +1788,6 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput) ToGoogleCloudRecap
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1TestingOptions) *GoogleCloudRecaptchaenterpriseV1TestingOptions {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput)
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1TestingOptions] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1TestingOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
@@ -2109,12 +1814,6 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput) ToGoogleCloudRe
 
 func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput) ToGoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1TestingOptions] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1TestingOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput {
@@ -2170,12 +1869,6 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
 func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput) TestingChallenge() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse) string { return v.TestingChallenge }).(pulumi.StringOutput)
@@ -2225,12 +1918,6 @@ func (i GoogleCloudRecaptchaenterpriseV1WafSettingsArgs) ToGoogleCloudRecaptchae
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1WafSettingsOutput)
 }
 
-func (i GoogleCloudRecaptchaenterpriseV1WafSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1WafSettings] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1WafSettings]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1WafSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecaptchaenterpriseV1WafSettingsArgs) ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput() GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput {
 	return i.ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(context.Background())
 }
@@ -2272,12 +1959,6 @@ func (i *googleCloudRecaptchaenterpriseV1WafSettingsPtrType) ToGoogleCloudRecapt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1WafSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1WafSettings] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1WafSettings]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings specific to keys that can be used for WAF (Web Application Firewall).
 type GoogleCloudRecaptchaenterpriseV1WafSettingsOutput struct{ *pulumi.OutputState }
 
@@ -2301,12 +1982,6 @@ func (o GoogleCloudRecaptchaenterpriseV1WafSettingsOutput) ToGoogleCloudRecaptch
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1WafSettings) *GoogleCloudRecaptchaenterpriseV1WafSettings {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput)
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1WafSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1WafSettings] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1WafSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The WAF feature for which this key is enabled.
@@ -2335,12 +2010,6 @@ func (o GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput) ToGoogleCloudRecap
 
 func (o GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1WafSettings] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1WafSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1WafSettingsOutput {
@@ -2394,12 +2063,6 @@ func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput) ToGoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1WafSettingsResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1WafSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The WAF feature for which this key is enabled.
@@ -2463,12 +2126,6 @@ func (i GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs) ToGoogleCloudRecaptc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput)
 }
 
-func (i GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1WebKeySettings] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1WebKeySettings]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs) ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput() GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput {
 	return i.ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutputWithContext(context.Background())
 }
@@ -2510,12 +2167,6 @@ func (i *googleCloudRecaptchaenterpriseV1WebKeySettingsPtrType) ToGoogleCloudRec
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput)
 }
 
-func (i *googleCloudRecaptchaenterpriseV1WebKeySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1WebKeySettings] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1WebKeySettings]{
-		OutputState: i.ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings specific to keys that can be used by websites.
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput struct{ *pulumi.OutputState }
 
@@ -2539,12 +2190,6 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) ToGoogleCloudRecap
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1WebKeySettings) *GoogleCloudRecaptchaenterpriseV1WebKeySettings {
 		return &v
 	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput)
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1WebKeySettings] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1WebKeySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set to true, it means allowed_domains will not be enforced.
@@ -2588,12 +2233,6 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) ToGoogleCloudRe
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecaptchaenterpriseV1WebKeySettings] {
-	return pulumix.Output[*GoogleCloudRecaptchaenterpriseV1WebKeySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput {
@@ -2683,12 +2322,6 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput) ToGoogleCl
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput) ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse] {
-	return pulumix.Output[GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set to true, it means allowed_domains will not be enforced.

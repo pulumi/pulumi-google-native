@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -35,12 +34,6 @@ func (o ConnectionInfoResponseOutput) ToConnectionInfoResponseOutput() Connectio
 
 func (o ConnectionInfoResponseOutput) ToConnectionInfoResponseOutputWithContext(ctx context.Context) ConnectionInfoResponseOutput {
 	return o
-}
-
-func (o ConnectionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionInfoResponse] {
-	return pulumix.Output[ConnectionInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The endpoint information through which to interact with a blockchain node.
@@ -74,12 +67,6 @@ func (o EndpointInfoResponseOutput) ToEndpointInfoResponseOutput() EndpointInfoR
 
 func (o EndpointInfoResponseOutput) ToEndpointInfoResponseOutputWithContext(ctx context.Context) EndpointInfoResponseOutput {
 	return o
-}
-
-func (o EndpointInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointInfoResponse] {
-	return pulumix.Output[EndpointInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The assigned URL for the node JSON-RPC API endpoint.
@@ -155,12 +142,6 @@ func (i EthereumDetailsArgs) ToEthereumDetailsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EthereumDetailsOutput)
 }
 
-func (i EthereumDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[EthereumDetails] {
-	return pulumix.Output[EthereumDetails]{
-		OutputState: i.ToEthereumDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EthereumDetailsArgs) ToEthereumDetailsPtrOutput() EthereumDetailsPtrOutput {
 	return i.ToEthereumDetailsPtrOutputWithContext(context.Background())
 }
@@ -202,12 +183,6 @@ func (i *ethereumDetailsPtrType) ToEthereumDetailsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(EthereumDetailsPtrOutput)
 }
 
-func (i *ethereumDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EthereumDetails] {
-	return pulumix.Output[*EthereumDetails]{
-		OutputState: i.ToEthereumDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ethereum-specific blockchain node details.
 type EthereumDetailsOutput struct{ *pulumi.OutputState }
 
@@ -231,12 +206,6 @@ func (o EthereumDetailsOutput) ToEthereumDetailsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EthereumDetails) *EthereumDetails {
 		return &v
 	}).(EthereumDetailsPtrOutput)
-}
-
-func (o EthereumDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[EthereumDetails] {
-	return pulumix.Output[EthereumDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`.
@@ -291,12 +260,6 @@ func (o EthereumDetailsPtrOutput) ToEthereumDetailsPtrOutput() EthereumDetailsPt
 
 func (o EthereumDetailsPtrOutput) ToEthereumDetailsPtrOutputWithContext(ctx context.Context) EthereumDetailsPtrOutput {
 	return o
-}
-
-func (o EthereumDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EthereumDetails] {
-	return pulumix.Output[*EthereumDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EthereumDetailsPtrOutput) Elem() EthereumDetailsOutput {
@@ -426,12 +389,6 @@ func (o EthereumDetailsResponseOutput) ToEthereumDetailsResponseOutputWithContex
 	return o
 }
 
-func (o EthereumDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EthereumDetailsResponse] {
-	return pulumix.Output[EthereumDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Ethereum-specific endpoint information.
 func (o EthereumDetailsResponseOutput) AdditionalEndpoints() EthereumEndpointsResponseOutput {
 	return o.ApplyT(func(v EthereumDetailsResponse) EthereumEndpointsResponse { return v.AdditionalEndpoints }).(EthereumEndpointsResponseOutput)
@@ -502,12 +459,6 @@ func (o EthereumEndpointsResponseOutput) ToEthereumEndpointsResponseOutputWithCo
 	return o
 }
 
-func (o EthereumEndpointsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EthereumEndpointsResponse] {
-	return pulumix.Output[EthereumEndpointsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The assigned URL for the node's Beacon API endpoint.
 func (o EthereumEndpointsResponseOutput) BeaconApiEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v EthereumEndpointsResponse) string { return v.BeaconApiEndpoint }).(pulumi.StringOutput)
@@ -558,12 +509,6 @@ func (i GethDetailsArgs) ToGethDetailsOutputWithContext(ctx context.Context) Get
 	return pulumi.ToOutputWithContext(ctx, i).(GethDetailsOutput)
 }
 
-func (i GethDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[GethDetails] {
-	return pulumix.Output[GethDetails]{
-		OutputState: i.ToGethDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GethDetailsArgs) ToGethDetailsPtrOutput() GethDetailsPtrOutput {
 	return i.ToGethDetailsPtrOutputWithContext(context.Background())
 }
@@ -605,12 +550,6 @@ func (i *gethDetailsPtrType) ToGethDetailsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GethDetailsPtrOutput)
 }
 
-func (i *gethDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GethDetails] {
-	return pulumix.Output[*GethDetails]{
-		OutputState: i.ToGethDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Options for the Geth execution client. See [Command-line Options](https://geth.ethereum.org/docs/fundamentals/command-line-options) for more details.
 type GethDetailsOutput struct{ *pulumi.OutputState }
 
@@ -636,12 +575,6 @@ func (o GethDetailsOutput) ToGethDetailsPtrOutputWithContext(ctx context.Context
 	}).(GethDetailsPtrOutput)
 }
 
-func (o GethDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[GethDetails] {
-	return pulumix.Output[GethDetails]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. Blockchain garbage collection mode.
 func (o GethDetailsOutput) GarbageCollectionMode() GethDetailsGarbageCollectionModePtrOutput {
 	return o.ApplyT(func(v GethDetails) *GethDetailsGarbageCollectionMode { return v.GarbageCollectionMode }).(GethDetailsGarbageCollectionModePtrOutput)
@@ -659,12 +592,6 @@ func (o GethDetailsPtrOutput) ToGethDetailsPtrOutput() GethDetailsPtrOutput {
 
 func (o GethDetailsPtrOutput) ToGethDetailsPtrOutputWithContext(ctx context.Context) GethDetailsPtrOutput {
 	return o
-}
-
-func (o GethDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GethDetails] {
-	return pulumix.Output[*GethDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GethDetailsPtrOutput) Elem() GethDetailsOutput {
@@ -706,12 +633,6 @@ func (o GethDetailsResponseOutput) ToGethDetailsResponseOutput() GethDetailsResp
 
 func (o GethDetailsResponseOutput) ToGethDetailsResponseOutputWithContext(ctx context.Context) GethDetailsResponseOutput {
 	return o
-}
-
-func (o GethDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GethDetailsResponse] {
-	return pulumix.Output[GethDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Blockchain garbage collection mode.

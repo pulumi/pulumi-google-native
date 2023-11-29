@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an app and associates it with an AppGroup. This API associates the AppGroup app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls.
@@ -166,12 +165,6 @@ func (i *AppGroupApp) ToAppGroupAppOutputWithContext(ctx context.Context) AppGro
 	return pulumi.ToOutputWithContext(ctx, i).(AppGroupAppOutput)
 }
 
-func (i *AppGroupApp) ToOutput(ctx context.Context) pulumix.Output[*AppGroupApp] {
-	return pulumix.Output[*AppGroupApp]{
-		OutputState: i.ToAppGroupAppOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppGroupAppOutput struct{ *pulumi.OutputState }
 
 func (AppGroupAppOutput) ElementType() reflect.Type {
@@ -184,12 +177,6 @@ func (o AppGroupAppOutput) ToAppGroupAppOutput() AppGroupAppOutput {
 
 func (o AppGroupAppOutput) ToAppGroupAppOutputWithContext(ctx context.Context) AppGroupAppOutput {
 	return o
-}
-
-func (o AppGroupAppOutput) ToOutput(ctx context.Context) pulumix.Output[*AppGroupApp] {
-	return pulumix.Output[*AppGroupApp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of API products associated with the AppGroup app.

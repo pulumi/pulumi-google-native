@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on a TagKey, replacing any existing policy. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `resourcemanager.tagKeys.setIamPolicy` permission on the identified tagValue.
@@ -136,12 +135,6 @@ func (i *TagKeyIamBinding) ToTagKeyIamBindingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamBindingOutput)
 }
 
-func (i *TagKeyIamBinding) ToOutput(ctx context.Context) pulumix.Output[*TagKeyIamBinding] {
-	return pulumix.Output[*TagKeyIamBinding]{
-		OutputState: i.ToTagKeyIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagKeyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o TagKeyIamBindingOutput) ToTagKeyIamBindingOutput() TagKeyIamBindingOutpu
 
 func (o TagKeyIamBindingOutput) ToTagKeyIamBindingOutputWithContext(ctx context.Context) TagKeyIamBindingOutput {
 	return o
-}
-
-func (o TagKeyIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TagKeyIamBinding] {
-	return pulumix.Output[*TagKeyIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *ServiceLbPolicyIamMember) ToServiceLbPolicyIamMemberOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPolicyIamMemberOutput)
 }
 
-func (i *ServiceLbPolicyIamMember) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicyIamMember] {
-	return pulumix.Output[*ServiceLbPolicyIamMember]{
-		OutputState: i.ToServiceLbPolicyIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceLbPolicyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ServiceLbPolicyIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o ServiceLbPolicyIamMemberOutput) ToServiceLbPolicyIamMemberOutput() Servi
 
 func (o ServiceLbPolicyIamMemberOutput) ToServiceLbPolicyIamMemberOutputWithContext(ctx context.Context) ServiceLbPolicyIamMemberOutput {
 	return o
-}
-
-func (o ServiceLbPolicyIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicyIamMember] {
-	return pulumix.Output[*ServiceLbPolicyIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

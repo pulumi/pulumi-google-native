@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid.
@@ -116,12 +115,6 @@ func (i *InstanceAttachment) ToInstanceAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttachmentOutput)
 }
 
-func (i *InstanceAttachment) ToOutput(ctx context.Context) pulumix.Output[*InstanceAttachment] {
-	return pulumix.Output[*InstanceAttachment]{
-		OutputState: i.ToInstanceAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceAttachmentOutput struct{ *pulumi.OutputState }
 
 func (InstanceAttachmentOutput) ElementType() reflect.Type {
@@ -134,12 +127,6 @@ func (o InstanceAttachmentOutput) ToInstanceAttachmentOutput() InstanceAttachmen
 
 func (o InstanceAttachmentOutput) ToInstanceAttachmentOutputWithContext(ctx context.Context) InstanceAttachmentOutput {
 	return o
-}
-
-func (o InstanceAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceAttachment] {
-	return pulumix.Output[*InstanceAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the attachment was created in milliseconds since epoch.

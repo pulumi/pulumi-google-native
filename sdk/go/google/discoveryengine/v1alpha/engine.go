@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Engine.
@@ -190,12 +189,6 @@ func (i *Engine) ToEngineOutputWithContext(ctx context.Context) EngineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EngineOutput)
 }
 
-func (i *Engine) ToOutput(ctx context.Context) pulumix.Output[*Engine] {
-	return pulumix.Output[*Engine]{
-		OutputState: i.ToEngineOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EngineOutput struct{ *pulumi.OutputState }
 
 func (EngineOutput) ElementType() reflect.Type {
@@ -208,12 +201,6 @@ func (o EngineOutput) ToEngineOutput() EngineOutput {
 
 func (o EngineOutput) ToEngineOutputWithContext(ctx context.Context) EngineOutput {
 	return o
-}
-
-func (o EngineOutput) ToOutput(ctx context.Context) pulumix.Output[*Engine] {
-	return pulumix.Output[*Engine]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.

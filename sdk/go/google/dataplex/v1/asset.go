@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an asset resource.
@@ -170,12 +169,6 @@ func (i *Asset) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssetOutput)
 }
 
-func (i *Asset) ToOutput(ctx context.Context) pulumix.Output[*Asset] {
-	return pulumix.Output[*Asset]{
-		OutputState: i.ToAssetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssetOutput struct{ *pulumi.OutputState }
 
 func (AssetOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o AssetOutput) ToAssetOutput() AssetOutput {
 
 func (o AssetOutput) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return o
-}
-
-func (o AssetOutput) ToOutput(ctx context.Context) pulumix.Output[*Asset] {
-	return pulumix.Output[*Asset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.

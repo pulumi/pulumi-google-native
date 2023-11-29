@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an annotation spec set by resource name.
@@ -75,12 +74,6 @@ func (o LookupAnnotationSpecSetResultOutput) ToLookupAnnotationSpecSetResultOutp
 
 func (o LookupAnnotationSpecSetResultOutput) ToLookupAnnotationSpecSetResultOutputWithContext(ctx context.Context) LookupAnnotationSpecSetResultOutput {
 	return o
-}
-
-func (o LookupAnnotationSpecSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAnnotationSpecSetResult] {
-	return pulumix.Output[LookupAnnotationSpecSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.

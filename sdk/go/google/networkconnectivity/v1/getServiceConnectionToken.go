@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ServiceConnectionToken.
@@ -85,12 +84,6 @@ func (o LookupServiceConnectionTokenResultOutput) ToLookupServiceConnectionToken
 
 func (o LookupServiceConnectionTokenResultOutput) ToLookupServiceConnectionTokenResultOutputWithContext(ctx context.Context) LookupServiceConnectionTokenResultOutput {
 	return o
-}
-
-func (o LookupServiceConnectionTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceConnectionTokenResult] {
-	return pulumix.Output[LookupServiceConnectionTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the ServiceConnectionToken was created.

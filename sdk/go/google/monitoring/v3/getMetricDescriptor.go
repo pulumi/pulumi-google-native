@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a single metric descriptor.
@@ -87,12 +86,6 @@ func (o LookupMetricDescriptorResultOutput) ToLookupMetricDescriptorResultOutput
 
 func (o LookupMetricDescriptorResultOutput) ToLookupMetricDescriptorResultOutputWithContext(ctx context.Context) LookupMetricDescriptorResultOutput {
 	return o
-}
-
-func (o LookupMetricDescriptorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMetricDescriptorResult] {
-	return pulumix.Output[LookupMetricDescriptorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A detailed description of the metric, which can be used in documentation.

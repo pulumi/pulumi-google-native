@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified release for a site or channel. When used to get a release for a site, this can get releases for both the default `live` channel and any active preview channels for the specified site.
@@ -81,12 +80,6 @@ func (o LookupReleaseResultOutput) ToLookupReleaseResultOutput() LookupReleaseRe
 
 func (o LookupReleaseResultOutput) ToLookupReleaseResultOutputWithContext(ctx context.Context) LookupReleaseResultOutput {
 	return o
-}
-
-func (o LookupReleaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReleaseResult] {
-	return pulumix.Output[LookupReleaseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The deploy description when the release was created. The value can be up to 512 characters.

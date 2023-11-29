@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new data exchange.
@@ -153,12 +152,6 @@ func (i *DataExchange) ToDataExchangeOutputWithContext(ctx context.Context) Data
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeOutput)
 }
 
-func (i *DataExchange) ToOutput(ctx context.Context) pulumix.Output[*DataExchange] {
-	return pulumix.Output[*DataExchange]{
-		OutputState: i.ToDataExchangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataExchangeOutput struct{ *pulumi.OutputState }
 
 func (DataExchangeOutput) ElementType() reflect.Type {
@@ -171,12 +164,6 @@ func (o DataExchangeOutput) ToDataExchangeOutput() DataExchangeOutput {
 
 func (o DataExchangeOutput) ToDataExchangeOutputWithContext(ctx context.Context) DataExchangeOutput {
 	return o
-}
-
-func (o DataExchangeOutput) ToOutput(ctx context.Context) pulumix.Output[*DataExchange] {
-	return pulumix.Output[*DataExchange]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.

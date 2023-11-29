@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Secret containing no SecretVersions.
@@ -125,12 +124,6 @@ func (i *Secret) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretOutput)
 }
 
-func (i *Secret) ToOutput(ctx context.Context) pulumix.Output[*Secret] {
-	return pulumix.Output[*Secret]{
-		OutputState: i.ToSecretOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretOutput struct{ *pulumi.OutputState }
 
 func (SecretOutput) ElementType() reflect.Type {
@@ -143,12 +136,6 @@ func (o SecretOutput) ToSecretOutput() SecretOutput {
 
 func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return o
-}
-
-func (o SecretOutput) ToOutput(ctx context.Context) pulumix.Output[*Secret] {
-	return pulumix.Output[*Secret]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the Secret was created.

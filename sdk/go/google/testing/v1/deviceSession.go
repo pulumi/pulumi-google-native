@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // POST /v1/projects/{project_id}/deviceSessions
@@ -136,12 +135,6 @@ func (i *DeviceSession) ToDeviceSessionOutputWithContext(ctx context.Context) De
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSessionOutput)
 }
 
-func (i *DeviceSession) ToOutput(ctx context.Context) pulumix.Output[*DeviceSession] {
-	return pulumix.Output[*DeviceSession]{
-		OutputState: i.ToDeviceSessionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceSessionOutput struct{ *pulumi.OutputState }
 
 func (DeviceSessionOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o DeviceSessionOutput) ToDeviceSessionOutput() DeviceSessionOutput {
 
 func (o DeviceSessionOutput) ToDeviceSessionOutputWithContext(ctx context.Context) DeviceSessionOutput {
 	return o
-}
-
-func (o DeviceSessionOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceSession] {
-	return pulumix.Output[*DeviceSession]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp that the session first became ACTIVE.

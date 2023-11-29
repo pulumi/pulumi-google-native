@@ -83,12 +83,6 @@ func (o InstanceMemcacheVersionOutput) ToInstanceMemcacheVersionPtrOutputWithCon
 	}).(InstanceMemcacheVersionPtrOutput)
 }
 
-func (o InstanceMemcacheVersionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceMemcacheVersion] {
-	return pulumix.Output[InstanceMemcacheVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceMemcacheVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o InstanceMemcacheVersionPtrOutput) ToInstanceMemcacheVersionPtrOutput() I
 
 func (o InstanceMemcacheVersionPtrOutput) ToInstanceMemcacheVersionPtrOutputWithContext(ctx context.Context) InstanceMemcacheVersionPtrOutput {
 	return o
-}
-
-func (o InstanceMemcacheVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceMemcacheVersion] {
-	return pulumix.Output[*InstanceMemcacheVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceMemcacheVersionPtrOutput) Elem() InstanceMemcacheVersionOutput {
@@ -268,12 +256,6 @@ func (o InstanceMessageCodeOutput) ToInstanceMessageCodePtrOutputWithContext(ctx
 	}).(InstanceMessageCodePtrOutput)
 }
 
-func (o InstanceMessageCodeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceMessageCode] {
-	return pulumix.Output[InstanceMessageCode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceMessageCodeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -307,12 +289,6 @@ func (o InstanceMessageCodePtrOutput) ToInstanceMessageCodePtrOutput() InstanceM
 
 func (o InstanceMessageCodePtrOutput) ToInstanceMessageCodePtrOutputWithContext(ctx context.Context) InstanceMessageCodePtrOutput {
 	return o
-}
-
-func (o InstanceMessageCodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceMessageCode] {
-	return pulumix.Output[*InstanceMessageCode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceMessageCodePtrOutput) Elem() InstanceMessageCodeOutput {
@@ -465,12 +441,6 @@ func (o WeeklyMaintenanceWindowDayOutput) ToWeeklyMaintenanceWindowDayPtrOutputW
 	}).(WeeklyMaintenanceWindowDayPtrOutput)
 }
 
-func (o WeeklyMaintenanceWindowDayOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyMaintenanceWindowDay] {
-	return pulumix.Output[WeeklyMaintenanceWindowDay]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WeeklyMaintenanceWindowDayOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -504,12 +474,6 @@ func (o WeeklyMaintenanceWindowDayPtrOutput) ToWeeklyMaintenanceWindowDayPtrOutp
 
 func (o WeeklyMaintenanceWindowDayPtrOutput) ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayPtrOutput {
 	return o
-}
-
-func (o WeeklyMaintenanceWindowDayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeeklyMaintenanceWindowDay] {
-	return pulumix.Output[*WeeklyMaintenanceWindowDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WeeklyMaintenanceWindowDayPtrOutput) Elem() WeeklyMaintenanceWindowDayOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create security settings in the specified location.
@@ -168,12 +167,6 @@ func (i *SecuritySetting) ToSecuritySettingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingOutput)
 }
 
-func (i *SecuritySetting) ToOutput(ctx context.Context) pulumix.Output[*SecuritySetting] {
-	return pulumix.Output[*SecuritySetting]{
-		OutputState: i.ToSecuritySettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecuritySettingOutput struct{ *pulumi.OutputState }
 
 func (SecuritySettingOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o SecuritySettingOutput) ToSecuritySettingOutput() SecuritySettingOutput {
 
 func (o SecuritySettingOutput) ToSecuritySettingOutputWithContext(ctx context.Context) SecuritySettingOutput {
 	return o
-}
-
-func (o SecuritySettingOutput) ToOutput(ctx context.Context) pulumix.Output[*SecuritySetting] {
-	return pulumix.Output[*SecuritySetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.

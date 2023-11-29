@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new FirewallPolicy, specifying conditions at which reCAPTCHA Enterprise actions can be executed. A project may have a maximum of 1000 policies.
@@ -124,12 +123,6 @@ func (i *Firewallpolicy) ToFirewallpolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallpolicyOutput)
 }
 
-func (i *Firewallpolicy) ToOutput(ctx context.Context) pulumix.Output[*Firewallpolicy] {
-	return pulumix.Output[*Firewallpolicy]{
-		OutputState: i.ToFirewallpolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallpolicyOutput struct{ *pulumi.OutputState }
 
 func (FirewallpolicyOutput) ElementType() reflect.Type {
@@ -142,12 +135,6 @@ func (o FirewallpolicyOutput) ToFirewallpolicyOutput() FirewallpolicyOutput {
 
 func (o FirewallpolicyOutput) ToFirewallpolicyOutputWithContext(ctx context.Context) FirewallpolicyOutput {
 	return o
-}
-
-func (o FirewallpolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*Firewallpolicy] {
-	return pulumix.Output[*Firewallpolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as `AllowAction`, `BlockAction` or `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader` might be specified. A single policy can contain up to 16 actions.

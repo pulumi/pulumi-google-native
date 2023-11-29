@@ -115,12 +115,6 @@ func (o PkixPublicKeySignatureAlgorithmOutput) ToPkixPublicKeySignatureAlgorithm
 	}).(PkixPublicKeySignatureAlgorithmPtrOutput)
 }
 
-func (o PkixPublicKeySignatureAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKeySignatureAlgorithm] {
-	return pulumix.Output[PkixPublicKeySignatureAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PkixPublicKeySignatureAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -154,12 +148,6 @@ func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToPkixPublicKeySignatureAlgori
 
 func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(ctx context.Context) PkixPublicKeySignatureAlgorithmPtrOutput {
 	return o
-}
-
-func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PkixPublicKeySignatureAlgorithm] {
-	return pulumix.Output[*PkixPublicKeySignatureAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PkixPublicKeySignatureAlgorithmPtrOutput) Elem() PkixPublicKeySignatureAlgorithmOutput {

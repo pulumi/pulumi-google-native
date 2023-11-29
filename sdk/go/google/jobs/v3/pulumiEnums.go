@@ -93,12 +93,6 @@ func (o CompanySizeOutput) ToCompanySizePtrOutputWithContext(ctx context.Context
 	}).(CompanySizePtrOutput)
 }
 
-func (o CompanySizeOutput) ToOutput(ctx context.Context) pulumix.Output[CompanySize] {
-	return pulumix.Output[CompanySize]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CompanySizeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -132,12 +126,6 @@ func (o CompanySizePtrOutput) ToCompanySizePtrOutput() CompanySizePtrOutput {
 
 func (o CompanySizePtrOutput) ToCompanySizePtrOutputWithContext(ctx context.Context) CompanySizePtrOutput {
 	return o
-}
-
-func (o CompanySizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompanySize] {
-	return pulumix.Output[*CompanySize]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompanySizePtrOutput) Elem() CompanySizeOutput {
@@ -292,12 +280,6 @@ func (o CompensationEntryTypeOutput) ToCompensationEntryTypePtrOutputWithContext
 	}).(CompensationEntryTypePtrOutput)
 }
 
-func (o CompensationEntryTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CompensationEntryType] {
-	return pulumix.Output[CompensationEntryType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CompensationEntryTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -331,12 +313,6 @@ func (o CompensationEntryTypePtrOutput) ToCompensationEntryTypePtrOutput() Compe
 
 func (o CompensationEntryTypePtrOutput) ToCompensationEntryTypePtrOutputWithContext(ctx context.Context) CompensationEntryTypePtrOutput {
 	return o
-}
-
-func (o CompensationEntryTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompensationEntryType] {
-	return pulumix.Output[*CompensationEntryType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompensationEntryTypePtrOutput) Elem() CompensationEntryTypeOutput {
@@ -489,12 +465,6 @@ func (o CompensationEntryUnitOutput) ToCompensationEntryUnitPtrOutputWithContext
 	}).(CompensationEntryUnitPtrOutput)
 }
 
-func (o CompensationEntryUnitOutput) ToOutput(ctx context.Context) pulumix.Output[CompensationEntryUnit] {
-	return pulumix.Output[CompensationEntryUnit]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CompensationEntryUnitOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -528,12 +498,6 @@ func (o CompensationEntryUnitPtrOutput) ToCompensationEntryUnitPtrOutput() Compe
 
 func (o CompensationEntryUnitPtrOutput) ToCompensationEntryUnitPtrOutputWithContext(ctx context.Context) CompensationEntryUnitPtrOutput {
 	return o
-}
-
-func (o CompensationEntryUnitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompensationEntryUnit] {
-	return pulumix.Output[*CompensationEntryUnit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompensationEntryUnitPtrOutput) Elem() CompensationEntryUnitOutput {
@@ -687,12 +651,6 @@ func (o JobDegreeTypesItemOutput) ToJobDegreeTypesItemPtrOutputWithContext(ctx c
 	}).(JobDegreeTypesItemPtrOutput)
 }
 
-func (o JobDegreeTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[JobDegreeTypesItem] {
-	return pulumix.Output[JobDegreeTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobDegreeTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -726,12 +684,6 @@ func (o JobDegreeTypesItemPtrOutput) ToJobDegreeTypesItemPtrOutput() JobDegreeTy
 
 func (o JobDegreeTypesItemPtrOutput) ToJobDegreeTypesItemPtrOutputWithContext(ctx context.Context) JobDegreeTypesItemPtrOutput {
 	return o
-}
-
-func (o JobDegreeTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobDegreeTypesItem] {
-	return pulumix.Output[*JobDegreeTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobDegreeTypesItemPtrOutput) Elem() JobDegreeTypesItemOutput {
@@ -827,12 +779,6 @@ func (i JobDegreeTypesItemArray) ToJobDegreeTypesItemArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(JobDegreeTypesItemArrayOutput)
 }
 
-func (i JobDegreeTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]JobDegreeTypesItem] {
-	return pulumix.Output[[]JobDegreeTypesItem]{
-		OutputState: i.ToJobDegreeTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobDegreeTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (JobDegreeTypesItemArrayOutput) ElementType() reflect.Type {
@@ -845,12 +791,6 @@ func (o JobDegreeTypesItemArrayOutput) ToJobDegreeTypesItemArrayOutput() JobDegr
 
 func (o JobDegreeTypesItemArrayOutput) ToJobDegreeTypesItemArrayOutputWithContext(ctx context.Context) JobDegreeTypesItemArrayOutput {
 	return o
-}
-
-func (o JobDegreeTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobDegreeTypesItem] {
-	return pulumix.Output[[]JobDegreeTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobDegreeTypesItemArrayOutput) Index(i pulumi.IntInput) JobDegreeTypesItemOutput {
@@ -946,12 +886,6 @@ func (o JobEmploymentTypesItemOutput) ToJobEmploymentTypesItemPtrOutputWithConte
 	}).(JobEmploymentTypesItemPtrOutput)
 }
 
-func (o JobEmploymentTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[JobEmploymentTypesItem] {
-	return pulumix.Output[JobEmploymentTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobEmploymentTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -985,12 +919,6 @@ func (o JobEmploymentTypesItemPtrOutput) ToJobEmploymentTypesItemPtrOutput() Job
 
 func (o JobEmploymentTypesItemPtrOutput) ToJobEmploymentTypesItemPtrOutputWithContext(ctx context.Context) JobEmploymentTypesItemPtrOutput {
 	return o
-}
-
-func (o JobEmploymentTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobEmploymentTypesItem] {
-	return pulumix.Output[*JobEmploymentTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobEmploymentTypesItemPtrOutput) Elem() JobEmploymentTypesItemOutput {
@@ -1086,12 +1014,6 @@ func (i JobEmploymentTypesItemArray) ToJobEmploymentTypesItemArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(JobEmploymentTypesItemArrayOutput)
 }
 
-func (i JobEmploymentTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]JobEmploymentTypesItem] {
-	return pulumix.Output[[]JobEmploymentTypesItem]{
-		OutputState: i.ToJobEmploymentTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobEmploymentTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (JobEmploymentTypesItemArrayOutput) ElementType() reflect.Type {
@@ -1104,12 +1026,6 @@ func (o JobEmploymentTypesItemArrayOutput) ToJobEmploymentTypesItemArrayOutput()
 
 func (o JobEmploymentTypesItemArrayOutput) ToJobEmploymentTypesItemArrayOutputWithContext(ctx context.Context) JobEmploymentTypesItemArrayOutput {
 	return o
-}
-
-func (o JobEmploymentTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobEmploymentTypesItem] {
-	return pulumix.Output[[]JobEmploymentTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobEmploymentTypesItemArrayOutput) Index(i pulumi.IntInput) JobEmploymentTypesItemOutput {
@@ -1207,12 +1123,6 @@ func (o JobJobBenefitsItemOutput) ToJobJobBenefitsItemPtrOutputWithContext(ctx c
 	}).(JobJobBenefitsItemPtrOutput)
 }
 
-func (o JobJobBenefitsItemOutput) ToOutput(ctx context.Context) pulumix.Output[JobJobBenefitsItem] {
-	return pulumix.Output[JobJobBenefitsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobJobBenefitsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1246,12 +1156,6 @@ func (o JobJobBenefitsItemPtrOutput) ToJobJobBenefitsItemPtrOutput() JobJobBenef
 
 func (o JobJobBenefitsItemPtrOutput) ToJobJobBenefitsItemPtrOutputWithContext(ctx context.Context) JobJobBenefitsItemPtrOutput {
 	return o
-}
-
-func (o JobJobBenefitsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobJobBenefitsItem] {
-	return pulumix.Output[*JobJobBenefitsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobJobBenefitsItemPtrOutput) Elem() JobJobBenefitsItemOutput {
@@ -1347,12 +1251,6 @@ func (i JobJobBenefitsItemArray) ToJobJobBenefitsItemArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(JobJobBenefitsItemArrayOutput)
 }
 
-func (i JobJobBenefitsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]JobJobBenefitsItem] {
-	return pulumix.Output[[]JobJobBenefitsItem]{
-		OutputState: i.ToJobJobBenefitsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobJobBenefitsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (JobJobBenefitsItemArrayOutput) ElementType() reflect.Type {
@@ -1365,12 +1263,6 @@ func (o JobJobBenefitsItemArrayOutput) ToJobJobBenefitsItemArrayOutput() JobJobB
 
 func (o JobJobBenefitsItemArrayOutput) ToJobJobBenefitsItemArrayOutputWithContext(ctx context.Context) JobJobBenefitsItemArrayOutput {
 	return o
-}
-
-func (o JobJobBenefitsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobJobBenefitsItem] {
-	return pulumix.Output[[]JobJobBenefitsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobJobBenefitsItemArrayOutput) Index(i pulumi.IntInput) JobJobBenefitsItemOutput {
@@ -1457,12 +1349,6 @@ func (o JobJobLevelOutput) ToJobJobLevelPtrOutputWithContext(ctx context.Context
 	}).(JobJobLevelPtrOutput)
 }
 
-func (o JobJobLevelOutput) ToOutput(ctx context.Context) pulumix.Output[JobJobLevel] {
-	return pulumix.Output[JobJobLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobJobLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1496,12 +1382,6 @@ func (o JobJobLevelPtrOutput) ToJobJobLevelPtrOutput() JobJobLevelPtrOutput {
 
 func (o JobJobLevelPtrOutput) ToJobJobLevelPtrOutputWithContext(ctx context.Context) JobJobLevelPtrOutput {
 	return o
-}
-
-func (o JobJobLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobJobLevel] {
-	return pulumix.Output[*JobJobLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobJobLevelPtrOutput) Elem() JobJobLevelOutput {
@@ -1646,12 +1526,6 @@ func (o JobPostingRegionOutput) ToJobPostingRegionPtrOutputWithContext(ctx conte
 	}).(JobPostingRegionPtrOutput)
 }
 
-func (o JobPostingRegionOutput) ToOutput(ctx context.Context) pulumix.Output[JobPostingRegion] {
-	return pulumix.Output[JobPostingRegion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobPostingRegionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1685,12 +1559,6 @@ func (o JobPostingRegionPtrOutput) ToJobPostingRegionPtrOutput() JobPostingRegio
 
 func (o JobPostingRegionPtrOutput) ToJobPostingRegionPtrOutputWithContext(ctx context.Context) JobPostingRegionPtrOutput {
 	return o
-}
-
-func (o JobPostingRegionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobPostingRegion] {
-	return pulumix.Output[*JobPostingRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobPostingRegionPtrOutput) Elem() JobPostingRegionOutput {
@@ -1835,12 +1703,6 @@ func (o JobVisibilityOutput) ToJobVisibilityPtrOutputWithContext(ctx context.Con
 	}).(JobVisibilityPtrOutput)
 }
 
-func (o JobVisibilityOutput) ToOutput(ctx context.Context) pulumix.Output[JobVisibility] {
-	return pulumix.Output[JobVisibility]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobVisibilityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1874,12 +1736,6 @@ func (o JobVisibilityPtrOutput) ToJobVisibilityPtrOutput() JobVisibilityPtrOutpu
 
 func (o JobVisibilityPtrOutput) ToJobVisibilityPtrOutputWithContext(ctx context.Context) JobVisibilityPtrOutput {
 	return o
-}
-
-func (o JobVisibilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobVisibility] {
-	return pulumix.Output[*JobVisibility]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobVisibilityPtrOutput) Elem() JobVisibilityOutput {
@@ -2022,12 +1878,6 @@ func (o ProcessingOptionsHtmlSanitizationOutput) ToProcessingOptionsHtmlSanitiza
 	}).(ProcessingOptionsHtmlSanitizationPtrOutput)
 }
 
-func (o ProcessingOptionsHtmlSanitizationOutput) ToOutput(ctx context.Context) pulumix.Output[ProcessingOptionsHtmlSanitization] {
-	return pulumix.Output[ProcessingOptionsHtmlSanitization]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProcessingOptionsHtmlSanitizationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2061,12 +1911,6 @@ func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToProcessingOptionsHtmlSanit
 
 func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(ctx context.Context) ProcessingOptionsHtmlSanitizationPtrOutput {
 	return o
-}
-
-func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProcessingOptionsHtmlSanitization] {
-	return pulumix.Output[*ProcessingOptionsHtmlSanitization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProcessingOptionsHtmlSanitizationPtrOutput) Elem() ProcessingOptionsHtmlSanitizationOutput {

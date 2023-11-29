@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new `BuildTrigger`.
@@ -261,12 +260,6 @@ func (i *Trigger) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerOutput)
 }
 
-func (i *Trigger) ToOutput(ctx context.Context) pulumix.Output[*Trigger] {
-	return pulumix.Output[*Trigger]{
-		OutputState: i.ToTriggerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TriggerOutput struct{ *pulumi.OutputState }
 
 func (TriggerOutput) ElementType() reflect.Type {
@@ -279,12 +272,6 @@ func (o TriggerOutput) ToTriggerOutput() TriggerOutput {
 
 func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput {
 	return o
-}
-
-func (o TriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*Trigger] {
-	return pulumix.Output[*Trigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for manual approval to start a build invocation of this BuildTrigger.

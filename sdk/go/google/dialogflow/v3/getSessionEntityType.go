@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified session entity type.
@@ -79,12 +78,6 @@ func (o LookupSessionEntityTypeResultOutput) ToLookupSessionEntityTypeResultOutp
 
 func (o LookupSessionEntityTypeResultOutput) ToLookupSessionEntityTypeResultOutputWithContext(ctx context.Context) LookupSessionEntityTypeResultOutput {
 	return o
-}
-
-func (o LookupSessionEntityTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSessionEntityTypeResult] {
-	return pulumix.Output[LookupSessionEntityTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection of entities to override or supplement the custom entity type.

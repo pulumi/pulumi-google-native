@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new `LbRouteExtension` resource in a given project and location.
@@ -164,12 +163,6 @@ func (i *LbRouteExtension) ToLbRouteExtensionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(LbRouteExtensionOutput)
 }
 
-func (i *LbRouteExtension) ToOutput(ctx context.Context) pulumix.Output[*LbRouteExtension] {
-	return pulumix.Output[*LbRouteExtension]{
-		OutputState: i.ToLbRouteExtensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LbRouteExtensionOutput struct{ *pulumi.OutputState }
 
 func (LbRouteExtensionOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o LbRouteExtensionOutput) ToLbRouteExtensionOutput() LbRouteExtensionOutpu
 
 func (o LbRouteExtensionOutput) ToLbRouteExtensionOutputWithContext(ctx context.Context) LbRouteExtensionOutput {
 	return o
-}
-
-func (o LbRouteExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[*LbRouteExtension] {
-	return pulumix.Output[*LbRouteExtension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.

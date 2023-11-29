@@ -83,12 +83,6 @@ func (o AnnotationTypeOutput) ToAnnotationTypePtrOutputWithContext(ctx context.C
 	}).(AnnotationTypePtrOutput)
 }
 
-func (o AnnotationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AnnotationType] {
-	return pulumix.Output[AnnotationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AnnotationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o AnnotationTypePtrOutput) ToAnnotationTypePtrOutput() AnnotationTypePtrOu
 
 func (o AnnotationTypePtrOutput) ToAnnotationTypePtrOutputWithContext(ctx context.Context) AnnotationTypePtrOutput {
 	return o
-}
-
-func (o AnnotationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AnnotationType] {
-	return pulumix.Output[*AnnotationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AnnotationTypePtrOutput) Elem() AnnotationTypeOutput {

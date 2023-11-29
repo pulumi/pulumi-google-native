@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a `VmwareEngineNetwork` resource by its resource name. The resource contains details of the VMware Engine network, such as its VMware Engine network type, peered networks in a service project, and state (for example, `CREATING`, `ACTIVE`, `DELETING`).
@@ -85,12 +84,6 @@ func (o LookupVmwareEngineNetworkResultOutput) ToLookupVmwareEngineNetworkResult
 
 func (o LookupVmwareEngineNetworkResultOutput) ToLookupVmwareEngineNetworkResultOutputWithContext(ctx context.Context) LookupVmwareEngineNetworkResultOutput {
 	return o
-}
-
-func (o LookupVmwareEngineNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVmwareEngineNetworkResult] {
-	return pulumix.Output[LookupVmwareEngineNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

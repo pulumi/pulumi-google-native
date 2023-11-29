@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i NetworkConfigArgs) ToNetworkConfigOutput() NetworkConfigOutput {
 
 func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context) NetworkConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput)
-}
-
-func (i NetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: i.ToNetworkConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i NetworkConfigArgs) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
@@ -96,12 +89,6 @@ func (i *networkConfigPtrType) ToNetworkConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigPtrOutput)
 }
 
-func (i *networkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
-	return pulumix.Output[*NetworkConfig]{
-		OutputState: i.ToNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network describes the network configuration for a `WorkerPool`.
 type NetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Con
 	}).(NetworkConfigPtrOutput)
 }
 
-func (o NetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
 func (o NetworkConfigOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfig) string { return v.PeeredNetwork }).(pulumi.StringOutput)
@@ -150,12 +131,6 @@ func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutpu
 
 func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
 	return o
-}
-
-func (o NetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
-	return pulumix.Output[*NetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
@@ -197,12 +172,6 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutput() NetworkConf
 
 func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
 	return o
-}
-
-func (o NetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigResponse] {
-	return pulumix.Output[NetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
@@ -253,12 +222,6 @@ func (i WorkerConfigArgs) ToWorkerConfigOutputWithContext(ctx context.Context) W
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigOutput)
 }
 
-func (i WorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerConfig] {
-	return pulumix.Output[WorkerConfig]{
-		OutputState: i.ToWorkerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkerConfigArgs) ToWorkerConfigPtrOutput() WorkerConfigPtrOutput {
 	return i.ToWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -300,12 +263,6 @@ func (i *workerConfigPtrType) ToWorkerConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigPtrOutput)
 }
 
-func (i *workerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkerConfig] {
-	return pulumix.Output[*WorkerConfig]{
-		OutputState: i.ToWorkerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the configuration to be used for creating workers in the pool.
 type WorkerConfigOutput struct{ *pulumi.OutputState }
 
@@ -329,12 +286,6 @@ func (o WorkerConfigOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerConfig) *WorkerConfig {
 		return &v
 	}).(WorkerConfigPtrOutput)
-}
-
-func (o WorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerConfig] {
-	return pulumix.Output[WorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
@@ -364,12 +315,6 @@ func (o WorkerConfigPtrOutput) ToWorkerConfigPtrOutput() WorkerConfigPtrOutput {
 
 func (o WorkerConfigPtrOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerConfigPtrOutput {
 	return o
-}
-
-func (o WorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerConfig] {
-	return pulumix.Output[*WorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkerConfigPtrOutput) Elem() WorkerConfigOutput {
@@ -435,12 +380,6 @@ func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutput() WorkerConfigR
 
 func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutputWithContext(ctx context.Context) WorkerConfigResponseOutput {
 	return o
-}
-
-func (o WorkerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerConfigResponse] {
-	return pulumix.Output[WorkerConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.

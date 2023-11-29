@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2A
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2AlternatePolicySpecOutput)
 }
 
-func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2AlternatePolicySpec] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2AlternatePolicySpec]{
-		OutputState: i.ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
 	return i.ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *googleCloudOrgpolicyV2AlternatePolicySpecPtrType) ToGoogleCloudOrgpolic
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput)
 }
 
-func (i *googleCloudOrgpolicyV2AlternatePolicySpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudOrgpolicyV2AlternatePolicySpec] {
-	return pulumix.Output[*GoogleCloudOrgpolicyV2AlternatePolicySpec]{
-		OutputState: i.ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
 type GoogleCloudOrgpolicyV2AlternatePolicySpecOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ToGoogleCloudOrgpolicyV
 	}).(GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput)
 }
 
-func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2AlternatePolicySpec] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2AlternatePolicySpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
 func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) Launch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudOrgpolicyV2AlternatePolicySpec) *string { return v.Launch }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) ToGoogleCloudOrgpoli
 
 func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudOrgpolicyV2AlternatePolicySpec] {
-	return pulumix.Output[*GoogleCloudOrgpolicyV2AlternatePolicySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) Elem() GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
@@ -218,12 +193,6 @@ func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) ToGoogleCloudOr
 
 func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2AlternatePolicySpecResponse] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2AlternatePolicySpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
@@ -285,12 +254,6 @@ func (i GoogleCloudOrgpolicyV2PolicySpecArgs) ToGoogleCloudOrgpolicyV2PolicySpec
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecOutput)
 }
 
-func (i GoogleCloudOrgpolicyV2PolicySpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2PolicySpec] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2PolicySpec]{
-		OutputState: i.ToGoogleCloudOrgpolicyV2PolicySpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudOrgpolicyV2PolicySpecArgs) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
 	return i.ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(context.Background())
 }
@@ -332,12 +295,6 @@ func (i *googleCloudOrgpolicyV2PolicySpecPtrType) ToGoogleCloudOrgpolicyV2Policy
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
 }
 
-func (i *googleCloudOrgpolicyV2PolicySpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudOrgpolicyV2PolicySpec] {
-	return pulumix.Output[*GoogleCloudOrgpolicyV2PolicySpec]{
-		OutputState: i.ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
 type GoogleCloudOrgpolicyV2PolicySpecOutput struct{ *pulumi.OutputState }
 
@@ -361,12 +318,6 @@ func (o GoogleCloudOrgpolicyV2PolicySpecOutput) ToGoogleCloudOrgpolicyV2PolicySp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2PolicySpec) *GoogleCloudOrgpolicyV2PolicySpec {
 		return &v
 	}).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
-}
-
-func (o GoogleCloudOrgpolicyV2PolicySpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2PolicySpec] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2PolicySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
@@ -401,12 +352,6 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) ToGoogleCloudOrgpolicyV2Polic
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) ToGoogleCloudOrgpolicyV2PolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudOrgpolicyV2PolicySpec] {
-	return pulumix.Output[*GoogleCloudOrgpolicyV2PolicySpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) Elem() GoogleCloudOrgpolicyV2PolicySpecOutput {
@@ -510,12 +455,6 @@ func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs) ToGoogleCloudOrgpolicyV2
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput)
 }
 
-func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRule] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRule]{
-		OutputState: i.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray and GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput` via:
 //
@@ -541,12 +480,6 @@ func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray) ToGoogleCloudOrgpolicyV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput)
 }
 
-func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudOrgpolicyV2PolicySpecPolicyRule] {
-	return pulumix.Output[[]GoogleCloudOrgpolicyV2PolicySpecPolicyRule]{
-		OutputState: i.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A rule used to express this policy.
 type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput struct{ *pulumi.OutputState }
 
@@ -560,12 +493,6 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) ToGoogleCloudOrgpolicy
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput {
 	return o
-}
-
-func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRule] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
@@ -609,12 +536,6 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput) ToGoogleCloudOrgp
 	return o
 }
 
-func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudOrgpolicyV2PolicySpecPolicyRule] {
-	return pulumix.Output[[]GoogleCloudOrgpolicyV2PolicySpecPolicyRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput) Index(i pulumi.IntInput) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 		return vs[0].([]GoogleCloudOrgpolicyV2PolicySpecPolicyRule)[vs[1].(int)]
@@ -648,12 +569,6 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) ToGoogleCloudO
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput {
 	return o
-}
-
-func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
@@ -695,12 +610,6 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput) ToGoogleC
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse] {
-	return pulumix.Output[[]GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseOutput {
@@ -748,12 +657,6 @@ func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput)
 }
 
-func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues]{
-		OutputState: i.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
 	return i.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(context.Background())
 }
@@ -795,12 +698,6 @@ func (i *googleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput)
 }
 
-func (i *googleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues] {
-	return pulumix.Output[*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues]{
-		OutputState: i.ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
 type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput struct{ *pulumi.OutputState }
 
@@ -826,12 +723,6 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) ToGoogleCl
 	}).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput)
 }
 
-func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of values allowed at this resource.
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput) AllowedValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues) []string { return v.AllowedValues }).(pulumi.StringArrayOutput)
@@ -854,12 +745,6 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) ToGoogl
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) ToGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput {
 	return o
-}
-
-func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues] {
-	return pulumix.Output[*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput) Elem() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput {
@@ -915,12 +800,6 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput) To
 	return o
 }
 
-func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of values allowed at this resource.
 func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput) AllowedValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse) []string {
@@ -960,12 +839,6 @@ func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2
 
 func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2PolicySpecResponseOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecResponse] {
-	return pulumix.Output[GoogleCloudOrgpolicyV2PolicySpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
@@ -1042,12 +915,6 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput)
 }
 
-func (i GoogleTypeExprArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
 	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
 }
@@ -1089,12 +956,6 @@ func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprPtrOutput)
 }
 
-func (i *googleTypeExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type GoogleTypeExprOutput struct{ *pulumi.OutputState }
 
@@ -1118,12 +979,6 @@ func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
 		return &v
 	}).(GoogleTypeExprPtrOutput)
-}
-
-func (o GoogleTypeExprOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1158,12 +1013,6 @@ func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOu
 
 func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
 	return o
-}
-
-func (o GoogleTypeExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
@@ -1241,12 +1090,6 @@ func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutput() GoogleTyp
 
 func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(ctx context.Context) GoogleTypeExprResponseOutput {
 	return o
-}
-
-func (o GoogleTypeExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExprResponse] {
-	return pulumix.Output[GoogleTypeExprResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -278,12 +266,6 @@ func (o EndpointSeverityOutput) ToEndpointSeverityPtrOutputWithContext(ctx conte
 	}).(EndpointSeverityPtrOutput)
 }
 
-func (o EndpointSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointSeverity] {
-	return pulumix.Output[EndpointSeverity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EndpointSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -317,12 +299,6 @@ func (o EndpointSeverityPtrOutput) ToEndpointSeverityPtrOutput() EndpointSeverit
 
 func (o EndpointSeverityPtrOutput) ToEndpointSeverityPtrOutputWithContext(ctx context.Context) EndpointSeverityPtrOutput {
 	return o
-}
-
-func (o EndpointSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointSeverity] {
-	return pulumix.Output[*EndpointSeverity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointSeverityPtrOutput) Elem() EndpointSeverityOutput {

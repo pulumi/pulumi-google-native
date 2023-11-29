@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single PartnerTenant.
@@ -77,12 +76,6 @@ func (o LookupPartnerTenantResultOutput) ToLookupPartnerTenantResultOutput() Loo
 
 func (o LookupPartnerTenantResultOutput) ToLookupPartnerTenantResultOutputWithContext(ctx context.Context) LookupPartnerTenantResultOutput {
 	return o
-}
-
-func (o LookupPartnerTenantResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPartnerTenantResult] {
-	return pulumix.Output[LookupPartnerTenantResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when the resource was created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -61,12 +60,6 @@ func (i AggregationArgs) ToAggregationOutputWithContext(ctx context.Context) Agg
 	return pulumi.ToOutputWithContext(ctx, i).(AggregationOutput)
 }
 
-func (i AggregationArgs) ToOutput(ctx context.Context) pulumix.Output[Aggregation] {
-	return pulumix.Output[Aggregation]{
-		OutputState: i.ToAggregationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AggregationArgs) ToAggregationPtrOutput() AggregationPtrOutput {
 	return i.ToAggregationPtrOutputWithContext(context.Background())
 }
@@ -108,12 +101,6 @@ func (i *aggregationPtrType) ToAggregationPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AggregationPtrOutput)
 }
 
-func (i *aggregationPtrType) ToOutput(ctx context.Context) pulumix.Output[*Aggregation] {
-	return pulumix.Output[*Aggregation]{
-		OutputState: i.ToAggregationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
 type AggregationOutput struct{ *pulumi.OutputState }
 
@@ -137,12 +124,6 @@ func (o AggregationOutput) ToAggregationPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Aggregation) *Aggregation {
 		return &v
 	}).(AggregationPtrOutput)
-}
-
-func (o AggregationOutput) ToOutput(ctx context.Context) pulumix.Output[Aggregation] {
-	return pulumix.Output[Aggregation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
@@ -177,12 +158,6 @@ func (o AggregationPtrOutput) ToAggregationPtrOutput() AggregationPtrOutput {
 
 func (o AggregationPtrOutput) ToAggregationPtrOutputWithContext(ctx context.Context) AggregationPtrOutput {
 	return o
-}
-
-func (o AggregationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Aggregation] {
-	return pulumix.Output[*Aggregation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AggregationPtrOutput) Elem() AggregationOutput {
@@ -274,12 +249,6 @@ func (i AggregationFunctionArgs) ToAggregationFunctionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AggregationFunctionOutput)
 }
 
-func (i AggregationFunctionArgs) ToOutput(ctx context.Context) pulumix.Output[AggregationFunction] {
-	return pulumix.Output[AggregationFunction]{
-		OutputState: i.ToAggregationFunctionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release.
 type AggregationFunctionOutput struct{ *pulumi.OutputState }
 
@@ -293,12 +262,6 @@ func (o AggregationFunctionOutput) ToAggregationFunctionOutput() AggregationFunc
 
 func (o AggregationFunctionOutput) ToAggregationFunctionOutputWithContext(ctx context.Context) AggregationFunctionOutput {
 	return o
-}
-
-func (o AggregationFunctionOutput) ToOutput(ctx context.Context) pulumix.Output[AggregationFunction] {
-	return pulumix.Output[AggregationFunction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Parameters applied to the aggregation function. Only used for functions that require them.
@@ -332,12 +295,6 @@ func (o AggregationFunctionResponseOutput) ToAggregationFunctionResponseOutput()
 
 func (o AggregationFunctionResponseOutput) ToAggregationFunctionResponseOutputWithContext(ctx context.Context) AggregationFunctionResponseOutput {
 	return o
-}
-
-func (o AggregationFunctionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AggregationFunctionResponse] {
-	return pulumix.Output[AggregationFunctionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Parameters applied to the aggregation function. Only used for functions that require them.
@@ -375,12 +332,6 @@ func (o AggregationResponseOutput) ToAggregationResponseOutput() AggregationResp
 
 func (o AggregationResponseOutput) ToAggregationResponseOutputWithContext(ctx context.Context) AggregationResponseOutput {
 	return o
-}
-
-func (o AggregationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AggregationResponse] {
-	return pulumix.Output[AggregationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
@@ -438,12 +389,6 @@ func (i AlertChartArgs) ToAlertChartOutputWithContext(ctx context.Context) Alert
 	return pulumi.ToOutputWithContext(ctx, i).(AlertChartOutput)
 }
 
-func (i AlertChartArgs) ToOutput(ctx context.Context) pulumix.Output[AlertChart] {
-	return pulumix.Output[AlertChart]{
-		OutputState: i.ToAlertChartOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AlertChartArgs) ToAlertChartPtrOutput() AlertChartPtrOutput {
 	return i.ToAlertChartPtrOutputWithContext(context.Background())
 }
@@ -485,12 +430,6 @@ func (i *alertChartPtrType) ToAlertChartPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AlertChartPtrOutput)
 }
 
-func (i *alertChartPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertChart] {
-	return pulumix.Output[*AlertChart]{
-		OutputState: i.ToAlertChartPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A chart that displays alert policy data.
 type AlertChartOutput struct{ *pulumi.OutputState }
 
@@ -516,12 +455,6 @@ func (o AlertChartOutput) ToAlertChartPtrOutputWithContext(ctx context.Context) 
 	}).(AlertChartPtrOutput)
 }
 
-func (o AlertChartOutput) ToOutput(ctx context.Context) pulumix.Output[AlertChart] {
-	return pulumix.Output[AlertChart]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
 func (o AlertChartOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertChart) string { return v.Name }).(pulumi.StringOutput)
@@ -539,12 +472,6 @@ func (o AlertChartPtrOutput) ToAlertChartPtrOutput() AlertChartPtrOutput {
 
 func (o AlertChartPtrOutput) ToAlertChartPtrOutputWithContext(ctx context.Context) AlertChartPtrOutput {
 	return o
-}
-
-func (o AlertChartPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertChart] {
-	return pulumix.Output[*AlertChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertChartPtrOutput) Elem() AlertChartOutput {
@@ -586,12 +513,6 @@ func (o AlertChartResponseOutput) ToAlertChartResponseOutput() AlertChartRespons
 
 func (o AlertChartResponseOutput) ToAlertChartResponseOutputWithContext(ctx context.Context) AlertChartResponseOutput {
 	return o
-}
-
-func (o AlertChartResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AlertChartResponse] {
-	return pulumix.Output[AlertChartResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
@@ -638,12 +559,6 @@ func (i AxisArgs) ToAxisOutputWithContext(ctx context.Context) AxisOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AxisOutput)
 }
 
-func (i AxisArgs) ToOutput(ctx context.Context) pulumix.Output[Axis] {
-	return pulumix.Output[Axis]{
-		OutputState: i.ToAxisOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AxisArgs) ToAxisPtrOutput() AxisPtrOutput {
 	return i.ToAxisPtrOutputWithContext(context.Background())
 }
@@ -685,12 +600,6 @@ func (i *axisPtrType) ToAxisPtrOutputWithContext(ctx context.Context) AxisPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(AxisPtrOutput)
 }
 
-func (i *axisPtrType) ToOutput(ctx context.Context) pulumix.Output[*Axis] {
-	return pulumix.Output[*Axis]{
-		OutputState: i.ToAxisPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A chart axis.
 type AxisOutput struct{ *pulumi.OutputState }
 
@@ -716,12 +625,6 @@ func (o AxisOutput) ToAxisPtrOutputWithContext(ctx context.Context) AxisPtrOutpu
 	}).(AxisPtrOutput)
 }
 
-func (o AxisOutput) ToOutput(ctx context.Context) pulumix.Output[Axis] {
-	return pulumix.Output[Axis]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The label of the axis.
 func (o AxisOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Axis) *string { return v.Label }).(pulumi.StringPtrOutput)
@@ -744,12 +647,6 @@ func (o AxisPtrOutput) ToAxisPtrOutput() AxisPtrOutput {
 
 func (o AxisPtrOutput) ToAxisPtrOutputWithContext(ctx context.Context) AxisPtrOutput {
 	return o
-}
-
-func (o AxisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Axis] {
-	return pulumix.Output[*Axis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AxisPtrOutput) Elem() AxisOutput {
@@ -803,12 +700,6 @@ func (o AxisResponseOutput) ToAxisResponseOutput() AxisResponseOutput {
 
 func (o AxisResponseOutput) ToAxisResponseOutputWithContext(ctx context.Context) AxisResponseOutput {
 	return o
-}
-
-func (o AxisResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AxisResponse] {
-	return pulumix.Output[AxisResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The label of the axis.
@@ -868,12 +759,6 @@ func (i BreakdownArgs) ToBreakdownOutputWithContext(ctx context.Context) Breakdo
 	return pulumi.ToOutputWithContext(ctx, i).(BreakdownOutput)
 }
 
-func (i BreakdownArgs) ToOutput(ctx context.Context) pulumix.Output[Breakdown] {
-	return pulumix.Output[Breakdown]{
-		OutputState: i.ToBreakdownOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BreakdownArrayInput is an input type that accepts BreakdownArray and BreakdownArrayOutput values.
 // You can construct a concrete instance of `BreakdownArrayInput` via:
 //
@@ -899,12 +784,6 @@ func (i BreakdownArray) ToBreakdownArrayOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BreakdownArrayOutput)
 }
 
-func (i BreakdownArray) ToOutput(ctx context.Context) pulumix.Output[[]Breakdown] {
-	return pulumix.Output[[]Breakdown]{
-		OutputState: i.ToBreakdownArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release.
 type BreakdownOutput struct{ *pulumi.OutputState }
 
@@ -918,12 +797,6 @@ func (o BreakdownOutput) ToBreakdownOutput() BreakdownOutput {
 
 func (o BreakdownOutput) ToBreakdownOutputWithContext(ctx context.Context) BreakdownOutput {
 	return o
-}
-
-func (o BreakdownOutput) ToOutput(ctx context.Context) pulumix.Output[Breakdown] {
-	return pulumix.Output[Breakdown]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Aggregation function is applied across all data in each breakdown created.
@@ -960,12 +833,6 @@ func (o BreakdownArrayOutput) ToBreakdownArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o BreakdownArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Breakdown] {
-	return pulumix.Output[[]Breakdown]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BreakdownArrayOutput) Index(i pulumi.IntInput) BreakdownOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Breakdown {
 		return vs[0].([]Breakdown)[vs[1].(int)]
@@ -997,12 +864,6 @@ func (o BreakdownResponseOutput) ToBreakdownResponseOutput() BreakdownResponseOu
 
 func (o BreakdownResponseOutput) ToBreakdownResponseOutputWithContext(ctx context.Context) BreakdownResponseOutput {
 	return o
-}
-
-func (o BreakdownResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BreakdownResponse] {
-	return pulumix.Output[BreakdownResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Aggregation function is applied across all data in each breakdown created.
@@ -1037,12 +898,6 @@ func (o BreakdownResponseArrayOutput) ToBreakdownResponseArrayOutput() Breakdown
 
 func (o BreakdownResponseArrayOutput) ToBreakdownResponseArrayOutputWithContext(ctx context.Context) BreakdownResponseArrayOutput {
 	return o
-}
-
-func (o BreakdownResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BreakdownResponse] {
-	return pulumix.Output[[]BreakdownResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BreakdownResponseArrayOutput) Index(i pulumi.IntInput) BreakdownResponseOutput {
@@ -1090,12 +945,6 @@ func (i ChartOptionsArgs) ToChartOptionsOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ChartOptionsOutput)
 }
 
-func (i ChartOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[ChartOptions] {
-	return pulumix.Output[ChartOptions]{
-		OutputState: i.ToChartOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ChartOptionsArgs) ToChartOptionsPtrOutput() ChartOptionsPtrOutput {
 	return i.ToChartOptionsPtrOutputWithContext(context.Background())
 }
@@ -1137,12 +986,6 @@ func (i *chartOptionsPtrType) ToChartOptionsPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ChartOptionsPtrOutput)
 }
 
-func (i *chartOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ChartOptions] {
-	return pulumix.Output[*ChartOptions]{
-		OutputState: i.ToChartOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Options to control visual rendering of a chart.
 type ChartOptionsOutput struct{ *pulumi.OutputState }
 
@@ -1168,12 +1011,6 @@ func (o ChartOptionsOutput) ToChartOptionsPtrOutputWithContext(ctx context.Conte
 	}).(ChartOptionsPtrOutput)
 }
 
-func (o ChartOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[ChartOptions] {
-	return pulumix.Output[ChartOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
 func (o ChartOptionsOutput) DisplayHorizontal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ChartOptions) *bool { return v.DisplayHorizontal }).(pulumi.BoolPtrOutput)
@@ -1196,12 +1033,6 @@ func (o ChartOptionsPtrOutput) ToChartOptionsPtrOutput() ChartOptionsPtrOutput {
 
 func (o ChartOptionsPtrOutput) ToChartOptionsPtrOutputWithContext(ctx context.Context) ChartOptionsPtrOutput {
 	return o
-}
-
-func (o ChartOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ChartOptions] {
-	return pulumix.Output[*ChartOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ChartOptionsPtrOutput) Elem() ChartOptionsOutput {
@@ -1257,12 +1088,6 @@ func (o ChartOptionsResponseOutput) ToChartOptionsResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o ChartOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ChartOptionsResponse] {
-	return pulumix.Output[ChartOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
 func (o ChartOptionsResponseOutput) DisplayHorizontal() pulumi.BoolOutput {
 	return o.ApplyT(func(v ChartOptionsResponse) bool { return v.DisplayHorizontal }).(pulumi.BoolOutput)
@@ -1308,12 +1133,6 @@ func (i CollapsibleGroupArgs) ToCollapsibleGroupOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CollapsibleGroupOutput)
 }
 
-func (i CollapsibleGroupArgs) ToOutput(ctx context.Context) pulumix.Output[CollapsibleGroup] {
-	return pulumix.Output[CollapsibleGroup]{
-		OutputState: i.ToCollapsibleGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CollapsibleGroupArgs) ToCollapsibleGroupPtrOutput() CollapsibleGroupPtrOutput {
 	return i.ToCollapsibleGroupPtrOutputWithContext(context.Background())
 }
@@ -1355,12 +1174,6 @@ func (i *collapsibleGroupPtrType) ToCollapsibleGroupPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(CollapsibleGroupPtrOutput)
 }
 
-func (i *collapsibleGroupPtrType) ToOutput(ctx context.Context) pulumix.Output[*CollapsibleGroup] {
-	return pulumix.Output[*CollapsibleGroup]{
-		OutputState: i.ToCollapsibleGroupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
 type CollapsibleGroupOutput struct{ *pulumi.OutputState }
 
@@ -1386,12 +1199,6 @@ func (o CollapsibleGroupOutput) ToCollapsibleGroupPtrOutputWithContext(ctx conte
 	}).(CollapsibleGroupPtrOutput)
 }
 
-func (o CollapsibleGroupOutput) ToOutput(ctx context.Context) pulumix.Output[CollapsibleGroup] {
-	return pulumix.Output[CollapsibleGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The collapsed state of the widget on first page load.
 func (o CollapsibleGroupOutput) Collapsed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CollapsibleGroup) *bool { return v.Collapsed }).(pulumi.BoolPtrOutput)
@@ -1409,12 +1216,6 @@ func (o CollapsibleGroupPtrOutput) ToCollapsibleGroupPtrOutput() CollapsibleGrou
 
 func (o CollapsibleGroupPtrOutput) ToCollapsibleGroupPtrOutputWithContext(ctx context.Context) CollapsibleGroupPtrOutput {
 	return o
-}
-
-func (o CollapsibleGroupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CollapsibleGroup] {
-	return pulumix.Output[*CollapsibleGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CollapsibleGroupPtrOutput) Elem() CollapsibleGroupOutput {
@@ -1456,12 +1257,6 @@ func (o CollapsibleGroupResponseOutput) ToCollapsibleGroupResponseOutput() Colla
 
 func (o CollapsibleGroupResponseOutput) ToCollapsibleGroupResponseOutputWithContext(ctx context.Context) CollapsibleGroupResponseOutput {
 	return o
-}
-
-func (o CollapsibleGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CollapsibleGroupResponse] {
-	return pulumix.Output[CollapsibleGroupResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collapsed state of the widget on first page load.
@@ -1508,12 +1303,6 @@ func (i ColumnArgs) ToColumnOutputWithContext(ctx context.Context) ColumnOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ColumnOutput)
 }
 
-func (i ColumnArgs) ToOutput(ctx context.Context) pulumix.Output[Column] {
-	return pulumix.Output[Column]{
-		OutputState: i.ToColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ColumnArrayInput is an input type that accepts ColumnArray and ColumnArrayOutput values.
 // You can construct a concrete instance of `ColumnArrayInput` via:
 //
@@ -1539,12 +1328,6 @@ func (i ColumnArray) ToColumnArrayOutputWithContext(ctx context.Context) ColumnA
 	return pulumi.ToOutputWithContext(ctx, i).(ColumnArrayOutput)
 }
 
-func (i ColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]Column] {
-	return pulumix.Output[[]Column]{
-		OutputState: i.ToColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the layout properties and content for a column.
 type ColumnOutput struct{ *pulumi.OutputState }
 
@@ -1558,12 +1341,6 @@ func (o ColumnOutput) ToColumnOutput() ColumnOutput {
 
 func (o ColumnOutput) ToColumnOutputWithContext(ctx context.Context) ColumnOutput {
 	return o
-}
-
-func (o ColumnOutput) ToOutput(ctx context.Context) pulumix.Output[Column] {
-	return pulumix.Output[Column]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering.
@@ -1588,12 +1365,6 @@ func (o ColumnArrayOutput) ToColumnArrayOutput() ColumnArrayOutput {
 
 func (o ColumnArrayOutput) ToColumnArrayOutputWithContext(ctx context.Context) ColumnArrayOutput {
 	return o
-}
-
-func (o ColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Column] {
-	return pulumix.Output[[]Column]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ColumnArrayOutput) Index(i pulumi.IntInput) ColumnOutput {
@@ -1637,12 +1408,6 @@ func (i ColumnLayoutArgs) ToColumnLayoutOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ColumnLayoutOutput)
 }
 
-func (i ColumnLayoutArgs) ToOutput(ctx context.Context) pulumix.Output[ColumnLayout] {
-	return pulumix.Output[ColumnLayout]{
-		OutputState: i.ToColumnLayoutOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ColumnLayoutArgs) ToColumnLayoutPtrOutput() ColumnLayoutPtrOutput {
 	return i.ToColumnLayoutPtrOutputWithContext(context.Background())
 }
@@ -1684,12 +1449,6 @@ func (i *columnLayoutPtrType) ToColumnLayoutPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ColumnLayoutPtrOutput)
 }
 
-func (i *columnLayoutPtrType) ToOutput(ctx context.Context) pulumix.Output[*ColumnLayout] {
-	return pulumix.Output[*ColumnLayout]{
-		OutputState: i.ToColumnLayoutPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
 type ColumnLayoutOutput struct{ *pulumi.OutputState }
 
@@ -1715,12 +1474,6 @@ func (o ColumnLayoutOutput) ToColumnLayoutPtrOutputWithContext(ctx context.Conte
 	}).(ColumnLayoutPtrOutput)
 }
 
-func (o ColumnLayoutOutput) ToOutput(ctx context.Context) pulumix.Output[ColumnLayout] {
-	return pulumix.Output[ColumnLayout]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The columns of content to display.
 func (o ColumnLayoutOutput) Columns() ColumnArrayOutput {
 	return o.ApplyT(func(v ColumnLayout) []Column { return v.Columns }).(ColumnArrayOutput)
@@ -1738,12 +1491,6 @@ func (o ColumnLayoutPtrOutput) ToColumnLayoutPtrOutput() ColumnLayoutPtrOutput {
 
 func (o ColumnLayoutPtrOutput) ToColumnLayoutPtrOutputWithContext(ctx context.Context) ColumnLayoutPtrOutput {
 	return o
-}
-
-func (o ColumnLayoutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ColumnLayout] {
-	return pulumix.Output[*ColumnLayout]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ColumnLayoutPtrOutput) Elem() ColumnLayoutOutput {
@@ -1787,12 +1534,6 @@ func (o ColumnLayoutResponseOutput) ToColumnLayoutResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o ColumnLayoutResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ColumnLayoutResponse] {
-	return pulumix.Output[ColumnLayoutResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The columns of content to display.
 func (o ColumnLayoutResponseOutput) Columns() ColumnResponseArrayOutput {
 	return o.ApplyT(func(v ColumnLayoutResponse) []ColumnResponse { return v.Columns }).(ColumnResponseArrayOutput)
@@ -1821,12 +1562,6 @@ func (o ColumnResponseOutput) ToColumnResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ColumnResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ColumnResponse] {
-	return pulumix.Output[ColumnResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering.
 func (o ColumnResponseOutput) Weight() pulumi.StringOutput {
 	return o.ApplyT(func(v ColumnResponse) string { return v.Weight }).(pulumi.StringOutput)
@@ -1849,12 +1584,6 @@ func (o ColumnResponseArrayOutput) ToColumnResponseArrayOutput() ColumnResponseA
 
 func (o ColumnResponseArrayOutput) ToColumnResponseArrayOutputWithContext(ctx context.Context) ColumnResponseArrayOutput {
 	return o
-}
-
-func (o ColumnResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ColumnResponse] {
-	return pulumix.Output[[]ColumnResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ColumnResponseArrayOutput) Index(i pulumi.IntInput) ColumnResponseOutput {
@@ -1902,12 +1631,6 @@ func (i ColumnSettingsArgs) ToColumnSettingsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ColumnSettingsOutput)
 }
 
-func (i ColumnSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ColumnSettings] {
-	return pulumix.Output[ColumnSettings]{
-		OutputState: i.ToColumnSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ColumnSettingsArrayInput is an input type that accepts ColumnSettingsArray and ColumnSettingsArrayOutput values.
 // You can construct a concrete instance of `ColumnSettingsArrayInput` via:
 //
@@ -1933,12 +1656,6 @@ func (i ColumnSettingsArray) ToColumnSettingsArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ColumnSettingsArrayOutput)
 }
 
-func (i ColumnSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]ColumnSettings] {
-	return pulumix.Output[[]ColumnSettings]{
-		OutputState: i.ToColumnSettingsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The persistent settings for a table's columns.
 type ColumnSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1952,12 +1669,6 @@ func (o ColumnSettingsOutput) ToColumnSettingsOutput() ColumnSettingsOutput {
 
 func (o ColumnSettingsOutput) ToColumnSettingsOutputWithContext(ctx context.Context) ColumnSettingsOutput {
 	return o
-}
-
-func (o ColumnSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ColumnSettings] {
-	return pulumix.Output[ColumnSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the column.
@@ -1982,12 +1693,6 @@ func (o ColumnSettingsArrayOutput) ToColumnSettingsArrayOutput() ColumnSettingsA
 
 func (o ColumnSettingsArrayOutput) ToColumnSettingsArrayOutputWithContext(ctx context.Context) ColumnSettingsArrayOutput {
 	return o
-}
-
-func (o ColumnSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ColumnSettings] {
-	return pulumix.Output[[]ColumnSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ColumnSettingsArrayOutput) Index(i pulumi.IntInput) ColumnSettingsOutput {
@@ -2019,12 +1724,6 @@ func (o ColumnSettingsResponseOutput) ToColumnSettingsResponseOutputWithContext(
 	return o
 }
 
-func (o ColumnSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ColumnSettingsResponse] {
-	return pulumix.Output[ColumnSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the column.
 func (o ColumnSettingsResponseOutput) Column() pulumi.StringOutput {
 	return o.ApplyT(func(v ColumnSettingsResponse) string { return v.Column }).(pulumi.StringOutput)
@@ -2047,12 +1746,6 @@ func (o ColumnSettingsResponseArrayOutput) ToColumnSettingsResponseArrayOutput()
 
 func (o ColumnSettingsResponseArrayOutput) ToColumnSettingsResponseArrayOutputWithContext(ctx context.Context) ColumnSettingsResponseArrayOutput {
 	return o
-}
-
-func (o ColumnSettingsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ColumnSettingsResponse] {
-	return pulumix.Output[[]ColumnSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ColumnSettingsResponseArrayOutput) Index(i pulumi.IntInput) ColumnSettingsResponseOutput {
@@ -2108,12 +1801,6 @@ func (i DashboardFilterArgs) ToDashboardFilterOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardFilterOutput)
 }
 
-func (i DashboardFilterArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardFilter] {
-	return pulumix.Output[DashboardFilter]{
-		OutputState: i.ToDashboardFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardFilterArrayInput is an input type that accepts DashboardFilterArray and DashboardFilterArrayOutput values.
 // You can construct a concrete instance of `DashboardFilterArrayInput` via:
 //
@@ -2139,12 +1826,6 @@ func (i DashboardFilterArray) ToDashboardFilterArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardFilterArrayOutput)
 }
 
-func (i DashboardFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardFilter] {
-	return pulumix.Output[[]DashboardFilter]{
-		OutputState: i.ToDashboardFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A filter to reduce the amount of data charted in relevant widgets.
 type DashboardFilterOutput struct{ *pulumi.OutputState }
 
@@ -2158,12 +1839,6 @@ func (o DashboardFilterOutput) ToDashboardFilterOutput() DashboardFilterOutput {
 
 func (o DashboardFilterOutput) ToDashboardFilterOutputWithContext(ctx context.Context) DashboardFilterOutput {
 	return o
-}
-
-func (o DashboardFilterOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardFilter] {
-	return pulumix.Output[DashboardFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The specified filter type
@@ -2200,12 +1875,6 @@ func (o DashboardFilterArrayOutput) ToDashboardFilterArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o DashboardFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardFilter] {
-	return pulumix.Output[[]DashboardFilter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DashboardFilterArrayOutput) Index(i pulumi.IntInput) DashboardFilterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardFilter {
 		return vs[0].([]DashboardFilter)[vs[1].(int)]
@@ -2237,12 +1906,6 @@ func (o DashboardFilterResponseOutput) ToDashboardFilterResponseOutput() Dashboa
 
 func (o DashboardFilterResponseOutput) ToDashboardFilterResponseOutputWithContext(ctx context.Context) DashboardFilterResponseOutput {
 	return o
-}
-
-func (o DashboardFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardFilterResponse] {
-	return pulumix.Output[DashboardFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The specified filter type
@@ -2277,12 +1940,6 @@ func (o DashboardFilterResponseArrayOutput) ToDashboardFilterResponseArrayOutput
 
 func (o DashboardFilterResponseArrayOutput) ToDashboardFilterResponseArrayOutputWithContext(ctx context.Context) DashboardFilterResponseArrayOutput {
 	return o
-}
-
-func (o DashboardFilterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardFilterResponse] {
-	return pulumix.Output[[]DashboardFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardFilterResponseArrayOutput) Index(i pulumi.IntInput) DashboardFilterResponseOutput {
@@ -2354,12 +2011,6 @@ func (i DataSetArgs) ToDataSetOutputWithContext(ctx context.Context) DataSetOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DataSetOutput)
 }
 
-func (i DataSetArgs) ToOutput(ctx context.Context) pulumix.Output[DataSet] {
-	return pulumix.Output[DataSet]{
-		OutputState: i.ToDataSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataSetArrayInput is an input type that accepts DataSetArray and DataSetArrayOutput values.
 // You can construct a concrete instance of `DataSetArrayInput` via:
 //
@@ -2385,12 +2036,6 @@ func (i DataSetArray) ToDataSetArrayOutputWithContext(ctx context.Context) DataS
 	return pulumi.ToOutputWithContext(ctx, i).(DataSetArrayOutput)
 }
 
-func (i DataSetArray) ToOutput(ctx context.Context) pulumix.Output[[]DataSet] {
-	return pulumix.Output[[]DataSet]{
-		OutputState: i.ToDataSetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Groups a time series query definition with charting options.
 type DataSetOutput struct{ *pulumi.OutputState }
 
@@ -2404,12 +2049,6 @@ func (o DataSetOutput) ToDataSetOutput() DataSetOutput {
 
 func (o DataSetOutput) ToDataSetOutputWithContext(ctx context.Context) DataSetOutput {
 	return o
-}
-
-func (o DataSetOutput) ToOutput(ctx context.Context) pulumix.Output[DataSet] {
-	return pulumix.Output[DataSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The collection of breakdowns to be applied to the dataset.
@@ -2466,12 +2105,6 @@ func (o DataSetArrayOutput) ToDataSetArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DataSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataSet] {
-	return pulumix.Output[[]DataSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataSetArrayOutput) Index(i pulumi.IntInput) DataSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataSet {
 		return vs[0].([]DataSet)[vs[1].(int)]
@@ -2511,12 +2144,6 @@ func (o DataSetResponseOutput) ToDataSetResponseOutput() DataSetResponseOutput {
 
 func (o DataSetResponseOutput) ToDataSetResponseOutputWithContext(ctx context.Context) DataSetResponseOutput {
 	return o
-}
-
-func (o DataSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataSetResponse] {
-	return pulumix.Output[DataSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The collection of breakdowns to be applied to the dataset.
@@ -2571,12 +2198,6 @@ func (o DataSetResponseArrayOutput) ToDataSetResponseArrayOutput() DataSetRespon
 
 func (o DataSetResponseArrayOutput) ToDataSetResponseArrayOutputWithContext(ctx context.Context) DataSetResponseArrayOutput {
 	return o
-}
-
-func (o DataSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataSetResponse] {
-	return pulumix.Output[[]DataSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataSetResponseArrayOutput) Index(i pulumi.IntInput) DataSetResponseOutput {
@@ -2648,12 +2269,6 @@ func (i DimensionArgs) ToDimensionOutputWithContext(ctx context.Context) Dimensi
 	return pulumi.ToOutputWithContext(ctx, i).(DimensionOutput)
 }
 
-func (i DimensionArgs) ToOutput(ctx context.Context) pulumix.Output[Dimension] {
-	return pulumix.Output[Dimension]{
-		OutputState: i.ToDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DimensionArrayInput is an input type that accepts DimensionArray and DimensionArrayOutput values.
 // You can construct a concrete instance of `DimensionArrayInput` via:
 //
@@ -2679,12 +2294,6 @@ func (i DimensionArray) ToDimensionArrayOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DimensionArrayOutput)
 }
 
-func (i DimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]Dimension] {
-	return pulumix.Output[[]Dimension]{
-		OutputState: i.ToDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
 type DimensionOutput struct{ *pulumi.OutputState }
 
@@ -2698,12 +2307,6 @@ func (o DimensionOutput) ToDimensionOutput() DimensionOutput {
 
 func (o DimensionOutput) ToDimensionOutputWithContext(ctx context.Context) DimensionOutput {
 	return o
-}
-
-func (o DimensionOutput) ToOutput(ctx context.Context) pulumix.Output[Dimension] {
-	return pulumix.Output[Dimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column in the source SQL query that is used to chart the dimension.
@@ -2760,12 +2363,6 @@ func (o DimensionArrayOutput) ToDimensionArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o DimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Dimension] {
-	return pulumix.Output[[]Dimension]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DimensionArrayOutput) Index(i pulumi.IntInput) DimensionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Dimension {
 		return vs[0].([]Dimension)[vs[1].(int)]
@@ -2805,12 +2402,6 @@ func (o DimensionResponseOutput) ToDimensionResponseOutput() DimensionResponseOu
 
 func (o DimensionResponseOutput) ToDimensionResponseOutputWithContext(ctx context.Context) DimensionResponseOutput {
 	return o
-}
-
-func (o DimensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DimensionResponse] {
-	return pulumix.Output[DimensionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column in the source SQL query that is used to chart the dimension.
@@ -2867,12 +2458,6 @@ func (o DimensionResponseArrayOutput) ToDimensionResponseArrayOutputWithContext(
 	return o
 }
 
-func (o DimensionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DimensionResponse] {
-	return pulumix.Output[[]DimensionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DimensionResponseArrayOutput) Index(i pulumi.IntInput) DimensionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponse {
 		return vs[0].([]DimensionResponse)[vs[1].(int)]
@@ -2908,12 +2493,6 @@ func (i EmptyArgs) ToEmptyOutput() EmptyOutput {
 
 func (i EmptyArgs) ToEmptyOutputWithContext(ctx context.Context) EmptyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmptyOutput)
-}
-
-func (i EmptyArgs) ToOutput(ctx context.Context) pulumix.Output[Empty] {
-	return pulumix.Output[Empty]{
-		OutputState: i.ToEmptyOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i EmptyArgs) ToEmptyPtrOutput() EmptyPtrOutput {
@@ -2957,12 +2536,6 @@ func (i *emptyPtrType) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPtr
 	return pulumi.ToOutputWithContext(ctx, i).(EmptyPtrOutput)
 }
 
-func (i *emptyPtrType) ToOutput(ctx context.Context) pulumix.Output[*Empty] {
-	return pulumix.Output[*Empty]{
-		OutputState: i.ToEmptyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
 type EmptyOutput struct{ *pulumi.OutputState }
 
@@ -2988,12 +2561,6 @@ func (o EmptyOutput) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPtrOu
 	}).(EmptyPtrOutput)
 }
 
-func (o EmptyOutput) ToOutput(ctx context.Context) pulumix.Output[Empty] {
-	return pulumix.Output[Empty]{
-		OutputState: o.OutputState,
-	}
-}
-
 type EmptyPtrOutput struct{ *pulumi.OutputState }
 
 func (EmptyPtrOutput) ElementType() reflect.Type {
@@ -3006,12 +2573,6 @@ func (o EmptyPtrOutput) ToEmptyPtrOutput() EmptyPtrOutput {
 
 func (o EmptyPtrOutput) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPtrOutput {
 	return o
-}
-
-func (o EmptyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Empty] {
-	return pulumix.Output[*Empty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmptyPtrOutput) Elem() EmptyOutput {
@@ -3041,12 +2602,6 @@ func (o EmptyResponseOutput) ToEmptyResponseOutput() EmptyResponseOutput {
 
 func (o EmptyResponseOutput) ToEmptyResponseOutputWithContext(ctx context.Context) EmptyResponseOutput {
 	return o
-}
-
-func (o EmptyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EmptyResponse] {
-	return pulumix.Output[EmptyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A widget that displays a list of error groups.
@@ -3092,12 +2647,6 @@ func (i ErrorReportingPanelArgs) ToErrorReportingPanelOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ErrorReportingPanelOutput)
 }
 
-func (i ErrorReportingPanelArgs) ToOutput(ctx context.Context) pulumix.Output[ErrorReportingPanel] {
-	return pulumix.Output[ErrorReportingPanel]{
-		OutputState: i.ToErrorReportingPanelOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ErrorReportingPanelArgs) ToErrorReportingPanelPtrOutput() ErrorReportingPanelPtrOutput {
 	return i.ToErrorReportingPanelPtrOutputWithContext(context.Background())
 }
@@ -3139,12 +2688,6 @@ func (i *errorReportingPanelPtrType) ToErrorReportingPanelPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ErrorReportingPanelPtrOutput)
 }
 
-func (i *errorReportingPanelPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErrorReportingPanel] {
-	return pulumix.Output[*ErrorReportingPanel]{
-		OutputState: i.ToErrorReportingPanelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A widget that displays a list of error groups.
 type ErrorReportingPanelOutput struct{ *pulumi.OutputState }
 
@@ -3168,12 +2711,6 @@ func (o ErrorReportingPanelOutput) ToErrorReportingPanelPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErrorReportingPanel) *ErrorReportingPanel {
 		return &v
 	}).(ErrorReportingPanelPtrOutput)
-}
-
-func (o ErrorReportingPanelOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorReportingPanel] {
-	return pulumix.Output[ErrorReportingPanel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
@@ -3203,12 +2740,6 @@ func (o ErrorReportingPanelPtrOutput) ToErrorReportingPanelPtrOutput() ErrorRepo
 
 func (o ErrorReportingPanelPtrOutput) ToErrorReportingPanelPtrOutputWithContext(ctx context.Context) ErrorReportingPanelPtrOutput {
 	return o
-}
-
-func (o ErrorReportingPanelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorReportingPanel] {
-	return pulumix.Output[*ErrorReportingPanel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorReportingPanelPtrOutput) Elem() ErrorReportingPanelOutput {
@@ -3276,12 +2807,6 @@ func (o ErrorReportingPanelResponseOutput) ToErrorReportingPanelResponseOutputWi
 	return o
 }
 
-func (o ErrorReportingPanelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorReportingPanelResponse] {
-	return pulumix.Output[ErrorReportingPanelResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
 func (o ErrorReportingPanelResponseOutput) ProjectNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErrorReportingPanelResponse) []string { return v.ProjectNames }).(pulumi.StringArrayOutput)
@@ -3336,12 +2861,6 @@ func (i GaugeViewArgs) ToGaugeViewOutputWithContext(ctx context.Context) GaugeVi
 	return pulumi.ToOutputWithContext(ctx, i).(GaugeViewOutput)
 }
 
-func (i GaugeViewArgs) ToOutput(ctx context.Context) pulumix.Output[GaugeView] {
-	return pulumix.Output[GaugeView]{
-		OutputState: i.ToGaugeViewOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GaugeViewArgs) ToGaugeViewPtrOutput() GaugeViewPtrOutput {
 	return i.ToGaugeViewPtrOutputWithContext(context.Background())
 }
@@ -3383,12 +2902,6 @@ func (i *gaugeViewPtrType) ToGaugeViewPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GaugeViewPtrOutput)
 }
 
-func (i *gaugeViewPtrType) ToOutput(ctx context.Context) pulumix.Output[*GaugeView] {
-	return pulumix.Output[*GaugeView]{
-		OutputState: i.ToGaugeViewPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive).
 type GaugeViewOutput struct{ *pulumi.OutputState }
 
@@ -3414,12 +2927,6 @@ func (o GaugeViewOutput) ToGaugeViewPtrOutputWithContext(ctx context.Context) Ga
 	}).(GaugeViewPtrOutput)
 }
 
-func (o GaugeViewOutput) ToOutput(ctx context.Context) pulumix.Output[GaugeView] {
-	return pulumix.Output[GaugeView]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
 func (o GaugeViewOutput) LowerBound() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GaugeView) *float64 { return v.LowerBound }).(pulumi.Float64PtrOutput)
@@ -3442,12 +2949,6 @@ func (o GaugeViewPtrOutput) ToGaugeViewPtrOutput() GaugeViewPtrOutput {
 
 func (o GaugeViewPtrOutput) ToGaugeViewPtrOutputWithContext(ctx context.Context) GaugeViewPtrOutput {
 	return o
-}
-
-func (o GaugeViewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GaugeView] {
-	return pulumix.Output[*GaugeView]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GaugeViewPtrOutput) Elem() GaugeViewOutput {
@@ -3503,12 +3004,6 @@ func (o GaugeViewResponseOutput) ToGaugeViewResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o GaugeViewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GaugeViewResponse] {
-	return pulumix.Output[GaugeViewResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
 func (o GaugeViewResponseOutput) LowerBound() pulumi.Float64Output {
 	return o.ApplyT(func(v GaugeViewResponse) float64 { return v.LowerBound }).(pulumi.Float64Output)
@@ -3558,12 +3053,6 @@ func (i GridLayoutArgs) ToGridLayoutOutputWithContext(ctx context.Context) GridL
 	return pulumi.ToOutputWithContext(ctx, i).(GridLayoutOutput)
 }
 
-func (i GridLayoutArgs) ToOutput(ctx context.Context) pulumix.Output[GridLayout] {
-	return pulumix.Output[GridLayout]{
-		OutputState: i.ToGridLayoutOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GridLayoutArgs) ToGridLayoutPtrOutput() GridLayoutPtrOutput {
 	return i.ToGridLayoutPtrOutputWithContext(context.Background())
 }
@@ -3605,12 +3094,6 @@ func (i *gridLayoutPtrType) ToGridLayoutPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GridLayoutPtrOutput)
 }
 
-func (i *gridLayoutPtrType) ToOutput(ctx context.Context) pulumix.Output[*GridLayout] {
-	return pulumix.Output[*GridLayout]{
-		OutputState: i.ToGridLayoutPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy.
 type GridLayoutOutput struct{ *pulumi.OutputState }
 
@@ -3636,12 +3119,6 @@ func (o GridLayoutOutput) ToGridLayoutPtrOutputWithContext(ctx context.Context) 
 	}).(GridLayoutPtrOutput)
 }
 
-func (o GridLayoutOutput) ToOutput(ctx context.Context) pulumix.Output[GridLayout] {
-	return pulumix.Output[GridLayout]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
 func (o GridLayoutOutput) Columns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GridLayout) *string { return v.Columns }).(pulumi.StringPtrOutput)
@@ -3664,12 +3141,6 @@ func (o GridLayoutPtrOutput) ToGridLayoutPtrOutput() GridLayoutPtrOutput {
 
 func (o GridLayoutPtrOutput) ToGridLayoutPtrOutputWithContext(ctx context.Context) GridLayoutPtrOutput {
 	return o
-}
-
-func (o GridLayoutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GridLayout] {
-	return pulumix.Output[*GridLayout]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GridLayoutPtrOutput) Elem() GridLayoutOutput {
@@ -3725,12 +3196,6 @@ func (o GridLayoutResponseOutput) ToGridLayoutResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o GridLayoutResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GridLayoutResponse] {
-	return pulumix.Output[GridLayoutResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
 func (o GridLayoutResponseOutput) Columns() pulumi.StringOutput {
 	return o.ApplyT(func(v GridLayoutResponse) string { return v.Columns }).(pulumi.StringOutput)
@@ -3780,12 +3245,6 @@ func (i IncidentListArgs) ToIncidentListOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IncidentListOutput)
 }
 
-func (i IncidentListArgs) ToOutput(ctx context.Context) pulumix.Output[IncidentList] {
-	return pulumix.Output[IncidentList]{
-		OutputState: i.ToIncidentListOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IncidentListArgs) ToIncidentListPtrOutput() IncidentListPtrOutput {
 	return i.ToIncidentListPtrOutputWithContext(context.Background())
 }
@@ -3827,12 +3286,6 @@ func (i *incidentListPtrType) ToIncidentListPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(IncidentListPtrOutput)
 }
 
-func (i *incidentListPtrType) ToOutput(ctx context.Context) pulumix.Output[*IncidentList] {
-	return pulumix.Output[*IncidentList]{
-		OutputState: i.ToIncidentListPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A widget that displays a list of incidents
 type IncidentListOutput struct{ *pulumi.OutputState }
 
@@ -3858,12 +3311,6 @@ func (o IncidentListOutput) ToIncidentListPtrOutputWithContext(ctx context.Conte
 	}).(IncidentListPtrOutput)
 }
 
-func (o IncidentListOutput) ToOutput(ctx context.Context) pulumix.Output[IncidentList] {
-	return pulumix.Output[IncidentList]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
 func (o IncidentListOutput) MonitoredResources() MonitoredResourceArrayOutput {
 	return o.ApplyT(func(v IncidentList) []MonitoredResource { return v.MonitoredResources }).(MonitoredResourceArrayOutput)
@@ -3886,12 +3333,6 @@ func (o IncidentListPtrOutput) ToIncidentListPtrOutput() IncidentListPtrOutput {
 
 func (o IncidentListPtrOutput) ToIncidentListPtrOutputWithContext(ctx context.Context) IncidentListPtrOutput {
 	return o
-}
-
-func (o IncidentListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IncidentList] {
-	return pulumix.Output[*IncidentList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IncidentListPtrOutput) Elem() IncidentListOutput {
@@ -3947,12 +3388,6 @@ func (o IncidentListResponseOutput) ToIncidentListResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o IncidentListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IncidentListResponse] {
-	return pulumix.Output[IncidentListResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
 func (o IncidentListResponseOutput) MonitoredResources() MonitoredResourceResponseArrayOutput {
 	return o.ApplyT(func(v IncidentListResponse) []MonitoredResourceResponse { return v.MonitoredResources }).(MonitoredResourceResponseArrayOutput)
@@ -4002,12 +3437,6 @@ func (i LogsPanelArgs) ToLogsPanelOutputWithContext(ctx context.Context) LogsPan
 	return pulumi.ToOutputWithContext(ctx, i).(LogsPanelOutput)
 }
 
-func (i LogsPanelArgs) ToOutput(ctx context.Context) pulumix.Output[LogsPanel] {
-	return pulumix.Output[LogsPanel]{
-		OutputState: i.ToLogsPanelOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LogsPanelArgs) ToLogsPanelPtrOutput() LogsPanelPtrOutput {
 	return i.ToLogsPanelPtrOutputWithContext(context.Background())
 }
@@ -4049,12 +3478,6 @@ func (i *logsPanelPtrType) ToLogsPanelPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(LogsPanelPtrOutput)
 }
 
-func (i *logsPanelPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogsPanel] {
-	return pulumix.Output[*LogsPanel]{
-		OutputState: i.ToLogsPanelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A widget that displays a stream of log.
 type LogsPanelOutput struct{ *pulumi.OutputState }
 
@@ -4080,12 +3503,6 @@ func (o LogsPanelOutput) ToLogsPanelPtrOutputWithContext(ctx context.Context) Lo
 	}).(LogsPanelPtrOutput)
 }
 
-func (o LogsPanelOutput) ToOutput(ctx context.Context) pulumix.Output[LogsPanel] {
-	return pulumix.Output[LogsPanel]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
 func (o LogsPanelOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogsPanel) *string { return v.Filter }).(pulumi.StringPtrOutput)
@@ -4108,12 +3525,6 @@ func (o LogsPanelPtrOutput) ToLogsPanelPtrOutput() LogsPanelPtrOutput {
 
 func (o LogsPanelPtrOutput) ToLogsPanelPtrOutputWithContext(ctx context.Context) LogsPanelPtrOutput {
 	return o
-}
-
-func (o LogsPanelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogsPanel] {
-	return pulumix.Output[*LogsPanel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogsPanelPtrOutput) Elem() LogsPanelOutput {
@@ -4169,12 +3580,6 @@ func (o LogsPanelResponseOutput) ToLogsPanelResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o LogsPanelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogsPanelResponse] {
-	return pulumix.Output[LogsPanelResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
 func (o LogsPanelResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v LogsPanelResponse) string { return v.Filter }).(pulumi.StringOutput)
@@ -4224,12 +3629,6 @@ func (i MeasureArgs) ToMeasureOutputWithContext(ctx context.Context) MeasureOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MeasureOutput)
 }
 
-func (i MeasureArgs) ToOutput(ctx context.Context) pulumix.Output[Measure] {
-	return pulumix.Output[Measure]{
-		OutputState: i.ToMeasureOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MeasureArrayInput is an input type that accepts MeasureArray and MeasureArrayOutput values.
 // You can construct a concrete instance of `MeasureArrayInput` via:
 //
@@ -4255,12 +3654,6 @@ func (i MeasureArray) ToMeasureArrayOutputWithContext(ctx context.Context) Measu
 	return pulumi.ToOutputWithContext(ctx, i).(MeasureArrayOutput)
 }
 
-func (i MeasureArray) ToOutput(ctx context.Context) pulumix.Output[[]Measure] {
-	return pulumix.Output[[]Measure]{
-		OutputState: i.ToMeasureArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
 type MeasureOutput struct{ *pulumi.OutputState }
 
@@ -4274,12 +3667,6 @@ func (o MeasureOutput) ToMeasureOutput() MeasureOutput {
 
 func (o MeasureOutput) ToMeasureOutputWithContext(ctx context.Context) MeasureOutput {
 	return o
-}
-
-func (o MeasureOutput) ToOutput(ctx context.Context) pulumix.Output[Measure] {
-	return pulumix.Output[Measure]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
@@ -4304,12 +3691,6 @@ func (o MeasureArrayOutput) ToMeasureArrayOutput() MeasureArrayOutput {
 
 func (o MeasureArrayOutput) ToMeasureArrayOutputWithContext(ctx context.Context) MeasureArrayOutput {
 	return o
-}
-
-func (o MeasureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Measure] {
-	return pulumix.Output[[]Measure]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MeasureArrayOutput) Index(i pulumi.IntInput) MeasureOutput {
@@ -4341,12 +3722,6 @@ func (o MeasureResponseOutput) ToMeasureResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o MeasureResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MeasureResponse] {
-	return pulumix.Output[MeasureResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
 func (o MeasureResponseOutput) AggregationFunction() AggregationFunctionResponseOutput {
 	return o.ApplyT(func(v MeasureResponse) AggregationFunctionResponse { return v.AggregationFunction }).(AggregationFunctionResponseOutput)
@@ -4369,12 +3744,6 @@ func (o MeasureResponseArrayOutput) ToMeasureResponseArrayOutput() MeasureRespon
 
 func (o MeasureResponseArrayOutput) ToMeasureResponseArrayOutputWithContext(ctx context.Context) MeasureResponseArrayOutput {
 	return o
-}
-
-func (o MeasureResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MeasureResponse] {
-	return pulumix.Output[[]MeasureResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MeasureResponseArrayOutput) Index(i pulumi.IntInput) MeasureResponseOutput {
@@ -4422,12 +3791,6 @@ func (i MonitoredResourceArgs) ToMonitoredResourceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourceOutput)
 }
 
-func (i MonitoredResourceArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoredResource] {
-	return pulumix.Output[MonitoredResource]{
-		OutputState: i.ToMonitoredResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MonitoredResourceArrayInput is an input type that accepts MonitoredResourceArray and MonitoredResourceArrayOutput values.
 // You can construct a concrete instance of `MonitoredResourceArrayInput` via:
 //
@@ -4453,12 +3816,6 @@ func (i MonitoredResourceArray) ToMonitoredResourceArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourceArrayOutput)
 }
 
-func (i MonitoredResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredResource] {
-	return pulumix.Output[[]MonitoredResource]{
-		OutputState: i.ToMonitoredResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
 type MonitoredResourceOutput struct{ *pulumi.OutputState }
 
@@ -4472,12 +3829,6 @@ func (o MonitoredResourceOutput) ToMonitoredResourceOutput() MonitoredResourceOu
 
 func (o MonitoredResourceOutput) ToMonitoredResourceOutputWithContext(ctx context.Context) MonitoredResourceOutput {
 	return o
-}
-
-func (o MonitoredResourceOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredResource] {
-	return pulumix.Output[MonitoredResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
@@ -4502,12 +3853,6 @@ func (o MonitoredResourceArrayOutput) ToMonitoredResourceArrayOutput() Monitored
 
 func (o MonitoredResourceArrayOutput) ToMonitoredResourceArrayOutputWithContext(ctx context.Context) MonitoredResourceArrayOutput {
 	return o
-}
-
-func (o MonitoredResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredResource] {
-	return pulumix.Output[[]MonitoredResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoredResourceArrayOutput) Index(i pulumi.IntInput) MonitoredResourceOutput {
@@ -4539,12 +3884,6 @@ func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponseOutputWithCo
 	return o
 }
 
-func (o MonitoredResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredResourceResponse] {
-	return pulumix.Output[MonitoredResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
 func (o MonitoredResourceResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MonitoredResourceResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -4567,12 +3906,6 @@ func (o MonitoredResourceResponseArrayOutput) ToMonitoredResourceResponseArrayOu
 
 func (o MonitoredResourceResponseArrayOutput) ToMonitoredResourceResponseArrayOutputWithContext(ctx context.Context) MonitoredResourceResponseArrayOutput {
 	return o
-}
-
-func (o MonitoredResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredResourceResponse] {
-	return pulumix.Output[[]MonitoredResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoredResourceResponseArrayOutput) Index(i pulumi.IntInput) MonitoredResourceResponseOutput {
@@ -4620,12 +3953,6 @@ func (i MosaicLayoutArgs) ToMosaicLayoutOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, i).(MosaicLayoutOutput)
 }
 
-func (i MosaicLayoutArgs) ToOutput(ctx context.Context) pulumix.Output[MosaicLayout] {
-	return pulumix.Output[MosaicLayout]{
-		OutputState: i.ToMosaicLayoutOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MosaicLayoutArgs) ToMosaicLayoutPtrOutput() MosaicLayoutPtrOutput {
 	return i.ToMosaicLayoutPtrOutputWithContext(context.Background())
 }
@@ -4667,12 +3994,6 @@ func (i *mosaicLayoutPtrType) ToMosaicLayoutPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(MosaicLayoutPtrOutput)
 }
 
-func (i *mosaicLayoutPtrType) ToOutput(ctx context.Context) pulumix.Output[*MosaicLayout] {
-	return pulumix.Output[*MosaicLayout]{
-		OutputState: i.ToMosaicLayoutPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
 type MosaicLayoutOutput struct{ *pulumi.OutputState }
 
@@ -4698,12 +4019,6 @@ func (o MosaicLayoutOutput) ToMosaicLayoutPtrOutputWithContext(ctx context.Conte
 	}).(MosaicLayoutPtrOutput)
 }
 
-func (o MosaicLayoutOutput) ToOutput(ctx context.Context) pulumix.Output[MosaicLayout] {
-	return pulumix.Output[MosaicLayout]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
 func (o MosaicLayoutOutput) Columns() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MosaicLayout) *int { return v.Columns }).(pulumi.IntPtrOutput)
@@ -4726,12 +4041,6 @@ func (o MosaicLayoutPtrOutput) ToMosaicLayoutPtrOutput() MosaicLayoutPtrOutput {
 
 func (o MosaicLayoutPtrOutput) ToMosaicLayoutPtrOutputWithContext(ctx context.Context) MosaicLayoutPtrOutput {
 	return o
-}
-
-func (o MosaicLayoutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MosaicLayout] {
-	return pulumix.Output[*MosaicLayout]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MosaicLayoutPtrOutput) Elem() MosaicLayoutOutput {
@@ -4787,12 +4096,6 @@ func (o MosaicLayoutResponseOutput) ToMosaicLayoutResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o MosaicLayoutResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MosaicLayoutResponse] {
-	return pulumix.Output[MosaicLayoutResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
 func (o MosaicLayoutResponseOutput) Columns() pulumi.IntOutput {
 	return o.ApplyT(func(v MosaicLayoutResponse) int { return v.Columns }).(pulumi.IntOutput)
@@ -4838,12 +4141,6 @@ func (i OpsAnalyticsQueryArgs) ToOpsAnalyticsQueryOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OpsAnalyticsQueryOutput)
 }
 
-func (i OpsAnalyticsQueryArgs) ToOutput(ctx context.Context) pulumix.Output[OpsAnalyticsQuery] {
-	return pulumix.Output[OpsAnalyticsQuery]{
-		OutputState: i.ToOpsAnalyticsQueryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OpsAnalyticsQueryArgs) ToOpsAnalyticsQueryPtrOutput() OpsAnalyticsQueryPtrOutput {
 	return i.ToOpsAnalyticsQueryPtrOutputWithContext(context.Background())
 }
@@ -4885,12 +4182,6 @@ func (i *opsAnalyticsQueryPtrType) ToOpsAnalyticsQueryPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OpsAnalyticsQueryPtrOutput)
 }
 
-func (i *opsAnalyticsQueryPtrType) ToOutput(ctx context.Context) pulumix.Output[*OpsAnalyticsQuery] {
-	return pulumix.Output[*OpsAnalyticsQuery]{
-		OutputState: i.ToOpsAnalyticsQueryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release.
 type OpsAnalyticsQueryOutput struct{ *pulumi.OutputState }
 
@@ -4916,12 +4207,6 @@ func (o OpsAnalyticsQueryOutput) ToOpsAnalyticsQueryPtrOutputWithContext(ctx con
 	}).(OpsAnalyticsQueryPtrOutput)
 }
 
-func (o OpsAnalyticsQueryOutput) ToOutput(ctx context.Context) pulumix.Output[OpsAnalyticsQuery] {
-	return pulumix.Output[OpsAnalyticsQuery]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A SQL query to fetch time series, category series, or numeric series data.
 func (o OpsAnalyticsQueryOutput) Sql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpsAnalyticsQuery) *string { return v.Sql }).(pulumi.StringPtrOutput)
@@ -4939,12 +4224,6 @@ func (o OpsAnalyticsQueryPtrOutput) ToOpsAnalyticsQueryPtrOutput() OpsAnalyticsQ
 
 func (o OpsAnalyticsQueryPtrOutput) ToOpsAnalyticsQueryPtrOutputWithContext(ctx context.Context) OpsAnalyticsQueryPtrOutput {
 	return o
-}
-
-func (o OpsAnalyticsQueryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpsAnalyticsQuery] {
-	return pulumix.Output[*OpsAnalyticsQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpsAnalyticsQueryPtrOutput) Elem() OpsAnalyticsQueryOutput {
@@ -4986,12 +4265,6 @@ func (o OpsAnalyticsQueryResponseOutput) ToOpsAnalyticsQueryResponseOutput() Ops
 
 func (o OpsAnalyticsQueryResponseOutput) ToOpsAnalyticsQueryResponseOutputWithContext(ctx context.Context) OpsAnalyticsQueryResponseOutput {
 	return o
-}
-
-func (o OpsAnalyticsQueryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpsAnalyticsQueryResponse] {
-	return pulumix.Output[OpsAnalyticsQueryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A SQL query to fetch time series, category series, or numeric series data.
@@ -5038,12 +4311,6 @@ func (i ParameterArgs) ToParameterOutputWithContext(ctx context.Context) Paramet
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterOutput)
 }
 
-func (i ParameterArgs) ToOutput(ctx context.Context) pulumix.Output[Parameter] {
-	return pulumix.Output[Parameter]{
-		OutputState: i.ToParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ParameterArrayInput is an input type that accepts ParameterArray and ParameterArrayOutput values.
 // You can construct a concrete instance of `ParameterArrayInput` via:
 //
@@ -5069,12 +4336,6 @@ func (i ParameterArray) ToParameterArrayOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterArrayOutput)
 }
 
-func (i ParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]Parameter] {
-	return pulumix.Output[[]Parameter]{
-		OutputState: i.ToParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release.
 type ParameterOutput struct{ *pulumi.OutputState }
 
@@ -5088,12 +4349,6 @@ func (o ParameterOutput) ToParameterOutput() ParameterOutput {
 
 func (o ParameterOutput) ToParameterOutputWithContext(ctx context.Context) ParameterOutput {
 	return o
-}
-
-func (o ParameterOutput) ToOutput(ctx context.Context) pulumix.Output[Parameter] {
-	return pulumix.Output[Parameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A floating-point parameter value.
@@ -5118,12 +4373,6 @@ func (o ParameterArrayOutput) ToParameterArrayOutput() ParameterArrayOutput {
 
 func (o ParameterArrayOutput) ToParameterArrayOutputWithContext(ctx context.Context) ParameterArrayOutput {
 	return o
-}
-
-func (o ParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Parameter] {
-	return pulumix.Output[[]Parameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterArrayOutput) Index(i pulumi.IntInput) ParameterOutput {
@@ -5155,12 +4404,6 @@ func (o ParameterResponseOutput) ToParameterResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterResponse] {
-	return pulumix.Output[ParameterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A floating-point parameter value.
 func (o ParameterResponseOutput) DoubleValue() pulumi.Float64Output {
 	return o.ApplyT(func(v ParameterResponse) float64 { return v.DoubleValue }).(pulumi.Float64Output)
@@ -5183,12 +4426,6 @@ func (o ParameterResponseArrayOutput) ToParameterResponseArrayOutput() Parameter
 
 func (o ParameterResponseArrayOutput) ToParameterResponseArrayOutputWithContext(ctx context.Context) ParameterResponseArrayOutput {
 	return o
-}
-
-func (o ParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ParameterResponse] {
-	return pulumix.Output[[]ParameterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterResponseArrayOutput) Index(i pulumi.IntInput) ParameterResponseOutput {
@@ -5240,12 +4477,6 @@ func (i PickTimeSeriesFilterArgs) ToPickTimeSeriesFilterOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PickTimeSeriesFilterOutput)
 }
 
-func (i PickTimeSeriesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[PickTimeSeriesFilter] {
-	return pulumix.Output[PickTimeSeriesFilter]{
-		OutputState: i.ToPickTimeSeriesFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PickTimeSeriesFilterArgs) ToPickTimeSeriesFilterPtrOutput() PickTimeSeriesFilterPtrOutput {
 	return i.ToPickTimeSeriesFilterPtrOutputWithContext(context.Background())
 }
@@ -5287,12 +4518,6 @@ func (i *pickTimeSeriesFilterPtrType) ToPickTimeSeriesFilterPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PickTimeSeriesFilterPtrOutput)
 }
 
-func (i *pickTimeSeriesFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*PickTimeSeriesFilter] {
-	return pulumix.Output[*PickTimeSeriesFilter]{
-		OutputState: i.ToPickTimeSeriesFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
 type PickTimeSeriesFilterOutput struct{ *pulumi.OutputState }
 
@@ -5316,12 +4541,6 @@ func (o PickTimeSeriesFilterOutput) ToPickTimeSeriesFilterPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PickTimeSeriesFilter) *PickTimeSeriesFilter {
 		return &v
 	}).(PickTimeSeriesFilterPtrOutput)
-}
-
-func (o PickTimeSeriesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[PickTimeSeriesFilter] {
-	return pulumix.Output[PickTimeSeriesFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How to use the ranking to select time series that pass through the filter.
@@ -5351,12 +4570,6 @@ func (o PickTimeSeriesFilterPtrOutput) ToPickTimeSeriesFilterPtrOutput() PickTim
 
 func (o PickTimeSeriesFilterPtrOutput) ToPickTimeSeriesFilterPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterPtrOutput {
 	return o
-}
-
-func (o PickTimeSeriesFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PickTimeSeriesFilter] {
-	return pulumix.Output[*PickTimeSeriesFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PickTimeSeriesFilterPtrOutput) Elem() PickTimeSeriesFilterOutput {
@@ -5424,12 +4637,6 @@ func (o PickTimeSeriesFilterResponseOutput) ToPickTimeSeriesFilterResponseOutput
 	return o
 }
 
-func (o PickTimeSeriesFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PickTimeSeriesFilterResponse] {
-	return pulumix.Output[PickTimeSeriesFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // How to use the ranking to select time series that pass through the filter.
 func (o PickTimeSeriesFilterResponseOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v PickTimeSeriesFilterResponse) string { return v.Direction }).(pulumi.StringOutput)
@@ -5488,12 +4695,6 @@ func (i PieChartArgs) ToPieChartOutputWithContext(ctx context.Context) PieChartO
 	return pulumi.ToOutputWithContext(ctx, i).(PieChartOutput)
 }
 
-func (i PieChartArgs) ToOutput(ctx context.Context) pulumix.Output[PieChart] {
-	return pulumix.Output[PieChart]{
-		OutputState: i.ToPieChartOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PieChartArgs) ToPieChartPtrOutput() PieChartPtrOutput {
 	return i.ToPieChartPtrOutputWithContext(context.Background())
 }
@@ -5535,12 +4736,6 @@ func (i *pieChartPtrType) ToPieChartPtrOutputWithContext(ctx context.Context) Pi
 	return pulumi.ToOutputWithContext(ctx, i).(PieChartPtrOutput)
 }
 
-func (i *pieChartPtrType) ToOutput(ctx context.Context) pulumix.Output[*PieChart] {
-	return pulumix.Output[*PieChart]{
-		OutputState: i.ToPieChartPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A widget that displays timeseries data as a pie or a donut.
 type PieChartOutput struct{ *pulumi.OutputState }
 
@@ -5564,12 +4759,6 @@ func (o PieChartOutput) ToPieChartPtrOutputWithContext(ctx context.Context) PieC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PieChart) *PieChart {
 		return &v
 	}).(PieChartPtrOutput)
-}
-
-func (o PieChartOutput) ToOutput(ctx context.Context) pulumix.Output[PieChart] {
-	return pulumix.Output[PieChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates the visualization type for the PieChart.
@@ -5599,12 +4788,6 @@ func (o PieChartPtrOutput) ToPieChartPtrOutput() PieChartPtrOutput {
 
 func (o PieChartPtrOutput) ToPieChartPtrOutputWithContext(ctx context.Context) PieChartPtrOutput {
 	return o
-}
-
-func (o PieChartPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PieChart] {
-	return pulumix.Output[*PieChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PieChartPtrOutput) Elem() PieChartOutput {
@@ -5690,12 +4873,6 @@ func (i PieChartDataSetArgs) ToPieChartDataSetOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PieChartDataSetOutput)
 }
 
-func (i PieChartDataSetArgs) ToOutput(ctx context.Context) pulumix.Output[PieChartDataSet] {
-	return pulumix.Output[PieChartDataSet]{
-		OutputState: i.ToPieChartDataSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PieChartDataSetArrayInput is an input type that accepts PieChartDataSetArray and PieChartDataSetArrayOutput values.
 // You can construct a concrete instance of `PieChartDataSetArrayInput` via:
 //
@@ -5721,12 +4898,6 @@ func (i PieChartDataSetArray) ToPieChartDataSetArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PieChartDataSetArrayOutput)
 }
 
-func (i PieChartDataSetArray) ToOutput(ctx context.Context) pulumix.Output[[]PieChartDataSet] {
-	return pulumix.Output[[]PieChartDataSet]{
-		OutputState: i.ToPieChartDataSetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Groups a time series query definition.
 type PieChartDataSetOutput struct{ *pulumi.OutputState }
 
@@ -5740,12 +4911,6 @@ func (o PieChartDataSetOutput) ToPieChartDataSetOutput() PieChartDataSetOutput {
 
 func (o PieChartDataSetOutput) ToPieChartDataSetOutputWithContext(ctx context.Context) PieChartDataSetOutput {
 	return o
-}
-
-func (o PieChartDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[PieChartDataSet] {
-	return pulumix.Output[PieChartDataSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
@@ -5775,12 +4940,6 @@ func (o PieChartDataSetArrayOutput) ToPieChartDataSetArrayOutput() PieChartDataS
 
 func (o PieChartDataSetArrayOutput) ToPieChartDataSetArrayOutputWithContext(ctx context.Context) PieChartDataSetArrayOutput {
 	return o
-}
-
-func (o PieChartDataSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PieChartDataSet] {
-	return pulumix.Output[[]PieChartDataSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PieChartDataSetArrayOutput) Index(i pulumi.IntInput) PieChartDataSetOutput {
@@ -5814,12 +4973,6 @@ func (o PieChartDataSetResponseOutput) ToPieChartDataSetResponseOutputWithContex
 	return o
 }
 
-func (o PieChartDataSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PieChartDataSetResponse] {
-	return pulumix.Output[PieChartDataSetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 func (o PieChartDataSetResponseOutput) MinAlignmentPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v PieChartDataSetResponse) string { return v.MinAlignmentPeriod }).(pulumi.StringOutput)
@@ -5847,12 +5000,6 @@ func (o PieChartDataSetResponseArrayOutput) ToPieChartDataSetResponseArrayOutput
 
 func (o PieChartDataSetResponseArrayOutput) ToPieChartDataSetResponseArrayOutputWithContext(ctx context.Context) PieChartDataSetResponseArrayOutput {
 	return o
-}
-
-func (o PieChartDataSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PieChartDataSetResponse] {
-	return pulumix.Output[[]PieChartDataSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PieChartDataSetResponseArrayOutput) Index(i pulumi.IntInput) PieChartDataSetResponseOutput {
@@ -5884,12 +5031,6 @@ func (o PieChartResponseOutput) ToPieChartResponseOutput() PieChartResponseOutpu
 
 func (o PieChartResponseOutput) ToPieChartResponseOutputWithContext(ctx context.Context) PieChartResponseOutput {
 	return o
-}
-
-func (o PieChartResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PieChartResponse] {
-	return pulumix.Output[PieChartResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates the visualization type for the PieChart.
@@ -5946,12 +5087,6 @@ func (i RatioPartArgs) ToRatioPartOutputWithContext(ctx context.Context) RatioPa
 	return pulumi.ToOutputWithContext(ctx, i).(RatioPartOutput)
 }
 
-func (i RatioPartArgs) ToOutput(ctx context.Context) pulumix.Output[RatioPart] {
-	return pulumix.Output[RatioPart]{
-		OutputState: i.ToRatioPartOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RatioPartArgs) ToRatioPartPtrOutput() RatioPartPtrOutput {
 	return i.ToRatioPartPtrOutputWithContext(context.Background())
 }
@@ -5993,12 +5128,6 @@ func (i *ratioPartPtrType) ToRatioPartPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RatioPartPtrOutput)
 }
 
-func (i *ratioPartPtrType) ToOutput(ctx context.Context) pulumix.Output[*RatioPart] {
-	return pulumix.Output[*RatioPart]{
-		OutputState: i.ToRatioPartPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.
 type RatioPartOutput struct{ *pulumi.OutputState }
 
@@ -6024,12 +5153,6 @@ func (o RatioPartOutput) ToRatioPartPtrOutputWithContext(ctx context.Context) Ra
 	}).(RatioPartPtrOutput)
 }
 
-func (o RatioPartOutput) ToOutput(ctx context.Context) pulumix.Output[RatioPart] {
-	return pulumix.Output[RatioPart]{
-		OutputState: o.OutputState,
-	}
-}
-
 // By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 func (o RatioPartOutput) Aggregation() AggregationPtrOutput {
 	return o.ApplyT(func(v RatioPart) *Aggregation { return v.Aggregation }).(AggregationPtrOutput)
@@ -6052,12 +5175,6 @@ func (o RatioPartPtrOutput) ToRatioPartPtrOutput() RatioPartPtrOutput {
 
 func (o RatioPartPtrOutput) ToRatioPartPtrOutputWithContext(ctx context.Context) RatioPartPtrOutput {
 	return o
-}
-
-func (o RatioPartPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RatioPart] {
-	return pulumix.Output[*RatioPart]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RatioPartPtrOutput) Elem() RatioPartOutput {
@@ -6113,12 +5230,6 @@ func (o RatioPartResponseOutput) ToRatioPartResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o RatioPartResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RatioPartResponse] {
-	return pulumix.Output[RatioPartResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 func (o RatioPartResponseOutput) Aggregation() AggregationResponseOutput {
 	return o.ApplyT(func(v RatioPartResponse) AggregationResponse { return v.Aggregation }).(AggregationResponseOutput)
@@ -6168,12 +5279,6 @@ func (i RowArgs) ToRowOutputWithContext(ctx context.Context) RowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RowOutput)
 }
 
-func (i RowArgs) ToOutput(ctx context.Context) pulumix.Output[Row] {
-	return pulumix.Output[Row]{
-		OutputState: i.ToRowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RowArrayInput is an input type that accepts RowArray and RowArrayOutput values.
 // You can construct a concrete instance of `RowArrayInput` via:
 //
@@ -6199,12 +5304,6 @@ func (i RowArray) ToRowArrayOutputWithContext(ctx context.Context) RowArrayOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RowArrayOutput)
 }
 
-func (i RowArray) ToOutput(ctx context.Context) pulumix.Output[[]Row] {
-	return pulumix.Output[[]Row]{
-		OutputState: i.ToRowArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the layout properties and content for a row.
 type RowOutput struct{ *pulumi.OutputState }
 
@@ -6218,12 +5317,6 @@ func (o RowOutput) ToRowOutput() RowOutput {
 
 func (o RowOutput) ToRowOutputWithContext(ctx context.Context) RowOutput {
 	return o
-}
-
-func (o RowOutput) ToOutput(ctx context.Context) pulumix.Output[Row] {
-	return pulumix.Output[Row]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering.
@@ -6248,12 +5341,6 @@ func (o RowArrayOutput) ToRowArrayOutput() RowArrayOutput {
 
 func (o RowArrayOutput) ToRowArrayOutputWithContext(ctx context.Context) RowArrayOutput {
 	return o
-}
-
-func (o RowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Row] {
-	return pulumix.Output[[]Row]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RowArrayOutput) Index(i pulumi.IntInput) RowOutput {
@@ -6297,12 +5384,6 @@ func (i RowLayoutArgs) ToRowLayoutOutputWithContext(ctx context.Context) RowLayo
 	return pulumi.ToOutputWithContext(ctx, i).(RowLayoutOutput)
 }
 
-func (i RowLayoutArgs) ToOutput(ctx context.Context) pulumix.Output[RowLayout] {
-	return pulumix.Output[RowLayout]{
-		OutputState: i.ToRowLayoutOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RowLayoutArgs) ToRowLayoutPtrOutput() RowLayoutPtrOutput {
 	return i.ToRowLayoutPtrOutputWithContext(context.Background())
 }
@@ -6344,12 +5425,6 @@ func (i *rowLayoutPtrType) ToRowLayoutPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RowLayoutPtrOutput)
 }
 
-func (i *rowLayoutPtrType) ToOutput(ctx context.Context) pulumix.Output[*RowLayout] {
-	return pulumix.Output[*RowLayout]{
-		OutputState: i.ToRowLayoutPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row.
 type RowLayoutOutput struct{ *pulumi.OutputState }
 
@@ -6375,12 +5450,6 @@ func (o RowLayoutOutput) ToRowLayoutPtrOutputWithContext(ctx context.Context) Ro
 	}).(RowLayoutPtrOutput)
 }
 
-func (o RowLayoutOutput) ToOutput(ctx context.Context) pulumix.Output[RowLayout] {
-	return pulumix.Output[RowLayout]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The rows of content to display.
 func (o RowLayoutOutput) Rows() RowArrayOutput {
 	return o.ApplyT(func(v RowLayout) []Row { return v.Rows }).(RowArrayOutput)
@@ -6398,12 +5467,6 @@ func (o RowLayoutPtrOutput) ToRowLayoutPtrOutput() RowLayoutPtrOutput {
 
 func (o RowLayoutPtrOutput) ToRowLayoutPtrOutputWithContext(ctx context.Context) RowLayoutPtrOutput {
 	return o
-}
-
-func (o RowLayoutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RowLayout] {
-	return pulumix.Output[*RowLayout]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RowLayoutPtrOutput) Elem() RowLayoutOutput {
@@ -6447,12 +5510,6 @@ func (o RowLayoutResponseOutput) ToRowLayoutResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o RowLayoutResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RowLayoutResponse] {
-	return pulumix.Output[RowLayoutResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The rows of content to display.
 func (o RowLayoutResponseOutput) Rows() RowResponseArrayOutput {
 	return o.ApplyT(func(v RowLayoutResponse) []RowResponse { return v.Rows }).(RowResponseArrayOutput)
@@ -6481,12 +5538,6 @@ func (o RowResponseOutput) ToRowResponseOutputWithContext(ctx context.Context) R
 	return o
 }
 
-func (o RowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RowResponse] {
-	return pulumix.Output[RowResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering.
 func (o RowResponseOutput) Weight() pulumi.StringOutput {
 	return o.ApplyT(func(v RowResponse) string { return v.Weight }).(pulumi.StringOutput)
@@ -6509,12 +5560,6 @@ func (o RowResponseArrayOutput) ToRowResponseArrayOutput() RowResponseArrayOutpu
 
 func (o RowResponseArrayOutput) ToRowResponseArrayOutputWithContext(ctx context.Context) RowResponseArrayOutput {
 	return o
-}
-
-func (o RowResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RowResponse] {
-	return pulumix.Output[[]RowResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RowResponseArrayOutput) Index(i pulumi.IntInput) RowResponseOutput {
@@ -6574,12 +5619,6 @@ func (i ScorecardArgs) ToScorecardOutputWithContext(ctx context.Context) Scoreca
 	return pulumi.ToOutputWithContext(ctx, i).(ScorecardOutput)
 }
 
-func (i ScorecardArgs) ToOutput(ctx context.Context) pulumix.Output[Scorecard] {
-	return pulumix.Output[Scorecard]{
-		OutputState: i.ToScorecardOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScorecardArgs) ToScorecardPtrOutput() ScorecardPtrOutput {
 	return i.ToScorecardPtrOutputWithContext(context.Background())
 }
@@ -6621,12 +5660,6 @@ func (i *scorecardPtrType) ToScorecardPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ScorecardPtrOutput)
 }
 
-func (i *scorecardPtrType) ToOutput(ctx context.Context) pulumix.Output[*Scorecard] {
-	return pulumix.Output[*Scorecard]{
-		OutputState: i.ToScorecardPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
 type ScorecardOutput struct{ *pulumi.OutputState }
 
@@ -6650,12 +5683,6 @@ func (o ScorecardOutput) ToScorecardPtrOutputWithContext(ctx context.Context) Sc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Scorecard) *Scorecard {
 		return &v
 	}).(ScorecardPtrOutput)
-}
-
-func (o ScorecardOutput) ToOutput(ctx context.Context) pulumix.Output[Scorecard] {
-	return pulumix.Output[Scorecard]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
@@ -6695,12 +5722,6 @@ func (o ScorecardPtrOutput) ToScorecardPtrOutput() ScorecardPtrOutput {
 
 func (o ScorecardPtrOutput) ToScorecardPtrOutputWithContext(ctx context.Context) ScorecardPtrOutput {
 	return o
-}
-
-func (o ScorecardPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Scorecard] {
-	return pulumix.Output[*Scorecard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScorecardPtrOutput) Elem() ScorecardOutput {
@@ -6792,12 +5813,6 @@ func (o ScorecardResponseOutput) ToScorecardResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ScorecardResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScorecardResponse] {
-	return pulumix.Output[ScorecardResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
 func (o ScorecardResponseOutput) BlankView() EmptyResponseOutput {
 	return o.ApplyT(func(v ScorecardResponse) EmptyResponse { return v.BlankView }).(EmptyResponseOutput)
@@ -6862,12 +5877,6 @@ func (i SparkChartViewArgs) ToSparkChartViewOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SparkChartViewOutput)
 }
 
-func (i SparkChartViewArgs) ToOutput(ctx context.Context) pulumix.Output[SparkChartView] {
-	return pulumix.Output[SparkChartView]{
-		OutputState: i.ToSparkChartViewOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SparkChartViewArgs) ToSparkChartViewPtrOutput() SparkChartViewPtrOutput {
 	return i.ToSparkChartViewPtrOutputWithContext(context.Background())
 }
@@ -6909,12 +5918,6 @@ func (i *sparkChartViewPtrType) ToSparkChartViewPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SparkChartViewPtrOutput)
 }
 
-func (i *sparkChartViewPtrType) ToOutput(ctx context.Context) pulumix.Output[*SparkChartView] {
-	return pulumix.Output[*SparkChartView]{
-		OutputState: i.ToSparkChartViewPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
 type SparkChartViewOutput struct{ *pulumi.OutputState }
 
@@ -6940,12 +5943,6 @@ func (o SparkChartViewOutput) ToSparkChartViewPtrOutputWithContext(ctx context.C
 	}).(SparkChartViewPtrOutput)
 }
 
-func (o SparkChartViewOutput) ToOutput(ctx context.Context) pulumix.Output[SparkChartView] {
-	return pulumix.Output[SparkChartView]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
 func (o SparkChartViewOutput) MinAlignmentPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkChartView) *string { return v.MinAlignmentPeriod }).(pulumi.StringPtrOutput)
@@ -6968,12 +5965,6 @@ func (o SparkChartViewPtrOutput) ToSparkChartViewPtrOutput() SparkChartViewPtrOu
 
 func (o SparkChartViewPtrOutput) ToSparkChartViewPtrOutputWithContext(ctx context.Context) SparkChartViewPtrOutput {
 	return o
-}
-
-func (o SparkChartViewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SparkChartView] {
-	return pulumix.Output[*SparkChartView]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SparkChartViewPtrOutput) Elem() SparkChartViewOutput {
@@ -7029,12 +6020,6 @@ func (o SparkChartViewResponseOutput) ToSparkChartViewResponseOutputWithContext(
 	return o
 }
 
-func (o SparkChartViewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SparkChartViewResponse] {
-	return pulumix.Output[SparkChartViewResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
 func (o SparkChartViewResponseOutput) MinAlignmentPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkChartViewResponse) string { return v.MinAlignmentPeriod }).(pulumi.StringOutput)
@@ -7084,12 +6069,6 @@ func (i StatisticalTimeSeriesFilterArgs) ToStatisticalTimeSeriesFilterOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(StatisticalTimeSeriesFilterOutput)
 }
 
-func (i StatisticalTimeSeriesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[StatisticalTimeSeriesFilter] {
-	return pulumix.Output[StatisticalTimeSeriesFilter]{
-		OutputState: i.ToStatisticalTimeSeriesFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StatisticalTimeSeriesFilterArgs) ToStatisticalTimeSeriesFilterPtrOutput() StatisticalTimeSeriesFilterPtrOutput {
 	return i.ToStatisticalTimeSeriesFilterPtrOutputWithContext(context.Background())
 }
@@ -7131,12 +6110,6 @@ func (i *statisticalTimeSeriesFilterPtrType) ToStatisticalTimeSeriesFilterPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(StatisticalTimeSeriesFilterPtrOutput)
 }
 
-func (i *statisticalTimeSeriesFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*StatisticalTimeSeriesFilter] {
-	return pulumix.Output[*StatisticalTimeSeriesFilter]{
-		OutputState: i.ToStatisticalTimeSeriesFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
 type StatisticalTimeSeriesFilterOutput struct{ *pulumi.OutputState }
 
@@ -7162,12 +6135,6 @@ func (o StatisticalTimeSeriesFilterOutput) ToStatisticalTimeSeriesFilterPtrOutpu
 	}).(StatisticalTimeSeriesFilterPtrOutput)
 }
 
-func (o StatisticalTimeSeriesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[StatisticalTimeSeriesFilter] {
-	return pulumix.Output[StatisticalTimeSeriesFilter]{
-		OutputState: o.OutputState,
-	}
-}
-
 // How many time series to output.
 func (o StatisticalTimeSeriesFilterOutput) NumTimeSeries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StatisticalTimeSeriesFilter) *int { return v.NumTimeSeries }).(pulumi.IntPtrOutput)
@@ -7190,12 +6157,6 @@ func (o StatisticalTimeSeriesFilterPtrOutput) ToStatisticalTimeSeriesFilterPtrOu
 
 func (o StatisticalTimeSeriesFilterPtrOutput) ToStatisticalTimeSeriesFilterPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterPtrOutput {
 	return o
-}
-
-func (o StatisticalTimeSeriesFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatisticalTimeSeriesFilter] {
-	return pulumix.Output[*StatisticalTimeSeriesFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatisticalTimeSeriesFilterPtrOutput) Elem() StatisticalTimeSeriesFilterOutput {
@@ -7249,12 +6210,6 @@ func (o StatisticalTimeSeriesFilterResponseOutput) ToStatisticalTimeSeriesFilter
 
 func (o StatisticalTimeSeriesFilterResponseOutput) ToStatisticalTimeSeriesFilterResponseOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterResponseOutput {
 	return o
-}
-
-func (o StatisticalTimeSeriesFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatisticalTimeSeriesFilterResponse] {
-	return pulumix.Output[StatisticalTimeSeriesFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How many time series to output.
@@ -7314,12 +6269,6 @@ func (i TableDataSetArgs) ToTableDataSetOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TableDataSetOutput)
 }
 
-func (i TableDataSetArgs) ToOutput(ctx context.Context) pulumix.Output[TableDataSet] {
-	return pulumix.Output[TableDataSet]{
-		OutputState: i.ToTableDataSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TableDataSetArrayInput is an input type that accepts TableDataSetArray and TableDataSetArrayOutput values.
 // You can construct a concrete instance of `TableDataSetArrayInput` via:
 //
@@ -7345,12 +6294,6 @@ func (i TableDataSetArray) ToTableDataSetArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TableDataSetArrayOutput)
 }
 
-func (i TableDataSetArray) ToOutput(ctx context.Context) pulumix.Output[[]TableDataSet] {
-	return pulumix.Output[[]TableDataSet]{
-		OutputState: i.ToTableDataSetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Groups a time series query definition with table options.
 type TableDataSetOutput struct{ *pulumi.OutputState }
 
@@ -7364,12 +6307,6 @@ func (o TableDataSetOutput) ToTableDataSetOutput() TableDataSetOutput {
 
 func (o TableDataSetOutput) ToTableDataSetOutputWithContext(ctx context.Context) TableDataSetOutput {
 	return o
-}
-
-func (o TableDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[TableDataSet] {
-	return pulumix.Output[TableDataSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
@@ -7406,12 +6343,6 @@ func (o TableDataSetArrayOutput) ToTableDataSetArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o TableDataSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TableDataSet] {
-	return pulumix.Output[[]TableDataSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TableDataSetArrayOutput) Index(i pulumi.IntInput) TableDataSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableDataSet {
 		return vs[0].([]TableDataSet)[vs[1].(int)]
@@ -7443,12 +6374,6 @@ func (o TableDataSetResponseOutput) ToTableDataSetResponseOutput() TableDataSetR
 
 func (o TableDataSetResponseOutput) ToTableDataSetResponseOutputWithContext(ctx context.Context) TableDataSetResponseOutput {
 	return o
-}
-
-func (o TableDataSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TableDataSetResponse] {
-	return pulumix.Output[TableDataSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
@@ -7483,12 +6408,6 @@ func (o TableDataSetResponseArrayOutput) ToTableDataSetResponseArrayOutput() Tab
 
 func (o TableDataSetResponseArrayOutput) ToTableDataSetResponseArrayOutputWithContext(ctx context.Context) TableDataSetResponseArrayOutput {
 	return o
-}
-
-func (o TableDataSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TableDataSetResponse] {
-	return pulumix.Output[[]TableDataSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableDataSetResponseArrayOutput) Index(i pulumi.IntInput) TableDataSetResponseOutput {
@@ -7532,12 +6451,6 @@ func (i TableDisplayOptionsArgs) ToTableDisplayOptionsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TableDisplayOptionsOutput)
 }
 
-func (i TableDisplayOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[TableDisplayOptions] {
-	return pulumix.Output[TableDisplayOptions]{
-		OutputState: i.ToTableDisplayOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TableDisplayOptionsArgs) ToTableDisplayOptionsPtrOutput() TableDisplayOptionsPtrOutput {
 	return i.ToTableDisplayOptionsPtrOutputWithContext(context.Background())
 }
@@ -7579,12 +6492,6 @@ func (i *tableDisplayOptionsPtrType) ToTableDisplayOptionsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(TableDisplayOptionsPtrOutput)
 }
 
-func (i *tableDisplayOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TableDisplayOptions] {
-	return pulumix.Output[*TableDisplayOptions]{
-		OutputState: i.ToTableDisplayOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Table display options that can be reused.
 type TableDisplayOptionsOutput struct{ *pulumi.OutputState }
 
@@ -7610,12 +6517,6 @@ func (o TableDisplayOptionsOutput) ToTableDisplayOptionsPtrOutputWithContext(ctx
 	}).(TableDisplayOptionsPtrOutput)
 }
 
-func (o TableDisplayOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[TableDisplayOptions] {
-	return pulumix.Output[TableDisplayOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
 func (o TableDisplayOptionsOutput) ShownColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TableDisplayOptions) []string { return v.ShownColumns }).(pulumi.StringArrayOutput)
@@ -7633,12 +6534,6 @@ func (o TableDisplayOptionsPtrOutput) ToTableDisplayOptionsPtrOutput() TableDisp
 
 func (o TableDisplayOptionsPtrOutput) ToTableDisplayOptionsPtrOutputWithContext(ctx context.Context) TableDisplayOptionsPtrOutput {
 	return o
-}
-
-func (o TableDisplayOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableDisplayOptions] {
-	return pulumix.Output[*TableDisplayOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableDisplayOptionsPtrOutput) Elem() TableDisplayOptionsOutput {
@@ -7680,12 +6575,6 @@ func (o TableDisplayOptionsResponseOutput) ToTableDisplayOptionsResponseOutput()
 
 func (o TableDisplayOptionsResponseOutput) ToTableDisplayOptionsResponseOutputWithContext(ctx context.Context) TableDisplayOptionsResponseOutput {
 	return o
-}
-
-func (o TableDisplayOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TableDisplayOptionsResponse] {
-	return pulumix.Output[TableDisplayOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
@@ -7736,12 +6625,6 @@ func (i TextArgs) ToTextOutputWithContext(ctx context.Context) TextOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TextOutput)
 }
 
-func (i TextArgs) ToOutput(ctx context.Context) pulumix.Output[Text] {
-	return pulumix.Output[Text]{
-		OutputState: i.ToTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TextArgs) ToTextPtrOutput() TextPtrOutput {
 	return i.ToTextPtrOutputWithContext(context.Background())
 }
@@ -7783,12 +6666,6 @@ func (i *textPtrType) ToTextPtrOutputWithContext(ctx context.Context) TextPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(TextPtrOutput)
 }
 
-func (i *textPtrType) ToOutput(ctx context.Context) pulumix.Output[*Text] {
-	return pulumix.Output[*Text]{
-		OutputState: i.ToTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A widget that displays textual content.
 type TextOutput struct{ *pulumi.OutputState }
 
@@ -7812,12 +6689,6 @@ func (o TextOutput) ToTextPtrOutputWithContext(ctx context.Context) TextPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Text) *Text {
 		return &v
 	}).(TextPtrOutput)
-}
-
-func (o TextOutput) ToOutput(ctx context.Context) pulumix.Output[Text] {
-	return pulumix.Output[Text]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The text content to be displayed.
@@ -7847,12 +6718,6 @@ func (o TextPtrOutput) ToTextPtrOutput() TextPtrOutput {
 
 func (o TextPtrOutput) ToTextPtrOutputWithContext(ctx context.Context) TextPtrOutput {
 	return o
-}
-
-func (o TextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Text] {
-	return pulumix.Output[*Text]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextPtrOutput) Elem() TextOutput {
@@ -7918,12 +6783,6 @@ func (o TextResponseOutput) ToTextResponseOutput() TextResponseOutput {
 
 func (o TextResponseOutput) ToTextResponseOutputWithContext(ctx context.Context) TextResponseOutput {
 	return o
-}
-
-func (o TextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TextResponse] {
-	return pulumix.Output[TextResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The text content to be displayed.
@@ -8000,12 +6859,6 @@ func (i TextStyleArgs) ToTextStyleOutputWithContext(ctx context.Context) TextSty
 	return pulumi.ToOutputWithContext(ctx, i).(TextStyleOutput)
 }
 
-func (i TextStyleArgs) ToOutput(ctx context.Context) pulumix.Output[TextStyle] {
-	return pulumix.Output[TextStyle]{
-		OutputState: i.ToTextStyleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TextStyleArgs) ToTextStylePtrOutput() TextStylePtrOutput {
 	return i.ToTextStylePtrOutputWithContext(context.Background())
 }
@@ -8047,12 +6900,6 @@ func (i *textStylePtrType) ToTextStylePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TextStylePtrOutput)
 }
 
-func (i *textStylePtrType) ToOutput(ctx context.Context) pulumix.Output[*TextStyle] {
-	return pulumix.Output[*TextStyle]{
-		OutputState: i.ToTextStylePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties that determine how the title and content are styled
 type TextStyleOutput struct{ *pulumi.OutputState }
 
@@ -8076,12 +6923,6 @@ func (o TextStyleOutput) ToTextStylePtrOutputWithContext(ctx context.Context) Te
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextStyle) *TextStyle {
 		return &v
 	}).(TextStylePtrOutput)
-}
-
-func (o TextStyleOutput) ToOutput(ctx context.Context) pulumix.Output[TextStyle] {
-	return pulumix.Output[TextStyle]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The background color as a hex string. "#RRGGBB" or "#RGB"
@@ -8131,12 +6972,6 @@ func (o TextStylePtrOutput) ToTextStylePtrOutput() TextStylePtrOutput {
 
 func (o TextStylePtrOutput) ToTextStylePtrOutputWithContext(ctx context.Context) TextStylePtrOutput {
 	return o
-}
-
-func (o TextStylePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStyle] {
-	return pulumix.Output[*TextStyle]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextStylePtrOutput) Elem() TextStyleOutput {
@@ -8252,12 +7087,6 @@ func (o TextStyleResponseOutput) ToTextStyleResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o TextStyleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TextStyleResponse] {
-	return pulumix.Output[TextStyleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The background color as a hex string. "#RRGGBB" or "#RGB"
 func (o TextStyleResponseOutput) BackgroundColor() pulumi.StringOutput {
 	return o.ApplyT(func(v TextStyleResponse) string { return v.BackgroundColor }).(pulumi.StringOutput)
@@ -8344,12 +7173,6 @@ func (i ThresholdArgs) ToThresholdOutputWithContext(ctx context.Context) Thresho
 	return pulumi.ToOutputWithContext(ctx, i).(ThresholdOutput)
 }
 
-func (i ThresholdArgs) ToOutput(ctx context.Context) pulumix.Output[Threshold] {
-	return pulumix.Output[Threshold]{
-		OutputState: i.ToThresholdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ThresholdArrayInput is an input type that accepts ThresholdArray and ThresholdArrayOutput values.
 // You can construct a concrete instance of `ThresholdArrayInput` via:
 //
@@ -8375,12 +7198,6 @@ func (i ThresholdArray) ToThresholdArrayOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(ThresholdArrayOutput)
 }
 
-func (i ThresholdArray) ToOutput(ctx context.Context) pulumix.Output[[]Threshold] {
-	return pulumix.Output[[]Threshold]{
-		OutputState: i.ToThresholdArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a threshold for categorizing time series values.
 type ThresholdOutput struct{ *pulumi.OutputState }
 
@@ -8394,12 +7211,6 @@ func (o ThresholdOutput) ToThresholdOutput() ThresholdOutput {
 
 func (o ThresholdOutput) ToThresholdOutputWithContext(ctx context.Context) ThresholdOutput {
 	return o
-}
-
-func (o ThresholdOutput) ToOutput(ctx context.Context) pulumix.Output[Threshold] {
-	return pulumix.Output[Threshold]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The state color for this threshold. Color is not allowed in a XyChart.
@@ -8441,12 +7252,6 @@ func (o ThresholdArrayOutput) ToThresholdArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ThresholdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Threshold] {
-	return pulumix.Output[[]Threshold]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ThresholdArrayOutput) Index(i pulumi.IntInput) ThresholdOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Threshold {
 		return vs[0].([]Threshold)[vs[1].(int)]
@@ -8480,12 +7285,6 @@ func (o ThresholdResponseOutput) ToThresholdResponseOutput() ThresholdResponseOu
 
 func (o ThresholdResponseOutput) ToThresholdResponseOutputWithContext(ctx context.Context) ThresholdResponseOutput {
 	return o
-}
-
-func (o ThresholdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ThresholdResponse] {
-	return pulumix.Output[ThresholdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The state color for this threshold. Color is not allowed in a XyChart.
@@ -8525,12 +7324,6 @@ func (o ThresholdResponseArrayOutput) ToThresholdResponseArrayOutput() Threshold
 
 func (o ThresholdResponseArrayOutput) ToThresholdResponseArrayOutputWithContext(ctx context.Context) ThresholdResponseArrayOutput {
 	return o
-}
-
-func (o ThresholdResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThresholdResponse] {
-	return pulumix.Output[[]ThresholdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThresholdResponseArrayOutput) Index(i pulumi.IntInput) ThresholdResponseOutput {
@@ -8590,12 +7383,6 @@ func (i TileArgs) ToTileOutputWithContext(ctx context.Context) TileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TileOutput)
 }
 
-func (i TileArgs) ToOutput(ctx context.Context) pulumix.Output[Tile] {
-	return pulumix.Output[Tile]{
-		OutputState: i.ToTileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TileArrayInput is an input type that accepts TileArray and TileArrayOutput values.
 // You can construct a concrete instance of `TileArrayInput` via:
 //
@@ -8621,12 +7408,6 @@ func (i TileArray) ToTileArrayOutputWithContext(ctx context.Context) TileArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(TileArrayOutput)
 }
 
-func (i TileArray) ToOutput(ctx context.Context) pulumix.Output[[]Tile] {
-	return pulumix.Output[[]Tile]{
-		OutputState: i.ToTileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A single tile in the mosaic. The placement and size of the tile are configurable.
 type TileOutput struct{ *pulumi.OutputState }
 
@@ -8640,12 +7421,6 @@ func (o TileOutput) ToTileOutput() TileOutput {
 
 func (o TileOutput) ToTileOutputWithContext(ctx context.Context) TileOutput {
 	return o
-}
-
-func (o TileOutput) ToOutput(ctx context.Context) pulumix.Output[Tile] {
-	return pulumix.Output[Tile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1.
@@ -8687,12 +7462,6 @@ func (o TileArrayOutput) ToTileArrayOutputWithContext(ctx context.Context) TileA
 	return o
 }
 
-func (o TileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Tile] {
-	return pulumix.Output[[]Tile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TileArrayOutput) Index(i pulumi.IntInput) TileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Tile {
 		return vs[0].([]Tile)[vs[1].(int)]
@@ -8726,12 +7495,6 @@ func (o TileResponseOutput) ToTileResponseOutput() TileResponseOutput {
 
 func (o TileResponseOutput) ToTileResponseOutputWithContext(ctx context.Context) TileResponseOutput {
 	return o
-}
-
-func (o TileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TileResponse] {
-	return pulumix.Output[TileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1.
@@ -8771,12 +7534,6 @@ func (o TileResponseArrayOutput) ToTileResponseArrayOutput() TileResponseArrayOu
 
 func (o TileResponseArrayOutput) ToTileResponseArrayOutputWithContext(ctx context.Context) TileResponseArrayOutput {
 	return o
-}
-
-func (o TileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TileResponse] {
-	return pulumix.Output[[]TileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TileResponseArrayOutput) Index(i pulumi.IntInput) TileResponseOutput {
@@ -8840,12 +7597,6 @@ func (i TimeSeriesFilterArgs) ToTimeSeriesFilterOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesFilterOutput)
 }
 
-func (i TimeSeriesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesFilter] {
-	return pulumix.Output[TimeSeriesFilter]{
-		OutputState: i.ToTimeSeriesFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TimeSeriesFilterArgs) ToTimeSeriesFilterPtrOutput() TimeSeriesFilterPtrOutput {
 	return i.ToTimeSeriesFilterPtrOutputWithContext(context.Background())
 }
@@ -8887,12 +7638,6 @@ func (i *timeSeriesFilterPtrType) ToTimeSeriesFilterPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesFilterPtrOutput)
 }
 
-func (i *timeSeriesFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesFilter] {
-	return pulumix.Output[*TimeSeriesFilter]{
-		OutputState: i.ToTimeSeriesFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
 type TimeSeriesFilterOutput struct{ *pulumi.OutputState }
 
@@ -8916,12 +7661,6 @@ func (o TimeSeriesFilterOutput) ToTimeSeriesFilterPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesFilter) *TimeSeriesFilter {
 		return &v
 	}).(TimeSeriesFilterPtrOutput)
-}
-
-func (o TimeSeriesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesFilter] {
-	return pulumix.Output[TimeSeriesFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
@@ -8963,12 +7702,6 @@ func (o TimeSeriesFilterPtrOutput) ToTimeSeriesFilterPtrOutput() TimeSeriesFilte
 
 func (o TimeSeriesFilterPtrOutput) ToTimeSeriesFilterPtrOutputWithContext(ctx context.Context) TimeSeriesFilterPtrOutput {
 	return o
-}
-
-func (o TimeSeriesFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesFilter] {
-	return pulumix.Output[*TimeSeriesFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeSeriesFilterPtrOutput) Elem() TimeSeriesFilterOutput {
@@ -9088,12 +7821,6 @@ func (i TimeSeriesFilterRatioArgs) ToTimeSeriesFilterRatioOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesFilterRatioOutput)
 }
 
-func (i TimeSeriesFilterRatioArgs) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesFilterRatio] {
-	return pulumix.Output[TimeSeriesFilterRatio]{
-		OutputState: i.ToTimeSeriesFilterRatioOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TimeSeriesFilterRatioArgs) ToTimeSeriesFilterRatioPtrOutput() TimeSeriesFilterRatioPtrOutput {
 	return i.ToTimeSeriesFilterRatioPtrOutputWithContext(context.Background())
 }
@@ -9135,12 +7862,6 @@ func (i *timeSeriesFilterRatioPtrType) ToTimeSeriesFilterRatioPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesFilterRatioPtrOutput)
 }
 
-func (i *timeSeriesFilterRatioPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesFilterRatio] {
-	return pulumix.Output[*TimeSeriesFilterRatio]{
-		OutputState: i.ToTimeSeriesFilterRatioPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
 type TimeSeriesFilterRatioOutput struct{ *pulumi.OutputState }
 
@@ -9164,12 +7885,6 @@ func (o TimeSeriesFilterRatioOutput) ToTimeSeriesFilterRatioPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesFilterRatio) *TimeSeriesFilterRatio {
 		return &v
 	}).(TimeSeriesFilterRatioPtrOutput)
-}
-
-func (o TimeSeriesFilterRatioOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesFilterRatio] {
-	return pulumix.Output[TimeSeriesFilterRatio]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The denominator of the ratio.
@@ -9211,12 +7926,6 @@ func (o TimeSeriesFilterRatioPtrOutput) ToTimeSeriesFilterRatioPtrOutput() TimeS
 
 func (o TimeSeriesFilterRatioPtrOutput) ToTimeSeriesFilterRatioPtrOutputWithContext(ctx context.Context) TimeSeriesFilterRatioPtrOutput {
 	return o
-}
-
-func (o TimeSeriesFilterRatioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesFilterRatio] {
-	return pulumix.Output[*TimeSeriesFilterRatio]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeSeriesFilterRatioPtrOutput) Elem() TimeSeriesFilterRatioOutput {
@@ -9312,12 +8021,6 @@ func (o TimeSeriesFilterRatioResponseOutput) ToTimeSeriesFilterRatioResponseOutp
 	return o
 }
 
-func (o TimeSeriesFilterRatioResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesFilterRatioResponse] {
-	return pulumix.Output[TimeSeriesFilterRatioResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The denominator of the ratio.
 func (o TimeSeriesFilterRatioResponseOutput) Denominator() RatioPartResponseOutput {
 	return o.ApplyT(func(v TimeSeriesFilterRatioResponse) RatioPartResponse { return v.Denominator }).(RatioPartResponseOutput)
@@ -9376,12 +8079,6 @@ func (o TimeSeriesFilterResponseOutput) ToTimeSeriesFilterResponseOutput() TimeS
 
 func (o TimeSeriesFilterResponseOutput) ToTimeSeriesFilterResponseOutputWithContext(ctx context.Context) TimeSeriesFilterResponseOutput {
 	return o
-}
-
-func (o TimeSeriesFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesFilterResponse] {
-	return pulumix.Output[TimeSeriesFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
@@ -9472,12 +8169,6 @@ func (i TimeSeriesQueryArgs) ToTimeSeriesQueryOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesQueryOutput)
 }
 
-func (i TimeSeriesQueryArgs) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesQuery] {
-	return pulumix.Output[TimeSeriesQuery]{
-		OutputState: i.ToTimeSeriesQueryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TimeSeriesQueryArgs) ToTimeSeriesQueryPtrOutput() TimeSeriesQueryPtrOutput {
 	return i.ToTimeSeriesQueryPtrOutputWithContext(context.Background())
 }
@@ -9519,12 +8210,6 @@ func (i *timeSeriesQueryPtrType) ToTimeSeriesQueryPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesQueryPtrOutput)
 }
 
-func (i *timeSeriesQueryPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesQuery] {
-	return pulumix.Output[*TimeSeriesQuery]{
-		OutputState: i.ToTimeSeriesQueryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
 type TimeSeriesQueryOutput struct{ *pulumi.OutputState }
 
@@ -9548,12 +8233,6 @@ func (o TimeSeriesQueryOutput) ToTimeSeriesQueryPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesQuery) *TimeSeriesQuery {
 		return &v
 	}).(TimeSeriesQueryPtrOutput)
-}
-
-func (o TimeSeriesQueryOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesQuery] {
-	return pulumix.Output[TimeSeriesQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
@@ -9603,12 +8282,6 @@ func (o TimeSeriesQueryPtrOutput) ToTimeSeriesQueryPtrOutput() TimeSeriesQueryPt
 
 func (o TimeSeriesQueryPtrOutput) ToTimeSeriesQueryPtrOutputWithContext(ctx context.Context) TimeSeriesQueryPtrOutput {
 	return o
-}
-
-func (o TimeSeriesQueryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesQuery] {
-	return pulumix.Output[*TimeSeriesQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeSeriesQueryPtrOutput) Elem() TimeSeriesQueryOutput {
@@ -9724,12 +8397,6 @@ func (o TimeSeriesQueryResponseOutput) ToTimeSeriesQueryResponseOutputWithContex
 	return o
 }
 
-func (o TimeSeriesQueryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesQueryResponse] {
-	return pulumix.Output[TimeSeriesQueryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
 func (o TimeSeriesQueryResponseOutput) OpsAnalyticsQuery() OpsAnalyticsQueryResponseOutput {
 	return o.ApplyT(func(v TimeSeriesQueryResponse) OpsAnalyticsQueryResponse { return v.OpsAnalyticsQuery }).(OpsAnalyticsQueryResponseOutput)
@@ -9808,12 +8475,6 @@ func (i TimeSeriesTableArgs) ToTimeSeriesTableOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesTableOutput)
 }
 
-func (i TimeSeriesTableArgs) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesTable] {
-	return pulumix.Output[TimeSeriesTable]{
-		OutputState: i.ToTimeSeriesTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TimeSeriesTableArgs) ToTimeSeriesTablePtrOutput() TimeSeriesTablePtrOutput {
 	return i.ToTimeSeriesTablePtrOutputWithContext(context.Background())
 }
@@ -9855,12 +8516,6 @@ func (i *timeSeriesTablePtrType) ToTimeSeriesTablePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesTablePtrOutput)
 }
 
-func (i *timeSeriesTablePtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesTable] {
-	return pulumix.Output[*TimeSeriesTable]{
-		OutputState: i.ToTimeSeriesTablePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A table that displays time series data.
 type TimeSeriesTableOutput struct{ *pulumi.OutputState }
 
@@ -9884,12 +8539,6 @@ func (o TimeSeriesTableOutput) ToTimeSeriesTablePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesTable) *TimeSeriesTable {
 		return &v
 	}).(TimeSeriesTablePtrOutput)
-}
-
-func (o TimeSeriesTableOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesTable] {
-	return pulumix.Output[TimeSeriesTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The list of the persistent column settings for the table.
@@ -9919,12 +8568,6 @@ func (o TimeSeriesTablePtrOutput) ToTimeSeriesTablePtrOutput() TimeSeriesTablePt
 
 func (o TimeSeriesTablePtrOutput) ToTimeSeriesTablePtrOutputWithContext(ctx context.Context) TimeSeriesTablePtrOutput {
 	return o
-}
-
-func (o TimeSeriesTablePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesTable] {
-	return pulumix.Output[*TimeSeriesTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeSeriesTablePtrOutput) Elem() TimeSeriesTableOutput {
@@ -9990,12 +8633,6 @@ func (o TimeSeriesTableResponseOutput) ToTimeSeriesTableResponseOutput() TimeSer
 
 func (o TimeSeriesTableResponseOutput) ToTimeSeriesTableResponseOutputWithContext(ctx context.Context) TimeSeriesTableResponseOutput {
 	return o
-}
-
-func (o TimeSeriesTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesTableResponse] {
-	return pulumix.Output[TimeSeriesTableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The list of the persistent column settings for the table.
@@ -10096,12 +8733,6 @@ func (i WidgetArgs) ToWidgetOutputWithContext(ctx context.Context) WidgetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(WidgetOutput)
 }
 
-func (i WidgetArgs) ToOutput(ctx context.Context) pulumix.Output[Widget] {
-	return pulumix.Output[Widget]{
-		OutputState: i.ToWidgetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WidgetArgs) ToWidgetPtrOutput() WidgetPtrOutput {
 	return i.ToWidgetPtrOutputWithContext(context.Background())
 }
@@ -10143,12 +8774,6 @@ func (i *widgetPtrType) ToWidgetPtrOutputWithContext(ctx context.Context) Widget
 	return pulumi.ToOutputWithContext(ctx, i).(WidgetPtrOutput)
 }
 
-func (i *widgetPtrType) ToOutput(ctx context.Context) pulumix.Output[*Widget] {
-	return pulumix.Output[*Widget]{
-		OutputState: i.ToWidgetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WidgetArrayInput is an input type that accepts WidgetArray and WidgetArrayOutput values.
 // You can construct a concrete instance of `WidgetArrayInput` via:
 //
@@ -10174,12 +8799,6 @@ func (i WidgetArray) ToWidgetArrayOutputWithContext(ctx context.Context) WidgetA
 	return pulumi.ToOutputWithContext(ctx, i).(WidgetArrayOutput)
 }
 
-func (i WidgetArray) ToOutput(ctx context.Context) pulumix.Output[[]Widget] {
-	return pulumix.Output[[]Widget]{
-		OutputState: i.ToWidgetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
 type WidgetOutput struct{ *pulumi.OutputState }
 
@@ -10203,12 +8822,6 @@ func (o WidgetOutput) ToWidgetPtrOutputWithContext(ctx context.Context) WidgetPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Widget) *Widget {
 		return &v
 	}).(WidgetPtrOutput)
-}
-
-func (o WidgetOutput) ToOutput(ctx context.Context) pulumix.Output[Widget] {
-	return pulumix.Output[Widget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A chart of alert policy data.
@@ -10288,12 +8901,6 @@ func (o WidgetPtrOutput) ToWidgetPtrOutput() WidgetPtrOutput {
 
 func (o WidgetPtrOutput) ToWidgetPtrOutputWithContext(ctx context.Context) WidgetPtrOutput {
 	return o
-}
-
-func (o WidgetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Widget] {
-	return pulumix.Output[*Widget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WidgetPtrOutput) Elem() WidgetOutput {
@@ -10450,12 +9057,6 @@ func (o WidgetArrayOutput) ToWidgetArrayOutputWithContext(ctx context.Context) W
 	return o
 }
 
-func (o WidgetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Widget] {
-	return pulumix.Output[[]Widget]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WidgetArrayOutput) Index(i pulumi.IntInput) WidgetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Widget {
 		return vs[0].([]Widget)[vs[1].(int)]
@@ -10503,12 +9104,6 @@ func (o WidgetResponseOutput) ToWidgetResponseOutput() WidgetResponseOutput {
 
 func (o WidgetResponseOutput) ToWidgetResponseOutputWithContext(ctx context.Context) WidgetResponseOutput {
 	return o
-}
-
-func (o WidgetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WidgetResponse] {
-	return pulumix.Output[WidgetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A chart of alert policy data.
@@ -10585,12 +9180,6 @@ func (o WidgetResponseArrayOutput) ToWidgetResponseArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o WidgetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WidgetResponse] {
-	return pulumix.Output[[]WidgetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WidgetResponseArrayOutput) Index(i pulumi.IntInput) WidgetResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WidgetResponse {
 		return vs[0].([]WidgetResponse)[vs[1].(int)]
@@ -10656,12 +9245,6 @@ func (i XyChartArgs) ToXyChartOutputWithContext(ctx context.Context) XyChartOutp
 	return pulumi.ToOutputWithContext(ctx, i).(XyChartOutput)
 }
 
-func (i XyChartArgs) ToOutput(ctx context.Context) pulumix.Output[XyChart] {
-	return pulumix.Output[XyChart]{
-		OutputState: i.ToXyChartOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i XyChartArgs) ToXyChartPtrOutput() XyChartPtrOutput {
 	return i.ToXyChartPtrOutputWithContext(context.Background())
 }
@@ -10703,12 +9286,6 @@ func (i *xyChartPtrType) ToXyChartPtrOutputWithContext(ctx context.Context) XyCh
 	return pulumi.ToOutputWithContext(ctx, i).(XyChartPtrOutput)
 }
 
-func (i *xyChartPtrType) ToOutput(ctx context.Context) pulumix.Output[*XyChart] {
-	return pulumix.Output[*XyChart]{
-		OutputState: i.ToXyChartPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A chart that displays data on a 2D (X and Y axes) plane.
 type XyChartOutput struct{ *pulumi.OutputState }
 
@@ -10732,12 +9309,6 @@ func (o XyChartOutput) ToXyChartPtrOutputWithContext(ctx context.Context) XyChar
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v XyChart) *XyChart {
 		return &v
 	}).(XyChartPtrOutput)
-}
-
-func (o XyChartOutput) ToOutput(ctx context.Context) pulumix.Output[XyChart] {
-	return pulumix.Output[XyChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display options for the chart.
@@ -10787,12 +9358,6 @@ func (o XyChartPtrOutput) ToXyChartPtrOutput() XyChartPtrOutput {
 
 func (o XyChartPtrOutput) ToXyChartPtrOutputWithContext(ctx context.Context) XyChartPtrOutput {
 	return o
-}
-
-func (o XyChartPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*XyChart] {
-	return pulumix.Output[*XyChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o XyChartPtrOutput) Elem() XyChartOutput {
@@ -10906,12 +9471,6 @@ func (o XyChartResponseOutput) ToXyChartResponseOutput() XyChartResponseOutput {
 
 func (o XyChartResponseOutput) ToXyChartResponseOutputWithContext(ctx context.Context) XyChartResponseOutput {
 	return o
-}
-
-func (o XyChartResponseOutput) ToOutput(ctx context.Context) pulumix.Output[XyChartResponse] {
-	return pulumix.Output[XyChartResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display options for the chart.

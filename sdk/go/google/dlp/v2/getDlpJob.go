@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
@@ -91,12 +90,6 @@ func (o LookupDlpJobResultOutput) ToLookupDlpJobResultOutput() LookupDlpJobResul
 
 func (o LookupDlpJobResultOutput) ToLookupDlpJobResultOutputWithContext(ctx context.Context) LookupDlpJobResultOutput {
 	return o
-}
-
-func (o LookupDlpJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDlpJobResult] {
-	return pulumix.Output[LookupDlpJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Events that should occur after the job has completed.

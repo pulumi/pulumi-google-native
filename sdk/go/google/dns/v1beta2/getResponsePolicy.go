@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches the representation of an existing Response Policy.
@@ -78,12 +77,6 @@ func (o LookupResponsePolicyResultOutput) ToLookupResponsePolicyResultOutput() L
 
 func (o LookupResponsePolicyResultOutput) ToLookupResponsePolicyResultOutputWithContext(ctx context.Context) LookupResponsePolicyResultOutput {
 	return o
-}
-
-func (o LookupResponsePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResponsePolicyResult] {
-	return pulumix.Output[LookupResponsePolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User-provided description for this Response Policy.

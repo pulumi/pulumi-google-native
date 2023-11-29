@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a firewall rule in the specified project using the data included in the request.
@@ -196,12 +195,6 @@ func (i *Firewall) ToFirewallOutputWithContext(ctx context.Context) FirewallOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallOutput)
 }
 
-func (i *Firewall) ToOutput(ctx context.Context) pulumix.Output[*Firewall] {
-	return pulumix.Output[*Firewall]{
-		OutputState: i.ToFirewallOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallOutput struct{ *pulumi.OutputState }
 
 func (FirewallOutput) ElementType() reflect.Type {
@@ -214,12 +207,6 @@ func (o FirewallOutput) ToFirewallOutput() FirewallOutput {
 
 func (o FirewallOutput) ToFirewallOutputWithContext(ctx context.Context) FirewallOutput {
 	return o
-}
-
-func (o FirewallOutput) ToOutput(ctx context.Context) pulumix.Output[*Firewall] {
-	return pulumix.Output[*Firewall]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.

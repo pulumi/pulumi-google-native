@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve a GitHubEnterpriseConfig.
@@ -89,12 +88,6 @@ func (o LookupGithubEnterpriseConfigResultOutput) ToLookupGithubEnterpriseConfig
 
 func (o LookupGithubEnterpriseConfigResultOutput) ToLookupGithubEnterpriseConfigResultOutputWithContext(ctx context.Context) LookupGithubEnterpriseConfigResultOutput {
 	return o
-}
-
-func (o LookupGithubEnterpriseConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGithubEnterpriseConfigResult] {
-	return pulumix.Output[LookupGithubEnterpriseConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The GitHub app id of the Cloud Build app on the GitHub Enterprise server.

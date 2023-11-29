@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -271,12 +259,6 @@ func (o DomainMappingSpecCertificateModeOutput) ToDomainMappingSpecCertificateMo
 	}).(DomainMappingSpecCertificateModePtrOutput)
 }
 
-func (o DomainMappingSpecCertificateModeOutput) ToOutput(ctx context.Context) pulumix.Output[DomainMappingSpecCertificateMode] {
-	return pulumix.Output[DomainMappingSpecCertificateMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DomainMappingSpecCertificateModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -310,12 +292,6 @@ func (o DomainMappingSpecCertificateModePtrOutput) ToDomainMappingSpecCertificat
 
 func (o DomainMappingSpecCertificateModePtrOutput) ToDomainMappingSpecCertificateModePtrOutputWithContext(ctx context.Context) DomainMappingSpecCertificateModePtrOutput {
 	return o
-}
-
-func (o DomainMappingSpecCertificateModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainMappingSpecCertificateMode] {
-	return pulumix.Output[*DomainMappingSpecCertificateMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainMappingSpecCertificateModePtrOutput) Elem() DomainMappingSpecCertificateModeOutput {

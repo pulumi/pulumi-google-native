@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a glossary entry.
@@ -130,12 +129,6 @@ func (i *GlossaryEntry) ToGlossaryEntryOutputWithContext(ctx context.Context) Gl
 	return pulumi.ToOutputWithContext(ctx, i).(GlossaryEntryOutput)
 }
 
-func (i *GlossaryEntry) ToOutput(ctx context.Context) pulumix.Output[*GlossaryEntry] {
-	return pulumix.Output[*GlossaryEntry]{
-		OutputState: i.ToGlossaryEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlossaryEntryOutput struct{ *pulumi.OutputState }
 
 func (GlossaryEntryOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o GlossaryEntryOutput) ToGlossaryEntryOutput() GlossaryEntryOutput {
 
 func (o GlossaryEntryOutput) ToGlossaryEntryOutputWithContext(ctx context.Context) GlossaryEntryOutput {
 	return o
-}
-
-func (o GlossaryEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*GlossaryEntry] {
-	return pulumix.Output[*GlossaryEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes the glossary entry.

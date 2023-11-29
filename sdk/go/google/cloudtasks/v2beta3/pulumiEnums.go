@@ -93,12 +93,6 @@ func (o AppEngineHttpRequestHttpMethodOutput) ToAppEngineHttpRequestHttpMethodPt
 	}).(AppEngineHttpRequestHttpMethodPtrOutput)
 }
 
-func (o AppEngineHttpRequestHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpRequestHttpMethod] {
-	return pulumix.Output[AppEngineHttpRequestHttpMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppEngineHttpRequestHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -132,12 +126,6 @@ func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMetho
 
 func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodPtrOutput {
 	return o
-}
-
-func (o AppEngineHttpRequestHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpRequestHttpMethod] {
-	return pulumix.Output[*AppEngineHttpRequestHttpMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppEngineHttpRequestHttpMethodPtrOutput) Elem() AppEngineHttpRequestHttpMethodOutput {
@@ -290,12 +278,6 @@ func (o HttpRequestHttpMethodOutput) ToHttpRequestHttpMethodPtrOutputWithContext
 	}).(HttpRequestHttpMethodPtrOutput)
 }
 
-func (o HttpRequestHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRequestHttpMethod] {
-	return pulumix.Output[HttpRequestHttpMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpRequestHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -329,12 +311,6 @@ func (o HttpRequestHttpMethodPtrOutput) ToHttpRequestHttpMethodPtrOutput() HttpR
 
 func (o HttpRequestHttpMethodPtrOutput) ToHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) HttpRequestHttpMethodPtrOutput {
 	return o
-}
-
-func (o HttpRequestHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRequestHttpMethod] {
-	return pulumix.Output[*HttpRequestHttpMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRequestHttpMethodPtrOutput) Elem() HttpRequestHttpMethodOutput {
@@ -487,12 +463,6 @@ func (o HttpTargetHttpMethodOutput) ToHttpTargetHttpMethodPtrOutputWithContext(c
 	}).(HttpTargetHttpMethodPtrOutput)
 }
 
-func (o HttpTargetHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[HttpTargetHttpMethod] {
-	return pulumix.Output[HttpTargetHttpMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpTargetHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -526,12 +496,6 @@ func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutput() HttpTar
 
 func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) HttpTargetHttpMethodPtrOutput {
 	return o
-}
-
-func (o HttpTargetHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpTargetHttpMethod] {
-	return pulumix.Output[*HttpTargetHttpMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpTargetHttpMethodPtrOutput) Elem() HttpTargetHttpMethodOutput {
@@ -674,12 +638,6 @@ func (o QueueTypeOutput) ToQueueTypePtrOutputWithContext(ctx context.Context) Qu
 	}).(QueueTypePtrOutput)
 }
 
-func (o QueueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[QueueType] {
-	return pulumix.Output[QueueType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QueueTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -713,12 +671,6 @@ func (o QueueTypePtrOutput) ToQueueTypePtrOutput() QueueTypePtrOutput {
 
 func (o QueueTypePtrOutput) ToQueueTypePtrOutputWithContext(ctx context.Context) QueueTypePtrOutput {
 	return o
-}
-
-func (o QueueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueType] {
-	return pulumix.Output[*QueueType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueueTypePtrOutput) Elem() QueueTypeOutput {
@@ -861,12 +813,6 @@ func (o TaskResponseViewOutput) ToTaskResponseViewPtrOutputWithContext(ctx conte
 	}).(TaskResponseViewPtrOutput)
 }
 
-func (o TaskResponseViewOutput) ToOutput(ctx context.Context) pulumix.Output[TaskResponseView] {
-	return pulumix.Output[TaskResponseView]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TaskResponseViewOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -900,12 +846,6 @@ func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutput() TaskResponseVie
 
 func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutputWithContext(ctx context.Context) TaskResponseViewPtrOutput {
 	return o
-}
-
-func (o TaskResponseViewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TaskResponseView] {
-	return pulumix.Output[*TaskResponseView]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TaskResponseViewPtrOutput) Elem() TaskResponseViewOutput {
@@ -1048,12 +988,6 @@ func (o UriOverrideSchemeOutput) ToUriOverrideSchemePtrOutputWithContext(ctx con
 	}).(UriOverrideSchemePtrOutput)
 }
 
-func (o UriOverrideSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[UriOverrideScheme] {
-	return pulumix.Output[UriOverrideScheme]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UriOverrideSchemeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1087,12 +1021,6 @@ func (o UriOverrideSchemePtrOutput) ToUriOverrideSchemePtrOutput() UriOverrideSc
 
 func (o UriOverrideSchemePtrOutput) ToUriOverrideSchemePtrOutputWithContext(ctx context.Context) UriOverrideSchemePtrOutput {
 	return o
-}
-
-func (o UriOverrideSchemePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UriOverrideScheme] {
-	return pulumix.Output[*UriOverrideScheme]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UriOverrideSchemePtrOutput) Elem() UriOverrideSchemeOutput {
@@ -1235,12 +1163,6 @@ func (o UriOverrideUriOverrideEnforceModeOutput) ToUriOverrideUriOverrideEnforce
 	}).(UriOverrideUriOverrideEnforceModePtrOutput)
 }
 
-func (o UriOverrideUriOverrideEnforceModeOutput) ToOutput(ctx context.Context) pulumix.Output[UriOverrideUriOverrideEnforceMode] {
-	return pulumix.Output[UriOverrideUriOverrideEnforceMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UriOverrideUriOverrideEnforceModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1274,12 +1196,6 @@ func (o UriOverrideUriOverrideEnforceModePtrOutput) ToUriOverrideUriOverrideEnfo
 
 func (o UriOverrideUriOverrideEnforceModePtrOutput) ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(ctx context.Context) UriOverrideUriOverrideEnforceModePtrOutput {
 	return o
-}
-
-func (o UriOverrideUriOverrideEnforceModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UriOverrideUriOverrideEnforceMode] {
-	return pulumix.Output[*UriOverrideUriOverrideEnforceMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UriOverrideUriOverrideEnforceModePtrOutput) Elem() UriOverrideUriOverrideEnforceModeOutput {

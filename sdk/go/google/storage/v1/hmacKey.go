@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new HMAC key for the specified service account.
@@ -126,12 +125,6 @@ func (i *HmacKey) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyOutput)
 }
 
-func (i *HmacKey) ToOutput(ctx context.Context) pulumix.Output[*HmacKey] {
-	return pulumix.Output[*HmacKey]{
-		OutputState: i.ToHmacKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HmacKeyOutput struct{ *pulumi.OutputState }
 
 func (HmacKeyOutput) ElementType() reflect.Type {
@@ -144,12 +137,6 @@ func (o HmacKeyOutput) ToHmacKeyOutput() HmacKeyOutput {
 
 func (o HmacKeyOutput) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput {
 	return o
-}
-
-func (o HmacKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*HmacKey] {
-	return pulumix.Output[*HmacKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the HMAC Key.

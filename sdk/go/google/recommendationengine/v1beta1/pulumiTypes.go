@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput)
 }
 
-func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput is an input type that accepts GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray and GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput` via:
 //
@@ -80,12 +73,6 @@ func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray)
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput)
 }
 
-func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy] {
-	return pulumix.Output[[]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Category represents catalog item category hierarchy.
 type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput struct{ *pulumi.OutputState }
 
@@ -99,12 +86,6 @@ func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput
 
 func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
@@ -126,12 +107,6 @@ func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayO
 
 func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy] {
-	return pulumix.Output[[]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput) Index(i pulumi.IntInput) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput {
@@ -161,12 +136,6 @@ func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyRespon
 	return o
 }
 
-func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
 func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse) []string {
@@ -186,12 +155,6 @@ func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyRespon
 
 func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput) ToGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse] {
-	return pulumix.Output[[]GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseOutput {
@@ -239,12 +202,6 @@ func (i GoogleCloudRecommendationengineV1beta1FeatureMapArgs) ToGoogleCloudRecom
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapOutput)
 }
 
-func (i GoogleCloudRecommendationengineV1beta1FeatureMapArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1FeatureMap] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1FeatureMap]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1FeatureMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecommendationengineV1beta1FeatureMapArgs) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput() GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
 	return i.ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(context.Background())
 }
@@ -286,12 +243,6 @@ func (i *googleCloudRecommendationengineV1beta1FeatureMapPtrType) ToGoogleCloudR
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput)
 }
 
-func (i *googleCloudRecommendationengineV1beta1FeatureMapPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecommendationengineV1beta1FeatureMap] {
-	return pulumix.Output[*GoogleCloudRecommendationengineV1beta1FeatureMap]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
 type GoogleCloudRecommendationengineV1beta1FeatureMapOutput struct{ *pulumi.OutputState }
 
@@ -315,12 +266,6 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) ToGoogleCloudRec
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1FeatureMap) *GoogleCloudRecommendationengineV1beta1FeatureMap {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput)
-}
-
-func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1FeatureMap] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1FeatureMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
@@ -347,12 +292,6 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecommendationengineV1beta1FeatureMap] {
-	return pulumix.Output[*GoogleCloudRecommendationengineV1beta1FeatureMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) Elem() GoogleCloudRecommendationengineV1beta1FeatureMapOutput {
@@ -406,12 +345,6 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) ToGoogle
 
 func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapResponseOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1FeatureMapResponse] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1FeatureMapResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
@@ -471,12 +404,6 @@ func (i GoogleCloudRecommendationengineV1beta1ImageArgs) ToGoogleCloudRecommenda
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ImageOutput)
 }
 
-func (i GoogleCloudRecommendationengineV1beta1ImageArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1Image] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1Image]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1ImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRecommendationengineV1beta1ImageArrayInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ImageArray and GoogleCloudRecommendationengineV1beta1ImageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ImageArrayInput` via:
 //
@@ -502,12 +429,6 @@ func (i GoogleCloudRecommendationengineV1beta1ImageArray) ToGoogleCloudRecommend
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ImageArrayOutput)
 }
 
-func (i GoogleCloudRecommendationengineV1beta1ImageArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRecommendationengineV1beta1Image] {
-	return pulumix.Output[[]GoogleCloudRecommendationengineV1beta1Image]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1ImageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Catalog item thumbnail/detail image.
 type GoogleCloudRecommendationengineV1beta1ImageOutput struct{ *pulumi.OutputState }
 
@@ -521,12 +442,6 @@ func (o GoogleCloudRecommendationengineV1beta1ImageOutput) ToGoogleCloudRecommen
 
 func (o GoogleCloudRecommendationengineV1beta1ImageOutput) ToGoogleCloudRecommendationengineV1beta1ImageOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ImageOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ImageOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1Image] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1Image]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Height of the image in number of pixels.
@@ -556,12 +471,6 @@ func (o GoogleCloudRecommendationengineV1beta1ImageArrayOutput) ToGoogleCloudRec
 
 func (o GoogleCloudRecommendationengineV1beta1ImageArrayOutput) ToGoogleCloudRecommendationengineV1beta1ImageArrayOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ImageArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRecommendationengineV1beta1Image] {
-	return pulumix.Output[[]GoogleCloudRecommendationengineV1beta1Image]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ImageArrayOutput) Index(i pulumi.IntInput) GoogleCloudRecommendationengineV1beta1ImageOutput {
@@ -595,12 +504,6 @@ func (o GoogleCloudRecommendationengineV1beta1ImageResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudRecommendationengineV1beta1ImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ImageResponse] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ImageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Height of the image in number of pixels.
 func (o GoogleCloudRecommendationengineV1beta1ImageResponseOutput) Height() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ImageResponse) int { return v.Height }).(pulumi.IntOutput)
@@ -628,12 +531,6 @@ func (o GoogleCloudRecommendationengineV1beta1ImageResponseArrayOutput) ToGoogle
 
 func (o GoogleCloudRecommendationengineV1beta1ImageResponseArrayOutput) ToGoogleCloudRecommendationengineV1beta1ImageResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ImageResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ImageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRecommendationengineV1beta1ImageResponse] {
-	return pulumix.Output[[]GoogleCloudRecommendationengineV1beta1ImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ImageResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRecommendationengineV1beta1ImageResponseOutput {
@@ -705,12 +602,6 @@ func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput)
 }
 
-func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItem] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItem]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
 	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(context.Background())
 }
@@ -752,12 +643,6 @@ func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemPtrType) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput)
 }
 
-func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItem] {
-	return pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItem]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProductCatalogItem captures item metadata specific to retail products.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput struct{ *pulumi.OutputState }
 
@@ -781,12 +666,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) ToGoogle
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput)
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItem] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The available quantity of the item.
@@ -849,12 +728,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) ToGoo
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItem] {
-	return pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput {
@@ -986,12 +859,6 @@ func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput)
 }
 
-func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput {
 	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutputWithContext(context.Background())
 }
@@ -1033,12 +900,6 @@ func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput)
 }
 
-func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice] {
-	return pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Exact product price.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput struct{ *pulumi.OutputState }
 
@@ -1062,12 +923,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
 		return &v
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput)
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Display price of the product.
@@ -1096,12 +951,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOut
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice] {
-	return pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput {
@@ -1157,12 +1006,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceRespon
 	return o
 }
 
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Display price of the product.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponseOutput) DisplayPrice() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse) float64 {
@@ -1216,12 +1059,6 @@ func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput)
 }
 
-func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput {
 	return i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutputWithContext(context.Background())
 }
@@ -1263,12 +1100,6 @@ func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput)
 }
 
-func (i *googleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange] {
-	return pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange]{
-		OutputState: i.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Product price range when there are a range of prices for different variations of the same product.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput struct{ *pulumi.OutputState }
 
@@ -1294,12 +1125,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput)
 }
 
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum product price.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput) Max() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange) float64 { return v.Max }).(pulumi.Float64Output)
@@ -1322,12 +1147,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOut
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange] {
-	return pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput) Elem() GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput {
@@ -1383,12 +1202,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeRespon
 	return o
 }
 
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum product price.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput) Max() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) float64 {
@@ -1436,12 +1249,6 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) 
 
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse] {
-	return pulumix.Output[GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The available quantity of the item.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i AppEngineHttpRequestArgs) ToAppEngineHttpRequestOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpRequestOutput)
 }
 
-func (i AppEngineHttpRequestArgs) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpRequest] {
-	return pulumix.Output[AppEngineHttpRequest]{
-		OutputState: i.ToAppEngineHttpRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppEngineHttpRequestArgs) ToAppEngineHttpRequestPtrOutput() AppEngineHttpRequestPtrOutput {
 	return i.ToAppEngineHttpRequestPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *appEngineHttpRequestPtrType) ToAppEngineHttpRequestPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpRequestPtrOutput)
 }
 
-func (i *appEngineHttpRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpRequest] {
-	return pulumix.Output[*AppEngineHttpRequest]{
-		OutputState: i.ToAppEngineHttpRequestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // App Engine HTTP request. The message defines the HTTP request that is sent to an App Engine app when the task is dispatched. Using AppEngineHttpRequest requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform` The task will be delivered to the App Engine app which belongs to the same project as the queue. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and how routing is affected by [dispatch files](https://cloud.google.com/appengine/docs/python/config/dispatchref). Traffic is encrypted during transport and never leaves Google datacenters. Because this traffic is carried over a communication mechanism internal to Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS). The request to the handler, however, will appear to have used the HTTP protocol. The AppEngineRouting used to construct the URL that the task is delivered to can be set at the queue-level or task-level: * If app_engine_routing_override is set on the queue, this value is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. The `url` that the task will be sent to is: * `url =` host `+` relative_uri Tasks can be dispatched to secure app handlers, unsecure app handlers, and URIs restricted with [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref). Because tasks are not run as any user, they cannot be dispatched to URIs restricted with [`login: required`](https://cloud.google.com/appengine/docs/standard/python/config/appref) Task dispatches also do not follow redirects. The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` - `299`]. The task attempt has failed if the app's handler returns a non-2xx response code or Cloud Tasks does not receive response before the deadline. Failed tasks will be retried according to the retry configuration. `503` (Service Unavailable) is considered an App Engine system error instead of an application error and will cause Cloud Tasks' traffic congestion control to temporarily throttle the queue's dispatches. Unlike other types of task targets, a `429` (Too Many Requests) response from an app handler does not cause traffic congestion control to throttle the queue.
 type AppEngineHttpRequestOutput struct{ *pulumi.OutputState }
 
@@ -141,12 +128,6 @@ func (o AppEngineHttpRequestOutput) ToAppEngineHttpRequestPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpRequest) *AppEngineHttpRequest {
 		return &v
 	}).(AppEngineHttpRequestPtrOutput)
-}
-
-func (o AppEngineHttpRequestOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpRequest] {
-	return pulumix.Output[AppEngineHttpRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Task-level setting for App Engine routing. * If app_engine_routing_override is set on the queue, this value is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
@@ -186,12 +167,6 @@ func (o AppEngineHttpRequestPtrOutput) ToAppEngineHttpRequestPtrOutput() AppEngi
 
 func (o AppEngineHttpRequestPtrOutput) ToAppEngineHttpRequestPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestPtrOutput {
 	return o
-}
-
-func (o AppEngineHttpRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpRequest] {
-	return pulumix.Output[*AppEngineHttpRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppEngineHttpRequestPtrOutput) Elem() AppEngineHttpRequestOutput {
@@ -283,12 +258,6 @@ func (o AppEngineHttpRequestResponseOutput) ToAppEngineHttpRequestResponseOutput
 	return o
 }
 
-func (o AppEngineHttpRequestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpRequestResponse] {
-	return pulumix.Output[AppEngineHttpRequestResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Task-level setting for App Engine routing. * If app_engine_routing_override is set on the queue, this value is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
 func (o AppEngineHttpRequestResponseOutput) AppEngineRouting() AppEngineRoutingResponseOutput {
 	return o.ApplyT(func(v AppEngineHttpRequestResponse) AppEngineRoutingResponse { return v.AppEngineRouting }).(AppEngineRoutingResponseOutput)
@@ -357,12 +326,6 @@ func (i AppEngineRoutingArgs) ToAppEngineRoutingOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineRoutingOutput)
 }
 
-func (i AppEngineRoutingArgs) ToOutput(ctx context.Context) pulumix.Output[AppEngineRouting] {
-	return pulumix.Output[AppEngineRouting]{
-		OutputState: i.ToAppEngineRoutingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppEngineRoutingArgs) ToAppEngineRoutingPtrOutput() AppEngineRoutingPtrOutput {
 	return i.ToAppEngineRoutingPtrOutputWithContext(context.Background())
 }
@@ -404,12 +367,6 @@ func (i *appEngineRoutingPtrType) ToAppEngineRoutingPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineRoutingPtrOutput)
 }
 
-func (i *appEngineRoutingPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppEngineRouting] {
-	return pulumix.Output[*AppEngineRouting]{
-		OutputState: i.ToAppEngineRoutingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed). Using AppEngineRouting requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform`
 type AppEngineRoutingOutput struct{ *pulumi.OutputState }
 
@@ -433,12 +390,6 @@ func (o AppEngineRoutingOutput) ToAppEngineRoutingPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineRouting) *AppEngineRouting {
 		return &v
 	}).(AppEngineRoutingPtrOutput)
-}
-
-func (o AppEngineRoutingOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineRouting] {
-	return pulumix.Output[AppEngineRouting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
@@ -468,12 +419,6 @@ func (o AppEngineRoutingPtrOutput) ToAppEngineRoutingPtrOutput() AppEngineRoutin
 
 func (o AppEngineRoutingPtrOutput) ToAppEngineRoutingPtrOutputWithContext(ctx context.Context) AppEngineRoutingPtrOutput {
 	return o
-}
-
-func (o AppEngineRoutingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineRouting] {
-	return pulumix.Output[*AppEngineRouting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppEngineRoutingPtrOutput) Elem() AppEngineRoutingOutput {
@@ -543,12 +488,6 @@ func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponseOutputWithCont
 	return o
 }
 
-func (o AppEngineRoutingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineRoutingResponse] {
-	return pulumix.Output[AppEngineRoutingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
 func (o AppEngineRoutingResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v AppEngineRoutingResponse) string { return v.Host }).(pulumi.StringOutput)
@@ -594,12 +533,6 @@ func (o AttemptResponseOutput) ToAttemptResponseOutput() AttemptResponseOutput {
 
 func (o AttemptResponseOutput) ToAttemptResponseOutputWithContext(ctx context.Context) AttemptResponseOutput {
 	return o
-}
-
-func (o AttemptResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AttemptResponse] {
-	return pulumix.Output[AttemptResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
@@ -665,12 +598,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -696,12 +623,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -715,12 +636,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -750,12 +665,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -789,12 +698,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -822,12 +725,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -883,12 +780,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -930,12 +821,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -959,12 +844,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -999,12 +878,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1084,12 +957,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1149,12 +1016,6 @@ func (i HeaderArgs) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(HeaderOutput)
 }
 
-func (i HeaderArgs) ToOutput(ctx context.Context) pulumix.Output[Header] {
-	return pulumix.Output[Header]{
-		OutputState: i.ToHeaderOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HeaderArgs) ToHeaderPtrOutput() HeaderPtrOutput {
 	return i.ToHeaderPtrOutputWithContext(context.Background())
 }
@@ -1196,12 +1057,6 @@ func (i *headerPtrType) ToHeaderPtrOutputWithContext(ctx context.Context) Header
 	return pulumi.ToOutputWithContext(ctx, i).(HeaderPtrOutput)
 }
 
-func (i *headerPtrType) ToOutput(ctx context.Context) pulumix.Output[*Header] {
-	return pulumix.Output[*Header]{
-		OutputState: i.ToHeaderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a header message. A header can have a key and a value.
 type HeaderOutput struct{ *pulumi.OutputState }
 
@@ -1227,12 +1082,6 @@ func (o HeaderOutput) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPt
 	}).(HeaderPtrOutput)
 }
 
-func (o HeaderOutput) ToOutput(ctx context.Context) pulumix.Output[Header] {
-	return pulumix.Output[Header]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Key of the header.
 func (o HeaderOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Header) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -1255,12 +1104,6 @@ func (o HeaderPtrOutput) ToHeaderPtrOutput() HeaderPtrOutput {
 
 func (o HeaderPtrOutput) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtrOutput {
 	return o
-}
-
-func (o HeaderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Header] {
-	return pulumix.Output[*Header]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeaderPtrOutput) Elem() HeaderOutput {
@@ -1328,12 +1171,6 @@ func (i HeaderOverrideArgs) ToHeaderOverrideOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(HeaderOverrideOutput)
 }
 
-func (i HeaderOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[HeaderOverride] {
-	return pulumix.Output[HeaderOverride]{
-		OutputState: i.ToHeaderOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HeaderOverrideArrayInput is an input type that accepts HeaderOverrideArray and HeaderOverrideArrayOutput values.
 // You can construct a concrete instance of `HeaderOverrideArrayInput` via:
 //
@@ -1359,12 +1196,6 @@ func (i HeaderOverrideArray) ToHeaderOverrideArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(HeaderOverrideArrayOutput)
 }
 
-func (i HeaderOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]HeaderOverride] {
-	return pulumix.Output[[]HeaderOverride]{
-		OutputState: i.ToHeaderOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Wraps the Header object.
 type HeaderOverrideOutput struct{ *pulumi.OutputState }
 
@@ -1378,12 +1209,6 @@ func (o HeaderOverrideOutput) ToHeaderOverrideOutput() HeaderOverrideOutput {
 
 func (o HeaderOverrideOutput) ToHeaderOverrideOutputWithContext(ctx context.Context) HeaderOverrideOutput {
 	return o
-}
-
-func (o HeaderOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[HeaderOverride] {
-	return pulumix.Output[HeaderOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // header embodying a key and a value.
@@ -1403,12 +1228,6 @@ func (o HeaderOverrideArrayOutput) ToHeaderOverrideArrayOutput() HeaderOverrideA
 
 func (o HeaderOverrideArrayOutput) ToHeaderOverrideArrayOutputWithContext(ctx context.Context) HeaderOverrideArrayOutput {
 	return o
-}
-
-func (o HeaderOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HeaderOverride] {
-	return pulumix.Output[[]HeaderOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeaderOverrideArrayOutput) Index(i pulumi.IntInput) HeaderOverrideOutput {
@@ -1438,12 +1257,6 @@ func (o HeaderOverrideResponseOutput) ToHeaderOverrideResponseOutputWithContext(
 	return o
 }
 
-func (o HeaderOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HeaderOverrideResponse] {
-	return pulumix.Output[HeaderOverrideResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // header embodying a key and a value.
 func (o HeaderOverrideResponseOutput) Header() HeaderResponseOutput {
 	return o.ApplyT(func(v HeaderOverrideResponse) HeaderResponse { return v.Header }).(HeaderResponseOutput)
@@ -1461,12 +1274,6 @@ func (o HeaderOverrideResponseArrayOutput) ToHeaderOverrideResponseArrayOutput()
 
 func (o HeaderOverrideResponseArrayOutput) ToHeaderOverrideResponseArrayOutputWithContext(ctx context.Context) HeaderOverrideResponseArrayOutput {
 	return o
-}
-
-func (o HeaderOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HeaderOverrideResponse] {
-	return pulumix.Output[[]HeaderOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeaderOverrideResponseArrayOutput) Index(i pulumi.IntInput) HeaderOverrideResponseOutput {
@@ -1496,12 +1303,6 @@ func (o HeaderResponseOutput) ToHeaderResponseOutput() HeaderResponseOutput {
 
 func (o HeaderResponseOutput) ToHeaderResponseOutputWithContext(ctx context.Context) HeaderResponseOutput {
 	return o
-}
-
-func (o HeaderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HeaderResponse] {
-	return pulumix.Output[HeaderResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Key of the header.
@@ -1569,12 +1370,6 @@ func (i HttpRequestArgs) ToHttpRequestOutputWithContext(ctx context.Context) Htt
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestOutput)
 }
 
-func (i HttpRequestArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRequest] {
-	return pulumix.Output[HttpRequest]{
-		OutputState: i.ToHttpRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRequestArgs) ToHttpRequestPtrOutput() HttpRequestPtrOutput {
 	return i.ToHttpRequestPtrOutputWithContext(context.Background())
 }
@@ -1616,12 +1411,6 @@ func (i *httpRequestPtrType) ToHttpRequestPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestPtrOutput)
 }
 
-func (i *httpRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRequest] {
-	return pulumix.Output[*HttpRequest]{
-		OutputState: i.ToHttpRequestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HTTP request. The task will be pushed to the worker as an HTTP request. If the worker or the redirected worker acknowledges the task by returning a successful HTTP response code ([`200` - `299`]), the task will be removed from the queue. If any other HTTP response code is returned or no response is received, the task will be retried according to the following: * User-specified throttling: retry configuration, rate limits, and the queue's state. * System throttling: To prevent the worker from overloading, Cloud Tasks may temporarily reduce the queue's effective rate. User-specified settings will not be changed. System throttling happens because: * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is considered. * To prevent traffic spikes and to smooth sudden increases in traffic, dispatches ramp up slowly when the queue is newly created or idle and if large numbers of tasks suddenly become available to dispatch (due to spikes in create task rates, the queue being unpaused, or many tasks that are scheduled at the same time).
 type HttpRequestOutput struct{ *pulumi.OutputState }
 
@@ -1645,12 +1434,6 @@ func (o HttpRequestOutput) ToHttpRequestPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRequest) *HttpRequest {
 		return &v
 	}).(HttpRequestPtrOutput)
-}
-
-func (o HttpRequestOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRequest] {
-	return pulumix.Output[HttpRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
@@ -1695,12 +1478,6 @@ func (o HttpRequestPtrOutput) ToHttpRequestPtrOutput() HttpRequestPtrOutput {
 
 func (o HttpRequestPtrOutput) ToHttpRequestPtrOutputWithContext(ctx context.Context) HttpRequestPtrOutput {
 	return o
-}
-
-func (o HttpRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRequest] {
-	return pulumix.Output[*HttpRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRequestPtrOutput) Elem() HttpRequestOutput {
@@ -1804,12 +1581,6 @@ func (o HttpRequestResponseOutput) ToHttpRequestResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o HttpRequestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRequestResponse] {
-	return pulumix.Output[HttpRequestResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
 func (o HttpRequestResponseOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRequestResponse) string { return v.Body }).(pulumi.StringOutput)
@@ -1891,12 +1662,6 @@ func (i HttpTargetArgs) ToHttpTargetOutputWithContext(ctx context.Context) HttpT
 	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetOutput)
 }
 
-func (i HttpTargetArgs) ToOutput(ctx context.Context) pulumix.Output[HttpTarget] {
-	return pulumix.Output[HttpTarget]{
-		OutputState: i.ToHttpTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpTargetArgs) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
 	return i.ToHttpTargetPtrOutputWithContext(context.Background())
 }
@@ -1938,12 +1703,6 @@ func (i *httpTargetPtrType) ToHttpTargetPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetPtrOutput)
 }
 
-func (i *httpTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpTarget] {
-	return pulumix.Output[*HttpTarget]{
-		OutputState: i.ToHttpTargetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
 type HttpTargetOutput struct{ *pulumi.OutputState }
 
@@ -1967,12 +1726,6 @@ func (o HttpTargetOutput) ToHttpTargetPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpTarget) *HttpTarget {
 		return &v
 	}).(HttpTargetPtrOutput)
-}
-
-func (o HttpTargetOutput) ToOutput(ctx context.Context) pulumix.Output[HttpTarget] {
-	return pulumix.Output[HttpTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-CloudTasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"` . * User-Agent: This will be set to  `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
@@ -2012,12 +1765,6 @@ func (o HttpTargetPtrOutput) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
 
 func (o HttpTargetPtrOutput) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
 	return o
-}
-
-func (o HttpTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpTarget] {
-	return pulumix.Output[*HttpTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpTargetPtrOutput) Elem() HttpTargetOutput {
@@ -2109,12 +1856,6 @@ func (o HttpTargetResponseOutput) ToHttpTargetResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o HttpTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpTargetResponse] {
-	return pulumix.Output[HttpTargetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-CloudTasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"` . * User-Agent: This will be set to  `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
 func (o HttpTargetResponseOutput) HeaderOverrides() HeaderOverrideResponseArrayOutput {
 	return o.ApplyT(func(v HttpTargetResponse) []HeaderOverrideResponse { return v.HeaderOverrides }).(HeaderOverrideResponseArrayOutput)
@@ -2179,12 +1920,6 @@ func (i OAuthTokenArgs) ToOAuthTokenOutputWithContext(ctx context.Context) OAuth
 	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenOutput)
 }
 
-func (i OAuthTokenArgs) ToOutput(ctx context.Context) pulumix.Output[OAuthToken] {
-	return pulumix.Output[OAuthToken]{
-		OutputState: i.ToOAuthTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OAuthTokenArgs) ToOAuthTokenPtrOutput() OAuthTokenPtrOutput {
 	return i.ToOAuthTokenPtrOutputWithContext(context.Background())
 }
@@ -2226,12 +1961,6 @@ func (i *oauthTokenPtrType) ToOAuthTokenPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenPtrOutput)
 }
 
-func (i *oauthTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*OAuthToken] {
-	return pulumix.Output[*OAuthToken]{
-		OutputState: i.ToOAuthTokenPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
 type OAuthTokenOutput struct{ *pulumi.OutputState }
 
@@ -2257,12 +1986,6 @@ func (o OAuthTokenOutput) ToOAuthTokenPtrOutputWithContext(ctx context.Context) 
 	}).(OAuthTokenPtrOutput)
 }
 
-func (o OAuthTokenOutput) ToOutput(ctx context.Context) pulumix.Output[OAuthToken] {
-	return pulumix.Output[OAuthToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 // OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
 func (o OAuthTokenOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuthToken) *string { return v.Scope }).(pulumi.StringPtrOutput)
@@ -2285,12 +2008,6 @@ func (o OAuthTokenPtrOutput) ToOAuthTokenPtrOutput() OAuthTokenPtrOutput {
 
 func (o OAuthTokenPtrOutput) ToOAuthTokenPtrOutputWithContext(ctx context.Context) OAuthTokenPtrOutput {
 	return o
-}
-
-func (o OAuthTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OAuthToken] {
-	return pulumix.Output[*OAuthToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OAuthTokenPtrOutput) Elem() OAuthTokenOutput {
@@ -2346,12 +2063,6 @@ func (o OAuthTokenResponseOutput) ToOAuthTokenResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o OAuthTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OAuthTokenResponse] {
-	return pulumix.Output[OAuthTokenResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
 func (o OAuthTokenResponseOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v OAuthTokenResponse) string { return v.Scope }).(pulumi.StringOutput)
@@ -2401,12 +2112,6 @@ func (i OidcTokenArgs) ToOidcTokenOutputWithContext(ctx context.Context) OidcTok
 	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenOutput)
 }
 
-func (i OidcTokenArgs) ToOutput(ctx context.Context) pulumix.Output[OidcToken] {
-	return pulumix.Output[OidcToken]{
-		OutputState: i.ToOidcTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OidcTokenArgs) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
 	return i.ToOidcTokenPtrOutputWithContext(context.Background())
 }
@@ -2448,12 +2153,6 @@ func (i *oidcTokenPtrType) ToOidcTokenPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenPtrOutput)
 }
 
-func (i *oidcTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*OidcToken] {
-	return pulumix.Output[*OidcToken]{
-		OutputState: i.ToOidcTokenPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 type OidcTokenOutput struct{ *pulumi.OutputState }
 
@@ -2479,12 +2178,6 @@ func (o OidcTokenOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) Oi
 	}).(OidcTokenPtrOutput)
 }
 
-func (o OidcTokenOutput) ToOutput(ctx context.Context) pulumix.Output[OidcToken] {
-	return pulumix.Output[OidcToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
 func (o OidcTokenOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
@@ -2507,12 +2200,6 @@ func (o OidcTokenPtrOutput) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
 
 func (o OidcTokenPtrOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
 	return o
-}
-
-func (o OidcTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OidcToken] {
-	return pulumix.Output[*OidcToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OidcTokenPtrOutput) Elem() OidcTokenOutput {
@@ -2568,12 +2255,6 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o OidcTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OidcTokenResponse] {
-	return pulumix.Output[OidcTokenResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
 func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
@@ -2619,12 +2300,6 @@ func (i PathOverrideArgs) ToPathOverrideOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PathOverrideOutput)
 }
 
-func (i PathOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[PathOverride] {
-	return pulumix.Output[PathOverride]{
-		OutputState: i.ToPathOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PathOverrideArgs) ToPathOverridePtrOutput() PathOverridePtrOutput {
 	return i.ToPathOverridePtrOutputWithContext(context.Background())
 }
@@ -2666,12 +2341,6 @@ func (i *pathOverridePtrType) ToPathOverridePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PathOverridePtrOutput)
 }
 
-func (i *pathOverridePtrType) ToOutput(ctx context.Context) pulumix.Output[*PathOverride] {
-	return pulumix.Output[*PathOverride]{
-		OutputState: i.ToPathOverridePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PathOverride. Path message defines path override for HTTP targets.
 type PathOverrideOutput struct{ *pulumi.OutputState }
 
@@ -2697,12 +2366,6 @@ func (o PathOverrideOutput) ToPathOverridePtrOutputWithContext(ctx context.Conte
 	}).(PathOverridePtrOutput)
 }
 
-func (o PathOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[PathOverride] {
-	return pulumix.Output[PathOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URI path (e.g., /users/1234). Default is an empty string.
 func (o PathOverrideOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PathOverride) *string { return v.Path }).(pulumi.StringPtrOutput)
@@ -2720,12 +2383,6 @@ func (o PathOverridePtrOutput) ToPathOverridePtrOutput() PathOverridePtrOutput {
 
 func (o PathOverridePtrOutput) ToPathOverridePtrOutputWithContext(ctx context.Context) PathOverridePtrOutput {
 	return o
-}
-
-func (o PathOverridePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PathOverride] {
-	return pulumix.Output[*PathOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PathOverridePtrOutput) Elem() PathOverrideOutput {
@@ -2769,12 +2426,6 @@ func (o PathOverrideResponseOutput) ToPathOverrideResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o PathOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PathOverrideResponse] {
-	return pulumix.Output[PathOverrideResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URI path (e.g., /users/1234). Default is an empty string.
 func (o PathOverrideResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v PathOverrideResponse) string { return v.Path }).(pulumi.StringOutput)
@@ -2813,12 +2464,6 @@ func (i QueryOverrideArgs) ToQueryOverrideOutput() QueryOverrideOutput {
 
 func (i QueryOverrideArgs) ToQueryOverrideOutputWithContext(ctx context.Context) QueryOverrideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueryOverrideOutput)
-}
-
-func (i QueryOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[QueryOverride] {
-	return pulumix.Output[QueryOverride]{
-		OutputState: i.ToQueryOverrideOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i QueryOverrideArgs) ToQueryOverridePtrOutput() QueryOverridePtrOutput {
@@ -2862,12 +2507,6 @@ func (i *queryOverridePtrType) ToQueryOverridePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(QueryOverridePtrOutput)
 }
 
-func (i *queryOverridePtrType) ToOutput(ctx context.Context) pulumix.Output[*QueryOverride] {
-	return pulumix.Output[*QueryOverride]{
-		OutputState: i.ToQueryOverridePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QueryOverride. Query message defines query override for HTTP targets.
 type QueryOverrideOutput struct{ *pulumi.OutputState }
 
@@ -2893,12 +2532,6 @@ func (o QueryOverrideOutput) ToQueryOverridePtrOutputWithContext(ctx context.Con
 	}).(QueryOverridePtrOutput)
 }
 
-func (o QueryOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[QueryOverride] {
-	return pulumix.Output[QueryOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
 func (o QueryOverrideOutput) QueryParams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueryOverride) *string { return v.QueryParams }).(pulumi.StringPtrOutput)
@@ -2916,12 +2549,6 @@ func (o QueryOverridePtrOutput) ToQueryOverridePtrOutput() QueryOverridePtrOutpu
 
 func (o QueryOverridePtrOutput) ToQueryOverridePtrOutputWithContext(ctx context.Context) QueryOverridePtrOutput {
 	return o
-}
-
-func (o QueryOverridePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryOverride] {
-	return pulumix.Output[*QueryOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryOverridePtrOutput) Elem() QueryOverrideOutput {
@@ -2963,12 +2590,6 @@ func (o QueryOverrideResponseOutput) ToQueryOverrideResponseOutput() QueryOverri
 
 func (o QueryOverrideResponseOutput) ToQueryOverrideResponseOutputWithContext(ctx context.Context) QueryOverrideResponseOutput {
 	return o
-}
-
-func (o QueryOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryOverrideResponse] {
-	return pulumix.Output[QueryOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
@@ -3015,12 +2636,6 @@ func (i RateLimitsArgs) ToRateLimitsOutputWithContext(ctx context.Context) RateL
 	return pulumi.ToOutputWithContext(ctx, i).(RateLimitsOutput)
 }
 
-func (i RateLimitsArgs) ToOutput(ctx context.Context) pulumix.Output[RateLimits] {
-	return pulumix.Output[RateLimits]{
-		OutputState: i.ToRateLimitsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RateLimitsArgs) ToRateLimitsPtrOutput() RateLimitsPtrOutput {
 	return i.ToRateLimitsPtrOutputWithContext(context.Background())
 }
@@ -3062,12 +2677,6 @@ func (i *rateLimitsPtrType) ToRateLimitsPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RateLimitsPtrOutput)
 }
 
-func (i *rateLimitsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RateLimits] {
-	return pulumix.Output[*RateLimits]{
-		OutputState: i.ToRateLimitsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Rate limits. This message determines the maximum rate that tasks can be dispatched by a queue, regardless of whether the dispatch is a first task attempt or a retry. Note: The debugging command, RunTask, will run a task even if the queue has reached its RateLimits.
 type RateLimitsOutput struct{ *pulumi.OutputState }
 
@@ -3093,12 +2702,6 @@ func (o RateLimitsOutput) ToRateLimitsPtrOutputWithContext(ctx context.Context) 
 	}).(RateLimitsPtrOutput)
 }
 
-func (o RateLimitsOutput) ToOutput(ctx context.Context) pulumix.Output[RateLimits] {
-	return pulumix.Output[RateLimits]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number of concurrent tasks that Cloud Tasks allows to be dispatched for this queue. After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of concurrent requests decreases. If unspecified when the queue is created, Cloud Tasks will pick the default. The maximum allowed value is 5,000. This field has the same meaning as [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
 func (o RateLimitsOutput) MaxConcurrentDispatches() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RateLimits) *int { return v.MaxConcurrentDispatches }).(pulumi.IntPtrOutput)
@@ -3121,12 +2724,6 @@ func (o RateLimitsPtrOutput) ToRateLimitsPtrOutput() RateLimitsPtrOutput {
 
 func (o RateLimitsPtrOutput) ToRateLimitsPtrOutputWithContext(ctx context.Context) RateLimitsPtrOutput {
 	return o
-}
-
-func (o RateLimitsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RateLimits] {
-	return pulumix.Output[*RateLimits]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RateLimitsPtrOutput) Elem() RateLimitsOutput {
@@ -3182,12 +2779,6 @@ func (o RateLimitsResponseOutput) ToRateLimitsResponseOutput() RateLimitsRespons
 
 func (o RateLimitsResponseOutput) ToRateLimitsResponseOutputWithContext(ctx context.Context) RateLimitsResponseOutput {
 	return o
-}
-
-func (o RateLimitsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RateLimitsResponse] {
-	return pulumix.Output[RateLimitsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The max burst size. Max burst size limits how fast tasks in queue are processed when many tasks are in the queue and the rate is high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued, but still limits resource usage when many tasks are enqueued in a short period of time. The [token bucket](https://wikipedia.org/wiki/Token_Bucket) algorithm is used to control the rate of task dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new tokens based on max_dispatches_per_second. Cloud Tasks will pick the value of `max_burst_size` based on the value of max_dispatches_per_second. For queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size). Since `max_burst_size` is output only, if UpdateQueue is called on a queue created by `queue.yaml/xml`, `max_burst_size` will be reset based on the value of max_dispatches_per_second, regardless of whether max_dispatches_per_second is updated.
@@ -3256,12 +2847,6 @@ func (i RetryConfigArgs) ToRetryConfigOutputWithContext(ctx context.Context) Ret
 	return pulumi.ToOutputWithContext(ctx, i).(RetryConfigOutput)
 }
 
-func (i RetryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RetryConfig] {
-	return pulumix.Output[RetryConfig]{
-		OutputState: i.ToRetryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RetryConfigArgs) ToRetryConfigPtrOutput() RetryConfigPtrOutput {
 	return i.ToRetryConfigPtrOutputWithContext(context.Background())
 }
@@ -3303,12 +2888,6 @@ func (i *retryConfigPtrType) ToRetryConfigPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RetryConfigPtrOutput)
 }
 
-func (i *retryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RetryConfig] {
-	return pulumix.Output[*RetryConfig]{
-		OutputState: i.ToRetryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Retry config. These settings determine when a failed task attempt is retried.
 type RetryConfigOutput struct{ *pulumi.OutputState }
 
@@ -3332,12 +2911,6 @@ func (o RetryConfigOutput) ToRetryConfigPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryConfig) *RetryConfig {
 		return &v
 	}).(RetryConfigPtrOutput)
-}
-
-func (o RetryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RetryConfig] {
-	return pulumix.Output[RetryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of attempts per task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be >= -1. If unspecified when the queue is created, Cloud Tasks will pick the default. -1 indicates unlimited attempts. This field has the same meaning as [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
@@ -3377,12 +2950,6 @@ func (o RetryConfigPtrOutput) ToRetryConfigPtrOutput() RetryConfigPtrOutput {
 
 func (o RetryConfigPtrOutput) ToRetryConfigPtrOutputWithContext(ctx context.Context) RetryConfigPtrOutput {
 	return o
-}
-
-func (o RetryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetryConfig] {
-	return pulumix.Output[*RetryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RetryConfigPtrOutput) Elem() RetryConfigOutput {
@@ -3474,12 +3041,6 @@ func (o RetryConfigResponseOutput) ToRetryConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o RetryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetryConfigResponse] {
-	return pulumix.Output[RetryConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of attempts per task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be >= -1. If unspecified when the queue is created, Cloud Tasks will pick the default. -1 indicates unlimited attempts. This field has the same meaning as [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
 func (o RetryConfigResponseOutput) MaxAttempts() pulumi.IntOutput {
 	return o.ApplyT(func(v RetryConfigResponse) int { return v.MaxAttempts }).(pulumi.IntOutput)
@@ -3540,12 +3101,6 @@ func (i StackdriverLoggingConfigArgs) ToStackdriverLoggingConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StackdriverLoggingConfigOutput)
 }
 
-func (i StackdriverLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StackdriverLoggingConfig] {
-	return pulumix.Output[StackdriverLoggingConfig]{
-		OutputState: i.ToStackdriverLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StackdriverLoggingConfigArgs) ToStackdriverLoggingConfigPtrOutput() StackdriverLoggingConfigPtrOutput {
 	return i.ToStackdriverLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -3587,12 +3142,6 @@ func (i *stackdriverLoggingConfigPtrType) ToStackdriverLoggingConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(StackdriverLoggingConfigPtrOutput)
 }
 
-func (i *stackdriverLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StackdriverLoggingConfig] {
-	return pulumix.Output[*StackdriverLoggingConfig]{
-		OutputState: i.ToStackdriverLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/).
 type StackdriverLoggingConfigOutput struct{ *pulumi.OutputState }
 
@@ -3618,12 +3167,6 @@ func (o StackdriverLoggingConfigOutput) ToStackdriverLoggingConfigPtrOutputWithC
 	}).(StackdriverLoggingConfigPtrOutput)
 }
 
-func (o StackdriverLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StackdriverLoggingConfig] {
-	return pulumix.Output[StackdriverLoggingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
 func (o StackdriverLoggingConfigOutput) SamplingRatio() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v StackdriverLoggingConfig) *float64 { return v.SamplingRatio }).(pulumi.Float64PtrOutput)
@@ -3641,12 +3184,6 @@ func (o StackdriverLoggingConfigPtrOutput) ToStackdriverLoggingConfigPtrOutput()
 
 func (o StackdriverLoggingConfigPtrOutput) ToStackdriverLoggingConfigPtrOutputWithContext(ctx context.Context) StackdriverLoggingConfigPtrOutput {
 	return o
-}
-
-func (o StackdriverLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StackdriverLoggingConfig] {
-	return pulumix.Output[*StackdriverLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StackdriverLoggingConfigPtrOutput) Elem() StackdriverLoggingConfigOutput {
@@ -3690,12 +3227,6 @@ func (o StackdriverLoggingConfigResponseOutput) ToStackdriverLoggingConfigRespon
 	return o
 }
 
-func (o StackdriverLoggingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StackdriverLoggingConfigResponse] {
-	return pulumix.Output[StackdriverLoggingConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
 func (o StackdriverLoggingConfigResponseOutput) SamplingRatio() pulumi.Float64Output {
 	return o.ApplyT(func(v StackdriverLoggingConfigResponse) float64 { return v.SamplingRatio }).(pulumi.Float64Output)
@@ -3724,12 +3255,6 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
-}
-
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -3802,12 +3327,6 @@ func (i UriOverrideArgs) ToUriOverrideOutputWithContext(ctx context.Context) Uri
 	return pulumi.ToOutputWithContext(ctx, i).(UriOverrideOutput)
 }
 
-func (i UriOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[UriOverride] {
-	return pulumix.Output[UriOverride]{
-		OutputState: i.ToUriOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UriOverrideArgs) ToUriOverridePtrOutput() UriOverridePtrOutput {
 	return i.ToUriOverridePtrOutputWithContext(context.Background())
 }
@@ -3849,12 +3368,6 @@ func (i *uriOverridePtrType) ToUriOverridePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(UriOverridePtrOutput)
 }
 
-func (i *uriOverridePtrType) ToOutput(ctx context.Context) pulumix.Output[*UriOverride] {
-	return pulumix.Output[*UriOverride]{
-		OutputState: i.ToUriOverridePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
 type UriOverrideOutput struct{ *pulumi.OutputState }
 
@@ -3878,12 +3391,6 @@ func (o UriOverrideOutput) ToUriOverridePtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UriOverride) *UriOverride {
 		return &v
 	}).(UriOverridePtrOutput)
-}
-
-func (o UriOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[UriOverride] {
-	return pulumix.Output[UriOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Host override. When specified, replaces the host part of the task URL. For example, if the task URL is "https://www.google.com," and host value is set to "example.net", the overridden URI will be changed to "https://example.net." Host value cannot be an empty string (INVALID_ARGUMENT).
@@ -3928,12 +3435,6 @@ func (o UriOverridePtrOutput) ToUriOverridePtrOutput() UriOverridePtrOutput {
 
 func (o UriOverridePtrOutput) ToUriOverridePtrOutputWithContext(ctx context.Context) UriOverridePtrOutput {
 	return o
-}
-
-func (o UriOverridePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UriOverride] {
-	return pulumix.Output[*UriOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UriOverridePtrOutput) Elem() UriOverrideOutput {
@@ -4035,12 +3536,6 @@ func (o UriOverrideResponseOutput) ToUriOverrideResponseOutput() UriOverrideResp
 
 func (o UriOverrideResponseOutput) ToUriOverrideResponseOutputWithContext(ctx context.Context) UriOverrideResponseOutput {
 	return o
-}
-
-func (o UriOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UriOverrideResponse] {
-	return pulumix.Output[UriOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Host override. When specified, replaces the host part of the task URL. For example, if the task URL is "https://www.google.com," and host value is set to "example.net", the overridden URI will be changed to "https://example.net." Host value cannot be an empty string (INVALID_ARGUMENT).

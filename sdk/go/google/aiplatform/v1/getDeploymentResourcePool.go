@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DeploymentResourcePool.
@@ -73,12 +72,6 @@ func (o LookupDeploymentResourcePoolResultOutput) ToLookupDeploymentResourcePool
 
 func (o LookupDeploymentResourcePoolResultOutput) ToLookupDeploymentResourcePoolResultOutputWithContext(ctx context.Context) LookupDeploymentResourcePoolResultOutput {
 	return o
-}
-
-func (o LookupDeploymentResourcePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeploymentResourcePoolResult] {
-	return pulumix.Output[LookupDeploymentResourcePoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this DeploymentResourcePool was created.

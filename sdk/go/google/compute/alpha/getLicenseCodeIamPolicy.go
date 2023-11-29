@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
@@ -77,12 +76,6 @@ func (o LookupLicenseCodeIamPolicyResultOutput) ToLookupLicenseCodeIamPolicyResu
 
 func (o LookupLicenseCodeIamPolicyResultOutput) ToLookupLicenseCodeIamPolicyResultOutputWithContext(ctx context.Context) LookupLicenseCodeIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupLicenseCodeIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLicenseCodeIamPolicyResult] {
-	return pulumix.Output[LookupLicenseCodeIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

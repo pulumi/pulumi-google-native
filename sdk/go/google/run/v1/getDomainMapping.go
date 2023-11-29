@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a domain mapping.
@@ -77,12 +76,6 @@ func (o LookupDomainMappingResultOutput) ToLookupDomainMappingResultOutput() Loo
 
 func (o LookupDomainMappingResultOutput) ToLookupDomainMappingResultOutputWithContext(ctx context.Context) LookupDomainMappingResultOutput {
 	return o
-}
-
-func (o LookupDomainMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDomainMappingResult] {
-	return pulumix.Output[LookupDomainMappingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The API version for this call such as "domains.cloudrun.com/v1".

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified global PublicDelegatedPrefix resource.
@@ -97,12 +96,6 @@ func (o LookupGlobalPublicDelegatedPrefixResultOutput) ToLookupGlobalPublicDeleg
 
 func (o LookupGlobalPublicDelegatedPrefixResultOutput) ToLookupGlobalPublicDelegatedPrefixResultOutputWithContext(ctx context.Context) LookupGlobalPublicDelegatedPrefixResultOutput {
 	return o
-}
-
-func (o LookupGlobalPublicDelegatedPrefixResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlobalPublicDelegatedPrefixResult] {
-	return pulumix.Output[LookupGlobalPublicDelegatedPrefixResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an execution of the given name.
@@ -91,12 +90,6 @@ func (o LookupExecutionResultOutput) ToLookupExecutionResultOutput() LookupExecu
 
 func (o LookupExecutionResultOutput) ToLookupExecutionResultOutputWithContext(ctx context.Context) LookupExecutionResultOutput {
 	return o
-}
-
-func (o LookupExecutionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExecutionResult] {
-	return pulumix.Output[LookupExecutionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`

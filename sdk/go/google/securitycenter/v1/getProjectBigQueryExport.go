@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a BigQuery export.
@@ -81,12 +80,6 @@ func (o LookupProjectBigQueryExportResultOutput) ToLookupProjectBigQueryExportRe
 
 func (o LookupProjectBigQueryExportResultOutput) ToLookupProjectBigQueryExportResultOutputWithContext(ctx context.Context) LookupProjectBigQueryExportResultOutput {
 	return o
-}
-
-func (o LookupProjectBigQueryExportResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectBigQueryExportResult] {
-	return pulumix.Output[LookupProjectBigQueryExportResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.

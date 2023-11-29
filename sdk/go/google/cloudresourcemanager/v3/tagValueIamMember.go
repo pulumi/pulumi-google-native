@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on a TagValue, replacing any existing policy. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have `resourcemanager.tagValues.setIamPolicy` permission on the identified tagValue.
@@ -136,12 +135,6 @@ func (i *TagValueIamMember) ToTagValueIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueIamMemberOutput)
 }
 
-func (i *TagValueIamMember) ToOutput(ctx context.Context) pulumix.Output[*TagValueIamMember] {
-	return pulumix.Output[*TagValueIamMember]{
-		OutputState: i.ToTagValueIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagValueIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TagValueIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o TagValueIamMemberOutput) ToTagValueIamMemberOutput() TagValueIamMemberOu
 
 func (o TagValueIamMemberOutput) ToTagValueIamMemberOutputWithContext(ctx context.Context) TagValueIamMemberOutput {
 	return o
-}
-
-func (o TagValueIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*TagValueIamMember] {
-	return pulumix.Output[*TagValueIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

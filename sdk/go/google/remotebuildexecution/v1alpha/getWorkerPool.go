@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified worker pool.
@@ -79,12 +78,6 @@ func (o LookupWorkerPoolResultOutput) ToLookupWorkerPoolResultOutput() LookupWor
 
 func (o LookupWorkerPoolResultOutput) ToLookupWorkerPoolResultOutputWithContext(ctx context.Context) LookupWorkerPoolResultOutput {
 	return o
-}
-
-func (o LookupWorkerPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkerPoolResult] {
-	return pulumix.Output[LookupWorkerPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The autoscale policy to apply on a pool.

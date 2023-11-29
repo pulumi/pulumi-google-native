@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a VpnTunnel resource in the specified project and region using the data included in the request.
@@ -216,12 +215,6 @@ func (i *VpnTunnel) ToVpnTunnelOutputWithContext(ctx context.Context) VpnTunnelO
 	return pulumi.ToOutputWithContext(ctx, i).(VpnTunnelOutput)
 }
 
-func (i *VpnTunnel) ToOutput(ctx context.Context) pulumix.Output[*VpnTunnel] {
-	return pulumix.Output[*VpnTunnel]{
-		OutputState: i.ToVpnTunnelOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VpnTunnelOutput struct{ *pulumi.OutputState }
 
 func (VpnTunnelOutput) ElementType() reflect.Type {
@@ -234,12 +227,6 @@ func (o VpnTunnelOutput) ToVpnTunnelOutput() VpnTunnelOutput {
 
 func (o VpnTunnelOutput) ToVpnTunnelOutputWithContext(ctx context.Context) VpnTunnelOutput {
 	return o
-}
-
-func (o VpnTunnelOutput) ToOutput(ctx context.Context) pulumix.Output[*VpnTunnel] {
-	return pulumix.Output[*VpnTunnel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

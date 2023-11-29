@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a specified spec.
@@ -99,12 +98,6 @@ func (o LookupSpecResultOutput) ToLookupSpecResultOutput() LookupSpecResultOutpu
 
 func (o LookupSpecResultOutput) ToLookupSpecResultOutputWithContext(ctx context.Context) LookupSpecResultOutput {
 	return o
-}
-
-func (o LookupSpecResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSpecResult] {
-	return pulumix.Output[LookupSpecResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.

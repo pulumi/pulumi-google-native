@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new backup run on demand.
@@ -195,12 +194,6 @@ func (i *BackupRun) ToBackupRunOutputWithContext(ctx context.Context) BackupRunO
 	return pulumi.ToOutputWithContext(ctx, i).(BackupRunOutput)
 }
 
-func (i *BackupRun) ToOutput(ctx context.Context) pulumix.Output[*BackupRun] {
-	return pulumix.Output[*BackupRun]{
-		OutputState: i.ToBackupRunOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupRunOutput struct{ *pulumi.OutputState }
 
 func (BackupRunOutput) ElementType() reflect.Type {
@@ -213,12 +206,6 @@ func (o BackupRunOutput) ToBackupRunOutput() BackupRunOutput {
 
 func (o BackupRunOutput) ToBackupRunOutputWithContext(ctx context.Context) BackupRunOutput {
 	return o
-}
-
-func (o BackupRunOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupRun] {
-	return pulumix.Output[*BackupRun]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.

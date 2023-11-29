@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a SpecialistPool.
@@ -130,12 +129,6 @@ func (i *SpecialistPool) ToSpecialistPoolOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SpecialistPoolOutput)
 }
 
-func (i *SpecialistPool) ToOutput(ctx context.Context) pulumix.Output[*SpecialistPool] {
-	return pulumix.Output[*SpecialistPool]{
-		OutputState: i.ToSpecialistPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SpecialistPoolOutput struct{ *pulumi.OutputState }
 
 func (SpecialistPoolOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o SpecialistPoolOutput) ToSpecialistPoolOutput() SpecialistPoolOutput {
 
 func (o SpecialistPoolOutput) ToSpecialistPoolOutputWithContext(ctx context.Context) SpecialistPoolOutput {
 	return o
-}
-
-func (o SpecialistPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*SpecialistPool] {
-	return pulumix.Output[*SpecialistPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-defined name of the SpecialistPool. The name can be up to 128 characters long and can consist of any UTF-8 characters. This field should be unique on project-level.

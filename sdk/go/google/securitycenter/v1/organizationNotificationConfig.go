@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a notification config.
@@ -134,12 +133,6 @@ func (i *OrganizationNotificationConfig) ToOrganizationNotificationConfigOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationNotificationConfigOutput)
 }
 
-func (i *OrganizationNotificationConfig) ToOutput(ctx context.Context) pulumix.Output[*OrganizationNotificationConfig] {
-	return pulumix.Output[*OrganizationNotificationConfig]{
-		OutputState: i.ToOrganizationNotificationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationNotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (OrganizationNotificationConfigOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o OrganizationNotificationConfigOutput) ToOrganizationNotificationConfigOu
 
 func (o OrganizationNotificationConfigOutput) ToOrganizationNotificationConfigOutputWithContext(ctx context.Context) OrganizationNotificationConfigOutput {
 	return o
-}
-
-func (o OrganizationNotificationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationNotificationConfig] {
-	return pulumix.Output[*OrganizationNotificationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.

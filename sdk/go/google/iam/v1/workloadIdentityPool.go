@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion.
@@ -134,12 +133,6 @@ func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolOutput)
 }
 
-func (i *WorkloadIdentityPool) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPool] {
-	return pulumix.Output[*WorkloadIdentityPool]{
-		OutputState: i.ToWorkloadIdentityPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadIdentityPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkloadIdentityPoolOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutput() WorkloadIdent
 
 func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutputWithContext(ctx context.Context) WorkloadIdentityPoolOutput {
 	return o
-}
-
-func (o WorkloadIdentityPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPool] {
-	return pulumix.Output[*WorkloadIdentityPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of the pool. Cannot exceed 256 characters.

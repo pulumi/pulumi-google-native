@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ServiceBinding in a given project and location.
@@ -142,12 +141,6 @@ func (i *ServiceBinding) ToServiceBindingOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBindingOutput)
 }
 
-func (i *ServiceBinding) ToOutput(ctx context.Context) pulumix.Output[*ServiceBinding] {
-	return pulumix.Output[*ServiceBinding]{
-		OutputState: i.ToServiceBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceBindingOutput struct{ *pulumi.OutputState }
 
 func (ServiceBindingOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o ServiceBindingOutput) ToServiceBindingOutput() ServiceBindingOutput {
 
 func (o ServiceBindingOutput) ToServiceBindingOutputWithContext(ctx context.Context) ServiceBindingOutput {
 	return o
-}
-
-func (o ServiceBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBinding] {
-	return pulumix.Output[*ServiceBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.

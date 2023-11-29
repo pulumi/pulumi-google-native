@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a debug session.
@@ -85,12 +84,6 @@ func (o LookupDebugSessionResultOutput) ToLookupDebugSessionResultOutput() Looku
 
 func (o LookupDebugSessionResultOutput) ToLookupDebugSessionResultOutputWithContext(ctx context.Context) LookupDebugSessionResultOutput {
 	return o
-}
-
-func (o LookupDebugSessionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDebugSessionResult] {
-	return pulumix.Output[LookupDebugSessionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.

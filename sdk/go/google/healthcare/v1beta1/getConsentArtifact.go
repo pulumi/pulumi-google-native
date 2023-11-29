@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Consent artifact.
@@ -87,12 +86,6 @@ func (o LookupConsentArtifactResultOutput) ToLookupConsentArtifactResultOutput()
 
 func (o LookupConsentArtifactResultOutput) ToLookupConsentArtifactResultOutputWithContext(ctx context.Context) LookupConsentArtifactResultOutput {
 	return o
-}
-
-func (o LookupConsentArtifactResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConsentArtifactResult] {
-	return pulumix.Output[LookupConsentArtifactResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Screenshots, PDFs, or other binary information documenting the user's consent.

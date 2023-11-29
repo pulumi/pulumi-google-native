@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a snapshot in the specified region using the data included in the request.
@@ -248,12 +247,6 @@ func (i *RegionSnapshot) ToRegionSnapshotOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSnapshotOutput)
 }
 
-func (i *RegionSnapshot) ToOutput(ctx context.Context) pulumix.Output[*RegionSnapshot] {
-	return pulumix.Output[*RegionSnapshot]{
-		OutputState: i.ToRegionSnapshotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionSnapshotOutput struct{ *pulumi.OutputState }
 
 func (RegionSnapshotOutput) ElementType() reflect.Type {
@@ -266,12 +259,6 @@ func (o RegionSnapshotOutput) ToRegionSnapshotOutput() RegionSnapshotOutput {
 
 func (o RegionSnapshotOutput) ToRegionSnapshotOutputWithContext(ctx context.Context) RegionSnapshotOutput {
 	return o
-}
-
-func (o RegionSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSnapshot] {
-	return pulumix.Output[*RegionSnapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The architecture of the snapshot. Valid values are ARM64 or X86_64.

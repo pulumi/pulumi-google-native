@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create an Oidc Idp configuration for an Identity Toolkit project.
@@ -150,12 +149,6 @@ func (i *OauthIdpConfig) ToOauthIdpConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigOutput)
 }
 
-func (i *OauthIdpConfig) ToOutput(ctx context.Context) pulumix.Output[*OauthIdpConfig] {
-	return pulumix.Output[*OauthIdpConfig]{
-		OutputState: i.ToOauthIdpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OauthIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (OauthIdpConfigOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o OauthIdpConfigOutput) ToOauthIdpConfigOutput() OauthIdpConfigOutput {
 
 func (o OauthIdpConfigOutput) ToOauthIdpConfigOutputWithContext(ctx context.Context) OauthIdpConfigOutput {
 	return o
-}
-
-func (o OauthIdpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*OauthIdpConfig] {
-	return pulumix.Output[*OauthIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client id of an OAuth client.

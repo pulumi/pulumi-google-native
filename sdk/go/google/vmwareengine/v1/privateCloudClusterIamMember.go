@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *PrivateCloudClusterIamMember) ToPrivateCloudClusterIamMemberOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudClusterIamMemberOutput)
 }
 
-func (i *PrivateCloudClusterIamMember) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudClusterIamMember] {
-	return pulumix.Output[*PrivateCloudClusterIamMember]{
-		OutputState: i.ToPrivateCloudClusterIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateCloudClusterIamMemberOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudClusterIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o PrivateCloudClusterIamMemberOutput) ToPrivateCloudClusterIamMemberOutput
 
 func (o PrivateCloudClusterIamMemberOutput) ToPrivateCloudClusterIamMemberOutputWithContext(ctx context.Context) PrivateCloudClusterIamMemberOutput {
 	return o
-}
-
-func (o PrivateCloudClusterIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudClusterIamMember] {
-	return pulumix.Output[*PrivateCloudClusterIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ApigatewayApiConfigFileArgs) ToApigatewayApiConfigFileOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigFileOutput)
 }
 
-func (i ApigatewayApiConfigFileArgs) ToOutput(ctx context.Context) pulumix.Output[ApigatewayApiConfigFile] {
-	return pulumix.Output[ApigatewayApiConfigFile]{
-		OutputState: i.ToApigatewayApiConfigFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApigatewayApiConfigFileArgs) ToApigatewayApiConfigFilePtrOutput() ApigatewayApiConfigFilePtrOutput {
 	return i.ToApigatewayApiConfigFilePtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *apigatewayApiConfigFilePtrType) ToApigatewayApiConfigFilePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigFilePtrOutput)
 }
 
-func (i *apigatewayApiConfigFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ApigatewayApiConfigFile] {
-	return pulumix.Output[*ApigatewayApiConfigFile]{
-		OutputState: i.ToApigatewayApiConfigFilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApigatewayApiConfigFileArrayInput is an input type that accepts ApigatewayApiConfigFileArray and ApigatewayApiConfigFileArrayOutput values.
 // You can construct a concrete instance of `ApigatewayApiConfigFileArrayInput` via:
 //
@@ -129,12 +116,6 @@ func (i ApigatewayApiConfigFileArray) ToApigatewayApiConfigFileArrayOutput() Api
 
 func (i ApigatewayApiConfigFileArray) ToApigatewayApiConfigFileArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigFileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigFileArrayOutput)
-}
-
-func (i ApigatewayApiConfigFileArray) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayApiConfigFile] {
-	return pulumix.Output[[]ApigatewayApiConfigFile]{
-		OutputState: i.ToApigatewayApiConfigFileArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A lightweight description of a file.
@@ -162,12 +143,6 @@ func (o ApigatewayApiConfigFileOutput) ToApigatewayApiConfigFilePtrOutputWithCon
 	}).(ApigatewayApiConfigFilePtrOutput)
 }
 
-func (o ApigatewayApiConfigFileOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayApiConfigFile] {
-	return pulumix.Output[ApigatewayApiConfigFile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The bytes that constitute the file.
 func (o ApigatewayApiConfigFileOutput) Contents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApigatewayApiConfigFile) *string { return v.Contents }).(pulumi.StringPtrOutput)
@@ -190,12 +165,6 @@ func (o ApigatewayApiConfigFilePtrOutput) ToApigatewayApiConfigFilePtrOutput() A
 
 func (o ApigatewayApiConfigFilePtrOutput) ToApigatewayApiConfigFilePtrOutputWithContext(ctx context.Context) ApigatewayApiConfigFilePtrOutput {
 	return o
-}
-
-func (o ApigatewayApiConfigFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApigatewayApiConfigFile] {
-	return pulumix.Output[*ApigatewayApiConfigFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayApiConfigFilePtrOutput) Elem() ApigatewayApiConfigFileOutput {
@@ -242,12 +211,6 @@ func (o ApigatewayApiConfigFileArrayOutput) ToApigatewayApiConfigFileArrayOutput
 	return o
 }
 
-func (o ApigatewayApiConfigFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayApiConfigFile] {
-	return pulumix.Output[[]ApigatewayApiConfigFile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApigatewayApiConfigFileArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigFileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayApiConfigFile {
 		return vs[0].([]ApigatewayApiConfigFile)[vs[1].(int)]
@@ -277,12 +240,6 @@ func (o ApigatewayApiConfigFileResponseOutput) ToApigatewayApiConfigFileResponse
 	return o
 }
 
-func (o ApigatewayApiConfigFileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayApiConfigFileResponse] {
-	return pulumix.Output[ApigatewayApiConfigFileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The bytes that constitute the file.
 func (o ApigatewayApiConfigFileResponseOutput) Contents() pulumi.StringOutput {
 	return o.ApplyT(func(v ApigatewayApiConfigFileResponse) string { return v.Contents }).(pulumi.StringOutput)
@@ -305,12 +262,6 @@ func (o ApigatewayApiConfigFileResponseArrayOutput) ToApigatewayApiConfigFileRes
 
 func (o ApigatewayApiConfigFileResponseArrayOutput) ToApigatewayApiConfigFileResponseArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigFileResponseArrayOutput {
 	return o
-}
-
-func (o ApigatewayApiConfigFileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayApiConfigFileResponse] {
-	return pulumix.Output[[]ApigatewayApiConfigFileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayApiConfigFileResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigFileResponseOutput {
@@ -358,12 +309,6 @@ func (i ApigatewayApiConfigGrpcServiceDefinitionArgs) ToApigatewayApiConfigGrpcS
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigGrpcServiceDefinitionOutput)
 }
 
-func (i ApigatewayApiConfigGrpcServiceDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[ApigatewayApiConfigGrpcServiceDefinition] {
-	return pulumix.Output[ApigatewayApiConfigGrpcServiceDefinition]{
-		OutputState: i.ToApigatewayApiConfigGrpcServiceDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApigatewayApiConfigGrpcServiceDefinitionArrayInput is an input type that accepts ApigatewayApiConfigGrpcServiceDefinitionArray and ApigatewayApiConfigGrpcServiceDefinitionArrayOutput values.
 // You can construct a concrete instance of `ApigatewayApiConfigGrpcServiceDefinitionArrayInput` via:
 //
@@ -389,12 +334,6 @@ func (i ApigatewayApiConfigGrpcServiceDefinitionArray) ToApigatewayApiConfigGrpc
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigGrpcServiceDefinitionArrayOutput)
 }
 
-func (i ApigatewayApiConfigGrpcServiceDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayApiConfigGrpcServiceDefinition] {
-	return pulumix.Output[[]ApigatewayApiConfigGrpcServiceDefinition]{
-		OutputState: i.ToApigatewayApiConfigGrpcServiceDefinitionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A gRPC service definition.
 type ApigatewayApiConfigGrpcServiceDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -408,12 +347,6 @@ func (o ApigatewayApiConfigGrpcServiceDefinitionOutput) ToApigatewayApiConfigGrp
 
 func (o ApigatewayApiConfigGrpcServiceDefinitionOutput) ToApigatewayApiConfigGrpcServiceDefinitionOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionOutput {
 	return o
-}
-
-func (o ApigatewayApiConfigGrpcServiceDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayApiConfigGrpcServiceDefinition] {
-	return pulumix.Output[ApigatewayApiConfigGrpcServiceDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb
@@ -438,12 +371,6 @@ func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) ToApigatewayApiConf
 
 func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) ToApigatewayApiConfigGrpcServiceDefinitionArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionArrayOutput {
 	return o
-}
-
-func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayApiConfigGrpcServiceDefinition] {
-	return pulumix.Output[[]ApigatewayApiConfigGrpcServiceDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigGrpcServiceDefinitionOutput {
@@ -475,12 +402,6 @@ func (o ApigatewayApiConfigGrpcServiceDefinitionResponseOutput) ToApigatewayApiC
 	return o
 }
 
-func (o ApigatewayApiConfigGrpcServiceDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayApiConfigGrpcServiceDefinitionResponse] {
-	return pulumix.Output[ApigatewayApiConfigGrpcServiceDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb
 func (o ApigatewayApiConfigGrpcServiceDefinitionResponseOutput) FileDescriptorSet() ApigatewayApiConfigFileResponseOutput {
 	return o.ApplyT(func(v ApigatewayApiConfigGrpcServiceDefinitionResponse) ApigatewayApiConfigFileResponse {
@@ -507,12 +428,6 @@ func (o ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput) ToApigatewa
 
 func (o ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput) ToApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput {
 	return o
-}
-
-func (o ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayApiConfigGrpcServiceDefinitionResponse] {
-	return pulumix.Output[[]ApigatewayApiConfigGrpcServiceDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigGrpcServiceDefinitionResponseOutput {
@@ -556,12 +471,6 @@ func (i ApigatewayApiConfigOpenApiDocumentArgs) ToApigatewayApiConfigOpenApiDocu
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigOpenApiDocumentOutput)
 }
 
-func (i ApigatewayApiConfigOpenApiDocumentArgs) ToOutput(ctx context.Context) pulumix.Output[ApigatewayApiConfigOpenApiDocument] {
-	return pulumix.Output[ApigatewayApiConfigOpenApiDocument]{
-		OutputState: i.ToApigatewayApiConfigOpenApiDocumentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApigatewayApiConfigOpenApiDocumentArrayInput is an input type that accepts ApigatewayApiConfigOpenApiDocumentArray and ApigatewayApiConfigOpenApiDocumentArrayOutput values.
 // You can construct a concrete instance of `ApigatewayApiConfigOpenApiDocumentArrayInput` via:
 //
@@ -587,12 +496,6 @@ func (i ApigatewayApiConfigOpenApiDocumentArray) ToApigatewayApiConfigOpenApiDoc
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigOpenApiDocumentArrayOutput)
 }
 
-func (i ApigatewayApiConfigOpenApiDocumentArray) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayApiConfigOpenApiDocument] {
-	return pulumix.Output[[]ApigatewayApiConfigOpenApiDocument]{
-		OutputState: i.ToApigatewayApiConfigOpenApiDocumentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An OpenAPI Specification Document describing an API.
 type ApigatewayApiConfigOpenApiDocumentOutput struct{ *pulumi.OutputState }
 
@@ -606,12 +509,6 @@ func (o ApigatewayApiConfigOpenApiDocumentOutput) ToApigatewayApiConfigOpenApiDo
 
 func (o ApigatewayApiConfigOpenApiDocumentOutput) ToApigatewayApiConfigOpenApiDocumentOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentOutput {
 	return o
-}
-
-func (o ApigatewayApiConfigOpenApiDocumentOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayApiConfigOpenApiDocument] {
-	return pulumix.Output[ApigatewayApiConfigOpenApiDocument]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The OpenAPI Specification document file.
@@ -631,12 +528,6 @@ func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) ToApigatewayApiConfigOpen
 
 func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) ToApigatewayApiConfigOpenApiDocumentArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentArrayOutput {
 	return o
-}
-
-func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayApiConfigOpenApiDocument] {
-	return pulumix.Output[[]ApigatewayApiConfigOpenApiDocument]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigOpenApiDocumentOutput {
@@ -666,12 +557,6 @@ func (o ApigatewayApiConfigOpenApiDocumentResponseOutput) ToApigatewayApiConfigO
 	return o
 }
 
-func (o ApigatewayApiConfigOpenApiDocumentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayApiConfigOpenApiDocumentResponse] {
-	return pulumix.Output[ApigatewayApiConfigOpenApiDocumentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The OpenAPI Specification document file.
 func (o ApigatewayApiConfigOpenApiDocumentResponseOutput) Document() ApigatewayApiConfigFileResponseOutput {
 	return o.ApplyT(func(v ApigatewayApiConfigOpenApiDocumentResponse) ApigatewayApiConfigFileResponse { return v.Document }).(ApigatewayApiConfigFileResponseOutput)
@@ -689,12 +574,6 @@ func (o ApigatewayApiConfigOpenApiDocumentResponseArrayOutput) ToApigatewayApiCo
 
 func (o ApigatewayApiConfigOpenApiDocumentResponseArrayOutput) ToApigatewayApiConfigOpenApiDocumentResponseArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentResponseArrayOutput {
 	return o
-}
-
-func (o ApigatewayApiConfigOpenApiDocumentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayApiConfigOpenApiDocumentResponse] {
-	return pulumix.Output[[]ApigatewayApiConfigOpenApiDocumentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayApiConfigOpenApiDocumentResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigOpenApiDocumentResponseOutput {
@@ -742,12 +621,6 @@ func (i ApigatewayAuditConfigArgs) ToApigatewayAuditConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayAuditConfigOutput)
 }
 
-func (i ApigatewayAuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ApigatewayAuditConfig] {
-	return pulumix.Output[ApigatewayAuditConfig]{
-		OutputState: i.ToApigatewayAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApigatewayAuditConfigArrayInput is an input type that accepts ApigatewayAuditConfigArray and ApigatewayAuditConfigArrayOutput values.
 // You can construct a concrete instance of `ApigatewayAuditConfigArrayInput` via:
 //
@@ -773,12 +646,6 @@ func (i ApigatewayAuditConfigArray) ToApigatewayAuditConfigArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayAuditConfigArrayOutput)
 }
 
-func (i ApigatewayAuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayAuditConfig] {
-	return pulumix.Output[[]ApigatewayAuditConfig]{
-		OutputState: i.ToApigatewayAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type ApigatewayAuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -792,12 +659,6 @@ func (o ApigatewayAuditConfigOutput) ToApigatewayAuditConfigOutput() ApigatewayA
 
 func (o ApigatewayAuditConfigOutput) ToApigatewayAuditConfigOutputWithContext(ctx context.Context) ApigatewayAuditConfigOutput {
 	return o
-}
-
-func (o ApigatewayAuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayAuditConfig] {
-	return pulumix.Output[ApigatewayAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -822,12 +683,6 @@ func (o ApigatewayAuditConfigArrayOutput) ToApigatewayAuditConfigArrayOutput() A
 
 func (o ApigatewayAuditConfigArrayOutput) ToApigatewayAuditConfigArrayOutputWithContext(ctx context.Context) ApigatewayAuditConfigArrayOutput {
 	return o
-}
-
-func (o ApigatewayAuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayAuditConfig] {
-	return pulumix.Output[[]ApigatewayAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayAuditConfigArrayOutput) Index(i pulumi.IntInput) ApigatewayAuditConfigOutput {
@@ -859,12 +714,6 @@ func (o ApigatewayAuditConfigResponseOutput) ToApigatewayAuditConfigResponseOutp
 	return o
 }
 
-func (o ApigatewayAuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayAuditConfigResponse] {
-	return pulumix.Output[ApigatewayAuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o ApigatewayAuditConfigResponseOutput) AuditLogConfigs() ApigatewayAuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v ApigatewayAuditConfigResponse) []ApigatewayAuditLogConfigResponse { return v.AuditLogConfigs }).(ApigatewayAuditLogConfigResponseArrayOutput)
@@ -887,12 +736,6 @@ func (o ApigatewayAuditConfigResponseArrayOutput) ToApigatewayAuditConfigRespons
 
 func (o ApigatewayAuditConfigResponseArrayOutput) ToApigatewayAuditConfigResponseArrayOutputWithContext(ctx context.Context) ApigatewayAuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o ApigatewayAuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayAuditConfigResponse] {
-	return pulumix.Output[[]ApigatewayAuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayAuditConfigResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayAuditConfigResponseOutput {
@@ -940,12 +783,6 @@ func (i ApigatewayAuditLogConfigArgs) ToApigatewayAuditLogConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayAuditLogConfigOutput)
 }
 
-func (i ApigatewayAuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ApigatewayAuditLogConfig] {
-	return pulumix.Output[ApigatewayAuditLogConfig]{
-		OutputState: i.ToApigatewayAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApigatewayAuditLogConfigArrayInput is an input type that accepts ApigatewayAuditLogConfigArray and ApigatewayAuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `ApigatewayAuditLogConfigArrayInput` via:
 //
@@ -971,12 +808,6 @@ func (i ApigatewayAuditLogConfigArray) ToApigatewayAuditLogConfigArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayAuditLogConfigArrayOutput)
 }
 
-func (i ApigatewayAuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayAuditLogConfig] {
-	return pulumix.Output[[]ApigatewayAuditLogConfig]{
-		OutputState: i.ToApigatewayAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type ApigatewayAuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -990,12 +821,6 @@ func (o ApigatewayAuditLogConfigOutput) ToApigatewayAuditLogConfigOutput() Apiga
 
 func (o ApigatewayAuditLogConfigOutput) ToApigatewayAuditLogConfigOutputWithContext(ctx context.Context) ApigatewayAuditLogConfigOutput {
 	return o
-}
-
-func (o ApigatewayAuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayAuditLogConfig] {
-	return pulumix.Output[ApigatewayAuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -1020,12 +845,6 @@ func (o ApigatewayAuditLogConfigArrayOutput) ToApigatewayAuditLogConfigArrayOutp
 
 func (o ApigatewayAuditLogConfigArrayOutput) ToApigatewayAuditLogConfigArrayOutputWithContext(ctx context.Context) ApigatewayAuditLogConfigArrayOutput {
 	return o
-}
-
-func (o ApigatewayAuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayAuditLogConfig] {
-	return pulumix.Output[[]ApigatewayAuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayAuditLogConfigArrayOutput) Index(i pulumi.IntInput) ApigatewayAuditLogConfigOutput {
@@ -1057,12 +876,6 @@ func (o ApigatewayAuditLogConfigResponseOutput) ToApigatewayAuditLogConfigRespon
 	return o
 }
 
-func (o ApigatewayAuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayAuditLogConfigResponse] {
-	return pulumix.Output[ApigatewayAuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o ApigatewayAuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApigatewayAuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -1085,12 +898,6 @@ func (o ApigatewayAuditLogConfigResponseArrayOutput) ToApigatewayAuditLogConfigR
 
 func (o ApigatewayAuditLogConfigResponseArrayOutput) ToApigatewayAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) ApigatewayAuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o ApigatewayAuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayAuditLogConfigResponse] {
-	return pulumix.Output[[]ApigatewayAuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayAuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayAuditLogConfigResponseOutput {
@@ -1134,12 +941,6 @@ func (i ApigatewayBackendConfigArgs) ToApigatewayBackendConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayBackendConfigOutput)
 }
 
-func (i ApigatewayBackendConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ApigatewayBackendConfig] {
-	return pulumix.Output[ApigatewayBackendConfig]{
-		OutputState: i.ToApigatewayBackendConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApigatewayBackendConfigArgs) ToApigatewayBackendConfigPtrOutput() ApigatewayBackendConfigPtrOutput {
 	return i.ToApigatewayBackendConfigPtrOutputWithContext(context.Background())
 }
@@ -1181,12 +982,6 @@ func (i *apigatewayBackendConfigPtrType) ToApigatewayBackendConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayBackendConfigPtrOutput)
 }
 
-func (i *apigatewayBackendConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApigatewayBackendConfig] {
-	return pulumix.Output[*ApigatewayBackendConfig]{
-		OutputState: i.ToApigatewayBackendConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for all backends.
 type ApigatewayBackendConfigOutput struct{ *pulumi.OutputState }
 
@@ -1212,12 +1007,6 @@ func (o ApigatewayBackendConfigOutput) ToApigatewayBackendConfigPtrOutputWithCon
 	}).(ApigatewayBackendConfigPtrOutput)
 }
 
-func (o ApigatewayBackendConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayBackendConfig] {
-	return pulumix.Output[ApigatewayBackendConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend). This may either be the Service Account's email (i.e. "{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com") or its full resource name (i.e. "projects/{PROJECT}/accounts/{UNIQUE_ID}"). This is most often used when the backend is a GCP resource such as a Cloud Run Service or an IAP-secured service. Note that this token is always sent as an authorization header bearer token. The audience of the OIDC token is configured in the associated Service Config in the BackendRule option (https://github.com/googleapis/googleapis/blob/master/google/api/backend.proto#L125).
 func (o ApigatewayBackendConfigOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApigatewayBackendConfig) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
@@ -1235,12 +1024,6 @@ func (o ApigatewayBackendConfigPtrOutput) ToApigatewayBackendConfigPtrOutput() A
 
 func (o ApigatewayBackendConfigPtrOutput) ToApigatewayBackendConfigPtrOutputWithContext(ctx context.Context) ApigatewayBackendConfigPtrOutput {
 	return o
-}
-
-func (o ApigatewayBackendConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApigatewayBackendConfig] {
-	return pulumix.Output[*ApigatewayBackendConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayBackendConfigPtrOutput) Elem() ApigatewayBackendConfigOutput {
@@ -1282,12 +1065,6 @@ func (o ApigatewayBackendConfigResponseOutput) ToApigatewayBackendConfigResponse
 
 func (o ApigatewayBackendConfigResponseOutput) ToApigatewayBackendConfigResponseOutputWithContext(ctx context.Context) ApigatewayBackendConfigResponseOutput {
 	return o
-}
-
-func (o ApigatewayBackendConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayBackendConfigResponse] {
-	return pulumix.Output[ApigatewayBackendConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend). This may either be the Service Account's email (i.e. "{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com") or its full resource name (i.e. "projects/{PROJECT}/accounts/{UNIQUE_ID}"). This is most often used when the backend is a GCP resource such as a Cloud Run Service or an IAP-secured service. Note that this token is always sent as an authorization header bearer token. The audience of the OIDC token is configured in the associated Service Config in the BackendRule option (https://github.com/googleapis/googleapis/blob/master/google/api/backend.proto#L125).
@@ -1338,12 +1115,6 @@ func (i ApigatewayBindingArgs) ToApigatewayBindingOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayBindingOutput)
 }
 
-func (i ApigatewayBindingArgs) ToOutput(ctx context.Context) pulumix.Output[ApigatewayBinding] {
-	return pulumix.Output[ApigatewayBinding]{
-		OutputState: i.ToApigatewayBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApigatewayBindingArrayInput is an input type that accepts ApigatewayBindingArray and ApigatewayBindingArrayOutput values.
 // You can construct a concrete instance of `ApigatewayBindingArrayInput` via:
 //
@@ -1369,12 +1140,6 @@ func (i ApigatewayBindingArray) ToApigatewayBindingArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayBindingArrayOutput)
 }
 
-func (i ApigatewayBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayBinding] {
-	return pulumix.Output[[]ApigatewayBinding]{
-		OutputState: i.ToApigatewayBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type ApigatewayBindingOutput struct{ *pulumi.OutputState }
 
@@ -1388,12 +1153,6 @@ func (o ApigatewayBindingOutput) ToApigatewayBindingOutput() ApigatewayBindingOu
 
 func (o ApigatewayBindingOutput) ToApigatewayBindingOutputWithContext(ctx context.Context) ApigatewayBindingOutput {
 	return o
-}
-
-func (o ApigatewayBindingOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayBinding] {
-	return pulumix.Output[ApigatewayBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -1423,12 +1182,6 @@ func (o ApigatewayBindingArrayOutput) ToApigatewayBindingArrayOutput() Apigatewa
 
 func (o ApigatewayBindingArrayOutput) ToApigatewayBindingArrayOutputWithContext(ctx context.Context) ApigatewayBindingArrayOutput {
 	return o
-}
-
-func (o ApigatewayBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayBinding] {
-	return pulumix.Output[[]ApigatewayBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayBindingArrayOutput) Index(i pulumi.IntInput) ApigatewayBindingOutput {
@@ -1462,12 +1215,6 @@ func (o ApigatewayBindingResponseOutput) ToApigatewayBindingResponseOutputWithCo
 	return o
 }
 
-func (o ApigatewayBindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayBindingResponse] {
-	return pulumix.Output[ApigatewayBindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o ApigatewayBindingResponseOutput) Condition() ApigatewayExprResponseOutput {
 	return o.ApplyT(func(v ApigatewayBindingResponse) ApigatewayExprResponse { return v.Condition }).(ApigatewayExprResponseOutput)
@@ -1495,12 +1242,6 @@ func (o ApigatewayBindingResponseArrayOutput) ToApigatewayBindingResponseArrayOu
 
 func (o ApigatewayBindingResponseArrayOutput) ToApigatewayBindingResponseArrayOutputWithContext(ctx context.Context) ApigatewayBindingResponseArrayOutput {
 	return o
-}
-
-func (o ApigatewayBindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApigatewayBindingResponse] {
-	return pulumix.Output[[]ApigatewayBindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayBindingResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayBindingResponseOutput {
@@ -1556,12 +1297,6 @@ func (i ApigatewayExprArgs) ToApigatewayExprOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayExprOutput)
 }
 
-func (i ApigatewayExprArgs) ToOutput(ctx context.Context) pulumix.Output[ApigatewayExpr] {
-	return pulumix.Output[ApigatewayExpr]{
-		OutputState: i.ToApigatewayExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApigatewayExprArgs) ToApigatewayExprPtrOutput() ApigatewayExprPtrOutput {
 	return i.ToApigatewayExprPtrOutputWithContext(context.Background())
 }
@@ -1603,12 +1338,6 @@ func (i *apigatewayExprPtrType) ToApigatewayExprPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayExprPtrOutput)
 }
 
-func (i *apigatewayExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApigatewayExpr] {
-	return pulumix.Output[*ApigatewayExpr]{
-		OutputState: i.ToApigatewayExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ApigatewayExprOutput struct{ *pulumi.OutputState }
 
@@ -1632,12 +1361,6 @@ func (o ApigatewayExprOutput) ToApigatewayExprPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApigatewayExpr) *ApigatewayExpr {
 		return &v
 	}).(ApigatewayExprPtrOutput)
-}
-
-func (o ApigatewayExprOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayExpr] {
-	return pulumix.Output[ApigatewayExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1672,12 +1395,6 @@ func (o ApigatewayExprPtrOutput) ToApigatewayExprPtrOutput() ApigatewayExprPtrOu
 
 func (o ApigatewayExprPtrOutput) ToApigatewayExprPtrOutputWithContext(ctx context.Context) ApigatewayExprPtrOutput {
 	return o
-}
-
-func (o ApigatewayExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApigatewayExpr] {
-	return pulumix.Output[*ApigatewayExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayExprPtrOutput) Elem() ApigatewayExprOutput {
@@ -1757,12 +1474,6 @@ func (o ApigatewayExprResponseOutput) ToApigatewayExprResponseOutputWithContext(
 	return o
 }
 
-func (o ApigatewayExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayExprResponse] {
-	return pulumix.Output[ApigatewayExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ApigatewayExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ApigatewayExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1818,12 +1529,6 @@ func (i ApigatewayGatewayConfigArgs) ToApigatewayGatewayConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayGatewayConfigOutput)
 }
 
-func (i ApigatewayGatewayConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ApigatewayGatewayConfig] {
-	return pulumix.Output[ApigatewayGatewayConfig]{
-		OutputState: i.ToApigatewayGatewayConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApigatewayGatewayConfigArgs) ToApigatewayGatewayConfigPtrOutput() ApigatewayGatewayConfigPtrOutput {
 	return i.ToApigatewayGatewayConfigPtrOutputWithContext(context.Background())
 }
@@ -1865,12 +1570,6 @@ func (i *apigatewayGatewayConfigPtrType) ToApigatewayGatewayConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayGatewayConfigPtrOutput)
 }
 
-func (i *apigatewayGatewayConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApigatewayGatewayConfig] {
-	return pulumix.Output[*ApigatewayGatewayConfig]{
-		OutputState: i.ToApigatewayGatewayConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration settings for Gateways.
 type ApigatewayGatewayConfigOutput struct{ *pulumi.OutputState }
 
@@ -1896,12 +1595,6 @@ func (o ApigatewayGatewayConfigOutput) ToApigatewayGatewayConfigPtrOutputWithCon
 	}).(ApigatewayGatewayConfigPtrOutput)
 }
 
-func (o ApigatewayGatewayConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayGatewayConfig] {
-	return pulumix.Output[ApigatewayGatewayConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Backend settings that are applied to all backends of the Gateway.
 func (o ApigatewayGatewayConfigOutput) BackendConfig() ApigatewayBackendConfigOutput {
 	return o.ApplyT(func(v ApigatewayGatewayConfig) ApigatewayBackendConfig { return v.BackendConfig }).(ApigatewayBackendConfigOutput)
@@ -1919,12 +1612,6 @@ func (o ApigatewayGatewayConfigPtrOutput) ToApigatewayGatewayConfigPtrOutput() A
 
 func (o ApigatewayGatewayConfigPtrOutput) ToApigatewayGatewayConfigPtrOutputWithContext(ctx context.Context) ApigatewayGatewayConfigPtrOutput {
 	return o
-}
-
-func (o ApigatewayGatewayConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApigatewayGatewayConfig] {
-	return pulumix.Output[*ApigatewayGatewayConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayGatewayConfigPtrOutput) Elem() ApigatewayGatewayConfigOutput {
@@ -1966,12 +1653,6 @@ func (o ApigatewayGatewayConfigResponseOutput) ToApigatewayGatewayConfigResponse
 
 func (o ApigatewayGatewayConfigResponseOutput) ToApigatewayGatewayConfigResponseOutputWithContext(ctx context.Context) ApigatewayGatewayConfigResponseOutput {
 	return o
-}
-
-func (o ApigatewayGatewayConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayGatewayConfigResponse] {
-	return pulumix.Output[ApigatewayGatewayConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backend settings that are applied to all backends of the Gateway.
