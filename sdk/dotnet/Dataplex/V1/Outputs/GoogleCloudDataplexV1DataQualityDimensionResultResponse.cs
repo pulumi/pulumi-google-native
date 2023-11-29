@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// Whether the dimension passed or failed.
         /// </summary>
         public readonly bool Passed;
+        /// <summary>
+        /// The dimension-level data quality score for this data scan job if and only if the 'dimension' field is set.The score ranges between 0, 100 (up to two decimal points).
+        /// </summary>
+        public readonly double Score;
 
         [OutputConstructor]
         private GoogleCloudDataplexV1DataQualityDimensionResultResponse(
             Outputs.GoogleCloudDataplexV1DataQualityDimensionResponse dimension,
 
-            bool passed)
+            bool passed,
+
+            double score)
         {
             Dimension = dimension;
             Passed = passed;
+            Score = score;
         }
     }
 }

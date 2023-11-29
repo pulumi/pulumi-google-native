@@ -39,6 +39,7 @@ __all__ = [
     'GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse',
     'GoogleCloudDataplexV1DataProfileSpecResponse',
     'GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse',
+    'GoogleCloudDataplexV1DataQualityColumnResultResponse',
     'GoogleCloudDataplexV1DataQualityDimensionResponse',
     'GoogleCloudDataplexV1DataQualityDimensionResultResponse',
     'GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultResponse',
@@ -1690,6 +1691,39 @@ class GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDataplexV1DataQualityColumnResultResponse(dict):
+    """
+    DataQualityColumnResult provides a more detailed, per-column view of the results.
+    """
+    def __init__(__self__, *,
+                 column: str,
+                 score: float):
+        """
+        DataQualityColumnResult provides a more detailed, per-column view of the results.
+        :param str column: The column specified in the DataQualityRule.
+        :param float score: The column-level data quality score for this data scan job if and only if the 'column' field is set.The score ranges between between 0, 100 (up to two decimal points).
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "score", score)
+
+    @property
+    @pulumi.getter
+    def column(self) -> str:
+        """
+        The column specified in the DataQualityRule.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter
+    def score(self) -> float:
+        """
+        The column-level data quality score for this data scan job if and only if the 'column' field is set.The score ranges between between 0, 100 (up to two decimal points).
+        """
+        return pulumi.get(self, "score")
+
+
+@pulumi.output_type
 class GoogleCloudDataplexV1DataQualityDimensionResponse(dict):
     """
     A dimension captures data quality intent about a defined subset of the rules specified.
@@ -1718,14 +1752,17 @@ class GoogleCloudDataplexV1DataQualityDimensionResultResponse(dict):
     """
     def __init__(__self__, *,
                  dimension: 'outputs.GoogleCloudDataplexV1DataQualityDimensionResponse',
-                 passed: bool):
+                 passed: bool,
+                 score: float):
         """
         DataQualityDimensionResult provides a more detailed, per-dimension view of the results.
         :param 'GoogleCloudDataplexV1DataQualityDimensionResponse' dimension: The dimension config specified in the DataQualitySpec, as is.
         :param bool passed: Whether the dimension passed or failed.
+        :param float score: The dimension-level data quality score for this data scan job if and only if the 'dimension' field is set.The score ranges between 0, 100 (up to two decimal points).
         """
         pulumi.set(__self__, "dimension", dimension)
         pulumi.set(__self__, "passed", passed)
+        pulumi.set(__self__, "score", score)
 
     @property
     @pulumi.getter
@@ -1742,6 +1779,14 @@ class GoogleCloudDataplexV1DataQualityDimensionResultResponse(dict):
         Whether the dimension passed or failed.
         """
         return pulumi.get(self, "passed")
+
+    @property
+    @pulumi.getter
+    def score(self) -> float:
+        """
+        The dimension-level data quality score for this data scan job if and only if the 'dimension' field is set.The score ranges between 0, 100 (up to two decimal points).
+        """
+        return pulumi.get(self, "score")
 
 
 @pulumi.output_type
@@ -1843,27 +1888,41 @@ class GoogleCloudDataplexV1DataQualityResultResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 columns: Sequence['outputs.GoogleCloudDataplexV1DataQualityColumnResultResponse'],
                  dimensions: Sequence['outputs.GoogleCloudDataplexV1DataQualityDimensionResultResponse'],
                  passed: bool,
                  post_scan_actions_result: 'outputs.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse',
                  row_count: str,
                  rules: Sequence['outputs.GoogleCloudDataplexV1DataQualityRuleResultResponse'],
-                 scanned_data: 'outputs.GoogleCloudDataplexV1ScannedDataResponse'):
+                 scanned_data: 'outputs.GoogleCloudDataplexV1ScannedDataResponse',
+                 score: float):
         """
         The output of a DataQualityScan.
+        :param Sequence['GoogleCloudDataplexV1DataQualityColumnResultResponse'] columns: A list of results at the column level.A column will have a corresponding DataQualityColumnResult if and only if there is at least one rule with the 'column' field set to it.
         :param Sequence['GoogleCloudDataplexV1DataQualityDimensionResultResponse'] dimensions: A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
         :param bool passed: Overall data quality result -- true if all rules passed.
         :param 'GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse' post_scan_actions_result: The result of post scan actions.
         :param str row_count: The count of rows processed.
         :param Sequence['GoogleCloudDataplexV1DataQualityRuleResultResponse'] rules: A list of all the rules in a job, and their results.
         :param 'GoogleCloudDataplexV1ScannedDataResponse' scanned_data: The data scanned for this result.
+        :param float score: The overall data quality score.The score ranges between 0, 100 (up to two decimal points).
         """
+        pulumi.set(__self__, "columns", columns)
         pulumi.set(__self__, "dimensions", dimensions)
         pulumi.set(__self__, "passed", passed)
         pulumi.set(__self__, "post_scan_actions_result", post_scan_actions_result)
         pulumi.set(__self__, "row_count", row_count)
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "scanned_data", scanned_data)
+        pulumi.set(__self__, "score", score)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GoogleCloudDataplexV1DataQualityColumnResultResponse']:
+        """
+        A list of results at the column level.A column will have a corresponding DataQualityColumnResult if and only if there is at least one rule with the 'column' field set to it.
+        """
+        return pulumi.get(self, "columns")
 
     @property
     @pulumi.getter
@@ -1912,6 +1971,14 @@ class GoogleCloudDataplexV1DataQualityResultResponse(dict):
         The data scanned for this result.
         """
         return pulumi.get(self, "scanned_data")
+
+    @property
+    @pulumi.getter
+    def score(self) -> float:
+        """
+        The overall data quality score.The score ranges between 0, 100 (up to two decimal points).
+        """
+        return pulumi.get(self, "score")
 
 
 @pulumi.output_type

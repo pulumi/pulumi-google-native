@@ -2913,7 +2913,8 @@ class VmwareNetworkConfigArgs:
                  control_plane_v2_config: Optional[pulumi.Input['VmwareControlPlaneV2ConfigArgs']] = None,
                  dhcp_ip_config: Optional[pulumi.Input['VmwareDhcpIpConfigArgs']] = None,
                  host_config: Optional[pulumi.Input['VmwareHostConfigArgs']] = None,
-                 static_ip_config: Optional[pulumi.Input['VmwareStaticIpConfigArgs']] = None):
+                 static_ip_config: Optional[pulumi.Input['VmwareStaticIpConfigArgs']] = None,
+                 vcenter_network: Optional[pulumi.Input[str]] = None):
         """
         Specifies network config for the VMware user cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
@@ -2922,6 +2923,7 @@ class VmwareNetworkConfigArgs:
         :param pulumi.Input['VmwareDhcpIpConfigArgs'] dhcp_ip_config: Configuration settings for a DHCP IP configuration.
         :param pulumi.Input['VmwareHostConfigArgs'] host_config: Represents common network settings irrespective of the host's IP address.
         :param pulumi.Input['VmwareStaticIpConfigArgs'] static_ip_config: Configuration settings for a static IP configuration.
+        :param pulumi.Input[str] vcenter_network: vcenter_network specifies vCenter network name. Inherited from the admin cluster.
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
         pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
@@ -2933,6 +2935,8 @@ class VmwareNetworkConfigArgs:
             pulumi.set(__self__, "host_config", host_config)
         if static_ip_config is not None:
             pulumi.set(__self__, "static_ip_config", static_ip_config)
+        if vcenter_network is not None:
+            pulumi.set(__self__, "vcenter_network", vcenter_network)
 
     @property
     @pulumi.getter(name="podAddressCidrBlocks")
@@ -3005,6 +3009,18 @@ class VmwareNetworkConfigArgs:
     @static_ip_config.setter
     def static_ip_config(self, value: Optional[pulumi.Input['VmwareStaticIpConfigArgs']]):
         pulumi.set(self, "static_ip_config", value)
+
+    @property
+    @pulumi.getter(name="vcenterNetwork")
+    def vcenter_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+        """
+        return pulumi.get(self, "vcenter_network")
+
+    @vcenter_network.setter
+    def vcenter_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vcenter_network", value)
 
 
 @pulumi.input_type

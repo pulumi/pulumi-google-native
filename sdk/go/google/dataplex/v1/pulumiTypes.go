@@ -3544,6 +3544,71 @@ func (o GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput) FieldN
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
 }
 
+// DataQualityColumnResult provides a more detailed, per-column view of the results.
+type GoogleCloudDataplexV1DataQualityColumnResultResponse struct {
+	// The column specified in the DataQualityRule.
+	Column string `pulumi:"column"`
+	// The column-level data quality score for this data scan job if and only if the 'column' field is set.The score ranges between between 0, 100 (up to two decimal points).
+	Score float64 `pulumi:"score"`
+}
+
+// DataQualityColumnResult provides a more detailed, per-column view of the results.
+type GoogleCloudDataplexV1DataQualityColumnResultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityColumnResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityColumnResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityColumnResultResponseOutput) ToGoogleCloudDataplexV1DataQualityColumnResultResponseOutput() GoogleCloudDataplexV1DataQualityColumnResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityColumnResultResponseOutput) ToGoogleCloudDataplexV1DataQualityColumnResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityColumnResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityColumnResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataplexV1DataQualityColumnResultResponse] {
+	return pulumix.Output[GoogleCloudDataplexV1DataQualityColumnResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The column specified in the DataQualityRule.
+func (o GoogleCloudDataplexV1DataQualityColumnResultResponseOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityColumnResultResponse) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// The column-level data quality score for this data scan job if and only if the 'column' field is set.The score ranges between between 0, 100 (up to two decimal points).
+func (o GoogleCloudDataplexV1DataQualityColumnResultResponseOutput) Score() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityColumnResultResponse) float64 { return v.Score }).(pulumi.Float64Output)
+}
+
+type GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataQualityColumnResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput) ToGoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput() GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput) ToGoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDataplexV1DataQualityColumnResultResponse] {
+	return pulumix.Output[[]GoogleCloudDataplexV1DataQualityColumnResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataQualityColumnResultResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataQualityColumnResultResponse {
+		return vs[0].([]GoogleCloudDataplexV1DataQualityColumnResultResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1DataQualityColumnResultResponseOutput)
+}
+
 // A dimension captures data quality intent about a defined subset of the rules specified.
 type GoogleCloudDataplexV1DataQualityDimensionResponse struct {
 	// The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
@@ -3582,6 +3647,8 @@ type GoogleCloudDataplexV1DataQualityDimensionResultResponse struct {
 	Dimension GoogleCloudDataplexV1DataQualityDimensionResponse `pulumi:"dimension"`
 	// Whether the dimension passed or failed.
 	Passed bool `pulumi:"passed"`
+	// The dimension-level data quality score for this data scan job if and only if the 'dimension' field is set.The score ranges between 0, 100 (up to two decimal points).
+	Score float64 `pulumi:"score"`
 }
 
 // DataQualityDimensionResult provides a more detailed, per-dimension view of the results.
@@ -3615,6 +3682,11 @@ func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) Dimension
 // Whether the dimension passed or failed.
 func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) Passed() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityDimensionResultResponse) bool { return v.Passed }).(pulumi.BoolOutput)
+}
+
+// The dimension-level data quality score for this data scan job if and only if the 'dimension' field is set.The score ranges between 0, 100 (up to two decimal points).
+func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) Score() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityDimensionResultResponse) float64 { return v.Score }).(pulumi.Float64Output)
 }
 
 type GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput struct{ *pulumi.OutputState }
@@ -3722,6 +3794,8 @@ func (o GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponseOutpu
 
 // The output of a DataQualityScan.
 type GoogleCloudDataplexV1DataQualityResultResponse struct {
+	// A list of results at the column level.A column will have a corresponding DataQualityColumnResult if and only if there is at least one rule with the 'column' field set to it.
+	Columns []GoogleCloudDataplexV1DataQualityColumnResultResponse `pulumi:"columns"`
 	// A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
 	Dimensions []GoogleCloudDataplexV1DataQualityDimensionResultResponse `pulumi:"dimensions"`
 	// Overall data quality result -- true if all rules passed.
@@ -3734,6 +3808,8 @@ type GoogleCloudDataplexV1DataQualityResultResponse struct {
 	Rules []GoogleCloudDataplexV1DataQualityRuleResultResponse `pulumi:"rules"`
 	// The data scanned for this result.
 	ScannedData GoogleCloudDataplexV1ScannedDataResponse `pulumi:"scannedData"`
+	// The overall data quality score.The score ranges between 0, 100 (up to two decimal points).
+	Score float64 `pulumi:"score"`
 }
 
 // The output of a DataQualityScan.
@@ -3755,6 +3831,13 @@ func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) ToOutput(ctx conte
 	return pulumix.Output[GoogleCloudDataplexV1DataQualityResultResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// A list of results at the column level.A column will have a corresponding DataQualityColumnResult if and only if there is at least one rule with the 'column' field set to it.
+func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) Columns() GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) []GoogleCloudDataplexV1DataQualityColumnResultResponse {
+		return v.Columns
+	}).(GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput)
 }
 
 // A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
@@ -3793,6 +3876,11 @@ func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) ScannedData() Goog
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) GoogleCloudDataplexV1ScannedDataResponse {
 		return v.ScannedData
 	}).(GoogleCloudDataplexV1ScannedDataResponseOutput)
+}
+
+// The overall data quality score.The score ranges between 0, 100 (up to two decimal points).
+func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) Score() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) float64 { return v.Score }).(pulumi.Float64Output)
 }
 
 // A rule captures data quality intent about a data source.
@@ -14798,6 +14886,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityColumnResultResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityColumnResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityDimensionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput{})

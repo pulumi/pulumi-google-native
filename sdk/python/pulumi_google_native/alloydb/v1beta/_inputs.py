@@ -384,28 +384,17 @@ class MachineConfigArgs:
 @pulumi.input_type
 class NetworkConfigArgs:
     def __init__(__self__, *,
-                 network: pulumi.Input[str],
-                 allocated_ip_range: Optional[pulumi.Input[str]] = None):
+                 allocated_ip_range: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None):
         """
         Metadata related to network configuration.
-        :param pulumi.Input[str] network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
         :param pulumi.Input[str] allocated_ip_range: Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
+        :param pulumi.Input[str] network: Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
         """
-        pulumi.set(__self__, "network", network)
         if allocated_ip_range is not None:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
-
-    @property
-    @pulumi.getter
-    def network(self) -> pulumi.Input[str]:
-        """
-        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[str]):
-        pulumi.set(self, "network", value)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
 
     @property
     @pulumi.getter(name="allocatedIpRange")
@@ -418,6 +407,18 @@ class NetworkConfigArgs:
     @allocated_ip_range.setter
     def allocated_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "allocated_ip_range", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
 
 
 @pulumi.input_type

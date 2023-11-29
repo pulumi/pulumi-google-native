@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataQualityResultResponse
     {
         /// <summary>
+        /// A list of results at the column level.A column will have a corresponding DataQualityColumnResult if and only if there is at least one rule with the 'column' field set to it.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityColumnResultResponse> Columns;
+        /// <summary>
         /// A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityDimensionResultResponse> Dimensions;
@@ -40,9 +44,15 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// The data scanned for this result.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1ScannedDataResponse ScannedData;
+        /// <summary>
+        /// The overall data quality score.The score ranges between 0, 100 (up to two decimal points).
+        /// </summary>
+        public readonly double Score;
 
         [OutputConstructor]
         private GoogleCloudDataplexV1DataQualityResultResponse(
+            ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityColumnResultResponse> columns,
+
             ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityDimensionResultResponse> dimensions,
 
             bool passed,
@@ -53,14 +63,18 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
             ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityRuleResultResponse> rules,
 
-            Outputs.GoogleCloudDataplexV1ScannedDataResponse scannedData)
+            Outputs.GoogleCloudDataplexV1ScannedDataResponse scannedData,
+
+            double score)
         {
+            Columns = columns;
             Dimensions = dimensions;
             Passed = passed;
             PostScanActionsResult = postScanActionsResult;
             RowCount = rowCount;
             Rules = rules;
             ScannedData = scannedData;
+            Score = score;
         }
     }
 }

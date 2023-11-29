@@ -1665,8 +1665,8 @@ func (o MigrationSourceResponseOutput) SourceType() pulumi.StringOutput {
 type NetworkConfig struct {
 	// Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
-	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
-	Network string `pulumi:"network"`
+	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	Network *string `pulumi:"network"`
 }
 
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
@@ -1684,8 +1684,8 @@ type NetworkConfigInput interface {
 type NetworkConfigArgs struct {
 	// Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
-	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
-	Network pulumi.StringInput `pulumi:"network"`
+	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	Network pulumi.StringPtrInput `pulumi:"network"`
 }
 
 func (NetworkConfigArgs) ElementType() reflect.Type {
@@ -1789,9 +1789,9 @@ func (o NetworkConfigOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
 }
 
-// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
-func (o NetworkConfigOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkConfig) string { return v.Network }).(pulumi.StringOutput)
+// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
 type NetworkConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1834,13 +1834,13 @@ func (o NetworkConfigPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
 func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Network
+		return v.Network
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1848,7 +1848,7 @@ func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 type NetworkConfigResponse struct {
 	// Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
 	AllocatedIpRange string `pulumi:"allocatedIpRange"`
-	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
 	Network string `pulumi:"network"`
 }
 
@@ -1878,7 +1878,7 @@ func (o NetworkConfigResponseOutput) AllocatedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
 }
 
-// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
 func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
 }

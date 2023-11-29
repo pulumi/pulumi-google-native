@@ -63,6 +63,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
         [Input("staticIpConfig")]
         public Input<Inputs.VmwareStaticIpConfigArgs>? StaticIpConfig { get; set; }
 
+        /// <summary>
+        /// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+        /// </summary>
+        [Input("vcenterNetwork")]
+        public Input<string>? VcenterNetwork { get; set; }
+
         public VmwareNetworkConfigArgs()
         {
         }

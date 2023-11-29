@@ -15936,6 +15936,8 @@ type VmwareNetworkConfig struct {
 	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
 	// Configuration settings for a static IP configuration.
 	StaticIpConfig *VmwareStaticIpConfig `pulumi:"staticIpConfig"`
+	// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+	VcenterNetwork *string `pulumi:"vcenterNetwork"`
 }
 
 // VmwareNetworkConfigInput is an input type that accepts VmwareNetworkConfigArgs and VmwareNetworkConfigOutput values.
@@ -15963,6 +15965,8 @@ type VmwareNetworkConfigArgs struct {
 	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
 	// Configuration settings for a static IP configuration.
 	StaticIpConfig VmwareStaticIpConfigPtrInput `pulumi:"staticIpConfig"`
+	// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+	VcenterNetwork pulumi.StringPtrInput `pulumi:"vcenterNetwork"`
 }
 
 func (VmwareNetworkConfigArgs) ElementType() reflect.Type {
@@ -16091,6 +16095,11 @@ func (o VmwareNetworkConfigOutput) StaticIpConfig() VmwareStaticIpConfigPtrOutpu
 	return o.ApplyT(func(v VmwareNetworkConfig) *VmwareStaticIpConfig { return v.StaticIpConfig }).(VmwareStaticIpConfigPtrOutput)
 }
 
+// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+func (o VmwareNetworkConfigOutput) VcenterNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareNetworkConfig) *string { return v.VcenterNetwork }).(pulumi.StringPtrOutput)
+}
+
 type VmwareNetworkConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (VmwareNetworkConfigPtrOutput) ElementType() reflect.Type {
@@ -16179,6 +16188,16 @@ func (o VmwareNetworkConfigPtrOutput) StaticIpConfig() VmwareStaticIpConfigPtrOu
 		}
 		return v.StaticIpConfig
 	}).(VmwareStaticIpConfigPtrOutput)
+}
+
+// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+func (o VmwareNetworkConfigPtrOutput) VcenterNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VcenterNetwork
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies network config for the VMware user cluster.
