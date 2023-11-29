@@ -13,6 +13,7 @@ __all__ = [
     'GetClientTokenResult',
     'AwaitableGetClientTokenResult',
     'get_client_token',
+    'get_client_token_output',
 ]
 
 @pulumi.output_type
@@ -92,3 +93,11 @@ def get_client_token(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         expiry=pulumi.get(__ret__, 'expiry'),
         refresh_token=pulumi.get(__ret__, 'refresh_token'),
         token_type=pulumi.get(__ret__, 'token_type'))
+
+
+@_utilities.lift_output_func(get_client_token)
+def get_client_token_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientTokenResult]:
+    """
+    Use this function to get an Google authentication token for the current login context.
+    """
+    ...

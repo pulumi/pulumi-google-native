@@ -650,9 +650,6 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["max_instances"] = max_instances
             __props__.__dict__["min_instances"] = min_instances
             __props__.__dict__["name"] = name
-            if network is not None and not opts.urn:
-                warnings.warn("""Deprecated: use vpc_connector""", DeprecationWarning)
-                pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["runtime"] = runtime

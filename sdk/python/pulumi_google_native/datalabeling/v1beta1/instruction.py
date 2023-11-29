@@ -182,9 +182,6 @@ class Instruction(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstructionArgs.__new__(InstructionArgs)
 
-            if csv_instruction is not None and not opts.urn:
-                warnings.warn("""Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.""", DeprecationWarning)
-                pulumi.log.warn("""csv_instruction is deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.""")
             __props__.__dict__["csv_instruction"] = csv_instruction
             if data_type is None and not opts.urn:
                 raise TypeError("Missing required property 'data_type'")

@@ -461,9 +461,6 @@ class NodePool(pulumi.CustomResource):
 
             __props__.__dict__["autoscaling"] = autoscaling
             __props__.__dict__["best_effort_provisioning"] = best_effort_provisioning
-            if cluster_id is not None and not opts.urn:
-                warnings.warn("""Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
-                pulumi.log.warn("""cluster_id is deprecated: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""")
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
@@ -479,16 +476,10 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["parent"] = parent
             __props__.__dict__["placement_policy"] = placement_policy
-            if project is not None and not opts.urn:
-                warnings.warn("""Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
-                pulumi.log.warn("""project is deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["project"] = project
             __props__.__dict__["queued_provisioning"] = queued_provisioning
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version
-            if zone is not None and not opts.urn:
-                warnings.warn("""Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
-                pulumi.log.warn("""zone is deprecated: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["instance_group_urls"] = None
             __props__.__dict__["pod_ipv4_cidr_size"] = None

@@ -239,9 +239,6 @@ class Database(pulumi.CustomResource):
 
             __props__.__dict__["charset"] = charset
             __props__.__dict__["collation"] = collation
-            if etag is not None and not opts.urn:
-                warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
-                pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
             __props__.__dict__["etag"] = etag
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

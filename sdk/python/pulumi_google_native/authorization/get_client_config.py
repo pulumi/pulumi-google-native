@@ -13,6 +13,7 @@ __all__ = [
     'GetClientConfigResult',
     'AwaitableGetClientConfigResult',
     'get_client_config',
+    'get_client_config_output',
 ]
 
 @pulumi.output_type
@@ -79,3 +80,11 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         zone=pulumi.get(__ret__, 'zone'))
+
+
+@_utilities.lift_output_func(get_client_config)
+def get_client_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientConfigResult]:
+    """
+    Use this function to access the current configuration of the native Google provider.
+    """
+    ...

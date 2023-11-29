@@ -332,9 +332,6 @@ class MigratingVm(pulumi.CustomResource):
 
             __props__.__dict__["compute_engine_disks_target_defaults"] = compute_engine_disks_target_defaults
             __props__.__dict__["compute_engine_target_defaults"] = compute_engine_target_defaults
-            if compute_engine_vm_defaults is not None and not opts.urn:
-                warnings.warn("""Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
-                pulumi.log.warn("""compute_engine_vm_defaults is deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""")
             __props__.__dict__["compute_engine_vm_defaults"] = compute_engine_vm_defaults
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -350,9 +347,6 @@ class MigratingVm(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source_id'")
             __props__.__dict__["source_id"] = source_id
             __props__.__dict__["source_vm_id"] = source_vm_id
-            if target_defaults is not None and not opts.urn:
-                warnings.warn("""The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
-                pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
             __props__.__dict__["target_defaults"] = target_defaults
             __props__.__dict__["aws_source_vm_details"] = None
             __props__.__dict__["azure_source_vm_details"] = None

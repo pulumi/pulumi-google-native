@@ -516,9 +516,6 @@ class Intent(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["messages"] = messages
             __props__.__dict__["ml_disabled"] = ml_disabled
-            if ml_enabled is not None and not opts.urn:
-                warnings.warn("""Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.""", DeprecationWarning)
-                pulumi.log.warn("""ml_enabled is deprecated: Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.""")
             __props__.__dict__["ml_enabled"] = ml_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["output_contexts"] = output_contexts

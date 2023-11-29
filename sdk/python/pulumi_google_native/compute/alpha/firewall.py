@@ -416,9 +416,6 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["destination_ranges"] = destination_ranges
             __props__.__dict__["direction"] = direction
             __props__.__dict__["disabled"] = disabled
-            if enable_logging is not None and not opts.urn:
-                warnings.warn("""Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""", DeprecationWarning)
-                pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""")
             __props__.__dict__["enable_logging"] = enable_logging
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name

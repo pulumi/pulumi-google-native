@@ -147,9 +147,6 @@ class StoredInfoType(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
-            if location is not None and not opts.urn:
-                warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
-                pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["stored_info_type_id"] = stored_info_type_id

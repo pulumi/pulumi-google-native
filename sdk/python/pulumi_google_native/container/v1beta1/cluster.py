@@ -1366,22 +1366,13 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_k8s_beta_apis"] = enable_k8s_beta_apis
             __props__.__dict__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
-            if enable_tpu is not None and not opts.urn:
-                warnings.warn("""Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""", DeprecationWarning)
-                pulumi.log.warn("""enable_tpu is deprecated: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""")
             __props__.__dict__["enable_tpu"] = enable_tpu
             __props__.__dict__["enterprise_config"] = enterprise_config
             __props__.__dict__["etag"] = etag
             __props__.__dict__["fleet"] = fleet
             __props__.__dict__["identity_service_config"] = identity_service_config
             __props__.__dict__["initial_cluster_version"] = initial_cluster_version
-            if initial_node_count is not None and not opts.urn:
-                warnings.warn("""The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""", DeprecationWarning)
-                pulumi.log.warn("""initial_node_count is deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""")
             __props__.__dict__["initial_node_count"] = initial_node_count
-            if instance_group_urls is not None and not opts.urn:
-                warnings.warn("""Deprecated. Use node_pools.instance_group_urls.""", DeprecationWarning)
-                pulumi.log.warn("""instance_group_urls is deprecated: Deprecated. Use node_pools.instance_group_urls.""")
             __props__.__dict__["instance_group_urls"] = instance_group_urls
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
             __props__.__dict__["legacy_abac"] = legacy_abac
@@ -1393,9 +1384,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["master"] = master
             __props__.__dict__["master_auth"] = master_auth
             __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
-            if master_ipv4_cidr_block is not None and not opts.urn:
-                warnings.warn("""The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.""", DeprecationWarning)
-                pulumi.log.warn("""master_ipv4_cidr_block is deprecated: The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.""")
             __props__.__dict__["master_ipv4_cidr_block"] = master_ipv4_cidr_block
             __props__.__dict__["mesh_certificates"] = mesh_certificates
             __props__.__dict__["monitoring_config"] = monitoring_config
@@ -1404,9 +1392,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["network_policy"] = network_policy
-            if node_config is not None and not opts.urn:
-                warnings.warn("""Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""", DeprecationWarning)
-                pulumi.log.warn("""node_config is deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""")
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["node_pool_auto_config"] = node_pool_auto_config
             __props__.__dict__["node_pool_defaults"] = node_pool_defaults
@@ -1415,18 +1400,9 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["parent"] = parent
             __props__.__dict__["parent_product_config"] = parent_product_config
             __props__.__dict__["pod_security_policy_config"] = pod_security_policy_config
-            if private_cluster is not None and not opts.urn:
-                warnings.warn("""If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.""", DeprecationWarning)
-                pulumi.log.warn("""private_cluster is deprecated: If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.""")
             __props__.__dict__["private_cluster"] = private_cluster
             __props__.__dict__["private_cluster_config"] = private_cluster_config
-            if project is not None and not opts.urn:
-                warnings.warn("""Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
-                pulumi.log.warn("""project is deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["project"] = project
-            if protect_config is not None and not opts.urn:
-                warnings.warn("""Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""", DeprecationWarning)
-                pulumi.log.warn("""protect_config is deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""")
             __props__.__dict__["protect_config"] = protect_config
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["resource_labels"] = resource_labels
@@ -1439,9 +1415,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["workload_alts_config"] = workload_alts_config
             __props__.__dict__["workload_certificates"] = workload_certificates
             __props__.__dict__["workload_identity_config"] = workload_identity_config
-            if zone is not None and not opts.urn:
-                warnings.warn("""Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
-                pulumi.log.warn("""zone is deprecated: Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_master_version"] = None

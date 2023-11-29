@@ -163,9 +163,6 @@ class FolderPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FolderPolicyArgs.__new__(FolderPolicyArgs)
 
-            if alternate is not None and not opts.urn:
-                warnings.warn("""Deprecated.""", DeprecationWarning)
-                pulumi.log.warn("""alternate is deprecated: Deprecated.""")
             __props__.__dict__["alternate"] = alternate
             __props__.__dict__["dry_run_spec"] = dry_run_spec
             if folder_id is None and not opts.urn:

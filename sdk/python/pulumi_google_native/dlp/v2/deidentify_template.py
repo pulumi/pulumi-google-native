@@ -187,9 +187,6 @@ class DeidentifyTemplate(pulumi.CustomResource):
             __props__.__dict__["deidentify_config"] = deidentify_config
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if location is not None and not opts.urn:
-                warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
-                pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["template_id"] = template_id

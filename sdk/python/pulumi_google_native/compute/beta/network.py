@@ -281,9 +281,6 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
             __props__.__dict__["internal_ipv6_range"] = internal_ipv6_range
-            if ipv4_range is not None and not opts.urn:
-                warnings.warn("""Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""", DeprecationWarning)
-                pulumi.log.warn("""ipv4_range is deprecated: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""")
             __props__.__dict__["ipv4_range"] = ipv4_range
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name

@@ -422,9 +422,6 @@ class TransferConfig(pulumi.CustomResource):
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["schedule_options"] = schedule_options
             __props__.__dict__["service_account_name"] = service_account_name
-            if user_id is not None and not opts.urn:
-                warnings.warn("""Deprecated. Unique ID of the user on whose behalf transfer is done.""", DeprecationWarning)
-                pulumi.log.warn("""user_id is deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.""")
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["version_info"] = version_info
             __props__.__dict__["dataset_region"] = None

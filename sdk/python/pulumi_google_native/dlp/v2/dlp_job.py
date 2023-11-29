@@ -167,9 +167,6 @@ class DlpJob(pulumi.CustomResource):
 
             __props__.__dict__["inspect_job"] = inspect_job
             __props__.__dict__["job_id"] = job_id
-            if location is not None and not opts.urn:
-                warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
-                pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["risk_job"] = risk_job

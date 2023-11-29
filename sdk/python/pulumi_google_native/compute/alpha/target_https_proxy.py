@@ -376,13 +376,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TargetHttpsProxyArgs.__new__(TargetHttpsProxyArgs)
 
-            if authentication is not None and not opts.urn:
-                warnings.warn("""[Deprecated] Use serverTlsPolicy instead.""", DeprecationWarning)
-                pulumi.log.warn("""authentication is deprecated: [Deprecated] Use serverTlsPolicy instead.""")
             __props__.__dict__["authentication"] = authentication
-            if authorization is not None and not opts.urn:
-                warnings.warn("""[Deprecated] Use authorizationPolicy instead.""", DeprecationWarning)
-                pulumi.log.warn("""authorization is deprecated: [Deprecated] Use authorizationPolicy instead.""")
             __props__.__dict__["authorization"] = authorization
             __props__.__dict__["authorization_policy"] = authorization_policy
             __props__.__dict__["certificate_map"] = certificate_map

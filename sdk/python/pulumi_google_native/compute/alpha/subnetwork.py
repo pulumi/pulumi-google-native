@@ -547,9 +547,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_flow_logs"] = enable_flow_logs
             __props__.__dict__["enable_l2"] = enable_l2
-            if enable_private_v6_access is not None and not opts.urn:
-                warnings.warn("""Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""", DeprecationWarning)
-                pulumi.log.warn("""enable_private_v6_access is deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""")
             __props__.__dict__["enable_private_v6_access"] = enable_private_v6_access
             __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
             __props__.__dict__["flow_sampling"] = flow_sampling

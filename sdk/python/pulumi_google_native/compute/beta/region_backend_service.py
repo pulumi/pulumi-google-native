@@ -789,9 +789,6 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["outlier_detection"] = outlier_detection
-            if port is not None and not opts.urn:
-                warnings.warn("""Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""", DeprecationWarning)
-                pulumi.log.warn("""port is deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""")
             __props__.__dict__["port"] = port
             __props__.__dict__["port_name"] = port_name
             __props__.__dict__["project"] = project
