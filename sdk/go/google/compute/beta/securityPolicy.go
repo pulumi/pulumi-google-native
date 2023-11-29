@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new policy in the specified project using the data included in the request.
@@ -178,12 +177,6 @@ func (i *SecurityPolicy) ToSecurityPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyOutput)
 }
 
-func (i *SecurityPolicy) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicy] {
-	return pulumix.Output[*SecurityPolicy]{
-		OutputState: i.ToSecurityPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyOutput) ElementType() reflect.Type {
@@ -196,12 +189,6 @@ func (o SecurityPolicyOutput) ToSecurityPolicyOutput() SecurityPolicyOutput {
 
 func (o SecurityPolicyOutput) ToSecurityPolicyOutputWithContext(ctx context.Context) SecurityPolicyOutput {
 	return o
-}
-
-func (o SecurityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicy] {
-	return pulumix.Output[*SecurityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityPolicyOutput) AdaptiveProtectionConfig() SecurityPolicyAdaptiveProtectionConfigResponseOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the details for a developer app.
@@ -97,12 +96,6 @@ func (o LookupDeveloperAppResultOutput) ToLookupDeveloperAppResultOutput() Looku
 
 func (o LookupDeveloperAppResultOutput) ToLookupDeveloperAppResultOutputWithContext(ctx context.Context) LookupDeveloperAppResultOutput {
 	return o
-}
-
-func (o LookupDeveloperAppResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeveloperAppResult] {
-	return pulumix.Output[LookupDeveloperAppResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of API products associated with the developer app.

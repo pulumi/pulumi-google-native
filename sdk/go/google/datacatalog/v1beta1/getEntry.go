@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an entry.
@@ -97,12 +96,6 @@ func (o LookupEntryResultOutput) ToLookupEntryResultOutput() LookupEntryResultOu
 
 func (o LookupEntryResultOutput) ToLookupEntryResultOutputWithContext(ctx context.Context) LookupEntryResultOutput {
 	return o
-}
-
-func (o LookupEntryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEntryResult] {
-	return pulumix.Output[LookupEntryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.

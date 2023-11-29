@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an app profile within an instance.
@@ -160,12 +159,6 @@ func (i *AppProfile) ToAppProfileOutputWithContext(ctx context.Context) AppProfi
 	return pulumi.ToOutputWithContext(ctx, i).(AppProfileOutput)
 }
 
-func (i *AppProfile) ToOutput(ctx context.Context) pulumix.Output[*AppProfile] {
-	return pulumix.Output[*AppProfile]{
-		OutputState: i.ToAppProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppProfileOutput struct{ *pulumi.OutputState }
 
 func (AppProfileOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o AppProfileOutput) ToAppProfileOutput() AppProfileOutput {
 
 func (o AppProfileOutput) ToAppProfileOutputWithContext(ctx context.Context) AppProfileOutput {
 	return o
-}
-
-func (o AppProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*AppProfile] {
-	return pulumix.Output[*AppProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Annotation record. It is valid to create Annotation objects for the same source more than once since a unique ID is assigned to each record by this service.
@@ -149,12 +148,6 @@ func (i *Annotation) ToAnnotationOutputWithContext(ctx context.Context) Annotati
 	return pulumi.ToOutputWithContext(ctx, i).(AnnotationOutput)
 }
 
-func (i *Annotation) ToOutput(ctx context.Context) pulumix.Output[*Annotation] {
-	return pulumix.Output[*Annotation]{
-		OutputState: i.ToAnnotationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AnnotationOutput struct{ *pulumi.OutputState }
 
 func (AnnotationOutput) ElementType() reflect.Type {
@@ -167,12 +160,6 @@ func (o AnnotationOutput) ToAnnotationOutput() AnnotationOutput {
 
 func (o AnnotationOutput) ToAnnotationOutputWithContext(ctx context.Context) AnnotationOutput {
 	return o
-}
-
-func (o AnnotationOutput) ToOutput(ctx context.Context) pulumix.Output[*Annotation] {
-	return pulumix.Output[*Annotation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Details of the source.

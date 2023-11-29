@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a tag template.
@@ -75,12 +74,6 @@ func (o LookupTagTemplateResultOutput) ToLookupTagTemplateResultOutput() LookupT
 
 func (o LookupTagTemplateResultOutput) ToLookupTagTemplateResultOutputWithContext(ctx context.Context) LookupTagTemplateResultOutput {
 	return o
-}
-
-func (o LookupTagTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagTemplateResult] {
-	return pulumix.Output[LookupTagTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single external IP address.
@@ -85,12 +84,6 @@ func (o LookupExternalAddressResultOutput) ToLookupExternalAddressResultOutput()
 
 func (o LookupExternalAddressResultOutput) ToLookupExternalAddressResultOutputWithContext(ctx context.Context) LookupExternalAddressResultOutput {
 	return o
-}
-
-func (o LookupExternalAddressResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExternalAddressResult] {
-	return pulumix.Output[LookupExternalAddressResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

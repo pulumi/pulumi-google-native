@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single TrustConfig.
@@ -81,12 +80,6 @@ func (o LookupTrustConfigResultOutput) ToLookupTrustConfigResultOutput() LookupT
 
 func (o LookupTrustConfigResultOutput) ToLookupTrustConfigResultOutputWithContext(ctx context.Context) LookupTrustConfigResultOutput {
 	return o
-}
-
-func (o LookupTrustConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTrustConfigResult] {
-	return pulumix.Output[LookupTrustConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of a TrustConfig.

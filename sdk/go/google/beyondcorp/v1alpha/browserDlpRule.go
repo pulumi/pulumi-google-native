@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new BrowserDlpRule in a given organization and PartnerTenant.
@@ -132,12 +131,6 @@ func (i *BrowserDlpRule) ToBrowserDlpRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BrowserDlpRuleOutput)
 }
 
-func (i *BrowserDlpRule) ToOutput(ctx context.Context) pulumix.Output[*BrowserDlpRule] {
-	return pulumix.Output[*BrowserDlpRule]{
-		OutputState: i.ToBrowserDlpRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BrowserDlpRuleOutput struct{ *pulumi.OutputState }
 
 func (BrowserDlpRuleOutput) ElementType() reflect.Type {
@@ -150,12 +143,6 @@ func (o BrowserDlpRuleOutput) ToBrowserDlpRuleOutput() BrowserDlpRuleOutput {
 
 func (o BrowserDlpRuleOutput) ToBrowserDlpRuleOutputWithContext(ctx context.Context) BrowserDlpRuleOutput {
 	return o
-}
-
-func (o BrowserDlpRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*BrowserDlpRule] {
-	return pulumix.Output[*BrowserDlpRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group to which this Rule should be applied to.

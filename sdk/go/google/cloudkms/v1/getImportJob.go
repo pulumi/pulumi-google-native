@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns metadata for a given ImportJob.
@@ -89,12 +88,6 @@ func (o LookupImportJobResultOutput) ToLookupImportJobResultOutput() LookupImpor
 
 func (o LookupImportJobResultOutput) ToLookupImportJobResultOutputWithContext(ctx context.Context) LookupImportJobResultOutput {
 	return o
-}
-
-func (o LookupImportJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImportJobResult] {
-	return pulumix.Output[LookupImportJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.

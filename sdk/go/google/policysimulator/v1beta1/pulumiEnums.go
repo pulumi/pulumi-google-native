@@ -81,12 +81,6 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToGoogleCl
 	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput)
 }
 
-func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource] {
-	return pulumix.Output[GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToGoogl
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
 	return o
-}
-
-func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource] {
-	return pulumix.Output[*GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput {

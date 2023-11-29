@@ -454,9 +454,6 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["fedramp_high_settings"] = fedramp_high_settings
             __props__.__dict__["fedramp_moderate_settings"] = fedramp_moderate_settings
             __props__.__dict__["il4_settings"] = il4_settings
-            if kms_settings is not None and not opts.urn:
-                warnings.warn("""Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""", DeprecationWarning)
-                pulumi.log.warn("""kms_settings is deprecated: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""")
             __props__.__dict__["kms_settings"] = kms_settings
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location

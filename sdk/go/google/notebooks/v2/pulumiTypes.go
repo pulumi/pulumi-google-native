@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AcceleratorConfigArgs) ToAcceleratorConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigOutput)
 }
 
-func (i AcceleratorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AcceleratorConfig] {
-	return pulumix.Output[AcceleratorConfig]{
-		OutputState: i.ToAcceleratorConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AcceleratorConfigArrayInput is an input type that accepts AcceleratorConfigArray and AcceleratorConfigArrayOutput values.
 // You can construct a concrete instance of `AcceleratorConfigArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AcceleratorConfigArray) ToAcceleratorConfigArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigArrayOutput)
 }
 
-func (i AcceleratorConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AcceleratorConfig] {
-	return pulumix.Output[[]AcceleratorConfig]{
-		OutputState: i.ToAcceleratorConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An accelerator configuration for a VM instance Definition of a hardware accelerator. Note that there is no check on `type` and `core_count` combinations. TPUs are not supported. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination.
 type AcceleratorConfigOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AcceleratorConfigOutput) ToAcceleratorConfigOutput() AcceleratorConfigOu
 
 func (o AcceleratorConfigOutput) ToAcceleratorConfigOutputWithContext(ctx context.Context) AcceleratorConfigOutput {
 	return o
-}
-
-func (o AcceleratorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AcceleratorConfig] {
-	return pulumix.Output[AcceleratorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Count of cores of this accelerator.
@@ -133,12 +114,6 @@ func (o AcceleratorConfigArrayOutput) ToAcceleratorConfigArrayOutput() Accelerat
 
 func (o AcceleratorConfigArrayOutput) ToAcceleratorConfigArrayOutputWithContext(ctx context.Context) AcceleratorConfigArrayOutput {
 	return o
-}
-
-func (o AcceleratorConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AcceleratorConfig] {
-	return pulumix.Output[[]AcceleratorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AcceleratorConfigArrayOutput) Index(i pulumi.IntInput) AcceleratorConfigOutput {
@@ -170,12 +145,6 @@ func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponseOutputWithCo
 	return o
 }
 
-func (o AcceleratorConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AcceleratorConfigResponse] {
-	return pulumix.Output[AcceleratorConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Count of cores of this accelerator.
 func (o AcceleratorConfigResponseOutput) CoreCount() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.CoreCount }).(pulumi.StringOutput)
@@ -198,12 +167,6 @@ func (o AcceleratorConfigResponseArrayOutput) ToAcceleratorConfigResponseArrayOu
 
 func (o AcceleratorConfigResponseArrayOutput) ToAcceleratorConfigResponseArrayOutputWithContext(ctx context.Context) AcceleratorConfigResponseArrayOutput {
 	return o
-}
-
-func (o AcceleratorConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AcceleratorConfigResponse] {
-	return pulumix.Output[[]AcceleratorConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) AcceleratorConfigResponseOutput {
@@ -255,12 +218,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -286,12 +243,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -305,12 +256,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -340,12 +285,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -379,12 +318,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -412,12 +345,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -473,12 +400,6 @@ func (i BootDiskArgs) ToBootDiskOutputWithContext(ctx context.Context) BootDiskO
 	return pulumi.ToOutputWithContext(ctx, i).(BootDiskOutput)
 }
 
-func (i BootDiskArgs) ToOutput(ctx context.Context) pulumix.Output[BootDisk] {
-	return pulumix.Output[BootDisk]{
-		OutputState: i.ToBootDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BootDiskArgs) ToBootDiskPtrOutput() BootDiskPtrOutput {
 	return i.ToBootDiskPtrOutputWithContext(context.Background())
 }
@@ -520,12 +441,6 @@ func (i *bootDiskPtrType) ToBootDiskPtrOutputWithContext(ctx context.Context) Bo
 	return pulumi.ToOutputWithContext(ctx, i).(BootDiskPtrOutput)
 }
 
-func (i *bootDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*BootDisk] {
-	return pulumix.Output[*BootDisk]{
-		OutputState: i.ToBootDiskPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of a boot disk.
 type BootDiskOutput struct{ *pulumi.OutputState }
 
@@ -549,12 +464,6 @@ func (o BootDiskOutput) ToBootDiskPtrOutputWithContext(ctx context.Context) Boot
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BootDisk) *BootDisk {
 		return &v
 	}).(BootDiskPtrOutput)
-}
-
-func (o BootDiskOutput) ToOutput(ctx context.Context) pulumix.Output[BootDisk] {
-	return pulumix.Output[BootDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
@@ -589,12 +498,6 @@ func (o BootDiskPtrOutput) ToBootDiskPtrOutput() BootDiskPtrOutput {
 
 func (o BootDiskPtrOutput) ToBootDiskPtrOutputWithContext(ctx context.Context) BootDiskPtrOutput {
 	return o
-}
-
-func (o BootDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BootDisk] {
-	return pulumix.Output[*BootDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BootDiskPtrOutput) Elem() BootDiskOutput {
@@ -674,12 +577,6 @@ func (o BootDiskResponseOutput) ToBootDiskResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o BootDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskResponse] {
-	return pulumix.Output[BootDiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
 func (o BootDiskResponseOutput) DiskEncryption() pulumi.StringOutput {
 	return o.ApplyT(func(v BootDiskResponse) string { return v.DiskEncryption }).(pulumi.StringOutput)
@@ -739,12 +636,6 @@ func (i ContainerImageArgs) ToContainerImageOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerImageOutput)
 }
 
-func (i ContainerImageArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerImage] {
-	return pulumix.Output[ContainerImage]{
-		OutputState: i.ToContainerImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerImageArgs) ToContainerImagePtrOutput() ContainerImagePtrOutput {
 	return i.ToContainerImagePtrOutputWithContext(context.Background())
 }
@@ -786,12 +677,6 @@ func (i *containerImagePtrType) ToContainerImagePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerImagePtrOutput)
 }
 
-func (i *containerImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerImage] {
-	return pulumix.Output[*ContainerImage]{
-		OutputState: i.ToContainerImagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Definition of a container image for starting a notebook instance with the environment installed in a container.
 type ContainerImageOutput struct{ *pulumi.OutputState }
 
@@ -817,12 +702,6 @@ func (o ContainerImageOutput) ToContainerImagePtrOutputWithContext(ctx context.C
 	}).(ContainerImagePtrOutput)
 }
 
-func (o ContainerImageOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerImage] {
-	return pulumix.Output[ContainerImage]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
 func (o ContainerImageOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerImage) string { return v.Repository }).(pulumi.StringOutput)
@@ -845,12 +724,6 @@ func (o ContainerImagePtrOutput) ToContainerImagePtrOutput() ContainerImagePtrOu
 
 func (o ContainerImagePtrOutput) ToContainerImagePtrOutputWithContext(ctx context.Context) ContainerImagePtrOutput {
 	return o
-}
-
-func (o ContainerImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerImage] {
-	return pulumix.Output[*ContainerImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerImagePtrOutput) Elem() ContainerImageOutput {
@@ -904,12 +777,6 @@ func (o ContainerImageResponseOutput) ToContainerImageResponseOutput() Container
 
 func (o ContainerImageResponseOutput) ToContainerImageResponseOutputWithContext(ctx context.Context) ContainerImageResponseOutput {
 	return o
-}
-
-func (o ContainerImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerImageResponse] {
-	return pulumix.Output[ContainerImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
@@ -969,12 +836,6 @@ func (i DataDiskArgs) ToDataDiskOutputWithContext(ctx context.Context) DataDiskO
 	return pulumi.ToOutputWithContext(ctx, i).(DataDiskOutput)
 }
 
-func (i DataDiskArgs) ToOutput(ctx context.Context) pulumix.Output[DataDisk] {
-	return pulumix.Output[DataDisk]{
-		OutputState: i.ToDataDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataDiskArrayInput is an input type that accepts DataDiskArray and DataDiskArrayOutput values.
 // You can construct a concrete instance of `DataDiskArrayInput` via:
 //
@@ -1000,12 +861,6 @@ func (i DataDiskArray) ToDataDiskArrayOutputWithContext(ctx context.Context) Dat
 	return pulumi.ToOutputWithContext(ctx, i).(DataDiskArrayOutput)
 }
 
-func (i DataDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]DataDisk] {
-	return pulumix.Output[[]DataDisk]{
-		OutputState: i.ToDataDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An instance-attached disk resource.
 type DataDiskOutput struct{ *pulumi.OutputState }
 
@@ -1019,12 +874,6 @@ func (o DataDiskOutput) ToDataDiskOutput() DataDiskOutput {
 
 func (o DataDiskOutput) ToDataDiskOutputWithContext(ctx context.Context) DataDiskOutput {
 	return o
-}
-
-func (o DataDiskOutput) ToOutput(ctx context.Context) pulumix.Output[DataDisk] {
-	return pulumix.Output[DataDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
@@ -1061,12 +910,6 @@ func (o DataDiskArrayOutput) ToDataDiskArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o DataDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataDisk] {
-	return pulumix.Output[[]DataDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataDiskArrayOutput) Index(i pulumi.IntInput) DataDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataDisk {
 		return vs[0].([]DataDisk)[vs[1].(int)]
@@ -1098,12 +941,6 @@ func (o DataDiskResponseOutput) ToDataDiskResponseOutput() DataDiskResponseOutpu
 
 func (o DataDiskResponseOutput) ToDataDiskResponseOutputWithContext(ctx context.Context) DataDiskResponseOutput {
 	return o
-}
-
-func (o DataDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataDiskResponse] {
-	return pulumix.Output[DataDiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
@@ -1138,12 +975,6 @@ func (o DataDiskResponseArrayOutput) ToDataDiskResponseArrayOutput() DataDiskRes
 
 func (o DataDiskResponseArrayOutput) ToDataDiskResponseArrayOutputWithContext(ctx context.Context) DataDiskResponseArrayOutput {
 	return o
-}
-
-func (o DataDiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataDiskResponse] {
-	return pulumix.Output[[]DataDiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataDiskResponseArrayOutput) Index(i pulumi.IntInput) DataDiskResponseOutput {
@@ -1199,12 +1030,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1246,12 +1071,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1275,12 +1094,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1315,12 +1128,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1400,12 +1207,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1465,12 +1266,6 @@ func (i GPUDriverConfigArgs) ToGPUDriverConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GPUDriverConfigOutput)
 }
 
-func (i GPUDriverConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GPUDriverConfig] {
-	return pulumix.Output[GPUDriverConfig]{
-		OutputState: i.ToGPUDriverConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GPUDriverConfigArgs) ToGPUDriverConfigPtrOutput() GPUDriverConfigPtrOutput {
 	return i.ToGPUDriverConfigPtrOutputWithContext(context.Background())
 }
@@ -1512,12 +1307,6 @@ func (i *gpudriverConfigPtrType) ToGPUDriverConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GPUDriverConfigPtrOutput)
 }
 
-func (i *gpudriverConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GPUDriverConfig] {
-	return pulumix.Output[*GPUDriverConfig]{
-		OutputState: i.ToGPUDriverConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A GPU driver configuration
 type GPUDriverConfigOutput struct{ *pulumi.OutputState }
 
@@ -1543,12 +1332,6 @@ func (o GPUDriverConfigOutput) ToGPUDriverConfigPtrOutputWithContext(ctx context
 	}).(GPUDriverConfigPtrOutput)
 }
 
-func (o GPUDriverConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GPUDriverConfig] {
-	return pulumix.Output[GPUDriverConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 func (o GPUDriverConfigOutput) CustomGpuDriverPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GPUDriverConfig) *string { return v.CustomGpuDriverPath }).(pulumi.StringPtrOutput)
@@ -1571,12 +1354,6 @@ func (o GPUDriverConfigPtrOutput) ToGPUDriverConfigPtrOutput() GPUDriverConfigPt
 
 func (o GPUDriverConfigPtrOutput) ToGPUDriverConfigPtrOutputWithContext(ctx context.Context) GPUDriverConfigPtrOutput {
 	return o
-}
-
-func (o GPUDriverConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GPUDriverConfig] {
-	return pulumix.Output[*GPUDriverConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GPUDriverConfigPtrOutput) Elem() GPUDriverConfigOutput {
@@ -1630,12 +1407,6 @@ func (o GPUDriverConfigResponseOutput) ToGPUDriverConfigResponseOutput() GPUDriv
 
 func (o GPUDriverConfigResponseOutput) ToGPUDriverConfigResponseOutputWithContext(ctx context.Context) GPUDriverConfigResponseOutput {
 	return o
-}
-
-func (o GPUDriverConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GPUDriverConfigResponse] {
-	return pulumix.Output[GPUDriverConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -1735,12 +1506,6 @@ func (i GceSetupArgs) ToGceSetupOutputWithContext(ctx context.Context) GceSetupO
 	return pulumi.ToOutputWithContext(ctx, i).(GceSetupOutput)
 }
 
-func (i GceSetupArgs) ToOutput(ctx context.Context) pulumix.Output[GceSetup] {
-	return pulumix.Output[GceSetup]{
-		OutputState: i.ToGceSetupOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GceSetupArgs) ToGceSetupPtrOutput() GceSetupPtrOutput {
 	return i.ToGceSetupPtrOutputWithContext(context.Background())
 }
@@ -1782,12 +1547,6 @@ func (i *gceSetupPtrType) ToGceSetupPtrOutputWithContext(ctx context.Context) Gc
 	return pulumi.ToOutputWithContext(ctx, i).(GceSetupPtrOutput)
 }
 
-func (i *gceSetupPtrType) ToOutput(ctx context.Context) pulumix.Output[*GceSetup] {
-	return pulumix.Output[*GceSetup]{
-		OutputState: i.ToGceSetupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of how to configure a VM instance outside of Resources and Identity.
 type GceSetupOutput struct{ *pulumi.OutputState }
 
@@ -1811,12 +1570,6 @@ func (o GceSetupOutput) ToGceSetupPtrOutputWithContext(ctx context.Context) GceS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GceSetup) *GceSetup {
 		return &v
 	}).(GceSetupPtrOutput)
-}
-
-func (o GceSetupOutput) ToOutput(ctx context.Context) pulumix.Output[GceSetup] {
-	return pulumix.Output[GceSetup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list). Currently supports only one accelerator configuration.
@@ -1901,12 +1654,6 @@ func (o GceSetupPtrOutput) ToGceSetupPtrOutput() GceSetupPtrOutput {
 
 func (o GceSetupPtrOutput) ToGceSetupPtrOutputWithContext(ctx context.Context) GceSetupPtrOutput {
 	return o
-}
-
-func (o GceSetupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GceSetup] {
-	return pulumix.Output[*GceSetup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GceSetupPtrOutput) Elem() GceSetupOutput {
@@ -2106,12 +1853,6 @@ func (o GceSetupResponseOutput) ToGceSetupResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o GceSetupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GceSetupResponse] {
-	return pulumix.Output[GceSetupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list). Currently supports only one accelerator configuration.
 func (o GceSetupResponseOutput) AcceleratorConfigs() AcceleratorConfigResponseArrayOutput {
 	return o.ApplyT(func(v GceSetupResponse) []AcceleratorConfigResponse { return v.AcceleratorConfigs }).(AcceleratorConfigResponseArrayOutput)
@@ -2225,12 +1966,6 @@ func (i NetworkInterfaceArgs) ToNetworkInterfaceOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceOutput)
 }
 
-func (i NetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkInterface] {
-	return pulumix.Output[NetworkInterface]{
-		OutputState: i.ToNetworkInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkInterfaceArrayInput is an input type that accepts NetworkInterfaceArray and NetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `NetworkInterfaceArrayInput` via:
 //
@@ -2256,12 +1991,6 @@ func (i NetworkInterfaceArray) ToNetworkInterfaceArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceArrayOutput)
 }
 
-func (i NetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]NetworkInterface] {
-	return pulumix.Output[[]NetworkInterface]{
-		OutputState: i.ToNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of a network interface resource attached to a VM.
 type NetworkInterfaceOutput struct{ *pulumi.OutputState }
 
@@ -2275,12 +2004,6 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutput() NetworkInterfaceOutpu
 
 func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.Context) NetworkInterfaceOutput {
 	return o
-}
-
-func (o NetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInterface] {
-	return pulumix.Output[NetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
@@ -2310,12 +2033,6 @@ func (o NetworkInterfaceArrayOutput) ToNetworkInterfaceArrayOutput() NetworkInte
 
 func (o NetworkInterfaceArrayOutput) ToNetworkInterfaceArrayOutputWithContext(ctx context.Context) NetworkInterfaceArrayOutput {
 	return o
-}
-
-func (o NetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkInterface] {
-	return pulumix.Output[[]NetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkInterfaceArrayOutput) Index(i pulumi.IntInput) NetworkInterfaceOutput {
@@ -2349,12 +2066,6 @@ func (o NetworkInterfaceResponseOutput) ToNetworkInterfaceResponseOutputWithCont
 	return o
 }
 
-func (o NetworkInterfaceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInterfaceResponse] {
-	return pulumix.Output[NetworkInterfaceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 func (o NetworkInterfaceResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Network }).(pulumi.StringOutput)
@@ -2382,12 +2093,6 @@ func (o NetworkInterfaceResponseArrayOutput) ToNetworkInterfaceResponseArrayOutp
 
 func (o NetworkInterfaceResponseArrayOutput) ToNetworkInterfaceResponseArrayOutputWithContext(ctx context.Context) NetworkInterfaceResponseArrayOutput {
 	return o
-}
-
-func (o NetworkInterfaceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkInterfaceResponse] {
-	return pulumix.Output[[]NetworkInterfaceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) NetworkInterfaceResponseOutput {
@@ -2431,12 +2136,6 @@ func (i ServiceAccountArgs) ToServiceAccountOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountOutput)
 }
 
-func (i ServiceAccountArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceAccount] {
-	return pulumix.Output[ServiceAccount]{
-		OutputState: i.ToServiceAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceAccountArrayInput is an input type that accepts ServiceAccountArray and ServiceAccountArrayOutput values.
 // You can construct a concrete instance of `ServiceAccountArrayInput` via:
 //
@@ -2462,12 +2161,6 @@ func (i ServiceAccountArray) ToServiceAccountArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountArrayOutput)
 }
 
-func (i ServiceAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceAccount] {
-	return pulumix.Output[[]ServiceAccount]{
-		OutputState: i.ToServiceAccountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A service account that acts as an identity.
 type ServiceAccountOutput struct{ *pulumi.OutputState }
 
@@ -2481,12 +2174,6 @@ func (o ServiceAccountOutput) ToServiceAccountOutput() ServiceAccountOutput {
 
 func (o ServiceAccountOutput) ToServiceAccountOutputWithContext(ctx context.Context) ServiceAccountOutput {
 	return o
-}
-
-func (o ServiceAccountOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAccount] {
-	return pulumix.Output[ServiceAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Email address of the service account.
@@ -2506,12 +2193,6 @@ func (o ServiceAccountArrayOutput) ToServiceAccountArrayOutput() ServiceAccountA
 
 func (o ServiceAccountArrayOutput) ToServiceAccountArrayOutputWithContext(ctx context.Context) ServiceAccountArrayOutput {
 	return o
-}
-
-func (o ServiceAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceAccount] {
-	return pulumix.Output[[]ServiceAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAccountArrayOutput) Index(i pulumi.IntInput) ServiceAccountOutput {
@@ -2543,12 +2224,6 @@ func (o ServiceAccountResponseOutput) ToServiceAccountResponseOutputWithContext(
 	return o
 }
 
-func (o ServiceAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAccountResponse] {
-	return pulumix.Output[ServiceAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Email address of the service account.
 func (o ServiceAccountResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAccountResponse) string { return v.Email }).(pulumi.StringOutput)
@@ -2571,12 +2246,6 @@ func (o ServiceAccountResponseArrayOutput) ToServiceAccountResponseArrayOutput()
 
 func (o ServiceAccountResponseArrayOutput) ToServiceAccountResponseArrayOutputWithContext(ctx context.Context) ServiceAccountResponseArrayOutput {
 	return o
-}
-
-func (o ServiceAccountResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceAccountResponse] {
-	return pulumix.Output[[]ServiceAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAccountResponseArrayOutput) Index(i pulumi.IntInput) ServiceAccountResponseOutput {
@@ -2628,12 +2297,6 @@ func (i ShieldedInstanceConfigArgs) ToShieldedInstanceConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigOutput)
 }
 
-func (i ShieldedInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ShieldedInstanceConfig] {
-	return pulumix.Output[ShieldedInstanceConfig]{
-		OutputState: i.ToShieldedInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ShieldedInstanceConfigArgs) ToShieldedInstanceConfigPtrOutput() ShieldedInstanceConfigPtrOutput {
 	return i.ToShieldedInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -2675,12 +2338,6 @@ func (i *shieldedInstanceConfigPtrType) ToShieldedInstanceConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigPtrOutput)
 }
 
-func (i *shieldedInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ShieldedInstanceConfig] {
-	return pulumix.Output[*ShieldedInstanceConfig]{
-		OutputState: i.ToShieldedInstanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type ShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
@@ -2704,12 +2361,6 @@ func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShieldedInstanceConfig) *ShieldedInstanceConfig {
 		return &v
 	}).(ShieldedInstanceConfigPtrOutput)
-}
-
-func (o ShieldedInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ShieldedInstanceConfig] {
-	return pulumix.Output[ShieldedInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Defines whether the VM instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the VM instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the VM instance is created. Enabled by default.
@@ -2739,12 +2390,6 @@ func (o ShieldedInstanceConfigPtrOutput) ToShieldedInstanceConfigPtrOutput() Shi
 
 func (o ShieldedInstanceConfigPtrOutput) ToShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigPtrOutput {
 	return o
-}
-
-func (o ShieldedInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ShieldedInstanceConfig] {
-	return pulumix.Output[*ShieldedInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ShieldedInstanceConfigPtrOutput) Elem() ShieldedInstanceConfigOutput {
@@ -2812,12 +2457,6 @@ func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponseOu
 	return o
 }
 
-func (o ShieldedInstanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ShieldedInstanceConfigResponse] {
-	return pulumix.Output[ShieldedInstanceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Defines whether the VM instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the VM instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the VM instance is created. Enabled by default.
 func (o ShieldedInstanceConfigResponseOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
@@ -2868,12 +2507,6 @@ func (o UpgradeHistoryEntryResponseOutput) ToUpgradeHistoryEntryResponseOutput()
 
 func (o UpgradeHistoryEntryResponseOutput) ToUpgradeHistoryEntryResponseOutputWithContext(ctx context.Context) UpgradeHistoryEntryResponseOutput {
 	return o
-}
-
-func (o UpgradeHistoryEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpgradeHistoryEntryResponse] {
-	return pulumix.Output[UpgradeHistoryEntryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Action. Rolloback or Upgrade.
@@ -2935,12 +2568,6 @@ func (o UpgradeHistoryEntryResponseArrayOutput) ToUpgradeHistoryEntryResponseArr
 	return o
 }
 
-func (o UpgradeHistoryEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UpgradeHistoryEntryResponse] {
-	return pulumix.Output[[]UpgradeHistoryEntryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UpgradeHistoryEntryResponseArrayOutput) Index(i pulumi.IntInput) UpgradeHistoryEntryResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpgradeHistoryEntryResponse {
 		return vs[0].([]UpgradeHistoryEntryResponse)[vs[1].(int)]
@@ -2990,12 +2617,6 @@ func (i VmImageArgs) ToVmImageOutputWithContext(ctx context.Context) VmImageOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VmImageOutput)
 }
 
-func (i VmImageArgs) ToOutput(ctx context.Context) pulumix.Output[VmImage] {
-	return pulumix.Output[VmImage]{
-		OutputState: i.ToVmImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmImageArgs) ToVmImagePtrOutput() VmImagePtrOutput {
 	return i.ToVmImagePtrOutputWithContext(context.Background())
 }
@@ -3037,12 +2658,6 @@ func (i *vmImagePtrType) ToVmImagePtrOutputWithContext(ctx context.Context) VmIm
 	return pulumi.ToOutputWithContext(ctx, i).(VmImagePtrOutput)
 }
 
-func (i *vmImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*VmImage] {
-	return pulumix.Output[*VmImage]{
-		OutputState: i.ToVmImagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
 type VmImageOutput struct{ *pulumi.OutputState }
 
@@ -3066,12 +2681,6 @@ func (o VmImageOutput) ToVmImagePtrOutputWithContext(ctx context.Context) VmImag
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmImage) *VmImage {
 		return &v
 	}).(VmImagePtrOutput)
-}
-
-func (o VmImageOutput) ToOutput(ctx context.Context) pulumix.Output[VmImage] {
-	return pulumix.Output[VmImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Use this VM image family to find the image; the newest image in this family will be used.
@@ -3101,12 +2710,6 @@ func (o VmImagePtrOutput) ToVmImagePtrOutput() VmImagePtrOutput {
 
 func (o VmImagePtrOutput) ToVmImagePtrOutputWithContext(ctx context.Context) VmImagePtrOutput {
 	return o
-}
-
-func (o VmImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmImage] {
-	return pulumix.Output[*VmImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmImagePtrOutput) Elem() VmImageOutput {
@@ -3172,12 +2775,6 @@ func (o VmImageResponseOutput) ToVmImageResponseOutput() VmImageResponseOutput {
 
 func (o VmImageResponseOutput) ToVmImageResponseOutputWithContext(ctx context.Context) VmImageResponseOutput {
 	return o
-}
-
-func (o VmImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmImageResponse] {
-	return pulumix.Output[VmImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Use this VM image family to find the image; the newest image in this family will be used.

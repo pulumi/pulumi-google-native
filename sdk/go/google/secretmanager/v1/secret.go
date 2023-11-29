@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Secret containing no SecretVersions.
@@ -167,12 +166,6 @@ func (i *Secret) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretOutput)
 }
 
-func (i *Secret) ToOutput(ctx context.Context) pulumix.Output[*Secret] {
-	return pulumix.Output[*Secret]{
-		OutputState: i.ToSecretOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretOutput struct{ *pulumi.OutputState }
 
 func (SecretOutput) ElementType() reflect.Type {
@@ -185,12 +178,6 @@ func (o SecretOutput) ToSecretOutput() SecretOutput {
 
 func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return o
-}
-
-func (o SecretOutput) ToOutput(ctx context.Context) pulumix.Output[*Secret] {
-	return pulumix.Output[*Secret]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of annotation keys and values must be less than 16KiB.

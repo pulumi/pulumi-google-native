@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Updates the IAM policy for a given resource.
@@ -136,12 +135,6 @@ func (i *RepositoryIamMember) ToRepositoryIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberOutput)
 }
 
-func (i *RepositoryIamMember) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamMember] {
-	return pulumix.Output[*RepositoryIamMember]{
-		OutputState: i.ToRepositoryIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o RepositoryIamMemberOutput) ToRepositoryIamMemberOutput() RepositoryIamMe
 
 func (o RepositoryIamMemberOutput) ToRepositoryIamMemberOutputWithContext(ctx context.Context) RepositoryIamMemberOutput {
 	return o
-}
-
-func (o RepositoryIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryIamMember] {
-	return pulumix.Output[*RepositoryIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

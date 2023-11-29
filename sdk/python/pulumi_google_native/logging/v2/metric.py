@@ -288,9 +288,6 @@ class Metric(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["value_extractor"] = value_extractor
-            if version is not None and not opts.urn:
-                warnings.warn("""Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""", DeprecationWarning)
-                pulumi.log.warn("""version is deprecated: Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""")
             __props__.__dict__["version"] = version
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

@@ -83,12 +83,6 @@ func (o ApiSyntaxOutput) ToApiSyntaxPtrOutputWithContext(ctx context.Context) Ap
 	}).(ApiSyntaxPtrOutput)
 }
 
-func (o ApiSyntaxOutput) ToOutput(ctx context.Context) pulumix.Output[ApiSyntax] {
-	return pulumix.Output[ApiSyntax]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiSyntaxOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o ApiSyntaxPtrOutput) ToApiSyntaxPtrOutput() ApiSyntaxPtrOutput {
 
 func (o ApiSyntaxPtrOutput) ToApiSyntaxPtrOutputWithContext(ctx context.Context) ApiSyntaxPtrOutput {
 	return o
-}
-
-func (o ApiSyntaxPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiSyntax] {
-	return pulumix.Output[*ApiSyntax]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiSyntaxPtrOutput) Elem() ApiSyntaxOutput {
@@ -272,12 +260,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -457,12 +433,6 @@ func (o BackendRulePathTranslationOutput) ToBackendRulePathTranslationPtrOutputW
 	}).(BackendRulePathTranslationPtrOutput)
 }
 
-func (o BackendRulePathTranslationOutput) ToOutput(ctx context.Context) pulumix.Output[BackendRulePathTranslation] {
-	return pulumix.Output[BackendRulePathTranslation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BackendRulePathTranslationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -496,12 +466,6 @@ func (o BackendRulePathTranslationPtrOutput) ToBackendRulePathTranslationPtrOutp
 
 func (o BackendRulePathTranslationPtrOutput) ToBackendRulePathTranslationPtrOutputWithContext(ctx context.Context) BackendRulePathTranslationPtrOutput {
 	return o
-}
-
-func (o BackendRulePathTranslationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendRulePathTranslation] {
-	return pulumix.Output[*BackendRulePathTranslation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendRulePathTranslationPtrOutput) Elem() BackendRulePathTranslationOutput {
@@ -654,12 +618,6 @@ func (o ClientLibrarySettingsLaunchStageOutput) ToClientLibrarySettingsLaunchSta
 	}).(ClientLibrarySettingsLaunchStagePtrOutput)
 }
 
-func (o ClientLibrarySettingsLaunchStageOutput) ToOutput(ctx context.Context) pulumix.Output[ClientLibrarySettingsLaunchStage] {
-	return pulumix.Output[ClientLibrarySettingsLaunchStage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClientLibrarySettingsLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -693,12 +651,6 @@ func (o ClientLibrarySettingsLaunchStagePtrOutput) ToClientLibrarySettingsLaunch
 
 func (o ClientLibrarySettingsLaunchStagePtrOutput) ToClientLibrarySettingsLaunchStagePtrOutputWithContext(ctx context.Context) ClientLibrarySettingsLaunchStagePtrOutput {
 	return o
-}
-
-func (o ClientLibrarySettingsLaunchStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientLibrarySettingsLaunchStage] {
-	return pulumix.Output[*ClientLibrarySettingsLaunchStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientLibrarySettingsLaunchStagePtrOutput) Elem() ClientLibrarySettingsLaunchStageOutput {
@@ -840,12 +792,6 @@ func (o CommonLanguageSettingsDestinationsItemOutput) ToCommonLanguageSettingsDe
 	}).(CommonLanguageSettingsDestinationsItemPtrOutput)
 }
 
-func (o CommonLanguageSettingsDestinationsItemOutput) ToOutput(ctx context.Context) pulumix.Output[CommonLanguageSettingsDestinationsItem] {
-	return pulumix.Output[CommonLanguageSettingsDestinationsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CommonLanguageSettingsDestinationsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -879,12 +825,6 @@ func (o CommonLanguageSettingsDestinationsItemPtrOutput) ToCommonLanguageSetting
 
 func (o CommonLanguageSettingsDestinationsItemPtrOutput) ToCommonLanguageSettingsDestinationsItemPtrOutputWithContext(ctx context.Context) CommonLanguageSettingsDestinationsItemPtrOutput {
 	return o
-}
-
-func (o CommonLanguageSettingsDestinationsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CommonLanguageSettingsDestinationsItem] {
-	return pulumix.Output[*CommonLanguageSettingsDestinationsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CommonLanguageSettingsDestinationsItemPtrOutput) Elem() CommonLanguageSettingsDestinationsItemOutput {
@@ -980,12 +920,6 @@ func (i CommonLanguageSettingsDestinationsItemArray) ToCommonLanguageSettingsDes
 	return pulumi.ToOutputWithContext(ctx, i).(CommonLanguageSettingsDestinationsItemArrayOutput)
 }
 
-func (i CommonLanguageSettingsDestinationsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]CommonLanguageSettingsDestinationsItem] {
-	return pulumix.Output[[]CommonLanguageSettingsDestinationsItem]{
-		OutputState: i.ToCommonLanguageSettingsDestinationsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CommonLanguageSettingsDestinationsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (CommonLanguageSettingsDestinationsItemArrayOutput) ElementType() reflect.Type {
@@ -998,12 +932,6 @@ func (o CommonLanguageSettingsDestinationsItemArrayOutput) ToCommonLanguageSetti
 
 func (o CommonLanguageSettingsDestinationsItemArrayOutput) ToCommonLanguageSettingsDestinationsItemArrayOutputWithContext(ctx context.Context) CommonLanguageSettingsDestinationsItemArrayOutput {
 	return o
-}
-
-func (o CommonLanguageSettingsDestinationsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CommonLanguageSettingsDestinationsItem] {
-	return pulumix.Output[[]CommonLanguageSettingsDestinationsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CommonLanguageSettingsDestinationsItemArrayOutput) Index(i pulumi.IntInput) CommonLanguageSettingsDestinationsItemOutput {
@@ -1084,12 +1012,6 @@ func (o EnumSyntaxOutput) ToEnumSyntaxPtrOutputWithContext(ctx context.Context) 
 	}).(EnumSyntaxPtrOutput)
 }
 
-func (o EnumSyntaxOutput) ToOutput(ctx context.Context) pulumix.Output[EnumSyntax] {
-	return pulumix.Output[EnumSyntax]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnumSyntaxOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1123,12 +1045,6 @@ func (o EnumSyntaxPtrOutput) ToEnumSyntaxPtrOutput() EnumSyntaxPtrOutput {
 
 func (o EnumSyntaxPtrOutput) ToEnumSyntaxPtrOutputWithContext(ctx context.Context) EnumSyntaxPtrOutput {
 	return o
-}
-
-func (o EnumSyntaxPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnumSyntax] {
-	return pulumix.Output[*EnumSyntax]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnumSyntaxPtrOutput) Elem() EnumSyntaxOutput {
@@ -1273,12 +1189,6 @@ func (o FieldCardinalityOutput) ToFieldCardinalityPtrOutputWithContext(ctx conte
 	}).(FieldCardinalityPtrOutput)
 }
 
-func (o FieldCardinalityOutput) ToOutput(ctx context.Context) pulumix.Output[FieldCardinality] {
-	return pulumix.Output[FieldCardinality]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FieldCardinalityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1312,12 +1222,6 @@ func (o FieldCardinalityPtrOutput) ToFieldCardinalityPtrOutput() FieldCardinalit
 
 func (o FieldCardinalityPtrOutput) ToFieldCardinalityPtrOutputWithContext(ctx context.Context) FieldCardinalityPtrOutput {
 	return o
-}
-
-func (o FieldCardinalityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FieldCardinality] {
-	return pulumix.Output[*FieldCardinality]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldCardinalityPtrOutput) Elem() FieldCardinalityOutput {
@@ -1492,12 +1396,6 @@ func (o FieldKindOutput) ToFieldKindPtrOutputWithContext(ctx context.Context) Fi
 	}).(FieldKindPtrOutput)
 }
 
-func (o FieldKindOutput) ToOutput(ctx context.Context) pulumix.Output[FieldKind] {
-	return pulumix.Output[FieldKind]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FieldKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1531,12 +1429,6 @@ func (o FieldKindPtrOutput) ToFieldKindPtrOutput() FieldKindPtrOutput {
 
 func (o FieldKindPtrOutput) ToFieldKindPtrOutputWithContext(ctx context.Context) FieldKindPtrOutput {
 	return o
-}
-
-func (o FieldKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FieldKind] {
-	return pulumix.Output[*FieldKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldKindPtrOutput) Elem() FieldKindOutput {
@@ -1679,12 +1571,6 @@ func (o LabelDescriptorValueTypeOutput) ToLabelDescriptorValueTypePtrOutputWithC
 	}).(LabelDescriptorValueTypePtrOutput)
 }
 
-func (o LabelDescriptorValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LabelDescriptorValueType] {
-	return pulumix.Output[LabelDescriptorValueType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LabelDescriptorValueTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1718,12 +1604,6 @@ func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutput()
 
 func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutputWithContext(ctx context.Context) LabelDescriptorValueTypePtrOutput {
 	return o
-}
-
-func (o LabelDescriptorValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LabelDescriptorValueType] {
-	return pulumix.Output[*LabelDescriptorValueType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LabelDescriptorValueTypePtrOutput) Elem() LabelDescriptorValueTypeOutput {
@@ -1866,12 +1746,6 @@ func (o MethodSyntaxOutput) ToMethodSyntaxPtrOutputWithContext(ctx context.Conte
 	}).(MethodSyntaxPtrOutput)
 }
 
-func (o MethodSyntaxOutput) ToOutput(ctx context.Context) pulumix.Output[MethodSyntax] {
-	return pulumix.Output[MethodSyntax]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MethodSyntaxOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1905,12 +1779,6 @@ func (o MethodSyntaxPtrOutput) ToMethodSyntaxPtrOutput() MethodSyntaxPtrOutput {
 
 func (o MethodSyntaxPtrOutput) ToMethodSyntaxPtrOutputWithContext(ctx context.Context) MethodSyntaxPtrOutput {
 	return o
-}
-
-func (o MethodSyntaxPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MethodSyntax] {
-	return pulumix.Output[*MethodSyntax]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MethodSyntaxPtrOutput) Elem() MethodSyntaxOutput {
@@ -2063,12 +1931,6 @@ func (o MetricDescriptorLaunchStageOutput) ToMetricDescriptorLaunchStagePtrOutpu
 	}).(MetricDescriptorLaunchStagePtrOutput)
 }
 
-func (o MetricDescriptorLaunchStageOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorLaunchStage] {
-	return pulumix.Output[MetricDescriptorLaunchStage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetricDescriptorLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2102,12 +1964,6 @@ func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOu
 
 func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorLaunchStagePtrOutput {
 	return o
-}
-
-func (o MetricDescriptorLaunchStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorLaunchStage] {
-	return pulumix.Output[*MetricDescriptorLaunchStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricDescriptorLaunchStagePtrOutput) Elem() MetricDescriptorLaunchStageOutput {
@@ -2260,12 +2116,6 @@ func (o MetricDescriptorMetadataLaunchStageOutput) ToMetricDescriptorMetadataLau
 	}).(MetricDescriptorMetadataLaunchStagePtrOutput)
 }
 
-func (o MetricDescriptorMetadataLaunchStageOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetadataLaunchStage] {
-	return pulumix.Output[MetricDescriptorMetadataLaunchStage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetricDescriptorMetadataLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2299,12 +2149,6 @@ func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToMetricDescriptorMetadata
 
 func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataLaunchStagePtrOutput {
 	return o
-}
-
-func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetadataLaunchStage] {
-	return pulumix.Output[*MetricDescriptorMetadataLaunchStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricDescriptorMetadataLaunchStagePtrOutput) Elem() MetricDescriptorMetadataLaunchStageOutput {
@@ -2449,12 +2293,6 @@ func (o MetricDescriptorMetricKindOutput) ToMetricDescriptorMetricKindPtrOutputW
 	}).(MetricDescriptorMetricKindPtrOutput)
 }
 
-func (o MetricDescriptorMetricKindOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetricKind] {
-	return pulumix.Output[MetricDescriptorMetricKind]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetricDescriptorMetricKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2488,12 +2326,6 @@ func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutp
 
 func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutputWithContext(ctx context.Context) MetricDescriptorMetricKindPtrOutput {
 	return o
-}
-
-func (o MetricDescriptorMetricKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetricKind] {
-	return pulumix.Output[*MetricDescriptorMetricKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricDescriptorMetricKindPtrOutput) Elem() MetricDescriptorMetricKindOutput {
@@ -2644,12 +2476,6 @@ func (o MetricDescriptorValueTypeOutput) ToMetricDescriptorValueTypePtrOutputWit
 	}).(MetricDescriptorValueTypePtrOutput)
 }
 
-func (o MetricDescriptorValueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorValueType] {
-	return pulumix.Output[MetricDescriptorValueType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetricDescriptorValueTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2683,12 +2509,6 @@ func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutput
 
 func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutputWithContext(ctx context.Context) MetricDescriptorValueTypePtrOutput {
 	return o
-}
-
-func (o MetricDescriptorValueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorValueType] {
-	return pulumix.Output[*MetricDescriptorValueType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricDescriptorValueTypePtrOutput) Elem() MetricDescriptorValueTypeOutput {
@@ -2841,12 +2661,6 @@ func (o MonitoredResourceDescriptorLaunchStageOutput) ToMonitoredResourceDescrip
 	}).(MonitoredResourceDescriptorLaunchStagePtrOutput)
 }
 
-func (o MonitoredResourceDescriptorLaunchStageOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredResourceDescriptorLaunchStage] {
-	return pulumix.Output[MonitoredResourceDescriptorLaunchStage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MonitoredResourceDescriptorLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2880,12 +2694,6 @@ func (o MonitoredResourceDescriptorLaunchStagePtrOutput) ToMonitoredResourceDesc
 
 func (o MonitoredResourceDescriptorLaunchStagePtrOutput) ToMonitoredResourceDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MonitoredResourceDescriptorLaunchStagePtrOutput {
 	return o
-}
-
-func (o MonitoredResourceDescriptorLaunchStagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoredResourceDescriptorLaunchStage] {
-	return pulumix.Output[*MonitoredResourceDescriptorLaunchStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoredResourceDescriptorLaunchStagePtrOutput) Elem() MonitoredResourceDescriptorLaunchStageOutput {
@@ -3038,12 +2846,6 @@ func (o PublishingOrganizationOutput) ToPublishingOrganizationPtrOutputWithConte
 	}).(PublishingOrganizationPtrOutput)
 }
 
-func (o PublishingOrganizationOutput) ToOutput(ctx context.Context) pulumix.Output[PublishingOrganization] {
-	return pulumix.Output[PublishingOrganization]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublishingOrganizationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3077,12 +2879,6 @@ func (o PublishingOrganizationPtrOutput) ToPublishingOrganizationPtrOutput() Pub
 
 func (o PublishingOrganizationPtrOutput) ToPublishingOrganizationPtrOutputWithContext(ctx context.Context) PublishingOrganizationPtrOutput {
 	return o
-}
-
-func (o PublishingOrganizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublishingOrganization] {
-	return pulumix.Output[*PublishingOrganization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublishingOrganizationPtrOutput) Elem() PublishingOrganizationOutput {
@@ -3245,12 +3041,6 @@ func (o TypeSyntaxOutput) ToTypeSyntaxPtrOutputWithContext(ctx context.Context) 
 	}).(TypeSyntaxPtrOutput)
 }
 
-func (o TypeSyntaxOutput) ToOutput(ctx context.Context) pulumix.Output[TypeSyntax] {
-	return pulumix.Output[TypeSyntax]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TypeSyntaxOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3284,12 +3074,6 @@ func (o TypeSyntaxPtrOutput) ToTypeSyntaxPtrOutput() TypeSyntaxPtrOutput {
 
 func (o TypeSyntaxPtrOutput) ToTypeSyntaxPtrOutputWithContext(ctx context.Context) TypeSyntaxPtrOutput {
 	return o
-}
-
-func (o TypeSyntaxPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TypeSyntax] {
-	return pulumix.Output[*TypeSyntax]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TypeSyntaxPtrOutput) Elem() TypeSyntaxOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
@@ -152,12 +151,6 @@ func (i *CryptoKeyVersion) ToCryptoKeyVersionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionOutput)
 }
 
-func (i *CryptoKeyVersion) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersion] {
-	return pulumix.Output[*CryptoKeyVersion]{
-		OutputState: i.ToCryptoKeyVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CryptoKeyVersionOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyVersionOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o CryptoKeyVersionOutput) ToCryptoKeyVersionOutput() CryptoKeyVersionOutpu
 
 func (o CryptoKeyVersionOutput) ToCryptoKeyVersionOutputWithContext(ctx context.Context) CryptoKeyVersionOutput {
 	return o
-}
-
-func (o CryptoKeyVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersion] {
-	return pulumix.Output[*CryptoKeyVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.

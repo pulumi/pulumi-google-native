@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i GoogleCloudPolicysimulatorV1betaReplayConfigArgs) ToGoogleCloudPolicysim
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1betaReplayConfigOutput)
 }
 
-func (i GoogleCloudPolicysimulatorV1betaReplayConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudPolicysimulatorV1betaReplayConfig] {
-	return pulumix.Output[GoogleCloudPolicysimulatorV1betaReplayConfig]{
-		OutputState: i.ToGoogleCloudPolicysimulatorV1betaReplayConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration used for a Replay.
 type GoogleCloudPolicysimulatorV1betaReplayConfigOutput struct{ *pulumi.OutputState }
 
@@ -72,12 +65,6 @@ func (o GoogleCloudPolicysimulatorV1betaReplayConfigOutput) ToGoogleCloudPolicys
 
 func (o GoogleCloudPolicysimulatorV1betaReplayConfigOutput) ToGoogleCloudPolicysimulatorV1betaReplayConfigOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1betaReplayConfigOutput {
 	return o
-}
-
-func (o GoogleCloudPolicysimulatorV1betaReplayConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudPolicysimulatorV1betaReplayConfig] {
-	return pulumix.Output[GoogleCloudPolicysimulatorV1betaReplayConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logs to use as input for the Replay.
@@ -113,12 +100,6 @@ func (o GoogleCloudPolicysimulatorV1betaReplayConfigResponseOutput) ToGoogleClou
 
 func (o GoogleCloudPolicysimulatorV1betaReplayConfigResponseOutput) ToGoogleCloudPolicysimulatorV1betaReplayConfigResponseOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1betaReplayConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudPolicysimulatorV1betaReplayConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudPolicysimulatorV1betaReplayConfigResponse] {
-	return pulumix.Output[GoogleCloudPolicysimulatorV1betaReplayConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logs to use as input for the Replay.
@@ -160,12 +141,6 @@ func (o GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponseOutput) ToGo
 
 func (o GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponseOutput) ToGoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponseOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponseOutput {
 	return o
-}
-
-func (o GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse] {
-	return pulumix.Output[GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of replayed log entries with a difference between baseline and simulated policies.
@@ -225,12 +200,6 @@ func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutput() GoogleTyp
 
 func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutputWithContext(ctx context.Context) GoogleTypeDateResponseOutput {
 	return o
-}
-
-func (o GoogleTypeDateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDateResponse] {
-	return pulumix.Output[GoogleTypeDateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.

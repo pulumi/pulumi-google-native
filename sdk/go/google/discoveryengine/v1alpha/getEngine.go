@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Engine.
@@ -97,12 +96,6 @@ func (o LookupEngineResultOutput) ToLookupEngineResultOutput() LookupEngineResul
 
 func (o LookupEngineResultOutput) ToLookupEngineResultOutputWithContext(ctx context.Context) LookupEngineResultOutput {
 	return o
-}
-
-func (o LookupEngineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEngineResult] {
-	return pulumix.Output[LookupEngineResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.

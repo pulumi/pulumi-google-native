@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ManagementServer in a given project and location.
@@ -168,12 +167,6 @@ func (i *ManagementServer) ToManagementServerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerOutput)
 }
 
-func (i *ManagementServer) ToOutput(ctx context.Context) pulumix.Output[*ManagementServer] {
-	return pulumix.Output[*ManagementServer]{
-		OutputState: i.ToManagementServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagementServerOutput struct{ *pulumi.OutputState }
 
 func (ManagementServerOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o ManagementServerOutput) ToManagementServerOutput() ManagementServerOutpu
 
 func (o ManagementServerOutput) ToManagementServerOutputWithContext(ctx context.Context) ManagementServerOutput {
 	return o
-}
-
-func (o ManagementServerOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementServer] {
-	return pulumix.Output[*ManagementServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the instance was created.

@@ -83,12 +83,6 @@ func (o BareMetalClusterUpgradePolicyPolicyOutput) ToBareMetalClusterUpgradePoli
 	}).(BareMetalClusterUpgradePolicyPolicyPtrOutput)
 }
 
-func (o BareMetalClusterUpgradePolicyPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicyPolicy] {
-	return pulumix.Output[BareMetalClusterUpgradePolicyPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BareMetalClusterUpgradePolicyPolicyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) ToBareMetalClusterUpgradeP
 
 func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPolicyPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicyPolicy] {
-	return pulumix.Output[*BareMetalClusterUpgradePolicyPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) Elem() BareMetalClusterUpgradePolicyPolicyOutput {
@@ -268,12 +256,6 @@ func (o BareMetalNodePoolConfigOperatingSystemOutput) ToBareMetalNodePoolConfigO
 	}).(BareMetalNodePoolConfigOperatingSystemPtrOutput)
 }
 
-func (o BareMetalNodePoolConfigOperatingSystemOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolConfigOperatingSystem] {
-	return pulumix.Output[BareMetalNodePoolConfigOperatingSystem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BareMetalNodePoolConfigOperatingSystemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -307,12 +289,6 @@ func (o BareMetalNodePoolConfigOperatingSystemPtrOutput) ToBareMetalNodePoolConf
 
 func (o BareMetalNodePoolConfigOperatingSystemPtrOutput) ToBareMetalNodePoolConfigOperatingSystemPtrOutputWithContext(ctx context.Context) BareMetalNodePoolConfigOperatingSystemPtrOutput {
 	return o
-}
-
-func (o BareMetalNodePoolConfigOperatingSystemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolConfigOperatingSystem] {
-	return pulumix.Output[*BareMetalNodePoolConfigOperatingSystem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodePoolConfigOperatingSystemPtrOutput) Elem() BareMetalNodePoolConfigOperatingSystemOutput {
@@ -453,12 +429,6 @@ func (o BareMetalWorkloadNodeConfigContainerRuntimeOutput) ToBareMetalWorkloadNo
 	}).(BareMetalWorkloadNodeConfigContainerRuntimePtrOutput)
 }
 
-func (o BareMetalWorkloadNodeConfigContainerRuntimeOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalWorkloadNodeConfigContainerRuntime] {
-	return pulumix.Output[BareMetalWorkloadNodeConfigContainerRuntime]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BareMetalWorkloadNodeConfigContainerRuntimeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -492,12 +462,6 @@ func (o BareMetalWorkloadNodeConfigContainerRuntimePtrOutput) ToBareMetalWorkloa
 
 func (o BareMetalWorkloadNodeConfigContainerRuntimePtrOutput) ToBareMetalWorkloadNodeConfigContainerRuntimePtrOutputWithContext(ctx context.Context) BareMetalWorkloadNodeConfigContainerRuntimePtrOutput {
 	return o
-}
-
-func (o BareMetalWorkloadNodeConfigContainerRuntimePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalWorkloadNodeConfigContainerRuntime] {
-	return pulumix.Output[*BareMetalWorkloadNodeConfigContainerRuntime]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalWorkloadNodeConfigContainerRuntimePtrOutput) Elem() BareMetalWorkloadNodeConfigContainerRuntimeOutput {
@@ -640,12 +604,6 @@ func (o BinaryAuthorizationEvaluationModeOutput) ToBinaryAuthorizationEvaluation
 	}).(BinaryAuthorizationEvaluationModePtrOutput)
 }
 
-func (o BinaryAuthorizationEvaluationModeOutput) ToOutput(ctx context.Context) pulumix.Output[BinaryAuthorizationEvaluationMode] {
-	return pulumix.Output[BinaryAuthorizationEvaluationMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BinaryAuthorizationEvaluationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -679,12 +637,6 @@ func (o BinaryAuthorizationEvaluationModePtrOutput) ToBinaryAuthorizationEvaluat
 
 func (o BinaryAuthorizationEvaluationModePtrOutput) ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModePtrOutput {
 	return o
-}
-
-func (o BinaryAuthorizationEvaluationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorizationEvaluationMode] {
-	return pulumix.Output[*BinaryAuthorizationEvaluationMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BinaryAuthorizationEvaluationModePtrOutput) Elem() BinaryAuthorizationEvaluationModeOutput {
@@ -829,12 +781,6 @@ func (o NodeTaintEffectOutput) ToNodeTaintEffectPtrOutputWithContext(ctx context
 	}).(NodeTaintEffectPtrOutput)
 }
 
-func (o NodeTaintEffectOutput) ToOutput(ctx context.Context) pulumix.Output[NodeTaintEffect] {
-	return pulumix.Output[NodeTaintEffect]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeTaintEffectOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -868,12 +814,6 @@ func (o NodeTaintEffectPtrOutput) ToNodeTaintEffectPtrOutput() NodeTaintEffectPt
 
 func (o NodeTaintEffectPtrOutput) ToNodeTaintEffectPtrOutputWithContext(ctx context.Context) NodeTaintEffectPtrOutput {
 	return o
-}
-
-func (o NodeTaintEffectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeTaintEffect] {
-	return pulumix.Output[*NodeTaintEffect]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeTaintEffectPtrOutput) Elem() NodeTaintEffectOutput {

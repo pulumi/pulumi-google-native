@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -126,12 +125,6 @@ func (i *ModelIamPolicy) ToModelIamPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ModelIamPolicyOutput)
 }
 
-func (i *ModelIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*ModelIamPolicy] {
-	return pulumix.Output[*ModelIamPolicy]{
-		OutputState: i.ToModelIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ModelIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ModelIamPolicyOutput) ElementType() reflect.Type {
@@ -144,12 +137,6 @@ func (o ModelIamPolicyOutput) ToModelIamPolicyOutput() ModelIamPolicyOutput {
 
 func (o ModelIamPolicyOutput) ToModelIamPolicyOutputWithContext(ctx context.Context) ModelIamPolicyOutput {
 	return o
-}
-
-func (o ModelIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelIamPolicy] {
-	return pulumix.Output[*ModelIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.

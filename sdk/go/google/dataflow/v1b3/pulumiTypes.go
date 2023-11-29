@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AutoscalingSettingsArgs) ToAutoscalingSettingsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingSettingsOutput)
 }
 
-func (i AutoscalingSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingSettings] {
-	return pulumix.Output[AutoscalingSettings]{
-		OutputState: i.ToAutoscalingSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingSettingsArgs) ToAutoscalingSettingsPtrOutput() AutoscalingSettingsPtrOutput {
 	return i.ToAutoscalingSettingsPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *autoscalingSettingsPtrType) ToAutoscalingSettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingSettingsPtrOutput)
 }
 
-func (i *autoscalingSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingSettings] {
-	return pulumix.Output[*AutoscalingSettings]{
-		OutputState: i.ToAutoscalingSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings for WorkerPool autoscaling.
 type AutoscalingSettingsOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o AutoscalingSettingsOutput) ToAutoscalingSettingsPtrOutputWithContext(ctx
 	}).(AutoscalingSettingsPtrOutput)
 }
 
-func (o AutoscalingSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingSettings] {
-	return pulumix.Output[AutoscalingSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The algorithm to use for autoscaling.
 func (o AutoscalingSettingsOutput) Algorithm() AutoscalingSettingsAlgorithmPtrOutput {
 	return o.ApplyT(func(v AutoscalingSettings) *AutoscalingSettingsAlgorithm { return v.Algorithm }).(AutoscalingSettingsAlgorithmPtrOutput)
@@ -159,12 +140,6 @@ func (o AutoscalingSettingsPtrOutput) ToAutoscalingSettingsPtrOutput() Autoscali
 
 func (o AutoscalingSettingsPtrOutput) ToAutoscalingSettingsPtrOutputWithContext(ctx context.Context) AutoscalingSettingsPtrOutput {
 	return o
-}
-
-func (o AutoscalingSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingSettings] {
-	return pulumix.Output[*AutoscalingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingSettingsPtrOutput) Elem() AutoscalingSettingsOutput {
@@ -218,12 +193,6 @@ func (o AutoscalingSettingsResponseOutput) ToAutoscalingSettingsResponseOutput()
 
 func (o AutoscalingSettingsResponseOutput) ToAutoscalingSettingsResponseOutputWithContext(ctx context.Context) AutoscalingSettingsResponseOutput {
 	return o
-}
-
-func (o AutoscalingSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingSettingsResponse] {
-	return pulumix.Output[AutoscalingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The algorithm to use for autoscaling.
@@ -283,12 +252,6 @@ func (i BigQueryIODetailsArgs) ToBigQueryIODetailsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryIODetailsOutput)
 }
 
-func (i BigQueryIODetailsArgs) ToOutput(ctx context.Context) pulumix.Output[BigQueryIODetails] {
-	return pulumix.Output[BigQueryIODetails]{
-		OutputState: i.ToBigQueryIODetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BigQueryIODetailsArrayInput is an input type that accepts BigQueryIODetailsArray and BigQueryIODetailsArrayOutput values.
 // You can construct a concrete instance of `BigQueryIODetailsArrayInput` via:
 //
@@ -314,12 +277,6 @@ func (i BigQueryIODetailsArray) ToBigQueryIODetailsArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryIODetailsArrayOutput)
 }
 
-func (i BigQueryIODetailsArray) ToOutput(ctx context.Context) pulumix.Output[[]BigQueryIODetails] {
-	return pulumix.Output[[]BigQueryIODetails]{
-		OutputState: i.ToBigQueryIODetailsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata for a BigQuery connector used by the job.
 type BigQueryIODetailsOutput struct{ *pulumi.OutputState }
 
@@ -333,12 +290,6 @@ func (o BigQueryIODetailsOutput) ToBigQueryIODetailsOutput() BigQueryIODetailsOu
 
 func (o BigQueryIODetailsOutput) ToBigQueryIODetailsOutputWithContext(ctx context.Context) BigQueryIODetailsOutput {
 	return o
-}
-
-func (o BigQueryIODetailsOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryIODetails] {
-	return pulumix.Output[BigQueryIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dataset accessed in the connection.
@@ -375,12 +326,6 @@ func (o BigQueryIODetailsArrayOutput) ToBigQueryIODetailsArrayOutputWithContext(
 	return o
 }
 
-func (o BigQueryIODetailsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BigQueryIODetails] {
-	return pulumix.Output[[]BigQueryIODetails]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BigQueryIODetailsArrayOutput) Index(i pulumi.IntInput) BigQueryIODetailsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BigQueryIODetails {
 		return vs[0].([]BigQueryIODetails)[vs[1].(int)]
@@ -412,12 +357,6 @@ func (o BigQueryIODetailsResponseOutput) ToBigQueryIODetailsResponseOutput() Big
 
 func (o BigQueryIODetailsResponseOutput) ToBigQueryIODetailsResponseOutputWithContext(ctx context.Context) BigQueryIODetailsResponseOutput {
 	return o
-}
-
-func (o BigQueryIODetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryIODetailsResponse] {
-	return pulumix.Output[BigQueryIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dataset accessed in the connection.
@@ -452,12 +391,6 @@ func (o BigQueryIODetailsResponseArrayOutput) ToBigQueryIODetailsResponseArrayOu
 
 func (o BigQueryIODetailsResponseArrayOutput) ToBigQueryIODetailsResponseArrayOutputWithContext(ctx context.Context) BigQueryIODetailsResponseArrayOutput {
 	return o
-}
-
-func (o BigQueryIODetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BigQueryIODetailsResponse] {
-	return pulumix.Output[[]BigQueryIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BigQueryIODetailsResponseArrayOutput) Index(i pulumi.IntInput) BigQueryIODetailsResponseOutput {
@@ -509,12 +442,6 @@ func (i BigTableIODetailsArgs) ToBigTableIODetailsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BigTableIODetailsOutput)
 }
 
-func (i BigTableIODetailsArgs) ToOutput(ctx context.Context) pulumix.Output[BigTableIODetails] {
-	return pulumix.Output[BigTableIODetails]{
-		OutputState: i.ToBigTableIODetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BigTableIODetailsArrayInput is an input type that accepts BigTableIODetailsArray and BigTableIODetailsArrayOutput values.
 // You can construct a concrete instance of `BigTableIODetailsArrayInput` via:
 //
@@ -540,12 +467,6 @@ func (i BigTableIODetailsArray) ToBigTableIODetailsArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BigTableIODetailsArrayOutput)
 }
 
-func (i BigTableIODetailsArray) ToOutput(ctx context.Context) pulumix.Output[[]BigTableIODetails] {
-	return pulumix.Output[[]BigTableIODetails]{
-		OutputState: i.ToBigTableIODetailsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata for a Cloud Bigtable connector used by the job.
 type BigTableIODetailsOutput struct{ *pulumi.OutputState }
 
@@ -559,12 +480,6 @@ func (o BigTableIODetailsOutput) ToBigTableIODetailsOutput() BigTableIODetailsOu
 
 func (o BigTableIODetailsOutput) ToBigTableIODetailsOutputWithContext(ctx context.Context) BigTableIODetailsOutput {
 	return o
-}
-
-func (o BigTableIODetailsOutput) ToOutput(ctx context.Context) pulumix.Output[BigTableIODetails] {
-	return pulumix.Output[BigTableIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // InstanceId accessed in the connection.
@@ -594,12 +509,6 @@ func (o BigTableIODetailsArrayOutput) ToBigTableIODetailsArrayOutput() BigTableI
 
 func (o BigTableIODetailsArrayOutput) ToBigTableIODetailsArrayOutputWithContext(ctx context.Context) BigTableIODetailsArrayOutput {
 	return o
-}
-
-func (o BigTableIODetailsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BigTableIODetails] {
-	return pulumix.Output[[]BigTableIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BigTableIODetailsArrayOutput) Index(i pulumi.IntInput) BigTableIODetailsOutput {
@@ -633,12 +542,6 @@ func (o BigTableIODetailsResponseOutput) ToBigTableIODetailsResponseOutputWithCo
 	return o
 }
 
-func (o BigTableIODetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BigTableIODetailsResponse] {
-	return pulumix.Output[BigTableIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // InstanceId accessed in the connection.
 func (o BigTableIODetailsResponseOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v BigTableIODetailsResponse) string { return v.InstanceId }).(pulumi.StringOutput)
@@ -666,12 +569,6 @@ func (o BigTableIODetailsResponseArrayOutput) ToBigTableIODetailsResponseArrayOu
 
 func (o BigTableIODetailsResponseArrayOutput) ToBigTableIODetailsResponseArrayOutputWithContext(ctx context.Context) BigTableIODetailsResponseArrayOutput {
 	return o
-}
-
-func (o BigTableIODetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BigTableIODetailsResponse] {
-	return pulumix.Output[[]BigTableIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BigTableIODetailsResponseArrayOutput) Index(i pulumi.IntInput) BigTableIODetailsResponseOutput {
@@ -723,12 +620,6 @@ func (i ComponentSourceArgs) ToComponentSourceOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentSourceOutput)
 }
 
-func (i ComponentSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ComponentSource] {
-	return pulumix.Output[ComponentSource]{
-		OutputState: i.ToComponentSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ComponentSourceArrayInput is an input type that accepts ComponentSourceArray and ComponentSourceArrayOutput values.
 // You can construct a concrete instance of `ComponentSourceArrayInput` via:
 //
@@ -754,12 +645,6 @@ func (i ComponentSourceArray) ToComponentSourceArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentSourceArrayOutput)
 }
 
-func (i ComponentSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]ComponentSource] {
-	return pulumix.Output[[]ComponentSource]{
-		OutputState: i.ToComponentSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of an interstitial value between transforms in an execution stage.
 type ComponentSourceOutput struct{ *pulumi.OutputState }
 
@@ -773,12 +658,6 @@ func (o ComponentSourceOutput) ToComponentSourceOutput() ComponentSourceOutput {
 
 func (o ComponentSourceOutput) ToComponentSourceOutputWithContext(ctx context.Context) ComponentSourceOutput {
 	return o
-}
-
-func (o ComponentSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ComponentSource] {
-	return pulumix.Output[ComponentSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dataflow service generated name for this source.
@@ -808,12 +687,6 @@ func (o ComponentSourceArrayOutput) ToComponentSourceArrayOutput() ComponentSour
 
 func (o ComponentSourceArrayOutput) ToComponentSourceArrayOutputWithContext(ctx context.Context) ComponentSourceArrayOutput {
 	return o
-}
-
-func (o ComponentSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ComponentSource] {
-	return pulumix.Output[[]ComponentSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComponentSourceArrayOutput) Index(i pulumi.IntInput) ComponentSourceOutput {
@@ -847,12 +720,6 @@ func (o ComponentSourceResponseOutput) ToComponentSourceResponseOutputWithContex
 	return o
 }
 
-func (o ComponentSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComponentSourceResponse] {
-	return pulumix.Output[ComponentSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Dataflow service generated name for this source.
 func (o ComponentSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentSourceResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -880,12 +747,6 @@ func (o ComponentSourceResponseArrayOutput) ToComponentSourceResponseArrayOutput
 
 func (o ComponentSourceResponseArrayOutput) ToComponentSourceResponseArrayOutputWithContext(ctx context.Context) ComponentSourceResponseArrayOutput {
 	return o
-}
-
-func (o ComponentSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ComponentSourceResponse] {
-	return pulumix.Output[[]ComponentSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComponentSourceResponseArrayOutput) Index(i pulumi.IntInput) ComponentSourceResponseOutput {
@@ -937,12 +798,6 @@ func (i ComponentTransformArgs) ToComponentTransformOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentTransformOutput)
 }
 
-func (i ComponentTransformArgs) ToOutput(ctx context.Context) pulumix.Output[ComponentTransform] {
-	return pulumix.Output[ComponentTransform]{
-		OutputState: i.ToComponentTransformOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ComponentTransformArrayInput is an input type that accepts ComponentTransformArray and ComponentTransformArrayOutput values.
 // You can construct a concrete instance of `ComponentTransformArrayInput` via:
 //
@@ -968,12 +823,6 @@ func (i ComponentTransformArray) ToComponentTransformArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentTransformArrayOutput)
 }
 
-func (i ComponentTransformArray) ToOutput(ctx context.Context) pulumix.Output[[]ComponentTransform] {
-	return pulumix.Output[[]ComponentTransform]{
-		OutputState: i.ToComponentTransformArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of a transform executed as part of an execution stage.
 type ComponentTransformOutput struct{ *pulumi.OutputState }
 
@@ -987,12 +836,6 @@ func (o ComponentTransformOutput) ToComponentTransformOutput() ComponentTransfor
 
 func (o ComponentTransformOutput) ToComponentTransformOutputWithContext(ctx context.Context) ComponentTransformOutput {
 	return o
-}
-
-func (o ComponentTransformOutput) ToOutput(ctx context.Context) pulumix.Output[ComponentTransform] {
-	return pulumix.Output[ComponentTransform]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dataflow service generated name for this source.
@@ -1022,12 +865,6 @@ func (o ComponentTransformArrayOutput) ToComponentTransformArrayOutput() Compone
 
 func (o ComponentTransformArrayOutput) ToComponentTransformArrayOutputWithContext(ctx context.Context) ComponentTransformArrayOutput {
 	return o
-}
-
-func (o ComponentTransformArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ComponentTransform] {
-	return pulumix.Output[[]ComponentTransform]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComponentTransformArrayOutput) Index(i pulumi.IntInput) ComponentTransformOutput {
@@ -1061,12 +898,6 @@ func (o ComponentTransformResponseOutput) ToComponentTransformResponseOutputWith
 	return o
 }
 
-func (o ComponentTransformResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComponentTransformResponse] {
-	return pulumix.Output[ComponentTransformResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Dataflow service generated name for this source.
 func (o ComponentTransformResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentTransformResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1094,12 +925,6 @@ func (o ComponentTransformResponseArrayOutput) ToComponentTransformResponseArray
 
 func (o ComponentTransformResponseArrayOutput) ToComponentTransformResponseArrayOutputWithContext(ctx context.Context) ComponentTransformResponseArrayOutput {
 	return o
-}
-
-func (o ComponentTransformResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ComponentTransformResponse] {
-	return pulumix.Output[[]ComponentTransformResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComponentTransformResponseArrayOutput) Index(i pulumi.IntInput) ComponentTransformResponseOutput {
@@ -1143,12 +968,6 @@ func (i DataSamplingConfigArgs) ToDataSamplingConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DataSamplingConfigOutput)
 }
 
-func (i DataSamplingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DataSamplingConfig] {
-	return pulumix.Output[DataSamplingConfig]{
-		OutputState: i.ToDataSamplingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DataSamplingConfigArgs) ToDataSamplingConfigPtrOutput() DataSamplingConfigPtrOutput {
 	return i.ToDataSamplingConfigPtrOutputWithContext(context.Background())
 }
@@ -1190,12 +1009,6 @@ func (i *dataSamplingConfigPtrType) ToDataSamplingConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(DataSamplingConfigPtrOutput)
 }
 
-func (i *dataSamplingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataSamplingConfig] {
-	return pulumix.Output[*DataSamplingConfig]{
-		OutputState: i.ToDataSamplingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration options for sampling elements.
 type DataSamplingConfigOutput struct{ *pulumi.OutputState }
 
@@ -1221,12 +1034,6 @@ func (o DataSamplingConfigOutput) ToDataSamplingConfigPtrOutputWithContext(ctx c
 	}).(DataSamplingConfigPtrOutput)
 }
 
-func (o DataSamplingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DataSamplingConfig] {
-	return pulumix.Output[DataSamplingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
 func (o DataSamplingConfigOutput) Behaviors() DataSamplingConfigBehaviorsItemArrayOutput {
 	return o.ApplyT(func(v DataSamplingConfig) []DataSamplingConfigBehaviorsItem { return v.Behaviors }).(DataSamplingConfigBehaviorsItemArrayOutput)
@@ -1244,12 +1051,6 @@ func (o DataSamplingConfigPtrOutput) ToDataSamplingConfigPtrOutput() DataSamplin
 
 func (o DataSamplingConfigPtrOutput) ToDataSamplingConfigPtrOutputWithContext(ctx context.Context) DataSamplingConfigPtrOutput {
 	return o
-}
-
-func (o DataSamplingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataSamplingConfig] {
-	return pulumix.Output[*DataSamplingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataSamplingConfigPtrOutput) Elem() DataSamplingConfigOutput {
@@ -1291,12 +1092,6 @@ func (o DataSamplingConfigResponseOutput) ToDataSamplingConfigResponseOutput() D
 
 func (o DataSamplingConfigResponseOutput) ToDataSamplingConfigResponseOutputWithContext(ctx context.Context) DataSamplingConfigResponseOutput {
 	return o
-}
-
-func (o DataSamplingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataSamplingConfigResponse] {
-	return pulumix.Output[DataSamplingConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
@@ -1343,12 +1138,6 @@ func (i DatastoreIODetailsArgs) ToDatastoreIODetailsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreIODetailsOutput)
 }
 
-func (i DatastoreIODetailsArgs) ToOutput(ctx context.Context) pulumix.Output[DatastoreIODetails] {
-	return pulumix.Output[DatastoreIODetails]{
-		OutputState: i.ToDatastoreIODetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatastoreIODetailsArrayInput is an input type that accepts DatastoreIODetailsArray and DatastoreIODetailsArrayOutput values.
 // You can construct a concrete instance of `DatastoreIODetailsArrayInput` via:
 //
@@ -1374,12 +1163,6 @@ func (i DatastoreIODetailsArray) ToDatastoreIODetailsArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreIODetailsArrayOutput)
 }
 
-func (i DatastoreIODetailsArray) ToOutput(ctx context.Context) pulumix.Output[[]DatastoreIODetails] {
-	return pulumix.Output[[]DatastoreIODetails]{
-		OutputState: i.ToDatastoreIODetailsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata for a Datastore connector used by the job.
 type DatastoreIODetailsOutput struct{ *pulumi.OutputState }
 
@@ -1393,12 +1176,6 @@ func (o DatastoreIODetailsOutput) ToDatastoreIODetailsOutput() DatastoreIODetail
 
 func (o DatastoreIODetailsOutput) ToDatastoreIODetailsOutputWithContext(ctx context.Context) DatastoreIODetailsOutput {
 	return o
-}
-
-func (o DatastoreIODetailsOutput) ToOutput(ctx context.Context) pulumix.Output[DatastoreIODetails] {
-	return pulumix.Output[DatastoreIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Namespace used in the connection.
@@ -1423,12 +1200,6 @@ func (o DatastoreIODetailsArrayOutput) ToDatastoreIODetailsArrayOutput() Datasto
 
 func (o DatastoreIODetailsArrayOutput) ToDatastoreIODetailsArrayOutputWithContext(ctx context.Context) DatastoreIODetailsArrayOutput {
 	return o
-}
-
-func (o DatastoreIODetailsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatastoreIODetails] {
-	return pulumix.Output[[]DatastoreIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatastoreIODetailsArrayOutput) Index(i pulumi.IntInput) DatastoreIODetailsOutput {
@@ -1460,12 +1231,6 @@ func (o DatastoreIODetailsResponseOutput) ToDatastoreIODetailsResponseOutputWith
 	return o
 }
 
-func (o DatastoreIODetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatastoreIODetailsResponse] {
-	return pulumix.Output[DatastoreIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Namespace used in the connection.
 func (o DatastoreIODetailsResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v DatastoreIODetailsResponse) string { return v.Namespace }).(pulumi.StringOutput)
@@ -1488,12 +1253,6 @@ func (o DatastoreIODetailsResponseArrayOutput) ToDatastoreIODetailsResponseArray
 
 func (o DatastoreIODetailsResponseArrayOutput) ToDatastoreIODetailsResponseArrayOutputWithContext(ctx context.Context) DatastoreIODetailsResponseArrayOutput {
 	return o
-}
-
-func (o DatastoreIODetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatastoreIODetailsResponse] {
-	return pulumix.Output[[]DatastoreIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatastoreIODetailsResponseArrayOutput) Index(i pulumi.IntInput) DatastoreIODetailsResponseOutput {
@@ -1541,12 +1300,6 @@ func (i DebugOptionsArgs) ToDebugOptionsOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DebugOptionsOutput)
 }
 
-func (i DebugOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DebugOptions] {
-	return pulumix.Output[DebugOptions]{
-		OutputState: i.ToDebugOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DebugOptionsArgs) ToDebugOptionsPtrOutput() DebugOptionsPtrOutput {
 	return i.ToDebugOptionsPtrOutputWithContext(context.Background())
 }
@@ -1588,12 +1341,6 @@ func (i *debugOptionsPtrType) ToDebugOptionsPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DebugOptionsPtrOutput)
 }
 
-func (i *debugOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DebugOptions] {
-	return pulumix.Output[*DebugOptions]{
-		OutputState: i.ToDebugOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes any options that have an effect on the debugging of pipelines.
 type DebugOptionsOutput struct{ *pulumi.OutputState }
 
@@ -1619,12 +1366,6 @@ func (o DebugOptionsOutput) ToDebugOptionsPtrOutputWithContext(ctx context.Conte
 	}).(DebugOptionsPtrOutput)
 }
 
-func (o DebugOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DebugOptions] {
-	return pulumix.Output[DebugOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration options for sampling elements from a running pipeline.
 func (o DebugOptionsOutput) DataSampling() DataSamplingConfigPtrOutput {
 	return o.ApplyT(func(v DebugOptions) *DataSamplingConfig { return v.DataSampling }).(DataSamplingConfigPtrOutput)
@@ -1647,12 +1388,6 @@ func (o DebugOptionsPtrOutput) ToDebugOptionsPtrOutput() DebugOptionsPtrOutput {
 
 func (o DebugOptionsPtrOutput) ToDebugOptionsPtrOutputWithContext(ctx context.Context) DebugOptionsPtrOutput {
 	return o
-}
-
-func (o DebugOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DebugOptions] {
-	return pulumix.Output[*DebugOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DebugOptionsPtrOutput) Elem() DebugOptionsOutput {
@@ -1708,12 +1443,6 @@ func (o DebugOptionsResponseOutput) ToDebugOptionsResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o DebugOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DebugOptionsResponse] {
-	return pulumix.Output[DebugOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration options for sampling elements from a running pipeline.
 func (o DebugOptionsResponseOutput) DataSampling() DataSamplingConfigResponseOutput {
 	return o.ApplyT(func(v DebugOptionsResponse) DataSamplingConfigResponse { return v.DataSampling }).(DataSamplingConfigResponseOutput)
@@ -1767,12 +1496,6 @@ func (i DiskArgs) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
 }
 
-func (i DiskArgs) ToOutput(ctx context.Context) pulumix.Output[Disk] {
-	return pulumix.Output[Disk]{
-		OutputState: i.ToDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
 // You can construct a concrete instance of `DiskArrayInput` via:
 //
@@ -1798,12 +1521,6 @@ func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(DiskArrayOutput)
 }
 
-func (i DiskArray) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
-	return pulumix.Output[[]Disk]{
-		OutputState: i.ToDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the data disk used by a workflow job.
 type DiskOutput struct{ *pulumi.OutputState }
 
@@ -1817,12 +1534,6 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
-}
-
-func (o DiskOutput) ToOutput(ctx context.Context) pulumix.Output[Disk] {
-	return pulumix.Output[Disk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Disk storage type, as defined by Google Compute Engine. This must be a disk type appropriate to the project and zone in which the workers will run. If unknown or unspecified, the service will attempt to choose a reasonable default. For example, the standard persistent disk type is a resource name typically ending in "pd-standard". If SSD persistent disks are available, the resource name typically ends with "pd-ssd". The actual valid values are defined the Google Compute Engine API, not by the Cloud Dataflow API; consult the Google Compute Engine documentation for more information about determining the set of available disk types for a particular project and zone. Google Compute Engine Disk types are local to a particular project in a particular zone, and so the resource name will typically look something like this: compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard
@@ -1852,12 +1563,6 @@ func (o DiskArrayOutput) ToDiskArrayOutput() DiskArrayOutput {
 
 func (o DiskArrayOutput) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOutput {
 	return o
-}
-
-func (o DiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
-	return pulumix.Output[[]Disk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
@@ -1891,12 +1596,6 @@ func (o DiskResponseOutput) ToDiskResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskResponse] {
-	return pulumix.Output[DiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Disk storage type, as defined by Google Compute Engine. This must be a disk type appropriate to the project and zone in which the workers will run. If unknown or unspecified, the service will attempt to choose a reasonable default. For example, the standard persistent disk type is a resource name typically ending in "pd-standard". If SSD persistent disks are available, the resource name typically ends with "pd-ssd". The actual valid values are defined the Google Compute Engine API, not by the Cloud Dataflow API; consult the Google Compute Engine documentation for more information about determining the set of available disk types for a particular project and zone. Google Compute Engine Disk types are local to a particular project in a particular zone, and so the resource name will typically look something like this: compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard
 func (o DiskResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.DiskType }).(pulumi.StringOutput)
@@ -1924,12 +1623,6 @@ func (o DiskResponseArrayOutput) ToDiskResponseArrayOutput() DiskResponseArrayOu
 
 func (o DiskResponseArrayOutput) ToDiskResponseArrayOutputWithContext(ctx context.Context) DiskResponseArrayOutput {
 	return o
-}
-
-func (o DiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskResponse] {
-	return pulumix.Output[[]DiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskResponseArrayOutput) Index(i pulumi.IntInput) DiskResponseOutput {
@@ -2017,12 +1710,6 @@ func (i DisplayDataArgs) ToDisplayDataOutputWithContext(ctx context.Context) Dis
 	return pulumi.ToOutputWithContext(ctx, i).(DisplayDataOutput)
 }
 
-func (i DisplayDataArgs) ToOutput(ctx context.Context) pulumix.Output[DisplayData] {
-	return pulumix.Output[DisplayData]{
-		OutputState: i.ToDisplayDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DisplayDataArrayInput is an input type that accepts DisplayDataArray and DisplayDataArrayOutput values.
 // You can construct a concrete instance of `DisplayDataArrayInput` via:
 //
@@ -2048,12 +1735,6 @@ func (i DisplayDataArray) ToDisplayDataArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DisplayDataArrayOutput)
 }
 
-func (i DisplayDataArray) ToOutput(ctx context.Context) pulumix.Output[[]DisplayData] {
-	return pulumix.Output[[]DisplayData]{
-		OutputState: i.ToDisplayDataArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data provided with a pipeline or transform to provide descriptive info.
 type DisplayDataOutput struct{ *pulumi.OutputState }
 
@@ -2067,12 +1748,6 @@ func (o DisplayDataOutput) ToDisplayDataOutput() DisplayDataOutput {
 
 func (o DisplayDataOutput) ToDisplayDataOutputWithContext(ctx context.Context) DisplayDataOutput {
 	return o
-}
-
-func (o DisplayDataOutput) ToOutput(ctx context.Context) pulumix.Output[DisplayData] {
-	return pulumix.Output[DisplayData]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contains value if the data is of a boolean type.
@@ -2149,12 +1824,6 @@ func (o DisplayDataArrayOutput) ToDisplayDataArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o DisplayDataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DisplayData] {
-	return pulumix.Output[[]DisplayData]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DisplayDataArrayOutput) Index(i pulumi.IntInput) DisplayDataOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DisplayData {
 		return vs[0].([]DisplayData)[vs[1].(int)]
@@ -2202,12 +1871,6 @@ func (o DisplayDataResponseOutput) ToDisplayDataResponseOutput() DisplayDataResp
 
 func (o DisplayDataResponseOutput) ToDisplayDataResponseOutputWithContext(ctx context.Context) DisplayDataResponseOutput {
 	return o
-}
-
-func (o DisplayDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DisplayDataResponse] {
-	return pulumix.Output[DisplayDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contains value if the data is of a boolean type.
@@ -2282,12 +1945,6 @@ func (o DisplayDataResponseArrayOutput) ToDisplayDataResponseArrayOutput() Displ
 
 func (o DisplayDataResponseArrayOutput) ToDisplayDataResponseArrayOutputWithContext(ctx context.Context) DisplayDataResponseArrayOutput {
 	return o
-}
-
-func (o DisplayDataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DisplayDataResponse] {
-	return pulumix.Output[[]DisplayDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DisplayDataResponseArrayOutput) Index(i pulumi.IntInput) DisplayDataResponseOutput {
@@ -2391,12 +2048,6 @@ func (i EnvironmentArgs) ToEnvironmentOutputWithContext(ctx context.Context) Env
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentOutput)
 }
 
-func (i EnvironmentArgs) ToOutput(ctx context.Context) pulumix.Output[Environment] {
-	return pulumix.Output[Environment]{
-		OutputState: i.ToEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentArgs) ToEnvironmentPtrOutput() EnvironmentPtrOutput {
 	return i.ToEnvironmentPtrOutputWithContext(context.Background())
 }
@@ -2438,12 +2089,6 @@ func (i *environmentPtrType) ToEnvironmentPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentPtrOutput)
 }
 
-func (i *environmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*Environment] {
-	return pulumix.Output[*Environment]{
-		OutputState: i.ToEnvironmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the environment in which a Dataflow Job runs.
 type EnvironmentOutput struct{ *pulumi.OutputState }
 
@@ -2467,12 +2112,6 @@ func (o EnvironmentOutput) ToEnvironmentPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Environment) *Environment {
 		return &v
 	}).(EnvironmentPtrOutput)
-}
-
-func (o EnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[Environment] {
-	return pulumix.Output[Environment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
@@ -2567,12 +2206,6 @@ func (o EnvironmentPtrOutput) ToEnvironmentPtrOutput() EnvironmentPtrOutput {
 
 func (o EnvironmentPtrOutput) ToEnvironmentPtrOutputWithContext(ctx context.Context) EnvironmentPtrOutput {
 	return o
-}
-
-func (o EnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Environment] {
-	return pulumix.Output[*Environment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentPtrOutput) Elem() EnvironmentOutput {
@@ -2800,12 +2433,6 @@ func (o EnvironmentResponseOutput) ToEnvironmentResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o EnvironmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentResponse] {
-	return pulumix.Output[EnvironmentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
 func (o EnvironmentResponseOutput) ClusterManagerApiService() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentResponse) string { return v.ClusterManagerApiService }).(pulumi.StringOutput)
@@ -2939,12 +2566,6 @@ func (i ExecutionStageStateArgs) ToExecutionStageStateOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionStageStateOutput)
 }
 
-func (i ExecutionStageStateArgs) ToOutput(ctx context.Context) pulumix.Output[ExecutionStageState] {
-	return pulumix.Output[ExecutionStageState]{
-		OutputState: i.ToExecutionStageStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExecutionStageStateArrayInput is an input type that accepts ExecutionStageStateArray and ExecutionStageStateArrayOutput values.
 // You can construct a concrete instance of `ExecutionStageStateArrayInput` via:
 //
@@ -2970,12 +2591,6 @@ func (i ExecutionStageStateArray) ToExecutionStageStateArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionStageStateArrayOutput)
 }
 
-func (i ExecutionStageStateArray) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionStageState] {
-	return pulumix.Output[[]ExecutionStageState]{
-		OutputState: i.ToExecutionStageStateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A message describing the state of a particular execution stage.
 type ExecutionStageStateOutput struct{ *pulumi.OutputState }
 
@@ -2989,12 +2604,6 @@ func (o ExecutionStageStateOutput) ToExecutionStageStateOutput() ExecutionStageS
 
 func (o ExecutionStageStateOutput) ToExecutionStageStateOutputWithContext(ctx context.Context) ExecutionStageStateOutput {
 	return o
-}
-
-func (o ExecutionStageStateOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionStageState] {
-	return pulumix.Output[ExecutionStageState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the stage transitioned to this state.
@@ -3024,12 +2633,6 @@ func (o ExecutionStageStateArrayOutput) ToExecutionStageStateArrayOutput() Execu
 
 func (o ExecutionStageStateArrayOutput) ToExecutionStageStateArrayOutputWithContext(ctx context.Context) ExecutionStageStateArrayOutput {
 	return o
-}
-
-func (o ExecutionStageStateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionStageState] {
-	return pulumix.Output[[]ExecutionStageState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecutionStageStateArrayOutput) Index(i pulumi.IntInput) ExecutionStageStateOutput {
@@ -3063,12 +2666,6 @@ func (o ExecutionStageStateResponseOutput) ToExecutionStageStateResponseOutputWi
 	return o
 }
 
-func (o ExecutionStageStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionStageStateResponse] {
-	return pulumix.Output[ExecutionStageStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The time at which the stage transitioned to this state.
 func (o ExecutionStageStateResponseOutput) CurrentStateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionStageStateResponse) string { return v.CurrentStateTime }).(pulumi.StringOutput)
@@ -3096,12 +2693,6 @@ func (o ExecutionStageStateResponseArrayOutput) ToExecutionStageStateResponseArr
 
 func (o ExecutionStageStateResponseArrayOutput) ToExecutionStageStateResponseArrayOutputWithContext(ctx context.Context) ExecutionStageStateResponseArrayOutput {
 	return o
-}
-
-func (o ExecutionStageStateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionStageStateResponse] {
-	return pulumix.Output[[]ExecutionStageStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecutionStageStateResponseArrayOutput) Index(i pulumi.IntInput) ExecutionStageStateResponseOutput {
@@ -3173,12 +2764,6 @@ func (i ExecutionStageSummaryArgs) ToExecutionStageSummaryOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionStageSummaryOutput)
 }
 
-func (i ExecutionStageSummaryArgs) ToOutput(ctx context.Context) pulumix.Output[ExecutionStageSummary] {
-	return pulumix.Output[ExecutionStageSummary]{
-		OutputState: i.ToExecutionStageSummaryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExecutionStageSummaryArrayInput is an input type that accepts ExecutionStageSummaryArray and ExecutionStageSummaryArrayOutput values.
 // You can construct a concrete instance of `ExecutionStageSummaryArrayInput` via:
 //
@@ -3204,12 +2789,6 @@ func (i ExecutionStageSummaryArray) ToExecutionStageSummaryArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionStageSummaryArrayOutput)
 }
 
-func (i ExecutionStageSummaryArray) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionStageSummary] {
-	return pulumix.Output[[]ExecutionStageSummary]{
-		OutputState: i.ToExecutionStageSummaryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of the composing transforms, names/ids, and input/outputs of a stage of execution. Some composing transforms and sources may have been generated by the Dataflow service during execution planning.
 type ExecutionStageSummaryOutput struct{ *pulumi.OutputState }
 
@@ -3223,12 +2802,6 @@ func (o ExecutionStageSummaryOutput) ToExecutionStageSummaryOutput() ExecutionSt
 
 func (o ExecutionStageSummaryOutput) ToExecutionStageSummaryOutputWithContext(ctx context.Context) ExecutionStageSummaryOutput {
 	return o
-}
-
-func (o ExecutionStageSummaryOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionStageSummary] {
-	return pulumix.Output[ExecutionStageSummary]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Collections produced and consumed by component transforms of this stage.
@@ -3285,12 +2858,6 @@ func (o ExecutionStageSummaryArrayOutput) ToExecutionStageSummaryArrayOutputWith
 	return o
 }
 
-func (o ExecutionStageSummaryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionStageSummary] {
-	return pulumix.Output[[]ExecutionStageSummary]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExecutionStageSummaryArrayOutput) Index(i pulumi.IntInput) ExecutionStageSummaryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExecutionStageSummary {
 		return vs[0].([]ExecutionStageSummary)[vs[1].(int)]
@@ -3328,12 +2895,6 @@ func (o ExecutionStageSummaryResponseOutput) ToExecutionStageSummaryResponseOutp
 
 func (o ExecutionStageSummaryResponseOutput) ToExecutionStageSummaryResponseOutputWithContext(ctx context.Context) ExecutionStageSummaryResponseOutput {
 	return o
-}
-
-func (o ExecutionStageSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionStageSummaryResponse] {
-	return pulumix.Output[ExecutionStageSummaryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Collections produced and consumed by component transforms of this stage.
@@ -3385,12 +2946,6 @@ func (o ExecutionStageSummaryResponseArrayOutput) ToExecutionStageSummaryRespons
 	return o
 }
 
-func (o ExecutionStageSummaryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExecutionStageSummaryResponse] {
-	return pulumix.Output[[]ExecutionStageSummaryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExecutionStageSummaryResponseArrayOutput) Index(i pulumi.IntInput) ExecutionStageSummaryResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExecutionStageSummaryResponse {
 		return vs[0].([]ExecutionStageSummaryResponse)[vs[1].(int)]
@@ -3432,12 +2987,6 @@ func (i FileIODetailsArgs) ToFileIODetailsOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(FileIODetailsOutput)
 }
 
-func (i FileIODetailsArgs) ToOutput(ctx context.Context) pulumix.Output[FileIODetails] {
-	return pulumix.Output[FileIODetails]{
-		OutputState: i.ToFileIODetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FileIODetailsArrayInput is an input type that accepts FileIODetailsArray and FileIODetailsArrayOutput values.
 // You can construct a concrete instance of `FileIODetailsArrayInput` via:
 //
@@ -3463,12 +3012,6 @@ func (i FileIODetailsArray) ToFileIODetailsArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FileIODetailsArrayOutput)
 }
 
-func (i FileIODetailsArray) ToOutput(ctx context.Context) pulumix.Output[[]FileIODetails] {
-	return pulumix.Output[[]FileIODetails]{
-		OutputState: i.ToFileIODetailsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata for a File connector used by the job.
 type FileIODetailsOutput struct{ *pulumi.OutputState }
 
@@ -3482,12 +3025,6 @@ func (o FileIODetailsOutput) ToFileIODetailsOutput() FileIODetailsOutput {
 
 func (o FileIODetailsOutput) ToFileIODetailsOutputWithContext(ctx context.Context) FileIODetailsOutput {
 	return o
-}
-
-func (o FileIODetailsOutput) ToOutput(ctx context.Context) pulumix.Output[FileIODetails] {
-	return pulumix.Output[FileIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // File Pattern used to access files by the connector.
@@ -3507,12 +3044,6 @@ func (o FileIODetailsArrayOutput) ToFileIODetailsArrayOutput() FileIODetailsArra
 
 func (o FileIODetailsArrayOutput) ToFileIODetailsArrayOutputWithContext(ctx context.Context) FileIODetailsArrayOutput {
 	return o
-}
-
-func (o FileIODetailsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FileIODetails] {
-	return pulumix.Output[[]FileIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileIODetailsArrayOutput) Index(i pulumi.IntInput) FileIODetailsOutput {
@@ -3542,12 +3073,6 @@ func (o FileIODetailsResponseOutput) ToFileIODetailsResponseOutputWithContext(ct
 	return o
 }
 
-func (o FileIODetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FileIODetailsResponse] {
-	return pulumix.Output[FileIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // File Pattern used to access files by the connector.
 func (o FileIODetailsResponseOutput) FilePattern() pulumi.StringOutput {
 	return o.ApplyT(func(v FileIODetailsResponse) string { return v.FilePattern }).(pulumi.StringOutput)
@@ -3565,12 +3090,6 @@ func (o FileIODetailsResponseArrayOutput) ToFileIODetailsResponseArrayOutput() F
 
 func (o FileIODetailsResponseArrayOutput) ToFileIODetailsResponseArrayOutputWithContext(ctx context.Context) FileIODetailsResponseArrayOutput {
 	return o
-}
-
-func (o FileIODetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FileIODetailsResponse] {
-	return pulumix.Output[[]FileIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileIODetailsResponseArrayOutput) Index(i pulumi.IntInput) FileIODetailsResponseOutput {
@@ -3614,12 +3133,6 @@ func (i JobExecutionInfoArgs) ToJobExecutionInfoOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionInfoOutput)
 }
 
-func (i JobExecutionInfoArgs) ToOutput(ctx context.Context) pulumix.Output[JobExecutionInfo] {
-	return pulumix.Output[JobExecutionInfo]{
-		OutputState: i.ToJobExecutionInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobExecutionInfoArgs) ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput {
 	return i.ToJobExecutionInfoPtrOutputWithContext(context.Background())
 }
@@ -3661,12 +3174,6 @@ func (i *jobExecutionInfoPtrType) ToJobExecutionInfoPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionInfoPtrOutput)
 }
 
-func (i *jobExecutionInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobExecutionInfo] {
-	return pulumix.Output[*JobExecutionInfo]{
-		OutputState: i.ToJobExecutionInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 type JobExecutionInfoOutput struct{ *pulumi.OutputState }
 
@@ -3692,12 +3199,6 @@ func (o JobExecutionInfoOutput) ToJobExecutionInfoPtrOutputWithContext(ctx conte
 	}).(JobExecutionInfoPtrOutput)
 }
 
-func (o JobExecutionInfoOutput) ToOutput(ctx context.Context) pulumix.Output[JobExecutionInfo] {
-	return pulumix.Output[JobExecutionInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A mapping from each stage to the information about that stage.
 func (o JobExecutionInfoOutput) Stages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobExecutionInfo) map[string]string { return v.Stages }).(pulumi.StringMapOutput)
@@ -3715,12 +3216,6 @@ func (o JobExecutionInfoPtrOutput) ToJobExecutionInfoPtrOutput() JobExecutionInf
 
 func (o JobExecutionInfoPtrOutput) ToJobExecutionInfoPtrOutputWithContext(ctx context.Context) JobExecutionInfoPtrOutput {
 	return o
-}
-
-func (o JobExecutionInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobExecutionInfo] {
-	return pulumix.Output[*JobExecutionInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobExecutionInfoPtrOutput) Elem() JobExecutionInfoOutput {
@@ -3762,12 +3257,6 @@ func (o JobExecutionInfoResponseOutput) ToJobExecutionInfoResponseOutput() JobEx
 
 func (o JobExecutionInfoResponseOutput) ToJobExecutionInfoResponseOutputWithContext(ctx context.Context) JobExecutionInfoResponseOutput {
 	return o
-}
-
-func (o JobExecutionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobExecutionInfoResponse] {
-	return pulumix.Output[JobExecutionInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A mapping from each stage to the information about that stage.
@@ -3838,12 +3327,6 @@ func (i JobMetadataArgs) ToJobMetadataOutputWithContext(ctx context.Context) Job
 	return pulumi.ToOutputWithContext(ctx, i).(JobMetadataOutput)
 }
 
-func (i JobMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[JobMetadata] {
-	return pulumix.Output[JobMetadata]{
-		OutputState: i.ToJobMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobMetadataArgs) ToJobMetadataPtrOutput() JobMetadataPtrOutput {
 	return i.ToJobMetadataPtrOutputWithContext(context.Background())
 }
@@ -3885,12 +3368,6 @@ func (i *jobMetadataPtrType) ToJobMetadataPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(JobMetadataPtrOutput)
 }
 
-func (i *jobMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobMetadata] {
-	return pulumix.Output[*JobMetadata]{
-		OutputState: i.ToJobMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadataOutput struct{ *pulumi.OutputState }
 
@@ -3914,12 +3391,6 @@ func (o JobMetadataOutput) ToJobMetadataPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobMetadata) *JobMetadata {
 		return &v
 	}).(JobMetadataPtrOutput)
-}
-
-func (o JobMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[JobMetadata] {
-	return pulumix.Output[JobMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identification of a Cloud Bigtable source used in the Dataflow job.
@@ -3974,12 +3445,6 @@ func (o JobMetadataPtrOutput) ToJobMetadataPtrOutput() JobMetadataPtrOutput {
 
 func (o JobMetadataPtrOutput) ToJobMetadataPtrOutputWithContext(ctx context.Context) JobMetadataPtrOutput {
 	return o
-}
-
-func (o JobMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobMetadata] {
-	return pulumix.Output[*JobMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobMetadataPtrOutput) Elem() JobMetadataOutput {
@@ -4107,12 +3572,6 @@ func (o JobMetadataResponseOutput) ToJobMetadataResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o JobMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobMetadataResponse] {
-	return pulumix.Output[JobMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Identification of a Cloud Bigtable source used in the Dataflow job.
 func (o JobMetadataResponseOutput) BigTableDetails() BigTableIODetailsResponseArrayOutput {
 	return o.ApplyT(func(v JobMetadataResponse) []BigTableIODetailsResponse { return v.BigTableDetails }).(BigTableIODetailsResponseArrayOutput)
@@ -4192,12 +3651,6 @@ func (i PackageArgs) ToPackageOutputWithContext(ctx context.Context) PackageOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PackageOutput)
 }
 
-func (i PackageArgs) ToOutput(ctx context.Context) pulumix.Output[Package] {
-	return pulumix.Output[Package]{
-		OutputState: i.ToPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PackageArrayInput is an input type that accepts PackageArray and PackageArrayOutput values.
 // You can construct a concrete instance of `PackageArrayInput` via:
 //
@@ -4223,12 +3676,6 @@ func (i PackageArray) ToPackageArrayOutputWithContext(ctx context.Context) Packa
 	return pulumi.ToOutputWithContext(ctx, i).(PackageArrayOutput)
 }
 
-func (i PackageArray) ToOutput(ctx context.Context) pulumix.Output[[]Package] {
-	return pulumix.Output[[]Package]{
-		OutputState: i.ToPackageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run.
 type PackageOutput struct{ *pulumi.OutputState }
 
@@ -4242,12 +3689,6 @@ func (o PackageOutput) ToPackageOutput() PackageOutput {
 
 func (o PackageOutput) ToPackageOutputWithContext(ctx context.Context) PackageOutput {
 	return o
-}
-
-func (o PackageOutput) ToOutput(ctx context.Context) pulumix.Output[Package] {
-	return pulumix.Output[Package]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource to read the package from. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket} bucket.storage.googleapis.com/
@@ -4272,12 +3713,6 @@ func (o PackageArrayOutput) ToPackageArrayOutput() PackageArrayOutput {
 
 func (o PackageArrayOutput) ToPackageArrayOutputWithContext(ctx context.Context) PackageArrayOutput {
 	return o
-}
-
-func (o PackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Package] {
-	return pulumix.Output[[]Package]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PackageArrayOutput) Index(i pulumi.IntInput) PackageOutput {
@@ -4309,12 +3744,6 @@ func (o PackageResponseOutput) ToPackageResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o PackageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PackageResponse] {
-	return pulumix.Output[PackageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource to read the package from. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket} bucket.storage.googleapis.com/
 func (o PackageResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageResponse) string { return v.Location }).(pulumi.StringOutput)
@@ -4337,12 +3766,6 @@ func (o PackageResponseArrayOutput) ToPackageResponseArrayOutput() PackageRespon
 
 func (o PackageResponseArrayOutput) ToPackageResponseArrayOutputWithContext(ctx context.Context) PackageResponseArrayOutput {
 	return o
-}
-
-func (o PackageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PackageResponse] {
-	return pulumix.Output[[]PackageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PackageResponseArrayOutput) Index(i pulumi.IntInput) PackageResponseOutput {
@@ -4376,12 +3799,6 @@ func (o ParameterMetadataEnumOptionResponseOutput) ToParameterMetadataEnumOption
 	return o
 }
 
-func (o ParameterMetadataEnumOptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterMetadataEnumOptionResponse] {
-	return pulumix.Output[ParameterMetadataEnumOptionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The description to display for the enum option.
 func (o ParameterMetadataEnumOptionResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterMetadataEnumOptionResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -4409,12 +3826,6 @@ func (o ParameterMetadataEnumOptionResponseArrayOutput) ToParameterMetadataEnumO
 
 func (o ParameterMetadataEnumOptionResponseArrayOutput) ToParameterMetadataEnumOptionResponseArrayOutputWithContext(ctx context.Context) ParameterMetadataEnumOptionResponseArrayOutput {
 	return o
-}
-
-func (o ParameterMetadataEnumOptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ParameterMetadataEnumOptionResponse] {
-	return pulumix.Output[[]ParameterMetadataEnumOptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterMetadataEnumOptionResponseArrayOutput) Index(i pulumi.IntInput) ParameterMetadataEnumOptionResponseOutput {
@@ -4464,12 +3875,6 @@ func (o ParameterMetadataResponseOutput) ToParameterMetadataResponseOutput() Par
 
 func (o ParameterMetadataResponseOutput) ToParameterMetadataResponseOutputWithContext(ctx context.Context) ParameterMetadataResponseOutput {
 	return o
-}
-
-func (o ParameterMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterMetadataResponse] {
-	return pulumix.Output[ParameterMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Additional metadata for describing this parameter.
@@ -4546,12 +3951,6 @@ func (o ParameterMetadataResponseArrayOutput) ToParameterMetadataResponseArrayOu
 	return o
 }
 
-func (o ParameterMetadataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ParameterMetadataResponse] {
-	return pulumix.Output[[]ParameterMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ParameterMetadataResponseArrayOutput) Index(i pulumi.IntInput) ParameterMetadataResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterMetadataResponse {
 		return vs[0].([]ParameterMetadataResponse)[vs[1].(int)]
@@ -4605,12 +4004,6 @@ func (i PipelineDescriptionArgs) ToPipelineDescriptionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineDescriptionOutput)
 }
 
-func (i PipelineDescriptionArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineDescription] {
-	return pulumix.Output[PipelineDescription]{
-		OutputState: i.ToPipelineDescriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineDescriptionArgs) ToPipelineDescriptionPtrOutput() PipelineDescriptionPtrOutput {
 	return i.ToPipelineDescriptionPtrOutputWithContext(context.Background())
 }
@@ -4652,12 +4045,6 @@ func (i *pipelineDescriptionPtrType) ToPipelineDescriptionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineDescriptionPtrOutput)
 }
 
-func (i *pipelineDescriptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineDescription] {
-	return pulumix.Output[*PipelineDescription]{
-		OutputState: i.ToPipelineDescriptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
 type PipelineDescriptionOutput struct{ *pulumi.OutputState }
 
@@ -4681,12 +4068,6 @@ func (o PipelineDescriptionOutput) ToPipelineDescriptionPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDescription) *PipelineDescription {
 		return &v
 	}).(PipelineDescriptionPtrOutput)
-}
-
-func (o PipelineDescriptionOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineDescription] {
-	return pulumix.Output[PipelineDescription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Pipeline level display data.
@@ -4721,12 +4102,6 @@ func (o PipelineDescriptionPtrOutput) ToPipelineDescriptionPtrOutput() PipelineD
 
 func (o PipelineDescriptionPtrOutput) ToPipelineDescriptionPtrOutputWithContext(ctx context.Context) PipelineDescriptionPtrOutput {
 	return o
-}
-
-func (o PipelineDescriptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineDescription] {
-	return pulumix.Output[*PipelineDescription]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineDescriptionPtrOutput) Elem() PipelineDescriptionOutput {
@@ -4806,12 +4181,6 @@ func (o PipelineDescriptionResponseOutput) ToPipelineDescriptionResponseOutputWi
 	return o
 }
 
-func (o PipelineDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineDescriptionResponse] {
-	return pulumix.Output[PipelineDescriptionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Pipeline level display data.
 func (o PipelineDescriptionResponseOutput) DisplayData() DisplayDataResponseArrayOutput {
 	return o.ApplyT(func(v PipelineDescriptionResponse) []DisplayDataResponse { return v.DisplayData }).(DisplayDataResponseArrayOutput)
@@ -4871,12 +4240,6 @@ func (i PubSubIODetailsArgs) ToPubSubIODetailsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PubSubIODetailsOutput)
 }
 
-func (i PubSubIODetailsArgs) ToOutput(ctx context.Context) pulumix.Output[PubSubIODetails] {
-	return pulumix.Output[PubSubIODetails]{
-		OutputState: i.ToPubSubIODetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PubSubIODetailsArrayInput is an input type that accepts PubSubIODetailsArray and PubSubIODetailsArrayOutput values.
 // You can construct a concrete instance of `PubSubIODetailsArrayInput` via:
 //
@@ -4902,12 +4265,6 @@ func (i PubSubIODetailsArray) ToPubSubIODetailsArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PubSubIODetailsArrayOutput)
 }
 
-func (i PubSubIODetailsArray) ToOutput(ctx context.Context) pulumix.Output[[]PubSubIODetails] {
-	return pulumix.Output[[]PubSubIODetails]{
-		OutputState: i.ToPubSubIODetailsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata for a Pub/Sub connector used by the job.
 type PubSubIODetailsOutput struct{ *pulumi.OutputState }
 
@@ -4921,12 +4278,6 @@ func (o PubSubIODetailsOutput) ToPubSubIODetailsOutput() PubSubIODetailsOutput {
 
 func (o PubSubIODetailsOutput) ToPubSubIODetailsOutputWithContext(ctx context.Context) PubSubIODetailsOutput {
 	return o
-}
-
-func (o PubSubIODetailsOutput) ToOutput(ctx context.Context) pulumix.Output[PubSubIODetails] {
-	return pulumix.Output[PubSubIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Subscription used in the connection.
@@ -4951,12 +4302,6 @@ func (o PubSubIODetailsArrayOutput) ToPubSubIODetailsArrayOutput() PubSubIODetai
 
 func (o PubSubIODetailsArrayOutput) ToPubSubIODetailsArrayOutputWithContext(ctx context.Context) PubSubIODetailsArrayOutput {
 	return o
-}
-
-func (o PubSubIODetailsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PubSubIODetails] {
-	return pulumix.Output[[]PubSubIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PubSubIODetailsArrayOutput) Index(i pulumi.IntInput) PubSubIODetailsOutput {
@@ -4988,12 +4333,6 @@ func (o PubSubIODetailsResponseOutput) ToPubSubIODetailsResponseOutputWithContex
 	return o
 }
 
-func (o PubSubIODetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PubSubIODetailsResponse] {
-	return pulumix.Output[PubSubIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Subscription used in the connection.
 func (o PubSubIODetailsResponseOutput) Subscription() pulumi.StringOutput {
 	return o.ApplyT(func(v PubSubIODetailsResponse) string { return v.Subscription }).(pulumi.StringOutput)
@@ -5016,12 +4355,6 @@ func (o PubSubIODetailsResponseArrayOutput) ToPubSubIODetailsResponseArrayOutput
 
 func (o PubSubIODetailsResponseArrayOutput) ToPubSubIODetailsResponseArrayOutputWithContext(ctx context.Context) PubSubIODetailsResponseArrayOutput {
 	return o
-}
-
-func (o PubSubIODetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PubSubIODetailsResponse] {
-	return pulumix.Output[[]PubSubIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PubSubIODetailsResponseArrayOutput) Index(i pulumi.IntInput) PubSubIODetailsResponseOutput {
@@ -5129,12 +4462,6 @@ func (i RuntimeEnvironmentArgs) ToRuntimeEnvironmentOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeEnvironmentOutput)
 }
 
-func (i RuntimeEnvironmentArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeEnvironment] {
-	return pulumix.Output[RuntimeEnvironment]{
-		OutputState: i.ToRuntimeEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RuntimeEnvironmentArgs) ToRuntimeEnvironmentPtrOutput() RuntimeEnvironmentPtrOutput {
 	return i.ToRuntimeEnvironmentPtrOutputWithContext(context.Background())
 }
@@ -5176,12 +4503,6 @@ func (i *runtimeEnvironmentPtrType) ToRuntimeEnvironmentPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeEnvironmentPtrOutput)
 }
 
-func (i *runtimeEnvironmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeEnvironment] {
-	return pulumix.Output[*RuntimeEnvironment]{
-		OutputState: i.ToRuntimeEnvironmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The environment values to set at runtime.
 type RuntimeEnvironmentOutput struct{ *pulumi.OutputState }
 
@@ -5205,12 +4526,6 @@ func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeEnvironment) *RuntimeEnvironment {
 		return &v
 	}).(RuntimeEnvironmentPtrOutput)
-}
-
-func (o RuntimeEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeEnvironment] {
-	return pulumix.Output[RuntimeEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Additional experiment flags for the job, specified with the `--experiments` option.
@@ -5310,12 +4625,6 @@ func (o RuntimeEnvironmentPtrOutput) ToRuntimeEnvironmentPtrOutput() RuntimeEnvi
 
 func (o RuntimeEnvironmentPtrOutput) ToRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) RuntimeEnvironmentPtrOutput {
 	return o
-}
-
-func (o RuntimeEnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeEnvironment] {
-	return pulumix.Output[*RuntimeEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuntimeEnvironmentPtrOutput) Elem() RuntimeEnvironmentOutput {
@@ -5521,12 +4830,6 @@ func (o RuntimeMetadataResponseOutput) ToRuntimeMetadataResponseOutputWithContex
 	return o
 }
 
-func (o RuntimeMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeMetadataResponse] {
-	return pulumix.Output[RuntimeMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The parameters for the template.
 func (o RuntimeMetadataResponseOutput) Parameters() ParameterMetadataResponseArrayOutput {
 	return o.ApplyT(func(v RuntimeMetadataResponse) []ParameterMetadataResponse { return v.Parameters }).(ParameterMetadataResponseArrayOutput)
@@ -5576,12 +4879,6 @@ func (i RuntimeUpdatableParamsArgs) ToRuntimeUpdatableParamsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeUpdatableParamsOutput)
 }
 
-func (i RuntimeUpdatableParamsArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeUpdatableParams] {
-	return pulumix.Output[RuntimeUpdatableParams]{
-		OutputState: i.ToRuntimeUpdatableParamsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RuntimeUpdatableParamsArgs) ToRuntimeUpdatableParamsPtrOutput() RuntimeUpdatableParamsPtrOutput {
 	return i.ToRuntimeUpdatableParamsPtrOutputWithContext(context.Background())
 }
@@ -5623,12 +4920,6 @@ func (i *runtimeUpdatableParamsPtrType) ToRuntimeUpdatableParamsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeUpdatableParamsPtrOutput)
 }
 
-func (i *runtimeUpdatableParamsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeUpdatableParams] {
-	return pulumix.Output[*RuntimeUpdatableParams]{
-		OutputState: i.ToRuntimeUpdatableParamsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
 type RuntimeUpdatableParamsOutput struct{ *pulumi.OutputState }
 
@@ -5654,12 +4945,6 @@ func (o RuntimeUpdatableParamsOutput) ToRuntimeUpdatableParamsPtrOutputWithConte
 	}).(RuntimeUpdatableParamsPtrOutput)
 }
 
-func (o RuntimeUpdatableParamsOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeUpdatableParams] {
-	return pulumix.Output[RuntimeUpdatableParams]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
 func (o RuntimeUpdatableParamsOutput) MaxNumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuntimeUpdatableParams) *int { return v.MaxNumWorkers }).(pulumi.IntPtrOutput)
@@ -5682,12 +4967,6 @@ func (o RuntimeUpdatableParamsPtrOutput) ToRuntimeUpdatableParamsPtrOutput() Run
 
 func (o RuntimeUpdatableParamsPtrOutput) ToRuntimeUpdatableParamsPtrOutputWithContext(ctx context.Context) RuntimeUpdatableParamsPtrOutput {
 	return o
-}
-
-func (o RuntimeUpdatableParamsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeUpdatableParams] {
-	return pulumix.Output[*RuntimeUpdatableParams]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuntimeUpdatableParamsPtrOutput) Elem() RuntimeUpdatableParamsOutput {
@@ -5743,12 +5022,6 @@ func (o RuntimeUpdatableParamsResponseOutput) ToRuntimeUpdatableParamsResponseOu
 	return o
 }
 
-func (o RuntimeUpdatableParamsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeUpdatableParamsResponse] {
-	return pulumix.Output[RuntimeUpdatableParamsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
 func (o RuntimeUpdatableParamsResponseOutput) MaxNumWorkers() pulumi.IntOutput {
 	return o.ApplyT(func(v RuntimeUpdatableParamsResponse) int { return v.MaxNumWorkers }).(pulumi.IntOutput)
@@ -5780,12 +5053,6 @@ func (o SDKInfoResponseOutput) ToSDKInfoResponseOutput() SDKInfoResponseOutput {
 
 func (o SDKInfoResponseOutput) ToSDKInfoResponseOutputWithContext(ctx context.Context) SDKInfoResponseOutput {
 	return o
-}
-
-func (o SDKInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SDKInfoResponse] {
-	return pulumix.Output[SDKInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The SDK Language.
@@ -5823,12 +5090,6 @@ func (o SdkBugResponseOutput) ToSdkBugResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SdkBugResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SdkBugResponse] {
-	return pulumix.Output[SdkBugResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // How severe the SDK bug is.
 func (o SdkBugResponseOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v SdkBugResponse) string { return v.Severity }).(pulumi.StringOutput)
@@ -5856,12 +5117,6 @@ func (o SdkBugResponseArrayOutput) ToSdkBugResponseArrayOutput() SdkBugResponseA
 
 func (o SdkBugResponseArrayOutput) ToSdkBugResponseArrayOutputWithContext(ctx context.Context) SdkBugResponseArrayOutput {
 	return o
-}
-
-func (o SdkBugResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SdkBugResponse] {
-	return pulumix.Output[[]SdkBugResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SdkBugResponseArrayOutput) Index(i pulumi.IntInput) SdkBugResponseOutput {
@@ -5917,12 +5172,6 @@ func (i SdkHarnessContainerImageArgs) ToSdkHarnessContainerImageOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SdkHarnessContainerImageOutput)
 }
 
-func (i SdkHarnessContainerImageArgs) ToOutput(ctx context.Context) pulumix.Output[SdkHarnessContainerImage] {
-	return pulumix.Output[SdkHarnessContainerImage]{
-		OutputState: i.ToSdkHarnessContainerImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SdkHarnessContainerImageArrayInput is an input type that accepts SdkHarnessContainerImageArray and SdkHarnessContainerImageArrayOutput values.
 // You can construct a concrete instance of `SdkHarnessContainerImageArrayInput` via:
 //
@@ -5948,12 +5197,6 @@ func (i SdkHarnessContainerImageArray) ToSdkHarnessContainerImageArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(SdkHarnessContainerImageArrayOutput)
 }
 
-func (i SdkHarnessContainerImageArray) ToOutput(ctx context.Context) pulumix.Output[[]SdkHarnessContainerImage] {
-	return pulumix.Output[[]SdkHarnessContainerImage]{
-		OutputState: i.ToSdkHarnessContainerImageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines an SDK harness container for executing Dataflow pipelines.
 type SdkHarnessContainerImageOutput struct{ *pulumi.OutputState }
 
@@ -5967,12 +5210,6 @@ func (o SdkHarnessContainerImageOutput) ToSdkHarnessContainerImageOutput() SdkHa
 
 func (o SdkHarnessContainerImageOutput) ToSdkHarnessContainerImageOutputWithContext(ctx context.Context) SdkHarnessContainerImageOutput {
 	return o
-}
-
-func (o SdkHarnessContainerImageOutput) ToOutput(ctx context.Context) pulumix.Output[SdkHarnessContainerImage] {
-	return pulumix.Output[SdkHarnessContainerImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
@@ -6009,12 +5246,6 @@ func (o SdkHarnessContainerImageArrayOutput) ToSdkHarnessContainerImageArrayOutp
 	return o
 }
 
-func (o SdkHarnessContainerImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SdkHarnessContainerImage] {
-	return pulumix.Output[[]SdkHarnessContainerImage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SdkHarnessContainerImageArrayOutput) Index(i pulumi.IntInput) SdkHarnessContainerImageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SdkHarnessContainerImage {
 		return vs[0].([]SdkHarnessContainerImage)[vs[1].(int)]
@@ -6046,12 +5277,6 @@ func (o SdkHarnessContainerImageResponseOutput) ToSdkHarnessContainerImageRespon
 
 func (o SdkHarnessContainerImageResponseOutput) ToSdkHarnessContainerImageResponseOutputWithContext(ctx context.Context) SdkHarnessContainerImageResponseOutput {
 	return o
-}
-
-func (o SdkHarnessContainerImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SdkHarnessContainerImageResponse] {
-	return pulumix.Output[SdkHarnessContainerImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
@@ -6086,12 +5311,6 @@ func (o SdkHarnessContainerImageResponseArrayOutput) ToSdkHarnessContainerImageR
 
 func (o SdkHarnessContainerImageResponseArrayOutput) ToSdkHarnessContainerImageResponseArrayOutputWithContext(ctx context.Context) SdkHarnessContainerImageResponseArrayOutput {
 	return o
-}
-
-func (o SdkHarnessContainerImageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SdkHarnessContainerImageResponse] {
-	return pulumix.Output[[]SdkHarnessContainerImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SdkHarnessContainerImageResponseArrayOutput) Index(i pulumi.IntInput) SdkHarnessContainerImageResponseOutput {
@@ -6143,12 +5362,6 @@ func (i SdkVersionArgs) ToSdkVersionOutputWithContext(ctx context.Context) SdkVe
 	return pulumi.ToOutputWithContext(ctx, i).(SdkVersionOutput)
 }
 
-func (i SdkVersionArgs) ToOutput(ctx context.Context) pulumix.Output[SdkVersion] {
-	return pulumix.Output[SdkVersion]{
-		OutputState: i.ToSdkVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SdkVersionArgs) ToSdkVersionPtrOutput() SdkVersionPtrOutput {
 	return i.ToSdkVersionPtrOutputWithContext(context.Background())
 }
@@ -6190,12 +5403,6 @@ func (i *sdkVersionPtrType) ToSdkVersionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SdkVersionPtrOutput)
 }
 
-func (i *sdkVersionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SdkVersion] {
-	return pulumix.Output[*SdkVersion]{
-		OutputState: i.ToSdkVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The version of the SDK used to run the job.
 type SdkVersionOutput struct{ *pulumi.OutputState }
 
@@ -6219,12 +5426,6 @@ func (o SdkVersionOutput) ToSdkVersionPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SdkVersion) *SdkVersion {
 		return &v
 	}).(SdkVersionPtrOutput)
-}
-
-func (o SdkVersionOutput) ToOutput(ctx context.Context) pulumix.Output[SdkVersion] {
-	return pulumix.Output[SdkVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The support status for this SDK version.
@@ -6254,12 +5455,6 @@ func (o SdkVersionPtrOutput) ToSdkVersionPtrOutput() SdkVersionPtrOutput {
 
 func (o SdkVersionPtrOutput) ToSdkVersionPtrOutputWithContext(ctx context.Context) SdkVersionPtrOutput {
 	return o
-}
-
-func (o SdkVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SdkVersion] {
-	return pulumix.Output[*SdkVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SdkVersionPtrOutput) Elem() SdkVersionOutput {
@@ -6329,12 +5524,6 @@ func (o SdkVersionResponseOutput) ToSdkVersionResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SdkVersionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SdkVersionResponse] {
-	return pulumix.Output[SdkVersionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Known bugs found in this SDK version.
 func (o SdkVersionResponseOutput) Bugs() SdkBugResponseArrayOutput {
 	return o.ApplyT(func(v SdkVersionResponse) []SdkBugResponse { return v.Bugs }).(SdkBugResponseArrayOutput)
@@ -6398,12 +5587,6 @@ func (i SpannerIODetailsArgs) ToSpannerIODetailsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SpannerIODetailsOutput)
 }
 
-func (i SpannerIODetailsArgs) ToOutput(ctx context.Context) pulumix.Output[SpannerIODetails] {
-	return pulumix.Output[SpannerIODetails]{
-		OutputState: i.ToSpannerIODetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SpannerIODetailsArrayInput is an input type that accepts SpannerIODetailsArray and SpannerIODetailsArrayOutput values.
 // You can construct a concrete instance of `SpannerIODetailsArrayInput` via:
 //
@@ -6429,12 +5612,6 @@ func (i SpannerIODetailsArray) ToSpannerIODetailsArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SpannerIODetailsArrayOutput)
 }
 
-func (i SpannerIODetailsArray) ToOutput(ctx context.Context) pulumix.Output[[]SpannerIODetails] {
-	return pulumix.Output[[]SpannerIODetails]{
-		OutputState: i.ToSpannerIODetailsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata for a Spanner connector used by the job.
 type SpannerIODetailsOutput struct{ *pulumi.OutputState }
 
@@ -6448,12 +5625,6 @@ func (o SpannerIODetailsOutput) ToSpannerIODetailsOutput() SpannerIODetailsOutpu
 
 func (o SpannerIODetailsOutput) ToSpannerIODetailsOutputWithContext(ctx context.Context) SpannerIODetailsOutput {
 	return o
-}
-
-func (o SpannerIODetailsOutput) ToOutput(ctx context.Context) pulumix.Output[SpannerIODetails] {
-	return pulumix.Output[SpannerIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DatabaseId accessed in the connection.
@@ -6483,12 +5654,6 @@ func (o SpannerIODetailsArrayOutput) ToSpannerIODetailsArrayOutput() SpannerIODe
 
 func (o SpannerIODetailsArrayOutput) ToSpannerIODetailsArrayOutputWithContext(ctx context.Context) SpannerIODetailsArrayOutput {
 	return o
-}
-
-func (o SpannerIODetailsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpannerIODetails] {
-	return pulumix.Output[[]SpannerIODetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpannerIODetailsArrayOutput) Index(i pulumi.IntInput) SpannerIODetailsOutput {
@@ -6522,12 +5687,6 @@ func (o SpannerIODetailsResponseOutput) ToSpannerIODetailsResponseOutputWithCont
 	return o
 }
 
-func (o SpannerIODetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SpannerIODetailsResponse] {
-	return pulumix.Output[SpannerIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DatabaseId accessed in the connection.
 func (o SpannerIODetailsResponseOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v SpannerIODetailsResponse) string { return v.DatabaseId }).(pulumi.StringOutput)
@@ -6555,12 +5714,6 @@ func (o SpannerIODetailsResponseArrayOutput) ToSpannerIODetailsResponseArrayOutp
 
 func (o SpannerIODetailsResponseArrayOutput) ToSpannerIODetailsResponseArrayOutputWithContext(ctx context.Context) SpannerIODetailsResponseArrayOutput {
 	return o
-}
-
-func (o SpannerIODetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpannerIODetailsResponse] {
-	return pulumix.Output[[]SpannerIODetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpannerIODetailsResponseArrayOutput) Index(i pulumi.IntInput) SpannerIODetailsResponseOutput {
@@ -6616,12 +5769,6 @@ func (i StageSourceArgs) ToStageSourceOutputWithContext(ctx context.Context) Sta
 	return pulumi.ToOutputWithContext(ctx, i).(StageSourceOutput)
 }
 
-func (i StageSourceArgs) ToOutput(ctx context.Context) pulumix.Output[StageSource] {
-	return pulumix.Output[StageSource]{
-		OutputState: i.ToStageSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StageSourceArrayInput is an input type that accepts StageSourceArray and StageSourceArrayOutput values.
 // You can construct a concrete instance of `StageSourceArrayInput` via:
 //
@@ -6647,12 +5794,6 @@ func (i StageSourceArray) ToStageSourceArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StageSourceArrayOutput)
 }
 
-func (i StageSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]StageSource] {
-	return pulumix.Output[[]StageSource]{
-		OutputState: i.ToStageSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of an input or output of an execution stage.
 type StageSourceOutput struct{ *pulumi.OutputState }
 
@@ -6666,12 +5807,6 @@ func (o StageSourceOutput) ToStageSourceOutput() StageSourceOutput {
 
 func (o StageSourceOutput) ToStageSourceOutputWithContext(ctx context.Context) StageSourceOutput {
 	return o
-}
-
-func (o StageSourceOutput) ToOutput(ctx context.Context) pulumix.Output[StageSource] {
-	return pulumix.Output[StageSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dataflow service generated name for this source.
@@ -6708,12 +5843,6 @@ func (o StageSourceArrayOutput) ToStageSourceArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o StageSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StageSource] {
-	return pulumix.Output[[]StageSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StageSourceArrayOutput) Index(i pulumi.IntInput) StageSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StageSource {
 		return vs[0].([]StageSource)[vs[1].(int)]
@@ -6745,12 +5874,6 @@ func (o StageSourceResponseOutput) ToStageSourceResponseOutput() StageSourceResp
 
 func (o StageSourceResponseOutput) ToStageSourceResponseOutputWithContext(ctx context.Context) StageSourceResponseOutput {
 	return o
-}
-
-func (o StageSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StageSourceResponse] {
-	return pulumix.Output[StageSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dataflow service generated name for this source.
@@ -6787,12 +5910,6 @@ func (o StageSourceResponseArrayOutput) ToStageSourceResponseArrayOutputWithCont
 	return o
 }
 
-func (o StageSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StageSourceResponse] {
-	return pulumix.Output[[]StageSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StageSourceResponseArrayOutput) Index(i pulumi.IntInput) StageSourceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StageSourceResponse {
 		return vs[0].([]StageSourceResponse)[vs[1].(int)]
@@ -6822,12 +5939,6 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
-}
-
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -6888,12 +5999,6 @@ func (i StepArgs) ToStepOutputWithContext(ctx context.Context) StepOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StepOutput)
 }
 
-func (i StepArgs) ToOutput(ctx context.Context) pulumix.Output[Step] {
-	return pulumix.Output[Step]{
-		OutputState: i.ToStepOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StepArrayInput is an input type that accepts StepArray and StepArrayOutput values.
 // You can construct a concrete instance of `StepArrayInput` via:
 //
@@ -6919,12 +6024,6 @@ func (i StepArray) ToStepArrayOutputWithContext(ctx context.Context) StepArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(StepArrayOutput)
 }
 
-func (i StepArray) ToOutput(ctx context.Context) pulumix.Output[[]Step] {
-	return pulumix.Output[[]Step]{
-		OutputState: i.ToStepArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. **Note:** The properties of this object are not stable and might change. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce.
 type StepOutput struct{ *pulumi.OutputState }
 
@@ -6938,12 +6037,6 @@ func (o StepOutput) ToStepOutput() StepOutput {
 
 func (o StepOutput) ToStepOutputWithContext(ctx context.Context) StepOutput {
 	return o
-}
-
-func (o StepOutput) ToOutput(ctx context.Context) pulumix.Output[Step] {
-	return pulumix.Output[Step]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The kind of step in the Cloud Dataflow job.
@@ -6973,12 +6066,6 @@ func (o StepArrayOutput) ToStepArrayOutput() StepArrayOutput {
 
 func (o StepArrayOutput) ToStepArrayOutputWithContext(ctx context.Context) StepArrayOutput {
 	return o
-}
-
-func (o StepArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Step] {
-	return pulumix.Output[[]Step]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StepArrayOutput) Index(i pulumi.IntInput) StepOutput {
@@ -7012,12 +6099,6 @@ func (o StepResponseOutput) ToStepResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o StepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StepResponse] {
-	return pulumix.Output[StepResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The kind of step in the Cloud Dataflow job.
 func (o StepResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v StepResponse) string { return v.Kind }).(pulumi.StringOutput)
@@ -7045,12 +6126,6 @@ func (o StepResponseArrayOutput) ToStepResponseArrayOutput() StepResponseArrayOu
 
 func (o StepResponseArrayOutput) ToStepResponseArrayOutputWithContext(ctx context.Context) StepResponseArrayOutput {
 	return o
-}
-
-func (o StepResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StepResponse] {
-	return pulumix.Output[[]StepResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StepResponseArrayOutput) Index(i pulumi.IntInput) StepResponseOutput {
@@ -7166,12 +6241,6 @@ func (i TaskRunnerSettingsArgs) ToTaskRunnerSettingsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TaskRunnerSettingsOutput)
 }
 
-func (i TaskRunnerSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[TaskRunnerSettings] {
-	return pulumix.Output[TaskRunnerSettings]{
-		OutputState: i.ToTaskRunnerSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TaskRunnerSettingsArgs) ToTaskRunnerSettingsPtrOutput() TaskRunnerSettingsPtrOutput {
 	return i.ToTaskRunnerSettingsPtrOutputWithContext(context.Background())
 }
@@ -7213,12 +6282,6 @@ func (i *taskRunnerSettingsPtrType) ToTaskRunnerSettingsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TaskRunnerSettingsPtrOutput)
 }
 
-func (i *taskRunnerSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TaskRunnerSettings] {
-	return pulumix.Output[*TaskRunnerSettings]{
-		OutputState: i.ToTaskRunnerSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Taskrunner configuration settings.
 type TaskRunnerSettingsOutput struct{ *pulumi.OutputState }
 
@@ -7242,12 +6305,6 @@ func (o TaskRunnerSettingsOutput) ToTaskRunnerSettingsPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskRunnerSettings) *TaskRunnerSettings {
 		return &v
 	}).(TaskRunnerSettingsPtrOutput)
-}
-
-func (o TaskRunnerSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[TaskRunnerSettings] {
-	return pulumix.Output[TaskRunnerSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to also send taskrunner log info to stderr.
@@ -7357,12 +6414,6 @@ func (o TaskRunnerSettingsPtrOutput) ToTaskRunnerSettingsPtrOutput() TaskRunnerS
 
 func (o TaskRunnerSettingsPtrOutput) ToTaskRunnerSettingsPtrOutputWithContext(ctx context.Context) TaskRunnerSettingsPtrOutput {
 	return o
-}
-
-func (o TaskRunnerSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TaskRunnerSettings] {
-	return pulumix.Output[*TaskRunnerSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TaskRunnerSettingsPtrOutput) Elem() TaskRunnerSettingsOutput {
@@ -7622,12 +6673,6 @@ func (o TaskRunnerSettingsResponseOutput) ToTaskRunnerSettingsResponseOutputWith
 	return o
 }
 
-func (o TaskRunnerSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TaskRunnerSettingsResponse] {
-	return pulumix.Output[TaskRunnerSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to also send taskrunner log info to stderr.
 func (o TaskRunnerSettingsResponseOutput) Alsologtostderr() pulumi.BoolOutput {
 	return o.ApplyT(func(v TaskRunnerSettingsResponse) bool { return v.Alsologtostderr }).(pulumi.BoolOutput)
@@ -7748,12 +6793,6 @@ func (o TemplateMetadataResponseOutput) ToTemplateMetadataResponseOutputWithCont
 	return o
 }
 
-func (o TemplateMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TemplateMetadataResponse] {
-	return pulumix.Output[TemplateMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A description of the template.
 func (o TemplateMetadataResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateMetadataResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -7824,12 +6863,6 @@ func (i TransformSummaryArgs) ToTransformSummaryOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TransformSummaryOutput)
 }
 
-func (i TransformSummaryArgs) ToOutput(ctx context.Context) pulumix.Output[TransformSummary] {
-	return pulumix.Output[TransformSummary]{
-		OutputState: i.ToTransformSummaryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransformSummaryArrayInput is an input type that accepts TransformSummaryArray and TransformSummaryArrayOutput values.
 // You can construct a concrete instance of `TransformSummaryArrayInput` via:
 //
@@ -7855,12 +6888,6 @@ func (i TransformSummaryArray) ToTransformSummaryArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TransformSummaryArrayOutput)
 }
 
-func (i TransformSummaryArray) ToOutput(ctx context.Context) pulumix.Output[[]TransformSummary] {
-	return pulumix.Output[[]TransformSummary]{
-		OutputState: i.ToTransformSummaryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of the type, names/ids, and input/outputs for a transform.
 type TransformSummaryOutput struct{ *pulumi.OutputState }
 
@@ -7874,12 +6901,6 @@ func (o TransformSummaryOutput) ToTransformSummaryOutput() TransformSummaryOutpu
 
 func (o TransformSummaryOutput) ToTransformSummaryOutputWithContext(ctx context.Context) TransformSummaryOutput {
 	return o
-}
-
-func (o TransformSummaryOutput) ToOutput(ctx context.Context) pulumix.Output[TransformSummary] {
-	return pulumix.Output[TransformSummary]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Transform-specific display data.
@@ -7926,12 +6947,6 @@ func (o TransformSummaryArrayOutput) ToTransformSummaryArrayOutputWithContext(ct
 	return o
 }
 
-func (o TransformSummaryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformSummary] {
-	return pulumix.Output[[]TransformSummary]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransformSummaryArrayOutput) Index(i pulumi.IntInput) TransformSummaryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformSummary {
 		return vs[0].([]TransformSummary)[vs[1].(int)]
@@ -7965,12 +6980,6 @@ func (o TransformSummaryResponseOutput) ToTransformSummaryResponseOutput() Trans
 
 func (o TransformSummaryResponseOutput) ToTransformSummaryResponseOutputWithContext(ctx context.Context) TransformSummaryResponseOutput {
 	return o
-}
-
-func (o TransformSummaryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransformSummaryResponse] {
-	return pulumix.Output[TransformSummaryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Transform-specific display data.
@@ -8010,12 +7019,6 @@ func (o TransformSummaryResponseArrayOutput) ToTransformSummaryResponseArrayOutp
 
 func (o TransformSummaryResponseArrayOutput) ToTransformSummaryResponseArrayOutputWithContext(ctx context.Context) TransformSummaryResponseArrayOutput {
 	return o
-}
-
-func (o TransformSummaryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformSummaryResponse] {
-	return pulumix.Output[[]TransformSummaryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransformSummaryResponseArrayOutput) Index(i pulumi.IntInput) TransformSummaryResponseOutput {
@@ -8147,12 +7150,6 @@ func (i WorkerPoolArgs) ToWorkerPoolOutputWithContext(ctx context.Context) Worke
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolOutput)
 }
 
-func (i WorkerPoolArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerPool] {
-	return pulumix.Output[WorkerPool]{
-		OutputState: i.ToWorkerPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkerPoolArrayInput is an input type that accepts WorkerPoolArray and WorkerPoolArrayOutput values.
 // You can construct a concrete instance of `WorkerPoolArrayInput` via:
 //
@@ -8178,12 +7175,6 @@ func (i WorkerPoolArray) ToWorkerPoolArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolArrayOutput)
 }
 
-func (i WorkerPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkerPool] {
-	return pulumix.Output[[]WorkerPool]{
-		OutputState: i.ToWorkerPoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.
 type WorkerPoolOutput struct{ *pulumi.OutputState }
 
@@ -8197,12 +7188,6 @@ func (o WorkerPoolOutput) ToWorkerPoolOutput() WorkerPoolOutput {
 
 func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPoolOutput {
 	return o
-}
-
-func (o WorkerPoolOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerPool] {
-	return pulumix.Output[WorkerPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Settings for autoscaling of this WorkerPool.
@@ -8331,12 +7316,6 @@ func (o WorkerPoolArrayOutput) ToWorkerPoolArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o WorkerPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkerPool] {
-	return pulumix.Output[[]WorkerPool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkerPoolArrayOutput) Index(i pulumi.IntInput) WorkerPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPool {
 		return vs[0].([]WorkerPool)[vs[1].(int)]
@@ -8406,12 +7385,6 @@ func (o WorkerPoolResponseOutput) ToWorkerPoolResponseOutput() WorkerPoolRespons
 
 func (o WorkerPoolResponseOutput) ToWorkerPoolResponseOutputWithContext(ctx context.Context) WorkerPoolResponseOutput {
 	return o
-}
-
-func (o WorkerPoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerPoolResponse] {
-	return pulumix.Output[WorkerPoolResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Settings for autoscaling of this WorkerPool.
@@ -8540,12 +7513,6 @@ func (o WorkerPoolResponseArrayOutput) ToWorkerPoolResponseArrayOutputWithContex
 	return o
 }
 
-func (o WorkerPoolResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkerPoolResponse] {
-	return pulumix.Output[[]WorkerPoolResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkerPoolResponseArrayOutput) Index(i pulumi.IntInput) WorkerPoolResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolResponse {
 		return vs[0].([]WorkerPoolResponse)[vs[1].(int)]
@@ -8607,12 +7574,6 @@ func (i WorkerSettingsArgs) ToWorkerSettingsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerSettingsOutput)
 }
 
-func (i WorkerSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerSettings] {
-	return pulumix.Output[WorkerSettings]{
-		OutputState: i.ToWorkerSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkerSettingsArgs) ToWorkerSettingsPtrOutput() WorkerSettingsPtrOutput {
 	return i.ToWorkerSettingsPtrOutputWithContext(context.Background())
 }
@@ -8654,12 +7615,6 @@ func (i *workerSettingsPtrType) ToWorkerSettingsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerSettingsPtrOutput)
 }
 
-func (i *workerSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkerSettings] {
-	return pulumix.Output[*WorkerSettings]{
-		OutputState: i.ToWorkerSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides data to pass through to the worker harness.
 type WorkerSettingsOutput struct{ *pulumi.OutputState }
 
@@ -8683,12 +7638,6 @@ func (o WorkerSettingsOutput) ToWorkerSettingsPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerSettings) *WorkerSettings {
 		return &v
 	}).(WorkerSettingsPtrOutput)
-}
-
-func (o WorkerSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerSettings] {
-	return pulumix.Output[WorkerSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The base URL for accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators". If not specified, the default value is "http://www.googleapis.com/"
@@ -8733,12 +7682,6 @@ func (o WorkerSettingsPtrOutput) ToWorkerSettingsPtrOutput() WorkerSettingsPtrOu
 
 func (o WorkerSettingsPtrOutput) ToWorkerSettingsPtrOutputWithContext(ctx context.Context) WorkerSettingsPtrOutput {
 	return o
-}
-
-func (o WorkerSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerSettings] {
-	return pulumix.Output[*WorkerSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkerSettingsPtrOutput) Elem() WorkerSettingsOutput {
@@ -8840,12 +7783,6 @@ func (o WorkerSettingsResponseOutput) ToWorkerSettingsResponseOutput() WorkerSet
 
 func (o WorkerSettingsResponseOutput) ToWorkerSettingsResponseOutputWithContext(ctx context.Context) WorkerSettingsResponseOutput {
 	return o
-}
-
-func (o WorkerSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerSettingsResponse] {
-	return pulumix.Output[WorkerSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The base URL for accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators". If not specified, the default value is "http://www.googleapis.com/"

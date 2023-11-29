@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates and starts a Replay using the given ReplayConfig.
@@ -120,12 +119,6 @@ func (i *OrganizationReplay) ToOrganizationReplayOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationReplayOutput)
 }
 
-func (i *OrganizationReplay) ToOutput(ctx context.Context) pulumix.Output[*OrganizationReplay] {
-	return pulumix.Output[*OrganizationReplay]{
-		OutputState: i.ToOrganizationReplayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationReplayOutput struct{ *pulumi.OutputState }
 
 func (OrganizationReplayOutput) ElementType() reflect.Type {
@@ -138,12 +131,6 @@ func (o OrganizationReplayOutput) ToOrganizationReplayOutput() OrganizationRepla
 
 func (o OrganizationReplayOutput) ToOrganizationReplayOutputWithContext(ctx context.Context) OrganizationReplayOutput {
 	return o
-}
-
-func (o OrganizationReplayOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationReplay] {
-	return pulumix.Output[*OrganizationReplay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration used for the `Replay`.

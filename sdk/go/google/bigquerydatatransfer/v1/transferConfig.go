@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new data transfer configuration.
@@ -211,12 +210,6 @@ func (i *TransferConfig) ToTransferConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TransferConfigOutput)
 }
 
-func (i *TransferConfig) ToOutput(ctx context.Context) pulumix.Output[*TransferConfig] {
-	return pulumix.Output[*TransferConfig]{
-		OutputState: i.ToTransferConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TransferConfigOutput struct{ *pulumi.OutputState }
 
 func (TransferConfigOutput) ElementType() reflect.Type {
@@ -229,12 +222,6 @@ func (o TransferConfigOutput) ToTransferConfigOutput() TransferConfigOutput {
 
 func (o TransferConfigOutput) ToTransferConfigOutputWithContext(ctx context.Context) TransferConfigOutput {
 	return o
-}
-
-func (o TransferConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*TransferConfig] {
-	return pulumix.Output[*TransferConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.

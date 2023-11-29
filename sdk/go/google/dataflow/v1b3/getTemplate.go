@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the template associated with a template.
@@ -77,12 +76,6 @@ func (o LookupTemplateResultOutput) ToLookupTemplateResultOutput() LookupTemplat
 
 func (o LookupTemplateResultOutput) ToLookupTemplateResultOutputWithContext(ctx context.Context) LookupTemplateResultOutput {
 	return o
-}
-
-func (o LookupTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTemplateResult] {
-	return pulumix.Output[LookupTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The template metadata describing the template name, available parameters, etc.

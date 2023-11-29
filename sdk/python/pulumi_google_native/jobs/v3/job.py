@@ -612,9 +612,6 @@ class Job(pulumi.CustomResource):
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
-            if visibility is not None and not opts.urn:
-                warnings.warn("""Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""", DeprecationWarning)
-                pulumi.log.warn("""visibility is deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""")
             __props__.__dict__["visibility"] = visibility
             __props__.__dict__["company_display_name"] = None
             __props__.__dict__["derived_info"] = None

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns all of the details about the specified managed instance group.
@@ -113,12 +112,6 @@ func (o LookupRegionInstanceGroupManagerResultOutput) ToLookupRegionInstanceGrou
 
 func (o LookupRegionInstanceGroupManagerResultOutput) ToLookupRegionInstanceGroupManagerResultOutputWithContext(ctx context.Context) LookupRegionInstanceGroupManagerResultOutput {
 	return o
-}
-
-func (o LookupRegionInstanceGroupManagerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionInstanceGroupManagerResult] {
-	return pulumix.Output[LookupRegionInstanceGroupManagerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The autohealing policy for this managed instance group. You can specify only one value.

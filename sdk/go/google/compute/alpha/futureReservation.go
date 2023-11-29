@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Future Reservation.
@@ -174,12 +173,6 @@ func (i *FutureReservation) ToFutureReservationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(FutureReservationOutput)
 }
 
-func (i *FutureReservation) ToOutput(ctx context.Context) pulumix.Output[*FutureReservation] {
-	return pulumix.Output[*FutureReservation]{
-		OutputState: i.ToFutureReservationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FutureReservationOutput struct{ *pulumi.OutputState }
 
 func (FutureReservationOutput) ElementType() reflect.Type {
@@ -192,12 +185,6 @@ func (o FutureReservationOutput) ToFutureReservationOutput() FutureReservationOu
 
 func (o FutureReservationOutput) ToFutureReservationOutputWithContext(ctx context.Context) FutureReservationOutput {
 	return o
-}
-
-func (o FutureReservationOutput) ToOutput(ctx context.Context) pulumix.Output[*FutureReservation] {
-	return pulumix.Output[*FutureReservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.

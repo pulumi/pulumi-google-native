@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single TcpRoute.
@@ -85,12 +84,6 @@ func (o LookupTcpRouteResultOutput) ToLookupTcpRouteResultOutput() LookupTcpRout
 
 func (o LookupTcpRouteResultOutput) ToLookupTcpRouteResultOutputWithContext(ctx context.Context) LookupTcpRouteResultOutput {
 	return o
-}
-
-func (o LookupTcpRouteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTcpRouteResult] {
-	return pulumix.Output[LookupTcpRouteResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.

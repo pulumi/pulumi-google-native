@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified conversation dataset.
@@ -81,12 +80,6 @@ func (o LookupConversationDatasetResultOutput) ToLookupConversationDatasetResult
 
 func (o LookupConversationDatasetResultOutput) ToLookupConversationDatasetResultOutputWithContext(ctx context.Context) LookupConversationDatasetResultOutput {
 	return o
-}
-
-func (o LookupConversationDatasetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConversationDatasetResult] {
-	return pulumix.Output[LookupConversationDatasetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of conversations this conversation dataset contains.

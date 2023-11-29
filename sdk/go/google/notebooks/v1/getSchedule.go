@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of schedule
@@ -86,12 +85,6 @@ func (o LookupScheduleResultOutput) ToLookupScheduleResultOutput() LookupSchedul
 
 func (o LookupScheduleResultOutput) ToLookupScheduleResultOutputWithContext(ctx context.Context) LookupScheduleResultOutput {
 	return o
-}
-
-func (o LookupScheduleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScheduleResult] {
-	return pulumix.Output[LookupScheduleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the schedule was created.

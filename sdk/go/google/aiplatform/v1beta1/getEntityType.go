@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single EntityType.
@@ -85,12 +84,6 @@ func (o LookupEntityTypeResultOutput) ToLookupEntityTypeResultOutput() LookupEnt
 
 func (o LookupEntityTypeResultOutput) ToLookupEntityTypeResultOutputWithContext(ctx context.Context) LookupEntityTypeResultOutput {
 	return o
-}
-
-func (o LookupEntityTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEntityTypeResult] {
-	return pulumix.Output[LookupEntityTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this EntityType was created.

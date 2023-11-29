@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
@@ -136,12 +135,6 @@ func (i *NoteIamMember) ToNoteIamMemberOutputWithContext(ctx context.Context) No
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamMemberOutput)
 }
 
-func (i *NoteIamMember) ToOutput(ctx context.Context) pulumix.Output[*NoteIamMember] {
-	return pulumix.Output[*NoteIamMember]{
-		OutputState: i.ToNoteIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NoteIamMemberOutput struct{ *pulumi.OutputState }
 
 func (NoteIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o NoteIamMemberOutput) ToNoteIamMemberOutput() NoteIamMemberOutput {
 
 func (o NoteIamMemberOutput) ToNoteIamMemberOutputWithContext(ctx context.Context) NoteIamMemberOutput {
 	return o
-}
-
-func (o NoteIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*NoteIamMember] {
-	return pulumix.Output[*NoteIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

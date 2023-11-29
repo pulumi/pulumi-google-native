@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -133,12 +114,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -170,12 +145,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -198,12 +167,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -251,12 +214,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -282,12 +239,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -301,12 +252,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -331,12 +276,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -368,12 +307,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -396,12 +329,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -445,12 +372,6 @@ func (i BigQueryDatasetSourceArgs) ToBigQueryDatasetSourceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDatasetSourceOutput)
 }
 
-func (i BigQueryDatasetSourceArgs) ToOutput(ctx context.Context) pulumix.Output[BigQueryDatasetSource] {
-	return pulumix.Output[BigQueryDatasetSource]{
-		OutputState: i.ToBigQueryDatasetSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A reference to a shared dataset. It is an existing BigQuery dataset with a collection of objects such as tables and views that you want to share with subscribers. When subscriber's subscribe to a listing, Analytics Hub creates a linked dataset in the subscriber's project. A Linked dataset is an opaque, read-only BigQuery dataset that serves as a _symbolic link_ to a shared dataset.
 type BigQueryDatasetSourceOutput struct{ *pulumi.OutputState }
 
@@ -464,12 +385,6 @@ func (o BigQueryDatasetSourceOutput) ToBigQueryDatasetSourceOutput() BigQueryDat
 
 func (o BigQueryDatasetSourceOutput) ToBigQueryDatasetSourceOutputWithContext(ctx context.Context) BigQueryDatasetSourceOutput {
 	return o
-}
-
-func (o BigQueryDatasetSourceOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryDatasetSource] {
-	return pulumix.Output[BigQueryDatasetSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123`
@@ -496,12 +411,6 @@ func (o BigQueryDatasetSourceResponseOutput) ToBigQueryDatasetSourceResponseOutp
 
 func (o BigQueryDatasetSourceResponseOutput) ToBigQueryDatasetSourceResponseOutputWithContext(ctx context.Context) BigQueryDatasetSourceResponseOutput {
 	return o
-}
-
-func (o BigQueryDatasetSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryDatasetSourceResponse] {
-	return pulumix.Output[BigQueryDatasetSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123`
@@ -552,12 +461,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -583,12 +486,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -602,12 +499,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -637,12 +528,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -676,12 +561,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -709,12 +588,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -762,12 +635,6 @@ func (i DataProviderArgs) ToDataProviderOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DataProviderOutput)
 }
 
-func (i DataProviderArgs) ToOutput(ctx context.Context) pulumix.Output[DataProvider] {
-	return pulumix.Output[DataProvider]{
-		OutputState: i.ToDataProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DataProviderArgs) ToDataProviderPtrOutput() DataProviderPtrOutput {
 	return i.ToDataProviderPtrOutputWithContext(context.Background())
 }
@@ -809,12 +676,6 @@ func (i *dataProviderPtrType) ToDataProviderPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DataProviderPtrOutput)
 }
 
-func (i *dataProviderPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataProvider] {
-	return pulumix.Output[*DataProvider]{
-		OutputState: i.ToDataProviderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains details of the data provider.
 type DataProviderOutput struct{ *pulumi.OutputState }
 
@@ -840,12 +701,6 @@ func (o DataProviderOutput) ToDataProviderPtrOutputWithContext(ctx context.Conte
 	}).(DataProviderPtrOutput)
 }
 
-func (o DataProviderOutput) ToOutput(ctx context.Context) pulumix.Output[DataProvider] {
-	return pulumix.Output[DataProvider]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Name of the data provider.
 func (o DataProviderOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataProvider) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -868,12 +723,6 @@ func (o DataProviderPtrOutput) ToDataProviderPtrOutput() DataProviderPtrOutput {
 
 func (o DataProviderPtrOutput) ToDataProviderPtrOutputWithContext(ctx context.Context) DataProviderPtrOutput {
 	return o
-}
-
-func (o DataProviderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataProvider] {
-	return pulumix.Output[*DataProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataProviderPtrOutput) Elem() DataProviderOutput {
@@ -929,12 +778,6 @@ func (o DataProviderResponseOutput) ToDataProviderResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o DataProviderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataProviderResponse] {
-	return pulumix.Output[DataProviderResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Name of the data provider.
 func (o DataProviderResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DataProviderResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -974,12 +817,6 @@ func (i DcrExchangeConfigArgs) ToDcrExchangeConfigOutput() DcrExchangeConfigOutp
 
 func (i DcrExchangeConfigArgs) ToDcrExchangeConfigOutputWithContext(ctx context.Context) DcrExchangeConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DcrExchangeConfigOutput)
-}
-
-func (i DcrExchangeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DcrExchangeConfig] {
-	return pulumix.Output[DcrExchangeConfig]{
-		OutputState: i.ToDcrExchangeConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DcrExchangeConfigArgs) ToDcrExchangeConfigPtrOutput() DcrExchangeConfigPtrOutput {
@@ -1023,12 +860,6 @@ func (i *dcrExchangeConfigPtrType) ToDcrExchangeConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DcrExchangeConfigPtrOutput)
 }
 
-func (i *dcrExchangeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DcrExchangeConfig] {
-	return pulumix.Output[*DcrExchangeConfig]{
-		OutputState: i.ToDcrExchangeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data Clean Room (DCR), used for privacy-safe and secured data sharing.
 type DcrExchangeConfigOutput struct{ *pulumi.OutputState }
 
@@ -1054,12 +885,6 @@ func (o DcrExchangeConfigOutput) ToDcrExchangeConfigPtrOutputWithContext(ctx con
 	}).(DcrExchangeConfigPtrOutput)
 }
 
-func (o DcrExchangeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DcrExchangeConfig] {
-	return pulumix.Output[DcrExchangeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DcrExchangeConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DcrExchangeConfigPtrOutput) ElementType() reflect.Type {
@@ -1072,12 +897,6 @@ func (o DcrExchangeConfigPtrOutput) ToDcrExchangeConfigPtrOutput() DcrExchangeCo
 
 func (o DcrExchangeConfigPtrOutput) ToDcrExchangeConfigPtrOutputWithContext(ctx context.Context) DcrExchangeConfigPtrOutput {
 	return o
-}
-
-func (o DcrExchangeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DcrExchangeConfig] {
-	return pulumix.Output[*DcrExchangeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DcrExchangeConfigPtrOutput) Elem() DcrExchangeConfigOutput {
@@ -1109,12 +928,6 @@ func (o DcrExchangeConfigResponseOutput) ToDcrExchangeConfigResponseOutputWithCo
 	return o
 }
 
-func (o DcrExchangeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DcrExchangeConfigResponse] {
-	return pulumix.Output[DcrExchangeConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Default Analytics Hub data exchange, used for secured data sharing.
 type DefaultExchangeConfig struct {
 }
@@ -1144,12 +957,6 @@ func (i DefaultExchangeConfigArgs) ToDefaultExchangeConfigOutput() DefaultExchan
 
 func (i DefaultExchangeConfigArgs) ToDefaultExchangeConfigOutputWithContext(ctx context.Context) DefaultExchangeConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultExchangeConfigOutput)
-}
-
-func (i DefaultExchangeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DefaultExchangeConfig] {
-	return pulumix.Output[DefaultExchangeConfig]{
-		OutputState: i.ToDefaultExchangeConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DefaultExchangeConfigArgs) ToDefaultExchangeConfigPtrOutput() DefaultExchangeConfigPtrOutput {
@@ -1193,12 +1000,6 @@ func (i *defaultExchangeConfigPtrType) ToDefaultExchangeConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultExchangeConfigPtrOutput)
 }
 
-func (i *defaultExchangeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DefaultExchangeConfig] {
-	return pulumix.Output[*DefaultExchangeConfig]{
-		OutputState: i.ToDefaultExchangeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Default Analytics Hub data exchange, used for secured data sharing.
 type DefaultExchangeConfigOutput struct{ *pulumi.OutputState }
 
@@ -1224,12 +1025,6 @@ func (o DefaultExchangeConfigOutput) ToDefaultExchangeConfigPtrOutputWithContext
 	}).(DefaultExchangeConfigPtrOutput)
 }
 
-func (o DefaultExchangeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultExchangeConfig] {
-	return pulumix.Output[DefaultExchangeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DefaultExchangeConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DefaultExchangeConfigPtrOutput) ElementType() reflect.Type {
@@ -1242,12 +1037,6 @@ func (o DefaultExchangeConfigPtrOutput) ToDefaultExchangeConfigPtrOutput() Defau
 
 func (o DefaultExchangeConfigPtrOutput) ToDefaultExchangeConfigPtrOutputWithContext(ctx context.Context) DefaultExchangeConfigPtrOutput {
 	return o
-}
-
-func (o DefaultExchangeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultExchangeConfig] {
-	return pulumix.Output[*DefaultExchangeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DefaultExchangeConfigPtrOutput) Elem() DefaultExchangeConfigOutput {
@@ -1277,12 +1066,6 @@ func (o DefaultExchangeConfigResponseOutput) ToDefaultExchangeConfigResponseOutp
 
 func (o DefaultExchangeConfigResponseOutput) ToDefaultExchangeConfigResponseOutputWithContext(ctx context.Context) DefaultExchangeConfigResponseOutput {
 	return o
-}
-
-func (o DefaultExchangeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultExchangeConfigResponse] {
-	return pulumix.Output[DefaultExchangeConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1332,12 +1115,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1379,12 +1156,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1408,12 +1179,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1448,12 +1213,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1533,12 +1292,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1598,12 +1351,6 @@ func (i PublisherArgs) ToPublisherOutputWithContext(ctx context.Context) Publish
 	return pulumi.ToOutputWithContext(ctx, i).(PublisherOutput)
 }
 
-func (i PublisherArgs) ToOutput(ctx context.Context) pulumix.Output[Publisher] {
-	return pulumix.Output[Publisher]{
-		OutputState: i.ToPublisherOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PublisherArgs) ToPublisherPtrOutput() PublisherPtrOutput {
 	return i.ToPublisherPtrOutputWithContext(context.Background())
 }
@@ -1645,12 +1392,6 @@ func (i *publisherPtrType) ToPublisherPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PublisherPtrOutput)
 }
 
-func (i *publisherPtrType) ToOutput(ctx context.Context) pulumix.Output[*Publisher] {
-	return pulumix.Output[*Publisher]{
-		OutputState: i.ToPublisherPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains details of the listing publisher.
 type PublisherOutput struct{ *pulumi.OutputState }
 
@@ -1676,12 +1417,6 @@ func (o PublisherOutput) ToPublisherPtrOutputWithContext(ctx context.Context) Pu
 	}).(PublisherPtrOutput)
 }
 
-func (o PublisherOutput) ToOutput(ctx context.Context) pulumix.Output[Publisher] {
-	return pulumix.Output[Publisher]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Name of the listing publisher.
 func (o PublisherOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Publisher) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1704,12 +1439,6 @@ func (o PublisherPtrOutput) ToPublisherPtrOutput() PublisherPtrOutput {
 
 func (o PublisherPtrOutput) ToPublisherPtrOutputWithContext(ctx context.Context) PublisherPtrOutput {
 	return o
-}
-
-func (o PublisherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Publisher] {
-	return pulumix.Output[*Publisher]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublisherPtrOutput) Elem() PublisherOutput {
@@ -1765,12 +1494,6 @@ func (o PublisherResponseOutput) ToPublisherResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o PublisherResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PublisherResponse] {
-	return pulumix.Output[PublisherResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Name of the listing publisher.
 func (o PublisherResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PublisherResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1820,12 +1543,6 @@ func (i RestrictedExportConfigArgs) ToRestrictedExportConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RestrictedExportConfigOutput)
 }
 
-func (i RestrictedExportConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RestrictedExportConfig] {
-	return pulumix.Output[RestrictedExportConfig]{
-		OutputState: i.ToRestrictedExportConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RestrictedExportConfigArgs) ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput {
 	return i.ToRestrictedExportConfigPtrOutputWithContext(context.Background())
 }
@@ -1867,12 +1584,6 @@ func (i *restrictedExportConfigPtrType) ToRestrictedExportConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RestrictedExportConfigPtrOutput)
 }
 
-func (i *restrictedExportConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestrictedExportConfig] {
-	return pulumix.Output[*RestrictedExportConfig]{
-		OutputState: i.ToRestrictedExportConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Restricted export config, used to configure restricted export on linked dataset.
 type RestrictedExportConfigOutput struct{ *pulumi.OutputState }
 
@@ -1898,12 +1609,6 @@ func (o RestrictedExportConfigOutput) ToRestrictedExportConfigPtrOutputWithConte
 	}).(RestrictedExportConfigPtrOutput)
 }
 
-func (o RestrictedExportConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RestrictedExportConfig] {
-	return pulumix.Output[RestrictedExportConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If true, enable restricted export.
 func (o RestrictedExportConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RestrictedExportConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -1926,12 +1631,6 @@ func (o RestrictedExportConfigPtrOutput) ToRestrictedExportConfigPtrOutput() Res
 
 func (o RestrictedExportConfigPtrOutput) ToRestrictedExportConfigPtrOutputWithContext(ctx context.Context) RestrictedExportConfigPtrOutput {
 	return o
-}
-
-func (o RestrictedExportConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestrictedExportConfig] {
-	return pulumix.Output[*RestrictedExportConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestrictedExportConfigPtrOutput) Elem() RestrictedExportConfigOutput {
@@ -1989,12 +1688,6 @@ func (o RestrictedExportConfigResponseOutput) ToRestrictedExportConfigResponseOu
 	return o
 }
 
-func (o RestrictedExportConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestrictedExportConfigResponse] {
-	return pulumix.Output[RestrictedExportConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If true, enable restricted export.
 func (o RestrictedExportConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v RestrictedExportConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -2049,12 +1742,6 @@ func (i SharingEnvironmentConfigArgs) ToSharingEnvironmentConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SharingEnvironmentConfigOutput)
 }
 
-func (i SharingEnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SharingEnvironmentConfig] {
-	return pulumix.Output[SharingEnvironmentConfig]{
-		OutputState: i.ToSharingEnvironmentConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SharingEnvironmentConfigArgs) ToSharingEnvironmentConfigPtrOutput() SharingEnvironmentConfigPtrOutput {
 	return i.ToSharingEnvironmentConfigPtrOutputWithContext(context.Background())
 }
@@ -2096,12 +1783,6 @@ func (i *sharingEnvironmentConfigPtrType) ToSharingEnvironmentConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SharingEnvironmentConfigPtrOutput)
 }
 
-func (i *sharingEnvironmentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SharingEnvironmentConfig] {
-	return pulumix.Output[*SharingEnvironmentConfig]{
-		OutputState: i.ToSharingEnvironmentConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sharing environment is a behavior model for sharing data within a data exchange. This option is configurable for a data exchange.
 type SharingEnvironmentConfigOutput struct{ *pulumi.OutputState }
 
@@ -2127,12 +1808,6 @@ func (o SharingEnvironmentConfigOutput) ToSharingEnvironmentConfigPtrOutputWithC
 	}).(SharingEnvironmentConfigPtrOutput)
 }
 
-func (o SharingEnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SharingEnvironmentConfig] {
-	return pulumix.Output[SharingEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Data Clean Room (DCR), used for privacy-safe and secured data sharing.
 func (o SharingEnvironmentConfigOutput) DcrExchangeConfig() DcrExchangeConfigPtrOutput {
 	return o.ApplyT(func(v SharingEnvironmentConfig) *DcrExchangeConfig { return v.DcrExchangeConfig }).(DcrExchangeConfigPtrOutput)
@@ -2155,12 +1830,6 @@ func (o SharingEnvironmentConfigPtrOutput) ToSharingEnvironmentConfigPtrOutput()
 
 func (o SharingEnvironmentConfigPtrOutput) ToSharingEnvironmentConfigPtrOutputWithContext(ctx context.Context) SharingEnvironmentConfigPtrOutput {
 	return o
-}
-
-func (o SharingEnvironmentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SharingEnvironmentConfig] {
-	return pulumix.Output[*SharingEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SharingEnvironmentConfigPtrOutput) Elem() SharingEnvironmentConfigOutput {
@@ -2214,12 +1883,6 @@ func (o SharingEnvironmentConfigResponseOutput) ToSharingEnvironmentConfigRespon
 
 func (o SharingEnvironmentConfigResponseOutput) ToSharingEnvironmentConfigResponseOutputWithContext(ctx context.Context) SharingEnvironmentConfigResponseOutput {
 	return o
-}
-
-func (o SharingEnvironmentConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SharingEnvironmentConfigResponse] {
-	return pulumix.Output[SharingEnvironmentConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data Clean Room (DCR), used for privacy-safe and secured data sharing.

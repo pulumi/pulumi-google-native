@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified search application. **Note:** This API requires an admin account to execute.
@@ -87,12 +86,6 @@ func (o LookupSearchApplicationResultOutput) ToLookupSearchApplicationResultOutp
 
 func (o LookupSearchApplicationResultOutput) ToLookupSearchApplicationResultOutputWithContext(ctx context.Context) LookupSearchApplicationResultOutput {
 	return o
-}
-
-func (o LookupSearchApplicationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSearchApplicationResult] {
-	return pulumix.Output[LookupSearchApplicationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Retrictions applied to the configurations. The maximum number of elements is 10.

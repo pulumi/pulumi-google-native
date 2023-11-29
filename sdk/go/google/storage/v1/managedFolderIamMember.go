@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Updates an IAM policy for the specified managed folder.
@@ -155,12 +154,6 @@ func (i *ManagedFolderIamMember) ToManagedFolderIamMemberOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderIamMemberOutput)
 }
 
-func (i *ManagedFolderIamMember) ToOutput(ctx context.Context) pulumix.Output[*ManagedFolderIamMember] {
-	return pulumix.Output[*ManagedFolderIamMember]{
-		OutputState: i.ToManagedFolderIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedFolderIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ManagedFolderIamMemberOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o ManagedFolderIamMemberOutput) ToManagedFolderIamMemberOutput() ManagedFo
 
 func (o ManagedFolderIamMemberOutput) ToManagedFolderIamMemberOutputWithContext(ctx context.Context) ManagedFolderIamMemberOutput {
 	return o
-}
-
-func (o ManagedFolderIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedFolderIamMember] {
-	return pulumix.Output[*ManagedFolderIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

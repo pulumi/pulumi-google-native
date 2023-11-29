@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new lineage event.
@@ -146,12 +145,6 @@ func (i *LineageEvent) ToLineageEventOutputWithContext(ctx context.Context) Line
 	return pulumi.ToOutputWithContext(ctx, i).(LineageEventOutput)
 }
 
-func (i *LineageEvent) ToOutput(ctx context.Context) pulumix.Output[*LineageEvent] {
-	return pulumix.Output[*LineageEvent]{
-		OutputState: i.ToLineageEventOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LineageEventOutput struct{ *pulumi.OutputState }
 
 func (LineageEventOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o LineageEventOutput) ToLineageEventOutput() LineageEventOutput {
 
 func (o LineageEventOutput) ToLineageEventOutputWithContext(ctx context.Context) LineageEventOutput {
 	return o
-}
-
-func (o LineageEventOutput) ToOutput(ctx context.Context) pulumix.Output[*LineageEvent] {
-	return pulumix.Output[*LineageEvent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The end of the transformation which resulted in this lineage event. For streaming scenarios, it should be the end of the period from which the lineage is being reported.

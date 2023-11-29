@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.
@@ -123,12 +122,6 @@ func (i *SslCert) ToSslCertOutputWithContext(ctx context.Context) SslCertOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SslCertOutput)
 }
 
-func (i *SslCert) ToOutput(ctx context.Context) pulumix.Output[*SslCert] {
-	return pulumix.Output[*SslCert]{
-		OutputState: i.ToSslCertOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SslCertOutput struct{ *pulumi.OutputState }
 
 func (SslCertOutput) ElementType() reflect.Type {
@@ -141,12 +134,6 @@ func (o SslCertOutput) ToSslCertOutput() SslCertOutput {
 
 func (o SslCertOutput) ToSslCertOutputWithContext(ctx context.Context) SslCertOutput {
 	return o
-}
-
-func (o SslCertOutput) ToOutput(ctx context.Context) pulumix.Output[*SslCert] {
-	return pulumix.Output[*SslCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PEM representation.

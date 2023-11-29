@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the project identified by the specified `name` (for example, `projects/415104041262`). The caller must have `resourcemanager.projects.get` permission for this project.
@@ -83,12 +82,6 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutput() LookupProjectRe
 
 func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx context.Context) LookupProjectResultOutput {
 	return o
-}
-
-func (o LookupProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectResult] {
-	return pulumix.Output[LookupProjectResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time.

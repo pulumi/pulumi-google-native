@@ -81,12 +81,6 @@ func (o BasicPerfSampleSeriesPerfMetricTypeOutput) ToBasicPerfSampleSeriesPerfMe
 	}).(BasicPerfSampleSeriesPerfMetricTypePtrOutput)
 }
 
-func (o BasicPerfSampleSeriesPerfMetricTypeOutput) ToOutput(ctx context.Context) pulumix.Output[BasicPerfSampleSeriesPerfMetricType] {
-	return pulumix.Output[BasicPerfSampleSeriesPerfMetricType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BasicPerfSampleSeriesPerfMetricTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) ToBasicPerfSampleSeriesPer
 
 func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) ToBasicPerfSampleSeriesPerfMetricTypePtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesPerfMetricTypePtrOutput {
 	return o
-}
-
-func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicPerfSampleSeriesPerfMetricType] {
-	return pulumix.Output[*BasicPerfSampleSeriesPerfMetricType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) Elem() BasicPerfSampleSeriesPerfMetricTypeOutput {
@@ -267,12 +255,6 @@ func (o BasicPerfSampleSeriesPerfUnitOutput) ToBasicPerfSampleSeriesPerfUnitPtrO
 	}).(BasicPerfSampleSeriesPerfUnitPtrOutput)
 }
 
-func (o BasicPerfSampleSeriesPerfUnitOutput) ToOutput(ctx context.Context) pulumix.Output[BasicPerfSampleSeriesPerfUnit] {
-	return pulumix.Output[BasicPerfSampleSeriesPerfUnit]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BasicPerfSampleSeriesPerfUnitOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -306,12 +288,6 @@ func (o BasicPerfSampleSeriesPerfUnitPtrOutput) ToBasicPerfSampleSeriesPerfUnitP
 
 func (o BasicPerfSampleSeriesPerfUnitPtrOutput) ToBasicPerfSampleSeriesPerfUnitPtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesPerfUnitPtrOutput {
 	return o
-}
-
-func (o BasicPerfSampleSeriesPerfUnitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicPerfSampleSeriesPerfUnit] {
-	return pulumix.Output[*BasicPerfSampleSeriesPerfUnit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BasicPerfSampleSeriesPerfUnitPtrOutput) Elem() BasicPerfSampleSeriesPerfUnitOutput {
@@ -464,12 +440,6 @@ func (o BasicPerfSampleSeriesSampleSeriesLabelOutput) ToBasicPerfSampleSeriesSam
 	}).(BasicPerfSampleSeriesSampleSeriesLabelPtrOutput)
 }
 
-func (o BasicPerfSampleSeriesSampleSeriesLabelOutput) ToOutput(ctx context.Context) pulumix.Output[BasicPerfSampleSeriesSampleSeriesLabel] {
-	return pulumix.Output[BasicPerfSampleSeriesSampleSeriesLabel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BasicPerfSampleSeriesSampleSeriesLabelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -503,12 +473,6 @@ func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ToBasicPerfSampleSeries
 
 func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ToBasicPerfSampleSeriesSampleSeriesLabelPtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesSampleSeriesLabelPtrOutput {
 	return o
-}
-
-func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicPerfSampleSeriesSampleSeriesLabel] {
-	return pulumix.Output[*BasicPerfSampleSeriesSampleSeriesLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) Elem() BasicPerfSampleSeriesSampleSeriesLabelOutput {
@@ -653,12 +617,6 @@ func (o ExecutionStateEnumOutput) ToExecutionStateEnumPtrOutputWithContext(ctx c
 	}).(ExecutionStateEnumPtrOutput)
 }
 
-func (o ExecutionStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionStateEnum] {
-	return pulumix.Output[ExecutionStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExecutionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -692,12 +650,6 @@ func (o ExecutionStateEnumPtrOutput) ToExecutionStateEnumPtrOutput() ExecutionSt
 
 func (o ExecutionStateEnumPtrOutput) ToExecutionStateEnumPtrOutputWithContext(ctx context.Context) ExecutionStateEnumPtrOutput {
 	return o
-}
-
-func (o ExecutionStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecutionStateEnum] {
-	return pulumix.Output[*ExecutionStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecutionStateEnumPtrOutput) Elem() ExecutionStateEnumOutput {
@@ -837,12 +789,6 @@ func (o HistoryTestPlatformOutput) ToHistoryTestPlatformPtrOutputWithContext(ctx
 	}).(HistoryTestPlatformPtrOutput)
 }
 
-func (o HistoryTestPlatformOutput) ToOutput(ctx context.Context) pulumix.Output[HistoryTestPlatform] {
-	return pulumix.Output[HistoryTestPlatform]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HistoryTestPlatformOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -876,12 +822,6 @@ func (o HistoryTestPlatformPtrOutput) ToHistoryTestPlatformPtrOutput() HistoryTe
 
 func (o HistoryTestPlatformPtrOutput) ToHistoryTestPlatformPtrOutputWithContext(ctx context.Context) HistoryTestPlatformPtrOutput {
 	return o
-}
-
-func (o HistoryTestPlatformPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HistoryTestPlatform] {
-	return pulumix.Output[*HistoryTestPlatform]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HistoryTestPlatformPtrOutput) Elem() HistoryTestPlatformOutput {
@@ -1029,12 +969,6 @@ func (o IndividualOutcomeOutcomeSummaryOutput) ToIndividualOutcomeOutcomeSummary
 	}).(IndividualOutcomeOutcomeSummaryPtrOutput)
 }
 
-func (o IndividualOutcomeOutcomeSummaryOutput) ToOutput(ctx context.Context) pulumix.Output[IndividualOutcomeOutcomeSummary] {
-	return pulumix.Output[IndividualOutcomeOutcomeSummary]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IndividualOutcomeOutcomeSummaryOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1068,12 +1002,6 @@ func (o IndividualOutcomeOutcomeSummaryPtrOutput) ToIndividualOutcomeOutcomeSumm
 
 func (o IndividualOutcomeOutcomeSummaryPtrOutput) ToIndividualOutcomeOutcomeSummaryPtrOutputWithContext(ctx context.Context) IndividualOutcomeOutcomeSummaryPtrOutput {
 	return o
-}
-
-func (o IndividualOutcomeOutcomeSummaryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IndividualOutcomeOutcomeSummary] {
-	return pulumix.Output[*IndividualOutcomeOutcomeSummary]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndividualOutcomeOutcomeSummaryPtrOutput) Elem() IndividualOutcomeOutcomeSummaryOutput {
@@ -1222,12 +1150,6 @@ func (o OutcomeSummaryOutput) ToOutcomeSummaryPtrOutputWithContext(ctx context.C
 	}).(OutcomeSummaryPtrOutput)
 }
 
-func (o OutcomeSummaryOutput) ToOutput(ctx context.Context) pulumix.Output[OutcomeSummary] {
-	return pulumix.Output[OutcomeSummary]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OutcomeSummaryOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1261,12 +1183,6 @@ func (o OutcomeSummaryPtrOutput) ToOutcomeSummaryPtrOutput() OutcomeSummaryPtrOu
 
 func (o OutcomeSummaryPtrOutput) ToOutcomeSummaryPtrOutputWithContext(ctx context.Context) OutcomeSummaryPtrOutput {
 	return o
-}
-
-func (o OutcomeSummaryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OutcomeSummary] {
-	return pulumix.Output[*OutcomeSummary]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OutcomeSummaryPtrOutput) Elem() OutcomeSummaryOutput {
@@ -1415,12 +1331,6 @@ func (o PrimaryStepRollUpOutput) ToPrimaryStepRollUpPtrOutputWithContext(ctx con
 	}).(PrimaryStepRollUpPtrOutput)
 }
 
-func (o PrimaryStepRollUpOutput) ToOutput(ctx context.Context) pulumix.Output[PrimaryStepRollUp] {
-	return pulumix.Output[PrimaryStepRollUp]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrimaryStepRollUpOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1454,12 +1364,6 @@ func (o PrimaryStepRollUpPtrOutput) ToPrimaryStepRollUpPtrOutput() PrimaryStepRo
 
 func (o PrimaryStepRollUpPtrOutput) ToPrimaryStepRollUpPtrOutputWithContext(ctx context.Context) PrimaryStepRollUpPtrOutput {
 	return o
-}
-
-func (o PrimaryStepRollUpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrimaryStepRollUp] {
-	return pulumix.Output[*PrimaryStepRollUp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrimaryStepRollUpPtrOutput) Elem() PrimaryStepRollUpOutput {
@@ -1604,12 +1508,6 @@ func (o StepStateEnumOutput) ToStepStateEnumPtrOutputWithContext(ctx context.Con
 	}).(StepStateEnumPtrOutput)
 }
 
-func (o StepStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[StepStateEnum] {
-	return pulumix.Output[StepStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StepStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1643,12 +1541,6 @@ func (o StepStateEnumPtrOutput) ToStepStateEnumPtrOutput() StepStateEnumPtrOutpu
 
 func (o StepStateEnumPtrOutput) ToStepStateEnumPtrOutputWithContext(ctx context.Context) StepStateEnumPtrOutput {
 	return o
-}
-
-func (o StepStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StepStateEnum] {
-	return pulumix.Output[*StepStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StepStateEnumPtrOutput) Elem() StepStateEnumOutput {
@@ -1791,12 +1683,6 @@ func (o TestIssueCategoryOutput) ToTestIssueCategoryPtrOutputWithContext(ctx con
 	}).(TestIssueCategoryPtrOutput)
 }
 
-func (o TestIssueCategoryOutput) ToOutput(ctx context.Context) pulumix.Output[TestIssueCategory] {
-	return pulumix.Output[TestIssueCategory]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TestIssueCategoryOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1830,12 +1716,6 @@ func (o TestIssueCategoryPtrOutput) ToTestIssueCategoryPtrOutput() TestIssueCate
 
 func (o TestIssueCategoryPtrOutput) ToTestIssueCategoryPtrOutputWithContext(ctx context.Context) TestIssueCategoryPtrOutput {
 	return o
-}
-
-func (o TestIssueCategoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TestIssueCategory] {
-	return pulumix.Output[*TestIssueCategory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TestIssueCategoryPtrOutput) Elem() TestIssueCategoryOutput {
@@ -1982,12 +1862,6 @@ func (o TestIssueSeverityOutput) ToTestIssueSeverityPtrOutputWithContext(ctx con
 	}).(TestIssueSeverityPtrOutput)
 }
 
-func (o TestIssueSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[TestIssueSeverity] {
-	return pulumix.Output[TestIssueSeverity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TestIssueSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2021,12 +1895,6 @@ func (o TestIssueSeverityPtrOutput) ToTestIssueSeverityPtrOutput() TestIssueSeve
 
 func (o TestIssueSeverityPtrOutput) ToTestIssueSeverityPtrOutputWithContext(ctx context.Context) TestIssueSeverityPtrOutput {
 	return o
-}
-
-func (o TestIssueSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TestIssueSeverity] {
-	return pulumix.Output[*TestIssueSeverity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TestIssueSeverityPtrOutput) Elem() TestIssueSeverityOutput {
@@ -2229,12 +2097,6 @@ func (o TestIssueTypeOutput) ToTestIssueTypePtrOutputWithContext(ctx context.Con
 	}).(TestIssueTypePtrOutput)
 }
 
-func (o TestIssueTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TestIssueType] {
-	return pulumix.Output[TestIssueType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TestIssueTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2268,12 +2130,6 @@ func (o TestIssueTypePtrOutput) ToTestIssueTypePtrOutput() TestIssueTypePtrOutpu
 
 func (o TestIssueTypePtrOutput) ToTestIssueTypePtrOutputWithContext(ctx context.Context) TestIssueTypePtrOutput {
 	return o
-}
-
-func (o TestIssueTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TestIssueType] {
-	return pulumix.Output[*TestIssueType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TestIssueTypePtrOutput) Elem() TestIssueTypeOutput {

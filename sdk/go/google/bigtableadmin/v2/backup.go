@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup.
@@ -156,12 +155,6 @@ func (i *Backup) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupOutput)
 }
 
-func (i *Backup) ToOutput(ctx context.Context) pulumix.Output[*Backup] {
-	return pulumix.Output[*Backup]{
-		OutputState: i.ToBackupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupOutput struct{ *pulumi.OutputState }
 
 func (BackupOutput) ElementType() reflect.Type {
@@ -174,12 +167,6 @@ func (o BackupOutput) ToBackupOutput() BackupOutput {
 
 func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
 	return o
-}
-
-func (o BackupOutput) ToOutput(ctx context.Context) pulumix.Output[*Backup] {
-	return pulumix.Output[*Backup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.

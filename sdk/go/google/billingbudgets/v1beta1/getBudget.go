@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.
@@ -80,12 +79,6 @@ func (o LookupBudgetResultOutput) ToLookupBudgetResultOutput() LookupBudgetResul
 
 func (o LookupBudgetResultOutput) ToLookupBudgetResultOutputWithContext(ctx context.Context) LookupBudgetResultOutput {
 	return o
-}
-
-func (o LookupBudgetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBudgetResult] {
-	return pulumix.Output[LookupBudgetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Rules to apply to notifications sent based on budget spend and thresholds.

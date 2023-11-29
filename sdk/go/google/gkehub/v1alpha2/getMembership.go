@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a Membership.
@@ -95,12 +94,6 @@ func (o LookupMembershipResultOutput) ToLookupMembershipResultOutput() LookupMem
 
 func (o LookupMembershipResultOutput) ToLookupMembershipResultOutputWithContext(ctx context.Context) LookupMembershipResultOutput {
 	return o
-}
-
-func (o LookupMembershipResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMembershipResult] {
-	return pulumix.Output[LookupMembershipResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity

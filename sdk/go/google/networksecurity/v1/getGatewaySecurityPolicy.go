@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single GatewaySecurityPolicy.
@@ -77,12 +76,6 @@ func (o LookupGatewaySecurityPolicyResultOutput) ToLookupGatewaySecurityPolicyRe
 
 func (o LookupGatewaySecurityPolicyResultOutput) ToLookupGatewaySecurityPolicyResultOutputWithContext(ctx context.Context) LookupGatewaySecurityPolicyResultOutput {
 	return o
-}
-
-func (o LookupGatewaySecurityPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGatewaySecurityPolicyResult] {
-	return pulumix.Output[LookupGatewaySecurityPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.

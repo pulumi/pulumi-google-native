@@ -394,9 +394,6 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["fhir_store_id"] = fhir_store_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            if notification_config is not None and not opts.urn:
-                warnings.warn("""Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\".""", DeprecationWarning)
-                pulumi.log.warn("""notification_config is deprecated: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\".""")
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["notification_configs"] = notification_configs
             __props__.__dict__["project"] = project

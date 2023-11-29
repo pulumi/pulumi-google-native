@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new note.
@@ -216,12 +215,6 @@ func (i *Note) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteOutput)
 }
 
-func (i *Note) ToOutput(ctx context.Context) pulumix.Output[*Note] {
-	return pulumix.Output[*Note]{
-		OutputState: i.ToNoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NoteOutput struct{ *pulumi.OutputState }
 
 func (NoteOutput) ElementType() reflect.Type {
@@ -234,12 +227,6 @@ func (o NoteOutput) ToNoteOutput() NoteOutput {
 
 func (o NoteOutput) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return o
-}
-
-func (o NoteOutput) ToOutput(ctx context.Context) pulumix.Output[*Note] {
-	return pulumix.Output[*Note]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A note describing an attestation role.

@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy for a Queue. Replaces any existing policy. Note: The Cloud Console does not check queue-level IAM permissions yet. Project-level permissions are required to use the Cloud Console. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.setIamPolicy`
@@ -136,12 +135,6 @@ func (i *QueueIamBinding) ToQueueIamBindingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamBindingOutput)
 }
 
-func (i *QueueIamBinding) ToOutput(ctx context.Context) pulumix.Output[*QueueIamBinding] {
-	return pulumix.Output[*QueueIamBinding]{
-		OutputState: i.ToQueueIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QueueIamBindingOutput struct{ *pulumi.OutputState }
 
 func (QueueIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o QueueIamBindingOutput) ToQueueIamBindingOutput() QueueIamBindingOutput {
 
 func (o QueueIamBindingOutput) ToQueueIamBindingOutputWithContext(ctx context.Context) QueueIamBindingOutput {
 	return o
-}
-
-func (o QueueIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueIamBinding] {
-	return pulumix.Output[*QueueIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

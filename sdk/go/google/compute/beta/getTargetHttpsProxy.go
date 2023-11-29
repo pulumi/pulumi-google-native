@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified TargetHttpsProxy resource.
@@ -107,12 +106,6 @@ func (o LookupTargetHttpsProxyResultOutput) ToLookupTargetHttpsProxyResultOutput
 
 func (o LookupTargetHttpsProxyResultOutput) ToLookupTargetHttpsProxyResultOutputWithContext(ctx context.Context) LookupTargetHttpsProxyResultOutput {
 	return o
-}
-
-func (o LookupTargetHttpsProxyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTargetHttpsProxyResult] {
-	return pulumix.Output[LookupTargetHttpsProxyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Deprecated] Use serverTlsPolicy instead.

@@ -731,17 +731,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["database_version"] = database_version
             __props__.__dict__["disk_encryption_configuration"] = disk_encryption_configuration
             __props__.__dict__["disk_encryption_status"] = disk_encryption_status
-            if etag is not None and not opts.urn:
-                warnings.warn("""This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""", DeprecationWarning)
-                pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""")
             __props__.__dict__["etag"] = etag
             __props__.__dict__["failover_replica"] = failover_replica
             __props__.__dict__["gce_zone"] = gce_zone
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["ip_addresses"] = ip_addresses
-            if ipv6_address is not None and not opts.urn:
-                warnings.warn("""The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""", DeprecationWarning)
-                pulumi.log.warn("""ipv6_address is deprecated: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""")
             __props__.__dict__["ipv6_address"] = ipv6_address
             __props__.__dict__["kind"] = kind
             __props__.__dict__["maintenance_version"] = maintenance_version

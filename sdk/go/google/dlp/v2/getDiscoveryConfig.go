@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a discovery configuration.
@@ -89,12 +88,6 @@ func (o LookupDiscoveryConfigResultOutput) ToLookupDiscoveryConfigResultOutput()
 
 func (o LookupDiscoveryConfigResultOutput) ToLookupDiscoveryConfigResultOutputWithContext(ctx context.Context) LookupDiscoveryConfigResultOutput {
 	return o
-}
-
-func (o LookupDiscoveryConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDiscoveryConfigResult] {
-	return pulumix.Output[LookupDiscoveryConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Actions to execute at the completion of scanning.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Annotation store within the parent dataset.
@@ -124,12 +123,6 @@ func (i *AnnotationStore) ToAnnotationStoreOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AnnotationStoreOutput)
 }
 
-func (i *AnnotationStore) ToOutput(ctx context.Context) pulumix.Output[*AnnotationStore] {
-	return pulumix.Output[*AnnotationStore]{
-		OutputState: i.ToAnnotationStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AnnotationStoreOutput struct{ *pulumi.OutputState }
 
 func (AnnotationStoreOutput) ElementType() reflect.Type {
@@ -142,12 +135,6 @@ func (o AnnotationStoreOutput) ToAnnotationStoreOutput() AnnotationStoreOutput {
 
 func (o AnnotationStoreOutput) ToAnnotationStoreOutputWithContext(ctx context.Context) AnnotationStoreOutput {
 	return o
-}
-
-func (o AnnotationStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*AnnotationStore] {
-	return pulumix.Output[*AnnotationStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.

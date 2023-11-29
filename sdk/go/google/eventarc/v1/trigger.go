@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new trigger in a particular project and location.
@@ -173,12 +172,6 @@ func (i *Trigger) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerOutput)
 }
 
-func (i *Trigger) ToOutput(ctx context.Context) pulumix.Output[*Trigger] {
-	return pulumix.Output[*Trigger]{
-		OutputState: i.ToTriggerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TriggerOutput struct{ *pulumi.OutputState }
 
 func (TriggerOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o TriggerOutput) ToTriggerOutput() TriggerOutput {
 
 func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput {
 	return o
-}
-
-func (o TriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*Trigger] {
-	return pulumix.Output[*Trigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.

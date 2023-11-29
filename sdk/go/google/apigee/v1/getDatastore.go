@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Datastore
@@ -79,12 +78,6 @@ func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutput() LookupDatas
 
 func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutputWithContext(ctx context.Context) LookupDatastoreResultOutput {
 	return o
-}
-
-func (o LookupDatastoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatastoreResult] {
-	return pulumix.Output[LookupDatastoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z

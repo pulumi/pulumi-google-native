@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -77,12 +76,6 @@ func (o LookupRestorePlanIamPolicyResultOutput) ToLookupRestorePlanIamPolicyResu
 
 func (o LookupRestorePlanIamPolicyResultOutput) ToLookupRestorePlanIamPolicyResultOutputWithContext(ctx context.Context) LookupRestorePlanIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupRestorePlanIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRestorePlanIamPolicyResult] {
-	return pulumix.Output[LookupRestorePlanIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

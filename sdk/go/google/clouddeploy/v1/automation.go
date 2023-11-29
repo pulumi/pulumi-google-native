@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Automation in a given project and location.
@@ -188,12 +187,6 @@ func (i *Automation) ToAutomationOutputWithContext(ctx context.Context) Automati
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationOutput)
 }
 
-func (i *Automation) ToOutput(ctx context.Context) pulumix.Output[*Automation] {
-	return pulumix.Output[*Automation]{
-		OutputState: i.ToAutomationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutomationOutput struct{ *pulumi.OutputState }
 
 func (AutomationOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o AutomationOutput) ToAutomationOutput() AutomationOutput {
 
 func (o AutomationOutput) ToAutomationOutputWithContext(ctx context.Context) AutomationOutput {
 	return o
-}
-
-func (o AutomationOutput) ToOutput(ctx context.Context) pulumix.Output[*Automation] {
-	return pulumix.Output[*Automation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.

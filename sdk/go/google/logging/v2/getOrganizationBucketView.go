@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a view on a log bucket.
@@ -79,12 +78,6 @@ func (o LookupOrganizationBucketViewResultOutput) ToLookupOrganizationBucketView
 
 func (o LookupOrganizationBucketViewResultOutput) ToLookupOrganizationBucketViewResultOutputWithContext(ctx context.Context) LookupOrganizationBucketViewResultOutput {
 	return o
-}
-
-func (o LookupOrganizationBucketViewResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationBucketViewResult] {
-	return pulumix.Output[LookupOrganizationBucketViewResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of the view.

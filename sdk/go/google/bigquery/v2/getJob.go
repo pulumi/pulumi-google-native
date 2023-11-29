@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.
@@ -85,12 +84,6 @@ func (o LookupJobResultOutput) ToLookupJobResultOutput() LookupJobResultOutput {
 
 func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Context) LookupJobResultOutput {
 	return o
-}
-
-func (o LookupJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobResult] {
-	return pulumix.Output[LookupJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Required] Describes the job configuration.

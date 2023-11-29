@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To register other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster.
@@ -162,12 +161,6 @@ func (i *Membership) ToMembershipOutputWithContext(ctx context.Context) Membersh
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipOutput)
 }
 
-func (i *Membership) ToOutput(ctx context.Context) pulumix.Output[*Membership] {
-	return pulumix.Output[*Membership]{
-		OutputState: i.ToMembershipOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipOutput struct{ *pulumi.OutputState }
 
 func (MembershipOutput) ElementType() reflect.Type {
@@ -180,12 +173,6 @@ func (o MembershipOutput) ToMembershipOutput() MembershipOutput {
 
 func (o MembershipOutput) ToMembershipOutputWithContext(ctx context.Context) MembershipOutput {
 	return o
-}
-
-func (o MembershipOutput) ToOutput(ctx context.Context) pulumix.Output[*Membership] {
-	return pulumix.Output[*Membership]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity

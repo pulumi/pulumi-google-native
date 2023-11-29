@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -43,12 +42,6 @@ func (i GoogleFirestoreAdminV1DailyRecurrenceArgs) ToGoogleFirestoreAdminV1Daily
 
 func (i GoogleFirestoreAdminV1DailyRecurrenceArgs) ToGoogleFirestoreAdminV1DailyRecurrenceOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1DailyRecurrenceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1DailyRecurrenceOutput)
-}
-
-func (i GoogleFirestoreAdminV1DailyRecurrenceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1DailyRecurrence] {
-	return pulumix.Output[GoogleFirestoreAdminV1DailyRecurrence]{
-		OutputState: i.ToGoogleFirestoreAdminV1DailyRecurrenceOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleFirestoreAdminV1DailyRecurrenceArgs) ToGoogleFirestoreAdminV1DailyRecurrencePtrOutput() GoogleFirestoreAdminV1DailyRecurrencePtrOutput {
@@ -92,12 +85,6 @@ func (i *googleFirestoreAdminV1DailyRecurrencePtrType) ToGoogleFirestoreAdminV1D
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1DailyRecurrencePtrOutput)
 }
 
-func (i *googleFirestoreAdminV1DailyRecurrencePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1DailyRecurrence] {
-	return pulumix.Output[*GoogleFirestoreAdminV1DailyRecurrence]{
-		OutputState: i.ToGoogleFirestoreAdminV1DailyRecurrencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
 type GoogleFirestoreAdminV1DailyRecurrenceOutput struct{ *pulumi.OutputState }
 
@@ -123,12 +110,6 @@ func (o GoogleFirestoreAdminV1DailyRecurrenceOutput) ToGoogleFirestoreAdminV1Dai
 	}).(GoogleFirestoreAdminV1DailyRecurrencePtrOutput)
 }
 
-func (o GoogleFirestoreAdminV1DailyRecurrenceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1DailyRecurrence] {
-	return pulumix.Output[GoogleFirestoreAdminV1DailyRecurrence]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleFirestoreAdminV1DailyRecurrencePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleFirestoreAdminV1DailyRecurrencePtrOutput) ElementType() reflect.Type {
@@ -141,12 +122,6 @@ func (o GoogleFirestoreAdminV1DailyRecurrencePtrOutput) ToGoogleFirestoreAdminV1
 
 func (o GoogleFirestoreAdminV1DailyRecurrencePtrOutput) ToGoogleFirestoreAdminV1DailyRecurrencePtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1DailyRecurrencePtrOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1DailyRecurrencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1DailyRecurrence] {
-	return pulumix.Output[*GoogleFirestoreAdminV1DailyRecurrence]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleFirestoreAdminV1DailyRecurrencePtrOutput) Elem() GoogleFirestoreAdminV1DailyRecurrenceOutput {
@@ -178,12 +153,6 @@ func (o GoogleFirestoreAdminV1DailyRecurrenceResponseOutput) ToGoogleFirestoreAd
 	return o
 }
 
-func (o GoogleFirestoreAdminV1DailyRecurrenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1DailyRecurrenceResponse] {
-	return pulumix.Output[GoogleFirestoreAdminV1DailyRecurrenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An index that stores vectors in a flat data structure, and supports exhaustive search.
 type GoogleFirestoreAdminV1FlatIndex struct {
 }
@@ -213,12 +182,6 @@ func (i GoogleFirestoreAdminV1FlatIndexArgs) ToGoogleFirestoreAdminV1FlatIndexOu
 
 func (i GoogleFirestoreAdminV1FlatIndexArgs) ToGoogleFirestoreAdminV1FlatIndexOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1FlatIndexOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1FlatIndexOutput)
-}
-
-func (i GoogleFirestoreAdminV1FlatIndexArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1FlatIndex] {
-	return pulumix.Output[GoogleFirestoreAdminV1FlatIndex]{
-		OutputState: i.ToGoogleFirestoreAdminV1FlatIndexOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleFirestoreAdminV1FlatIndexArgs) ToGoogleFirestoreAdminV1FlatIndexPtrOutput() GoogleFirestoreAdminV1FlatIndexPtrOutput {
@@ -262,12 +225,6 @@ func (i *googleFirestoreAdminV1FlatIndexPtrType) ToGoogleFirestoreAdminV1FlatInd
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1FlatIndexPtrOutput)
 }
 
-func (i *googleFirestoreAdminV1FlatIndexPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1FlatIndex] {
-	return pulumix.Output[*GoogleFirestoreAdminV1FlatIndex]{
-		OutputState: i.ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An index that stores vectors in a flat data structure, and supports exhaustive search.
 type GoogleFirestoreAdminV1FlatIndexOutput struct{ *pulumi.OutputState }
 
@@ -293,12 +250,6 @@ func (o GoogleFirestoreAdminV1FlatIndexOutput) ToGoogleFirestoreAdminV1FlatIndex
 	}).(GoogleFirestoreAdminV1FlatIndexPtrOutput)
 }
 
-func (o GoogleFirestoreAdminV1FlatIndexOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1FlatIndex] {
-	return pulumix.Output[GoogleFirestoreAdminV1FlatIndex]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleFirestoreAdminV1FlatIndexPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleFirestoreAdminV1FlatIndexPtrOutput) ElementType() reflect.Type {
@@ -311,12 +262,6 @@ func (o GoogleFirestoreAdminV1FlatIndexPtrOutput) ToGoogleFirestoreAdminV1FlatIn
 
 func (o GoogleFirestoreAdminV1FlatIndexPtrOutput) ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1FlatIndexPtrOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1FlatIndexPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1FlatIndex] {
-	return pulumix.Output[*GoogleFirestoreAdminV1FlatIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleFirestoreAdminV1FlatIndexPtrOutput) Elem() GoogleFirestoreAdminV1FlatIndexOutput {
@@ -346,12 +291,6 @@ func (o GoogleFirestoreAdminV1FlatIndexResponseOutput) ToGoogleFirestoreAdminV1F
 
 func (o GoogleFirestoreAdminV1FlatIndexResponseOutput) ToGoogleFirestoreAdminV1FlatIndexResponseOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1FlatIndexResponseOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1FlatIndexResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1FlatIndexResponse] {
-	return pulumix.Output[GoogleFirestoreAdminV1FlatIndexResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
@@ -401,12 +340,6 @@ func (i GoogleFirestoreAdminV1IndexFieldArgs) ToGoogleFirestoreAdminV1IndexField
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1IndexFieldOutput)
 }
 
-func (i GoogleFirestoreAdminV1IndexFieldArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1IndexField] {
-	return pulumix.Output[GoogleFirestoreAdminV1IndexField]{
-		OutputState: i.ToGoogleFirestoreAdminV1IndexFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleFirestoreAdminV1IndexFieldArrayInput is an input type that accepts GoogleFirestoreAdminV1IndexFieldArray and GoogleFirestoreAdminV1IndexFieldArrayOutput values.
 // You can construct a concrete instance of `GoogleFirestoreAdminV1IndexFieldArrayInput` via:
 //
@@ -432,12 +365,6 @@ func (i GoogleFirestoreAdminV1IndexFieldArray) ToGoogleFirestoreAdminV1IndexFiel
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1IndexFieldArrayOutput)
 }
 
-func (i GoogleFirestoreAdminV1IndexFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleFirestoreAdminV1IndexField] {
-	return pulumix.Output[[]GoogleFirestoreAdminV1IndexField]{
-		OutputState: i.ToGoogleFirestoreAdminV1IndexFieldArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
 type GoogleFirestoreAdminV1IndexFieldOutput struct{ *pulumi.OutputState }
 
@@ -451,12 +378,6 @@ func (o GoogleFirestoreAdminV1IndexFieldOutput) ToGoogleFirestoreAdminV1IndexFie
 
 func (o GoogleFirestoreAdminV1IndexFieldOutput) ToGoogleFirestoreAdminV1IndexFieldOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1IndexFieldOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1IndexFieldOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1IndexField] {
-	return pulumix.Output[GoogleFirestoreAdminV1IndexField]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates that this field supports operations on `array_value`s.
@@ -495,12 +416,6 @@ func (o GoogleFirestoreAdminV1IndexFieldArrayOutput) ToGoogleFirestoreAdminV1Ind
 	return o
 }
 
-func (o GoogleFirestoreAdminV1IndexFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleFirestoreAdminV1IndexField] {
-	return pulumix.Output[[]GoogleFirestoreAdminV1IndexField]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleFirestoreAdminV1IndexFieldArrayOutput) Index(i pulumi.IntInput) GoogleFirestoreAdminV1IndexFieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleFirestoreAdminV1IndexField {
 		return vs[0].([]GoogleFirestoreAdminV1IndexField)[vs[1].(int)]
@@ -532,12 +447,6 @@ func (o GoogleFirestoreAdminV1IndexFieldResponseOutput) ToGoogleFirestoreAdminV1
 
 func (o GoogleFirestoreAdminV1IndexFieldResponseOutput) ToGoogleFirestoreAdminV1IndexFieldResponseOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1IndexFieldResponseOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1IndexFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1IndexFieldResponse] {
-	return pulumix.Output[GoogleFirestoreAdminV1IndexFieldResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates that this field supports operations on `array_value`s.
@@ -574,12 +483,6 @@ func (o GoogleFirestoreAdminV1IndexFieldResponseArrayOutput) ToGoogleFirestoreAd
 
 func (o GoogleFirestoreAdminV1IndexFieldResponseArrayOutput) ToGoogleFirestoreAdminV1IndexFieldResponseArrayOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1IndexFieldResponseArrayOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1IndexFieldResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleFirestoreAdminV1IndexFieldResponse] {
-	return pulumix.Output[[]GoogleFirestoreAdminV1IndexFieldResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleFirestoreAdminV1IndexFieldResponseArrayOutput) Index(i pulumi.IntInput) GoogleFirestoreAdminV1IndexFieldResponseOutput {
@@ -627,12 +530,6 @@ func (i GoogleFirestoreAdminV1VectorConfigArgs) ToGoogleFirestoreAdminV1VectorCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1VectorConfigOutput)
 }
 
-func (i GoogleFirestoreAdminV1VectorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1VectorConfig] {
-	return pulumix.Output[GoogleFirestoreAdminV1VectorConfig]{
-		OutputState: i.ToGoogleFirestoreAdminV1VectorConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleFirestoreAdminV1VectorConfigArgs) ToGoogleFirestoreAdminV1VectorConfigPtrOutput() GoogleFirestoreAdminV1VectorConfigPtrOutput {
 	return i.ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(context.Background())
 }
@@ -674,12 +571,6 @@ func (i *googleFirestoreAdminV1VectorConfigPtrType) ToGoogleFirestoreAdminV1Vect
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1VectorConfigPtrOutput)
 }
 
-func (i *googleFirestoreAdminV1VectorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1VectorConfig] {
-	return pulumix.Output[*GoogleFirestoreAdminV1VectorConfig]{
-		OutputState: i.ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The index configuration to support vector search operations
 type GoogleFirestoreAdminV1VectorConfigOutput struct{ *pulumi.OutputState }
 
@@ -705,12 +596,6 @@ func (o GoogleFirestoreAdminV1VectorConfigOutput) ToGoogleFirestoreAdminV1Vector
 	}).(GoogleFirestoreAdminV1VectorConfigPtrOutput)
 }
 
-func (o GoogleFirestoreAdminV1VectorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1VectorConfig] {
-	return pulumix.Output[GoogleFirestoreAdminV1VectorConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
 func (o GoogleFirestoreAdminV1VectorConfigOutput) Dimension() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleFirestoreAdminV1VectorConfig) int { return v.Dimension }).(pulumi.IntOutput)
@@ -733,12 +618,6 @@ func (o GoogleFirestoreAdminV1VectorConfigPtrOutput) ToGoogleFirestoreAdminV1Vec
 
 func (o GoogleFirestoreAdminV1VectorConfigPtrOutput) ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1VectorConfigPtrOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1VectorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1VectorConfig] {
-	return pulumix.Output[*GoogleFirestoreAdminV1VectorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleFirestoreAdminV1VectorConfigPtrOutput) Elem() GoogleFirestoreAdminV1VectorConfigOutput {
@@ -794,12 +673,6 @@ func (o GoogleFirestoreAdminV1VectorConfigResponseOutput) ToGoogleFirestoreAdmin
 	return o
 }
 
-func (o GoogleFirestoreAdminV1VectorConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1VectorConfigResponse] {
-	return pulumix.Output[GoogleFirestoreAdminV1VectorConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
 func (o GoogleFirestoreAdminV1VectorConfigResponseOutput) Dimension() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleFirestoreAdminV1VectorConfigResponse) int { return v.Dimension }).(pulumi.IntOutput)
@@ -847,12 +720,6 @@ func (i GoogleFirestoreAdminV1WeeklyRecurrenceArgs) ToGoogleFirestoreAdminV1Week
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1WeeklyRecurrenceOutput)
 }
 
-func (i GoogleFirestoreAdminV1WeeklyRecurrenceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1WeeklyRecurrence] {
-	return pulumix.Output[GoogleFirestoreAdminV1WeeklyRecurrence]{
-		OutputState: i.ToGoogleFirestoreAdminV1WeeklyRecurrenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleFirestoreAdminV1WeeklyRecurrenceArgs) ToGoogleFirestoreAdminV1WeeklyRecurrencePtrOutput() GoogleFirestoreAdminV1WeeklyRecurrencePtrOutput {
 	return i.ToGoogleFirestoreAdminV1WeeklyRecurrencePtrOutputWithContext(context.Background())
 }
@@ -894,12 +761,6 @@ func (i *googleFirestoreAdminV1WeeklyRecurrencePtrType) ToGoogleFirestoreAdminV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1WeeklyRecurrencePtrOutput)
 }
 
-func (i *googleFirestoreAdminV1WeeklyRecurrencePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1WeeklyRecurrence] {
-	return pulumix.Output[*GoogleFirestoreAdminV1WeeklyRecurrence]{
-		OutputState: i.ToGoogleFirestoreAdminV1WeeklyRecurrencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a recurring schedule that runs on a specified day of the week. The time zone is UTC.
 type GoogleFirestoreAdminV1WeeklyRecurrenceOutput struct{ *pulumi.OutputState }
 
@@ -925,12 +786,6 @@ func (o GoogleFirestoreAdminV1WeeklyRecurrenceOutput) ToGoogleFirestoreAdminV1We
 	}).(GoogleFirestoreAdminV1WeeklyRecurrencePtrOutput)
 }
 
-func (o GoogleFirestoreAdminV1WeeklyRecurrenceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1WeeklyRecurrence] {
-	return pulumix.Output[GoogleFirestoreAdminV1WeeklyRecurrence]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
 func (o GoogleFirestoreAdminV1WeeklyRecurrenceOutput) Day() GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
 	return o.ApplyT(func(v GoogleFirestoreAdminV1WeeklyRecurrence) *GoogleFirestoreAdminV1WeeklyRecurrenceDay {
@@ -950,12 +805,6 @@ func (o GoogleFirestoreAdminV1WeeklyRecurrencePtrOutput) ToGoogleFirestoreAdminV
 
 func (o GoogleFirestoreAdminV1WeeklyRecurrencePtrOutput) ToGoogleFirestoreAdminV1WeeklyRecurrencePtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1WeeklyRecurrencePtrOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1WeeklyRecurrencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1WeeklyRecurrence] {
-	return pulumix.Output[*GoogleFirestoreAdminV1WeeklyRecurrence]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleFirestoreAdminV1WeeklyRecurrencePtrOutput) Elem() GoogleFirestoreAdminV1WeeklyRecurrenceOutput {
@@ -997,12 +846,6 @@ func (o GoogleFirestoreAdminV1WeeklyRecurrenceResponseOutput) ToGoogleFirestoreA
 
 func (o GoogleFirestoreAdminV1WeeklyRecurrenceResponseOutput) ToGoogleFirestoreAdminV1WeeklyRecurrenceResponseOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceResponseOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1WeeklyRecurrenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1WeeklyRecurrenceResponse] {
-	return pulumix.Output[GoogleFirestoreAdminV1WeeklyRecurrenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.

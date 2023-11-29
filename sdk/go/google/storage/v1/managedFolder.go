@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new managed folder.
@@ -140,12 +139,6 @@ func (i *ManagedFolder) ToManagedFolderOutputWithContext(ctx context.Context) Ma
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderOutput)
 }
 
-func (i *ManagedFolder) ToOutput(ctx context.Context) pulumix.Output[*ManagedFolder] {
-	return pulumix.Output[*ManagedFolder]{
-		OutputState: i.ToManagedFolderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedFolderOutput struct{ *pulumi.OutputState }
 
 func (ManagedFolderOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o ManagedFolderOutput) ToManagedFolderOutput() ManagedFolderOutput {
 
 func (o ManagedFolderOutput) ToManagedFolderOutputWithContext(ctx context.Context) ManagedFolderOutput {
 	return o
-}
-
-func (o ManagedFolderOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedFolder] {
-	return pulumix.Output[*ManagedFolder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedFolderOutput) Bucket() pulumi.StringOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Connection in a given project and location.
@@ -167,12 +166,6 @@ func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) Connecti
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOutput)
 }
 
-func (i *Connection) ToOutput(ctx context.Context) pulumix.Output[*Connection] {
-	return pulumix.Output[*Connection]{
-		OutputState: i.ToConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionOutput struct{ *pulumi.OutputState }
 
 func (ConnectionOutput) ElementType() reflect.Type {
@@ -185,12 +178,6 @@ func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
 
 func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return o
-}
-
-func (o ConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*Connection] {
-	return pulumix.Output[*Connection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Address of the remote application endpoint for the BeyondCorp Connection.

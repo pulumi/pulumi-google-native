@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i GoogleFirestoreAdminV1beta1IndexFieldArgs) ToGoogleFirestoreAdminV1beta1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1beta1IndexFieldOutput)
 }
 
-func (i GoogleFirestoreAdminV1beta1IndexFieldArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta1IndexField] {
-	return pulumix.Output[GoogleFirestoreAdminV1beta1IndexField]{
-		OutputState: i.ToGoogleFirestoreAdminV1beta1IndexFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleFirestoreAdminV1beta1IndexFieldArrayInput is an input type that accepts GoogleFirestoreAdminV1beta1IndexFieldArray and GoogleFirestoreAdminV1beta1IndexFieldArrayOutput values.
 // You can construct a concrete instance of `GoogleFirestoreAdminV1beta1IndexFieldArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i GoogleFirestoreAdminV1beta1IndexFieldArray) ToGoogleFirestoreAdminV1beta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1beta1IndexFieldArrayOutput)
 }
 
-func (i GoogleFirestoreAdminV1beta1IndexFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleFirestoreAdminV1beta1IndexField] {
-	return pulumix.Output[[]GoogleFirestoreAdminV1beta1IndexField]{
-		OutputState: i.ToGoogleFirestoreAdminV1beta1IndexFieldArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A field of an index.
 type GoogleFirestoreAdminV1beta1IndexFieldOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldOutput) ToGoogleFirestoreAdminV1bet
 
 func (o GoogleFirestoreAdminV1beta1IndexFieldOutput) ToGoogleFirestoreAdminV1beta1IndexFieldOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta1IndexFieldOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1beta1IndexFieldOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta1IndexField] {
-	return pulumix.Output[GoogleFirestoreAdminV1beta1IndexField]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
@@ -135,12 +116,6 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldArrayOutput) ToGoogleFirestoreAdmin
 
 func (o GoogleFirestoreAdminV1beta1IndexFieldArrayOutput) ToGoogleFirestoreAdminV1beta1IndexFieldArrayOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta1IndexFieldArrayOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1beta1IndexFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleFirestoreAdminV1beta1IndexField] {
-	return pulumix.Output[[]GoogleFirestoreAdminV1beta1IndexField]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleFirestoreAdminV1beta1IndexFieldArrayOutput) Index(i pulumi.IntInput) GoogleFirestoreAdminV1beta1IndexFieldOutput {
@@ -172,12 +147,6 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldResponseOutput) ToGoogleFirestoreAd
 	return o
 }
 
-func (o GoogleFirestoreAdminV1beta1IndexFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1beta1IndexFieldResponse] {
-	return pulumix.Output[GoogleFirestoreAdminV1beta1IndexFieldResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
 func (o GoogleFirestoreAdminV1beta1IndexFieldResponseOutput) FieldPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleFirestoreAdminV1beta1IndexFieldResponse) string { return v.FieldPath }).(pulumi.StringOutput)
@@ -200,12 +169,6 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput) ToGoogleFirest
 
 func (o GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput) ToGoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput {
 	return o
-}
-
-func (o GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleFirestoreAdminV1beta1IndexFieldResponse] {
-	return pulumix.Output[[]GoogleFirestoreAdminV1beta1IndexFieldResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput) Index(i pulumi.IntInput) GoogleFirestoreAdminV1beta1IndexFieldResponseOutput {

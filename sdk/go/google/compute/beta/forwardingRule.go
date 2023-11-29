@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a ForwardingRule resource in the specified project and region using the data included in the request.
@@ -271,12 +270,6 @@ func (i *ForwardingRule) ToForwardingRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleOutput)
 }
 
-func (i *ForwardingRule) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRule] {
-	return pulumix.Output[*ForwardingRule]{
-		OutputState: i.ToForwardingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleOutput) ElementType() reflect.Type {
@@ -289,12 +282,6 @@ func (o ForwardingRuleOutput) ToForwardingRuleOutput() ForwardingRuleOutput {
 
 func (o ForwardingRuleOutput) ToForwardingRuleOutputWithContext(ctx context.Context) ForwardingRuleOutput {
 	return o
-}
-
-func (o ForwardingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRule] {
-	return pulumix.Output[*ForwardingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ports, portRange, and allPorts fields are mutually exclusive. Only packets addressed to ports in the specified range will be forwarded to the backends configured with this forwarding rule. The allPorts field has the following limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, SCTP, or L3_DEFAULT. - It's applicable only to the following products: internal passthrough Network Load Balancers, backend service-based external passthrough Network Load Balancers, and internal and external protocol forwarding. - Set this field to true to allow packets addressed to any port or packets lacking destination port information (for example, UDP fragments after the first fragment) to be forwarded to the backends configured with this forwarding rule. The L3_DEFAULT protocol requires allPorts be set to true.

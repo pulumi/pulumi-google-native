@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches a single ReleaseConfig.
@@ -83,12 +82,6 @@ func (o LookupReleaseConfigResultOutput) ToLookupReleaseConfigResultOutput() Loo
 
 func (o LookupReleaseConfigResultOutput) ToLookupReleaseConfigResultOutputWithContext(ctx context.Context) LookupReleaseConfigResultOutput {
 	return o
-}
-
-func (o LookupReleaseConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReleaseConfigResult] {
-	return pulumix.Output[LookupReleaseConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.

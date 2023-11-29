@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a mapping rule.
@@ -107,12 +106,6 @@ func (o LookupMappingRuleResultOutput) ToLookupMappingRuleResultOutput() LookupM
 
 func (o LookupMappingRuleResultOutput) ToLookupMappingRuleResultOutputWithContext(ctx context.Context) LookupMappingRuleResultOutput {
 	return o
-}
-
-func (o LookupMappingRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMappingRuleResult] {
-	return pulumix.Output[LookupMappingRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed, rounded, etc) provided that the data meets certain criteria.

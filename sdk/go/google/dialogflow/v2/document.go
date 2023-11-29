@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new document. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata - `response`: Document
@@ -167,12 +166,6 @@ func (i *Document) ToDocumentOutputWithContext(ctx context.Context) DocumentOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentOutput)
 }
 
-func (i *Document) ToOutput(ctx context.Context) pulumix.Output[*Document] {
-	return pulumix.Output[*Document]{
-		OutputState: i.ToDocumentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentOutput struct{ *pulumi.OutputState }
 
 func (DocumentOutput) ElementType() reflect.Type {
@@ -185,12 +178,6 @@ func (o DocumentOutput) ToDocumentOutput() DocumentOutput {
 
 func (o DocumentOutput) ToDocumentOutputWithContext(ctx context.Context) DocumentOutput {
 	return o
-}
-
-func (o DocumentOutput) ToOutput(ctx context.Context) pulumix.Output[*Document] {
-	return pulumix.Output[*Document]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.

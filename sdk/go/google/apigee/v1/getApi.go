@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an API proxy including a list of existing revisions.
@@ -79,12 +78,6 @@ func (o LookupApiResultOutput) ToLookupApiResultOutput() LookupApiResultOutput {
 
 func (o LookupApiResultOutput) ToLookupApiResultOutputWithContext(ctx context.Context) LookupApiResultOutput {
 	return o
-}
-
-func (o LookupApiResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiResult] {
-	return pulumix.Output[LookupApiResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of the API proxy.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a SynonymSet for a single context. Throws an ALREADY_EXISTS exception if a synonymset already exists for the context.
@@ -116,12 +115,6 @@ func (i *SynonymSet) ToSynonymSetOutputWithContext(ctx context.Context) SynonymS
 	return pulumi.ToOutputWithContext(ctx, i).(SynonymSetOutput)
 }
 
-func (i *SynonymSet) ToOutput(ctx context.Context) pulumix.Output[*SynonymSet] {
-	return pulumix.Output[*SynonymSet]{
-		OutputState: i.ToSynonymSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SynonymSetOutput struct{ *pulumi.OutputState }
 
 func (SynonymSetOutput) ElementType() reflect.Type {
@@ -134,12 +127,6 @@ func (o SynonymSetOutput) ToSynonymSetOutput() SynonymSetOutput {
 
 func (o SynonymSetOutput) ToSynonymSetOutputWithContext(ctx context.Context) SynonymSetOutput {
 	return o
-}
-
-func (o SynonymSetOutput) ToOutput(ctx context.Context) pulumix.Output[*SynonymSet] {
-	return pulumix.Output[*SynonymSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.

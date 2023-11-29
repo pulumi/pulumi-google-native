@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an autoscaler in the specified project using the data included in the request.
@@ -146,12 +145,6 @@ func (i *Autoscaler) ToAutoscalerOutputWithContext(ctx context.Context) Autoscal
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerOutput)
 }
 
-func (i *Autoscaler) ToOutput(ctx context.Context) pulumix.Output[*Autoscaler] {
-	return pulumix.Output[*Autoscaler]{
-		OutputState: i.ToAutoscalerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalerOutput struct{ *pulumi.OutputState }
 
 func (AutoscalerOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o AutoscalerOutput) ToAutoscalerOutput() AutoscalerOutput {
 
 func (o AutoscalerOutput) ToAutoscalerOutputWithContext(ctx context.Context) AutoscalerOutput {
 	return o
-}
-
-func (o AutoscalerOutput) ToOutput(ctx context.Context) pulumix.Output[*Autoscaler] {
-	return pulumix.Output[*Autoscaler]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.

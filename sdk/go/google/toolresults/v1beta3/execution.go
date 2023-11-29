@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an Execution. The returned Execution will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History does not exist
@@ -159,12 +158,6 @@ func (i *Execution) ToExecutionOutputWithContext(ctx context.Context) ExecutionO
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionOutput)
 }
 
-func (i *Execution) ToOutput(ctx context.Context) pulumix.Output[*Execution] {
-	return pulumix.Output[*Execution]{
-		OutputState: i.ToExecutionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExecutionOutput struct{ *pulumi.OutputState }
 
 func (ExecutionOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o ExecutionOutput) ToExecutionOutput() ExecutionOutput {
 
 func (o ExecutionOutput) ToExecutionOutputWithContext(ctx context.Context) ExecutionOutput {
 	return o
-}
-
-func (o ExecutionOutput) ToOutput(ctx context.Context) pulumix.Output[*Execution] {
-	return pulumix.Output[*Execution]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the Execution status transitioned to COMPLETE. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set

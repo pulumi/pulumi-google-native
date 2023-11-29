@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new policy-based route in a given project and location.
@@ -188,12 +187,6 @@ func (i *PolicyBasedRoute) ToPolicyBasedRouteOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteOutput)
 }
 
-func (i *PolicyBasedRoute) ToOutput(ctx context.Context) pulumix.Output[*PolicyBasedRoute] {
-	return pulumix.Output[*PolicyBasedRoute]{
-		OutputState: i.ToPolicyBasedRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyBasedRouteOutput struct{ *pulumi.OutputState }
 
 func (PolicyBasedRouteOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o PolicyBasedRouteOutput) ToPolicyBasedRouteOutput() PolicyBasedRouteOutpu
 
 func (o PolicyBasedRouteOutput) ToPolicyBasedRouteOutputWithContext(ctx context.Context) PolicyBasedRouteOutput {
 	return o
-}
-
-func (o PolicyBasedRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyBasedRoute] {
-	return pulumix.Output[*PolicyBasedRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the policy-based route was created.

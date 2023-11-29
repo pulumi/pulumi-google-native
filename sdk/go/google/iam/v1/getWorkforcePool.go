@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an individual WorkforcePool.
@@ -83,12 +82,6 @@ func (o LookupWorkforcePoolResultOutput) ToLookupWorkforcePoolResultOutput() Loo
 
 func (o LookupWorkforcePoolResultOutput) ToLookupWorkforcePoolResultOutputWithContext(ctx context.Context) LookupWorkforcePoolResultOutput {
 	return o
-}
-
-func (o LookupWorkforcePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkforcePoolResult] {
-	return pulumix.Output[LookupWorkforcePoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.

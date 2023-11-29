@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the dataset specified by datasetID.
@@ -110,12 +109,6 @@ func (o LookupDatasetResultOutput) ToLookupDatasetResultOutput() LookupDatasetRe
 
 func (o LookupDatasetResultOutput) ToLookupDatasetResultOutputWithContext(ctx context.Context) LookupDatasetResultOutput {
 	return o
-}
-
-func (o LookupDatasetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatasetResult] {
-	return pulumix.Output[LookupDatasetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified TargetHttpsProxy resource in the specified region.
@@ -111,12 +110,6 @@ func (o LookupRegionTargetHttpsProxyResultOutput) ToLookupRegionTargetHttpsProxy
 
 func (o LookupRegionTargetHttpsProxyResultOutput) ToLookupRegionTargetHttpsProxyResultOutputWithContext(ctx context.Context) LookupRegionTargetHttpsProxyResultOutput {
 	return o
-}
-
-func (o LookupRegionTargetHttpsProxyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionTargetHttpsProxyResult] {
-	return pulumix.Output[LookupRegionTargetHttpsProxyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Deprecated] Use serverTlsPolicy instead.

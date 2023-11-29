@@ -91,12 +91,6 @@ func (o FeedContentTypeOutput) ToFeedContentTypePtrOutputWithContext(ctx context
 	}).(FeedContentTypePtrOutput)
 }
 
-func (o FeedContentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FeedContentType] {
-	return pulumix.Output[FeedContentType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeedContentTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -130,12 +124,6 @@ func (o FeedContentTypePtrOutput) ToFeedContentTypePtrOutput() FeedContentTypePt
 
 func (o FeedContentTypePtrOutput) ToFeedContentTypePtrOutputWithContext(ctx context.Context) FeedContentTypePtrOutput {
 	return o
-}
-
-func (o FeedContentTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeedContentType] {
-	return pulumix.Output[*FeedContentType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeedContentTypePtrOutput) Elem() FeedContentTypeOutput {

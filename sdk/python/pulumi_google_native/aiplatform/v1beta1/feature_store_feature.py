@@ -311,9 +311,6 @@ class FeatureStoreFeature(pulumi.CustomResource):
             __props__.__dict__["featurestore_id"] = featurestore_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            if monitoring_config is not None and not opts.urn:
-                warnings.warn("""Optional. Only applicable for Vertex AI Feature Store (Legacy). Deprecated: The custom monitoring configuration for this Feature, if not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If this is populated with FeaturestoreMonitoringConfig.disabled = true, snapshot analysis monitoring is disabled; if FeaturestoreMonitoringConfig.monitoring_interval specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring config is same as the EntityType's this Feature belongs to.""", DeprecationWarning)
-                pulumi.log.warn("""monitoring_config is deprecated: Optional. Only applicable for Vertex AI Feature Store (Legacy). Deprecated: The custom monitoring configuration for this Feature, if not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If this is populated with FeaturestoreMonitoringConfig.disabled = true, snapshot analysis monitoring is disabled; if FeaturestoreMonitoringConfig.monitoring_interval specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring config is same as the EntityType's this Feature belongs to.""")
             __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

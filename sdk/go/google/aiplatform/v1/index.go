@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an Index.
@@ -161,12 +160,6 @@ func (i *Index) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndexOutput)
 }
 
-func (i *Index) ToOutput(ctx context.Context) pulumix.Output[*Index] {
-	return pulumix.Output[*Index]{
-		OutputState: i.ToIndexOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IndexOutput struct{ *pulumi.OutputState }
 
 func (IndexOutput) ElementType() reflect.Type {
@@ -179,12 +172,6 @@ func (o IndexOutput) ToIndexOutput() IndexOutput {
 
 func (o IndexOutput) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return o
-}
-
-func (o IndexOutput) ToOutput(ctx context.Context) pulumix.Output[*Index] {
-	return pulumix.Output[*Index]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this Index was created.

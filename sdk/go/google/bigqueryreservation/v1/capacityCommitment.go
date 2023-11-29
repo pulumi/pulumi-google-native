@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new capacity commitment resource.
@@ -153,12 +152,6 @@ func (i *CapacityCommitment) ToCapacityCommitmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityCommitmentOutput)
 }
 
-func (i *CapacityCommitment) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitment] {
-	return pulumix.Output[*CapacityCommitment]{
-		OutputState: i.ToCapacityCommitmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CapacityCommitmentOutput struct{ *pulumi.OutputState }
 
 func (CapacityCommitmentOutput) ElementType() reflect.Type {
@@ -171,12 +164,6 @@ func (o CapacityCommitmentOutput) ToCapacityCommitmentOutput() CapacityCommitmen
 
 func (o CapacityCommitmentOutput) ToCapacityCommitmentOutputWithContext(ctx context.Context) CapacityCommitmentOutput {
 	return o
-}
-
-func (o CapacityCommitmentOutput) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitment] {
-	return pulumix.Output[*CapacityCommitment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.

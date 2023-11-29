@@ -91,12 +91,6 @@ func (o GoogleCloudDatacatalogLineageV1OriginSourceTypeOutput) ToGoogleCloudData
 	}).(GoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutput)
 }
 
-func (o GoogleCloudDatacatalogLineageV1OriginSourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogLineageV1OriginSourceType] {
-	return pulumix.Output[GoogleCloudDatacatalogLineageV1OriginSourceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDatacatalogLineageV1OriginSourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -130,12 +124,6 @@ func (o GoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutput) ToGoogleCloudD
 
 func (o GoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutput) ToGoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogLineageV1OriginSourceType] {
-	return pulumix.Output[*GoogleCloudDatacatalogLineageV1OriginSourceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutput) Elem() GoogleCloudDatacatalogLineageV1OriginSourceTypeOutput {
@@ -282,12 +270,6 @@ func (o RunStateEnumOutput) ToRunStateEnumPtrOutputWithContext(ctx context.Conte
 	}).(RunStateEnumPtrOutput)
 }
 
-func (o RunStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[RunStateEnum] {
-	return pulumix.Output[RunStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RunStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -321,12 +303,6 @@ func (o RunStateEnumPtrOutput) ToRunStateEnumPtrOutput() RunStateEnumPtrOutput {
 
 func (o RunStateEnumPtrOutput) ToRunStateEnumPtrOutputWithContext(ctx context.Context) RunStateEnumPtrOutput {
 	return o
-}
-
-func (o RunStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RunStateEnum] {
-	return pulumix.Output[*RunStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RunStateEnumPtrOutput) Elem() RunStateEnumOutput {

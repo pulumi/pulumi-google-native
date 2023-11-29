@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an alias.
@@ -75,12 +74,6 @@ func (o LookupAliasResultOutput) ToLookupAliasResultOutput() LookupAliasResultOu
 
 func (o LookupAliasResultOutput) ToLookupAliasResultOutputWithContext(ctx context.Context) LookupAliasResultOutput {
 	return o
-}
-
-func (o LookupAliasResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAliasResult] {
-	return pulumix.Output[LookupAliasResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.

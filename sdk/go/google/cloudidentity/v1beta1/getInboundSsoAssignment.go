@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an InboundSsoAssignment.
@@ -79,12 +78,6 @@ func (o LookupInboundSsoAssignmentResultOutput) ToLookupInboundSsoAssignmentResu
 
 func (o LookupInboundSsoAssignmentResultOutput) ToLookupInboundSsoAssignmentResultOutputWithContext(ctx context.Context) LookupInboundSsoAssignmentResultOutput {
 	return o
-}
-
-func (o LookupInboundSsoAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInboundSsoAssignmentResult] {
-	return pulumix.Output[LookupInboundSsoAssignmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The customer. For example: `customers/C0123abc`.

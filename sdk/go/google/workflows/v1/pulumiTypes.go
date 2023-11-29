@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -35,12 +34,6 @@ func (o StateErrorResponseOutput) ToStateErrorResponseOutput() StateErrorRespons
 
 func (o StateErrorResponseOutput) ToStateErrorResponseOutputWithContext(ctx context.Context) StateErrorResponseOutput {
 	return o
-}
-
-func (o StateErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StateErrorResponse] {
-	return pulumix.Output[StateErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Provides specifics about the error.

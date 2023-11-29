@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -43,12 +42,6 @@ func (i BigQueryDatasetArgs) ToBigQueryDatasetOutput() BigQueryDatasetOutput {
 
 func (i BigQueryDatasetArgs) ToBigQueryDatasetOutputWithContext(ctx context.Context) BigQueryDatasetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDatasetOutput)
-}
-
-func (i BigQueryDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[BigQueryDataset] {
-	return pulumix.Output[BigQueryDataset]{
-		OutputState: i.ToBigQueryDatasetOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BigQueryDatasetArgs) ToBigQueryDatasetPtrOutput() BigQueryDatasetPtrOutput {
@@ -92,12 +85,6 @@ func (i *bigQueryDatasetPtrType) ToBigQueryDatasetPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDatasetPtrOutput)
 }
 
-func (i *bigQueryDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*BigQueryDataset] {
-	return pulumix.Output[*BigQueryDataset]{
-		OutputState: i.ToBigQueryDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes a BigQuery dataset that was created by a link.
 type BigQueryDatasetOutput struct{ *pulumi.OutputState }
 
@@ -123,12 +110,6 @@ func (o BigQueryDatasetOutput) ToBigQueryDatasetPtrOutputWithContext(ctx context
 	}).(BigQueryDatasetPtrOutput)
 }
 
-func (o BigQueryDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryDataset] {
-	return pulumix.Output[BigQueryDataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 type BigQueryDatasetPtrOutput struct{ *pulumi.OutputState }
 
 func (BigQueryDatasetPtrOutput) ElementType() reflect.Type {
@@ -141,12 +122,6 @@ func (o BigQueryDatasetPtrOutput) ToBigQueryDatasetPtrOutput() BigQueryDatasetPt
 
 func (o BigQueryDatasetPtrOutput) ToBigQueryDatasetPtrOutputWithContext(ctx context.Context) BigQueryDatasetPtrOutput {
 	return o
-}
-
-func (o BigQueryDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BigQueryDataset] {
-	return pulumix.Output[*BigQueryDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BigQueryDatasetPtrOutput) Elem() BigQueryDatasetOutput {
@@ -178,12 +153,6 @@ func (o BigQueryDatasetResponseOutput) ToBigQueryDatasetResponseOutput() BigQuer
 
 func (o BigQueryDatasetResponseOutput) ToBigQueryDatasetResponseOutputWithContext(ctx context.Context) BigQueryDatasetResponseOutput {
 	return o
-}
-
-func (o BigQueryDatasetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryDatasetResponse] {
-	return pulumix.Output[BigQueryDatasetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The full resource name of the BigQuery dataset. The DATASET_ID will match the ID of the link, so the link must match the naming restrictions of BigQuery datasets (alphanumeric characters and underscores only).The dataset will have a resource path of "bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID"
@@ -224,12 +193,6 @@ func (i BigQueryOptionsArgs) ToBigQueryOptionsOutput() BigQueryOptionsOutput {
 
 func (i BigQueryOptionsArgs) ToBigQueryOptionsOutputWithContext(ctx context.Context) BigQueryOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryOptionsOutput)
-}
-
-func (i BigQueryOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[BigQueryOptions] {
-	return pulumix.Output[BigQueryOptions]{
-		OutputState: i.ToBigQueryOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BigQueryOptionsArgs) ToBigQueryOptionsPtrOutput() BigQueryOptionsPtrOutput {
@@ -273,12 +236,6 @@ func (i *bigQueryOptionsPtrType) ToBigQueryOptionsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryOptionsPtrOutput)
 }
 
-func (i *bigQueryOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BigQueryOptions] {
-	return pulumix.Output[*BigQueryOptions]{
-		OutputState: i.ToBigQueryOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Options that change functionality of a sink exporting data to BigQuery.
 type BigQueryOptionsOutput struct{ *pulumi.OutputState }
 
@@ -304,12 +261,6 @@ func (o BigQueryOptionsOutput) ToBigQueryOptionsPtrOutputWithContext(ctx context
 	}).(BigQueryOptionsPtrOutput)
 }
 
-func (o BigQueryOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryOptions] {
-	return pulumix.Output[BigQueryOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
 func (o BigQueryOptionsOutput) UsePartitionedTables() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BigQueryOptions) *bool { return v.UsePartitionedTables }).(pulumi.BoolPtrOutput)
@@ -327,12 +278,6 @@ func (o BigQueryOptionsPtrOutput) ToBigQueryOptionsPtrOutput() BigQueryOptionsPt
 
 func (o BigQueryOptionsPtrOutput) ToBigQueryOptionsPtrOutputWithContext(ctx context.Context) BigQueryOptionsPtrOutput {
 	return o
-}
-
-func (o BigQueryOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BigQueryOptions] {
-	return pulumix.Output[*BigQueryOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BigQueryOptionsPtrOutput) Elem() BigQueryOptionsOutput {
@@ -376,12 +321,6 @@ func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponseOutput() BigQuer
 
 func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponseOutputWithContext(ctx context.Context) BigQueryOptionsResponseOutput {
 	return o
-}
-
-func (o BigQueryOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryOptionsResponse] {
-	return pulumix.Output[BigQueryOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
@@ -437,12 +376,6 @@ func (i BucketOptionsArgs) ToBucketOptionsOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(BucketOptionsOutput)
 }
 
-func (i BucketOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[BucketOptions] {
-	return pulumix.Output[BucketOptions]{
-		OutputState: i.ToBucketOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BucketOptionsArgs) ToBucketOptionsPtrOutput() BucketOptionsPtrOutput {
 	return i.ToBucketOptionsPtrOutputWithContext(context.Background())
 }
@@ -484,12 +417,6 @@ func (i *bucketOptionsPtrType) ToBucketOptionsPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BucketOptionsPtrOutput)
 }
 
-func (i *bucketOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BucketOptions] {
-	return pulumix.Output[*BucketOptions]{
-		OutputState: i.ToBucketOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.
 type BucketOptionsOutput struct{ *pulumi.OutputState }
 
@@ -513,12 +440,6 @@ func (o BucketOptionsOutput) ToBucketOptionsPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketOptions) *BucketOptions {
 		return &v
 	}).(BucketOptionsPtrOutput)
-}
-
-func (o BucketOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[BucketOptions] {
-	return pulumix.Output[BucketOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The explicit buckets.
@@ -548,12 +469,6 @@ func (o BucketOptionsPtrOutput) ToBucketOptionsPtrOutput() BucketOptionsPtrOutpu
 
 func (o BucketOptionsPtrOutput) ToBucketOptionsPtrOutputWithContext(ctx context.Context) BucketOptionsPtrOutput {
 	return o
-}
-
-func (o BucketOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketOptions] {
-	return pulumix.Output[*BucketOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BucketOptionsPtrOutput) Elem() BucketOptionsOutput {
@@ -621,12 +536,6 @@ func (o BucketOptionsResponseOutput) ToBucketOptionsResponseOutputWithContext(ct
 	return o
 }
 
-func (o BucketOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BucketOptionsResponse] {
-	return pulumix.Output[BucketOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The explicit buckets.
 func (o BucketOptionsResponseOutput) ExplicitBuckets() ExplicitResponseOutput {
 	return o.ApplyT(func(v BucketOptionsResponse) ExplicitResponse { return v.ExplicitBuckets }).(ExplicitResponseOutput)
@@ -681,12 +590,6 @@ func (i CmekSettingsArgs) ToCmekSettingsOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CmekSettingsOutput)
 }
 
-func (i CmekSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CmekSettings] {
-	return pulumix.Output[CmekSettings]{
-		OutputState: i.ToCmekSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CmekSettingsArgs) ToCmekSettingsPtrOutput() CmekSettingsPtrOutput {
 	return i.ToCmekSettingsPtrOutputWithContext(context.Background())
 }
@@ -728,12 +631,6 @@ func (i *cmekSettingsPtrType) ToCmekSettingsPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(CmekSettingsPtrOutput)
 }
 
-func (i *cmekSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CmekSettings] {
-	return pulumix.Output[*CmekSettings]{
-		OutputState: i.ToCmekSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the customer-managed encryption key (CMEK) settings associated with a project, folder, organization, billing account, or flexible resource.Note: CMEK for the Log Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
 type CmekSettingsOutput struct{ *pulumi.OutputState }
 
@@ -759,12 +656,6 @@ func (o CmekSettingsOutput) ToCmekSettingsPtrOutputWithContext(ctx context.Conte
 	}).(CmekSettingsPtrOutput)
 }
 
-func (o CmekSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CmekSettings] {
-	return pulumix.Output[CmekSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource name for the configured Cloud KMS key.KMS key name format: "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]" For example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"To enable CMEK for the Log Router, set this field to a valid kms_key_name for which the associated service account has the needed cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.The Cloud KMS key used by the Log Router can be updated by changing the kms_key_name to a new valid key name or disabled by setting the key name to an empty string. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.To disable CMEK for the Log Router, set this field to an empty string.See Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
 func (o CmekSettingsOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CmekSettings) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -787,12 +678,6 @@ func (o CmekSettingsPtrOutput) ToCmekSettingsPtrOutput() CmekSettingsPtrOutput {
 
 func (o CmekSettingsPtrOutput) ToCmekSettingsPtrOutputWithContext(ctx context.Context) CmekSettingsPtrOutput {
 	return o
-}
-
-func (o CmekSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CmekSettings] {
-	return pulumix.Output[*CmekSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CmekSettingsPtrOutput) Elem() CmekSettingsOutput {
@@ -852,12 +737,6 @@ func (o CmekSettingsResponseOutput) ToCmekSettingsResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o CmekSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CmekSettingsResponse] {
-	return pulumix.Output[CmekSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource name for the configured Cloud KMS key.KMS key name format: "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]" For example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"To enable CMEK for the Log Router, set this field to a valid kms_key_name for which the associated service account has the needed cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.The Cloud KMS key used by the Log Router can be updated by changing the kms_key_name to a new valid key name or disabled by setting the key name to an empty string. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.To disable CMEK for the Log Router, set this field to an empty string.See Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
 func (o CmekSettingsResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v CmekSettingsResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -913,12 +792,6 @@ func (i ExplicitArgs) ToExplicitOutputWithContext(ctx context.Context) ExplicitO
 	return pulumi.ToOutputWithContext(ctx, i).(ExplicitOutput)
 }
 
-func (i ExplicitArgs) ToOutput(ctx context.Context) pulumix.Output[Explicit] {
-	return pulumix.Output[Explicit]{
-		OutputState: i.ToExplicitOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExplicitArgs) ToExplicitPtrOutput() ExplicitPtrOutput {
 	return i.ToExplicitPtrOutputWithContext(context.Background())
 }
@@ -960,12 +833,6 @@ func (i *explicitPtrType) ToExplicitPtrOutputWithContext(ctx context.Context) Ex
 	return pulumi.ToOutputWithContext(ctx, i).(ExplicitPtrOutput)
 }
 
-func (i *explicitPtrType) ToOutput(ctx context.Context) pulumix.Output[*Explicit] {
-	return pulumix.Output[*Explicit]{
-		OutputState: i.ToExplicitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least one element. If bounds has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets.
 type ExplicitOutput struct{ *pulumi.OutputState }
 
@@ -991,12 +858,6 @@ func (o ExplicitOutput) ToExplicitPtrOutputWithContext(ctx context.Context) Expl
 	}).(ExplicitPtrOutput)
 }
 
-func (o ExplicitOutput) ToOutput(ctx context.Context) pulumix.Output[Explicit] {
-	return pulumix.Output[Explicit]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The values must be monotonically increasing.
 func (o ExplicitOutput) Bounds() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v Explicit) []float64 { return v.Bounds }).(pulumi.Float64ArrayOutput)
@@ -1014,12 +875,6 @@ func (o ExplicitPtrOutput) ToExplicitPtrOutput() ExplicitPtrOutput {
 
 func (o ExplicitPtrOutput) ToExplicitPtrOutputWithContext(ctx context.Context) ExplicitPtrOutput {
 	return o
-}
-
-func (o ExplicitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Explicit] {
-	return pulumix.Output[*Explicit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExplicitPtrOutput) Elem() ExplicitOutput {
@@ -1061,12 +916,6 @@ func (o ExplicitResponseOutput) ToExplicitResponseOutput() ExplicitResponseOutpu
 
 func (o ExplicitResponseOutput) ToExplicitResponseOutputWithContext(ctx context.Context) ExplicitResponseOutput {
 	return o
-}
-
-func (o ExplicitResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExplicitResponse] {
-	return pulumix.Output[ExplicitResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The values must be monotonically increasing.
@@ -1117,12 +966,6 @@ func (i ExponentialArgs) ToExponentialOutputWithContext(ctx context.Context) Exp
 	return pulumi.ToOutputWithContext(ctx, i).(ExponentialOutput)
 }
 
-func (i ExponentialArgs) ToOutput(ctx context.Context) pulumix.Output[Exponential] {
-	return pulumix.Output[Exponential]{
-		OutputState: i.ToExponentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExponentialArgs) ToExponentialPtrOutput() ExponentialPtrOutput {
 	return i.ToExponentialPtrOutputWithContext(context.Background())
 }
@@ -1164,12 +1007,6 @@ func (i *exponentialPtrType) ToExponentialPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ExponentialPtrOutput)
 }
 
-func (i *exponentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*Exponential] {
-	return pulumix.Output[*Exponential]{
-		OutputState: i.ToExponentialPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
 type ExponentialOutput struct{ *pulumi.OutputState }
 
@@ -1193,12 +1030,6 @@ func (o ExponentialOutput) ToExponentialPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Exponential) *Exponential {
 		return &v
 	}).(ExponentialPtrOutput)
-}
-
-func (o ExponentialOutput) ToOutput(ctx context.Context) pulumix.Output[Exponential] {
-	return pulumix.Output[Exponential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Must be greater than 1.
@@ -1228,12 +1059,6 @@ func (o ExponentialPtrOutput) ToExponentialPtrOutput() ExponentialPtrOutput {
 
 func (o ExponentialPtrOutput) ToExponentialPtrOutputWithContext(ctx context.Context) ExponentialPtrOutput {
 	return o
-}
-
-func (o ExponentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Exponential] {
-	return pulumix.Output[*Exponential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExponentialPtrOutput) Elem() ExponentialOutput {
@@ -1301,12 +1126,6 @@ func (o ExponentialResponseOutput) ToExponentialResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ExponentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExponentialResponse] {
-	return pulumix.Output[ExponentialResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Must be greater than 1.
 func (o ExponentialResponseOutput) GrowthFactor() pulumi.Float64Output {
 	return o.ApplyT(func(v ExponentialResponse) float64 { return v.GrowthFactor }).(pulumi.Float64Output)
@@ -1361,12 +1180,6 @@ func (i IndexConfigArgs) ToIndexConfigOutputWithContext(ctx context.Context) Ind
 	return pulumi.ToOutputWithContext(ctx, i).(IndexConfigOutput)
 }
 
-func (i IndexConfigArgs) ToOutput(ctx context.Context) pulumix.Output[IndexConfig] {
-	return pulumix.Output[IndexConfig]{
-		OutputState: i.ToIndexConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IndexConfigArrayInput is an input type that accepts IndexConfigArray and IndexConfigArrayOutput values.
 // You can construct a concrete instance of `IndexConfigArrayInput` via:
 //
@@ -1392,12 +1205,6 @@ func (i IndexConfigArray) ToIndexConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(IndexConfigArrayOutput)
 }
 
-func (i IndexConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]IndexConfig] {
-	return pulumix.Output[[]IndexConfig]{
-		OutputState: i.ToIndexConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for an indexed field.
 type IndexConfigOutput struct{ *pulumi.OutputState }
 
@@ -1411,12 +1218,6 @@ func (o IndexConfigOutput) ToIndexConfigOutput() IndexConfigOutput {
 
 func (o IndexConfigOutput) ToIndexConfigOutputWithContext(ctx context.Context) IndexConfigOutput {
 	return o
-}
-
-func (o IndexConfigOutput) ToOutput(ctx context.Context) pulumix.Output[IndexConfig] {
-	return pulumix.Output[IndexConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The LogEntry field path to index.Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation( https://cloud.google.com/logging/docs/view/advanced-queries#indexed-fields) for details.For example: jsonPayload.request.status
@@ -1441,12 +1242,6 @@ func (o IndexConfigArrayOutput) ToIndexConfigArrayOutput() IndexConfigArrayOutpu
 
 func (o IndexConfigArrayOutput) ToIndexConfigArrayOutputWithContext(ctx context.Context) IndexConfigArrayOutput {
 	return o
-}
-
-func (o IndexConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IndexConfig] {
-	return pulumix.Output[[]IndexConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndexConfigArrayOutput) Index(i pulumi.IntInput) IndexConfigOutput {
@@ -1480,12 +1275,6 @@ func (o IndexConfigResponseOutput) ToIndexConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o IndexConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IndexConfigResponse] {
-	return pulumix.Output[IndexConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp when the index was last modified.This is used to return the timestamp, and will be ignored if supplied during update.
 func (o IndexConfigResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v IndexConfigResponse) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -1513,12 +1302,6 @@ func (o IndexConfigResponseArrayOutput) ToIndexConfigResponseArrayOutput() Index
 
 func (o IndexConfigResponseArrayOutput) ToIndexConfigResponseArrayOutputWithContext(ctx context.Context) IndexConfigResponseArrayOutput {
 	return o
-}
-
-func (o IndexConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IndexConfigResponse] {
-	return pulumix.Output[[]IndexConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndexConfigResponseArrayOutput) Index(i pulumi.IntInput) IndexConfigResponseOutput {
@@ -1570,12 +1353,6 @@ func (i LabelDescriptorArgs) ToLabelDescriptorOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(LabelDescriptorOutput)
 }
 
-func (i LabelDescriptorArgs) ToOutput(ctx context.Context) pulumix.Output[LabelDescriptor] {
-	return pulumix.Output[LabelDescriptor]{
-		OutputState: i.ToLabelDescriptorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LabelDescriptorArrayInput is an input type that accepts LabelDescriptorArray and LabelDescriptorArrayOutput values.
 // You can construct a concrete instance of `LabelDescriptorArrayInput` via:
 //
@@ -1601,12 +1378,6 @@ func (i LabelDescriptorArray) ToLabelDescriptorArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(LabelDescriptorArrayOutput)
 }
 
-func (i LabelDescriptorArray) ToOutput(ctx context.Context) pulumix.Output[[]LabelDescriptor] {
-	return pulumix.Output[[]LabelDescriptor]{
-		OutputState: i.ToLabelDescriptorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A description of a label.
 type LabelDescriptorOutput struct{ *pulumi.OutputState }
 
@@ -1620,12 +1391,6 @@ func (o LabelDescriptorOutput) ToLabelDescriptorOutput() LabelDescriptorOutput {
 
 func (o LabelDescriptorOutput) ToLabelDescriptorOutputWithContext(ctx context.Context) LabelDescriptorOutput {
 	return o
-}
-
-func (o LabelDescriptorOutput) ToOutput(ctx context.Context) pulumix.Output[LabelDescriptor] {
-	return pulumix.Output[LabelDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human-readable description for the label.
@@ -1655,12 +1420,6 @@ func (o LabelDescriptorArrayOutput) ToLabelDescriptorArrayOutput() LabelDescript
 
 func (o LabelDescriptorArrayOutput) ToLabelDescriptorArrayOutputWithContext(ctx context.Context) LabelDescriptorArrayOutput {
 	return o
-}
-
-func (o LabelDescriptorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LabelDescriptor] {
-	return pulumix.Output[[]LabelDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LabelDescriptorArrayOutput) Index(i pulumi.IntInput) LabelDescriptorOutput {
@@ -1694,12 +1453,6 @@ func (o LabelDescriptorResponseOutput) ToLabelDescriptorResponseOutputWithContex
 	return o
 }
 
-func (o LabelDescriptorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LabelDescriptorResponse] {
-	return pulumix.Output[LabelDescriptorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A human-readable description for the label.
 func (o LabelDescriptorResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1727,12 +1480,6 @@ func (o LabelDescriptorResponseArrayOutput) ToLabelDescriptorResponseArrayOutput
 
 func (o LabelDescriptorResponseArrayOutput) ToLabelDescriptorResponseArrayOutputWithContext(ctx context.Context) LabelDescriptorResponseArrayOutput {
 	return o
-}
-
-func (o LabelDescriptorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LabelDescriptorResponse] {
-	return pulumix.Output[[]LabelDescriptorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LabelDescriptorResponseArrayOutput) Index(i pulumi.IntInput) LabelDescriptorResponseOutput {
@@ -1784,12 +1531,6 @@ func (i LinearArgs) ToLinearOutputWithContext(ctx context.Context) LinearOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(LinearOutput)
 }
 
-func (i LinearArgs) ToOutput(ctx context.Context) pulumix.Output[Linear] {
-	return pulumix.Output[Linear]{
-		OutputState: i.ToLinearOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LinearArgs) ToLinearPtrOutput() LinearPtrOutput {
 	return i.ToLinearPtrOutputWithContext(context.Background())
 }
@@ -1831,12 +1572,6 @@ func (i *linearPtrType) ToLinearPtrOutputWithContext(ctx context.Context) Linear
 	return pulumi.ToOutputWithContext(ctx, i).(LinearPtrOutput)
 }
 
-func (i *linearPtrType) ToOutput(ctx context.Context) pulumix.Output[*Linear] {
-	return pulumix.Output[*Linear]{
-		OutputState: i.ToLinearPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i).Lower bound (1 <= i < N): offset + (width * (i - 1)).
 type LinearOutput struct{ *pulumi.OutputState }
 
@@ -1860,12 +1595,6 @@ func (o LinearOutput) ToLinearPtrOutputWithContext(ctx context.Context) LinearPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Linear) *Linear {
 		return &v
 	}).(LinearPtrOutput)
-}
-
-func (o LinearOutput) ToOutput(ctx context.Context) pulumix.Output[Linear] {
-	return pulumix.Output[Linear]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Must be greater than 0.
@@ -1895,12 +1624,6 @@ func (o LinearPtrOutput) ToLinearPtrOutput() LinearPtrOutput {
 
 func (o LinearPtrOutput) ToLinearPtrOutputWithContext(ctx context.Context) LinearPtrOutput {
 	return o
-}
-
-func (o LinearPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Linear] {
-	return pulumix.Output[*Linear]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinearPtrOutput) Elem() LinearOutput {
@@ -1968,12 +1691,6 @@ func (o LinearResponseOutput) ToLinearResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o LinearResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinearResponse] {
-	return pulumix.Output[LinearResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Must be greater than 0.
 func (o LinearResponseOutput) NumFiniteBuckets() pulumi.IntOutput {
 	return o.ApplyT(func(v LinearResponse) int { return v.NumFiniteBuckets }).(pulumi.IntOutput)
@@ -2036,12 +1753,6 @@ func (i LogExclusionArgs) ToLogExclusionOutputWithContext(ctx context.Context) L
 	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionOutput)
 }
 
-func (i LogExclusionArgs) ToOutput(ctx context.Context) pulumix.Output[LogExclusion] {
-	return pulumix.Output[LogExclusion]{
-		OutputState: i.ToLogExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LogExclusionArrayInput is an input type that accepts LogExclusionArray and LogExclusionArrayOutput values.
 // You can construct a concrete instance of `LogExclusionArrayInput` via:
 //
@@ -2067,12 +1778,6 @@ func (i LogExclusionArray) ToLogExclusionArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionArrayOutput)
 }
 
-func (i LogExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]LogExclusion] {
-	return pulumix.Output[[]LogExclusion]{
-		OutputState: i.ToLogExclusionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.
 type LogExclusionOutput struct{ *pulumi.OutputState }
 
@@ -2086,12 +1791,6 @@ func (o LogExclusionOutput) ToLogExclusionOutput() LogExclusionOutput {
 
 func (o LogExclusionOutput) ToLogExclusionOutputWithContext(ctx context.Context) LogExclusionOutput {
 	return o
-}
-
-func (o LogExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[LogExclusion] {
-	return pulumix.Output[LogExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A description of this exclusion.
@@ -2126,12 +1825,6 @@ func (o LogExclusionArrayOutput) ToLogExclusionArrayOutput() LogExclusionArrayOu
 
 func (o LogExclusionArrayOutput) ToLogExclusionArrayOutputWithContext(ctx context.Context) LogExclusionArrayOutput {
 	return o
-}
-
-func (o LogExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LogExclusion] {
-	return pulumix.Output[[]LogExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogExclusionArrayOutput) Index(i pulumi.IntInput) LogExclusionOutput {
@@ -2169,12 +1862,6 @@ func (o LogExclusionResponseOutput) ToLogExclusionResponseOutput() LogExclusionR
 
 func (o LogExclusionResponseOutput) ToLogExclusionResponseOutputWithContext(ctx context.Context) LogExclusionResponseOutput {
 	return o
-}
-
-func (o LogExclusionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogExclusionResponse] {
-	return pulumix.Output[LogExclusionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of the exclusion.This field may not be present for older exclusions.
@@ -2219,12 +1906,6 @@ func (o LogExclusionResponseArrayOutput) ToLogExclusionResponseArrayOutput() Log
 
 func (o LogExclusionResponseArrayOutput) ToLogExclusionResponseArrayOutputWithContext(ctx context.Context) LogExclusionResponseArrayOutput {
 	return o
-}
-
-func (o LogExclusionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LogExclusionResponse] {
-	return pulumix.Output[[]LogExclusionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogExclusionResponseArrayOutput) Index(i pulumi.IntInput) LogExclusionResponseOutput {
@@ -2308,12 +1989,6 @@ func (i MetricDescriptorArgs) ToMetricDescriptorOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorOutput)
 }
 
-func (i MetricDescriptorArgs) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptor] {
-	return pulumix.Output[MetricDescriptor]{
-		OutputState: i.ToMetricDescriptorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetricDescriptorArgs) ToMetricDescriptorPtrOutput() MetricDescriptorPtrOutput {
 	return i.ToMetricDescriptorPtrOutputWithContext(context.Background())
 }
@@ -2355,12 +2030,6 @@ func (i *metricDescriptorPtrType) ToMetricDescriptorPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorPtrOutput)
 }
 
-func (i *metricDescriptorPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptor] {
-	return pulumix.Output[*MetricDescriptor]{
-		OutputState: i.ToMetricDescriptorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
 type MetricDescriptorOutput struct{ *pulumi.OutputState }
 
@@ -2384,12 +2053,6 @@ func (o MetricDescriptorOutput) ToMetricDescriptorPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptor) *MetricDescriptor {
 		return &v
 	}).(MetricDescriptorPtrOutput)
-}
-
-func (o MetricDescriptorOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptor] {
-	return pulumix.Output[MetricDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A detailed description of the metric, which can be used in documentation.
@@ -2459,12 +2122,6 @@ func (o MetricDescriptorPtrOutput) ToMetricDescriptorPtrOutput() MetricDescripto
 
 func (o MetricDescriptorPtrOutput) ToMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricDescriptorPtrOutput {
 	return o
-}
-
-func (o MetricDescriptorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptor] {
-	return pulumix.Output[*MetricDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricDescriptorPtrOutput) Elem() MetricDescriptorOutput {
@@ -2634,12 +2291,6 @@ func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataOutput)
 }
 
-func (i MetricDescriptorMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetadata] {
-	return pulumix.Output[MetricDescriptorMetadata]{
-		OutputState: i.ToMetricDescriptorMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataPtrOutput() MetricDescriptorMetadataPtrOutput {
 	return i.ToMetricDescriptorMetadataPtrOutputWithContext(context.Background())
 }
@@ -2681,12 +2332,6 @@ func (i *metricDescriptorMetadataPtrType) ToMetricDescriptorMetadataPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataPtrOutput)
 }
 
-func (i *metricDescriptorMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetadata] {
-	return pulumix.Output[*MetricDescriptorMetadata]{
-		OutputState: i.ToMetricDescriptorMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional annotations that can be used to guide the usage of a metric.
 type MetricDescriptorMetadataOutput struct{ *pulumi.OutputState }
 
@@ -2710,12 +2355,6 @@ func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptorMetadata) *MetricDescriptorMetadata {
 		return &v
 	}).(MetricDescriptorMetadataPtrOutput)
-}
-
-func (o MetricDescriptorMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetadata] {
-	return pulumix.Output[MetricDescriptorMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
@@ -2747,12 +2386,6 @@ func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutput()
 
 func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataPtrOutput {
 	return o
-}
-
-func (o MetricDescriptorMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetadata] {
-	return pulumix.Output[*MetricDescriptorMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricDescriptorMetadataPtrOutput) Elem() MetricDescriptorMetadataOutput {
@@ -2824,12 +2457,6 @@ func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataRespon
 	return o
 }
 
-func (o MetricDescriptorMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetadataResponse] {
-	return pulumix.Output[MetricDescriptorMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 func (o MetricDescriptorMetadataResponseOutput) IngestDelay() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadataResponse) string { return v.IngestDelay }).(pulumi.StringOutput)
@@ -2886,12 +2513,6 @@ func (o MetricDescriptorResponseOutput) ToMetricDescriptorResponseOutput() Metri
 
 func (o MetricDescriptorResponseOutput) ToMetricDescriptorResponseOutputWithContext(ctx context.Context) MetricDescriptorResponseOutput {
 	return o
-}
-
-func (o MetricDescriptorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorResponse] {
-	return pulumix.Output[MetricDescriptorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A detailed description of the metric, which can be used in documentation.

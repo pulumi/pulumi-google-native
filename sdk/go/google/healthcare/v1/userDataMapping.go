@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new User data mapping in the parent consent store.
@@ -147,12 +146,6 @@ func (i *UserDataMapping) ToUserDataMappingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(UserDataMappingOutput)
 }
 
-func (i *UserDataMapping) ToOutput(ctx context.Context) pulumix.Output[*UserDataMapping] {
-	return pulumix.Output[*UserDataMapping]{
-		OutputState: i.ToUserDataMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserDataMappingOutput struct{ *pulumi.OutputState }
 
 func (UserDataMappingOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o UserDataMappingOutput) ToUserDataMappingOutput() UserDataMappingOutput {
 
 func (o UserDataMappingOutput) ToUserDataMappingOutputWithContext(ctx context.Context) UserDataMappingOutput {
 	return o
-}
-
-func (o UserDataMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*UserDataMapping] {
-	return pulumix.Output[*UserDataMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates the time when this mapping was archived.

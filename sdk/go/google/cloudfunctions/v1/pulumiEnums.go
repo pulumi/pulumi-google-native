@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -272,12 +260,6 @@ func (o FunctionDockerRegistryOutput) ToFunctionDockerRegistryPtrOutputWithConte
 	}).(FunctionDockerRegistryPtrOutput)
 }
 
-func (o FunctionDockerRegistryOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionDockerRegistry] {
-	return pulumix.Output[FunctionDockerRegistry]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FunctionDockerRegistryOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o FunctionDockerRegistryPtrOutput) ToFunctionDockerRegistryPtrOutput() Fun
 
 func (o FunctionDockerRegistryPtrOutput) ToFunctionDockerRegistryPtrOutputWithContext(ctx context.Context) FunctionDockerRegistryPtrOutput {
 	return o
-}
-
-func (o FunctionDockerRegistryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionDockerRegistry] {
-	return pulumix.Output[*FunctionDockerRegistry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionDockerRegistryPtrOutput) Elem() FunctionDockerRegistryOutput {
@@ -461,12 +437,6 @@ func (o FunctionIngressSettingsOutput) ToFunctionIngressSettingsPtrOutputWithCon
 	}).(FunctionIngressSettingsPtrOutput)
 }
 
-func (o FunctionIngressSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionIngressSettings] {
-	return pulumix.Output[FunctionIngressSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FunctionIngressSettingsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -500,12 +470,6 @@ func (o FunctionIngressSettingsPtrOutput) ToFunctionIngressSettingsPtrOutput() F
 
 func (o FunctionIngressSettingsPtrOutput) ToFunctionIngressSettingsPtrOutputWithContext(ctx context.Context) FunctionIngressSettingsPtrOutput {
 	return o
-}
-
-func (o FunctionIngressSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionIngressSettings] {
-	return pulumix.Output[*FunctionIngressSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionIngressSettingsPtrOutput) Elem() FunctionIngressSettingsOutput {
@@ -648,12 +612,6 @@ func (o FunctionVpcConnectorEgressSettingsOutput) ToFunctionVpcConnectorEgressSe
 	}).(FunctionVpcConnectorEgressSettingsPtrOutput)
 }
 
-func (o FunctionVpcConnectorEgressSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionVpcConnectorEgressSettings] {
-	return pulumix.Output[FunctionVpcConnectorEgressSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FunctionVpcConnectorEgressSettingsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -687,12 +645,6 @@ func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToFunctionVpcConnectorEgres
 
 func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(ctx context.Context) FunctionVpcConnectorEgressSettingsPtrOutput {
 	return o
-}
-
-func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionVpcConnectorEgressSettings] {
-	return pulumix.Output[*FunctionVpcConnectorEgressSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionVpcConnectorEgressSettingsPtrOutput) Elem() FunctionVpcConnectorEgressSettingsOutput {
@@ -835,12 +787,6 @@ func (o HttpsTriggerSecurityLevelOutput) ToHttpsTriggerSecurityLevelPtrOutputWit
 	}).(HttpsTriggerSecurityLevelPtrOutput)
 }
 
-func (o HttpsTriggerSecurityLevelOutput) ToOutput(ctx context.Context) pulumix.Output[HttpsTriggerSecurityLevel] {
-	return pulumix.Output[HttpsTriggerSecurityLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpsTriggerSecurityLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -874,12 +820,6 @@ func (o HttpsTriggerSecurityLevelPtrOutput) ToHttpsTriggerSecurityLevelPtrOutput
 
 func (o HttpsTriggerSecurityLevelPtrOutput) ToHttpsTriggerSecurityLevelPtrOutputWithContext(ctx context.Context) HttpsTriggerSecurityLevelPtrOutput {
 	return o
-}
-
-func (o HttpsTriggerSecurityLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpsTriggerSecurityLevel] {
-	return pulumix.Output[*HttpsTriggerSecurityLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpsTriggerSecurityLevelPtrOutput) Elem() HttpsTriggerSecurityLevelOutput {

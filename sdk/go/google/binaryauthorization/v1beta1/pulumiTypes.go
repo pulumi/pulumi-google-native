@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -61,12 +60,6 @@ func (i AttestorPublicKeyArgs) ToAttestorPublicKeyOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorPublicKeyOutput)
 }
 
-func (i AttestorPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[AttestorPublicKey] {
-	return pulumix.Output[AttestorPublicKey]{
-		OutputState: i.ToAttestorPublicKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AttestorPublicKeyArrayInput is an input type that accepts AttestorPublicKeyArray and AttestorPublicKeyArrayOutput values.
 // You can construct a concrete instance of `AttestorPublicKeyArrayInput` via:
 //
@@ -92,12 +85,6 @@ func (i AttestorPublicKeyArray) ToAttestorPublicKeyArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorPublicKeyArrayOutput)
 }
 
-func (i AttestorPublicKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]AttestorPublicKey] {
-	return pulumix.Output[[]AttestorPublicKey]{
-		OutputState: i.ToAttestorPublicKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An attestor public key that will be used to verify attestations signed by this attestor.
 type AttestorPublicKeyOutput struct{ *pulumi.OutputState }
 
@@ -111,12 +98,6 @@ func (o AttestorPublicKeyOutput) ToAttestorPublicKeyOutput() AttestorPublicKeyOu
 
 func (o AttestorPublicKeyOutput) ToAttestorPublicKeyOutputWithContext(ctx context.Context) AttestorPublicKeyOutput {
 	return o
-}
-
-func (o AttestorPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[AttestorPublicKey] {
-	return pulumix.Output[AttestorPublicKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
@@ -153,12 +134,6 @@ func (o AttestorPublicKeyArrayOutput) ToAttestorPublicKeyArrayOutputWithContext(
 	return o
 }
 
-func (o AttestorPublicKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttestorPublicKey] {
-	return pulumix.Output[[]AttestorPublicKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AttestorPublicKeyArrayOutput) Index(i pulumi.IntInput) AttestorPublicKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttestorPublicKey {
 		return vs[0].([]AttestorPublicKey)[vs[1].(int)]
@@ -190,12 +165,6 @@ func (o AttestorPublicKeyResponseOutput) ToAttestorPublicKeyResponseOutputWithCo
 	return o
 }
 
-func (o AttestorPublicKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AttestorPublicKeyResponse] {
-	return pulumix.Output[AttestorPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
 func (o AttestorPublicKeyResponseOutput) AsciiArmoredPgpPublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AttestorPublicKeyResponse) string { return v.AsciiArmoredPgpPublicKey }).(pulumi.StringOutput)
@@ -223,12 +192,6 @@ func (o AttestorPublicKeyResponseArrayOutput) ToAttestorPublicKeyResponseArrayOu
 
 func (o AttestorPublicKeyResponseArrayOutput) ToAttestorPublicKeyResponseArrayOutputWithContext(ctx context.Context) AttestorPublicKeyResponseArrayOutput {
 	return o
-}
-
-func (o AttestorPublicKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttestorPublicKeyResponse] {
-	return pulumix.Output[[]AttestorPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttestorPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) AttestorPublicKeyResponseOutput {
@@ -280,12 +243,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -311,12 +268,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -330,12 +281,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -365,12 +310,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -404,12 +343,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -437,12 +370,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -498,12 +425,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -545,12 +466,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -574,12 +489,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -614,12 +523,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -699,12 +602,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -764,12 +661,6 @@ func (i PkixPublicKeyArgs) ToPkixPublicKeyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PkixPublicKeyOutput)
 }
 
-func (i PkixPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKey] {
-	return pulumix.Output[PkixPublicKey]{
-		OutputState: i.ToPkixPublicKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PkixPublicKeyArgs) ToPkixPublicKeyPtrOutput() PkixPublicKeyPtrOutput {
 	return i.ToPkixPublicKeyPtrOutputWithContext(context.Background())
 }
@@ -811,12 +702,6 @@ func (i *pkixPublicKeyPtrType) ToPkixPublicKeyPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PkixPublicKeyPtrOutput)
 }
 
-func (i *pkixPublicKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PkixPublicKey] {
-	return pulumix.Output[*PkixPublicKey]{
-		OutputState: i.ToPkixPublicKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format.
 type PkixPublicKeyOutput struct{ *pulumi.OutputState }
 
@@ -842,12 +727,6 @@ func (o PkixPublicKeyOutput) ToPkixPublicKeyPtrOutputWithContext(ctx context.Con
 	}).(PkixPublicKeyPtrOutput)
 }
 
-func (o PkixPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKey] {
-	return pulumix.Output[PkixPublicKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
 func (o PkixPublicKeyOutput) PublicKeyPem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PkixPublicKey) *string { return v.PublicKeyPem }).(pulumi.StringPtrOutput)
@@ -870,12 +749,6 @@ func (o PkixPublicKeyPtrOutput) ToPkixPublicKeyPtrOutput() PkixPublicKeyPtrOutpu
 
 func (o PkixPublicKeyPtrOutput) ToPkixPublicKeyPtrOutputWithContext(ctx context.Context) PkixPublicKeyPtrOutput {
 	return o
-}
-
-func (o PkixPublicKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PkixPublicKey] {
-	return pulumix.Output[*PkixPublicKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PkixPublicKeyPtrOutput) Elem() PkixPublicKeyOutput {
@@ -931,12 +804,6 @@ func (o PkixPublicKeyResponseOutput) ToPkixPublicKeyResponseOutputWithContext(ct
 	return o
 }
 
-func (o PkixPublicKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKeyResponse] {
-	return pulumix.Output[PkixPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
 func (o PkixPublicKeyResponseOutput) PublicKeyPem() pulumi.StringOutput {
 	return o.ApplyT(func(v PkixPublicKeyResponse) string { return v.PublicKeyPem }).(pulumi.StringOutput)
@@ -986,12 +853,6 @@ func (i UserOwnedDrydockNoteArgs) ToUserOwnedDrydockNoteOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedDrydockNoteOutput)
 }
 
-func (i UserOwnedDrydockNoteArgs) ToOutput(ctx context.Context) pulumix.Output[UserOwnedDrydockNote] {
-	return pulumix.Output[UserOwnedDrydockNote]{
-		OutputState: i.ToUserOwnedDrydockNoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserOwnedDrydockNoteArgs) ToUserOwnedDrydockNotePtrOutput() UserOwnedDrydockNotePtrOutput {
 	return i.ToUserOwnedDrydockNotePtrOutputWithContext(context.Background())
 }
@@ -1033,12 +894,6 @@ func (i *userOwnedDrydockNotePtrType) ToUserOwnedDrydockNotePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedDrydockNotePtrOutput)
 }
 
-func (i *userOwnedDrydockNotePtrType) ToOutput(ctx context.Context) pulumix.Output[*UserOwnedDrydockNote] {
-	return pulumix.Output[*UserOwnedDrydockNote]{
-		OutputState: i.ToUserOwnedDrydockNotePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
 type UserOwnedDrydockNoteOutput struct{ *pulumi.OutputState }
 
@@ -1064,12 +919,6 @@ func (o UserOwnedDrydockNoteOutput) ToUserOwnedDrydockNotePtrOutputWithContext(c
 	}).(UserOwnedDrydockNotePtrOutput)
 }
 
-func (o UserOwnedDrydockNoteOutput) ToOutput(ctx context.Context) pulumix.Output[UserOwnedDrydockNote] {
-	return pulumix.Output[UserOwnedDrydockNote]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
 func (o UserOwnedDrydockNoteOutput) NoteReference() pulumi.StringOutput {
 	return o.ApplyT(func(v UserOwnedDrydockNote) string { return v.NoteReference }).(pulumi.StringOutput)
@@ -1092,12 +941,6 @@ func (o UserOwnedDrydockNotePtrOutput) ToUserOwnedDrydockNotePtrOutput() UserOwn
 
 func (o UserOwnedDrydockNotePtrOutput) ToUserOwnedDrydockNotePtrOutputWithContext(ctx context.Context) UserOwnedDrydockNotePtrOutput {
 	return o
-}
-
-func (o UserOwnedDrydockNotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserOwnedDrydockNote] {
-	return pulumix.Output[*UserOwnedDrydockNote]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserOwnedDrydockNotePtrOutput) Elem() UserOwnedDrydockNoteOutput {
@@ -1153,12 +996,6 @@ func (o UserOwnedDrydockNoteResponseOutput) ToUserOwnedDrydockNoteResponseOutput
 
 func (o UserOwnedDrydockNoteResponseOutput) ToUserOwnedDrydockNoteResponseOutputWithContext(ctx context.Context) UserOwnedDrydockNoteResponseOutput {
 	return o
-}
-
-func (o UserOwnedDrydockNoteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserOwnedDrydockNoteResponse] {
-	return pulumix.Output[UserOwnedDrydockNoteResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: * The reseller account making the request is different from the reseller account in the API request. * You are not authorized to create a customer. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource.
@@ -173,12 +172,6 @@ func (i *Customer) ToCustomerOutputWithContext(ctx context.Context) CustomerOutp
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerOutput)
 }
 
-func (i *Customer) ToOutput(ctx context.Context) pulumix.Output[*Customer] {
-	return pulumix.Output[*Customer]{
-		OutputState: i.ToCustomerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomerOutput struct{ *pulumi.OutputState }
 
 func (CustomerOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o CustomerOutput) ToCustomerOutput() CustomerOutput {
 
 func (o CustomerOutput) ToCustomerOutputWithContext(ctx context.Context) CustomerOutput {
 	return o
-}
-
-func (o CustomerOutput) ToOutput(ctx context.Context) pulumix.Output[*Customer] {
-	return pulumix.Output[*Customer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomerOutput) AccountId() pulumi.StringOutput {

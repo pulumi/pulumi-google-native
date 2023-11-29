@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *EdgeCacheServiceIamPolicy) ToEdgeCacheServiceIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceIamPolicyOutput)
 }
 
-func (i *EdgeCacheServiceIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceIamPolicy] {
-	return pulumix.Output[*EdgeCacheServiceIamPolicy]{
-		OutputState: i.ToEdgeCacheServiceIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdgeCacheServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceIamPolicyOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o EdgeCacheServiceIamPolicyOutput) ToEdgeCacheServiceIamPolicyOutput() Edg
 
 func (o EdgeCacheServiceIamPolicyOutput) ToEdgeCacheServiceIamPolicyOutputWithContext(ctx context.Context) EdgeCacheServiceIamPolicyOutput {
 	return o
-}
-
-func (o EdgeCacheServiceIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceIamPolicy] {
-	return pulumix.Output[*EdgeCacheServiceIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

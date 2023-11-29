@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -270,12 +258,6 @@ func (o FilterProtocolVersionOutput) ToFilterProtocolVersionPtrOutputWithContext
 	}).(FilterProtocolVersionPtrOutput)
 }
 
-func (o FilterProtocolVersionOutput) ToOutput(ctx context.Context) pulumix.Output[FilterProtocolVersion] {
-	return pulumix.Output[FilterProtocolVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FilterProtocolVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o FilterProtocolVersionPtrOutput) ToFilterProtocolVersionPtrOutput() Filte
 
 func (o FilterProtocolVersionPtrOutput) ToFilterProtocolVersionPtrOutputWithContext(ctx context.Context) FilterProtocolVersionPtrOutput {
 	return o
-}
-
-func (o FilterProtocolVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FilterProtocolVersion] {
-	return pulumix.Output[*FilterProtocolVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilterProtocolVersionPtrOutput) Elem() FilterProtocolVersionOutput {
@@ -456,12 +432,6 @@ func (o InternalRangeOverlapsItemOutput) ToInternalRangeOverlapsItemPtrOutputWit
 	}).(InternalRangeOverlapsItemPtrOutput)
 }
 
-func (o InternalRangeOverlapsItemOutput) ToOutput(ctx context.Context) pulumix.Output[InternalRangeOverlapsItem] {
-	return pulumix.Output[InternalRangeOverlapsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InternalRangeOverlapsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -495,12 +465,6 @@ func (o InternalRangeOverlapsItemPtrOutput) ToInternalRangeOverlapsItemPtrOutput
 
 func (o InternalRangeOverlapsItemPtrOutput) ToInternalRangeOverlapsItemPtrOutputWithContext(ctx context.Context) InternalRangeOverlapsItemPtrOutput {
 	return o
-}
-
-func (o InternalRangeOverlapsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeOverlapsItem] {
-	return pulumix.Output[*InternalRangeOverlapsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InternalRangeOverlapsItemPtrOutput) Elem() InternalRangeOverlapsItemOutput {
@@ -596,12 +560,6 @@ func (i InternalRangeOverlapsItemArray) ToInternalRangeOverlapsItemArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeOverlapsItemArrayOutput)
 }
 
-func (i InternalRangeOverlapsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]InternalRangeOverlapsItem] {
-	return pulumix.Output[[]InternalRangeOverlapsItem]{
-		OutputState: i.ToInternalRangeOverlapsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InternalRangeOverlapsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (InternalRangeOverlapsItemArrayOutput) ElementType() reflect.Type {
@@ -614,12 +572,6 @@ func (o InternalRangeOverlapsItemArrayOutput) ToInternalRangeOverlapsItemArrayOu
 
 func (o InternalRangeOverlapsItemArrayOutput) ToInternalRangeOverlapsItemArrayOutputWithContext(ctx context.Context) InternalRangeOverlapsItemArrayOutput {
 	return o
-}
-
-func (o InternalRangeOverlapsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InternalRangeOverlapsItem] {
-	return pulumix.Output[[]InternalRangeOverlapsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InternalRangeOverlapsItemArrayOutput) Index(i pulumi.IntInput) InternalRangeOverlapsItemOutput {
@@ -702,12 +654,6 @@ func (o InternalRangePeeringOutput) ToInternalRangePeeringPtrOutputWithContext(c
 	}).(InternalRangePeeringPtrOutput)
 }
 
-func (o InternalRangePeeringOutput) ToOutput(ctx context.Context) pulumix.Output[InternalRangePeering] {
-	return pulumix.Output[InternalRangePeering]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InternalRangePeeringOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -741,12 +687,6 @@ func (o InternalRangePeeringPtrOutput) ToInternalRangePeeringPtrOutput() Interna
 
 func (o InternalRangePeeringPtrOutput) ToInternalRangePeeringPtrOutputWithContext(ctx context.Context) InternalRangePeeringPtrOutput {
 	return o
-}
-
-func (o InternalRangePeeringPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalRangePeering] {
-	return pulumix.Output[*InternalRangePeering]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InternalRangePeeringPtrOutput) Elem() InternalRangePeeringOutput {
@@ -889,12 +829,6 @@ func (o InternalRangeUsageOutput) ToInternalRangeUsagePtrOutputWithContext(ctx c
 	}).(InternalRangeUsagePtrOutput)
 }
 
-func (o InternalRangeUsageOutput) ToOutput(ctx context.Context) pulumix.Output[InternalRangeUsage] {
-	return pulumix.Output[InternalRangeUsage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InternalRangeUsageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -928,12 +862,6 @@ func (o InternalRangeUsagePtrOutput) ToInternalRangeUsagePtrOutput() InternalRan
 
 func (o InternalRangeUsagePtrOutput) ToInternalRangeUsagePtrOutputWithContext(ctx context.Context) InternalRangeUsagePtrOutput {
 	return o
-}
-
-func (o InternalRangeUsagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeUsage] {
-	return pulumix.Output[*InternalRangeUsage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InternalRangeUsagePtrOutput) Elem() InternalRangeUsageOutput {
@@ -1074,12 +1002,6 @@ func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToPolicyBasedRouteNextHopOther
 	}).(PolicyBasedRouteNextHopOtherRoutesPtrOutput)
 }
 
-func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyBasedRouteNextHopOtherRoutes] {
-	return pulumix.Output[PolicyBasedRouteNextHopOtherRoutes]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyBasedRouteNextHopOtherRoutesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1113,12 +1035,6 @@ func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) ToPolicyBasedRouteNextHopOt
 
 func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(ctx context.Context) PolicyBasedRouteNextHopOtherRoutesPtrOutput {
 	return o
-}
-
-func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyBasedRouteNextHopOtherRoutes] {
-	return pulumix.Output[*PolicyBasedRouteNextHopOtherRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) Elem() PolicyBasedRouteNextHopOtherRoutesOutput {

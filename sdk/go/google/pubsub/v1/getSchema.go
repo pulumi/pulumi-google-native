@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a schema.
@@ -77,12 +76,6 @@ func (o LookupSchemaResultOutput) ToLookupSchemaResultOutput() LookupSchemaResul
 
 func (o LookupSchemaResultOutput) ToLookupSchemaResultOutputWithContext(ctx context.Context) LookupSchemaResultOutput {
 	return o
-}
-
-func (o LookupSchemaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSchemaResult] {
-	return pulumix.Output[LookupSchemaResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.

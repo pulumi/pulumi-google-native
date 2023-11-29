@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new worker pool with a specified size and configuration. Returns a long running operation which contains a worker pool on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `CREATING`.
@@ -142,12 +141,6 @@ func (i *WorkerPool) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolOutput)
 }
 
-func (i *WorkerPool) ToOutput(ctx context.Context) pulumix.Output[*WorkerPool] {
-	return pulumix.Output[*WorkerPool]{
-		OutputState: i.ToWorkerPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkerPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o WorkerPoolOutput) ToWorkerPoolOutput() WorkerPoolOutput {
 
 func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPoolOutput {
 	return o
-}
-
-func (o WorkerPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerPool] {
-	return pulumix.Output[*WorkerPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The autoscale policy to apply on a pool.

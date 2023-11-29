@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a custom class.
@@ -140,12 +139,6 @@ func (i *CustomClass) ToCustomClassOutputWithContext(ctx context.Context) Custom
 	return pulumi.ToOutputWithContext(ctx, i).(CustomClassOutput)
 }
 
-func (i *CustomClass) ToOutput(ctx context.Context) pulumix.Output[*CustomClass] {
-	return pulumix.Output[*CustomClass]{
-		OutputState: i.ToCustomClassOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomClassOutput struct{ *pulumi.OutputState }
 
 func (CustomClassOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o CustomClassOutput) ToCustomClassOutput() CustomClassOutput {
 
 func (o CustomClassOutput) ToCustomClassOutputWithContext(ctx context.Context) CustomClassOutput {
 	return o
-}
-
-func (o CustomClassOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomClass] {
-	return pulumix.Output[*CustomClass]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.

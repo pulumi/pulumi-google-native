@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches the representation of an existing Policy.
@@ -80,12 +79,6 @@ func (o LookupPolicyResultOutput) ToLookupPolicyResultOutput() LookupPolicyResul
 
 func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx context.Context) LookupPolicyResultOutput {
 	return o
-}
-
-func (o LookupPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPolicyResult] {
-	return pulumix.Output[LookupPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.

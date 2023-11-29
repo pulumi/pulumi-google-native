@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve a custom report definition.
@@ -109,12 +108,6 @@ func (o LookupReportResultOutput) ToLookupReportResultOutput() LookupReportResul
 
 func (o LookupReportResultOutput) ToLookupReportResultOutputWithContext(ctx context.Context) LookupReportResultOutput {
 	return o
-}
-
-func (o LookupReportResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReportResult] {
-	return pulumix.Output[LookupReportResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This field contains the chart type for the report

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets metadata on a pending or completed Backup.
@@ -91,12 +90,6 @@ func (o LookupBackupResultOutput) ToLookupBackupResultOutput() LookupBackupResul
 
 func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx context.Context) LookupBackupResultOutput {
 	return o
-}
-
-func (o LookupBackupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupResult] {
-	return pulumix.Output[LookupBackupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.

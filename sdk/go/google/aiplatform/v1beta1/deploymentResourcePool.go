@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a DeploymentResourcePool.
@@ -123,12 +122,6 @@ func (i *DeploymentResourcePool) ToDeploymentResourcePoolOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentResourcePoolOutput)
 }
 
-func (i *DeploymentResourcePool) ToOutput(ctx context.Context) pulumix.Output[*DeploymentResourcePool] {
-	return pulumix.Output[*DeploymentResourcePool]{
-		OutputState: i.ToDeploymentResourcePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeploymentResourcePoolOutput struct{ *pulumi.OutputState }
 
 func (DeploymentResourcePoolOutput) ElementType() reflect.Type {
@@ -141,12 +134,6 @@ func (o DeploymentResourcePoolOutput) ToDeploymentResourcePoolOutput() Deploymen
 
 func (o DeploymentResourcePoolOutput) ToDeploymentResourcePoolOutputWithContext(ctx context.Context) DeploymentResourcePoolOutput {
 	return o
-}
-
-func (o DeploymentResourcePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentResourcePool] {
-	return pulumix.Output[*DeploymentResourcePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this DeploymentResourcePool was created.

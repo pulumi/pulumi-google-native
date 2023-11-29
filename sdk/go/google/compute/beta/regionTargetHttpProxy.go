@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a TargetHttpProxy resource in the specified project and region using the data included in the request.
@@ -152,12 +151,6 @@ func (i *RegionTargetHttpProxy) ToRegionTargetHttpProxyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpProxyOutput)
 }
 
-func (i *RegionTargetHttpProxy) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpProxy] {
-	return pulumix.Output[*RegionTargetHttpProxy]{
-		OutputState: i.ToRegionTargetHttpProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionTargetHttpProxyOutput struct{ *pulumi.OutputState }
 
 func (RegionTargetHttpProxyOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o RegionTargetHttpProxyOutput) ToRegionTargetHttpProxyOutput() RegionTarge
 
 func (o RegionTargetHttpProxyOutput) ToRegionTargetHttpProxyOutputWithContext(ctx context.Context) RegionTargetHttpProxyOutput {
 	return o
-}
-
-func (o RegionTargetHttpProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpProxy] {
-	return pulumix.Output[*RegionTargetHttpProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

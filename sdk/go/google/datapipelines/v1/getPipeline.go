@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Looks up a single pipeline. Returns a "NOT_FOUND" error if no such pipeline exists. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it.
@@ -89,12 +88,6 @@ func (o LookupPipelineResultOutput) ToLookupPipelineResultOutput() LookupPipelin
 
 func (o LookupPipelineResultOutput) ToLookupPipelineResultOutputWithContext(ctx context.Context) LookupPipelineResultOutput {
 	return o
-}
-
-func (o LookupPipelineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPipelineResult] {
-	return pulumix.Output[LookupPipelineResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The timestamp when the pipeline was initially created. Set by the Data Pipelines service.

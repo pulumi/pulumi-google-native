@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single VMware Cluster.
@@ -131,12 +130,6 @@ func (o LookupVmwareClusterResultOutput) ToLookupVmwareClusterResultOutput() Loo
 
 func (o LookupVmwareClusterResultOutput) ToLookupVmwareClusterResultOutputWithContext(ctx context.Context) LookupVmwareClusterResultOutput {
 	return o
-}
-
-func (o LookupVmwareClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVmwareClusterResult] {
-	return pulumix.Output[LookupVmwareClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The admin cluster this VMware user cluster belongs to. This is the full resource name of the admin cluster's fleet membership. In the future, references to other resource types might be allowed if admin clusters are modeled as their own resources.

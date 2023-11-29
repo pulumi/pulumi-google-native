@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified intent.
@@ -87,12 +86,6 @@ func (o LookupIntentResultOutput) ToLookupIntentResultOutput() LookupIntentResul
 
 func (o LookupIntentResultOutput) ToLookupIntentResultOutputWithContext(ctx context.Context) LookupIntentResultOutput {
 	return o
-}
-
-func (o LookupIntentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntentResult] {
-	return pulumix.Output[LookupIntentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.

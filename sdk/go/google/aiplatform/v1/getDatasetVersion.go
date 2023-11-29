@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Dataset version.
@@ -81,12 +80,6 @@ func (o LookupDatasetVersionResultOutput) ToLookupDatasetVersionResultOutput() L
 
 func (o LookupDatasetVersionResultOutput) ToLookupDatasetVersionResultOutputWithContext(ctx context.Context) LookupDatasetVersionResultOutput {
 	return o
-}
-
-func (o LookupDatasetVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatasetVersionResult] {
-	return pulumix.Output[LookupDatasetVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the associated BigQuery dataset.

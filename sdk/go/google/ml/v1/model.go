@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a model which will later contain one or more versions. You must add at least one version before you can request predictions from the model. Add versions by calling projects.models.versions.create.
@@ -138,12 +137,6 @@ func (i *Model) ToModelOutputWithContext(ctx context.Context) ModelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ModelOutput)
 }
 
-func (i *Model) ToOutput(ctx context.Context) pulumix.Output[*Model] {
-	return pulumix.Output[*Model]{
-		OutputState: i.ToModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ModelOutput struct{ *pulumi.OutputState }
 
 func (ModelOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o ModelOutput) ToModelOutput() ModelOutput {
 
 func (o ModelOutput) ToModelOutputWithContext(ctx context.Context) ModelOutput {
 	return o
-}
-
-func (o ModelOutput) ToOutput(ctx context.Context) pulumix.Output[*Model] {
-	return pulumix.Output[*Model]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.

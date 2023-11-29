@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified HL7v2 store.
@@ -79,12 +78,6 @@ func (o LookupHl7V2StoreResultOutput) ToLookupHl7V2StoreResultOutput() LookupHl7
 
 func (o LookupHl7V2StoreResultOutput) ToLookupHl7V2StoreResultOutputWithContext(ctx context.Context) LookupHl7V2StoreResultOutput {
 	return o
-}
-
-func (o LookupHl7V2StoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHl7V2StoreResult] {
-	return pulumix.Output[LookupHl7V2StoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.

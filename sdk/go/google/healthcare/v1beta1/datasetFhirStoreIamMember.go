@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *DatasetFhirStoreIamMember) ToDatasetFhirStoreIamMemberOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetFhirStoreIamMemberOutput)
 }
 
-func (i *DatasetFhirStoreIamMember) ToOutput(ctx context.Context) pulumix.Output[*DatasetFhirStoreIamMember] {
-	return pulumix.Output[*DatasetFhirStoreIamMember]{
-		OutputState: i.ToDatasetFhirStoreIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetFhirStoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DatasetFhirStoreIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o DatasetFhirStoreIamMemberOutput) ToDatasetFhirStoreIamMemberOutput() Dat
 
 func (o DatasetFhirStoreIamMemberOutput) ToDatasetFhirStoreIamMemberOutputWithContext(ctx context.Context) DatasetFhirStoreIamMemberOutput {
 	return o
-}
-
-func (o DatasetFhirStoreIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetFhirStoreIamMember] {
-	return pulumix.Output[*DatasetFhirStoreIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a DataStore.
@@ -83,12 +82,6 @@ func (o LookupDataStoreResultOutput) ToLookupDataStoreResultOutput() LookupDataS
 
 func (o LookupDataStoreResultOutput) ToLookupDataStoreResultOutputWithContext(ctx context.Context) LookupDataStoreResultOutput {
 	return o
-}
-
-func (o LookupDataStoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataStoreResult] {
-	return pulumix.Output[LookupDataStoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.

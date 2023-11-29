@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a session template synchronously.
@@ -142,12 +141,6 @@ func (i *SessionTemplate) ToSessionTemplateOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateOutput)
 }
 
-func (i *SessionTemplate) ToOutput(ctx context.Context) pulumix.Output[*SessionTemplate] {
-	return pulumix.Output[*SessionTemplate]{
-		OutputState: i.ToSessionTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SessionTemplateOutput struct{ *pulumi.OutputState }
 
 func (SessionTemplateOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o SessionTemplateOutput) ToSessionTemplateOutput() SessionTemplateOutput {
 
 func (o SessionTemplateOutput) ToSessionTemplateOutputWithContext(ctx context.Context) SessionTemplateOutput {
 	return o
-}
-
-func (o SessionTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*SessionTemplate] {
-	return pulumix.Output[*SessionTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the template was created.

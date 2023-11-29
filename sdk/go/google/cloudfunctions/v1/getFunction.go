@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a function with the given name from the requested project.
@@ -137,12 +136,6 @@ func (o LookupFunctionResultOutput) ToLookupFunctionResultOutput() LookupFunctio
 
 func (o LookupFunctionResultOutput) ToLookupFunctionResultOutputWithContext(ctx context.Context) LookupFunctionResultOutput {
 	return o
-}
-
-func (o LookupFunctionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFunctionResult] {
-	return pulumix.Output[LookupFunctionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The amount of memory in MB available for a function. Defaults to 256MB.

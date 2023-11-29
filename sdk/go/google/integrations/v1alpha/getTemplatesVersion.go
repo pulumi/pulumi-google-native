@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an IntegrationTemplateVersion in the specified project.
@@ -101,12 +100,6 @@ func (o LookupTemplatesVersionResultOutput) ToLookupTemplatesVersionResultOutput
 
 func (o LookupTemplatesVersionResultOutput) ToLookupTemplatesVersionResultOutputWithContext(ctx context.Context) LookupTemplatesVersionResultOutput {
 	return o
-}
-
-func (o LookupTemplatesVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTemplatesVersionResult] {
-	return pulumix.Output[LookupTemplatesVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Auto-generated.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a 'ManagementDnsZoneBinding' resource by its resource name.
@@ -85,12 +84,6 @@ func (o LookupManagementDnsZoneBindingResultOutput) ToLookupManagementDnsZoneBin
 
 func (o LookupManagementDnsZoneBindingResultOutput) ToLookupManagementDnsZoneBindingResultOutputWithContext(ctx context.Context) LookupManagementDnsZoneBindingResultOutput {
 	return o
-}
-
-func (o LookupManagementDnsZoneBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagementDnsZoneBindingResult] {
-	return pulumix.Output[LookupManagementDnsZoneBindingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

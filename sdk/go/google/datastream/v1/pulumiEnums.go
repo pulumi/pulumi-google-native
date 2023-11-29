@@ -83,12 +83,6 @@ func (o JsonFileFormatCompressionOutput) ToJsonFileFormatCompressionPtrOutputWit
 	}).(JsonFileFormatCompressionPtrOutput)
 }
 
-func (o JsonFileFormatCompressionOutput) ToOutput(ctx context.Context) pulumix.Output[JsonFileFormatCompression] {
-	return pulumix.Output[JsonFileFormatCompression]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JsonFileFormatCompressionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o JsonFileFormatCompressionPtrOutput) ToJsonFileFormatCompressionPtrOutput
 
 func (o JsonFileFormatCompressionPtrOutput) ToJsonFileFormatCompressionPtrOutputWithContext(ctx context.Context) JsonFileFormatCompressionPtrOutput {
 	return o
-}
-
-func (o JsonFileFormatCompressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JsonFileFormatCompression] {
-	return pulumix.Output[*JsonFileFormatCompression]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JsonFileFormatCompressionPtrOutput) Elem() JsonFileFormatCompressionOutput {
@@ -270,12 +258,6 @@ func (o JsonFileFormatSchemaFileFormatOutput) ToJsonFileFormatSchemaFileFormatPt
 	}).(JsonFileFormatSchemaFileFormatPtrOutput)
 }
 
-func (o JsonFileFormatSchemaFileFormatOutput) ToOutput(ctx context.Context) pulumix.Output[JsonFileFormatSchemaFileFormat] {
-	return pulumix.Output[JsonFileFormatSchemaFileFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JsonFileFormatSchemaFileFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o JsonFileFormatSchemaFileFormatPtrOutput) ToJsonFileFormatSchemaFileForma
 
 func (o JsonFileFormatSchemaFileFormatPtrOutput) ToJsonFileFormatSchemaFileFormatPtrOutputWithContext(ctx context.Context) JsonFileFormatSchemaFileFormatPtrOutput {
 	return o
-}
-
-func (o JsonFileFormatSchemaFileFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JsonFileFormatSchemaFileFormat] {
-	return pulumix.Output[*JsonFileFormatSchemaFileFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JsonFileFormatSchemaFileFormatPtrOutput) Elem() JsonFileFormatSchemaFileFormatOutput {
@@ -469,12 +445,6 @@ func (o StreamStateEnumOutput) ToStreamStateEnumPtrOutputWithContext(ctx context
 	}).(StreamStateEnumPtrOutput)
 }
 
-func (o StreamStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[StreamStateEnum] {
-	return pulumix.Output[StreamStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StreamStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -508,12 +478,6 @@ func (o StreamStateEnumPtrOutput) ToStreamStateEnumPtrOutput() StreamStateEnumPt
 
 func (o StreamStateEnumPtrOutput) ToStreamStateEnumPtrOutputWithContext(ctx context.Context) StreamStateEnumPtrOutput {
 	return o
-}
-
-func (o StreamStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamStateEnum] {
-	return pulumix.Output[*StreamStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamStateEnumPtrOutput) Elem() StreamStateEnumOutput {

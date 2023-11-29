@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the resource representation for an interactive session.
@@ -97,12 +96,6 @@ func (o LookupSessionResultOutput) ToLookupSessionResultOutput() LookupSessionRe
 
 func (o LookupSessionResultOutput) ToLookupSessionResultOutputWithContext(ctx context.Context) LookupSessionResultOutput {
 	return o
-}
-
-func (o LookupSessionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSessionResult] {
-	return pulumix.Output[LookupSessionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the session was created.

@@ -84,12 +84,6 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregation
 	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput)
 }
 
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType] {
-	return pulumix.Output[GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -123,12 +117,6 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregation
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType] {
-	return pulumix.Output[*GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput) Elem() GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeOutput {
@@ -292,12 +280,6 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput) ToGoogleC
 	}).(GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput)
 }
 
-func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1InputConfigAnnotationType] {
-	return pulumix.Output[GoogleCloudDatalabelingV1beta1InputConfigAnnotationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -331,12 +313,6 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) ToGoog
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) ToGoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfigAnnotationType] {
-	return pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfigAnnotationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) Elem() GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput {
@@ -483,12 +459,6 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput) ToGoogleCloudDa
 	}).(GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput)
 }
 
-func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatalabelingV1beta1InputConfigDataType] {
-	return pulumix.Output[GoogleCloudDatalabelingV1beta1InputConfigDataType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -522,12 +492,6 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) ToGoogleClou
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) ToGoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfigDataType] {
-	return pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfigDataType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) Elem() GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput {
@@ -674,12 +638,6 @@ func (o InstructionDataTypeOutput) ToInstructionDataTypePtrOutputWithContext(ctx
 	}).(InstructionDataTypePtrOutput)
 }
 
-func (o InstructionDataTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstructionDataType] {
-	return pulumix.Output[InstructionDataType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstructionDataTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -713,12 +671,6 @@ func (o InstructionDataTypePtrOutput) ToInstructionDataTypePtrOutput() Instructi
 
 func (o InstructionDataTypePtrOutput) ToInstructionDataTypePtrOutputWithContext(ctx context.Context) InstructionDataTypePtrOutput {
 	return o
-}
-
-func (o InstructionDataTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstructionDataType] {
-	return pulumix.Output[*InstructionDataType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstructionDataTypePtrOutput) Elem() InstructionDataTypeOutput {

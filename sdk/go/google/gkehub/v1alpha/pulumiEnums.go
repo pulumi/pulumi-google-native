@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -272,12 +260,6 @@ func (o BinaryAuthorizationConfigEvaluationModeOutput) ToBinaryAuthorizationConf
 	}).(BinaryAuthorizationConfigEvaluationModePtrOutput)
 }
 
-func (o BinaryAuthorizationConfigEvaluationModeOutput) ToOutput(ctx context.Context) pulumix.Output[BinaryAuthorizationConfigEvaluationMode] {
-	return pulumix.Output[BinaryAuthorizationConfigEvaluationMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BinaryAuthorizationConfigEvaluationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o BinaryAuthorizationConfigEvaluationModePtrOutput) ToBinaryAuthorizationC
 
 func (o BinaryAuthorizationConfigEvaluationModePtrOutput) ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationConfigEvaluationModePtrOutput {
 	return o
-}
-
-func (o BinaryAuthorizationConfigEvaluationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorizationConfigEvaluationMode] {
-	return pulumix.Output[*BinaryAuthorizationConfigEvaluationMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BinaryAuthorizationConfigEvaluationModePtrOutput) Elem() BinaryAuthorizationConfigEvaluationModeOutput {
@@ -458,12 +434,6 @@ func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToConfigMa
 	}).(ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput)
 }
 
-func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigManagementPolicyControllerMonitoringBackendsItem] {
-	return pulumix.Output[ConfigManagementPolicyControllerMonitoringBackendsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -497,12 +467,6 @@ func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) ToConfi
 
 func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput {
 	return o
-}
-
-func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigManagementPolicyControllerMonitoringBackendsItem] {
-	return pulumix.Output[*ConfigManagementPolicyControllerMonitoringBackendsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) Elem() ConfigManagementPolicyControllerMonitoringBackendsItemOutput {
@@ -598,12 +562,6 @@ func (i ConfigManagementPolicyControllerMonitoringBackendsItemArray) ToConfigMan
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput)
 }
 
-func (i ConfigManagementPolicyControllerMonitoringBackendsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigManagementPolicyControllerMonitoringBackendsItem] {
-	return pulumix.Output[[]ConfigManagementPolicyControllerMonitoringBackendsItem]{
-		OutputState: i.ToConfigManagementPolicyControllerMonitoringBackendsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput) ElementType() reflect.Type {
@@ -616,12 +574,6 @@ func (o ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput) ToCon
 
 func (o ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput) ToConfigManagementPolicyControllerMonitoringBackendsItemArrayOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput {
 	return o
-}
-
-func (o ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigManagementPolicyControllerMonitoringBackendsItem] {
-	return pulumix.Output[[]ConfigManagementPolicyControllerMonitoringBackendsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput) Index(i pulumi.IntInput) ConfigManagementPolicyControllerMonitoringBackendsItemOutput {
@@ -706,12 +658,6 @@ func (o FeatureSpecProvisionGoogleCaOutput) ToFeatureSpecProvisionGoogleCaPtrOut
 	}).(FeatureSpecProvisionGoogleCaPtrOutput)
 }
 
-func (o FeatureSpecProvisionGoogleCaOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecProvisionGoogleCa] {
-	return pulumix.Output[FeatureSpecProvisionGoogleCa]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeatureSpecProvisionGoogleCaOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -745,12 +691,6 @@ func (o FeatureSpecProvisionGoogleCaPtrOutput) ToFeatureSpecProvisionGoogleCaPtr
 
 func (o FeatureSpecProvisionGoogleCaPtrOutput) ToFeatureSpecProvisionGoogleCaPtrOutputWithContext(ctx context.Context) FeatureSpecProvisionGoogleCaPtrOutput {
 	return o
-}
-
-func (o FeatureSpecProvisionGoogleCaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecProvisionGoogleCa] {
-	return pulumix.Output[*FeatureSpecProvisionGoogleCa]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureSpecProvisionGoogleCaPtrOutput) Elem() FeatureSpecProvisionGoogleCaOutput {
@@ -893,12 +833,6 @@ func (o FleetObservabilityRoutingConfigModeOutput) ToFleetObservabilityRoutingCo
 	}).(FleetObservabilityRoutingConfigModePtrOutput)
 }
 
-func (o FleetObservabilityRoutingConfigModeOutput) ToOutput(ctx context.Context) pulumix.Output[FleetObservabilityRoutingConfigMode] {
-	return pulumix.Output[FleetObservabilityRoutingConfigMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FleetObservabilityRoutingConfigModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -932,12 +866,6 @@ func (o FleetObservabilityRoutingConfigModePtrOutput) ToFleetObservabilityRoutin
 
 func (o FleetObservabilityRoutingConfigModePtrOutput) ToFleetObservabilityRoutingConfigModePtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigModePtrOutput {
 	return o
-}
-
-func (o FleetObservabilityRoutingConfigModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FleetObservabilityRoutingConfigMode] {
-	return pulumix.Output[*FleetObservabilityRoutingConfigMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FleetObservabilityRoutingConfigModePtrOutput) Elem() FleetObservabilityRoutingConfigModeOutput {
@@ -1080,12 +1008,6 @@ func (o MembershipSpecCertificateManagementOutput) ToMembershipSpecCertificateMa
 	}).(MembershipSpecCertificateManagementPtrOutput)
 }
 
-func (o MembershipSpecCertificateManagementOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipSpecCertificateManagement] {
-	return pulumix.Output[MembershipSpecCertificateManagement]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembershipSpecCertificateManagementOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1119,12 +1041,6 @@ func (o MembershipSpecCertificateManagementPtrOutput) ToMembershipSpecCertificat
 
 func (o MembershipSpecCertificateManagementPtrOutput) ToMembershipSpecCertificateManagementPtrOutputWithContext(ctx context.Context) MembershipSpecCertificateManagementPtrOutput {
 	return o
-}
-
-func (o MembershipSpecCertificateManagementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipSpecCertificateManagement] {
-	return pulumix.Output[*MembershipSpecCertificateManagement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipSpecCertificateManagementPtrOutput) Elem() MembershipSpecCertificateManagementOutput {
@@ -1267,12 +1183,6 @@ func (o MultiClusterIngressFeatureSpecBillingOutput) ToMultiClusterIngressFeatur
 	}).(MultiClusterIngressFeatureSpecBillingPtrOutput)
 }
 
-func (o MultiClusterIngressFeatureSpecBillingOutput) ToOutput(ctx context.Context) pulumix.Output[MultiClusterIngressFeatureSpecBilling] {
-	return pulumix.Output[MultiClusterIngressFeatureSpecBilling]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MultiClusterIngressFeatureSpecBillingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1306,12 +1216,6 @@ func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToMultiClusterIngressFea
 
 func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecBillingPtrOutput {
 	return o
-}
-
-func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiClusterIngressFeatureSpecBilling] {
-	return pulumix.Output[*MultiClusterIngressFeatureSpecBilling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MultiClusterIngressFeatureSpecBillingPtrOutput) Elem() MultiClusterIngressFeatureSpecBillingOutput {
@@ -1454,12 +1358,6 @@ func (o NamespaceActuationFeatureSpecActuationModeOutput) ToNamespaceActuationFe
 	}).(NamespaceActuationFeatureSpecActuationModePtrOutput)
 }
 
-func (o NamespaceActuationFeatureSpecActuationModeOutput) ToOutput(ctx context.Context) pulumix.Output[NamespaceActuationFeatureSpecActuationMode] {
-	return pulumix.Output[NamespaceActuationFeatureSpecActuationMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NamespaceActuationFeatureSpecActuationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1493,12 +1391,6 @@ func (o NamespaceActuationFeatureSpecActuationModePtrOutput) ToNamespaceActuatio
 
 func (o NamespaceActuationFeatureSpecActuationModePtrOutput) ToNamespaceActuationFeatureSpecActuationModePtrOutputWithContext(ctx context.Context) NamespaceActuationFeatureSpecActuationModePtrOutput {
 	return o
-}
-
-func (o NamespaceActuationFeatureSpecActuationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceActuationFeatureSpecActuationMode] {
-	return pulumix.Output[*NamespaceActuationFeatureSpecActuationMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NamespaceActuationFeatureSpecActuationModePtrOutput) Elem() NamespaceActuationFeatureSpecActuationModeOutput {
@@ -1645,12 +1537,6 @@ func (o OnPremClusterClusterTypeOutput) ToOnPremClusterClusterTypePtrOutputWithC
 	}).(OnPremClusterClusterTypePtrOutput)
 }
 
-func (o OnPremClusterClusterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OnPremClusterClusterType] {
-	return pulumix.Output[OnPremClusterClusterType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OnPremClusterClusterTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1684,12 +1570,6 @@ func (o OnPremClusterClusterTypePtrOutput) ToOnPremClusterClusterTypePtrOutput()
 
 func (o OnPremClusterClusterTypePtrOutput) ToOnPremClusterClusterTypePtrOutputWithContext(ctx context.Context) OnPremClusterClusterTypePtrOutput {
 	return o
-}
-
-func (o OnPremClusterClusterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OnPremClusterClusterType] {
-	return pulumix.Output[*OnPremClusterClusterType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OnPremClusterClusterTypePtrOutput) Elem() OnPremClusterClusterTypeOutput {
@@ -1836,12 +1716,6 @@ func (o PolicyControllerHubConfigInstallSpecOutput) ToPolicyControllerHubConfigI
 	}).(PolicyControllerHubConfigInstallSpecPtrOutput)
 }
 
-func (o PolicyControllerHubConfigInstallSpecOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyControllerHubConfigInstallSpec] {
-	return pulumix.Output[PolicyControllerHubConfigInstallSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyControllerHubConfigInstallSpecOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1875,12 +1749,6 @@ func (o PolicyControllerHubConfigInstallSpecPtrOutput) ToPolicyControllerHubConf
 
 func (o PolicyControllerHubConfigInstallSpecPtrOutput) ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(ctx context.Context) PolicyControllerHubConfigInstallSpecPtrOutput {
 	return o
-}
-
-func (o PolicyControllerHubConfigInstallSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerHubConfigInstallSpec] {
-	return pulumix.Output[*PolicyControllerHubConfigInstallSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyControllerHubConfigInstallSpecPtrOutput) Elem() PolicyControllerHubConfigInstallSpecOutput {
@@ -2022,12 +1890,6 @@ func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToPolicyControllerMo
 	}).(PolicyControllerMonitoringConfigBackendsItemPtrOutput)
 }
 
-func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyControllerMonitoringConfigBackendsItem] {
-	return pulumix.Output[PolicyControllerMonitoringConfigBackendsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2061,12 +1923,6 @@ func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) ToPolicyControlle
 
 func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemPtrOutput {
 	return o
-}
-
-func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerMonitoringConfigBackendsItem] {
-	return pulumix.Output[*PolicyControllerMonitoringConfigBackendsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) Elem() PolicyControllerMonitoringConfigBackendsItemOutput {
@@ -2162,12 +2018,6 @@ func (i PolicyControllerMonitoringConfigBackendsItemArray) ToPolicyControllerMon
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerMonitoringConfigBackendsItemArrayOutput)
 }
 
-func (i PolicyControllerMonitoringConfigBackendsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyControllerMonitoringConfigBackendsItem] {
-	return pulumix.Output[[]PolicyControllerMonitoringConfigBackendsItem]{
-		OutputState: i.ToPolicyControllerMonitoringConfigBackendsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyControllerMonitoringConfigBackendsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (PolicyControllerMonitoringConfigBackendsItemArrayOutput) ElementType() reflect.Type {
@@ -2180,12 +2030,6 @@ func (o PolicyControllerMonitoringConfigBackendsItemArrayOutput) ToPolicyControl
 
 func (o PolicyControllerMonitoringConfigBackendsItemArrayOutput) ToPolicyControllerMonitoringConfigBackendsItemArrayOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemArrayOutput {
 	return o
-}
-
-func (o PolicyControllerMonitoringConfigBackendsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyControllerMonitoringConfigBackendsItem] {
-	return pulumix.Output[[]PolicyControllerMonitoringConfigBackendsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyControllerMonitoringConfigBackendsItemArrayOutput) Index(i pulumi.IntInput) PolicyControllerMonitoringConfigBackendsItemOutput {
@@ -2266,12 +2110,6 @@ func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToPolicyControl
 	}).(PolicyControllerTemplateLibraryConfigInstallationPtrOutput)
 }
 
-func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyControllerTemplateLibraryConfigInstallation] {
-	return pulumix.Output[PolicyControllerTemplateLibraryConfigInstallation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2305,12 +2143,6 @@ func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) ToPolicyCont
 
 func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(ctx context.Context) PolicyControllerTemplateLibraryConfigInstallationPtrOutput {
 	return o
-}
-
-func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerTemplateLibraryConfigInstallation] {
-	return pulumix.Output[*PolicyControllerTemplateLibraryConfigInstallation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) Elem() PolicyControllerTemplateLibraryConfigInstallationOutput {
@@ -2457,12 +2289,6 @@ func (o RolePredefinedRoleOutput) ToRolePredefinedRolePtrOutputWithContext(ctx c
 	}).(RolePredefinedRolePtrOutput)
 }
 
-func (o RolePredefinedRoleOutput) ToOutput(ctx context.Context) pulumix.Output[RolePredefinedRole] {
-	return pulumix.Output[RolePredefinedRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RolePredefinedRoleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2496,12 +2322,6 @@ func (o RolePredefinedRolePtrOutput) ToRolePredefinedRolePtrOutput() RolePredefi
 
 func (o RolePredefinedRolePtrOutput) ToRolePredefinedRolePtrOutputWithContext(ctx context.Context) RolePredefinedRolePtrOutput {
 	return o
-}
-
-func (o RolePredefinedRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RolePredefinedRole] {
-	return pulumix.Output[*RolePredefinedRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RolePredefinedRolePtrOutput) Elem() RolePredefinedRoleOutput {
@@ -2644,12 +2464,6 @@ func (o SecurityPostureConfigModeOutput) ToSecurityPostureConfigModePtrOutputWit
 	}).(SecurityPostureConfigModePtrOutput)
 }
 
-func (o SecurityPostureConfigModeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPostureConfigMode] {
-	return pulumix.Output[SecurityPostureConfigMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecurityPostureConfigModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2683,12 +2497,6 @@ func (o SecurityPostureConfigModePtrOutput) ToSecurityPostureConfigModePtrOutput
 
 func (o SecurityPostureConfigModePtrOutput) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
 	return o
-}
-
-func (o SecurityPostureConfigModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigMode] {
-	return pulumix.Output[*SecurityPostureConfigMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityPostureConfigModePtrOutput) Elem() SecurityPostureConfigModeOutput {
@@ -2833,12 +2641,6 @@ func (o SecurityPostureConfigVulnerabilityModeOutput) ToSecurityPostureConfigVul
 	}).(SecurityPostureConfigVulnerabilityModePtrOutput)
 }
 
-func (o SecurityPostureConfigVulnerabilityModeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPostureConfigVulnerabilityMode] {
-	return pulumix.Output[SecurityPostureConfigVulnerabilityMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecurityPostureConfigVulnerabilityModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2872,12 +2674,6 @@ func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToSecurityPostureConfig
 
 func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModePtrOutput {
 	return o
-}
-
-func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigVulnerabilityMode] {
-	return pulumix.Output[*SecurityPostureConfigVulnerabilityMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityPostureConfigVulnerabilityModePtrOutput) Elem() SecurityPostureConfigVulnerabilityModeOutput {
@@ -3020,12 +2816,6 @@ func (o ServiceMeshMembershipSpecControlPlaneOutput) ToServiceMeshMembershipSpec
 	}).(ServiceMeshMembershipSpecControlPlanePtrOutput)
 }
 
-func (o ServiceMeshMembershipSpecControlPlaneOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMembershipSpecControlPlane] {
-	return pulumix.Output[ServiceMeshMembershipSpecControlPlane]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceMeshMembershipSpecControlPlaneOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3059,12 +2849,6 @@ func (o ServiceMeshMembershipSpecControlPlanePtrOutput) ToServiceMeshMembershipS
 
 func (o ServiceMeshMembershipSpecControlPlanePtrOutput) ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecControlPlanePtrOutput {
 	return o
-}
-
-func (o ServiceMeshMembershipSpecControlPlanePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecControlPlane] {
-	return pulumix.Output[*ServiceMeshMembershipSpecControlPlane]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceMeshMembershipSpecControlPlanePtrOutput) Elem() ServiceMeshMembershipSpecControlPlaneOutput {
@@ -3209,12 +2993,6 @@ func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToServiceMeshMembershipSp
 	}).(ServiceMeshMembershipSpecDefaultChannelPtrOutput)
 }
 
-func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMembershipSpecDefaultChannel] {
-	return pulumix.Output[ServiceMeshMembershipSpecDefaultChannel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3248,12 +3026,6 @@ func (o ServiceMeshMembershipSpecDefaultChannelPtrOutput) ToServiceMeshMembershi
 
 func (o ServiceMeshMembershipSpecDefaultChannelPtrOutput) ToServiceMeshMembershipSpecDefaultChannelPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecDefaultChannelPtrOutput {
 	return o
-}
-
-func (o ServiceMeshMembershipSpecDefaultChannelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecDefaultChannel] {
-	return pulumix.Output[*ServiceMeshMembershipSpecDefaultChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceMeshMembershipSpecDefaultChannelPtrOutput) Elem() ServiceMeshMembershipSpecDefaultChannelOutput {
@@ -3396,12 +3168,6 @@ func (o ServiceMeshMembershipSpecManagementOutput) ToServiceMeshMembershipSpecMa
 	}).(ServiceMeshMembershipSpecManagementPtrOutput)
 }
 
-func (o ServiceMeshMembershipSpecManagementOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMembershipSpecManagement] {
-	return pulumix.Output[ServiceMeshMembershipSpecManagement]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceMeshMembershipSpecManagementOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3435,12 +3201,6 @@ func (o ServiceMeshMembershipSpecManagementPtrOutput) ToServiceMeshMembershipSpe
 
 func (o ServiceMeshMembershipSpecManagementPtrOutput) ToServiceMeshMembershipSpecManagementPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecManagementPtrOutput {
 	return o
-}
-
-func (o ServiceMeshMembershipSpecManagementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecManagement] {
-	return pulumix.Output[*ServiceMeshMembershipSpecManagement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceMeshMembershipSpecManagementPtrOutput) Elem() ServiceMeshMembershipSpecManagementOutput {

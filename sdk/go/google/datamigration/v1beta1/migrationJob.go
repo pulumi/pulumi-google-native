@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new migration job in a given project and location.
@@ -214,12 +213,6 @@ func (i *MigrationJob) ToMigrationJobOutputWithContext(ctx context.Context) Migr
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobOutput)
 }
 
-func (i *MigrationJob) ToOutput(ctx context.Context) pulumix.Output[*MigrationJob] {
-	return pulumix.Output[*MigrationJob]{
-		OutputState: i.ToMigrationJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MigrationJobOutput struct{ *pulumi.OutputState }
 
 func (MigrationJobOutput) ElementType() reflect.Type {
@@ -232,12 +225,6 @@ func (o MigrationJobOutput) ToMigrationJobOutput() MigrationJobOutput {
 
 func (o MigrationJobOutput) ToMigrationJobOutputWithContext(ctx context.Context) MigrationJobOutput {
 	return o
-}
-
-func (o MigrationJobOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationJob] {
-	return pulumix.Output[*MigrationJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".

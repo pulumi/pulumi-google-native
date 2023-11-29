@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single connection profile.
@@ -93,12 +92,6 @@ func (o LookupConnectionProfileResultOutput) ToLookupConnectionProfileResultOutp
 
 func (o LookupConnectionProfileResultOutput) ToLookupConnectionProfileResultOutputWithContext(ctx context.Context) LookupConnectionProfileResultOutput {
 	return o
-}
-
-func (o LookupConnectionProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectionProfileResult] {
-	return pulumix.Output[LookupConnectionProfileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An AlloyDB cluster connection profile.

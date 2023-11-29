@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the details of a Scope.
@@ -83,12 +82,6 @@ func (o LookupScopeResultOutput) ToLookupScopeResultOutput() LookupScopeResultOu
 
 func (o LookupScopeResultOutput) ToLookupScopeResultOutputWithContext(ctx context.Context) LookupScopeResultOutput {
 	return o
-}
-
-func (o LookupScopeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScopeResult] {
-	return pulumix.Output[LookupScopeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the scope was created.

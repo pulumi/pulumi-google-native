@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single AppConnection.
@@ -89,12 +88,6 @@ func (o LookupAppConnectionResultOutput) ToLookupAppConnectionResultOutput() Loo
 
 func (o LookupAppConnectionResultOutput) ToLookupAppConnectionResultOutputWithContext(ctx context.Context) LookupAppConnectionResultOutput {
 	return o
-}
-
-func (o LookupAppConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppConnectionResult] {
-	return pulumix.Output[LookupAppConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Address of the remote application endpoint for the BeyondCorp AppConnection.

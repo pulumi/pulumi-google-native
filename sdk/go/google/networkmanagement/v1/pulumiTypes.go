@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -37,12 +36,6 @@ func (o AbortInfoResponseOutput) ToAbortInfoResponseOutput() AbortInfoResponseOu
 
 func (o AbortInfoResponseOutput) ToAbortInfoResponseOutputWithContext(ctx context.Context) AbortInfoResponseOutput {
 	return o
-}
-
-func (o AbortInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AbortInfoResponse] {
-	return pulumix.Output[AbortInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Causes that the analysis is aborted.
@@ -95,12 +88,6 @@ func (i AppEngineVersionEndpointArgs) ToAppEngineVersionEndpointOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionEndpointOutput)
 }
 
-func (i AppEngineVersionEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[AppEngineVersionEndpoint] {
-	return pulumix.Output[AppEngineVersionEndpoint]{
-		OutputState: i.ToAppEngineVersionEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppEngineVersionEndpointArgs) ToAppEngineVersionEndpointPtrOutput() AppEngineVersionEndpointPtrOutput {
 	return i.ToAppEngineVersionEndpointPtrOutputWithContext(context.Background())
 }
@@ -142,12 +129,6 @@ func (i *appEngineVersionEndpointPtrType) ToAppEngineVersionEndpointPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionEndpointPtrOutput)
 }
 
-func (i *appEngineVersionEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppEngineVersionEndpoint] {
-	return pulumix.Output[*AppEngineVersionEndpoint]{
-		OutputState: i.ToAppEngineVersionEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Wrapper for the App Engine service version attributes.
 type AppEngineVersionEndpointOutput struct{ *pulumi.OutputState }
 
@@ -173,12 +154,6 @@ func (o AppEngineVersionEndpointOutput) ToAppEngineVersionEndpointPtrOutputWithC
 	}).(AppEngineVersionEndpointPtrOutput)
 }
 
-func (o AppEngineVersionEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineVersionEndpoint] {
-	return pulumix.Output[AppEngineVersionEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
 func (o AppEngineVersionEndpointOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEngineVersionEndpoint) *string { return v.Uri }).(pulumi.StringPtrOutput)
@@ -196,12 +171,6 @@ func (o AppEngineVersionEndpointPtrOutput) ToAppEngineVersionEndpointPtrOutput()
 
 func (o AppEngineVersionEndpointPtrOutput) ToAppEngineVersionEndpointPtrOutputWithContext(ctx context.Context) AppEngineVersionEndpointPtrOutput {
 	return o
-}
-
-func (o AppEngineVersionEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineVersionEndpoint] {
-	return pulumix.Output[*AppEngineVersionEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppEngineVersionEndpointPtrOutput) Elem() AppEngineVersionEndpointOutput {
@@ -245,12 +214,6 @@ func (o AppEngineVersionEndpointResponseOutput) ToAppEngineVersionEndpointRespon
 	return o
 }
 
-func (o AppEngineVersionEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineVersionEndpointResponse] {
-	return pulumix.Output[AppEngineVersionEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
 func (o AppEngineVersionEndpointResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v AppEngineVersionEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
@@ -281,12 +244,6 @@ func (o AppEngineVersionInfoResponseOutput) ToAppEngineVersionInfoResponseOutput
 
 func (o AppEngineVersionInfoResponseOutput) ToAppEngineVersionInfoResponseOutputWithContext(ctx context.Context) AppEngineVersionInfoResponseOutput {
 	return o
-}
-
-func (o AppEngineVersionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineVersionInfoResponse] {
-	return pulumix.Output[AppEngineVersionInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of an App Engine version.
@@ -348,12 +305,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -379,12 +330,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -398,12 +343,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -428,12 +367,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -465,12 +398,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -493,12 +420,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -546,12 +467,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -577,12 +492,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -596,12 +505,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -626,12 +529,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -663,12 +560,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -691,12 +582,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -748,12 +633,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -779,12 +658,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -798,12 +671,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -833,12 +700,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -872,12 +733,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -905,12 +760,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -954,12 +803,6 @@ func (i CloudFunctionEndpointArgs) ToCloudFunctionEndpointOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CloudFunctionEndpointOutput)
 }
 
-func (i CloudFunctionEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[CloudFunctionEndpoint] {
-	return pulumix.Output[CloudFunctionEndpoint]{
-		OutputState: i.ToCloudFunctionEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CloudFunctionEndpointArgs) ToCloudFunctionEndpointPtrOutput() CloudFunctionEndpointPtrOutput {
 	return i.ToCloudFunctionEndpointPtrOutputWithContext(context.Background())
 }
@@ -1001,12 +844,6 @@ func (i *cloudFunctionEndpointPtrType) ToCloudFunctionEndpointPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CloudFunctionEndpointPtrOutput)
 }
 
-func (i *cloudFunctionEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudFunctionEndpoint] {
-	return pulumix.Output[*CloudFunctionEndpoint]{
-		OutputState: i.ToCloudFunctionEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Wrapper for Cloud Function attributes.
 type CloudFunctionEndpointOutput struct{ *pulumi.OutputState }
 
@@ -1032,12 +869,6 @@ func (o CloudFunctionEndpointOutput) ToCloudFunctionEndpointPtrOutputWithContext
 	}).(CloudFunctionEndpointPtrOutput)
 }
 
-func (o CloudFunctionEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[CloudFunctionEndpoint] {
-	return pulumix.Output[CloudFunctionEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A [Cloud Function](https://cloud.google.com/functions) name.
 func (o CloudFunctionEndpointOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudFunctionEndpoint) *string { return v.Uri }).(pulumi.StringPtrOutput)
@@ -1055,12 +886,6 @@ func (o CloudFunctionEndpointPtrOutput) ToCloudFunctionEndpointPtrOutput() Cloud
 
 func (o CloudFunctionEndpointPtrOutput) ToCloudFunctionEndpointPtrOutputWithContext(ctx context.Context) CloudFunctionEndpointPtrOutput {
 	return o
-}
-
-func (o CloudFunctionEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudFunctionEndpoint] {
-	return pulumix.Output[*CloudFunctionEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudFunctionEndpointPtrOutput) Elem() CloudFunctionEndpointOutput {
@@ -1104,12 +929,6 @@ func (o CloudFunctionEndpointResponseOutput) ToCloudFunctionEndpointResponseOutp
 	return o
 }
 
-func (o CloudFunctionEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudFunctionEndpointResponse] {
-	return pulumix.Output[CloudFunctionEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A [Cloud Function](https://cloud.google.com/functions) name.
 func (o CloudFunctionEndpointResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudFunctionEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
@@ -1140,12 +959,6 @@ func (o CloudFunctionInfoResponseOutput) ToCloudFunctionInfoResponseOutput() Clo
 
 func (o CloudFunctionInfoResponseOutput) ToCloudFunctionInfoResponseOutputWithContext(ctx context.Context) CloudFunctionInfoResponseOutput {
 	return o
-}
-
-func (o CloudFunctionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudFunctionInfoResponse] {
-	return pulumix.Output[CloudFunctionInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of a Cloud Function.
@@ -1203,12 +1016,6 @@ func (i CloudRunRevisionEndpointArgs) ToCloudRunRevisionEndpointOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRevisionEndpointOutput)
 }
 
-func (i CloudRunRevisionEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[CloudRunRevisionEndpoint] {
-	return pulumix.Output[CloudRunRevisionEndpoint]{
-		OutputState: i.ToCloudRunRevisionEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CloudRunRevisionEndpointArgs) ToCloudRunRevisionEndpointPtrOutput() CloudRunRevisionEndpointPtrOutput {
 	return i.ToCloudRunRevisionEndpointPtrOutputWithContext(context.Background())
 }
@@ -1250,12 +1057,6 @@ func (i *cloudRunRevisionEndpointPtrType) ToCloudRunRevisionEndpointPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRevisionEndpointPtrOutput)
 }
 
-func (i *cloudRunRevisionEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudRunRevisionEndpoint] {
-	return pulumix.Output[*CloudRunRevisionEndpoint]{
-		OutputState: i.ToCloudRunRevisionEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Wrapper for Cloud Run revision attributes.
 type CloudRunRevisionEndpointOutput struct{ *pulumi.OutputState }
 
@@ -1281,12 +1082,6 @@ func (o CloudRunRevisionEndpointOutput) ToCloudRunRevisionEndpointPtrOutputWithC
 	}).(CloudRunRevisionEndpointPtrOutput)
 }
 
-func (o CloudRunRevisionEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunRevisionEndpoint] {
-	return pulumix.Output[CloudRunRevisionEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
 func (o CloudRunRevisionEndpointOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudRunRevisionEndpoint) *string { return v.Uri }).(pulumi.StringPtrOutput)
@@ -1304,12 +1099,6 @@ func (o CloudRunRevisionEndpointPtrOutput) ToCloudRunRevisionEndpointPtrOutput()
 
 func (o CloudRunRevisionEndpointPtrOutput) ToCloudRunRevisionEndpointPtrOutputWithContext(ctx context.Context) CloudRunRevisionEndpointPtrOutput {
 	return o
-}
-
-func (o CloudRunRevisionEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudRunRevisionEndpoint] {
-	return pulumix.Output[*CloudRunRevisionEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudRunRevisionEndpointPtrOutput) Elem() CloudRunRevisionEndpointOutput {
@@ -1353,12 +1142,6 @@ func (o CloudRunRevisionEndpointResponseOutput) ToCloudRunRevisionEndpointRespon
 	return o
 }
 
-func (o CloudRunRevisionEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunRevisionEndpointResponse] {
-	return pulumix.Output[CloudRunRevisionEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
 func (o CloudRunRevisionEndpointResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunRevisionEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
@@ -1389,12 +1172,6 @@ func (o CloudRunRevisionInfoResponseOutput) ToCloudRunRevisionInfoResponseOutput
 
 func (o CloudRunRevisionInfoResponseOutput) ToCloudRunRevisionInfoResponseOutputWithContext(ctx context.Context) CloudRunRevisionInfoResponseOutput {
 	return o
-}
-
-func (o CloudRunRevisionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunRevisionInfoResponse] {
-	return pulumix.Output[CloudRunRevisionInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of a Cloud Run revision.
@@ -1446,12 +1223,6 @@ func (o CloudSQLInstanceInfoResponseOutput) ToCloudSQLInstanceInfoResponseOutput
 
 func (o CloudSQLInstanceInfoResponseOutput) ToCloudSQLInstanceInfoResponseOutputWithContext(ctx context.Context) CloudSQLInstanceInfoResponseOutput {
 	return o
-}
-
-func (o CloudSQLInstanceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSQLInstanceInfoResponse] {
-	return pulumix.Output[CloudSQLInstanceInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of a Cloud SQL instance.
@@ -1507,12 +1278,6 @@ func (o DeliverInfoResponseOutput) ToDeliverInfoResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o DeliverInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeliverInfoResponse] {
-	return pulumix.Output[DeliverInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // URI of the resource that the packet is delivered to.
 func (o DeliverInfoResponseOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliverInfoResponse) string { return v.ResourceUri }).(pulumi.StringOutput)
@@ -1546,12 +1311,6 @@ func (o DropInfoResponseOutput) ToDropInfoResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o DropInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DropInfoResponse] {
-	return pulumix.Output[DropInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cause that the packet is dropped.
 func (o DropInfoResponseOutput) Cause() pulumi.StringOutput {
 	return o.ApplyT(func(v DropInfoResponse) string { return v.Cause }).(pulumi.StringOutput)
@@ -1581,12 +1340,6 @@ func (o EdgeLocationResponseOutput) ToEdgeLocationResponseOutput() EdgeLocationR
 
 func (o EdgeLocationResponseOutput) ToEdgeLocationResponseOutputWithContext(ctx context.Context) EdgeLocationResponseOutput {
 	return o
-}
-
-func (o EdgeLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeLocationResponse] {
-	return pulumix.Output[EdgeLocationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the metropolitan area.
@@ -1673,12 +1426,6 @@ func (i EndpointArgs) ToEndpointOutputWithContext(ctx context.Context) EndpointO
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointOutput)
 }
 
-func (i EndpointArgs) ToOutput(ctx context.Context) pulumix.Output[Endpoint] {
-	return pulumix.Output[Endpoint]{
-		OutputState: i.ToEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Source or destination of the Connectivity Test.
 type EndpointOutput struct{ *pulumi.OutputState }
 
@@ -1692,12 +1439,6 @@ func (o EndpointOutput) ToEndpointOutput() EndpointOutput {
 
 func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
 	return o
-}
-
-func (o EndpointOutput) ToOutput(ctx context.Context) pulumix.Output[Endpoint] {
-	return pulumix.Output[Endpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
@@ -1795,12 +1536,6 @@ func (o EndpointInfoResponseOutput) ToEndpointInfoResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o EndpointInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointInfoResponse] {
-	return pulumix.Output[EndpointInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Destination IP address.
 func (o EndpointInfoResponseOutput) DestinationIp() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointInfoResponse) string { return v.DestinationIp }).(pulumi.StringOutput)
@@ -1888,12 +1623,6 @@ func (o EndpointResponseOutput) ToEndpointResponseOutput() EndpointResponseOutpu
 
 func (o EndpointResponseOutput) ToEndpointResponseOutputWithContext(ctx context.Context) EndpointResponseOutput {
 	return o
-}
-
-func (o EndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointResponse] {
-	return pulumix.Output[EndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
@@ -2018,12 +1747,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -2065,12 +1788,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -2094,12 +1811,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2134,12 +1845,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -2219,12 +1924,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -2282,12 +1981,6 @@ func (o FirewallInfoResponseOutput) ToFirewallInfoResponseOutput() FirewallInfoR
 
 func (o FirewallInfoResponseOutput) ToFirewallInfoResponseOutputWithContext(ctx context.Context) FirewallInfoResponseOutput {
 	return o
-}
-
-func (o FirewallInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallInfoResponse] {
-	return pulumix.Output[FirewallInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Possible values: ALLOW, DENY
@@ -2363,12 +2056,6 @@ func (o ForwardInfoResponseOutput) ToForwardInfoResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ForwardInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardInfoResponse] {
-	return pulumix.Output[ForwardInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // URI of the resource that the packet is forwarded to.
 func (o ForwardInfoResponseOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardInfoResponse) string { return v.ResourceUri }).(pulumi.StringOutput)
@@ -2410,12 +2097,6 @@ func (o ForwardingRuleInfoResponseOutput) ToForwardingRuleInfoResponseOutput() F
 
 func (o ForwardingRuleInfoResponseOutput) ToForwardingRuleInfoResponseOutputWithContext(ctx context.Context) ForwardingRuleInfoResponseOutput {
 	return o
-}
-
-func (o ForwardingRuleInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardingRuleInfoResponse] {
-	return pulumix.Output[ForwardingRuleInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of a Compute Engine forwarding rule.
@@ -2480,12 +2161,6 @@ func (o GKEMasterInfoResponseOutput) ToGKEMasterInfoResponseOutputWithContext(ct
 	return o
 }
 
-func (o GKEMasterInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GKEMasterInfoResponse] {
-	return pulumix.Output[GKEMasterInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // URI of a GKE cluster network.
 func (o GKEMasterInfoResponseOutput) ClusterNetworkUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GKEMasterInfoResponse) string { return v.ClusterNetworkUri }).(pulumi.StringOutput)
@@ -2527,12 +2202,6 @@ func (o GoogleServiceInfoResponseOutput) ToGoogleServiceInfoResponseOutput() Goo
 
 func (o GoogleServiceInfoResponseOutput) ToGoogleServiceInfoResponseOutputWithContext(ctx context.Context) GoogleServiceInfoResponseOutput {
 	return o
-}
-
-func (o GoogleServiceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleServiceInfoResponse] {
-	return pulumix.Output[GoogleServiceInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Recognized type of a Google Service.
@@ -2578,12 +2247,6 @@ func (o InstanceInfoResponseOutput) ToInstanceInfoResponseOutput() InstanceInfoR
 
 func (o InstanceInfoResponseOutput) ToInstanceInfoResponseOutputWithContext(ctx context.Context) InstanceInfoResponseOutput {
 	return o
-}
-
-func (o InstanceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceInfoResponse] {
-	return pulumix.Output[InstanceInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of a Compute Engine instance.
@@ -2647,12 +2310,6 @@ func (o LatencyDistributionResponseOutput) ToLatencyDistributionResponseOutputWi
 	return o
 }
 
-func (o LatencyDistributionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LatencyDistributionResponse] {
-	return pulumix.Output[LatencyDistributionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Representative latency percentiles.
 func (o LatencyDistributionResponseOutput) LatencyPercentiles() LatencyPercentileResponseArrayOutput {
 	return o.ApplyT(func(v LatencyDistributionResponse) []LatencyPercentileResponse { return v.LatencyPercentiles }).(LatencyPercentileResponseArrayOutput)
@@ -2681,12 +2338,6 @@ func (o LatencyPercentileResponseOutput) ToLatencyPercentileResponseOutputWithCo
 	return o
 }
 
-func (o LatencyPercentileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LatencyPercentileResponse] {
-	return pulumix.Output[LatencyPercentileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have latency lower or equal to the value of this field.
 func (o LatencyPercentileResponseOutput) LatencyMicros() pulumi.StringOutput {
 	return o.ApplyT(func(v LatencyPercentileResponse) string { return v.LatencyMicros }).(pulumi.StringOutput)
@@ -2709,12 +2360,6 @@ func (o LatencyPercentileResponseArrayOutput) ToLatencyPercentileResponseArrayOu
 
 func (o LatencyPercentileResponseArrayOutput) ToLatencyPercentileResponseArrayOutputWithContext(ctx context.Context) LatencyPercentileResponseArrayOutput {
 	return o
-}
-
-func (o LatencyPercentileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LatencyPercentileResponse] {
-	return pulumix.Output[[]LatencyPercentileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LatencyPercentileResponseArrayOutput) Index(i pulumi.IntInput) LatencyPercentileResponseOutput {
@@ -2750,12 +2395,6 @@ func (o LoadBalancerBackendResponseOutput) ToLoadBalancerBackendResponseOutput()
 
 func (o LoadBalancerBackendResponseOutput) ToLoadBalancerBackendResponseOutputWithContext(ctx context.Context) LoadBalancerBackendResponseOutput {
 	return o
-}
-
-func (o LoadBalancerBackendResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerBackendResponse] {
-	return pulumix.Output[LoadBalancerBackendResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of a Compute Engine instance or network endpoint.
@@ -2797,12 +2436,6 @@ func (o LoadBalancerBackendResponseArrayOutput) ToLoadBalancerBackendResponseArr
 	return o
 }
 
-func (o LoadBalancerBackendResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerBackendResponse] {
-	return pulumix.Output[[]LoadBalancerBackendResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LoadBalancerBackendResponseArrayOutput) Index(i pulumi.IntInput) LoadBalancerBackendResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerBackendResponse {
 		return vs[0].([]LoadBalancerBackendResponse)[vs[1].(int)]
@@ -2838,12 +2471,6 @@ func (o LoadBalancerInfoResponseOutput) ToLoadBalancerInfoResponseOutput() LoadB
 
 func (o LoadBalancerInfoResponseOutput) ToLoadBalancerInfoResponseOutputWithContext(ctx context.Context) LoadBalancerInfoResponseOutput {
 	return o
-}
-
-func (o LoadBalancerInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerInfoResponse] {
-	return pulumix.Output[LoadBalancerInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of load balancer's backend configuration.
@@ -2898,12 +2525,6 @@ func (o NetworkInfoResponseOutput) ToNetworkInfoResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o NetworkInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInfoResponse] {
-	return pulumix.Output[NetworkInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of a Compute Engine network.
 func (o NetworkInfoResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInfoResponse) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -2954,12 +2575,6 @@ func (o ProbingDetailsResponseOutput) ToProbingDetailsResponseOutput() ProbingDe
 
 func (o ProbingDetailsResponseOutput) ToProbingDetailsResponseOutputWithContext(ctx context.Context) ProbingDetailsResponseOutput {
 	return o
-}
-
-func (o ProbingDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProbingDetailsResponse] {
-	return pulumix.Output[ProbingDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The reason probing was aborted.
@@ -3034,12 +2649,6 @@ func (o ReachabilityDetailsResponseOutput) ToReachabilityDetailsResponseOutputWi
 	return o
 }
 
-func (o ReachabilityDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReachabilityDetailsResponse] {
-	return pulumix.Output[ReachabilityDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The details of a failure or a cancellation of reachability analysis.
 func (o ReachabilityDetailsResponseOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v ReachabilityDetailsResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
@@ -3109,12 +2718,6 @@ func (o RouteInfoResponseOutput) ToRouteInfoResponseOutput() RouteInfoResponseOu
 
 func (o RouteInfoResponseOutput) ToRouteInfoResponseOutputWithContext(ctx context.Context) RouteInfoResponseOutput {
 	return o
-}
-
-func (o RouteInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RouteInfoResponse] {
-	return pulumix.Output[RouteInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Destination IP range of the route.
@@ -3222,12 +2825,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -3308,12 +2905,6 @@ func (o StepResponseOutput) ToStepResponseOutput() StepResponseOutput {
 
 func (o StepResponseOutput) ToStepResponseOutputWithContext(ctx context.Context) StepResponseOutput {
 	return o
-}
-
-func (o StepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StepResponse] {
-	return pulumix.Output[StepResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display information of the final state "abort" and reason.
@@ -3450,12 +3041,6 @@ func (o StepResponseArrayOutput) ToStepResponseArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o StepResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StepResponse] {
-	return pulumix.Output[[]StepResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StepResponseArrayOutput) Index(i pulumi.IntInput) StepResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StepResponse {
 		return vs[0].([]StepResponse)[vs[1].(int)]
@@ -3485,12 +3070,6 @@ func (o TraceResponseOutput) ToTraceResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o TraceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TraceResponse] {
-	return pulumix.Output[TraceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
 func (o TraceResponseOutput) EndpointInfo() EndpointInfoResponseOutput {
 	return o.ApplyT(func(v TraceResponse) EndpointInfoResponse { return v.EndpointInfo }).(EndpointInfoResponseOutput)
@@ -3513,12 +3092,6 @@ func (o TraceResponseArrayOutput) ToTraceResponseArrayOutput() TraceResponseArra
 
 func (o TraceResponseArrayOutput) ToTraceResponseArrayOutputWithContext(ctx context.Context) TraceResponseArrayOutput {
 	return o
-}
-
-func (o TraceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TraceResponse] {
-	return pulumix.Output[[]TraceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TraceResponseArrayOutput) Index(i pulumi.IntInput) TraceResponseOutput {
@@ -3550,12 +3123,6 @@ func (o VpcConnectorInfoResponseOutput) ToVpcConnectorInfoResponseOutput() VpcCo
 
 func (o VpcConnectorInfoResponseOutput) ToVpcConnectorInfoResponseOutputWithContext(ctx context.Context) VpcConnectorInfoResponseOutput {
 	return o
-}
-
-func (o VpcConnectorInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VpcConnectorInfoResponse] {
-	return pulumix.Output[VpcConnectorInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of a VPC connector.
@@ -3602,12 +3169,6 @@ func (o VpnGatewayInfoResponseOutput) ToVpnGatewayInfoResponseOutput() VpnGatewa
 
 func (o VpnGatewayInfoResponseOutput) ToVpnGatewayInfoResponseOutputWithContext(ctx context.Context) VpnGatewayInfoResponseOutput {
 	return o
-}
-
-func (o VpnGatewayInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VpnGatewayInfoResponse] {
-	return pulumix.Output[VpnGatewayInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of a VPN gateway.
@@ -3675,12 +3236,6 @@ func (o VpnTunnelInfoResponseOutput) ToVpnTunnelInfoResponseOutput() VpnTunnelIn
 
 func (o VpnTunnelInfoResponseOutput) ToVpnTunnelInfoResponseOutputWithContext(ctx context.Context) VpnTunnelInfoResponseOutput {
 	return o
-}
-
-func (o VpnTunnelInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VpnTunnelInfoResponse] {
-	return pulumix.Output[VpnTunnelInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of a VPN tunnel.

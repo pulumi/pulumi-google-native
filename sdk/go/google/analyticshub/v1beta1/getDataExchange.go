@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a data exchange.
@@ -81,12 +80,6 @@ func (o LookupDataExchangeResultOutput) ToLookupDataExchangeResultOutput() Looku
 
 func (o LookupDataExchangeResultOutput) ToLookupDataExchangeResultOutputWithContext(ctx context.Context) LookupDataExchangeResultOutput {
 	return o
-}
-
-func (o LookupDataExchangeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataExchangeResult] {
-	return pulumix.Output[LookupDataExchangeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.

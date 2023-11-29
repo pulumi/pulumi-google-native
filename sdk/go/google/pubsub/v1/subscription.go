@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a subscription to a given topic. See the [resource name rules] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in the returned Subscription object. Note that for REST API requests, you must specify a name in the request.
@@ -205,12 +204,6 @@ func (i *Subscription) ToSubscriptionOutputWithContext(ctx context.Context) Subs
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionOutput)
 }
 
-func (i *Subscription) ToOutput(ctx context.Context) pulumix.Output[*Subscription] {
-	return pulumix.Output[*Subscription]{
-		OutputState: i.ToSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubscriptionOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionOutput) ElementType() reflect.Type {
@@ -223,12 +216,6 @@ func (o SubscriptionOutput) ToSubscriptionOutput() SubscriptionOutput {
 
 func (o SubscriptionOutput) ToSubscriptionOutputWithContext(ctx context.Context) SubscriptionOutput {
 	return o
-}
-
-func (o SubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*Subscription] {
-	return pulumix.Output[*Subscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.

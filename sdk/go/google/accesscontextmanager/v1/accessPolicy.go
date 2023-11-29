@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an access policy. This method fails if the organization already has an access policy. The long-running operation has a successful status after the access policy propagates to long-lasting storage. Syntactic and basic semantic errors are returned in `metadata` as a BadRequest proto.
@@ -117,12 +116,6 @@ func (i *AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) Acce
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyOutput)
 }
 
-func (i *AccessPolicy) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicy] {
-	return pulumix.Output[*AccessPolicy]{
-		OutputState: i.ToAccessPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyOutput) ElementType() reflect.Type {
@@ -135,12 +128,6 @@ func (o AccessPolicyOutput) ToAccessPolicyOutput() AccessPolicyOutput {
 
 func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
 	return o
-}
-
-func (o AccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicy] {
-	return pulumix.Output[*AccessPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.

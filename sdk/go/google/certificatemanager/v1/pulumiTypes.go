@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o AuthorizationAttemptInfoResponseOutput) ToAuthorizationAttemptInfoRespon
 
 func (o AuthorizationAttemptInfoResponseOutput) ToAuthorizationAttemptInfoResponseOutputWithContext(ctx context.Context) AuthorizationAttemptInfoResponseOutput {
 	return o
-}
-
-func (o AuthorizationAttemptInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationAttemptInfoResponse] {
-	return pulumix.Output[AuthorizationAttemptInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use FailureReason enum.
@@ -79,12 +72,6 @@ func (o AuthorizationAttemptInfoResponseArrayOutput) ToAuthorizationAttemptInfoR
 
 func (o AuthorizationAttemptInfoResponseArrayOutput) ToAuthorizationAttemptInfoResponseArrayOutputWithContext(ctx context.Context) AuthorizationAttemptInfoResponseArrayOutput {
 	return o
-}
-
-func (o AuthorizationAttemptInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationAttemptInfoResponse] {
-	return pulumix.Output[[]AuthorizationAttemptInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationAttemptInfoResponseArrayOutput) Index(i pulumi.IntInput) AuthorizationAttemptInfoResponseOutput {
@@ -128,12 +115,6 @@ func (i CertificateAuthorityConfigArgs) ToCertificateAuthorityConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityConfigOutput)
 }
 
-func (i CertificateAuthorityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateAuthorityConfig] {
-	return pulumix.Output[CertificateAuthorityConfig]{
-		OutputState: i.ToCertificateAuthorityConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
 type CertificateAuthorityConfigOutput struct{ *pulumi.OutputState }
 
@@ -147,12 +128,6 @@ func (o CertificateAuthorityConfigOutput) ToCertificateAuthorityConfigOutput() C
 
 func (o CertificateAuthorityConfigOutput) ToCertificateAuthorityConfigOutputWithContext(ctx context.Context) CertificateAuthorityConfigOutput {
 	return o
-}
-
-func (o CertificateAuthorityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateAuthorityConfig] {
-	return pulumix.Output[CertificateAuthorityConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines a CertificateAuthorityServiceConfig.
@@ -181,12 +156,6 @@ func (o CertificateAuthorityConfigResponseOutput) ToCertificateAuthorityConfigRe
 
 func (o CertificateAuthorityConfigResponseOutput) ToCertificateAuthorityConfigResponseOutputWithContext(ctx context.Context) CertificateAuthorityConfigResponseOutput {
 	return o
-}
-
-func (o CertificateAuthorityConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateAuthorityConfigResponse] {
-	return pulumix.Output[CertificateAuthorityConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines a CertificateAuthorityServiceConfig.
@@ -231,12 +200,6 @@ func (i CertificateAuthorityServiceConfigArgs) ToCertificateAuthorityServiceConf
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityServiceConfigOutput)
 }
 
-func (i CertificateAuthorityServiceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateAuthorityServiceConfig] {
-	return pulumix.Output[CertificateAuthorityServiceConfig]{
-		OutputState: i.ToCertificateAuthorityServiceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CertificateAuthorityServiceConfigArgs) ToCertificateAuthorityServiceConfigPtrOutput() CertificateAuthorityServiceConfigPtrOutput {
 	return i.ToCertificateAuthorityServiceConfigPtrOutputWithContext(context.Background())
 }
@@ -278,12 +241,6 @@ func (i *certificateAuthorityServiceConfigPtrType) ToCertificateAuthorityService
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityServiceConfigPtrOutput)
 }
 
-func (i *certificateAuthorityServiceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*CertificateAuthorityServiceConfig] {
-	return pulumix.Output[*CertificateAuthorityServiceConfig]{
-		OutputState: i.ToCertificateAuthorityServiceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains information required to contact CA service.
 type CertificateAuthorityServiceConfigOutput struct{ *pulumi.OutputState }
 
@@ -309,12 +266,6 @@ func (o CertificateAuthorityServiceConfigOutput) ToCertificateAuthorityServiceCo
 	}).(CertificateAuthorityServiceConfigPtrOutput)
 }
 
-func (o CertificateAuthorityServiceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateAuthorityServiceConfig] {
-	return pulumix.Output[CertificateAuthorityServiceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
 func (o CertificateAuthorityServiceConfigOutput) CaPool() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateAuthorityServiceConfig) string { return v.CaPool }).(pulumi.StringOutput)
@@ -332,12 +283,6 @@ func (o CertificateAuthorityServiceConfigPtrOutput) ToCertificateAuthorityServic
 
 func (o CertificateAuthorityServiceConfigPtrOutput) ToCertificateAuthorityServiceConfigPtrOutputWithContext(ctx context.Context) CertificateAuthorityServiceConfigPtrOutput {
 	return o
-}
-
-func (o CertificateAuthorityServiceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateAuthorityServiceConfig] {
-	return pulumix.Output[*CertificateAuthorityServiceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateAuthorityServiceConfigPtrOutput) Elem() CertificateAuthorityServiceConfigOutput {
@@ -381,12 +326,6 @@ func (o CertificateAuthorityServiceConfigResponseOutput) ToCertificateAuthorityS
 	return o
 }
 
-func (o CertificateAuthorityServiceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateAuthorityServiceConfigResponse] {
-	return pulumix.Output[CertificateAuthorityServiceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
 func (o CertificateAuthorityServiceConfigResponseOutput) CaPool() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateAuthorityServiceConfigResponse) string { return v.CaPool }).(pulumi.StringOutput)
@@ -415,12 +354,6 @@ func (o DnsResourceRecordResponseOutput) ToDnsResourceRecordResponseOutput() Dns
 
 func (o DnsResourceRecordResponseOutput) ToDnsResourceRecordResponseOutputWithContext(ctx context.Context) DnsResourceRecordResponseOutput {
 	return o
-}
-
-func (o DnsResourceRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsResourceRecordResponse] {
-	return pulumix.Output[DnsResourceRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data of the DNS Resource Record.
@@ -463,12 +396,6 @@ func (o GclbTargetResponseOutput) ToGclbTargetResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o GclbTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GclbTargetResponse] {
-	return pulumix.Output[GclbTargetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // IP configurations for this Target Proxy where the Certificate Map is serving.
 func (o GclbTargetResponseOutput) IpConfigs() IpConfigResponseArrayOutput {
 	return o.ApplyT(func(v GclbTargetResponse) []IpConfigResponse { return v.IpConfigs }).(IpConfigResponseArrayOutput)
@@ -496,12 +423,6 @@ func (o GclbTargetResponseArrayOutput) ToGclbTargetResponseArrayOutput() GclbTar
 
 func (o GclbTargetResponseArrayOutput) ToGclbTargetResponseArrayOutputWithContext(ctx context.Context) GclbTargetResponseArrayOutput {
 	return o
-}
-
-func (o GclbTargetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GclbTargetResponse] {
-	return pulumix.Output[[]GclbTargetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GclbTargetResponseArrayOutput) Index(i pulumi.IntInput) GclbTargetResponseOutput {
@@ -545,12 +466,6 @@ func (i IntermediateCAArgs) ToIntermediateCAOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(IntermediateCAOutput)
 }
 
-func (i IntermediateCAArgs) ToOutput(ctx context.Context) pulumix.Output[IntermediateCA] {
-	return pulumix.Output[IntermediateCA]{
-		OutputState: i.ToIntermediateCAOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IntermediateCAArrayInput is an input type that accepts IntermediateCAArray and IntermediateCAArrayOutput values.
 // You can construct a concrete instance of `IntermediateCAArrayInput` via:
 //
@@ -576,12 +491,6 @@ func (i IntermediateCAArray) ToIntermediateCAArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(IntermediateCAArrayOutput)
 }
 
-func (i IntermediateCAArray) ToOutput(ctx context.Context) pulumix.Output[[]IntermediateCA] {
-	return pulumix.Output[[]IntermediateCA]{
-		OutputState: i.ToIntermediateCAArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines an intermediate CA.
 type IntermediateCAOutput struct{ *pulumi.OutputState }
 
@@ -595,12 +504,6 @@ func (o IntermediateCAOutput) ToIntermediateCAOutput() IntermediateCAOutput {
 
 func (o IntermediateCAOutput) ToIntermediateCAOutputWithContext(ctx context.Context) IntermediateCAOutput {
 	return o
-}
-
-func (o IntermediateCAOutput) ToOutput(ctx context.Context) pulumix.Output[IntermediateCA] {
-	return pulumix.Output[IntermediateCA]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
@@ -620,12 +523,6 @@ func (o IntermediateCAArrayOutput) ToIntermediateCAArrayOutput() IntermediateCAA
 
 func (o IntermediateCAArrayOutput) ToIntermediateCAArrayOutputWithContext(ctx context.Context) IntermediateCAArrayOutput {
 	return o
-}
-
-func (o IntermediateCAArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntermediateCA] {
-	return pulumix.Output[[]IntermediateCA]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntermediateCAArrayOutput) Index(i pulumi.IntInput) IntermediateCAOutput {
@@ -655,12 +552,6 @@ func (o IntermediateCAResponseOutput) ToIntermediateCAResponseOutputWithContext(
 	return o
 }
 
-func (o IntermediateCAResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IntermediateCAResponse] {
-	return pulumix.Output[IntermediateCAResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
 func (o IntermediateCAResponseOutput) PemCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v IntermediateCAResponse) string { return v.PemCertificate }).(pulumi.StringOutput)
@@ -678,12 +569,6 @@ func (o IntermediateCAResponseArrayOutput) ToIntermediateCAResponseArrayOutput()
 
 func (o IntermediateCAResponseArrayOutput) ToIntermediateCAResponseArrayOutputWithContext(ctx context.Context) IntermediateCAResponseArrayOutput {
 	return o
-}
-
-func (o IntermediateCAResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntermediateCAResponse] {
-	return pulumix.Output[[]IntermediateCAResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntermediateCAResponseArrayOutput) Index(i pulumi.IntInput) IntermediateCAResponseOutput {
@@ -715,12 +600,6 @@ func (o IpConfigResponseOutput) ToIpConfigResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IpConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IpConfigResponse] {
-	return pulumix.Output[IpConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An external IP address.
 func (o IpConfigResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v IpConfigResponse) string { return v.IpAddress }).(pulumi.StringOutput)
@@ -743,12 +622,6 @@ func (o IpConfigResponseArrayOutput) ToIpConfigResponseArrayOutput() IpConfigRes
 
 func (o IpConfigResponseArrayOutput) ToIpConfigResponseArrayOutputWithContext(ctx context.Context) IpConfigResponseArrayOutput {
 	return o
-}
-
-func (o IpConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpConfigResponse] {
-	return pulumix.Output[[]IpConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpConfigResponseArrayOutput) Index(i pulumi.IntInput) IpConfigResponseOutput {
@@ -800,12 +673,6 @@ func (i ManagedCertificateArgs) ToManagedCertificateOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificateOutput)
 }
 
-func (i ManagedCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedCertificate] {
-	return pulumix.Output[ManagedCertificate]{
-		OutputState: i.ToManagedCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedCertificateArgs) ToManagedCertificatePtrOutput() ManagedCertificatePtrOutput {
 	return i.ToManagedCertificatePtrOutputWithContext(context.Background())
 }
@@ -847,12 +714,6 @@ func (i *managedCertificatePtrType) ToManagedCertificatePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificatePtrOutput)
 }
 
-func (i *managedCertificatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedCertificate] {
-	return pulumix.Output[*ManagedCertificate]{
-		OutputState: i.ToManagedCertificatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.
 type ManagedCertificateOutput struct{ *pulumi.OutputState }
 
@@ -876,12 +737,6 @@ func (o ManagedCertificateOutput) ToManagedCertificatePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedCertificate) *ManagedCertificate {
 		return &v
 	}).(ManagedCertificatePtrOutput)
-}
-
-func (o ManagedCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedCertificate] {
-	return pulumix.Output[ManagedCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Authorizations that will be used for performing domain authorization.
@@ -911,12 +766,6 @@ func (o ManagedCertificatePtrOutput) ToManagedCertificatePtrOutput() ManagedCert
 
 func (o ManagedCertificatePtrOutput) ToManagedCertificatePtrOutputWithContext(ctx context.Context) ManagedCertificatePtrOutput {
 	return o
-}
-
-func (o ManagedCertificatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedCertificate] {
-	return pulumix.Output[*ManagedCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedCertificatePtrOutput) Elem() ManagedCertificateOutput {
@@ -990,12 +839,6 @@ func (o ManagedCertificateResponseOutput) ToManagedCertificateResponseOutputWith
 	return o
 }
 
-func (o ManagedCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedCertificateResponse] {
-	return pulumix.Output[ManagedCertificateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Detailed state of the latest authorization attempt for each domain specified for managed certificate resource.
 func (o ManagedCertificateResponseOutput) AuthorizationAttemptInfo() AuthorizationAttemptInfoResponseArrayOutput {
 	return o.ApplyT(func(v ManagedCertificateResponse) []AuthorizationAttemptInfoResponse {
@@ -1051,12 +894,6 @@ func (o ProvisioningIssueResponseOutput) ToProvisioningIssueResponseOutputWithCo
 	return o
 }
 
-func (o ProvisioningIssueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProvisioningIssueResponse] {
-	return pulumix.Output[ProvisioningIssueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
 func (o ProvisioningIssueResponseOutput) Details() pulumi.StringOutput {
 	return o.ApplyT(func(v ProvisioningIssueResponse) string { return v.Details }).(pulumi.StringOutput)
@@ -1106,12 +943,6 @@ func (i SelfManagedCertificateArgs) ToSelfManagedCertificateOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SelfManagedCertificateOutput)
 }
 
-func (i SelfManagedCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[SelfManagedCertificate] {
-	return pulumix.Output[SelfManagedCertificate]{
-		OutputState: i.ToSelfManagedCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SelfManagedCertificateArgs) ToSelfManagedCertificatePtrOutput() SelfManagedCertificatePtrOutput {
 	return i.ToSelfManagedCertificatePtrOutputWithContext(context.Background())
 }
@@ -1153,12 +984,6 @@ func (i *selfManagedCertificatePtrType) ToSelfManagedCertificatePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(SelfManagedCertificatePtrOutput)
 }
 
-func (i *selfManagedCertificatePtrType) ToOutput(ctx context.Context) pulumix.Output[*SelfManagedCertificate] {
-	return pulumix.Output[*SelfManagedCertificate]{
-		OutputState: i.ToSelfManagedCertificatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Certificate data for a SelfManaged Certificate. SelfManaged Certificates are uploaded by the user. Updating such certificates before they expire remains the user's responsibility.
 type SelfManagedCertificateOutput struct{ *pulumi.OutputState }
 
@@ -1184,12 +1009,6 @@ func (o SelfManagedCertificateOutput) ToSelfManagedCertificatePtrOutputWithConte
 	}).(SelfManagedCertificatePtrOutput)
 }
 
-func (o SelfManagedCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[SelfManagedCertificate] {
-	return pulumix.Output[SelfManagedCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any.
 func (o SelfManagedCertificateOutput) PemCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SelfManagedCertificate) *string { return v.PemCertificate }).(pulumi.StringPtrOutput)
@@ -1212,12 +1031,6 @@ func (o SelfManagedCertificatePtrOutput) ToSelfManagedCertificatePtrOutput() Sel
 
 func (o SelfManagedCertificatePtrOutput) ToSelfManagedCertificatePtrOutputWithContext(ctx context.Context) SelfManagedCertificatePtrOutput {
 	return o
-}
-
-func (o SelfManagedCertificatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SelfManagedCertificate] {
-	return pulumix.Output[*SelfManagedCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SelfManagedCertificatePtrOutput) Elem() SelfManagedCertificateOutput {
@@ -1273,12 +1086,6 @@ func (o SelfManagedCertificateResponseOutput) ToSelfManagedCertificateResponseOu
 	return o
 }
 
-func (o SelfManagedCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SelfManagedCertificateResponse] {
-	return pulumix.Output[SelfManagedCertificateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any.
 func (o SelfManagedCertificateResponseOutput) PemCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v SelfManagedCertificateResponse) string { return v.PemCertificate }).(pulumi.StringOutput)
@@ -1324,12 +1131,6 @@ func (i TrustAnchorArgs) ToTrustAnchorOutputWithContext(ctx context.Context) Tru
 	return pulumi.ToOutputWithContext(ctx, i).(TrustAnchorOutput)
 }
 
-func (i TrustAnchorArgs) ToOutput(ctx context.Context) pulumix.Output[TrustAnchor] {
-	return pulumix.Output[TrustAnchor]{
-		OutputState: i.ToTrustAnchorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TrustAnchorArrayInput is an input type that accepts TrustAnchorArray and TrustAnchorArrayOutput values.
 // You can construct a concrete instance of `TrustAnchorArrayInput` via:
 //
@@ -1355,12 +1156,6 @@ func (i TrustAnchorArray) ToTrustAnchorArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TrustAnchorArrayOutput)
 }
 
-func (i TrustAnchorArray) ToOutput(ctx context.Context) pulumix.Output[[]TrustAnchor] {
-	return pulumix.Output[[]TrustAnchor]{
-		OutputState: i.ToTrustAnchorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a trust anchor.
 type TrustAnchorOutput struct{ *pulumi.OutputState }
 
@@ -1374,12 +1169,6 @@ func (o TrustAnchorOutput) ToTrustAnchorOutput() TrustAnchorOutput {
 
 func (o TrustAnchorOutput) ToTrustAnchorOutputWithContext(ctx context.Context) TrustAnchorOutput {
 	return o
-}
-
-func (o TrustAnchorOutput) ToOutput(ctx context.Context) pulumix.Output[TrustAnchor] {
-	return pulumix.Output[TrustAnchor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
@@ -1399,12 +1188,6 @@ func (o TrustAnchorArrayOutput) ToTrustAnchorArrayOutput() TrustAnchorArrayOutpu
 
 func (o TrustAnchorArrayOutput) ToTrustAnchorArrayOutputWithContext(ctx context.Context) TrustAnchorArrayOutput {
 	return o
-}
-
-func (o TrustAnchorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrustAnchor] {
-	return pulumix.Output[[]TrustAnchor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrustAnchorArrayOutput) Index(i pulumi.IntInput) TrustAnchorOutput {
@@ -1434,12 +1217,6 @@ func (o TrustAnchorResponseOutput) ToTrustAnchorResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o TrustAnchorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrustAnchorResponse] {
-	return pulumix.Output[TrustAnchorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
 func (o TrustAnchorResponseOutput) PemCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v TrustAnchorResponse) string { return v.PemCertificate }).(pulumi.StringOutput)
@@ -1457,12 +1234,6 @@ func (o TrustAnchorResponseArrayOutput) ToTrustAnchorResponseArrayOutput() Trust
 
 func (o TrustAnchorResponseArrayOutput) ToTrustAnchorResponseArrayOutputWithContext(ctx context.Context) TrustAnchorResponseArrayOutput {
 	return o
-}
-
-func (o TrustAnchorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrustAnchorResponse] {
-	return pulumix.Output[[]TrustAnchorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrustAnchorResponseArrayOutput) Index(i pulumi.IntInput) TrustAnchorResponseOutput {
@@ -1510,12 +1281,6 @@ func (i TrustStoreArgs) ToTrustStoreOutputWithContext(ctx context.Context) Trust
 	return pulumi.ToOutputWithContext(ctx, i).(TrustStoreOutput)
 }
 
-func (i TrustStoreArgs) ToOutput(ctx context.Context) pulumix.Output[TrustStore] {
-	return pulumix.Output[TrustStore]{
-		OutputState: i.ToTrustStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TrustStoreArrayInput is an input type that accepts TrustStoreArray and TrustStoreArrayOutput values.
 // You can construct a concrete instance of `TrustStoreArrayInput` via:
 //
@@ -1541,12 +1306,6 @@ func (i TrustStoreArray) ToTrustStoreArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(TrustStoreArrayOutput)
 }
 
-func (i TrustStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]TrustStore] {
-	return pulumix.Output[[]TrustStore]{
-		OutputState: i.ToTrustStoreArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a trust store.
 type TrustStoreOutput struct{ *pulumi.OutputState }
 
@@ -1560,12 +1319,6 @@ func (o TrustStoreOutput) ToTrustStoreOutput() TrustStoreOutput {
 
 func (o TrustStoreOutput) ToTrustStoreOutputWithContext(ctx context.Context) TrustStoreOutput {
 	return o
-}
-
-func (o TrustStoreOutput) ToOutput(ctx context.Context) pulumix.Output[TrustStore] {
-	return pulumix.Output[TrustStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
@@ -1590,12 +1343,6 @@ func (o TrustStoreArrayOutput) ToTrustStoreArrayOutput() TrustStoreArrayOutput {
 
 func (o TrustStoreArrayOutput) ToTrustStoreArrayOutputWithContext(ctx context.Context) TrustStoreArrayOutput {
 	return o
-}
-
-func (o TrustStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrustStore] {
-	return pulumix.Output[[]TrustStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrustStoreArrayOutput) Index(i pulumi.IntInput) TrustStoreOutput {
@@ -1627,12 +1374,6 @@ func (o TrustStoreResponseOutput) ToTrustStoreResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o TrustStoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrustStoreResponse] {
-	return pulumix.Output[TrustStoreResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
 func (o TrustStoreResponseOutput) IntermediateCas() IntermediateCAResponseArrayOutput {
 	return o.ApplyT(func(v TrustStoreResponse) []IntermediateCAResponse { return v.IntermediateCas }).(IntermediateCAResponseArrayOutput)
@@ -1655,12 +1396,6 @@ func (o TrustStoreResponseArrayOutput) ToTrustStoreResponseArrayOutput() TrustSt
 
 func (o TrustStoreResponseArrayOutput) ToTrustStoreResponseArrayOutputWithContext(ctx context.Context) TrustStoreResponseArrayOutput {
 	return o
-}
-
-func (o TrustStoreResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrustStoreResponse] {
-	return pulumix.Output[[]TrustStoreResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrustStoreResponseArrayOutput) Index(i pulumi.IntInput) TrustStoreResponseOutput {

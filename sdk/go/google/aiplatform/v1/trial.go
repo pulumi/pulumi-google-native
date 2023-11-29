@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Adds a user provided Trial to a Study.
@@ -129,12 +128,6 @@ func (i *Trial) ToTrialOutputWithContext(ctx context.Context) TrialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrialOutput)
 }
 
-func (i *Trial) ToOutput(ctx context.Context) pulumix.Output[*Trial] {
-	return pulumix.Output[*Trial]{
-		OutputState: i.ToTrialOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrialOutput struct{ *pulumi.OutputState }
 
 func (TrialOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o TrialOutput) ToTrialOutput() TrialOutput {
 
 func (o TrialOutput) ToTrialOutputWithContext(ctx context.Context) TrialOutput {
 	return o
-}
-
-func (o TrialOutput) ToOutput(ctx context.Context) pulumix.Output[*Trial] {
-	return pulumix.Output[*Trial]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier of the client that originally requested this Trial. Each client is identified by a unique client_id. When a client asks for a suggestion, Vertex AI Vizier will assign it a Trial. The client should evaluate the Trial, complete it, and report back to Vertex AI Vizier. If suggestion is asked again by same client_id before the Trial is completed, the same Trial will be returned. Multiple clients with different client_ids can ask for suggestions simultaneously, each of them will get their own Trial.

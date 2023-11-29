@@ -186,9 +186,6 @@ class OrganizationInspectTemplate(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["inspect_config"] = inspect_config
-            if location is not None and not opts.urn:
-                warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
-                pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
             __props__.__dict__["location"] = location
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the OAuth brand of the project.
@@ -73,12 +72,6 @@ func (o LookupBrandResultOutput) ToLookupBrandResultOutput() LookupBrandResultOu
 
 func (o LookupBrandResultOutput) ToLookupBrandResultOutputWithContext(ctx context.Context) LookupBrandResultOutput {
 	return o
-}
-
-func (o LookupBrandResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBrandResult] {
-	return pulumix.Output[LookupBrandResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application name displayed on OAuth consent screen.

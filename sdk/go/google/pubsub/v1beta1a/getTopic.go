@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here.
@@ -65,12 +64,6 @@ func (o LookupTopicResultOutput) ToLookupTopicResultOutput() LookupTopicResultOu
 
 func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx context.Context) LookupTopicResultOutput {
 	return o
-}
-
-func (o LookupTopicResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTopicResult] {
-	return pulumix.Output[LookupTopicResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the topic.

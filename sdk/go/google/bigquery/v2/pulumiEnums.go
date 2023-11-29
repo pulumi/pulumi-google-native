@@ -83,12 +83,6 @@ func (o ArgumentArgumentKindOutput) ToArgumentArgumentKindPtrOutputWithContext(c
 	}).(ArgumentArgumentKindPtrOutput)
 }
 
-func (o ArgumentArgumentKindOutput) ToOutput(ctx context.Context) pulumix.Output[ArgumentArgumentKind] {
-	return pulumix.Output[ArgumentArgumentKind]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ArgumentArgumentKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o ArgumentArgumentKindPtrOutput) ToArgumentArgumentKindPtrOutput() Argumen
 
 func (o ArgumentArgumentKindPtrOutput) ToArgumentArgumentKindPtrOutputWithContext(ctx context.Context) ArgumentArgumentKindPtrOutput {
 	return o
-}
-
-func (o ArgumentArgumentKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArgumentArgumentKind] {
-	return pulumix.Output[*ArgumentArgumentKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArgumentArgumentKindPtrOutput) Elem() ArgumentArgumentKindOutput {
@@ -272,12 +260,6 @@ func (o ArgumentModeOutput) ToArgumentModePtrOutputWithContext(ctx context.Conte
 	}).(ArgumentModePtrOutput)
 }
 
-func (o ArgumentModeOutput) ToOutput(ctx context.Context) pulumix.Output[ArgumentMode] {
-	return pulumix.Output[ArgumentMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ArgumentModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o ArgumentModePtrOutput) ToArgumentModePtrOutput() ArgumentModePtrOutput {
 
 func (o ArgumentModePtrOutput) ToArgumentModePtrOutputWithContext(ctx context.Context) ArgumentModePtrOutput {
 	return o
-}
-
-func (o ArgumentModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArgumentMode] {
-	return pulumix.Output[*ArgumentMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArgumentModePtrOutput) Elem() ArgumentModeOutput {
@@ -461,12 +437,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -500,12 +470,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -647,12 +611,6 @@ func (o DatasetAccessEntryTargetTypesItemOutput) ToDatasetAccessEntryTargetTypes
 	}).(DatasetAccessEntryTargetTypesItemPtrOutput)
 }
 
-func (o DatasetAccessEntryTargetTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetAccessEntryTargetTypesItem] {
-	return pulumix.Output[DatasetAccessEntryTargetTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatasetAccessEntryTargetTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -686,12 +644,6 @@ func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToDatasetAccessEntryTargetTy
 
 func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemPtrOutput {
 	return o
-}
-
-func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetAccessEntryTargetTypesItem] {
-	return pulumix.Output[*DatasetAccessEntryTargetTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetAccessEntryTargetTypesItemPtrOutput) Elem() DatasetAccessEntryTargetTypesItemOutput {
@@ -787,12 +739,6 @@ func (i DatasetAccessEntryTargetTypesItemArray) ToDatasetAccessEntryTargetTypesI
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemArrayOutput)
 }
 
-func (i DatasetAccessEntryTargetTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]DatasetAccessEntryTargetTypesItem] {
-	return pulumix.Output[[]DatasetAccessEntryTargetTypesItem]{
-		OutputState: i.ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetAccessEntryTargetTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessEntryTargetTypesItemArrayOutput) ElementType() reflect.Type {
@@ -805,12 +751,6 @@ func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToDatasetAccessEntryTarget
 
 func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemArrayOutput {
 	return o
-}
-
-func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatasetAccessEntryTargetTypesItem] {
-	return pulumix.Output[[]DatasetAccessEntryTargetTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetAccessEntryTargetTypesItemArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTargetTypesItemOutput {
@@ -889,12 +829,6 @@ func (o RoutineDataGovernanceTypeOutput) ToRoutineDataGovernanceTypePtrOutputWit
 	}).(RoutineDataGovernanceTypePtrOutput)
 }
 
-func (o RoutineDataGovernanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RoutineDataGovernanceType] {
-	return pulumix.Output[RoutineDataGovernanceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoutineDataGovernanceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -928,12 +862,6 @@ func (o RoutineDataGovernanceTypePtrOutput) ToRoutineDataGovernanceTypePtrOutput
 
 func (o RoutineDataGovernanceTypePtrOutput) ToRoutineDataGovernanceTypePtrOutputWithContext(ctx context.Context) RoutineDataGovernanceTypePtrOutput {
 	return o
-}
-
-func (o RoutineDataGovernanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutineDataGovernanceType] {
-	return pulumix.Output[*RoutineDataGovernanceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoutineDataGovernanceTypePtrOutput) Elem() RoutineDataGovernanceTypeOutput {
@@ -1076,12 +1004,6 @@ func (o RoutineDeterminismLevelOutput) ToRoutineDeterminismLevelPtrOutputWithCon
 	}).(RoutineDeterminismLevelPtrOutput)
 }
 
-func (o RoutineDeterminismLevelOutput) ToOutput(ctx context.Context) pulumix.Output[RoutineDeterminismLevel] {
-	return pulumix.Output[RoutineDeterminismLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoutineDeterminismLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1115,12 +1037,6 @@ func (o RoutineDeterminismLevelPtrOutput) ToRoutineDeterminismLevelPtrOutput() R
 
 func (o RoutineDeterminismLevelPtrOutput) ToRoutineDeterminismLevelPtrOutputWithContext(ctx context.Context) RoutineDeterminismLevelPtrOutput {
 	return o
-}
-
-func (o RoutineDeterminismLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutineDeterminismLevel] {
-	return pulumix.Output[*RoutineDeterminismLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoutineDeterminismLevelPtrOutput) Elem() RoutineDeterminismLevelOutput {
@@ -1269,12 +1185,6 @@ func (o RoutineLanguageOutput) ToRoutineLanguagePtrOutputWithContext(ctx context
 	}).(RoutineLanguagePtrOutput)
 }
 
-func (o RoutineLanguageOutput) ToOutput(ctx context.Context) pulumix.Output[RoutineLanguage] {
-	return pulumix.Output[RoutineLanguage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoutineLanguageOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1308,12 +1218,6 @@ func (o RoutineLanguagePtrOutput) ToRoutineLanguagePtrOutput() RoutineLanguagePt
 
 func (o RoutineLanguagePtrOutput) ToRoutineLanguagePtrOutputWithContext(ctx context.Context) RoutineLanguagePtrOutput {
 	return o
-}
-
-func (o RoutineLanguagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutineLanguage] {
-	return pulumix.Output[*RoutineLanguage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoutineLanguagePtrOutput) Elem() RoutineLanguageOutput {
@@ -1460,12 +1364,6 @@ func (o RoutineRoutineTypeOutput) ToRoutineRoutineTypePtrOutputWithContext(ctx c
 	}).(RoutineRoutineTypePtrOutput)
 }
 
-func (o RoutineRoutineTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RoutineRoutineType] {
-	return pulumix.Output[RoutineRoutineType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoutineRoutineTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1499,12 +1397,6 @@ func (o RoutineRoutineTypePtrOutput) ToRoutineRoutineTypePtrOutput() RoutineRout
 
 func (o RoutineRoutineTypePtrOutput) ToRoutineRoutineTypePtrOutputWithContext(ctx context.Context) RoutineRoutineTypePtrOutput {
 	return o
-}
-
-func (o RoutineRoutineTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutineRoutineType] {
-	return pulumix.Output[*RoutineRoutineType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoutineRoutineTypePtrOutput) Elem() RoutineRoutineTypeOutput {
@@ -1647,12 +1539,6 @@ func (o RoutineSecurityModeOutput) ToRoutineSecurityModePtrOutputWithContext(ctx
 	}).(RoutineSecurityModePtrOutput)
 }
 
-func (o RoutineSecurityModeOutput) ToOutput(ctx context.Context) pulumix.Output[RoutineSecurityMode] {
-	return pulumix.Output[RoutineSecurityMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoutineSecurityModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1686,12 +1572,6 @@ func (o RoutineSecurityModePtrOutput) ToRoutineSecurityModePtrOutput() RoutineSe
 
 func (o RoutineSecurityModePtrOutput) ToRoutineSecurityModePtrOutputWithContext(ctx context.Context) RoutineSecurityModePtrOutput {
 	return o
-}
-
-func (o RoutineSecurityModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutineSecurityMode] {
-	return pulumix.Output[*RoutineSecurityMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoutineSecurityModePtrOutput) Elem() RoutineSecurityModeOutput {
@@ -1864,12 +1744,6 @@ func (o StandardSqlDataTypeTypeKindOutput) ToStandardSqlDataTypeTypeKindPtrOutpu
 	}).(StandardSqlDataTypeTypeKindPtrOutput)
 }
 
-func (o StandardSqlDataTypeTypeKindOutput) ToOutput(ctx context.Context) pulumix.Output[StandardSqlDataTypeTypeKind] {
-	return pulumix.Output[StandardSqlDataTypeTypeKind]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StandardSqlDataTypeTypeKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1903,12 +1777,6 @@ func (o StandardSqlDataTypeTypeKindPtrOutput) ToStandardSqlDataTypeTypeKindPtrOu
 
 func (o StandardSqlDataTypeTypeKindPtrOutput) ToStandardSqlDataTypeTypeKindPtrOutputWithContext(ctx context.Context) StandardSqlDataTypeTypeKindPtrOutput {
 	return o
-}
-
-func (o StandardSqlDataTypeTypeKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardSqlDataTypeTypeKind] {
-	return pulumix.Output[*StandardSqlDataTypeTypeKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardSqlDataTypeTypeKindPtrOutput) Elem() StandardSqlDataTypeTypeKindOutput {

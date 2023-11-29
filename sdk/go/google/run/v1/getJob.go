@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a job.
@@ -75,12 +74,6 @@ func (o GetJobResultOutput) ToGetJobResultOutput() GetJobResultOutput {
 
 func (o GetJobResultOutput) ToGetJobResultOutputWithContext(ctx context.Context) GetJobResultOutput {
 	return o
-}
-
-func (o GetJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetJobResult] {
-	return pulumix.Output[GetJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.

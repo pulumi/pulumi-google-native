@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ServiceLbPolicy in a given project and location.
@@ -149,12 +148,6 @@ func (i *ServiceLbPolicy) ToServiceLbPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceLbPolicyOutput)
 }
 
-func (i *ServiceLbPolicy) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicy] {
-	return pulumix.Output[*ServiceLbPolicy]{
-		OutputState: i.ToServiceLbPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceLbPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServiceLbPolicyOutput) ElementType() reflect.Type {
@@ -167,12 +160,6 @@ func (o ServiceLbPolicyOutput) ToServiceLbPolicyOutput() ServiceLbPolicyOutput {
 
 func (o ServiceLbPolicyOutput) ToServiceLbPolicyOutputWithContext(ctx context.Context) ServiceLbPolicyOutput {
 	return o
-}
-
-func (o ServiceLbPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicy] {
-	return pulumix.Output[*ServiceLbPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Configuration to automatically move traffic away for unhealthy IG/NEG for the associated Backend Service.

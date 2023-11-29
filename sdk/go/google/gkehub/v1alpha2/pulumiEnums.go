@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -272,12 +260,6 @@ func (o MembershipInfrastructureTypeOutput) ToMembershipInfrastructureTypePtrOut
 	}).(MembershipInfrastructureTypePtrOutput)
 }
 
-func (o MembershipInfrastructureTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipInfrastructureType] {
-	return pulumix.Output[MembershipInfrastructureType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembershipInfrastructureTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o MembershipInfrastructureTypePtrOutput) ToMembershipInfrastructureTypePtr
 
 func (o MembershipInfrastructureTypePtrOutput) ToMembershipInfrastructureTypePtrOutputWithContext(ctx context.Context) MembershipInfrastructureTypePtrOutput {
 	return o
-}
-
-func (o MembershipInfrastructureTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipInfrastructureType] {
-	return pulumix.Output[*MembershipInfrastructureType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipInfrastructureTypePtrOutput) Elem() MembershipInfrastructureTypeOutput {
@@ -463,12 +439,6 @@ func (o OnPremClusterClusterTypeOutput) ToOnPremClusterClusterTypePtrOutputWithC
 	}).(OnPremClusterClusterTypePtrOutput)
 }
 
-func (o OnPremClusterClusterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OnPremClusterClusterType] {
-	return pulumix.Output[OnPremClusterClusterType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OnPremClusterClusterTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -502,12 +472,6 @@ func (o OnPremClusterClusterTypePtrOutput) ToOnPremClusterClusterTypePtrOutput()
 
 func (o OnPremClusterClusterTypePtrOutput) ToOnPremClusterClusterTypePtrOutputWithContext(ctx context.Context) OnPremClusterClusterTypePtrOutput {
 	return o
-}
-
-func (o OnPremClusterClusterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OnPremClusterClusterType] {
-	return pulumix.Output[*OnPremClusterClusterType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OnPremClusterClusterTypePtrOutput) Elem() OnPremClusterClusterTypeOutput {

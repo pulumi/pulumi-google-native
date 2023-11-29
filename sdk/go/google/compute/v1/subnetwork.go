@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a subnetwork in the specified project using the data included in the request.
@@ -210,12 +209,6 @@ func (i *Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) Subnetwo
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkOutput)
 }
 
-func (i *Subnetwork) ToOutput(ctx context.Context) pulumix.Output[*Subnetwork] {
-	return pulumix.Output[*Subnetwork]{
-		OutputState: i.ToSubnetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubnetworkOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkOutput) ElementType() reflect.Type {
@@ -228,12 +221,6 @@ func (o SubnetworkOutput) ToSubnetworkOutput() SubnetworkOutput {
 
 func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) SubnetworkOutput {
 	return o
-}
-
-func (o SubnetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*Subnetwork] {
-	return pulumix.Output[*Subnetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

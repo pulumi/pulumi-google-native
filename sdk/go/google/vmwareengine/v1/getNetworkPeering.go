@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state.
@@ -97,12 +96,6 @@ func (o LookupNetworkPeeringResultOutput) ToLookupNetworkPeeringResultOutput() L
 
 func (o LookupNetworkPeeringResultOutput) ToLookupNetworkPeeringResultOutputWithContext(ctx context.Context) LookupNetworkPeeringResultOutput {
 	return o
-}
-
-func (o LookupNetworkPeeringResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkPeeringResult] {
-	return pulumix.Output[LookupNetworkPeeringResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

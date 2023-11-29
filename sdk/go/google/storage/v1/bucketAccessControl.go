@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ACL entry on the specified bucket.
@@ -198,12 +197,6 @@ func (i *BucketAccessControl) ToBucketAccessControlOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlOutput)
 }
 
-func (i *BucketAccessControl) ToOutput(ctx context.Context) pulumix.Output[*BucketAccessControl] {
-	return pulumix.Output[*BucketAccessControl]{
-		OutputState: i.ToBucketAccessControlOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BucketAccessControlOutput struct{ *pulumi.OutputState }
 
 func (BucketAccessControlOutput) ElementType() reflect.Type {
@@ -216,12 +209,6 @@ func (o BucketAccessControlOutput) ToBucketAccessControlOutput() BucketAccessCon
 
 func (o BucketAccessControlOutput) ToBucketAccessControlOutputWithContext(ctx context.Context) BucketAccessControlOutput {
 	return o
-}
-
-func (o BucketAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketAccessControl] {
-	return pulumix.Output[*BucketAccessControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BucketAccessControlOutput) Bucket() pulumi.StringOutput {

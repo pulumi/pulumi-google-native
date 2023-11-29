@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new routine in the dataset.
@@ -208,12 +207,6 @@ func (i *Routine) ToRoutineOutputWithContext(ctx context.Context) RoutineOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RoutineOutput)
 }
 
-func (i *Routine) ToOutput(ctx context.Context) pulumix.Output[*Routine] {
-	return pulumix.Output[*Routine]{
-		OutputState: i.ToRoutineOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RoutineOutput struct{ *pulumi.OutputState }
 
 func (RoutineOutput) ElementType() reflect.Type {
@@ -226,12 +219,6 @@ func (o RoutineOutput) ToRoutineOutput() RoutineOutput {
 
 func (o RoutineOutput) ToRoutineOutputWithContext(ctx context.Context) RoutineOutput {
 	return o
-}
-
-func (o RoutineOutput) ToOutput(ctx context.Context) pulumix.Output[*Routine] {
-	return pulumix.Output[*Routine]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional.

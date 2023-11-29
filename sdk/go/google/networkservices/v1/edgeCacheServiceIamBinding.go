@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *EdgeCacheServiceIamBinding) ToEdgeCacheServiceIamBindingOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceIamBindingOutput)
 }
 
-func (i *EdgeCacheServiceIamBinding) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceIamBinding] {
-	return pulumix.Output[*EdgeCacheServiceIamBinding]{
-		OutputState: i.ToEdgeCacheServiceIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdgeCacheServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o EdgeCacheServiceIamBindingOutput) ToEdgeCacheServiceIamBindingOutput() E
 
 func (o EdgeCacheServiceIamBindingOutput) ToEdgeCacheServiceIamBindingOutputWithContext(ctx context.Context) EdgeCacheServiceIamBindingOutput {
 	return o
-}
-
-func (o EdgeCacheServiceIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceIamBinding] {
-	return pulumix.Output[*EdgeCacheServiceIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
@@ -259,12 +258,6 @@ func (i *GlobalForwardingRule) ToGlobalForwardingRuleOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleOutput)
 }
 
-func (i *GlobalForwardingRule) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRule] {
-	return pulumix.Output[*GlobalForwardingRule]{
-		OutputState: i.ToGlobalForwardingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRuleOutput) ElementType() reflect.Type {
@@ -277,12 +270,6 @@ func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutput() GlobalForward
 
 func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutputWithContext(ctx context.Context) GlobalForwardingRuleOutput {
 	return o
-}
-
-func (o GlobalForwardingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRule] {
-	return pulumix.Output[*GlobalForwardingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ports, portRange, and allPorts fields are mutually exclusive. Only packets addressed to ports in the specified range will be forwarded to the backends configured with this forwarding rule. The allPorts field has the following limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, SCTP, or L3_DEFAULT. - It's applicable only to the following products: internal passthrough Network Load Balancers, backend service-based external passthrough Network Load Balancers, and internal and external protocol forwarding. - Set this field to true to allow packets addressed to any port or packets lacking destination port information (for example, UDP fragments after the first fragment) to be forwarded to the backends configured with this forwarding rule. The L3_DEFAULT protocol requires allPorts be set to true.

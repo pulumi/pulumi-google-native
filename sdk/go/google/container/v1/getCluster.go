@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a specific cluster.
@@ -217,12 +216,6 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterRe
 
 func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
 	return o
-}
-
-func (o LookupClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterResult] {
-	return pulumix.Output[LookupClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configurations for the various addons available to run in the cluster.

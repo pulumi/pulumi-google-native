@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a variable within the given configuration. You cannot create a variable with a name that is a prefix of an existing variable name, or a name that has an existing variable name as a prefix. To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-get-variables) documentation.
@@ -130,12 +129,6 @@ func (i *Variable) ToVariableOutputWithContext(ctx context.Context) VariableOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VariableOutput)
 }
 
-func (i *Variable) ToOutput(ctx context.Context) pulumix.Output[*Variable] {
-	return pulumix.Output[*Variable]{
-		OutputState: i.ToVariableOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VariableOutput struct{ *pulumi.OutputState }
 
 func (VariableOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o VariableOutput) ToVariableOutput() VariableOutput {
 
 func (o VariableOutput) ToVariableOutputWithContext(ctx context.Context) VariableOutput {
 	return o
-}
-
-func (o VariableOutput) ToOutput(ctx context.Context) pulumix.Output[*Variable] {
-	return pulumix.Output[*Variable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VariableOutput) ConfigId() pulumi.StringOutput {

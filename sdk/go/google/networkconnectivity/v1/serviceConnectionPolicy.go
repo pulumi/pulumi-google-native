@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ServiceConnectionPolicy in a given project and location.
@@ -160,12 +159,6 @@ func (i *ServiceConnectionPolicy) ToServiceConnectionPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyOutput)
 }
 
-func (i *ServiceConnectionPolicy) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicy] {
-	return pulumix.Output[*ServiceConnectionPolicy]{
-		OutputState: i.ToServiceConnectionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceConnectionPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionPolicyOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o ServiceConnectionPolicyOutput) ToServiceConnectionPolicyOutput() Service
 
 func (o ServiceConnectionPolicyOutput) ToServiceConnectionPolicyOutputWithContext(ctx context.Context) ServiceConnectionPolicyOutput {
 	return o
-}
-
-func (o ServiceConnectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicy] {
-	return pulumix.Output[*ServiceConnectionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the ServiceConnectionMap was created.

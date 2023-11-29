@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets metadata for a given Secret.
@@ -73,12 +72,6 @@ func (o LookupSecretResultOutput) ToLookupSecretResultOutput() LookupSecretResul
 
 func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx context.Context) LookupSecretResultOutput {
 	return o
-}
-
-func (o LookupSecretResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecretResult] {
-	return pulumix.Output[LookupSecretResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the Secret was created.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new MetadataImport in a given project and location.
@@ -150,12 +149,6 @@ func (i *MetadataImport) ToMetadataImportOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataImportOutput)
 }
 
-func (i *MetadataImport) ToOutput(ctx context.Context) pulumix.Output[*MetadataImport] {
-	return pulumix.Output[*MetadataImport]{
-		OutputState: i.ToMetadataImportOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetadataImportOutput struct{ *pulumi.OutputState }
 
 func (MetadataImportOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o MetadataImportOutput) ToMetadataImportOutput() MetadataImportOutput {
 
 func (o MetadataImportOutput) ToMetadataImportOutputWithContext(ctx context.Context) MetadataImportOutput {
 	return o
-}
-
-func (o MetadataImportOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataImport] {
-	return pulumix.Output[*MetadataImport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the metadata import was started.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified `CustomDomain`.
@@ -99,12 +98,6 @@ func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutput() Looku
 
 func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutputWithContext(ctx context.Context) LookupCustomDomainResultOutput {
 	return o
-}
-
-func (o LookupCustomDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomDomainResult] {
-	return pulumix.Output[LookupCustomDomainResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations you can add to leave both human- and machine-readable metadata about your `CustomDomain`.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns metadata for a given KeyRing.
@@ -71,12 +70,6 @@ func (o LookupKeyRingResultOutput) ToLookupKeyRingResultOutput() LookupKeyRingRe
 
 func (o LookupKeyRingResultOutput) ToLookupKeyRingResultOutputWithContext(ctx context.Context) LookupKeyRingResultOutput {
 	return o
-}
-
-func (o LookupKeyRingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKeyRingResult] {
-	return pulumix.Output[LookupKeyRingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which this KeyRing was created.

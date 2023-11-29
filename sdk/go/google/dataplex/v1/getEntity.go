@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a metadata entity.
@@ -107,12 +106,6 @@ func (o LookupEntityResultOutput) ToLookupEntityResultOutput() LookupEntityResul
 
 func (o LookupEntityResultOutput) ToLookupEntityResultOutputWithContext(ctx context.Context) LookupEntityResultOutput {
 	return o
-}
-
-func (o LookupEntityResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEntityResult] {
-	return pulumix.Output[LookupEntityResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifies the access mechanism to the entity. Not user settable.

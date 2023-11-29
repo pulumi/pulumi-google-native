@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new HttpRoute in a given project and location.
@@ -163,12 +162,6 @@ func (i *HttpRoute) ToHttpRouteOutputWithContext(ctx context.Context) HttpRouteO
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteOutput)
 }
 
-func (i *HttpRoute) ToOutput(ctx context.Context) pulumix.Output[*HttpRoute] {
-	return pulumix.Output[*HttpRoute]{
-		OutputState: i.ToHttpRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HttpRouteOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o HttpRouteOutput) ToHttpRouteOutput() HttpRouteOutput {
 
 func (o HttpRouteOutput) ToHttpRouteOutputWithContext(ctx context.Context) HttpRouteOutput {
 	return o
-}
-
-func (o HttpRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRoute] {
-	return pulumix.Output[*HttpRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.

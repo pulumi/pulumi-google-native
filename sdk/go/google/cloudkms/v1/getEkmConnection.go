@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns metadata for a given EkmConnection.
@@ -79,12 +78,6 @@ func (o LookupEkmConnectionResultOutput) ToLookupEkmConnectionResultOutput() Loo
 
 func (o LookupEkmConnectionResultOutput) ToLookupEkmConnectionResultOutputWithContext(ctx context.Context) LookupEkmConnectionResultOutput {
 	return o
-}
-
-func (o LookupEkmConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEkmConnectionResult] {
-	return pulumix.Output[LookupEkmConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the EkmConnection was created.

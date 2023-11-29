@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns all of the details about the specified resize request.
@@ -95,12 +94,6 @@ func (o LookupInstanceGroupManagerResizeRequestResultOutput) ToLookupInstanceGro
 
 func (o LookupInstanceGroupManagerResizeRequestResultOutput) ToLookupInstanceGroupManagerResizeRequestResultOutputWithContext(ctx context.Context) LookupInstanceGroupManagerResizeRequestResultOutput {
 	return o
-}
-
-func (o LookupInstanceGroupManagerResizeRequestResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceGroupManagerResizeRequestResult] {
-	return pulumix.Output[LookupInstanceGroupManagerResizeRequestResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The count of instances to create as part of this resize request.

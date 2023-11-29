@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *DatasetHl7V2StoreIamBinding) ToDatasetHl7V2StoreIamBindingOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetHl7V2StoreIamBindingOutput)
 }
 
-func (i *DatasetHl7V2StoreIamBinding) ToOutput(ctx context.Context) pulumix.Output[*DatasetHl7V2StoreIamBinding] {
-	return pulumix.Output[*DatasetHl7V2StoreIamBinding]{
-		OutputState: i.ToDatasetHl7V2StoreIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetHl7V2StoreIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DatasetHl7V2StoreIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o DatasetHl7V2StoreIamBindingOutput) ToDatasetHl7V2StoreIamBindingOutput()
 
 func (o DatasetHl7V2StoreIamBindingOutput) ToDatasetHl7V2StoreIamBindingOutputWithContext(ctx context.Context) DatasetHl7V2StoreIamBindingOutput {
 	return o
-}
-
-func (o DatasetHl7V2StoreIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetHl7V2StoreIamBinding] {
-	return pulumix.Output[*DatasetHl7V2StoreIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

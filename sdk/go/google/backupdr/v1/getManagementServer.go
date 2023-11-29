@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ManagementServer.
@@ -93,12 +92,6 @@ func (o LookupManagementServerResultOutput) ToLookupManagementServerResultOutput
 
 func (o LookupManagementServerResultOutput) ToLookupManagementServerResultOutputWithContext(ctx context.Context) LookupManagementServerResultOutput {
 	return o
-}
-
-func (o LookupManagementServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagementServerResult] {
-	return pulumix.Output[LookupManagementServerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the instance was created.

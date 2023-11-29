@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new FirewallEndpoint in a given project and location.
@@ -149,12 +148,6 @@ func (i *FirewallEndpoint) ToFirewallEndpointOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointOutput)
 }
 
-func (i *FirewallEndpoint) ToOutput(ctx context.Context) pulumix.Output[*FirewallEndpoint] {
-	return pulumix.Output[*FirewallEndpoint]{
-		OutputState: i.ToFirewallEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallEndpointOutput struct{ *pulumi.OutputState }
 
 func (FirewallEndpointOutput) ElementType() reflect.Type {
@@ -167,12 +160,6 @@ func (o FirewallEndpointOutput) ToFirewallEndpointOutput() FirewallEndpointOutpu
 
 func (o FirewallEndpointOutput) ToFirewallEndpointOutputWithContext(ctx context.Context) FirewallEndpointOutput {
 	return o
-}
-
-func (o FirewallEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallEndpoint] {
-	return pulumix.Output[*FirewallEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of networks that are associated with this endpoint in the local zone. This is a projection of the FirewallEndpointAssociations pointing at this endpoint. A network will only appear in this list after traffic routing is fully configured. Format: projects/{project}/global/networks/{name}.

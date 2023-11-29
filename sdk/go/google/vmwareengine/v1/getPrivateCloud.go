@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a `PrivateCloud` resource by its resource name.
@@ -95,12 +94,6 @@ func (o LookupPrivateCloudResultOutput) ToLookupPrivateCloudResultOutput() Looku
 
 func (o LookupPrivateCloudResultOutput) ToLookupPrivateCloudResultOutputWithContext(ctx context.Context) LookupPrivateCloudResultOutput {
 	return o
-}
-
-func (o LookupPrivateCloudResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateCloudResult] {
-	return pulumix.Output[LookupPrivateCloudResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

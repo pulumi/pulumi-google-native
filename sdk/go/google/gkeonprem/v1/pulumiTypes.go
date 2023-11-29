@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AuthorizationArgs) ToAuthorizationOutput() AuthorizationOutput {
 
 func (i AuthorizationArgs) ToAuthorizationOutputWithContext(ctx context.Context) AuthorizationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationOutput)
-}
-
-func (i AuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[Authorization] {
-	return pulumix.Output[Authorization]{
-		OutputState: i.ToAuthorizationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AuthorizationArgs) ToAuthorizationPtrOutput() AuthorizationPtrOutput {
@@ -96,12 +89,6 @@ func (i *authorizationPtrType) ToAuthorizationPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPtrOutput)
 }
 
-func (i *authorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*Authorization] {
-	return pulumix.Output[*Authorization]{
-		OutputState: i.ToAuthorizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Authorization defines the On-Prem cluster authorization configuration to bootstrap onto the admin cluster.
 type AuthorizationOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o AuthorizationOutput) ToAuthorizationPtrOutputWithContext(ctx context.Con
 	}).(AuthorizationPtrOutput)
 }
 
-func (o AuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[Authorization] {
-	return pulumix.Output[Authorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
 func (o AuthorizationOutput) AdminUsers() ClusterUserArrayOutput {
 	return o.ApplyT(func(v Authorization) []ClusterUser { return v.AdminUsers }).(ClusterUserArrayOutput)
@@ -150,12 +131,6 @@ func (o AuthorizationPtrOutput) ToAuthorizationPtrOutput() AuthorizationPtrOutpu
 
 func (o AuthorizationPtrOutput) ToAuthorizationPtrOutputWithContext(ctx context.Context) AuthorizationPtrOutput {
 	return o
-}
-
-func (o AuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Authorization] {
-	return pulumix.Output[*Authorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationPtrOutput) Elem() AuthorizationOutput {
@@ -197,12 +172,6 @@ func (o AuthorizationResponseOutput) ToAuthorizationResponseOutput() Authorizati
 
 func (o AuthorizationResponseOutput) ToAuthorizationResponseOutputWithContext(ctx context.Context) AuthorizationResponseOutput {
 	return o
-}
-
-func (o AuthorizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationResponse] {
-	return pulumix.Output[AuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
@@ -249,12 +218,6 @@ func (i BareMetalAdminApiServerArgumentArgs) ToBareMetalAdminApiServerArgumentOu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminApiServerArgumentOutput)
 }
 
-func (i BareMetalAdminApiServerArgumentArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminApiServerArgument] {
-	return pulumix.Output[BareMetalAdminApiServerArgument]{
-		OutputState: i.ToBareMetalAdminApiServerArgumentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminApiServerArgumentArrayInput is an input type that accepts BareMetalAdminApiServerArgumentArray and BareMetalAdminApiServerArgumentArrayOutput values.
 // You can construct a concrete instance of `BareMetalAdminApiServerArgumentArrayInput` via:
 //
@@ -280,12 +243,6 @@ func (i BareMetalAdminApiServerArgumentArray) ToBareMetalAdminApiServerArgumentA
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminApiServerArgumentArrayOutput)
 }
 
-func (i BareMetalAdminApiServerArgumentArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminApiServerArgument] {
-	return pulumix.Output[[]BareMetalAdminApiServerArgument]{
-		OutputState: i.ToBareMetalAdminApiServerArgumentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminApiServerArgument represents an arg name->value pair. Only a subset of customized flags are supported. Please refer to the API server documentation below to know the exact format: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
 type BareMetalAdminApiServerArgumentOutput struct{ *pulumi.OutputState }
 
@@ -299,12 +256,6 @@ func (o BareMetalAdminApiServerArgumentOutput) ToBareMetalAdminApiServerArgument
 
 func (o BareMetalAdminApiServerArgumentOutput) ToBareMetalAdminApiServerArgumentOutputWithContext(ctx context.Context) BareMetalAdminApiServerArgumentOutput {
 	return o
-}
-
-func (o BareMetalAdminApiServerArgumentOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminApiServerArgument] {
-	return pulumix.Output[BareMetalAdminApiServerArgument]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
@@ -329,12 +280,6 @@ func (o BareMetalAdminApiServerArgumentArrayOutput) ToBareMetalAdminApiServerArg
 
 func (o BareMetalAdminApiServerArgumentArrayOutput) ToBareMetalAdminApiServerArgumentArrayOutputWithContext(ctx context.Context) BareMetalAdminApiServerArgumentArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminApiServerArgumentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminApiServerArgument] {
-	return pulumix.Output[[]BareMetalAdminApiServerArgument]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminApiServerArgumentArrayOutput) Index(i pulumi.IntInput) BareMetalAdminApiServerArgumentOutput {
@@ -366,12 +311,6 @@ func (o BareMetalAdminApiServerArgumentResponseOutput) ToBareMetalAdminApiServer
 	return o
 }
 
-func (o BareMetalAdminApiServerArgumentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminApiServerArgumentResponse] {
-	return pulumix.Output[BareMetalAdminApiServerArgumentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
 func (o BareMetalAdminApiServerArgumentResponseOutput) Argument() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalAdminApiServerArgumentResponse) string { return v.Argument }).(pulumi.StringOutput)
@@ -394,12 +333,6 @@ func (o BareMetalAdminApiServerArgumentResponseArrayOutput) ToBareMetalAdminApiS
 
 func (o BareMetalAdminApiServerArgumentResponseArrayOutput) ToBareMetalAdminApiServerArgumentResponseArrayOutputWithContext(ctx context.Context) BareMetalAdminApiServerArgumentResponseArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminApiServerArgumentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminApiServerArgumentResponse] {
-	return pulumix.Output[[]BareMetalAdminApiServerArgumentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminApiServerArgumentResponseArrayOutput) Index(i pulumi.IntInput) BareMetalAdminApiServerArgumentResponseOutput {
@@ -443,12 +376,6 @@ func (i BareMetalAdminClusterOperationsConfigArgs) ToBareMetalAdminClusterOperat
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterOperationsConfigOutput)
 }
 
-func (i BareMetalAdminClusterOperationsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterOperationsConfig] {
-	return pulumix.Output[BareMetalAdminClusterOperationsConfig]{
-		OutputState: i.ToBareMetalAdminClusterOperationsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminClusterOperationsConfigArgs) ToBareMetalAdminClusterOperationsConfigPtrOutput() BareMetalAdminClusterOperationsConfigPtrOutput {
 	return i.ToBareMetalAdminClusterOperationsConfigPtrOutputWithContext(context.Background())
 }
@@ -490,12 +417,6 @@ func (i *bareMetalAdminClusterOperationsConfigPtrType) ToBareMetalAdminClusterOp
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterOperationsConfigPtrOutput)
 }
 
-func (i *bareMetalAdminClusterOperationsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterOperationsConfig] {
-	return pulumix.Output[*BareMetalAdminClusterOperationsConfig]{
-		OutputState: i.ToBareMetalAdminClusterOperationsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminClusterOperationsConfig specifies the admin cluster's observability infrastructure.
 type BareMetalAdminClusterOperationsConfigOutput struct{ *pulumi.OutputState }
 
@@ -521,12 +442,6 @@ func (o BareMetalAdminClusterOperationsConfigOutput) ToBareMetalAdminClusterOper
 	}).(BareMetalAdminClusterOperationsConfigPtrOutput)
 }
 
-func (o BareMetalAdminClusterOperationsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterOperationsConfig] {
-	return pulumix.Output[BareMetalAdminClusterOperationsConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
 func (o BareMetalAdminClusterOperationsConfigOutput) EnableApplicationLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterOperationsConfig) *bool { return v.EnableApplicationLogs }).(pulumi.BoolPtrOutput)
@@ -544,12 +459,6 @@ func (o BareMetalAdminClusterOperationsConfigPtrOutput) ToBareMetalAdminClusterO
 
 func (o BareMetalAdminClusterOperationsConfigPtrOutput) ToBareMetalAdminClusterOperationsConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterOperationsConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterOperationsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminClusterOperationsConfig] {
-	return pulumix.Output[*BareMetalAdminClusterOperationsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminClusterOperationsConfigPtrOutput) Elem() BareMetalAdminClusterOperationsConfigOutput {
@@ -591,12 +500,6 @@ func (o BareMetalAdminClusterOperationsConfigResponseOutput) ToBareMetalAdminClu
 
 func (o BareMetalAdminClusterOperationsConfigResponseOutput) ToBareMetalAdminClusterOperationsConfigResponseOutputWithContext(ctx context.Context) BareMetalAdminClusterOperationsConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalAdminClusterOperationsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminClusterOperationsConfigResponse] {
-	return pulumix.Output[BareMetalAdminClusterOperationsConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
@@ -643,12 +546,6 @@ func (i BareMetalAdminControlPlaneConfigArgs) ToBareMetalAdminControlPlaneConfig
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminControlPlaneConfigOutput)
 }
 
-func (i BareMetalAdminControlPlaneConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminControlPlaneConfig] {
-	return pulumix.Output[BareMetalAdminControlPlaneConfig]{
-		OutputState: i.ToBareMetalAdminControlPlaneConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminControlPlaneConfigArgs) ToBareMetalAdminControlPlaneConfigPtrOutput() BareMetalAdminControlPlaneConfigPtrOutput {
 	return i.ToBareMetalAdminControlPlaneConfigPtrOutputWithContext(context.Background())
 }
@@ -690,12 +587,6 @@ func (i *bareMetalAdminControlPlaneConfigPtrType) ToBareMetalAdminControlPlaneCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminControlPlaneConfigPtrOutput)
 }
 
-func (i *bareMetalAdminControlPlaneConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminControlPlaneConfig] {
-	return pulumix.Output[*BareMetalAdminControlPlaneConfig]{
-		OutputState: i.ToBareMetalAdminControlPlaneConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminControlPlaneConfig specifies the control plane configuration.
 type BareMetalAdminControlPlaneConfigOutput struct{ *pulumi.OutputState }
 
@@ -719,12 +610,6 @@ func (o BareMetalAdminControlPlaneConfigOutput) ToBareMetalAdminControlPlaneConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminControlPlaneConfig) *BareMetalAdminControlPlaneConfig {
 		return &v
 	}).(BareMetalAdminControlPlaneConfigPtrOutput)
-}
-
-func (o BareMetalAdminControlPlaneConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminControlPlaneConfig] {
-	return pulumix.Output[BareMetalAdminControlPlaneConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customizes the default API server args. Only a subset of customized flags are supported. Please refer to the API server documentation below to know the exact format: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
@@ -751,12 +636,6 @@ func (o BareMetalAdminControlPlaneConfigPtrOutput) ToBareMetalAdminControlPlaneC
 
 func (o BareMetalAdminControlPlaneConfigPtrOutput) ToBareMetalAdminControlPlaneConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminControlPlaneConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminControlPlaneConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminControlPlaneConfig] {
-	return pulumix.Output[*BareMetalAdminControlPlaneConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminControlPlaneConfigPtrOutput) Elem() BareMetalAdminControlPlaneConfigOutput {
@@ -812,12 +691,6 @@ func (o BareMetalAdminControlPlaneConfigResponseOutput) ToBareMetalAdminControlP
 	return o
 }
 
-func (o BareMetalAdminControlPlaneConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminControlPlaneConfigResponse] {
-	return pulumix.Output[BareMetalAdminControlPlaneConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Customizes the default API server args. Only a subset of customized flags are supported. Please refer to the API server documentation below to know the exact format: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
 func (o BareMetalAdminControlPlaneConfigResponseOutput) ApiServerArgs() BareMetalAdminApiServerArgumentResponseArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminControlPlaneConfigResponse) []BareMetalAdminApiServerArgumentResponse {
@@ -867,12 +740,6 @@ func (i BareMetalAdminControlPlaneNodePoolConfigArgs) ToBareMetalAdminControlPla
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminControlPlaneNodePoolConfigOutput)
 }
 
-func (i BareMetalAdminControlPlaneNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminControlPlaneNodePoolConfig] {
-	return pulumix.Output[BareMetalAdminControlPlaneNodePoolConfig]{
-		OutputState: i.ToBareMetalAdminControlPlaneNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminControlPlaneNodePoolConfigArgs) ToBareMetalAdminControlPlaneNodePoolConfigPtrOutput() BareMetalAdminControlPlaneNodePoolConfigPtrOutput {
 	return i.ToBareMetalAdminControlPlaneNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -914,12 +781,6 @@ func (i *bareMetalAdminControlPlaneNodePoolConfigPtrType) ToBareMetalAdminContro
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminControlPlaneNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalAdminControlPlaneNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminControlPlaneNodePoolConfig] {
-	return pulumix.Output[*BareMetalAdminControlPlaneNodePoolConfig]{
-		OutputState: i.ToBareMetalAdminControlPlaneNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminControlPlaneNodePoolConfig specifies the control plane node pool configuration. We have a control plane specific node pool config so that we can flexible about supporting control plane specific fields in the future.
 type BareMetalAdminControlPlaneNodePoolConfigOutput struct{ *pulumi.OutputState }
 
@@ -945,12 +806,6 @@ func (o BareMetalAdminControlPlaneNodePoolConfigOutput) ToBareMetalAdminControlP
 	}).(BareMetalAdminControlPlaneNodePoolConfigPtrOutput)
 }
 
-func (o BareMetalAdminControlPlaneNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminControlPlaneNodePoolConfig] {
-	return pulumix.Output[BareMetalAdminControlPlaneNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The generic configuration for a node pool running the control plane.
 func (o BareMetalAdminControlPlaneNodePoolConfigOutput) NodePoolConfig() BareMetalNodePoolConfigOutput {
 	return o.ApplyT(func(v BareMetalAdminControlPlaneNodePoolConfig) BareMetalNodePoolConfig { return v.NodePoolConfig }).(BareMetalNodePoolConfigOutput)
@@ -968,12 +823,6 @@ func (o BareMetalAdminControlPlaneNodePoolConfigPtrOutput) ToBareMetalAdminContr
 
 func (o BareMetalAdminControlPlaneNodePoolConfigPtrOutput) ToBareMetalAdminControlPlaneNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminControlPlaneNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminControlPlaneNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminControlPlaneNodePoolConfig] {
-	return pulumix.Output[*BareMetalAdminControlPlaneNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminControlPlaneNodePoolConfigPtrOutput) Elem() BareMetalAdminControlPlaneNodePoolConfigOutput {
@@ -1017,12 +866,6 @@ func (o BareMetalAdminControlPlaneNodePoolConfigResponseOutput) ToBareMetalAdmin
 	return o
 }
 
-func (o BareMetalAdminControlPlaneNodePoolConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminControlPlaneNodePoolConfigResponse] {
-	return pulumix.Output[BareMetalAdminControlPlaneNodePoolConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The generic configuration for a node pool running the control plane.
 func (o BareMetalAdminControlPlaneNodePoolConfigResponseOutput) NodePoolConfig() BareMetalNodePoolConfigResponseOutput {
 	return o.ApplyT(func(v BareMetalAdminControlPlaneNodePoolConfigResponse) BareMetalNodePoolConfigResponse {
@@ -1051,12 +894,6 @@ func (o BareMetalAdminDrainedMachineResponseOutput) ToBareMetalAdminDrainedMachi
 	return o
 }
 
-func (o BareMetalAdminDrainedMachineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminDrainedMachineResponse] {
-	return pulumix.Output[BareMetalAdminDrainedMachineResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Drained machine IP address.
 func (o BareMetalAdminDrainedMachineResponseOutput) NodeIp() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalAdminDrainedMachineResponse) string { return v.NodeIp }).(pulumi.StringOutput)
@@ -1074,12 +911,6 @@ func (o BareMetalAdminDrainedMachineResponseArrayOutput) ToBareMetalAdminDrained
 
 func (o BareMetalAdminDrainedMachineResponseArrayOutput) ToBareMetalAdminDrainedMachineResponseArrayOutputWithContext(ctx context.Context) BareMetalAdminDrainedMachineResponseArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminDrainedMachineResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminDrainedMachineResponse] {
-	return pulumix.Output[[]BareMetalAdminDrainedMachineResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminDrainedMachineResponseArrayOutput) Index(i pulumi.IntInput) BareMetalAdminDrainedMachineResponseOutput {
@@ -1111,12 +942,6 @@ func (o BareMetalAdminDrainingMachineResponseOutput) ToBareMetalAdminDrainingMac
 	return o
 }
 
-func (o BareMetalAdminDrainingMachineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminDrainingMachineResponse] {
-	return pulumix.Output[BareMetalAdminDrainingMachineResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Draining machine IP address.
 func (o BareMetalAdminDrainingMachineResponseOutput) NodeIp() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalAdminDrainingMachineResponse) string { return v.NodeIp }).(pulumi.StringOutput)
@@ -1139,12 +964,6 @@ func (o BareMetalAdminDrainingMachineResponseArrayOutput) ToBareMetalAdminDraini
 
 func (o BareMetalAdminDrainingMachineResponseArrayOutput) ToBareMetalAdminDrainingMachineResponseArrayOutputWithContext(ctx context.Context) BareMetalAdminDrainingMachineResponseArrayOutput {
 	return o
-}
-
-func (o BareMetalAdminDrainingMachineResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalAdminDrainingMachineResponse] {
-	return pulumix.Output[[]BareMetalAdminDrainingMachineResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminDrainingMachineResponseArrayOutput) Index(i pulumi.IntInput) BareMetalAdminDrainingMachineResponseOutput {
@@ -1192,12 +1011,6 @@ func (i BareMetalAdminIslandModeCidrConfigArgs) ToBareMetalAdminIslandModeCidrCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminIslandModeCidrConfigOutput)
 }
 
-func (i BareMetalAdminIslandModeCidrConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminIslandModeCidrConfig] {
-	return pulumix.Output[BareMetalAdminIslandModeCidrConfig]{
-		OutputState: i.ToBareMetalAdminIslandModeCidrConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminIslandModeCidrConfigArgs) ToBareMetalAdminIslandModeCidrConfigPtrOutput() BareMetalAdminIslandModeCidrConfigPtrOutput {
 	return i.ToBareMetalAdminIslandModeCidrConfigPtrOutputWithContext(context.Background())
 }
@@ -1239,12 +1052,6 @@ func (i *bareMetalAdminIslandModeCidrConfigPtrType) ToBareMetalAdminIslandModeCi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminIslandModeCidrConfigPtrOutput)
 }
 
-func (i *bareMetalAdminIslandModeCidrConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminIslandModeCidrConfig] {
-	return pulumix.Output[*BareMetalAdminIslandModeCidrConfig]{
-		OutputState: i.ToBareMetalAdminIslandModeCidrConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminIslandModeCidrConfig specifies the cluster CIDR configuration while running in island mode.
 type BareMetalAdminIslandModeCidrConfigOutput struct{ *pulumi.OutputState }
 
@@ -1270,12 +1077,6 @@ func (o BareMetalAdminIslandModeCidrConfigOutput) ToBareMetalAdminIslandModeCidr
 	}).(BareMetalAdminIslandModeCidrConfigPtrOutput)
 }
 
-func (o BareMetalAdminIslandModeCidrConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminIslandModeCidrConfig] {
-	return pulumix.Output[BareMetalAdminIslandModeCidrConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
 func (o BareMetalAdminIslandModeCidrConfigOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminIslandModeCidrConfig) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -1298,12 +1099,6 @@ func (o BareMetalAdminIslandModeCidrConfigPtrOutput) ToBareMetalAdminIslandModeC
 
 func (o BareMetalAdminIslandModeCidrConfigPtrOutput) ToBareMetalAdminIslandModeCidrConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminIslandModeCidrConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminIslandModeCidrConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminIslandModeCidrConfig] {
-	return pulumix.Output[*BareMetalAdminIslandModeCidrConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminIslandModeCidrConfigPtrOutput) Elem() BareMetalAdminIslandModeCidrConfigOutput {
@@ -1359,12 +1154,6 @@ func (o BareMetalAdminIslandModeCidrConfigResponseOutput) ToBareMetalAdminIsland
 	return o
 }
 
-func (o BareMetalAdminIslandModeCidrConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminIslandModeCidrConfigResponse] {
-	return pulumix.Output[BareMetalAdminIslandModeCidrConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
 func (o BareMetalAdminIslandModeCidrConfigResponseOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminIslandModeCidrConfigResponse) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -1418,12 +1207,6 @@ func (i BareMetalAdminLoadBalancerConfigArgs) ToBareMetalAdminLoadBalancerConfig
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminLoadBalancerConfigOutput)
 }
 
-func (i BareMetalAdminLoadBalancerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminLoadBalancerConfig] {
-	return pulumix.Output[BareMetalAdminLoadBalancerConfig]{
-		OutputState: i.ToBareMetalAdminLoadBalancerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminLoadBalancerConfigArgs) ToBareMetalAdminLoadBalancerConfigPtrOutput() BareMetalAdminLoadBalancerConfigPtrOutput {
 	return i.ToBareMetalAdminLoadBalancerConfigPtrOutputWithContext(context.Background())
 }
@@ -1465,12 +1248,6 @@ func (i *bareMetalAdminLoadBalancerConfigPtrType) ToBareMetalAdminLoadBalancerCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminLoadBalancerConfigPtrOutput)
 }
 
-func (i *bareMetalAdminLoadBalancerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminLoadBalancerConfig] {
-	return pulumix.Output[*BareMetalAdminLoadBalancerConfig]{
-		OutputState: i.ToBareMetalAdminLoadBalancerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminLoadBalancerConfig specifies the load balancer configuration.
 type BareMetalAdminLoadBalancerConfigOutput struct{ *pulumi.OutputState }
 
@@ -1494,12 +1271,6 @@ func (o BareMetalAdminLoadBalancerConfigOutput) ToBareMetalAdminLoadBalancerConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminLoadBalancerConfig) *BareMetalAdminLoadBalancerConfig {
 		return &v
 	}).(BareMetalAdminLoadBalancerConfigPtrOutput)
-}
-
-func (o BareMetalAdminLoadBalancerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminLoadBalancerConfig] {
-	return pulumix.Output[BareMetalAdminLoadBalancerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Manually configured load balancers.
@@ -1529,12 +1300,6 @@ func (o BareMetalAdminLoadBalancerConfigPtrOutput) ToBareMetalAdminLoadBalancerC
 
 func (o BareMetalAdminLoadBalancerConfigPtrOutput) ToBareMetalAdminLoadBalancerConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminLoadBalancerConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminLoadBalancerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminLoadBalancerConfig] {
-	return pulumix.Output[*BareMetalAdminLoadBalancerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminLoadBalancerConfigPtrOutput) Elem() BareMetalAdminLoadBalancerConfigOutput {
@@ -1602,12 +1367,6 @@ func (o BareMetalAdminLoadBalancerConfigResponseOutput) ToBareMetalAdminLoadBala
 	return o
 }
 
-func (o BareMetalAdminLoadBalancerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminLoadBalancerConfigResponse] {
-	return pulumix.Output[BareMetalAdminLoadBalancerConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Manually configured load balancers.
 func (o BareMetalAdminLoadBalancerConfigResponseOutput) ManualLbConfig() BareMetalAdminManualLbConfigResponseOutput {
 	return o.ApplyT(func(v BareMetalAdminLoadBalancerConfigResponse) BareMetalAdminManualLbConfigResponse {
@@ -1646,12 +1405,6 @@ func (o BareMetalAdminMachineDrainStatusResponseOutput) ToBareMetalAdminMachineD
 
 func (o BareMetalAdminMachineDrainStatusResponseOutput) ToBareMetalAdminMachineDrainStatusResponseOutputWithContext(ctx context.Context) BareMetalAdminMachineDrainStatusResponseOutput {
 	return o
-}
-
-func (o BareMetalAdminMachineDrainStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminMachineDrainStatusResponse] {
-	return pulumix.Output[BareMetalAdminMachineDrainStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of drained machines.
@@ -1703,12 +1456,6 @@ func (i BareMetalAdminMaintenanceConfigArgs) ToBareMetalAdminMaintenanceConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminMaintenanceConfigOutput)
 }
 
-func (i BareMetalAdminMaintenanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminMaintenanceConfig] {
-	return pulumix.Output[BareMetalAdminMaintenanceConfig]{
-		OutputState: i.ToBareMetalAdminMaintenanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminMaintenanceConfigArgs) ToBareMetalAdminMaintenanceConfigPtrOutput() BareMetalAdminMaintenanceConfigPtrOutput {
 	return i.ToBareMetalAdminMaintenanceConfigPtrOutputWithContext(context.Background())
 }
@@ -1750,12 +1497,6 @@ func (i *bareMetalAdminMaintenanceConfigPtrType) ToBareMetalAdminMaintenanceConf
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminMaintenanceConfigPtrOutput)
 }
 
-func (i *bareMetalAdminMaintenanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminMaintenanceConfig] {
-	return pulumix.Output[*BareMetalAdminMaintenanceConfig]{
-		OutputState: i.ToBareMetalAdminMaintenanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminMaintenanceConfig specifies configurations to put bare metal Admin cluster CRs nodes in and out of maintenance.
 type BareMetalAdminMaintenanceConfigOutput struct{ *pulumi.OutputState }
 
@@ -1781,12 +1522,6 @@ func (o BareMetalAdminMaintenanceConfigOutput) ToBareMetalAdminMaintenanceConfig
 	}).(BareMetalAdminMaintenanceConfigPtrOutput)
 }
 
-func (o BareMetalAdminMaintenanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminMaintenanceConfig] {
-	return pulumix.Output[BareMetalAdminMaintenanceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All IPv4 address from these ranges will be placed into maintenance mode. Nodes in maintenance mode will be cordoned and drained. When both of these are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set on the node resource.
 func (o BareMetalAdminMaintenanceConfigOutput) MaintenanceAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminMaintenanceConfig) []string { return v.MaintenanceAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -1804,12 +1539,6 @@ func (o BareMetalAdminMaintenanceConfigPtrOutput) ToBareMetalAdminMaintenanceCon
 
 func (o BareMetalAdminMaintenanceConfigPtrOutput) ToBareMetalAdminMaintenanceConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminMaintenanceConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminMaintenanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminMaintenanceConfig] {
-	return pulumix.Output[*BareMetalAdminMaintenanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminMaintenanceConfigPtrOutput) Elem() BareMetalAdminMaintenanceConfigOutput {
@@ -1853,12 +1582,6 @@ func (o BareMetalAdminMaintenanceConfigResponseOutput) ToBareMetalAdminMaintenan
 	return o
 }
 
-func (o BareMetalAdminMaintenanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminMaintenanceConfigResponse] {
-	return pulumix.Output[BareMetalAdminMaintenanceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All IPv4 address from these ranges will be placed into maintenance mode. Nodes in maintenance mode will be cordoned and drained. When both of these are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set on the node resource.
 func (o BareMetalAdminMaintenanceConfigResponseOutput) MaintenanceAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminMaintenanceConfigResponse) []string { return v.MaintenanceAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -1883,12 +1606,6 @@ func (o BareMetalAdminMaintenanceStatusResponseOutput) ToBareMetalAdminMaintenan
 
 func (o BareMetalAdminMaintenanceStatusResponseOutput) ToBareMetalAdminMaintenanceStatusResponseOutputWithContext(ctx context.Context) BareMetalAdminMaintenanceStatusResponseOutput {
 	return o
-}
-
-func (o BareMetalAdminMaintenanceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminMaintenanceStatusResponse] {
-	return pulumix.Output[BareMetalAdminMaintenanceStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents the status of draining and drained machine nodes. This is used to show the progress of cluster upgrade.
@@ -1933,12 +1650,6 @@ func (i BareMetalAdminManualLbConfigArgs) ToBareMetalAdminManualLbConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminManualLbConfigOutput)
 }
 
-func (i BareMetalAdminManualLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminManualLbConfig] {
-	return pulumix.Output[BareMetalAdminManualLbConfig]{
-		OutputState: i.ToBareMetalAdminManualLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminManualLbConfigArgs) ToBareMetalAdminManualLbConfigPtrOutput() BareMetalAdminManualLbConfigPtrOutput {
 	return i.ToBareMetalAdminManualLbConfigPtrOutputWithContext(context.Background())
 }
@@ -1980,12 +1691,6 @@ func (i *bareMetalAdminManualLbConfigPtrType) ToBareMetalAdminManualLbConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminManualLbConfigPtrOutput)
 }
 
-func (i *bareMetalAdminManualLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminManualLbConfig] {
-	return pulumix.Output[*BareMetalAdminManualLbConfig]{
-		OutputState: i.ToBareMetalAdminManualLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminManualLbConfig represents configuration parameters for a manual load balancer.
 type BareMetalAdminManualLbConfigOutput struct{ *pulumi.OutputState }
 
@@ -2011,12 +1716,6 @@ func (o BareMetalAdminManualLbConfigOutput) ToBareMetalAdminManualLbConfigPtrOut
 	}).(BareMetalAdminManualLbConfigPtrOutput)
 }
 
-func (o BareMetalAdminManualLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminManualLbConfig] {
-	return pulumix.Output[BareMetalAdminManualLbConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether manual load balancing is enabled.
 func (o BareMetalAdminManualLbConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminManualLbConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -2034,12 +1733,6 @@ func (o BareMetalAdminManualLbConfigPtrOutput) ToBareMetalAdminManualLbConfigPtr
 
 func (o BareMetalAdminManualLbConfigPtrOutput) ToBareMetalAdminManualLbConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminManualLbConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminManualLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminManualLbConfig] {
-	return pulumix.Output[*BareMetalAdminManualLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminManualLbConfigPtrOutput) Elem() BareMetalAdminManualLbConfigOutput {
@@ -2083,12 +1776,6 @@ func (o BareMetalAdminManualLbConfigResponseOutput) ToBareMetalAdminManualLbConf
 	return o
 }
 
-func (o BareMetalAdminManualLbConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminManualLbConfigResponse] {
-	return pulumix.Output[BareMetalAdminManualLbConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether manual load balancing is enabled.
 func (o BareMetalAdminManualLbConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BareMetalAdminManualLbConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -2127,12 +1814,6 @@ func (i BareMetalAdminNetworkConfigArgs) ToBareMetalAdminNetworkConfigOutput() B
 
 func (i BareMetalAdminNetworkConfigArgs) ToBareMetalAdminNetworkConfigOutputWithContext(ctx context.Context) BareMetalAdminNetworkConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminNetworkConfigOutput)
-}
-
-func (i BareMetalAdminNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminNetworkConfig] {
-	return pulumix.Output[BareMetalAdminNetworkConfig]{
-		OutputState: i.ToBareMetalAdminNetworkConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BareMetalAdminNetworkConfigArgs) ToBareMetalAdminNetworkConfigPtrOutput() BareMetalAdminNetworkConfigPtrOutput {
@@ -2176,12 +1857,6 @@ func (i *bareMetalAdminNetworkConfigPtrType) ToBareMetalAdminNetworkConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminNetworkConfigPtrOutput)
 }
 
-func (i *bareMetalAdminNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminNetworkConfig] {
-	return pulumix.Output[*BareMetalAdminNetworkConfig]{
-		OutputState: i.ToBareMetalAdminNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminNetworkConfig specifies the cluster network configuration.
 type BareMetalAdminNetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -2207,12 +1882,6 @@ func (o BareMetalAdminNetworkConfigOutput) ToBareMetalAdminNetworkConfigPtrOutpu
 	}).(BareMetalAdminNetworkConfigPtrOutput)
 }
 
-func (o BareMetalAdminNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminNetworkConfig] {
-	return pulumix.Output[BareMetalAdminNetworkConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration for Island mode CIDR.
 func (o BareMetalAdminNetworkConfigOutput) IslandModeCidr() BareMetalAdminIslandModeCidrConfigPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminNetworkConfig) *BareMetalAdminIslandModeCidrConfig { return v.IslandModeCidr }).(BareMetalAdminIslandModeCidrConfigPtrOutput)
@@ -2230,12 +1899,6 @@ func (o BareMetalAdminNetworkConfigPtrOutput) ToBareMetalAdminNetworkConfigPtrOu
 
 func (o BareMetalAdminNetworkConfigPtrOutput) ToBareMetalAdminNetworkConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminNetworkConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminNetworkConfig] {
-	return pulumix.Output[*BareMetalAdminNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminNetworkConfigPtrOutput) Elem() BareMetalAdminNetworkConfigOutput {
@@ -2277,12 +1940,6 @@ func (o BareMetalAdminNetworkConfigResponseOutput) ToBareMetalAdminNetworkConfig
 
 func (o BareMetalAdminNetworkConfigResponseOutput) ToBareMetalAdminNetworkConfigResponseOutputWithContext(ctx context.Context) BareMetalAdminNetworkConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalAdminNetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminNetworkConfigResponse] {
-	return pulumix.Output[BareMetalAdminNetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for Island mode CIDR.
@@ -2327,12 +1984,6 @@ func (i BareMetalAdminNodeAccessConfigArgs) ToBareMetalAdminNodeAccessConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminNodeAccessConfigOutput)
 }
 
-func (i BareMetalAdminNodeAccessConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminNodeAccessConfig] {
-	return pulumix.Output[BareMetalAdminNodeAccessConfig]{
-		OutputState: i.ToBareMetalAdminNodeAccessConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminNodeAccessConfigArgs) ToBareMetalAdminNodeAccessConfigPtrOutput() BareMetalAdminNodeAccessConfigPtrOutput {
 	return i.ToBareMetalAdminNodeAccessConfigPtrOutputWithContext(context.Background())
 }
@@ -2374,12 +2025,6 @@ func (i *bareMetalAdminNodeAccessConfigPtrType) ToBareMetalAdminNodeAccessConfig
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminNodeAccessConfigPtrOutput)
 }
 
-func (i *bareMetalAdminNodeAccessConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminNodeAccessConfig] {
-	return pulumix.Output[*BareMetalAdminNodeAccessConfig]{
-		OutputState: i.ToBareMetalAdminNodeAccessConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the node access related settings for the bare metal admin cluster.
 type BareMetalAdminNodeAccessConfigOutput struct{ *pulumi.OutputState }
 
@@ -2405,12 +2050,6 @@ func (o BareMetalAdminNodeAccessConfigOutput) ToBareMetalAdminNodeAccessConfigPt
 	}).(BareMetalAdminNodeAccessConfigPtrOutput)
 }
 
-func (o BareMetalAdminNodeAccessConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminNodeAccessConfig] {
-	return pulumix.Output[BareMetalAdminNodeAccessConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // LoginUser is the user name used to access node machines. It defaults to "root" if not set.
 func (o BareMetalAdminNodeAccessConfigOutput) LoginUser() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalAdminNodeAccessConfig) string { return v.LoginUser }).(pulumi.StringOutput)
@@ -2428,12 +2067,6 @@ func (o BareMetalAdminNodeAccessConfigPtrOutput) ToBareMetalAdminNodeAccessConfi
 
 func (o BareMetalAdminNodeAccessConfigPtrOutput) ToBareMetalAdminNodeAccessConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminNodeAccessConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminNodeAccessConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminNodeAccessConfig] {
-	return pulumix.Output[*BareMetalAdminNodeAccessConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminNodeAccessConfigPtrOutput) Elem() BareMetalAdminNodeAccessConfigOutput {
@@ -2477,12 +2110,6 @@ func (o BareMetalAdminNodeAccessConfigResponseOutput) ToBareMetalAdminNodeAccess
 	return o
 }
 
-func (o BareMetalAdminNodeAccessConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminNodeAccessConfigResponse] {
-	return pulumix.Output[BareMetalAdminNodeAccessConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // LoginUser is the user name used to access node machines. It defaults to "root" if not set.
 func (o BareMetalAdminNodeAccessConfigResponseOutput) LoginUser() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalAdminNodeAccessConfigResponse) string { return v.LoginUser }).(pulumi.StringOutput)
@@ -2521,12 +2148,6 @@ func (i BareMetalAdminOsEnvironmentConfigArgs) ToBareMetalAdminOsEnvironmentConf
 
 func (i BareMetalAdminOsEnvironmentConfigArgs) ToBareMetalAdminOsEnvironmentConfigOutputWithContext(ctx context.Context) BareMetalAdminOsEnvironmentConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminOsEnvironmentConfigOutput)
-}
-
-func (i BareMetalAdminOsEnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminOsEnvironmentConfig] {
-	return pulumix.Output[BareMetalAdminOsEnvironmentConfig]{
-		OutputState: i.ToBareMetalAdminOsEnvironmentConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BareMetalAdminOsEnvironmentConfigArgs) ToBareMetalAdminOsEnvironmentConfigPtrOutput() BareMetalAdminOsEnvironmentConfigPtrOutput {
@@ -2570,12 +2191,6 @@ func (i *bareMetalAdminOsEnvironmentConfigPtrType) ToBareMetalAdminOsEnvironment
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminOsEnvironmentConfigPtrOutput)
 }
 
-func (i *bareMetalAdminOsEnvironmentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminOsEnvironmentConfig] {
-	return pulumix.Output[*BareMetalAdminOsEnvironmentConfig]{
-		OutputState: i.ToBareMetalAdminOsEnvironmentConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies operating system operation settings for cluster provisioning.
 type BareMetalAdminOsEnvironmentConfigOutput struct{ *pulumi.OutputState }
 
@@ -2601,12 +2216,6 @@ func (o BareMetalAdminOsEnvironmentConfigOutput) ToBareMetalAdminOsEnvironmentCo
 	}).(BareMetalAdminOsEnvironmentConfigPtrOutput)
 }
 
-func (o BareMetalAdminOsEnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminOsEnvironmentConfig] {
-	return pulumix.Output[BareMetalAdminOsEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether the package repo should be added when initializing bare metal machines.
 func (o BareMetalAdminOsEnvironmentConfigOutput) PackageRepoExcluded() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminOsEnvironmentConfig) *bool { return v.PackageRepoExcluded }).(pulumi.BoolPtrOutput)
@@ -2624,12 +2233,6 @@ func (o BareMetalAdminOsEnvironmentConfigPtrOutput) ToBareMetalAdminOsEnvironmen
 
 func (o BareMetalAdminOsEnvironmentConfigPtrOutput) ToBareMetalAdminOsEnvironmentConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminOsEnvironmentConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminOsEnvironmentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminOsEnvironmentConfig] {
-	return pulumix.Output[*BareMetalAdminOsEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminOsEnvironmentConfigPtrOutput) Elem() BareMetalAdminOsEnvironmentConfigOutput {
@@ -2673,12 +2276,6 @@ func (o BareMetalAdminOsEnvironmentConfigResponseOutput) ToBareMetalAdminOsEnvir
 	return o
 }
 
-func (o BareMetalAdminOsEnvironmentConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminOsEnvironmentConfigResponse] {
-	return pulumix.Output[BareMetalAdminOsEnvironmentConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether the package repo should be added when initializing bare metal machines.
 func (o BareMetalAdminOsEnvironmentConfigResponseOutput) PackageRepoExcluded() pulumi.BoolOutput {
 	return o.ApplyT(func(v BareMetalAdminOsEnvironmentConfigResponse) bool { return v.PackageRepoExcluded }).(pulumi.BoolOutput)
@@ -2717,12 +2314,6 @@ func (i BareMetalAdminPortConfigArgs) ToBareMetalAdminPortConfigOutput() BareMet
 
 func (i BareMetalAdminPortConfigArgs) ToBareMetalAdminPortConfigOutputWithContext(ctx context.Context) BareMetalAdminPortConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminPortConfigOutput)
-}
-
-func (i BareMetalAdminPortConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminPortConfig] {
-	return pulumix.Output[BareMetalAdminPortConfig]{
-		OutputState: i.ToBareMetalAdminPortConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BareMetalAdminPortConfigArgs) ToBareMetalAdminPortConfigPtrOutput() BareMetalAdminPortConfigPtrOutput {
@@ -2766,12 +2357,6 @@ func (i *bareMetalAdminPortConfigPtrType) ToBareMetalAdminPortConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminPortConfigPtrOutput)
 }
 
-func (i *bareMetalAdminPortConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminPortConfig] {
-	return pulumix.Output[*BareMetalAdminPortConfig]{
-		OutputState: i.ToBareMetalAdminPortConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminPortConfig is the specification of load balancer ports.
 type BareMetalAdminPortConfigOutput struct{ *pulumi.OutputState }
 
@@ -2797,12 +2382,6 @@ func (o BareMetalAdminPortConfigOutput) ToBareMetalAdminPortConfigPtrOutputWithC
 	}).(BareMetalAdminPortConfigPtrOutput)
 }
 
-func (o BareMetalAdminPortConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminPortConfig] {
-	return pulumix.Output[BareMetalAdminPortConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The port that control plane hosted load balancers will listen on.
 func (o BareMetalAdminPortConfigOutput) ControlPlaneLoadBalancerPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminPortConfig) *int { return v.ControlPlaneLoadBalancerPort }).(pulumi.IntPtrOutput)
@@ -2820,12 +2399,6 @@ func (o BareMetalAdminPortConfigPtrOutput) ToBareMetalAdminPortConfigPtrOutput()
 
 func (o BareMetalAdminPortConfigPtrOutput) ToBareMetalAdminPortConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminPortConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminPortConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminPortConfig] {
-	return pulumix.Output[*BareMetalAdminPortConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminPortConfigPtrOutput) Elem() BareMetalAdminPortConfigOutput {
@@ -2867,12 +2440,6 @@ func (o BareMetalAdminPortConfigResponseOutput) ToBareMetalAdminPortConfigRespon
 
 func (o BareMetalAdminPortConfigResponseOutput) ToBareMetalAdminPortConfigResponseOutputWithContext(ctx context.Context) BareMetalAdminPortConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalAdminPortConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminPortConfigResponse] {
-	return pulumix.Output[BareMetalAdminPortConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The port that control plane hosted load balancers will listen on.
@@ -2919,12 +2486,6 @@ func (i BareMetalAdminProxyConfigArgs) ToBareMetalAdminProxyConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminProxyConfigOutput)
 }
 
-func (i BareMetalAdminProxyConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminProxyConfig] {
-	return pulumix.Output[BareMetalAdminProxyConfig]{
-		OutputState: i.ToBareMetalAdminProxyConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminProxyConfigArgs) ToBareMetalAdminProxyConfigPtrOutput() BareMetalAdminProxyConfigPtrOutput {
 	return i.ToBareMetalAdminProxyConfigPtrOutputWithContext(context.Background())
 }
@@ -2966,12 +2527,6 @@ func (i *bareMetalAdminProxyConfigPtrType) ToBareMetalAdminProxyConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminProxyConfigPtrOutput)
 }
 
-func (i *bareMetalAdminProxyConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminProxyConfig] {
-	return pulumix.Output[*BareMetalAdminProxyConfig]{
-		OutputState: i.ToBareMetalAdminProxyConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminProxyConfig specifies the cluster proxy configuration.
 type BareMetalAdminProxyConfigOutput struct{ *pulumi.OutputState }
 
@@ -2997,12 +2552,6 @@ func (o BareMetalAdminProxyConfigOutput) ToBareMetalAdminProxyConfigPtrOutputWit
 	}).(BareMetalAdminProxyConfigPtrOutput)
 }
 
-func (o BareMetalAdminProxyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminProxyConfig] {
-	return pulumix.Output[BareMetalAdminProxyConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of IPs, hostnames, and domains that should skip the proxy. Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
 func (o BareMetalAdminProxyConfigOutput) NoProxy() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminProxyConfig) []string { return v.NoProxy }).(pulumi.StringArrayOutput)
@@ -3025,12 +2574,6 @@ func (o BareMetalAdminProxyConfigPtrOutput) ToBareMetalAdminProxyConfigPtrOutput
 
 func (o BareMetalAdminProxyConfigPtrOutput) ToBareMetalAdminProxyConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminProxyConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminProxyConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminProxyConfig] {
-	return pulumix.Output[*BareMetalAdminProxyConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminProxyConfigPtrOutput) Elem() BareMetalAdminProxyConfigOutput {
@@ -3086,12 +2629,6 @@ func (o BareMetalAdminProxyConfigResponseOutput) ToBareMetalAdminProxyConfigResp
 	return o
 }
 
-func (o BareMetalAdminProxyConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminProxyConfigResponse] {
-	return pulumix.Output[BareMetalAdminProxyConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of IPs, hostnames, and domains that should skip the proxy. Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
 func (o BareMetalAdminProxyConfigResponseOutput) NoProxy() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminProxyConfigResponse) []string { return v.NoProxy }).(pulumi.StringArrayOutput)
@@ -3137,12 +2674,6 @@ func (i BareMetalAdminSecurityConfigArgs) ToBareMetalAdminSecurityConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminSecurityConfigOutput)
 }
 
-func (i BareMetalAdminSecurityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminSecurityConfig] {
-	return pulumix.Output[BareMetalAdminSecurityConfig]{
-		OutputState: i.ToBareMetalAdminSecurityConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminSecurityConfigArgs) ToBareMetalAdminSecurityConfigPtrOutput() BareMetalAdminSecurityConfigPtrOutput {
 	return i.ToBareMetalAdminSecurityConfigPtrOutputWithContext(context.Background())
 }
@@ -3184,12 +2715,6 @@ func (i *bareMetalAdminSecurityConfigPtrType) ToBareMetalAdminSecurityConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminSecurityConfigPtrOutput)
 }
 
-func (i *bareMetalAdminSecurityConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminSecurityConfig] {
-	return pulumix.Output[*BareMetalAdminSecurityConfig]{
-		OutputState: i.ToBareMetalAdminSecurityConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the security related settings for the bare metal admin cluster.
 type BareMetalAdminSecurityConfigOutput struct{ *pulumi.OutputState }
 
@@ -3215,12 +2740,6 @@ func (o BareMetalAdminSecurityConfigOutput) ToBareMetalAdminSecurityConfigPtrOut
 	}).(BareMetalAdminSecurityConfigPtrOutput)
 }
 
-func (o BareMetalAdminSecurityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminSecurityConfig] {
-	return pulumix.Output[BareMetalAdminSecurityConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configures user access to the admin cluster.
 func (o BareMetalAdminSecurityConfigOutput) Authorization() AuthorizationPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminSecurityConfig) *Authorization { return v.Authorization }).(AuthorizationPtrOutput)
@@ -3238,12 +2757,6 @@ func (o BareMetalAdminSecurityConfigPtrOutput) ToBareMetalAdminSecurityConfigPtr
 
 func (o BareMetalAdminSecurityConfigPtrOutput) ToBareMetalAdminSecurityConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminSecurityConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminSecurityConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminSecurityConfig] {
-	return pulumix.Output[*BareMetalAdminSecurityConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminSecurityConfigPtrOutput) Elem() BareMetalAdminSecurityConfigOutput {
@@ -3285,12 +2798,6 @@ func (o BareMetalAdminSecurityConfigResponseOutput) ToBareMetalAdminSecurityConf
 
 func (o BareMetalAdminSecurityConfigResponseOutput) ToBareMetalAdminSecurityConfigResponseOutputWithContext(ctx context.Context) BareMetalAdminSecurityConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalAdminSecurityConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminSecurityConfigResponse] {
-	return pulumix.Output[BareMetalAdminSecurityConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configures user access to the admin cluster.
@@ -3337,12 +2844,6 @@ func (i BareMetalAdminStorageConfigArgs) ToBareMetalAdminStorageConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminStorageConfigOutput)
 }
 
-func (i BareMetalAdminStorageConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminStorageConfig] {
-	return pulumix.Output[BareMetalAdminStorageConfig]{
-		OutputState: i.ToBareMetalAdminStorageConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminStorageConfigArgs) ToBareMetalAdminStorageConfigPtrOutput() BareMetalAdminStorageConfigPtrOutput {
 	return i.ToBareMetalAdminStorageConfigPtrOutputWithContext(context.Background())
 }
@@ -3384,12 +2885,6 @@ func (i *bareMetalAdminStorageConfigPtrType) ToBareMetalAdminStorageConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminStorageConfigPtrOutput)
 }
 
-func (i *bareMetalAdminStorageConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminStorageConfig] {
-	return pulumix.Output[*BareMetalAdminStorageConfig]{
-		OutputState: i.ToBareMetalAdminStorageConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminStorageConfig specifies the cluster storage configuration.
 type BareMetalAdminStorageConfigOutput struct{ *pulumi.OutputState }
 
@@ -3415,12 +2910,6 @@ func (o BareMetalAdminStorageConfigOutput) ToBareMetalAdminStorageConfigPtrOutpu
 	}).(BareMetalAdminStorageConfigPtrOutput)
 }
 
-func (o BareMetalAdminStorageConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminStorageConfig] {
-	return pulumix.Output[BareMetalAdminStorageConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the config for local PersistentVolumes backed by mounted node disks. These disks need to be formatted and mounted by the user, which can be done before or after cluster creation.
 func (o BareMetalAdminStorageConfigOutput) LvpNodeMountsConfig() BareMetalLvpConfigOutput {
 	return o.ApplyT(func(v BareMetalAdminStorageConfig) BareMetalLvpConfig { return v.LvpNodeMountsConfig }).(BareMetalLvpConfigOutput)
@@ -3443,12 +2932,6 @@ func (o BareMetalAdminStorageConfigPtrOutput) ToBareMetalAdminStorageConfigPtrOu
 
 func (o BareMetalAdminStorageConfigPtrOutput) ToBareMetalAdminStorageConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminStorageConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminStorageConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminStorageConfig] {
-	return pulumix.Output[*BareMetalAdminStorageConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminStorageConfigPtrOutput) Elem() BareMetalAdminStorageConfigOutput {
@@ -3504,12 +2987,6 @@ func (o BareMetalAdminStorageConfigResponseOutput) ToBareMetalAdminStorageConfig
 	return o
 }
 
-func (o BareMetalAdminStorageConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminStorageConfigResponse] {
-	return pulumix.Output[BareMetalAdminStorageConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the config for local PersistentVolumes backed by mounted node disks. These disks need to be formatted and mounted by the user, which can be done before or after cluster creation.
 func (o BareMetalAdminStorageConfigResponseOutput) LvpNodeMountsConfig() BareMetalLvpConfigResponseOutput {
 	return o.ApplyT(func(v BareMetalAdminStorageConfigResponse) BareMetalLvpConfigResponse { return v.LvpNodeMountsConfig }).(BareMetalLvpConfigResponseOutput)
@@ -3555,12 +3032,6 @@ func (i BareMetalAdminVipConfigArgs) ToBareMetalAdminVipConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminVipConfigOutput)
 }
 
-func (i BareMetalAdminVipConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminVipConfig] {
-	return pulumix.Output[BareMetalAdminVipConfig]{
-		OutputState: i.ToBareMetalAdminVipConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalAdminVipConfigArgs) ToBareMetalAdminVipConfigPtrOutput() BareMetalAdminVipConfigPtrOutput {
 	return i.ToBareMetalAdminVipConfigPtrOutputWithContext(context.Background())
 }
@@ -3602,12 +3073,6 @@ func (i *bareMetalAdminVipConfigPtrType) ToBareMetalAdminVipConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminVipConfigPtrOutput)
 }
 
-func (i *bareMetalAdminVipConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminVipConfig] {
-	return pulumix.Output[*BareMetalAdminVipConfig]{
-		OutputState: i.ToBareMetalAdminVipConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminVipConfig for bare metal load balancer configurations.
 type BareMetalAdminVipConfigOutput struct{ *pulumi.OutputState }
 
@@ -3633,12 +3098,6 @@ func (o BareMetalAdminVipConfigOutput) ToBareMetalAdminVipConfigPtrOutputWithCon
 	}).(BareMetalAdminVipConfigPtrOutput)
 }
 
-func (o BareMetalAdminVipConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminVipConfig] {
-	return pulumix.Output[BareMetalAdminVipConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The VIP which you previously set aside for the Kubernetes API of this bare metal admin cluster.
 func (o BareMetalAdminVipConfigOutput) ControlPlaneVip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminVipConfig) *string { return v.ControlPlaneVip }).(pulumi.StringPtrOutput)
@@ -3656,12 +3115,6 @@ func (o BareMetalAdminVipConfigPtrOutput) ToBareMetalAdminVipConfigPtrOutput() B
 
 func (o BareMetalAdminVipConfigPtrOutput) ToBareMetalAdminVipConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminVipConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminVipConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminVipConfig] {
-	return pulumix.Output[*BareMetalAdminVipConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminVipConfigPtrOutput) Elem() BareMetalAdminVipConfigOutput {
@@ -3705,12 +3158,6 @@ func (o BareMetalAdminVipConfigResponseOutput) ToBareMetalAdminVipConfigResponse
 	return o
 }
 
-func (o BareMetalAdminVipConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminVipConfigResponse] {
-	return pulumix.Output[BareMetalAdminVipConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The VIP which you previously set aside for the Kubernetes API of this bare metal admin cluster.
 func (o BareMetalAdminVipConfigResponseOutput) ControlPlaneVip() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalAdminVipConfigResponse) string { return v.ControlPlaneVip }).(pulumi.StringOutput)
@@ -3749,12 +3196,6 @@ func (i BareMetalAdminWorkloadNodeConfigArgs) ToBareMetalAdminWorkloadNodeConfig
 
 func (i BareMetalAdminWorkloadNodeConfigArgs) ToBareMetalAdminWorkloadNodeConfigOutputWithContext(ctx context.Context) BareMetalAdminWorkloadNodeConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminWorkloadNodeConfigOutput)
-}
-
-func (i BareMetalAdminWorkloadNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminWorkloadNodeConfig] {
-	return pulumix.Output[BareMetalAdminWorkloadNodeConfig]{
-		OutputState: i.ToBareMetalAdminWorkloadNodeConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BareMetalAdminWorkloadNodeConfigArgs) ToBareMetalAdminWorkloadNodeConfigPtrOutput() BareMetalAdminWorkloadNodeConfigPtrOutput {
@@ -3798,12 +3239,6 @@ func (i *bareMetalAdminWorkloadNodeConfigPtrType) ToBareMetalAdminWorkloadNodeCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminWorkloadNodeConfigPtrOutput)
 }
 
-func (i *bareMetalAdminWorkloadNodeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminWorkloadNodeConfig] {
-	return pulumix.Output[*BareMetalAdminWorkloadNodeConfig]{
-		OutputState: i.ToBareMetalAdminWorkloadNodeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalAdminWorkloadNodeConfig specifies the workload node configurations.
 type BareMetalAdminWorkloadNodeConfigOutput struct{ *pulumi.OutputState }
 
@@ -3829,12 +3264,6 @@ func (o BareMetalAdminWorkloadNodeConfigOutput) ToBareMetalAdminWorkloadNodeConf
 	}).(BareMetalAdminWorkloadNodeConfigPtrOutput)
 }
 
-func (o BareMetalAdminWorkloadNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminWorkloadNodeConfig] {
-	return pulumix.Output[BareMetalAdminWorkloadNodeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number of pods a node can run. The size of the CIDR range assigned to the node will be derived from this parameter. By default 110 Pods are created per Node. Upper bound is 250 for both HA and non-HA admin cluster. Lower bound is 64 for non-HA admin cluster and 32 for HA admin cluster.
 func (o BareMetalAdminWorkloadNodeConfigOutput) MaxPodsPerNode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminWorkloadNodeConfig) *string { return v.MaxPodsPerNode }).(pulumi.StringPtrOutput)
@@ -3852,12 +3281,6 @@ func (o BareMetalAdminWorkloadNodeConfigPtrOutput) ToBareMetalAdminWorkloadNodeC
 
 func (o BareMetalAdminWorkloadNodeConfigPtrOutput) ToBareMetalAdminWorkloadNodeConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminWorkloadNodeConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalAdminWorkloadNodeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalAdminWorkloadNodeConfig] {
-	return pulumix.Output[*BareMetalAdminWorkloadNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalAdminWorkloadNodeConfigPtrOutput) Elem() BareMetalAdminWorkloadNodeConfigOutput {
@@ -3899,12 +3322,6 @@ func (o BareMetalAdminWorkloadNodeConfigResponseOutput) ToBareMetalAdminWorkload
 
 func (o BareMetalAdminWorkloadNodeConfigResponseOutput) ToBareMetalAdminWorkloadNodeConfigResponseOutputWithContext(ctx context.Context) BareMetalAdminWorkloadNodeConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalAdminWorkloadNodeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalAdminWorkloadNodeConfigResponse] {
-	return pulumix.Output[BareMetalAdminWorkloadNodeConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum number of pods a node can run. The size of the CIDR range assigned to the node will be derived from this parameter. By default 110 Pods are created per Node. Upper bound is 250 for both HA and non-HA admin cluster. Lower bound is 64 for non-HA admin cluster and 32 for HA admin cluster.
@@ -3951,12 +3368,6 @@ func (i BareMetalApiServerArgumentArgs) ToBareMetalApiServerArgumentOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalApiServerArgumentOutput)
 }
 
-func (i BareMetalApiServerArgumentArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalApiServerArgument] {
-	return pulumix.Output[BareMetalApiServerArgument]{
-		OutputState: i.ToBareMetalApiServerArgumentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalApiServerArgumentArrayInput is an input type that accepts BareMetalApiServerArgumentArray and BareMetalApiServerArgumentArrayOutput values.
 // You can construct a concrete instance of `BareMetalApiServerArgumentArrayInput` via:
 //
@@ -3982,12 +3393,6 @@ func (i BareMetalApiServerArgumentArray) ToBareMetalApiServerArgumentArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalApiServerArgumentArrayOutput)
 }
 
-func (i BareMetalApiServerArgumentArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalApiServerArgument] {
-	return pulumix.Output[[]BareMetalApiServerArgument]{
-		OutputState: i.ToBareMetalApiServerArgumentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an arg name->value pair. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
 type BareMetalApiServerArgumentOutput struct{ *pulumi.OutputState }
 
@@ -4001,12 +3406,6 @@ func (o BareMetalApiServerArgumentOutput) ToBareMetalApiServerArgumentOutput() B
 
 func (o BareMetalApiServerArgumentOutput) ToBareMetalApiServerArgumentOutputWithContext(ctx context.Context) BareMetalApiServerArgumentOutput {
 	return o
-}
-
-func (o BareMetalApiServerArgumentOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalApiServerArgument] {
-	return pulumix.Output[BareMetalApiServerArgument]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The argument name as it appears on the API Server command line, make sure to remove the leading dashes.
@@ -4031,12 +3430,6 @@ func (o BareMetalApiServerArgumentArrayOutput) ToBareMetalApiServerArgumentArray
 
 func (o BareMetalApiServerArgumentArrayOutput) ToBareMetalApiServerArgumentArrayOutputWithContext(ctx context.Context) BareMetalApiServerArgumentArrayOutput {
 	return o
-}
-
-func (o BareMetalApiServerArgumentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalApiServerArgument] {
-	return pulumix.Output[[]BareMetalApiServerArgument]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalApiServerArgumentArrayOutput) Index(i pulumi.IntInput) BareMetalApiServerArgumentOutput {
@@ -4068,12 +3461,6 @@ func (o BareMetalApiServerArgumentResponseOutput) ToBareMetalApiServerArgumentRe
 	return o
 }
 
-func (o BareMetalApiServerArgumentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalApiServerArgumentResponse] {
-	return pulumix.Output[BareMetalApiServerArgumentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The argument name as it appears on the API Server command line, make sure to remove the leading dashes.
 func (o BareMetalApiServerArgumentResponseOutput) Argument() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalApiServerArgumentResponse) string { return v.Argument }).(pulumi.StringOutput)
@@ -4096,12 +3483,6 @@ func (o BareMetalApiServerArgumentResponseArrayOutput) ToBareMetalApiServerArgum
 
 func (o BareMetalApiServerArgumentResponseArrayOutput) ToBareMetalApiServerArgumentResponseArrayOutputWithContext(ctx context.Context) BareMetalApiServerArgumentResponseArrayOutput {
 	return o
-}
-
-func (o BareMetalApiServerArgumentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalApiServerArgumentResponse] {
-	return pulumix.Output[[]BareMetalApiServerArgumentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalApiServerArgumentResponseArrayOutput) Index(i pulumi.IntInput) BareMetalApiServerArgumentResponseOutput {
@@ -4157,12 +3538,6 @@ func (i BareMetalBgpLbConfigArgs) ToBareMetalBgpLbConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalBgpLbConfigOutput)
 }
 
-func (i BareMetalBgpLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalBgpLbConfig] {
-	return pulumix.Output[BareMetalBgpLbConfig]{
-		OutputState: i.ToBareMetalBgpLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalBgpLbConfigArgs) ToBareMetalBgpLbConfigPtrOutput() BareMetalBgpLbConfigPtrOutput {
 	return i.ToBareMetalBgpLbConfigPtrOutputWithContext(context.Background())
 }
@@ -4204,12 +3579,6 @@ func (i *bareMetalBgpLbConfigPtrType) ToBareMetalBgpLbConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalBgpLbConfigPtrOutput)
 }
 
-func (i *bareMetalBgpLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalBgpLbConfig] {
-	return pulumix.Output[*BareMetalBgpLbConfig]{
-		OutputState: i.ToBareMetalBgpLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalBgpLbConfig represents configuration parameters for a Border Gateway Protocol (BGP) load balancer.
 type BareMetalBgpLbConfigOutput struct{ *pulumi.OutputState }
 
@@ -4233,12 +3602,6 @@ func (o BareMetalBgpLbConfigOutput) ToBareMetalBgpLbConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalBgpLbConfig) *BareMetalBgpLbConfig {
 		return &v
 	}).(BareMetalBgpLbConfigPtrOutput)
-}
-
-func (o BareMetalBgpLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalBgpLbConfig] {
-	return pulumix.Output[BareMetalBgpLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools.
@@ -4273,12 +3636,6 @@ func (o BareMetalBgpLbConfigPtrOutput) ToBareMetalBgpLbConfigPtrOutput() BareMet
 
 func (o BareMetalBgpLbConfigPtrOutput) ToBareMetalBgpLbConfigPtrOutputWithContext(ctx context.Context) BareMetalBgpLbConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalBgpLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalBgpLbConfig] {
-	return pulumix.Output[*BareMetalBgpLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalBgpLbConfigPtrOutput) Elem() BareMetalBgpLbConfigOutput {
@@ -4358,12 +3715,6 @@ func (o BareMetalBgpLbConfigResponseOutput) ToBareMetalBgpLbConfigResponseOutput
 	return o
 }
 
-func (o BareMetalBgpLbConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalBgpLbConfigResponse] {
-	return pulumix.Output[BareMetalBgpLbConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools.
 func (o BareMetalBgpLbConfigResponseOutput) AddressPools() BareMetalLoadBalancerAddressPoolResponseArrayOutput {
 	return o.ApplyT(func(v BareMetalBgpLbConfigResponse) []BareMetalLoadBalancerAddressPoolResponse { return v.AddressPools }).(BareMetalLoadBalancerAddressPoolResponseArrayOutput)
@@ -4429,12 +3780,6 @@ func (i BareMetalBgpPeerConfigArgs) ToBareMetalBgpPeerConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalBgpPeerConfigOutput)
 }
 
-func (i BareMetalBgpPeerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalBgpPeerConfig] {
-	return pulumix.Output[BareMetalBgpPeerConfig]{
-		OutputState: i.ToBareMetalBgpPeerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalBgpPeerConfigArrayInput is an input type that accepts BareMetalBgpPeerConfigArray and BareMetalBgpPeerConfigArrayOutput values.
 // You can construct a concrete instance of `BareMetalBgpPeerConfigArrayInput` via:
 //
@@ -4460,12 +3805,6 @@ func (i BareMetalBgpPeerConfigArray) ToBareMetalBgpPeerConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalBgpPeerConfigArrayOutput)
 }
 
-func (i BareMetalBgpPeerConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalBgpPeerConfig] {
-	return pulumix.Output[[]BareMetalBgpPeerConfig]{
-		OutputState: i.ToBareMetalBgpPeerConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalBgpPeerConfig represents configuration parameters for a Border Gateway Protocol (BGP) peer.
 type BareMetalBgpPeerConfigOutput struct{ *pulumi.OutputState }
 
@@ -4479,12 +3818,6 @@ func (o BareMetalBgpPeerConfigOutput) ToBareMetalBgpPeerConfigOutput() BareMetal
 
 func (o BareMetalBgpPeerConfigOutput) ToBareMetalBgpPeerConfigOutputWithContext(ctx context.Context) BareMetalBgpPeerConfigOutput {
 	return o
-}
-
-func (o BareMetalBgpPeerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalBgpPeerConfig] {
-	return pulumix.Output[BareMetalBgpPeerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BGP autonomous system number (ASN) for the network that contains the external peer device.
@@ -4514,12 +3847,6 @@ func (o BareMetalBgpPeerConfigArrayOutput) ToBareMetalBgpPeerConfigArrayOutput()
 
 func (o BareMetalBgpPeerConfigArrayOutput) ToBareMetalBgpPeerConfigArrayOutputWithContext(ctx context.Context) BareMetalBgpPeerConfigArrayOutput {
 	return o
-}
-
-func (o BareMetalBgpPeerConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalBgpPeerConfig] {
-	return pulumix.Output[[]BareMetalBgpPeerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalBgpPeerConfigArrayOutput) Index(i pulumi.IntInput) BareMetalBgpPeerConfigOutput {
@@ -4553,12 +3880,6 @@ func (o BareMetalBgpPeerConfigResponseOutput) ToBareMetalBgpPeerConfigResponseOu
 	return o
 }
 
-func (o BareMetalBgpPeerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalBgpPeerConfigResponse] {
-	return pulumix.Output[BareMetalBgpPeerConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // BGP autonomous system number (ASN) for the network that contains the external peer device.
 func (o BareMetalBgpPeerConfigResponseOutput) Asn() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalBgpPeerConfigResponse) string { return v.Asn }).(pulumi.StringOutput)
@@ -4586,12 +3907,6 @@ func (o BareMetalBgpPeerConfigResponseArrayOutput) ToBareMetalBgpPeerConfigRespo
 
 func (o BareMetalBgpPeerConfigResponseArrayOutput) ToBareMetalBgpPeerConfigResponseArrayOutputWithContext(ctx context.Context) BareMetalBgpPeerConfigResponseArrayOutput {
 	return o
-}
-
-func (o BareMetalBgpPeerConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalBgpPeerConfigResponse] {
-	return pulumix.Output[[]BareMetalBgpPeerConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalBgpPeerConfigResponseArrayOutput) Index(i pulumi.IntInput) BareMetalBgpPeerConfigResponseOutput {
@@ -4635,12 +3950,6 @@ func (i BareMetalClusterOperationsConfigArgs) ToBareMetalClusterOperationsConfig
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterOperationsConfigOutput)
 }
 
-func (i BareMetalClusterOperationsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterOperationsConfig] {
-	return pulumix.Output[BareMetalClusterOperationsConfig]{
-		OutputState: i.ToBareMetalClusterOperationsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalClusterOperationsConfigArgs) ToBareMetalClusterOperationsConfigPtrOutput() BareMetalClusterOperationsConfigPtrOutput {
 	return i.ToBareMetalClusterOperationsConfigPtrOutputWithContext(context.Background())
 }
@@ -4682,12 +3991,6 @@ func (i *bareMetalClusterOperationsConfigPtrType) ToBareMetalClusterOperationsCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterOperationsConfigPtrOutput)
 }
 
-func (i *bareMetalClusterOperationsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterOperationsConfig] {
-	return pulumix.Output[*BareMetalClusterOperationsConfig]{
-		OutputState: i.ToBareMetalClusterOperationsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the bare metal user cluster's observability infrastructure.
 type BareMetalClusterOperationsConfigOutput struct{ *pulumi.OutputState }
 
@@ -4713,12 +4016,6 @@ func (o BareMetalClusterOperationsConfigOutput) ToBareMetalClusterOperationsConf
 	}).(BareMetalClusterOperationsConfigPtrOutput)
 }
 
-func (o BareMetalClusterOperationsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterOperationsConfig] {
-	return pulumix.Output[BareMetalClusterOperationsConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
 func (o BareMetalClusterOperationsConfigOutput) EnableApplicationLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalClusterOperationsConfig) *bool { return v.EnableApplicationLogs }).(pulumi.BoolPtrOutput)
@@ -4736,12 +4033,6 @@ func (o BareMetalClusterOperationsConfigPtrOutput) ToBareMetalClusterOperationsC
 
 func (o BareMetalClusterOperationsConfigPtrOutput) ToBareMetalClusterOperationsConfigPtrOutputWithContext(ctx context.Context) BareMetalClusterOperationsConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterOperationsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterOperationsConfig] {
-	return pulumix.Output[*BareMetalClusterOperationsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterOperationsConfigPtrOutput) Elem() BareMetalClusterOperationsConfigOutput {
@@ -4785,12 +4076,6 @@ func (o BareMetalClusterOperationsConfigResponseOutput) ToBareMetalClusterOperat
 	return o
 }
 
-func (o BareMetalClusterOperationsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterOperationsConfigResponse] {
-	return pulumix.Output[BareMetalClusterOperationsConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
 func (o BareMetalClusterOperationsConfigResponseOutput) EnableApplicationLogs() pulumi.BoolOutput {
 	return o.ApplyT(func(v BareMetalClusterOperationsConfigResponse) bool { return v.EnableApplicationLogs }).(pulumi.BoolOutput)
@@ -4829,12 +4114,6 @@ func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyOutput
 
 func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterUpgradePolicyOutput)
-}
-
-func (i BareMetalClusterUpgradePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicy] {
-	return pulumix.Output[BareMetalClusterUpgradePolicy]{
-		OutputState: i.ToBareMetalClusterUpgradePolicyOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput {
@@ -4878,12 +4157,6 @@ func (i *bareMetalClusterUpgradePolicyPtrType) ToBareMetalClusterUpgradePolicyPt
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterUpgradePolicyPtrOutput)
 }
 
-func (i *bareMetalClusterUpgradePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicy] {
-	return pulumix.Output[*BareMetalClusterUpgradePolicy]{
-		OutputState: i.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
 type BareMetalClusterUpgradePolicyOutput struct{ *pulumi.OutputState }
 
@@ -4909,12 +4182,6 @@ func (o BareMetalClusterUpgradePolicyOutput) ToBareMetalClusterUpgradePolicyPtrO
 	}).(BareMetalClusterUpgradePolicyPtrOutput)
 }
 
-func (o BareMetalClusterUpgradePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicy] {
-	return pulumix.Output[BareMetalClusterUpgradePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies which upgrade policy to use.
 func (o BareMetalClusterUpgradePolicyOutput) Policy() BareMetalClusterUpgradePolicyPolicyPtrOutput {
 	return o.ApplyT(func(v BareMetalClusterUpgradePolicy) *BareMetalClusterUpgradePolicyPolicy { return v.Policy }).(BareMetalClusterUpgradePolicyPolicyPtrOutput)
@@ -4932,12 +4199,6 @@ func (o BareMetalClusterUpgradePolicyPtrOutput) ToBareMetalClusterUpgradePolicyP
 
 func (o BareMetalClusterUpgradePolicyPtrOutput) ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPtrOutput {
 	return o
-}
-
-func (o BareMetalClusterUpgradePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicy] {
-	return pulumix.Output[*BareMetalClusterUpgradePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterUpgradePolicyPtrOutput) Elem() BareMetalClusterUpgradePolicyOutput {
@@ -4979,12 +4240,6 @@ func (o BareMetalClusterUpgradePolicyResponseOutput) ToBareMetalClusterUpgradePo
 
 func (o BareMetalClusterUpgradePolicyResponseOutput) ToBareMetalClusterUpgradePolicyResponseOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyResponseOutput {
 	return o
-}
-
-func (o BareMetalClusterUpgradePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicyResponse] {
-	return pulumix.Output[BareMetalClusterUpgradePolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies which upgrade policy to use.
@@ -5031,12 +4286,6 @@ func (i BareMetalControlPlaneConfigArgs) ToBareMetalControlPlaneConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalControlPlaneConfigOutput)
 }
 
-func (i BareMetalControlPlaneConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalControlPlaneConfig] {
-	return pulumix.Output[BareMetalControlPlaneConfig]{
-		OutputState: i.ToBareMetalControlPlaneConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the control plane configuration.
 type BareMetalControlPlaneConfigOutput struct{ *pulumi.OutputState }
 
@@ -5050,12 +4299,6 @@ func (o BareMetalControlPlaneConfigOutput) ToBareMetalControlPlaneConfigOutput()
 
 func (o BareMetalControlPlaneConfigOutput) ToBareMetalControlPlaneConfigOutputWithContext(ctx context.Context) BareMetalControlPlaneConfigOutput {
 	return o
-}
-
-func (o BareMetalControlPlaneConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalControlPlaneConfig] {
-	return pulumix.Output[BareMetalControlPlaneConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customizes the default API server args. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
@@ -5091,12 +4334,6 @@ func (o BareMetalControlPlaneConfigResponseOutput) ToBareMetalControlPlaneConfig
 
 func (o BareMetalControlPlaneConfigResponseOutput) ToBareMetalControlPlaneConfigResponseOutputWithContext(ctx context.Context) BareMetalControlPlaneConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalControlPlaneConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalControlPlaneConfigResponse] {
-	return pulumix.Output[BareMetalControlPlaneConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customizes the default API server args. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
@@ -5148,12 +4385,6 @@ func (i BareMetalControlPlaneNodePoolConfigArgs) ToBareMetalControlPlaneNodePool
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalControlPlaneNodePoolConfigOutput)
 }
 
-func (i BareMetalControlPlaneNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalControlPlaneNodePoolConfig] {
-	return pulumix.Output[BareMetalControlPlaneNodePoolConfig]{
-		OutputState: i.ToBareMetalControlPlaneNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the control plane node pool configuration.
 type BareMetalControlPlaneNodePoolConfigOutput struct{ *pulumi.OutputState }
 
@@ -5167,12 +4398,6 @@ func (o BareMetalControlPlaneNodePoolConfigOutput) ToBareMetalControlPlaneNodePo
 
 func (o BareMetalControlPlaneNodePoolConfigOutput) ToBareMetalControlPlaneNodePoolConfigOutputWithContext(ctx context.Context) BareMetalControlPlaneNodePoolConfigOutput {
 	return o
-}
-
-func (o BareMetalControlPlaneNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalControlPlaneNodePoolConfig] {
-	return pulumix.Output[BareMetalControlPlaneNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The generic configuration for a node pool running the control plane.
@@ -5199,12 +4424,6 @@ func (o BareMetalControlPlaneNodePoolConfigResponseOutput) ToBareMetalControlPla
 
 func (o BareMetalControlPlaneNodePoolConfigResponseOutput) ToBareMetalControlPlaneNodePoolConfigResponseOutputWithContext(ctx context.Context) BareMetalControlPlaneNodePoolConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalControlPlaneNodePoolConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalControlPlaneNodePoolConfigResponse] {
-	return pulumix.Output[BareMetalControlPlaneNodePoolConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The generic configuration for a node pool running the control plane.
@@ -5235,12 +4454,6 @@ func (o BareMetalDrainedMachineResponseOutput) ToBareMetalDrainedMachineResponse
 	return o
 }
 
-func (o BareMetalDrainedMachineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalDrainedMachineResponse] {
-	return pulumix.Output[BareMetalDrainedMachineResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Drained machine IP address.
 func (o BareMetalDrainedMachineResponseOutput) NodeIp() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalDrainedMachineResponse) string { return v.NodeIp }).(pulumi.StringOutput)
@@ -5258,12 +4471,6 @@ func (o BareMetalDrainedMachineResponseArrayOutput) ToBareMetalDrainedMachineRes
 
 func (o BareMetalDrainedMachineResponseArrayOutput) ToBareMetalDrainedMachineResponseArrayOutputWithContext(ctx context.Context) BareMetalDrainedMachineResponseArrayOutput {
 	return o
-}
-
-func (o BareMetalDrainedMachineResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalDrainedMachineResponse] {
-	return pulumix.Output[[]BareMetalDrainedMachineResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalDrainedMachineResponseArrayOutput) Index(i pulumi.IntInput) BareMetalDrainedMachineResponseOutput {
@@ -5295,12 +4502,6 @@ func (o BareMetalDrainingMachineResponseOutput) ToBareMetalDrainingMachineRespon
 	return o
 }
 
-func (o BareMetalDrainingMachineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalDrainingMachineResponse] {
-	return pulumix.Output[BareMetalDrainingMachineResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Draining machine IP address.
 func (o BareMetalDrainingMachineResponseOutput) NodeIp() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalDrainingMachineResponse) string { return v.NodeIp }).(pulumi.StringOutput)
@@ -5323,12 +4524,6 @@ func (o BareMetalDrainingMachineResponseArrayOutput) ToBareMetalDrainingMachineR
 
 func (o BareMetalDrainingMachineResponseArrayOutput) ToBareMetalDrainingMachineResponseArrayOutputWithContext(ctx context.Context) BareMetalDrainingMachineResponseArrayOutput {
 	return o
-}
-
-func (o BareMetalDrainingMachineResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalDrainingMachineResponse] {
-	return pulumix.Output[[]BareMetalDrainingMachineResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalDrainingMachineResponseArrayOutput) Index(i pulumi.IntInput) BareMetalDrainingMachineResponseOutput {
@@ -5376,12 +4571,6 @@ func (i BareMetalIslandModeCidrConfigArgs) ToBareMetalIslandModeCidrConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalIslandModeCidrConfigOutput)
 }
 
-func (i BareMetalIslandModeCidrConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalIslandModeCidrConfig] {
-	return pulumix.Output[BareMetalIslandModeCidrConfig]{
-		OutputState: i.ToBareMetalIslandModeCidrConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalIslandModeCidrConfigArgs) ToBareMetalIslandModeCidrConfigPtrOutput() BareMetalIslandModeCidrConfigPtrOutput {
 	return i.ToBareMetalIslandModeCidrConfigPtrOutputWithContext(context.Background())
 }
@@ -5423,12 +4612,6 @@ func (i *bareMetalIslandModeCidrConfigPtrType) ToBareMetalIslandModeCidrConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalIslandModeCidrConfigPtrOutput)
 }
 
-func (i *bareMetalIslandModeCidrConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalIslandModeCidrConfig] {
-	return pulumix.Output[*BareMetalIslandModeCidrConfig]{
-		OutputState: i.ToBareMetalIslandModeCidrConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the cluster CIDR configuration while running in island mode.
 type BareMetalIslandModeCidrConfigOutput struct{ *pulumi.OutputState }
 
@@ -5454,12 +4637,6 @@ func (o BareMetalIslandModeCidrConfigOutput) ToBareMetalIslandModeCidrConfigPtrO
 	}).(BareMetalIslandModeCidrConfigPtrOutput)
 }
 
-func (o BareMetalIslandModeCidrConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalIslandModeCidrConfig] {
-	return pulumix.Output[BareMetalIslandModeCidrConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
 func (o BareMetalIslandModeCidrConfigOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalIslandModeCidrConfig) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -5482,12 +4659,6 @@ func (o BareMetalIslandModeCidrConfigPtrOutput) ToBareMetalIslandModeCidrConfigP
 
 func (o BareMetalIslandModeCidrConfigPtrOutput) ToBareMetalIslandModeCidrConfigPtrOutputWithContext(ctx context.Context) BareMetalIslandModeCidrConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalIslandModeCidrConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalIslandModeCidrConfig] {
-	return pulumix.Output[*BareMetalIslandModeCidrConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalIslandModeCidrConfigPtrOutput) Elem() BareMetalIslandModeCidrConfigOutput {
@@ -5543,12 +4714,6 @@ func (o BareMetalIslandModeCidrConfigResponseOutput) ToBareMetalIslandModeCidrCo
 	return o
 }
 
-func (o BareMetalIslandModeCidrConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalIslandModeCidrConfigResponse] {
-	return pulumix.Output[BareMetalIslandModeCidrConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
 func (o BareMetalIslandModeCidrConfigResponseOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalIslandModeCidrConfigResponse) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -5602,12 +4767,6 @@ func (i BareMetalKubeletConfigArgs) ToBareMetalKubeletConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalKubeletConfigOutput)
 }
 
-func (i BareMetalKubeletConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalKubeletConfig] {
-	return pulumix.Output[BareMetalKubeletConfig]{
-		OutputState: i.ToBareMetalKubeletConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalKubeletConfigArgs) ToBareMetalKubeletConfigPtrOutput() BareMetalKubeletConfigPtrOutput {
 	return i.ToBareMetalKubeletConfigPtrOutputWithContext(context.Background())
 }
@@ -5649,12 +4808,6 @@ func (i *bareMetalKubeletConfigPtrType) ToBareMetalKubeletConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalKubeletConfigPtrOutput)
 }
 
-func (i *bareMetalKubeletConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalKubeletConfig] {
-	return pulumix.Output[*BareMetalKubeletConfig]{
-		OutputState: i.ToBareMetalKubeletConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
 type BareMetalKubeletConfigOutput struct{ *pulumi.OutputState }
 
@@ -5678,12 +4831,6 @@ func (o BareMetalKubeletConfigOutput) ToBareMetalKubeletConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalKubeletConfig) *BareMetalKubeletConfig {
 		return &v
 	}).(BareMetalKubeletConfigPtrOutput)
-}
-
-func (o BareMetalKubeletConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalKubeletConfig] {
-	return pulumix.Output[BareMetalKubeletConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum size of bursty pulls, temporarily allows pulls to burst to this number, while still not exceeding registry_pull_qps. The value must not be a negative number. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 10.
@@ -5713,12 +4860,6 @@ func (o BareMetalKubeletConfigPtrOutput) ToBareMetalKubeletConfigPtrOutput() Bar
 
 func (o BareMetalKubeletConfigPtrOutput) ToBareMetalKubeletConfigPtrOutputWithContext(ctx context.Context) BareMetalKubeletConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalKubeletConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalKubeletConfig] {
-	return pulumix.Output[*BareMetalKubeletConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalKubeletConfigPtrOutput) Elem() BareMetalKubeletConfigOutput {
@@ -5786,12 +4927,6 @@ func (o BareMetalKubeletConfigResponseOutput) ToBareMetalKubeletConfigResponseOu
 	return o
 }
 
-func (o BareMetalKubeletConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalKubeletConfigResponse] {
-	return pulumix.Output[BareMetalKubeletConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum size of bursty pulls, temporarily allows pulls to burst to this number, while still not exceeding registry_pull_qps. The value must not be a negative number. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 10.
 func (o BareMetalKubeletConfigResponseOutput) RegistryBurst() pulumi.IntOutput {
 	return o.ApplyT(func(v BareMetalKubeletConfigResponse) int { return v.RegistryBurst }).(pulumi.IntOutput)
@@ -5854,12 +4989,6 @@ func (i BareMetalLoadBalancerAddressPoolArgs) ToBareMetalLoadBalancerAddressPool
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalLoadBalancerAddressPoolOutput)
 }
 
-func (i BareMetalLoadBalancerAddressPoolArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalLoadBalancerAddressPool] {
-	return pulumix.Output[BareMetalLoadBalancerAddressPool]{
-		OutputState: i.ToBareMetalLoadBalancerAddressPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalLoadBalancerAddressPoolArrayInput is an input type that accepts BareMetalLoadBalancerAddressPoolArray and BareMetalLoadBalancerAddressPoolArrayOutput values.
 // You can construct a concrete instance of `BareMetalLoadBalancerAddressPoolArrayInput` via:
 //
@@ -5885,12 +5014,6 @@ func (i BareMetalLoadBalancerAddressPoolArray) ToBareMetalLoadBalancerAddressPoo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalLoadBalancerAddressPoolArrayOutput)
 }
 
-func (i BareMetalLoadBalancerAddressPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalLoadBalancerAddressPool] {
-	return pulumix.Output[[]BareMetalLoadBalancerAddressPool]{
-		OutputState: i.ToBareMetalLoadBalancerAddressPoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an IP pool used by the load balancer.
 type BareMetalLoadBalancerAddressPoolOutput struct{ *pulumi.OutputState }
 
@@ -5904,12 +5027,6 @@ func (o BareMetalLoadBalancerAddressPoolOutput) ToBareMetalLoadBalancerAddressPo
 
 func (o BareMetalLoadBalancerAddressPoolOutput) ToBareMetalLoadBalancerAddressPoolOutputWithContext(ctx context.Context) BareMetalLoadBalancerAddressPoolOutput {
 	return o
-}
-
-func (o BareMetalLoadBalancerAddressPoolOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalLoadBalancerAddressPool] {
-	return pulumix.Output[BareMetalLoadBalancerAddressPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
@@ -5946,12 +5063,6 @@ func (o BareMetalLoadBalancerAddressPoolArrayOutput) ToBareMetalLoadBalancerAddr
 	return o
 }
 
-func (o BareMetalLoadBalancerAddressPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalLoadBalancerAddressPool] {
-	return pulumix.Output[[]BareMetalLoadBalancerAddressPool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BareMetalLoadBalancerAddressPoolArrayOutput) Index(i pulumi.IntInput) BareMetalLoadBalancerAddressPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalLoadBalancerAddressPool {
 		return vs[0].([]BareMetalLoadBalancerAddressPool)[vs[1].(int)]
@@ -5983,12 +5094,6 @@ func (o BareMetalLoadBalancerAddressPoolResponseOutput) ToBareMetalLoadBalancerA
 
 func (o BareMetalLoadBalancerAddressPoolResponseOutput) ToBareMetalLoadBalancerAddressPoolResponseOutputWithContext(ctx context.Context) BareMetalLoadBalancerAddressPoolResponseOutput {
 	return o
-}
-
-func (o BareMetalLoadBalancerAddressPoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalLoadBalancerAddressPoolResponse] {
-	return pulumix.Output[BareMetalLoadBalancerAddressPoolResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
@@ -6023,12 +5128,6 @@ func (o BareMetalLoadBalancerAddressPoolResponseArrayOutput) ToBareMetalLoadBala
 
 func (o BareMetalLoadBalancerAddressPoolResponseArrayOutput) ToBareMetalLoadBalancerAddressPoolResponseArrayOutputWithContext(ctx context.Context) BareMetalLoadBalancerAddressPoolResponseArrayOutput {
 	return o
-}
-
-func (o BareMetalLoadBalancerAddressPoolResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalLoadBalancerAddressPoolResponse] {
-	return pulumix.Output[[]BareMetalLoadBalancerAddressPoolResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalLoadBalancerAddressPoolResponseArrayOutput) Index(i pulumi.IntInput) BareMetalLoadBalancerAddressPoolResponseOutput {
@@ -6088,12 +5187,6 @@ func (i BareMetalLoadBalancerConfigArgs) ToBareMetalLoadBalancerConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalLoadBalancerConfigOutput)
 }
 
-func (i BareMetalLoadBalancerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalLoadBalancerConfig] {
-	return pulumix.Output[BareMetalLoadBalancerConfig]{
-		OutputState: i.ToBareMetalLoadBalancerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the load balancer configuration.
 type BareMetalLoadBalancerConfigOutput struct{ *pulumi.OutputState }
 
@@ -6107,12 +5200,6 @@ func (o BareMetalLoadBalancerConfigOutput) ToBareMetalLoadBalancerConfigOutput()
 
 func (o BareMetalLoadBalancerConfigOutput) ToBareMetalLoadBalancerConfigOutputWithContext(ctx context.Context) BareMetalLoadBalancerConfigOutput {
 	return o
-}
-
-func (o BareMetalLoadBalancerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalLoadBalancerConfig] {
-	return pulumix.Output[BareMetalLoadBalancerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for BGP typed load balancers. When set network_config.advanced_networking is automatically set to true.
@@ -6167,12 +5254,6 @@ func (o BareMetalLoadBalancerConfigResponseOutput) ToBareMetalLoadBalancerConfig
 
 func (o BareMetalLoadBalancerConfigResponseOutput) ToBareMetalLoadBalancerConfigResponseOutputWithContext(ctx context.Context) BareMetalLoadBalancerConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalLoadBalancerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalLoadBalancerConfigResponse] {
-	return pulumix.Output[BareMetalLoadBalancerConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for BGP typed load balancers. When set network_config.advanced_networking is automatically set to true.
@@ -6235,12 +5316,6 @@ func (i BareMetalLoadBalancerNodePoolConfigArgs) ToBareMetalLoadBalancerNodePool
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalLoadBalancerNodePoolConfigOutput)
 }
 
-func (i BareMetalLoadBalancerNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalLoadBalancerNodePoolConfig] {
-	return pulumix.Output[BareMetalLoadBalancerNodePoolConfig]{
-		OutputState: i.ToBareMetalLoadBalancerNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalLoadBalancerNodePoolConfigArgs) ToBareMetalLoadBalancerNodePoolConfigPtrOutput() BareMetalLoadBalancerNodePoolConfigPtrOutput {
 	return i.ToBareMetalLoadBalancerNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -6282,12 +5357,6 @@ func (i *bareMetalLoadBalancerNodePoolConfigPtrType) ToBareMetalLoadBalancerNode
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalLoadBalancerNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalLoadBalancerNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalLoadBalancerNodePoolConfig] {
-	return pulumix.Output[*BareMetalLoadBalancerNodePoolConfig]{
-		OutputState: i.ToBareMetalLoadBalancerNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the load balancer's node pool configuration.
 type BareMetalLoadBalancerNodePoolConfigOutput struct{ *pulumi.OutputState }
 
@@ -6313,12 +5382,6 @@ func (o BareMetalLoadBalancerNodePoolConfigOutput) ToBareMetalLoadBalancerNodePo
 	}).(BareMetalLoadBalancerNodePoolConfigPtrOutput)
 }
 
-func (o BareMetalLoadBalancerNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalLoadBalancerNodePoolConfig] {
-	return pulumix.Output[BareMetalLoadBalancerNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The generic configuration for a node pool running a load balancer.
 func (o BareMetalLoadBalancerNodePoolConfigOutput) NodePoolConfig() BareMetalNodePoolConfigPtrOutput {
 	return o.ApplyT(func(v BareMetalLoadBalancerNodePoolConfig) *BareMetalNodePoolConfig { return v.NodePoolConfig }).(BareMetalNodePoolConfigPtrOutput)
@@ -6336,12 +5399,6 @@ func (o BareMetalLoadBalancerNodePoolConfigPtrOutput) ToBareMetalLoadBalancerNod
 
 func (o BareMetalLoadBalancerNodePoolConfigPtrOutput) ToBareMetalLoadBalancerNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalLoadBalancerNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalLoadBalancerNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalLoadBalancerNodePoolConfig] {
-	return pulumix.Output[*BareMetalLoadBalancerNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalLoadBalancerNodePoolConfigPtrOutput) Elem() BareMetalLoadBalancerNodePoolConfigOutput {
@@ -6383,12 +5440,6 @@ func (o BareMetalLoadBalancerNodePoolConfigResponseOutput) ToBareMetalLoadBalanc
 
 func (o BareMetalLoadBalancerNodePoolConfigResponseOutput) ToBareMetalLoadBalancerNodePoolConfigResponseOutputWithContext(ctx context.Context) BareMetalLoadBalancerNodePoolConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalLoadBalancerNodePoolConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalLoadBalancerNodePoolConfigResponse] {
-	return pulumix.Output[BareMetalLoadBalancerNodePoolConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The generic configuration for a node pool running a load balancer.
@@ -6437,12 +5488,6 @@ func (i BareMetalLvpConfigArgs) ToBareMetalLvpConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalLvpConfigOutput)
 }
 
-func (i BareMetalLvpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalLvpConfig] {
-	return pulumix.Output[BareMetalLvpConfig]{
-		OutputState: i.ToBareMetalLvpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalLvpConfigArgs) ToBareMetalLvpConfigPtrOutput() BareMetalLvpConfigPtrOutput {
 	return i.ToBareMetalLvpConfigPtrOutputWithContext(context.Background())
 }
@@ -6484,12 +5529,6 @@ func (i *bareMetalLvpConfigPtrType) ToBareMetalLvpConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalLvpConfigPtrOutput)
 }
 
-func (i *bareMetalLvpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalLvpConfig] {
-	return pulumix.Output[*BareMetalLvpConfig]{
-		OutputState: i.ToBareMetalLvpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the configs for local persistent volumes (PVs).
 type BareMetalLvpConfigOutput struct{ *pulumi.OutputState }
 
@@ -6515,12 +5554,6 @@ func (o BareMetalLvpConfigOutput) ToBareMetalLvpConfigPtrOutputWithContext(ctx c
 	}).(BareMetalLvpConfigPtrOutput)
 }
 
-func (o BareMetalLvpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalLvpConfig] {
-	return pulumix.Output[BareMetalLvpConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The host machine path.
 func (o BareMetalLvpConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalLvpConfig) string { return v.Path }).(pulumi.StringOutput)
@@ -6543,12 +5576,6 @@ func (o BareMetalLvpConfigPtrOutput) ToBareMetalLvpConfigPtrOutput() BareMetalLv
 
 func (o BareMetalLvpConfigPtrOutput) ToBareMetalLvpConfigPtrOutputWithContext(ctx context.Context) BareMetalLvpConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalLvpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalLvpConfig] {
-	return pulumix.Output[*BareMetalLvpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalLvpConfigPtrOutput) Elem() BareMetalLvpConfigOutput {
@@ -6604,12 +5631,6 @@ func (o BareMetalLvpConfigResponseOutput) ToBareMetalLvpConfigResponseOutputWith
 	return o
 }
 
-func (o BareMetalLvpConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalLvpConfigResponse] {
-	return pulumix.Output[BareMetalLvpConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The host machine path.
 func (o BareMetalLvpConfigResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalLvpConfigResponse) string { return v.Path }).(pulumi.StringOutput)
@@ -6659,12 +5680,6 @@ func (i BareMetalLvpShareConfigArgs) ToBareMetalLvpShareConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalLvpShareConfigOutput)
 }
 
-func (i BareMetalLvpShareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalLvpShareConfig] {
-	return pulumix.Output[BareMetalLvpShareConfig]{
-		OutputState: i.ToBareMetalLvpShareConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalLvpShareConfigArgs) ToBareMetalLvpShareConfigPtrOutput() BareMetalLvpShareConfigPtrOutput {
 	return i.ToBareMetalLvpShareConfigPtrOutputWithContext(context.Background())
 }
@@ -6706,12 +5721,6 @@ func (i *bareMetalLvpShareConfigPtrType) ToBareMetalLvpShareConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalLvpShareConfigPtrOutput)
 }
 
-func (i *bareMetalLvpShareConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalLvpShareConfig] {
-	return pulumix.Output[*BareMetalLvpShareConfig]{
-		OutputState: i.ToBareMetalLvpShareConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the configs for local persistent volumes under a shared file system.
 type BareMetalLvpShareConfigOutput struct{ *pulumi.OutputState }
 
@@ -6737,12 +5746,6 @@ func (o BareMetalLvpShareConfigOutput) ToBareMetalLvpShareConfigPtrOutputWithCon
 	}).(BareMetalLvpShareConfigPtrOutput)
 }
 
-func (o BareMetalLvpShareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalLvpShareConfig] {
-	return pulumix.Output[BareMetalLvpShareConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the machine path and storage class for the LVP Share.
 func (o BareMetalLvpShareConfigOutput) LvpConfig() BareMetalLvpConfigOutput {
 	return o.ApplyT(func(v BareMetalLvpShareConfig) BareMetalLvpConfig { return v.LvpConfig }).(BareMetalLvpConfigOutput)
@@ -6765,12 +5768,6 @@ func (o BareMetalLvpShareConfigPtrOutput) ToBareMetalLvpShareConfigPtrOutput() B
 
 func (o BareMetalLvpShareConfigPtrOutput) ToBareMetalLvpShareConfigPtrOutputWithContext(ctx context.Context) BareMetalLvpShareConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalLvpShareConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalLvpShareConfig] {
-	return pulumix.Output[*BareMetalLvpShareConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalLvpShareConfigPtrOutput) Elem() BareMetalLvpShareConfigOutput {
@@ -6826,12 +5823,6 @@ func (o BareMetalLvpShareConfigResponseOutput) ToBareMetalLvpShareConfigResponse
 	return o
 }
 
-func (o BareMetalLvpShareConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalLvpShareConfigResponse] {
-	return pulumix.Output[BareMetalLvpShareConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the machine path and storage class for the LVP Share.
 func (o BareMetalLvpShareConfigResponseOutput) LvpConfig() BareMetalLvpConfigResponseOutput {
 	return o.ApplyT(func(v BareMetalLvpShareConfigResponse) BareMetalLvpConfigResponse { return v.LvpConfig }).(BareMetalLvpConfigResponseOutput)
@@ -6863,12 +5854,6 @@ func (o BareMetalMachineDrainStatusResponseOutput) ToBareMetalMachineDrainStatus
 
 func (o BareMetalMachineDrainStatusResponseOutput) ToBareMetalMachineDrainStatusResponseOutputWithContext(ctx context.Context) BareMetalMachineDrainStatusResponseOutput {
 	return o
-}
-
-func (o BareMetalMachineDrainStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalMachineDrainStatusResponse] {
-	return pulumix.Output[BareMetalMachineDrainStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of drained machines.
@@ -6920,12 +5905,6 @@ func (i BareMetalMaintenanceConfigArgs) ToBareMetalMaintenanceConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalMaintenanceConfigOutput)
 }
 
-func (i BareMetalMaintenanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalMaintenanceConfig] {
-	return pulumix.Output[BareMetalMaintenanceConfig]{
-		OutputState: i.ToBareMetalMaintenanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalMaintenanceConfigArgs) ToBareMetalMaintenanceConfigPtrOutput() BareMetalMaintenanceConfigPtrOutput {
 	return i.ToBareMetalMaintenanceConfigPtrOutputWithContext(context.Background())
 }
@@ -6967,12 +5946,6 @@ func (i *bareMetalMaintenanceConfigPtrType) ToBareMetalMaintenanceConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalMaintenanceConfigPtrOutput)
 }
 
-func (i *bareMetalMaintenanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMaintenanceConfig] {
-	return pulumix.Output[*BareMetalMaintenanceConfig]{
-		OutputState: i.ToBareMetalMaintenanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies configurations to put bare metal nodes in and out of maintenance.
 type BareMetalMaintenanceConfigOutput struct{ *pulumi.OutputState }
 
@@ -6998,12 +5971,6 @@ func (o BareMetalMaintenanceConfigOutput) ToBareMetalMaintenanceConfigPtrOutputW
 	}).(BareMetalMaintenanceConfigPtrOutput)
 }
 
-func (o BareMetalMaintenanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalMaintenanceConfig] {
-	return pulumix.Output[BareMetalMaintenanceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All IPv4 address from these ranges will be placed into maintenance mode. Nodes in maintenance mode will be cordoned and drained. When both of these are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set on the node resource.
 func (o BareMetalMaintenanceConfigOutput) MaintenanceAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalMaintenanceConfig) []string { return v.MaintenanceAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -7021,12 +5988,6 @@ func (o BareMetalMaintenanceConfigPtrOutput) ToBareMetalMaintenanceConfigPtrOutp
 
 func (o BareMetalMaintenanceConfigPtrOutput) ToBareMetalMaintenanceConfigPtrOutputWithContext(ctx context.Context) BareMetalMaintenanceConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalMaintenanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMaintenanceConfig] {
-	return pulumix.Output[*BareMetalMaintenanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalMaintenanceConfigPtrOutput) Elem() BareMetalMaintenanceConfigOutput {
@@ -7070,12 +6031,6 @@ func (o BareMetalMaintenanceConfigResponseOutput) ToBareMetalMaintenanceConfigRe
 	return o
 }
 
-func (o BareMetalMaintenanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalMaintenanceConfigResponse] {
-	return pulumix.Output[BareMetalMaintenanceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // All IPv4 address from these ranges will be placed into maintenance mode. Nodes in maintenance mode will be cordoned and drained. When both of these are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set on the node resource.
 func (o BareMetalMaintenanceConfigResponseOutput) MaintenanceAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalMaintenanceConfigResponse) []string { return v.MaintenanceAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -7100,12 +6055,6 @@ func (o BareMetalMaintenanceStatusResponseOutput) ToBareMetalMaintenanceStatusRe
 
 func (o BareMetalMaintenanceStatusResponseOutput) ToBareMetalMaintenanceStatusResponseOutputWithContext(ctx context.Context) BareMetalMaintenanceStatusResponseOutput {
 	return o
-}
-
-func (o BareMetalMaintenanceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalMaintenanceStatusResponse] {
-	return pulumix.Output[BareMetalMaintenanceStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maintenance status of node machines.
@@ -7150,12 +6099,6 @@ func (i BareMetalManualLbConfigArgs) ToBareMetalManualLbConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalManualLbConfigOutput)
 }
 
-func (i BareMetalManualLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalManualLbConfig] {
-	return pulumix.Output[BareMetalManualLbConfig]{
-		OutputState: i.ToBareMetalManualLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalManualLbConfigArgs) ToBareMetalManualLbConfigPtrOutput() BareMetalManualLbConfigPtrOutput {
 	return i.ToBareMetalManualLbConfigPtrOutputWithContext(context.Background())
 }
@@ -7197,12 +6140,6 @@ func (i *bareMetalManualLbConfigPtrType) ToBareMetalManualLbConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalManualLbConfigPtrOutput)
 }
 
-func (i *bareMetalManualLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalManualLbConfig] {
-	return pulumix.Output[*BareMetalManualLbConfig]{
-		OutputState: i.ToBareMetalManualLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents configuration parameters for a manual load balancer.
 type BareMetalManualLbConfigOutput struct{ *pulumi.OutputState }
 
@@ -7228,12 +6165,6 @@ func (o BareMetalManualLbConfigOutput) ToBareMetalManualLbConfigPtrOutputWithCon
 	}).(BareMetalManualLbConfigPtrOutput)
 }
 
-func (o BareMetalManualLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalManualLbConfig] {
-	return pulumix.Output[BareMetalManualLbConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether manual load balancing is enabled.
 func (o BareMetalManualLbConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalManualLbConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -7251,12 +6182,6 @@ func (o BareMetalManualLbConfigPtrOutput) ToBareMetalManualLbConfigPtrOutput() B
 
 func (o BareMetalManualLbConfigPtrOutput) ToBareMetalManualLbConfigPtrOutputWithContext(ctx context.Context) BareMetalManualLbConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalManualLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalManualLbConfig] {
-	return pulumix.Output[*BareMetalManualLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalManualLbConfigPtrOutput) Elem() BareMetalManualLbConfigOutput {
@@ -7298,12 +6223,6 @@ func (o BareMetalManualLbConfigResponseOutput) ToBareMetalManualLbConfigResponse
 
 func (o BareMetalManualLbConfigResponseOutput) ToBareMetalManualLbConfigResponseOutputWithContext(ctx context.Context) BareMetalManualLbConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalManualLbConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalManualLbConfigResponse] {
-	return pulumix.Output[BareMetalManualLbConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether manual load balancing is enabled.
@@ -7350,12 +6269,6 @@ func (i BareMetalMetalLbConfigArgs) ToBareMetalMetalLbConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalMetalLbConfigOutput)
 }
 
-func (i BareMetalMetalLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalMetalLbConfig] {
-	return pulumix.Output[BareMetalMetalLbConfig]{
-		OutputState: i.ToBareMetalMetalLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalMetalLbConfigArgs) ToBareMetalMetalLbConfigPtrOutput() BareMetalMetalLbConfigPtrOutput {
 	return i.ToBareMetalMetalLbConfigPtrOutputWithContext(context.Background())
 }
@@ -7397,12 +6310,6 @@ func (i *bareMetalMetalLbConfigPtrType) ToBareMetalMetalLbConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalMetalLbConfigPtrOutput)
 }
 
-func (i *bareMetalMetalLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMetalLbConfig] {
-	return pulumix.Output[*BareMetalMetalLbConfig]{
-		OutputState: i.ToBareMetalMetalLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents configuration parameters for a MetalLB load balancer.
 type BareMetalMetalLbConfigOutput struct{ *pulumi.OutputState }
 
@@ -7426,12 +6333,6 @@ func (o BareMetalMetalLbConfigOutput) ToBareMetalMetalLbConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalMetalLbConfig) *BareMetalMetalLbConfig {
 		return &v
 	}).(BareMetalMetalLbConfigPtrOutput)
-}
-
-func (o BareMetalMetalLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalMetalLbConfig] {
-	return pulumix.Output[BareMetalMetalLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools.
@@ -7458,12 +6359,6 @@ func (o BareMetalMetalLbConfigPtrOutput) ToBareMetalMetalLbConfigPtrOutput() Bar
 
 func (o BareMetalMetalLbConfigPtrOutput) ToBareMetalMetalLbConfigPtrOutputWithContext(ctx context.Context) BareMetalMetalLbConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalMetalLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMetalLbConfig] {
-	return pulumix.Output[*BareMetalMetalLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalMetalLbConfigPtrOutput) Elem() BareMetalMetalLbConfigOutput {
@@ -7519,12 +6414,6 @@ func (o BareMetalMetalLbConfigResponseOutput) ToBareMetalMetalLbConfigResponseOu
 	return o
 }
 
-func (o BareMetalMetalLbConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalMetalLbConfigResponse] {
-	return pulumix.Output[BareMetalMetalLbConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools.
 func (o BareMetalMetalLbConfigResponseOutput) AddressPools() BareMetalLoadBalancerAddressPoolResponseArrayOutput {
 	return o.ApplyT(func(v BareMetalMetalLbConfigResponse) []BareMetalLoadBalancerAddressPoolResponse {
@@ -7574,12 +6463,6 @@ func (i BareMetalMultipleNetworkInterfacesConfigArgs) ToBareMetalMultipleNetwork
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalMultipleNetworkInterfacesConfigOutput)
 }
 
-func (i BareMetalMultipleNetworkInterfacesConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalMultipleNetworkInterfacesConfig] {
-	return pulumix.Output[BareMetalMultipleNetworkInterfacesConfig]{
-		OutputState: i.ToBareMetalMultipleNetworkInterfacesConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalMultipleNetworkInterfacesConfigArgs) ToBareMetalMultipleNetworkInterfacesConfigPtrOutput() BareMetalMultipleNetworkInterfacesConfigPtrOutput {
 	return i.ToBareMetalMultipleNetworkInterfacesConfigPtrOutputWithContext(context.Background())
 }
@@ -7621,12 +6504,6 @@ func (i *bareMetalMultipleNetworkInterfacesConfigPtrType) ToBareMetalMultipleNet
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalMultipleNetworkInterfacesConfigPtrOutput)
 }
 
-func (i *bareMetalMultipleNetworkInterfacesConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMultipleNetworkInterfacesConfig] {
-	return pulumix.Output[*BareMetalMultipleNetworkInterfacesConfig]{
-		OutputState: i.ToBareMetalMultipleNetworkInterfacesConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the multiple networking interfaces cluster configuration.
 type BareMetalMultipleNetworkInterfacesConfigOutput struct{ *pulumi.OutputState }
 
@@ -7652,12 +6529,6 @@ func (o BareMetalMultipleNetworkInterfacesConfigOutput) ToBareMetalMultipleNetwo
 	}).(BareMetalMultipleNetworkInterfacesConfigPtrOutput)
 }
 
-func (o BareMetalMultipleNetworkInterfacesConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalMultipleNetworkInterfacesConfig] {
-	return pulumix.Output[BareMetalMultipleNetworkInterfacesConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable multiple network interfaces for your pods. When set network_config.advanced_networking is automatically set to true.
 func (o BareMetalMultipleNetworkInterfacesConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalMultipleNetworkInterfacesConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -7675,12 +6546,6 @@ func (o BareMetalMultipleNetworkInterfacesConfigPtrOutput) ToBareMetalMultipleNe
 
 func (o BareMetalMultipleNetworkInterfacesConfigPtrOutput) ToBareMetalMultipleNetworkInterfacesConfigPtrOutputWithContext(ctx context.Context) BareMetalMultipleNetworkInterfacesConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalMultipleNetworkInterfacesConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMultipleNetworkInterfacesConfig] {
-	return pulumix.Output[*BareMetalMultipleNetworkInterfacesConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalMultipleNetworkInterfacesConfigPtrOutput) Elem() BareMetalMultipleNetworkInterfacesConfigOutput {
@@ -7722,12 +6587,6 @@ func (o BareMetalMultipleNetworkInterfacesConfigResponseOutput) ToBareMetalMulti
 
 func (o BareMetalMultipleNetworkInterfacesConfigResponseOutput) ToBareMetalMultipleNetworkInterfacesConfigResponseOutputWithContext(ctx context.Context) BareMetalMultipleNetworkInterfacesConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalMultipleNetworkInterfacesConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalMultipleNetworkInterfacesConfigResponse] {
-	return pulumix.Output[BareMetalMultipleNetworkInterfacesConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable multiple network interfaces for your pods. When set network_config.advanced_networking is automatically set to true.
@@ -7782,12 +6641,6 @@ func (i BareMetalNetworkConfigArgs) ToBareMetalNetworkConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNetworkConfigOutput)
 }
 
-func (i BareMetalNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNetworkConfig] {
-	return pulumix.Output[BareMetalNetworkConfig]{
-		OutputState: i.ToBareMetalNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the cluster network configuration.
 type BareMetalNetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -7801,12 +6654,6 @@ func (o BareMetalNetworkConfigOutput) ToBareMetalNetworkConfigOutput() BareMetal
 
 func (o BareMetalNetworkConfigOutput) ToBareMetalNetworkConfigOutputWithContext(ctx context.Context) BareMetalNetworkConfigOutput {
 	return o
-}
-
-func (o BareMetalNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNetworkConfig] {
-	return pulumix.Output[BareMetalNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enables the use of advanced Anthos networking features, such as Bundled Load Balancing with BGP or the egress NAT gateway. Setting configuration for advanced networking features will automatically set this flag.
@@ -7856,12 +6703,6 @@ func (o BareMetalNetworkConfigResponseOutput) ToBareMetalNetworkConfigResponseOu
 
 func (o BareMetalNetworkConfigResponseOutput) ToBareMetalNetworkConfigResponseOutputWithContext(ctx context.Context) BareMetalNetworkConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalNetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNetworkConfigResponse] {
-	return pulumix.Output[BareMetalNetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enables the use of advanced Anthos networking features, such as Bundled Load Balancing with BGP or the egress NAT gateway. Setting configuration for advanced networking features will automatically set this flag.
@@ -7921,12 +6762,6 @@ func (i BareMetalNodeAccessConfigArgs) ToBareMetalNodeAccessConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodeAccessConfigOutput)
 }
 
-func (i BareMetalNodeAccessConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodeAccessConfig] {
-	return pulumix.Output[BareMetalNodeAccessConfig]{
-		OutputState: i.ToBareMetalNodeAccessConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalNodeAccessConfigArgs) ToBareMetalNodeAccessConfigPtrOutput() BareMetalNodeAccessConfigPtrOutput {
 	return i.ToBareMetalNodeAccessConfigPtrOutputWithContext(context.Background())
 }
@@ -7968,12 +6803,6 @@ func (i *bareMetalNodeAccessConfigPtrType) ToBareMetalNodeAccessConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodeAccessConfigPtrOutput)
 }
 
-func (i *bareMetalNodeAccessConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodeAccessConfig] {
-	return pulumix.Output[*BareMetalNodeAccessConfig]{
-		OutputState: i.ToBareMetalNodeAccessConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the node access related settings for the bare metal user cluster.
 type BareMetalNodeAccessConfigOutput struct{ *pulumi.OutputState }
 
@@ -7999,12 +6828,6 @@ func (o BareMetalNodeAccessConfigOutput) ToBareMetalNodeAccessConfigPtrOutputWit
 	}).(BareMetalNodeAccessConfigPtrOutput)
 }
 
-func (o BareMetalNodeAccessConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodeAccessConfig] {
-	return pulumix.Output[BareMetalNodeAccessConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // LoginUser is the user name used to access node machines. It defaults to "root" if not set.
 func (o BareMetalNodeAccessConfigOutput) LoginUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalNodeAccessConfig) *string { return v.LoginUser }).(pulumi.StringPtrOutput)
@@ -8022,12 +6845,6 @@ func (o BareMetalNodeAccessConfigPtrOutput) ToBareMetalNodeAccessConfigPtrOutput
 
 func (o BareMetalNodeAccessConfigPtrOutput) ToBareMetalNodeAccessConfigPtrOutputWithContext(ctx context.Context) BareMetalNodeAccessConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalNodeAccessConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodeAccessConfig] {
-	return pulumix.Output[*BareMetalNodeAccessConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodeAccessConfigPtrOutput) Elem() BareMetalNodeAccessConfigOutput {
@@ -8069,12 +6886,6 @@ func (o BareMetalNodeAccessConfigResponseOutput) ToBareMetalNodeAccessConfigResp
 
 func (o BareMetalNodeAccessConfigResponseOutput) ToBareMetalNodeAccessConfigResponseOutputWithContext(ctx context.Context) BareMetalNodeAccessConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalNodeAccessConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodeAccessConfigResponse] {
-	return pulumix.Output[BareMetalNodeAccessConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // LoginUser is the user name used to access node machines. It defaults to "root" if not set.
@@ -8121,12 +6932,6 @@ func (i BareMetalNodeConfigArgs) ToBareMetalNodeConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodeConfigOutput)
 }
 
-func (i BareMetalNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodeConfig] {
-	return pulumix.Output[BareMetalNodeConfig]{
-		OutputState: i.ToBareMetalNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalNodeConfigArrayInput is an input type that accepts BareMetalNodeConfigArray and BareMetalNodeConfigArrayOutput values.
 // You can construct a concrete instance of `BareMetalNodeConfigArrayInput` via:
 //
@@ -8152,12 +6957,6 @@ func (i BareMetalNodeConfigArray) ToBareMetalNodeConfigArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodeConfigArrayOutput)
 }
 
-func (i BareMetalNodeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodeConfig] {
-	return pulumix.Output[[]BareMetalNodeConfig]{
-		OutputState: i.ToBareMetalNodeConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalNodeConfig lists machine addresses to access Nodes.
 type BareMetalNodeConfigOutput struct{ *pulumi.OutputState }
 
@@ -8171,12 +6970,6 @@ func (o BareMetalNodeConfigOutput) ToBareMetalNodeConfigOutput() BareMetalNodeCo
 
 func (o BareMetalNodeConfigOutput) ToBareMetalNodeConfigOutputWithContext(ctx context.Context) BareMetalNodeConfigOutput {
 	return o
-}
-
-func (o BareMetalNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodeConfig] {
-	return pulumix.Output[BareMetalNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The labels assigned to this node. An object containing a list of key/value pairs. The labels here, unioned with the labels set on BareMetalNodePoolConfig are the set of labels that will be applied to the node. If there are any conflicts, the BareMetalNodeConfig labels take precedence. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -8201,12 +6994,6 @@ func (o BareMetalNodeConfigArrayOutput) ToBareMetalNodeConfigArrayOutput() BareM
 
 func (o BareMetalNodeConfigArrayOutput) ToBareMetalNodeConfigArrayOutputWithContext(ctx context.Context) BareMetalNodeConfigArrayOutput {
 	return o
-}
-
-func (o BareMetalNodeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodeConfig] {
-	return pulumix.Output[[]BareMetalNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodeConfigArrayOutput) Index(i pulumi.IntInput) BareMetalNodeConfigOutput {
@@ -8238,12 +7025,6 @@ func (o BareMetalNodeConfigResponseOutput) ToBareMetalNodeConfigResponseOutputWi
 	return o
 }
 
-func (o BareMetalNodeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodeConfigResponse] {
-	return pulumix.Output[BareMetalNodeConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The labels assigned to this node. An object containing a list of key/value pairs. The labels here, unioned with the labels set on BareMetalNodePoolConfig are the set of labels that will be applied to the node. If there are any conflicts, the BareMetalNodeConfig labels take precedence. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalNodeConfigResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BareMetalNodeConfigResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -8266,12 +7047,6 @@ func (o BareMetalNodeConfigResponseArrayOutput) ToBareMetalNodeConfigResponseArr
 
 func (o BareMetalNodeConfigResponseArrayOutput) ToBareMetalNodeConfigResponseArrayOutputWithContext(ctx context.Context) BareMetalNodeConfigResponseArrayOutput {
 	return o
-}
-
-func (o BareMetalNodeConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BareMetalNodeConfigResponse] {
-	return pulumix.Output[[]BareMetalNodeConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodeConfigResponseArrayOutput) Index(i pulumi.IntInput) BareMetalNodeConfigResponseOutput {
@@ -8331,12 +7106,6 @@ func (i BareMetalNodePoolConfigArgs) ToBareMetalNodePoolConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolConfigOutput)
 }
 
-func (i BareMetalNodePoolConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolConfig] {
-	return pulumix.Output[BareMetalNodePoolConfig]{
-		OutputState: i.ToBareMetalNodePoolConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalNodePoolConfigArgs) ToBareMetalNodePoolConfigPtrOutput() BareMetalNodePoolConfigPtrOutput {
 	return i.ToBareMetalNodePoolConfigPtrOutputWithContext(context.Background())
 }
@@ -8378,12 +7147,6 @@ func (i *bareMetalNodePoolConfigPtrType) ToBareMetalNodePoolConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolConfigPtrOutput)
 }
 
-func (i *bareMetalNodePoolConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolConfig] {
-	return pulumix.Output[*BareMetalNodePoolConfig]{
-		OutputState: i.ToBareMetalNodePoolConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalNodePoolConfig describes the configuration of all nodes within a given bare metal node pool.
 type BareMetalNodePoolConfigOutput struct{ *pulumi.OutputState }
 
@@ -8407,12 +7170,6 @@ func (o BareMetalNodePoolConfigOutput) ToBareMetalNodePoolConfigPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalNodePoolConfig) *BareMetalNodePoolConfig {
 		return &v
 	}).(BareMetalNodePoolConfigPtrOutput)
-}
-
-func (o BareMetalNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolConfig] {
-	return pulumix.Output[BareMetalNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The modifiable kubelet configurations for the bare metal machines.
@@ -8452,12 +7209,6 @@ func (o BareMetalNodePoolConfigPtrOutput) ToBareMetalNodePoolConfigPtrOutput() B
 
 func (o BareMetalNodePoolConfigPtrOutput) ToBareMetalNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalNodePoolConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalNodePoolConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolConfig] {
-	return pulumix.Output[*BareMetalNodePoolConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodePoolConfigPtrOutput) Elem() BareMetalNodePoolConfigOutput {
@@ -8549,12 +7300,6 @@ func (o BareMetalNodePoolConfigResponseOutput) ToBareMetalNodePoolConfigResponse
 	return o
 }
 
-func (o BareMetalNodePoolConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolConfigResponse] {
-	return pulumix.Output[BareMetalNodePoolConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The modifiable kubelet configurations for the bare metal machines.
 func (o BareMetalNodePoolConfigResponseOutput) KubeletConfig() BareMetalKubeletConfigResponseOutput {
 	return o.ApplyT(func(v BareMetalNodePoolConfigResponse) BareMetalKubeletConfigResponse { return v.KubeletConfig }).(BareMetalKubeletConfigResponseOutput)
@@ -8615,12 +7360,6 @@ func (i BareMetalNodePoolUpgradePolicyArgs) ToBareMetalNodePoolUpgradePolicyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolUpgradePolicyOutput)
 }
 
-func (i BareMetalNodePoolUpgradePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolUpgradePolicy] {
-	return pulumix.Output[BareMetalNodePoolUpgradePolicy]{
-		OutputState: i.ToBareMetalNodePoolUpgradePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalNodePoolUpgradePolicyArgs) ToBareMetalNodePoolUpgradePolicyPtrOutput() BareMetalNodePoolUpgradePolicyPtrOutput {
 	return i.ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(context.Background())
 }
@@ -8662,12 +7401,6 @@ func (i *bareMetalNodePoolUpgradePolicyPtrType) ToBareMetalNodePoolUpgradePolicy
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolUpgradePolicyPtrOutput)
 }
 
-func (i *bareMetalNodePoolUpgradePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolUpgradePolicy] {
-	return pulumix.Output[*BareMetalNodePoolUpgradePolicy]{
-		OutputState: i.ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
 type BareMetalNodePoolUpgradePolicyOutput struct{ *pulumi.OutputState }
 
@@ -8693,12 +7426,6 @@ func (o BareMetalNodePoolUpgradePolicyOutput) ToBareMetalNodePoolUpgradePolicyPt
 	}).(BareMetalNodePoolUpgradePolicyPtrOutput)
 }
 
-func (o BareMetalNodePoolUpgradePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolUpgradePolicy] {
-	return pulumix.Output[BareMetalNodePoolUpgradePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The parallel upgrade settings for worker node pools.
 func (o BareMetalNodePoolUpgradePolicyOutput) ParallelUpgradeConfig() BareMetalParallelUpgradeConfigPtrOutput {
 	return o.ApplyT(func(v BareMetalNodePoolUpgradePolicy) *BareMetalParallelUpgradeConfig { return v.ParallelUpgradeConfig }).(BareMetalParallelUpgradeConfigPtrOutput)
@@ -8716,12 +7443,6 @@ func (o BareMetalNodePoolUpgradePolicyPtrOutput) ToBareMetalNodePoolUpgradePolic
 
 func (o BareMetalNodePoolUpgradePolicyPtrOutput) ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalNodePoolUpgradePolicyPtrOutput {
 	return o
-}
-
-func (o BareMetalNodePoolUpgradePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolUpgradePolicy] {
-	return pulumix.Output[*BareMetalNodePoolUpgradePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodePoolUpgradePolicyPtrOutput) Elem() BareMetalNodePoolUpgradePolicyOutput {
@@ -8763,12 +7484,6 @@ func (o BareMetalNodePoolUpgradePolicyResponseOutput) ToBareMetalNodePoolUpgrade
 
 func (o BareMetalNodePoolUpgradePolicyResponseOutput) ToBareMetalNodePoolUpgradePolicyResponseOutputWithContext(ctx context.Context) BareMetalNodePoolUpgradePolicyResponseOutput {
 	return o
-}
-
-func (o BareMetalNodePoolUpgradePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolUpgradePolicyResponse] {
-	return pulumix.Output[BareMetalNodePoolUpgradePolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parallel upgrade settings for worker node pools.
@@ -8813,12 +7528,6 @@ func (i BareMetalOsEnvironmentConfigArgs) ToBareMetalOsEnvironmentConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalOsEnvironmentConfigOutput)
 }
 
-func (i BareMetalOsEnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalOsEnvironmentConfig] {
-	return pulumix.Output[BareMetalOsEnvironmentConfig]{
-		OutputState: i.ToBareMetalOsEnvironmentConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalOsEnvironmentConfigArgs) ToBareMetalOsEnvironmentConfigPtrOutput() BareMetalOsEnvironmentConfigPtrOutput {
 	return i.ToBareMetalOsEnvironmentConfigPtrOutputWithContext(context.Background())
 }
@@ -8860,12 +7569,6 @@ func (i *bareMetalOsEnvironmentConfigPtrType) ToBareMetalOsEnvironmentConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalOsEnvironmentConfigPtrOutput)
 }
 
-func (i *bareMetalOsEnvironmentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalOsEnvironmentConfig] {
-	return pulumix.Output[*BareMetalOsEnvironmentConfig]{
-		OutputState: i.ToBareMetalOsEnvironmentConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies operating system settings for cluster provisioning.
 type BareMetalOsEnvironmentConfigOutput struct{ *pulumi.OutputState }
 
@@ -8891,12 +7594,6 @@ func (o BareMetalOsEnvironmentConfigOutput) ToBareMetalOsEnvironmentConfigPtrOut
 	}).(BareMetalOsEnvironmentConfigPtrOutput)
 }
 
-func (o BareMetalOsEnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalOsEnvironmentConfig] {
-	return pulumix.Output[BareMetalOsEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether the package repo should not be included when initializing bare metal machines.
 func (o BareMetalOsEnvironmentConfigOutput) PackageRepoExcluded() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalOsEnvironmentConfig) *bool { return v.PackageRepoExcluded }).(pulumi.BoolPtrOutput)
@@ -8914,12 +7611,6 @@ func (o BareMetalOsEnvironmentConfigPtrOutput) ToBareMetalOsEnvironmentConfigPtr
 
 func (o BareMetalOsEnvironmentConfigPtrOutput) ToBareMetalOsEnvironmentConfigPtrOutputWithContext(ctx context.Context) BareMetalOsEnvironmentConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalOsEnvironmentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalOsEnvironmentConfig] {
-	return pulumix.Output[*BareMetalOsEnvironmentConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalOsEnvironmentConfigPtrOutput) Elem() BareMetalOsEnvironmentConfigOutput {
@@ -8961,12 +7652,6 @@ func (o BareMetalOsEnvironmentConfigResponseOutput) ToBareMetalOsEnvironmentConf
 
 func (o BareMetalOsEnvironmentConfigResponseOutput) ToBareMetalOsEnvironmentConfigResponseOutputWithContext(ctx context.Context) BareMetalOsEnvironmentConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalOsEnvironmentConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalOsEnvironmentConfigResponse] {
-	return pulumix.Output[BareMetalOsEnvironmentConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the package repo should not be included when initializing bare metal machines.
@@ -9013,12 +7698,6 @@ func (i BareMetalParallelUpgradeConfigArgs) ToBareMetalParallelUpgradeConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalParallelUpgradeConfigOutput)
 }
 
-func (i BareMetalParallelUpgradeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalParallelUpgradeConfig] {
-	return pulumix.Output[BareMetalParallelUpgradeConfig]{
-		OutputState: i.ToBareMetalParallelUpgradeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalParallelUpgradeConfigArgs) ToBareMetalParallelUpgradeConfigPtrOutput() BareMetalParallelUpgradeConfigPtrOutput {
 	return i.ToBareMetalParallelUpgradeConfigPtrOutputWithContext(context.Background())
 }
@@ -9060,12 +7739,6 @@ func (i *bareMetalParallelUpgradeConfigPtrType) ToBareMetalParallelUpgradeConfig
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalParallelUpgradeConfigPtrOutput)
 }
 
-func (i *bareMetalParallelUpgradeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalParallelUpgradeConfig] {
-	return pulumix.Output[*BareMetalParallelUpgradeConfig]{
-		OutputState: i.ToBareMetalParallelUpgradeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
 type BareMetalParallelUpgradeConfigOutput struct{ *pulumi.OutputState }
 
@@ -9091,12 +7764,6 @@ func (o BareMetalParallelUpgradeConfigOutput) ToBareMetalParallelUpgradeConfigPt
 	}).(BareMetalParallelUpgradeConfigPtrOutput)
 }
 
-func (o BareMetalParallelUpgradeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalParallelUpgradeConfig] {
-	return pulumix.Output[BareMetalParallelUpgradeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number of nodes that can be upgraded at once.
 func (o BareMetalParallelUpgradeConfigOutput) ConcurrentNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BareMetalParallelUpgradeConfig) *int { return v.ConcurrentNodes }).(pulumi.IntPtrOutput)
@@ -9119,12 +7786,6 @@ func (o BareMetalParallelUpgradeConfigPtrOutput) ToBareMetalParallelUpgradeConfi
 
 func (o BareMetalParallelUpgradeConfigPtrOutput) ToBareMetalParallelUpgradeConfigPtrOutputWithContext(ctx context.Context) BareMetalParallelUpgradeConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalParallelUpgradeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalParallelUpgradeConfig] {
-	return pulumix.Output[*BareMetalParallelUpgradeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalParallelUpgradeConfigPtrOutput) Elem() BareMetalParallelUpgradeConfigOutput {
@@ -9180,12 +7841,6 @@ func (o BareMetalParallelUpgradeConfigResponseOutput) ToBareMetalParallelUpgrade
 	return o
 }
 
-func (o BareMetalParallelUpgradeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalParallelUpgradeConfigResponse] {
-	return pulumix.Output[BareMetalParallelUpgradeConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number of nodes that can be upgraded at once.
 func (o BareMetalParallelUpgradeConfigResponseOutput) ConcurrentNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v BareMetalParallelUpgradeConfigResponse) int { return v.ConcurrentNodes }).(pulumi.IntOutput)
@@ -9231,12 +7886,6 @@ func (i BareMetalPortConfigArgs) ToBareMetalPortConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalPortConfigOutput)
 }
 
-func (i BareMetalPortConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalPortConfig] {
-	return pulumix.Output[BareMetalPortConfig]{
-		OutputState: i.ToBareMetalPortConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalPortConfigArgs) ToBareMetalPortConfigPtrOutput() BareMetalPortConfigPtrOutput {
 	return i.ToBareMetalPortConfigPtrOutputWithContext(context.Background())
 }
@@ -9278,12 +7927,6 @@ func (i *bareMetalPortConfigPtrType) ToBareMetalPortConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalPortConfigPtrOutput)
 }
 
-func (i *bareMetalPortConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalPortConfig] {
-	return pulumix.Output[*BareMetalPortConfig]{
-		OutputState: i.ToBareMetalPortConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies load balancer ports for the bare metal user cluster.
 type BareMetalPortConfigOutput struct{ *pulumi.OutputState }
 
@@ -9309,12 +7952,6 @@ func (o BareMetalPortConfigOutput) ToBareMetalPortConfigPtrOutputWithContext(ctx
 	}).(BareMetalPortConfigPtrOutput)
 }
 
-func (o BareMetalPortConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalPortConfig] {
-	return pulumix.Output[BareMetalPortConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The port that control plane hosted load balancers will listen on.
 func (o BareMetalPortConfigOutput) ControlPlaneLoadBalancerPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BareMetalPortConfig) *int { return v.ControlPlaneLoadBalancerPort }).(pulumi.IntPtrOutput)
@@ -9332,12 +7969,6 @@ func (o BareMetalPortConfigPtrOutput) ToBareMetalPortConfigPtrOutput() BareMetal
 
 func (o BareMetalPortConfigPtrOutput) ToBareMetalPortConfigPtrOutputWithContext(ctx context.Context) BareMetalPortConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalPortConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalPortConfig] {
-	return pulumix.Output[*BareMetalPortConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalPortConfigPtrOutput) Elem() BareMetalPortConfigOutput {
@@ -9379,12 +8010,6 @@ func (o BareMetalPortConfigResponseOutput) ToBareMetalPortConfigResponseOutput()
 
 func (o BareMetalPortConfigResponseOutput) ToBareMetalPortConfigResponseOutputWithContext(ctx context.Context) BareMetalPortConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalPortConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalPortConfigResponse] {
-	return pulumix.Output[BareMetalPortConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The port that control plane hosted load balancers will listen on.
@@ -9431,12 +8056,6 @@ func (i BareMetalProxyConfigArgs) ToBareMetalProxyConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalProxyConfigOutput)
 }
 
-func (i BareMetalProxyConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalProxyConfig] {
-	return pulumix.Output[BareMetalProxyConfig]{
-		OutputState: i.ToBareMetalProxyConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalProxyConfigArgs) ToBareMetalProxyConfigPtrOutput() BareMetalProxyConfigPtrOutput {
 	return i.ToBareMetalProxyConfigPtrOutputWithContext(context.Background())
 }
@@ -9478,12 +8097,6 @@ func (i *bareMetalProxyConfigPtrType) ToBareMetalProxyConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalProxyConfigPtrOutput)
 }
 
-func (i *bareMetalProxyConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalProxyConfig] {
-	return pulumix.Output[*BareMetalProxyConfig]{
-		OutputState: i.ToBareMetalProxyConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the cluster proxy configuration.
 type BareMetalProxyConfigOutput struct{ *pulumi.OutputState }
 
@@ -9509,12 +8122,6 @@ func (o BareMetalProxyConfigOutput) ToBareMetalProxyConfigPtrOutputWithContext(c
 	}).(BareMetalProxyConfigPtrOutput)
 }
 
-func (o BareMetalProxyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalProxyConfig] {
-	return pulumix.Output[BareMetalProxyConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of IPs, hostnames, and domains that should skip the proxy. Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
 func (o BareMetalProxyConfigOutput) NoProxy() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalProxyConfig) []string { return v.NoProxy }).(pulumi.StringArrayOutput)
@@ -9537,12 +8144,6 @@ func (o BareMetalProxyConfigPtrOutput) ToBareMetalProxyConfigPtrOutput() BareMet
 
 func (o BareMetalProxyConfigPtrOutput) ToBareMetalProxyConfigPtrOutputWithContext(ctx context.Context) BareMetalProxyConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalProxyConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalProxyConfig] {
-	return pulumix.Output[*BareMetalProxyConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalProxyConfigPtrOutput) Elem() BareMetalProxyConfigOutput {
@@ -9598,12 +8199,6 @@ func (o BareMetalProxyConfigResponseOutput) ToBareMetalProxyConfigResponseOutput
 	return o
 }
 
-func (o BareMetalProxyConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalProxyConfigResponse] {
-	return pulumix.Output[BareMetalProxyConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of IPs, hostnames, and domains that should skip the proxy. Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
 func (o BareMetalProxyConfigResponseOutput) NoProxy() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BareMetalProxyConfigResponse) []string { return v.NoProxy }).(pulumi.StringArrayOutput)
@@ -9649,12 +8244,6 @@ func (i BareMetalSecurityConfigArgs) ToBareMetalSecurityConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalSecurityConfigOutput)
 }
 
-func (i BareMetalSecurityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalSecurityConfig] {
-	return pulumix.Output[BareMetalSecurityConfig]{
-		OutputState: i.ToBareMetalSecurityConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalSecurityConfigArgs) ToBareMetalSecurityConfigPtrOutput() BareMetalSecurityConfigPtrOutput {
 	return i.ToBareMetalSecurityConfigPtrOutputWithContext(context.Background())
 }
@@ -9696,12 +8285,6 @@ func (i *bareMetalSecurityConfigPtrType) ToBareMetalSecurityConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalSecurityConfigPtrOutput)
 }
 
-func (i *bareMetalSecurityConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalSecurityConfig] {
-	return pulumix.Output[*BareMetalSecurityConfig]{
-		OutputState: i.ToBareMetalSecurityConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the security related settings for the bare metal user cluster.
 type BareMetalSecurityConfigOutput struct{ *pulumi.OutputState }
 
@@ -9727,12 +8310,6 @@ func (o BareMetalSecurityConfigOutput) ToBareMetalSecurityConfigPtrOutputWithCon
 	}).(BareMetalSecurityConfigPtrOutput)
 }
 
-func (o BareMetalSecurityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalSecurityConfig] {
-	return pulumix.Output[BareMetalSecurityConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configures user access to the user cluster.
 func (o BareMetalSecurityConfigOutput) Authorization() AuthorizationPtrOutput {
 	return o.ApplyT(func(v BareMetalSecurityConfig) *Authorization { return v.Authorization }).(AuthorizationPtrOutput)
@@ -9750,12 +8327,6 @@ func (o BareMetalSecurityConfigPtrOutput) ToBareMetalSecurityConfigPtrOutput() B
 
 func (o BareMetalSecurityConfigPtrOutput) ToBareMetalSecurityConfigPtrOutputWithContext(ctx context.Context) BareMetalSecurityConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalSecurityConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalSecurityConfig] {
-	return pulumix.Output[*BareMetalSecurityConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalSecurityConfigPtrOutput) Elem() BareMetalSecurityConfigOutput {
@@ -9799,12 +8370,6 @@ func (o BareMetalSecurityConfigResponseOutput) ToBareMetalSecurityConfigResponse
 	return o
 }
 
-func (o BareMetalSecurityConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalSecurityConfigResponse] {
-	return pulumix.Output[BareMetalSecurityConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configures user access to the user cluster.
 func (o BareMetalSecurityConfigResponseOutput) Authorization() AuthorizationResponseOutput {
 	return o.ApplyT(func(v BareMetalSecurityConfigResponse) AuthorizationResponse { return v.Authorization }).(AuthorizationResponseOutput)
@@ -9843,12 +8408,6 @@ func (i BareMetalSrIovConfigArgs) ToBareMetalSrIovConfigOutput() BareMetalSrIovC
 
 func (i BareMetalSrIovConfigArgs) ToBareMetalSrIovConfigOutputWithContext(ctx context.Context) BareMetalSrIovConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalSrIovConfigOutput)
-}
-
-func (i BareMetalSrIovConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalSrIovConfig] {
-	return pulumix.Output[BareMetalSrIovConfig]{
-		OutputState: i.ToBareMetalSrIovConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BareMetalSrIovConfigArgs) ToBareMetalSrIovConfigPtrOutput() BareMetalSrIovConfigPtrOutput {
@@ -9892,12 +8451,6 @@ func (i *bareMetalSrIovConfigPtrType) ToBareMetalSrIovConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalSrIovConfigPtrOutput)
 }
 
-func (i *bareMetalSrIovConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalSrIovConfig] {
-	return pulumix.Output[*BareMetalSrIovConfig]{
-		OutputState: i.ToBareMetalSrIovConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the SR-IOV networking operator config.
 type BareMetalSrIovConfigOutput struct{ *pulumi.OutputState }
 
@@ -9923,12 +8476,6 @@ func (o BareMetalSrIovConfigOutput) ToBareMetalSrIovConfigPtrOutputWithContext(c
 	}).(BareMetalSrIovConfigPtrOutput)
 }
 
-func (o BareMetalSrIovConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalSrIovConfig] {
-	return pulumix.Output[BareMetalSrIovConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to install the SR-IOV operator.
 func (o BareMetalSrIovConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalSrIovConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -9946,12 +8493,6 @@ func (o BareMetalSrIovConfigPtrOutput) ToBareMetalSrIovConfigPtrOutput() BareMet
 
 func (o BareMetalSrIovConfigPtrOutput) ToBareMetalSrIovConfigPtrOutputWithContext(ctx context.Context) BareMetalSrIovConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalSrIovConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalSrIovConfig] {
-	return pulumix.Output[*BareMetalSrIovConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalSrIovConfigPtrOutput) Elem() BareMetalSrIovConfigOutput {
@@ -9993,12 +8534,6 @@ func (o BareMetalSrIovConfigResponseOutput) ToBareMetalSrIovConfigResponseOutput
 
 func (o BareMetalSrIovConfigResponseOutput) ToBareMetalSrIovConfigResponseOutputWithContext(ctx context.Context) BareMetalSrIovConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalSrIovConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalSrIovConfigResponse] {
-	return pulumix.Output[BareMetalSrIovConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to install the SR-IOV operator.
@@ -10045,12 +8580,6 @@ func (i BareMetalStorageConfigArgs) ToBareMetalStorageConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalStorageConfigOutput)
 }
 
-func (i BareMetalStorageConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalStorageConfig] {
-	return pulumix.Output[BareMetalStorageConfig]{
-		OutputState: i.ToBareMetalStorageConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalStorageConfig specifies the cluster storage configuration.
 type BareMetalStorageConfigOutput struct{ *pulumi.OutputState }
 
@@ -10064,12 +8593,6 @@ func (o BareMetalStorageConfigOutput) ToBareMetalStorageConfigOutput() BareMetal
 
 func (o BareMetalStorageConfigOutput) ToBareMetalStorageConfigOutputWithContext(ctx context.Context) BareMetalStorageConfigOutput {
 	return o
-}
-
-func (o BareMetalStorageConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalStorageConfig] {
-	return pulumix.Output[BareMetalStorageConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the config for local PersistentVolumes backed by mounted node disks. These disks need to be formatted and mounted by the user, which can be done before or after cluster creation.
@@ -10103,12 +8626,6 @@ func (o BareMetalStorageConfigResponseOutput) ToBareMetalStorageConfigResponseOu
 
 func (o BareMetalStorageConfigResponseOutput) ToBareMetalStorageConfigResponseOutputWithContext(ctx context.Context) BareMetalStorageConfigResponseOutput {
 	return o
-}
-
-func (o BareMetalStorageConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalStorageConfigResponse] {
-	return pulumix.Output[BareMetalStorageConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the config for local PersistentVolumes backed by mounted node disks. These disks need to be formatted and mounted by the user, which can be done before or after cluster creation.
@@ -10160,12 +8677,6 @@ func (i BareMetalVipConfigArgs) ToBareMetalVipConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalVipConfigOutput)
 }
 
-func (i BareMetalVipConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalVipConfig] {
-	return pulumix.Output[BareMetalVipConfig]{
-		OutputState: i.ToBareMetalVipConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalVipConfigArgs) ToBareMetalVipConfigPtrOutput() BareMetalVipConfigPtrOutput {
 	return i.ToBareMetalVipConfigPtrOutputWithContext(context.Background())
 }
@@ -10207,12 +8718,6 @@ func (i *bareMetalVipConfigPtrType) ToBareMetalVipConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalVipConfigPtrOutput)
 }
 
-func (i *bareMetalVipConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalVipConfig] {
-	return pulumix.Output[*BareMetalVipConfig]{
-		OutputState: i.ToBareMetalVipConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the VIP config for the bare metal load balancer.
 type BareMetalVipConfigOutput struct{ *pulumi.OutputState }
 
@@ -10238,12 +8743,6 @@ func (o BareMetalVipConfigOutput) ToBareMetalVipConfigPtrOutputWithContext(ctx c
 	}).(BareMetalVipConfigPtrOutput)
 }
 
-func (o BareMetalVipConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalVipConfig] {
-	return pulumix.Output[BareMetalVipConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The VIP which you previously set aside for the Kubernetes API of this bare metal user cluster.
 func (o BareMetalVipConfigOutput) ControlPlaneVip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalVipConfig) *string { return v.ControlPlaneVip }).(pulumi.StringPtrOutput)
@@ -10266,12 +8765,6 @@ func (o BareMetalVipConfigPtrOutput) ToBareMetalVipConfigPtrOutput() BareMetalVi
 
 func (o BareMetalVipConfigPtrOutput) ToBareMetalVipConfigPtrOutputWithContext(ctx context.Context) BareMetalVipConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalVipConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalVipConfig] {
-	return pulumix.Output[*BareMetalVipConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalVipConfigPtrOutput) Elem() BareMetalVipConfigOutput {
@@ -10327,12 +8820,6 @@ func (o BareMetalVipConfigResponseOutput) ToBareMetalVipConfigResponseOutputWith
 	return o
 }
 
-func (o BareMetalVipConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalVipConfigResponse] {
-	return pulumix.Output[BareMetalVipConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The VIP which you previously set aside for the Kubernetes API of this bare metal user cluster.
 func (o BareMetalVipConfigResponseOutput) ControlPlaneVip() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalVipConfigResponse) string { return v.ControlPlaneVip }).(pulumi.StringOutput)
@@ -10382,12 +8869,6 @@ func (i BareMetalWorkloadNodeConfigArgs) ToBareMetalWorkloadNodeConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalWorkloadNodeConfigOutput)
 }
 
-func (i BareMetalWorkloadNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalWorkloadNodeConfig] {
-	return pulumix.Output[BareMetalWorkloadNodeConfig]{
-		OutputState: i.ToBareMetalWorkloadNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BareMetalWorkloadNodeConfigArgs) ToBareMetalWorkloadNodeConfigPtrOutput() BareMetalWorkloadNodeConfigPtrOutput {
 	return i.ToBareMetalWorkloadNodeConfigPtrOutputWithContext(context.Background())
 }
@@ -10429,12 +8910,6 @@ func (i *bareMetalWorkloadNodeConfigPtrType) ToBareMetalWorkloadNodeConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalWorkloadNodeConfigPtrOutput)
 }
 
-func (i *bareMetalWorkloadNodeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalWorkloadNodeConfig] {
-	return pulumix.Output[*BareMetalWorkloadNodeConfig]{
-		OutputState: i.ToBareMetalWorkloadNodeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the workload node configurations.
 type BareMetalWorkloadNodeConfigOutput struct{ *pulumi.OutputState }
 
@@ -10458,12 +8933,6 @@ func (o BareMetalWorkloadNodeConfigOutput) ToBareMetalWorkloadNodeConfigPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalWorkloadNodeConfig) *BareMetalWorkloadNodeConfig {
 		return &v
 	}).(BareMetalWorkloadNodeConfigPtrOutput)
-}
-
-func (o BareMetalWorkloadNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalWorkloadNodeConfig] {
-	return pulumix.Output[BareMetalWorkloadNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies which container runtime will be used.
@@ -10490,12 +8959,6 @@ func (o BareMetalWorkloadNodeConfigPtrOutput) ToBareMetalWorkloadNodeConfigPtrOu
 
 func (o BareMetalWorkloadNodeConfigPtrOutput) ToBareMetalWorkloadNodeConfigPtrOutputWithContext(ctx context.Context) BareMetalWorkloadNodeConfigPtrOutput {
 	return o
-}
-
-func (o BareMetalWorkloadNodeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalWorkloadNodeConfig] {
-	return pulumix.Output[*BareMetalWorkloadNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalWorkloadNodeConfigPtrOutput) Elem() BareMetalWorkloadNodeConfigOutput {
@@ -10551,12 +9014,6 @@ func (o BareMetalWorkloadNodeConfigResponseOutput) ToBareMetalWorkloadNodeConfig
 	return o
 }
 
-func (o BareMetalWorkloadNodeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalWorkloadNodeConfigResponse] {
-	return pulumix.Output[BareMetalWorkloadNodeConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies which container runtime will be used.
 func (o BareMetalWorkloadNodeConfigResponseOutput) ContainerRuntime() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalWorkloadNodeConfigResponse) string { return v.ContainerRuntime }).(pulumi.StringOutput)
@@ -10602,12 +9059,6 @@ func (i BinaryAuthorizationArgs) ToBinaryAuthorizationOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(BinaryAuthorizationOutput)
 }
 
-func (i BinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[BinaryAuthorization] {
-	return pulumix.Output[BinaryAuthorization]{
-		OutputState: i.ToBinaryAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BinaryAuthorizationArgs) ToBinaryAuthorizationPtrOutput() BinaryAuthorizationPtrOutput {
 	return i.ToBinaryAuthorizationPtrOutputWithContext(context.Background())
 }
@@ -10649,12 +9100,6 @@ func (i *binaryAuthorizationPtrType) ToBinaryAuthorizationPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(BinaryAuthorizationPtrOutput)
 }
 
-func (i *binaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorization] {
-	return pulumix.Output[*BinaryAuthorization]{
-		OutputState: i.ToBinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for Binary Authorization.
 type BinaryAuthorizationOutput struct{ *pulumi.OutputState }
 
@@ -10680,12 +9125,6 @@ func (o BinaryAuthorizationOutput) ToBinaryAuthorizationPtrOutputWithContext(ctx
 	}).(BinaryAuthorizationPtrOutput)
 }
 
-func (o BinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[BinaryAuthorization] {
-	return pulumix.Output[BinaryAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
 func (o BinaryAuthorizationOutput) EvaluationMode() BinaryAuthorizationEvaluationModePtrOutput {
 	return o.ApplyT(func(v BinaryAuthorization) *BinaryAuthorizationEvaluationMode { return v.EvaluationMode }).(BinaryAuthorizationEvaluationModePtrOutput)
@@ -10703,12 +9142,6 @@ func (o BinaryAuthorizationPtrOutput) ToBinaryAuthorizationPtrOutput() BinaryAut
 
 func (o BinaryAuthorizationPtrOutput) ToBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BinaryAuthorizationPtrOutput {
 	return o
-}
-
-func (o BinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorization] {
-	return pulumix.Output[*BinaryAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BinaryAuthorizationPtrOutput) Elem() BinaryAuthorizationOutput {
@@ -10750,12 +9183,6 @@ func (o BinaryAuthorizationResponseOutput) ToBinaryAuthorizationResponseOutput()
 
 func (o BinaryAuthorizationResponseOutput) ToBinaryAuthorizationResponseOutputWithContext(ctx context.Context) BinaryAuthorizationResponseOutput {
 	return o
-}
-
-func (o BinaryAuthorizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BinaryAuthorizationResponse] {
-	return pulumix.Output[BinaryAuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
@@ -10806,12 +9233,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -10837,12 +9258,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -10856,12 +9271,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -10891,12 +9300,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -10930,12 +9333,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -10963,12 +9360,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -11012,12 +9403,6 @@ func (i ClusterUserArgs) ToClusterUserOutputWithContext(ctx context.Context) Clu
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserOutput)
 }
 
-func (i ClusterUserArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterUser] {
-	return pulumix.Output[ClusterUser]{
-		OutputState: i.ToClusterUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterUserArrayInput is an input type that accepts ClusterUserArray and ClusterUserArrayOutput values.
 // You can construct a concrete instance of `ClusterUserArrayInput` via:
 //
@@ -11043,12 +9428,6 @@ func (i ClusterUserArray) ToClusterUserArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserArrayOutput)
 }
 
-func (i ClusterUserArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterUser] {
-	return pulumix.Output[[]ClusterUser]{
-		OutputState: i.ToClusterUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterUser configures user principals for an RBAC policy.
 type ClusterUserOutput struct{ *pulumi.OutputState }
 
@@ -11062,12 +9441,6 @@ func (o ClusterUserOutput) ToClusterUserOutput() ClusterUserOutput {
 
 func (o ClusterUserOutput) ToClusterUserOutputWithContext(ctx context.Context) ClusterUserOutput {
 	return o
-}
-
-func (o ClusterUserOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterUser] {
-	return pulumix.Output[ClusterUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the user, e.g. `my-gcp-id@gmail.com`.
@@ -11087,12 +9460,6 @@ func (o ClusterUserArrayOutput) ToClusterUserArrayOutput() ClusterUserArrayOutpu
 
 func (o ClusterUserArrayOutput) ToClusterUserArrayOutputWithContext(ctx context.Context) ClusterUserArrayOutput {
 	return o
-}
-
-func (o ClusterUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterUser] {
-	return pulumix.Output[[]ClusterUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterUserArrayOutput) Index(i pulumi.IntInput) ClusterUserOutput {
@@ -11122,12 +9489,6 @@ func (o ClusterUserResponseOutput) ToClusterUserResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ClusterUserResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterUserResponse] {
-	return pulumix.Output[ClusterUserResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the user, e.g. `my-gcp-id@gmail.com`.
 func (o ClusterUserResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterUserResponse) string { return v.Username }).(pulumi.StringOutput)
@@ -11145,12 +9506,6 @@ func (o ClusterUserResponseArrayOutput) ToClusterUserResponseArrayOutput() Clust
 
 func (o ClusterUserResponseArrayOutput) ToClusterUserResponseArrayOutputWithContext(ctx context.Context) ClusterUserResponseArrayOutput {
 	return o
-}
-
-func (o ClusterUserResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterUserResponse] {
-	return pulumix.Output[[]ClusterUserResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterUserResponseArrayOutput) Index(i pulumi.IntInput) ClusterUserResponseOutput {
@@ -11206,12 +9561,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -11253,12 +9602,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -11282,12 +9625,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -11322,12 +9659,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -11407,12 +9738,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -11452,12 +9777,6 @@ func (o FleetResponseOutput) ToFleetResponseOutput() FleetResponseOutput {
 
 func (o FleetResponseOutput) ToFleetResponseOutputWithContext(ctx context.Context) FleetResponseOutput {
 	return o
-}
-
-func (o FleetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FleetResponse] {
-	return pulumix.Output[FleetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the managed fleet Membership resource associated to this cluster. Membership names are formatted as `projects//locations//memberships/`.
@@ -11508,12 +9827,6 @@ func (i NodeTaintArgs) ToNodeTaintOutputWithContext(ctx context.Context) NodeTai
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTaintOutput)
 }
 
-func (i NodeTaintArgs) ToOutput(ctx context.Context) pulumix.Output[NodeTaint] {
-	return pulumix.Output[NodeTaint]{
-		OutputState: i.ToNodeTaintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeTaintArrayInput is an input type that accepts NodeTaintArray and NodeTaintArrayOutput values.
 // You can construct a concrete instance of `NodeTaintArrayInput` via:
 //
@@ -11539,12 +9852,6 @@ func (i NodeTaintArray) ToNodeTaintArrayOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTaintArrayOutput)
 }
 
-func (i NodeTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]NodeTaint] {
-	return pulumix.Output[[]NodeTaint]{
-		OutputState: i.ToNodeTaintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeTaint applied to every Kubernetes node in a node pool. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes. Node taints are permanent.
 type NodeTaintOutput struct{ *pulumi.OutputState }
 
@@ -11558,12 +9865,6 @@ func (o NodeTaintOutput) ToNodeTaintOutput() NodeTaintOutput {
 
 func (o NodeTaintOutput) ToNodeTaintOutputWithContext(ctx context.Context) NodeTaintOutput {
 	return o
-}
-
-func (o NodeTaintOutput) ToOutput(ctx context.Context) pulumix.Output[NodeTaint] {
-	return pulumix.Output[NodeTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The taint effect.
@@ -11593,12 +9894,6 @@ func (o NodeTaintArrayOutput) ToNodeTaintArrayOutput() NodeTaintArrayOutput {
 
 func (o NodeTaintArrayOutput) ToNodeTaintArrayOutputWithContext(ctx context.Context) NodeTaintArrayOutput {
 	return o
-}
-
-func (o NodeTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeTaint] {
-	return pulumix.Output[[]NodeTaint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeTaintArrayOutput) Index(i pulumi.IntInput) NodeTaintOutput {
@@ -11632,12 +9927,6 @@ func (o NodeTaintResponseOutput) ToNodeTaintResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o NodeTaintResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeTaintResponse] {
-	return pulumix.Output[NodeTaintResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The taint effect.
 func (o NodeTaintResponseOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeTaintResponse) string { return v.Effect }).(pulumi.StringOutput)
@@ -11665,12 +9954,6 @@ func (o NodeTaintResponseArrayOutput) ToNodeTaintResponseArrayOutput() NodeTaint
 
 func (o NodeTaintResponseArrayOutput) ToNodeTaintResponseArrayOutputWithContext(ctx context.Context) NodeTaintResponseArrayOutput {
 	return o
-}
-
-func (o NodeTaintResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeTaintResponse] {
-	return pulumix.Output[[]NodeTaintResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeTaintResponseArrayOutput) Index(i pulumi.IntInput) NodeTaintResponseOutput {
@@ -11706,12 +9989,6 @@ func (o ResourceConditionResponseOutput) ToResourceConditionResponseOutput() Res
 
 func (o ResourceConditionResponseOutput) ToResourceConditionResponseOutputWithContext(ctx context.Context) ResourceConditionResponseOutput {
 	return o
-}
-
-func (o ResourceConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceConditionResponse] {
-	return pulumix.Output[ResourceConditionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Last time the condition transit from one status to another.
@@ -11753,12 +10030,6 @@ func (o ResourceConditionResponseArrayOutput) ToResourceConditionResponseArrayOu
 	return o
 }
 
-func (o ResourceConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceConditionResponse] {
-	return pulumix.Output[[]ResourceConditionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceConditionResponseArrayOutput) Index(i pulumi.IntInput) ResourceConditionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceConditionResponse {
 		return vs[0].([]ResourceConditionResponse)[vs[1].(int)]
@@ -11786,12 +10057,6 @@ func (o ResourceStatusResponseOutput) ToResourceStatusResponseOutput() ResourceS
 
 func (o ResourceStatusResponseOutput) ToResourceStatusResponseOutputWithContext(ctx context.Context) ResourceStatusResponseOutput {
 	return o
-}
-
-func (o ResourceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceStatusResponse] {
-	return pulumix.Output[ResourceStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ResourceCondition provide a standard mechanism for higher-level status reporting from controller.
@@ -11827,12 +10092,6 @@ func (o ValidationCheckResponseOutput) ToValidationCheckResponseOutput() Validat
 
 func (o ValidationCheckResponseOutput) ToValidationCheckResponseOutputWithContext(ctx context.Context) ValidationCheckResponseOutput {
 	return o
-}
-
-func (o ValidationCheckResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ValidationCheckResponse] {
-	return pulumix.Output[ValidationCheckResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Options used for the validation check
@@ -11879,12 +10138,6 @@ func (o ValidationCheckResultResponseOutput) ToValidationCheckResultResponseOutp
 	return o
 }
 
-func (o ValidationCheckResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ValidationCheckResultResponse] {
-	return pulumix.Output[ValidationCheckResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The category of the validation.
 func (o ValidationCheckResultResponseOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v ValidationCheckResultResponse) string { return v.Category }).(pulumi.StringOutput)
@@ -11924,12 +10177,6 @@ func (o ValidationCheckResultResponseArrayOutput) ToValidationCheckResultRespons
 	return o
 }
 
-func (o ValidationCheckResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ValidationCheckResultResponse] {
-	return pulumix.Output[[]ValidationCheckResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ValidationCheckResultResponseArrayOutput) Index(i pulumi.IntInput) ValidationCheckResultResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ValidationCheckResultResponse {
 		return vs[0].([]ValidationCheckResultResponse)[vs[1].(int)]
@@ -11955,12 +10202,6 @@ func (o ValidationCheckStatusResponseOutput) ToValidationCheckStatusResponseOutp
 
 func (o ValidationCheckStatusResponseOutput) ToValidationCheckStatusResponseOutputWithContext(ctx context.Context) ValidationCheckStatusResponseOutput {
 	return o
-}
-
-func (o ValidationCheckStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ValidationCheckStatusResponse] {
-	return pulumix.Output[ValidationCheckStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Individual checks which failed as part of the Preflight check execution.
@@ -12001,12 +10242,6 @@ func (i VmwareAAGConfigArgs) ToVmwareAAGConfigOutput() VmwareAAGConfigOutput {
 
 func (i VmwareAAGConfigArgs) ToVmwareAAGConfigOutputWithContext(ctx context.Context) VmwareAAGConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareAAGConfigOutput)
-}
-
-func (i VmwareAAGConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareAAGConfig] {
-	return pulumix.Output[VmwareAAGConfig]{
-		OutputState: i.ToVmwareAAGConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i VmwareAAGConfigArgs) ToVmwareAAGConfigPtrOutput() VmwareAAGConfigPtrOutput {
@@ -12050,12 +10285,6 @@ func (i *vmwareAAGConfigPtrType) ToVmwareAAGConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareAAGConfigPtrOutput)
 }
 
-func (i *vmwareAAGConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareAAGConfig] {
-	return pulumix.Output[*VmwareAAGConfig]{
-		OutputState: i.ToVmwareAAGConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies anti affinity group config for the VMware user cluster.
 type VmwareAAGConfigOutput struct{ *pulumi.OutputState }
 
@@ -12081,12 +10310,6 @@ func (o VmwareAAGConfigOutput) ToVmwareAAGConfigPtrOutputWithContext(ctx context
 	}).(VmwareAAGConfigPtrOutput)
 }
 
-func (o VmwareAAGConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareAAGConfig] {
-	return pulumix.Output[VmwareAAGConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Spread nodes across at least three physical hosts (requires at least three hosts). Enabled by default.
 func (o VmwareAAGConfigOutput) AagConfigDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmwareAAGConfig) *bool { return v.AagConfigDisabled }).(pulumi.BoolPtrOutput)
@@ -12104,12 +10327,6 @@ func (o VmwareAAGConfigPtrOutput) ToVmwareAAGConfigPtrOutput() VmwareAAGConfigPt
 
 func (o VmwareAAGConfigPtrOutput) ToVmwareAAGConfigPtrOutputWithContext(ctx context.Context) VmwareAAGConfigPtrOutput {
 	return o
-}
-
-func (o VmwareAAGConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareAAGConfig] {
-	return pulumix.Output[*VmwareAAGConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareAAGConfigPtrOutput) Elem() VmwareAAGConfigOutput {
@@ -12151,12 +10368,6 @@ func (o VmwareAAGConfigResponseOutput) ToVmwareAAGConfigResponseOutput() VmwareA
 
 func (o VmwareAAGConfigResponseOutput) ToVmwareAAGConfigResponseOutputWithContext(ctx context.Context) VmwareAAGConfigResponseOutput {
 	return o
-}
-
-func (o VmwareAAGConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareAAGConfigResponse] {
-	return pulumix.Output[VmwareAAGConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Spread nodes across at least three physical hosts (requires at least three hosts). Enabled by default.
@@ -12211,12 +10422,6 @@ func (i VmwareAddressPoolArgs) ToVmwareAddressPoolOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareAddressPoolOutput)
 }
 
-func (i VmwareAddressPoolArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareAddressPool] {
-	return pulumix.Output[VmwareAddressPool]{
-		OutputState: i.ToVmwareAddressPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VmwareAddressPoolArrayInput is an input type that accepts VmwareAddressPoolArray and VmwareAddressPoolArrayOutput values.
 // You can construct a concrete instance of `VmwareAddressPoolArrayInput` via:
 //
@@ -12242,12 +10447,6 @@ func (i VmwareAddressPoolArray) ToVmwareAddressPoolArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareAddressPoolArrayOutput)
 }
 
-func (i VmwareAddressPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]VmwareAddressPool] {
-	return pulumix.Output[[]VmwareAddressPool]{
-		OutputState: i.ToVmwareAddressPoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an IP pool used by the load balancer.
 type VmwareAddressPoolOutput struct{ *pulumi.OutputState }
 
@@ -12261,12 +10460,6 @@ func (o VmwareAddressPoolOutput) ToVmwareAddressPoolOutput() VmwareAddressPoolOu
 
 func (o VmwareAddressPoolOutput) ToVmwareAddressPoolOutputWithContext(ctx context.Context) VmwareAddressPoolOutput {
 	return o
-}
-
-func (o VmwareAddressPoolOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareAddressPool] {
-	return pulumix.Output[VmwareAddressPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
@@ -12303,12 +10496,6 @@ func (o VmwareAddressPoolArrayOutput) ToVmwareAddressPoolArrayOutputWithContext(
 	return o
 }
 
-func (o VmwareAddressPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmwareAddressPool] {
-	return pulumix.Output[[]VmwareAddressPool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VmwareAddressPoolArrayOutput) Index(i pulumi.IntInput) VmwareAddressPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAddressPool {
 		return vs[0].([]VmwareAddressPool)[vs[1].(int)]
@@ -12340,12 +10527,6 @@ func (o VmwareAddressPoolResponseOutput) ToVmwareAddressPoolResponseOutput() Vmw
 
 func (o VmwareAddressPoolResponseOutput) ToVmwareAddressPoolResponseOutputWithContext(ctx context.Context) VmwareAddressPoolResponseOutput {
 	return o
-}
-
-func (o VmwareAddressPoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareAddressPoolResponse] {
-	return pulumix.Output[VmwareAddressPoolResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
@@ -12380,12 +10561,6 @@ func (o VmwareAddressPoolResponseArrayOutput) ToVmwareAddressPoolResponseArrayOu
 
 func (o VmwareAddressPoolResponseArrayOutput) ToVmwareAddressPoolResponseArrayOutputWithContext(ctx context.Context) VmwareAddressPoolResponseArrayOutput {
 	return o
-}
-
-func (o VmwareAddressPoolResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmwareAddressPoolResponse] {
-	return pulumix.Output[[]VmwareAddressPoolResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareAddressPoolResponseArrayOutput) Index(i pulumi.IntInput) VmwareAddressPoolResponseOutput {
@@ -12429,12 +10604,6 @@ func (i VmwareAutoRepairConfigArgs) ToVmwareAutoRepairConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareAutoRepairConfigOutput)
 }
 
-func (i VmwareAutoRepairConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareAutoRepairConfig] {
-	return pulumix.Output[VmwareAutoRepairConfig]{
-		OutputState: i.ToVmwareAutoRepairConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareAutoRepairConfigArgs) ToVmwareAutoRepairConfigPtrOutput() VmwareAutoRepairConfigPtrOutput {
 	return i.ToVmwareAutoRepairConfigPtrOutputWithContext(context.Background())
 }
@@ -12476,12 +10645,6 @@ func (i *vmwareAutoRepairConfigPtrType) ToVmwareAutoRepairConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareAutoRepairConfigPtrOutput)
 }
 
-func (i *vmwareAutoRepairConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareAutoRepairConfig] {
-	return pulumix.Output[*VmwareAutoRepairConfig]{
-		OutputState: i.ToVmwareAutoRepairConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies config to enable/disable auto repair. The cluster-health-controller is deployed only if Enabled is true.
 type VmwareAutoRepairConfigOutput struct{ *pulumi.OutputState }
 
@@ -12507,12 +10670,6 @@ func (o VmwareAutoRepairConfigOutput) ToVmwareAutoRepairConfigPtrOutputWithConte
 	}).(VmwareAutoRepairConfigPtrOutput)
 }
 
-func (o VmwareAutoRepairConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareAutoRepairConfig] {
-	return pulumix.Output[VmwareAutoRepairConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether auto repair is enabled.
 func (o VmwareAutoRepairConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmwareAutoRepairConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -12530,12 +10687,6 @@ func (o VmwareAutoRepairConfigPtrOutput) ToVmwareAutoRepairConfigPtrOutput() Vmw
 
 func (o VmwareAutoRepairConfigPtrOutput) ToVmwareAutoRepairConfigPtrOutputWithContext(ctx context.Context) VmwareAutoRepairConfigPtrOutput {
 	return o
-}
-
-func (o VmwareAutoRepairConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareAutoRepairConfig] {
-	return pulumix.Output[*VmwareAutoRepairConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareAutoRepairConfigPtrOutput) Elem() VmwareAutoRepairConfigOutput {
@@ -12579,12 +10730,6 @@ func (o VmwareAutoRepairConfigResponseOutput) ToVmwareAutoRepairConfigResponseOu
 	return o
 }
 
-func (o VmwareAutoRepairConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareAutoRepairConfigResponse] {
-	return pulumix.Output[VmwareAutoRepairConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether auto repair is enabled.
 func (o VmwareAutoRepairConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VmwareAutoRepairConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -12623,12 +10768,6 @@ func (i VmwareAutoResizeConfigArgs) ToVmwareAutoResizeConfigOutput() VmwareAutoR
 
 func (i VmwareAutoResizeConfigArgs) ToVmwareAutoResizeConfigOutputWithContext(ctx context.Context) VmwareAutoResizeConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareAutoResizeConfigOutput)
-}
-
-func (i VmwareAutoResizeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareAutoResizeConfig] {
-	return pulumix.Output[VmwareAutoResizeConfig]{
-		OutputState: i.ToVmwareAutoResizeConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i VmwareAutoResizeConfigArgs) ToVmwareAutoResizeConfigPtrOutput() VmwareAutoResizeConfigPtrOutput {
@@ -12672,12 +10811,6 @@ func (i *vmwareAutoResizeConfigPtrType) ToVmwareAutoResizeConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareAutoResizeConfigPtrOutput)
 }
 
-func (i *vmwareAutoResizeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareAutoResizeConfig] {
-	return pulumix.Output[*VmwareAutoResizeConfig]{
-		OutputState: i.ToVmwareAutoResizeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents auto resizing configurations for the VMware user cluster.
 type VmwareAutoResizeConfigOutput struct{ *pulumi.OutputState }
 
@@ -12703,12 +10836,6 @@ func (o VmwareAutoResizeConfigOutput) ToVmwareAutoResizeConfigPtrOutputWithConte
 	}).(VmwareAutoResizeConfigPtrOutput)
 }
 
-func (o VmwareAutoResizeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareAutoResizeConfig] {
-	return pulumix.Output[VmwareAutoResizeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable controle plane node auto resizing.
 func (o VmwareAutoResizeConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmwareAutoResizeConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -12726,12 +10853,6 @@ func (o VmwareAutoResizeConfigPtrOutput) ToVmwareAutoResizeConfigPtrOutput() Vmw
 
 func (o VmwareAutoResizeConfigPtrOutput) ToVmwareAutoResizeConfigPtrOutputWithContext(ctx context.Context) VmwareAutoResizeConfigPtrOutput {
 	return o
-}
-
-func (o VmwareAutoResizeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareAutoResizeConfig] {
-	return pulumix.Output[*VmwareAutoResizeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareAutoResizeConfigPtrOutput) Elem() VmwareAutoResizeConfigOutput {
@@ -12775,12 +10896,6 @@ func (o VmwareAutoResizeConfigResponseOutput) ToVmwareAutoResizeConfigResponseOu
 	return o
 }
 
-func (o VmwareAutoResizeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareAutoResizeConfigResponse] {
-	return pulumix.Output[VmwareAutoResizeConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable controle plane node auto resizing.
 func (o VmwareAutoResizeConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VmwareAutoResizeConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -12819,12 +10934,6 @@ func (i VmwareClusterUpgradePolicyArgs) ToVmwareClusterUpgradePolicyOutput() Vmw
 
 func (i VmwareClusterUpgradePolicyArgs) ToVmwareClusterUpgradePolicyOutputWithContext(ctx context.Context) VmwareClusterUpgradePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareClusterUpgradePolicyOutput)
-}
-
-func (i VmwareClusterUpgradePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareClusterUpgradePolicy] {
-	return pulumix.Output[VmwareClusterUpgradePolicy]{
-		OutputState: i.ToVmwareClusterUpgradePolicyOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i VmwareClusterUpgradePolicyArgs) ToVmwareClusterUpgradePolicyPtrOutput() VmwareClusterUpgradePolicyPtrOutput {
@@ -12868,12 +10977,6 @@ func (i *vmwareClusterUpgradePolicyPtrType) ToVmwareClusterUpgradePolicyPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareClusterUpgradePolicyPtrOutput)
 }
 
-func (i *vmwareClusterUpgradePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareClusterUpgradePolicy] {
-	return pulumix.Output[*VmwareClusterUpgradePolicy]{
-		OutputState: i.ToVmwareClusterUpgradePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VmwareClusterUpgradePolicy defines the cluster upgrade policy.
 type VmwareClusterUpgradePolicyOutput struct{ *pulumi.OutputState }
 
@@ -12899,12 +11002,6 @@ func (o VmwareClusterUpgradePolicyOutput) ToVmwareClusterUpgradePolicyPtrOutputW
 	}).(VmwareClusterUpgradePolicyPtrOutput)
 }
 
-func (o VmwareClusterUpgradePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareClusterUpgradePolicy] {
-	return pulumix.Output[VmwareClusterUpgradePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Controls whether the upgrade applies to the control plane only.
 func (o VmwareClusterUpgradePolicyOutput) ControlPlaneOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmwareClusterUpgradePolicy) *bool { return v.ControlPlaneOnly }).(pulumi.BoolPtrOutput)
@@ -12922,12 +11019,6 @@ func (o VmwareClusterUpgradePolicyPtrOutput) ToVmwareClusterUpgradePolicyPtrOutp
 
 func (o VmwareClusterUpgradePolicyPtrOutput) ToVmwareClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) VmwareClusterUpgradePolicyPtrOutput {
 	return o
-}
-
-func (o VmwareClusterUpgradePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareClusterUpgradePolicy] {
-	return pulumix.Output[*VmwareClusterUpgradePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareClusterUpgradePolicyPtrOutput) Elem() VmwareClusterUpgradePolicyOutput {
@@ -12969,12 +11060,6 @@ func (o VmwareClusterUpgradePolicyResponseOutput) ToVmwareClusterUpgradePolicyRe
 
 func (o VmwareClusterUpgradePolicyResponseOutput) ToVmwareClusterUpgradePolicyResponseOutputWithContext(ctx context.Context) VmwareClusterUpgradePolicyResponseOutput {
 	return o
-}
-
-func (o VmwareClusterUpgradePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareClusterUpgradePolicyResponse] {
-	return pulumix.Output[VmwareClusterUpgradePolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Controls whether the upgrade applies to the control plane only.
@@ -13033,12 +11118,6 @@ func (i VmwareControlPlaneNodeConfigArgs) ToVmwareControlPlaneNodeConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareControlPlaneNodeConfigOutput)
 }
 
-func (i VmwareControlPlaneNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneNodeConfig] {
-	return pulumix.Output[VmwareControlPlaneNodeConfig]{
-		OutputState: i.ToVmwareControlPlaneNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareControlPlaneNodeConfigArgs) ToVmwareControlPlaneNodeConfigPtrOutput() VmwareControlPlaneNodeConfigPtrOutput {
 	return i.ToVmwareControlPlaneNodeConfigPtrOutputWithContext(context.Background())
 }
@@ -13080,12 +11159,6 @@ func (i *vmwareControlPlaneNodeConfigPtrType) ToVmwareControlPlaneNodeConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareControlPlaneNodeConfigPtrOutput)
 }
 
-func (i *vmwareControlPlaneNodeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareControlPlaneNodeConfig] {
-	return pulumix.Output[*VmwareControlPlaneNodeConfig]{
-		OutputState: i.ToVmwareControlPlaneNodeConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies control plane node config for the VMware user cluster.
 type VmwareControlPlaneNodeConfigOutput struct{ *pulumi.OutputState }
 
@@ -13109,12 +11182,6 @@ func (o VmwareControlPlaneNodeConfigOutput) ToVmwareControlPlaneNodeConfigPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareControlPlaneNodeConfig) *VmwareControlPlaneNodeConfig {
 		return &v
 	}).(VmwareControlPlaneNodeConfigPtrOutput)
-}
-
-func (o VmwareControlPlaneNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneNodeConfig] {
-	return pulumix.Output[VmwareControlPlaneNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AutoResizeConfig provides auto resizing configurations.
@@ -13154,12 +11221,6 @@ func (o VmwareControlPlaneNodeConfigPtrOutput) ToVmwareControlPlaneNodeConfigPtr
 
 func (o VmwareControlPlaneNodeConfigPtrOutput) ToVmwareControlPlaneNodeConfigPtrOutputWithContext(ctx context.Context) VmwareControlPlaneNodeConfigPtrOutput {
 	return o
-}
-
-func (o VmwareControlPlaneNodeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareControlPlaneNodeConfig] {
-	return pulumix.Output[*VmwareControlPlaneNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareControlPlaneNodeConfigPtrOutput) Elem() VmwareControlPlaneNodeConfigOutput {
@@ -13251,12 +11312,6 @@ func (o VmwareControlPlaneNodeConfigResponseOutput) ToVmwareControlPlaneNodeConf
 	return o
 }
 
-func (o VmwareControlPlaneNodeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneNodeConfigResponse] {
-	return pulumix.Output[VmwareControlPlaneNodeConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // AutoResizeConfig provides auto resizing configurations.
 func (o VmwareControlPlaneNodeConfigResponseOutput) AutoResizeConfig() VmwareAutoResizeConfigResponseOutput {
 	return o.ApplyT(func(v VmwareControlPlaneNodeConfigResponse) VmwareAutoResizeConfigResponse { return v.AutoResizeConfig }).(VmwareAutoResizeConfigResponseOutput)
@@ -13319,12 +11374,6 @@ func (i VmwareControlPlaneV2ConfigArgs) ToVmwareControlPlaneV2ConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareControlPlaneV2ConfigOutput)
 }
 
-func (i VmwareControlPlaneV2ConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneV2Config] {
-	return pulumix.Output[VmwareControlPlaneV2Config]{
-		OutputState: i.ToVmwareControlPlaneV2ConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareControlPlaneV2ConfigArgs) ToVmwareControlPlaneV2ConfigPtrOutput() VmwareControlPlaneV2ConfigPtrOutput {
 	return i.ToVmwareControlPlaneV2ConfigPtrOutputWithContext(context.Background())
 }
@@ -13366,12 +11415,6 @@ func (i *vmwareControlPlaneV2ConfigPtrType) ToVmwareControlPlaneV2ConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareControlPlaneV2ConfigPtrOutput)
 }
 
-func (i *vmwareControlPlaneV2ConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareControlPlaneV2Config] {
-	return pulumix.Output[*VmwareControlPlaneV2Config]{
-		OutputState: i.ToVmwareControlPlaneV2ConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies control plane V2 config.
 type VmwareControlPlaneV2ConfigOutput struct{ *pulumi.OutputState }
 
@@ -13397,12 +11440,6 @@ func (o VmwareControlPlaneV2ConfigOutput) ToVmwareControlPlaneV2ConfigPtrOutputW
 	}).(VmwareControlPlaneV2ConfigPtrOutput)
 }
 
-func (o VmwareControlPlaneV2ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneV2Config] {
-	return pulumix.Output[VmwareControlPlaneV2Config]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Static IP addresses for the control plane nodes.
 func (o VmwareControlPlaneV2ConfigOutput) ControlPlaneIpBlock() VmwareIpBlockPtrOutput {
 	return o.ApplyT(func(v VmwareControlPlaneV2Config) *VmwareIpBlock { return v.ControlPlaneIpBlock }).(VmwareIpBlockPtrOutput)
@@ -13420,12 +11457,6 @@ func (o VmwareControlPlaneV2ConfigPtrOutput) ToVmwareControlPlaneV2ConfigPtrOutp
 
 func (o VmwareControlPlaneV2ConfigPtrOutput) ToVmwareControlPlaneV2ConfigPtrOutputWithContext(ctx context.Context) VmwareControlPlaneV2ConfigPtrOutput {
 	return o
-}
-
-func (o VmwareControlPlaneV2ConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareControlPlaneV2Config] {
-	return pulumix.Output[*VmwareControlPlaneV2Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareControlPlaneV2ConfigPtrOutput) Elem() VmwareControlPlaneV2ConfigOutput {
@@ -13467,12 +11498,6 @@ func (o VmwareControlPlaneV2ConfigResponseOutput) ToVmwareControlPlaneV2ConfigRe
 
 func (o VmwareControlPlaneV2ConfigResponseOutput) ToVmwareControlPlaneV2ConfigResponseOutputWithContext(ctx context.Context) VmwareControlPlaneV2ConfigResponseOutput {
 	return o
-}
-
-func (o VmwareControlPlaneV2ConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneV2ConfigResponse] {
-	return pulumix.Output[VmwareControlPlaneV2ConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Static IP addresses for the control plane nodes.
@@ -13519,12 +11544,6 @@ func (i VmwareControlPlaneVsphereConfigArgs) ToVmwareControlPlaneVsphereConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareControlPlaneVsphereConfigOutput)
 }
 
-func (i VmwareControlPlaneVsphereConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneVsphereConfig] {
-	return pulumix.Output[VmwareControlPlaneVsphereConfig]{
-		OutputState: i.ToVmwareControlPlaneVsphereConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareControlPlaneVsphereConfigArgs) ToVmwareControlPlaneVsphereConfigPtrOutput() VmwareControlPlaneVsphereConfigPtrOutput {
 	return i.ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(context.Background())
 }
@@ -13566,12 +11585,6 @@ func (i *vmwareControlPlaneVsphereConfigPtrType) ToVmwareControlPlaneVsphereConf
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareControlPlaneVsphereConfigPtrOutput)
 }
 
-func (i *vmwareControlPlaneVsphereConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareControlPlaneVsphereConfig] {
-	return pulumix.Output[*VmwareControlPlaneVsphereConfig]{
-		OutputState: i.ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies control plane node config.
 type VmwareControlPlaneVsphereConfigOutput struct{ *pulumi.OutputState }
 
@@ -13597,12 +11610,6 @@ func (o VmwareControlPlaneVsphereConfigOutput) ToVmwareControlPlaneVsphereConfig
 	}).(VmwareControlPlaneVsphereConfigPtrOutput)
 }
 
-func (o VmwareControlPlaneVsphereConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneVsphereConfig] {
-	return pulumix.Output[VmwareControlPlaneVsphereConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Vsphere datastore used by the control plane Node.
 func (o VmwareControlPlaneVsphereConfigOutput) Datastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareControlPlaneVsphereConfig) *string { return v.Datastore }).(pulumi.StringPtrOutput)
@@ -13625,12 +11632,6 @@ func (o VmwareControlPlaneVsphereConfigPtrOutput) ToVmwareControlPlaneVsphereCon
 
 func (o VmwareControlPlaneVsphereConfigPtrOutput) ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(ctx context.Context) VmwareControlPlaneVsphereConfigPtrOutput {
 	return o
-}
-
-func (o VmwareControlPlaneVsphereConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareControlPlaneVsphereConfig] {
-	return pulumix.Output[*VmwareControlPlaneVsphereConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareControlPlaneVsphereConfigPtrOutput) Elem() VmwareControlPlaneVsphereConfigOutput {
@@ -13686,12 +11687,6 @@ func (o VmwareControlPlaneVsphereConfigResponseOutput) ToVmwareControlPlaneVsphe
 	return o
 }
 
-func (o VmwareControlPlaneVsphereConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneVsphereConfigResponse] {
-	return pulumix.Output[VmwareControlPlaneVsphereConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Vsphere datastore used by the control plane Node.
 func (o VmwareControlPlaneVsphereConfigResponseOutput) Datastore() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareControlPlaneVsphereConfigResponse) string { return v.Datastore }).(pulumi.StringOutput)
@@ -13745,12 +11740,6 @@ func (i VmwareDataplaneV2ConfigArgs) ToVmwareDataplaneV2ConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareDataplaneV2ConfigOutput)
 }
 
-func (i VmwareDataplaneV2ConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareDataplaneV2Config] {
-	return pulumix.Output[VmwareDataplaneV2Config]{
-		OutputState: i.ToVmwareDataplaneV2ConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareDataplaneV2ConfigArgs) ToVmwareDataplaneV2ConfigPtrOutput() VmwareDataplaneV2ConfigPtrOutput {
 	return i.ToVmwareDataplaneV2ConfigPtrOutputWithContext(context.Background())
 }
@@ -13792,12 +11781,6 @@ func (i *vmwareDataplaneV2ConfigPtrType) ToVmwareDataplaneV2ConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareDataplaneV2ConfigPtrOutput)
 }
 
-func (i *vmwareDataplaneV2ConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareDataplaneV2Config] {
-	return pulumix.Output[*VmwareDataplaneV2Config]{
-		OutputState: i.ToVmwareDataplaneV2ConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains configurations for Dataplane V2, which is optimized dataplane for Kubernetes networking. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2
 type VmwareDataplaneV2ConfigOutput struct{ *pulumi.OutputState }
 
@@ -13821,12 +11804,6 @@ func (o VmwareDataplaneV2ConfigOutput) ToVmwareDataplaneV2ConfigPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareDataplaneV2Config) *VmwareDataplaneV2Config {
 		return &v
 	}).(VmwareDataplaneV2ConfigPtrOutput)
-}
-
-func (o VmwareDataplaneV2ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareDataplaneV2Config] {
-	return pulumix.Output[VmwareDataplaneV2Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable advanced networking which requires dataplane_v2_enabled to be set true.
@@ -13856,12 +11833,6 @@ func (o VmwareDataplaneV2ConfigPtrOutput) ToVmwareDataplaneV2ConfigPtrOutput() V
 
 func (o VmwareDataplaneV2ConfigPtrOutput) ToVmwareDataplaneV2ConfigPtrOutputWithContext(ctx context.Context) VmwareDataplaneV2ConfigPtrOutput {
 	return o
-}
-
-func (o VmwareDataplaneV2ConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareDataplaneV2Config] {
-	return pulumix.Output[*VmwareDataplaneV2Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareDataplaneV2ConfigPtrOutput) Elem() VmwareDataplaneV2ConfigOutput {
@@ -13929,12 +11900,6 @@ func (o VmwareDataplaneV2ConfigResponseOutput) ToVmwareDataplaneV2ConfigResponse
 	return o
 }
 
-func (o VmwareDataplaneV2ConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareDataplaneV2ConfigResponse] {
-	return pulumix.Output[VmwareDataplaneV2ConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enable advanced networking which requires dataplane_v2_enabled to be set true.
 func (o VmwareDataplaneV2ConfigResponseOutput) AdvancedNetworking() pulumi.BoolOutput {
 	return o.ApplyT(func(v VmwareDataplaneV2ConfigResponse) bool { return v.AdvancedNetworking }).(pulumi.BoolOutput)
@@ -13985,12 +11950,6 @@ func (i VmwareDhcpIpConfigArgs) ToVmwareDhcpIpConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareDhcpIpConfigOutput)
 }
 
-func (i VmwareDhcpIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareDhcpIpConfig] {
-	return pulumix.Output[VmwareDhcpIpConfig]{
-		OutputState: i.ToVmwareDhcpIpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareDhcpIpConfigArgs) ToVmwareDhcpIpConfigPtrOutput() VmwareDhcpIpConfigPtrOutput {
 	return i.ToVmwareDhcpIpConfigPtrOutputWithContext(context.Background())
 }
@@ -14032,12 +11991,6 @@ func (i *vmwareDhcpIpConfigPtrType) ToVmwareDhcpIpConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareDhcpIpConfigPtrOutput)
 }
 
-func (i *vmwareDhcpIpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareDhcpIpConfig] {
-	return pulumix.Output[*VmwareDhcpIpConfig]{
-		OutputState: i.ToVmwareDhcpIpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the network configuration required for the VMware user clusters with DHCP IP configurations.
 type VmwareDhcpIpConfigOutput struct{ *pulumi.OutputState }
 
@@ -14063,12 +12016,6 @@ func (o VmwareDhcpIpConfigOutput) ToVmwareDhcpIpConfigPtrOutputWithContext(ctx c
 	}).(VmwareDhcpIpConfigPtrOutput)
 }
 
-func (o VmwareDhcpIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareDhcpIpConfig] {
-	return pulumix.Output[VmwareDhcpIpConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // enabled is a flag to mark if DHCP IP allocation is used for VMware user clusters.
 func (o VmwareDhcpIpConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmwareDhcpIpConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -14086,12 +12033,6 @@ func (o VmwareDhcpIpConfigPtrOutput) ToVmwareDhcpIpConfigPtrOutput() VmwareDhcpI
 
 func (o VmwareDhcpIpConfigPtrOutput) ToVmwareDhcpIpConfigPtrOutputWithContext(ctx context.Context) VmwareDhcpIpConfigPtrOutput {
 	return o
-}
-
-func (o VmwareDhcpIpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareDhcpIpConfig] {
-	return pulumix.Output[*VmwareDhcpIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareDhcpIpConfigPtrOutput) Elem() VmwareDhcpIpConfigOutput {
@@ -14133,12 +12074,6 @@ func (o VmwareDhcpIpConfigResponseOutput) ToVmwareDhcpIpConfigResponseOutput() V
 
 func (o VmwareDhcpIpConfigResponseOutput) ToVmwareDhcpIpConfigResponseOutputWithContext(ctx context.Context) VmwareDhcpIpConfigResponseOutput {
 	return o
-}
-
-func (o VmwareDhcpIpConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareDhcpIpConfigResponse] {
-	return pulumix.Output[VmwareDhcpIpConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // enabled is a flag to mark if DHCP IP allocation is used for VMware user clusters.
@@ -14189,12 +12124,6 @@ func (i VmwareF5BigIpConfigArgs) ToVmwareF5BigIpConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareF5BigIpConfigOutput)
 }
 
-func (i VmwareF5BigIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareF5BigIpConfig] {
-	return pulumix.Output[VmwareF5BigIpConfig]{
-		OutputState: i.ToVmwareF5BigIpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareF5BigIpConfigArgs) ToVmwareF5BigIpConfigPtrOutput() VmwareF5BigIpConfigPtrOutput {
 	return i.ToVmwareF5BigIpConfigPtrOutputWithContext(context.Background())
 }
@@ -14236,12 +12165,6 @@ func (i *vmwareF5BigIpConfigPtrType) ToVmwareF5BigIpConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareF5BigIpConfigPtrOutput)
 }
 
-func (i *vmwareF5BigIpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareF5BigIpConfig] {
-	return pulumix.Output[*VmwareF5BigIpConfig]{
-		OutputState: i.ToVmwareF5BigIpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents configuration parameters for an F5 BIG-IP load balancer.
 type VmwareF5BigIpConfigOutput struct{ *pulumi.OutputState }
 
@@ -14265,12 +12188,6 @@ func (o VmwareF5BigIpConfigOutput) ToVmwareF5BigIpConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareF5BigIpConfig) *VmwareF5BigIpConfig {
 		return &v
 	}).(VmwareF5BigIpConfigPtrOutput)
-}
-
-func (o VmwareF5BigIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareF5BigIpConfig] {
-	return pulumix.Output[VmwareF5BigIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The load balancer's IP address.
@@ -14300,12 +12217,6 @@ func (o VmwareF5BigIpConfigPtrOutput) ToVmwareF5BigIpConfigPtrOutput() VmwareF5B
 
 func (o VmwareF5BigIpConfigPtrOutput) ToVmwareF5BigIpConfigPtrOutputWithContext(ctx context.Context) VmwareF5BigIpConfigPtrOutput {
 	return o
-}
-
-func (o VmwareF5BigIpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareF5BigIpConfig] {
-	return pulumix.Output[*VmwareF5BigIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareF5BigIpConfigPtrOutput) Elem() VmwareF5BigIpConfigOutput {
@@ -14373,12 +12284,6 @@ func (o VmwareF5BigIpConfigResponseOutput) ToVmwareF5BigIpConfigResponseOutputWi
 	return o
 }
 
-func (o VmwareF5BigIpConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareF5BigIpConfigResponse] {
-	return pulumix.Output[VmwareF5BigIpConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The load balancer's IP address.
 func (o VmwareF5BigIpConfigResponseOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareF5BigIpConfigResponse) string { return v.Address }).(pulumi.StringOutput)
@@ -14437,12 +12342,6 @@ func (i VmwareHostConfigArgs) ToVmwareHostConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareHostConfigOutput)
 }
 
-func (i VmwareHostConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareHostConfig] {
-	return pulumix.Output[VmwareHostConfig]{
-		OutputState: i.ToVmwareHostConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareHostConfigArgs) ToVmwareHostConfigPtrOutput() VmwareHostConfigPtrOutput {
 	return i.ToVmwareHostConfigPtrOutputWithContext(context.Background())
 }
@@ -14484,12 +12383,6 @@ func (i *vmwareHostConfigPtrType) ToVmwareHostConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareHostConfigPtrOutput)
 }
 
-func (i *vmwareHostConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareHostConfig] {
-	return pulumix.Output[*VmwareHostConfig]{
-		OutputState: i.ToVmwareHostConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the common parameters for all the hosts irrespective of their IP address.
 type VmwareHostConfigOutput struct{ *pulumi.OutputState }
 
@@ -14513,12 +12406,6 @@ func (o VmwareHostConfigOutput) ToVmwareHostConfigPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareHostConfig) *VmwareHostConfig {
 		return &v
 	}).(VmwareHostConfigPtrOutput)
-}
-
-func (o VmwareHostConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareHostConfig] {
-	return pulumix.Output[VmwareHostConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DNS search domains.
@@ -14548,12 +12435,6 @@ func (o VmwareHostConfigPtrOutput) ToVmwareHostConfigPtrOutput() VmwareHostConfi
 
 func (o VmwareHostConfigPtrOutput) ToVmwareHostConfigPtrOutputWithContext(ctx context.Context) VmwareHostConfigPtrOutput {
 	return o
-}
-
-func (o VmwareHostConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareHostConfig] {
-	return pulumix.Output[*VmwareHostConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareHostConfigPtrOutput) Elem() VmwareHostConfigOutput {
@@ -14621,12 +12502,6 @@ func (o VmwareHostConfigResponseOutput) ToVmwareHostConfigResponseOutputWithCont
 	return o
 }
 
-func (o VmwareHostConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareHostConfigResponse] {
-	return pulumix.Output[VmwareHostConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DNS search domains.
 func (o VmwareHostConfigResponseOutput) DnsSearchDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VmwareHostConfigResponse) []string { return v.DnsSearchDomains }).(pulumi.StringArrayOutput)
@@ -14681,12 +12556,6 @@ func (i VmwareHostIpArgs) ToVmwareHostIpOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareHostIpOutput)
 }
 
-func (i VmwareHostIpArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareHostIp] {
-	return pulumix.Output[VmwareHostIp]{
-		OutputState: i.ToVmwareHostIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VmwareHostIpArrayInput is an input type that accepts VmwareHostIpArray and VmwareHostIpArrayOutput values.
 // You can construct a concrete instance of `VmwareHostIpArrayInput` via:
 //
@@ -14712,12 +12581,6 @@ func (i VmwareHostIpArray) ToVmwareHostIpArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareHostIpArrayOutput)
 }
 
-func (i VmwareHostIpArray) ToOutput(ctx context.Context) pulumix.Output[[]VmwareHostIp] {
-	return pulumix.Output[[]VmwareHostIp]{
-		OutputState: i.ToVmwareHostIpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents VMware user cluster node's network configuration.
 type VmwareHostIpOutput struct{ *pulumi.OutputState }
 
@@ -14731,12 +12594,6 @@ func (o VmwareHostIpOutput) ToVmwareHostIpOutput() VmwareHostIpOutput {
 
 func (o VmwareHostIpOutput) ToVmwareHostIpOutputWithContext(ctx context.Context) VmwareHostIpOutput {
 	return o
-}
-
-func (o VmwareHostIpOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareHostIp] {
-	return pulumix.Output[VmwareHostIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostname of the machine. VM's name will be used if this field is empty.
@@ -14761,12 +12618,6 @@ func (o VmwareHostIpArrayOutput) ToVmwareHostIpArrayOutput() VmwareHostIpArrayOu
 
 func (o VmwareHostIpArrayOutput) ToVmwareHostIpArrayOutputWithContext(ctx context.Context) VmwareHostIpArrayOutput {
 	return o
-}
-
-func (o VmwareHostIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmwareHostIp] {
-	return pulumix.Output[[]VmwareHostIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareHostIpArrayOutput) Index(i pulumi.IntInput) VmwareHostIpOutput {
@@ -14798,12 +12649,6 @@ func (o VmwareHostIpResponseOutput) ToVmwareHostIpResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o VmwareHostIpResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareHostIpResponse] {
-	return pulumix.Output[VmwareHostIpResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Hostname of the machine. VM's name will be used if this field is empty.
 func (o VmwareHostIpResponseOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareHostIpResponse) string { return v.Hostname }).(pulumi.StringOutput)
@@ -14826,12 +12671,6 @@ func (o VmwareHostIpResponseArrayOutput) ToVmwareHostIpResponseArrayOutput() Vmw
 
 func (o VmwareHostIpResponseArrayOutput) ToVmwareHostIpResponseArrayOutputWithContext(ctx context.Context) VmwareHostIpResponseArrayOutput {
 	return o
-}
-
-func (o VmwareHostIpResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmwareHostIpResponse] {
-	return pulumix.Output[[]VmwareHostIpResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareHostIpResponseArrayOutput) Index(i pulumi.IntInput) VmwareHostIpResponseOutput {
@@ -14883,12 +12722,6 @@ func (i VmwareIpBlockArgs) ToVmwareIpBlockOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareIpBlockOutput)
 }
 
-func (i VmwareIpBlockArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareIpBlock] {
-	return pulumix.Output[VmwareIpBlock]{
-		OutputState: i.ToVmwareIpBlockOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareIpBlockArgs) ToVmwareIpBlockPtrOutput() VmwareIpBlockPtrOutput {
 	return i.ToVmwareIpBlockPtrOutputWithContext(context.Background())
 }
@@ -14930,12 +12763,6 @@ func (i *vmwareIpBlockPtrType) ToVmwareIpBlockPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareIpBlockPtrOutput)
 }
 
-func (i *vmwareIpBlockPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareIpBlock] {
-	return pulumix.Output[*VmwareIpBlock]{
-		OutputState: i.ToVmwareIpBlockPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VmwareIpBlockArrayInput is an input type that accepts VmwareIpBlockArray and VmwareIpBlockArrayOutput values.
 // You can construct a concrete instance of `VmwareIpBlockArrayInput` via:
 //
@@ -14961,12 +12788,6 @@ func (i VmwareIpBlockArray) ToVmwareIpBlockArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareIpBlockArrayOutput)
 }
 
-func (i VmwareIpBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]VmwareIpBlock] {
-	return pulumix.Output[[]VmwareIpBlock]{
-		OutputState: i.ToVmwareIpBlockArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a collection of IP addresses to assign to nodes.
 type VmwareIpBlockOutput struct{ *pulumi.OutputState }
 
@@ -14990,12 +12811,6 @@ func (o VmwareIpBlockOutput) ToVmwareIpBlockPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareIpBlock) *VmwareIpBlock {
 		return &v
 	}).(VmwareIpBlockPtrOutput)
-}
-
-func (o VmwareIpBlockOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareIpBlock] {
-	return pulumix.Output[VmwareIpBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network gateway used by the VMware user cluster.
@@ -15025,12 +12840,6 @@ func (o VmwareIpBlockPtrOutput) ToVmwareIpBlockPtrOutput() VmwareIpBlockPtrOutpu
 
 func (o VmwareIpBlockPtrOutput) ToVmwareIpBlockPtrOutputWithContext(ctx context.Context) VmwareIpBlockPtrOutput {
 	return o
-}
-
-func (o VmwareIpBlockPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareIpBlock] {
-	return pulumix.Output[*VmwareIpBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareIpBlockPtrOutput) Elem() VmwareIpBlockOutput {
@@ -15087,12 +12896,6 @@ func (o VmwareIpBlockArrayOutput) ToVmwareIpBlockArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o VmwareIpBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmwareIpBlock] {
-	return pulumix.Output[[]VmwareIpBlock]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VmwareIpBlockArrayOutput) Index(i pulumi.IntInput) VmwareIpBlockOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareIpBlock {
 		return vs[0].([]VmwareIpBlock)[vs[1].(int)]
@@ -15124,12 +12927,6 @@ func (o VmwareIpBlockResponseOutput) ToVmwareIpBlockResponseOutputWithContext(ct
 	return o
 }
 
-func (o VmwareIpBlockResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareIpBlockResponse] {
-	return pulumix.Output[VmwareIpBlockResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The network gateway used by the VMware user cluster.
 func (o VmwareIpBlockResponseOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareIpBlockResponse) string { return v.Gateway }).(pulumi.StringOutput)
@@ -15157,12 +12954,6 @@ func (o VmwareIpBlockResponseArrayOutput) ToVmwareIpBlockResponseArrayOutput() V
 
 func (o VmwareIpBlockResponseArrayOutput) ToVmwareIpBlockResponseArrayOutputWithContext(ctx context.Context) VmwareIpBlockResponseArrayOutput {
 	return o
-}
-
-func (o VmwareIpBlockResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmwareIpBlockResponse] {
-	return pulumix.Output[[]VmwareIpBlockResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareIpBlockResponseArrayOutput) Index(i pulumi.IntInput) VmwareIpBlockResponseOutput {
@@ -15218,12 +13009,6 @@ func (i VmwareLoadBalancerConfigArgs) ToVmwareLoadBalancerConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareLoadBalancerConfigOutput)
 }
 
-func (i VmwareLoadBalancerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareLoadBalancerConfig] {
-	return pulumix.Output[VmwareLoadBalancerConfig]{
-		OutputState: i.ToVmwareLoadBalancerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareLoadBalancerConfigArgs) ToVmwareLoadBalancerConfigPtrOutput() VmwareLoadBalancerConfigPtrOutput {
 	return i.ToVmwareLoadBalancerConfigPtrOutputWithContext(context.Background())
 }
@@ -15265,12 +13050,6 @@ func (i *vmwareLoadBalancerConfigPtrType) ToVmwareLoadBalancerConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareLoadBalancerConfigPtrOutput)
 }
 
-func (i *vmwareLoadBalancerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareLoadBalancerConfig] {
-	return pulumix.Output[*VmwareLoadBalancerConfig]{
-		OutputState: i.ToVmwareLoadBalancerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the locad balancer config for the VMware user cluster.
 type VmwareLoadBalancerConfigOutput struct{ *pulumi.OutputState }
 
@@ -15294,12 +13073,6 @@ func (o VmwareLoadBalancerConfigOutput) ToVmwareLoadBalancerConfigPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareLoadBalancerConfig) *VmwareLoadBalancerConfig {
 		return &v
 	}).(VmwareLoadBalancerConfigPtrOutput)
-}
-
-func (o VmwareLoadBalancerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareLoadBalancerConfig] {
-	return pulumix.Output[VmwareLoadBalancerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for F5 Big IP typed load balancers.
@@ -15334,12 +13107,6 @@ func (o VmwareLoadBalancerConfigPtrOutput) ToVmwareLoadBalancerConfigPtrOutput()
 
 func (o VmwareLoadBalancerConfigPtrOutput) ToVmwareLoadBalancerConfigPtrOutputWithContext(ctx context.Context) VmwareLoadBalancerConfigPtrOutput {
 	return o
-}
-
-func (o VmwareLoadBalancerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareLoadBalancerConfig] {
-	return pulumix.Output[*VmwareLoadBalancerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareLoadBalancerConfigPtrOutput) Elem() VmwareLoadBalancerConfigOutput {
@@ -15421,12 +13188,6 @@ func (o VmwareLoadBalancerConfigResponseOutput) ToVmwareLoadBalancerConfigRespon
 	return o
 }
 
-func (o VmwareLoadBalancerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareLoadBalancerConfigResponse] {
-	return pulumix.Output[VmwareLoadBalancerConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration for F5 Big IP typed load balancers.
 func (o VmwareLoadBalancerConfigResponseOutput) F5Config() VmwareF5BigIpConfigResponseOutput {
 	return o.ApplyT(func(v VmwareLoadBalancerConfigResponse) VmwareF5BigIpConfigResponse { return v.F5Config }).(VmwareF5BigIpConfigResponseOutput)
@@ -15499,12 +13260,6 @@ func (i VmwareManualLbConfigArgs) ToVmwareManualLbConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareManualLbConfigOutput)
 }
 
-func (i VmwareManualLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareManualLbConfig] {
-	return pulumix.Output[VmwareManualLbConfig]{
-		OutputState: i.ToVmwareManualLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareManualLbConfigArgs) ToVmwareManualLbConfigPtrOutput() VmwareManualLbConfigPtrOutput {
 	return i.ToVmwareManualLbConfigPtrOutputWithContext(context.Background())
 }
@@ -15546,12 +13301,6 @@ func (i *vmwareManualLbConfigPtrType) ToVmwareManualLbConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareManualLbConfigPtrOutput)
 }
 
-func (i *vmwareManualLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareManualLbConfig] {
-	return pulumix.Output[*VmwareManualLbConfig]{
-		OutputState: i.ToVmwareManualLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.
 type VmwareManualLbConfigOutput struct{ *pulumi.OutputState }
 
@@ -15575,12 +13324,6 @@ func (o VmwareManualLbConfigOutput) ToVmwareManualLbConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareManualLbConfig) *VmwareManualLbConfig {
 		return &v
 	}).(VmwareManualLbConfigPtrOutput)
-}
-
-func (o VmwareManualLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareManualLbConfig] {
-	return pulumix.Output[VmwareManualLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // NodePort for control plane service. The Kubernetes API server in the admin cluster is implemented as a Service of type NodePort (ex. 30968).
@@ -15615,12 +13358,6 @@ func (o VmwareManualLbConfigPtrOutput) ToVmwareManualLbConfigPtrOutput() VmwareM
 
 func (o VmwareManualLbConfigPtrOutput) ToVmwareManualLbConfigPtrOutputWithContext(ctx context.Context) VmwareManualLbConfigPtrOutput {
 	return o
-}
-
-func (o VmwareManualLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareManualLbConfig] {
-	return pulumix.Output[*VmwareManualLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareManualLbConfigPtrOutput) Elem() VmwareManualLbConfigOutput {
@@ -15700,12 +13437,6 @@ func (o VmwareManualLbConfigResponseOutput) ToVmwareManualLbConfigResponseOutput
 	return o
 }
 
-func (o VmwareManualLbConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareManualLbConfigResponse] {
-	return pulumix.Output[VmwareManualLbConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // NodePort for control plane service. The Kubernetes API server in the admin cluster is implemented as a Service of type NodePort (ex. 30968).
 func (o VmwareManualLbConfigResponseOutput) ControlPlaneNodePort() pulumi.IntOutput {
 	return o.ApplyT(func(v VmwareManualLbConfigResponse) int { return v.ControlPlaneNodePort }).(pulumi.IntOutput)
@@ -15761,12 +13492,6 @@ func (i VmwareMetalLbConfigArgs) ToVmwareMetalLbConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareMetalLbConfigOutput)
 }
 
-func (i VmwareMetalLbConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareMetalLbConfig] {
-	return pulumix.Output[VmwareMetalLbConfig]{
-		OutputState: i.ToVmwareMetalLbConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareMetalLbConfigArgs) ToVmwareMetalLbConfigPtrOutput() VmwareMetalLbConfigPtrOutput {
 	return i.ToVmwareMetalLbConfigPtrOutputWithContext(context.Background())
 }
@@ -15808,12 +13533,6 @@ func (i *vmwareMetalLbConfigPtrType) ToVmwareMetalLbConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareMetalLbConfigPtrOutput)
 }
 
-func (i *vmwareMetalLbConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareMetalLbConfig] {
-	return pulumix.Output[*VmwareMetalLbConfig]{
-		OutputState: i.ToVmwareMetalLbConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents configuration parameters for the MetalLB load balancer.
 type VmwareMetalLbConfigOutput struct{ *pulumi.OutputState }
 
@@ -15839,12 +13558,6 @@ func (o VmwareMetalLbConfigOutput) ToVmwareMetalLbConfigPtrOutputWithContext(ctx
 	}).(VmwareMetalLbConfigPtrOutput)
 }
 
-func (o VmwareMetalLbConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareMetalLbConfig] {
-	return pulumix.Output[VmwareMetalLbConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools.
 func (o VmwareMetalLbConfigOutput) AddressPools() VmwareAddressPoolArrayOutput {
 	return o.ApplyT(func(v VmwareMetalLbConfig) []VmwareAddressPool { return v.AddressPools }).(VmwareAddressPoolArrayOutput)
@@ -15862,12 +13575,6 @@ func (o VmwareMetalLbConfigPtrOutput) ToVmwareMetalLbConfigPtrOutput() VmwareMet
 
 func (o VmwareMetalLbConfigPtrOutput) ToVmwareMetalLbConfigPtrOutputWithContext(ctx context.Context) VmwareMetalLbConfigPtrOutput {
 	return o
-}
-
-func (o VmwareMetalLbConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareMetalLbConfig] {
-	return pulumix.Output[*VmwareMetalLbConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareMetalLbConfigPtrOutput) Elem() VmwareMetalLbConfigOutput {
@@ -15909,12 +13616,6 @@ func (o VmwareMetalLbConfigResponseOutput) ToVmwareMetalLbConfigResponseOutput()
 
 func (o VmwareMetalLbConfigResponseOutput) ToVmwareMetalLbConfigResponseOutputWithContext(ctx context.Context) VmwareMetalLbConfigResponseOutput {
 	return o
-}
-
-func (o VmwareMetalLbConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareMetalLbConfigResponse] {
-	return pulumix.Output[VmwareMetalLbConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools.
@@ -15981,12 +13682,6 @@ func (i VmwareNetworkConfigArgs) ToVmwareNetworkConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareNetworkConfigOutput)
 }
 
-func (i VmwareNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareNetworkConfig] {
-	return pulumix.Output[VmwareNetworkConfig]{
-		OutputState: i.ToVmwareNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareNetworkConfigArgs) ToVmwareNetworkConfigPtrOutput() VmwareNetworkConfigPtrOutput {
 	return i.ToVmwareNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -16028,12 +13723,6 @@ func (i *vmwareNetworkConfigPtrType) ToVmwareNetworkConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareNetworkConfigPtrOutput)
 }
 
-func (i *vmwareNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareNetworkConfig] {
-	return pulumix.Output[*VmwareNetworkConfig]{
-		OutputState: i.ToVmwareNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies network config for the VMware user cluster.
 type VmwareNetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -16057,12 +13746,6 @@ func (o VmwareNetworkConfigOutput) ToVmwareNetworkConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareNetworkConfig) *VmwareNetworkConfig {
 		return &v
 	}).(VmwareNetworkConfigPtrOutput)
-}
-
-func (o VmwareNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareNetworkConfig] {
-	return pulumix.Output[VmwareNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for control plane V2 mode.
@@ -16112,12 +13795,6 @@ func (o VmwareNetworkConfigPtrOutput) ToVmwareNetworkConfigPtrOutput() VmwareNet
 
 func (o VmwareNetworkConfigPtrOutput) ToVmwareNetworkConfigPtrOutputWithContext(ctx context.Context) VmwareNetworkConfigPtrOutput {
 	return o
-}
-
-func (o VmwareNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareNetworkConfig] {
-	return pulumix.Output[*VmwareNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareNetworkConfigPtrOutput) Elem() VmwareNetworkConfigOutput {
@@ -16233,12 +13910,6 @@ func (o VmwareNetworkConfigResponseOutput) ToVmwareNetworkConfigResponseOutputWi
 	return o
 }
 
-func (o VmwareNetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareNetworkConfigResponse] {
-	return pulumix.Output[VmwareNetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration for control plane V2 mode.
 func (o VmwareNetworkConfigResponseOutput) ControlPlaneV2Config() VmwareControlPlaneV2ConfigResponseOutput {
 	return o.ApplyT(func(v VmwareNetworkConfigResponse) VmwareControlPlaneV2ConfigResponse { return v.ControlPlaneV2Config }).(VmwareControlPlaneV2ConfigResponseOutput)
@@ -16345,12 +14016,6 @@ func (i VmwareNodeConfigArgs) ToVmwareNodeConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareNodeConfigOutput)
 }
 
-func (i VmwareNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareNodeConfig] {
-	return pulumix.Output[VmwareNodeConfig]{
-		OutputState: i.ToVmwareNodeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Parameters that describe the configuration of all nodes within a given node pool.
 type VmwareNodeConfigOutput struct{ *pulumi.OutputState }
 
@@ -16364,12 +14029,6 @@ func (o VmwareNodeConfigOutput) ToVmwareNodeConfigOutput() VmwareNodeConfigOutpu
 
 func (o VmwareNodeConfigOutput) ToVmwareNodeConfigOutputWithContext(ctx context.Context) VmwareNodeConfigOutput {
 	return o
-}
-
-func (o VmwareNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareNodeConfig] {
-	return pulumix.Output[VmwareNodeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // VMware disk size to be used during creation.
@@ -16461,12 +14120,6 @@ func (o VmwareNodeConfigResponseOutput) ToVmwareNodeConfigResponseOutputWithCont
 	return o
 }
 
-func (o VmwareNodeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareNodeConfigResponse] {
-	return pulumix.Output[VmwareNodeConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // VMware disk size to be used during creation.
 func (o VmwareNodeConfigResponseOutput) BootDiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareNodeConfigResponse) string { return v.BootDiskSizeGb }).(pulumi.StringOutput)
@@ -16556,12 +14209,6 @@ func (i VmwareNodePoolAutoscalingConfigArgs) ToVmwareNodePoolAutoscalingConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareNodePoolAutoscalingConfigOutput)
 }
 
-func (i VmwareNodePoolAutoscalingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareNodePoolAutoscalingConfig] {
-	return pulumix.Output[VmwareNodePoolAutoscalingConfig]{
-		OutputState: i.ToVmwareNodePoolAutoscalingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareNodePoolAutoscalingConfigArgs) ToVmwareNodePoolAutoscalingConfigPtrOutput() VmwareNodePoolAutoscalingConfigPtrOutput {
 	return i.ToVmwareNodePoolAutoscalingConfigPtrOutputWithContext(context.Background())
 }
@@ -16603,12 +14250,6 @@ func (i *vmwareNodePoolAutoscalingConfigPtrType) ToVmwareNodePoolAutoscalingConf
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareNodePoolAutoscalingConfigPtrOutput)
 }
 
-func (i *vmwareNodePoolAutoscalingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareNodePoolAutoscalingConfig] {
-	return pulumix.Output[*VmwareNodePoolAutoscalingConfig]{
-		OutputState: i.ToVmwareNodePoolAutoscalingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodePoolAutoscaling config for the NodePool to allow for the kubernetes to scale NodePool.
 type VmwareNodePoolAutoscalingConfigOutput struct{ *pulumi.OutputState }
 
@@ -16634,12 +14275,6 @@ func (o VmwareNodePoolAutoscalingConfigOutput) ToVmwareNodePoolAutoscalingConfig
 	}).(VmwareNodePoolAutoscalingConfigPtrOutput)
 }
 
-func (o VmwareNodePoolAutoscalingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareNodePoolAutoscalingConfig] {
-	return pulumix.Output[VmwareNodePoolAutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of replicas in the NodePool.
 func (o VmwareNodePoolAutoscalingConfigOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmwareNodePoolAutoscalingConfig) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
@@ -16662,12 +14297,6 @@ func (o VmwareNodePoolAutoscalingConfigPtrOutput) ToVmwareNodePoolAutoscalingCon
 
 func (o VmwareNodePoolAutoscalingConfigPtrOutput) ToVmwareNodePoolAutoscalingConfigPtrOutputWithContext(ctx context.Context) VmwareNodePoolAutoscalingConfigPtrOutput {
 	return o
-}
-
-func (o VmwareNodePoolAutoscalingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareNodePoolAutoscalingConfig] {
-	return pulumix.Output[*VmwareNodePoolAutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareNodePoolAutoscalingConfigPtrOutput) Elem() VmwareNodePoolAutoscalingConfigOutput {
@@ -16723,12 +14352,6 @@ func (o VmwareNodePoolAutoscalingConfigResponseOutput) ToVmwareNodePoolAutoscali
 	return o
 }
 
-func (o VmwareNodePoolAutoscalingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareNodePoolAutoscalingConfigResponse] {
-	return pulumix.Output[VmwareNodePoolAutoscalingConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of replicas in the NodePool.
 func (o VmwareNodePoolAutoscalingConfigResponseOutput) MaxReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v VmwareNodePoolAutoscalingConfigResponse) int { return v.MaxReplicas }).(pulumi.IntOutput)
@@ -16768,12 +14391,6 @@ func (o VmwareSeesawConfigResponseOutput) ToVmwareSeesawConfigResponseOutput() V
 
 func (o VmwareSeesawConfigResponseOutput) ToVmwareSeesawConfigResponseOutputWithContext(ctx context.Context) VmwareSeesawConfigResponseOutput {
 	return o
-}
-
-func (o VmwareSeesawConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareSeesawConfigResponse] {
-	return pulumix.Output[VmwareSeesawConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable two load balancer VMs to achieve a highly-available Seesaw load balancer.
@@ -16841,12 +14458,6 @@ func (i VmwareStaticIpConfigArgs) ToVmwareStaticIpConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareStaticIpConfigOutput)
 }
 
-func (i VmwareStaticIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareStaticIpConfig] {
-	return pulumix.Output[VmwareStaticIpConfig]{
-		OutputState: i.ToVmwareStaticIpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareStaticIpConfigArgs) ToVmwareStaticIpConfigPtrOutput() VmwareStaticIpConfigPtrOutput {
 	return i.ToVmwareStaticIpConfigPtrOutputWithContext(context.Background())
 }
@@ -16888,12 +14499,6 @@ func (i *vmwareStaticIpConfigPtrType) ToVmwareStaticIpConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareStaticIpConfigPtrOutput)
 }
 
-func (i *vmwareStaticIpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareStaticIpConfig] {
-	return pulumix.Output[*VmwareStaticIpConfig]{
-		OutputState: i.ToVmwareStaticIpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the network configuration required for the VMware user clusters with Static IP configurations.
 type VmwareStaticIpConfigOutput struct{ *pulumi.OutputState }
 
@@ -16919,12 +14524,6 @@ func (o VmwareStaticIpConfigOutput) ToVmwareStaticIpConfigPtrOutputWithContext(c
 	}).(VmwareStaticIpConfigPtrOutput)
 }
 
-func (o VmwareStaticIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareStaticIpConfig] {
-	return pulumix.Output[VmwareStaticIpConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Represents the configuration values for static IP allocation to nodes.
 func (o VmwareStaticIpConfigOutput) IpBlocks() VmwareIpBlockArrayOutput {
 	return o.ApplyT(func(v VmwareStaticIpConfig) []VmwareIpBlock { return v.IpBlocks }).(VmwareIpBlockArrayOutput)
@@ -16942,12 +14541,6 @@ func (o VmwareStaticIpConfigPtrOutput) ToVmwareStaticIpConfigPtrOutput() VmwareS
 
 func (o VmwareStaticIpConfigPtrOutput) ToVmwareStaticIpConfigPtrOutputWithContext(ctx context.Context) VmwareStaticIpConfigPtrOutput {
 	return o
-}
-
-func (o VmwareStaticIpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareStaticIpConfig] {
-	return pulumix.Output[*VmwareStaticIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareStaticIpConfigPtrOutput) Elem() VmwareStaticIpConfigOutput {
@@ -16991,12 +14584,6 @@ func (o VmwareStaticIpConfigResponseOutput) ToVmwareStaticIpConfigResponseOutput
 	return o
 }
 
-func (o VmwareStaticIpConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareStaticIpConfigResponse] {
-	return pulumix.Output[VmwareStaticIpConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Represents the configuration values for static IP allocation to nodes.
 func (o VmwareStaticIpConfigResponseOutput) IpBlocks() VmwareIpBlockResponseArrayOutput {
 	return o.ApplyT(func(v VmwareStaticIpConfigResponse) []VmwareIpBlockResponse { return v.IpBlocks }).(VmwareIpBlockResponseArrayOutput)
@@ -17035,12 +14622,6 @@ func (i VmwareStorageConfigArgs) ToVmwareStorageConfigOutput() VmwareStorageConf
 
 func (i VmwareStorageConfigArgs) ToVmwareStorageConfigOutputWithContext(ctx context.Context) VmwareStorageConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareStorageConfigOutput)
-}
-
-func (i VmwareStorageConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareStorageConfig] {
-	return pulumix.Output[VmwareStorageConfig]{
-		OutputState: i.ToVmwareStorageConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i VmwareStorageConfigArgs) ToVmwareStorageConfigPtrOutput() VmwareStorageConfigPtrOutput {
@@ -17084,12 +14665,6 @@ func (i *vmwareStorageConfigPtrType) ToVmwareStorageConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareStorageConfigPtrOutput)
 }
 
-func (i *vmwareStorageConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareStorageConfig] {
-	return pulumix.Output[*VmwareStorageConfig]{
-		OutputState: i.ToVmwareStorageConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies vSphere CSI components deployment config in the VMware user cluster.
 type VmwareStorageConfigOutput struct{ *pulumi.OutputState }
 
@@ -17115,12 +14690,6 @@ func (o VmwareStorageConfigOutput) ToVmwareStorageConfigPtrOutputWithContext(ctx
 	}).(VmwareStorageConfigPtrOutput)
 }
 
-func (o VmwareStorageConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareStorageConfig] {
-	return pulumix.Output[VmwareStorageConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether or not to deploy vSphere CSI components in the VMware user cluster. Enabled by default.
 func (o VmwareStorageConfigOutput) VsphereCsiDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmwareStorageConfig) *bool { return v.VsphereCsiDisabled }).(pulumi.BoolPtrOutput)
@@ -17138,12 +14707,6 @@ func (o VmwareStorageConfigPtrOutput) ToVmwareStorageConfigPtrOutput() VmwareSto
 
 func (o VmwareStorageConfigPtrOutput) ToVmwareStorageConfigPtrOutputWithContext(ctx context.Context) VmwareStorageConfigPtrOutput {
 	return o
-}
-
-func (o VmwareStorageConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareStorageConfig] {
-	return pulumix.Output[*VmwareStorageConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareStorageConfigPtrOutput) Elem() VmwareStorageConfigOutput {
@@ -17185,12 +14748,6 @@ func (o VmwareStorageConfigResponseOutput) ToVmwareStorageConfigResponseOutput()
 
 func (o VmwareStorageConfigResponseOutput) ToVmwareStorageConfigResponseOutputWithContext(ctx context.Context) VmwareStorageConfigResponseOutput {
 	return o
-}
-
-func (o VmwareStorageConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareStorageConfigResponse] {
-	return pulumix.Output[VmwareStorageConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether or not to deploy vSphere CSI components in the VMware user cluster. Enabled by default.
@@ -17257,12 +14814,6 @@ func (i VmwareVCenterConfigArgs) ToVmwareVCenterConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareVCenterConfigOutput)
 }
 
-func (i VmwareVCenterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareVCenterConfig] {
-	return pulumix.Output[VmwareVCenterConfig]{
-		OutputState: i.ToVmwareVCenterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareVCenterConfigArgs) ToVmwareVCenterConfigPtrOutput() VmwareVCenterConfigPtrOutput {
 	return i.ToVmwareVCenterConfigPtrOutputWithContext(context.Background())
 }
@@ -17304,12 +14855,6 @@ func (i *vmwareVCenterConfigPtrType) ToVmwareVCenterConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareVCenterConfigPtrOutput)
 }
 
-func (i *vmwareVCenterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareVCenterConfig] {
-	return pulumix.Output[*VmwareVCenterConfig]{
-		OutputState: i.ToVmwareVCenterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents configuration for the VMware VCenter for the user cluster.
 type VmwareVCenterConfigOutput struct{ *pulumi.OutputState }
 
@@ -17333,12 +14878,6 @@ func (o VmwareVCenterConfigOutput) ToVmwareVCenterConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareVCenterConfig) *VmwareVCenterConfig {
 		return &v
 	}).(VmwareVCenterConfigPtrOutput)
-}
-
-func (o VmwareVCenterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVCenterConfig] {
-	return pulumix.Output[VmwareVCenterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contains the vCenter CA certificate public key for SSL verification.
@@ -17388,12 +14927,6 @@ func (o VmwareVCenterConfigPtrOutput) ToVmwareVCenterConfigPtrOutput() VmwareVCe
 
 func (o VmwareVCenterConfigPtrOutput) ToVmwareVCenterConfigPtrOutputWithContext(ctx context.Context) VmwareVCenterConfigPtrOutput {
 	return o
-}
-
-func (o VmwareVCenterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareVCenterConfig] {
-	return pulumix.Output[*VmwareVCenterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareVCenterConfigPtrOutput) Elem() VmwareVCenterConfigOutput {
@@ -17511,12 +15044,6 @@ func (o VmwareVCenterConfigResponseOutput) ToVmwareVCenterConfigResponseOutputWi
 	return o
 }
 
-func (o VmwareVCenterConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVCenterConfigResponse] {
-	return pulumix.Output[VmwareVCenterConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The vCenter IP address.
 func (o VmwareVCenterConfigResponseOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareVCenterConfigResponse) string { return v.Address }).(pulumi.StringOutput)
@@ -17596,12 +15123,6 @@ func (i VmwareVipConfigArgs) ToVmwareVipConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareVipConfigOutput)
 }
 
-func (i VmwareVipConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareVipConfig] {
-	return pulumix.Output[VmwareVipConfig]{
-		OutputState: i.ToVmwareVipConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareVipConfigArgs) ToVmwareVipConfigPtrOutput() VmwareVipConfigPtrOutput {
 	return i.ToVmwareVipConfigPtrOutputWithContext(context.Background())
 }
@@ -17643,12 +15164,6 @@ func (i *vmwareVipConfigPtrType) ToVmwareVipConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareVipConfigPtrOutput)
 }
 
-func (i *vmwareVipConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareVipConfig] {
-	return pulumix.Output[*VmwareVipConfig]{
-		OutputState: i.ToVmwareVipConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the VIP config for the VMware user cluster load balancer.
 type VmwareVipConfigOutput struct{ *pulumi.OutputState }
 
@@ -17674,12 +15189,6 @@ func (o VmwareVipConfigOutput) ToVmwareVipConfigPtrOutputWithContext(ctx context
 	}).(VmwareVipConfigPtrOutput)
 }
 
-func (o VmwareVipConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVipConfig] {
-	return pulumix.Output[VmwareVipConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The VIP which you previously set aside for the Kubernetes API of this cluster.
 func (o VmwareVipConfigOutput) ControlPlaneVip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareVipConfig) *string { return v.ControlPlaneVip }).(pulumi.StringPtrOutput)
@@ -17702,12 +15211,6 @@ func (o VmwareVipConfigPtrOutput) ToVmwareVipConfigPtrOutput() VmwareVipConfigPt
 
 func (o VmwareVipConfigPtrOutput) ToVmwareVipConfigPtrOutputWithContext(ctx context.Context) VmwareVipConfigPtrOutput {
 	return o
-}
-
-func (o VmwareVipConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareVipConfig] {
-	return pulumix.Output[*VmwareVipConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareVipConfigPtrOutput) Elem() VmwareVipConfigOutput {
@@ -17763,12 +15266,6 @@ func (o VmwareVipConfigResponseOutput) ToVmwareVipConfigResponseOutputWithContex
 	return o
 }
 
-func (o VmwareVipConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVipConfigResponse] {
-	return pulumix.Output[VmwareVipConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The VIP which you previously set aside for the Kubernetes API of this cluster.
 func (o VmwareVipConfigResponseOutput) ControlPlaneVip() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareVipConfigResponse) string { return v.ControlPlaneVip }).(pulumi.StringOutput)
@@ -17822,12 +15319,6 @@ func (i VmwareVsphereConfigArgs) ToVmwareVsphereConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareVsphereConfigOutput)
 }
 
-func (i VmwareVsphereConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareVsphereConfig] {
-	return pulumix.Output[VmwareVsphereConfig]{
-		OutputState: i.ToVmwareVsphereConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VmwareVsphereConfigArgs) ToVmwareVsphereConfigPtrOutput() VmwareVsphereConfigPtrOutput {
 	return i.ToVmwareVsphereConfigPtrOutputWithContext(context.Background())
 }
@@ -17869,12 +15360,6 @@ func (i *vmwareVsphereConfigPtrType) ToVmwareVsphereConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareVsphereConfigPtrOutput)
 }
 
-func (i *vmwareVsphereConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareVsphereConfig] {
-	return pulumix.Output[*VmwareVsphereConfig]{
-		OutputState: i.ToVmwareVsphereConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
 type VmwareVsphereConfigOutput struct{ *pulumi.OutputState }
 
@@ -17898,12 +15383,6 @@ func (o VmwareVsphereConfigOutput) ToVmwareVsphereConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareVsphereConfig) *VmwareVsphereConfig {
 		return &v
 	}).(VmwareVsphereConfigPtrOutput)
-}
-
-func (o VmwareVsphereConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVsphereConfig] {
-	return pulumix.Output[VmwareVsphereConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the vCenter datastore. Inherited from the user cluster.
@@ -17933,12 +15412,6 @@ func (o VmwareVsphereConfigPtrOutput) ToVmwareVsphereConfigPtrOutput() VmwareVsp
 
 func (o VmwareVsphereConfigPtrOutput) ToVmwareVsphereConfigPtrOutputWithContext(ctx context.Context) VmwareVsphereConfigPtrOutput {
 	return o
-}
-
-func (o VmwareVsphereConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareVsphereConfig] {
-	return pulumix.Output[*VmwareVsphereConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareVsphereConfigPtrOutput) Elem() VmwareVsphereConfigOutput {
@@ -18006,12 +15479,6 @@ func (o VmwareVsphereConfigResponseOutput) ToVmwareVsphereConfigResponseOutputWi
 	return o
 }
 
-func (o VmwareVsphereConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVsphereConfigResponse] {
-	return pulumix.Output[VmwareVsphereConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the vCenter datastore. Inherited from the user cluster.
 func (o VmwareVsphereConfigResponseOutput) Datastore() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareVsphereConfigResponse) string { return v.Datastore }).(pulumi.StringOutput)
@@ -18066,12 +15533,6 @@ func (i VmwareVsphereTagArgs) ToVmwareVsphereTagOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareVsphereTagOutput)
 }
 
-func (i VmwareVsphereTagArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareVsphereTag] {
-	return pulumix.Output[VmwareVsphereTag]{
-		OutputState: i.ToVmwareVsphereTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VmwareVsphereTagArrayInput is an input type that accepts VmwareVsphereTagArray and VmwareVsphereTagArrayOutput values.
 // You can construct a concrete instance of `VmwareVsphereTagArrayInput` via:
 //
@@ -18097,12 +15558,6 @@ func (i VmwareVsphereTagArray) ToVmwareVsphereTagArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareVsphereTagArrayOutput)
 }
 
-func (i VmwareVsphereTagArray) ToOutput(ctx context.Context) pulumix.Output[[]VmwareVsphereTag] {
-	return pulumix.Output[[]VmwareVsphereTag]{
-		OutputState: i.ToVmwareVsphereTagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VmwareVsphereTag describes a vSphere tag to be placed on VMs in the node pool. For more information, see https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
 type VmwareVsphereTagOutput struct{ *pulumi.OutputState }
 
@@ -18116,12 +15571,6 @@ func (o VmwareVsphereTagOutput) ToVmwareVsphereTagOutput() VmwareVsphereTagOutpu
 
 func (o VmwareVsphereTagOutput) ToVmwareVsphereTagOutputWithContext(ctx context.Context) VmwareVsphereTagOutput {
 	return o
-}
-
-func (o VmwareVsphereTagOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVsphereTag] {
-	return pulumix.Output[VmwareVsphereTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Vsphere tag category.
@@ -18146,12 +15595,6 @@ func (o VmwareVsphereTagArrayOutput) ToVmwareVsphereTagArrayOutput() VmwareVsphe
 
 func (o VmwareVsphereTagArrayOutput) ToVmwareVsphereTagArrayOutputWithContext(ctx context.Context) VmwareVsphereTagArrayOutput {
 	return o
-}
-
-func (o VmwareVsphereTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmwareVsphereTag] {
-	return pulumix.Output[[]VmwareVsphereTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareVsphereTagArrayOutput) Index(i pulumi.IntInput) VmwareVsphereTagOutput {
@@ -18183,12 +15626,6 @@ func (o VmwareVsphereTagResponseOutput) ToVmwareVsphereTagResponseOutputWithCont
 	return o
 }
 
-func (o VmwareVsphereTagResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVsphereTagResponse] {
-	return pulumix.Output[VmwareVsphereTagResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Vsphere tag category.
 func (o VmwareVsphereTagResponseOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareVsphereTagResponse) string { return v.Category }).(pulumi.StringOutput)
@@ -18211,12 +15648,6 @@ func (o VmwareVsphereTagResponseArrayOutput) ToVmwareVsphereTagResponseArrayOutp
 
 func (o VmwareVsphereTagResponseArrayOutput) ToVmwareVsphereTagResponseArrayOutputWithContext(ctx context.Context) VmwareVsphereTagResponseArrayOutput {
 	return o
-}
-
-func (o VmwareVsphereTagResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmwareVsphereTagResponse] {
-	return pulumix.Output[[]VmwareVsphereTagResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareVsphereTagResponseArrayOutput) Index(i pulumi.IntInput) VmwareVsphereTagResponseOutput {

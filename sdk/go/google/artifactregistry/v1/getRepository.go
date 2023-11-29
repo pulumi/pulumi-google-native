@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a repository.
@@ -99,12 +98,6 @@ func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutput() LookupRep
 
 func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutputWithContext(ctx context.Context) LookupRepositoryResultOutput {
 	return o
-}
-
-func (o LookupRepositoryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRepositoryResult] {
-	return pulumix.Output[LookupRepositoryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.

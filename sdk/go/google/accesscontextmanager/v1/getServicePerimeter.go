@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a service perimeter based on the resource name.
@@ -79,12 +78,6 @@ func (o LookupServicePerimeterResultOutput) ToLookupServicePerimeterResultOutput
 
 func (o LookupServicePerimeterResultOutput) ToLookupServicePerimeterResultOutputWithContext(ctx context.Context) LookupServicePerimeterResultOutput {
 	return o
-}
-
-func (o LookupServicePerimeterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServicePerimeterResult] {
-	return pulumix.Output[LookupServicePerimeterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the `ServicePerimeter` and its use. Does not affect behavior.

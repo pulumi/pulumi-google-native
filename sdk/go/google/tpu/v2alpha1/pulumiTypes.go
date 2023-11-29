@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AcceleratorConfigArgs) ToAcceleratorConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigOutput)
 }
 
-func (i AcceleratorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AcceleratorConfig] {
-	return pulumix.Output[AcceleratorConfig]{
-		OutputState: i.ToAcceleratorConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AcceleratorConfigArgs) ToAcceleratorConfigPtrOutput() AcceleratorConfigPtrOutput {
 	return i.ToAcceleratorConfigPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *acceleratorConfigPtrType) ToAcceleratorConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigPtrOutput)
 }
 
-func (i *acceleratorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfig] {
-	return pulumix.Output[*AcceleratorConfig]{
-		OutputState: i.ToAcceleratorConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A TPU accelerator configuration.
 type AcceleratorConfigOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o AcceleratorConfigOutput) ToAcceleratorConfigPtrOutputWithContext(ctx con
 	}).(AcceleratorConfigPtrOutput)
 }
 
-func (o AcceleratorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AcceleratorConfig] {
-	return pulumix.Output[AcceleratorConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Topology of TPU in chips.
 func (o AcceleratorConfigOutput) Topology() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorConfig) string { return v.Topology }).(pulumi.StringOutput)
@@ -159,12 +140,6 @@ func (o AcceleratorConfigPtrOutput) ToAcceleratorConfigPtrOutput() AcceleratorCo
 
 func (o AcceleratorConfigPtrOutput) ToAcceleratorConfigPtrOutputWithContext(ctx context.Context) AcceleratorConfigPtrOutput {
 	return o
-}
-
-func (o AcceleratorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfig] {
-	return pulumix.Output[*AcceleratorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AcceleratorConfigPtrOutput) Elem() AcceleratorConfigOutput {
@@ -220,12 +195,6 @@ func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponseOutputWithCo
 	return o
 }
 
-func (o AcceleratorConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AcceleratorConfigResponse] {
-	return pulumix.Output[AcceleratorConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Topology of TPU in chips.
 func (o AcceleratorConfigResponseOutput) Topology() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.Topology }).(pulumi.StringOutput)
@@ -255,12 +224,6 @@ func (o AcceptedDataResponseOutput) ToAcceptedDataResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o AcceptedDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AcceptedDataResponse] {
-	return pulumix.Output[AcceptedDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An access config attached to the TPU worker.
 type AccessConfigResponse struct {
 	// An external IP address associated with the TPU worker.
@@ -280,12 +243,6 @@ func (o AccessConfigResponseOutput) ToAccessConfigResponseOutput() AccessConfigR
 
 func (o AccessConfigResponseOutput) ToAccessConfigResponseOutputWithContext(ctx context.Context) AccessConfigResponseOutput {
 	return o
-}
-
-func (o AccessConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessConfigResponse] {
-	return pulumix.Output[AccessConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An external IP address associated with the TPU worker.
@@ -310,12 +267,6 @@ func (o ActiveDataResponseOutput) ToActiveDataResponseOutput() ActiveDataRespons
 
 func (o ActiveDataResponseOutput) ToActiveDataResponseOutputWithContext(ctx context.Context) ActiveDataResponseOutput {
 	return o
-}
-
-func (o ActiveDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActiveDataResponse] {
-	return pulumix.Output[ActiveDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A node-attached disk resource. Next ID: 8;
@@ -357,12 +308,6 @@ func (i AttachedDiskArgs) ToAttachedDiskOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskOutput)
 }
 
-func (i AttachedDiskArgs) ToOutput(ctx context.Context) pulumix.Output[AttachedDisk] {
-	return pulumix.Output[AttachedDisk]{
-		OutputState: i.ToAttachedDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AttachedDiskArrayInput is an input type that accepts AttachedDiskArray and AttachedDiskArrayOutput values.
 // You can construct a concrete instance of `AttachedDiskArrayInput` via:
 //
@@ -388,12 +333,6 @@ func (i AttachedDiskArray) ToAttachedDiskArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskArrayOutput)
 }
 
-func (i AttachedDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]AttachedDisk] {
-	return pulumix.Output[[]AttachedDisk]{
-		OutputState: i.ToAttachedDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A node-attached disk resource. Next ID: 8;
 type AttachedDiskOutput struct{ *pulumi.OutputState }
 
@@ -407,12 +346,6 @@ func (o AttachedDiskOutput) ToAttachedDiskOutput() AttachedDiskOutput {
 
 func (o AttachedDiskOutput) ToAttachedDiskOutputWithContext(ctx context.Context) AttachedDiskOutput {
 	return o
-}
-
-func (o AttachedDiskOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDisk] {
-	return pulumix.Output[AttachedDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
@@ -437,12 +370,6 @@ func (o AttachedDiskArrayOutput) ToAttachedDiskArrayOutput() AttachedDiskArrayOu
 
 func (o AttachedDiskArrayOutput) ToAttachedDiskArrayOutputWithContext(ctx context.Context) AttachedDiskArrayOutput {
 	return o
-}
-
-func (o AttachedDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttachedDisk] {
-	return pulumix.Output[[]AttachedDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttachedDiskArrayOutput) Index(i pulumi.IntInput) AttachedDiskOutput {
@@ -474,12 +401,6 @@ func (o AttachedDiskResponseOutput) ToAttachedDiskResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o AttachedDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedDiskResponse] {
-	return pulumix.Output[AttachedDiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
 func (o AttachedDiskResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskResponse) string { return v.Mode }).(pulumi.StringOutput)
@@ -502,12 +423,6 @@ func (o AttachedDiskResponseArrayOutput) ToAttachedDiskResponseArrayOutput() Att
 
 func (o AttachedDiskResponseArrayOutput) ToAttachedDiskResponseArrayOutputWithContext(ctx context.Context) AttachedDiskResponseArrayOutput {
 	return o
-}
-
-func (o AttachedDiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttachedDiskResponse] {
-	return pulumix.Output[[]AttachedDiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttachedDiskResponseArrayOutput) Index(i pulumi.IntInput) AttachedDiskResponseOutput {
@@ -545,12 +460,6 @@ func (i BestEffortArgs) ToBestEffortOutput() BestEffortOutput {
 
 func (i BestEffortArgs) ToBestEffortOutputWithContext(ctx context.Context) BestEffortOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BestEffortOutput)
-}
-
-func (i BestEffortArgs) ToOutput(ctx context.Context) pulumix.Output[BestEffort] {
-	return pulumix.Output[BestEffort]{
-		OutputState: i.ToBestEffortOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BestEffortArgs) ToBestEffortPtrOutput() BestEffortPtrOutput {
@@ -594,12 +503,6 @@ func (i *bestEffortPtrType) ToBestEffortPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BestEffortPtrOutput)
 }
 
-func (i *bestEffortPtrType) ToOutput(ctx context.Context) pulumix.Output[*BestEffort] {
-	return pulumix.Output[*BestEffort]{
-		OutputState: i.ToBestEffortPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BestEffort tier definition.
 type BestEffortOutput struct{ *pulumi.OutputState }
 
@@ -625,12 +528,6 @@ func (o BestEffortOutput) ToBestEffortPtrOutputWithContext(ctx context.Context) 
 	}).(BestEffortPtrOutput)
 }
 
-func (o BestEffortOutput) ToOutput(ctx context.Context) pulumix.Output[BestEffort] {
-	return pulumix.Output[BestEffort]{
-		OutputState: o.OutputState,
-	}
-}
-
 type BestEffortPtrOutput struct{ *pulumi.OutputState }
 
 func (BestEffortPtrOutput) ElementType() reflect.Type {
@@ -643,12 +540,6 @@ func (o BestEffortPtrOutput) ToBestEffortPtrOutput() BestEffortPtrOutput {
 
 func (o BestEffortPtrOutput) ToBestEffortPtrOutputWithContext(ctx context.Context) BestEffortPtrOutput {
 	return o
-}
-
-func (o BestEffortPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BestEffort] {
-	return pulumix.Output[*BestEffort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BestEffortPtrOutput) Elem() BestEffortOutput {
@@ -678,12 +569,6 @@ func (o BestEffortResponseOutput) ToBestEffortResponseOutput() BestEffortRespons
 
 func (o BestEffortResponseOutput) ToBestEffortResponseOutputWithContext(ctx context.Context) BestEffortResponseOutput {
 	return o
-}
-
-func (o BestEffortResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BestEffortResponse] {
-	return pulumix.Output[BestEffortResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Boot disk configurations.
@@ -723,12 +608,6 @@ func (i BootDiskConfigArgs) ToBootDiskConfigOutput() BootDiskConfigOutput {
 
 func (i BootDiskConfigArgs) ToBootDiskConfigOutputWithContext(ctx context.Context) BootDiskConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BootDiskConfigOutput)
-}
-
-func (i BootDiskConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BootDiskConfig] {
-	return pulumix.Output[BootDiskConfig]{
-		OutputState: i.ToBootDiskConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BootDiskConfigArgs) ToBootDiskConfigPtrOutput() BootDiskConfigPtrOutput {
@@ -772,12 +651,6 @@ func (i *bootDiskConfigPtrType) ToBootDiskConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BootDiskConfigPtrOutput)
 }
 
-func (i *bootDiskConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BootDiskConfig] {
-	return pulumix.Output[*BootDiskConfig]{
-		OutputState: i.ToBootDiskConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Boot disk configurations.
 type BootDiskConfigOutput struct{ *pulumi.OutputState }
 
@@ -803,12 +676,6 @@ func (o BootDiskConfigOutput) ToBootDiskConfigPtrOutputWithContext(ctx context.C
 	}).(BootDiskConfigPtrOutput)
 }
 
-func (o BootDiskConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskConfig] {
-	return pulumix.Output[BootDiskConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Customer encryption key for boot disk.
 func (o BootDiskConfigOutput) CustomerEncryptionKey() CustomerEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v BootDiskConfig) *CustomerEncryptionKey { return v.CustomerEncryptionKey }).(CustomerEncryptionKeyPtrOutput)
@@ -831,12 +698,6 @@ func (o BootDiskConfigPtrOutput) ToBootDiskConfigPtrOutput() BootDiskConfigPtrOu
 
 func (o BootDiskConfigPtrOutput) ToBootDiskConfigPtrOutputWithContext(ctx context.Context) BootDiskConfigPtrOutput {
 	return o
-}
-
-func (o BootDiskConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BootDiskConfig] {
-	return pulumix.Output[*BootDiskConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BootDiskConfigPtrOutput) Elem() BootDiskConfigOutput {
@@ -892,12 +753,6 @@ func (o BootDiskConfigResponseOutput) ToBootDiskConfigResponseOutputWithContext(
 	return o
 }
 
-func (o BootDiskConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskConfigResponse] {
-	return pulumix.Output[BootDiskConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Customer encryption key for boot disk.
 func (o BootDiskConfigResponseOutput) CustomerEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v BootDiskConfigResponse) CustomerEncryptionKeyResponse { return v.CustomerEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
@@ -925,12 +780,6 @@ func (o CreatingDataResponseOutput) ToCreatingDataResponseOutput() CreatingDataR
 
 func (o CreatingDataResponseOutput) ToCreatingDataResponseOutputWithContext(ctx context.Context) CreatingDataResponseOutput {
 	return o
-}
-
-func (o CreatingDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CreatingDataResponse] {
-	return pulumix.Output[CreatingDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customer's encryption key.
@@ -966,12 +815,6 @@ func (i CustomerEncryptionKeyArgs) ToCustomerEncryptionKeyOutput() CustomerEncry
 
 func (i CustomerEncryptionKeyArgs) ToCustomerEncryptionKeyOutputWithContext(ctx context.Context) CustomerEncryptionKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerEncryptionKeyOutput)
-}
-
-func (i CustomerEncryptionKeyArgs) ToOutput(ctx context.Context) pulumix.Output[CustomerEncryptionKey] {
-	return pulumix.Output[CustomerEncryptionKey]{
-		OutputState: i.ToCustomerEncryptionKeyOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CustomerEncryptionKeyArgs) ToCustomerEncryptionKeyPtrOutput() CustomerEncryptionKeyPtrOutput {
@@ -1015,12 +858,6 @@ func (i *customerEncryptionKeyPtrType) ToCustomerEncryptionKeyPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerEncryptionKeyPtrOutput)
 }
 
-func (i *customerEncryptionKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomerEncryptionKey] {
-	return pulumix.Output[*CustomerEncryptionKey]{
-		OutputState: i.ToCustomerEncryptionKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Customer's encryption key.
 type CustomerEncryptionKeyOutput struct{ *pulumi.OutputState }
 
@@ -1046,12 +883,6 @@ func (o CustomerEncryptionKeyOutput) ToCustomerEncryptionKeyPtrOutputWithContext
 	}).(CustomerEncryptionKeyPtrOutput)
 }
 
-func (o CustomerEncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerEncryptionKey] {
-	return pulumix.Output[CustomerEncryptionKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
 func (o CustomerEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -1069,12 +900,6 @@ func (o CustomerEncryptionKeyPtrOutput) ToCustomerEncryptionKeyPtrOutput() Custo
 
 func (o CustomerEncryptionKeyPtrOutput) ToCustomerEncryptionKeyPtrOutputWithContext(ctx context.Context) CustomerEncryptionKeyPtrOutput {
 	return o
-}
-
-func (o CustomerEncryptionKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomerEncryptionKey] {
-	return pulumix.Output[*CustomerEncryptionKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomerEncryptionKeyPtrOutput) Elem() CustomerEncryptionKeyOutput {
@@ -1118,12 +943,6 @@ func (o CustomerEncryptionKeyResponseOutput) ToCustomerEncryptionKeyResponseOutp
 	return o
 }
 
-func (o CustomerEncryptionKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomerEncryptionKeyResponse] {
-	return pulumix.Output[CustomerEncryptionKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
 func (o CustomerEncryptionKeyResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -1148,12 +967,6 @@ func (o DeletingDataResponseOutput) ToDeletingDataResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o DeletingDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeletingDataResponse] {
-	return pulumix.Output[DeletingDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Further data for the failed state.
 type FailedDataResponse struct {
 	// The error that caused the queued resource to enter the FAILED state.
@@ -1173,12 +986,6 @@ func (o FailedDataResponseOutput) ToFailedDataResponseOutput() FailedDataRespons
 
 func (o FailedDataResponseOutput) ToFailedDataResponseOutputWithContext(ctx context.Context) FailedDataResponseOutput {
 	return o
-}
-
-func (o FailedDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FailedDataResponse] {
-	return pulumix.Output[FailedDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The error that caused the queued resource to enter the FAILED state.
@@ -1225,12 +1032,6 @@ func (i GuaranteedArgs) ToGuaranteedOutputWithContext(ctx context.Context) Guara
 	return pulumi.ToOutputWithContext(ctx, i).(GuaranteedOutput)
 }
 
-func (i GuaranteedArgs) ToOutput(ctx context.Context) pulumix.Output[Guaranteed] {
-	return pulumix.Output[Guaranteed]{
-		OutputState: i.ToGuaranteedOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuaranteedArgs) ToGuaranteedPtrOutput() GuaranteedPtrOutput {
 	return i.ToGuaranteedPtrOutputWithContext(context.Background())
 }
@@ -1272,12 +1073,6 @@ func (i *guaranteedPtrType) ToGuaranteedPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GuaranteedPtrOutput)
 }
 
-func (i *guaranteedPtrType) ToOutput(ctx context.Context) pulumix.Output[*Guaranteed] {
-	return pulumix.Output[*Guaranteed]{
-		OutputState: i.ToGuaranteedPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Guaranteed tier definition.
 type GuaranteedOutput struct{ *pulumi.OutputState }
 
@@ -1303,12 +1098,6 @@ func (o GuaranteedOutput) ToGuaranteedPtrOutputWithContext(ctx context.Context) 
 	}).(GuaranteedPtrOutput)
 }
 
-func (o GuaranteedOutput) ToOutput(ctx context.Context) pulumix.Output[Guaranteed] {
-	return pulumix.Output[Guaranteed]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
 func (o GuaranteedOutput) MinDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Guaranteed) *string { return v.MinDuration }).(pulumi.StringPtrOutput)
@@ -1331,12 +1120,6 @@ func (o GuaranteedPtrOutput) ToGuaranteedPtrOutput() GuaranteedPtrOutput {
 
 func (o GuaranteedPtrOutput) ToGuaranteedPtrOutputWithContext(ctx context.Context) GuaranteedPtrOutput {
 	return o
-}
-
-func (o GuaranteedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Guaranteed] {
-	return pulumix.Output[*Guaranteed]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuaranteedPtrOutput) Elem() GuaranteedOutput {
@@ -1392,12 +1175,6 @@ func (o GuaranteedResponseOutput) ToGuaranteedResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o GuaranteedResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GuaranteedResponse] {
-	return pulumix.Output[GuaranteedResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
 func (o GuaranteedResponseOutput) MinDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GuaranteedResponse) string { return v.MinDuration }).(pulumi.StringOutput)
@@ -1447,12 +1224,6 @@ func (i IntervalArgs) ToIntervalOutputWithContext(ctx context.Context) IntervalO
 	return pulumi.ToOutputWithContext(ctx, i).(IntervalOutput)
 }
 
-func (i IntervalArgs) ToOutput(ctx context.Context) pulumix.Output[Interval] {
-	return pulumix.Output[Interval]{
-		OutputState: i.ToIntervalOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IntervalArgs) ToIntervalPtrOutput() IntervalPtrOutput {
 	return i.ToIntervalPtrOutputWithContext(context.Background())
 }
@@ -1494,12 +1265,6 @@ func (i *intervalPtrType) ToIntervalPtrOutputWithContext(ctx context.Context) In
 	return pulumi.ToOutputWithContext(ctx, i).(IntervalPtrOutput)
 }
 
-func (i *intervalPtrType) ToOutput(ctx context.Context) pulumix.Output[*Interval] {
-	return pulumix.Output[*Interval]{
-		OutputState: i.ToIntervalPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
 type IntervalOutput struct{ *pulumi.OutputState }
 
@@ -1525,12 +1290,6 @@ func (o IntervalOutput) ToIntervalPtrOutputWithContext(ctx context.Context) Inte
 	}).(IntervalPtrOutput)
 }
 
-func (o IntervalOutput) ToOutput(ctx context.Context) pulumix.Output[Interval] {
-	return pulumix.Output[Interval]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
 func (o IntervalOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Interval) *string { return v.EndTime }).(pulumi.StringPtrOutput)
@@ -1553,12 +1312,6 @@ func (o IntervalPtrOutput) ToIntervalPtrOutput() IntervalPtrOutput {
 
 func (o IntervalPtrOutput) ToIntervalPtrOutputWithContext(ctx context.Context) IntervalPtrOutput {
 	return o
-}
-
-func (o IntervalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Interval] {
-	return pulumix.Output[*Interval]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntervalPtrOutput) Elem() IntervalOutput {
@@ -1614,12 +1367,6 @@ func (o IntervalResponseOutput) ToIntervalResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IntervalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IntervalResponse] {
-	return pulumix.Output[IntervalResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
 func (o IntervalResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v IntervalResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -1669,12 +1416,6 @@ func (i MultiNodeParamsArgs) ToMultiNodeParamsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MultiNodeParamsOutput)
 }
 
-func (i MultiNodeParamsArgs) ToOutput(ctx context.Context) pulumix.Output[MultiNodeParams] {
-	return pulumix.Output[MultiNodeParams]{
-		OutputState: i.ToMultiNodeParamsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MultiNodeParamsArgs) ToMultiNodeParamsPtrOutput() MultiNodeParamsPtrOutput {
 	return i.ToMultiNodeParamsPtrOutputWithContext(context.Background())
 }
@@ -1716,12 +1457,6 @@ func (i *multiNodeParamsPtrType) ToMultiNodeParamsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MultiNodeParamsPtrOutput)
 }
 
-func (i *multiNodeParamsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MultiNodeParams] {
-	return pulumix.Output[*MultiNodeParams]{
-		OutputState: i.ToMultiNodeParamsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params.
 type MultiNodeParamsOutput struct{ *pulumi.OutputState }
 
@@ -1747,12 +1482,6 @@ func (o MultiNodeParamsOutput) ToMultiNodeParamsPtrOutputWithContext(ctx context
 	}).(MultiNodeParamsPtrOutput)
 }
 
-func (o MultiNodeParamsOutput) ToOutput(ctx context.Context) pulumix.Output[MultiNodeParams] {
-	return pulumix.Output[MultiNodeParams]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
 func (o MultiNodeParamsOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v MultiNodeParams) int { return v.NodeCount }).(pulumi.IntOutput)
@@ -1775,12 +1504,6 @@ func (o MultiNodeParamsPtrOutput) ToMultiNodeParamsPtrOutput() MultiNodeParamsPt
 
 func (o MultiNodeParamsPtrOutput) ToMultiNodeParamsPtrOutputWithContext(ctx context.Context) MultiNodeParamsPtrOutput {
 	return o
-}
-
-func (o MultiNodeParamsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiNodeParams] {
-	return pulumix.Output[*MultiNodeParams]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MultiNodeParamsPtrOutput) Elem() MultiNodeParamsOutput {
@@ -1834,12 +1557,6 @@ func (o MultiNodeParamsResponseOutput) ToMultiNodeParamsResponseOutput() MultiNo
 
 func (o MultiNodeParamsResponseOutput) ToMultiNodeParamsResponseOutputWithContext(ctx context.Context) MultiNodeParamsResponseOutput {
 	return o
-}
-
-func (o MultiNodeParamsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MultiNodeParamsResponse] {
-	return pulumix.Output[MultiNodeParamsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
@@ -1899,12 +1616,6 @@ func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput)
 }
 
-func (i NetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: i.ToNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkConfigArgs) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
 	return i.ToNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -1946,12 +1657,6 @@ func (i *networkConfigPtrType) ToNetworkConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigPtrOutput)
 }
 
-func (i *networkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
-	return pulumix.Output[*NetworkConfig]{
-		OutputState: i.ToNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network related configurations.
 type NetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -1975,12 +1680,6 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfig) *NetworkConfig {
 		return &v
 	}).(NetworkConfigPtrOutput)
-}
-
-func (o NetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes.
@@ -2015,12 +1714,6 @@ func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutpu
 
 func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
 	return o
-}
-
-func (o NetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
-	return pulumix.Output[*NetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
@@ -2100,12 +1793,6 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o NetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigResponse] {
-	return pulumix.Output[NetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes.
 func (o NetworkConfigResponseOutput) CanIpForward() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.CanIpForward }).(pulumi.BoolOutput)
@@ -2151,12 +1838,6 @@ func (o NetworkEndpointResponseOutput) ToNetworkEndpointResponseOutputWithContex
 	return o
 }
 
-func (o NetworkEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkEndpointResponse] {
-	return pulumix.Output[NetworkEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The access config for the TPU worker.
 func (o NetworkEndpointResponseOutput) AccessConfig() AccessConfigResponseOutput {
 	return o.ApplyT(func(v NetworkEndpointResponse) AccessConfigResponse { return v.AccessConfig }).(AccessConfigResponseOutput)
@@ -2184,12 +1865,6 @@ func (o NetworkEndpointResponseArrayOutput) ToNetworkEndpointResponseArrayOutput
 
 func (o NetworkEndpointResponseArrayOutput) ToNetworkEndpointResponseArrayOutputWithContext(ctx context.Context) NetworkEndpointResponseArrayOutput {
 	return o
-}
-
-func (o NetworkEndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkEndpointResponse] {
-	return pulumix.Output[[]NetworkEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkEndpointResponseArrayOutput) Index(i pulumi.IntInput) NetworkEndpointResponseOutput {
@@ -2293,12 +1968,6 @@ func (i NodeTypeArgs) ToNodeTypeOutputWithContext(ctx context.Context) NodeTypeO
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTypeOutput)
 }
 
-func (i NodeTypeArgs) ToOutput(ctx context.Context) pulumix.Output[NodeType] {
-	return pulumix.Output[NodeType]{
-		OutputState: i.ToNodeTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A TPU instance.
 type NodeTypeOutput struct{ *pulumi.OutputState }
 
@@ -2312,12 +1981,6 @@ func (o NodeTypeOutput) ToNodeTypeOutput() NodeTypeOutput {
 
 func (o NodeTypeOutput) ToNodeTypeOutputWithContext(ctx context.Context) NodeTypeOutput {
 	return o
-}
-
-func (o NodeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NodeType] {
-	return pulumix.Output[NodeType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The AccleratorConfig for the TPU Node.
@@ -2467,12 +2130,6 @@ func (o NodeResponseOutput) ToNodeResponseOutput() NodeResponseOutput {
 
 func (o NodeResponseOutput) ToNodeResponseOutputWithContext(ctx context.Context) NodeResponseOutput {
 	return o
-}
-
-func (o NodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeResponse] {
-	return pulumix.Output[NodeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The AccleratorConfig for the TPU Node.
@@ -2647,12 +2304,6 @@ func (i NodeSpecArgs) ToNodeSpecOutputWithContext(ctx context.Context) NodeSpecO
 	return pulumi.ToOutputWithContext(ctx, i).(NodeSpecOutput)
 }
 
-func (i NodeSpecArgs) ToOutput(ctx context.Context) pulumix.Output[NodeSpec] {
-	return pulumix.Output[NodeSpec]{
-		OutputState: i.ToNodeSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeSpecArrayInput is an input type that accepts NodeSpecArray and NodeSpecArrayOutput values.
 // You can construct a concrete instance of `NodeSpecArrayInput` via:
 //
@@ -2678,12 +2329,6 @@ func (i NodeSpecArray) ToNodeSpecArrayOutputWithContext(ctx context.Context) Nod
 	return pulumi.ToOutputWithContext(ctx, i).(NodeSpecArrayOutput)
 }
 
-func (i NodeSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]NodeSpec] {
-	return pulumix.Output[[]NodeSpec]{
-		OutputState: i.ToNodeSpecArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
 type NodeSpecOutput struct{ *pulumi.OutputState }
 
@@ -2697,12 +2342,6 @@ func (o NodeSpecOutput) ToNodeSpecOutput() NodeSpecOutput {
 
 func (o NodeSpecOutput) ToNodeSpecOutputWithContext(ctx context.Context) NodeSpecOutput {
 	return o
-}
-
-func (o NodeSpecOutput) ToOutput(ctx context.Context) pulumix.Output[NodeSpec] {
-	return pulumix.Output[NodeSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Fields to specify in case of multi-node request.
@@ -2739,12 +2378,6 @@ func (o NodeSpecArrayOutput) ToNodeSpecArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o NodeSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeSpec] {
-	return pulumix.Output[[]NodeSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeSpecArrayOutput) Index(i pulumi.IntInput) NodeSpecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeSpec {
 		return vs[0].([]NodeSpec)[vs[1].(int)]
@@ -2776,12 +2409,6 @@ func (o NodeSpecResponseOutput) ToNodeSpecResponseOutput() NodeSpecResponseOutpu
 
 func (o NodeSpecResponseOutput) ToNodeSpecResponseOutputWithContext(ctx context.Context) NodeSpecResponseOutput {
 	return o
-}
-
-func (o NodeSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeSpecResponse] {
-	return pulumix.Output[NodeSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Fields to specify in case of multi-node request.
@@ -2818,12 +2445,6 @@ func (o NodeSpecResponseArrayOutput) ToNodeSpecResponseArrayOutputWithContext(ct
 	return o
 }
 
-func (o NodeSpecResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeSpecResponse] {
-	return pulumix.Output[[]NodeSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeSpecResponseArrayOutput) Index(i pulumi.IntInput) NodeSpecResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeSpecResponse {
 		return vs[0].([]NodeSpecResponse)[vs[1].(int)]
@@ -2847,12 +2468,6 @@ func (o ProvisioningDataResponseOutput) ToProvisioningDataResponseOutput() Provi
 
 func (o ProvisioningDataResponseOutput) ToProvisioningDataResponseOutputWithContext(ctx context.Context) ProvisioningDataResponseOutput {
 	return o
-}
-
-func (o ProvisioningDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProvisioningDataResponse] {
-	return pulumix.Output[ProvisioningDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // QueuedResourceState defines the details of the QueuedResource request.
@@ -2892,12 +2507,6 @@ func (o QueuedResourceStateResponseOutput) ToQueuedResourceStateResponseOutput()
 
 func (o QueuedResourceStateResponseOutput) ToQueuedResourceStateResponseOutputWithContext(ctx context.Context) QueuedResourceStateResponseOutput {
 	return o
-}
-
-func (o QueuedResourceStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueuedResourceStateResponse] {
-	return pulumix.Output[QueuedResourceStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Further data for the accepted state.
@@ -3001,12 +2610,6 @@ func (i QueueingPolicyArgs) ToQueueingPolicyOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(QueueingPolicyOutput)
 }
 
-func (i QueueingPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[QueueingPolicy] {
-	return pulumix.Output[QueueingPolicy]{
-		OutputState: i.ToQueueingPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i QueueingPolicyArgs) ToQueueingPolicyPtrOutput() QueueingPolicyPtrOutput {
 	return i.ToQueueingPolicyPtrOutputWithContext(context.Background())
 }
@@ -3048,12 +2651,6 @@ func (i *queueingPolicyPtrType) ToQueueingPolicyPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(QueueingPolicyPtrOutput)
 }
 
-func (i *queueingPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueueingPolicy] {
-	return pulumix.Output[*QueueingPolicy]{
-		OutputState: i.ToQueueingPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the policy of the QueuedRequest.
 type QueueingPolicyOutput struct{ *pulumi.OutputState }
 
@@ -3077,12 +2674,6 @@ func (o QueueingPolicyOutput) ToQueueingPolicyPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueingPolicy) *QueueingPolicy {
 		return &v
 	}).(QueueingPolicyPtrOutput)
-}
-
-func (o QueueingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[QueueingPolicy] {
-	return pulumix.Output[QueueingPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A relative time after which resources may be created.
@@ -3122,12 +2713,6 @@ func (o QueueingPolicyPtrOutput) ToQueueingPolicyPtrOutput() QueueingPolicyPtrOu
 
 func (o QueueingPolicyPtrOutput) ToQueueingPolicyPtrOutputWithContext(ctx context.Context) QueueingPolicyPtrOutput {
 	return o
-}
-
-func (o QueueingPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueingPolicy] {
-	return pulumix.Output[*QueueingPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueueingPolicyPtrOutput) Elem() QueueingPolicyOutput {
@@ -3219,12 +2804,6 @@ func (o QueueingPolicyResponseOutput) ToQueueingPolicyResponseOutputWithContext(
 	return o
 }
 
-func (o QueueingPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueueingPolicyResponse] {
-	return pulumix.Output[QueueingPolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A relative time after which resources may be created.
 func (o QueueingPolicyResponseOutput) ValidAfterDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v QueueingPolicyResponse) string { return v.ValidAfterDuration }).(pulumi.StringOutput)
@@ -3289,12 +2868,6 @@ func (i SchedulingConfigArgs) ToSchedulingConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulingConfigOutput)
 }
 
-func (i SchedulingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SchedulingConfig] {
-	return pulumix.Output[SchedulingConfig]{
-		OutputState: i.ToSchedulingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SchedulingConfigArgs) ToSchedulingConfigPtrOutput() SchedulingConfigPtrOutput {
 	return i.ToSchedulingConfigPtrOutputWithContext(context.Background())
 }
@@ -3336,12 +2909,6 @@ func (i *schedulingConfigPtrType) ToSchedulingConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulingConfigPtrOutput)
 }
 
-func (i *schedulingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SchedulingConfig] {
-	return pulumix.Output[*SchedulingConfig]{
-		OutputState: i.ToSchedulingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets the scheduling options for this node.
 type SchedulingConfigOutput struct{ *pulumi.OutputState }
 
@@ -3367,12 +2934,6 @@ func (o SchedulingConfigOutput) ToSchedulingConfigPtrOutputWithContext(ctx conte
 	}).(SchedulingConfigPtrOutput)
 }
 
-func (o SchedulingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingConfig] {
-	return pulumix.Output[SchedulingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines whether the node is preemptible.
 func (o SchedulingConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SchedulingConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
@@ -3395,12 +2956,6 @@ func (o SchedulingConfigPtrOutput) ToSchedulingConfigPtrOutput() SchedulingConfi
 
 func (o SchedulingConfigPtrOutput) ToSchedulingConfigPtrOutputWithContext(ctx context.Context) SchedulingConfigPtrOutput {
 	return o
-}
-
-func (o SchedulingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulingConfig] {
-	return pulumix.Output[*SchedulingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchedulingConfigPtrOutput) Elem() SchedulingConfigOutput {
@@ -3456,12 +3011,6 @@ func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponseOutputWithCont
 	return o
 }
 
-func (o SchedulingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingConfigResponse] {
-	return pulumix.Output[SchedulingConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines whether the node is preemptible.
 func (o SchedulingConfigResponseOutput) Preemptible() pulumi.BoolOutput {
 	return o.ApplyT(func(v SchedulingConfigResponse) bool { return v.Preemptible }).(pulumi.BoolOutput)
@@ -3511,12 +3060,6 @@ func (i ServiceAccountArgs) ToServiceAccountOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountOutput)
 }
 
-func (i ServiceAccountArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceAccount] {
-	return pulumix.Output[ServiceAccount]{
-		OutputState: i.ToServiceAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceAccountArgs) ToServiceAccountPtrOutput() ServiceAccountPtrOutput {
 	return i.ToServiceAccountPtrOutputWithContext(context.Background())
 }
@@ -3558,12 +3101,6 @@ func (i *serviceAccountPtrType) ToServiceAccountPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountPtrOutput)
 }
 
-func (i *serviceAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceAccount] {
-	return pulumix.Output[*ServiceAccount]{
-		OutputState: i.ToServiceAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A service account.
 type ServiceAccountOutput struct{ *pulumi.OutputState }
 
@@ -3589,12 +3126,6 @@ func (o ServiceAccountOutput) ToServiceAccountPtrOutputWithContext(ctx context.C
 	}).(ServiceAccountPtrOutput)
 }
 
-func (o ServiceAccountOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAccount] {
-	return pulumix.Output[ServiceAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Email address of the service account. If empty, default Compute service account will be used.
 func (o ServiceAccountOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
@@ -3617,12 +3148,6 @@ func (o ServiceAccountPtrOutput) ToServiceAccountPtrOutput() ServiceAccountPtrOu
 
 func (o ServiceAccountPtrOutput) ToServiceAccountPtrOutputWithContext(ctx context.Context) ServiceAccountPtrOutput {
 	return o
-}
-
-func (o ServiceAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAccount] {
-	return pulumix.Output[*ServiceAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAccountPtrOutput) Elem() ServiceAccountOutput {
@@ -3678,12 +3203,6 @@ func (o ServiceAccountResponseOutput) ToServiceAccountResponseOutputWithContext(
 	return o
 }
 
-func (o ServiceAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAccountResponse] {
-	return pulumix.Output[ServiceAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Email address of the service account. If empty, default Compute service account will be used.
 func (o ServiceAccountResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAccountResponse) string { return v.Email }).(pulumi.StringOutput)
@@ -3729,12 +3248,6 @@ func (i ShieldedInstanceConfigArgs) ToShieldedInstanceConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigOutput)
 }
 
-func (i ShieldedInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ShieldedInstanceConfig] {
-	return pulumix.Output[ShieldedInstanceConfig]{
-		OutputState: i.ToShieldedInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ShieldedInstanceConfigArgs) ToShieldedInstanceConfigPtrOutput() ShieldedInstanceConfigPtrOutput {
 	return i.ToShieldedInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -3776,12 +3289,6 @@ func (i *shieldedInstanceConfigPtrType) ToShieldedInstanceConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigPtrOutput)
 }
 
-func (i *shieldedInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ShieldedInstanceConfig] {
-	return pulumix.Output[*ShieldedInstanceConfig]{
-		OutputState: i.ToShieldedInstanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A set of Shielded Instance options.
 type ShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
@@ -3807,12 +3314,6 @@ func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigPtrOutputWithConte
 	}).(ShieldedInstanceConfigPtrOutput)
 }
 
-func (o ShieldedInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ShieldedInstanceConfig] {
-	return pulumix.Output[ShieldedInstanceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines whether the instance has Secure Boot enabled.
 func (o ShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
@@ -3830,12 +3331,6 @@ func (o ShieldedInstanceConfigPtrOutput) ToShieldedInstanceConfigPtrOutput() Shi
 
 func (o ShieldedInstanceConfigPtrOutput) ToShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigPtrOutput {
 	return o
-}
-
-func (o ShieldedInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ShieldedInstanceConfig] {
-	return pulumix.Output[*ShieldedInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ShieldedInstanceConfigPtrOutput) Elem() ShieldedInstanceConfigOutput {
@@ -3879,12 +3374,6 @@ func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponseOu
 	return o
 }
 
-func (o ShieldedInstanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ShieldedInstanceConfigResponse] {
-	return pulumix.Output[ShieldedInstanceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines whether the instance has Secure Boot enabled.
 func (o ShieldedInstanceConfigResponseOutput) EnableSecureBoot() pulumi.BoolOutput {
 	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
@@ -3919,12 +3408,6 @@ func (i SpotArgs) ToSpotOutput() SpotOutput {
 
 func (i SpotArgs) ToSpotOutputWithContext(ctx context.Context) SpotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpotOutput)
-}
-
-func (i SpotArgs) ToOutput(ctx context.Context) pulumix.Output[Spot] {
-	return pulumix.Output[Spot]{
-		OutputState: i.ToSpotOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i SpotArgs) ToSpotPtrOutput() SpotPtrOutput {
@@ -3968,12 +3451,6 @@ func (i *spotPtrType) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(SpotPtrOutput)
 }
 
-func (i *spotPtrType) ToOutput(ctx context.Context) pulumix.Output[*Spot] {
-	return pulumix.Output[*Spot]{
-		OutputState: i.ToSpotPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Spot tier definition.
 type SpotOutput struct{ *pulumi.OutputState }
 
@@ -3999,12 +3476,6 @@ func (o SpotOutput) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOutpu
 	}).(SpotPtrOutput)
 }
 
-func (o SpotOutput) ToOutput(ctx context.Context) pulumix.Output[Spot] {
-	return pulumix.Output[Spot]{
-		OutputState: o.OutputState,
-	}
-}
-
 type SpotPtrOutput struct{ *pulumi.OutputState }
 
 func (SpotPtrOutput) ElementType() reflect.Type {
@@ -4017,12 +3488,6 @@ func (o SpotPtrOutput) ToSpotPtrOutput() SpotPtrOutput {
 
 func (o SpotPtrOutput) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOutput {
 	return o
-}
-
-func (o SpotPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Spot] {
-	return pulumix.Output[*Spot]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpotPtrOutput) Elem() SpotOutput {
@@ -4054,12 +3519,6 @@ func (o SpotResponseOutput) ToSpotResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o SpotResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SpotResponse] {
-	return pulumix.Output[SpotResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -4083,12 +3542,6 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
-}
-
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -4125,12 +3578,6 @@ func (o SuspendedDataResponseOutput) ToSuspendedDataResponseOutputWithContext(ct
 	return o
 }
 
-func (o SuspendedDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SuspendedDataResponse] {
-	return pulumix.Output[SuspendedDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Further data for the suspending state.
 type SuspendingDataResponse struct {
 }
@@ -4148,12 +3595,6 @@ func (o SuspendingDataResponseOutput) ToSuspendingDataResponseOutput() Suspendin
 
 func (o SuspendingDataResponseOutput) ToSuspendingDataResponseOutputWithContext(ctx context.Context) SuspendingDataResponseOutput {
 	return o
-}
-
-func (o SuspendingDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SuspendingDataResponse] {
-	return pulumix.Output[SuspendingDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A Symptom instance.
@@ -4181,12 +3622,6 @@ func (o SymptomResponseOutput) ToSymptomResponseOutput() SymptomResponseOutput {
 
 func (o SymptomResponseOutput) ToSymptomResponseOutputWithContext(ctx context.Context) SymptomResponseOutput {
 	return o
-}
-
-func (o SymptomResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SymptomResponse] {
-	return pulumix.Output[SymptomResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when the Symptom is created.
@@ -4221,12 +3656,6 @@ func (o SymptomResponseArrayOutput) ToSymptomResponseArrayOutput() SymptomRespon
 
 func (o SymptomResponseArrayOutput) ToSymptomResponseArrayOutputWithContext(ctx context.Context) SymptomResponseArrayOutput {
 	return o
-}
-
-func (o SymptomResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SymptomResponse] {
-	return pulumix.Output[[]SymptomResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SymptomResponseArrayOutput) Index(i pulumi.IntInput) SymptomResponseOutput {
@@ -4270,12 +3699,6 @@ func (i TpuArgs) ToTpuOutputWithContext(ctx context.Context) TpuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TpuOutput)
 }
 
-func (i TpuArgs) ToOutput(ctx context.Context) pulumix.Output[Tpu] {
-	return pulumix.Output[Tpu]{
-		OutputState: i.ToTpuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TpuArgs) ToTpuPtrOutput() TpuPtrOutput {
 	return i.ToTpuPtrOutputWithContext(context.Background())
 }
@@ -4317,12 +3740,6 @@ func (i *tpuPtrType) ToTpuPtrOutputWithContext(ctx context.Context) TpuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(TpuPtrOutput)
 }
 
-func (i *tpuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Tpu] {
-	return pulumix.Output[*Tpu]{
-		OutputState: i.ToTpuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details of the TPU resource(s) being requested.
 type TpuOutput struct{ *pulumi.OutputState }
 
@@ -4348,12 +3765,6 @@ func (o TpuOutput) ToTpuPtrOutputWithContext(ctx context.Context) TpuPtrOutput {
 	}).(TpuPtrOutput)
 }
 
-func (o TpuOutput) ToOutput(ctx context.Context) pulumix.Output[Tpu] {
-	return pulumix.Output[Tpu]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The TPU node(s) being requested.
 func (o TpuOutput) NodeSpec() NodeSpecArrayOutput {
 	return o.ApplyT(func(v Tpu) []NodeSpec { return v.NodeSpec }).(NodeSpecArrayOutput)
@@ -4371,12 +3782,6 @@ func (o TpuPtrOutput) ToTpuPtrOutput() TpuPtrOutput {
 
 func (o TpuPtrOutput) ToTpuPtrOutputWithContext(ctx context.Context) TpuPtrOutput {
 	return o
-}
-
-func (o TpuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Tpu] {
-	return pulumix.Output[*Tpu]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TpuPtrOutput) Elem() TpuOutput {
@@ -4418,12 +3823,6 @@ func (o TpuResponseOutput) ToTpuResponseOutput() TpuResponseOutput {
 
 func (o TpuResponseOutput) ToTpuResponseOutputWithContext(ctx context.Context) TpuResponseOutput {
 	return o
-}
-
-func (o TpuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TpuResponse] {
-	return pulumix.Output[TpuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The TPU node(s) being requested.

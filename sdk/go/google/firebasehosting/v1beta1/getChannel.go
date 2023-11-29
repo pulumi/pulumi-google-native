@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information for the specified channel of the specified site.
@@ -85,12 +84,6 @@ func (o LookupChannelResultOutput) ToLookupChannelResultOutput() LookupChannelRe
 
 func (o LookupChannelResultOutput) ToLookupChannelResultOutputWithContext(ctx context.Context) LookupChannelResultOutput {
 	return o
-}
-
-func (o LookupChannelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupChannelResult] {
-	return pulumix.Output[LookupChannelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the channel was created.

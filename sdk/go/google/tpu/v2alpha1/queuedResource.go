@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a QueuedResource TPU instance.
@@ -153,12 +152,6 @@ func (i *QueuedResource) ToQueuedResourceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(QueuedResourceOutput)
 }
 
-func (i *QueuedResource) ToOutput(ctx context.Context) pulumix.Output[*QueuedResource] {
-	return pulumix.Output[*QueuedResource]{
-		OutputState: i.ToQueuedResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QueuedResourceOutput struct{ *pulumi.OutputState }
 
 func (QueuedResourceOutput) ElementType() reflect.Type {
@@ -171,12 +164,6 @@ func (o QueuedResourceOutput) ToQueuedResourceOutput() QueuedResourceOutput {
 
 func (o QueuedResourceOutput) ToQueuedResourceOutputWithContext(ctx context.Context) QueuedResourceOutput {
 	return o
-}
-
-func (o QueuedResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*QueuedResource] {
-	return pulumix.Output[*QueuedResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The BestEffort tier.

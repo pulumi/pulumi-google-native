@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an entry group. An entry group contains logically related entries together with [Cloud Identity and Access Management](/data-catalog/docs/concepts/iam) policies. These policies specify users who can create, edit, and view entries within entry groups. Data Catalog automatically creates entry groups with names that start with the `@` symbol for the following resources: * BigQuery entries (`@bigquery`) * Pub/Sub topics (`@pubsub`) * Dataproc Metastore services (`@dataproc_metastore_{SERVICE_NAME_HASH}`) You can create your own entry groups for Cloud Storage fileset entries and custom entries together with the corresponding IAM policies. User-created entry groups can't contain the `@` symbol, it is reserved for automatically created groups. Entry groups, like entries, can be searched. A maximum of 10,000 entry groups may be created per organization across all locations. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
@@ -129,12 +128,6 @@ func (i *EntryGroup) ToEntryGroupOutputWithContext(ctx context.Context) EntryGro
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupOutput)
 }
 
-func (i *EntryGroup) ToOutput(ctx context.Context) pulumix.Output[*EntryGroup] {
-	return pulumix.Output[*EntryGroup]{
-		OutputState: i.ToEntryGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntryGroupOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o EntryGroupOutput) ToEntryGroupOutput() EntryGroupOutput {
 
 func (o EntryGroupOutput) ToEntryGroupOutputWithContext(ctx context.Context) EntryGroupOutput {
 	return o
-}
-
-func (o EntryGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryGroup] {
-	return pulumix.Output[*EntryGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamps of the entry group. Default value is empty.

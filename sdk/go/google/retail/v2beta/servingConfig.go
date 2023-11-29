@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a ServingConfig. A maximum of 100 ServingConfigs are allowed in a Catalog, otherwise a FAILED_PRECONDITION error is returned.
@@ -237,12 +236,6 @@ func (i *ServingConfig) ToServingConfigOutputWithContext(ctx context.Context) Se
 	return pulumi.ToOutputWithContext(ctx, i).(ServingConfigOutput)
 }
 
-func (i *ServingConfig) ToOutput(ctx context.Context) pulumix.Output[*ServingConfig] {
-	return pulumix.Output[*ServingConfig]{
-		OutputState: i.ToServingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServingConfigOutput struct{ *pulumi.OutputState }
 
 func (ServingConfigOutput) ElementType() reflect.Type {
@@ -255,12 +248,6 @@ func (o ServingConfigOutput) ToServingConfigOutput() ServingConfigOutput {
 
 func (o ServingConfigOutput) ToServingConfigOutputWithContext(ctx context.Context) ServingConfigOutput {
 	return o
-}
-
-func (o ServingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ServingConfig] {
-	return pulumix.Output[*ServingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.

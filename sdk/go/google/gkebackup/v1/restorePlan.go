@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new RestorePlan in a given location.
@@ -163,12 +162,6 @@ func (i *RestorePlan) ToRestorePlanOutputWithContext(ctx context.Context) Restor
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanOutput)
 }
 
-func (i *RestorePlan) ToOutput(ctx context.Context) pulumix.Output[*RestorePlan] {
-	return pulumix.Output[*RestorePlan]{
-		OutputState: i.ToRestorePlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o RestorePlanOutput) ToRestorePlanOutput() RestorePlanOutput {
 
 func (o RestorePlanOutput) ToRestorePlanOutputWithContext(ctx context.Context) RestorePlanOutput {
 	return o
-}
-
-func (o RestorePlanOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlan] {
-	return pulumix.Output[*RestorePlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.

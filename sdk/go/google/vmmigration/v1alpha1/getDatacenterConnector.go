@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single DatacenterConnector.
@@ -97,12 +96,6 @@ func (o LookupDatacenterConnectorResultOutput) ToLookupDatacenterConnectorResult
 
 func (o LookupDatacenterConnectorResultOutput) ToLookupDatacenterConnectorResultOutputWithContext(ctx context.Context) LookupDatacenterConnectorResultOutput {
 	return o
-}
-
-func (o LookupDatacenterConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatacenterConnectorResult] {
-	return pulumix.Output[LookupDatacenterConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.

@@ -741,9 +741,6 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
             __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
             __props__.__dict__["guest_os_features"] = guest_os_features
-            if interface is not None and not opts.urn:
-                warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
-                pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
             __props__.__dict__["interface"] = interface
             __props__.__dict__["labels"] = labels
             __props__.__dict__["license_codes"] = license_codes
@@ -768,9 +765,6 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["source_snapshot"] = source_snapshot
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["source_storage_object"] = source_storage_object
-            if storage_type is not None and not opts.urn:
-                warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
-                pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
             __props__.__dict__["storage_type"] = storage_type
             __props__.__dict__["type"] = type
             __props__.__dict__["user_licenses"] = user_licenses

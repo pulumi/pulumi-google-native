@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an OS Config patch deployment.
@@ -89,12 +88,6 @@ func (o LookupPatchDeploymentResultOutput) ToLookupPatchDeploymentResultOutput()
 
 func (o LookupPatchDeploymentResultOutput) ToLookupPatchDeploymentResultOutputWithContext(ctx context.Context) LookupPatchDeploymentResultOutput {
 	return o
-}
-
-func (o LookupPatchDeploymentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPatchDeploymentResult] {
-	return pulumix.Output[LookupPatchDeploymentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.

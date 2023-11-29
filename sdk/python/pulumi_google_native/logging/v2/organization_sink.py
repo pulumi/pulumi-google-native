@@ -308,9 +308,6 @@ class OrganizationSink(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
-            if output_version_format is not None and not opts.urn:
-                warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
-                pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
             __props__.__dict__["output_version_format"] = output_version_format
             __props__.__dict__["unique_writer_identity"] = unique_writer_identity
             __props__.__dict__["create_time"] = None

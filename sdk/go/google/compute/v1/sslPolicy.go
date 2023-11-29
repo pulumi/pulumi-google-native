@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified SSL policy resource.
@@ -144,12 +143,6 @@ func (i *SslPolicy) ToSslPolicyOutputWithContext(ctx context.Context) SslPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(SslPolicyOutput)
 }
 
-func (i *SslPolicy) ToOutput(ctx context.Context) pulumix.Output[*SslPolicy] {
-	return pulumix.Output[*SslPolicy]{
-		OutputState: i.ToSslPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SslPolicyOutput struct{ *pulumi.OutputState }
 
 func (SslPolicyOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o SslPolicyOutput) ToSslPolicyOutput() SslPolicyOutput {
 
 func (o SslPolicyOutput) ToSslPolicyOutputWithContext(ctx context.Context) SslPolicyOutput {
 	return o
-}
-
-func (o SslPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SslPolicy] {
-	return pulumix.Output[*SslPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

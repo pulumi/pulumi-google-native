@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new domain mapping.
@@ -131,12 +130,6 @@ func (i *DomainMapping) ToDomainMappingOutputWithContext(ctx context.Context) Do
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingOutput)
 }
 
-func (i *DomainMapping) ToOutput(ctx context.Context) pulumix.Output[*DomainMapping] {
-	return pulumix.Output[*DomainMapping]{
-		OutputState: i.ToDomainMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainMappingOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingOutput) ElementType() reflect.Type {
@@ -149,12 +142,6 @@ func (o DomainMappingOutput) ToDomainMappingOutput() DomainMappingOutput {
 
 func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput {
 	return o
-}
-
-func (o DomainMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainMapping] {
-	return pulumix.Output[*DomainMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The API version for this call such as "domains.cloudrun.com/v1".

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches a single WorkflowInvocation.
@@ -83,12 +82,6 @@ func (o LookupWorkflowInvocationResultOutput) ToLookupWorkflowInvocationResultOu
 
 func (o LookupWorkflowInvocationResultOutput) ToLookupWorkflowInvocationResultOutputWithContext(ctx context.Context) LookupWorkflowInvocationResultOutput {
 	return o
-}
-
-func (o LookupWorkflowInvocationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkflowInvocationResult] {
-	return pulumix.Output[LookupWorkflowInvocationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.

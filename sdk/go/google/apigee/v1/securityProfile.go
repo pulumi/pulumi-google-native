@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // CreateSecurityProfile create a new custom security profile.
@@ -159,12 +158,6 @@ func (i *SecurityProfile) ToSecurityProfileOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileOutput)
 }
 
-func (i *SecurityProfile) ToOutput(ctx context.Context) pulumix.Output[*SecurityProfile] {
-	return pulumix.Output[*SecurityProfile]{
-		OutputState: i.ToSecurityProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityProfileOutput struct{ *pulumi.OutputState }
 
 func (SecurityProfileOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o SecurityProfileOutput) ToSecurityProfileOutput() SecurityProfileOutput {
 
 func (o SecurityProfileOutput) ToSecurityProfileOutputWithContext(ctx context.Context) SecurityProfileOutput {
 	return o
-}
-
-func (o SecurityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityProfile] {
-	return pulumix.Output[*SecurityProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the security profile.

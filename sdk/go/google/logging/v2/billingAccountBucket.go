@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a log bucket that can be used to store log entries. After a bucket has been created, the bucket's location cannot be changed.
@@ -163,12 +162,6 @@ func (i *BillingAccountBucket) ToBillingAccountBucketOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketOutput)
 }
 
-func (i *BillingAccountBucket) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountBucket] {
-	return pulumix.Output[*BillingAccountBucket]{
-		OutputState: i.ToBillingAccountBucketOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BillingAccountBucketOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountBucketOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o BillingAccountBucketOutput) ToBillingAccountBucketOutput() BillingAccoun
 
 func (o BillingAccountBucketOutput) ToBillingAccountBucketOutputWithContext(ctx context.Context) BillingAccountBucketOutput {
 	return o
-}
-
-func (o BillingAccountBucketOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountBucket] {
-	return pulumix.Output[*BillingAccountBucket]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.

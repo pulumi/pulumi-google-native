@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
@@ -73,12 +72,6 @@ func (o LookupNatAddressResultOutput) ToLookupNatAddressResultOutput() LookupNat
 
 func (o LookupNatAddressResultOutput) ToLookupNatAddressResultOutputWithContext(ctx context.Context) LookupNatAddressResultOutput {
 	return o
-}
-
-func (o LookupNatAddressResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNatAddressResult] {
-	return pulumix.Output[LookupNatAddressResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The static IPV4 address.

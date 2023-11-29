@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a NotebookRuntimeTemplate.
@@ -183,12 +182,6 @@ func (i *NotebookRuntimeTemplate) ToNotebookRuntimeTemplateOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(NotebookRuntimeTemplateOutput)
 }
 
-func (i *NotebookRuntimeTemplate) ToOutput(ctx context.Context) pulumix.Output[*NotebookRuntimeTemplate] {
-	return pulumix.Output[*NotebookRuntimeTemplate]{
-		OutputState: i.ToNotebookRuntimeTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotebookRuntimeTemplateOutput struct{ *pulumi.OutputState }
 
 func (NotebookRuntimeTemplateOutput) ElementType() reflect.Type {
@@ -201,12 +194,6 @@ func (o NotebookRuntimeTemplateOutput) ToNotebookRuntimeTemplateOutput() Noteboo
 
 func (o NotebookRuntimeTemplateOutput) ToNotebookRuntimeTemplateOutputWithContext(ctx context.Context) NotebookRuntimeTemplateOutput {
 	return o
-}
-
-func (o NotebookRuntimeTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*NotebookRuntimeTemplate] {
-	return pulumix.Output[*NotebookRuntimeTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this NotebookRuntimeTemplate was created.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a BigQuery export.
@@ -138,12 +137,6 @@ func (i *ProjectBigQueryExport) ToProjectBigQueryExportOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBigQueryExportOutput)
 }
 
-func (i *ProjectBigQueryExport) ToOutput(ctx context.Context) pulumix.Output[*ProjectBigQueryExport] {
-	return pulumix.Output[*ProjectBigQueryExport]{
-		OutputState: i.ToProjectBigQueryExportOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectBigQueryExportOutput struct{ *pulumi.OutputState }
 
 func (ProjectBigQueryExportOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o ProjectBigQueryExportOutput) ToProjectBigQueryExportOutput() ProjectBigQ
 
 func (o ProjectBigQueryExportOutput) ToProjectBigQueryExportOutputWithContext(ctx context.Context) ProjectBigQueryExportOutput {
 	return o
-}
-
-func (o ProjectBigQueryExportOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectBigQueryExport] {
-	return pulumix.Output[*ProjectBigQueryExport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -133,12 +114,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -170,12 +145,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -198,12 +167,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -251,12 +214,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -282,12 +239,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -301,12 +252,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -331,12 +276,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -368,12 +307,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -396,12 +329,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -453,12 +380,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -484,12 +405,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -503,12 +418,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -538,12 +447,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -577,12 +480,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -610,12 +507,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -671,12 +562,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -718,12 +603,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -747,12 +626,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -787,12 +660,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -872,12 +739,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -937,12 +798,6 @@ func (i GitHubConfigArgs) ToGitHubConfigOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubConfigOutput)
 }
 
-func (i GitHubConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GitHubConfig] {
-	return pulumix.Output[GitHubConfig]{
-		OutputState: i.ToGitHubConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitHubConfigArgs) ToGitHubConfigPtrOutput() GitHubConfigPtrOutput {
 	return i.ToGitHubConfigPtrOutputWithContext(context.Background())
 }
@@ -984,12 +839,6 @@ func (i *gitHubConfigPtrType) ToGitHubConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubConfigPtrOutput)
 }
 
-func (i *gitHubConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitHubConfig] {
-	return pulumix.Output[*GitHubConfig]{
-		OutputState: i.ToGitHubConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for connections to github.com.
 type GitHubConfigOutput struct{ *pulumi.OutputState }
 
@@ -1015,12 +864,6 @@ func (o GitHubConfigOutput) ToGitHubConfigPtrOutputWithContext(ctx context.Conte
 	}).(GitHubConfigPtrOutput)
 }
 
-func (o GitHubConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubConfig] {
-	return pulumix.Output[GitHubConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // GitHub App installation id.
 func (o GitHubConfigOutput) AppInstallationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitHubConfig) *string { return v.AppInstallationId }).(pulumi.StringPtrOutput)
@@ -1043,12 +886,6 @@ func (o GitHubConfigPtrOutput) ToGitHubConfigPtrOutput() GitHubConfigPtrOutput {
 
 func (o GitHubConfigPtrOutput) ToGitHubConfigPtrOutputWithContext(ctx context.Context) GitHubConfigPtrOutput {
 	return o
-}
-
-func (o GitHubConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubConfig] {
-	return pulumix.Output[*GitHubConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitHubConfigPtrOutput) Elem() GitHubConfigOutput {
@@ -1102,12 +939,6 @@ func (o GitHubConfigResponseOutput) ToGitHubConfigResponseOutput() GitHubConfigR
 
 func (o GitHubConfigResponseOutput) ToGitHubConfigResponseOutputWithContext(ctx context.Context) GitHubConfigResponseOutput {
 	return o
-}
-
-func (o GitHubConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubConfigResponse] {
-	return pulumix.Output[GitHubConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // GitHub App installation id.
@@ -1187,12 +1018,6 @@ func (i GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgs) ToGoogleDevtoolsCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigOutput)
 }
 
-func (i GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig] {
-	return pulumix.Output[GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig]{
-		OutputState: i.ToGoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgs) ToGoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutput() GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutput {
 	return i.ToGoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutputWithContext(context.Background())
 }
@@ -1234,12 +1059,6 @@ func (i *googleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrType) ToGoogleDevtoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutput)
 }
 
-func (i *googleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig] {
-	return pulumix.Output[*GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig]{
-		OutputState: i.ToGoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for connections to an instance of GitHub Enterprise.
 type GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigOutput struct{ *pulumi.OutputState }
 
@@ -1263,12 +1082,6 @@ func (o GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigOutput) ToGoogleDevtools
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig) *GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
 		return &v
 	}).(GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutput)
-}
-
-func (o GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig] {
-	return pulumix.Output[GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API Key used for authentication of webhook events.
@@ -1330,12 +1143,6 @@ func (o GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutput) ToGoogleDevto
 
 func (o GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutput) ToGoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutputWithContext(ctx context.Context) GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutput {
 	return o
-}
-
-func (o GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig] {
-	return pulumix.Output[*GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigPtrOutput) Elem() GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigOutput {
@@ -1477,12 +1284,6 @@ func (o GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse] {
-	return pulumix.Output[GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // API Key used for authentication of webhook events.
 func (o GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponseOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse) string { return v.ApiKey }).(pulumi.StringOutput)
@@ -1594,12 +1395,6 @@ func (i GoogleDevtoolsCloudbuildV2GitLabConfigArgs) ToGoogleDevtoolsCloudbuildV2
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsCloudbuildV2GitLabConfigOutput)
 }
 
-func (i GoogleDevtoolsCloudbuildV2GitLabConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsCloudbuildV2GitLabConfig] {
-	return pulumix.Output[GoogleDevtoolsCloudbuildV2GitLabConfig]{
-		OutputState: i.ToGoogleDevtoolsCloudbuildV2GitLabConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleDevtoolsCloudbuildV2GitLabConfigArgs) ToGoogleDevtoolsCloudbuildV2GitLabConfigPtrOutput() GoogleDevtoolsCloudbuildV2GitLabConfigPtrOutput {
 	return i.ToGoogleDevtoolsCloudbuildV2GitLabConfigPtrOutputWithContext(context.Background())
 }
@@ -1641,12 +1436,6 @@ func (i *googleDevtoolsCloudbuildV2GitLabConfigPtrType) ToGoogleDevtoolsCloudbui
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsCloudbuildV2GitLabConfigPtrOutput)
 }
 
-func (i *googleDevtoolsCloudbuildV2GitLabConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsCloudbuildV2GitLabConfig] {
-	return pulumix.Output[*GoogleDevtoolsCloudbuildV2GitLabConfig]{
-		OutputState: i.ToGoogleDevtoolsCloudbuildV2GitLabConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
 type GoogleDevtoolsCloudbuildV2GitLabConfigOutput struct{ *pulumi.OutputState }
 
@@ -1670,12 +1459,6 @@ func (o GoogleDevtoolsCloudbuildV2GitLabConfigOutput) ToGoogleDevtoolsCloudbuild
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsCloudbuildV2GitLabConfig) *GoogleDevtoolsCloudbuildV2GitLabConfig {
 		return &v
 	}).(GoogleDevtoolsCloudbuildV2GitLabConfigPtrOutput)
-}
-
-func (o GoogleDevtoolsCloudbuildV2GitLabConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsCloudbuildV2GitLabConfig] {
-	return pulumix.Output[GoogleDevtoolsCloudbuildV2GitLabConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A GitLab personal access token with the `api` scope access.
@@ -1722,12 +1505,6 @@ func (o GoogleDevtoolsCloudbuildV2GitLabConfigPtrOutput) ToGoogleDevtoolsCloudbu
 
 func (o GoogleDevtoolsCloudbuildV2GitLabConfigPtrOutput) ToGoogleDevtoolsCloudbuildV2GitLabConfigPtrOutputWithContext(ctx context.Context) GoogleDevtoolsCloudbuildV2GitLabConfigPtrOutput {
 	return o
-}
-
-func (o GoogleDevtoolsCloudbuildV2GitLabConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsCloudbuildV2GitLabConfig] {
-	return pulumix.Output[*GoogleDevtoolsCloudbuildV2GitLabConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleDevtoolsCloudbuildV2GitLabConfigPtrOutput) Elem() GoogleDevtoolsCloudbuildV2GitLabConfigOutput {
@@ -1833,12 +1610,6 @@ func (o GoogleDevtoolsCloudbuildV2GitLabConfigResponseOutput) ToGoogleDevtoolsCl
 	return o
 }
 
-func (o GoogleDevtoolsCloudbuildV2GitLabConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsCloudbuildV2GitLabConfigResponse] {
-	return pulumix.Output[GoogleDevtoolsCloudbuildV2GitLabConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A GitLab personal access token with the `api` scope access.
 func (o GoogleDevtoolsCloudbuildV2GitLabConfigResponseOutput) AuthorizerCredential() UserCredentialResponseOutput {
 	return o.ApplyT(func(v GoogleDevtoolsCloudbuildV2GitLabConfigResponse) UserCredentialResponse {
@@ -1915,12 +1686,6 @@ func (i GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigArgs) ToGoogleDevtoolsCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigOutput)
 }
 
-func (i GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig] {
-	return pulumix.Output[GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig]{
-		OutputState: i.ToGoogleDevtoolsCloudbuildV2ServiceDirectoryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigArgs) ToGoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput() GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput {
 	return i.ToGoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutputWithContext(context.Background())
 }
@@ -1962,12 +1727,6 @@ func (i *googleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrType) ToGoogleDevtoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput)
 }
 
-func (i *googleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig] {
-	return pulumix.Output[*GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig]{
-		OutputState: i.ToGoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceDirectoryConfig represents Service Directory configuration for a connection.
 type GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
 
@@ -1993,12 +1752,6 @@ func (o GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigOutput) ToGoogleDevtools
 	}).(GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput)
 }
 
-func (o GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig] {
-	return pulumix.Output[GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
@@ -2016,12 +1769,6 @@ func (o GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput) ToGoogleDevto
 
 func (o GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput) ToGoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput {
 	return o
-}
-
-func (o GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig] {
-	return pulumix.Output[*GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput) Elem() GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigOutput {
@@ -2065,12 +1812,6 @@ func (o GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse] {
-	return pulumix.Output[GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse) string { return v.Service }).(pulumi.StringOutput)
@@ -2099,12 +1840,6 @@ func (o InstallationStateResponseOutput) ToInstallationStateResponseOutput() Ins
 
 func (o InstallationStateResponseOutput) ToInstallationStateResponseOutputWithContext(ctx context.Context) InstallationStateResponseOutput {
 	return o
-}
-
-func (o InstallationStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstallationStateResponse] {
-	return pulumix.Output[InstallationStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link to follow for next action. Empty string if the installation is already complete.
@@ -2157,12 +1892,6 @@ func (i OAuthCredentialArgs) ToOAuthCredentialOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OAuthCredentialOutput)
 }
 
-func (i OAuthCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[OAuthCredential] {
-	return pulumix.Output[OAuthCredential]{
-		OutputState: i.ToOAuthCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OAuthCredentialArgs) ToOAuthCredentialPtrOutput() OAuthCredentialPtrOutput {
 	return i.ToOAuthCredentialPtrOutputWithContext(context.Background())
 }
@@ -2204,12 +1933,6 @@ func (i *oauthCredentialPtrType) ToOAuthCredentialPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(OAuthCredentialPtrOutput)
 }
 
-func (i *oauthCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*OAuthCredential] {
-	return pulumix.Output[*OAuthCredential]{
-		OutputState: i.ToOAuthCredentialPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an OAuth token of the account that authorized the Connection, and associated metadata.
 type OAuthCredentialOutput struct{ *pulumi.OutputState }
 
@@ -2235,12 +1958,6 @@ func (o OAuthCredentialOutput) ToOAuthCredentialPtrOutputWithContext(ctx context
 	}).(OAuthCredentialPtrOutput)
 }
 
-func (o OAuthCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[OAuthCredential] {
-	return pulumix.Output[OAuthCredential]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 func (o OAuthCredentialOutput) OauthTokenSecretVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuthCredential) *string { return v.OauthTokenSecretVersion }).(pulumi.StringPtrOutput)
@@ -2258,12 +1975,6 @@ func (o OAuthCredentialPtrOutput) ToOAuthCredentialPtrOutput() OAuthCredentialPt
 
 func (o OAuthCredentialPtrOutput) ToOAuthCredentialPtrOutputWithContext(ctx context.Context) OAuthCredentialPtrOutput {
 	return o
-}
-
-func (o OAuthCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OAuthCredential] {
-	return pulumix.Output[*OAuthCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OAuthCredentialPtrOutput) Elem() OAuthCredentialOutput {
@@ -2307,12 +2018,6 @@ func (o OAuthCredentialResponseOutput) ToOAuthCredentialResponseOutput() OAuthCr
 
 func (o OAuthCredentialResponseOutput) ToOAuthCredentialResponseOutputWithContext(ctx context.Context) OAuthCredentialResponseOutput {
 	return o
-}
-
-func (o OAuthCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OAuthCredentialResponse] {
-	return pulumix.Output[OAuthCredentialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
@@ -2360,12 +2065,6 @@ func (i UserCredentialArgs) ToUserCredentialOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(UserCredentialOutput)
 }
 
-func (i UserCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[UserCredential] {
-	return pulumix.Output[UserCredential]{
-		OutputState: i.ToUserCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserCredentialArgs) ToUserCredentialPtrOutput() UserCredentialPtrOutput {
 	return i.ToUserCredentialPtrOutputWithContext(context.Background())
 }
@@ -2407,12 +2106,6 @@ func (i *userCredentialPtrType) ToUserCredentialPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(UserCredentialPtrOutput)
 }
 
-func (i *userCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserCredential] {
-	return pulumix.Output[*UserCredential]{
-		OutputState: i.ToUserCredentialPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a personal access token that authorized the Connection, and associated metadata.
 type UserCredentialOutput struct{ *pulumi.OutputState }
 
@@ -2438,12 +2131,6 @@ func (o UserCredentialOutput) ToUserCredentialPtrOutputWithContext(ctx context.C
 	}).(UserCredentialPtrOutput)
 }
 
-func (o UserCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[UserCredential] {
-	return pulumix.Output[UserCredential]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 func (o UserCredentialOutput) UserTokenSecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v UserCredential) string { return v.UserTokenSecretVersion }).(pulumi.StringOutput)
@@ -2461,12 +2148,6 @@ func (o UserCredentialPtrOutput) ToUserCredentialPtrOutput() UserCredentialPtrOu
 
 func (o UserCredentialPtrOutput) ToUserCredentialPtrOutputWithContext(ctx context.Context) UserCredentialPtrOutput {
 	return o
-}
-
-func (o UserCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserCredential] {
-	return pulumix.Output[*UserCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserCredentialPtrOutput) Elem() UserCredentialOutput {
@@ -2510,12 +2191,6 @@ func (o UserCredentialResponseOutput) ToUserCredentialResponseOutput() UserCrede
 
 func (o UserCredentialResponseOutput) ToUserCredentialResponseOutputWithContext(ctx context.Context) UserCredentialResponseOutput {
 	return o
-}
-
-func (o UserCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserCredentialResponse] {
-	return pulumix.Output[UserCredentialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.

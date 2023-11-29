@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
@@ -111,12 +110,6 @@ func (i *Ruleset) ToRulesetOutputWithContext(ctx context.Context) RulesetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetOutput)
 }
 
-func (i *Ruleset) ToOutput(ctx context.Context) pulumix.Output[*Ruleset] {
-	return pulumix.Output[*Ruleset]{
-		OutputState: i.ToRulesetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RulesetOutput struct{ *pulumi.OutputState }
 
 func (RulesetOutput) ElementType() reflect.Type {
@@ -129,12 +122,6 @@ func (o RulesetOutput) ToRulesetOutput() RulesetOutput {
 
 func (o RulesetOutput) ToRulesetOutputWithContext(ctx context.Context) RulesetOutput {
 	return o
-}
-
-func (o RulesetOutput) ToOutput(ctx context.Context) pulumix.Output[*Ruleset] {
-	return pulumix.Output[*Ruleset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the `Ruleset` was created.

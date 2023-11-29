@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Backup.
@@ -109,12 +108,6 @@ func (o LookupBackupResultOutput) ToLookupBackupResultOutput() LookupBackupResul
 
 func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx context.Context) LookupBackupResultOutput {
 	return o
-}
-
-func (o LookupBackupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupResult] {
-	return pulumix.Output[LookupBackupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128

@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -141,12 +140,6 @@ func (i *OrganizationPartnerTenantBrowserDlpRuleIamMember) ToOrganizationPartner
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPartnerTenantBrowserDlpRuleIamMemberOutput)
 }
 
-func (i *OrganizationPartnerTenantBrowserDlpRuleIamMember) ToOutput(ctx context.Context) pulumix.Output[*OrganizationPartnerTenantBrowserDlpRuleIamMember] {
-	return pulumix.Output[*OrganizationPartnerTenantBrowserDlpRuleIamMember]{
-		OutputState: i.ToOrganizationPartnerTenantBrowserDlpRuleIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationPartnerTenantBrowserDlpRuleIamMemberOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPartnerTenantBrowserDlpRuleIamMemberOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o OrganizationPartnerTenantBrowserDlpRuleIamMemberOutput) ToOrganizationPa
 
 func (o OrganizationPartnerTenantBrowserDlpRuleIamMemberOutput) ToOrganizationPartnerTenantBrowserDlpRuleIamMemberOutputWithContext(ctx context.Context) OrganizationPartnerTenantBrowserDlpRuleIamMemberOutput {
 	return o
-}
-
-func (o OrganizationPartnerTenantBrowserDlpRuleIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationPartnerTenantBrowserDlpRuleIamMember] {
-	return pulumix.Output[*OrganizationPartnerTenantBrowserDlpRuleIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

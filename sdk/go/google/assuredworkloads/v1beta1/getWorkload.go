@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets Assured Workload associated with a CRM Node
@@ -119,12 +118,6 @@ func (o LookupWorkloadResultOutput) ToLookupWorkloadResultOutput() LookupWorkloa
 
 func (o LookupWorkloadResultOutput) ToLookupWorkloadResultOutputWithContext(ctx context.Context) LookupWorkloadResultOutput {
 	return o
-}
-
-func (o LookupWorkloadResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadResult] {
-	return pulumix.Output[LookupWorkloadResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.

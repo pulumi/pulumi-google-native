@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new `PrivateCloud` resource in a given project and location. Private clouds of type `STANDARD` and `TIME_LIMITED` are zonal resources, `STRETCHED` private clouds are regional. Creating a private cloud also creates a [management cluster](https://cloud.google.com/vmware-engine/docs/concepts-vmware-components) for that private cloud.
@@ -166,12 +165,6 @@ func (i *PrivateCloud) ToPrivateCloudOutputWithContext(ctx context.Context) Priv
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudOutput)
 }
 
-func (i *PrivateCloud) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloud] {
-	return pulumix.Output[*PrivateCloud]{
-		OutputState: i.ToPrivateCloudOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateCloudOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudOutput) ElementType() reflect.Type {
@@ -184,12 +177,6 @@ func (o PrivateCloudOutput) ToPrivateCloudOutput() PrivateCloudOutput {
 
 func (o PrivateCloudOutput) ToPrivateCloudOutputWithContext(ctx context.Context) PrivateCloudOutput {
 	return o
-}
-
-func (o PrivateCloudOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloud] {
-	return pulumix.Output[*PrivateCloud]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

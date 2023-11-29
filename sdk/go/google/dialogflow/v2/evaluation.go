@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates evaluation of a conversation model.
@@ -132,12 +131,6 @@ func (i *Evaluation) ToEvaluationOutputWithContext(ctx context.Context) Evaluati
 	return pulumi.ToOutputWithContext(ctx, i).(EvaluationOutput)
 }
 
-func (i *Evaluation) ToOutput(ctx context.Context) pulumix.Output[*Evaluation] {
-	return pulumix.Output[*Evaluation]{
-		OutputState: i.ToEvaluationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EvaluationOutput struct{ *pulumi.OutputState }
 
 func (EvaluationOutput) ElementType() reflect.Type {
@@ -150,12 +143,6 @@ func (o EvaluationOutput) ToEvaluationOutput() EvaluationOutput {
 
 func (o EvaluationOutput) ToEvaluationOutputWithContext(ctx context.Context) EvaluationOutput {
 	return o
-}
-
-func (o EvaluationOutput) ToOutput(ctx context.Context) pulumix.Output[*Evaluation] {
-	return pulumix.Output[*Evaluation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EvaluationOutput) ConversationModelId() pulumi.StringOutput {

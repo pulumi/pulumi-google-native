@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new FeatureGroup in a given project and location.
@@ -140,12 +139,6 @@ func (i *FeatureGroup) ToFeatureGroupOutputWithContext(ctx context.Context) Feat
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureGroupOutput)
 }
 
-func (i *FeatureGroup) ToOutput(ctx context.Context) pulumix.Output[*FeatureGroup] {
-	return pulumix.Output[*FeatureGroup]{
-		OutputState: i.ToFeatureGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureGroupOutput struct{ *pulumi.OutputState }
 
 func (FeatureGroupOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o FeatureGroupOutput) ToFeatureGroupOutput() FeatureGroupOutput {
 
 func (o FeatureGroupOutput) ToFeatureGroupOutputWithContext(ctx context.Context) FeatureGroupOutput {
 	return o
-}
-
-func (o FeatureGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureGroup] {
-	return pulumix.Output[*FeatureGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entity_id and a feature_timestamp column in the source.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i AppEngineHttpTargetArgs) ToAppEngineHttpTargetOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpTargetOutput)
 }
 
-func (i AppEngineHttpTargetArgs) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpTarget] {
-	return pulumix.Output[AppEngineHttpTarget]{
-		OutputState: i.ToAppEngineHttpTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppEngineHttpTargetArgs) ToAppEngineHttpTargetPtrOutput() AppEngineHttpTargetPtrOutput {
 	return i.ToAppEngineHttpTargetPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *appEngineHttpTargetPtrType) ToAppEngineHttpTargetPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpTargetPtrOutput)
 }
 
-func (i *appEngineHttpTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpTarget] {
-	return pulumix.Output[*AppEngineHttpTarget]{
-		OutputState: i.ToAppEngineHttpTargetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // App Engine target. The job will be pushed to a job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. Error 503 is considered an App Engine system error instead of an application error. Requests returning error 503 will be retried regardless of retry configuration and not counted against retry counts. Any other response code, or a failure to receive a response before the deadline, constitutes a failed attempt.
 type AppEngineHttpTargetOutput struct{ *pulumi.OutputState }
 
@@ -141,12 +128,6 @@ func (o AppEngineHttpTargetOutput) ToAppEngineHttpTargetPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpTarget) *AppEngineHttpTarget {
 		return &v
 	}).(AppEngineHttpTargetPtrOutput)
-}
-
-func (o AppEngineHttpTargetOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpTarget] {
-	return pulumix.Output[AppEngineHttpTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // App Engine Routing setting for the job.
@@ -186,12 +167,6 @@ func (o AppEngineHttpTargetPtrOutput) ToAppEngineHttpTargetPtrOutput() AppEngine
 
 func (o AppEngineHttpTargetPtrOutput) ToAppEngineHttpTargetPtrOutputWithContext(ctx context.Context) AppEngineHttpTargetPtrOutput {
 	return o
-}
-
-func (o AppEngineHttpTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpTarget] {
-	return pulumix.Output[*AppEngineHttpTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppEngineHttpTargetPtrOutput) Elem() AppEngineHttpTargetOutput {
@@ -283,12 +258,6 @@ func (o AppEngineHttpTargetResponseOutput) ToAppEngineHttpTargetResponseOutputWi
 	return o
 }
 
-func (o AppEngineHttpTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpTargetResponse] {
-	return pulumix.Output[AppEngineHttpTargetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // App Engine Routing setting for the job.
 func (o AppEngineHttpTargetResponseOutput) AppEngineRouting() AppEngineRoutingResponseOutput {
 	return o.ApplyT(func(v AppEngineHttpTargetResponse) AppEngineRoutingResponse { return v.AppEngineRouting }).(AppEngineRoutingResponseOutput)
@@ -357,12 +326,6 @@ func (i AppEngineRoutingArgs) ToAppEngineRoutingOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineRoutingOutput)
 }
 
-func (i AppEngineRoutingArgs) ToOutput(ctx context.Context) pulumix.Output[AppEngineRouting] {
-	return pulumix.Output[AppEngineRouting]{
-		OutputState: i.ToAppEngineRoutingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppEngineRoutingArgs) ToAppEngineRoutingPtrOutput() AppEngineRoutingPtrOutput {
 	return i.ToAppEngineRoutingPtrOutputWithContext(context.Background())
 }
@@ -404,12 +367,6 @@ func (i *appEngineRoutingPtrType) ToAppEngineRoutingPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineRoutingPtrOutput)
 }
 
-func (i *appEngineRoutingPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppEngineRouting] {
-	return pulumix.Output[*AppEngineRouting]{
-		OutputState: i.ToAppEngineRoutingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // App Engine Routing. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 type AppEngineRoutingOutput struct{ *pulumi.OutputState }
 
@@ -433,12 +390,6 @@ func (o AppEngineRoutingOutput) ToAppEngineRoutingPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineRouting) *AppEngineRouting {
 		return &v
 	}).(AppEngineRoutingPtrOutput)
-}
-
-func (o AppEngineRoutingOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineRouting] {
-	return pulumix.Output[AppEngineRouting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // App instance. By default, the job is sent to an instance which is available when the job is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
@@ -468,12 +419,6 @@ func (o AppEngineRoutingPtrOutput) ToAppEngineRoutingPtrOutput() AppEngineRoutin
 
 func (o AppEngineRoutingPtrOutput) ToAppEngineRoutingPtrOutputWithContext(ctx context.Context) AppEngineRoutingPtrOutput {
 	return o
-}
-
-func (o AppEngineRoutingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineRouting] {
-	return pulumix.Output[*AppEngineRouting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppEngineRoutingPtrOutput) Elem() AppEngineRoutingOutput {
@@ -541,12 +486,6 @@ func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponseOutput() AppEn
 
 func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponseOutputWithContext(ctx context.Context) AppEngineRoutingResponseOutput {
 	return o
-}
-
-func (o AppEngineRoutingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineRoutingResponse] {
-	return pulumix.Output[AppEngineRoutingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The host that the job is sent to. For more information about how App Engine requests are routed, see [here](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed). The host is constructed as: * `host = [application_domain_name]` `| [service] + '.' + [application_domain_name]` `| [version] + '.' + [application_domain_name]` `| [version_dot_service]+ '.' + [application_domain_name]` `| [instance] + '.' + [application_domain_name]` `| [instance_dot_service] + '.' + [application_domain_name]` `| [instance_dot_version] + '.' + [application_domain_name]` `| [instance_dot_version_dot_service] + '.' + [application_domain_name]` * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with the job's project ID. * `service =` service * `version =` version * `version_dot_service =` version `+ '.' +` service * `instance =` instance * `instance_dot_service =` instance `+ '.' +` service * `instance_dot_version =` instance `+ '.' +` version * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service If service is empty, then the job will be sent to the service which is the default service when the job is attempted. If version is empty, then the job will be sent to the version which is the default version when the job is attempted. If instance is empty, then the job will be sent to an instance which is available when the job is attempted. If service, version, or instance is invalid, then the job will be sent to the default version of the default service when the job is attempted.
@@ -624,12 +563,6 @@ func (i HttpTargetArgs) ToHttpTargetOutputWithContext(ctx context.Context) HttpT
 	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetOutput)
 }
 
-func (i HttpTargetArgs) ToOutput(ctx context.Context) pulumix.Output[HttpTarget] {
-	return pulumix.Output[HttpTarget]{
-		OutputState: i.ToHttpTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpTargetArgs) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
 	return i.ToHttpTargetPtrOutputWithContext(context.Background())
 }
@@ -671,12 +604,6 @@ func (i *httpTargetPtrType) ToHttpTargetPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetPtrOutput)
 }
 
-func (i *httpTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpTarget] {
-	return pulumix.Output[*HttpTarget]{
-		OutputState: i.ToHttpTargetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Http target. The job will be pushed to the job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. A failure to receive a response constitutes a failed execution. For a redirected request, the response returned by the redirected request is considered.
 type HttpTargetOutput struct{ *pulumi.OutputState }
 
@@ -700,12 +627,6 @@ func (o HttpTargetOutput) ToHttpTargetPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpTarget) *HttpTarget {
 		return &v
 	}).(HttpTargetPtrOutput)
-}
-
-func (o HttpTargetOutput) ToOutput(ctx context.Context) pulumix.Output[HttpTarget] {
-	return pulumix.Output[HttpTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
@@ -750,12 +671,6 @@ func (o HttpTargetPtrOutput) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
 
 func (o HttpTargetPtrOutput) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
 	return o
-}
-
-func (o HttpTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpTarget] {
-	return pulumix.Output[*HttpTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpTargetPtrOutput) Elem() HttpTargetOutput {
@@ -859,12 +774,6 @@ func (o HttpTargetResponseOutput) ToHttpTargetResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o HttpTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpTargetResponse] {
-	return pulumix.Output[HttpTargetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
 func (o HttpTargetResponseOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpTargetResponse) string { return v.Body }).(pulumi.StringOutput)
@@ -934,12 +843,6 @@ func (i OAuthTokenArgs) ToOAuthTokenOutputWithContext(ctx context.Context) OAuth
 	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenOutput)
 }
 
-func (i OAuthTokenArgs) ToOutput(ctx context.Context) pulumix.Output[OAuthToken] {
-	return pulumix.Output[OAuthToken]{
-		OutputState: i.ToOAuthTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OAuthTokenArgs) ToOAuthTokenPtrOutput() OAuthTokenPtrOutput {
 	return i.ToOAuthTokenPtrOutputWithContext(context.Background())
 }
@@ -981,12 +884,6 @@ func (i *oauthTokenPtrType) ToOAuthTokenPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenPtrOutput)
 }
 
-func (i *oauthTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*OAuthToken] {
-	return pulumix.Output[*OAuthToken]{
-		OutputState: i.ToOAuthTokenPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
 type OAuthTokenOutput struct{ *pulumi.OutputState }
 
@@ -1012,12 +909,6 @@ func (o OAuthTokenOutput) ToOAuthTokenPtrOutputWithContext(ctx context.Context) 
 	}).(OAuthTokenPtrOutput)
 }
 
-func (o OAuthTokenOutput) ToOutput(ctx context.Context) pulumix.Output[OAuthToken] {
-	return pulumix.Output[OAuthToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 // OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
 func (o OAuthTokenOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuthToken) *string { return v.Scope }).(pulumi.StringPtrOutput)
@@ -1040,12 +931,6 @@ func (o OAuthTokenPtrOutput) ToOAuthTokenPtrOutput() OAuthTokenPtrOutput {
 
 func (o OAuthTokenPtrOutput) ToOAuthTokenPtrOutputWithContext(ctx context.Context) OAuthTokenPtrOutput {
 	return o
-}
-
-func (o OAuthTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OAuthToken] {
-	return pulumix.Output[*OAuthToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OAuthTokenPtrOutput) Elem() OAuthTokenOutput {
@@ -1101,12 +986,6 @@ func (o OAuthTokenResponseOutput) ToOAuthTokenResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o OAuthTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OAuthTokenResponse] {
-	return pulumix.Output[OAuthTokenResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
 func (o OAuthTokenResponseOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v OAuthTokenResponse) string { return v.Scope }).(pulumi.StringOutput)
@@ -1156,12 +1035,6 @@ func (i OidcTokenArgs) ToOidcTokenOutputWithContext(ctx context.Context) OidcTok
 	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenOutput)
 }
 
-func (i OidcTokenArgs) ToOutput(ctx context.Context) pulumix.Output[OidcToken] {
-	return pulumix.Output[OidcToken]{
-		OutputState: i.ToOidcTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OidcTokenArgs) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
 	return i.ToOidcTokenPtrOutputWithContext(context.Background())
 }
@@ -1203,12 +1076,6 @@ func (i *oidcTokenPtrType) ToOidcTokenPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenPtrOutput)
 }
 
-func (i *oidcTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*OidcToken] {
-	return pulumix.Output[*OidcToken]{
-		OutputState: i.ToOidcTokenPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 type OidcTokenOutput struct{ *pulumi.OutputState }
 
@@ -1234,12 +1101,6 @@ func (o OidcTokenOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) Oi
 	}).(OidcTokenPtrOutput)
 }
 
-func (o OidcTokenOutput) ToOutput(ctx context.Context) pulumix.Output[OidcToken] {
-	return pulumix.Output[OidcToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
 func (o OidcTokenOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
@@ -1262,12 +1123,6 @@ func (o OidcTokenPtrOutput) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
 
 func (o OidcTokenPtrOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
 	return o
-}
-
-func (o OidcTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OidcToken] {
-	return pulumix.Output[*OidcToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OidcTokenPtrOutput) Elem() OidcTokenOutput {
@@ -1323,12 +1178,6 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o OidcTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OidcTokenResponse] {
-	return pulumix.Output[OidcTokenResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
 func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
@@ -1382,12 +1231,6 @@ func (i PubsubTargetArgs) ToPubsubTargetOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubTargetOutput)
 }
 
-func (i PubsubTargetArgs) ToOutput(ctx context.Context) pulumix.Output[PubsubTarget] {
-	return pulumix.Output[PubsubTarget]{
-		OutputState: i.ToPubsubTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PubsubTargetArgs) ToPubsubTargetPtrOutput() PubsubTargetPtrOutput {
 	return i.ToPubsubTargetPtrOutputWithContext(context.Background())
 }
@@ -1429,12 +1272,6 @@ func (i *pubsubTargetPtrType) ToPubsubTargetPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubTargetPtrOutput)
 }
 
-func (i *pubsubTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*PubsubTarget] {
-	return pulumix.Output[*PubsubTarget]{
-		OutputState: i.ToPubsubTargetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic.
 type PubsubTargetOutput struct{ *pulumi.OutputState }
 
@@ -1458,12 +1295,6 @@ func (o PubsubTargetOutput) ToPubsubTargetPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubTarget) *PubsubTarget {
 		return &v
 	}).(PubsubTargetPtrOutput)
-}
-
-func (o PubsubTargetOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubTarget] {
-	return pulumix.Output[PubsubTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
@@ -1493,12 +1324,6 @@ func (o PubsubTargetPtrOutput) ToPubsubTargetPtrOutput() PubsubTargetPtrOutput {
 
 func (o PubsubTargetPtrOutput) ToPubsubTargetPtrOutputWithContext(ctx context.Context) PubsubTargetPtrOutput {
 	return o
-}
-
-func (o PubsubTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PubsubTarget] {
-	return pulumix.Output[*PubsubTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PubsubTargetPtrOutput) Elem() PubsubTargetOutput {
@@ -1564,12 +1389,6 @@ func (o PubsubTargetResponseOutput) ToPubsubTargetResponseOutput() PubsubTargetR
 
 func (o PubsubTargetResponseOutput) ToPubsubTargetResponseOutputWithContext(ctx context.Context) PubsubTargetResponseOutput {
 	return o
-}
-
-func (o PubsubTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubTargetResponse] {
-	return pulumix.Output[PubsubTargetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
@@ -1638,12 +1457,6 @@ func (i RetryConfigArgs) ToRetryConfigOutputWithContext(ctx context.Context) Ret
 	return pulumi.ToOutputWithContext(ctx, i).(RetryConfigOutput)
 }
 
-func (i RetryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RetryConfig] {
-	return pulumix.Output[RetryConfig]{
-		OutputState: i.ToRetryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RetryConfigArgs) ToRetryConfigPtrOutput() RetryConfigPtrOutput {
 	return i.ToRetryConfigPtrOutputWithContext(context.Background())
 }
@@ -1685,12 +1498,6 @@ func (i *retryConfigPtrType) ToRetryConfigPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RetryConfigPtrOutput)
 }
 
-func (i *retryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RetryConfig] {
-	return pulumix.Output[*RetryConfig]{
-		OutputState: i.ToRetryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings that determine the retry behavior. By default, if a job does not complete successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with exponential backoff according to the settings in RetryConfig.
 type RetryConfigOutput struct{ *pulumi.OutputState }
 
@@ -1714,12 +1521,6 @@ func (o RetryConfigOutput) ToRetryConfigPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryConfig) *RetryConfig {
 		return &v
 	}).(RetryConfigPtrOutput)
-}
-
-func (o RetryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RetryConfig] {
-	return pulumix.Output[RetryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum amount of time to wait before retrying a job after it fails. The default value of this field is 1 hour.
@@ -1759,12 +1560,6 @@ func (o RetryConfigPtrOutput) ToRetryConfigPtrOutput() RetryConfigPtrOutput {
 
 func (o RetryConfigPtrOutput) ToRetryConfigPtrOutputWithContext(ctx context.Context) RetryConfigPtrOutput {
 	return o
-}
-
-func (o RetryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetryConfig] {
-	return pulumix.Output[*RetryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RetryConfigPtrOutput) Elem() RetryConfigOutput {
@@ -1856,12 +1651,6 @@ func (o RetryConfigResponseOutput) ToRetryConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o RetryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetryConfigResponse] {
-	return pulumix.Output[RetryConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum amount of time to wait before retrying a job after it fails. The default value of this field is 1 hour.
 func (o RetryConfigResponseOutput) MaxBackoffDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v RetryConfigResponse) string { return v.MaxBackoffDuration }).(pulumi.StringOutput)
@@ -1910,12 +1699,6 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
-}
-
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

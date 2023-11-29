@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about a Network Connectivity Center spoke.
@@ -97,12 +96,6 @@ func (o LookupSpokeResultOutput) ToLookupSpokeResultOutput() LookupSpokeResultOu
 
 func (o LookupSpokeResultOutput) ToLookupSpokeResultOutputWithContext(ctx context.Context) LookupSpokeResultOutput {
 	return o
-}
-
-func (o LookupSpokeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSpokeResult] {
-	return pulumix.Output[LookupSpokeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the spoke was created.

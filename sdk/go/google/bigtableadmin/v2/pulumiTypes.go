@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -133,12 +114,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -170,12 +145,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -198,12 +167,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -251,12 +214,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -282,12 +239,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -301,12 +252,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -331,12 +276,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -368,12 +307,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -396,12 +329,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -449,12 +376,6 @@ func (i AutoscalingLimitsArgs) ToAutoscalingLimitsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingLimitsOutput)
 }
 
-func (i AutoscalingLimitsArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingLimits] {
-	return pulumix.Output[AutoscalingLimits]{
-		OutputState: i.ToAutoscalingLimitsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingLimitsArgs) ToAutoscalingLimitsPtrOutput() AutoscalingLimitsPtrOutput {
 	return i.ToAutoscalingLimitsPtrOutputWithContext(context.Background())
 }
@@ -496,12 +417,6 @@ func (i *autoscalingLimitsPtrType) ToAutoscalingLimitsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingLimitsPtrOutput)
 }
 
-func (i *autoscalingLimitsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingLimits] {
-	return pulumix.Output[*AutoscalingLimits]{
-		OutputState: i.ToAutoscalingLimitsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Limits for the number of nodes a Cluster can autoscale up/down to.
 type AutoscalingLimitsOutput struct{ *pulumi.OutputState }
 
@@ -527,12 +442,6 @@ func (o AutoscalingLimitsOutput) ToAutoscalingLimitsPtrOutputWithContext(ctx con
 	}).(AutoscalingLimitsPtrOutput)
 }
 
-func (o AutoscalingLimitsOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingLimits] {
-	return pulumix.Output[AutoscalingLimits]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of nodes to scale up to.
 func (o AutoscalingLimitsOutput) MaxServeNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingLimits) int { return v.MaxServeNodes }).(pulumi.IntOutput)
@@ -555,12 +464,6 @@ func (o AutoscalingLimitsPtrOutput) ToAutoscalingLimitsPtrOutput() AutoscalingLi
 
 func (o AutoscalingLimitsPtrOutput) ToAutoscalingLimitsPtrOutputWithContext(ctx context.Context) AutoscalingLimitsPtrOutput {
 	return o
-}
-
-func (o AutoscalingLimitsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingLimits] {
-	return pulumix.Output[*AutoscalingLimits]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingLimitsPtrOutput) Elem() AutoscalingLimitsOutput {
@@ -616,12 +519,6 @@ func (o AutoscalingLimitsResponseOutput) ToAutoscalingLimitsResponseOutputWithCo
 	return o
 }
 
-func (o AutoscalingLimitsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingLimitsResponse] {
-	return pulumix.Output[AutoscalingLimitsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of nodes to scale up to.
 func (o AutoscalingLimitsResponseOutput) MaxServeNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingLimitsResponse) int { return v.MaxServeNodes }).(pulumi.IntOutput)
@@ -671,12 +568,6 @@ func (i AutoscalingTargetsArgs) ToAutoscalingTargetsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingTargetsOutput)
 }
 
-func (i AutoscalingTargetsArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingTargets] {
-	return pulumix.Output[AutoscalingTargets]{
-		OutputState: i.ToAutoscalingTargetsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingTargetsArgs) ToAutoscalingTargetsPtrOutput() AutoscalingTargetsPtrOutput {
 	return i.ToAutoscalingTargetsPtrOutputWithContext(context.Background())
 }
@@ -718,12 +609,6 @@ func (i *autoscalingTargetsPtrType) ToAutoscalingTargetsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingTargetsPtrOutput)
 }
 
-func (i *autoscalingTargetsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingTargets] {
-	return pulumix.Output[*AutoscalingTargets]{
-		OutputState: i.ToAutoscalingTargetsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Autoscaling targets for a Cluster. These determine the recommended nodes.
 type AutoscalingTargetsOutput struct{ *pulumi.OutputState }
 
@@ -749,12 +634,6 @@ func (o AutoscalingTargetsOutput) ToAutoscalingTargetsPtrOutputWithContext(ctx c
 	}).(AutoscalingTargetsPtrOutput)
 }
 
-func (o AutoscalingTargetsOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingTargets] {
-	return pulumix.Output[AutoscalingTargets]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
 func (o AutoscalingTargetsOutput) CpuUtilizationPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AutoscalingTargets) *int { return v.CpuUtilizationPercent }).(pulumi.IntPtrOutput)
@@ -777,12 +656,6 @@ func (o AutoscalingTargetsPtrOutput) ToAutoscalingTargetsPtrOutput() Autoscaling
 
 func (o AutoscalingTargetsPtrOutput) ToAutoscalingTargetsPtrOutputWithContext(ctx context.Context) AutoscalingTargetsPtrOutput {
 	return o
-}
-
-func (o AutoscalingTargetsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingTargets] {
-	return pulumix.Output[*AutoscalingTargets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingTargetsPtrOutput) Elem() AutoscalingTargetsOutput {
@@ -838,12 +711,6 @@ func (o AutoscalingTargetsResponseOutput) ToAutoscalingTargetsResponseOutputWith
 	return o
 }
 
-func (o AutoscalingTargetsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingTargetsResponse] {
-	return pulumix.Output[AutoscalingTargetsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
 func (o AutoscalingTargetsResponseOutput) CpuUtilizationPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingTargetsResponse) int { return v.CpuUtilizationPercent }).(pulumi.IntOutput)
@@ -881,12 +748,6 @@ func (o BackupInfoResponseOutput) ToBackupInfoResponseOutput() BackupInfoRespons
 
 func (o BackupInfoResponseOutput) ToBackupInfoResponseOutputWithContext(ctx context.Context) BackupInfoResponseOutput {
 	return o
-}
-
-func (o BackupInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackupInfoResponse] {
-	return pulumix.Output[BackupInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the backup.
@@ -957,12 +818,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -988,12 +843,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -1007,12 +856,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -1042,12 +885,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -1081,12 +918,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -1114,12 +945,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -1163,12 +988,6 @@ func (i ChangeStreamConfigArgs) ToChangeStreamConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamConfigOutput)
 }
 
-func (i ChangeStreamConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ChangeStreamConfig] {
-	return pulumix.Output[ChangeStreamConfig]{
-		OutputState: i.ToChangeStreamConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ChangeStreamConfigArgs) ToChangeStreamConfigPtrOutput() ChangeStreamConfigPtrOutput {
 	return i.ToChangeStreamConfigPtrOutputWithContext(context.Background())
 }
@@ -1210,12 +1029,6 @@ func (i *changeStreamConfigPtrType) ToChangeStreamConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamConfigPtrOutput)
 }
 
-func (i *changeStreamConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ChangeStreamConfig] {
-	return pulumix.Output[*ChangeStreamConfig]{
-		OutputState: i.ToChangeStreamConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Change stream configuration.
 type ChangeStreamConfigOutput struct{ *pulumi.OutputState }
 
@@ -1241,12 +1054,6 @@ func (o ChangeStreamConfigOutput) ToChangeStreamConfigPtrOutputWithContext(ctx c
 	}).(ChangeStreamConfigPtrOutput)
 }
 
-func (o ChangeStreamConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ChangeStreamConfig] {
-	return pulumix.Output[ChangeStreamConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
 func (o ChangeStreamConfigOutput) RetentionPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ChangeStreamConfig) *string { return v.RetentionPeriod }).(pulumi.StringPtrOutput)
@@ -1264,12 +1071,6 @@ func (o ChangeStreamConfigPtrOutput) ToChangeStreamConfigPtrOutput() ChangeStrea
 
 func (o ChangeStreamConfigPtrOutput) ToChangeStreamConfigPtrOutputWithContext(ctx context.Context) ChangeStreamConfigPtrOutput {
 	return o
-}
-
-func (o ChangeStreamConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ChangeStreamConfig] {
-	return pulumix.Output[*ChangeStreamConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ChangeStreamConfigPtrOutput) Elem() ChangeStreamConfigOutput {
@@ -1311,12 +1112,6 @@ func (o ChangeStreamConfigResponseOutput) ToChangeStreamConfigResponseOutput() C
 
 func (o ChangeStreamConfigResponseOutput) ToChangeStreamConfigResponseOutputWithContext(ctx context.Context) ChangeStreamConfigResponseOutput {
 	return o
-}
-
-func (o ChangeStreamConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ChangeStreamConfigResponse] {
-	return pulumix.Output[ChangeStreamConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
@@ -1363,12 +1158,6 @@ func (i ClusterAutoscalingConfigArgs) ToClusterAutoscalingConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingConfigOutput)
 }
 
-func (i ClusterAutoscalingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterAutoscalingConfig] {
-	return pulumix.Output[ClusterAutoscalingConfig]{
-		OutputState: i.ToClusterAutoscalingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterAutoscalingConfigArgs) ToClusterAutoscalingConfigPtrOutput() ClusterAutoscalingConfigPtrOutput {
 	return i.ToClusterAutoscalingConfigPtrOutputWithContext(context.Background())
 }
@@ -1410,12 +1199,6 @@ func (i *clusterAutoscalingConfigPtrType) ToClusterAutoscalingConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingConfigPtrOutput)
 }
 
-func (i *clusterAutoscalingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterAutoscalingConfig] {
-	return pulumix.Output[*ClusterAutoscalingConfig]{
-		OutputState: i.ToClusterAutoscalingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Autoscaling config for a cluster.
 type ClusterAutoscalingConfigOutput struct{ *pulumi.OutputState }
 
@@ -1441,12 +1224,6 @@ func (o ClusterAutoscalingConfigOutput) ToClusterAutoscalingConfigPtrOutputWithC
 	}).(ClusterAutoscalingConfigPtrOutput)
 }
 
-func (o ClusterAutoscalingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterAutoscalingConfig] {
-	return pulumix.Output[ClusterAutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Autoscaling limits for this cluster.
 func (o ClusterAutoscalingConfigOutput) AutoscalingLimits() AutoscalingLimitsOutput {
 	return o.ApplyT(func(v ClusterAutoscalingConfig) AutoscalingLimits { return v.AutoscalingLimits }).(AutoscalingLimitsOutput)
@@ -1469,12 +1246,6 @@ func (o ClusterAutoscalingConfigPtrOutput) ToClusterAutoscalingConfigPtrOutput()
 
 func (o ClusterAutoscalingConfigPtrOutput) ToClusterAutoscalingConfigPtrOutputWithContext(ctx context.Context) ClusterAutoscalingConfigPtrOutput {
 	return o
-}
-
-func (o ClusterAutoscalingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterAutoscalingConfig] {
-	return pulumix.Output[*ClusterAutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterAutoscalingConfigPtrOutput) Elem() ClusterAutoscalingConfigOutput {
@@ -1530,12 +1301,6 @@ func (o ClusterAutoscalingConfigResponseOutput) ToClusterAutoscalingConfigRespon
 	return o
 }
 
-func (o ClusterAutoscalingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterAutoscalingConfigResponse] {
-	return pulumix.Output[ClusterAutoscalingConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Autoscaling limits for this cluster.
 func (o ClusterAutoscalingConfigResponseOutput) AutoscalingLimits() AutoscalingLimitsResponseOutput {
 	return o.ApplyT(func(v ClusterAutoscalingConfigResponse) AutoscalingLimitsResponse { return v.AutoscalingLimits }).(AutoscalingLimitsResponseOutput)
@@ -1581,12 +1346,6 @@ func (i ClusterConfigArgs) ToClusterConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigOutput)
 }
 
-func (i ClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterConfig] {
-	return pulumix.Output[ClusterConfig]{
-		OutputState: i.ToClusterConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterConfigArgs) ToClusterConfigPtrOutput() ClusterConfigPtrOutput {
 	return i.ToClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -1628,12 +1387,6 @@ func (i *clusterConfigPtrType) ToClusterConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigPtrOutput)
 }
 
-func (i *clusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterConfig] {
-	return pulumix.Output[*ClusterConfig]{
-		OutputState: i.ToClusterConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for a cluster.
 type ClusterConfigOutput struct{ *pulumi.OutputState }
 
@@ -1659,12 +1412,6 @@ func (o ClusterConfigOutput) ToClusterConfigPtrOutputWithContext(ctx context.Con
 	}).(ClusterConfigPtrOutput)
 }
 
-func (o ClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterConfig] {
-	return pulumix.Output[ClusterConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Autoscaling configuration for this cluster.
 func (o ClusterConfigOutput) ClusterAutoscalingConfig() ClusterAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *ClusterAutoscalingConfig { return v.ClusterAutoscalingConfig }).(ClusterAutoscalingConfigPtrOutput)
@@ -1682,12 +1429,6 @@ func (o ClusterConfigPtrOutput) ToClusterConfigPtrOutput() ClusterConfigPtrOutpu
 
 func (o ClusterConfigPtrOutput) ToClusterConfigPtrOutputWithContext(ctx context.Context) ClusterConfigPtrOutput {
 	return o
-}
-
-func (o ClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterConfig] {
-	return pulumix.Output[*ClusterConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterConfigPtrOutput) Elem() ClusterConfigOutput {
@@ -1731,12 +1472,6 @@ func (o ClusterConfigResponseOutput) ToClusterConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o ClusterConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterConfigResponse] {
-	return pulumix.Output[ClusterConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Autoscaling configuration for this cluster.
 func (o ClusterConfigResponseOutput) ClusterAutoscalingConfig() ClusterAutoscalingConfigResponseOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) ClusterAutoscalingConfigResponse { return v.ClusterAutoscalingConfig }).(ClusterAutoscalingConfigResponseOutput)
@@ -1775,12 +1510,6 @@ func (i EncryptionConfigArgs) ToEncryptionConfigOutput() EncryptionConfigOutput 
 
 func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
-}
-
-func (i EncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
-	return pulumix.Output[EncryptionConfig]{
-		OutputState: i.ToEncryptionConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
@@ -1824,12 +1553,6 @@ func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
 }
 
-func (i *encryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
-	return pulumix.Output[*EncryptionConfig]{
-		OutputState: i.ToEncryptionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
 type EncryptionConfigOutput struct{ *pulumi.OutputState }
 
@@ -1855,12 +1578,6 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx conte
 	}).(EncryptionConfigPtrOutput)
 }
 
-func (o EncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
-	return pulumix.Output[EncryptionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
 func (o EncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -1878,12 +1595,6 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfi
 
 func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
 	return o
-}
-
-func (o EncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
-	return pulumix.Output[*EncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
@@ -1927,12 +1638,6 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithCont
 	return o
 }
 
-func (o EncryptionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfigResponse] {
-	return pulumix.Output[EncryptionConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
 func (o EncryptionConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -1961,12 +1666,6 @@ func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponseOutput() Encryptio
 
 func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponseOutputWithContext(ctx context.Context) EncryptionInfoResponseOutput {
 	return o
-}
-
-func (o EncryptionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionInfoResponse] {
-	return pulumix.Output[EncryptionInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
@@ -2031,12 +1730,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -2078,12 +1771,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -2107,12 +1794,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2147,12 +1828,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -2232,12 +1907,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -2293,12 +1962,6 @@ func (i MultiClusterRoutingUseAnyArgs) ToMultiClusterRoutingUseAnyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterRoutingUseAnyOutput)
 }
 
-func (i MultiClusterRoutingUseAnyArgs) ToOutput(ctx context.Context) pulumix.Output[MultiClusterRoutingUseAny] {
-	return pulumix.Output[MultiClusterRoutingUseAny]{
-		OutputState: i.ToMultiClusterRoutingUseAnyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MultiClusterRoutingUseAnyArgs) ToMultiClusterRoutingUseAnyPtrOutput() MultiClusterRoutingUseAnyPtrOutput {
 	return i.ToMultiClusterRoutingUseAnyPtrOutputWithContext(context.Background())
 }
@@ -2340,12 +2003,6 @@ func (i *multiClusterRoutingUseAnyPtrType) ToMultiClusterRoutingUseAnyPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterRoutingUseAnyPtrOutput)
 }
 
-func (i *multiClusterRoutingUseAnyPtrType) ToOutput(ctx context.Context) pulumix.Output[*MultiClusterRoutingUseAny] {
-	return pulumix.Output[*MultiClusterRoutingUseAny]{
-		OutputState: i.ToMultiClusterRoutingUseAnyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
 type MultiClusterRoutingUseAnyOutput struct{ *pulumi.OutputState }
 
@@ -2371,12 +2028,6 @@ func (o MultiClusterRoutingUseAnyOutput) ToMultiClusterRoutingUseAnyPtrOutputWit
 	}).(MultiClusterRoutingUseAnyPtrOutput)
 }
 
-func (o MultiClusterRoutingUseAnyOutput) ToOutput(ctx context.Context) pulumix.Output[MultiClusterRoutingUseAny] {
-	return pulumix.Output[MultiClusterRoutingUseAny]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
 func (o MultiClusterRoutingUseAnyOutput) ClusterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MultiClusterRoutingUseAny) []string { return v.ClusterIds }).(pulumi.StringArrayOutput)
@@ -2394,12 +2045,6 @@ func (o MultiClusterRoutingUseAnyPtrOutput) ToMultiClusterRoutingUseAnyPtrOutput
 
 func (o MultiClusterRoutingUseAnyPtrOutput) ToMultiClusterRoutingUseAnyPtrOutputWithContext(ctx context.Context) MultiClusterRoutingUseAnyPtrOutput {
 	return o
-}
-
-func (o MultiClusterRoutingUseAnyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MultiClusterRoutingUseAny] {
-	return pulumix.Output[*MultiClusterRoutingUseAny]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MultiClusterRoutingUseAnyPtrOutput) Elem() MultiClusterRoutingUseAnyOutput {
@@ -2443,12 +2088,6 @@ func (o MultiClusterRoutingUseAnyResponseOutput) ToMultiClusterRoutingUseAnyResp
 	return o
 }
 
-func (o MultiClusterRoutingUseAnyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MultiClusterRoutingUseAnyResponse] {
-	return pulumix.Output[MultiClusterRoutingUseAnyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
 func (o MultiClusterRoutingUseAnyResponseOutput) ClusterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MultiClusterRoutingUseAnyResponse) []string { return v.ClusterIds }).(pulumi.StringArrayOutput)
@@ -2475,12 +2114,6 @@ func (o RestoreInfoResponseOutput) ToRestoreInfoResponseOutput() RestoreInfoResp
 
 func (o RestoreInfoResponseOutput) ToRestoreInfoResponseOutputWithContext(ctx context.Context) RestoreInfoResponseOutput {
 	return o
-}
-
-func (o RestoreInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreInfoResponse] {
-	return pulumix.Output[RestoreInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Information about the backup used to restore the table. The backup may no longer exist.
@@ -2532,12 +2165,6 @@ func (i SingleClusterRoutingArgs) ToSingleClusterRoutingOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SingleClusterRoutingOutput)
 }
 
-func (i SingleClusterRoutingArgs) ToOutput(ctx context.Context) pulumix.Output[SingleClusterRouting] {
-	return pulumix.Output[SingleClusterRouting]{
-		OutputState: i.ToSingleClusterRoutingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SingleClusterRoutingArgs) ToSingleClusterRoutingPtrOutput() SingleClusterRoutingPtrOutput {
 	return i.ToSingleClusterRoutingPtrOutputWithContext(context.Background())
 }
@@ -2579,12 +2206,6 @@ func (i *singleClusterRoutingPtrType) ToSingleClusterRoutingPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(SingleClusterRoutingPtrOutput)
 }
 
-func (i *singleClusterRoutingPtrType) ToOutput(ctx context.Context) pulumix.Output[*SingleClusterRouting] {
-	return pulumix.Output[*SingleClusterRouting]{
-		OutputState: i.ToSingleClusterRoutingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Unconditionally routes all read/write requests to a specific cluster. This option preserves read-your-writes consistency but does not improve availability.
 type SingleClusterRoutingOutput struct{ *pulumi.OutputState }
 
@@ -2610,12 +2231,6 @@ func (o SingleClusterRoutingOutput) ToSingleClusterRoutingPtrOutputWithContext(c
 	}).(SingleClusterRoutingPtrOutput)
 }
 
-func (o SingleClusterRoutingOutput) ToOutput(ctx context.Context) pulumix.Output[SingleClusterRouting] {
-	return pulumix.Output[SingleClusterRouting]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
 func (o SingleClusterRoutingOutput) AllowTransactionalWrites() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SingleClusterRouting) *bool { return v.AllowTransactionalWrites }).(pulumi.BoolPtrOutput)
@@ -2638,12 +2253,6 @@ func (o SingleClusterRoutingPtrOutput) ToSingleClusterRoutingPtrOutput() SingleC
 
 func (o SingleClusterRoutingPtrOutput) ToSingleClusterRoutingPtrOutputWithContext(ctx context.Context) SingleClusterRoutingPtrOutput {
 	return o
-}
-
-func (o SingleClusterRoutingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SingleClusterRouting] {
-	return pulumix.Output[*SingleClusterRouting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SingleClusterRoutingPtrOutput) Elem() SingleClusterRoutingOutput {
@@ -2699,12 +2308,6 @@ func (o SingleClusterRoutingResponseOutput) ToSingleClusterRoutingResponseOutput
 	return o
 }
 
-func (o SingleClusterRoutingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SingleClusterRoutingResponse] {
-	return pulumix.Output[SingleClusterRoutingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
 func (o SingleClusterRoutingResponseOutput) AllowTransactionalWrites() pulumi.BoolOutput {
 	return o.ApplyT(func(v SingleClusterRoutingResponse) bool { return v.AllowTransactionalWrites }).(pulumi.BoolOutput)
@@ -2750,12 +2353,6 @@ func (i SplitArgs) ToSplitOutputWithContext(ctx context.Context) SplitOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SplitOutput)
 }
 
-func (i SplitArgs) ToOutput(ctx context.Context) pulumix.Output[Split] {
-	return pulumix.Output[Split]{
-		OutputState: i.ToSplitOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SplitArrayInput is an input type that accepts SplitArray and SplitArrayOutput values.
 // You can construct a concrete instance of `SplitArrayInput` via:
 //
@@ -2781,12 +2378,6 @@ func (i SplitArray) ToSplitArrayOutputWithContext(ctx context.Context) SplitArra
 	return pulumi.ToOutputWithContext(ctx, i).(SplitArrayOutput)
 }
 
-func (i SplitArray) ToOutput(ctx context.Context) pulumix.Output[[]Split] {
-	return pulumix.Output[[]Split]{
-		OutputState: i.ToSplitArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An initial split point for a newly created table.
 type SplitOutput struct{ *pulumi.OutputState }
 
@@ -2800,12 +2391,6 @@ func (o SplitOutput) ToSplitOutput() SplitOutput {
 
 func (o SplitOutput) ToSplitOutputWithContext(ctx context.Context) SplitOutput {
 	return o
-}
-
-func (o SplitOutput) ToOutput(ctx context.Context) pulumix.Output[Split] {
-	return pulumix.Output[Split]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Row key to use as an initial tablet boundary.
@@ -2825,12 +2410,6 @@ func (o SplitArrayOutput) ToSplitArrayOutput() SplitArrayOutput {
 
 func (o SplitArrayOutput) ToSplitArrayOutputWithContext(ctx context.Context) SplitArrayOutput {
 	return o
-}
-
-func (o SplitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Split] {
-	return pulumix.Output[[]Split]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SplitArrayOutput) Index(i pulumi.IntInput) SplitOutput {
@@ -2874,12 +2453,6 @@ func (i StandardIsolationArgs) ToStandardIsolationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(StandardIsolationOutput)
 }
 
-func (i StandardIsolationArgs) ToOutput(ctx context.Context) pulumix.Output[StandardIsolation] {
-	return pulumix.Output[StandardIsolation]{
-		OutputState: i.ToStandardIsolationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StandardIsolationArgs) ToStandardIsolationPtrOutput() StandardIsolationPtrOutput {
 	return i.ToStandardIsolationPtrOutputWithContext(context.Background())
 }
@@ -2921,12 +2494,6 @@ func (i *standardIsolationPtrType) ToStandardIsolationPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(StandardIsolationPtrOutput)
 }
 
-func (i *standardIsolationPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardIsolation] {
-	return pulumix.Output[*StandardIsolation]{
-		OutputState: i.ToStandardIsolationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Standard options for isolating this app profile's traffic from other use cases.
 type StandardIsolationOutput struct{ *pulumi.OutputState }
 
@@ -2952,12 +2519,6 @@ func (o StandardIsolationOutput) ToStandardIsolationPtrOutputWithContext(ctx con
 	}).(StandardIsolationPtrOutput)
 }
 
-func (o StandardIsolationOutput) ToOutput(ctx context.Context) pulumix.Output[StandardIsolation] {
-	return pulumix.Output[StandardIsolation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The priority of requests sent using this app profile.
 func (o StandardIsolationOutput) Priority() StandardIsolationPriorityPtrOutput {
 	return o.ApplyT(func(v StandardIsolation) *StandardIsolationPriority { return v.Priority }).(StandardIsolationPriorityPtrOutput)
@@ -2975,12 +2536,6 @@ func (o StandardIsolationPtrOutput) ToStandardIsolationPtrOutput() StandardIsola
 
 func (o StandardIsolationPtrOutput) ToStandardIsolationPtrOutputWithContext(ctx context.Context) StandardIsolationPtrOutput {
 	return o
-}
-
-func (o StandardIsolationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardIsolation] {
-	return pulumix.Output[*StandardIsolation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardIsolationPtrOutput) Elem() StandardIsolationOutput {
@@ -3024,12 +2579,6 @@ func (o StandardIsolationResponseOutput) ToStandardIsolationResponseOutputWithCo
 	return o
 }
 
-func (o StandardIsolationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StandardIsolationResponse] {
-	return pulumix.Output[StandardIsolationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The priority of requests sent using this app profile.
 func (o StandardIsolationResponseOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardIsolationResponse) string { return v.Priority }).(pulumi.StringOutput)
@@ -3058,12 +2607,6 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
-}
-
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -3106,12 +2649,6 @@ func (o TableStatsResponseOutput) ToTableStatsResponseOutput() TableStatsRespons
 
 func (o TableStatsResponseOutput) ToTableStatsResponseOutputWithContext(ctx context.Context) TableStatsResponseOutput {
 	return o
-}
-
-func (o TableStatsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TableStatsResponse] {
-	return pulumix.Output[TableStatsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.

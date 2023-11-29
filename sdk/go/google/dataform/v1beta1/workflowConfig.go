@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new WorkflowConfig in a given Repository.
@@ -148,12 +147,6 @@ func (i *WorkflowConfig) ToWorkflowConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowConfigOutput)
 }
 
-func (i *WorkflowConfig) ToOutput(ctx context.Context) pulumix.Output[*WorkflowConfig] {
-	return pulumix.Output[*WorkflowConfig]{
-		OutputState: i.ToWorkflowConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkflowConfigOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o WorkflowConfigOutput) ToWorkflowConfigOutput() WorkflowConfigOutput {
 
 func (o WorkflowConfigOutput) ToWorkflowConfigOutputWithContext(ctx context.Context) WorkflowConfigOutput {
 	return o
-}
-
-func (o WorkflowConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowConfig] {
-	return pulumix.Output[*WorkflowConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Optional schedule (in cron format) for automatic execution of this workflow config.

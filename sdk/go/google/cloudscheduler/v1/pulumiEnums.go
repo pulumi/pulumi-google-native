@@ -93,12 +93,6 @@ func (o AppEngineHttpTargetHttpMethodOutput) ToAppEngineHttpTargetHttpMethodPtrO
 	}).(AppEngineHttpTargetHttpMethodPtrOutput)
 }
 
-func (o AppEngineHttpTargetHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[AppEngineHttpTargetHttpMethod] {
-	return pulumix.Output[AppEngineHttpTargetHttpMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppEngineHttpTargetHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -132,12 +126,6 @@ func (o AppEngineHttpTargetHttpMethodPtrOutput) ToAppEngineHttpTargetHttpMethodP
 
 func (o AppEngineHttpTargetHttpMethodPtrOutput) ToAppEngineHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpTargetHttpMethodPtrOutput {
 	return o
-}
-
-func (o AppEngineHttpTargetHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpTargetHttpMethod] {
-	return pulumix.Output[*AppEngineHttpTargetHttpMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppEngineHttpTargetHttpMethodPtrOutput) Elem() AppEngineHttpTargetHttpMethodOutput {
@@ -290,12 +278,6 @@ func (o HttpTargetHttpMethodOutput) ToHttpTargetHttpMethodPtrOutputWithContext(c
 	}).(HttpTargetHttpMethodPtrOutput)
 }
 
-func (o HttpTargetHttpMethodOutput) ToOutput(ctx context.Context) pulumix.Output[HttpTargetHttpMethod] {
-	return pulumix.Output[HttpTargetHttpMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpTargetHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -329,12 +311,6 @@ func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutput() HttpTar
 
 func (o HttpTargetHttpMethodPtrOutput) ToHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) HttpTargetHttpMethodPtrOutput {
 	return o
-}
-
-func (o HttpTargetHttpMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpTargetHttpMethod] {
-	return pulumix.Output[*HttpTargetHttpMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpTargetHttpMethodPtrOutput) Elem() HttpTargetHttpMethodOutput {

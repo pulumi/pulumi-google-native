@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns information about the capacity commitment.
@@ -89,12 +88,6 @@ func (o LookupCapacityCommitmentResultOutput) ToLookupCapacityCommitmentResultOu
 
 func (o LookupCapacityCommitmentResultOutput) ToLookupCapacityCommitmentResultOutputWithContext(ctx context.Context) LookupCapacityCommitmentResultOutput {
 	return o
-}
-
-func (o LookupCapacityCommitmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCapacityCommitmentResult] {
-	return pulumix.Output[LookupCapacityCommitmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.

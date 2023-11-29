@@ -89,12 +89,6 @@ func (o CasePriorityOutput) ToCasePriorityPtrOutputWithContext(ctx context.Conte
 	}).(CasePriorityPtrOutput)
 }
 
-func (o CasePriorityOutput) ToOutput(ctx context.Context) pulumix.Output[CasePriority] {
-	return pulumix.Output[CasePriority]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CasePriorityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -128,12 +122,6 @@ func (o CasePriorityPtrOutput) ToCasePriorityPtrOutput() CasePriorityPtrOutput {
 
 func (o CasePriorityPtrOutput) ToCasePriorityPtrOutputWithContext(ctx context.Context) CasePriorityPtrOutput {
 	return o
-}
-
-func (o CasePriorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CasePriority] {
-	return pulumix.Output[*CasePriority]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CasePriorityPtrOutput) Elem() CasePriorityOutput {

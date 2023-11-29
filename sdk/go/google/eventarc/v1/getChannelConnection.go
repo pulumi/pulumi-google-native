@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a single ChannelConnection.
@@ -79,12 +78,6 @@ func (o LookupChannelConnectionResultOutput) ToLookupChannelConnectionResultOutp
 
 func (o LookupChannelConnectionResultOutput) ToLookupChannelConnectionResultOutputWithContext(ctx context.Context) LookupChannelConnectionResultOutput {
 	return o
-}
-
-func (o LookupChannelConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupChannelConnectionResult] {
-	return pulumix.Output[LookupChannelConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Input only. Activation token for the channel. The token will be used during the creation of ChannelConnection to bind the channel with the provider project. This field will not be stored in the provider resource.

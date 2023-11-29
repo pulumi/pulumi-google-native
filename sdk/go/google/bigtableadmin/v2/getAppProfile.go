@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about an app profile.
@@ -81,12 +80,6 @@ func (o LookupAppProfileResultOutput) ToLookupAppProfileResultOutput() LookupApp
 
 func (o LookupAppProfileResultOutput) ToLookupAppProfileResultOutputWithContext(ctx context.Context) LookupAppProfileResultOutput {
 	return o
-}
-
-func (o LookupAppProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppProfileResult] {
-	return pulumix.Output[LookupAppProfileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Long form description of the use case for this AppProfile.

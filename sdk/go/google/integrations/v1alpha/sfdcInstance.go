@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an sfdc instance record. Store the sfdc instance in Spanner. Returns the sfdc instance.
@@ -149,12 +148,6 @@ func (i *SfdcInstance) ToSfdcInstanceOutputWithContext(ctx context.Context) Sfdc
 	return pulumi.ToOutputWithContext(ctx, i).(SfdcInstanceOutput)
 }
 
-func (i *SfdcInstance) ToOutput(ctx context.Context) pulumix.Output[*SfdcInstance] {
-	return pulumix.Output[*SfdcInstance]{
-		OutputState: i.ToSfdcInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SfdcInstanceOutput struct{ *pulumi.OutputState }
 
 func (SfdcInstanceOutput) ElementType() reflect.Type {
@@ -167,12 +160,6 @@ func (o SfdcInstanceOutput) ToSfdcInstanceOutput() SfdcInstanceOutput {
 
 func (o SfdcInstanceOutput) ToSfdcInstanceOutputWithContext(ctx context.Context) SfdcInstanceOutput {
 	return o
-}
-
-func (o SfdcInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*SfdcInstance] {
-	return pulumix.Output[*SfdcInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of AuthConfigs that can be tried to open the channel to SFDC

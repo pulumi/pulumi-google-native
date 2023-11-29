@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Execution in a given project and location.
@@ -140,12 +139,6 @@ func (i *Execution) ToExecutionOutputWithContext(ctx context.Context) ExecutionO
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionOutput)
 }
 
-func (i *Execution) ToOutput(ctx context.Context) pulumix.Output[*Execution] {
-	return pulumix.Output[*Execution]{
-		OutputState: i.ToExecutionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExecutionOutput struct{ *pulumi.OutputState }
 
 func (ExecutionOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o ExecutionOutput) ToExecutionOutput() ExecutionOutput {
 
 func (o ExecutionOutput) ToExecutionOutputWithContext(ctx context.Context) ExecutionOutput {
 	return o
-}
-
-func (o ExecutionOutput) ToOutput(ctx context.Context) pulumix.Output[*Execution] {
-	return pulumix.Output[*Execution]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the Execution was instantiated.

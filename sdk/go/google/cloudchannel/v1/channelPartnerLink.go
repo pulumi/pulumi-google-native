@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Initiates a channel partner link between a distributor and a reseller, or between resellers in an n-tier reseller channel. Invited partners need to follow the invite_link_uri provided in the response to accept. After accepting the invitation, a link is set up between the two parties. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * ALREADY_EXISTS: The ChannelPartnerLink sent in the request already exists. * NOT_FOUND: No Cloud Identity customer exists for provided domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The new ChannelPartnerLink resource.
@@ -131,12 +130,6 @@ func (i *ChannelPartnerLink) ToChannelPartnerLinkOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ChannelPartnerLinkOutput)
 }
 
-func (i *ChannelPartnerLink) ToOutput(ctx context.Context) pulumix.Output[*ChannelPartnerLink] {
-	return pulumix.Output[*ChannelPartnerLink]{
-		OutputState: i.ToChannelPartnerLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ChannelPartnerLinkOutput struct{ *pulumi.OutputState }
 
 func (ChannelPartnerLinkOutput) ElementType() reflect.Type {
@@ -149,12 +142,6 @@ func (o ChannelPartnerLinkOutput) ToChannelPartnerLinkOutput() ChannelPartnerLin
 
 func (o ChannelPartnerLinkOutput) ToChannelPartnerLinkOutputWithContext(ctx context.Context) ChannelPartnerLinkOutput {
 	return o
-}
-
-func (o ChannelPartnerLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*ChannelPartnerLink] {
-	return pulumix.Output[*ChannelPartnerLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ChannelPartnerLinkOutput) AccountId() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified TargetHttpProxy resource.
@@ -89,12 +88,6 @@ func (o LookupTargetHttpProxyResultOutput) ToLookupTargetHttpProxyResultOutput()
 
 func (o LookupTargetHttpProxyResultOutput) ToLookupTargetHttpProxyResultOutputWithContext(ctx context.Context) LookupTargetHttpProxyResultOutput {
 	return o
-}
-
-func (o LookupTargetHttpProxyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTargetHttpProxyResult] {
-	return pulumix.Output[LookupTargetHttpProxyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

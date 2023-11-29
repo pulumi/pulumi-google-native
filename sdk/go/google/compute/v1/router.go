@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Router resource in the specified project and region using the data included in the request.
@@ -168,12 +167,6 @@ func (i *Router) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterOutput)
 }
 
-func (i *Router) ToOutput(ctx context.Context) pulumix.Output[*Router] {
-	return pulumix.Output[*Router]{
-		OutputState: i.ToRouterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterOutput struct{ *pulumi.OutputState }
 
 func (RouterOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o RouterOutput) ToRouterOutput() RouterOutput {
 
 func (o RouterOutput) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
 	return o
-}
-
-func (o RouterOutput) ToOutput(ctx context.Context) pulumix.Output[*Router] {
-	return pulumix.Output[*Router]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BGP information specific to this router.

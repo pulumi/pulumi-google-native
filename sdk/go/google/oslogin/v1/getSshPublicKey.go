@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an SSH public key.
@@ -73,12 +72,6 @@ func (o LookupSshPublicKeyResultOutput) ToLookupSshPublicKeyResultOutput() Looku
 
 func (o LookupSshPublicKeyResultOutput) ToLookupSshPublicKeyResultOutputWithContext(ctx context.Context) LookupSshPublicKeyResultOutput {
 	return o
-}
-
-func (o LookupSshPublicKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSshPublicKeyResult] {
-	return pulumix.Output[LookupSshPublicKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An expiration time in microseconds since epoch.

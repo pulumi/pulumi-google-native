@@ -83,12 +83,6 @@ func (o ConversationMediumOutput) ToConversationMediumPtrOutputWithContext(ctx c
 	}).(ConversationMediumPtrOutput)
 }
 
-func (o ConversationMediumOutput) ToOutput(ctx context.Context) pulumix.Output[ConversationMedium] {
-	return pulumix.Output[ConversationMedium]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConversationMediumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o ConversationMediumPtrOutput) ToConversationMediumPtrOutput() Conversatio
 
 func (o ConversationMediumPtrOutput) ToConversationMediumPtrOutputWithContext(ctx context.Context) ConversationMediumPtrOutput {
 	return o
-}
-
-func (o ConversationMediumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConversationMedium] {
-	return pulumix.Output[*ConversationMedium]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConversationMediumPtrOutput) Elem() ConversationMediumOutput {
@@ -268,12 +256,6 @@ func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSu
 	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput)
 }
 
-func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel] {
-	return pulumix.Output[GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -307,12 +289,6 @@ func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSu
 
 func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel] {
-	return pulumix.Output[*GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput) Elem() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelOutput {
@@ -455,12 +431,6 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput)
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput)
 }
 
-func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium] {
-	return pulumix.Output[GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -494,12 +464,6 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutp
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput) ToGoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium] {
-	return pulumix.Output[*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput) Elem() GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput {
@@ -642,12 +606,6 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput) ToGoog
 	}).(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput)
 }
 
-func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType] {
-	return pulumix.Output[GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -681,12 +639,6 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) ToG
 
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) ToGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType] {
-	return pulumix.Output[*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) Elem() GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput {
@@ -829,12 +781,6 @@ func (o IssueModelModelTypeOutput) ToIssueModelModelTypePtrOutputWithContext(ctx
 	}).(IssueModelModelTypePtrOutput)
 }
 
-func (o IssueModelModelTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IssueModelModelType] {
-	return pulumix.Output[IssueModelModelType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IssueModelModelTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -868,12 +814,6 @@ func (o IssueModelModelTypePtrOutput) ToIssueModelModelTypePtrOutput() IssueMode
 
 func (o IssueModelModelTypePtrOutput) ToIssueModelModelTypePtrOutputWithContext(ctx context.Context) IssueModelModelTypePtrOutput {
 	return o
-}
-
-func (o IssueModelModelTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IssueModelModelType] {
-	return pulumix.Output[*IssueModelModelType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IssueModelModelTypePtrOutput) Elem() IssueModelModelTypeOutput {
@@ -1020,12 +960,6 @@ func (o PhraseMatcherRoleMatchOutput) ToPhraseMatcherRoleMatchPtrOutputWithConte
 	}).(PhraseMatcherRoleMatchPtrOutput)
 }
 
-func (o PhraseMatcherRoleMatchOutput) ToOutput(ctx context.Context) pulumix.Output[PhraseMatcherRoleMatch] {
-	return pulumix.Output[PhraseMatcherRoleMatch]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PhraseMatcherRoleMatchOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1059,12 +993,6 @@ func (o PhraseMatcherRoleMatchPtrOutput) ToPhraseMatcherRoleMatchPtrOutput() Phr
 
 func (o PhraseMatcherRoleMatchPtrOutput) ToPhraseMatcherRoleMatchPtrOutputWithContext(ctx context.Context) PhraseMatcherRoleMatchPtrOutput {
 	return o
-}
-
-func (o PhraseMatcherRoleMatchPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PhraseMatcherRoleMatch] {
-	return pulumix.Output[*PhraseMatcherRoleMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PhraseMatcherRoleMatchPtrOutput) Elem() PhraseMatcherRoleMatchOutput {
@@ -1207,12 +1135,6 @@ func (o PhraseMatcherTypeOutput) ToPhraseMatcherTypePtrOutputWithContext(ctx con
 	}).(PhraseMatcherTypePtrOutput)
 }
 
-func (o PhraseMatcherTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PhraseMatcherType] {
-	return pulumix.Output[PhraseMatcherType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PhraseMatcherTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1246,12 +1168,6 @@ func (o PhraseMatcherTypePtrOutput) ToPhraseMatcherTypePtrOutput() PhraseMatcher
 
 func (o PhraseMatcherTypePtrOutput) ToPhraseMatcherTypePtrOutputWithContext(ctx context.Context) PhraseMatcherTypePtrOutput {
 	return o
-}
-
-func (o PhraseMatcherTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PhraseMatcherType] {
-	return pulumix.Output[*PhraseMatcherType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PhraseMatcherTypePtrOutput) Elem() PhraseMatcherTypeOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new private connection in a given project and location.
@@ -153,12 +152,6 @@ func (i *PrivateConnection) ToPrivateConnectionOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionOutput)
 }
 
-func (i *PrivateConnection) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnection] {
-	return pulumix.Output[*PrivateConnection]{
-		OutputState: i.ToPrivateConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateConnectionOutput struct{ *pulumi.OutputState }
 
 func (PrivateConnectionOutput) ElementType() reflect.Type {
@@ -171,12 +164,6 @@ func (o PrivateConnectionOutput) ToPrivateConnectionOutput() PrivateConnectionOu
 
 func (o PrivateConnectionOutput) ToPrivateConnectionOutputWithContext(ctx context.Context) PrivateConnectionOutput {
 	return o
-}
-
-func (o PrivateConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnection] {
-	return pulumix.Output[*PrivateConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The create time of the resource.

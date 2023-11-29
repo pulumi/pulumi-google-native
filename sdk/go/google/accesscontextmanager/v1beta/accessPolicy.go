@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
@@ -109,12 +108,6 @@ func (i *AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) Acce
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyOutput)
 }
 
-func (i *AccessPolicy) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicy] {
-	return pulumix.Output[*AccessPolicy]{
-		OutputState: i.ToAccessPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyOutput) ElementType() reflect.Type {
@@ -127,12 +120,6 @@ func (o AccessPolicyOutput) ToAccessPolicyOutput() AccessPolicyOutput {
 
 func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
 	return o
-}
-
-func (o AccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicy] {
-	return pulumix.Output[*AccessPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`

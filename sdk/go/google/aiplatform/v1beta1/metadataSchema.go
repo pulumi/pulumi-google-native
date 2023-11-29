@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a MetadataSchema.
@@ -146,12 +145,6 @@ func (i *MetadataSchema) ToMetadataSchemaOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataSchemaOutput)
 }
 
-func (i *MetadataSchema) ToOutput(ctx context.Context) pulumix.Output[*MetadataSchema] {
-	return pulumix.Output[*MetadataSchema]{
-		OutputState: i.ToMetadataSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetadataSchemaOutput struct{ *pulumi.OutputState }
 
 func (MetadataSchemaOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o MetadataSchemaOutput) ToMetadataSchemaOutput() MetadataSchemaOutput {
 
 func (o MetadataSchemaOutput) ToMetadataSchemaOutputWithContext(ctx context.Context) MetadataSchemaOutput {
 	return o
-}
-
-func (o MetadataSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataSchema] {
-	return pulumix.Output[*MetadataSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this MetadataSchema was created.

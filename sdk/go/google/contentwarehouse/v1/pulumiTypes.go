@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i GoogleCloudContentwarehouseV1AccessControlActionArgs) ToGoogleCloudConte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1AccessControlActionOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1AccessControlActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1AccessControlAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1AccessControlAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1AccessControlActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1AccessControlActionArgs) ToGoogleCloudContentwarehouseV1AccessControlActionPtrOutput() GoogleCloudContentwarehouseV1AccessControlActionPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1AccessControlActionPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *googleCloudContentwarehouseV1AccessControlActionPtrType) ToGoogleCloudC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1AccessControlActionPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1AccessControlActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1AccessControlAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1AccessControlAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1AccessControlActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the action responsible for access control list management operations.
 type GoogleCloudContentwarehouseV1AccessControlActionOutput struct{ *pulumi.OutputState }
 
@@ -129,12 +116,6 @@ func (o GoogleCloudContentwarehouseV1AccessControlActionOutput) ToGoogleCloudCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContentwarehouseV1AccessControlAction) *GoogleCloudContentwarehouseV1AccessControlAction {
 		return &v
 	}).(GoogleCloudContentwarehouseV1AccessControlActionPtrOutput)
-}
-
-func (o GoogleCloudContentwarehouseV1AccessControlActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1AccessControlAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1AccessControlAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifies the type of operation.
@@ -161,12 +142,6 @@ func (o GoogleCloudContentwarehouseV1AccessControlActionPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudContentwarehouseV1AccessControlActionPtrOutput) ToGoogleCloudContentwarehouseV1AccessControlActionPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1AccessControlActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1AccessControlActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1AccessControlAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1AccessControlAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1AccessControlActionPtrOutput) Elem() GoogleCloudContentwarehouseV1AccessControlActionOutput {
@@ -220,12 +195,6 @@ func (o GoogleCloudContentwarehouseV1AccessControlActionResponseOutput) ToGoogle
 
 func (o GoogleCloudContentwarehouseV1AccessControlActionResponseOutput) ToGoogleCloudContentwarehouseV1AccessControlActionResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1AccessControlActionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1AccessControlActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1AccessControlActionResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1AccessControlActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifies the type of operation.
@@ -303,12 +272,6 @@ func (i GoogleCloudContentwarehouseV1ActionArgs) ToGoogleCloudContentwarehouseV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1ActionOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1ActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1Action] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1Action]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1ActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudContentwarehouseV1ActionArrayInput is an input type that accepts GoogleCloudContentwarehouseV1ActionArray and GoogleCloudContentwarehouseV1ActionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudContentwarehouseV1ActionArrayInput` via:
 //
@@ -334,12 +297,6 @@ func (i GoogleCloudContentwarehouseV1ActionArray) ToGoogleCloudContentwarehouseV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1ActionArrayOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1ActionArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1Action] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1Action]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1ActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the action triggered by Rule Engine when the rule is true.
 type GoogleCloudContentwarehouseV1ActionOutput struct{ *pulumi.OutputState }
 
@@ -353,12 +310,6 @@ func (o GoogleCloudContentwarehouseV1ActionOutput) ToGoogleCloudContentwarehouse
 
 func (o GoogleCloudContentwarehouseV1ActionOutput) ToGoogleCloudContentwarehouseV1ActionOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1ActionOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1ActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1Action] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1Action]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action triggering access control operations.
@@ -429,12 +380,6 @@ func (o GoogleCloudContentwarehouseV1ActionArrayOutput) ToGoogleCloudContentware
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1ActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1Action] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1Action]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContentwarehouseV1ActionArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1ActionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1Action {
 		return vs[0].([]GoogleCloudContentwarehouseV1Action)[vs[1].(int)]
@@ -474,12 +419,6 @@ func (o GoogleCloudContentwarehouseV1ActionResponseOutput) ToGoogleCloudContentw
 
 func (o GoogleCloudContentwarehouseV1ActionResponseOutput) ToGoogleCloudContentwarehouseV1ActionResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1ActionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1ActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1ActionResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1ActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action triggering access control operations.
@@ -550,12 +489,6 @@ func (o GoogleCloudContentwarehouseV1ActionResponseArrayOutput) ToGoogleCloudCon
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1ActionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1ActionResponse] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1ActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContentwarehouseV1ActionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1ActionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1ActionResponse {
 		return vs[0].([]GoogleCloudContentwarehouseV1ActionResponse)[vs[1].(int)]
@@ -595,12 +528,6 @@ func (i GoogleCloudContentwarehouseV1AddToFolderActionArgs) ToGoogleCloudContent
 
 func (i GoogleCloudContentwarehouseV1AddToFolderActionArgs) ToGoogleCloudContentwarehouseV1AddToFolderActionOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1AddToFolderActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1AddToFolderActionOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1AddToFolderActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1AddToFolderAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1AddToFolderAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1AddToFolderActionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1AddToFolderActionArgs) ToGoogleCloudContentwarehouseV1AddToFolderActionPtrOutput() GoogleCloudContentwarehouseV1AddToFolderActionPtrOutput {
@@ -644,12 +571,6 @@ func (i *googleCloudContentwarehouseV1AddToFolderActionPtrType) ToGoogleCloudCon
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1AddToFolderActionPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1AddToFolderActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1AddToFolderAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1AddToFolderAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1AddToFolderActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the action responsible for adding document under a folder.
 type GoogleCloudContentwarehouseV1AddToFolderActionOutput struct{ *pulumi.OutputState }
 
@@ -675,12 +596,6 @@ func (o GoogleCloudContentwarehouseV1AddToFolderActionOutput) ToGoogleCloudConte
 	}).(GoogleCloudContentwarehouseV1AddToFolderActionPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1AddToFolderActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1AddToFolderAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1AddToFolderAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Names of the folder under which new document is to be added. Format: projects/{project_number}/locations/{location}/documents/{document_id}.
 func (o GoogleCloudContentwarehouseV1AddToFolderActionOutput) Folders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1AddToFolderAction) []string { return v.Folders }).(pulumi.StringArrayOutput)
@@ -698,12 +613,6 @@ func (o GoogleCloudContentwarehouseV1AddToFolderActionPtrOutput) ToGoogleCloudCo
 
 func (o GoogleCloudContentwarehouseV1AddToFolderActionPtrOutput) ToGoogleCloudContentwarehouseV1AddToFolderActionPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1AddToFolderActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1AddToFolderActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1AddToFolderAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1AddToFolderAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1AddToFolderActionPtrOutput) Elem() GoogleCloudContentwarehouseV1AddToFolderActionOutput {
@@ -745,12 +654,6 @@ func (o GoogleCloudContentwarehouseV1AddToFolderActionResponseOutput) ToGoogleCl
 
 func (o GoogleCloudContentwarehouseV1AddToFolderActionResponseOutput) ToGoogleCloudContentwarehouseV1AddToFolderActionResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1AddToFolderActionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1AddToFolderActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1AddToFolderActionResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1AddToFolderActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Names of the folder under which new document is to be added. Format: projects/{project_number}/locations/{location}/documents/{document_id}.
@@ -797,12 +700,6 @@ func (i GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs) ToGoogleCloudCon
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1CloudAIDocumentOptionOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1CloudAIDocumentOption] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1CloudAIDocumentOption]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1CloudAIDocumentOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs) ToGoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutput() GoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutputWithContext(context.Background())
 }
@@ -844,12 +741,6 @@ func (i *googleCloudContentwarehouseV1CloudAIDocumentOptionPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1CloudAIDocumentOptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1CloudAIDocumentOption] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1CloudAIDocumentOption]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Request Option for processing Cloud AI Document in CW Document.
 type GoogleCloudContentwarehouseV1CloudAIDocumentOptionOutput struct{ *pulumi.OutputState }
 
@@ -873,12 +764,6 @@ func (o GoogleCloudContentwarehouseV1CloudAIDocumentOptionOutput) ToGoogleCloudC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContentwarehouseV1CloudAIDocumentOption) *GoogleCloudContentwarehouseV1CloudAIDocumentOption {
 		return &v
 	}).(GoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutput)
-}
-
-func (o GoogleCloudContentwarehouseV1CloudAIDocumentOptionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1CloudAIDocumentOption] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1CloudAIDocumentOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If set, only selected entities will be converted to properties.
@@ -905,12 +790,6 @@ func (o GoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutput) ToGoogleClo
 
 func (o GoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutput) ToGoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1CloudAIDocumentOption] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1CloudAIDocumentOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrOutput) Elem() GoogleCloudContentwarehouseV1CloudAIDocumentOptionOutput {
@@ -978,12 +857,6 @@ func (i GoogleCloudContentwarehouseV1DataUpdateActionArgs) ToGoogleCloudContentw
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1DataUpdateActionOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1DataUpdateActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DataUpdateAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DataUpdateAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1DataUpdateActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1DataUpdateActionArgs) ToGoogleCloudContentwarehouseV1DataUpdateActionPtrOutput() GoogleCloudContentwarehouseV1DataUpdateActionPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1DataUpdateActionPtrOutputWithContext(context.Background())
 }
@@ -1025,12 +898,6 @@ func (i *googleCloudContentwarehouseV1DataUpdateActionPtrType) ToGoogleCloudCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1DataUpdateActionPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1DataUpdateActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1DataUpdateAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1DataUpdateAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1DataUpdateActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the action responsible for properties update operations.
 type GoogleCloudContentwarehouseV1DataUpdateActionOutput struct{ *pulumi.OutputState }
 
@@ -1056,12 +923,6 @@ func (o GoogleCloudContentwarehouseV1DataUpdateActionOutput) ToGoogleCloudConten
 	}).(GoogleCloudContentwarehouseV1DataUpdateActionPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1DataUpdateActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DataUpdateAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DataUpdateAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Map of (K, V) -> (valid name of the field, new value of the field) E.g., ("age", "60") entry triggers update of field age with a value of 60. If the field is not present then new entry is added. During update action execution, value strings will be casted to appropriate types.
 func (o GoogleCloudContentwarehouseV1DataUpdateActionOutput) Entries() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1DataUpdateAction) map[string]string { return v.Entries }).(pulumi.StringMapOutput)
@@ -1079,12 +940,6 @@ func (o GoogleCloudContentwarehouseV1DataUpdateActionPtrOutput) ToGoogleCloudCon
 
 func (o GoogleCloudContentwarehouseV1DataUpdateActionPtrOutput) ToGoogleCloudContentwarehouseV1DataUpdateActionPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1DataUpdateActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1DataUpdateActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1DataUpdateAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1DataUpdateAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1DataUpdateActionPtrOutput) Elem() GoogleCloudContentwarehouseV1DataUpdateActionOutput {
@@ -1128,12 +983,6 @@ func (o GoogleCloudContentwarehouseV1DataUpdateActionResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1DataUpdateActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DataUpdateActionResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DataUpdateActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Map of (K, V) -> (valid name of the field, new value of the field) E.g., ("age", "60") entry triggers update of field age with a value of 60. If the field is not present then new entry is added. During update action execution, value strings will be casted to appropriate types.
 func (o GoogleCloudContentwarehouseV1DataUpdateActionResponseOutput) Entries() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1DataUpdateActionResponse) map[string]string { return v.Entries }).(pulumi.StringMapOutput)
@@ -1172,12 +1021,6 @@ func (i GoogleCloudContentwarehouseV1DataValidationActionArgs) ToGoogleCloudCont
 
 func (i GoogleCloudContentwarehouseV1DataValidationActionArgs) ToGoogleCloudContentwarehouseV1DataValidationActionOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1DataValidationActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1DataValidationActionOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1DataValidationActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DataValidationAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DataValidationAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1DataValidationActionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1DataValidationActionArgs) ToGoogleCloudContentwarehouseV1DataValidationActionPtrOutput() GoogleCloudContentwarehouseV1DataValidationActionPtrOutput {
@@ -1221,12 +1064,6 @@ func (i *googleCloudContentwarehouseV1DataValidationActionPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1DataValidationActionPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1DataValidationActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1DataValidationAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1DataValidationAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1DataValidationActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the action responsible for data validation operations.
 type GoogleCloudContentwarehouseV1DataValidationActionOutput struct{ *pulumi.OutputState }
 
@@ -1252,12 +1089,6 @@ func (o GoogleCloudContentwarehouseV1DataValidationActionOutput) ToGoogleCloudCo
 	}).(GoogleCloudContentwarehouseV1DataValidationActionPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1DataValidationActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DataValidationAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DataValidationAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Map of (K, V) -> (field, string condition to be evaluated on the field) E.g., ("age", "age > 18 && age < 60") entry triggers validation of field age with the given condition. Map entries will be ANDed during validation.
 func (o GoogleCloudContentwarehouseV1DataValidationActionOutput) Conditions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1DataValidationAction) map[string]string { return v.Conditions }).(pulumi.StringMapOutput)
@@ -1275,12 +1106,6 @@ func (o GoogleCloudContentwarehouseV1DataValidationActionPtrOutput) ToGoogleClou
 
 func (o GoogleCloudContentwarehouseV1DataValidationActionPtrOutput) ToGoogleCloudContentwarehouseV1DataValidationActionPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1DataValidationActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1DataValidationActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1DataValidationAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1DataValidationAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1DataValidationActionPtrOutput) Elem() GoogleCloudContentwarehouseV1DataValidationActionOutput {
@@ -1322,12 +1147,6 @@ func (o GoogleCloudContentwarehouseV1DataValidationActionResponseOutput) ToGoogl
 
 func (o GoogleCloudContentwarehouseV1DataValidationActionResponseOutput) ToGoogleCloudContentwarehouseV1DataValidationActionResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1DataValidationActionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1DataValidationActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DataValidationActionResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DataValidationActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Map of (K, V) -> (field, string condition to be evaluated on the field) E.g., ("age", "age > 18 && age < 60") entry triggers validation of field age with the given condition. Map entries will be ANDed during validation.
@@ -1372,12 +1191,6 @@ func (i GoogleCloudContentwarehouseV1DateTimeArrayArgs) ToGoogleCloudContentware
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1DateTimeArrayOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1DateTimeArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DateTimeArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DateTimeArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1DateTimeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1DateTimeArrayArgs) ToGoogleCloudContentwarehouseV1DateTimeArrayPtrOutput() GoogleCloudContentwarehouseV1DateTimeArrayPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1DateTimeArrayPtrOutputWithContext(context.Background())
 }
@@ -1419,12 +1232,6 @@ func (i *googleCloudContentwarehouseV1DateTimeArrayPtrType) ToGoogleCloudContent
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1DateTimeArrayPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1DateTimeArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1DateTimeArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1DateTimeArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1DateTimeArrayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DateTime values.
 type GoogleCloudContentwarehouseV1DateTimeArrayOutput struct{ *pulumi.OutputState }
 
@@ -1450,12 +1257,6 @@ func (o GoogleCloudContentwarehouseV1DateTimeArrayOutput) ToGoogleCloudContentwa
 	}).(GoogleCloudContentwarehouseV1DateTimeArrayPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1DateTimeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DateTimeArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DateTimeArray]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of datetime values. Both OffsetDateTime and ZonedDateTime are supported.
 func (o GoogleCloudContentwarehouseV1DateTimeArrayOutput) Values() GoogleTypeDateTimeArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1DateTimeArray) []GoogleTypeDateTime { return v.Values }).(GoogleTypeDateTimeArrayOutput)
@@ -1473,12 +1274,6 @@ func (o GoogleCloudContentwarehouseV1DateTimeArrayPtrOutput) ToGoogleCloudConten
 
 func (o GoogleCloudContentwarehouseV1DateTimeArrayPtrOutput) ToGoogleCloudContentwarehouseV1DateTimeArrayPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1DateTimeArrayPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1DateTimeArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1DateTimeArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1DateTimeArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1DateTimeArrayPtrOutput) Elem() GoogleCloudContentwarehouseV1DateTimeArrayOutput {
@@ -1522,12 +1317,6 @@ func (o GoogleCloudContentwarehouseV1DateTimeArrayResponseOutput) ToGoogleCloudC
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1DateTimeArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DateTimeArrayResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DateTimeArrayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of datetime values. Both OffsetDateTime and ZonedDateTime are supported.
 func (o GoogleCloudContentwarehouseV1DateTimeArrayResponseOutput) Values() GoogleTypeDateTimeResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1DateTimeArrayResponse) []GoogleTypeDateTimeResponse {
@@ -1564,12 +1353,6 @@ func (i GoogleCloudContentwarehouseV1DateTimeTypeOptionsArgs) ToGoogleCloudConte
 
 func (i GoogleCloudContentwarehouseV1DateTimeTypeOptionsArgs) ToGoogleCloudContentwarehouseV1DateTimeTypeOptionsOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1DateTimeTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1DateTimeTypeOptionsOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1DateTimeTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DateTimeTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DateTimeTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1DateTimeTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1DateTimeTypeOptionsArgs) ToGoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput() GoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput {
@@ -1613,12 +1396,6 @@ func (i *googleCloudContentwarehouseV1DateTimeTypeOptionsPtrType) ToGoogleCloudC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1DateTimeTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1DateTimeTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1DateTimeTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for a date time property.
 type GoogleCloudContentwarehouseV1DateTimeTypeOptionsOutput struct{ *pulumi.OutputState }
 
@@ -1644,12 +1421,6 @@ func (o GoogleCloudContentwarehouseV1DateTimeTypeOptionsOutput) ToGoogleCloudCon
 	}).(GoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1DateTimeTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DateTimeTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DateTimeTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -1662,12 +1433,6 @@ func (o GoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput) ToGoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1DateTimeTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1DateTimeTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1DateTimeTypeOptionsPtrOutput) Elem() GoogleCloudContentwarehouseV1DateTimeTypeOptionsOutput {
@@ -1697,12 +1462,6 @@ func (o GoogleCloudContentwarehouseV1DateTimeTypeOptionsResponseOutput) ToGoogle
 
 func (o GoogleCloudContentwarehouseV1DateTimeTypeOptionsResponseOutput) ToGoogleCloudContentwarehouseV1DateTimeTypeOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1DateTimeTypeOptionsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1DateTimeTypeOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DateTimeTypeOptionsResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DateTimeTypeOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents the action responsible for deleting the document.
@@ -1738,12 +1497,6 @@ func (i GoogleCloudContentwarehouseV1DeleteDocumentActionArgs) ToGoogleCloudCont
 
 func (i GoogleCloudContentwarehouseV1DeleteDocumentActionArgs) ToGoogleCloudContentwarehouseV1DeleteDocumentActionOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1DeleteDocumentActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1DeleteDocumentActionOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1DeleteDocumentActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DeleteDocumentAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DeleteDocumentAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1DeleteDocumentActionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1DeleteDocumentActionArgs) ToGoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutput() GoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutput {
@@ -1787,12 +1540,6 @@ func (i *googleCloudContentwarehouseV1DeleteDocumentActionPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1DeleteDocumentActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1DeleteDocumentAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1DeleteDocumentAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the action responsible for deleting the document.
 type GoogleCloudContentwarehouseV1DeleteDocumentActionOutput struct{ *pulumi.OutputState }
 
@@ -1818,12 +1565,6 @@ func (o GoogleCloudContentwarehouseV1DeleteDocumentActionOutput) ToGoogleCloudCo
 	}).(GoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1DeleteDocumentActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DeleteDocumentAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DeleteDocumentAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Boolean field to select between hard vs soft delete options. Set 'true' for 'hard delete' and 'false' for 'soft delete'.
 func (o GoogleCloudContentwarehouseV1DeleteDocumentActionOutput) EnableHardDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1DeleteDocumentAction) *bool { return v.EnableHardDelete }).(pulumi.BoolPtrOutput)
@@ -1841,12 +1582,6 @@ func (o GoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutput) ToGoogleClou
 
 func (o GoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutput) ToGoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1DeleteDocumentAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1DeleteDocumentAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1DeleteDocumentActionPtrOutput) Elem() GoogleCloudContentwarehouseV1DeleteDocumentActionOutput {
@@ -1890,12 +1625,6 @@ func (o GoogleCloudContentwarehouseV1DeleteDocumentActionResponseOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1DeleteDocumentActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1DeleteDocumentActionResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1DeleteDocumentActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Boolean field to select between hard vs soft delete options. Set 'true' for 'hard delete' and 'false' for 'soft delete'.
 func (o GoogleCloudContentwarehouseV1DeleteDocumentActionResponseOutput) EnableHardDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1DeleteDocumentActionResponse) bool { return v.EnableHardDelete }).(pulumi.BoolOutput)
@@ -1934,12 +1663,6 @@ func (i GoogleCloudContentwarehouseV1EnumArrayArgs) ToGoogleCloudContentwarehous
 
 func (i GoogleCloudContentwarehouseV1EnumArrayArgs) ToGoogleCloudContentwarehouseV1EnumArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1EnumArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1EnumArrayOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1EnumArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1EnumArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1EnumArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1EnumArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1EnumArrayArgs) ToGoogleCloudContentwarehouseV1EnumArrayPtrOutput() GoogleCloudContentwarehouseV1EnumArrayPtrOutput {
@@ -1983,12 +1706,6 @@ func (i *googleCloudContentwarehouseV1EnumArrayPtrType) ToGoogleCloudContentware
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1EnumArrayPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1EnumArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1EnumArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1EnumArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1EnumArrayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enum values.
 type GoogleCloudContentwarehouseV1EnumArrayOutput struct{ *pulumi.OutputState }
 
@@ -2014,12 +1731,6 @@ func (o GoogleCloudContentwarehouseV1EnumArrayOutput) ToGoogleCloudContentwareho
 	}).(GoogleCloudContentwarehouseV1EnumArrayPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1EnumArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1EnumArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1EnumArray]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of enum values.
 func (o GoogleCloudContentwarehouseV1EnumArrayOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1EnumArray) []string { return v.Values }).(pulumi.StringArrayOutput)
@@ -2037,12 +1748,6 @@ func (o GoogleCloudContentwarehouseV1EnumArrayPtrOutput) ToGoogleCloudContentwar
 
 func (o GoogleCloudContentwarehouseV1EnumArrayPtrOutput) ToGoogleCloudContentwarehouseV1EnumArrayPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1EnumArrayPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1EnumArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1EnumArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1EnumArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1EnumArrayPtrOutput) Elem() GoogleCloudContentwarehouseV1EnumArrayOutput {
@@ -2084,12 +1789,6 @@ func (o GoogleCloudContentwarehouseV1EnumArrayResponseOutput) ToGoogleCloudConte
 
 func (o GoogleCloudContentwarehouseV1EnumArrayResponseOutput) ToGoogleCloudContentwarehouseV1EnumArrayResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1EnumArrayResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1EnumArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1EnumArrayResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1EnumArrayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of enum values.
@@ -2136,12 +1835,6 @@ func (i GoogleCloudContentwarehouseV1EnumTypeOptionsArgs) ToGoogleCloudContentwa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1EnumTypeOptionsOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1EnumTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1EnumTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1EnumTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1EnumTypeOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1EnumTypeOptionsArgs) ToGoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutput() GoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutputWithContext(context.Background())
 }
@@ -2183,12 +1876,6 @@ func (i *googleCloudContentwarehouseV1EnumTypeOptionsPtrType) ToGoogleCloudConte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1EnumTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1EnumTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1EnumTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for an enum/categorical property.
 type GoogleCloudContentwarehouseV1EnumTypeOptionsOutput struct{ *pulumi.OutputState }
 
@@ -2214,12 +1901,6 @@ func (o GoogleCloudContentwarehouseV1EnumTypeOptionsOutput) ToGoogleCloudContent
 	}).(GoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1EnumTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1EnumTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1EnumTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of possible enum values.
 func (o GoogleCloudContentwarehouseV1EnumTypeOptionsOutput) PossibleValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1EnumTypeOptions) []string { return v.PossibleValues }).(pulumi.StringArrayOutput)
@@ -2242,12 +1923,6 @@ func (o GoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutput) ToGoogleCloudCont
 
 func (o GoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutput) ToGoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1EnumTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1EnumTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1EnumTypeOptionsPtrOutput) Elem() GoogleCloudContentwarehouseV1EnumTypeOptionsOutput {
@@ -2303,12 +1978,6 @@ func (o GoogleCloudContentwarehouseV1EnumTypeOptionsResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1EnumTypeOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1EnumTypeOptionsResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1EnumTypeOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of possible enum values.
 func (o GoogleCloudContentwarehouseV1EnumTypeOptionsResponseOutput) PossibleValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1EnumTypeOptionsResponse) []string { return v.PossibleValues }).(pulumi.StringArrayOutput)
@@ -2354,12 +2023,6 @@ func (i GoogleCloudContentwarehouseV1FloatArrayArgs) ToGoogleCloudContentwarehou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1FloatArrayOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1FloatArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1FloatArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1FloatArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1FloatArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1FloatArrayArgs) ToGoogleCloudContentwarehouseV1FloatArrayPtrOutput() GoogleCloudContentwarehouseV1FloatArrayPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1FloatArrayPtrOutputWithContext(context.Background())
 }
@@ -2401,12 +2064,6 @@ func (i *googleCloudContentwarehouseV1FloatArrayPtrType) ToGoogleCloudContentwar
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1FloatArrayPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1FloatArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1FloatArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1FloatArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1FloatArrayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Float values.
 type GoogleCloudContentwarehouseV1FloatArrayOutput struct{ *pulumi.OutputState }
 
@@ -2432,12 +2089,6 @@ func (o GoogleCloudContentwarehouseV1FloatArrayOutput) ToGoogleCloudContentwareh
 	}).(GoogleCloudContentwarehouseV1FloatArrayPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1FloatArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1FloatArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1FloatArray]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of float values.
 func (o GoogleCloudContentwarehouseV1FloatArrayOutput) Values() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1FloatArray) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
@@ -2455,12 +2106,6 @@ func (o GoogleCloudContentwarehouseV1FloatArrayPtrOutput) ToGoogleCloudContentwa
 
 func (o GoogleCloudContentwarehouseV1FloatArrayPtrOutput) ToGoogleCloudContentwarehouseV1FloatArrayPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1FloatArrayPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1FloatArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1FloatArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1FloatArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1FloatArrayPtrOutput) Elem() GoogleCloudContentwarehouseV1FloatArrayOutput {
@@ -2504,12 +2149,6 @@ func (o GoogleCloudContentwarehouseV1FloatArrayResponseOutput) ToGoogleCloudCont
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1FloatArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1FloatArrayResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1FloatArrayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of float values.
 func (o GoogleCloudContentwarehouseV1FloatArrayResponseOutput) Values() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1FloatArrayResponse) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
@@ -2544,12 +2183,6 @@ func (i GoogleCloudContentwarehouseV1FloatTypeOptionsArgs) ToGoogleCloudContentw
 
 func (i GoogleCloudContentwarehouseV1FloatTypeOptionsArgs) ToGoogleCloudContentwarehouseV1FloatTypeOptionsOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1FloatTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1FloatTypeOptionsOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1FloatTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1FloatTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1FloatTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1FloatTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1FloatTypeOptionsArgs) ToGoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput() GoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput {
@@ -2593,12 +2226,6 @@ func (i *googleCloudContentwarehouseV1FloatTypeOptionsPtrType) ToGoogleCloudCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1FloatTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1FloatTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1FloatTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for a float property.
 type GoogleCloudContentwarehouseV1FloatTypeOptionsOutput struct{ *pulumi.OutputState }
 
@@ -2624,12 +2251,6 @@ func (o GoogleCloudContentwarehouseV1FloatTypeOptionsOutput) ToGoogleCloudConten
 	}).(GoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1FloatTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1FloatTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1FloatTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -2642,12 +2263,6 @@ func (o GoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput) ToGoogleCloudCon
 
 func (o GoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput) ToGoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1FloatTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1FloatTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1FloatTypeOptionsPtrOutput) Elem() GoogleCloudContentwarehouseV1FloatTypeOptionsOutput {
@@ -2677,12 +2292,6 @@ func (o GoogleCloudContentwarehouseV1FloatTypeOptionsResponseOutput) ToGoogleClo
 
 func (o GoogleCloudContentwarehouseV1FloatTypeOptionsResponseOutput) ToGoogleCloudContentwarehouseV1FloatTypeOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1FloatTypeOptionsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1FloatTypeOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1FloatTypeOptionsResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1FloatTypeOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Integer values.
@@ -2718,12 +2327,6 @@ func (i GoogleCloudContentwarehouseV1IntegerArrayArgs) ToGoogleCloudContentwareh
 
 func (i GoogleCloudContentwarehouseV1IntegerArrayArgs) ToGoogleCloudContentwarehouseV1IntegerArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1IntegerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1IntegerArrayOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1IntegerArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1IntegerArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1IntegerArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1IntegerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1IntegerArrayArgs) ToGoogleCloudContentwarehouseV1IntegerArrayPtrOutput() GoogleCloudContentwarehouseV1IntegerArrayPtrOutput {
@@ -2767,12 +2370,6 @@ func (i *googleCloudContentwarehouseV1IntegerArrayPtrType) ToGoogleCloudContentw
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1IntegerArrayPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1IntegerArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1IntegerArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1IntegerArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1IntegerArrayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Integer values.
 type GoogleCloudContentwarehouseV1IntegerArrayOutput struct{ *pulumi.OutputState }
 
@@ -2798,12 +2395,6 @@ func (o GoogleCloudContentwarehouseV1IntegerArrayOutput) ToGoogleCloudContentwar
 	}).(GoogleCloudContentwarehouseV1IntegerArrayPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1IntegerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1IntegerArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1IntegerArray]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of integer values.
 func (o GoogleCloudContentwarehouseV1IntegerArrayOutput) Values() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1IntegerArray) []int { return v.Values }).(pulumi.IntArrayOutput)
@@ -2821,12 +2412,6 @@ func (o GoogleCloudContentwarehouseV1IntegerArrayPtrOutput) ToGoogleCloudContent
 
 func (o GoogleCloudContentwarehouseV1IntegerArrayPtrOutput) ToGoogleCloudContentwarehouseV1IntegerArrayPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1IntegerArrayPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1IntegerArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1IntegerArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1IntegerArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1IntegerArrayPtrOutput) Elem() GoogleCloudContentwarehouseV1IntegerArrayOutput {
@@ -2870,12 +2455,6 @@ func (o GoogleCloudContentwarehouseV1IntegerArrayResponseOutput) ToGoogleCloudCo
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1IntegerArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1IntegerArrayResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1IntegerArrayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of integer values.
 func (o GoogleCloudContentwarehouseV1IntegerArrayResponseOutput) Values() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1IntegerArrayResponse) []int { return v.Values }).(pulumi.IntArrayOutput)
@@ -2910,12 +2489,6 @@ func (i GoogleCloudContentwarehouseV1IntegerTypeOptionsArgs) ToGoogleCloudConten
 
 func (i GoogleCloudContentwarehouseV1IntegerTypeOptionsArgs) ToGoogleCloudContentwarehouseV1IntegerTypeOptionsOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1IntegerTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1IntegerTypeOptionsOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1IntegerTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1IntegerTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1IntegerTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1IntegerTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1IntegerTypeOptionsArgs) ToGoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput() GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput {
@@ -2959,12 +2532,6 @@ func (i *googleCloudContentwarehouseV1IntegerTypeOptionsPtrType) ToGoogleCloudCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1IntegerTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1IntegerTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1IntegerTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for an integer property.
 type GoogleCloudContentwarehouseV1IntegerTypeOptionsOutput struct{ *pulumi.OutputState }
 
@@ -2990,12 +2557,6 @@ func (o GoogleCloudContentwarehouseV1IntegerTypeOptionsOutput) ToGoogleCloudCont
 	}).(GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1IntegerTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1IntegerTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1IntegerTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -3008,12 +2569,6 @@ func (o GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput) ToGoogleCloudC
 
 func (o GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput) ToGoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1IntegerTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1IntegerTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrOutput) Elem() GoogleCloudContentwarehouseV1IntegerTypeOptionsOutput {
@@ -3043,12 +2598,6 @@ func (o GoogleCloudContentwarehouseV1IntegerTypeOptionsResponseOutput) ToGoogleC
 
 func (o GoogleCloudContentwarehouseV1IntegerTypeOptionsResponseOutput) ToGoogleCloudContentwarehouseV1IntegerTypeOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1IntegerTypeOptionsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1IntegerTypeOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1IntegerTypeOptionsResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1IntegerTypeOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
@@ -3084,12 +2633,6 @@ func (i GoogleCloudContentwarehouseV1MapPropertyArgs) ToGoogleCloudContentwareho
 
 func (i GoogleCloudContentwarehouseV1MapPropertyArgs) ToGoogleCloudContentwarehouseV1MapPropertyOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1MapPropertyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1MapPropertyOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1MapPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1MapProperty] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1MapProperty]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1MapPropertyOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1MapPropertyArgs) ToGoogleCloudContentwarehouseV1MapPropertyPtrOutput() GoogleCloudContentwarehouseV1MapPropertyPtrOutput {
@@ -3133,12 +2676,6 @@ func (i *googleCloudContentwarehouseV1MapPropertyPtrType) ToGoogleCloudContentwa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1MapPropertyPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1MapPropertyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1MapProperty] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1MapProperty]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1MapPropertyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
 type GoogleCloudContentwarehouseV1MapPropertyOutput struct{ *pulumi.OutputState }
 
@@ -3164,12 +2701,6 @@ func (o GoogleCloudContentwarehouseV1MapPropertyOutput) ToGoogleCloudContentware
 	}).(GoogleCloudContentwarehouseV1MapPropertyPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1MapPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1MapProperty] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1MapProperty]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Unordered map of dynamically typed values.
 func (o GoogleCloudContentwarehouseV1MapPropertyOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1MapProperty) map[string]string { return v.Fields }).(pulumi.StringMapOutput)
@@ -3187,12 +2718,6 @@ func (o GoogleCloudContentwarehouseV1MapPropertyPtrOutput) ToGoogleCloudContentw
 
 func (o GoogleCloudContentwarehouseV1MapPropertyPtrOutput) ToGoogleCloudContentwarehouseV1MapPropertyPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1MapPropertyPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1MapPropertyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1MapProperty] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1MapProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1MapPropertyPtrOutput) Elem() GoogleCloudContentwarehouseV1MapPropertyOutput {
@@ -3236,12 +2761,6 @@ func (o GoogleCloudContentwarehouseV1MapPropertyResponseOutput) ToGoogleCloudCon
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1MapPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1MapPropertyResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1MapPropertyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Unordered map of dynamically typed values.
 func (o GoogleCloudContentwarehouseV1MapPropertyResponseOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1MapPropertyResponse) map[string]string { return v.Fields }).(pulumi.StringMapOutput)
@@ -3276,12 +2795,6 @@ func (i GoogleCloudContentwarehouseV1MapTypeOptionsArgs) ToGoogleCloudContentwar
 
 func (i GoogleCloudContentwarehouseV1MapTypeOptionsArgs) ToGoogleCloudContentwarehouseV1MapTypeOptionsOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1MapTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1MapTypeOptionsOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1MapTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1MapTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1MapTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1MapTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1MapTypeOptionsArgs) ToGoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput() GoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput {
@@ -3325,12 +2838,6 @@ func (i *googleCloudContentwarehouseV1MapTypeOptionsPtrType) ToGoogleCloudConten
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1MapTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1MapTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1MapTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1MapTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for a Map property.
 type GoogleCloudContentwarehouseV1MapTypeOptionsOutput struct{ *pulumi.OutputState }
 
@@ -3356,12 +2863,6 @@ func (o GoogleCloudContentwarehouseV1MapTypeOptionsOutput) ToGoogleCloudContentw
 	}).(GoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1MapTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1MapTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1MapTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -3374,12 +2875,6 @@ func (o GoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput) ToGoogleCloudConte
 
 func (o GoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput) ToGoogleCloudContentwarehouseV1MapTypeOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1MapTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1MapTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1MapTypeOptionsPtrOutput) Elem() GoogleCloudContentwarehouseV1MapTypeOptionsOutput {
@@ -3409,12 +2904,6 @@ func (o GoogleCloudContentwarehouseV1MapTypeOptionsResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudContentwarehouseV1MapTypeOptionsResponseOutput) ToGoogleCloudContentwarehouseV1MapTypeOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1MapTypeOptionsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1MapTypeOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1MapTypeOptionsResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1MapTypeOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Options for merging updated fields.
@@ -3492,12 +2981,6 @@ func (i GoogleCloudContentwarehouseV1PropertyArgs) ToGoogleCloudContentwarehouse
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1PropertyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1Property] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1Property]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Property of a document.
 type GoogleCloudContentwarehouseV1PropertyOutput struct{ *pulumi.OutputState }
 
@@ -3511,12 +2994,6 @@ func (o GoogleCloudContentwarehouseV1PropertyOutput) ToGoogleCloudContentwarehou
 
 func (o GoogleCloudContentwarehouseV1PropertyOutput) ToGoogleCloudContentwarehouseV1PropertyOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1Property] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1Property]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Date time property values. It is not supported by CMEK compliant deployment.
@@ -3615,12 +3092,6 @@ func (i GoogleCloudContentwarehouseV1PropertyArrayArgs) ToGoogleCloudContentware
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyArrayOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1PropertyArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PropertyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1PropertyArrayArgs) ToGoogleCloudContentwarehouseV1PropertyArrayPtrOutput() GoogleCloudContentwarehouseV1PropertyArrayPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1PropertyArrayPtrOutputWithContext(context.Background())
 }
@@ -3662,12 +3133,6 @@ func (i *googleCloudContentwarehouseV1PropertyArrayPtrType) ToGoogleCloudContent
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyArrayPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1PropertyArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1PropertyArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1PropertyArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PropertyArrayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Property values.
 type GoogleCloudContentwarehouseV1PropertyArrayOutput struct{ *pulumi.OutputState }
 
@@ -3693,12 +3158,6 @@ func (o GoogleCloudContentwarehouseV1PropertyArrayOutput) ToGoogleCloudContentwa
 	}).(GoogleCloudContentwarehouseV1PropertyArrayPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1PropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyArray]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of property values.
 func (o GoogleCloudContentwarehouseV1PropertyArrayOutput) Properties() GoogleCloudContentwarehouseV1PropertyArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyArray) []GoogleCloudContentwarehouseV1Property {
@@ -3718,12 +3177,6 @@ func (o GoogleCloudContentwarehouseV1PropertyArrayPtrOutput) ToGoogleCloudConten
 
 func (o GoogleCloudContentwarehouseV1PropertyArrayPtrOutput) ToGoogleCloudContentwarehouseV1PropertyArrayPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyArrayPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1PropertyArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1PropertyArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1PropertyArrayPtrOutput) Elem() GoogleCloudContentwarehouseV1PropertyArrayOutput {
@@ -3765,12 +3218,6 @@ func (o GoogleCloudContentwarehouseV1PropertyArrayResponseOutput) ToGoogleCloudC
 
 func (o GoogleCloudContentwarehouseV1PropertyArrayResponseOutput) ToGoogleCloudContentwarehouseV1PropertyArrayResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyArrayResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyArrayResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyArrayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of property values.
@@ -3879,12 +3326,6 @@ func (i GoogleCloudContentwarehouseV1PropertyDefinitionArgs) ToGoogleCloudConten
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyDefinitionOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1PropertyDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinition] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinition]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PropertyDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudContentwarehouseV1PropertyDefinitionArrayInput is an input type that accepts GoogleCloudContentwarehouseV1PropertyDefinitionArray and GoogleCloudContentwarehouseV1PropertyDefinitionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudContentwarehouseV1PropertyDefinitionArrayInput` via:
 //
@@ -3910,12 +3351,6 @@ func (i GoogleCloudContentwarehouseV1PropertyDefinitionArray) ToGoogleCloudConte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyDefinitionArrayOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1PropertyDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinition] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinition]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PropertyDefinitionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the metadata for a schema property.
 type GoogleCloudContentwarehouseV1PropertyDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -3929,12 +3364,6 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionOutput) ToGoogleCloudCont
 
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinition] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Date time property. It is not supported by CMEK compliant deployment.
@@ -4056,12 +3485,6 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionArrayOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1PropertyDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinition] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1PropertyDefinitionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1PropertyDefinition {
 		return vs[0].([]GoogleCloudContentwarehouseV1PropertyDefinition)[vs[1].(int)]
@@ -4119,12 +3542,6 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput) ToGoogleC
 
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinitionResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Date time property. It is not supported by CMEK compliant deployment.
@@ -4244,12 +3661,6 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseArrayOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinitionResponse] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1PropertyDefinitionResponse {
 		return vs[0].([]GoogleCloudContentwarehouseV1PropertyDefinitionResponse)[vs[1].(int)]
@@ -4295,12 +3706,6 @@ func (i GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayInput is an input type that accepts GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArray and GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayInput` via:
 //
@@ -4326,12 +3731,6 @@ func (i GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArray) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The schema source information.
 type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput struct{ *pulumi.OutputState }
 
@@ -4345,12 +3744,6 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput) ToGoo
 
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The schema name in the source.
@@ -4375,12 +3768,6 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput) 
 
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput {
@@ -4412,12 +3799,6 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutpu
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The schema name in the source.
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4442,12 +3823,6 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArray
 
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput {
@@ -4491,12 +3866,6 @@ func (o GoogleCloudContentwarehouseV1PropertyResponseOutput) ToGoogleCloudConten
 
 func (o GoogleCloudContentwarehouseV1PropertyResponseOutput) ToGoogleCloudContentwarehouseV1PropertyResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Date time property values. It is not supported by CMEK compliant deployment.
@@ -4574,12 +3943,6 @@ func (o GoogleCloudContentwarehouseV1PropertyResponseArrayOutput) ToGoogleCloudC
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1PropertyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyResponse] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1PropertyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContentwarehouseV1PropertyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1PropertyResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1PropertyResponse {
 		return vs[0].([]GoogleCloudContentwarehouseV1PropertyResponse)[vs[1].(int)]
@@ -4619,12 +3982,6 @@ func (i GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs) ToGoogleCloudConte
 
 func (i GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs) ToGoogleCloudContentwarehouseV1PropertyTypeOptionsOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyTypeOptionsOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PropertyTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs) ToGoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutput() GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutput {
@@ -4668,12 +4025,6 @@ func (i *googleCloudContentwarehouseV1PropertyTypeOptionsPtrType) ToGoogleCloudC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1PropertyTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1PropertyTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1PropertyTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for a nested structured data property.
 type GoogleCloudContentwarehouseV1PropertyTypeOptionsOutput struct{ *pulumi.OutputState }
 
@@ -4699,12 +4050,6 @@ func (o GoogleCloudContentwarehouseV1PropertyTypeOptionsOutput) ToGoogleCloudCon
 	}).(GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1PropertyTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of property definitions.
 func (o GoogleCloudContentwarehouseV1PropertyTypeOptionsOutput) PropertyDefinitions() GoogleCloudContentwarehouseV1PropertyDefinitionArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyTypeOptions) []GoogleCloudContentwarehouseV1PropertyDefinition {
@@ -4724,12 +4069,6 @@ func (o GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutput) ToGoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1PropertyTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1PropertyTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutput) Elem() GoogleCloudContentwarehouseV1PropertyTypeOptionsOutput {
@@ -4771,12 +4110,6 @@ func (o GoogleCloudContentwarehouseV1PropertyTypeOptionsResponseOutput) ToGoogle
 
 func (o GoogleCloudContentwarehouseV1PropertyTypeOptionsResponseOutput) ToGoogleCloudContentwarehouseV1PropertyTypeOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyTypeOptionsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PropertyTypeOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of property definitions.
@@ -4825,12 +4158,6 @@ func (i GoogleCloudContentwarehouseV1PublishActionArgs) ToGoogleCloudContentware
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PublishActionOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1PublishActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PublishAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PublishAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PublishActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1PublishActionArgs) ToGoogleCloudContentwarehouseV1PublishActionPtrOutput() GoogleCloudContentwarehouseV1PublishActionPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1PublishActionPtrOutputWithContext(context.Background())
 }
@@ -4872,12 +4199,6 @@ func (i *googleCloudContentwarehouseV1PublishActionPtrType) ToGoogleCloudContent
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PublishActionPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1PublishActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1PublishAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1PublishAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1PublishActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the action responsible for publishing messages to a Pub/Sub topic.
 type GoogleCloudContentwarehouseV1PublishActionOutput struct{ *pulumi.OutputState }
 
@@ -4903,12 +4224,6 @@ func (o GoogleCloudContentwarehouseV1PublishActionOutput) ToGoogleCloudContentwa
 	}).(GoogleCloudContentwarehouseV1PublishActionPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1PublishActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PublishAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PublishAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Messages to be published.
 func (o GoogleCloudContentwarehouseV1PublishActionOutput) Messages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PublishAction) []string { return v.Messages }).(pulumi.StringArrayOutput)
@@ -4931,12 +4246,6 @@ func (o GoogleCloudContentwarehouseV1PublishActionPtrOutput) ToGoogleCloudConten
 
 func (o GoogleCloudContentwarehouseV1PublishActionPtrOutput) ToGoogleCloudContentwarehouseV1PublishActionPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PublishActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1PublishActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1PublishAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1PublishAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1PublishActionPtrOutput) Elem() GoogleCloudContentwarehouseV1PublishActionOutput {
@@ -4992,12 +4301,6 @@ func (o GoogleCloudContentwarehouseV1PublishActionResponseOutput) ToGoogleCloudC
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1PublishActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1PublishActionResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1PublishActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Messages to be published.
 func (o GoogleCloudContentwarehouseV1PublishActionResponseOutput) Messages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PublishActionResponse) []string { return v.Messages }).(pulumi.StringArrayOutput)
@@ -5047,12 +4350,6 @@ func (i GoogleCloudContentwarehouseV1RemoveFromFolderActionArgs) ToGoogleCloudCo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1RemoveFromFolderActionOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1RemoveFromFolderActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1RemoveFromFolderAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1RemoveFromFolderAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1RemoveFromFolderActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1RemoveFromFolderActionArgs) ToGoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutput() GoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutputWithContext(context.Background())
 }
@@ -5094,12 +4391,6 @@ func (i *googleCloudContentwarehouseV1RemoveFromFolderActionPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1RemoveFromFolderActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1RemoveFromFolderAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1RemoveFromFolderAction]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the action responsible for remove a document from a specific folder.
 type GoogleCloudContentwarehouseV1RemoveFromFolderActionOutput struct{ *pulumi.OutputState }
 
@@ -5125,12 +4416,6 @@ func (o GoogleCloudContentwarehouseV1RemoveFromFolderActionOutput) ToGoogleCloud
 	}).(GoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1RemoveFromFolderActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1RemoveFromFolderAction] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1RemoveFromFolderAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Condition of the action to be executed.
 func (o GoogleCloudContentwarehouseV1RemoveFromFolderActionOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1RemoveFromFolderAction) *string { return v.Condition }).(pulumi.StringPtrOutput)
@@ -5153,12 +4438,6 @@ func (o GoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutput) ToGoogleCl
 
 func (o GoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutput) ToGoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1RemoveFromFolderAction] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1RemoveFromFolderAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1RemoveFromFolderActionPtrOutput) Elem() GoogleCloudContentwarehouseV1RemoveFromFolderActionOutput {
@@ -5214,12 +4493,6 @@ func (o GoogleCloudContentwarehouseV1RemoveFromFolderActionResponseOutput) ToGoo
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1RemoveFromFolderActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Condition of the action to be executed.
 func (o GoogleCloudContentwarehouseV1RemoveFromFolderActionResponseOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse) string { return v.Condition }).(pulumi.StringOutput)
@@ -5265,12 +4538,6 @@ func (i GoogleCloudContentwarehouseV1RequestMetadataArgs) ToGoogleCloudContentwa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1RequestMetadataOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1RequestMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1RequestMetadata] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1RequestMetadata]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1RequestMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1RequestMetadataArgs) ToGoogleCloudContentwarehouseV1RequestMetadataPtrOutput() GoogleCloudContentwarehouseV1RequestMetadataPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1RequestMetadataPtrOutputWithContext(context.Background())
 }
@@ -5312,12 +4579,6 @@ func (i *googleCloudContentwarehouseV1RequestMetadataPtrType) ToGoogleCloudConte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1RequestMetadataPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1RequestMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1RequestMetadata] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1RequestMetadata]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1RequestMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Meta information is used to improve the performance of the service.
 type GoogleCloudContentwarehouseV1RequestMetadataOutput struct{ *pulumi.OutputState }
 
@@ -5343,12 +4604,6 @@ func (o GoogleCloudContentwarehouseV1RequestMetadataOutput) ToGoogleCloudContent
 	}).(GoogleCloudContentwarehouseV1RequestMetadataPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1RequestMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1RequestMetadata] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1RequestMetadata]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Provides user unique identification and groups information.
 func (o GoogleCloudContentwarehouseV1RequestMetadataOutput) UserInfo() GoogleCloudContentwarehouseV1UserInfoPtrOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1RequestMetadata) *GoogleCloudContentwarehouseV1UserInfo {
@@ -5368,12 +4623,6 @@ func (o GoogleCloudContentwarehouseV1RequestMetadataPtrOutput) ToGoogleCloudCont
 
 func (o GoogleCloudContentwarehouseV1RequestMetadataPtrOutput) ToGoogleCloudContentwarehouseV1RequestMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1RequestMetadataPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1RequestMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1RequestMetadata] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1RequestMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1RequestMetadataPtrOutput) Elem() GoogleCloudContentwarehouseV1RequestMetadataOutput {
@@ -5447,12 +4696,6 @@ func (i GoogleCloudContentwarehouseV1RuleArgs) ToGoogleCloudContentwarehouseV1Ru
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1RuleOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1RuleArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1Rule] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1Rule]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1RuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudContentwarehouseV1RuleArrayInput is an input type that accepts GoogleCloudContentwarehouseV1RuleArray and GoogleCloudContentwarehouseV1RuleArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudContentwarehouseV1RuleArrayInput` via:
 //
@@ -5478,12 +4721,6 @@ func (i GoogleCloudContentwarehouseV1RuleArray) ToGoogleCloudContentwarehouseV1R
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1RuleArrayOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1RuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1Rule] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1Rule]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1RuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the rule for a content warehouse trigger.
 type GoogleCloudContentwarehouseV1RuleOutput struct{ *pulumi.OutputState }
 
@@ -5497,12 +4734,6 @@ func (o GoogleCloudContentwarehouseV1RuleOutput) ToGoogleCloudContentwarehouseV1
 
 func (o GoogleCloudContentwarehouseV1RuleOutput) ToGoogleCloudContentwarehouseV1RuleOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1RuleOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1RuleOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1Rule] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1Rule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of actions that are executed when the rule is satisfied.
@@ -5546,12 +4777,6 @@ func (o GoogleCloudContentwarehouseV1RuleArrayOutput) ToGoogleCloudContentwareho
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1RuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1Rule] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1Rule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContentwarehouseV1RuleArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1RuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1Rule {
 		return vs[0].([]GoogleCloudContentwarehouseV1Rule)[vs[1].(int)]
@@ -5585,12 +4810,6 @@ func (o GoogleCloudContentwarehouseV1RuleResponseOutput) ToGoogleCloudContentwar
 
 func (o GoogleCloudContentwarehouseV1RuleResponseOutput) ToGoogleCloudContentwarehouseV1RuleResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1RuleResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1RuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1RuleResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1RuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of actions that are executed when the rule is satisfied.
@@ -5634,12 +4853,6 @@ func (o GoogleCloudContentwarehouseV1RuleResponseArrayOutput) ToGoogleCloudConte
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1RuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1RuleResponse] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1RuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudContentwarehouseV1RuleResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1RuleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1RuleResponse {
 		return vs[0].([]GoogleCloudContentwarehouseV1RuleResponse)[vs[1].(int)]
@@ -5681,12 +4894,6 @@ func (i GoogleCloudContentwarehouseV1SynonymSetSynonymArgs) ToGoogleCloudContent
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1SynonymSetSynonymOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1SynonymSetSynonymArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1SynonymSetSynonym] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1SynonymSetSynonym]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1SynonymSetSynonymOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudContentwarehouseV1SynonymSetSynonymArrayInput is an input type that accepts GoogleCloudContentwarehouseV1SynonymSetSynonymArray and GoogleCloudContentwarehouseV1SynonymSetSynonymArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudContentwarehouseV1SynonymSetSynonymArrayInput` via:
 //
@@ -5712,12 +4919,6 @@ func (i GoogleCloudContentwarehouseV1SynonymSetSynonymArray) ToGoogleCloudConten
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1SynonymSetSynonymArrayOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1SynonymSetSynonymArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1SynonymSetSynonym] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1SynonymSetSynonym]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1SynonymSetSynonymArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a list of words given by the customer All these words are synonyms of each other.
 type GoogleCloudContentwarehouseV1SynonymSetSynonymOutput struct{ *pulumi.OutputState }
 
@@ -5731,12 +4932,6 @@ func (o GoogleCloudContentwarehouseV1SynonymSetSynonymOutput) ToGoogleCloudConte
 
 func (o GoogleCloudContentwarehouseV1SynonymSetSynonymOutput) ToGoogleCloudContentwarehouseV1SynonymSetSynonymOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1SynonymSetSynonymOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1SynonymSetSynonymOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1SynonymSetSynonym] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1SynonymSetSynonym]{
-		OutputState: o.OutputState,
-	}
 }
 
 // For example: sale, invoice, bill, order
@@ -5756,12 +4951,6 @@ func (o GoogleCloudContentwarehouseV1SynonymSetSynonymArrayOutput) ToGoogleCloud
 
 func (o GoogleCloudContentwarehouseV1SynonymSetSynonymArrayOutput) ToGoogleCloudContentwarehouseV1SynonymSetSynonymArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1SynonymSetSynonymArrayOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1SynonymSetSynonymArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1SynonymSetSynonym] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1SynonymSetSynonym]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1SynonymSetSynonymArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1SynonymSetSynonymOutput {
@@ -5791,12 +4980,6 @@ func (o GoogleCloudContentwarehouseV1SynonymSetSynonymResponseOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1SynonymSetSynonymResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1SynonymSetSynonymResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1SynonymSetSynonymResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // For example: sale, invoice, bill, order
 func (o GoogleCloudContentwarehouseV1SynonymSetSynonymResponseOutput) Words() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1SynonymSetSynonymResponse) []string { return v.Words }).(pulumi.StringArrayOutput)
@@ -5814,12 +4997,6 @@ func (o GoogleCloudContentwarehouseV1SynonymSetSynonymResponseArrayOutput) ToGoo
 
 func (o GoogleCloudContentwarehouseV1SynonymSetSynonymResponseArrayOutput) ToGoogleCloudContentwarehouseV1SynonymSetSynonymResponseArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1SynonymSetSynonymResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1SynonymSetSynonymResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1SynonymSetSynonymResponse] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1SynonymSetSynonymResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1SynonymSetSynonymResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1SynonymSetSynonymResponseOutput {
@@ -5863,12 +5040,6 @@ func (i GoogleCloudContentwarehouseV1TextArrayArgs) ToGoogleCloudContentwarehous
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1TextArrayOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1TextArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TextArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TextArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1TextArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1TextArrayArgs) ToGoogleCloudContentwarehouseV1TextArrayPtrOutput() GoogleCloudContentwarehouseV1TextArrayPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1TextArrayPtrOutputWithContext(context.Background())
 }
@@ -5910,12 +5081,6 @@ func (i *googleCloudContentwarehouseV1TextArrayPtrType) ToGoogleCloudContentware
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1TextArrayPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1TextArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1TextArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1TextArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1TextArrayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // String/text values.
 type GoogleCloudContentwarehouseV1TextArrayOutput struct{ *pulumi.OutputState }
 
@@ -5941,12 +5106,6 @@ func (o GoogleCloudContentwarehouseV1TextArrayOutput) ToGoogleCloudContentwareho
 	}).(GoogleCloudContentwarehouseV1TextArrayPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1TextArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TextArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TextArray]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of text values.
 func (o GoogleCloudContentwarehouseV1TextArrayOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1TextArray) []string { return v.Values }).(pulumi.StringArrayOutput)
@@ -5964,12 +5123,6 @@ func (o GoogleCloudContentwarehouseV1TextArrayPtrOutput) ToGoogleCloudContentwar
 
 func (o GoogleCloudContentwarehouseV1TextArrayPtrOutput) ToGoogleCloudContentwarehouseV1TextArrayPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TextArrayPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1TextArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1TextArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1TextArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1TextArrayPtrOutput) Elem() GoogleCloudContentwarehouseV1TextArrayOutput {
@@ -6013,12 +5166,6 @@ func (o GoogleCloudContentwarehouseV1TextArrayResponseOutput) ToGoogleCloudConte
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1TextArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TextArrayResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TextArrayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of text values.
 func (o GoogleCloudContentwarehouseV1TextArrayResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1TextArrayResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
@@ -6053,12 +5200,6 @@ func (i GoogleCloudContentwarehouseV1TextTypeOptionsArgs) ToGoogleCloudContentwa
 
 func (i GoogleCloudContentwarehouseV1TextTypeOptionsArgs) ToGoogleCloudContentwarehouseV1TextTypeOptionsOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TextTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1TextTypeOptionsOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1TextTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TextTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TextTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1TextTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1TextTypeOptionsArgs) ToGoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput() GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput {
@@ -6102,12 +5243,6 @@ func (i *googleCloudContentwarehouseV1TextTypeOptionsPtrType) ToGoogleCloudConte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1TextTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1TextTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1TextTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1TextTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for a text property.
 type GoogleCloudContentwarehouseV1TextTypeOptionsOutput struct{ *pulumi.OutputState }
 
@@ -6133,12 +5268,6 @@ func (o GoogleCloudContentwarehouseV1TextTypeOptionsOutput) ToGoogleCloudContent
 	}).(GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1TextTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TextTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TextTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -6151,12 +5280,6 @@ func (o GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput) ToGoogleCloudCont
 
 func (o GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput) ToGoogleCloudContentwarehouseV1TextTypeOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1TextTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1TextTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput) Elem() GoogleCloudContentwarehouseV1TextTypeOptionsOutput {
@@ -6186,12 +5309,6 @@ func (o GoogleCloudContentwarehouseV1TextTypeOptionsResponseOutput) ToGoogleClou
 
 func (o GoogleCloudContentwarehouseV1TextTypeOptionsResponseOutput) ToGoogleCloudContentwarehouseV1TextTypeOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TextTypeOptionsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1TextTypeOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TextTypeOptionsResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TextTypeOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp values.
@@ -6227,12 +5344,6 @@ func (i GoogleCloudContentwarehouseV1TimestampArrayArgs) ToGoogleCloudContentwar
 
 func (i GoogleCloudContentwarehouseV1TimestampArrayArgs) ToGoogleCloudContentwarehouseV1TimestampArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TimestampArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1TimestampArrayOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1TimestampArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TimestampArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TimestampArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1TimestampArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1TimestampArrayArgs) ToGoogleCloudContentwarehouseV1TimestampArrayPtrOutput() GoogleCloudContentwarehouseV1TimestampArrayPtrOutput {
@@ -6276,12 +5387,6 @@ func (i *googleCloudContentwarehouseV1TimestampArrayPtrType) ToGoogleCloudConten
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1TimestampArrayPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1TimestampArrayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1TimestampArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1TimestampArray]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1TimestampArrayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Timestamp values.
 type GoogleCloudContentwarehouseV1TimestampArrayOutput struct{ *pulumi.OutputState }
 
@@ -6307,12 +5412,6 @@ func (o GoogleCloudContentwarehouseV1TimestampArrayOutput) ToGoogleCloudContentw
 	}).(GoogleCloudContentwarehouseV1TimestampArrayPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1TimestampArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TimestampArray] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TimestampArray]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of timestamp values.
 func (o GoogleCloudContentwarehouseV1TimestampArrayOutput) Values() GoogleCloudContentwarehouseV1TimestampValueArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1TimestampArray) []GoogleCloudContentwarehouseV1TimestampValue {
@@ -6332,12 +5431,6 @@ func (o GoogleCloudContentwarehouseV1TimestampArrayPtrOutput) ToGoogleCloudConte
 
 func (o GoogleCloudContentwarehouseV1TimestampArrayPtrOutput) ToGoogleCloudContentwarehouseV1TimestampArrayPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TimestampArrayPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1TimestampArrayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1TimestampArray] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1TimestampArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1TimestampArrayPtrOutput) Elem() GoogleCloudContentwarehouseV1TimestampArrayOutput {
@@ -6381,12 +5474,6 @@ func (o GoogleCloudContentwarehouseV1TimestampArrayResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1TimestampArrayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TimestampArrayResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TimestampArrayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of timestamp values.
 func (o GoogleCloudContentwarehouseV1TimestampArrayResponseOutput) Values() GoogleCloudContentwarehouseV1TimestampValueResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1TimestampArrayResponse) []GoogleCloudContentwarehouseV1TimestampValueResponse {
@@ -6423,12 +5510,6 @@ func (i GoogleCloudContentwarehouseV1TimestampTypeOptionsArgs) ToGoogleCloudCont
 
 func (i GoogleCloudContentwarehouseV1TimestampTypeOptionsArgs) ToGoogleCloudContentwarehouseV1TimestampTypeOptionsOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TimestampTypeOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1TimestampTypeOptionsOutput)
-}
-
-func (i GoogleCloudContentwarehouseV1TimestampTypeOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TimestampTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TimestampTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1TimestampTypeOptionsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudContentwarehouseV1TimestampTypeOptionsArgs) ToGoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput() GoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput {
@@ -6472,12 +5553,6 @@ func (i *googleCloudContentwarehouseV1TimestampTypeOptionsPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1TimestampTypeOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1TimestampTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1TimestampTypeOptions]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configurations for a timestamp property.
 type GoogleCloudContentwarehouseV1TimestampTypeOptionsOutput struct{ *pulumi.OutputState }
 
@@ -6503,12 +5578,6 @@ func (o GoogleCloudContentwarehouseV1TimestampTypeOptionsOutput) ToGoogleCloudCo
 	}).(GoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1TimestampTypeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TimestampTypeOptions] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TimestampTypeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput) ElementType() reflect.Type {
@@ -6521,12 +5590,6 @@ func (o GoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput) ToGoogleClou
 
 func (o GoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput) ToGoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1TimestampTypeOptions] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1TimestampTypeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1TimestampTypeOptionsPtrOutput) Elem() GoogleCloudContentwarehouseV1TimestampTypeOptionsOutput {
@@ -6556,12 +5619,6 @@ func (o GoogleCloudContentwarehouseV1TimestampTypeOptionsResponseOutput) ToGoogl
 
 func (o GoogleCloudContentwarehouseV1TimestampTypeOptionsResponseOutput) ToGoogleCloudContentwarehouseV1TimestampTypeOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TimestampTypeOptionsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1TimestampTypeOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TimestampTypeOptionsResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TimestampTypeOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp value type.
@@ -6603,12 +5660,6 @@ func (i GoogleCloudContentwarehouseV1TimestampValueArgs) ToGoogleCloudContentwar
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1TimestampValueOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1TimestampValueArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TimestampValue] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TimestampValue]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1TimestampValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudContentwarehouseV1TimestampValueArrayInput is an input type that accepts GoogleCloudContentwarehouseV1TimestampValueArray and GoogleCloudContentwarehouseV1TimestampValueArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudContentwarehouseV1TimestampValueArrayInput` via:
 //
@@ -6634,12 +5685,6 @@ func (i GoogleCloudContentwarehouseV1TimestampValueArray) ToGoogleCloudContentwa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1TimestampValueArrayOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1TimestampValueArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1TimestampValue] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1TimestampValue]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1TimestampValueArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Timestamp value type.
 type GoogleCloudContentwarehouseV1TimestampValueOutput struct{ *pulumi.OutputState }
 
@@ -6653,12 +5698,6 @@ func (o GoogleCloudContentwarehouseV1TimestampValueOutput) ToGoogleCloudContentw
 
 func (o GoogleCloudContentwarehouseV1TimestampValueOutput) ToGoogleCloudContentwarehouseV1TimestampValueOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TimestampValueOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1TimestampValueOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TimestampValue] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TimestampValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The string must represent a valid instant in UTC and is parsed using java.time.format.DateTimeFormatter.ISO_INSTANT. e.g. "2013-09-29T18:46:19Z"
@@ -6683,12 +5722,6 @@ func (o GoogleCloudContentwarehouseV1TimestampValueArrayOutput) ToGoogleCloudCon
 
 func (o GoogleCloudContentwarehouseV1TimestampValueArrayOutput) ToGoogleCloudContentwarehouseV1TimestampValueArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TimestampValueArrayOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1TimestampValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1TimestampValue] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1TimestampValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1TimestampValueArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1TimestampValueOutput {
@@ -6720,12 +5753,6 @@ func (o GoogleCloudContentwarehouseV1TimestampValueResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1TimestampValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1TimestampValueResponse] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1TimestampValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The string must represent a valid instant in UTC and is parsed using java.time.format.DateTimeFormatter.ISO_INSTANT. e.g. "2013-09-29T18:46:19Z"
 func (o GoogleCloudContentwarehouseV1TimestampValueResponseOutput) TextValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1TimestampValueResponse) string { return v.TextValue }).(pulumi.StringOutput)
@@ -6748,12 +5775,6 @@ func (o GoogleCloudContentwarehouseV1TimestampValueResponseArrayOutput) ToGoogle
 
 func (o GoogleCloudContentwarehouseV1TimestampValueResponseArrayOutput) ToGoogleCloudContentwarehouseV1TimestampValueResponseArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1TimestampValueResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1TimestampValueResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudContentwarehouseV1TimestampValueResponse] {
-	return pulumix.Output[[]GoogleCloudContentwarehouseV1TimestampValueResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1TimestampValueResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1TimestampValueResponseOutput {
@@ -6811,12 +5832,6 @@ func (i GoogleCloudContentwarehouseV1UserInfoArgs) ToGoogleCloudContentwarehouse
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1UserInfoOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1UserInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1UserInfo] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1UserInfo]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1UserInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudContentwarehouseV1UserInfoArgs) ToGoogleCloudContentwarehouseV1UserInfoPtrOutput() GoogleCloudContentwarehouseV1UserInfoPtrOutput {
 	return i.ToGoogleCloudContentwarehouseV1UserInfoPtrOutputWithContext(context.Background())
 }
@@ -6858,12 +5873,6 @@ func (i *googleCloudContentwarehouseV1UserInfoPtrType) ToGoogleCloudContentwareh
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1UserInfoPtrOutput)
 }
 
-func (i *googleCloudContentwarehouseV1UserInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1UserInfo] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1UserInfo]{
-		OutputState: i.ToGoogleCloudContentwarehouseV1UserInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The user information.
 type GoogleCloudContentwarehouseV1UserInfoOutput struct{ *pulumi.OutputState }
 
@@ -6889,12 +5898,6 @@ func (o GoogleCloudContentwarehouseV1UserInfoOutput) ToGoogleCloudContentwarehou
 	}).(GoogleCloudContentwarehouseV1UserInfoPtrOutput)
 }
 
-func (o GoogleCloudContentwarehouseV1UserInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudContentwarehouseV1UserInfo] {
-	return pulumix.Output[GoogleCloudContentwarehouseV1UserInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The unique group identifications which the user is belong to. The format is "group:yyyy@example.com";
 func (o GoogleCloudContentwarehouseV1UserInfoOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1UserInfo) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
@@ -6917,12 +5920,6 @@ func (o GoogleCloudContentwarehouseV1UserInfoPtrOutput) ToGoogleCloudContentware
 
 func (o GoogleCloudContentwarehouseV1UserInfoPtrOutput) ToGoogleCloudContentwarehouseV1UserInfoPtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1UserInfoPtrOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1UserInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1UserInfo] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1UserInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudContentwarehouseV1UserInfoPtrOutput) Elem() GoogleCloudContentwarehouseV1UserInfoOutput {
@@ -6998,12 +5995,6 @@ func (i GoogleCloudDocumentaiV1BarcodeArgs) ToGoogleCloudDocumentaiV1BarcodeOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1BarcodeOutput)
 }
 
-func (i GoogleCloudDocumentaiV1BarcodeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1Barcode] {
-	return pulumix.Output[GoogleCloudDocumentaiV1Barcode]{
-		OutputState: i.ToGoogleCloudDocumentaiV1BarcodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1BarcodeArgs) ToGoogleCloudDocumentaiV1BarcodePtrOutput() GoogleCloudDocumentaiV1BarcodePtrOutput {
 	return i.ToGoogleCloudDocumentaiV1BarcodePtrOutputWithContext(context.Background())
 }
@@ -7045,12 +6036,6 @@ func (i *googleCloudDocumentaiV1BarcodePtrType) ToGoogleCloudDocumentaiV1Barcode
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1BarcodePtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1BarcodePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1Barcode] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1Barcode]{
-		OutputState: i.ToGoogleCloudDocumentaiV1BarcodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encodes the detailed information of a barcode.
 type GoogleCloudDocumentaiV1BarcodeOutput struct{ *pulumi.OutputState }
 
@@ -7074,12 +6059,6 @@ func (o GoogleCloudDocumentaiV1BarcodeOutput) ToGoogleCloudDocumentaiV1BarcodePt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1Barcode) *GoogleCloudDocumentaiV1Barcode {
 		return &v
 	}).(GoogleCloudDocumentaiV1BarcodePtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1BarcodeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1Barcode] {
-	return pulumix.Output[GoogleCloudDocumentaiV1Barcode]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type.
@@ -7109,12 +6088,6 @@ func (o GoogleCloudDocumentaiV1BarcodePtrOutput) ToGoogleCloudDocumentaiV1Barcod
 
 func (o GoogleCloudDocumentaiV1BarcodePtrOutput) ToGoogleCloudDocumentaiV1BarcodePtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1BarcodePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1BarcodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1Barcode] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1Barcode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1BarcodePtrOutput) Elem() GoogleCloudDocumentaiV1BarcodeOutput {
@@ -7182,12 +6155,6 @@ func (o GoogleCloudDocumentaiV1BarcodeResponseOutput) ToGoogleCloudDocumentaiV1B
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1BarcodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1BarcodeResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1BarcodeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type.
 func (o GoogleCloudDocumentaiV1BarcodeResponseOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1BarcodeResponse) string { return v.Format }).(pulumi.StringOutput)
@@ -7242,12 +6209,6 @@ func (i GoogleCloudDocumentaiV1BoundingPolyArgs) ToGoogleCloudDocumentaiV1Boundi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1BoundingPolyOutput)
 }
 
-func (i GoogleCloudDocumentaiV1BoundingPolyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1BoundingPoly] {
-	return pulumix.Output[GoogleCloudDocumentaiV1BoundingPoly]{
-		OutputState: i.ToGoogleCloudDocumentaiV1BoundingPolyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1BoundingPolyArgs) ToGoogleCloudDocumentaiV1BoundingPolyPtrOutput() GoogleCloudDocumentaiV1BoundingPolyPtrOutput {
 	return i.ToGoogleCloudDocumentaiV1BoundingPolyPtrOutputWithContext(context.Background())
 }
@@ -7289,12 +6250,6 @@ func (i *googleCloudDocumentaiV1BoundingPolyPtrType) ToGoogleCloudDocumentaiV1Bo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1BoundingPolyPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1BoundingPolyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1BoundingPoly] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1BoundingPoly]{
-		OutputState: i.ToGoogleCloudDocumentaiV1BoundingPolyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A bounding polygon for the detected image annotation.
 type GoogleCloudDocumentaiV1BoundingPolyOutput struct{ *pulumi.OutputState }
 
@@ -7318,12 +6273,6 @@ func (o GoogleCloudDocumentaiV1BoundingPolyOutput) ToGoogleCloudDocumentaiV1Boun
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1BoundingPoly) *GoogleCloudDocumentaiV1BoundingPoly {
 		return &v
 	}).(GoogleCloudDocumentaiV1BoundingPolyPtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1BoundingPolyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1BoundingPoly] {
-	return pulumix.Output[GoogleCloudDocumentaiV1BoundingPoly]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bounding polygon normalized vertices.
@@ -7350,12 +6299,6 @@ func (o GoogleCloudDocumentaiV1BoundingPolyPtrOutput) ToGoogleCloudDocumentaiV1B
 
 func (o GoogleCloudDocumentaiV1BoundingPolyPtrOutput) ToGoogleCloudDocumentaiV1BoundingPolyPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1BoundingPolyPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1BoundingPolyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1BoundingPoly] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1BoundingPoly]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1BoundingPolyPtrOutput) Elem() GoogleCloudDocumentaiV1BoundingPolyOutput {
@@ -7409,12 +6352,6 @@ func (o GoogleCloudDocumentaiV1BoundingPolyResponseOutput) ToGoogleCloudDocument
 
 func (o GoogleCloudDocumentaiV1BoundingPolyResponseOutput) ToGoogleCloudDocumentaiV1BoundingPolyResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1BoundingPolyResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1BoundingPolyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1BoundingPolyResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1BoundingPolyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bounding polygon normalized vertices.
@@ -7510,12 +6447,6 @@ func (i GoogleCloudDocumentaiV1DocumentArgs) ToGoogleCloudDocumentaiV1DocumentOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1Document] {
-	return pulumix.Output[GoogleCloudDocumentaiV1Document]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentArgs) ToGoogleCloudDocumentaiV1DocumentPtrOutput() GoogleCloudDocumentaiV1DocumentPtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentPtrOutputWithContext(context.Background())
 }
@@ -7557,12 +6488,6 @@ func (i *googleCloudDocumentaiV1DocumentPtrType) ToGoogleCloudDocumentaiV1Docume
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1Document] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1Document]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Document represents the canonical document resource in Document AI. It is an interchange format that provides insights into documents and allows for collaboration between users and Document AI to iterate and optimize for quality.
 type GoogleCloudDocumentaiV1DocumentOutput struct{ *pulumi.OutputState }
 
@@ -7586,12 +6511,6 @@ func (o GoogleCloudDocumentaiV1DocumentOutput) ToGoogleCloudDocumentaiV1Document
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1Document) *GoogleCloudDocumentaiV1Document {
 		return &v
 	}).(GoogleCloudDocumentaiV1DocumentPtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1DocumentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1Document] {
-	return pulumix.Output[GoogleCloudDocumentaiV1Document]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use a pure binary representation, whereas JSON representations use base64.
@@ -7670,12 +6589,6 @@ func (o GoogleCloudDocumentaiV1DocumentPtrOutput) ToGoogleCloudDocumentaiV1Docum
 
 func (o GoogleCloudDocumentaiV1DocumentPtrOutput) ToGoogleCloudDocumentaiV1DocumentPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1Document] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1Document]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentOutput {
@@ -7887,12 +6800,6 @@ func (i GoogleCloudDocumentaiV1DocumentEntityArgs) ToGoogleCloudDocumentaiV1Docu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentEntityOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentEntityArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentEntity] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentEntity]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentEntityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentEntityArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentEntityArray and GoogleCloudDocumentaiV1DocumentEntityArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentEntityArrayInput` via:
 //
@@ -7918,12 +6825,6 @@ func (i GoogleCloudDocumentaiV1DocumentEntityArray) ToGoogleCloudDocumentaiV1Doc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentEntityArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentEntityArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntity] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntity]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentEntityArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity type, such as a person, an organization, or location.
 type GoogleCloudDocumentaiV1DocumentEntityOutput struct{ *pulumi.OutputState }
 
@@ -7937,12 +6838,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityOutput) ToGoogleCloudDocumentaiV1Do
 
 func (o GoogleCloudDocumentaiV1DocumentEntityOutput) ToGoogleCloudDocumentaiV1DocumentEntityOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentEntityOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentEntityOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentEntity] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentEntity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Confidence of detected Schema entity. Range `[0, 1]`.
@@ -8026,12 +6921,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityArrayOutput) ToGoogleCloudDocumenta
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentEntityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntity] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentEntityArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentEntityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentEntity {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentEntity)[vs[1].(int)]
@@ -8101,12 +6990,6 @@ func (i GoogleCloudDocumentaiV1DocumentEntityNormalizedValueArgs) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentEntityNormalizedValueOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentEntityNormalizedValueArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityNormalizedValue] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityNormalizedValue]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentEntityNormalizedValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentEntityNormalizedValueArgs) ToGoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput() GoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutputWithContext(context.Background())
 }
@@ -8148,12 +7031,6 @@ func (i *googleCloudDocumentaiV1DocumentEntityNormalizedValuePtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentEntityNormalizedValuePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentEntityNormalizedValue] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentEntityNormalizedValue]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Parsed and normalized entity value.
 type GoogleCloudDocumentaiV1DocumentEntityNormalizedValueOutput struct{ *pulumi.OutputState }
 
@@ -8177,12 +7054,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValueOutput) ToGoogleClou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1DocumentEntityNormalizedValue) *GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
 		return &v
 	}).(GoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValueOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityNormalizedValue] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityNormalizedValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Postal address. See also: https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto
@@ -8241,12 +7112,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput) ToGoogleC
 
 func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput) ToGoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentEntityNormalizedValue] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentEntityNormalizedValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput) Elem() GoogleCloudDocumentaiV1DocumentEntityNormalizedValueOutput {
@@ -8374,12 +7239,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponseOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Postal address. See also: https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto
 func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponseOutput) AddressValue() GoogleTypePostalAddressResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponse) GoogleTypePostalAddressResponse {
@@ -8471,12 +7330,6 @@ func (i GoogleCloudDocumentaiV1DocumentEntityRelationArgs) ToGoogleCloudDocument
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentEntityRelationOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentEntityRelationArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityRelation] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityRelation]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentEntityRelationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentEntityRelationArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentEntityRelationArray and GoogleCloudDocumentaiV1DocumentEntityRelationArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentEntityRelationArrayInput` via:
 //
@@ -8502,12 +7355,6 @@ func (i GoogleCloudDocumentaiV1DocumentEntityRelationArray) ToGoogleCloudDocumen
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentEntityRelationArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentEntityRelationArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntityRelation] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntityRelation]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentEntityRelationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Relationship between Entities.
 type GoogleCloudDocumentaiV1DocumentEntityRelationOutput struct{ *pulumi.OutputState }
 
@@ -8521,12 +7368,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityRelationOutput) ToGoogleCloudDocume
 
 func (o GoogleCloudDocumentaiV1DocumentEntityRelationOutput) ToGoogleCloudDocumentaiV1DocumentEntityRelationOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentEntityRelationOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentEntityRelationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityRelation] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityRelation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Object entity id.
@@ -8556,12 +7397,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityRelationArrayOutput) ToGoogleCloudD
 
 func (o GoogleCloudDocumentaiV1DocumentEntityRelationArrayOutput) ToGoogleCloudDocumentaiV1DocumentEntityRelationArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentEntityRelationArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentEntityRelationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntityRelation] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntityRelation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentEntityRelationArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentEntityRelationOutput {
@@ -8595,12 +7430,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityRelationResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentEntityRelationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityRelationResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityRelationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Object entity id.
 func (o GoogleCloudDocumentaiV1DocumentEntityRelationResponseOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentEntityRelationResponse) string { return v.ObjectId }).(pulumi.StringOutput)
@@ -8628,12 +7457,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityRelationResponseArrayOutput) ToGoog
 
 func (o GoogleCloudDocumentaiV1DocumentEntityRelationResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentEntityRelationResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentEntityRelationResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentEntityRelationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntityRelationResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntityRelationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentEntityRelationResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentEntityRelationResponseOutput {
@@ -8681,12 +7504,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityResponseOutput) ToGoogleCloudDocume
 
 func (o GoogleCloudDocumentaiV1DocumentEntityResponseOutput) ToGoogleCloudDocumentaiV1DocumentEntityResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentEntityResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Confidence of detected Schema entity. Range `[0, 1]`.
@@ -8763,12 +7580,6 @@ func (o GoogleCloudDocumentaiV1DocumentEntityResponseArrayOutput) ToGoogleCloudD
 
 func (o GoogleCloudDocumentaiV1DocumentEntityResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentEntityResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentEntityResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentEntityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntityResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentEntityResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentEntityResponseOutput {
@@ -8876,12 +7687,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageArgs) ToGoogleCloudDocumentaiV1Docume
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPage] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPage]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageArray and GoogleCloudDocumentaiV1DocumentPageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageArrayInput` via:
 //
@@ -8907,12 +7712,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageArray) ToGoogleCloudDocumentaiV1Docum
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPage] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPage]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A page in a Document.
 type GoogleCloudDocumentaiV1DocumentPageOutput struct{ *pulumi.OutputState }
 
@@ -8926,12 +7725,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageOutput) ToGoogleCloudDocumentaiV1Docu
 
 func (o GoogleCloudDocumentaiV1DocumentPageOutput) ToGoogleCloudDocumentaiV1DocumentPageOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPage] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of visually detected text blocks on the page. A block has a set of lines (collected into paragraphs) that have a common line-spacing and orientation.
@@ -9061,12 +7854,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageArrayOutput) ToGoogleCloudDocumentaiV
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPage] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPage {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPage)[vs[1].(int)]
@@ -9106,12 +7893,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageAnchorArgs) ToGoogleCloudDocumentaiV1
 
 func (i GoogleCloudDocumentaiV1DocumentPageAnchorArgs) ToGoogleCloudDocumentaiV1DocumentPageAnchorOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageAnchorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageAnchorOutput)
-}
-
-func (i GoogleCloudDocumentaiV1DocumentPageAnchorArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchor] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchor]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageAnchorOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudDocumentaiV1DocumentPageAnchorArgs) ToGoogleCloudDocumentaiV1DocumentPageAnchorPtrOutput() GoogleCloudDocumentaiV1DocumentPageAnchorPtrOutput {
@@ -9155,12 +7936,6 @@ func (i *googleCloudDocumentaiV1DocumentPageAnchorPtrType) ToGoogleCloudDocument
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageAnchorPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentPageAnchorPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageAnchor] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageAnchor]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageAnchorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Referencing the visual context of the entity in the Document.pages. Page anchors can be cross-page, consist of multiple bounding polygons and optionally reference specific layout element types.
 type GoogleCloudDocumentaiV1DocumentPageAnchorOutput struct{ *pulumi.OutputState }
 
@@ -9186,12 +7961,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorOutput) ToGoogleCloudDocumentai
 	}).(GoogleCloudDocumentaiV1DocumentPageAnchorPtrOutput)
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageAnchorOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchor] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchor]{
-		OutputState: o.OutputState,
-	}
-}
-
 // One or more references to visual page elements
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorOutput) PageRefs() GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageAnchor) []GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
@@ -9211,12 +7980,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPtrOutput) ToGoogleCloudDocumen
 
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPtrOutput) ToGoogleCloudDocumentaiV1DocumentPageAnchorPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageAnchorPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageAnchorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageAnchor] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageAnchor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageAnchorOutput {
@@ -9294,12 +8057,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArgs) ToGoogleCloudDocum
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchorPageRef] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchorPageRef]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArray and GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArrayInput` via:
 //
@@ -9325,12 +8082,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArray) ToGoogleCloudDocu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageAnchorPageRef] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageAnchorPageRef]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageAnchorPageRefArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a weak reference to a page element within a document.
 type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput struct{ *pulumi.OutputState }
 
@@ -9344,12 +8095,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput) ToGoogleCloudDoc
 
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput) ToGoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchorPageRef] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchorPageRef]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Identifies the bounding polygon of a layout element on the page.
@@ -9397,12 +8142,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArrayOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageAnchorPageRef] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageAnchorPageRef]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageAnchorPageRef)[vs[1].(int)]
@@ -9438,12 +8177,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseOutput) ToGoogle
 
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Identifies the bounding polygon of a layout element on the page.
@@ -9489,12 +8222,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseArrayOutput) ToG
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse)[vs[1].(int)]
@@ -9520,12 +8247,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorResponseOutput) ToGoogleCloudDo
 
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageAnchorResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageAnchorResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageAnchorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchorResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageAnchorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // One or more references to visual page elements
@@ -9578,12 +8299,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageBlockArgs) ToGoogleCloudDocumentaiV1D
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageBlockOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageBlockArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageBlock] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageBlock]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageBlockOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageBlockArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageBlockArray and GoogleCloudDocumentaiV1DocumentPageBlockArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageBlockArrayInput` via:
 //
@@ -9609,12 +8324,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageBlockArray) ToGoogleCloudDocumentaiV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageBlockArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageBlock] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageBlock]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageBlockArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A block has a set of lines (collected into paragraphs) that have a common line-spacing and orientation.
 type GoogleCloudDocumentaiV1DocumentPageBlockOutput struct{ *pulumi.OutputState }
 
@@ -9628,12 +8337,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageBlockOutput) ToGoogleCloudDocumentaiV
 
 func (o GoogleCloudDocumentaiV1DocumentPageBlockOutput) ToGoogleCloudDocumentaiV1DocumentPageBlockOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageBlockOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageBlockOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageBlock] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected languages together with confidence.
@@ -9671,12 +8374,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageBlockArrayOutput) ToGoogleCloudDocume
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageBlock] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageBlock]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageBlockArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageBlockOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageBlock {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageBlock)[vs[1].(int)]
@@ -9706,12 +8403,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageBlockResponseOutput) ToGoogleCloudDoc
 
 func (o GoogleCloudDocumentaiV1DocumentPageBlockResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageBlockResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageBlockResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageBlockResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageBlockResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageBlockResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected languages together with confidence.
@@ -9747,12 +8438,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageBlockResponseArrayOutput) ToGoogleClo
 
 func (o GoogleCloudDocumentaiV1DocumentPageBlockResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageBlockResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageBlockResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageBlockResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageBlockResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageBlockResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageBlockResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageBlockResponseOutput {
@@ -9800,12 +8485,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArgs) ToGoogleCloudDoc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedBarcode] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedBarcode]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageDetectedBarcodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArray and GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayInput` via:
 //
@@ -9831,12 +8510,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArray) ToGoogleCloudDo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedBarcode] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedBarcode]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A detected barcode.
 type GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeOutput struct{ *pulumi.OutputState }
 
@@ -9850,12 +8523,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeOutput) ToGoogleCloudD
 
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeOutput) ToGoogleCloudDocumentaiV1DocumentPageDetectedBarcodeOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedBarcode] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedBarcode]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Detailed barcode information of the DetectedBarcode.
@@ -9884,12 +8551,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayOutput) ToGoogleC
 
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedBarcode] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedBarcode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeOutput {
@@ -9921,12 +8582,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseOutput) ToGoog
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Detailed barcode information of the DetectedBarcode.
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseOutput) Barcode() GoogleCloudDocumentaiV1BarcodeResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse) GoogleCloudDocumentaiV1BarcodeResponse {
@@ -9953,12 +8608,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseArrayOutput) T
 
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseOutput {
@@ -10006,12 +8655,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs) ToGoogleCloudDo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedLanguage] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedLanguage]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArray and GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayInput` via:
 //
@@ -10037,12 +8680,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArray) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedLanguage] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedLanguage]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Detected language for a structural component.
 type GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput struct{ *pulumi.OutputState }
 
@@ -10056,12 +8693,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput) ToGoogleCloud
 
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput) ToGoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedLanguage] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedLanguage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Confidence of detected language. Range `[0, 1]`.
@@ -10086,12 +8717,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutput) ToGoogle
 
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedLanguage] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedLanguage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput {
@@ -10123,12 +8748,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseOutput) ToGoo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Confidence of detected language. Range `[0, 1]`.
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseOutput) Confidence() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse) float64 { return v.Confidence }).(pulumi.Float64Output)
@@ -10151,12 +8770,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseArrayOutput) 
 
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseOutput {
@@ -10208,12 +8821,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageDimensionArgs) ToGoogleCloudDocumenta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageDimensionOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDimension] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDimension]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentPageDimensionArgs) ToGoogleCloudDocumentaiV1DocumentPageDimensionPtrOutput() GoogleCloudDocumentaiV1DocumentPageDimensionPtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentPageDimensionPtrOutputWithContext(context.Background())
 }
@@ -10255,12 +8862,6 @@ func (i *googleCloudDocumentaiV1DocumentPageDimensionPtrType) ToGoogleCloudDocum
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageDimensionPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentPageDimensionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageDimension] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageDimension]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageDimensionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Dimension for the page.
 type GoogleCloudDocumentaiV1DocumentPageDimensionOutput struct{ *pulumi.OutputState }
 
@@ -10284,12 +8885,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDimensionOutput) ToGoogleCloudDocumen
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1DocumentPageDimension) *GoogleCloudDocumentaiV1DocumentPageDimension {
 		return &v
 	}).(GoogleCloudDocumentaiV1DocumentPageDimensionPtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDimension] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Page height.
@@ -10319,12 +8914,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDimensionPtrOutput) ToGoogleCloudDocu
 
 func (o GoogleCloudDocumentaiV1DocumentPageDimensionPtrOutput) ToGoogleCloudDocumentaiV1DocumentPageDimensionPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageDimensionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageDimensionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageDimension] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageDimensionPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageDimensionOutput {
@@ -10390,12 +8979,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageDimensionResponseOutput) ToGoogleClou
 
 func (o GoogleCloudDocumentaiV1DocumentPageDimensionResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageDimensionResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageDimensionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageDimensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDimensionResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageDimensionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Page height.
@@ -10476,12 +9059,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageFormFieldArgs) ToGoogleCloudDocumenta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageFormFieldOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageFormFieldArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageFormField] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageFormField]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageFormFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageFormFieldArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageFormFieldArray and GoogleCloudDocumentaiV1DocumentPageFormFieldArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageFormFieldArrayInput` via:
 //
@@ -10507,12 +9084,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageFormFieldArray) ToGoogleCloudDocument
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageFormFieldArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageFormFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageFormField] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageFormField]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageFormFieldArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A form field detected on the page.
 type GoogleCloudDocumentaiV1DocumentPageFormFieldOutput struct{ *pulumi.OutputState }
 
@@ -10526,12 +9097,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageFormFieldOutput) ToGoogleCloudDocumen
 
 func (o GoogleCloudDocumentaiV1DocumentPageFormFieldOutput) ToGoogleCloudDocumentaiV1DocumentPageFormFieldOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageFormFieldOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageFormFieldOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageFormField] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageFormField]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Created for Labeling UI to export key text. If corrections were made to the text identified by the `field_name.text_anchor`, this field will contain the correction.
@@ -10598,12 +9163,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageFormFieldArrayOutput) ToGoogleCloudDo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageFormFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageFormField] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageFormField]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageFormFieldArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageFormFieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageFormField {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageFormField)[vs[1].(int)]
@@ -10643,12 +9202,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageFormFieldResponseOutput) ToGoogleClou
 
 func (o GoogleCloudDocumentaiV1DocumentPageFormFieldResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageFormFieldResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageFormFieldResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageFormFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageFormFieldResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageFormFieldResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Created for Labeling UI to export key text. If corrections were made to the text identified by the `field_name.text_anchor`, this field will contain the correction.
@@ -10715,12 +9268,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageFormFieldResponseArrayOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageFormFieldResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageFormFieldResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageFormFieldResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageFormFieldResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageFormFieldResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageFormFieldResponse {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageFormFieldResponse)[vs[1].(int)]
@@ -10774,12 +9321,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageImageArgs) ToGoogleCloudDocumentaiV1D
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageImageOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageImageArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImage] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImage]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentPageImageArgs) ToGoogleCloudDocumentaiV1DocumentPageImagePtrOutput() GoogleCloudDocumentaiV1DocumentPageImagePtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentPageImagePtrOutputWithContext(context.Background())
 }
@@ -10821,12 +9362,6 @@ func (i *googleCloudDocumentaiV1DocumentPageImagePtrType) ToGoogleCloudDocumenta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageImagePtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentPageImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageImage] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageImage]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageImagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Rendered image contents for this page.
 type GoogleCloudDocumentaiV1DocumentPageImageOutput struct{ *pulumi.OutputState }
 
@@ -10850,12 +9385,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageOutput) ToGoogleCloudDocumentaiV
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1DocumentPageImage) *GoogleCloudDocumentaiV1DocumentPageImage {
 		return &v
 	}).(GoogleCloudDocumentaiV1DocumentPageImagePtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageImageOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImage] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Raw byte content of the image.
@@ -10890,12 +9419,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageImagePtrOutput) ToGoogleCloudDocument
 
 func (o GoogleCloudDocumentaiV1DocumentPageImagePtrOutput) ToGoogleCloudDocumentaiV1DocumentPageImagePtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageImagePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageImage] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageImagePtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageImageOutput {
@@ -10987,12 +9510,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScores] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScores]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs) ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput() GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutputWithContext(context.Background())
 }
@@ -11034,12 +9551,6 @@ func (i *googleCloudDocumentaiV1DocumentPageImageQualityScoresPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentPageImageQualityScoresPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageImageQualityScores] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageImageQualityScores]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Image quality scores for the page image.
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput struct{ *pulumi.OutputState }
 
@@ -11063,12 +9574,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput) ToGoogleClo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1DocumentPageImageQualityScores) *GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
 		return &v
 	}).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScores] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScores]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected defects.
@@ -11095,12 +9600,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput) ToGoogle
 
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput) ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageImageQualityScores] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageImageQualityScores]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput {
@@ -11172,12 +9671,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArray and GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayInput` via:
 //
@@ -11203,12 +9696,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArray
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Image Quality Defects
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutput struct{ *pulumi.OutputState }
 
@@ -11222,12 +9709,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutpu
 
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutput) ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
@@ -11254,12 +9735,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArray
 
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutput {
@@ -11291,12 +9766,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectRespo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseOutput) Confidence() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse) float64 {
@@ -11323,12 +9792,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectRespo
 
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseOutput {
@@ -11358,12 +9821,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput) ToG
 
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected defects.
@@ -11403,12 +9860,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageResponseOutput) ToGoogleCloudDoc
 
 func (o GoogleCloudDocumentaiV1DocumentPageImageResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageImageResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageImageResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Raw byte content of the image.
@@ -11478,12 +9929,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageLayoutArgs) ToGoogleCloudDocumentaiV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageLayoutOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageLayoutArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLayout] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLayout]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageLayoutOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentPageLayoutArgs) ToGoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput() GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentPageLayoutPtrOutputWithContext(context.Background())
 }
@@ -11525,12 +9970,6 @@ func (i *googleCloudDocumentaiV1DocumentPageLayoutPtrType) ToGoogleCloudDocument
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentPageLayoutPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageLayout] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageLayout]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageLayoutPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Visual element describing a layout unit on a page.
 type GoogleCloudDocumentaiV1DocumentPageLayoutOutput struct{ *pulumi.OutputState }
 
@@ -11554,12 +9993,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageLayoutOutput) ToGoogleCloudDocumentai
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1DocumentPageLayout) *GoogleCloudDocumentaiV1DocumentPageLayout {
 		return &v
 	}).(GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageLayoutOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLayout] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLayout]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bounding polygon for the Layout.
@@ -11600,12 +10033,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput) ToGoogleCloudDocumen
 
 func (o GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput) ToGoogleCloudDocumentaiV1DocumentPageLayoutPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageLayout] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageLayout]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageLayoutOutput {
@@ -11685,12 +10112,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageLayoutResponseOutput) ToGoogleCloudDo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageLayoutResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLayoutResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLayoutResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The bounding polygon for the Layout.
 func (o GoogleCloudDocumentaiV1DocumentPageLayoutResponseOutput) BoundingPoly() GoogleCloudDocumentaiV1BoundingPolyResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageLayoutResponse) GoogleCloudDocumentaiV1BoundingPolyResponse {
@@ -11758,12 +10179,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageLineArgs) ToGoogleCloudDocumentaiV1Do
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageLineOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageLineArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLine] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLine]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageLineOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageLineArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageLineArray and GoogleCloudDocumentaiV1DocumentPageLineArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageLineArrayInput` via:
 //
@@ -11789,12 +10204,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageLineArray) ToGoogleCloudDocumentaiV1D
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageLineArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageLineArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageLine] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageLine]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageLineArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A collection of tokens that a human would perceive as a line. Does not cross column boundaries, can be horizontal, vertical, etc.
 type GoogleCloudDocumentaiV1DocumentPageLineOutput struct{ *pulumi.OutputState }
 
@@ -11808,12 +10217,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageLineOutput) ToGoogleCloudDocumentaiV1
 
 func (o GoogleCloudDocumentaiV1DocumentPageLineOutput) ToGoogleCloudDocumentaiV1DocumentPageLineOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageLineOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageLineOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLine] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLine]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected languages together with confidence.
@@ -11851,12 +10254,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageLineArrayOutput) ToGoogleCloudDocumen
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageLineArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageLine] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageLine]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageLineArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageLineOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageLine {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageLine)[vs[1].(int)]
@@ -11886,12 +10283,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageLineResponseOutput) ToGoogleCloudDocu
 
 func (o GoogleCloudDocumentaiV1DocumentPageLineResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageLineResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageLineResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageLineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLineResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageLineResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected languages together with confidence.
@@ -11927,12 +10318,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageLineResponseArrayOutput) ToGoogleClou
 
 func (o GoogleCloudDocumentaiV1DocumentPageLineResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageLineResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageLineResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageLineResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageLineResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageLineResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageLineResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageLineResponseOutput {
@@ -11988,12 +10373,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageMatrixArgs) ToGoogleCloudDocumentaiV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageMatrixOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageMatrixArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageMatrix] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageMatrix]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageMatrixOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageMatrixArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageMatrixArray and GoogleCloudDocumentaiV1DocumentPageMatrixArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageMatrixArrayInput` via:
 //
@@ -12019,12 +10398,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageMatrixArray) ToGoogleCloudDocumentaiV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageMatrixArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageMatrixArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageMatrix] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageMatrix]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageMatrixArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Representation for transformation matrix, intended to be compatible and used with OpenCV format for image manipulation.
 type GoogleCloudDocumentaiV1DocumentPageMatrixOutput struct{ *pulumi.OutputState }
 
@@ -12038,12 +10411,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageMatrixOutput) ToGoogleCloudDocumentai
 
 func (o GoogleCloudDocumentaiV1DocumentPageMatrixOutput) ToGoogleCloudDocumentaiV1DocumentPageMatrixOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageMatrixOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageMatrixOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageMatrix] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageMatrix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of columns in the matrix.
@@ -12080,12 +10447,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageMatrixArrayOutput) ToGoogleCloudDocum
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageMatrixArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageMatrix] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageMatrix]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageMatrixArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageMatrixOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageMatrix {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageMatrix)[vs[1].(int)]
@@ -12117,12 +10478,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageMatrixResponseOutput) ToGoogleCloudDo
 
 func (o GoogleCloudDocumentaiV1DocumentPageMatrixResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageMatrixResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageMatrixResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageMatrixResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageMatrixResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageMatrixResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of columns in the matrix.
@@ -12157,12 +10512,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageMatrixResponseArrayOutput) ToGoogleCl
 
 func (o GoogleCloudDocumentaiV1DocumentPageMatrixResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageMatrixResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageMatrixResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageMatrixResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageMatrixResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageMatrixResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageMatrixResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageMatrixResponseOutput {
@@ -12214,12 +10563,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageParagraphArgs) ToGoogleCloudDocumenta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageParagraphOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageParagraphArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageParagraph] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageParagraph]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageParagraphOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageParagraphArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageParagraphArray and GoogleCloudDocumentaiV1DocumentPageParagraphArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageParagraphArrayInput` via:
 //
@@ -12245,12 +10588,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageParagraphArray) ToGoogleCloudDocument
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageParagraphArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageParagraphArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageParagraph] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageParagraph]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageParagraphArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A collection of lines that a human would perceive as a paragraph.
 type GoogleCloudDocumentaiV1DocumentPageParagraphOutput struct{ *pulumi.OutputState }
 
@@ -12264,12 +10601,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageParagraphOutput) ToGoogleCloudDocumen
 
 func (o GoogleCloudDocumentaiV1DocumentPageParagraphOutput) ToGoogleCloudDocumentaiV1DocumentPageParagraphOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageParagraphOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageParagraphOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageParagraph] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageParagraph]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected languages together with confidence.
@@ -12307,12 +10638,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageParagraphArrayOutput) ToGoogleCloudDo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageParagraphArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageParagraph] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageParagraph]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageParagraphArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageParagraphOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageParagraph {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageParagraph)[vs[1].(int)]
@@ -12342,12 +10667,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageParagraphResponseOutput) ToGoogleClou
 
 func (o GoogleCloudDocumentaiV1DocumentPageParagraphResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageParagraphResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageParagraphResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageParagraphResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageParagraphResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageParagraphResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected languages together with confidence.
@@ -12383,12 +10702,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageParagraphResponseArrayOutput) ToGoogl
 
 func (o GoogleCloudDocumentaiV1DocumentPageParagraphResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageParagraphResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageParagraphResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageParagraphResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageParagraphResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageParagraphResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageParagraphResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageParagraphResponseOutput {
@@ -12448,12 +10761,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageResponseOutput) ToGoogleCloudDocument
 
 func (o GoogleCloudDocumentaiV1DocumentPageResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of visually detected text blocks on the page. A block has a set of lines (collected into paragraphs) that have a common line-spacing and orientation.
@@ -12587,12 +10894,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageResponseArrayOutput) ToGoogleCloudDoc
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageResponse {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageResponse)[vs[1].(int)]
@@ -12638,12 +10939,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageSymbolArgs) ToGoogleCloudDocumentaiV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageSymbolOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageSymbolArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageSymbol] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageSymbol]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageSymbolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageSymbolArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageSymbolArray and GoogleCloudDocumentaiV1DocumentPageSymbolArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageSymbolArrayInput` via:
 //
@@ -12669,12 +10964,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageSymbolArray) ToGoogleCloudDocumentaiV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageSymbolArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageSymbolArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageSymbol] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageSymbol]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageSymbolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A detected symbol.
 type GoogleCloudDocumentaiV1DocumentPageSymbolOutput struct{ *pulumi.OutputState }
 
@@ -12688,12 +10977,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageSymbolOutput) ToGoogleCloudDocumentai
 
 func (o GoogleCloudDocumentaiV1DocumentPageSymbolOutput) ToGoogleCloudDocumentaiV1DocumentPageSymbolOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageSymbolOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageSymbolOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageSymbol] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageSymbol]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected languages together with confidence.
@@ -12722,12 +11005,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageSymbolArrayOutput) ToGoogleCloudDocum
 
 func (o GoogleCloudDocumentaiV1DocumentPageSymbolArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageSymbolArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageSymbolArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageSymbolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageSymbol] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageSymbol]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageSymbolArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageSymbolOutput {
@@ -12759,12 +11036,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageSymbolResponseOutput) ToGoogleCloudDo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageSymbolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageSymbolResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageSymbolResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of detected languages together with confidence.
 func (o GoogleCloudDocumentaiV1DocumentPageSymbolResponseOutput) DetectedLanguages() GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageSymbolResponse) []GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse {
@@ -12791,12 +11062,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageSymbolResponseArrayOutput) ToGoogleCl
 
 func (o GoogleCloudDocumentaiV1DocumentPageSymbolResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageSymbolResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageSymbolResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageSymbolResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageSymbolResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageSymbolResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageSymbolResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageSymbolResponseOutput {
@@ -12856,12 +11121,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageTableArgs) ToGoogleCloudDocumentaiV1D
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTableOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageTableArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTable] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTable]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageTableArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageTableArray and GoogleCloudDocumentaiV1DocumentPageTableArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageTableArrayInput` via:
 //
@@ -12887,12 +11146,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageTableArray) ToGoogleCloudDocumentaiV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTableArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageTableArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTable] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTable]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A table representation similar to HTML table structure.
 type GoogleCloudDocumentaiV1DocumentPageTableOutput struct{ *pulumi.OutputState }
 
@@ -12906,12 +11159,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableOutput) ToGoogleCloudDocumentaiV
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableOutput) ToGoogleCloudDocumentaiV1DocumentPageTableOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTableOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTableOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTable] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Body rows of the table.
@@ -12963,12 +11210,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableArrayOutput) ToGoogleCloudDocume
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTable] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTable]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageTableArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageTableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageTable {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageTable)[vs[1].(int)]
@@ -13002,12 +11243,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableResponseOutput) ToGoogleCloudDoc
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageTableResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTableResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Body rows of the table.
@@ -13057,12 +11292,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableResponseArrayOutput) ToGoogleClo
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageTableResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTableResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTableResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageTableResponseOutput {
@@ -13118,12 +11347,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageTableTableCellArgs) ToGoogleCloudDocu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTableTableCellOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageTableTableCellArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableCell] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableCell]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTableTableCellOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageTableTableCellArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageTableTableCellArray and GoogleCloudDocumentaiV1DocumentPageTableTableCellArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageTableTableCellArrayInput` via:
 //
@@ -13149,12 +11372,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageTableTableCellArray) ToGoogleCloudDoc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTableTableCellArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageTableTableCellArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableCell] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableCell]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTableTableCellArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A cell representation inside the table.
 type GoogleCloudDocumentaiV1DocumentPageTableTableCellOutput struct{ *pulumi.OutputState }
 
@@ -13168,12 +11385,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellOutput) ToGoogleCloudDo
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellOutput) ToGoogleCloudDocumentaiV1DocumentPageTableTableCellOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTableTableCellOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableCell] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableCell]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How many columns this cell spans.
@@ -13214,12 +11425,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellArrayOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableCell] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableCell]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageTableTableCellOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageTableTableCell {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageTableTableCell)[vs[1].(int)]
@@ -13251,12 +11456,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseOutput) ToGoogl
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageTableTableCellResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How many columns this cell spans.
@@ -13295,12 +11494,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseArrayOutput) To
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageTableTableCellResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseOutput {
@@ -13344,12 +11537,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageTableTableRowArgs) ToGoogleCloudDocum
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTableTableRowOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageTableTableRowArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableRow] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableRow]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTableTableRowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageTableTableRowArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageTableTableRowArray and GoogleCloudDocumentaiV1DocumentPageTableTableRowArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageTableTableRowArrayInput` via:
 //
@@ -13375,12 +11562,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageTableTableRowArray) ToGoogleCloudDocu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTableTableRowArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageTableTableRowArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableRow] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableRow]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTableTableRowArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A row of table cells.
 type GoogleCloudDocumentaiV1DocumentPageTableTableRowOutput struct{ *pulumi.OutputState }
 
@@ -13394,12 +11575,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowOutput) ToGoogleCloudDoc
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowOutput) ToGoogleCloudDocumentaiV1DocumentPageTableTableRowOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTableTableRowOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableRow] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableRow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cells that make up this row.
@@ -13421,12 +11596,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowArrayOutput) ToGoogleClo
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageTableTableRowArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTableTableRowArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableRow] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableRow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageTableTableRowOutput {
@@ -13456,12 +11625,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cells that make up this row.
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowResponseOutput) Cells() GoogleCloudDocumentaiV1DocumentPageTableTableCellResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse) []GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse {
@@ -13481,12 +11644,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowResponseArrayOutput) ToG
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageTableTableRowResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTableTableRowResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageTableTableRowResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageTableTableRowResponseOutput {
@@ -13546,12 +11703,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageTokenArgs) ToGoogleCloudDocumentaiV1D
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTokenOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageTokenArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageToken] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageToken]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageTokenArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageTokenArray and GoogleCloudDocumentaiV1DocumentPageTokenArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageTokenArrayInput` via:
 //
@@ -13577,12 +11728,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageTokenArray) ToGoogleCloudDocumentaiV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTokenArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageToken] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageToken]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTokenArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A detected token.
 type GoogleCloudDocumentaiV1DocumentPageTokenOutput struct{ *pulumi.OutputState }
 
@@ -13596,12 +11741,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenOutput) ToGoogleCloudDocumentaiV
 
 func (o GoogleCloudDocumentaiV1DocumentPageTokenOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTokenOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageToken] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Detected break at the end of a Token.
@@ -13653,12 +11792,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenArrayOutput) ToGoogleCloudDocume
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageToken] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageTokenArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageToken {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageToken)[vs[1].(int)]
@@ -13698,12 +11831,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakArgs) ToGoogleCloud
 
 func (i GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakArgs) ToGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakOutput)
-}
-
-func (i GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakArgs) ToGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutput() GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutput {
@@ -13747,12 +11874,6 @@ func (i *googleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Detected break at the end of a Token.
 type GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakOutput struct{ *pulumi.OutputState }
 
@@ -13778,12 +11899,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakOutput) ToGoogleClo
 	}).(GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutput)
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Detected break type.
 func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakOutput) Type() GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak) *GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType {
@@ -13803,12 +11918,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutput) ToGoogle
 
 func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakOutput {
@@ -13852,12 +11961,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponseOutput) ToG
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Detected break type.
 func (o GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -13890,12 +11993,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenResponseOutput) ToGoogleCloudDoc
 
 func (o GoogleCloudDocumentaiV1DocumentPageTokenResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Detected break at the end of a Token.
@@ -13945,12 +12042,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenResponseArrayOutput) ToGoogleClo
 
 func (o GoogleCloudDocumentaiV1DocumentPageTokenResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTokenResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTokenResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageTokenResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageTokenResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageTokenResponseOutput {
@@ -14050,12 +12141,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs) ToGoogleCloudDocu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(context.Background())
 }
@@ -14097,12 +12182,6 @@ func (i *googleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Font and other text style attributes.
 type GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput struct{ *pulumi.OutputState }
 
@@ -14126,12 +12205,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) ToGoogleCloudDo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
 		return &v
 	}).(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Color of the background.
@@ -14221,12 +12294,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) ToGoogleClou
 
 func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput {
@@ -14438,12 +12505,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Color of the background.
 func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) BackgroundColor() GoogleTypeColorResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) GoogleTypeColorResponse {
@@ -14566,12 +12627,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageVisualElementArgs) ToGoogleCloudDocum
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageVisualElementOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageVisualElementArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageVisualElement] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageVisualElement]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageVisualElementOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentPageVisualElementArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageVisualElementArray and GoogleCloudDocumentaiV1DocumentPageVisualElementArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageVisualElementArrayInput` via:
 //
@@ -14597,12 +12652,6 @@ func (i GoogleCloudDocumentaiV1DocumentPageVisualElementArray) ToGoogleCloudDocu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageVisualElementArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentPageVisualElementArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageVisualElement] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageVisualElement]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentPageVisualElementArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Detected non-text visual elements e.g. checkbox, signature etc. on the page.
 type GoogleCloudDocumentaiV1DocumentPageVisualElementOutput struct{ *pulumi.OutputState }
 
@@ -14616,12 +12665,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageVisualElementOutput) ToGoogleCloudDoc
 
 func (o GoogleCloudDocumentaiV1DocumentPageVisualElementOutput) ToGoogleCloudDocumentaiV1DocumentPageVisualElementOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageVisualElementOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageVisualElementOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageVisualElement] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageVisualElement]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected languages together with confidence.
@@ -14657,12 +12700,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageVisualElementArrayOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentPageVisualElementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageVisualElement] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageVisualElement]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentPageVisualElementArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageVisualElementOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageVisualElement {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageVisualElement)[vs[1].(int)]
@@ -14692,12 +12729,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageVisualElementResponseOutput) ToGoogle
 
 func (o GoogleCloudDocumentaiV1DocumentPageVisualElementResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageVisualElementResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageVisualElementResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageVisualElementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentPageVisualElementResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentPageVisualElementResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of detected languages together with confidence.
@@ -14731,12 +12762,6 @@ func (o GoogleCloudDocumentaiV1DocumentPageVisualElementResponseArrayOutput) ToG
 
 func (o GoogleCloudDocumentaiV1DocumentPageVisualElementResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentPageVisualElementResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageVisualElementResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentPageVisualElementResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageVisualElementResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentPageVisualElementResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentPageVisualElementResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentPageVisualElementResponseOutput {
@@ -14792,12 +12817,6 @@ func (i GoogleCloudDocumentaiV1DocumentProvenanceArgs) ToGoogleCloudDocumentaiV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentProvenanceOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentProvenanceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenance] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenance]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentProvenanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentProvenanceArgs) ToGoogleCloudDocumentaiV1DocumentProvenancePtrOutput() GoogleCloudDocumentaiV1DocumentProvenancePtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentProvenancePtrOutputWithContext(context.Background())
 }
@@ -14839,12 +12858,6 @@ func (i *googleCloudDocumentaiV1DocumentProvenancePtrType) ToGoogleCloudDocument
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentProvenancePtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentProvenancePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentProvenance] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentProvenance]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentProvenancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentProvenanceArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentProvenanceArray and GoogleCloudDocumentaiV1DocumentProvenanceArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentProvenanceArrayInput` via:
 //
@@ -14870,12 +12883,6 @@ func (i GoogleCloudDocumentaiV1DocumentProvenanceArray) ToGoogleCloudDocumentaiV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentProvenanceArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentProvenanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenance] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenance]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentProvenanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Structure to identify provenance relationships between annotations in different revisions.
 type GoogleCloudDocumentaiV1DocumentProvenanceOutput struct{ *pulumi.OutputState }
 
@@ -14899,12 +12906,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenanceOutput) ToGoogleCloudDocumentai
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1DocumentProvenance) *GoogleCloudDocumentaiV1DocumentProvenance {
 		return &v
 	}).(GoogleCloudDocumentaiV1DocumentProvenancePtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1DocumentProvenanceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenance] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Id of this operation. Needs to be unique within the scope of the revision.
@@ -14943,12 +12944,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenancePtrOutput) ToGoogleCloudDocumen
 
 func (o GoogleCloudDocumentaiV1DocumentProvenancePtrOutput) ToGoogleCloudDocumentaiV1DocumentProvenancePtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentProvenancePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentProvenancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentProvenance] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentProvenance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentProvenancePtrOutput) Elem() GoogleCloudDocumentaiV1DocumentProvenanceOutput {
@@ -15015,12 +13010,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenanceArrayOutput) ToGoogleCloudDocum
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentProvenanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenance] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentProvenanceArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentProvenanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentProvenance {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentProvenance)[vs[1].(int)]
@@ -15070,12 +13059,6 @@ func (i GoogleCloudDocumentaiV1DocumentProvenanceParentArgs) ToGoogleCloudDocume
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentProvenanceParentOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentProvenanceParentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenanceParent] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenanceParent]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentProvenanceParentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentProvenanceParentArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentProvenanceParentArray and GoogleCloudDocumentaiV1DocumentProvenanceParentArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentProvenanceParentArrayInput` via:
 //
@@ -15101,12 +13084,6 @@ func (i GoogleCloudDocumentaiV1DocumentProvenanceParentArray) ToGoogleCloudDocum
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentProvenanceParentArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentProvenanceParentArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenanceParent] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenanceParent]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentProvenanceParentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The parent element the current element is based on. Used for referencing/aligning, removal and replacement operations.
 type GoogleCloudDocumentaiV1DocumentProvenanceParentOutput struct{ *pulumi.OutputState }
 
@@ -15120,12 +13097,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenanceParentOutput) ToGoogleCloudDocu
 
 func (o GoogleCloudDocumentaiV1DocumentProvenanceParentOutput) ToGoogleCloudDocumentaiV1DocumentProvenanceParentOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentProvenanceParentOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentProvenanceParentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenanceParent] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenanceParent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the parent provenance.
@@ -15157,12 +13128,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenanceParentArrayOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentProvenanceParentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenanceParent] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenanceParent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentProvenanceParentArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentProvenanceParentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentProvenanceParent {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentProvenanceParent)[vs[1].(int)]
@@ -15192,12 +13157,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenanceParentResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentProvenanceParentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenanceParentResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenanceParentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The index of the parent item in the corresponding item list (eg. list of entities, properties within entities, etc.) in the parent revision.
 func (o GoogleCloudDocumentaiV1DocumentProvenanceParentResponseOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentProvenanceParentResponse) int { return v.Index }).(pulumi.IntOutput)
@@ -15220,12 +13179,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenanceParentResponseArrayOutput) ToGo
 
 func (o GoogleCloudDocumentaiV1DocumentProvenanceParentResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentProvenanceParentResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentProvenanceParentResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentProvenanceParentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenanceParentResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenanceParentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentProvenanceParentResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentProvenanceParentResponseOutput {
@@ -15259,12 +13212,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenanceResponseOutput) ToGoogleCloudDo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentProvenanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenanceResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentProvenanceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // References to the original elements that are replaced.
 func (o GoogleCloudDocumentaiV1DocumentProvenanceResponseOutput) Parents() GoogleCloudDocumentaiV1DocumentProvenanceParentResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentProvenanceResponse) []GoogleCloudDocumentaiV1DocumentProvenanceParentResponse {
@@ -15294,12 +13241,6 @@ func (o GoogleCloudDocumentaiV1DocumentProvenanceResponseArrayOutput) ToGoogleCl
 
 func (o GoogleCloudDocumentaiV1DocumentProvenanceResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentProvenanceResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentProvenanceResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentProvenanceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenanceResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentProvenanceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentProvenanceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentProvenanceResponseOutput {
@@ -15349,12 +13290,6 @@ func (o GoogleCloudDocumentaiV1DocumentResponseOutput) ToGoogleCloudDocumentaiV1
 
 func (o GoogleCloudDocumentaiV1DocumentResponseOutput) ToGoogleCloudDocumentaiV1DocumentResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use a pure binary representation, whereas JSON representations use base64.
@@ -15490,12 +13425,6 @@ func (i GoogleCloudDocumentaiV1DocumentRevisionArgs) ToGoogleCloudDocumentaiV1Do
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentRevisionOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentRevisionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentRevision] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentRevision]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentRevisionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentRevisionArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentRevisionArray and GoogleCloudDocumentaiV1DocumentRevisionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentRevisionArrayInput` via:
 //
@@ -15521,12 +13450,6 @@ func (i GoogleCloudDocumentaiV1DocumentRevisionArray) ToGoogleCloudDocumentaiV1D
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentRevisionArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentRevisionArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentRevision] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentRevision]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentRevisionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains past or forward revisions of this document.
 type GoogleCloudDocumentaiV1DocumentRevisionOutput struct{ *pulumi.OutputState }
 
@@ -15540,12 +13463,6 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionOutput) ToGoogleCloudDocumentaiV1
 
 func (o GoogleCloudDocumentaiV1DocumentRevisionOutput) ToGoogleCloudDocumentaiV1DocumentRevisionOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentRevisionOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentRevisionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentRevision] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentRevision]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the change was made by a person specify the name or id of that person.
@@ -15599,12 +13516,6 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionArrayOutput) ToGoogleCloudDocumen
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentRevisionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentRevision] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentRevision]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentRevisionArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentRevisionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentRevision {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentRevision)[vs[1].(int)]
@@ -15650,12 +13561,6 @@ func (i GoogleCloudDocumentaiV1DocumentRevisionHumanReviewArgs) ToGoogleCloudDoc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentRevisionHumanReviewOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentRevisionHumanReviewArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentRevisionHumanReview] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentRevisionHumanReview]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentRevisionHumanReviewOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentRevisionHumanReviewArgs) ToGoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutput() GoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutputWithContext(context.Background())
 }
@@ -15697,12 +13602,6 @@ func (i *googleCloudDocumentaiV1DocumentRevisionHumanReviewPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentRevisionHumanReviewPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentRevisionHumanReview] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentRevisionHumanReview]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Human Review information of the document.
 type GoogleCloudDocumentaiV1DocumentRevisionHumanReviewOutput struct{ *pulumi.OutputState }
 
@@ -15728,12 +13627,6 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewOutput) ToGoogleCloudD
 	}).(GoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutput)
 }
 
-func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentRevisionHumanReview] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentRevisionHumanReview]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Human review state. e.g. `requested`, `succeeded`, `rejected`.
 func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentRevisionHumanReview) *string { return v.State }).(pulumi.StringPtrOutput)
@@ -15756,12 +13649,6 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutput) ToGoogleClo
 
 func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutput) ToGoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentRevisionHumanReview] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentRevisionHumanReview]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentRevisionHumanReviewOutput {
@@ -15817,12 +13704,6 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponseOutput) ToGoog
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Human review state. e.g. `requested`, `succeeded`, `rejected`.
 func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse) string { return v.State }).(pulumi.StringOutput)
@@ -15862,12 +13743,6 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionResponseOutput) ToGoogleCloudDocu
 
 func (o GoogleCloudDocumentaiV1DocumentRevisionResponseOutput) ToGoogleCloudDocumentaiV1DocumentRevisionResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentRevisionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentRevisionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentRevisionResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentRevisionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the change was made by a person specify the name or id of that person.
@@ -15914,12 +13789,6 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionResponseArrayOutput) ToGoogleClou
 
 func (o GoogleCloudDocumentaiV1DocumentRevisionResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentRevisionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentRevisionResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentRevisionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentRevisionResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentRevisionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentRevisionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentRevisionResponseOutput {
@@ -15971,12 +13840,6 @@ func (i GoogleCloudDocumentaiV1DocumentShardInfoArgs) ToGoogleCloudDocumentaiV1D
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentShardInfoOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentShardInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentShardInfo] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentShardInfo]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentShardInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentShardInfoArgs) ToGoogleCloudDocumentaiV1DocumentShardInfoPtrOutput() GoogleCloudDocumentaiV1DocumentShardInfoPtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentShardInfoPtrOutputWithContext(context.Background())
 }
@@ -16018,12 +13881,6 @@ func (i *googleCloudDocumentaiV1DocumentShardInfoPtrType) ToGoogleCloudDocumenta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentShardInfoPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentShardInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentShardInfo] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentShardInfo]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentShardInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // For a large document, sharding may be performed to produce several document shards. Each document shard contains this field to detail which shard it is.
 type GoogleCloudDocumentaiV1DocumentShardInfoOutput struct{ *pulumi.OutputState }
 
@@ -16047,12 +13904,6 @@ func (o GoogleCloudDocumentaiV1DocumentShardInfoOutput) ToGoogleCloudDocumentaiV
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1DocumentShardInfo) *GoogleCloudDocumentaiV1DocumentShardInfo {
 		return &v
 	}).(GoogleCloudDocumentaiV1DocumentShardInfoPtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1DocumentShardInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentShardInfo] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentShardInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Total number of shards.
@@ -16082,12 +13933,6 @@ func (o GoogleCloudDocumentaiV1DocumentShardInfoPtrOutput) ToGoogleCloudDocument
 
 func (o GoogleCloudDocumentaiV1DocumentShardInfoPtrOutput) ToGoogleCloudDocumentaiV1DocumentShardInfoPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentShardInfoPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentShardInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentShardInfo] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentShardInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentShardInfoPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentShardInfoOutput {
@@ -16153,12 +13998,6 @@ func (o GoogleCloudDocumentaiV1DocumentShardInfoResponseOutput) ToGoogleCloudDoc
 
 func (o GoogleCloudDocumentaiV1DocumentShardInfoResponseOutput) ToGoogleCloudDocumentaiV1DocumentShardInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentShardInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentShardInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentShardInfoResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentShardInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Total number of shards.
@@ -16239,12 +14078,6 @@ func (i GoogleCloudDocumentaiV1DocumentStyleArgs) ToGoogleCloudDocumentaiV1Docum
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentStyleOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentStyleArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentStyle] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentStyle]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentStyleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentStyleArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentStyleArray and GoogleCloudDocumentaiV1DocumentStyleArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentStyleArrayInput` via:
 //
@@ -16270,12 +14103,6 @@ func (i GoogleCloudDocumentaiV1DocumentStyleArray) ToGoogleCloudDocumentaiV1Docu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentStyleArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentStyleArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentStyle] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentStyle]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentStyleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Annotation for common text style attributes. This adheres to CSS conventions as much as possible.
 type GoogleCloudDocumentaiV1DocumentStyleOutput struct{ *pulumi.OutputState }
 
@@ -16289,12 +14116,6 @@ func (o GoogleCloudDocumentaiV1DocumentStyleOutput) ToGoogleCloudDocumentaiV1Doc
 
 func (o GoogleCloudDocumentaiV1DocumentStyleOutput) ToGoogleCloudDocumentaiV1DocumentStyleOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentStyleOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentStyleOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentStyle] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentStyle]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Text background color.
@@ -16355,12 +14176,6 @@ func (o GoogleCloudDocumentaiV1DocumentStyleArrayOutput) ToGoogleCloudDocumentai
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentStyleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentStyle] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentStyle]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentStyleArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentStyleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentStyle {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentStyle)[vs[1].(int)]
@@ -16406,12 +14221,6 @@ func (i GoogleCloudDocumentaiV1DocumentStyleFontSizeArgs) ToGoogleCloudDocumenta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentStyleFontSizeOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentStyleFontSizeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentStyleFontSize] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentStyleFontSize]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentStyleFontSizeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentStyleFontSizeArgs) ToGoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput() GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutputWithContext(context.Background())
 }
@@ -16453,12 +14262,6 @@ func (i *googleCloudDocumentaiV1DocumentStyleFontSizePtrType) ToGoogleCloudDocum
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentStyleFontSizePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentStyleFontSize] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentStyleFontSize]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Font size with unit.
 type GoogleCloudDocumentaiV1DocumentStyleFontSizeOutput struct{ *pulumi.OutputState }
 
@@ -16484,12 +14287,6 @@ func (o GoogleCloudDocumentaiV1DocumentStyleFontSizeOutput) ToGoogleCloudDocumen
 	}).(GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput)
 }
 
-func (o GoogleCloudDocumentaiV1DocumentStyleFontSizeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentStyleFontSize] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentStyleFontSize]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Font size for the text.
 func (o GoogleCloudDocumentaiV1DocumentStyleFontSizeOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleFontSize) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
@@ -16512,12 +14309,6 @@ func (o GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput) ToGoogleCloudDocu
 
 func (o GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput) ToGoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentStyleFontSize] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentStyleFontSize]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentStyleFontSizePtrOutput) Elem() GoogleCloudDocumentaiV1DocumentStyleFontSizeOutput {
@@ -16573,12 +14364,6 @@ func (o GoogleCloudDocumentaiV1DocumentStyleFontSizeResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentStyleFontSizeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Font size for the text.
 func (o GoogleCloudDocumentaiV1DocumentStyleFontSizeResponseOutput) Size() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse) float64 { return v.Size }).(pulumi.Float64Output)
@@ -16622,12 +14407,6 @@ func (o GoogleCloudDocumentaiV1DocumentStyleResponseOutput) ToGoogleCloudDocumen
 
 func (o GoogleCloudDocumentaiV1DocumentStyleResponseOutput) ToGoogleCloudDocumentaiV1DocumentStyleResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentStyleResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentStyleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentStyleResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentStyleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Text background color.
@@ -16688,12 +14467,6 @@ func (o GoogleCloudDocumentaiV1DocumentStyleResponseArrayOutput) ToGoogleCloudDo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentStyleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentStyleResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentStyleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentStyleResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentStyleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentStyleResponse {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentStyleResponse)[vs[1].(int)]
@@ -16739,12 +14512,6 @@ func (i GoogleCloudDocumentaiV1DocumentTextAnchorArgs) ToGoogleCloudDocumentaiV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentTextAnchorOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentTextAnchorArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchor] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchor]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentTextAnchorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDocumentaiV1DocumentTextAnchorArgs) ToGoogleCloudDocumentaiV1DocumentTextAnchorPtrOutput() GoogleCloudDocumentaiV1DocumentTextAnchorPtrOutput {
 	return i.ToGoogleCloudDocumentaiV1DocumentTextAnchorPtrOutputWithContext(context.Background())
 }
@@ -16786,12 +14553,6 @@ func (i *googleCloudDocumentaiV1DocumentTextAnchorPtrType) ToGoogleCloudDocument
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentTextAnchorPtrOutput)
 }
 
-func (i *googleCloudDocumentaiV1DocumentTextAnchorPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentTextAnchor] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentTextAnchor]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentTextAnchorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Text reference indexing into the Document.text.
 type GoogleCloudDocumentaiV1DocumentTextAnchorOutput struct{ *pulumi.OutputState }
 
@@ -16815,12 +14576,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextAnchorOutput) ToGoogleCloudDocumentai
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1DocumentTextAnchor) *GoogleCloudDocumentaiV1DocumentTextAnchor {
 		return &v
 	}).(GoogleCloudDocumentaiV1DocumentTextAnchorPtrOutput)
-}
-
-func (o GoogleCloudDocumentaiV1DocumentTextAnchorOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchor] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contains the content of the text span so that users do not have to look it up in the text_segments. It is always populated for formFields.
@@ -16847,12 +14602,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextAnchorPtrOutput) ToGoogleCloudDocumen
 
 func (o GoogleCloudDocumentaiV1DocumentTextAnchorPtrOutput) ToGoogleCloudDocumentaiV1DocumentTextAnchorPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentTextAnchorPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentTextAnchorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentTextAnchor] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentTextAnchor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentTextAnchorPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentTextAnchorOutput {
@@ -16908,12 +14657,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextAnchorResponseOutput) ToGoogleCloudDo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentTextAnchorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchorResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Contains the content of the text span so that users do not have to look it up in the text_segments. It is always populated for formFields.
 func (o GoogleCloudDocumentaiV1DocumentTextAnchorResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentTextAnchorResponse) string { return v.Content }).(pulumi.StringOutput)
@@ -16965,12 +14708,6 @@ func (i GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArgs) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArray and GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayInput` via:
 //
@@ -16996,12 +14733,6 @@ func (i GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArray) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A text segment in the Document.text. The indices may be out of bounds which indicate that the text extends into another document shard for large sharded documents. See ShardInfo.text_offset
 type GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentOutput struct{ *pulumi.OutputState }
 
@@ -17015,12 +14746,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentOutput) ToGoogleClou
 
 func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentOutput) ToGoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // TextSegment half open end UTF-8 char index in the Document.text.
@@ -17045,12 +14770,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayOutput) ToGoogl
 
 func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayOutput) ToGoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentOutput {
@@ -17082,12 +14801,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponseOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // TextSegment half open end UTF-8 char index in the Document.text.
 func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponseOutput) EndIndex() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse) string { return v.EndIndex }).(pulumi.StringOutput)
@@ -17110,12 +14823,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponseArrayOutput)
 
 func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponseOutput {
@@ -17167,12 +14874,6 @@ func (i GoogleCloudDocumentaiV1DocumentTextChangeArgs) ToGoogleCloudDocumentaiV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentTextChangeOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentTextChangeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentTextChange] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentTextChange]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentTextChangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1DocumentTextChangeArrayInput is an input type that accepts GoogleCloudDocumentaiV1DocumentTextChangeArray and GoogleCloudDocumentaiV1DocumentTextChangeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentTextChangeArrayInput` via:
 //
@@ -17198,12 +14899,6 @@ func (i GoogleCloudDocumentaiV1DocumentTextChangeArray) ToGoogleCloudDocumentaiV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentTextChangeArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1DocumentTextChangeArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextChange] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextChange]{
-		OutputState: i.ToGoogleCloudDocumentaiV1DocumentTextChangeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This message is used for text changes aka. OCR corrections.
 type GoogleCloudDocumentaiV1DocumentTextChangeOutput struct{ *pulumi.OutputState }
 
@@ -17217,12 +14912,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextChangeOutput) ToGoogleCloudDocumentai
 
 func (o GoogleCloudDocumentaiV1DocumentTextChangeOutput) ToGoogleCloudDocumentaiV1DocumentTextChangeOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentTextChangeOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentTextChangeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentTextChange] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentTextChange]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The text that replaces the text identified in the `text_anchor`.
@@ -17258,12 +14947,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextChangeArrayOutput) ToGoogleCloudDocum
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1DocumentTextChangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextChange] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextChange]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDocumentaiV1DocumentTextChangeArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentTextChangeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentTextChange {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentTextChange)[vs[1].(int)]
@@ -17293,12 +14976,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextChangeResponseOutput) ToGoogleCloudDo
 
 func (o GoogleCloudDocumentaiV1DocumentTextChangeResponseOutput) ToGoogleCloudDocumentaiV1DocumentTextChangeResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentTextChangeResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentTextChangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1DocumentTextChangeResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1DocumentTextChangeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The text that replaces the text identified in the `text_anchor`.
@@ -17332,12 +15009,6 @@ func (o GoogleCloudDocumentaiV1DocumentTextChangeResponseArrayOutput) ToGoogleCl
 
 func (o GoogleCloudDocumentaiV1DocumentTextChangeResponseArrayOutput) ToGoogleCloudDocumentaiV1DocumentTextChangeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentTextChangeResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1DocumentTextChangeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextChangeResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1DocumentTextChangeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1DocumentTextChangeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1DocumentTextChangeResponseOutput {
@@ -17385,12 +15056,6 @@ func (i GoogleCloudDocumentaiV1NormalizedVertexArgs) ToGoogleCloudDocumentaiV1No
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1NormalizedVertexOutput)
 }
 
-func (i GoogleCloudDocumentaiV1NormalizedVertexArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1NormalizedVertex] {
-	return pulumix.Output[GoogleCloudDocumentaiV1NormalizedVertex]{
-		OutputState: i.ToGoogleCloudDocumentaiV1NormalizedVertexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1NormalizedVertexArrayInput is an input type that accepts GoogleCloudDocumentaiV1NormalizedVertexArray and GoogleCloudDocumentaiV1NormalizedVertexArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1NormalizedVertexArrayInput` via:
 //
@@ -17416,12 +15081,6 @@ func (i GoogleCloudDocumentaiV1NormalizedVertexArray) ToGoogleCloudDocumentaiV1N
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1NormalizedVertexArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1NormalizedVertexArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1NormalizedVertex] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1NormalizedVertex]{
-		OutputState: i.ToGoogleCloudDocumentaiV1NormalizedVertexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1.
 type GoogleCloudDocumentaiV1NormalizedVertexOutput struct{ *pulumi.OutputState }
 
@@ -17435,12 +15094,6 @@ func (o GoogleCloudDocumentaiV1NormalizedVertexOutput) ToGoogleCloudDocumentaiV1
 
 func (o GoogleCloudDocumentaiV1NormalizedVertexOutput) ToGoogleCloudDocumentaiV1NormalizedVertexOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1NormalizedVertexOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1NormalizedVertexOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1NormalizedVertex] {
-	return pulumix.Output[GoogleCloudDocumentaiV1NormalizedVertex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // X coordinate.
@@ -17465,12 +15118,6 @@ func (o GoogleCloudDocumentaiV1NormalizedVertexArrayOutput) ToGoogleCloudDocumen
 
 func (o GoogleCloudDocumentaiV1NormalizedVertexArrayOutput) ToGoogleCloudDocumentaiV1NormalizedVertexArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1NormalizedVertexArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1NormalizedVertexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1NormalizedVertex] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1NormalizedVertex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1NormalizedVertexArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1NormalizedVertexOutput {
@@ -17502,12 +15149,6 @@ func (o GoogleCloudDocumentaiV1NormalizedVertexResponseOutput) ToGoogleCloudDocu
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1NormalizedVertexResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1NormalizedVertexResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1NormalizedVertexResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // X coordinate.
 func (o GoogleCloudDocumentaiV1NormalizedVertexResponseOutput) X() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1NormalizedVertexResponse) float64 { return v.X }).(pulumi.Float64Output)
@@ -17530,12 +15171,6 @@ func (o GoogleCloudDocumentaiV1NormalizedVertexResponseArrayOutput) ToGoogleClou
 
 func (o GoogleCloudDocumentaiV1NormalizedVertexResponseArrayOutput) ToGoogleCloudDocumentaiV1NormalizedVertexResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1NormalizedVertexResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1NormalizedVertexResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1NormalizedVertexResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1NormalizedVertexResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1NormalizedVertexResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1NormalizedVertexResponseOutput {
@@ -17583,12 +15218,6 @@ func (i GoogleCloudDocumentaiV1VertexArgs) ToGoogleCloudDocumentaiV1VertexOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1VertexOutput)
 }
 
-func (i GoogleCloudDocumentaiV1VertexArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1Vertex] {
-	return pulumix.Output[GoogleCloudDocumentaiV1Vertex]{
-		OutputState: i.ToGoogleCloudDocumentaiV1VertexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDocumentaiV1VertexArrayInput is an input type that accepts GoogleCloudDocumentaiV1VertexArray and GoogleCloudDocumentaiV1VertexArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDocumentaiV1VertexArrayInput` via:
 //
@@ -17614,12 +15243,6 @@ func (i GoogleCloudDocumentaiV1VertexArray) ToGoogleCloudDocumentaiV1VertexArray
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1VertexArrayOutput)
 }
 
-func (i GoogleCloudDocumentaiV1VertexArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1Vertex] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1Vertex]{
-		OutputState: i.ToGoogleCloudDocumentaiV1VertexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image.
 type GoogleCloudDocumentaiV1VertexOutput struct{ *pulumi.OutputState }
 
@@ -17633,12 +15256,6 @@ func (o GoogleCloudDocumentaiV1VertexOutput) ToGoogleCloudDocumentaiV1VertexOutp
 
 func (o GoogleCloudDocumentaiV1VertexOutput) ToGoogleCloudDocumentaiV1VertexOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1VertexOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1VertexOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1Vertex] {
-	return pulumix.Output[GoogleCloudDocumentaiV1Vertex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // X coordinate.
@@ -17663,12 +15280,6 @@ func (o GoogleCloudDocumentaiV1VertexArrayOutput) ToGoogleCloudDocumentaiV1Verte
 
 func (o GoogleCloudDocumentaiV1VertexArrayOutput) ToGoogleCloudDocumentaiV1VertexArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1VertexArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1VertexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1Vertex] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1Vertex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1VertexArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1VertexOutput {
@@ -17700,12 +15311,6 @@ func (o GoogleCloudDocumentaiV1VertexResponseOutput) ToGoogleCloudDocumentaiV1Ve
 	return o
 }
 
-func (o GoogleCloudDocumentaiV1VertexResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDocumentaiV1VertexResponse] {
-	return pulumix.Output[GoogleCloudDocumentaiV1VertexResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // X coordinate.
 func (o GoogleCloudDocumentaiV1VertexResponseOutput) X() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1VertexResponse) int { return v.X }).(pulumi.IntOutput)
@@ -17728,12 +15333,6 @@ func (o GoogleCloudDocumentaiV1VertexResponseArrayOutput) ToGoogleCloudDocumenta
 
 func (o GoogleCloudDocumentaiV1VertexResponseArrayOutput) ToGoogleCloudDocumentaiV1VertexResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1VertexResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDocumentaiV1VertexResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDocumentaiV1VertexResponse] {
-	return pulumix.Output[[]GoogleCloudDocumentaiV1VertexResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDocumentaiV1VertexResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDocumentaiV1VertexResponseOutput {
@@ -17781,12 +15380,6 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigOutput)
 }
 
-func (i GoogleIamV1AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
-	return pulumix.Output[GoogleIamV1AuditConfig]{
-		OutputState: i.ToGoogleIamV1AuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
@@ -17812,12 +15405,6 @@ func (i GoogleIamV1AuditConfigArray) ToGoogleIamV1AuditConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigArrayOutput)
 }
 
-func (i GoogleIamV1AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditConfig]{
-		OutputState: i.ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -17831,12 +15418,6 @@ func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutput() GoogleIam
 
 func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
-	return pulumix.Output[GoogleIamV1AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -17861,12 +15442,6 @@ func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutput()
 
 func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigOutput {
@@ -17898,12 +15473,6 @@ func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOu
 	return o
 }
 
-func (o GoogleIamV1AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfigResponse] {
-	return pulumix.Output[GoogleIamV1AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o GoogleIamV1AuditConfigResponseOutput) AuditLogConfigs() GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) []GoogleIamV1AuditLogConfigResponse { return v.AuditLogConfigs }).(GoogleIamV1AuditLogConfigResponseArrayOutput)
@@ -17926,12 +15495,6 @@ func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigRespo
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfigResponse] {
-	return pulumix.Output[[]GoogleIamV1AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigResponseOutput {
@@ -17979,12 +15542,6 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigOutput)
 }
 
-func (i GoogleIamV1AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[GoogleIamV1AuditLogConfig]{
-		OutputState: i.ToGoogleIamV1AuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
@@ -18010,12 +15567,6 @@ func (i GoogleIamV1AuditLogConfigArray) ToGoogleIamV1AuditLogConfigArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigArrayOutput)
 }
 
-func (i GoogleIamV1AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
-		OutputState: i.ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type GoogleIamV1AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -18029,12 +15580,6 @@ func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutput() Goo
 
 func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[GoogleIamV1AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -18059,12 +15604,6 @@ func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOu
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigOutput {
@@ -18096,12 +15635,6 @@ func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResp
 	return o
 }
 
-func (o GoogleIamV1AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigResponse] {
-	return pulumix.Output[GoogleIamV1AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o GoogleIamV1AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -18124,12 +15657,6 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfi
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfigResponse] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigResponseOutput {
@@ -18181,12 +15708,6 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingOutput)
 }
 
-func (i GoogleIamV1BindingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
-	return pulumix.Output[GoogleIamV1Binding]{
-		OutputState: i.ToGoogleIamV1BindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
@@ -18212,12 +15733,6 @@ func (i GoogleIamV1BindingArray) ToGoogleIamV1BindingArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingArrayOutput)
 }
 
-func (i GoogleIamV1BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
-	return pulumix.Output[[]GoogleIamV1Binding]{
-		OutputState: i.ToGoogleIamV1BindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type GoogleIamV1BindingOutput struct{ *pulumi.OutputState }
 
@@ -18231,12 +15746,6 @@ func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutput() GoogleIamV1Bindin
 
 func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutputWithContext(ctx context.Context) GoogleIamV1BindingOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
-	return pulumix.Output[GoogleIamV1Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -18266,12 +15775,6 @@ func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutput() GoogleI
 
 func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
-	return pulumix.Output[[]GoogleIamV1Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingOutput {
@@ -18305,12 +15808,6 @@ func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutputWith
 	return o
 }
 
-func (o GoogleIamV1BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1BindingResponse] {
-	return pulumix.Output[GoogleIamV1BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
@@ -18338,12 +15835,6 @@ func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArray
 
 func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1BindingResponse] {
-	return pulumix.Output[[]GoogleIamV1BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingResponseOutput {
@@ -18399,12 +15890,6 @@ func (i GoogleIamV1PolicyArgs) ToGoogleIamV1PolicyOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1PolicyOutput)
 }
 
-func (i GoogleIamV1PolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Policy] {
-	return pulumix.Output[GoogleIamV1Policy]{
-		OutputState: i.ToGoogleIamV1PolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleIamV1PolicyArgs) ToGoogleIamV1PolicyPtrOutput() GoogleIamV1PolicyPtrOutput {
 	return i.ToGoogleIamV1PolicyPtrOutputWithContext(context.Background())
 }
@@ -18446,12 +15931,6 @@ func (i *googleIamV1PolicyPtrType) ToGoogleIamV1PolicyPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1PolicyPtrOutput)
 }
 
-func (i *googleIamV1PolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1Policy] {
-	return pulumix.Output[*GoogleIamV1Policy]{
-		OutputState: i.ToGoogleIamV1PolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
 type GoogleIamV1PolicyOutput struct{ *pulumi.OutputState }
 
@@ -18475,12 +15954,6 @@ func (o GoogleIamV1PolicyOutput) ToGoogleIamV1PolicyPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleIamV1Policy) *GoogleIamV1Policy {
 		return &v
 	}).(GoogleIamV1PolicyPtrOutput)
-}
-
-func (o GoogleIamV1PolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Policy] {
-	return pulumix.Output[GoogleIamV1Policy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.
@@ -18515,12 +15988,6 @@ func (o GoogleIamV1PolicyPtrOutput) ToGoogleIamV1PolicyPtrOutput() GoogleIamV1Po
 
 func (o GoogleIamV1PolicyPtrOutput) ToGoogleIamV1PolicyPtrOutputWithContext(ctx context.Context) GoogleIamV1PolicyPtrOutput {
 	return o
-}
-
-func (o GoogleIamV1PolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1Policy] {
-	return pulumix.Output[*GoogleIamV1Policy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1PolicyPtrOutput) Elem() GoogleIamV1PolicyOutput {
@@ -18600,12 +16067,6 @@ func (o GoogleIamV1PolicyResponseOutput) ToGoogleIamV1PolicyResponseOutputWithCo
 	return o
 }
 
-func (o GoogleIamV1PolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1PolicyResponse] {
-	return pulumix.Output[GoogleIamV1PolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies cloud audit logging configuration for this policy.
 func (o GoogleIamV1PolicyResponseOutput) AuditConfigs() GoogleIamV1AuditConfigResponseArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1PolicyResponse) []GoogleIamV1AuditConfigResponse { return v.AuditConfigs }).(GoogleIamV1AuditConfigResponseArrayOutput)
@@ -18669,12 +16130,6 @@ func (i GoogleRpcStatusArgs) ToGoogleRpcStatusOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusOutput)
 }
 
-func (i GoogleRpcStatusArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleRpcStatus] {
-	return pulumix.Output[GoogleRpcStatus]{
-		OutputState: i.ToGoogleRpcStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleRpcStatusArgs) ToGoogleRpcStatusPtrOutput() GoogleRpcStatusPtrOutput {
 	return i.ToGoogleRpcStatusPtrOutputWithContext(context.Background())
 }
@@ -18716,12 +16171,6 @@ func (i *googleRpcStatusPtrType) ToGoogleRpcStatusPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusPtrOutput)
 }
 
-func (i *googleRpcStatusPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleRpcStatus] {
-	return pulumix.Output[*GoogleRpcStatus]{
-		OutputState: i.ToGoogleRpcStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type GoogleRpcStatusOutput struct{ *pulumi.OutputState }
 
@@ -18745,12 +16194,6 @@ func (o GoogleRpcStatusOutput) ToGoogleRpcStatusPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleRpcStatus) *GoogleRpcStatus {
 		return &v
 	}).(GoogleRpcStatusPtrOutput)
-}
-
-func (o GoogleRpcStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleRpcStatus] {
-	return pulumix.Output[GoogleRpcStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -18780,12 +16223,6 @@ func (o GoogleRpcStatusPtrOutput) ToGoogleRpcStatusPtrOutput() GoogleRpcStatusPt
 
 func (o GoogleRpcStatusPtrOutput) ToGoogleRpcStatusPtrOutputWithContext(ctx context.Context) GoogleRpcStatusPtrOutput {
 	return o
-}
-
-func (o GoogleRpcStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleRpcStatus] {
-	return pulumix.Output[*GoogleRpcStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleRpcStatusPtrOutput) Elem() GoogleRpcStatusOutput {
@@ -18853,12 +16290,6 @@ func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponseOutputWithContex
 	return o
 }
 
-func (o GoogleRpcStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleRpcStatusResponse] {
-	return pulumix.Output[GoogleRpcStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o GoogleRpcStatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleRpcStatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -18921,12 +16352,6 @@ func (i GoogleTypeColorArgs) ToGoogleTypeColorOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeColorOutput)
 }
 
-func (i GoogleTypeColorArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeColor] {
-	return pulumix.Output[GoogleTypeColor]{
-		OutputState: i.ToGoogleTypeColorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeColorArgs) ToGoogleTypeColorPtrOutput() GoogleTypeColorPtrOutput {
 	return i.ToGoogleTypeColorPtrOutputWithContext(context.Background())
 }
@@ -18968,12 +16393,6 @@ func (i *googleTypeColorPtrType) ToGoogleTypeColorPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeColorPtrOutput)
 }
 
-func (i *googleTypeColorPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeColor] {
-	return pulumix.Output[*GoogleTypeColor]{
-		OutputState: i.ToGoogleTypeColorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(”); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(”); }; // ...
 type GoogleTypeColorOutput struct{ *pulumi.OutputState }
 
@@ -18997,12 +16416,6 @@ func (o GoogleTypeColorOutput) ToGoogleTypeColorPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeColor) *GoogleTypeColor {
 		return &v
 	}).(GoogleTypeColorPtrOutput)
-}
-
-func (o GoogleTypeColorOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeColor] {
-	return pulumix.Output[GoogleTypeColor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by the equation: `pixel color = alpha * (this color) + (1.0 - alpha) * (background color)` This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish between a default value and the value being unset. If omitted, this color object is rendered as a solid color (as if the alpha value had been explicitly given a value of 1.0).
@@ -19037,12 +16450,6 @@ func (o GoogleTypeColorPtrOutput) ToGoogleTypeColorPtrOutput() GoogleTypeColorPt
 
 func (o GoogleTypeColorPtrOutput) ToGoogleTypeColorPtrOutputWithContext(ctx context.Context) GoogleTypeColorPtrOutput {
 	return o
-}
-
-func (o GoogleTypeColorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeColor] {
-	return pulumix.Output[*GoogleTypeColor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeColorPtrOutput) Elem() GoogleTypeColorOutput {
@@ -19122,12 +16529,6 @@ func (o GoogleTypeColorResponseOutput) ToGoogleTypeColorResponseOutputWithContex
 	return o
 }
 
-func (o GoogleTypeColorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeColorResponse] {
-	return pulumix.Output[GoogleTypeColorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by the equation: `pixel color = alpha * (this color) + (1.0 - alpha) * (background color)` This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish between a default value and the value being unset. If omitted, this color object is rendered as a solid color (as if the alpha value had been explicitly given a value of 1.0).
 func (o GoogleTypeColorResponseOutput) Alpha() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleTypeColorResponse) float64 { return v.Alpha }).(pulumi.Float64Output)
@@ -19191,12 +16592,6 @@ func (i GoogleTypeDateArgs) ToGoogleTypeDateOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateOutput)
 }
 
-func (i GoogleTypeDateArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDate] {
-	return pulumix.Output[GoogleTypeDate]{
-		OutputState: i.ToGoogleTypeDateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeDateArgs) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
 	return i.ToGoogleTypeDatePtrOutputWithContext(context.Background())
 }
@@ -19238,12 +16633,6 @@ func (i *googleTypeDatePtrType) ToGoogleTypeDatePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDatePtrOutput)
 }
 
-func (i *googleTypeDatePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeDate] {
-	return pulumix.Output[*GoogleTypeDate]{
-		OutputState: i.ToGoogleTypeDatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 type GoogleTypeDateOutput struct{ *pulumi.OutputState }
 
@@ -19267,12 +16656,6 @@ func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDate) *GoogleTypeDate {
 		return &v
 	}).(GoogleTypeDatePtrOutput)
-}
-
-func (o GoogleTypeDateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDate] {
-	return pulumix.Output[GoogleTypeDate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -19302,12 +16685,6 @@ func (o GoogleTypeDatePtrOutput) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOu
 
 func (o GoogleTypeDatePtrOutput) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
 	return o
-}
-
-func (o GoogleTypeDatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeDate] {
-	return pulumix.Output[*GoogleTypeDate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeDatePtrOutput) Elem() GoogleTypeDateOutput {
@@ -19373,12 +16750,6 @@ func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutput() GoogleTyp
 
 func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutputWithContext(ctx context.Context) GoogleTypeDateResponseOutput {
 	return o
-}
-
-func (o GoogleTypeDateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDateResponse] {
-	return pulumix.Output[GoogleTypeDateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -19463,12 +16834,6 @@ func (i GoogleTypeDateTimeArgs) ToGoogleTypeDateTimeOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateTimeOutput)
 }
 
-func (i GoogleTypeDateTimeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDateTime] {
-	return pulumix.Output[GoogleTypeDateTime]{
-		OutputState: i.ToGoogleTypeDateTimeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeDateTimeArgs) ToGoogleTypeDateTimePtrOutput() GoogleTypeDateTimePtrOutput {
 	return i.ToGoogleTypeDateTimePtrOutputWithContext(context.Background())
 }
@@ -19510,12 +16875,6 @@ func (i *googleTypeDateTimePtrType) ToGoogleTypeDateTimePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateTimePtrOutput)
 }
 
-func (i *googleTypeDateTimePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeDateTime] {
-	return pulumix.Output[*GoogleTypeDateTime]{
-		OutputState: i.ToGoogleTypeDateTimePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleTypeDateTimeArrayInput is an input type that accepts GoogleTypeDateTimeArray and GoogleTypeDateTimeArrayOutput values.
 // You can construct a concrete instance of `GoogleTypeDateTimeArrayInput` via:
 //
@@ -19541,12 +16900,6 @@ func (i GoogleTypeDateTimeArray) ToGoogleTypeDateTimeArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateTimeArrayOutput)
 }
 
-func (i GoogleTypeDateTimeArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleTypeDateTime] {
-	return pulumix.Output[[]GoogleTypeDateTime]{
-		OutputState: i.ToGoogleTypeDateTimeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations.
 type GoogleTypeDateTimeOutput struct{ *pulumi.OutputState }
 
@@ -19570,12 +16923,6 @@ func (o GoogleTypeDateTimeOutput) ToGoogleTypeDateTimePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDateTime) *GoogleTypeDateTime {
 		return &v
 	}).(GoogleTypeDateTimePtrOutput)
-}
-
-func (o GoogleTypeDateTimeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDateTime] {
-	return pulumix.Output[GoogleTypeDateTime]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day.
@@ -19635,12 +16982,6 @@ func (o GoogleTypeDateTimePtrOutput) ToGoogleTypeDateTimePtrOutput() GoogleTypeD
 
 func (o GoogleTypeDateTimePtrOutput) ToGoogleTypeDateTimePtrOutputWithContext(ctx context.Context) GoogleTypeDateTimePtrOutput {
 	return o
-}
-
-func (o GoogleTypeDateTimePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeDateTime] {
-	return pulumix.Output[*GoogleTypeDateTime]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeDateTimePtrOutput) Elem() GoogleTypeDateTimeOutput {
@@ -19757,12 +17098,6 @@ func (o GoogleTypeDateTimeArrayOutput) ToGoogleTypeDateTimeArrayOutputWithContex
 	return o
 }
 
-func (o GoogleTypeDateTimeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleTypeDateTime] {
-	return pulumix.Output[[]GoogleTypeDateTime]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleTypeDateTimeArrayOutput) Index(i pulumi.IntInput) GoogleTypeDateTimeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleTypeDateTime {
 		return vs[0].([]GoogleTypeDateTime)[vs[1].(int)]
@@ -19804,12 +17139,6 @@ func (o GoogleTypeDateTimeResponseOutput) ToGoogleTypeDateTimeResponseOutput() G
 
 func (o GoogleTypeDateTimeResponseOutput) ToGoogleTypeDateTimeResponseOutputWithContext(ctx context.Context) GoogleTypeDateTimeResponseOutput {
 	return o
-}
-
-func (o GoogleTypeDateTimeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeDateTimeResponse] {
-	return pulumix.Output[GoogleTypeDateTimeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day.
@@ -19871,12 +17200,6 @@ func (o GoogleTypeDateTimeResponseArrayOutput) ToGoogleTypeDateTimeResponseArray
 	return o
 }
 
-func (o GoogleTypeDateTimeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleTypeDateTimeResponse] {
-	return pulumix.Output[[]GoogleTypeDateTimeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleTypeDateTimeResponseArrayOutput) Index(i pulumi.IntInput) GoogleTypeDateTimeResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleTypeDateTimeResponse {
 		return vs[0].([]GoogleTypeDateTimeResponse)[vs[1].(int)]
@@ -19930,12 +17253,6 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput)
 }
 
-func (i GoogleTypeExprArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
 	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
 }
@@ -19977,12 +17294,6 @@ func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprPtrOutput)
 }
 
-func (i *googleTypeExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type GoogleTypeExprOutput struct{ *pulumi.OutputState }
 
@@ -20006,12 +17317,6 @@ func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
 		return &v
 	}).(GoogleTypeExprPtrOutput)
-}
-
-func (o GoogleTypeExprOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -20046,12 +17351,6 @@ func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOu
 
 func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
 	return o
-}
-
-func (o GoogleTypeExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
@@ -20131,12 +17430,6 @@ func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(
 	return o
 }
 
-func (o GoogleTypeExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExprResponse] {
-	return pulumix.Output[GoogleTypeExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o GoogleTypeExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -20200,12 +17493,6 @@ func (i GoogleTypeMoneyArgs) ToGoogleTypeMoneyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeMoneyOutput)
 }
 
-func (i GoogleTypeMoneyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeMoney] {
-	return pulumix.Output[GoogleTypeMoney]{
-		OutputState: i.ToGoogleTypeMoneyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeMoneyArgs) ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPtrOutput {
 	return i.ToGoogleTypeMoneyPtrOutputWithContext(context.Background())
 }
@@ -20247,12 +17534,6 @@ func (i *googleTypeMoneyPtrType) ToGoogleTypeMoneyPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeMoneyPtrOutput)
 }
 
-func (i *googleTypeMoneyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeMoney] {
-	return pulumix.Output[*GoogleTypeMoney]{
-		OutputState: i.ToGoogleTypeMoneyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an amount of money with its currency type.
 type GoogleTypeMoneyOutput struct{ *pulumi.OutputState }
 
@@ -20276,12 +17557,6 @@ func (o GoogleTypeMoneyOutput) ToGoogleTypeMoneyPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeMoney) *GoogleTypeMoney {
 		return &v
 	}).(GoogleTypeMoneyPtrOutput)
-}
-
-func (o GoogleTypeMoneyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeMoney] {
-	return pulumix.Output[GoogleTypeMoney]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -20311,12 +17586,6 @@ func (o GoogleTypeMoneyPtrOutput) ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPt
 
 func (o GoogleTypeMoneyPtrOutput) ToGoogleTypeMoneyPtrOutputWithContext(ctx context.Context) GoogleTypeMoneyPtrOutput {
 	return o
-}
-
-func (o GoogleTypeMoneyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeMoney] {
-	return pulumix.Output[*GoogleTypeMoney]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeMoneyPtrOutput) Elem() GoogleTypeMoneyOutput {
@@ -20382,12 +17651,6 @@ func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponseOutput() GoogleT
 
 func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponseOutputWithContext(ctx context.Context) GoogleTypeMoneyResponseOutput {
 	return o
-}
-
-func (o GoogleTypeMoneyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeMoneyResponse] {
-	return pulumix.Output[GoogleTypeMoneyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -20480,12 +17743,6 @@ func (i GoogleTypePostalAddressArgs) ToGoogleTypePostalAddressOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypePostalAddressOutput)
 }
 
-func (i GoogleTypePostalAddressArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypePostalAddress] {
-	return pulumix.Output[GoogleTypePostalAddress]{
-		OutputState: i.ToGoogleTypePostalAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypePostalAddressArgs) ToGoogleTypePostalAddressPtrOutput() GoogleTypePostalAddressPtrOutput {
 	return i.ToGoogleTypePostalAddressPtrOutputWithContext(context.Background())
 }
@@ -20527,12 +17784,6 @@ func (i *googleTypePostalAddressPtrType) ToGoogleTypePostalAddressPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypePostalAddressPtrOutput)
 }
 
-func (i *googleTypePostalAddressPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypePostalAddress] {
-	return pulumix.Output[*GoogleTypePostalAddress]{
-		OutputState: i.ToGoogleTypePostalAddressPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
 type GoogleTypePostalAddressOutput struct{ *pulumi.OutputState }
 
@@ -20556,12 +17807,6 @@ func (o GoogleTypePostalAddressOutput) ToGoogleTypePostalAddressPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypePostalAddress) *GoogleTypePostalAddress {
 		return &v
 	}).(GoogleTypePostalAddressPtrOutput)
-}
-
-func (o GoogleTypePostalAddressOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypePostalAddress] {
-	return pulumix.Output[GoogleTypePostalAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -20631,12 +17876,6 @@ func (o GoogleTypePostalAddressPtrOutput) ToGoogleTypePostalAddressPtrOutput() G
 
 func (o GoogleTypePostalAddressPtrOutput) ToGoogleTypePostalAddressPtrOutputWithContext(ctx context.Context) GoogleTypePostalAddressPtrOutput {
 	return o
-}
-
-func (o GoogleTypePostalAddressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypePostalAddress] {
-	return pulumix.Output[*GoogleTypePostalAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypePostalAddressPtrOutput) Elem() GoogleTypePostalAddressOutput {
@@ -20800,12 +18039,6 @@ func (o GoogleTypePostalAddressResponseOutput) ToGoogleTypePostalAddressResponse
 	return o
 }
 
-func (o GoogleTypePostalAddressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypePostalAddressResponse] {
-	return pulumix.Output[GoogleTypePostalAddressResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
 func (o GoogleTypePostalAddressResponseOutput) AddressLines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleTypePostalAddressResponse) []string { return v.AddressLines }).(pulumi.StringArrayOutput)
@@ -20900,12 +18133,6 @@ func (i GoogleTypeTimeZoneArgs) ToGoogleTypeTimeZoneOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeTimeZoneOutput)
 }
 
-func (i GoogleTypeTimeZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeTimeZone] {
-	return pulumix.Output[GoogleTypeTimeZone]{
-		OutputState: i.ToGoogleTypeTimeZoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeTimeZoneArgs) ToGoogleTypeTimeZonePtrOutput() GoogleTypeTimeZonePtrOutput {
 	return i.ToGoogleTypeTimeZonePtrOutputWithContext(context.Background())
 }
@@ -20947,12 +18174,6 @@ func (i *googleTypeTimeZonePtrType) ToGoogleTypeTimeZonePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeTimeZonePtrOutput)
 }
 
-func (i *googleTypeTimeZonePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeTimeZone] {
-	return pulumix.Output[*GoogleTypeTimeZone]{
-		OutputState: i.ToGoogleTypeTimeZonePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 type GoogleTypeTimeZoneOutput struct{ *pulumi.OutputState }
 
@@ -20978,12 +18199,6 @@ func (o GoogleTypeTimeZoneOutput) ToGoogleTypeTimeZonePtrOutputWithContext(ctx c
 	}).(GoogleTypeTimeZonePtrOutput)
 }
 
-func (o GoogleTypeTimeZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeTimeZone] {
-	return pulumix.Output[GoogleTypeTimeZone]{
-		OutputState: o.OutputState,
-	}
-}
-
 // IANA Time Zone Database time zone, e.g. "America/New_York".
 func (o GoogleTypeTimeZoneOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleTypeTimeZone) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -21006,12 +18221,6 @@ func (o GoogleTypeTimeZonePtrOutput) ToGoogleTypeTimeZonePtrOutput() GoogleTypeT
 
 func (o GoogleTypeTimeZonePtrOutput) ToGoogleTypeTimeZonePtrOutputWithContext(ctx context.Context) GoogleTypeTimeZonePtrOutput {
 	return o
-}
-
-func (o GoogleTypeTimeZonePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeTimeZone] {
-	return pulumix.Output[*GoogleTypeTimeZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeTimeZonePtrOutput) Elem() GoogleTypeTimeZoneOutput {
@@ -21063,12 +18272,6 @@ func (o GoogleTypeTimeZoneResponseOutput) ToGoogleTypeTimeZoneResponseOutput() G
 
 func (o GoogleTypeTimeZoneResponseOutput) ToGoogleTypeTimeZoneResponseOutputWithContext(ctx context.Context) GoogleTypeTimeZoneResponseOutput {
 	return o
-}
-
-func (o GoogleTypeTimeZoneResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeTimeZoneResponse] {
-	return pulumix.Output[GoogleTypeTimeZoneResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. IANA Time Zone Database version number, e.g. "2019a".

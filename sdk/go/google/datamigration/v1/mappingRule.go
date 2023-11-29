@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new mapping rule for a given conversion workspace.
@@ -237,12 +236,6 @@ func (i *MappingRule) ToMappingRuleOutputWithContext(ctx context.Context) Mappin
 	return pulumi.ToOutputWithContext(ctx, i).(MappingRuleOutput)
 }
 
-func (i *MappingRule) ToOutput(ctx context.Context) pulumix.Output[*MappingRule] {
-	return pulumix.Output[*MappingRule]{
-		OutputState: i.ToMappingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MappingRuleOutput struct{ *pulumi.OutputState }
 
 func (MappingRuleOutput) ElementType() reflect.Type {
@@ -255,12 +248,6 @@ func (o MappingRuleOutput) ToMappingRuleOutput() MappingRuleOutput {
 
 func (o MappingRuleOutput) ToMappingRuleOutputWithContext(ctx context.Context) MappingRuleOutput {
 	return o
-}
-
-func (o MappingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*MappingRule] {
-	return pulumix.Output[*MappingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed, rounded, etc) provided that the data meets certain criteria.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a `HcxActivationKey` resource by its resource name.
@@ -79,12 +78,6 @@ func (o LookupHcxActivationKeyResultOutput) ToLookupHcxActivationKeyResultOutput
 
 func (o LookupHcxActivationKeyResultOutput) ToLookupHcxActivationKeyResultOutputWithContext(ctx context.Context) LookupHcxActivationKeyResultOutput {
 	return o
-}
-
-func (o LookupHcxActivationKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHcxActivationKeyResult] {
-	return pulumix.Output[LookupHcxActivationKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HCX activation key.

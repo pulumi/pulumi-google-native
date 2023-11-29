@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches a single CompilationResult.
@@ -85,12 +84,6 @@ func (o LookupCompilationResultResultOutput) ToLookupCompilationResultResultOutp
 
 func (o LookupCompilationResultResultOutput) ToLookupCompilationResultResultOutputWithContext(ctx context.Context) LookupCompilationResultResultOutput {
 	return o
-}
-
-func (o LookupCompilationResultResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCompilationResultResult] {
-	return pulumix.Output[LookupCompilationResultResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.

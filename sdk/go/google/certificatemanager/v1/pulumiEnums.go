@@ -83,12 +83,6 @@ func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToCertificateIssuanceConfig
 	}).(CertificateIssuanceConfigKeyAlgorithmPtrOutput)
 }
 
-func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateIssuanceConfigKeyAlgorithm] {
-	return pulumix.Output[CertificateIssuanceConfigKeyAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o CertificateIssuanceConfigKeyAlgorithmPtrOutput) ToCertificateIssuanceCon
 
 func (o CertificateIssuanceConfigKeyAlgorithmPtrOutput) ToCertificateIssuanceConfigKeyAlgorithmPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigKeyAlgorithmPtrOutput {
 	return o
-}
-
-func (o CertificateIssuanceConfigKeyAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateIssuanceConfigKeyAlgorithm] {
-	return pulumix.Output[*CertificateIssuanceConfigKeyAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateIssuanceConfigKeyAlgorithmPtrOutput) Elem() CertificateIssuanceConfigKeyAlgorithmOutput {
@@ -268,12 +256,6 @@ func (o CertificateMapEntryMatcherOutput) ToCertificateMapEntryMatcherPtrOutputW
 	}).(CertificateMapEntryMatcherPtrOutput)
 }
 
-func (o CertificateMapEntryMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateMapEntryMatcher] {
-	return pulumix.Output[CertificateMapEntryMatcher]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateMapEntryMatcherOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -307,12 +289,6 @@ func (o CertificateMapEntryMatcherPtrOutput) ToCertificateMapEntryMatcherPtrOutp
 
 func (o CertificateMapEntryMatcherPtrOutput) ToCertificateMapEntryMatcherPtrOutputWithContext(ctx context.Context) CertificateMapEntryMatcherPtrOutput {
 	return o
-}
-
-func (o CertificateMapEntryMatcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateMapEntryMatcher] {
-	return pulumix.Output[*CertificateMapEntryMatcher]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateMapEntryMatcherPtrOutput) Elem() CertificateMapEntryMatcherOutput {
@@ -455,12 +431,6 @@ func (o CertificateScopeOutput) ToCertificateScopePtrOutputWithContext(ctx conte
 	}).(CertificateScopePtrOutput)
 }
 
-func (o CertificateScopeOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateScope] {
-	return pulumix.Output[CertificateScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -494,12 +464,6 @@ func (o CertificateScopePtrOutput) ToCertificateScopePtrOutput() CertificateScop
 
 func (o CertificateScopePtrOutput) ToCertificateScopePtrOutputWithContext(ctx context.Context) CertificateScopePtrOutput {
 	return o
-}
-
-func (o CertificateScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateScope] {
-	return pulumix.Output[*CertificateScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateScopePtrOutput) Elem() CertificateScopeOutput {

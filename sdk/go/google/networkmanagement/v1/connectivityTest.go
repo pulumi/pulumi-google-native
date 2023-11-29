@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of AMBIGUOUS. For more information, see the Connectivity Test documentation.
@@ -167,12 +166,6 @@ func (i *ConnectivityTest) ToConnectivityTestOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestOutput)
 }
 
-func (i *ConnectivityTest) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityTest] {
-	return pulumix.Output[*ConnectivityTest]{
-		OutputState: i.ToConnectivityTestOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectivityTestOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestOutput) ElementType() reflect.Type {
@@ -185,12 +178,6 @@ func (o ConnectivityTestOutput) ToConnectivityTestOutput() ConnectivityTestOutpu
 
 func (o ConnectivityTestOutput) ToConnectivityTestOutputWithContext(ctx context.Context) ConnectivityTestOutput {
 	return o
-}
-
-func (o ConnectivityTestOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityTest] {
-	return pulumix.Output[*ConnectivityTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the test was created.

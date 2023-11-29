@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new TlsRoute in a given project and location.
@@ -154,12 +153,6 @@ func (i *TlsRoute) ToTlsRouteOutputWithContext(ctx context.Context) TlsRouteOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteOutput)
 }
 
-func (i *TlsRoute) ToOutput(ctx context.Context) pulumix.Output[*TlsRoute] {
-	return pulumix.Output[*TlsRoute]{
-		OutputState: i.ToTlsRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TlsRouteOutput struct{ *pulumi.OutputState }
 
 func (TlsRouteOutput) ElementType() reflect.Type {
@@ -172,12 +165,6 @@ func (o TlsRouteOutput) ToTlsRouteOutput() TlsRouteOutput {
 
 func (o TlsRouteOutput) ToTlsRouteOutputWithContext(ctx context.Context) TlsRouteOutput {
 	return o
-}
-
-func (o TlsRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsRoute] {
-	return pulumix.Output[*TlsRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.

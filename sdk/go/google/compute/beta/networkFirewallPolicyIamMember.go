@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -136,12 +135,6 @@ func (i *NetworkFirewallPolicyIamMember) ToNetworkFirewallPolicyIamMemberOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFirewallPolicyIamMemberOutput)
 }
 
-func (i *NetworkFirewallPolicyIamMember) ToOutput(ctx context.Context) pulumix.Output[*NetworkFirewallPolicyIamMember] {
-	return pulumix.Output[*NetworkFirewallPolicyIamMember]{
-		OutputState: i.ToNetworkFirewallPolicyIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkFirewallPolicyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (NetworkFirewallPolicyIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o NetworkFirewallPolicyIamMemberOutput) ToNetworkFirewallPolicyIamMemberOu
 
 func (o NetworkFirewallPolicyIamMemberOutput) ToNetworkFirewallPolicyIamMemberOutputWithContext(ctx context.Context) NetworkFirewallPolicyIamMemberOutput {
 	return o
-}
-
-func (o NetworkFirewallPolicyIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkFirewallPolicyIamMember] {
-	return pulumix.Output[*NetworkFirewallPolicyIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

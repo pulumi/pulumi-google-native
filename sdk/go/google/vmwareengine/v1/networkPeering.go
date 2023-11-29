@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource.
@@ -193,12 +192,6 @@ func (i *NetworkPeering) ToNetworkPeeringOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringOutput)
 }
 
-func (i *NetworkPeering) ToOutput(ctx context.Context) pulumix.Output[*NetworkPeering] {
-	return pulumix.Output[*NetworkPeering]{
-		OutputState: i.ToNetworkPeeringOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkPeeringOutput struct{ *pulumi.OutputState }
 
 func (NetworkPeeringOutput) ElementType() reflect.Type {
@@ -211,12 +204,6 @@ func (o NetworkPeeringOutput) ToNetworkPeeringOutput() NetworkPeeringOutput {
 
 func (o NetworkPeeringOutput) ToNetworkPeeringOutputWithContext(ctx context.Context) NetworkPeeringOutput {
 	return o
-}
-
-func (o NetworkPeeringOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPeering] {
-	return pulumix.Output[*NetworkPeering]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

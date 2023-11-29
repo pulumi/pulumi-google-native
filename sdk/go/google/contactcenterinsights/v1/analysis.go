@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an analysis. The long running operation is done when the analysis has completed.
@@ -124,12 +123,6 @@ func (i *Analysis) ToAnalysisOutputWithContext(ctx context.Context) AnalysisOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AnalysisOutput)
 }
 
-func (i *Analysis) ToOutput(ctx context.Context) pulumix.Output[*Analysis] {
-	return pulumix.Output[*Analysis]{
-		OutputState: i.ToAnalysisOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AnalysisOutput struct{ *pulumi.OutputState }
 
 func (AnalysisOutput) ElementType() reflect.Type {
@@ -142,12 +135,6 @@ func (o AnalysisOutput) ToAnalysisOutput() AnalysisOutput {
 
 func (o AnalysisOutput) ToAnalysisOutputWithContext(ctx context.Context) AnalysisOutput {
 	return o
-}
-
-func (o AnalysisOutput) ToOutput(ctx context.Context) pulumix.Output[*Analysis] {
-	return pulumix.Output[*Analysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The result of the analysis, which is populated when the analysis finishes.

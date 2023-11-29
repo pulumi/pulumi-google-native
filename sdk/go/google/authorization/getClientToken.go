@@ -4,6 +4,9 @@
 package authorization
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -29,4 +32,54 @@ type GetClientTokenResult struct {
 	RefreshToken *string `pulumi:"refreshToken"`
 	// The type of auth token. Possible types are "Bearer", "MAC", "Basic".
 	TokenType string `pulumi:"tokenType"`
+}
+
+func GetClientTokenOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetClientTokenResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetClientTokenResult, error) {
+		r, err := GetClientToken(ctx, opts...)
+		var s GetClientTokenResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetClientTokenResultOutput)
+}
+
+// Configuration values returned by getClientToken.
+type GetClientTokenResultOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenResult)(nil)).Elem()
+}
+
+func (o GetClientTokenResultOutput) ToGetClientTokenResultOutput() GetClientTokenResultOutput {
+	return o
+}
+
+func (o GetClientTokenResultOutput) ToGetClientTokenResultOutputWithContext(ctx context.Context) GetClientTokenResultOutput {
+	return o
+}
+
+// The OAuth2 access token used by the client to authenticate against the Google Cloud API.
+func (o GetClientTokenResultOutput) AccessToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientTokenResult) string { return v.AccessToken }).(pulumi.StringOutput)
+}
+
+// Expiry is the optional expiration time of the access token. If zero, TokenSource implementations will reuse the same token forever and RefreshToken or equivalent mechanisms for that TokenSource will not be used.
+func (o GetClientTokenResultOutput) Expiry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClientTokenResult) *string { return v.Expiry }).(pulumi.StringPtrOutput)
+}
+
+// RefreshToken is a token that's used by the application (as opposed to the user) to refresh the access token if it expires.
+func (o GetClientTokenResultOutput) RefreshToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClientTokenResult) *string { return v.RefreshToken }).(pulumi.StringPtrOutput)
+}
+
+// The type of auth token. Possible types are "Bearer", "MAC", "Basic".
+func (o GetClientTokenResultOutput) TokenType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientTokenResult) string { return v.TokenType }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetClientTokenResultOutput{})
 }

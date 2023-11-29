@@ -83,12 +83,6 @@ func (o AllowedClientMountPermissionsOutput) ToAllowedClientMountPermissionsPtrO
 	}).(AllowedClientMountPermissionsPtrOutput)
 }
 
-func (o AllowedClientMountPermissionsOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedClientMountPermissions] {
-	return pulumix.Output[AllowedClientMountPermissions]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AllowedClientMountPermissionsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o AllowedClientMountPermissionsPtrOutput) ToAllowedClientMountPermissionsP
 
 func (o AllowedClientMountPermissionsPtrOutput) ToAllowedClientMountPermissionsPtrOutputWithContext(ctx context.Context) AllowedClientMountPermissionsPtrOutput {
 	return o
-}
-
-func (o AllowedClientMountPermissionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AllowedClientMountPermissions] {
-	return pulumix.Output[*AllowedClientMountPermissions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AllowedClientMountPermissionsPtrOutput) Elem() AllowedClientMountPermissionsOutput {
@@ -270,12 +258,6 @@ func (o InstanceConfigNetworkConfigOutput) ToInstanceConfigNetworkConfigPtrOutpu
 	}).(InstanceConfigNetworkConfigPtrOutput)
 }
 
-func (o InstanceConfigNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceConfigNetworkConfig] {
-	return pulumix.Output[InstanceConfigNetworkConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceConfigNetworkConfigOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o InstanceConfigNetworkConfigPtrOutput) ToInstanceConfigNetworkConfigPtrOu
 
 func (o InstanceConfigNetworkConfigPtrOutput) ToInstanceConfigNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceConfigNetworkConfigPtrOutput {
 	return o
-}
-
-func (o InstanceConfigNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfigNetworkConfig] {
-	return pulumix.Output[*InstanceConfigNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceConfigNetworkConfigPtrOutput) Elem() InstanceConfigNetworkConfigOutput {
@@ -457,12 +433,6 @@ func (o LogicalNetworkInterfaceNetworkTypeOutput) ToLogicalNetworkInterfaceNetwo
 	}).(LogicalNetworkInterfaceNetworkTypePtrOutput)
 }
 
-func (o LogicalNetworkInterfaceNetworkTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LogicalNetworkInterfaceNetworkType] {
-	return pulumix.Output[LogicalNetworkInterfaceNetworkType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LogicalNetworkInterfaceNetworkTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -496,12 +466,6 @@ func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToLogicalNetworkInterfaceNe
 
 func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx context.Context) LogicalNetworkInterfaceNetworkTypePtrOutput {
 	return o
-}
-
-func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogicalNetworkInterfaceNetworkType] {
-	return pulumix.Output[*LogicalNetworkInterfaceNetworkType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogicalNetworkInterfaceNetworkTypePtrOutput) Elem() LogicalNetworkInterfaceNetworkTypeOutput {
@@ -648,12 +612,6 @@ func (o NetworkConfigBandwidthOutput) ToNetworkConfigBandwidthPtrOutputWithConte
 	}).(NetworkConfigBandwidthPtrOutput)
 }
 
-func (o NetworkConfigBandwidthOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigBandwidth] {
-	return pulumix.Output[NetworkConfigBandwidth]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkConfigBandwidthOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -687,12 +645,6 @@ func (o NetworkConfigBandwidthPtrOutput) ToNetworkConfigBandwidthPtrOutput() Net
 
 func (o NetworkConfigBandwidthPtrOutput) ToNetworkConfigBandwidthPtrOutputWithContext(ctx context.Context) NetworkConfigBandwidthPtrOutput {
 	return o
-}
-
-func (o NetworkConfigBandwidthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigBandwidth] {
-	return pulumix.Output[*NetworkConfigBandwidth]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigBandwidthPtrOutput) Elem() NetworkConfigBandwidthOutput {
@@ -839,12 +791,6 @@ func (o NetworkConfigServiceCidrOutput) ToNetworkConfigServiceCidrPtrOutputWithC
 	}).(NetworkConfigServiceCidrPtrOutput)
 }
 
-func (o NetworkConfigServiceCidrOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigServiceCidr] {
-	return pulumix.Output[NetworkConfigServiceCidr]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkConfigServiceCidrOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -878,12 +824,6 @@ func (o NetworkConfigServiceCidrPtrOutput) ToNetworkConfigServiceCidrPtrOutput()
 
 func (o NetworkConfigServiceCidrPtrOutput) ToNetworkConfigServiceCidrPtrOutputWithContext(ctx context.Context) NetworkConfigServiceCidrPtrOutput {
 	return o
-}
-
-func (o NetworkConfigServiceCidrPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigServiceCidr] {
-	return pulumix.Output[*NetworkConfigServiceCidr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigServiceCidrPtrOutput) Elem() NetworkConfigServiceCidrOutput {
@@ -1026,12 +966,6 @@ func (o NetworkConfigTypeOutput) ToNetworkConfigTypePtrOutputWithContext(ctx con
 	}).(NetworkConfigTypePtrOutput)
 }
 
-func (o NetworkConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigType] {
-	return pulumix.Output[NetworkConfigType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1065,12 +999,6 @@ func (o NetworkConfigTypePtrOutput) ToNetworkConfigTypePtrOutput() NetworkConfig
 
 func (o NetworkConfigTypePtrOutput) ToNetworkConfigTypePtrOutputWithContext(ctx context.Context) NetworkConfigTypePtrOutput {
 	return o
-}
-
-func (o NetworkConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigType] {
-	return pulumix.Output[*NetworkConfigType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigTypePtrOutput) Elem() NetworkConfigTypeOutput {
@@ -1213,12 +1141,6 @@ func (o NfsExportPermissionsOutput) ToNfsExportPermissionsPtrOutputWithContext(c
 	}).(NfsExportPermissionsPtrOutput)
 }
 
-func (o NfsExportPermissionsOutput) ToOutput(ctx context.Context) pulumix.Output[NfsExportPermissions] {
-	return pulumix.Output[NfsExportPermissions]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NfsExportPermissionsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1252,12 +1174,6 @@ func (o NfsExportPermissionsPtrOutput) ToNfsExportPermissionsPtrOutput() NfsExpo
 
 func (o NfsExportPermissionsPtrOutput) ToNfsExportPermissionsPtrOutputWithContext(ctx context.Context) NfsExportPermissionsPtrOutput {
 	return o
-}
-
-func (o NfsExportPermissionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NfsExportPermissions] {
-	return pulumix.Output[*NfsExportPermissions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NfsExportPermissionsPtrOutput) Elem() NfsExportPermissionsOutput {
@@ -1400,12 +1316,6 @@ func (o NfsShareStorageTypeOutput) ToNfsShareStorageTypePtrOutputWithContext(ctx
 	}).(NfsShareStorageTypePtrOutput)
 }
 
-func (o NfsShareStorageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NfsShareStorageType] {
-	return pulumix.Output[NfsShareStorageType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NfsShareStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1439,12 +1349,6 @@ func (o NfsShareStorageTypePtrOutput) ToNfsShareStorageTypePtrOutput() NfsShareS
 
 func (o NfsShareStorageTypePtrOutput) ToNfsShareStorageTypePtrOutputWithContext(ctx context.Context) NfsShareStorageTypePtrOutput {
 	return o
-}
-
-func (o NfsShareStorageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NfsShareStorageType] {
-	return pulumix.Output[*NfsShareStorageType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NfsShareStorageTypePtrOutput) Elem() NfsShareStorageTypeOutput {
@@ -1589,12 +1493,6 @@ func (o VolumeConfigPerformanceTierOutput) ToVolumeConfigPerformanceTierPtrOutpu
 	}).(VolumeConfigPerformanceTierPtrOutput)
 }
 
-func (o VolumeConfigPerformanceTierOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeConfigPerformanceTier] {
-	return pulumix.Output[VolumeConfigPerformanceTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VolumeConfigPerformanceTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1628,12 +1526,6 @@ func (o VolumeConfigPerformanceTierPtrOutput) ToVolumeConfigPerformanceTierPtrOu
 
 func (o VolumeConfigPerformanceTierPtrOutput) ToVolumeConfigPerformanceTierPtrOutputWithContext(ctx context.Context) VolumeConfigPerformanceTierPtrOutput {
 	return o
-}
-
-func (o VolumeConfigPerformanceTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigPerformanceTier] {
-	return pulumix.Output[*VolumeConfigPerformanceTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeConfigPerformanceTierPtrOutput) Elem() VolumeConfigPerformanceTierOutput {
@@ -1776,12 +1668,6 @@ func (o VolumeConfigProtocolOutput) ToVolumeConfigProtocolPtrOutputWithContext(c
 	}).(VolumeConfigProtocolPtrOutput)
 }
 
-func (o VolumeConfigProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeConfigProtocol] {
-	return pulumix.Output[VolumeConfigProtocol]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VolumeConfigProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1815,12 +1701,6 @@ func (o VolumeConfigProtocolPtrOutput) ToVolumeConfigProtocolPtrOutput() VolumeC
 
 func (o VolumeConfigProtocolPtrOutput) ToVolumeConfigProtocolPtrOutputWithContext(ctx context.Context) VolumeConfigProtocolPtrOutput {
 	return o
-}
-
-func (o VolumeConfigProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigProtocol] {
-	return pulumix.Output[*VolumeConfigProtocol]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeConfigProtocolPtrOutput) Elem() VolumeConfigProtocolOutput {
@@ -1963,12 +1843,6 @@ func (o VolumeConfigTypeOutput) ToVolumeConfigTypePtrOutputWithContext(ctx conte
 	}).(VolumeConfigTypePtrOutput)
 }
 
-func (o VolumeConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeConfigType] {
-	return pulumix.Output[VolumeConfigType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VolumeConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2002,12 +1876,6 @@ func (o VolumeConfigTypePtrOutput) ToVolumeConfigTypePtrOutput() VolumeConfigTyp
 
 func (o VolumeConfigTypePtrOutput) ToVolumeConfigTypePtrOutputWithContext(ctx context.Context) VolumeConfigTypePtrOutput {
 	return o
-}
-
-func (o VolumeConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigType] {
-	return pulumix.Output[*VolumeConfigType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeConfigTypePtrOutput) Elem() VolumeConfigTypeOutput {

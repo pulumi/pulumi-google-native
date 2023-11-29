@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a source.
@@ -71,12 +70,6 @@ func (o LookupSourceResultOutput) ToLookupSourceResultOutput() LookupSourceResul
 
 func (o LookupSourceResultOutput) ToLookupSourceResultOutputWithContext(ctx context.Context) LookupSourceResultOutput {
 	return o
-}
-
-func (o LookupSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSourceResult] {
-	return pulumix.Output[LookupSourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the source (max of 1024 characters). Example: "Web Security Scanner is a web security scanner for common vulnerabilities in App Engine applications. It can automatically scan and detect four common vulnerabilities, including cross-site-scripting (XSS), Flash injection, mixed content (HTTP in HTTPS), and outdated/insecure libraries."

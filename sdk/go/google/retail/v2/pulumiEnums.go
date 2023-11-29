@@ -82,12 +82,6 @@ func (o ControlSearchSolutionUseCaseItemOutput) ToControlSearchSolutionUseCaseIt
 	}).(ControlSearchSolutionUseCaseItemPtrOutput)
 }
 
-func (o ControlSearchSolutionUseCaseItemOutput) ToOutput(ctx context.Context) pulumix.Output[ControlSearchSolutionUseCaseItem] {
-	return pulumix.Output[ControlSearchSolutionUseCaseItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ControlSearchSolutionUseCaseItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -121,12 +115,6 @@ func (o ControlSearchSolutionUseCaseItemPtrOutput) ToControlSearchSolutionUseCas
 
 func (o ControlSearchSolutionUseCaseItemPtrOutput) ToControlSearchSolutionUseCaseItemPtrOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemPtrOutput {
 	return o
-}
-
-func (o ControlSearchSolutionUseCaseItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ControlSearchSolutionUseCaseItem] {
-	return pulumix.Output[*ControlSearchSolutionUseCaseItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ControlSearchSolutionUseCaseItemPtrOutput) Elem() ControlSearchSolutionUseCaseItemOutput {
@@ -222,12 +210,6 @@ func (i ControlSearchSolutionUseCaseItemArray) ToControlSearchSolutionUseCaseIte
 	return pulumi.ToOutputWithContext(ctx, i).(ControlSearchSolutionUseCaseItemArrayOutput)
 }
 
-func (i ControlSearchSolutionUseCaseItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ControlSearchSolutionUseCaseItem] {
-	return pulumix.Output[[]ControlSearchSolutionUseCaseItem]{
-		OutputState: i.ToControlSearchSolutionUseCaseItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ControlSearchSolutionUseCaseItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ControlSearchSolutionUseCaseItemArrayOutput) ElementType() reflect.Type {
@@ -240,12 +222,6 @@ func (o ControlSearchSolutionUseCaseItemArrayOutput) ToControlSearchSolutionUseC
 
 func (o ControlSearchSolutionUseCaseItemArrayOutput) ToControlSearchSolutionUseCaseItemArrayOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemArrayOutput {
 	return o
-}
-
-func (o ControlSearchSolutionUseCaseItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ControlSearchSolutionUseCaseItem] {
-	return pulumix.Output[[]ControlSearchSolutionUseCaseItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ControlSearchSolutionUseCaseItemArrayOutput) Index(i pulumi.IntInput) ControlSearchSolutionUseCaseItemOutput {
@@ -325,12 +301,6 @@ func (o ControlSolutionTypesItemOutput) ToControlSolutionTypesItemPtrOutputWithC
 	}).(ControlSolutionTypesItemPtrOutput)
 }
 
-func (o ControlSolutionTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[ControlSolutionTypesItem] {
-	return pulumix.Output[ControlSolutionTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ControlSolutionTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -364,12 +334,6 @@ func (o ControlSolutionTypesItemPtrOutput) ToControlSolutionTypesItemPtrOutput()
 
 func (o ControlSolutionTypesItemPtrOutput) ToControlSolutionTypesItemPtrOutputWithContext(ctx context.Context) ControlSolutionTypesItemPtrOutput {
 	return o
-}
-
-func (o ControlSolutionTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ControlSolutionTypesItem] {
-	return pulumix.Output[*ControlSolutionTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ControlSolutionTypesItemPtrOutput) Elem() ControlSolutionTypesItemOutput {
@@ -465,12 +429,6 @@ func (i ControlSolutionTypesItemArray) ToControlSolutionTypesItemArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ControlSolutionTypesItemArrayOutput)
 }
 
-func (i ControlSolutionTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ControlSolutionTypesItem] {
-	return pulumix.Output[[]ControlSolutionTypesItem]{
-		OutputState: i.ToControlSolutionTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ControlSolutionTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ControlSolutionTypesItemArrayOutput) ElementType() reflect.Type {
@@ -483,12 +441,6 @@ func (o ControlSolutionTypesItemArrayOutput) ToControlSolutionTypesItemArrayOutp
 
 func (o ControlSolutionTypesItemArrayOutput) ToControlSolutionTypesItemArrayOutputWithContext(ctx context.Context) ControlSolutionTypesItemArrayOutput {
 	return o
-}
-
-func (o ControlSolutionTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ControlSolutionTypesItem] {
-	return pulumix.Output[[]ControlSolutionTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ControlSolutionTypesItemArrayOutput) Index(i pulumi.IntInput) ControlSolutionTypesItemOutput {
@@ -569,12 +521,6 @@ func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextPro
 	}).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput)
 }
 
-func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType] {
-	return pulumix.Output[GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -608,12 +554,6 @@ func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextPro
 
 func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType] {
-	return pulumix.Output[*GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput) Elem() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeOutput {
@@ -756,12 +696,6 @@ func (o GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeOutput) ToGoogleClou
 	}).(GoogleCloudRetailV2SearchRequestDynamicFacetSpecModePtrOutput)
 }
 
-func (o GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode] {
-	return pulumix.Output[GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -795,12 +729,6 @@ func (o GoogleCloudRetailV2SearchRequestDynamicFacetSpecModePtrOutput) ToGoogleC
 
 func (o GoogleCloudRetailV2SearchRequestDynamicFacetSpecModePtrOutput) ToGoogleCloudRetailV2SearchRequestDynamicFacetSpecModePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2SearchRequestDynamicFacetSpecModePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2SearchRequestDynamicFacetSpecModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode] {
-	return pulumix.Output[*GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2SearchRequestDynamicFacetSpecModePtrOutput) Elem() GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeOutput {
@@ -943,12 +871,6 @@ func (o GoogleCloudRetailV2SearchRequestPersonalizationSpecModeOutput) ToGoogleC
 	}).(GoogleCloudRetailV2SearchRequestPersonalizationSpecModePtrOutput)
 }
 
-func (o GoogleCloudRetailV2SearchRequestPersonalizationSpecModeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2SearchRequestPersonalizationSpecMode] {
-	return pulumix.Output[GoogleCloudRetailV2SearchRequestPersonalizationSpecMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRetailV2SearchRequestPersonalizationSpecModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -982,12 +904,6 @@ func (o GoogleCloudRetailV2SearchRequestPersonalizationSpecModePtrOutput) ToGoog
 
 func (o GoogleCloudRetailV2SearchRequestPersonalizationSpecModePtrOutput) ToGoogleCloudRetailV2SearchRequestPersonalizationSpecModePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2SearchRequestPersonalizationSpecModePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2SearchRequestPersonalizationSpecModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2SearchRequestPersonalizationSpecMode] {
-	return pulumix.Output[*GoogleCloudRetailV2SearchRequestPersonalizationSpecMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2SearchRequestPersonalizationSpecModePtrOutput) Elem() GoogleCloudRetailV2SearchRequestPersonalizationSpecModeOutput {
@@ -1130,12 +1046,6 @@ func (o ModelFilteringOptionOutput) ToModelFilteringOptionPtrOutputWithContext(c
 	}).(ModelFilteringOptionPtrOutput)
 }
 
-func (o ModelFilteringOptionOutput) ToOutput(ctx context.Context) pulumix.Output[ModelFilteringOption] {
-	return pulumix.Output[ModelFilteringOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ModelFilteringOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1169,12 +1079,6 @@ func (o ModelFilteringOptionPtrOutput) ToModelFilteringOptionPtrOutput() ModelFi
 
 func (o ModelFilteringOptionPtrOutput) ToModelFilteringOptionPtrOutputWithContext(ctx context.Context) ModelFilteringOptionPtrOutput {
 	return o
-}
-
-func (o ModelFilteringOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelFilteringOption] {
-	return pulumix.Output[*ModelFilteringOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelFilteringOptionPtrOutput) Elem() ModelFilteringOptionOutput {
@@ -1319,12 +1223,6 @@ func (o ModelPeriodicTuningStateOutput) ToModelPeriodicTuningStatePtrOutputWithC
 	}).(ModelPeriodicTuningStatePtrOutput)
 }
 
-func (o ModelPeriodicTuningStateOutput) ToOutput(ctx context.Context) pulumix.Output[ModelPeriodicTuningState] {
-	return pulumix.Output[ModelPeriodicTuningState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ModelPeriodicTuningStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1358,12 +1256,6 @@ func (o ModelPeriodicTuningStatePtrOutput) ToModelPeriodicTuningStatePtrOutput()
 
 func (o ModelPeriodicTuningStatePtrOutput) ToModelPeriodicTuningStatePtrOutputWithContext(ctx context.Context) ModelPeriodicTuningStatePtrOutput {
 	return o
-}
-
-func (o ModelPeriodicTuningStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelPeriodicTuningState] {
-	return pulumix.Output[*ModelPeriodicTuningState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelPeriodicTuningStatePtrOutput) Elem() ModelPeriodicTuningStateOutput {
@@ -1506,12 +1398,6 @@ func (o ModelTrainingStateOutput) ToModelTrainingStatePtrOutputWithContext(ctx c
 	}).(ModelTrainingStatePtrOutput)
 }
 
-func (o ModelTrainingStateOutput) ToOutput(ctx context.Context) pulumix.Output[ModelTrainingState] {
-	return pulumix.Output[ModelTrainingState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ModelTrainingStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1545,12 +1431,6 @@ func (o ModelTrainingStatePtrOutput) ToModelTrainingStatePtrOutput() ModelTraini
 
 func (o ModelTrainingStatePtrOutput) ToModelTrainingStatePtrOutputWithContext(ctx context.Context) ModelTrainingStatePtrOutput {
 	return o
-}
-
-func (o ModelTrainingStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelTrainingState] {
-	return pulumix.Output[*ModelTrainingState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelTrainingStatePtrOutput) Elem() ModelTrainingStateOutput {
@@ -1697,12 +1577,6 @@ func (o ProductAvailabilityOutput) ToProductAvailabilityPtrOutputWithContext(ctx
 	}).(ProductAvailabilityPtrOutput)
 }
 
-func (o ProductAvailabilityOutput) ToOutput(ctx context.Context) pulumix.Output[ProductAvailability] {
-	return pulumix.Output[ProductAvailability]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProductAvailabilityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1736,12 +1610,6 @@ func (o ProductAvailabilityPtrOutput) ToProductAvailabilityPtrOutput() ProductAv
 
 func (o ProductAvailabilityPtrOutput) ToProductAvailabilityPtrOutputWithContext(ctx context.Context) ProductAvailabilityPtrOutput {
 	return o
-}
-
-func (o ProductAvailabilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProductAvailability] {
-	return pulumix.Output[*ProductAvailability]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProductAvailabilityPtrOutput) Elem() ProductAvailabilityOutput {
@@ -1886,12 +1754,6 @@ func (o ProductTypeOutput) ToProductTypePtrOutputWithContext(ctx context.Context
 	}).(ProductTypePtrOutput)
 }
 
-func (o ProductTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ProductType] {
-	return pulumix.Output[ProductType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProductTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1925,12 +1787,6 @@ func (o ProductTypePtrOutput) ToProductTypePtrOutput() ProductTypePtrOutput {
 
 func (o ProductTypePtrOutput) ToProductTypePtrOutputWithContext(ctx context.Context) ProductTypePtrOutput {
 	return o
-}
-
-func (o ProductTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProductType] {
-	return pulumix.Output[*ProductType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProductTypePtrOutput) Elem() ProductTypeOutput {
@@ -2073,12 +1929,6 @@ func (o ServingConfigDiversityTypeOutput) ToServingConfigDiversityTypePtrOutputW
 	}).(ServingConfigDiversityTypePtrOutput)
 }
 
-func (o ServingConfigDiversityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ServingConfigDiversityType] {
-	return pulumix.Output[ServingConfigDiversityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServingConfigDiversityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2112,12 +1962,6 @@ func (o ServingConfigDiversityTypePtrOutput) ToServingConfigDiversityTypePtrOutp
 
 func (o ServingConfigDiversityTypePtrOutput) ToServingConfigDiversityTypePtrOutputWithContext(ctx context.Context) ServingConfigDiversityTypePtrOutput {
 	return o
-}
-
-func (o ServingConfigDiversityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigDiversityType] {
-	return pulumix.Output[*ServingConfigDiversityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServingConfigDiversityTypePtrOutput) Elem() ServingConfigDiversityTypeOutput {
@@ -2259,12 +2103,6 @@ func (o ServingConfigSolutionTypesItemOutput) ToServingConfigSolutionTypesItemPt
 	}).(ServingConfigSolutionTypesItemPtrOutput)
 }
 
-func (o ServingConfigSolutionTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[ServingConfigSolutionTypesItem] {
-	return pulumix.Output[ServingConfigSolutionTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServingConfigSolutionTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2298,12 +2136,6 @@ func (o ServingConfigSolutionTypesItemPtrOutput) ToServingConfigSolutionTypesIte
 
 func (o ServingConfigSolutionTypesItemPtrOutput) ToServingConfigSolutionTypesItemPtrOutputWithContext(ctx context.Context) ServingConfigSolutionTypesItemPtrOutput {
 	return o
-}
-
-func (o ServingConfigSolutionTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigSolutionTypesItem] {
-	return pulumix.Output[*ServingConfigSolutionTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServingConfigSolutionTypesItemPtrOutput) Elem() ServingConfigSolutionTypesItemOutput {
@@ -2399,12 +2231,6 @@ func (i ServingConfigSolutionTypesItemArray) ToServingConfigSolutionTypesItemArr
 	return pulumi.ToOutputWithContext(ctx, i).(ServingConfigSolutionTypesItemArrayOutput)
 }
 
-func (i ServingConfigSolutionTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ServingConfigSolutionTypesItem] {
-	return pulumix.Output[[]ServingConfigSolutionTypesItem]{
-		OutputState: i.ToServingConfigSolutionTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServingConfigSolutionTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ServingConfigSolutionTypesItemArrayOutput) ElementType() reflect.Type {
@@ -2417,12 +2243,6 @@ func (o ServingConfigSolutionTypesItemArrayOutput) ToServingConfigSolutionTypesI
 
 func (o ServingConfigSolutionTypesItemArrayOutput) ToServingConfigSolutionTypesItemArrayOutputWithContext(ctx context.Context) ServingConfigSolutionTypesItemArrayOutput {
 	return o
-}
-
-func (o ServingConfigSolutionTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServingConfigSolutionTypesItem] {
-	return pulumix.Output[[]ServingConfigSolutionTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServingConfigSolutionTypesItemArrayOutput) Index(i pulumi.IntInput) ServingConfigSolutionTypesItemOutput {

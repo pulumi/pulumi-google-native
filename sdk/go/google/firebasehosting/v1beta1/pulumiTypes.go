@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -35,12 +34,6 @@ func (o ActingUserResponseOutput) ToActingUserResponseOutput() ActingUserRespons
 
 func (o ActingUserResponseOutput) ToActingUserResponseOutputWithContext(ctx context.Context) ActingUserResponseOutput {
 	return o
-}
-
-func (o ActingUserResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActingUserResponse] {
-	return pulumix.Output[ActingUserResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email address of the user when the user performed the action.
@@ -76,12 +69,6 @@ func (o CertDnsChallengeResponseOutput) ToCertDnsChallengeResponseOutputWithCont
 	return o
 }
 
-func (o CertDnsChallengeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertDnsChallengeResponse] {
-	return pulumix.Output[CertDnsChallengeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The domain name upon which the DNS challenge must be satisfied.
 func (o CertDnsChallengeResponseOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v CertDnsChallengeResponse) string { return v.DomainName }).(pulumi.StringOutput)
@@ -115,12 +102,6 @@ func (o CertHttpChallengeResponseOutput) ToCertHttpChallengeResponseOutputWithCo
 	return o
 }
 
-func (o CertHttpChallengeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertHttpChallengeResponse] {
-	return pulumix.Output[CertHttpChallengeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL path on which to serve the specified token to satisfy the certificate challenge.
 func (o CertHttpChallengeResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v CertHttpChallengeResponse) string { return v.Path }).(pulumi.StringOutput)
@@ -152,12 +133,6 @@ func (o CertVerificationResponseOutput) ToCertVerificationResponseOutput() CertV
 
 func (o CertVerificationResponseOutput) ToCertVerificationResponseOutputWithContext(ctx context.Context) CertVerificationResponseOutput {
 	return o
-}
-
-func (o CertVerificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertVerificationResponse] {
-	return pulumix.Output[CertVerificationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name.
@@ -199,12 +174,6 @@ func (o CertificateResponseOutput) ToCertificateResponseOutput() CertificateResp
 
 func (o CertificateResponseOutput) ToCertificateResponseOutputWithContext(ctx context.Context) CertificateResponseOutput {
 	return o
-}
-
-func (o CertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateResponse] {
-	return pulumix.Output[CertificateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The certificate's creation time. For `TEMPORARY` certs this is the time Hosting first generated challenges for your domain name. For all other cert types, it's the time the actual cert was created.
@@ -280,12 +249,6 @@ func (i CloudRunRewriteArgs) ToCloudRunRewriteOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRewriteOutput)
 }
 
-func (i CloudRunRewriteArgs) ToOutput(ctx context.Context) pulumix.Output[CloudRunRewrite] {
-	return pulumix.Output[CloudRunRewrite]{
-		OutputState: i.ToCloudRunRewriteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CloudRunRewriteArgs) ToCloudRunRewritePtrOutput() CloudRunRewritePtrOutput {
 	return i.ToCloudRunRewritePtrOutputWithContext(context.Background())
 }
@@ -327,12 +290,6 @@ func (i *cloudRunRewritePtrType) ToCloudRunRewritePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRewritePtrOutput)
 }
 
-func (i *cloudRunRewritePtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudRunRewrite] {
-	return pulumix.Output[*CloudRunRewrite]{
-		OutputState: i.ToCloudRunRewritePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
 type CloudRunRewriteOutput struct{ *pulumi.OutputState }
 
@@ -356,12 +313,6 @@ func (o CloudRunRewriteOutput) ToCloudRunRewritePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRunRewrite) *CloudRunRewrite {
 		return &v
 	}).(CloudRunRewritePtrOutput)
-}
-
-func (o CloudRunRewriteOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunRewrite] {
-	return pulumix.Output[CloudRunRewrite]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
@@ -391,12 +342,6 @@ func (o CloudRunRewritePtrOutput) ToCloudRunRewritePtrOutput() CloudRunRewritePt
 
 func (o CloudRunRewritePtrOutput) ToCloudRunRewritePtrOutputWithContext(ctx context.Context) CloudRunRewritePtrOutput {
 	return o
-}
-
-func (o CloudRunRewritePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudRunRewrite] {
-	return pulumix.Output[*CloudRunRewrite]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudRunRewritePtrOutput) Elem() CloudRunRewriteOutput {
@@ -464,12 +409,6 @@ func (o CloudRunRewriteResponseOutput) ToCloudRunRewriteResponseOutputWithContex
 	return o
 }
 
-func (o CloudRunRewriteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRunRewriteResponse] {
-	return pulumix.Output[CloudRunRewriteResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
 func (o CloudRunRewriteResponseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunRewriteResponse) string { return v.Region }).(pulumi.StringOutput)
@@ -512,12 +451,6 @@ func (o DnsRecordResponseOutput) ToDnsRecordResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o DnsRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsRecordResponse] {
-	return pulumix.Output[DnsRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The domain name the record pertains to, e.g. `foo.bar.com.`.
 func (o DnsRecordResponseOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsRecordResponse) string { return v.DomainName }).(pulumi.StringOutput)
@@ -552,12 +485,6 @@ func (o DnsRecordResponseArrayOutput) ToDnsRecordResponseArrayOutputWithContext(
 	return o
 }
 
-func (o DnsRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DnsRecordResponse] {
-	return pulumix.Output[[]DnsRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DnsRecordResponseArrayOutput) Index(i pulumi.IntInput) DnsRecordResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnsRecordResponse {
 		return vs[0].([]DnsRecordResponse)[vs[1].(int)]
@@ -589,12 +516,6 @@ func (o DnsRecordSetResponseOutput) ToDnsRecordSetResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o DnsRecordSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsRecordSetResponse] {
-	return pulumix.Output[DnsRecordSetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An error Hosting services encountered when querying your domain name's DNS records. Note: Hosting ignores `NXDOMAIN` errors, as those generally just mean that a domain name hasn't been set up yet.
 func (o DnsRecordSetResponseOutput) CheckError() StatusResponseOutput {
 	return o.ApplyT(func(v DnsRecordSetResponse) StatusResponse { return v.CheckError }).(StatusResponseOutput)
@@ -622,12 +543,6 @@ func (o DnsRecordSetResponseArrayOutput) ToDnsRecordSetResponseArrayOutput() Dns
 
 func (o DnsRecordSetResponseArrayOutput) ToDnsRecordSetResponseArrayOutputWithContext(ctx context.Context) DnsRecordSetResponseArrayOutput {
 	return o
-}
-
-func (o DnsRecordSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DnsRecordSetResponse] {
-	return pulumix.Output[[]DnsRecordSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsRecordSetResponseArrayOutput) Index(i pulumi.IntInput) DnsRecordSetResponseOutput {
@@ -659,12 +574,6 @@ func (o DnsUpdatesResponseOutput) ToDnsUpdatesResponseOutput() DnsUpdatesRespons
 
 func (o DnsUpdatesResponseOutput) ToDnsUpdatesResponseOutputWithContext(ctx context.Context) DnsUpdatesResponseOutput {
 	return o
-}
-
-func (o DnsUpdatesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsUpdatesResponse] {
-	return pulumix.Output[DnsUpdatesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The last time Hosting checked your custom domain's DNS records.
@@ -715,12 +624,6 @@ func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponseOutput() D
 
 func (o DomainProvisioningResponseOutput) ToDomainProvisioningResponseOutputWithContext(ctx context.Context) DomainProvisioningResponseOutput {
 	return o
-}
-
-func (o DomainProvisioningResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DomainProvisioningResponse] {
-	return pulumix.Output[DomainProvisioningResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The TXT records (for the certificate challenge) that were found at the last DNS fetch.
@@ -802,12 +705,6 @@ func (i DomainRedirectArgs) ToDomainRedirectOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectOutput)
 }
 
-func (i DomainRedirectArgs) ToOutput(ctx context.Context) pulumix.Output[DomainRedirect] {
-	return pulumix.Output[DomainRedirect]{
-		OutputState: i.ToDomainRedirectOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DomainRedirectArgs) ToDomainRedirectPtrOutput() DomainRedirectPtrOutput {
 	return i.ToDomainRedirectPtrOutputWithContext(context.Background())
 }
@@ -849,12 +746,6 @@ func (i *domainRedirectPtrType) ToDomainRedirectPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectPtrOutput)
 }
 
-func (i *domainRedirectPtrType) ToOutput(ctx context.Context) pulumix.Output[*DomainRedirect] {
-	return pulumix.Output[*DomainRedirect]{
-		OutputState: i.ToDomainRedirectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
 type DomainRedirectOutput struct{ *pulumi.OutputState }
 
@@ -880,12 +771,6 @@ func (o DomainRedirectOutput) ToDomainRedirectPtrOutputWithContext(ctx context.C
 	}).(DomainRedirectPtrOutput)
 }
 
-func (o DomainRedirectOutput) ToOutput(ctx context.Context) pulumix.Output[DomainRedirect] {
-	return pulumix.Output[DomainRedirect]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The domain name to redirect to.
 func (o DomainRedirectOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainRedirect) string { return v.DomainName }).(pulumi.StringOutput)
@@ -908,12 +793,6 @@ func (o DomainRedirectPtrOutput) ToDomainRedirectPtrOutput() DomainRedirectPtrOu
 
 func (o DomainRedirectPtrOutput) ToDomainRedirectPtrOutputWithContext(ctx context.Context) DomainRedirectPtrOutput {
 	return o
-}
-
-func (o DomainRedirectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainRedirect] {
-	return pulumix.Output[*DomainRedirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainRedirectPtrOutput) Elem() DomainRedirectOutput {
@@ -969,12 +848,6 @@ func (o DomainRedirectResponseOutput) ToDomainRedirectResponseOutputWithContext(
 	return o
 }
 
-func (o DomainRedirectResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DomainRedirectResponse] {
-	return pulumix.Output[DomainRedirectResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The domain name to redirect to.
 func (o DomainRedirectResponseOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainRedirectResponse) string { return v.DomainName }).(pulumi.StringOutput)
@@ -1028,12 +901,6 @@ func (i HeaderArgs) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(HeaderOutput)
 }
 
-func (i HeaderArgs) ToOutput(ctx context.Context) pulumix.Output[Header] {
-	return pulumix.Output[Header]{
-		OutputState: i.ToHeaderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HeaderArrayInput is an input type that accepts HeaderArray and HeaderArrayOutput values.
 // You can construct a concrete instance of `HeaderArrayInput` via:
 //
@@ -1059,12 +926,6 @@ func (i HeaderArray) ToHeaderArrayOutputWithContext(ctx context.Context) HeaderA
 	return pulumi.ToOutputWithContext(ctx, i).(HeaderArrayOutput)
 }
 
-func (i HeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]Header] {
-	return pulumix.Output[[]Header]{
-		OutputState: i.ToHeaderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
 type HeaderOutput struct{ *pulumi.OutputState }
 
@@ -1078,12 +939,6 @@ func (o HeaderOutput) ToHeaderOutput() HeaderOutput {
 
 func (o HeaderOutput) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput {
 	return o
-}
-
-func (o HeaderOutput) ToOutput(ctx context.Context) pulumix.Output[Header] {
-	return pulumix.Output[Header]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
@@ -1113,12 +968,6 @@ func (o HeaderArrayOutput) ToHeaderArrayOutput() HeaderArrayOutput {
 
 func (o HeaderArrayOutput) ToHeaderArrayOutputWithContext(ctx context.Context) HeaderArrayOutput {
 	return o
-}
-
-func (o HeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Header] {
-	return pulumix.Output[[]Header]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeaderArrayOutput) Index(i pulumi.IntInput) HeaderOutput {
@@ -1152,12 +1001,6 @@ func (o HeaderResponseOutput) ToHeaderResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o HeaderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HeaderResponse] {
-	return pulumix.Output[HeaderResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
 func (o HeaderResponseOutput) Glob() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderResponse) string { return v.Glob }).(pulumi.StringOutput)
@@ -1185,12 +1028,6 @@ func (o HeaderResponseArrayOutput) ToHeaderResponseArrayOutput() HeaderResponseA
 
 func (o HeaderResponseArrayOutput) ToHeaderResponseArrayOutputWithContext(ctx context.Context) HeaderResponseArrayOutput {
 	return o
-}
-
-func (o HeaderResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HeaderResponse] {
-	return pulumix.Output[[]HeaderResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeaderResponseArrayOutput) Index(i pulumi.IntInput) HeaderResponseOutput {
@@ -1226,12 +1063,6 @@ func (o HttpUpdateResponseOutput) ToHttpUpdateResponseOutput() HttpUpdateRespons
 
 func (o HttpUpdateResponseOutput) ToHttpUpdateResponseOutputWithContext(ctx context.Context) HttpUpdateResponseOutput {
 	return o
-}
-
-func (o HttpUpdateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpUpdateResponse] {
-	return pulumix.Output[HttpUpdateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An error encountered during the last contents check. If null, the check completed successfully.
@@ -1294,12 +1125,6 @@ func (i I18nConfigArgs) ToI18nConfigOutputWithContext(ctx context.Context) I18nC
 	return pulumi.ToOutputWithContext(ctx, i).(I18nConfigOutput)
 }
 
-func (i I18nConfigArgs) ToOutput(ctx context.Context) pulumix.Output[I18nConfig] {
-	return pulumix.Output[I18nConfig]{
-		OutputState: i.ToI18nConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i I18nConfigArgs) ToI18nConfigPtrOutput() I18nConfigPtrOutput {
 	return i.ToI18nConfigPtrOutputWithContext(context.Background())
 }
@@ -1341,12 +1166,6 @@ func (i *i18nConfigPtrType) ToI18nConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(I18nConfigPtrOutput)
 }
 
-func (i *i18nConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*I18nConfig] {
-	return pulumix.Output[*I18nConfig]{
-		OutputState: i.ToI18nConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If provided, i18n rewrites are enabled.
 type I18nConfigOutput struct{ *pulumi.OutputState }
 
@@ -1372,12 +1191,6 @@ func (o I18nConfigOutput) ToI18nConfigPtrOutputWithContext(ctx context.Context) 
 	}).(I18nConfigPtrOutput)
 }
 
-func (o I18nConfigOutput) ToOutput(ctx context.Context) pulumix.Output[I18nConfig] {
-	return pulumix.Output[I18nConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The user-supplied path where country and language specific content will be looked for within the public directory.
 func (o I18nConfigOutput) Root() pulumi.StringOutput {
 	return o.ApplyT(func(v I18nConfig) string { return v.Root }).(pulumi.StringOutput)
@@ -1395,12 +1208,6 @@ func (o I18nConfigPtrOutput) ToI18nConfigPtrOutput() I18nConfigPtrOutput {
 
 func (o I18nConfigPtrOutput) ToI18nConfigPtrOutputWithContext(ctx context.Context) I18nConfigPtrOutput {
 	return o
-}
-
-func (o I18nConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*I18nConfig] {
-	return pulumix.Output[*I18nConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o I18nConfigPtrOutput) Elem() I18nConfigOutput {
@@ -1442,12 +1249,6 @@ func (o I18nConfigResponseOutput) ToI18nConfigResponseOutput() I18nConfigRespons
 
 func (o I18nConfigResponseOutput) ToI18nConfigResponseOutputWithContext(ctx context.Context) I18nConfigResponseOutput {
 	return o
-}
-
-func (o I18nConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[I18nConfigResponse] {
-	return pulumix.Output[I18nConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-supplied path where country and language specific content will be looked for within the public directory.
@@ -1502,12 +1303,6 @@ func (i RedirectArgs) ToRedirectOutputWithContext(ctx context.Context) RedirectO
 	return pulumi.ToOutputWithContext(ctx, i).(RedirectOutput)
 }
 
-func (i RedirectArgs) ToOutput(ctx context.Context) pulumix.Output[Redirect] {
-	return pulumix.Output[Redirect]{
-		OutputState: i.ToRedirectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RedirectArrayInput is an input type that accepts RedirectArray and RedirectArrayOutput values.
 // You can construct a concrete instance of `RedirectArrayInput` via:
 //
@@ -1533,12 +1328,6 @@ func (i RedirectArray) ToRedirectArrayOutputWithContext(ctx context.Context) Red
 	return pulumi.ToOutputWithContext(ctx, i).(RedirectArrayOutput)
 }
 
-func (i RedirectArray) ToOutput(ctx context.Context) pulumix.Output[[]Redirect] {
-	return pulumix.Output[[]Redirect]{
-		OutputState: i.ToRedirectArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
 type RedirectOutput struct{ *pulumi.OutputState }
 
@@ -1552,12 +1341,6 @@ func (o RedirectOutput) ToRedirectOutput() RedirectOutput {
 
 func (o RedirectOutput) ToRedirectOutputWithContext(ctx context.Context) RedirectOutput {
 	return o
-}
-
-func (o RedirectOutput) ToOutput(ctx context.Context) pulumix.Output[Redirect] {
-	return pulumix.Output[Redirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
@@ -1594,12 +1377,6 @@ func (o RedirectArrayOutput) ToRedirectArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o RedirectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Redirect] {
-	return pulumix.Output[[]Redirect]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RedirectArrayOutput) Index(i pulumi.IntInput) RedirectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Redirect {
 		return vs[0].([]Redirect)[vs[1].(int)]
@@ -1631,12 +1408,6 @@ func (o RedirectResponseOutput) ToRedirectResponseOutput() RedirectResponseOutpu
 
 func (o RedirectResponseOutput) ToRedirectResponseOutputWithContext(ctx context.Context) RedirectResponseOutput {
 	return o
-}
-
-func (o RedirectResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RedirectResponse] {
-	return pulumix.Output[RedirectResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
@@ -1671,12 +1442,6 @@ func (o RedirectResponseArrayOutput) ToRedirectResponseArrayOutput() RedirectRes
 
 func (o RedirectResponseArrayOutput) ToRedirectResponseArrayOutputWithContext(ctx context.Context) RedirectResponseArrayOutput {
 	return o
-}
-
-func (o RedirectResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RedirectResponse] {
-	return pulumix.Output[[]RedirectResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RedirectResponseArrayOutput) Index(i pulumi.IntInput) RedirectResponseOutput {
@@ -1714,12 +1479,6 @@ func (o ReleaseResponseOutput) ToReleaseResponseOutput() ReleaseResponseOutput {
 
 func (o ReleaseResponseOutput) ToReleaseResponseOutputWithContext(ctx context.Context) ReleaseResponseOutput {
 	return o
-}
-
-func (o ReleaseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReleaseResponse] {
-	return pulumix.Output[ReleaseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The deploy description when the release was created. The value can be up to 512 characters.
@@ -1811,12 +1570,6 @@ func (i RewriteArgs) ToRewriteOutputWithContext(ctx context.Context) RewriteOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RewriteOutput)
 }
 
-func (i RewriteArgs) ToOutput(ctx context.Context) pulumix.Output[Rewrite] {
-	return pulumix.Output[Rewrite]{
-		OutputState: i.ToRewriteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RewriteArrayInput is an input type that accepts RewriteArray and RewriteArrayOutput values.
 // You can construct a concrete instance of `RewriteArrayInput` via:
 //
@@ -1842,12 +1595,6 @@ func (i RewriteArray) ToRewriteArrayOutputWithContext(ctx context.Context) Rewri
 	return pulumi.ToOutputWithContext(ctx, i).(RewriteArrayOutput)
 }
 
-func (i RewriteArray) ToOutput(ctx context.Context) pulumix.Output[[]Rewrite] {
-	return pulumix.Output[[]Rewrite]{
-		OutputState: i.ToRewriteArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
 type RewriteOutput struct{ *pulumi.OutputState }
 
@@ -1861,12 +1608,6 @@ func (o RewriteOutput) ToRewriteOutput() RewriteOutput {
 
 func (o RewriteOutput) ToRewriteOutputWithContext(ctx context.Context) RewriteOutput {
 	return o
-}
-
-func (o RewriteOutput) ToOutput(ctx context.Context) pulumix.Output[Rewrite] {
-	return pulumix.Output[Rewrite]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The request will be forwarded to Firebase Dynamic Links.
@@ -1918,12 +1659,6 @@ func (o RewriteArrayOutput) ToRewriteArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o RewriteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Rewrite] {
-	return pulumix.Output[[]Rewrite]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RewriteArrayOutput) Index(i pulumi.IntInput) RewriteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Rewrite {
 		return vs[0].([]Rewrite)[vs[1].(int)]
@@ -1961,12 +1696,6 @@ func (o RewriteResponseOutput) ToRewriteResponseOutput() RewriteResponseOutput {
 
 func (o RewriteResponseOutput) ToRewriteResponseOutputWithContext(ctx context.Context) RewriteResponseOutput {
 	return o
-}
-
-func (o RewriteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RewriteResponse] {
-	return pulumix.Output[RewriteResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The request will be forwarded to Firebase Dynamic Links.
@@ -2016,12 +1745,6 @@ func (o RewriteResponseArrayOutput) ToRewriteResponseArrayOutput() RewriteRespon
 
 func (o RewriteResponseArrayOutput) ToRewriteResponseArrayOutputWithContext(ctx context.Context) RewriteResponseArrayOutput {
 	return o
-}
-
-func (o RewriteResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RewriteResponse] {
-	return pulumix.Output[[]RewriteResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RewriteResponseArrayOutput) Index(i pulumi.IntInput) RewriteResponseOutput {
@@ -2089,12 +1812,6 @@ func (i ServingConfigArgs) ToServingConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ServingConfigOutput)
 }
 
-func (i ServingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ServingConfig] {
-	return pulumix.Output[ServingConfig]{
-		OutputState: i.ToServingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServingConfigArgs) ToServingConfigPtrOutput() ServingConfigPtrOutput {
 	return i.ToServingConfigPtrOutputWithContext(context.Background())
 }
@@ -2136,12 +1853,6 @@ func (i *servingConfigPtrType) ToServingConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ServingConfigPtrOutput)
 }
 
-func (i *servingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServingConfig] {
-	return pulumix.Output[*ServingConfig]{
-		OutputState: i.ToServingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
 type ServingConfigOutput struct{ *pulumi.OutputState }
 
@@ -2165,12 +1876,6 @@ func (o ServingConfigOutput) ToServingConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServingConfig) *ServingConfig {
 		return &v
 	}).(ServingConfigPtrOutput)
-}
-
-func (o ServingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ServingConfig] {
-	return pulumix.Output[ServingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How to handle well known App Association files.
@@ -2220,12 +1925,6 @@ func (o ServingConfigPtrOutput) ToServingConfigPtrOutput() ServingConfigPtrOutpu
 
 func (o ServingConfigPtrOutput) ToServingConfigPtrOutputWithContext(ctx context.Context) ServingConfigPtrOutput {
 	return o
-}
-
-func (o ServingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServingConfig] {
-	return pulumix.Output[*ServingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServingConfigPtrOutput) Elem() ServingConfigOutput {
@@ -2341,12 +2040,6 @@ func (o ServingConfigResponseOutput) ToServingConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o ServingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServingConfigResponse] {
-	return pulumix.Output[ServingConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // How to handle well known App Association files.
 func (o ServingConfigResponseOutput) AppAssociation() pulumi.StringOutput {
 	return o.ApplyT(func(v ServingConfigResponse) string { return v.AppAssociation }).(pulumi.StringOutput)
@@ -2407,12 +2100,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -2440,12 +2127,6 @@ func (o StatusResponseArrayOutput) ToStatusResponseArrayOutput() StatusResponseA
 
 func (o StatusResponseArrayOutput) ToStatusResponseArrayOutputWithContext(ctx context.Context) StatusResponseArrayOutput {
 	return o
-}
-
-func (o StatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatusResponse] {
-	return pulumix.Output[[]StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatusResponseArrayOutput) Index(i pulumi.IntInput) StatusResponseOutput {
@@ -2495,12 +2176,6 @@ func (o VersionResponseOutput) ToVersionResponseOutput() VersionResponseOutput {
 
 func (o VersionResponseOutput) ToVersionResponseOutputWithContext(ctx context.Context) VersionResponseOutput {
 	return o
-}
-
-func (o VersionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VersionResponse] {
-	return pulumix.Output[VersionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.

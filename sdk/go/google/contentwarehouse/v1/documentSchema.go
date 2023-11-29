@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a document schema.
@@ -136,12 +135,6 @@ func (i *DocumentSchema) ToDocumentSchemaOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentSchemaOutput)
 }
 
-func (i *DocumentSchema) ToOutput(ctx context.Context) pulumix.Output[*DocumentSchema] {
-	return pulumix.Output[*DocumentSchema]{
-		OutputState: i.ToDocumentSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentSchemaOutput struct{ *pulumi.OutputState }
 
 func (DocumentSchemaOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o DocumentSchemaOutput) ToDocumentSchemaOutput() DocumentSchemaOutput {
 
 func (o DocumentSchemaOutput) ToDocumentSchemaOutputWithContext(ctx context.Context) DocumentSchemaOutput {
 	return o
-}
-
-func (o DocumentSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentSchema] {
-	return pulumix.Output[*DocumentSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the document schema is created.

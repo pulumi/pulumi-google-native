@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this method to create a stream.
@@ -187,12 +186,6 @@ func (i *Stream) ToStreamOutputWithContext(ctx context.Context) StreamOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamOutput)
 }
 
-func (i *Stream) ToOutput(ctx context.Context) pulumix.Output[*Stream] {
-	return pulumix.Output[*Stream]{
-		OutputState: i.ToStreamOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamOutput struct{ *pulumi.OutputState }
 
 func (StreamOutput) ElementType() reflect.Type {
@@ -205,12 +198,6 @@ func (o StreamOutput) ToStreamOutput() StreamOutput {
 
 func (o StreamOutput) ToStreamOutputWithContext(ctx context.Context) StreamOutput {
 	return o
-}
-
-func (o StreamOutput) ToOutput(ctx context.Context) pulumix.Output[*Stream] {
-	return pulumix.Output[*Stream]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a PersistentResource.
@@ -172,12 +171,6 @@ func (i *PersistentResource) ToPersistentResourceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PersistentResourceOutput)
 }
 
-func (i *PersistentResource) ToOutput(ctx context.Context) pulumix.Output[*PersistentResource] {
-	return pulumix.Output[*PersistentResource]{
-		OutputState: i.ToPersistentResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PersistentResourceOutput struct{ *pulumi.OutputState }
 
 func (PersistentResourceOutput) ElementType() reflect.Type {
@@ -190,12 +183,6 @@ func (o PersistentResourceOutput) ToPersistentResourceOutput() PersistentResourc
 
 func (o PersistentResourceOutput) ToPersistentResourceOutputWithContext(ctx context.Context) PersistentResourceOutput {
 	return o
-}
-
-func (o PersistentResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*PersistentResource] {
-	return pulumix.Output[*PersistentResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the PersistentResource was created.

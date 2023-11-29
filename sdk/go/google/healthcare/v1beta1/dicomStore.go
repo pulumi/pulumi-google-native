@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new DICOM store within the parent dataset.
@@ -136,12 +135,6 @@ func (i *DicomStore) ToDicomStoreOutputWithContext(ctx context.Context) DicomSto
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreOutput)
 }
 
-func (i *DicomStore) ToOutput(ctx context.Context) pulumix.Output[*DicomStore] {
-	return pulumix.Output[*DicomStore]{
-		OutputState: i.ToDicomStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DicomStoreOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o DicomStoreOutput) ToDicomStoreOutput() DicomStoreOutput {
 
 func (o DicomStoreOutput) ToDicomStoreOutputWithContext(ctx context.Context) DicomStoreOutput {
 	return o
-}
-
-func (o DicomStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomStore] {
-	return pulumix.Output[*DicomStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreOutput) DatasetId() pulumi.StringOutput {

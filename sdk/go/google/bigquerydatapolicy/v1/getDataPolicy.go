@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the data policy specified by its resource name.
@@ -77,12 +76,6 @@ func (o LookupDataPolicyResultOutput) ToLookupDataPolicyResultOutput() LookupDat
 
 func (o LookupDataPolicyResultOutput) ToLookupDataPolicyResultOutputWithContext(ctx context.Context) LookupDataPolicyResultOutput {
 	return o
-}
-
-func (o LookupDataPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataPolicyResult] {
-	return pulumix.Output[LookupDataPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The data masking policy that specifies the data masking rule to use.

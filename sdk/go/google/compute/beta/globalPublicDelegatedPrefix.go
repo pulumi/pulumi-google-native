@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a global PublicDelegatedPrefix in the specified project using the parameters that are included in the request.
@@ -150,12 +149,6 @@ func (i *GlobalPublicDelegatedPrefix) ToGlobalPublicDelegatedPrefixOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalPublicDelegatedPrefixOutput)
 }
 
-func (i *GlobalPublicDelegatedPrefix) ToOutput(ctx context.Context) pulumix.Output[*GlobalPublicDelegatedPrefix] {
-	return pulumix.Output[*GlobalPublicDelegatedPrefix]{
-		OutputState: i.ToGlobalPublicDelegatedPrefixOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalPublicDelegatedPrefixOutput struct{ *pulumi.OutputState }
 
 func (GlobalPublicDelegatedPrefixOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o GlobalPublicDelegatedPrefixOutput) ToGlobalPublicDelegatedPrefixOutput()
 
 func (o GlobalPublicDelegatedPrefixOutput) ToGlobalPublicDelegatedPrefixOutputWithContext(ctx context.Context) GlobalPublicDelegatedPrefixOutput {
 	return o
-}
-
-func (o GlobalPublicDelegatedPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalPublicDelegatedPrefix] {
-	return pulumix.Output[*GlobalPublicDelegatedPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The version of BYOIP API.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
@@ -179,12 +178,6 @@ func (i *FolderSink) ToFolderSinkOutputWithContext(ctx context.Context) FolderSi
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkOutput)
 }
 
-func (i *FolderSink) ToOutput(ctx context.Context) pulumix.Output[*FolderSink] {
-	return pulumix.Output[*FolderSink]{
-		OutputState: i.ToFolderSinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderSinkOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o FolderSinkOutput) ToFolderSinkOutput() FolderSinkOutput {
 
 func (o FolderSinkOutput) ToFolderSinkOutputWithContext(ctx context.Context) FolderSinkOutput {
 	return o
-}
-
-func (o FolderSinkOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderSink] {
-	return pulumix.Output[*FolderSink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Options that affect sinks exporting data to BigQuery.

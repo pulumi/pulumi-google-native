@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i GoogleCloudDatacatalogLineageV1EntityReferenceArgs) ToGoogleCloudDatacat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogLineageV1EntityReferenceOutput)
 }
 
-func (i GoogleCloudDatacatalogLineageV1EntityReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogLineageV1EntityReference] {
-	return pulumix.Output[GoogleCloudDatacatalogLineageV1EntityReference]{
-		OutputState: i.ToGoogleCloudDatacatalogLineageV1EntityReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The soft reference to everything you can attach a lineage event to.
 type GoogleCloudDatacatalogLineageV1EntityReferenceOutput struct{ *pulumi.OutputState }
 
@@ -68,12 +61,6 @@ func (o GoogleCloudDatacatalogLineageV1EntityReferenceOutput) ToGoogleCloudDatac
 
 func (o GoogleCloudDatacatalogLineageV1EntityReferenceOutput) ToGoogleCloudDatacatalogLineageV1EntityReferenceOutputWithContext(ctx context.Context) GoogleCloudDatacatalogLineageV1EntityReferenceOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogLineageV1EntityReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogLineageV1EntityReference] {
-	return pulumix.Output[GoogleCloudDatacatalogLineageV1EntityReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
@@ -100,12 +87,6 @@ func (o GoogleCloudDatacatalogLineageV1EntityReferenceResponseOutput) ToGoogleCl
 
 func (o GoogleCloudDatacatalogLineageV1EntityReferenceResponseOutput) ToGoogleCloudDatacatalogLineageV1EntityReferenceResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogLineageV1EntityReferenceResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogLineageV1EntityReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogLineageV1EntityReferenceResponse] {
-	return pulumix.Output[GoogleCloudDatacatalogLineageV1EntityReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
@@ -152,12 +133,6 @@ func (i GoogleCloudDatacatalogLineageV1EventLinkArgs) ToGoogleCloudDatacatalogLi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogLineageV1EventLinkOutput)
 }
 
-func (i GoogleCloudDatacatalogLineageV1EventLinkArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogLineageV1EventLink] {
-	return pulumix.Output[GoogleCloudDatacatalogLineageV1EventLink]{
-		OutputState: i.ToGoogleCloudDatacatalogLineageV1EventLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudDatacatalogLineageV1EventLinkArrayInput is an input type that accepts GoogleCloudDatacatalogLineageV1EventLinkArray and GoogleCloudDatacatalogLineageV1EventLinkArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogLineageV1EventLinkArrayInput` via:
 //
@@ -183,12 +158,6 @@ func (i GoogleCloudDatacatalogLineageV1EventLinkArray) ToGoogleCloudDatacatalogL
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogLineageV1EventLinkArrayOutput)
 }
 
-func (i GoogleCloudDatacatalogLineageV1EventLinkArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogLineageV1EventLink] {
-	return pulumix.Output[[]GoogleCloudDatacatalogLineageV1EventLink]{
-		OutputState: i.ToGoogleCloudDatacatalogLineageV1EventLinkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A lineage between source and target entities.
 type GoogleCloudDatacatalogLineageV1EventLinkOutput struct{ *pulumi.OutputState }
 
@@ -202,12 +171,6 @@ func (o GoogleCloudDatacatalogLineageV1EventLinkOutput) ToGoogleCloudDatacatalog
 
 func (o GoogleCloudDatacatalogLineageV1EventLinkOutput) ToGoogleCloudDatacatalogLineageV1EventLinkOutputWithContext(ctx context.Context) GoogleCloudDatacatalogLineageV1EventLinkOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogLineageV1EventLinkOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogLineageV1EventLink] {
-	return pulumix.Output[GoogleCloudDatacatalogLineageV1EventLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Reference to the source entity
@@ -236,12 +199,6 @@ func (o GoogleCloudDatacatalogLineageV1EventLinkArrayOutput) ToGoogleCloudDataca
 
 func (o GoogleCloudDatacatalogLineageV1EventLinkArrayOutput) ToGoogleCloudDatacatalogLineageV1EventLinkArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogLineageV1EventLinkArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogLineageV1EventLinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogLineageV1EventLink] {
-	return pulumix.Output[[]GoogleCloudDatacatalogLineageV1EventLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatacatalogLineageV1EventLinkArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogLineageV1EventLinkOutput {
@@ -273,12 +230,6 @@ func (o GoogleCloudDatacatalogLineageV1EventLinkResponseOutput) ToGoogleCloudDat
 	return o
 }
 
-func (o GoogleCloudDatacatalogLineageV1EventLinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogLineageV1EventLinkResponse] {
-	return pulumix.Output[GoogleCloudDatacatalogLineageV1EventLinkResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Reference to the source entity
 func (o GoogleCloudDatacatalogLineageV1EventLinkResponseOutput) Source() GoogleCloudDatacatalogLineageV1EntityReferenceResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogLineageV1EventLinkResponse) GoogleCloudDatacatalogLineageV1EntityReferenceResponse {
@@ -305,12 +256,6 @@ func (o GoogleCloudDatacatalogLineageV1EventLinkResponseArrayOutput) ToGoogleClo
 
 func (o GoogleCloudDatacatalogLineageV1EventLinkResponseArrayOutput) ToGoogleCloudDatacatalogLineageV1EventLinkResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogLineageV1EventLinkResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogLineageV1EventLinkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudDatacatalogLineageV1EventLinkResponse] {
-	return pulumix.Output[[]GoogleCloudDatacatalogLineageV1EventLinkResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatacatalogLineageV1EventLinkResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogLineageV1EventLinkResponseOutput {
@@ -358,12 +303,6 @@ func (i GoogleCloudDatacatalogLineageV1OriginArgs) ToGoogleCloudDatacatalogLinea
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogLineageV1OriginOutput)
 }
 
-func (i GoogleCloudDatacatalogLineageV1OriginArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogLineageV1Origin] {
-	return pulumix.Output[GoogleCloudDatacatalogLineageV1Origin]{
-		OutputState: i.ToGoogleCloudDatacatalogLineageV1OriginOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDatacatalogLineageV1OriginArgs) ToGoogleCloudDatacatalogLineageV1OriginPtrOutput() GoogleCloudDatacatalogLineageV1OriginPtrOutput {
 	return i.ToGoogleCloudDatacatalogLineageV1OriginPtrOutputWithContext(context.Background())
 }
@@ -405,12 +344,6 @@ func (i *googleCloudDatacatalogLineageV1OriginPtrType) ToGoogleCloudDatacatalogL
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogLineageV1OriginPtrOutput)
 }
 
-func (i *googleCloudDatacatalogLineageV1OriginPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogLineageV1Origin] {
-	return pulumix.Output[*GoogleCloudDatacatalogLineageV1Origin]{
-		OutputState: i.ToGoogleCloudDatacatalogLineageV1OriginPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Origin of a process.
 type GoogleCloudDatacatalogLineageV1OriginOutput struct{ *pulumi.OutputState }
 
@@ -434,12 +367,6 @@ func (o GoogleCloudDatacatalogLineageV1OriginOutput) ToGoogleCloudDatacatalogLin
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogLineageV1Origin) *GoogleCloudDatacatalogLineageV1Origin {
 		return &v
 	}).(GoogleCloudDatacatalogLineageV1OriginPtrOutput)
-}
-
-func (o GoogleCloudDatacatalogLineageV1OriginOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogLineageV1Origin] {
-	return pulumix.Output[GoogleCloudDatacatalogLineageV1Origin]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the source_type isn't CUSTOM, the value of this field should be a GCP resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
@@ -466,12 +393,6 @@ func (o GoogleCloudDatacatalogLineageV1OriginPtrOutput) ToGoogleCloudDatacatalog
 
 func (o GoogleCloudDatacatalogLineageV1OriginPtrOutput) ToGoogleCloudDatacatalogLineageV1OriginPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogLineageV1OriginPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogLineageV1OriginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogLineageV1Origin] {
-	return pulumix.Output[*GoogleCloudDatacatalogLineageV1Origin]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatacatalogLineageV1OriginPtrOutput) Elem() GoogleCloudDatacatalogLineageV1OriginOutput {
@@ -525,12 +446,6 @@ func (o GoogleCloudDatacatalogLineageV1OriginResponseOutput) ToGoogleCloudDataca
 
 func (o GoogleCloudDatacatalogLineageV1OriginResponseOutput) ToGoogleCloudDatacatalogLineageV1OriginResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogLineageV1OriginResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogLineageV1OriginResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatacatalogLineageV1OriginResponse] {
-	return pulumix.Output[GoogleCloudDatacatalogLineageV1OriginResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the source_type isn't CUSTOM, the value of this field should be a GCP resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`

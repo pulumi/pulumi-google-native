@@ -83,12 +83,6 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalOutput
 	}).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtrOutput)
 }
 
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtrOut
 
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtrOutput) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtrOutput) Elem() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalOutput {
@@ -270,12 +258,6 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationO
 	}).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationPtrOutput)
 }
 
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationP
 
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationPtrOutput) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationPtrOutput) Elem() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationOutput {
@@ -457,12 +433,6 @@ func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationOutput) ToGoo
 	}).(GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutput)
 }
 
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -496,12 +466,6 @@ func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutput) To
 
 func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutput) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutput) Elem() GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationOutput {
@@ -650,12 +614,6 @@ func (o PipelineStateEnumOutput) ToPipelineStateEnumPtrOutputWithContext(ctx con
 	}).(PipelineStateEnumPtrOutput)
 }
 
-func (o PipelineStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineStateEnum] {
-	return pulumix.Output[PipelineStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PipelineStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -689,12 +647,6 @@ func (o PipelineStateEnumPtrOutput) ToPipelineStateEnumPtrOutput() PipelineState
 
 func (o PipelineStateEnumPtrOutput) ToPipelineStateEnumPtrOutputWithContext(ctx context.Context) PipelineStateEnumPtrOutput {
 	return o
-}
-
-func (o PipelineStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineStateEnum] {
-	return pulumix.Output[*PipelineStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineStateEnumPtrOutput) Elem() PipelineStateEnumOutput {
@@ -837,12 +789,6 @@ func (o PipelineTypeOutput) ToPipelineTypePtrOutputWithContext(ctx context.Conte
 	}).(PipelineTypePtrOutput)
 }
 
-func (o PipelineTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineType] {
-	return pulumix.Output[PipelineType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PipelineTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -876,12 +822,6 @@ func (o PipelineTypePtrOutput) ToPipelineTypePtrOutput() PipelineTypePtrOutput {
 
 func (o PipelineTypePtrOutput) ToPipelineTypePtrOutputWithContext(ctx context.Context) PipelineTypePtrOutput {
 	return o
-}
-
-func (o PipelineTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineType] {
-	return pulumix.Output[*PipelineType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineTypePtrOutput) Elem() PipelineTypeOutput {

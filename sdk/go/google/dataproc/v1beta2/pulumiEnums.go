@@ -85,12 +85,6 @@ func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToGceClusterConfigPrivate
 	}).(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput)
 }
 
-func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToOutput(ctx context.Context) pulumix.Output[GceClusterConfigPrivateIpv6GoogleAccess] {
-	return pulumix.Output[GceClusterConfigPrivateIpv6GoogleAccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToGceClusterConfigPriv
 
 func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
 	return o
-}
-
-func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GceClusterConfigPrivateIpv6GoogleAccess] {
-	return pulumix.Output[*GceClusterConfigPrivateIpv6GoogleAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) Elem() GceClusterConfigPrivateIpv6GoogleAccessOutput {
@@ -272,12 +260,6 @@ func (o InstanceGroupConfigPreemptibilityOutput) ToInstanceGroupConfigPreemptibi
 	}).(InstanceGroupConfigPreemptibilityPtrOutput)
 }
 
-func (o InstanceGroupConfigPreemptibilityOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupConfigPreemptibility] {
-	return pulumix.Output[InstanceGroupConfigPreemptibility]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceGroupConfigPreemptibilityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o InstanceGroupConfigPreemptibilityPtrOutput) ToInstanceGroupConfigPreempt
 
 func (o InstanceGroupConfigPreemptibilityPtrOutput) ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx context.Context) InstanceGroupConfigPreemptibilityPtrOutput {
 	return o
-}
-
-func (o InstanceGroupConfigPreemptibilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupConfigPreemptibility] {
-	return pulumix.Output[*InstanceGroupConfigPreemptibility]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceGroupConfigPreemptibilityPtrOutput) Elem() InstanceGroupConfigPreemptibilityOutput {
@@ -460,12 +436,6 @@ func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityCo
 	}).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
-func (o ReservationAffinityConsumeReservationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReservationAffinityConsumeReservationType] {
-	return pulumix.Output[ReservationAffinityConsumeReservationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReservationAffinityConsumeReservationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -499,12 +469,6 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinit
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return o
-}
-
-func (o ReservationAffinityConsumeReservationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
-	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
@@ -668,12 +632,6 @@ func (o SoftwareConfigOptionalComponentsItemOutput) ToSoftwareConfigOptionalComp
 	}).(SoftwareConfigOptionalComponentsItemPtrOutput)
 }
 
-func (o SoftwareConfigOptionalComponentsItemOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareConfigOptionalComponentsItem] {
-	return pulumix.Output[SoftwareConfigOptionalComponentsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SoftwareConfigOptionalComponentsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -707,12 +665,6 @@ func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToSoftwareConfigOptionalC
 
 func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemPtrOutput {
 	return o
-}
-
-func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareConfigOptionalComponentsItem] {
-	return pulumix.Output[*SoftwareConfigOptionalComponentsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareConfigOptionalComponentsItemPtrOutput) Elem() SoftwareConfigOptionalComponentsItemOutput {
@@ -808,12 +760,6 @@ func (i SoftwareConfigOptionalComponentsItemArray) ToSoftwareConfigOptionalCompo
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareConfigOptionalComponentsItemArrayOutput)
 }
 
-func (i SoftwareConfigOptionalComponentsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareConfigOptionalComponentsItem] {
-	return pulumix.Output[[]SoftwareConfigOptionalComponentsItem]{
-		OutputState: i.ToSoftwareConfigOptionalComponentsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SoftwareConfigOptionalComponentsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (SoftwareConfigOptionalComponentsItemArrayOutput) ElementType() reflect.Type {
@@ -826,12 +772,6 @@ func (o SoftwareConfigOptionalComponentsItemArrayOutput) ToSoftwareConfigOptiona
 
 func (o SoftwareConfigOptionalComponentsItemArrayOutput) ToSoftwareConfigOptionalComponentsItemArrayOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemArrayOutput {
 	return o
-}
-
-func (o SoftwareConfigOptionalComponentsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareConfigOptionalComponentsItem] {
-	return pulumix.Output[[]SoftwareConfigOptionalComponentsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareConfigOptionalComponentsItemArrayOutput) Index(i pulumi.IntInput) SoftwareConfigOptionalComponentsItemOutput {

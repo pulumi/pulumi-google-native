@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -150,12 +149,6 @@ func (i *WorkstationClusterWorkstationConfigWorkstationIamPolicy) ToWorkstationC
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterWorkstationConfigWorkstationIamPolicyOutput)
 }
 
-func (i *WorkstationClusterWorkstationConfigWorkstationIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*WorkstationClusterWorkstationConfigWorkstationIamPolicy] {
-	return pulumix.Output[*WorkstationClusterWorkstationConfigWorkstationIamPolicy]{
-		OutputState: i.ToWorkstationClusterWorkstationConfigWorkstationIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkstationClusterWorkstationConfigWorkstationIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (WorkstationClusterWorkstationConfigWorkstationIamPolicyOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o WorkstationClusterWorkstationConfigWorkstationIamPolicyOutput) ToWorksta
 
 func (o WorkstationClusterWorkstationConfigWorkstationIamPolicyOutput) ToWorkstationClusterWorkstationConfigWorkstationIamPolicyOutputWithContext(ctx context.Context) WorkstationClusterWorkstationConfigWorkstationIamPolicyOutput {
 	return o
-}
-
-func (o WorkstationClusterWorkstationConfigWorkstationIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationClusterWorkstationConfigWorkstationIamPolicy] {
-	return pulumix.Output[*WorkstationClusterWorkstationConfigWorkstationIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

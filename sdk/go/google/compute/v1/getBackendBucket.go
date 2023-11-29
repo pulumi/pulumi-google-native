@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified BackendBucket resource.
@@ -87,12 +86,6 @@ func (o LookupBackendBucketResultOutput) ToLookupBackendBucketResultOutput() Loo
 
 func (o LookupBackendBucketResultOutput) ToLookupBackendBucketResultOutputWithContext(ctx context.Context) LookupBackendBucketResultOutput {
 	return o
-}
-
-func (o LookupBackendBucketResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackendBucketResult] {
-	return pulumix.Output[LookupBackendBucketResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Storage bucket name.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a BatchPredictionJob. A BatchPredictionJob once created will right away be attempted to start.
@@ -237,12 +236,6 @@ func (i *BatchPredictionJob) ToBatchPredictionJobOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BatchPredictionJobOutput)
 }
 
-func (i *BatchPredictionJob) ToOutput(ctx context.Context) pulumix.Output[*BatchPredictionJob] {
-	return pulumix.Output[*BatchPredictionJob]{
-		OutputState: i.ToBatchPredictionJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BatchPredictionJobOutput struct{ *pulumi.OutputState }
 
 func (BatchPredictionJobOutput) ElementType() reflect.Type {
@@ -255,12 +248,6 @@ func (o BatchPredictionJobOutput) ToBatchPredictionJobOutput() BatchPredictionJo
 
 func (o BatchPredictionJobOutput) ToBatchPredictionJobOutputWithContext(ctx context.Context) BatchPredictionJobOutput {
 	return o
-}
-
-func (o BatchPredictionJobOutput) ToOutput(ctx context.Context) pulumix.Output[*BatchPredictionJob] {
-	return pulumix.Output[*BatchPredictionJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Statistics on completed and failed prediction instances.

@@ -83,12 +83,6 @@ func (o SchemaSettingsEncodingOutput) ToSchemaSettingsEncodingPtrOutputWithConte
 	}).(SchemaSettingsEncodingPtrOutput)
 }
 
-func (o SchemaSettingsEncodingOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaSettingsEncoding] {
-	return pulumix.Output[SchemaSettingsEncoding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SchemaSettingsEncodingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o SchemaSettingsEncodingPtrOutput) ToSchemaSettingsEncodingPtrOutput() Sch
 
 func (o SchemaSettingsEncodingPtrOutput) ToSchemaSettingsEncodingPtrOutputWithContext(ctx context.Context) SchemaSettingsEncodingPtrOutput {
 	return o
-}
-
-func (o SchemaSettingsEncodingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchemaSettingsEncoding] {
-	return pulumix.Output[*SchemaSettingsEncoding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchemaSettingsEncodingPtrOutput) Elem() SchemaSettingsEncodingOutput {
@@ -270,12 +258,6 @@ func (o SchemaTypeOutput) ToSchemaTypePtrOutputWithContext(ctx context.Context) 
 	}).(SchemaTypePtrOutput)
 }
 
-func (o SchemaTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaType] {
-	return pulumix.Output[SchemaType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SchemaTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o SchemaTypePtrOutput) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
 
 func (o SchemaTypePtrOutput) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
 	return o
-}
-
-func (o SchemaTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchemaType] {
-	return pulumix.Output[*SchemaType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchemaTypePtrOutput) Elem() SchemaTypeOutput {

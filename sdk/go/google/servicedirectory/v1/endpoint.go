@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an endpoint, and returns the new endpoint.
@@ -155,12 +154,6 @@ func (i *Endpoint) ToEndpointOutputWithContext(ctx context.Context) EndpointOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointOutput)
 }
 
-func (i *Endpoint) ToOutput(ctx context.Context) pulumix.Output[*Endpoint] {
-	return pulumix.Output[*Endpoint]{
-		OutputState: i.ToEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EndpointOutput struct{ *pulumi.OutputState }
 
 func (EndpointOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o EndpointOutput) ToEndpointOutput() EndpointOutput {
 
 func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
 	return o
-}
-
-func (o EndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*Endpoint] {
-	return pulumix.Output[*Endpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.

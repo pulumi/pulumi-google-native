@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single address group.
@@ -85,12 +84,6 @@ func (o LookupOrganizationAddressGroupResultOutput) ToLookupOrganizationAddressG
 
 func (o LookupOrganizationAddressGroupResultOutput) ToLookupOrganizationAddressGroupResultOutputWithContext(ctx context.Context) LookupOrganizationAddressGroupResultOutput {
 	return o
-}
-
-func (o LookupOrganizationAddressGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationAddressGroupResult] {
-	return pulumix.Output[LookupOrganizationAddressGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Capacity of the Address Group

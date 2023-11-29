@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Schedule.
@@ -177,12 +176,6 @@ func (i *Schedule) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
-func (i *Schedule) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: i.ToScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScheduleOutput) ElementType() reflect.Type {
@@ -195,12 +188,6 @@ func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {
 
 func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
 	return o
-}
-
-func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.

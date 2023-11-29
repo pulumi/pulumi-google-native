@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a network endpoint group in the specified project using the parameters that are included in the request.
@@ -187,12 +186,6 @@ func (i *RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupOutput)
 }
 
-func (i *RegionNetworkEndpointGroup) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroup] {
-	return pulumix.Output[*RegionNetworkEndpointGroup]{
-		OutputState: i.ToRegionNetworkEndpointGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionNetworkEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (RegionNetworkEndpointGroupOutput) ElementType() reflect.Type {
@@ -205,12 +198,6 @@ func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutput() R
 
 func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupOutput {
 	return o
-}
-
-func (o RegionNetworkEndpointGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroup] {
-	return pulumix.Output[*RegionNetworkEndpointGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Metadata defined as annotations on the network endpoint group.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a content resource.
@@ -91,12 +90,6 @@ func (o LookupContentResultOutput) ToLookupContentResultOutput() LookupContentRe
 
 func (o LookupContentResultOutput) ToLookupContentResultOutputWithContext(ctx context.Context) LookupContentResultOutput {
 	return o
-}
-
-func (o LookupContentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContentResult] {
-	return pulumix.Output[LookupContentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Content creation time.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a DataAttributeBinding resource.
@@ -89,12 +88,6 @@ func (o LookupDataAttributeBindingResultOutput) ToLookupDataAttributeBindingResu
 
 func (o LookupDataAttributeBindingResultOutput) ToLookupDataAttributeBindingResultOutputWithContext(ctx context.Context) LookupDataAttributeBindingResultOutput {
 	return o
-}
-
-func (o LookupDataAttributeBindingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataAttributeBindingResult] {
-	return pulumix.Output[LookupDataAttributeBindingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. List of attributes to be associated with the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}

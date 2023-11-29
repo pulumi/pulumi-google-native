@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new external access rule in a given network policy.
@@ -181,12 +180,6 @@ func (i *ExternalAccessRule) ToExternalAccessRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalAccessRuleOutput)
 }
 
-func (i *ExternalAccessRule) ToOutput(ctx context.Context) pulumix.Output[*ExternalAccessRule] {
-	return pulumix.Output[*ExternalAccessRule]{
-		OutputState: i.ToExternalAccessRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExternalAccessRuleOutput struct{ *pulumi.OutputState }
 
 func (ExternalAccessRuleOutput) ElementType() reflect.Type {
@@ -199,12 +192,6 @@ func (o ExternalAccessRuleOutput) ToExternalAccessRuleOutput() ExternalAccessRul
 
 func (o ExternalAccessRuleOutput) ToExternalAccessRuleOutputWithContext(ctx context.Context) ExternalAccessRuleOutput {
 	return o
-}
-
-func (o ExternalAccessRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalAccessRule] {
-	return pulumix.Output[*ExternalAccessRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action that the external access rule performs.

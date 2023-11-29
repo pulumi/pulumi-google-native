@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an environment group attachment.
@@ -75,12 +74,6 @@ func (o LookupEnvgroupAttachmentResultOutput) ToLookupEnvgroupAttachmentResultOu
 
 func (o LookupEnvgroupAttachmentResultOutput) ToLookupEnvgroupAttachmentResultOutputWithContext(ctx context.Context) LookupEnvgroupAttachmentResultOutput {
 	return o
-}
-
-func (o LookupEnvgroupAttachmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnvgroupAttachmentResult] {
-	return pulumix.Output[LookupEnvgroupAttachmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the environment group attachment was created as milliseconds since epoch.

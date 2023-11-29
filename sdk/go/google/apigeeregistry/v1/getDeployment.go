@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a specified deployment.
@@ -97,12 +96,6 @@ func (o LookupDeploymentResultOutput) ToLookupDeploymentResultOutput() LookupDep
 
 func (o LookupDeploymentResultOutput) ToLookupDeploymentResultOutputWithContext(ctx context.Context) LookupDeploymentResultOutput {
 	return o
-}
-
-func (o LookupDeploymentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeploymentResult] {
-	return pulumix.Output[LookupDeploymentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Text briefly describing how to access the endpoint. Changes to this value will not affect the revision.

@@ -83,12 +83,6 @@ func (o ExecutionCallLogLevelOutput) ToExecutionCallLogLevelPtrOutputWithContext
 	}).(ExecutionCallLogLevelPtrOutput)
 }
 
-func (o ExecutionCallLogLevelOutput) ToOutput(ctx context.Context) pulumix.Output[ExecutionCallLogLevel] {
-	return pulumix.Output[ExecutionCallLogLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExecutionCallLogLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o ExecutionCallLogLevelPtrOutput) ToExecutionCallLogLevelPtrOutput() Execu
 
 func (o ExecutionCallLogLevelPtrOutput) ToExecutionCallLogLevelPtrOutputWithContext(ctx context.Context) ExecutionCallLogLevelPtrOutput {
 	return o
-}
-
-func (o ExecutionCallLogLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecutionCallLogLevel] {
-	return pulumix.Output[*ExecutionCallLogLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecutionCallLogLevelPtrOutput) Elem() ExecutionCallLogLevelOutput {

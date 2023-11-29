@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an instruction for how data should be labeled.
@@ -146,12 +145,6 @@ func (i *Instruction) ToInstructionOutputWithContext(ctx context.Context) Instru
 	return pulumi.ToOutputWithContext(ctx, i).(InstructionOutput)
 }
 
-func (i *Instruction) ToOutput(ctx context.Context) pulumix.Output[*Instruction] {
-	return pulumix.Output[*Instruction]{
-		OutputState: i.ToInstructionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstructionOutput struct{ *pulumi.OutputState }
 
 func (InstructionOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o InstructionOutput) ToInstructionOutput() InstructionOutput {
 
 func (o InstructionOutput) ToInstructionOutputWithContext(ctx context.Context) InstructionOutput {
 	return o
-}
-
-func (o InstructionOutput) ToOutput(ctx context.Context) pulumix.Output[*Instruction] {
-	return pulumix.Output[*Instruction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The names of any related resources that are blocking changes to the instruction.

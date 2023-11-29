@@ -308,9 +308,6 @@ class FolderSink(pulumi.CustomResource):
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["include_children"] = include_children
             __props__.__dict__["name"] = name
-            if output_version_format is not None and not opts.urn:
-                warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
-                pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
             __props__.__dict__["output_version_format"] = output_version_format
             __props__.__dict__["unique_writer_identity"] = unique_writer_identity
             __props__.__dict__["create_time"] = None

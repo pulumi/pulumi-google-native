@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an sfdc instance. If the instance doesn't exist, Code.NOT_FOUND exception will be thrown.
@@ -87,12 +86,6 @@ func (o LookupSfdcInstanceResultOutput) ToLookupSfdcInstanceResultOutput() Looku
 
 func (o LookupSfdcInstanceResultOutput) ToLookupSfdcInstanceResultOutputWithContext(ctx context.Context) LookupSfdcInstanceResultOutput {
 	return o
-}
-
-func (o LookupSfdcInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSfdcInstanceResult] {
-	return pulumix.Output[LookupSfdcInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of AuthConfigs that can be tried to open the channel to SFDC

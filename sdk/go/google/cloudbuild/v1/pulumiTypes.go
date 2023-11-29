@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i ApprovalConfigArgs) ToApprovalConfigOutput() ApprovalConfigOutput {
 
 func (i ApprovalConfigArgs) ToApprovalConfigOutputWithContext(ctx context.Context) ApprovalConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigOutput)
-}
-
-func (i ApprovalConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ApprovalConfig] {
-	return pulumix.Output[ApprovalConfig]{
-		OutputState: i.ToApprovalConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ApprovalConfigArgs) ToApprovalConfigPtrOutput() ApprovalConfigPtrOutput {
@@ -96,12 +89,6 @@ func (i *approvalConfigPtrType) ToApprovalConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigPtrOutput)
 }
 
-func (i *approvalConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApprovalConfig] {
-	return pulumix.Output[*ApprovalConfig]{
-		OutputState: i.ToApprovalConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApprovalConfig describes configuration for manual approval of a build.
 type ApprovalConfigOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o ApprovalConfigOutput) ToApprovalConfigPtrOutputWithContext(ctx context.C
 	}).(ApprovalConfigPtrOutput)
 }
 
-func (o ApprovalConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ApprovalConfig] {
-	return pulumix.Output[ApprovalConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
 func (o ApprovalConfigOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApprovalConfig) *bool { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
@@ -150,12 +131,6 @@ func (o ApprovalConfigPtrOutput) ToApprovalConfigPtrOutput() ApprovalConfigPtrOu
 
 func (o ApprovalConfigPtrOutput) ToApprovalConfigPtrOutputWithContext(ctx context.Context) ApprovalConfigPtrOutput {
 	return o
-}
-
-func (o ApprovalConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApprovalConfig] {
-	return pulumix.Output[*ApprovalConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApprovalConfigPtrOutput) Elem() ApprovalConfigOutput {
@@ -199,12 +174,6 @@ func (o ApprovalConfigResponseOutput) ToApprovalConfigResponseOutputWithContext(
 	return o
 }
 
-func (o ApprovalConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApprovalConfigResponse] {
-	return pulumix.Output[ApprovalConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
 func (o ApprovalConfigResponseOutput) ApprovalRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v ApprovalConfigResponse) bool { return v.ApprovalRequired }).(pulumi.BoolOutput)
@@ -237,12 +206,6 @@ func (o ApprovalResultResponseOutput) ToApprovalResultResponseOutput() ApprovalR
 
 func (o ApprovalResultResponseOutput) ToApprovalResultResponseOutputWithContext(ctx context.Context) ApprovalResultResponseOutput {
 	return o
-}
-
-func (o ApprovalResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApprovalResultResponse] {
-	return pulumix.Output[ApprovalResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the approval decision was made.
@@ -309,12 +272,6 @@ func (i ArtifactObjectsArgs) ToArtifactObjectsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactObjectsOutput)
 }
 
-func (i ArtifactObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[ArtifactObjects] {
-	return pulumix.Output[ArtifactObjects]{
-		OutputState: i.ToArtifactObjectsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ArtifactObjectsArgs) ToArtifactObjectsPtrOutput() ArtifactObjectsPtrOutput {
 	return i.ToArtifactObjectsPtrOutputWithContext(context.Background())
 }
@@ -356,12 +313,6 @@ func (i *artifactObjectsPtrType) ToArtifactObjectsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactObjectsPtrOutput)
 }
 
-func (i *artifactObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ArtifactObjects] {
-	return pulumix.Output[*ArtifactObjects]{
-		OutputState: i.ToArtifactObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
 type ArtifactObjectsOutput struct{ *pulumi.OutputState }
 
@@ -387,12 +338,6 @@ func (o ArtifactObjectsOutput) ToArtifactObjectsPtrOutputWithContext(ctx context
 	}).(ArtifactObjectsPtrOutput)
 }
 
-func (o ArtifactObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactObjects] {
-	return pulumix.Output[ArtifactObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
 func (o ArtifactObjectsOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ArtifactObjects) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -415,12 +360,6 @@ func (o ArtifactObjectsPtrOutput) ToArtifactObjectsPtrOutput() ArtifactObjectsPt
 
 func (o ArtifactObjectsPtrOutput) ToArtifactObjectsPtrOutputWithContext(ctx context.Context) ArtifactObjectsPtrOutput {
 	return o
-}
-
-func (o ArtifactObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArtifactObjects] {
-	return pulumix.Output[*ArtifactObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArtifactObjectsPtrOutput) Elem() ArtifactObjectsOutput {
@@ -476,12 +415,6 @@ func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponseOutput() Artifac
 
 func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponseOutputWithContext(ctx context.Context) ArtifactObjectsResponseOutput {
 	return o
-}
-
-func (o ArtifactObjectsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactObjectsResponse] {
-	return pulumix.Output[ArtifactObjectsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
@@ -550,12 +483,6 @@ func (i ArtifactsArgs) ToArtifactsOutputWithContext(ctx context.Context) Artifac
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactsOutput)
 }
 
-func (i ArtifactsArgs) ToOutput(ctx context.Context) pulumix.Output[Artifacts] {
-	return pulumix.Output[Artifacts]{
-		OutputState: i.ToArtifactsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ArtifactsArgs) ToArtifactsPtrOutput() ArtifactsPtrOutput {
 	return i.ToArtifactsPtrOutputWithContext(context.Background())
 }
@@ -597,12 +524,6 @@ func (i *artifactsPtrType) ToArtifactsPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactsPtrOutput)
 }
 
-func (i *artifactsPtrType) ToOutput(ctx context.Context) pulumix.Output[*Artifacts] {
-	return pulumix.Output[*Artifacts]{
-		OutputState: i.ToArtifactsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
 type ArtifactsOutput struct{ *pulumi.OutputState }
 
@@ -626,12 +547,6 @@ func (o ArtifactsOutput) ToArtifactsPtrOutputWithContext(ctx context.Context) Ar
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Artifacts) *Artifacts {
 		return &v
 	}).(ArtifactsPtrOutput)
-}
-
-func (o ArtifactsOutput) ToOutput(ctx context.Context) pulumix.Output[Artifacts] {
-	return pulumix.Output[Artifacts]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
@@ -671,12 +586,6 @@ func (o ArtifactsPtrOutput) ToArtifactsPtrOutput() ArtifactsPtrOutput {
 
 func (o ArtifactsPtrOutput) ToArtifactsPtrOutputWithContext(ctx context.Context) ArtifactsPtrOutput {
 	return o
-}
-
-func (o ArtifactsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Artifacts] {
-	return pulumix.Output[*Artifacts]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArtifactsPtrOutput) Elem() ArtifactsOutput {
@@ -768,12 +677,6 @@ func (o ArtifactsResponseOutput) ToArtifactsResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ArtifactsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactsResponse] {
-	return pulumix.Output[ArtifactsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
 func (o ArtifactsResponseOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ArtifactsResponse) []string { return v.Images }).(pulumi.StringArrayOutput)
@@ -838,12 +741,6 @@ func (o BitbucketServerConfigResponseOutput) ToBitbucketServerConfigResponseOutp
 
 func (o BitbucketServerConfigResponseOutput) ToBitbucketServerConfigResponseOutputWithContext(ctx context.Context) BitbucketServerConfigResponseOutput {
 	return o
-}
-
-func (o BitbucketServerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerConfigResponse] {
-	return pulumix.Output[BitbucketServerConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
@@ -928,12 +825,6 @@ func (o BitbucketServerRepositoryIdResponseOutput) ToBitbucketServerRepositoryId
 	return o
 }
 
-func (o BitbucketServerRepositoryIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerRepositoryIdResponse] {
-	return pulumix.Output[BitbucketServerRepositoryIdResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Identifier for the project storing the repository.
 func (o BitbucketServerRepositoryIdResponseOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v BitbucketServerRepositoryIdResponse) string { return v.ProjectKey }).(pulumi.StringOutput)
@@ -961,12 +852,6 @@ func (o BitbucketServerRepositoryIdResponseArrayOutput) ToBitbucketServerReposit
 
 func (o BitbucketServerRepositoryIdResponseArrayOutput) ToBitbucketServerRepositoryIdResponseArrayOutputWithContext(ctx context.Context) BitbucketServerRepositoryIdResponseArrayOutput {
 	return o
-}
-
-func (o BitbucketServerRepositoryIdResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BitbucketServerRepositoryIdResponse] {
-	return pulumix.Output[[]BitbucketServerRepositoryIdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BitbucketServerRepositoryIdResponseArrayOutput) Index(i pulumi.IntInput) BitbucketServerRepositoryIdResponseOutput {
@@ -1018,12 +903,6 @@ func (i BitbucketServerSecretsArgs) ToBitbucketServerSecretsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerSecretsOutput)
 }
 
-func (i BitbucketServerSecretsArgs) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerSecrets] {
-	return pulumix.Output[BitbucketServerSecrets]{
-		OutputState: i.ToBitbucketServerSecretsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.
 type BitbucketServerSecretsOutput struct{ *pulumi.OutputState }
 
@@ -1037,12 +916,6 @@ func (o BitbucketServerSecretsOutput) ToBitbucketServerSecretsOutput() Bitbucket
 
 func (o BitbucketServerSecretsOutput) ToBitbucketServerSecretsOutputWithContext(ctx context.Context) BitbucketServerSecretsOutput {
 	return o
-}
-
-func (o BitbucketServerSecretsOutput) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerSecrets] {
-	return pulumix.Output[BitbucketServerSecrets]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name for the admin access token's secret version.
@@ -1083,12 +956,6 @@ func (o BitbucketServerSecretsResponseOutput) ToBitbucketServerSecretsResponseOu
 
 func (o BitbucketServerSecretsResponseOutput) ToBitbucketServerSecretsResponseOutputWithContext(ctx context.Context) BitbucketServerSecretsResponseOutput {
 	return o
-}
-
-func (o BitbucketServerSecretsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerSecretsResponse] {
-	return pulumix.Output[BitbucketServerSecretsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name for the admin access token's secret version.
@@ -1157,12 +1024,6 @@ func (i BitbucketServerTriggerConfigArgs) ToBitbucketServerTriggerConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerTriggerConfigOutput)
 }
 
-func (i BitbucketServerTriggerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerTriggerConfig] {
-	return pulumix.Output[BitbucketServerTriggerConfig]{
-		OutputState: i.ToBitbucketServerTriggerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BitbucketServerTriggerConfigArgs) ToBitbucketServerTriggerConfigPtrOutput() BitbucketServerTriggerConfigPtrOutput {
 	return i.ToBitbucketServerTriggerConfigPtrOutputWithContext(context.Background())
 }
@@ -1204,12 +1065,6 @@ func (i *bitbucketServerTriggerConfigPtrType) ToBitbucketServerTriggerConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerTriggerConfigPtrOutput)
 }
 
-func (i *bitbucketServerTriggerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BitbucketServerTriggerConfig] {
-	return pulumix.Output[*BitbucketServerTriggerConfig]{
-		OutputState: i.ToBitbucketServerTriggerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
 type BitbucketServerTriggerConfigOutput struct{ *pulumi.OutputState }
 
@@ -1233,12 +1088,6 @@ func (o BitbucketServerTriggerConfigOutput) ToBitbucketServerTriggerConfigPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketServerTriggerConfig) *BitbucketServerTriggerConfig {
 		return &v
 	}).(BitbucketServerTriggerConfigPtrOutput)
-}
-
-func (o BitbucketServerTriggerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerTriggerConfig] {
-	return pulumix.Output[BitbucketServerTriggerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Bitbucket server config resource that this trigger config maps to.
@@ -1278,12 +1127,6 @@ func (o BitbucketServerTriggerConfigPtrOutput) ToBitbucketServerTriggerConfigPtr
 
 func (o BitbucketServerTriggerConfigPtrOutput) ToBitbucketServerTriggerConfigPtrOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigPtrOutput {
 	return o
-}
-
-func (o BitbucketServerTriggerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BitbucketServerTriggerConfig] {
-	return pulumix.Output[*BitbucketServerTriggerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BitbucketServerTriggerConfigPtrOutput) Elem() BitbucketServerTriggerConfigOutput {
@@ -1375,12 +1218,6 @@ func (o BitbucketServerTriggerConfigResponseOutput) ToBitbucketServerTriggerConf
 
 func (o BitbucketServerTriggerConfigResponseOutput) ToBitbucketServerTriggerConfigResponseOutputWithContext(ctx context.Context) BitbucketServerTriggerConfigResponseOutput {
 	return o
-}
-
-func (o BitbucketServerTriggerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerTriggerConfigResponse] {
-	return pulumix.Output[BitbucketServerTriggerConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The BitbucketServerConfig specified in the bitbucket_server_config_resource field.
@@ -1498,12 +1335,6 @@ func (i BuildTypeArgs) ToBuildTypeOutputWithContext(ctx context.Context) BuildTy
 	return pulumi.ToOutputWithContext(ctx, i).(BuildTypeOutput)
 }
 
-func (i BuildTypeArgs) ToOutput(ctx context.Context) pulumix.Output[BuildType] {
-	return pulumix.Output[BuildType]{
-		OutputState: i.ToBuildTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BuildTypeArgs) ToBuildTypePtrOutput() BuildTypePtrOutput {
 	return i.ToBuildTypePtrOutputWithContext(context.Background())
 }
@@ -1545,12 +1376,6 @@ func (i *buildTypePtrType) ToBuildTypePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BuildTypePtrOutput)
 }
 
-func (i *buildTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*BuildType] {
-	return pulumix.Output[*BuildType]{
-		OutputState: i.ToBuildTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildTypeOutput struct{ *pulumi.OutputState }
 
@@ -1574,12 +1399,6 @@ func (o BuildTypeOutput) ToBuildTypePtrOutputWithContext(ctx context.Context) Bu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildType) *BuildType {
 		return &v
 	}).(BuildTypePtrOutput)
-}
-
-func (o BuildTypeOutput) ToOutput(ctx context.Context) pulumix.Output[BuildType] {
-	return pulumix.Output[BuildType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -1659,12 +1478,6 @@ func (o BuildTypePtrOutput) ToBuildTypePtrOutput() BuildTypePtrOutput {
 
 func (o BuildTypePtrOutput) ToBuildTypePtrOutputWithContext(ctx context.Context) BuildTypePtrOutput {
 	return o
-}
-
-func (o BuildTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildType] {
-	return pulumix.Output[*BuildType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuildTypePtrOutput) Elem() BuildTypeOutput {
@@ -1832,12 +1645,6 @@ func (o BuildApprovalResponseOutput) ToBuildApprovalResponseOutputWithContext(ct
 	return o
 }
 
-func (o BuildApprovalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BuildApprovalResponse] {
-	return pulumix.Output[BuildApprovalResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration for manual approval of this build.
 func (o BuildApprovalResponseOutput) Config() ApprovalConfigResponseOutput {
 	return o.ApplyT(func(v BuildApprovalResponse) ApprovalConfigResponse { return v.Config }).(ApprovalConfigResponseOutput)
@@ -1944,12 +1751,6 @@ func (i BuildOptionsArgs) ToBuildOptionsOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BuildOptionsOutput)
 }
 
-func (i BuildOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[BuildOptions] {
-	return pulumix.Output[BuildOptions]{
-		OutputState: i.ToBuildOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BuildOptionsArgs) ToBuildOptionsPtrOutput() BuildOptionsPtrOutput {
 	return i.ToBuildOptionsPtrOutputWithContext(context.Background())
 }
@@ -1991,12 +1792,6 @@ func (i *buildOptionsPtrType) ToBuildOptionsPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BuildOptionsPtrOutput)
 }
 
-func (i *buildOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BuildOptions] {
-	return pulumix.Output[*BuildOptions]{
-		OutputState: i.ToBuildOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional arguments to enable specific features of builds.
 type BuildOptionsOutput struct{ *pulumi.OutputState }
 
@@ -2020,12 +1815,6 @@ func (o BuildOptionsOutput) ToBuildOptionsPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptions) *BuildOptions {
 		return &v
 	}).(BuildOptionsPtrOutput)
-}
-
-func (o BuildOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[BuildOptions] {
-	return pulumix.Output[BuildOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Option to include built-in and custom substitutions as env variables for all build steps.
@@ -2115,12 +1904,6 @@ func (o BuildOptionsPtrOutput) ToBuildOptionsPtrOutput() BuildOptionsPtrOutput {
 
 func (o BuildOptionsPtrOutput) ToBuildOptionsPtrOutputWithContext(ctx context.Context) BuildOptionsPtrOutput {
 	return o
-}
-
-func (o BuildOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildOptions] {
-	return pulumix.Output[*BuildOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuildOptionsPtrOutput) Elem() BuildOptionsOutput {
@@ -2332,12 +2115,6 @@ func (o BuildOptionsResponseOutput) ToBuildOptionsResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o BuildOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BuildOptionsResponse] {
-	return pulumix.Output[BuildOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Option to include built-in and custom substitutions as env variables for all build steps.
 func (o BuildOptionsResponseOutput) AutomapSubstitutions() pulumi.BoolOutput {
 	return o.ApplyT(func(v BuildOptionsResponse) bool { return v.AutomapSubstitutions }).(pulumi.BoolOutput)
@@ -2486,12 +2263,6 @@ func (o BuildResponseOutput) ToBuildResponseOutput() BuildResponseOutput {
 
 func (o BuildResponseOutput) ToBuildResponseOutputWithContext(ctx context.Context) BuildResponseOutput {
 	return o
-}
-
-func (o BuildResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BuildResponse] {
-	return pulumix.Output[BuildResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes this build's approval configuration, status, and result.
@@ -2721,12 +2492,6 @@ func (i BuildStepArgs) ToBuildStepOutputWithContext(ctx context.Context) BuildSt
 	return pulumi.ToOutputWithContext(ctx, i).(BuildStepOutput)
 }
 
-func (i BuildStepArgs) ToOutput(ctx context.Context) pulumix.Output[BuildStep] {
-	return pulumix.Output[BuildStep]{
-		OutputState: i.ToBuildStepOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BuildStepArrayInput is an input type that accepts BuildStepArray and BuildStepArrayOutput values.
 // You can construct a concrete instance of `BuildStepArrayInput` via:
 //
@@ -2752,12 +2517,6 @@ func (i BuildStepArray) ToBuildStepArrayOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BuildStepArrayOutput)
 }
 
-func (i BuildStepArray) ToOutput(ctx context.Context) pulumix.Output[[]BuildStep] {
-	return pulumix.Output[[]BuildStep]{
-		OutputState: i.ToBuildStepArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A step in the build pipeline.
 type BuildStepOutput struct{ *pulumi.OutputState }
 
@@ -2771,12 +2530,6 @@ func (o BuildStepOutput) ToBuildStepOutput() BuildStepOutput {
 
 func (o BuildStepOutput) ToBuildStepOutputWithContext(ctx context.Context) BuildStepOutput {
 	return o
-}
-
-func (o BuildStepOutput) ToOutput(ctx context.Context) pulumix.Output[BuildStep] {
-	return pulumix.Output[BuildStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
@@ -2863,12 +2616,6 @@ func (o BuildStepArrayOutput) ToBuildStepArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o BuildStepArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BuildStep] {
-	return pulumix.Output[[]BuildStep]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BuildStepArrayOutput) Index(i pulumi.IntInput) BuildStepOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BuildStep {
 		return vs[0].([]BuildStep)[vs[1].(int)]
@@ -2926,12 +2673,6 @@ func (o BuildStepResponseOutput) ToBuildStepResponseOutput() BuildStepResponseOu
 
 func (o BuildStepResponseOutput) ToBuildStepResponseOutputWithContext(ctx context.Context) BuildStepResponseOutput {
 	return o
-}
-
-func (o BuildStepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BuildStepResponse] {
-	return pulumix.Output[BuildStepResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
@@ -3033,12 +2774,6 @@ func (o BuildStepResponseArrayOutput) ToBuildStepResponseArrayOutputWithContext(
 	return o
 }
 
-func (o BuildStepResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BuildStepResponse] {
-	return pulumix.Output[[]BuildStepResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BuildStepResponseArrayOutput) Index(i pulumi.IntInput) BuildStepResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BuildStepResponse {
 		return vs[0].([]BuildStepResponse)[vs[1].(int)]
@@ -3070,12 +2805,6 @@ func (o BuiltImageResponseOutput) ToBuiltImageResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o BuiltImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BuiltImageResponse] {
-	return pulumix.Output[BuiltImageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Docker Registry 2.0 digest.
 func (o BuiltImageResponseOutput) Digest() pulumi.StringOutput {
 	return o.ApplyT(func(v BuiltImageResponse) string { return v.Digest }).(pulumi.StringOutput)
@@ -3103,12 +2832,6 @@ func (o BuiltImageResponseArrayOutput) ToBuiltImageResponseArrayOutput() BuiltIm
 
 func (o BuiltImageResponseArrayOutput) ToBuiltImageResponseArrayOutputWithContext(ctx context.Context) BuiltImageResponseArrayOutput {
 	return o
-}
-
-func (o BuiltImageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BuiltImageResponse] {
-	return pulumix.Output[[]BuiltImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BuiltImageResponseArrayOutput) Index(i pulumi.IntInput) BuiltImageResponseOutput {
@@ -3160,12 +2883,6 @@ func (i ConnectedRepositoryArgs) ToConnectedRepositoryOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectedRepositoryOutput)
 }
 
-func (i ConnectedRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectedRepository] {
-	return pulumix.Output[ConnectedRepository]{
-		OutputState: i.ToConnectedRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectedRepositoryArgs) ToConnectedRepositoryPtrOutput() ConnectedRepositoryPtrOutput {
 	return i.ToConnectedRepositoryPtrOutputWithContext(context.Background())
 }
@@ -3207,12 +2924,6 @@ func (i *connectedRepositoryPtrType) ToConnectedRepositoryPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectedRepositoryPtrOutput)
 }
 
-func (i *connectedRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectedRepository] {
-	return pulumix.Output[*ConnectedRepository]{
-		OutputState: i.ToConnectedRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Location of the source in a 2nd-gen Google Cloud Build repository resource.
 type ConnectedRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -3236,12 +2947,6 @@ func (o ConnectedRepositoryOutput) ToConnectedRepositoryPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectedRepository) *ConnectedRepository {
 		return &v
 	}).(ConnectedRepositoryPtrOutput)
-}
-
-func (o ConnectedRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectedRepository] {
-	return pulumix.Output[ConnectedRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Directory, relative to the source root, in which to run the build.
@@ -3271,12 +2976,6 @@ func (o ConnectedRepositoryPtrOutput) ToConnectedRepositoryPtrOutput() Connected
 
 func (o ConnectedRepositoryPtrOutput) ToConnectedRepositoryPtrOutputWithContext(ctx context.Context) ConnectedRepositoryPtrOutput {
 	return o
-}
-
-func (o ConnectedRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectedRepository] {
-	return pulumix.Output[*ConnectedRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectedRepositoryPtrOutput) Elem() ConnectedRepositoryOutput {
@@ -3344,12 +3043,6 @@ func (o ConnectedRepositoryResponseOutput) ToConnectedRepositoryResponseOutputWi
 	return o
 }
 
-func (o ConnectedRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectedRepositoryResponse] {
-	return pulumix.Output[ConnectedRepositoryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Directory, relative to the source root, in which to run the build.
 func (o ConnectedRepositoryResponseOutput) Dir() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectedRepositoryResponse) string { return v.Dir }).(pulumi.StringOutput)
@@ -3388,12 +3081,6 @@ func (o FailureInfoResponseOutput) ToFailureInfoResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o FailureInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FailureInfoResponse] {
-	return pulumix.Output[FailureInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Explains the failure issue in more detail using hard-coded text.
 func (o FailureInfoResponseOutput) Detail() pulumi.StringOutput {
 	return o.ApplyT(func(v FailureInfoResponse) string { return v.Detail }).(pulumi.StringOutput)
@@ -3423,12 +3110,6 @@ func (o FileHashesResponseOutput) ToFileHashesResponseOutput() FileHashesRespons
 
 func (o FileHashesResponseOutput) ToFileHashesResponseOutputWithContext(ctx context.Context) FileHashesResponseOutput {
 	return o
-}
-
-func (o FileHashesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FileHashesResponse] {
-	return pulumix.Output[FileHashesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Collection of file hashes.
@@ -3495,12 +3176,6 @@ func (i GitFileSourceArgs) ToGitFileSourceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourceOutput)
 }
 
-func (i GitFileSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GitFileSource] {
-	return pulumix.Output[GitFileSource]{
-		OutputState: i.ToGitFileSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitFileSourceArgs) ToGitFileSourcePtrOutput() GitFileSourcePtrOutput {
 	return i.ToGitFileSourcePtrOutputWithContext(context.Background())
 }
@@ -3542,12 +3217,6 @@ func (i *gitFileSourcePtrType) ToGitFileSourcePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourcePtrOutput)
 }
 
-func (i *gitFileSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GitFileSource] {
-	return pulumix.Output[*GitFileSource]{
-		OutputState: i.ToGitFileSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GitFileSource describes a file within a (possibly remote) code repository.
 type GitFileSourceOutput struct{ *pulumi.OutputState }
 
@@ -3571,12 +3240,6 @@ func (o GitFileSourceOutput) ToGitFileSourcePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitFileSource) *GitFileSource {
 		return &v
 	}).(GitFileSourcePtrOutput)
-}
-
-func (o GitFileSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GitFileSource] {
-	return pulumix.Output[GitFileSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
@@ -3626,12 +3289,6 @@ func (o GitFileSourcePtrOutput) ToGitFileSourcePtrOutput() GitFileSourcePtrOutpu
 
 func (o GitFileSourcePtrOutput) ToGitFileSourcePtrOutputWithContext(ctx context.Context) GitFileSourcePtrOutput {
 	return o
-}
-
-func (o GitFileSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitFileSource] {
-	return pulumix.Output[*GitFileSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitFileSourcePtrOutput) Elem() GitFileSourceOutput {
@@ -3747,12 +3404,6 @@ func (o GitFileSourceResponseOutput) ToGitFileSourceResponseOutputWithContext(ct
 	return o
 }
 
-func (o GitFileSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitFileSourceResponse] {
-	return pulumix.Output[GitFileSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
 func (o GitFileSourceResponseOutput) BitbucketServerConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GitFileSourceResponse) string { return v.BitbucketServerConfig }).(pulumi.StringOutput)
@@ -3851,12 +3502,6 @@ func (i GitHubEnterpriseSecretsArgs) ToGitHubEnterpriseSecretsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsOutput)
 }
 
-func (i GitHubEnterpriseSecretsArgs) ToOutput(ctx context.Context) pulumix.Output[GitHubEnterpriseSecrets] {
-	return pulumix.Output[GitHubEnterpriseSecrets]{
-		OutputState: i.ToGitHubEnterpriseSecretsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitHubEnterpriseSecretsArgs) ToGitHubEnterpriseSecretsPtrOutput() GitHubEnterpriseSecretsPtrOutput {
 	return i.ToGitHubEnterpriseSecretsPtrOutputWithContext(context.Background())
 }
@@ -3898,12 +3543,6 @@ func (i *gitHubEnterpriseSecretsPtrType) ToGitHubEnterpriseSecretsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsPtrOutput)
 }
 
-func (i *gitHubEnterpriseSecretsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitHubEnterpriseSecrets] {
-	return pulumix.Output[*GitHubEnterpriseSecrets]{
-		OutputState: i.ToGitHubEnterpriseSecretsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
 type GitHubEnterpriseSecretsOutput struct{ *pulumi.OutputState }
 
@@ -3927,12 +3566,6 @@ func (o GitHubEnterpriseSecretsOutput) ToGitHubEnterpriseSecretsPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHubEnterpriseSecrets) *GitHubEnterpriseSecrets {
 		return &v
 	}).(GitHubEnterpriseSecretsPtrOutput)
-}
-
-func (o GitHubEnterpriseSecretsOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubEnterpriseSecrets] {
-	return pulumix.Output[GitHubEnterpriseSecrets]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name for the OAuth client ID secret in Secret Manager.
@@ -3987,12 +3620,6 @@ func (o GitHubEnterpriseSecretsPtrOutput) ToGitHubEnterpriseSecretsPtrOutput() G
 
 func (o GitHubEnterpriseSecretsPtrOutput) ToGitHubEnterpriseSecretsPtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsPtrOutput {
 	return o
-}
-
-func (o GitHubEnterpriseSecretsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubEnterpriseSecrets] {
-	return pulumix.Output[*GitHubEnterpriseSecrets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitHubEnterpriseSecretsPtrOutput) Elem() GitHubEnterpriseSecretsOutput {
@@ -4120,12 +3747,6 @@ func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponse
 	return o
 }
 
-func (o GitHubEnterpriseSecretsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubEnterpriseSecretsResponse] {
-	return pulumix.Output[GitHubEnterpriseSecretsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource name for the OAuth client ID secret in Secret Manager.
 func (o GitHubEnterpriseSecretsResponseOutput) OauthClientIdName() pulumi.StringOutput {
 	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) string { return v.OauthClientIdName }).(pulumi.StringOutput)
@@ -4221,12 +3842,6 @@ func (i GitHubEventsConfigArgs) ToGitHubEventsConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubEventsConfigOutput)
 }
 
-func (i GitHubEventsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GitHubEventsConfig] {
-	return pulumix.Output[GitHubEventsConfig]{
-		OutputState: i.ToGitHubEventsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitHubEventsConfigArgs) ToGitHubEventsConfigPtrOutput() GitHubEventsConfigPtrOutput {
 	return i.ToGitHubEventsConfigPtrOutputWithContext(context.Background())
 }
@@ -4268,12 +3883,6 @@ func (i *gitHubEventsConfigPtrType) ToGitHubEventsConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubEventsConfigPtrOutput)
 }
 
-func (i *gitHubEventsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitHubEventsConfig] {
-	return pulumix.Output[*GitHubEventsConfig]{
-		OutputState: i.ToGitHubEventsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfigOutput struct{ *pulumi.OutputState }
 
@@ -4297,12 +3906,6 @@ func (o GitHubEventsConfigOutput) ToGitHubEventsConfigPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHubEventsConfig) *GitHubEventsConfig {
 		return &v
 	}).(GitHubEventsConfigPtrOutput)
-}
-
-func (o GitHubEventsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubEventsConfig] {
-	return pulumix.Output[GitHubEventsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
@@ -4347,12 +3950,6 @@ func (o GitHubEventsConfigPtrOutput) ToGitHubEventsConfigPtrOutput() GitHubEvent
 
 func (o GitHubEventsConfigPtrOutput) ToGitHubEventsConfigPtrOutputWithContext(ctx context.Context) GitHubEventsConfigPtrOutput {
 	return o
-}
-
-func (o GitHubEventsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubEventsConfig] {
-	return pulumix.Output[*GitHubEventsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitHubEventsConfigPtrOutput) Elem() GitHubEventsConfigOutput {
@@ -4456,12 +4053,6 @@ func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponseOutputWith
 	return o
 }
 
-func (o GitHubEventsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubEventsConfigResponse] {
-	return pulumix.Output[GitHubEventsConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
 func (o GitHubEventsConfigResponseOutput) EnterpriseConfigResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GitHubEventsConfigResponse) string { return v.EnterpriseConfigResourceName }).(pulumi.StringOutput)
@@ -4523,12 +4114,6 @@ func (o GitLabConfigResponseOutput) ToGitLabConfigResponseOutput() GitLabConfigR
 
 func (o GitLabConfigResponseOutput) ToGitLabConfigResponseOutputWithContext(ctx context.Context) GitLabConfigResponseOutput {
 	return o
-}
-
-func (o GitLabConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabConfigResponse] {
-	return pulumix.Output[GitLabConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Connected GitLab.com or GitLabEnterprise repositories for this config.
@@ -4609,12 +4194,6 @@ func (i GitLabEnterpriseConfigArgs) ToGitLabEnterpriseConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GitLabEnterpriseConfigOutput)
 }
 
-func (i GitLabEnterpriseConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GitLabEnterpriseConfig] {
-	return pulumix.Output[GitLabEnterpriseConfig]{
-		OutputState: i.ToGitLabEnterpriseConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitLabEnterpriseConfigArgs) ToGitLabEnterpriseConfigPtrOutput() GitLabEnterpriseConfigPtrOutput {
 	return i.ToGitLabEnterpriseConfigPtrOutputWithContext(context.Background())
 }
@@ -4656,12 +4235,6 @@ func (i *gitLabEnterpriseConfigPtrType) ToGitLabEnterpriseConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GitLabEnterpriseConfigPtrOutput)
 }
 
-func (i *gitLabEnterpriseConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitLabEnterpriseConfig] {
-	return pulumix.Output[*GitLabEnterpriseConfig]{
-		OutputState: i.ToGitLabEnterpriseConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.
 type GitLabEnterpriseConfigOutput struct{ *pulumi.OutputState }
 
@@ -4685,12 +4258,6 @@ func (o GitLabEnterpriseConfigOutput) ToGitLabEnterpriseConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitLabEnterpriseConfig) *GitLabEnterpriseConfig {
 		return &v
 	}).(GitLabEnterpriseConfigPtrOutput)
-}
-
-func (o GitLabEnterpriseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabEnterpriseConfig] {
-	return pulumix.Output[GitLabEnterpriseConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. The URI of the GitlabEnterprise host.
@@ -4720,12 +4287,6 @@ func (o GitLabEnterpriseConfigPtrOutput) ToGitLabEnterpriseConfigPtrOutput() Git
 
 func (o GitLabEnterpriseConfigPtrOutput) ToGitLabEnterpriseConfigPtrOutputWithContext(ctx context.Context) GitLabEnterpriseConfigPtrOutput {
 	return o
-}
-
-func (o GitLabEnterpriseConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitLabEnterpriseConfig] {
-	return pulumix.Output[*GitLabEnterpriseConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitLabEnterpriseConfigPtrOutput) Elem() GitLabEnterpriseConfigOutput {
@@ -4793,12 +4354,6 @@ func (o GitLabEnterpriseConfigResponseOutput) ToGitLabEnterpriseConfigResponseOu
 	return o
 }
 
-func (o GitLabEnterpriseConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabEnterpriseConfigResponse] {
-	return pulumix.Output[GitLabEnterpriseConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Immutable. The URI of the GitlabEnterprise host.
 func (o GitLabEnterpriseConfigResponseOutput) HostUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GitLabEnterpriseConfigResponse) string { return v.HostUri }).(pulumi.StringOutput)
@@ -4861,12 +4416,6 @@ func (i GitLabEventsConfigArgs) ToGitLabEventsConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GitLabEventsConfigOutput)
 }
 
-func (i GitLabEventsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GitLabEventsConfig] {
-	return pulumix.Output[GitLabEventsConfig]{
-		OutputState: i.ToGitLabEventsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitLabEventsConfigArgs) ToGitLabEventsConfigPtrOutput() GitLabEventsConfigPtrOutput {
 	return i.ToGitLabEventsConfigPtrOutputWithContext(context.Background())
 }
@@ -4908,12 +4457,6 @@ func (i *gitLabEventsConfigPtrType) ToGitLabEventsConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GitLabEventsConfigPtrOutput)
 }
 
-func (i *gitLabEventsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitLabEventsConfig] {
-	return pulumix.Output[*GitLabEventsConfig]{
-		OutputState: i.ToGitLabEventsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
 type GitLabEventsConfigOutput struct{ *pulumi.OutputState }
 
@@ -4937,12 +4480,6 @@ func (o GitLabEventsConfigOutput) ToGitLabEventsConfigPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitLabEventsConfig) *GitLabEventsConfig {
 		return &v
 	}).(GitLabEventsConfigPtrOutput)
-}
-
-func (o GitLabEventsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabEventsConfig] {
-	return pulumix.Output[GitLabEventsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The GitLab config resource that this trigger config maps to.
@@ -4977,12 +4514,6 @@ func (o GitLabEventsConfigPtrOutput) ToGitLabEventsConfigPtrOutput() GitLabEvent
 
 func (o GitLabEventsConfigPtrOutput) ToGitLabEventsConfigPtrOutputWithContext(ctx context.Context) GitLabEventsConfigPtrOutput {
 	return o
-}
-
-func (o GitLabEventsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitLabEventsConfig] {
-	return pulumix.Output[*GitLabEventsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitLabEventsConfigPtrOutput) Elem() GitLabEventsConfigOutput {
@@ -5064,12 +4595,6 @@ func (o GitLabEventsConfigResponseOutput) ToGitLabEventsConfigResponseOutputWith
 	return o
 }
 
-func (o GitLabEventsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabEventsConfigResponse] {
-	return pulumix.Output[GitLabEventsConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The GitLabConfig specified in the gitlab_config_resource field.
 func (o GitLabEventsConfigResponseOutput) GitlabConfig() GitLabConfigResponseOutput {
 	return o.ApplyT(func(v GitLabEventsConfigResponse) GitLabConfigResponse { return v.GitlabConfig }).(GitLabConfigResponseOutput)
@@ -5130,12 +4655,6 @@ func (i GitLabRepositoryIdArgs) ToGitLabRepositoryIdOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GitLabRepositoryIdOutput)
 }
 
-func (i GitLabRepositoryIdArgs) ToOutput(ctx context.Context) pulumix.Output[GitLabRepositoryId] {
-	return pulumix.Output[GitLabRepositoryId]{
-		OutputState: i.ToGitLabRepositoryIdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GitLabRepositoryIdArrayInput is an input type that accepts GitLabRepositoryIdArray and GitLabRepositoryIdArrayOutput values.
 // You can construct a concrete instance of `GitLabRepositoryIdArrayInput` via:
 //
@@ -5161,12 +4680,6 @@ func (i GitLabRepositoryIdArray) ToGitLabRepositoryIdArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GitLabRepositoryIdArrayOutput)
 }
 
-func (i GitLabRepositoryIdArray) ToOutput(ctx context.Context) pulumix.Output[[]GitLabRepositoryId] {
-	return pulumix.Output[[]GitLabRepositoryId]{
-		OutputState: i.ToGitLabRepositoryIdArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
 type GitLabRepositoryIdOutput struct{ *pulumi.OutputState }
 
@@ -5180,12 +4693,6 @@ func (o GitLabRepositoryIdOutput) ToGitLabRepositoryIdOutput() GitLabRepositoryI
 
 func (o GitLabRepositoryIdOutput) ToGitLabRepositoryIdOutputWithContext(ctx context.Context) GitLabRepositoryIdOutput {
 	return o
-}
-
-func (o GitLabRepositoryIdOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabRepositoryId] {
-	return pulumix.Output[GitLabRepositoryId]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
@@ -5205,12 +4712,6 @@ func (o GitLabRepositoryIdArrayOutput) ToGitLabRepositoryIdArrayOutput() GitLabR
 
 func (o GitLabRepositoryIdArrayOutput) ToGitLabRepositoryIdArrayOutputWithContext(ctx context.Context) GitLabRepositoryIdArrayOutput {
 	return o
-}
-
-func (o GitLabRepositoryIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GitLabRepositoryId] {
-	return pulumix.Output[[]GitLabRepositoryId]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitLabRepositoryIdArrayOutput) Index(i pulumi.IntInput) GitLabRepositoryIdOutput {
@@ -5240,12 +4741,6 @@ func (o GitLabRepositoryIdResponseOutput) ToGitLabRepositoryIdResponseOutputWith
 	return o
 }
 
-func (o GitLabRepositoryIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabRepositoryIdResponse] {
-	return pulumix.Output[GitLabRepositoryIdResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
 func (o GitLabRepositoryIdResponseOutput) WebhookId() pulumi.IntOutput {
 	return o.ApplyT(func(v GitLabRepositoryIdResponse) int { return v.WebhookId }).(pulumi.IntOutput)
@@ -5263,12 +4758,6 @@ func (o GitLabRepositoryIdResponseArrayOutput) ToGitLabRepositoryIdResponseArray
 
 func (o GitLabRepositoryIdResponseArrayOutput) ToGitLabRepositoryIdResponseArrayOutputWithContext(ctx context.Context) GitLabRepositoryIdResponseArrayOutput {
 	return o
-}
-
-func (o GitLabRepositoryIdResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GitLabRepositoryIdResponse] {
-	return pulumix.Output[[]GitLabRepositoryIdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitLabRepositoryIdResponseArrayOutput) Index(i pulumi.IntInput) GitLabRepositoryIdResponseOutput {
@@ -5324,12 +4813,6 @@ func (i GitLabSecretsArgs) ToGitLabSecretsOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GitLabSecretsOutput)
 }
 
-func (i GitLabSecretsArgs) ToOutput(ctx context.Context) pulumix.Output[GitLabSecrets] {
-	return pulumix.Output[GitLabSecrets]{
-		OutputState: i.ToGitLabSecretsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.
 type GitLabSecretsOutput struct{ *pulumi.OutputState }
 
@@ -5343,12 +4826,6 @@ func (o GitLabSecretsOutput) ToGitLabSecretsOutput() GitLabSecretsOutput {
 
 func (o GitLabSecretsOutput) ToGitLabSecretsOutputWithContext(ctx context.Context) GitLabSecretsOutput {
 	return o
-}
-
-func (o GitLabSecretsOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabSecrets] {
-	return pulumix.Output[GitLabSecrets]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name for the api access token’s secret version
@@ -5396,12 +4873,6 @@ func (o GitLabSecretsResponseOutput) ToGitLabSecretsResponseOutput() GitLabSecre
 
 func (o GitLabSecretsResponseOutput) ToGitLabSecretsResponseOutputWithContext(ctx context.Context) GitLabSecretsResponseOutput {
 	return o
-}
-
-func (o GitLabSecretsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabSecretsResponse] {
-	return pulumix.Output[GitLabSecretsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name for the api access token’s secret version
@@ -5479,12 +4950,6 @@ func (i GitRepoSourceArgs) ToGitRepoSourceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourceOutput)
 }
 
-func (i GitRepoSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GitRepoSource] {
-	return pulumix.Output[GitRepoSource]{
-		OutputState: i.ToGitRepoSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitRepoSourceArgs) ToGitRepoSourcePtrOutput() GitRepoSourcePtrOutput {
 	return i.ToGitRepoSourcePtrOutputWithContext(context.Background())
 }
@@ -5526,12 +4991,6 @@ func (i *gitRepoSourcePtrType) ToGitRepoSourcePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourcePtrOutput)
 }
 
-func (i *gitRepoSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GitRepoSource] {
-	return pulumix.Output[*GitRepoSource]{
-		OutputState: i.ToGitRepoSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GitRepoSource describes a repo and ref of a code repository.
 type GitRepoSourceOutput struct{ *pulumi.OutputState }
 
@@ -5555,12 +5014,6 @@ func (o GitRepoSourceOutput) ToGitRepoSourcePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitRepoSource) *GitRepoSource {
 		return &v
 	}).(GitRepoSourcePtrOutput)
-}
-
-func (o GitRepoSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GitRepoSource] {
-	return pulumix.Output[GitRepoSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
@@ -5605,12 +5058,6 @@ func (o GitRepoSourcePtrOutput) ToGitRepoSourcePtrOutput() GitRepoSourcePtrOutpu
 
 func (o GitRepoSourcePtrOutput) ToGitRepoSourcePtrOutputWithContext(ctx context.Context) GitRepoSourcePtrOutput {
 	return o
-}
-
-func (o GitRepoSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitRepoSource] {
-	return pulumix.Output[*GitRepoSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitRepoSourcePtrOutput) Elem() GitRepoSourceOutput {
@@ -5714,12 +5161,6 @@ func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponseOutputWithContext(ct
 	return o
 }
 
-func (o GitRepoSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitRepoSourceResponse] {
-	return pulumix.Output[GitRepoSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
 func (o GitRepoSourceResponseOutput) BitbucketServerConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.BitbucketServerConfig }).(pulumi.StringOutput)
@@ -5793,12 +5234,6 @@ func (i GitSourceArgs) ToGitSourceOutputWithContext(ctx context.Context) GitSour
 	return pulumi.ToOutputWithContext(ctx, i).(GitSourceOutput)
 }
 
-func (i GitSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GitSource] {
-	return pulumix.Output[GitSource]{
-		OutputState: i.ToGitSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitSourceArgs) ToGitSourcePtrOutput() GitSourcePtrOutput {
 	return i.ToGitSourcePtrOutputWithContext(context.Background())
 }
@@ -5840,12 +5275,6 @@ func (i *gitSourcePtrType) ToGitSourcePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GitSourcePtrOutput)
 }
 
-func (i *gitSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*GitSource] {
-	return pulumix.Output[*GitSource]{
-		OutputState: i.ToGitSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Location of the source in any accessible Git repository.
 type GitSourceOutput struct{ *pulumi.OutputState }
 
@@ -5869,12 +5298,6 @@ func (o GitSourceOutput) ToGitSourcePtrOutputWithContext(ctx context.Context) Gi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitSource) *GitSource {
 		return &v
 	}).(GitSourcePtrOutput)
-}
-
-func (o GitSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GitSource] {
-	return pulumix.Output[GitSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
@@ -5904,12 +5327,6 @@ func (o GitSourcePtrOutput) ToGitSourcePtrOutput() GitSourcePtrOutput {
 
 func (o GitSourcePtrOutput) ToGitSourcePtrOutputWithContext(ctx context.Context) GitSourcePtrOutput {
 	return o
-}
-
-func (o GitSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitSource] {
-	return pulumix.Output[*GitSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitSourcePtrOutput) Elem() GitSourceOutput {
@@ -5977,12 +5394,6 @@ func (o GitSourceResponseOutput) ToGitSourceResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o GitSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitSourceResponse] {
-	return pulumix.Output[GitSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
 func (o GitSourceResponseOutput) Dir() pulumi.StringOutput {
 	return o.ApplyT(func(v GitSourceResponse) string { return v.Dir }).(pulumi.StringOutput)
@@ -6021,12 +5432,6 @@ func (o HashResponseOutput) ToHashResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o HashResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HashResponse] {
-	return pulumix.Output[HashResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of hash that was performed.
 func (o HashResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v HashResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -6049,12 +5454,6 @@ func (o HashResponseArrayOutput) ToHashResponseArrayOutput() HashResponseArrayOu
 
 func (o HashResponseArrayOutput) ToHashResponseArrayOutputWithContext(ctx context.Context) HashResponseArrayOutput {
 	return o
-}
-
-func (o HashResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HashResponse] {
-	return pulumix.Output[[]HashResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HashResponseArrayOutput) Index(i pulumi.IntInput) HashResponseOutput {
@@ -6102,12 +5501,6 @@ func (i InlineSecretArgs) ToInlineSecretOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(InlineSecretOutput)
 }
 
-func (i InlineSecretArgs) ToOutput(ctx context.Context) pulumix.Output[InlineSecret] {
-	return pulumix.Output[InlineSecret]{
-		OutputState: i.ToInlineSecretOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InlineSecretArrayInput is an input type that accepts InlineSecretArray and InlineSecretArrayOutput values.
 // You can construct a concrete instance of `InlineSecretArrayInput` via:
 //
@@ -6133,12 +5526,6 @@ func (i InlineSecretArray) ToInlineSecretArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InlineSecretArrayOutput)
 }
 
-func (i InlineSecretArray) ToOutput(ctx context.Context) pulumix.Output[[]InlineSecret] {
-	return pulumix.Output[[]InlineSecret]{
-		OutputState: i.ToInlineSecretArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
 type InlineSecretOutput struct{ *pulumi.OutputState }
 
@@ -6152,12 +5539,6 @@ func (o InlineSecretOutput) ToInlineSecretOutput() InlineSecretOutput {
 
 func (o InlineSecretOutput) ToInlineSecretOutputWithContext(ctx context.Context) InlineSecretOutput {
 	return o
-}
-
-func (o InlineSecretOutput) ToOutput(ctx context.Context) pulumix.Output[InlineSecret] {
-	return pulumix.Output[InlineSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
@@ -6182,12 +5563,6 @@ func (o InlineSecretArrayOutput) ToInlineSecretArrayOutput() InlineSecretArrayOu
 
 func (o InlineSecretArrayOutput) ToInlineSecretArrayOutputWithContext(ctx context.Context) InlineSecretArrayOutput {
 	return o
-}
-
-func (o InlineSecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InlineSecret] {
-	return pulumix.Output[[]InlineSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InlineSecretArrayOutput) Index(i pulumi.IntInput) InlineSecretOutput {
@@ -6219,12 +5594,6 @@ func (o InlineSecretResponseOutput) ToInlineSecretResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o InlineSecretResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InlineSecretResponse] {
-	return pulumix.Output[InlineSecretResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
 func (o InlineSecretResponseOutput) EnvMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v InlineSecretResponse) map[string]string { return v.EnvMap }).(pulumi.StringMapOutput)
@@ -6247,12 +5616,6 @@ func (o InlineSecretResponseArrayOutput) ToInlineSecretResponseArrayOutput() Inl
 
 func (o InlineSecretResponseArrayOutput) ToInlineSecretResponseArrayOutputWithContext(ctx context.Context) InlineSecretResponseArrayOutput {
 	return o
-}
-
-func (o InlineSecretResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InlineSecretResponse] {
-	return pulumix.Output[[]InlineSecretResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InlineSecretResponseArrayOutput) Index(i pulumi.IntInput) InlineSecretResponseOutput {
@@ -6312,12 +5675,6 @@ func (i MavenArtifactArgs) ToMavenArtifactOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MavenArtifactOutput)
 }
 
-func (i MavenArtifactArgs) ToOutput(ctx context.Context) pulumix.Output[MavenArtifact] {
-	return pulumix.Output[MavenArtifact]{
-		OutputState: i.ToMavenArtifactOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MavenArtifactArrayInput is an input type that accepts MavenArtifactArray and MavenArtifactArrayOutput values.
 // You can construct a concrete instance of `MavenArtifactArrayInput` via:
 //
@@ -6343,12 +5700,6 @@ func (i MavenArtifactArray) ToMavenArtifactArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MavenArtifactArrayOutput)
 }
 
-func (i MavenArtifactArray) ToOutput(ctx context.Context) pulumix.Output[[]MavenArtifact] {
-	return pulumix.Output[[]MavenArtifact]{
-		OutputState: i.ToMavenArtifactArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
 type MavenArtifactOutput struct{ *pulumi.OutputState }
 
@@ -6362,12 +5713,6 @@ func (o MavenArtifactOutput) ToMavenArtifactOutput() MavenArtifactOutput {
 
 func (o MavenArtifactOutput) ToMavenArtifactOutputWithContext(ctx context.Context) MavenArtifactOutput {
 	return o
-}
-
-func (o MavenArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[MavenArtifact] {
-	return pulumix.Output[MavenArtifact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maven `artifactId` value used when uploading the artifact to Artifact Registry.
@@ -6409,12 +5754,6 @@ func (o MavenArtifactArrayOutput) ToMavenArtifactArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o MavenArtifactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MavenArtifact] {
-	return pulumix.Output[[]MavenArtifact]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MavenArtifactArrayOutput) Index(i pulumi.IntInput) MavenArtifactOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MavenArtifact {
 		return vs[0].([]MavenArtifact)[vs[1].(int)]
@@ -6448,12 +5787,6 @@ func (o MavenArtifactResponseOutput) ToMavenArtifactResponseOutput() MavenArtifa
 
 func (o MavenArtifactResponseOutput) ToMavenArtifactResponseOutputWithContext(ctx context.Context) MavenArtifactResponseOutput {
 	return o
-}
-
-func (o MavenArtifactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MavenArtifactResponse] {
-	return pulumix.Output[MavenArtifactResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maven `artifactId` value used when uploading the artifact to Artifact Registry.
@@ -6493,12 +5826,6 @@ func (o MavenArtifactResponseArrayOutput) ToMavenArtifactResponseArrayOutput() M
 
 func (o MavenArtifactResponseArrayOutput) ToMavenArtifactResponseArrayOutputWithContext(ctx context.Context) MavenArtifactResponseArrayOutput {
 	return o
-}
-
-func (o MavenArtifactResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MavenArtifactResponse] {
-	return pulumix.Output[[]MavenArtifactResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MavenArtifactResponseArrayOutput) Index(i pulumi.IntInput) MavenArtifactResponseOutput {
@@ -6550,12 +5877,6 @@ func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput)
 }
 
-func (i NetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: i.ToNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkConfigArgs) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
 	return i.ToNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -6597,12 +5918,6 @@ func (i *networkConfigPtrType) ToNetworkConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigPtrOutput)
 }
 
-func (i *networkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
-	return pulumix.Output[*NetworkConfig]{
-		OutputState: i.ToNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the network configuration for the pool.
 type NetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -6626,12 +5941,6 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfig) *NetworkConfig {
 		return &v
 	}).(NetworkConfigPtrOutput)
-}
-
-func (o NetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Option to configure network egress for the workers.
@@ -6661,12 +5970,6 @@ func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutpu
 
 func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
 	return o
-}
-
-func (o NetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
-	return pulumix.Output[*NetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
@@ -6734,12 +6037,6 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o NetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigResponse] {
-	return pulumix.Output[NetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Option to configure network egress for the workers.
 func (o NetworkConfigResponseOutput) EgressOption() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.EgressOption }).(pulumi.StringOutput)
@@ -6794,12 +6091,6 @@ func (i NpmPackageArgs) ToNpmPackageOutputWithContext(ctx context.Context) NpmPa
 	return pulumi.ToOutputWithContext(ctx, i).(NpmPackageOutput)
 }
 
-func (i NpmPackageArgs) ToOutput(ctx context.Context) pulumix.Output[NpmPackage] {
-	return pulumix.Output[NpmPackage]{
-		OutputState: i.ToNpmPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NpmPackageArrayInput is an input type that accepts NpmPackageArray and NpmPackageArrayOutput values.
 // You can construct a concrete instance of `NpmPackageArrayInput` via:
 //
@@ -6825,12 +6116,6 @@ func (i NpmPackageArray) ToNpmPackageArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NpmPackageArrayOutput)
 }
 
-func (i NpmPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]NpmPackage] {
-	return pulumix.Output[[]NpmPackage]{
-		OutputState: i.ToNpmPackageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Npm package to upload to Artifact Registry upon successful completion of all build steps.
 type NpmPackageOutput struct{ *pulumi.OutputState }
 
@@ -6844,12 +6129,6 @@ func (o NpmPackageOutput) ToNpmPackageOutput() NpmPackageOutput {
 
 func (o NpmPackageOutput) ToNpmPackageOutputWithContext(ctx context.Context) NpmPackageOutput {
 	return o
-}
-
-func (o NpmPackageOutput) ToOutput(ctx context.Context) pulumix.Output[NpmPackage] {
-	return pulumix.Output[NpmPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Path to the package.json. e.g. workspace/path/to/package
@@ -6874,12 +6153,6 @@ func (o NpmPackageArrayOutput) ToNpmPackageArrayOutput() NpmPackageArrayOutput {
 
 func (o NpmPackageArrayOutput) ToNpmPackageArrayOutputWithContext(ctx context.Context) NpmPackageArrayOutput {
 	return o
-}
-
-func (o NpmPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NpmPackage] {
-	return pulumix.Output[[]NpmPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NpmPackageArrayOutput) Index(i pulumi.IntInput) NpmPackageOutput {
@@ -6911,12 +6184,6 @@ func (o NpmPackageResponseOutput) ToNpmPackageResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o NpmPackageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NpmPackageResponse] {
-	return pulumix.Output[NpmPackageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Path to the package.json. e.g. workspace/path/to/package
 func (o NpmPackageResponseOutput) PackagePath() pulumi.StringOutput {
 	return o.ApplyT(func(v NpmPackageResponse) string { return v.PackagePath }).(pulumi.StringOutput)
@@ -6939,12 +6206,6 @@ func (o NpmPackageResponseArrayOutput) ToNpmPackageResponseArrayOutput() NpmPack
 
 func (o NpmPackageResponseArrayOutput) ToNpmPackageResponseArrayOutputWithContext(ctx context.Context) NpmPackageResponseArrayOutput {
 	return o
-}
-
-func (o NpmPackageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NpmPackageResponse] {
-	return pulumix.Output[[]NpmPackageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NpmPackageResponseArrayOutput) Index(i pulumi.IntInput) NpmPackageResponseOutput {
@@ -6988,12 +6249,6 @@ func (i PoolOptionArgs) ToPoolOptionOutputWithContext(ctx context.Context) PoolO
 	return pulumi.ToOutputWithContext(ctx, i).(PoolOptionOutput)
 }
 
-func (i PoolOptionArgs) ToOutput(ctx context.Context) pulumix.Output[PoolOption] {
-	return pulumix.Output[PoolOption]{
-		OutputState: i.ToPoolOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PoolOptionArgs) ToPoolOptionPtrOutput() PoolOptionPtrOutput {
 	return i.ToPoolOptionPtrOutputWithContext(context.Background())
 }
@@ -7035,12 +6290,6 @@ func (i *poolOptionPtrType) ToPoolOptionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PoolOptionPtrOutput)
 }
 
-func (i *poolOptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*PoolOption] {
-	return pulumix.Output[*PoolOption]{
-		OutputState: i.ToPoolOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 type PoolOptionOutput struct{ *pulumi.OutputState }
 
@@ -7066,12 +6315,6 @@ func (o PoolOptionOutput) ToPoolOptionPtrOutputWithContext(ctx context.Context) 
 	}).(PoolOptionPtrOutput)
 }
 
-func (o PoolOptionOutput) ToOutput(ctx context.Context) pulumix.Output[PoolOption] {
-	return pulumix.Output[PoolOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
 func (o PoolOptionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PoolOption) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -7089,12 +6332,6 @@ func (o PoolOptionPtrOutput) ToPoolOptionPtrOutput() PoolOptionPtrOutput {
 
 func (o PoolOptionPtrOutput) ToPoolOptionPtrOutputWithContext(ctx context.Context) PoolOptionPtrOutput {
 	return o
-}
-
-func (o PoolOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PoolOption] {
-	return pulumix.Output[*PoolOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PoolOptionPtrOutput) Elem() PoolOptionOutput {
@@ -7136,12 +6373,6 @@ func (o PoolOptionResponseOutput) ToPoolOptionResponseOutput() PoolOptionRespons
 
 func (o PoolOptionResponseOutput) ToPoolOptionResponseOutputWithContext(ctx context.Context) PoolOptionResponseOutput {
 	return o
-}
-
-func (o PoolOptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PoolOptionResponse] {
-	return pulumix.Output[PoolOptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
@@ -7188,12 +6419,6 @@ func (i PrivatePoolV1ConfigArgs) ToPrivatePoolV1ConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivatePoolV1ConfigOutput)
 }
 
-func (i PrivatePoolV1ConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PrivatePoolV1Config] {
-	return pulumix.Output[PrivatePoolV1Config]{
-		OutputState: i.ToPrivatePoolV1ConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivatePoolV1ConfigArgs) ToPrivatePoolV1ConfigPtrOutput() PrivatePoolV1ConfigPtrOutput {
 	return i.ToPrivatePoolV1ConfigPtrOutputWithContext(context.Background())
 }
@@ -7235,12 +6460,6 @@ func (i *privatePoolV1ConfigPtrType) ToPrivatePoolV1ConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PrivatePoolV1ConfigPtrOutput)
 }
 
-func (i *privatePoolV1ConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivatePoolV1Config] {
-	return pulumix.Output[*PrivatePoolV1Config]{
-		OutputState: i.ToPrivatePoolV1ConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for a V1 `PrivatePool`.
 type PrivatePoolV1ConfigOutput struct{ *pulumi.OutputState }
 
@@ -7266,12 +6485,6 @@ func (o PrivatePoolV1ConfigOutput) ToPrivatePoolV1ConfigPtrOutputWithContext(ctx
 	}).(PrivatePoolV1ConfigPtrOutput)
 }
 
-func (o PrivatePoolV1ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PrivatePoolV1Config] {
-	return pulumix.Output[PrivatePoolV1Config]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Network configuration for the pool.
 func (o PrivatePoolV1ConfigOutput) NetworkConfig() NetworkConfigPtrOutput {
 	return o.ApplyT(func(v PrivatePoolV1Config) *NetworkConfig { return v.NetworkConfig }).(NetworkConfigPtrOutput)
@@ -7294,12 +6507,6 @@ func (o PrivatePoolV1ConfigPtrOutput) ToPrivatePoolV1ConfigPtrOutput() PrivatePo
 
 func (o PrivatePoolV1ConfigPtrOutput) ToPrivatePoolV1ConfigPtrOutputWithContext(ctx context.Context) PrivatePoolV1ConfigPtrOutput {
 	return o
-}
-
-func (o PrivatePoolV1ConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivatePoolV1Config] {
-	return pulumix.Output[*PrivatePoolV1Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivatePoolV1ConfigPtrOutput) Elem() PrivatePoolV1ConfigOutput {
@@ -7355,12 +6562,6 @@ func (o PrivatePoolV1ConfigResponseOutput) ToPrivatePoolV1ConfigResponseOutputWi
 	return o
 }
 
-func (o PrivatePoolV1ConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivatePoolV1ConfigResponse] {
-	return pulumix.Output[PrivatePoolV1ConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Network configuration for the pool.
 func (o PrivatePoolV1ConfigResponseOutput) NetworkConfig() NetworkConfigResponseOutput {
 	return o.ApplyT(func(v PrivatePoolV1ConfigResponse) NetworkConfigResponse { return v.NetworkConfig }).(NetworkConfigResponseOutput)
@@ -7414,12 +6615,6 @@ func (i PubsubConfigArgs) ToPubsubConfigOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigOutput)
 }
 
-func (i PubsubConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PubsubConfig] {
-	return pulumix.Output[PubsubConfig]{
-		OutputState: i.ToPubsubConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PubsubConfigArgs) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
 	return i.ToPubsubConfigPtrOutputWithContext(context.Background())
 }
@@ -7461,12 +6656,6 @@ func (i *pubsubConfigPtrType) ToPubsubConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigPtrOutput)
 }
 
-func (i *pubsubConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PubsubConfig] {
-	return pulumix.Output[*PubsubConfig]{
-		OutputState: i.ToPubsubConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
 type PubsubConfigOutput struct{ *pulumi.OutputState }
 
@@ -7490,12 +6679,6 @@ func (o PubsubConfigOutput) ToPubsubConfigPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubConfig) *PubsubConfig {
 		return &v
 	}).(PubsubConfigPtrOutput)
-}
-
-func (o PubsubConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubConfig] {
-	return pulumix.Output[PubsubConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Service account that will make the push request.
@@ -7525,12 +6708,6 @@ func (o PubsubConfigPtrOutput) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
 
 func (o PubsubConfigPtrOutput) ToPubsubConfigPtrOutputWithContext(ctx context.Context) PubsubConfigPtrOutput {
 	return o
-}
-
-func (o PubsubConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PubsubConfig] {
-	return pulumix.Output[*PubsubConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PubsubConfigPtrOutput) Elem() PubsubConfigOutput {
@@ -7600,12 +6777,6 @@ func (o PubsubConfigResponseOutput) ToPubsubConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o PubsubConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PubsubConfigResponse] {
-	return pulumix.Output[PubsubConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Service account that will make the push request.
 func (o PubsubConfigResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubConfigResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
@@ -7669,12 +6840,6 @@ func (i PullRequestFilterArgs) ToPullRequestFilterOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PullRequestFilterOutput)
 }
 
-func (i PullRequestFilterArgs) ToOutput(ctx context.Context) pulumix.Output[PullRequestFilter] {
-	return pulumix.Output[PullRequestFilter]{
-		OutputState: i.ToPullRequestFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PullRequestFilterArgs) ToPullRequestFilterPtrOutput() PullRequestFilterPtrOutput {
 	return i.ToPullRequestFilterPtrOutputWithContext(context.Background())
 }
@@ -7716,12 +6881,6 @@ func (i *pullRequestFilterPtrType) ToPullRequestFilterPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PullRequestFilterPtrOutput)
 }
 
-func (i *pullRequestFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*PullRequestFilter] {
-	return pulumix.Output[*PullRequestFilter]{
-		OutputState: i.ToPullRequestFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PullRequestFilter contains filter properties for matching GitHub Pull Requests.
 type PullRequestFilterOutput struct{ *pulumi.OutputState }
 
@@ -7745,12 +6904,6 @@ func (o PullRequestFilterOutput) ToPullRequestFilterPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PullRequestFilter) *PullRequestFilter {
 		return &v
 	}).(PullRequestFilterPtrOutput)
-}
-
-func (o PullRequestFilterOutput) ToOutput(ctx context.Context) pulumix.Output[PullRequestFilter] {
-	return pulumix.Output[PullRequestFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -7780,12 +6933,6 @@ func (o PullRequestFilterPtrOutput) ToPullRequestFilterPtrOutput() PullRequestFi
 
 func (o PullRequestFilterPtrOutput) ToPullRequestFilterPtrOutputWithContext(ctx context.Context) PullRequestFilterPtrOutput {
 	return o
-}
-
-func (o PullRequestFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PullRequestFilter] {
-	return pulumix.Output[*PullRequestFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PullRequestFilterPtrOutput) Elem() PullRequestFilterOutput {
@@ -7853,12 +7000,6 @@ func (o PullRequestFilterResponseOutput) ToPullRequestFilterResponseOutputWithCo
 	return o
 }
 
-func (o PullRequestFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PullRequestFilterResponse] {
-	return pulumix.Output[PullRequestFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o PullRequestFilterResponseOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v PullRequestFilterResponse) string { return v.Branch }).(pulumi.StringOutput)
@@ -7917,12 +7058,6 @@ func (i PushFilterArgs) ToPushFilterOutputWithContext(ctx context.Context) PushF
 	return pulumi.ToOutputWithContext(ctx, i).(PushFilterOutput)
 }
 
-func (i PushFilterArgs) ToOutput(ctx context.Context) pulumix.Output[PushFilter] {
-	return pulumix.Output[PushFilter]{
-		OutputState: i.ToPushFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PushFilterArgs) ToPushFilterPtrOutput() PushFilterPtrOutput {
 	return i.ToPushFilterPtrOutputWithContext(context.Background())
 }
@@ -7964,12 +7099,6 @@ func (i *pushFilterPtrType) ToPushFilterPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PushFilterPtrOutput)
 }
 
-func (i *pushFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*PushFilter] {
-	return pulumix.Output[*PushFilter]{
-		OutputState: i.ToPushFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Push contains filter properties for matching GitHub git pushes.
 type PushFilterOutput struct{ *pulumi.OutputState }
 
@@ -7993,12 +7122,6 @@ func (o PushFilterOutput) ToPushFilterPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushFilter) *PushFilter {
 		return &v
 	}).(PushFilterPtrOutput)
-}
-
-func (o PushFilterOutput) ToOutput(ctx context.Context) pulumix.Output[PushFilter] {
-	return pulumix.Output[PushFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -8028,12 +7151,6 @@ func (o PushFilterPtrOutput) ToPushFilterPtrOutput() PushFilterPtrOutput {
 
 func (o PushFilterPtrOutput) ToPushFilterPtrOutputWithContext(ctx context.Context) PushFilterPtrOutput {
 	return o
-}
-
-func (o PushFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PushFilter] {
-	return pulumix.Output[*PushFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PushFilterPtrOutput) Elem() PushFilterOutput {
@@ -8101,12 +7218,6 @@ func (o PushFilterResponseOutput) ToPushFilterResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o PushFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PushFilterResponse] {
-	return pulumix.Output[PushFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o PushFilterResponseOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v PushFilterResponse) string { return v.Branch }).(pulumi.StringOutput)
@@ -8161,12 +7272,6 @@ func (i PythonPackageArgs) ToPythonPackageOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PythonPackageOutput)
 }
 
-func (i PythonPackageArgs) ToOutput(ctx context.Context) pulumix.Output[PythonPackage] {
-	return pulumix.Output[PythonPackage]{
-		OutputState: i.ToPythonPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PythonPackageArrayInput is an input type that accepts PythonPackageArray and PythonPackageArrayOutput values.
 // You can construct a concrete instance of `PythonPackageArrayInput` via:
 //
@@ -8192,12 +7297,6 @@ func (i PythonPackageArray) ToPythonPackageArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PythonPackageArrayOutput)
 }
 
-func (i PythonPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]PythonPackage] {
-	return pulumix.Output[[]PythonPackage]{
-		OutputState: i.ToPythonPackageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
 type PythonPackageOutput struct{ *pulumi.OutputState }
 
@@ -8211,12 +7310,6 @@ func (o PythonPackageOutput) ToPythonPackageOutput() PythonPackageOutput {
 
 func (o PythonPackageOutput) ToPythonPackageOutputWithContext(ctx context.Context) PythonPackageOutput {
 	return o
-}
-
-func (o PythonPackageOutput) ToOutput(ctx context.Context) pulumix.Output[PythonPackage] {
-	return pulumix.Output[PythonPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
@@ -8241,12 +7334,6 @@ func (o PythonPackageArrayOutput) ToPythonPackageArrayOutput() PythonPackageArra
 
 func (o PythonPackageArrayOutput) ToPythonPackageArrayOutputWithContext(ctx context.Context) PythonPackageArrayOutput {
 	return o
-}
-
-func (o PythonPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PythonPackage] {
-	return pulumix.Output[[]PythonPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PythonPackageArrayOutput) Index(i pulumi.IntInput) PythonPackageOutput {
@@ -8278,12 +7365,6 @@ func (o PythonPackageResponseOutput) ToPythonPackageResponseOutputWithContext(ct
 	return o
 }
 
-func (o PythonPackageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PythonPackageResponse] {
-	return pulumix.Output[PythonPackageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
 func (o PythonPackageResponseOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PythonPackageResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
@@ -8306,12 +7387,6 @@ func (o PythonPackageResponseArrayOutput) ToPythonPackageResponseArrayOutput() P
 
 func (o PythonPackageResponseArrayOutput) ToPythonPackageResponseArrayOutputWithContext(ctx context.Context) PythonPackageResponseArrayOutput {
 	return o
-}
-
-func (o PythonPackageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PythonPackageResponse] {
-	return pulumix.Output[[]PythonPackageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PythonPackageResponseArrayOutput) Index(i pulumi.IntInput) PythonPackageResponseOutput {
@@ -8383,12 +7458,6 @@ func (i RepoSourceArgs) ToRepoSourceOutputWithContext(ctx context.Context) RepoS
 	return pulumi.ToOutputWithContext(ctx, i).(RepoSourceOutput)
 }
 
-func (i RepoSourceArgs) ToOutput(ctx context.Context) pulumix.Output[RepoSource] {
-	return pulumix.Output[RepoSource]{
-		OutputState: i.ToRepoSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepoSourceArgs) ToRepoSourcePtrOutput() RepoSourcePtrOutput {
 	return i.ToRepoSourcePtrOutputWithContext(context.Background())
 }
@@ -8430,12 +7499,6 @@ func (i *repoSourcePtrType) ToRepoSourcePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RepoSourcePtrOutput)
 }
 
-func (i *repoSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*RepoSource] {
-	return pulumix.Output[*RepoSource]{
-		OutputState: i.ToRepoSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Location of the source in a Google Cloud Source Repository.
 type RepoSourceOutput struct{ *pulumi.OutputState }
 
@@ -8459,12 +7522,6 @@ func (o RepoSourceOutput) ToRepoSourcePtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoSource) *RepoSource {
 		return &v
 	}).(RepoSourcePtrOutput)
-}
-
-func (o RepoSourceOutput) ToOutput(ctx context.Context) pulumix.Output[RepoSource] {
-	return pulumix.Output[RepoSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -8519,12 +7576,6 @@ func (o RepoSourcePtrOutput) ToRepoSourcePtrOutput() RepoSourcePtrOutput {
 
 func (o RepoSourcePtrOutput) ToRepoSourcePtrOutputWithContext(ctx context.Context) RepoSourcePtrOutput {
 	return o
-}
-
-func (o RepoSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepoSource] {
-	return pulumix.Output[*RepoSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepoSourcePtrOutput) Elem() RepoSourceOutput {
@@ -8652,12 +7703,6 @@ func (o RepoSourceResponseOutput) ToRepoSourceResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o RepoSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RepoSourceResponse] {
-	return pulumix.Output[RepoSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o RepoSourceResponseOutput) BranchName() pulumi.StringOutput {
 	return o.ApplyT(func(v RepoSourceResponse) string { return v.BranchName }).(pulumi.StringOutput)
@@ -8741,12 +7786,6 @@ func (i RepositoryEventConfigArgs) ToRepositoryEventConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryEventConfigOutput)
 }
 
-func (i RepositoryEventConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryEventConfig] {
-	return pulumix.Output[RepositoryEventConfig]{
-		OutputState: i.ToRepositoryEventConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryEventConfigArgs) ToRepositoryEventConfigPtrOutput() RepositoryEventConfigPtrOutput {
 	return i.ToRepositoryEventConfigPtrOutputWithContext(context.Background())
 }
@@ -8788,12 +7827,6 @@ func (i *repositoryEventConfigPtrType) ToRepositoryEventConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryEventConfigPtrOutput)
 }
 
-func (i *repositoryEventConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryEventConfig] {
-	return pulumix.Output[*RepositoryEventConfig]{
-		OutputState: i.ToRepositoryEventConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration of a trigger that creates a build whenever an event from Repo API is received.
 type RepositoryEventConfigOutput struct{ *pulumi.OutputState }
 
@@ -8817,12 +7850,6 @@ func (o RepositoryEventConfigOutput) ToRepositoryEventConfigPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryEventConfig) *RepositoryEventConfig {
 		return &v
 	}).(RepositoryEventConfigPtrOutput)
-}
-
-func (o RepositoryEventConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryEventConfig] {
-	return pulumix.Output[RepositoryEventConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Filter to match changes in pull requests.
@@ -8852,12 +7879,6 @@ func (o RepositoryEventConfigPtrOutput) ToRepositoryEventConfigPtrOutput() Repos
 
 func (o RepositoryEventConfigPtrOutput) ToRepositoryEventConfigPtrOutputWithContext(ctx context.Context) RepositoryEventConfigPtrOutput {
 	return o
-}
-
-func (o RepositoryEventConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryEventConfig] {
-	return pulumix.Output[*RepositoryEventConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryEventConfigPtrOutput) Elem() RepositoryEventConfigOutput {
@@ -8927,12 +7948,6 @@ func (o RepositoryEventConfigResponseOutput) ToRepositoryEventConfigResponseOutp
 	return o
 }
 
-func (o RepositoryEventConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryEventConfigResponse] {
-	return pulumix.Output[RepositoryEventConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Filter to match changes in pull requests.
 func (o RepositoryEventConfigResponseOutput) PullRequest() PullRequestFilterResponseOutput {
 	return o.ApplyT(func(v RepositoryEventConfigResponse) PullRequestFilterResponse { return v.PullRequest }).(PullRequestFilterResponseOutput)
@@ -8988,12 +8003,6 @@ func (o ResultsResponseOutput) ToResultsResponseOutput() ResultsResponseOutput {
 
 func (o ResultsResponseOutput) ToResultsResponseOutputWithContext(ctx context.Context) ResultsResponseOutput {
 	return o
-}
-
-func (o ResultsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResultsResponse] {
-	return pulumix.Output[ResultsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
@@ -9080,12 +8089,6 @@ func (i SecretArgs) ToSecretOutputWithContext(ctx context.Context) SecretOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SecretOutput)
 }
 
-func (i SecretArgs) ToOutput(ctx context.Context) pulumix.Output[Secret] {
-	return pulumix.Output[Secret]{
-		OutputState: i.ToSecretOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecretArrayInput is an input type that accepts SecretArray and SecretArrayOutput values.
 // You can construct a concrete instance of `SecretArrayInput` via:
 //
@@ -9111,12 +8114,6 @@ func (i SecretArray) ToSecretArrayOutputWithContext(ctx context.Context) SecretA
 	return pulumi.ToOutputWithContext(ctx, i).(SecretArrayOutput)
 }
 
-func (i SecretArray) ToOutput(ctx context.Context) pulumix.Output[[]Secret] {
-	return pulumix.Output[[]Secret]{
-		OutputState: i.ToSecretArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
 type SecretOutput struct{ *pulumi.OutputState }
 
@@ -9130,12 +8127,6 @@ func (o SecretOutput) ToSecretOutput() SecretOutput {
 
 func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return o
-}
-
-func (o SecretOutput) ToOutput(ctx context.Context) pulumix.Output[Secret] {
-	return pulumix.Output[Secret]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud KMS key name to use to decrypt these envs.
@@ -9160,12 +8151,6 @@ func (o SecretArrayOutput) ToSecretArrayOutput() SecretArrayOutput {
 
 func (o SecretArrayOutput) ToSecretArrayOutputWithContext(ctx context.Context) SecretArrayOutput {
 	return o
-}
-
-func (o SecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Secret] {
-	return pulumix.Output[[]Secret]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretArrayOutput) Index(i pulumi.IntInput) SecretOutput {
@@ -9213,12 +8198,6 @@ func (i SecretManagerSecretArgs) ToSecretManagerSecretOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSecretOutput)
 }
 
-func (i SecretManagerSecretArgs) ToOutput(ctx context.Context) pulumix.Output[SecretManagerSecret] {
-	return pulumix.Output[SecretManagerSecret]{
-		OutputState: i.ToSecretManagerSecretOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecretManagerSecretArrayInput is an input type that accepts SecretManagerSecretArray and SecretManagerSecretArrayOutput values.
 // You can construct a concrete instance of `SecretManagerSecretArrayInput` via:
 //
@@ -9244,12 +8223,6 @@ func (i SecretManagerSecretArray) ToSecretManagerSecretArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSecretArrayOutput)
 }
 
-func (i SecretManagerSecretArray) ToOutput(ctx context.Context) pulumix.Output[[]SecretManagerSecret] {
-	return pulumix.Output[[]SecretManagerSecret]{
-		OutputState: i.ToSecretManagerSecretArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Pairs a secret environment variable with a SecretVersion in Secret Manager.
 type SecretManagerSecretOutput struct{ *pulumi.OutputState }
 
@@ -9263,12 +8236,6 @@ func (o SecretManagerSecretOutput) ToSecretManagerSecretOutput() SecretManagerSe
 
 func (o SecretManagerSecretOutput) ToSecretManagerSecretOutputWithContext(ctx context.Context) SecretManagerSecretOutput {
 	return o
-}
-
-func (o SecretManagerSecretOutput) ToOutput(ctx context.Context) pulumix.Output[SecretManagerSecret] {
-	return pulumix.Output[SecretManagerSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step.
@@ -9293,12 +8260,6 @@ func (o SecretManagerSecretArrayOutput) ToSecretManagerSecretArrayOutput() Secre
 
 func (o SecretManagerSecretArrayOutput) ToSecretManagerSecretArrayOutputWithContext(ctx context.Context) SecretManagerSecretArrayOutput {
 	return o
-}
-
-func (o SecretManagerSecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecretManagerSecret] {
-	return pulumix.Output[[]SecretManagerSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretManagerSecretArrayOutput) Index(i pulumi.IntInput) SecretManagerSecretOutput {
@@ -9330,12 +8291,6 @@ func (o SecretManagerSecretResponseOutput) ToSecretManagerSecretResponseOutputWi
 	return o
 }
 
-func (o SecretManagerSecretResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretManagerSecretResponse] {
-	return pulumix.Output[SecretManagerSecretResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step.
 func (o SecretManagerSecretResponseOutput) Env() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretManagerSecretResponse) string { return v.Env }).(pulumi.StringOutput)
@@ -9358,12 +8313,6 @@ func (o SecretManagerSecretResponseArrayOutput) ToSecretManagerSecretResponseArr
 
 func (o SecretManagerSecretResponseArrayOutput) ToSecretManagerSecretResponseArrayOutputWithContext(ctx context.Context) SecretManagerSecretResponseArrayOutput {
 	return o
-}
-
-func (o SecretManagerSecretResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecretManagerSecretResponse] {
-	return pulumix.Output[[]SecretManagerSecretResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretManagerSecretResponseArrayOutput) Index(i pulumi.IntInput) SecretManagerSecretResponseOutput {
@@ -9395,12 +8344,6 @@ func (o SecretResponseOutput) ToSecretResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SecretResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretResponse] {
-	return pulumix.Output[SecretResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cloud KMS key name to use to decrypt these envs.
 func (o SecretResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -9423,12 +8366,6 @@ func (o SecretResponseArrayOutput) ToSecretResponseArrayOutput() SecretResponseA
 
 func (o SecretResponseArrayOutput) ToSecretResponseArrayOutputWithContext(ctx context.Context) SecretResponseArrayOutput {
 	return o
-}
-
-func (o SecretResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecretResponse] {
-	return pulumix.Output[[]SecretResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretResponseArrayOutput) Index(i pulumi.IntInput) SecretResponseOutput {
@@ -9476,12 +8413,6 @@ func (i SecretsArgs) ToSecretsOutputWithContext(ctx context.Context) SecretsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SecretsOutput)
 }
 
-func (i SecretsArgs) ToOutput(ctx context.Context) pulumix.Output[Secrets] {
-	return pulumix.Output[Secrets]{
-		OutputState: i.ToSecretsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecretsArgs) ToSecretsPtrOutput() SecretsPtrOutput {
 	return i.ToSecretsPtrOutputWithContext(context.Background())
 }
@@ -9523,12 +8454,6 @@ func (i *secretsPtrType) ToSecretsPtrOutputWithContext(ctx context.Context) Secr
 	return pulumi.ToOutputWithContext(ctx, i).(SecretsPtrOutput)
 }
 
-func (i *secretsPtrType) ToOutput(ctx context.Context) pulumix.Output[*Secrets] {
-	return pulumix.Output[*Secrets]{
-		OutputState: i.ToSecretsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Secrets and secret environment variables.
 type SecretsOutput struct{ *pulumi.OutputState }
 
@@ -9554,12 +8479,6 @@ func (o SecretsOutput) ToSecretsPtrOutputWithContext(ctx context.Context) Secret
 	}).(SecretsPtrOutput)
 }
 
-func (o SecretsOutput) ToOutput(ctx context.Context) pulumix.Output[Secrets] {
-	return pulumix.Output[Secrets]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Secrets encrypted with KMS key and the associated secret environment variable.
 func (o SecretsOutput) Inline() InlineSecretArrayOutput {
 	return o.ApplyT(func(v Secrets) []InlineSecret { return v.Inline }).(InlineSecretArrayOutput)
@@ -9582,12 +8501,6 @@ func (o SecretsPtrOutput) ToSecretsPtrOutput() SecretsPtrOutput {
 
 func (o SecretsPtrOutput) ToSecretsPtrOutputWithContext(ctx context.Context) SecretsPtrOutput {
 	return o
-}
-
-func (o SecretsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Secrets] {
-	return pulumix.Output[*Secrets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretsPtrOutput) Elem() SecretsOutput {
@@ -9643,12 +8556,6 @@ func (o SecretsResponseOutput) ToSecretsResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SecretsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretsResponse] {
-	return pulumix.Output[SecretsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Secrets encrypted with KMS key and the associated secret environment variable.
 func (o SecretsResponseOutput) Inline() InlineSecretResponseArrayOutput {
 	return o.ApplyT(func(v SecretsResponse) []InlineSecretResponse { return v.Inline }).(InlineSecretResponseArrayOutput)
@@ -9694,12 +8601,6 @@ func (i ServiceDirectoryConfigArgs) ToServiceDirectoryConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceDirectoryConfigOutput)
 }
 
-func (i ServiceDirectoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceDirectoryConfig] {
-	return pulumix.Output[ServiceDirectoryConfig]{
-		OutputState: i.ToServiceDirectoryConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceDirectoryConfigArgs) ToServiceDirectoryConfigPtrOutput() ServiceDirectoryConfigPtrOutput {
 	return i.ToServiceDirectoryConfigPtrOutputWithContext(context.Background())
 }
@@ -9741,12 +8642,6 @@ func (i *serviceDirectoryConfigPtrType) ToServiceDirectoryConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceDirectoryConfigPtrOutput)
 }
 
-func (i *serviceDirectoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceDirectoryConfig] {
-	return pulumix.Output[*ServiceDirectoryConfig]{
-		OutputState: i.ToServiceDirectoryConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.
 type ServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
 
@@ -9772,12 +8667,6 @@ func (o ServiceDirectoryConfigOutput) ToServiceDirectoryConfigPtrOutputWithConte
 	}).(ServiceDirectoryConfigPtrOutput)
 }
 
-func (o ServiceDirectoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceDirectoryConfig] {
-	return pulumix.Output[ServiceDirectoryConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o ServiceDirectoryConfigOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceDirectoryConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
@@ -9795,12 +8684,6 @@ func (o ServiceDirectoryConfigPtrOutput) ToServiceDirectoryConfigPtrOutput() Ser
 
 func (o ServiceDirectoryConfigPtrOutput) ToServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ServiceDirectoryConfigPtrOutput {
 	return o
-}
-
-func (o ServiceDirectoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceDirectoryConfig] {
-	return pulumix.Output[*ServiceDirectoryConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceDirectoryConfigPtrOutput) Elem() ServiceDirectoryConfigOutput {
@@ -9842,12 +8725,6 @@ func (o ServiceDirectoryConfigResponseOutput) ToServiceDirectoryConfigResponseOu
 
 func (o ServiceDirectoryConfigResponseOutput) ToServiceDirectoryConfigResponseOutputWithContext(ctx context.Context) ServiceDirectoryConfigResponseOutput {
 	return o
-}
-
-func (o ServiceDirectoryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceDirectoryConfigResponse] {
-	return pulumix.Output[ServiceDirectoryConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
@@ -9906,12 +8783,6 @@ func (i SourceArgs) ToSourceOutputWithContext(ctx context.Context) SourceOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SourceOutput)
 }
 
-func (i SourceArgs) ToOutput(ctx context.Context) pulumix.Output[Source] {
-	return pulumix.Output[Source]{
-		OutputState: i.ToSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SourceArgs) ToSourcePtrOutput() SourcePtrOutput {
 	return i.ToSourcePtrOutputWithContext(context.Background())
 }
@@ -9953,12 +8824,6 @@ func (i *sourcePtrType) ToSourcePtrOutputWithContext(ctx context.Context) Source
 	return pulumi.ToOutputWithContext(ctx, i).(SourcePtrOutput)
 }
 
-func (i *sourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*Source] {
-	return pulumix.Output[*Source]{
-		OutputState: i.ToSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Location of the source in a supported storage service.
 type SourceOutput struct{ *pulumi.OutputState }
 
@@ -9982,12 +8847,6 @@ func (o SourceOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Source) *Source {
 		return &v
 	}).(SourcePtrOutput)
-}
-
-func (o SourceOutput) ToOutput(ctx context.Context) pulumix.Output[Source] {
-	return pulumix.Output[Source]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
@@ -10027,12 +8886,6 @@ func (o SourcePtrOutput) ToSourcePtrOutput() SourcePtrOutput {
 
 func (o SourcePtrOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
 	return o
-}
-
-func (o SourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Source] {
-	return pulumix.Output[*Source]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourcePtrOutput) Elem() SourceOutput {
@@ -10126,12 +8979,6 @@ func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponseOutputWithCont
 	return o
 }
 
-func (o SourceProvenanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceProvenanceResponse] {
-	return pulumix.Output[SourceProvenanceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
 func (o SourceProvenanceResponseOutput) FileHashes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SourceProvenanceResponse) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
@@ -10189,12 +9036,6 @@ func (o SourceResponseOutput) ToSourceResponseOutput() SourceResponseOutput {
 
 func (o SourceResponseOutput) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
 	return o
-}
-
-func (o SourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceResponse] {
-	return pulumix.Output[SourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
@@ -10269,12 +9110,6 @@ func (i StorageSourceArgs) ToStorageSourceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceOutput)
 }
 
-func (i StorageSourceArgs) ToOutput(ctx context.Context) pulumix.Output[StorageSource] {
-	return pulumix.Output[StorageSource]{
-		OutputState: i.ToStorageSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StorageSourceArgs) ToStorageSourcePtrOutput() StorageSourcePtrOutput {
 	return i.ToStorageSourcePtrOutputWithContext(context.Background())
 }
@@ -10316,12 +9151,6 @@ func (i *storageSourcePtrType) ToStorageSourcePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(StorageSourcePtrOutput)
 }
 
-func (i *storageSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageSource] {
-	return pulumix.Output[*StorageSource]{
-		OutputState: i.ToStorageSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Location of the source in an archive file in Cloud Storage.
 type StorageSourceOutput struct{ *pulumi.OutputState }
 
@@ -10345,12 +9174,6 @@ func (o StorageSourceOutput) ToStorageSourcePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSource) *StorageSource {
 		return &v
 	}).(StorageSourcePtrOutput)
-}
-
-func (o StorageSourceOutput) ToOutput(ctx context.Context) pulumix.Output[StorageSource] {
-	return pulumix.Output[StorageSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -10385,12 +9208,6 @@ func (o StorageSourcePtrOutput) ToStorageSourcePtrOutput() StorageSourcePtrOutpu
 
 func (o StorageSourcePtrOutput) ToStorageSourcePtrOutputWithContext(ctx context.Context) StorageSourcePtrOutput {
 	return o
-}
-
-func (o StorageSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageSource] {
-	return pulumix.Output[*StorageSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageSourcePtrOutput) Elem() StorageSourceOutput {
@@ -10486,12 +9303,6 @@ func (i StorageSourceManifestArgs) ToStorageSourceManifestOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestOutput)
 }
 
-func (i StorageSourceManifestArgs) ToOutput(ctx context.Context) pulumix.Output[StorageSourceManifest] {
-	return pulumix.Output[StorageSourceManifest]{
-		OutputState: i.ToStorageSourceManifestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StorageSourceManifestArgs) ToStorageSourceManifestPtrOutput() StorageSourceManifestPtrOutput {
 	return i.ToStorageSourceManifestPtrOutputWithContext(context.Background())
 }
@@ -10533,12 +9344,6 @@ func (i *storageSourceManifestPtrType) ToStorageSourceManifestPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestPtrOutput)
 }
 
-func (i *storageSourceManifestPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageSourceManifest] {
-	return pulumix.Output[*StorageSourceManifest]{
-		OutputState: i.ToStorageSourceManifestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 type StorageSourceManifestOutput struct{ *pulumi.OutputState }
 
@@ -10562,12 +9367,6 @@ func (o StorageSourceManifestOutput) ToStorageSourceManifestPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSourceManifest) *StorageSourceManifest {
 		return &v
 	}).(StorageSourceManifestPtrOutput)
-}
-
-func (o StorageSourceManifestOutput) ToOutput(ctx context.Context) pulumix.Output[StorageSourceManifest] {
-	return pulumix.Output[StorageSourceManifest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -10597,12 +9396,6 @@ func (o StorageSourceManifestPtrOutput) ToStorageSourceManifestPtrOutput() Stora
 
 func (o StorageSourceManifestPtrOutput) ToStorageSourceManifestPtrOutputWithContext(ctx context.Context) StorageSourceManifestPtrOutput {
 	return o
-}
-
-func (o StorageSourceManifestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageSourceManifest] {
-	return pulumix.Output[*StorageSourceManifest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageSourceManifestPtrOutput) Elem() StorageSourceManifestOutput {
@@ -10670,12 +9463,6 @@ func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponseOutp
 	return o
 }
 
-func (o StorageSourceManifestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageSourceManifestResponse] {
-	return pulumix.Output[StorageSourceManifestResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 func (o StorageSourceManifestResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceManifestResponse) string { return v.Bucket }).(pulumi.StringOutput)
@@ -10716,12 +9503,6 @@ func (o StorageSourceResponseOutput) ToStorageSourceResponseOutput() StorageSour
 
 func (o StorageSourceResponseOutput) ToStorageSourceResponseOutputWithContext(ctx context.Context) StorageSourceResponseOutput {
 	return o
-}
-
-func (o StorageSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageSourceResponse] {
-	return pulumix.Output[StorageSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -10767,12 +9548,6 @@ func (o TimeSpanResponseOutput) ToTimeSpanResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o TimeSpanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSpanResponse] {
-	return pulumix.Output[TimeSpanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // End of time span.
 func (o TimeSpanResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeSpanResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -10808,12 +9583,6 @@ func (o UploadedMavenArtifactResponseOutput) ToUploadedMavenArtifactResponseOutp
 	return o
 }
 
-func (o UploadedMavenArtifactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UploadedMavenArtifactResponse] {
-	return pulumix.Output[UploadedMavenArtifactResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Hash types and values of the Maven Artifact.
 func (o UploadedMavenArtifactResponseOutput) FileHashes() FileHashesResponseOutput {
 	return o.ApplyT(func(v UploadedMavenArtifactResponse) FileHashesResponse { return v.FileHashes }).(FileHashesResponseOutput)
@@ -10841,12 +9610,6 @@ func (o UploadedMavenArtifactResponseArrayOutput) ToUploadedMavenArtifactRespons
 
 func (o UploadedMavenArtifactResponseArrayOutput) ToUploadedMavenArtifactResponseArrayOutputWithContext(ctx context.Context) UploadedMavenArtifactResponseArrayOutput {
 	return o
-}
-
-func (o UploadedMavenArtifactResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UploadedMavenArtifactResponse] {
-	return pulumix.Output[[]UploadedMavenArtifactResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UploadedMavenArtifactResponseArrayOutput) Index(i pulumi.IntInput) UploadedMavenArtifactResponseOutput {
@@ -10880,12 +9643,6 @@ func (o UploadedNpmPackageResponseOutput) ToUploadedNpmPackageResponseOutputWith
 	return o
 }
 
-func (o UploadedNpmPackageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UploadedNpmPackageResponse] {
-	return pulumix.Output[UploadedNpmPackageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Hash types and values of the npm package.
 func (o UploadedNpmPackageResponseOutput) FileHashes() FileHashesResponseOutput {
 	return o.ApplyT(func(v UploadedNpmPackageResponse) FileHashesResponse { return v.FileHashes }).(FileHashesResponseOutput)
@@ -10913,12 +9670,6 @@ func (o UploadedNpmPackageResponseArrayOutput) ToUploadedNpmPackageResponseArray
 
 func (o UploadedNpmPackageResponseArrayOutput) ToUploadedNpmPackageResponseArrayOutputWithContext(ctx context.Context) UploadedNpmPackageResponseArrayOutput {
 	return o
-}
-
-func (o UploadedNpmPackageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UploadedNpmPackageResponse] {
-	return pulumix.Output[[]UploadedNpmPackageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UploadedNpmPackageResponseArrayOutput) Index(i pulumi.IntInput) UploadedNpmPackageResponseOutput {
@@ -10952,12 +9703,6 @@ func (o UploadedPythonPackageResponseOutput) ToUploadedPythonPackageResponseOutp
 	return o
 }
 
-func (o UploadedPythonPackageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UploadedPythonPackageResponse] {
-	return pulumix.Output[UploadedPythonPackageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Hash types and values of the Python Artifact.
 func (o UploadedPythonPackageResponseOutput) FileHashes() FileHashesResponseOutput {
 	return o.ApplyT(func(v UploadedPythonPackageResponse) FileHashesResponse { return v.FileHashes }).(FileHashesResponseOutput)
@@ -10985,12 +9730,6 @@ func (o UploadedPythonPackageResponseArrayOutput) ToUploadedPythonPackageRespons
 
 func (o UploadedPythonPackageResponseArrayOutput) ToUploadedPythonPackageResponseArrayOutputWithContext(ctx context.Context) UploadedPythonPackageResponseArrayOutput {
 	return o
-}
-
-func (o UploadedPythonPackageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UploadedPythonPackageResponse] {
-	return pulumix.Output[[]UploadedPythonPackageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UploadedPythonPackageResponseArrayOutput) Index(i pulumi.IntInput) UploadedPythonPackageResponseOutput {
@@ -11038,12 +9777,6 @@ func (i VolumeArgs) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeOutput)
 }
 
-func (i VolumeArgs) ToOutput(ctx context.Context) pulumix.Output[Volume] {
-	return pulumix.Output[Volume]{
-		OutputState: i.ToVolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeArrayInput is an input type that accepts VolumeArray and VolumeArrayOutput values.
 // You can construct a concrete instance of `VolumeArrayInput` via:
 //
@@ -11069,12 +9802,6 @@ func (i VolumeArray) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeA
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeArrayOutput)
 }
 
-func (i VolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]Volume] {
-	return pulumix.Output[[]Volume]{
-		OutputState: i.ToVolumeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
 type VolumeOutput struct{ *pulumi.OutputState }
 
@@ -11088,12 +9815,6 @@ func (o VolumeOutput) ToVolumeOutput() VolumeOutput {
 
 func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput {
 	return o
-}
-
-func (o VolumeOutput) ToOutput(ctx context.Context) pulumix.Output[Volume] {
-	return pulumix.Output[Volume]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.
@@ -11118,12 +9839,6 @@ func (o VolumeArrayOutput) ToVolumeArrayOutput() VolumeArrayOutput {
 
 func (o VolumeArrayOutput) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeArrayOutput {
 	return o
-}
-
-func (o VolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Volume] {
-	return pulumix.Output[[]Volume]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeArrayOutput) Index(i pulumi.IntInput) VolumeOutput {
@@ -11155,12 +9870,6 @@ func (o VolumeResponseOutput) ToVolumeResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o VolumeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeResponse] {
-	return pulumix.Output[VolumeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.
 func (o VolumeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -11183,12 +9892,6 @@ func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutput() VolumeResponseA
 
 func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
 	return o
-}
-
-func (o VolumeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeResponse] {
-	return pulumix.Output[[]VolumeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput {
@@ -11220,12 +9923,6 @@ func (o WarningResponseOutput) ToWarningResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o WarningResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WarningResponse] {
-	return pulumix.Output[WarningResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The priority for this warning.
 func (o WarningResponseOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v WarningResponse) string { return v.Priority }).(pulumi.StringOutput)
@@ -11248,12 +9945,6 @@ func (o WarningResponseArrayOutput) ToWarningResponseArrayOutput() WarningRespon
 
 func (o WarningResponseArrayOutput) ToWarningResponseArrayOutputWithContext(ctx context.Context) WarningResponseArrayOutput {
 	return o
-}
-
-func (o WarningResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WarningResponse] {
-	return pulumix.Output[[]WarningResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WarningResponseArrayOutput) Index(i pulumi.IntInput) WarningResponseOutput {
@@ -11301,12 +9992,6 @@ func (i WebhookConfigArgs) ToWebhookConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigOutput)
 }
 
-func (i WebhookConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WebhookConfig] {
-	return pulumix.Output[WebhookConfig]{
-		OutputState: i.ToWebhookConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WebhookConfigArgs) ToWebhookConfigPtrOutput() WebhookConfigPtrOutput {
 	return i.ToWebhookConfigPtrOutputWithContext(context.Background())
 }
@@ -11348,12 +10033,6 @@ func (i *webhookConfigPtrType) ToWebhookConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigPtrOutput)
 }
 
-func (i *webhookConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WebhookConfig] {
-	return pulumix.Output[*WebhookConfig]{
-		OutputState: i.ToWebhookConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
 type WebhookConfigOutput struct{ *pulumi.OutputState }
 
@@ -11379,12 +10058,6 @@ func (o WebhookConfigOutput) ToWebhookConfigPtrOutputWithContext(ctx context.Con
 	}).(WebhookConfigPtrOutput)
 }
 
-func (o WebhookConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookConfig] {
-	return pulumix.Output[WebhookConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource name for the secret required as a URL parameter.
 func (o WebhookConfigOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v WebhookConfig) string { return v.Secret }).(pulumi.StringOutput)
@@ -11407,12 +10080,6 @@ func (o WebhookConfigPtrOutput) ToWebhookConfigPtrOutput() WebhookConfigPtrOutpu
 
 func (o WebhookConfigPtrOutput) ToWebhookConfigPtrOutputWithContext(ctx context.Context) WebhookConfigPtrOutput {
 	return o
-}
-
-func (o WebhookConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebhookConfig] {
-	return pulumix.Output[*WebhookConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookConfigPtrOutput) Elem() WebhookConfigOutput {
@@ -11468,12 +10135,6 @@ func (o WebhookConfigResponseOutput) ToWebhookConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o WebhookConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookConfigResponse] {
-	return pulumix.Output[WebhookConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource name for the secret required as a URL parameter.
 func (o WebhookConfigResponseOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v WebhookConfigResponse) string { return v.Secret }).(pulumi.StringOutput)
@@ -11523,12 +10184,6 @@ func (i WorkerConfigArgs) ToWorkerConfigOutputWithContext(ctx context.Context) W
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigOutput)
 }
 
-func (i WorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerConfig] {
-	return pulumix.Output[WorkerConfig]{
-		OutputState: i.ToWorkerConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkerConfigArgs) ToWorkerConfigPtrOutput() WorkerConfigPtrOutput {
 	return i.ToWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -11570,12 +10225,6 @@ func (i *workerConfigPtrType) ToWorkerConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigPtrOutput)
 }
 
-func (i *workerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkerConfig] {
-	return pulumix.Output[*WorkerConfig]{
-		OutputState: i.ToWorkerConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the configuration to be used for creating workers in the pool.
 type WorkerConfigOutput struct{ *pulumi.OutputState }
 
@@ -11601,12 +10250,6 @@ func (o WorkerConfigOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Conte
 	}).(WorkerConfigPtrOutput)
 }
 
-func (o WorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerConfig] {
-	return pulumix.Output[WorkerConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerConfigOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerConfig) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
@@ -11629,12 +10272,6 @@ func (o WorkerConfigPtrOutput) ToWorkerConfigPtrOutput() WorkerConfigPtrOutput {
 
 func (o WorkerConfigPtrOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerConfigPtrOutput {
 	return o
-}
-
-func (o WorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerConfig] {
-	return pulumix.Output[*WorkerConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkerConfigPtrOutput) Elem() WorkerConfigOutput {
@@ -11688,12 +10325,6 @@ func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutput() WorkerConfigR
 
 func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutputWithContext(ctx context.Context) WorkerConfigResponseOutput {
 	return o
-}
-
-func (o WorkerConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerConfigResponse] {
-	return pulumix.Output[WorkerConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.

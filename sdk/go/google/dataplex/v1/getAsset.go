@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an asset resource.
@@ -97,12 +96,6 @@ func (o LookupAssetResultOutput) ToLookupAssetResultOutput() LookupAssetResultOu
 
 func (o LookupAssetResultOutput) ToLookupAssetResultOutputWithContext(ctx context.Context) LookupAssetResultOutput {
 	return o
-}
-
-func (o LookupAssetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssetResult] {
-	return pulumix.Output[LookupAssetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the asset was created.

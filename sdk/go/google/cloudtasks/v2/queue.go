@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a queue. Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31 days old, the task will be deleted regardless of whether it was dispatched or not. WARNING: Using this method may have unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.
@@ -138,12 +137,6 @@ func (i *Queue) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueueOutput)
 }
 
-func (i *Queue) ToOutput(ctx context.Context) pulumix.Output[*Queue] {
-	return pulumix.Output[*Queue]{
-		OutputState: i.ToQueueOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QueueOutput struct{ *pulumi.OutputState }
 
 func (QueueOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o QueueOutput) ToQueueOutput() QueueOutput {
 
 func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 	return o
-}
-
-func (o QueueOutput) ToOutput(ctx context.Context) pulumix.Output[*Queue] {
-	return pulumix.Output[*Queue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this queue. Http tasks are not affected. If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the setting is for the task-level app_engine_routing.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a NasJob
@@ -93,12 +92,6 @@ func (o LookupNasJobResultOutput) ToLookupNasJobResultOutput() LookupNasJobResul
 
 func (o LookupNasJobResultOutput) ToLookupNasJobResultOutputWithContext(ctx context.Context) LookupNasJobResultOutput {
 	return o
-}
-
-func (o LookupNasJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNasJobResult] {
-	return pulumix.Output[LookupNasJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the NasJob was created.

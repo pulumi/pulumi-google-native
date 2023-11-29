@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AutoscaleArgs) ToAutoscaleOutput() AutoscaleOutput {
 
 func (i AutoscaleArgs) ToAutoscaleOutputWithContext(ctx context.Context) AutoscaleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleOutput)
-}
-
-func (i AutoscaleArgs) ToOutput(ctx context.Context) pulumix.Output[Autoscale] {
-	return pulumix.Output[Autoscale]{
-		OutputState: i.ToAutoscaleOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AutoscaleArgs) ToAutoscalePtrOutput() AutoscalePtrOutput {
@@ -96,12 +89,6 @@ func (i *autoscalePtrType) ToAutoscalePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalePtrOutput)
 }
 
-func (i *autoscalePtrType) ToOutput(ctx context.Context) pulumix.Output[*Autoscale] {
-	return pulumix.Output[*Autoscale]{
-		OutputState: i.ToAutoscalePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Auto scaling settings.
 type AutoscaleOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o AutoscaleOutput) ToAutoscalePtrOutputWithContext(ctx context.Context) Au
 	}).(AutoscalePtrOutput)
 }
 
-func (o AutoscaleOutput) ToOutput(ctx context.Context) pulumix.Output[Autoscale] {
-	return pulumix.Output[Autoscale]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of slots to be scaled when needed.
 func (o AutoscaleOutput) MaxSlots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Autoscale) *string { return v.MaxSlots }).(pulumi.StringPtrOutput)
@@ -150,12 +131,6 @@ func (o AutoscalePtrOutput) ToAutoscalePtrOutput() AutoscalePtrOutput {
 
 func (o AutoscalePtrOutput) ToAutoscalePtrOutputWithContext(ctx context.Context) AutoscalePtrOutput {
 	return o
-}
-
-func (o AutoscalePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Autoscale] {
-	return pulumix.Output[*Autoscale]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalePtrOutput) Elem() AutoscaleOutput {
@@ -201,12 +176,6 @@ func (o AutoscaleResponseOutput) ToAutoscaleResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o AutoscaleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscaleResponse] {
-	return pulumix.Output[AutoscaleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
 func (o AutoscaleResponseOutput) CurrentSlots() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoscaleResponse) string { return v.CurrentSlots }).(pulumi.StringOutput)
@@ -240,12 +209,6 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
-}
-
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

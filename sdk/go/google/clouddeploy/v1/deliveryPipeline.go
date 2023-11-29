@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new DeliveryPipeline in a given project and location.
@@ -165,12 +164,6 @@ func (i *DeliveryPipeline) ToDeliveryPipelineOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineOutput)
 }
 
-func (i *DeliveryPipeline) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipeline] {
-	return pulumix.Output[*DeliveryPipeline]{
-		OutputState: i.ToDeliveryPipelineOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryPipelineOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineOutput) ElementType() reflect.Type {
@@ -183,12 +176,6 @@ func (o DeliveryPipelineOutput) ToDeliveryPipelineOutput() DeliveryPipelineOutpu
 
 func (o DeliveryPipelineOutput) ToDeliveryPipelineOutputWithContext(ctx context.Context) DeliveryPipelineOutput {
 	return o
-}
-
-func (o DeliveryPipelineOutput) ToOutput(ctx context.Context) pulumix.Output[*DeliveryPipeline] {
-	return pulumix.Output[*DeliveryPipeline]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.

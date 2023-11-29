@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Updates an IAM policy for the specified managed folder.
@@ -143,12 +142,6 @@ func (i *ManagedFolderIamPolicy) ToManagedFolderIamPolicyOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderIamPolicyOutput)
 }
 
-func (i *ManagedFolderIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*ManagedFolderIamPolicy] {
-	return pulumix.Output[*ManagedFolderIamPolicy]{
-		OutputState: i.ToManagedFolderIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedFolderIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ManagedFolderIamPolicyOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o ManagedFolderIamPolicyOutput) ToManagedFolderIamPolicyOutput() ManagedFo
 
 func (o ManagedFolderIamPolicyOutput) ToManagedFolderIamPolicyOutputWithContext(ctx context.Context) ManagedFolderIamPolicyOutput {
 	return o
-}
-
-func (o ManagedFolderIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedFolderIamPolicy] {
-	return pulumix.Output[*ManagedFolderIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An association between a role, which comes with a set of permissions, and members who may assume that role.

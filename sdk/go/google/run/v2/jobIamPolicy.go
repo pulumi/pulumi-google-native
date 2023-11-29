@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM Access control policy for the specified Job. Overwrites any existing policy.
@@ -136,12 +135,6 @@ func (i *JobIamPolicy) ToJobIamPolicyOutputWithContext(ctx context.Context) JobI
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamPolicyOutput)
 }
 
-func (i *JobIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*JobIamPolicy] {
-	return pulumix.Output[*JobIamPolicy]{
-		OutputState: i.ToJobIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (JobIamPolicyOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o JobIamPolicyOutput) ToJobIamPolicyOutput() JobIamPolicyOutput {
 
 func (o JobIamPolicyOutput) ToJobIamPolicyOutputWithContext(ctx context.Context) JobIamPolicyOutput {
 	return o
-}
-
-func (o JobIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIamPolicy] {
-	return pulumix.Output[*JobIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Checks the status of a test matrix and the executions once they are created. The test matrix will contain the list of test executions to run if and only if the resultStorage.toolResultsExecution fields have been populated. Note: Flaky test executions may be added to the matrix at a later stage. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
@@ -91,12 +90,6 @@ func (o LookupTestMatrixResultOutput) ToLookupTestMatrixResultOutput() LookupTes
 
 func (o LookupTestMatrixResultOutput) ToLookupTestMatrixResultOutputWithContext(ctx context.Context) LookupTestMatrixResultOutput {
 	return o
-}
-
-func (o LookupTestMatrixResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTestMatrixResult] {
-	return pulumix.Output[LookupTestMatrixResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Information about the client which invoked the test.

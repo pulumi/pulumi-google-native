@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a tag template. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project).
@@ -136,12 +135,6 @@ func (i *TagTemplate) ToTagTemplateOutputWithContext(ctx context.Context) TagTem
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateOutput)
 }
 
-func (i *TagTemplate) ToOutput(ctx context.Context) pulumix.Output[*TagTemplate] {
-	return pulumix.Output[*TagTemplate]{
-		OutputState: i.ToTagTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagTemplateOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o TagTemplateOutput) ToTagTemplateOutput() TagTemplateOutput {
 
 func (o TagTemplateOutput) ToTagTemplateOutputWithContext(ctx context.Context) TagTemplateOutput {
 	return o
-}
-
-func (o TagTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*TagTemplate] {
-	return pulumix.Output[*TagTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.

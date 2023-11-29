@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a list() request.
@@ -83,12 +82,6 @@ func (o LookupExternalVpnGatewayResultOutput) ToLookupExternalVpnGatewayResultOu
 
 func (o LookupExternalVpnGatewayResultOutput) ToLookupExternalVpnGatewayResultOutputWithContext(ctx context.Context) LookupExternalVpnGatewayResultOutput {
 	return o
-}
-
-func (o LookupExternalVpnGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExternalVpnGatewayResult] {
-	return pulumix.Output[LookupExternalVpnGatewayResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

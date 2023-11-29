@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Reference in the specified environment.
@@ -132,12 +131,6 @@ func (i *Reference) ToReferenceOutputWithContext(ctx context.Context) ReferenceO
 	return pulumi.ToOutputWithContext(ctx, i).(ReferenceOutput)
 }
 
-func (i *Reference) ToOutput(ctx context.Context) pulumix.Output[*Reference] {
-	return pulumix.Output[*Reference]{
-		OutputState: i.ToReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReferenceOutput struct{ *pulumi.OutputState }
 
 func (ReferenceOutput) ElementType() reflect.Type {
@@ -150,12 +143,6 @@ func (o ReferenceOutput) ToReferenceOutput() ReferenceOutput {
 
 func (o ReferenceOutput) ToReferenceOutputWithContext(ctx context.Context) ReferenceOutput {
 	return o
-}
-
-func (o ReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[*Reference] {
-	return pulumix.Output[*Reference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A human-readable description of this reference.

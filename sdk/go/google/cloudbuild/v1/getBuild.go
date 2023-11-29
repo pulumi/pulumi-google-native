@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
@@ -127,12 +126,6 @@ func (o LookupBuildResultOutput) ToLookupBuildResultOutput() LookupBuildResultOu
 
 func (o LookupBuildResultOutput) ToLookupBuildResultOutputWithContext(ctx context.Context) LookupBuildResultOutput {
 	return o
-}
-
-func (o LookupBuildResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBuildResult] {
-	return pulumix.Output[LookupBuildResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes this build's approval configuration, status, and result.

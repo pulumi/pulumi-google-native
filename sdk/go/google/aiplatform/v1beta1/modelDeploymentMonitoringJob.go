@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a ModelDeploymentMonitoringJob. It will run periodically on a configured interval.
@@ -217,12 +216,6 @@ func (i *ModelDeploymentMonitoringJob) ToModelDeploymentMonitoringJobOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ModelDeploymentMonitoringJobOutput)
 }
 
-func (i *ModelDeploymentMonitoringJob) ToOutput(ctx context.Context) pulumix.Output[*ModelDeploymentMonitoringJob] {
-	return pulumix.Output[*ModelDeploymentMonitoringJob]{
-		OutputState: i.ToModelDeploymentMonitoringJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ModelDeploymentMonitoringJobOutput struct{ *pulumi.OutputState }
 
 func (ModelDeploymentMonitoringJobOutput) ElementType() reflect.Type {
@@ -235,12 +228,6 @@ func (o ModelDeploymentMonitoringJobOutput) ToModelDeploymentMonitoringJobOutput
 
 func (o ModelDeploymentMonitoringJobOutput) ToModelDeploymentMonitoringJobOutputWithContext(ctx context.Context) ModelDeploymentMonitoringJobOutput {
 	return o
-}
-
-func (o ModelDeploymentMonitoringJobOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelDeploymentMonitoringJob] {
-	return pulumix.Output[*ModelDeploymentMonitoringJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // YAML schema file uri describing the format of a single instance that you want Tensorflow Data Validation (TFDV) to analyze. If this field is empty, all the feature data types are inferred from predict_instance_schema_uri, meaning that TFDV will use the data in the exact format(data type) as prediction request/response. If there are any data type differences between predict instance and TFDV instance, this field can be used to override the schema. For models trained with Vertex AI, this field must be set as all the fields in predict instance formatted as string.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i AptRepositoryArgs) ToAptRepositoryOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AptRepositoryOutput)
 }
 
-func (i AptRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[AptRepository] {
-	return pulumix.Output[AptRepository]{
-		OutputState: i.ToAptRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AptRepositoryArgs) ToAptRepositoryPtrOutput() AptRepositoryPtrOutput {
 	return i.ToAptRepositoryPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *aptRepositoryPtrType) ToAptRepositoryPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AptRepositoryPtrOutput)
 }
 
-func (i *aptRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*AptRepository] {
-	return pulumix.Output[*AptRepository]{
-		OutputState: i.ToAptRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
 type AptRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -141,12 +128,6 @@ func (o AptRepositoryOutput) ToAptRepositoryPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AptRepository) *AptRepository {
 		return &v
 	}).(AptRepositoryPtrOutput)
-}
-
-func (o AptRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[AptRepository] {
-	return pulumix.Output[AptRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of archive files in this repository. The default behavior is DEB.
@@ -186,12 +167,6 @@ func (o AptRepositoryPtrOutput) ToAptRepositoryPtrOutput() AptRepositoryPtrOutpu
 
 func (o AptRepositoryPtrOutput) ToAptRepositoryPtrOutputWithContext(ctx context.Context) AptRepositoryPtrOutput {
 	return o
-}
-
-func (o AptRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AptRepository] {
-	return pulumix.Output[*AptRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AptRepositoryPtrOutput) Elem() AptRepositoryOutput {
@@ -283,12 +258,6 @@ func (o AptRepositoryResponseOutput) ToAptRepositoryResponseOutputWithContext(ct
 	return o
 }
 
-func (o AptRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AptRepositoryResponse] {
-	return pulumix.Output[AptRepositoryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of archive files in this repository. The default behavior is DEB.
 func (o AptRepositoryResponseOutput) ArchiveType() pulumi.StringOutput {
 	return o.ApplyT(func(v AptRepositoryResponse) string { return v.ArchiveType }).(pulumi.StringOutput)
@@ -357,12 +326,6 @@ func (i AptSettingsArgs) ToAptSettingsOutputWithContext(ctx context.Context) Apt
 	return pulumi.ToOutputWithContext(ctx, i).(AptSettingsOutput)
 }
 
-func (i AptSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AptSettings] {
-	return pulumix.Output[AptSettings]{
-		OutputState: i.ToAptSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AptSettingsArgs) ToAptSettingsPtrOutput() AptSettingsPtrOutput {
 	return i.ToAptSettingsPtrOutputWithContext(context.Background())
 }
@@ -404,12 +367,6 @@ func (i *aptSettingsPtrType) ToAptSettingsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AptSettingsPtrOutput)
 }
 
-func (i *aptSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AptSettings] {
-	return pulumix.Output[*AptSettings]{
-		OutputState: i.ToAptSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
 type AptSettingsOutput struct{ *pulumi.OutputState }
 
@@ -433,12 +390,6 @@ func (o AptSettingsOutput) ToAptSettingsPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AptSettings) *AptSettings {
 		return &v
 	}).(AptSettingsPtrOutput)
-}
-
-func (o AptSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AptSettings] {
-	return pulumix.Output[AptSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of packages to exclude from update. These packages will be excluded
@@ -468,12 +419,6 @@ func (o AptSettingsPtrOutput) ToAptSettingsPtrOutput() AptSettingsPtrOutput {
 
 func (o AptSettingsPtrOutput) ToAptSettingsPtrOutputWithContext(ctx context.Context) AptSettingsPtrOutput {
 	return o
-}
-
-func (o AptSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AptSettings] {
-	return pulumix.Output[*AptSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AptSettingsPtrOutput) Elem() AptSettingsOutput {
@@ -539,12 +484,6 @@ func (o AptSettingsResponseOutput) ToAptSettingsResponseOutput() AptSettingsResp
 
 func (o AptSettingsResponseOutput) ToAptSettingsResponseOutputWithContext(ctx context.Context) AptSettingsResponseOutput {
 	return o
-}
-
-func (o AptSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AptSettingsResponse] {
-	return pulumix.Output[AptSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of packages to exclude from update. These packages will be excluded
@@ -613,12 +552,6 @@ func (i AssignmentArgs) ToAssignmentOutputWithContext(ctx context.Context) Assig
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentOutput)
 }
 
-func (i AssignmentArgs) ToOutput(ctx context.Context) pulumix.Output[Assignment] {
-	return pulumix.Output[Assignment]{
-		OutputState: i.ToAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An assignment represents the group or groups of VM instances that the policy applies to. If an assignment is empty, it applies to all VM instances. Otherwise, the targeted VM instances must meet all the criteria specified. So if both labels and zones are specified, the policy applies to VM instances with those labels and in those zones.
 type AssignmentOutput struct{ *pulumi.OutputState }
 
@@ -632,12 +565,6 @@ func (o AssignmentOutput) ToAssignmentOutput() AssignmentOutput {
 
 func (o AssignmentOutput) ToAssignmentOutputWithContext(ctx context.Context) AssignmentOutput {
 	return o
-}
-
-func (o AssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[Assignment] {
-	return pulumix.Output[Assignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups, for example "env=prod or env=staging".
@@ -700,12 +627,6 @@ func (i AssignmentGroupLabelArgs) ToAssignmentGroupLabelOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentGroupLabelOutput)
 }
 
-func (i AssignmentGroupLabelArgs) ToOutput(ctx context.Context) pulumix.Output[AssignmentGroupLabel] {
-	return pulumix.Output[AssignmentGroupLabel]{
-		OutputState: i.ToAssignmentGroupLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AssignmentGroupLabelArrayInput is an input type that accepts AssignmentGroupLabelArray and AssignmentGroupLabelArrayOutput values.
 // You can construct a concrete instance of `AssignmentGroupLabelArrayInput` via:
 //
@@ -731,12 +652,6 @@ func (i AssignmentGroupLabelArray) ToAssignmentGroupLabelArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentGroupLabelArrayOutput)
 }
 
-func (i AssignmentGroupLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentGroupLabel] {
-	return pulumix.Output[[]AssignmentGroupLabel]{
-		OutputState: i.ToAssignmentGroupLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a group of VM intances that can be identified as having all these labels, for example "env=prod and app=web".
 type AssignmentGroupLabelOutput struct{ *pulumi.OutputState }
 
@@ -750,12 +665,6 @@ func (o AssignmentGroupLabelOutput) ToAssignmentGroupLabelOutput() AssignmentGro
 
 func (o AssignmentGroupLabelOutput) ToAssignmentGroupLabelOutputWithContext(ctx context.Context) AssignmentGroupLabelOutput {
 	return o
-}
-
-func (o AssignmentGroupLabelOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentGroupLabel] {
-	return pulumix.Output[AssignmentGroupLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
@@ -775,12 +684,6 @@ func (o AssignmentGroupLabelArrayOutput) ToAssignmentGroupLabelArrayOutput() Ass
 
 func (o AssignmentGroupLabelArrayOutput) ToAssignmentGroupLabelArrayOutputWithContext(ctx context.Context) AssignmentGroupLabelArrayOutput {
 	return o
-}
-
-func (o AssignmentGroupLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentGroupLabel] {
-	return pulumix.Output[[]AssignmentGroupLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignmentGroupLabelArrayOutput) Index(i pulumi.IntInput) AssignmentGroupLabelOutput {
@@ -810,12 +713,6 @@ func (o AssignmentGroupLabelResponseOutput) ToAssignmentGroupLabelResponseOutput
 	return o
 }
 
-func (o AssignmentGroupLabelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentGroupLabelResponse] {
-	return pulumix.Output[AssignmentGroupLabelResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
 func (o AssignmentGroupLabelResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AssignmentGroupLabelResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -833,12 +730,6 @@ func (o AssignmentGroupLabelResponseArrayOutput) ToAssignmentGroupLabelResponseA
 
 func (o AssignmentGroupLabelResponseArrayOutput) ToAssignmentGroupLabelResponseArrayOutputWithContext(ctx context.Context) AssignmentGroupLabelResponseArrayOutput {
 	return o
-}
-
-func (o AssignmentGroupLabelResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentGroupLabelResponse] {
-	return pulumix.Output[[]AssignmentGroupLabelResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignmentGroupLabelResponseArrayOutput) Index(i pulumi.IntInput) AssignmentGroupLabelResponseOutput {
@@ -890,12 +781,6 @@ func (i AssignmentOsTypeArgs) ToAssignmentOsTypeOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentOsTypeOutput)
 }
 
-func (i AssignmentOsTypeArgs) ToOutput(ctx context.Context) pulumix.Output[AssignmentOsType] {
-	return pulumix.Output[AssignmentOsType]{
-		OutputState: i.ToAssignmentOsTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AssignmentOsTypeArrayInput is an input type that accepts AssignmentOsTypeArray and AssignmentOsTypeArrayOutput values.
 // You can construct a concrete instance of `AssignmentOsTypeArrayInput` via:
 //
@@ -921,12 +806,6 @@ func (i AssignmentOsTypeArray) ToAssignmentOsTypeArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentOsTypeArrayOutput)
 }
 
-func (i AssignmentOsTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentOsType] {
-	return pulumix.Output[[]AssignmentOsType]{
-		OutputState: i.ToAssignmentOsTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the criteria for selecting VM Instances by OS type.
 type AssignmentOsTypeOutput struct{ *pulumi.OutputState }
 
@@ -940,12 +819,6 @@ func (o AssignmentOsTypeOutput) ToAssignmentOsTypeOutput() AssignmentOsTypeOutpu
 
 func (o AssignmentOsTypeOutput) ToAssignmentOsTypeOutputWithContext(ctx context.Context) AssignmentOsTypeOutput {
 	return o
-}
-
-func (o AssignmentOsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentOsType] {
-	return pulumix.Output[AssignmentOsType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Targets VM instances with OS Inventory enabled and having the following OS architecture.
@@ -975,12 +848,6 @@ func (o AssignmentOsTypeArrayOutput) ToAssignmentOsTypeArrayOutput() AssignmentO
 
 func (o AssignmentOsTypeArrayOutput) ToAssignmentOsTypeArrayOutputWithContext(ctx context.Context) AssignmentOsTypeArrayOutput {
 	return o
-}
-
-func (o AssignmentOsTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentOsType] {
-	return pulumix.Output[[]AssignmentOsType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignmentOsTypeArrayOutput) Index(i pulumi.IntInput) AssignmentOsTypeOutput {
@@ -1014,12 +881,6 @@ func (o AssignmentOsTypeResponseOutput) ToAssignmentOsTypeResponseOutputWithCont
 	return o
 }
 
-func (o AssignmentOsTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentOsTypeResponse] {
-	return pulumix.Output[AssignmentOsTypeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Targets VM instances with OS Inventory enabled and having the following OS architecture.
 func (o AssignmentOsTypeResponseOutput) OsArchitecture() pulumi.StringOutput {
 	return o.ApplyT(func(v AssignmentOsTypeResponse) string { return v.OsArchitecture }).(pulumi.StringOutput)
@@ -1047,12 +908,6 @@ func (o AssignmentOsTypeResponseArrayOutput) ToAssignmentOsTypeResponseArrayOutp
 
 func (o AssignmentOsTypeResponseArrayOutput) ToAssignmentOsTypeResponseArrayOutputWithContext(ctx context.Context) AssignmentOsTypeResponseArrayOutput {
 	return o
-}
-
-func (o AssignmentOsTypeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentOsTypeResponse] {
-	return pulumix.Output[[]AssignmentOsTypeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignmentOsTypeResponseArrayOutput) Index(i pulumi.IntInput) AssignmentOsTypeResponseOutput {
@@ -1088,12 +943,6 @@ func (o AssignmentResponseOutput) ToAssignmentResponseOutput() AssignmentRespons
 
 func (o AssignmentResponseOutput) ToAssignmentResponseOutputWithContext(ctx context.Context) AssignmentResponseOutput {
 	return o
-}
-
-func (o AssignmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentResponse] {
-	return pulumix.Output[AssignmentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups, for example "env=prod or env=staging".
@@ -1160,12 +1009,6 @@ func (i ExecStepArgs) ToExecStepOutputWithContext(ctx context.Context) ExecStepO
 	return pulumi.ToOutputWithContext(ctx, i).(ExecStepOutput)
 }
 
-func (i ExecStepArgs) ToOutput(ctx context.Context) pulumix.Output[ExecStep] {
-	return pulumix.Output[ExecStep]{
-		OutputState: i.ToExecStepOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExecStepArgs) ToExecStepPtrOutput() ExecStepPtrOutput {
 	return i.ToExecStepPtrOutputWithContext(context.Background())
 }
@@ -1207,12 +1050,6 @@ func (i *execStepPtrType) ToExecStepPtrOutputWithContext(ctx context.Context) Ex
 	return pulumi.ToOutputWithContext(ctx, i).(ExecStepPtrOutput)
 }
 
-func (i *execStepPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExecStep] {
-	return pulumix.Output[*ExecStep]{
-		OutputState: i.ToExecStepPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A step that runs an executable for a PatchJob.
 type ExecStepOutput struct{ *pulumi.OutputState }
 
@@ -1238,12 +1075,6 @@ func (o ExecStepOutput) ToExecStepPtrOutputWithContext(ctx context.Context) Exec
 	}).(ExecStepPtrOutput)
 }
 
-func (o ExecStepOutput) ToOutput(ctx context.Context) pulumix.Output[ExecStep] {
-	return pulumix.Output[ExecStep]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ExecStepConfig for all Linux VMs targeted by the PatchJob.
 func (o ExecStepOutput) LinuxExecStepConfig() ExecStepConfigPtrOutput {
 	return o.ApplyT(func(v ExecStep) *ExecStepConfig { return v.LinuxExecStepConfig }).(ExecStepConfigPtrOutput)
@@ -1266,12 +1097,6 @@ func (o ExecStepPtrOutput) ToExecStepPtrOutput() ExecStepPtrOutput {
 
 func (o ExecStepPtrOutput) ToExecStepPtrOutputWithContext(ctx context.Context) ExecStepPtrOutput {
 	return o
-}
-
-func (o ExecStepPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecStep] {
-	return pulumix.Output[*ExecStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecStepPtrOutput) Elem() ExecStepOutput {
@@ -1351,12 +1176,6 @@ func (i ExecStepConfigArgs) ToExecStepConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExecStepConfigOutput)
 }
 
-func (i ExecStepConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ExecStepConfig] {
-	return pulumix.Output[ExecStepConfig]{
-		OutputState: i.ToExecStepConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExecStepConfigArgs) ToExecStepConfigPtrOutput() ExecStepConfigPtrOutput {
 	return i.ToExecStepConfigPtrOutputWithContext(context.Background())
 }
@@ -1398,12 +1217,6 @@ func (i *execStepConfigPtrType) ToExecStepConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ExecStepConfigPtrOutput)
 }
 
-func (i *execStepConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExecStepConfig] {
-	return pulumix.Output[*ExecStepConfig]{
-		OutputState: i.ToExecStepConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Common configurations for an ExecStep.
 type ExecStepConfigOutput struct{ *pulumi.OutputState }
 
@@ -1427,12 +1240,6 @@ func (o ExecStepConfigOutput) ToExecStepConfigPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecStepConfig) *ExecStepConfig {
 		return &v
 	}).(ExecStepConfigPtrOutput)
-}
-
-func (o ExecStepConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ExecStepConfig] {
-	return pulumix.Output[ExecStepConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
@@ -1467,12 +1274,6 @@ func (o ExecStepConfigPtrOutput) ToExecStepConfigPtrOutput() ExecStepConfigPtrOu
 
 func (o ExecStepConfigPtrOutput) ToExecStepConfigPtrOutputWithContext(ctx context.Context) ExecStepConfigPtrOutput {
 	return o
-}
-
-func (o ExecStepConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExecStepConfig] {
-	return pulumix.Output[*ExecStepConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExecStepConfigPtrOutput) Elem() ExecStepConfigOutput {
@@ -1552,12 +1353,6 @@ func (o ExecStepConfigResponseOutput) ToExecStepConfigResponseOutputWithContext(
 	return o
 }
 
-func (o ExecStepConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExecStepConfigResponse] {
-	return pulumix.Output[ExecStepConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
 func (o ExecStepConfigResponseOutput) AllowedSuccessCodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v ExecStepConfigResponse) []int { return v.AllowedSuccessCodes }).(pulumi.IntArrayOutput)
@@ -1599,12 +1394,6 @@ func (o ExecStepResponseOutput) ToExecStepResponseOutput() ExecStepResponseOutpu
 
 func (o ExecStepResponseOutput) ToExecStepResponseOutputWithContext(ctx context.Context) ExecStepResponseOutput {
 	return o
-}
-
-func (o ExecStepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExecStepResponse] {
-	return pulumix.Output[ExecStepResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -1656,12 +1445,6 @@ func (i FixedOrPercentArgs) ToFixedOrPercentOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(FixedOrPercentOutput)
 }
 
-func (i FixedOrPercentArgs) ToOutput(ctx context.Context) pulumix.Output[FixedOrPercent] {
-	return pulumix.Output[FixedOrPercent]{
-		OutputState: i.ToFixedOrPercentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FixedOrPercentArgs) ToFixedOrPercentPtrOutput() FixedOrPercentPtrOutput {
 	return i.ToFixedOrPercentPtrOutputWithContext(context.Background())
 }
@@ -1703,12 +1486,6 @@ func (i *fixedOrPercentPtrType) ToFixedOrPercentPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FixedOrPercentPtrOutput)
 }
 
-func (i *fixedOrPercentPtrType) ToOutput(ctx context.Context) pulumix.Output[*FixedOrPercent] {
-	return pulumix.Output[*FixedOrPercent]{
-		OutputState: i.ToFixedOrPercentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
 type FixedOrPercentOutput struct{ *pulumi.OutputState }
 
@@ -1734,12 +1511,6 @@ func (o FixedOrPercentOutput) ToFixedOrPercentPtrOutputWithContext(ctx context.C
 	}).(FixedOrPercentPtrOutput)
 }
 
-func (o FixedOrPercentOutput) ToOutput(ctx context.Context) pulumix.Output[FixedOrPercent] {
-	return pulumix.Output[FixedOrPercent]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies a fixed value.
 func (o FixedOrPercentOutput) Fixed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FixedOrPercent) *int { return v.Fixed }).(pulumi.IntPtrOutput)
@@ -1762,12 +1533,6 @@ func (o FixedOrPercentPtrOutput) ToFixedOrPercentPtrOutput() FixedOrPercentPtrOu
 
 func (o FixedOrPercentPtrOutput) ToFixedOrPercentPtrOutputWithContext(ctx context.Context) FixedOrPercentPtrOutput {
 	return o
-}
-
-func (o FixedOrPercentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FixedOrPercent] {
-	return pulumix.Output[*FixedOrPercent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FixedOrPercentPtrOutput) Elem() FixedOrPercentOutput {
@@ -1823,12 +1588,6 @@ func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponseOutputWithContext(
 	return o
 }
 
-func (o FixedOrPercentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FixedOrPercentResponse] {
-	return pulumix.Output[FixedOrPercentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies a fixed value.
 func (o FixedOrPercentResponseOutput) Fixed() pulumi.IntOutput {
 	return o.ApplyT(func(v FixedOrPercentResponse) int { return v.Fixed }).(pulumi.IntOutput)
@@ -1882,12 +1641,6 @@ func (i GcsObjectArgs) ToGcsObjectOutputWithContext(ctx context.Context) GcsObje
 	return pulumi.ToOutputWithContext(ctx, i).(GcsObjectOutput)
 }
 
-func (i GcsObjectArgs) ToOutput(ctx context.Context) pulumix.Output[GcsObject] {
-	return pulumix.Output[GcsObject]{
-		OutputState: i.ToGcsObjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GcsObjectArgs) ToGcsObjectPtrOutput() GcsObjectPtrOutput {
 	return i.ToGcsObjectPtrOutputWithContext(context.Background())
 }
@@ -1929,12 +1682,6 @@ func (i *gcsObjectPtrType) ToGcsObjectPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GcsObjectPtrOutput)
 }
 
-func (i *gcsObjectPtrType) ToOutput(ctx context.Context) pulumix.Output[*GcsObject] {
-	return pulumix.Output[*GcsObject]{
-		OutputState: i.ToGcsObjectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Google Cloud Storage object representation.
 type GcsObjectOutput struct{ *pulumi.OutputState }
 
@@ -1958,12 +1705,6 @@ func (o GcsObjectOutput) ToGcsObjectPtrOutputWithContext(ctx context.Context) Gc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsObject) *GcsObject {
 		return &v
 	}).(GcsObjectPtrOutput)
-}
-
-func (o GcsObjectOutput) ToOutput(ctx context.Context) pulumix.Output[GcsObject] {
-	return pulumix.Output[GcsObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Google Cloud Storage object.
@@ -1993,12 +1734,6 @@ func (o GcsObjectPtrOutput) ToGcsObjectPtrOutput() GcsObjectPtrOutput {
 
 func (o GcsObjectPtrOutput) ToGcsObjectPtrOutputWithContext(ctx context.Context) GcsObjectPtrOutput {
 	return o
-}
-
-func (o GcsObjectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GcsObject] {
-	return pulumix.Output[*GcsObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GcsObjectPtrOutput) Elem() GcsObjectOutput {
@@ -2066,12 +1801,6 @@ func (o GcsObjectResponseOutput) ToGcsObjectResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o GcsObjectResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GcsObjectResponse] {
-	return pulumix.Output[GcsObjectResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Bucket of the Google Cloud Storage object.
 func (o GcsObjectResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsObjectResponse) string { return v.Bucket }).(pulumi.StringOutput)
@@ -2126,12 +1855,6 @@ func (i GooRepositoryArgs) ToGooRepositoryOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GooRepositoryOutput)
 }
 
-func (i GooRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[GooRepository] {
-	return pulumix.Output[GooRepository]{
-		OutputState: i.ToGooRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GooRepositoryArgs) ToGooRepositoryPtrOutput() GooRepositoryPtrOutput {
 	return i.ToGooRepositoryPtrOutputWithContext(context.Background())
 }
@@ -2173,12 +1896,6 @@ func (i *gooRepositoryPtrType) ToGooRepositoryPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(GooRepositoryPtrOutput)
 }
 
-func (i *gooRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooRepository] {
-	return pulumix.Output[*GooRepository]{
-		OutputState: i.ToGooRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
 type GooRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -2204,12 +1921,6 @@ func (o GooRepositoryOutput) ToGooRepositoryPtrOutputWithContext(ctx context.Con
 	}).(GooRepositoryPtrOutput)
 }
 
-func (o GooRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[GooRepository] {
-	return pulumix.Output[GooRepository]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the repository.
 func (o GooRepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooRepository) string { return v.Name }).(pulumi.StringOutput)
@@ -2232,12 +1943,6 @@ func (o GooRepositoryPtrOutput) ToGooRepositoryPtrOutput() GooRepositoryPtrOutpu
 
 func (o GooRepositoryPtrOutput) ToGooRepositoryPtrOutputWithContext(ctx context.Context) GooRepositoryPtrOutput {
 	return o
-}
-
-func (o GooRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooRepository] {
-	return pulumix.Output[*GooRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooRepositoryPtrOutput) Elem() GooRepositoryOutput {
@@ -2293,12 +1998,6 @@ func (o GooRepositoryResponseOutput) ToGooRepositoryResponseOutputWithContext(ct
 	return o
 }
 
-func (o GooRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooRepositoryResponse] {
-	return pulumix.Output[GooRepositoryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the repository.
 func (o GooRepositoryResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooRepositoryResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -2338,12 +2037,6 @@ func (i GooSettingsArgs) ToGooSettingsOutput() GooSettingsOutput {
 
 func (i GooSettingsArgs) ToGooSettingsOutputWithContext(ctx context.Context) GooSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GooSettingsOutput)
-}
-
-func (i GooSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GooSettings] {
-	return pulumix.Output[GooSettings]{
-		OutputState: i.ToGooSettingsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GooSettingsArgs) ToGooSettingsPtrOutput() GooSettingsPtrOutput {
@@ -2387,12 +2080,6 @@ func (i *gooSettingsPtrType) ToGooSettingsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GooSettingsPtrOutput)
 }
 
-func (i *gooSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GooSettings] {
-	return pulumix.Output[*GooSettings]{
-		OutputState: i.ToGooSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Googet patching is performed by running `googet update`.
 type GooSettingsOutput struct{ *pulumi.OutputState }
 
@@ -2418,12 +2105,6 @@ func (o GooSettingsOutput) ToGooSettingsPtrOutputWithContext(ctx context.Context
 	}).(GooSettingsPtrOutput)
 }
 
-func (o GooSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GooSettings] {
-	return pulumix.Output[GooSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GooSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (GooSettingsPtrOutput) ElementType() reflect.Type {
@@ -2436,12 +2117,6 @@ func (o GooSettingsPtrOutput) ToGooSettingsPtrOutput() GooSettingsPtrOutput {
 
 func (o GooSettingsPtrOutput) ToGooSettingsPtrOutputWithContext(ctx context.Context) GooSettingsPtrOutput {
 	return o
-}
-
-func (o GooSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GooSettings] {
-	return pulumix.Output[*GooSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooSettingsPtrOutput) Elem() GooSettingsOutput {
@@ -2471,12 +2146,6 @@ func (o GooSettingsResponseOutput) ToGooSettingsResponseOutput() GooSettingsResp
 
 func (o GooSettingsResponseOutput) ToGooSettingsResponseOutputWithContext(ctx context.Context) GooSettingsResponseOutput {
 	return o
-}
-
-func (o GooSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GooSettingsResponse] {
-	return pulumix.Output[GooSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
@@ -2518,12 +2187,6 @@ func (i MonthlyScheduleArgs) ToMonthlyScheduleOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleOutput)
 }
 
-func (i MonthlyScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[MonthlySchedule] {
-	return pulumix.Output[MonthlySchedule]{
-		OutputState: i.ToMonthlyScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
 type MonthlyScheduleOutput struct{ *pulumi.OutputState }
 
@@ -2537,12 +2200,6 @@ func (o MonthlyScheduleOutput) ToMonthlyScheduleOutput() MonthlyScheduleOutput {
 
 func (o MonthlyScheduleOutput) ToMonthlyScheduleOutputWithContext(ctx context.Context) MonthlyScheduleOutput {
 	return o
-}
-
-func (o MonthlyScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[MonthlySchedule] {
-	return pulumix.Output[MonthlySchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
@@ -2576,12 +2233,6 @@ func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponseOutput() Monthly
 
 func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponseOutputWithContext(ctx context.Context) MonthlyScheduleResponseOutput {
 	return o
-}
-
-func (o MonthlyScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonthlyScheduleResponse] {
-	return pulumix.Output[MonthlyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
@@ -2629,12 +2280,6 @@ func (i OneTimeScheduleArgs) ToOneTimeScheduleOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OneTimeScheduleOutput)
 }
 
-func (i OneTimeScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[OneTimeSchedule] {
-	return pulumix.Output[OneTimeSchedule]{
-		OutputState: i.ToOneTimeScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 type OneTimeScheduleOutput struct{ *pulumi.OutputState }
 
@@ -2648,12 +2293,6 @@ func (o OneTimeScheduleOutput) ToOneTimeScheduleOutput() OneTimeScheduleOutput {
 
 func (o OneTimeScheduleOutput) ToOneTimeScheduleOutputWithContext(ctx context.Context) OneTimeScheduleOutput {
 	return o
-}
-
-func (o OneTimeScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[OneTimeSchedule] {
-	return pulumix.Output[OneTimeSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desired patch job execution time.
@@ -2680,12 +2319,6 @@ func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponseOutput() OneTime
 
 func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponseOutputWithContext(ctx context.Context) OneTimeScheduleResponseOutput {
 	return o
-}
-
-func (o OneTimeScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OneTimeScheduleResponse] {
-	return pulumix.Output[OneTimeScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desired patch job execution time.
@@ -2736,12 +2369,6 @@ func (i PackageArgs) ToPackageOutputWithContext(ctx context.Context) PackageOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PackageOutput)
 }
 
-func (i PackageArgs) ToOutput(ctx context.Context) pulumix.Output[Package] {
-	return pulumix.Output[Package]{
-		OutputState: i.ToPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PackageArrayInput is an input type that accepts PackageArray and PackageArrayOutput values.
 // You can construct a concrete instance of `PackageArrayInput` via:
 //
@@ -2767,12 +2394,6 @@ func (i PackageArray) ToPackageArrayOutputWithContext(ctx context.Context) Packa
 	return pulumi.ToOutputWithContext(ctx, i).(PackageArrayOutput)
 }
 
-func (i PackageArray) ToOutput(ctx context.Context) pulumix.Output[[]Package] {
-	return pulumix.Output[[]Package]{
-		OutputState: i.ToPackageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
 type PackageOutput struct{ *pulumi.OutputState }
 
@@ -2786,12 +2407,6 @@ func (o PackageOutput) ToPackageOutput() PackageOutput {
 
 func (o PackageOutput) ToPackageOutputWithContext(ctx context.Context) PackageOutput {
 	return o
-}
-
-func (o PackageOutput) ToOutput(ctx context.Context) pulumix.Output[Package] {
-	return pulumix.Output[Package]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
@@ -2821,12 +2436,6 @@ func (o PackageArrayOutput) ToPackageArrayOutput() PackageArrayOutput {
 
 func (o PackageArrayOutput) ToPackageArrayOutputWithContext(ctx context.Context) PackageArrayOutput {
 	return o
-}
-
-func (o PackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Package] {
-	return pulumix.Output[[]Package]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PackageArrayOutput) Index(i pulumi.IntInput) PackageOutput {
@@ -2882,12 +2491,6 @@ func (i PackageRepositoryArgs) ToPackageRepositoryOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PackageRepositoryOutput)
 }
 
-func (i PackageRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[PackageRepository] {
-	return pulumix.Output[PackageRepository]{
-		OutputState: i.ToPackageRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PackageRepositoryArrayInput is an input type that accepts PackageRepositoryArray and PackageRepositoryArrayOutput values.
 // You can construct a concrete instance of `PackageRepositoryArrayInput` via:
 //
@@ -2913,12 +2516,6 @@ func (i PackageRepositoryArray) ToPackageRepositoryArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PackageRepositoryArrayOutput)
 }
 
-func (i PackageRepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]PackageRepository] {
-	return pulumix.Output[[]PackageRepository]{
-		OutputState: i.ToPackageRepositoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A package repository.
 type PackageRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -2932,12 +2529,6 @@ func (o PackageRepositoryOutput) ToPackageRepositoryOutput() PackageRepositoryOu
 
 func (o PackageRepositoryOutput) ToPackageRepositoryOutputWithContext(ctx context.Context) PackageRepositoryOutput {
 	return o
-}
-
-func (o PackageRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[PackageRepository] {
-	return pulumix.Output[PackageRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An Apt Repository.
@@ -2974,12 +2565,6 @@ func (o PackageRepositoryArrayOutput) ToPackageRepositoryArrayOutputWithContext(
 	return o
 }
 
-func (o PackageRepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PackageRepository] {
-	return pulumix.Output[[]PackageRepository]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PackageRepositoryArrayOutput) Index(i pulumi.IntInput) PackageRepositoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PackageRepository {
 		return vs[0].([]PackageRepository)[vs[1].(int)]
@@ -3011,12 +2596,6 @@ func (o PackageRepositoryResponseOutput) ToPackageRepositoryResponseOutput() Pac
 
 func (o PackageRepositoryResponseOutput) ToPackageRepositoryResponseOutputWithContext(ctx context.Context) PackageRepositoryResponseOutput {
 	return o
-}
-
-func (o PackageRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PackageRepositoryResponse] {
-	return pulumix.Output[PackageRepositoryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An Apt Repository.
@@ -3053,12 +2632,6 @@ func (o PackageRepositoryResponseArrayOutput) ToPackageRepositoryResponseArrayOu
 	return o
 }
 
-func (o PackageRepositoryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PackageRepositoryResponse] {
-	return pulumix.Output[[]PackageRepositoryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PackageRepositoryResponseArrayOutput) Index(i pulumi.IntInput) PackageRepositoryResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PackageRepositoryResponse {
 		return vs[0].([]PackageRepositoryResponse)[vs[1].(int)]
@@ -3090,12 +2663,6 @@ func (o PackageResponseOutput) ToPackageResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o PackageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PackageResponse] {
-	return pulumix.Output[PackageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
 func (o PackageResponseOutput) DesiredState() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageResponse) string { return v.DesiredState }).(pulumi.StringOutput)
@@ -3123,12 +2690,6 @@ func (o PackageResponseArrayOutput) ToPackageResponseArrayOutput() PackageRespon
 
 func (o PackageResponseArrayOutput) ToPackageResponseArrayOutputWithContext(ctx context.Context) PackageResponseArrayOutput {
 	return o
-}
-
-func (o PackageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PackageResponse] {
-	return pulumix.Output[[]PackageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PackageResponseArrayOutput) Index(i pulumi.IntInput) PackageResponseOutput {
@@ -3204,12 +2765,6 @@ func (i PatchConfigArgs) ToPatchConfigOutputWithContext(ctx context.Context) Pat
 	return pulumi.ToOutputWithContext(ctx, i).(PatchConfigOutput)
 }
 
-func (i PatchConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PatchConfig] {
-	return pulumix.Output[PatchConfig]{
-		OutputState: i.ToPatchConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchConfigArgs) ToPatchConfigPtrOutput() PatchConfigPtrOutput {
 	return i.ToPatchConfigPtrOutputWithContext(context.Background())
 }
@@ -3251,12 +2806,6 @@ func (i *patchConfigPtrType) ToPatchConfigPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PatchConfigPtrOutput)
 }
 
-func (i *patchConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchConfig] {
-	return pulumix.Output[*PatchConfig]{
-		OutputState: i.ToPatchConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
 type PatchConfigOutput struct{ *pulumi.OutputState }
 
@@ -3280,12 +2829,6 @@ func (o PatchConfigOutput) ToPatchConfigPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchConfig) *PatchConfig {
 		return &v
 	}).(PatchConfigPtrOutput)
-}
-
-func (o PatchConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PatchConfig] {
-	return pulumix.Output[PatchConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Apt update settings. Use this setting to override the default `apt` patch rules.
@@ -3345,12 +2888,6 @@ func (o PatchConfigPtrOutput) ToPatchConfigPtrOutput() PatchConfigPtrOutput {
 
 func (o PatchConfigPtrOutput) ToPatchConfigPtrOutputWithContext(ctx context.Context) PatchConfigPtrOutput {
 	return o
-}
-
-func (o PatchConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchConfig] {
-	return pulumix.Output[*PatchConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchConfigPtrOutput) Elem() PatchConfigOutput {
@@ -3490,12 +3027,6 @@ func (o PatchConfigResponseOutput) ToPatchConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o PatchConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PatchConfigResponse] {
-	return pulumix.Output[PatchConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Apt update settings. Use this setting to override the default `apt` patch rules.
 func (o PatchConfigResponseOutput) Apt() AptSettingsResponseOutput {
 	return o.ApplyT(func(v PatchConfigResponse) AptSettingsResponse { return v.Apt }).(AptSettingsResponseOutput)
@@ -3592,12 +3123,6 @@ func (i PatchInstanceFilterArgs) ToPatchInstanceFilterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterOutput)
 }
 
-func (i PatchInstanceFilterArgs) ToOutput(ctx context.Context) pulumix.Output[PatchInstanceFilter] {
-	return pulumix.Output[PatchInstanceFilter]{
-		OutputState: i.ToPatchInstanceFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
 type PatchInstanceFilterOutput struct{ *pulumi.OutputState }
 
@@ -3611,12 +3136,6 @@ func (o PatchInstanceFilterOutput) ToPatchInstanceFilterOutput() PatchInstanceFi
 
 func (o PatchInstanceFilterOutput) ToPatchInstanceFilterOutputWithContext(ctx context.Context) PatchInstanceFilterOutput {
 	return o
-}
-
-func (o PatchInstanceFilterOutput) ToOutput(ctx context.Context) pulumix.Output[PatchInstanceFilter] {
-	return pulumix.Output[PatchInstanceFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target all VM instances in the project. If true, no other criteria is permitted.
@@ -3679,12 +3198,6 @@ func (i PatchInstanceFilterGroupLabelArgs) ToPatchInstanceFilterGroupLabelOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterGroupLabelOutput)
 }
 
-func (i PatchInstanceFilterGroupLabelArgs) ToOutput(ctx context.Context) pulumix.Output[PatchInstanceFilterGroupLabel] {
-	return pulumix.Output[PatchInstanceFilterGroupLabel]{
-		OutputState: i.ToPatchInstanceFilterGroupLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PatchInstanceFilterGroupLabelArrayInput is an input type that accepts PatchInstanceFilterGroupLabelArray and PatchInstanceFilterGroupLabelArrayOutput values.
 // You can construct a concrete instance of `PatchInstanceFilterGroupLabelArrayInput` via:
 //
@@ -3710,12 +3223,6 @@ func (i PatchInstanceFilterGroupLabelArray) ToPatchInstanceFilterGroupLabelArray
 	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterGroupLabelArrayOutput)
 }
 
-func (i PatchInstanceFilterGroupLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]PatchInstanceFilterGroupLabel] {
-	return pulumix.Output[[]PatchInstanceFilterGroupLabel]{
-		OutputState: i.ToPatchInstanceFilterGroupLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web".
 type PatchInstanceFilterGroupLabelOutput struct{ *pulumi.OutputState }
 
@@ -3729,12 +3236,6 @@ func (o PatchInstanceFilterGroupLabelOutput) ToPatchInstanceFilterGroupLabelOutp
 
 func (o PatchInstanceFilterGroupLabelOutput) ToPatchInstanceFilterGroupLabelOutputWithContext(ctx context.Context) PatchInstanceFilterGroupLabelOutput {
 	return o
-}
-
-func (o PatchInstanceFilterGroupLabelOutput) ToOutput(ctx context.Context) pulumix.Output[PatchInstanceFilterGroupLabel] {
-	return pulumix.Output[PatchInstanceFilterGroupLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
@@ -3754,12 +3255,6 @@ func (o PatchInstanceFilterGroupLabelArrayOutput) ToPatchInstanceFilterGroupLabe
 
 func (o PatchInstanceFilterGroupLabelArrayOutput) ToPatchInstanceFilterGroupLabelArrayOutputWithContext(ctx context.Context) PatchInstanceFilterGroupLabelArrayOutput {
 	return o
-}
-
-func (o PatchInstanceFilterGroupLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PatchInstanceFilterGroupLabel] {
-	return pulumix.Output[[]PatchInstanceFilterGroupLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchInstanceFilterGroupLabelArrayOutput) Index(i pulumi.IntInput) PatchInstanceFilterGroupLabelOutput {
@@ -3789,12 +3284,6 @@ func (o PatchInstanceFilterGroupLabelResponseOutput) ToPatchInstanceFilterGroupL
 	return o
 }
 
-func (o PatchInstanceFilterGroupLabelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PatchInstanceFilterGroupLabelResponse] {
-	return pulumix.Output[PatchInstanceFilterGroupLabelResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
 func (o PatchInstanceFilterGroupLabelResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PatchInstanceFilterGroupLabelResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -3812,12 +3301,6 @@ func (o PatchInstanceFilterGroupLabelResponseArrayOutput) ToPatchInstanceFilterG
 
 func (o PatchInstanceFilterGroupLabelResponseArrayOutput) ToPatchInstanceFilterGroupLabelResponseArrayOutputWithContext(ctx context.Context) PatchInstanceFilterGroupLabelResponseArrayOutput {
 	return o
-}
-
-func (o PatchInstanceFilterGroupLabelResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PatchInstanceFilterGroupLabelResponse] {
-	return pulumix.Output[[]PatchInstanceFilterGroupLabelResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchInstanceFilterGroupLabelResponseArrayOutput) Index(i pulumi.IntInput) PatchInstanceFilterGroupLabelResponseOutput {
@@ -3853,12 +3336,6 @@ func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponseOutput()
 
 func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponseOutputWithContext(ctx context.Context) PatchInstanceFilterResponseOutput {
 	return o
-}
-
-func (o PatchInstanceFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PatchInstanceFilterResponse] {
-	return pulumix.Output[PatchInstanceFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target all VM instances in the project. If true, no other criteria is permitted.
@@ -3925,12 +3402,6 @@ func (i PatchRolloutArgs) ToPatchRolloutOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PatchRolloutOutput)
 }
 
-func (i PatchRolloutArgs) ToOutput(ctx context.Context) pulumix.Output[PatchRollout] {
-	return pulumix.Output[PatchRollout]{
-		OutputState: i.ToPatchRolloutOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PatchRolloutArgs) ToPatchRolloutPtrOutput() PatchRolloutPtrOutput {
 	return i.ToPatchRolloutPtrOutputWithContext(context.Background())
 }
@@ -3972,12 +3443,6 @@ func (i *patchRolloutPtrType) ToPatchRolloutPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PatchRolloutPtrOutput)
 }
 
-func (i *patchRolloutPtrType) ToOutput(ctx context.Context) pulumix.Output[*PatchRollout] {
-	return pulumix.Output[*PatchRollout]{
-		OutputState: i.ToPatchRolloutPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
 type PatchRolloutOutput struct{ *pulumi.OutputState }
 
@@ -4003,12 +3468,6 @@ func (o PatchRolloutOutput) ToPatchRolloutPtrOutputWithContext(ctx context.Conte
 	}).(PatchRolloutPtrOutput)
 }
 
-func (o PatchRolloutOutput) ToOutput(ctx context.Context) pulumix.Output[PatchRollout] {
-	return pulumix.Output[PatchRollout]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
 func (o PatchRolloutOutput) DisruptionBudget() FixedOrPercentPtrOutput {
 	return o.ApplyT(func(v PatchRollout) *FixedOrPercent { return v.DisruptionBudget }).(FixedOrPercentPtrOutput)
@@ -4031,12 +3490,6 @@ func (o PatchRolloutPtrOutput) ToPatchRolloutPtrOutput() PatchRolloutPtrOutput {
 
 func (o PatchRolloutPtrOutput) ToPatchRolloutPtrOutputWithContext(ctx context.Context) PatchRolloutPtrOutput {
 	return o
-}
-
-func (o PatchRolloutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchRollout] {
-	return pulumix.Output[*PatchRollout]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchRolloutPtrOutput) Elem() PatchRolloutOutput {
@@ -4090,12 +3543,6 @@ func (o PatchRolloutResponseOutput) ToPatchRolloutResponseOutput() PatchRolloutR
 
 func (o PatchRolloutResponseOutput) ToPatchRolloutResponseOutputWithContext(ctx context.Context) PatchRolloutResponseOutput {
 	return o
-}
-
-func (o PatchRolloutResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PatchRolloutResponse] {
-	return pulumix.Output[PatchRolloutResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
@@ -4167,12 +3614,6 @@ func (i RecurringScheduleArgs) ToRecurringScheduleOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RecurringScheduleOutput)
 }
 
-func (i RecurringScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[RecurringSchedule] {
-	return pulumix.Output[RecurringSchedule]{
-		OutputState: i.ToRecurringScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets the time for recurring patch deployments.
 type RecurringScheduleOutput struct{ *pulumi.OutputState }
 
@@ -4186,12 +3627,6 @@ func (o RecurringScheduleOutput) ToRecurringScheduleOutput() RecurringScheduleOu
 
 func (o RecurringScheduleOutput) ToRecurringScheduleOutputWithContext(ctx context.Context) RecurringScheduleOutput {
 	return o
-}
-
-func (o RecurringScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[RecurringSchedule] {
-	return pulumix.Output[RecurringSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The end time at which a recurring patch deployment schedule is no longer active.
@@ -4264,12 +3699,6 @@ func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponseOutput() Rec
 
 func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponseOutputWithContext(ctx context.Context) RecurringScheduleResponseOutput {
 	return o
-}
-
-func (o RecurringScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RecurringScheduleResponse] {
-	return pulumix.Output[RecurringScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The end time at which a recurring patch deployment schedule is no longer active.
@@ -4372,12 +3801,6 @@ func (i SoftwareRecipeArgs) ToSoftwareRecipeOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeOutput)
 }
 
-func (i SoftwareRecipeArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipe] {
-	return pulumix.Output[SoftwareRecipe]{
-		OutputState: i.ToSoftwareRecipeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SoftwareRecipeArrayInput is an input type that accepts SoftwareRecipeArray and SoftwareRecipeArrayOutput values.
 // You can construct a concrete instance of `SoftwareRecipeArrayInput` via:
 //
@@ -4403,12 +3826,6 @@ func (i SoftwareRecipeArray) ToSoftwareRecipeArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArrayOutput)
 }
 
-func (i SoftwareRecipeArray) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareRecipe] {
-	return pulumix.Output[[]SoftwareRecipe]{
-		OutputState: i.ToSoftwareRecipeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step.
 type SoftwareRecipeOutput struct{ *pulumi.OutputState }
 
@@ -4422,12 +3839,6 @@ func (o SoftwareRecipeOutput) ToSoftwareRecipeOutput() SoftwareRecipeOutput {
 
 func (o SoftwareRecipeOutput) ToSoftwareRecipeOutputWithContext(ctx context.Context) SoftwareRecipeOutput {
 	return o
-}
-
-func (o SoftwareRecipeOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipe] {
-	return pulumix.Output[SoftwareRecipe]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resources available to be used in the steps in the recipe.
@@ -4472,12 +3883,6 @@ func (o SoftwareRecipeArrayOutput) ToSoftwareRecipeArrayOutput() SoftwareRecipeA
 
 func (o SoftwareRecipeArrayOutput) ToSoftwareRecipeArrayOutputWithContext(ctx context.Context) SoftwareRecipeArrayOutput {
 	return o
-}
-
-func (o SoftwareRecipeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareRecipe] {
-	return pulumix.Output[[]SoftwareRecipe]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeArrayOutput) Index(i pulumi.IntInput) SoftwareRecipeOutput {
@@ -4533,12 +3938,6 @@ func (i SoftwareRecipeArtifactArgs) ToSoftwareRecipeArtifactOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArtifactOutput)
 }
 
-func (i SoftwareRecipeArtifactArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeArtifact] {
-	return pulumix.Output[SoftwareRecipeArtifact]{
-		OutputState: i.ToSoftwareRecipeArtifactOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SoftwareRecipeArtifactArrayInput is an input type that accepts SoftwareRecipeArtifactArray and SoftwareRecipeArtifactArrayOutput values.
 // You can construct a concrete instance of `SoftwareRecipeArtifactArrayInput` via:
 //
@@ -4564,12 +3963,6 @@ func (i SoftwareRecipeArtifactArray) ToSoftwareRecipeArtifactArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArtifactArrayOutput)
 }
 
-func (i SoftwareRecipeArtifactArray) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareRecipeArtifact] {
-	return pulumix.Output[[]SoftwareRecipeArtifact]{
-		OutputState: i.ToSoftwareRecipeArtifactArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies a resource to be used in the recipe.
 type SoftwareRecipeArtifactOutput struct{ *pulumi.OutputState }
 
@@ -4583,12 +3976,6 @@ func (o SoftwareRecipeArtifactOutput) ToSoftwareRecipeArtifactOutput() SoftwareR
 
 func (o SoftwareRecipeArtifactOutput) ToSoftwareRecipeArtifactOutputWithContext(ctx context.Context) SoftwareRecipeArtifactOutput {
 	return o
-}
-
-func (o SoftwareRecipeArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeArtifact] {
-	return pulumix.Output[SoftwareRecipeArtifact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
@@ -4623,12 +4010,6 @@ func (o SoftwareRecipeArtifactArrayOutput) ToSoftwareRecipeArtifactArrayOutput()
 
 func (o SoftwareRecipeArtifactArrayOutput) ToSoftwareRecipeArtifactArrayOutputWithContext(ctx context.Context) SoftwareRecipeArtifactArrayOutput {
 	return o
-}
-
-func (o SoftwareRecipeArtifactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareRecipeArtifact] {
-	return pulumix.Output[[]SoftwareRecipeArtifact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeArtifactArrayOutput) Index(i pulumi.IntInput) SoftwareRecipeArtifactOutput {
@@ -4680,12 +4061,6 @@ func (i SoftwareRecipeArtifactGcsArgs) ToSoftwareRecipeArtifactGcsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArtifactGcsOutput)
 }
 
-func (i SoftwareRecipeArtifactGcsArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeArtifactGcs] {
-	return pulumix.Output[SoftwareRecipeArtifactGcs]{
-		OutputState: i.ToSoftwareRecipeArtifactGcsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SoftwareRecipeArtifactGcsArgs) ToSoftwareRecipeArtifactGcsPtrOutput() SoftwareRecipeArtifactGcsPtrOutput {
 	return i.ToSoftwareRecipeArtifactGcsPtrOutputWithContext(context.Background())
 }
@@ -4727,12 +4102,6 @@ func (i *softwareRecipeArtifactGcsPtrType) ToSoftwareRecipeArtifactGcsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArtifactGcsPtrOutput)
 }
 
-func (i *softwareRecipeArtifactGcsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeArtifactGcs] {
-	return pulumix.Output[*SoftwareRecipeArtifactGcs]{
-		OutputState: i.ToSoftwareRecipeArtifactGcsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies an artifact available as a Google Cloud Storage object.
 type SoftwareRecipeArtifactGcsOutput struct{ *pulumi.OutputState }
 
@@ -4756,12 +4125,6 @@ func (o SoftwareRecipeArtifactGcsOutput) ToSoftwareRecipeArtifactGcsPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeArtifactGcs) *SoftwareRecipeArtifactGcs {
 		return &v
 	}).(SoftwareRecipeArtifactGcsPtrOutput)
-}
-
-func (o SoftwareRecipeArtifactGcsOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeArtifactGcs] {
-	return pulumix.Output[SoftwareRecipeArtifactGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bucket of the Google Cloud Storage object. Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `my-bucket`.
@@ -4791,12 +4154,6 @@ func (o SoftwareRecipeArtifactGcsPtrOutput) ToSoftwareRecipeArtifactGcsPtrOutput
 
 func (o SoftwareRecipeArtifactGcsPtrOutput) ToSoftwareRecipeArtifactGcsPtrOutputWithContext(ctx context.Context) SoftwareRecipeArtifactGcsPtrOutput {
 	return o
-}
-
-func (o SoftwareRecipeArtifactGcsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeArtifactGcs] {
-	return pulumix.Output[*SoftwareRecipeArtifactGcs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeArtifactGcsPtrOutput) Elem() SoftwareRecipeArtifactGcsOutput {
@@ -4864,12 +4221,6 @@ func (o SoftwareRecipeArtifactGcsResponseOutput) ToSoftwareRecipeArtifactGcsResp
 	return o
 }
 
-func (o SoftwareRecipeArtifactGcsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeArtifactGcsResponse] {
-	return pulumix.Output[SoftwareRecipeArtifactGcsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Bucket of the Google Cloud Storage object. Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `my-bucket`.
 func (o SoftwareRecipeArtifactGcsResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeArtifactGcsResponse) string { return v.Bucket }).(pulumi.StringOutput)
@@ -4924,12 +4275,6 @@ func (i SoftwareRecipeArtifactRemoteArgs) ToSoftwareRecipeArtifactRemoteOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArtifactRemoteOutput)
 }
 
-func (i SoftwareRecipeArtifactRemoteArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeArtifactRemote] {
-	return pulumix.Output[SoftwareRecipeArtifactRemote]{
-		OutputState: i.ToSoftwareRecipeArtifactRemoteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SoftwareRecipeArtifactRemoteArgs) ToSoftwareRecipeArtifactRemotePtrOutput() SoftwareRecipeArtifactRemotePtrOutput {
 	return i.ToSoftwareRecipeArtifactRemotePtrOutputWithContext(context.Background())
 }
@@ -4971,12 +4316,6 @@ func (i *softwareRecipeArtifactRemotePtrType) ToSoftwareRecipeArtifactRemotePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArtifactRemotePtrOutput)
 }
 
-func (i *softwareRecipeArtifactRemotePtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeArtifactRemote] {
-	return pulumix.Output[*SoftwareRecipeArtifactRemote]{
-		OutputState: i.ToSoftwareRecipeArtifactRemotePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies an artifact available via some URI.
 type SoftwareRecipeArtifactRemoteOutput struct{ *pulumi.OutputState }
 
@@ -5002,12 +4341,6 @@ func (o SoftwareRecipeArtifactRemoteOutput) ToSoftwareRecipeArtifactRemotePtrOut
 	}).(SoftwareRecipeArtifactRemotePtrOutput)
 }
 
-func (o SoftwareRecipeArtifactRemoteOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeArtifactRemote] {
-	return pulumix.Output[SoftwareRecipeArtifactRemote]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Must be provided if `allow_insecure` is `false`. SHA256 checksum in hex format, to compare to the checksum of the artifact. If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any of the steps.
 func (o SoftwareRecipeArtifactRemoteOutput) Checksum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SoftwareRecipeArtifactRemote) *string { return v.Checksum }).(pulumi.StringPtrOutput)
@@ -5030,12 +4363,6 @@ func (o SoftwareRecipeArtifactRemotePtrOutput) ToSoftwareRecipeArtifactRemotePtr
 
 func (o SoftwareRecipeArtifactRemotePtrOutput) ToSoftwareRecipeArtifactRemotePtrOutputWithContext(ctx context.Context) SoftwareRecipeArtifactRemotePtrOutput {
 	return o
-}
-
-func (o SoftwareRecipeArtifactRemotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeArtifactRemote] {
-	return pulumix.Output[*SoftwareRecipeArtifactRemote]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeArtifactRemotePtrOutput) Elem() SoftwareRecipeArtifactRemoteOutput {
@@ -5091,12 +4418,6 @@ func (o SoftwareRecipeArtifactRemoteResponseOutput) ToSoftwareRecipeArtifactRemo
 	return o
 }
 
-func (o SoftwareRecipeArtifactRemoteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeArtifactRemoteResponse] {
-	return pulumix.Output[SoftwareRecipeArtifactRemoteResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Must be provided if `allow_insecure` is `false`. SHA256 checksum in hex format, to compare to the checksum of the artifact. If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any of the steps.
 func (o SoftwareRecipeArtifactRemoteResponseOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeArtifactRemoteResponse) string { return v.Checksum }).(pulumi.StringOutput)
@@ -5132,12 +4453,6 @@ func (o SoftwareRecipeArtifactResponseOutput) ToSoftwareRecipeArtifactResponseOu
 	return o
 }
 
-func (o SoftwareRecipeArtifactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeArtifactResponse] {
-	return pulumix.Output[SoftwareRecipeArtifactResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
 func (o SoftwareRecipeArtifactResponseOutput) AllowInsecure() pulumi.BoolOutput {
 	return o.ApplyT(func(v SoftwareRecipeArtifactResponse) bool { return v.AllowInsecure }).(pulumi.BoolOutput)
@@ -5165,12 +4480,6 @@ func (o SoftwareRecipeArtifactResponseArrayOutput) ToSoftwareRecipeArtifactRespo
 
 func (o SoftwareRecipeArtifactResponseArrayOutput) ToSoftwareRecipeArtifactResponseArrayOutputWithContext(ctx context.Context) SoftwareRecipeArtifactResponseArrayOutput {
 	return o
-}
-
-func (o SoftwareRecipeArtifactResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareRecipeArtifactResponse] {
-	return pulumix.Output[[]SoftwareRecipeArtifactResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeArtifactResponseArrayOutput) Index(i pulumi.IntInput) SoftwareRecipeArtifactResponseOutput {
@@ -5208,12 +4517,6 @@ func (o SoftwareRecipeResponseOutput) ToSoftwareRecipeResponseOutput() SoftwareR
 
 func (o SoftwareRecipeResponseOutput) ToSoftwareRecipeResponseOutputWithContext(ctx context.Context) SoftwareRecipeResponseOutput {
 	return o
-}
-
-func (o SoftwareRecipeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeResponse] {
-	return pulumix.Output[SoftwareRecipeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resources available to be used in the steps in the recipe.
@@ -5258,12 +4561,6 @@ func (o SoftwareRecipeResponseArrayOutput) ToSoftwareRecipeResponseArrayOutput()
 
 func (o SoftwareRecipeResponseArrayOutput) ToSoftwareRecipeResponseArrayOutputWithContext(ctx context.Context) SoftwareRecipeResponseArrayOutput {
 	return o
-}
-
-func (o SoftwareRecipeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareRecipeResponse] {
-	return pulumix.Output[[]SoftwareRecipeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeResponseArrayOutput) Index(i pulumi.IntInput) SoftwareRecipeResponseOutput {
@@ -5331,12 +4628,6 @@ func (i SoftwareRecipeStepArgs) ToSoftwareRecipeStepOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepOutput)
 }
 
-func (i SoftwareRecipeStepArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStep] {
-	return pulumix.Output[SoftwareRecipeStep]{
-		OutputState: i.ToSoftwareRecipeStepOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SoftwareRecipeStepArrayInput is an input type that accepts SoftwareRecipeStepArray and SoftwareRecipeStepArrayOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepArrayInput` via:
 //
@@ -5362,12 +4653,6 @@ func (i SoftwareRecipeStepArray) ToSoftwareRecipeStepArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepArrayOutput)
 }
 
-func (i SoftwareRecipeStepArray) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareRecipeStep] {
-	return pulumix.Output[[]SoftwareRecipeStep]{
-		OutputState: i.ToSoftwareRecipeStepArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An action that can be taken as part of installing or updating a recipe.
 type SoftwareRecipeStepOutput struct{ *pulumi.OutputState }
 
@@ -5381,12 +4666,6 @@ func (o SoftwareRecipeStepOutput) ToSoftwareRecipeStepOutput() SoftwareRecipeSte
 
 func (o SoftwareRecipeStepOutput) ToSoftwareRecipeStepOutputWithContext(ctx context.Context) SoftwareRecipeStepOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStep] {
-	return pulumix.Output[SoftwareRecipeStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extracts an archive into the specified directory.
@@ -5436,12 +4715,6 @@ func (o SoftwareRecipeStepArrayOutput) ToSoftwareRecipeStepArrayOutput() Softwar
 
 func (o SoftwareRecipeStepArrayOutput) ToSoftwareRecipeStepArrayOutputWithContext(ctx context.Context) SoftwareRecipeStepArrayOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareRecipeStep] {
-	return pulumix.Output[[]SoftwareRecipeStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeStepArrayOutput) Index(i pulumi.IntInput) SoftwareRecipeStepOutput {
@@ -5497,12 +4770,6 @@ func (i SoftwareRecipeStepCopyFileArgs) ToSoftwareRecipeStepCopyFileOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepCopyFileOutput)
 }
 
-func (i SoftwareRecipeStepCopyFileArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepCopyFile] {
-	return pulumix.Output[SoftwareRecipeStepCopyFile]{
-		OutputState: i.ToSoftwareRecipeStepCopyFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SoftwareRecipeStepCopyFileArgs) ToSoftwareRecipeStepCopyFilePtrOutput() SoftwareRecipeStepCopyFilePtrOutput {
 	return i.ToSoftwareRecipeStepCopyFilePtrOutputWithContext(context.Background())
 }
@@ -5544,12 +4811,6 @@ func (i *softwareRecipeStepCopyFilePtrType) ToSoftwareRecipeStepCopyFilePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepCopyFilePtrOutput)
 }
 
-func (i *softwareRecipeStepCopyFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepCopyFile] {
-	return pulumix.Output[*SoftwareRecipeStepCopyFile]{
-		OutputState: i.ToSoftwareRecipeStepCopyFilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Copies the artifact to the specified path on the instance.
 type SoftwareRecipeStepCopyFileOutput struct{ *pulumi.OutputState }
 
@@ -5573,12 +4834,6 @@ func (o SoftwareRecipeStepCopyFileOutput) ToSoftwareRecipeStepCopyFilePtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepCopyFile) *SoftwareRecipeStepCopyFile {
 		return &v
 	}).(SoftwareRecipeStepCopyFilePtrOutput)
-}
-
-func (o SoftwareRecipeStepCopyFileOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepCopyFile] {
-	return pulumix.Output[SoftwareRecipeStepCopyFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the relevant artifact in the recipe.
@@ -5613,12 +4868,6 @@ func (o SoftwareRecipeStepCopyFilePtrOutput) ToSoftwareRecipeStepCopyFilePtrOutp
 
 func (o SoftwareRecipeStepCopyFilePtrOutput) ToSoftwareRecipeStepCopyFilePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepCopyFilePtrOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepCopyFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepCopyFile] {
-	return pulumix.Output[*SoftwareRecipeStepCopyFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeStepCopyFilePtrOutput) Elem() SoftwareRecipeStepCopyFileOutput {
@@ -5698,12 +4947,6 @@ func (o SoftwareRecipeStepCopyFileResponseOutput) ToSoftwareRecipeStepCopyFileRe
 	return o
 }
 
-func (o SoftwareRecipeStepCopyFileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepCopyFileResponse] {
-	return pulumix.Output[SoftwareRecipeStepCopyFileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepCopyFileResponseOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepCopyFileResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
@@ -5771,12 +5014,6 @@ func (i SoftwareRecipeStepExecFileArgs) ToSoftwareRecipeStepExecFileOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepExecFileOutput)
 }
 
-func (i SoftwareRecipeStepExecFileArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepExecFile] {
-	return pulumix.Output[SoftwareRecipeStepExecFile]{
-		OutputState: i.ToSoftwareRecipeStepExecFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SoftwareRecipeStepExecFileArgs) ToSoftwareRecipeStepExecFilePtrOutput() SoftwareRecipeStepExecFilePtrOutput {
 	return i.ToSoftwareRecipeStepExecFilePtrOutputWithContext(context.Background())
 }
@@ -5818,12 +5055,6 @@ func (i *softwareRecipeStepExecFilePtrType) ToSoftwareRecipeStepExecFilePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepExecFilePtrOutput)
 }
 
-func (i *softwareRecipeStepExecFilePtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepExecFile] {
-	return pulumix.Output[*SoftwareRecipeStepExecFile]{
-		OutputState: i.ToSoftwareRecipeStepExecFilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Executes an artifact or local file.
 type SoftwareRecipeStepExecFileOutput struct{ *pulumi.OutputState }
 
@@ -5847,12 +5078,6 @@ func (o SoftwareRecipeStepExecFileOutput) ToSoftwareRecipeStepExecFilePtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepExecFile) *SoftwareRecipeStepExecFile {
 		return &v
 	}).(SoftwareRecipeStepExecFilePtrOutput)
-}
-
-func (o SoftwareRecipeStepExecFileOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepExecFile] {
-	return pulumix.Output[SoftwareRecipeStepExecFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to [0]. A list of possible return values that the program can return to indicate a success.
@@ -5887,12 +5112,6 @@ func (o SoftwareRecipeStepExecFilePtrOutput) ToSoftwareRecipeStepExecFilePtrOutp
 
 func (o SoftwareRecipeStepExecFilePtrOutput) ToSoftwareRecipeStepExecFilePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExecFilePtrOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepExecFilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepExecFile] {
-	return pulumix.Output[*SoftwareRecipeStepExecFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeStepExecFilePtrOutput) Elem() SoftwareRecipeStepExecFileOutput {
@@ -5972,12 +5191,6 @@ func (o SoftwareRecipeStepExecFileResponseOutput) ToSoftwareRecipeStepExecFileRe
 	return o
 }
 
-func (o SoftwareRecipeStepExecFileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepExecFileResponse] {
-	return pulumix.Output[SoftwareRecipeStepExecFileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defaults to [0]. A list of possible return values that the program can return to indicate a success.
 func (o SoftwareRecipeStepExecFileResponseOutput) AllowedExitCodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepExecFileResponse) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
@@ -6041,12 +5254,6 @@ func (i SoftwareRecipeStepExtractArchiveArgs) ToSoftwareRecipeStepExtractArchive
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepExtractArchiveOutput)
 }
 
-func (i SoftwareRecipeStepExtractArchiveArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepExtractArchive] {
-	return pulumix.Output[SoftwareRecipeStepExtractArchive]{
-		OutputState: i.ToSoftwareRecipeStepExtractArchiveOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SoftwareRecipeStepExtractArchiveArgs) ToSoftwareRecipeStepExtractArchivePtrOutput() SoftwareRecipeStepExtractArchivePtrOutput {
 	return i.ToSoftwareRecipeStepExtractArchivePtrOutputWithContext(context.Background())
 }
@@ -6088,12 +5295,6 @@ func (i *softwareRecipeStepExtractArchivePtrType) ToSoftwareRecipeStepExtractArc
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepExtractArchivePtrOutput)
 }
 
-func (i *softwareRecipeStepExtractArchivePtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepExtractArchive] {
-	return pulumix.Output[*SoftwareRecipeStepExtractArchive]{
-		OutputState: i.ToSoftwareRecipeStepExtractArchivePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Extracts an archive of the type specified in the specified directory.
 type SoftwareRecipeStepExtractArchiveOutput struct{ *pulumi.OutputState }
 
@@ -6117,12 +5318,6 @@ func (o SoftwareRecipeStepExtractArchiveOutput) ToSoftwareRecipeStepExtractArchi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepExtractArchive) *SoftwareRecipeStepExtractArchive {
 		return &v
 	}).(SoftwareRecipeStepExtractArchivePtrOutput)
-}
-
-func (o SoftwareRecipeStepExtractArchiveOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepExtractArchive] {
-	return pulumix.Output[SoftwareRecipeStepExtractArchive]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the relevant artifact in the recipe.
@@ -6152,12 +5347,6 @@ func (o SoftwareRecipeStepExtractArchivePtrOutput) ToSoftwareRecipeStepExtractAr
 
 func (o SoftwareRecipeStepExtractArchivePtrOutput) ToSoftwareRecipeStepExtractArchivePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchivePtrOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepExtractArchivePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepExtractArchive] {
-	return pulumix.Output[*SoftwareRecipeStepExtractArchive]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeStepExtractArchivePtrOutput) Elem() SoftwareRecipeStepExtractArchiveOutput {
@@ -6225,12 +5414,6 @@ func (o SoftwareRecipeStepExtractArchiveResponseOutput) ToSoftwareRecipeStepExtr
 	return o
 }
 
-func (o SoftwareRecipeStepExtractArchiveResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepExtractArchiveResponse] {
-	return pulumix.Output[SoftwareRecipeStepExtractArchiveResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepExtractArchiveResponseOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepExtractArchiveResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
@@ -6281,12 +5464,6 @@ func (i SoftwareRecipeStepInstallDpkgArgs) ToSoftwareRecipeStepInstallDpkgOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepInstallDpkgOutput)
 }
 
-func (i SoftwareRecipeStepInstallDpkgArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepInstallDpkg] {
-	return pulumix.Output[SoftwareRecipeStepInstallDpkg]{
-		OutputState: i.ToSoftwareRecipeStepInstallDpkgOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SoftwareRecipeStepInstallDpkgArgs) ToSoftwareRecipeStepInstallDpkgPtrOutput() SoftwareRecipeStepInstallDpkgPtrOutput {
 	return i.ToSoftwareRecipeStepInstallDpkgPtrOutputWithContext(context.Background())
 }
@@ -6328,12 +5505,6 @@ func (i *softwareRecipeStepInstallDpkgPtrType) ToSoftwareRecipeStepInstallDpkgPt
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepInstallDpkgPtrOutput)
 }
 
-func (i *softwareRecipeStepInstallDpkgPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepInstallDpkg] {
-	return pulumix.Output[*SoftwareRecipeStepInstallDpkg]{
-		OutputState: i.ToSoftwareRecipeStepInstallDpkgPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Installs a deb via dpkg.
 type SoftwareRecipeStepInstallDpkgOutput struct{ *pulumi.OutputState }
 
@@ -6359,12 +5530,6 @@ func (o SoftwareRecipeStepInstallDpkgOutput) ToSoftwareRecipeStepInstallDpkgPtrO
 	}).(SoftwareRecipeStepInstallDpkgPtrOutput)
 }
 
-func (o SoftwareRecipeStepInstallDpkgOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepInstallDpkg] {
-	return pulumix.Output[SoftwareRecipeStepInstallDpkg]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepInstallDpkgOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepInstallDpkg) string { return v.ArtifactId }).(pulumi.StringOutput)
@@ -6382,12 +5547,6 @@ func (o SoftwareRecipeStepInstallDpkgPtrOutput) ToSoftwareRecipeStepInstallDpkgP
 
 func (o SoftwareRecipeStepInstallDpkgPtrOutput) ToSoftwareRecipeStepInstallDpkgPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallDpkgPtrOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepInstallDpkgPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepInstallDpkg] {
-	return pulumix.Output[*SoftwareRecipeStepInstallDpkg]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeStepInstallDpkgPtrOutput) Elem() SoftwareRecipeStepInstallDpkgOutput {
@@ -6429,12 +5588,6 @@ func (o SoftwareRecipeStepInstallDpkgResponseOutput) ToSoftwareRecipeStepInstall
 
 func (o SoftwareRecipeStepInstallDpkgResponseOutput) ToSoftwareRecipeStepInstallDpkgResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallDpkgResponseOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepInstallDpkgResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepInstallDpkgResponse] {
-	return pulumix.Output[SoftwareRecipeStepInstallDpkgResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the relevant artifact in the recipe.
@@ -6485,12 +5638,6 @@ func (i SoftwareRecipeStepInstallMsiArgs) ToSoftwareRecipeStepInstallMsiOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepInstallMsiOutput)
 }
 
-func (i SoftwareRecipeStepInstallMsiArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepInstallMsi] {
-	return pulumix.Output[SoftwareRecipeStepInstallMsi]{
-		OutputState: i.ToSoftwareRecipeStepInstallMsiOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SoftwareRecipeStepInstallMsiArgs) ToSoftwareRecipeStepInstallMsiPtrOutput() SoftwareRecipeStepInstallMsiPtrOutput {
 	return i.ToSoftwareRecipeStepInstallMsiPtrOutputWithContext(context.Background())
 }
@@ -6532,12 +5679,6 @@ func (i *softwareRecipeStepInstallMsiPtrType) ToSoftwareRecipeStepInstallMsiPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepInstallMsiPtrOutput)
 }
 
-func (i *softwareRecipeStepInstallMsiPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepInstallMsi] {
-	return pulumix.Output[*SoftwareRecipeStepInstallMsi]{
-		OutputState: i.ToSoftwareRecipeStepInstallMsiPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Installs an MSI file.
 type SoftwareRecipeStepInstallMsiOutput struct{ *pulumi.OutputState }
 
@@ -6561,12 +5702,6 @@ func (o SoftwareRecipeStepInstallMsiOutput) ToSoftwareRecipeStepInstallMsiPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepInstallMsi) *SoftwareRecipeStepInstallMsi {
 		return &v
 	}).(SoftwareRecipeStepInstallMsiPtrOutput)
-}
-
-func (o SoftwareRecipeStepInstallMsiOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepInstallMsi] {
-	return pulumix.Output[SoftwareRecipeStepInstallMsi]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -6596,12 +5731,6 @@ func (o SoftwareRecipeStepInstallMsiPtrOutput) ToSoftwareRecipeStepInstallMsiPtr
 
 func (o SoftwareRecipeStepInstallMsiPtrOutput) ToSoftwareRecipeStepInstallMsiPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallMsiPtrOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepInstallMsiPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepInstallMsi] {
-	return pulumix.Output[*SoftwareRecipeStepInstallMsi]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeStepInstallMsiPtrOutput) Elem() SoftwareRecipeStepInstallMsiOutput {
@@ -6669,12 +5798,6 @@ func (o SoftwareRecipeStepInstallMsiResponseOutput) ToSoftwareRecipeStepInstallM
 	return o
 }
 
-func (o SoftwareRecipeStepInstallMsiResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepInstallMsiResponse] {
-	return pulumix.Output[SoftwareRecipeStepInstallMsiResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
 func (o SoftwareRecipeStepInstallMsiResponseOutput) AllowedExitCodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepInstallMsiResponse) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
@@ -6725,12 +5848,6 @@ func (i SoftwareRecipeStepInstallRpmArgs) ToSoftwareRecipeStepInstallRpmOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepInstallRpmOutput)
 }
 
-func (i SoftwareRecipeStepInstallRpmArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepInstallRpm] {
-	return pulumix.Output[SoftwareRecipeStepInstallRpm]{
-		OutputState: i.ToSoftwareRecipeStepInstallRpmOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SoftwareRecipeStepInstallRpmArgs) ToSoftwareRecipeStepInstallRpmPtrOutput() SoftwareRecipeStepInstallRpmPtrOutput {
 	return i.ToSoftwareRecipeStepInstallRpmPtrOutputWithContext(context.Background())
 }
@@ -6772,12 +5889,6 @@ func (i *softwareRecipeStepInstallRpmPtrType) ToSoftwareRecipeStepInstallRpmPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepInstallRpmPtrOutput)
 }
 
-func (i *softwareRecipeStepInstallRpmPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepInstallRpm] {
-	return pulumix.Output[*SoftwareRecipeStepInstallRpm]{
-		OutputState: i.ToSoftwareRecipeStepInstallRpmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Installs an rpm file via the rpm utility.
 type SoftwareRecipeStepInstallRpmOutput struct{ *pulumi.OutputState }
 
@@ -6803,12 +5914,6 @@ func (o SoftwareRecipeStepInstallRpmOutput) ToSoftwareRecipeStepInstallRpmPtrOut
 	}).(SoftwareRecipeStepInstallRpmPtrOutput)
 }
 
-func (o SoftwareRecipeStepInstallRpmOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepInstallRpm] {
-	return pulumix.Output[SoftwareRecipeStepInstallRpm]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepInstallRpmOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepInstallRpm) string { return v.ArtifactId }).(pulumi.StringOutput)
@@ -6826,12 +5931,6 @@ func (o SoftwareRecipeStepInstallRpmPtrOutput) ToSoftwareRecipeStepInstallRpmPtr
 
 func (o SoftwareRecipeStepInstallRpmPtrOutput) ToSoftwareRecipeStepInstallRpmPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallRpmPtrOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepInstallRpmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepInstallRpm] {
-	return pulumix.Output[*SoftwareRecipeStepInstallRpm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeStepInstallRpmPtrOutput) Elem() SoftwareRecipeStepInstallRpmOutput {
@@ -6875,12 +5974,6 @@ func (o SoftwareRecipeStepInstallRpmResponseOutput) ToSoftwareRecipeStepInstallR
 	return o
 }
 
-func (o SoftwareRecipeStepInstallRpmResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepInstallRpmResponse] {
-	return pulumix.Output[SoftwareRecipeStepInstallRpmResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepInstallRpmResponseOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepInstallRpmResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
@@ -6917,12 +6010,6 @@ func (o SoftwareRecipeStepResponseOutput) ToSoftwareRecipeStepResponseOutput() S
 
 func (o SoftwareRecipeStepResponseOutput) ToSoftwareRecipeStepResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepResponseOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepResponse] {
-	return pulumix.Output[SoftwareRecipeStepResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extracts an archive into the specified directory.
@@ -6976,12 +6063,6 @@ func (o SoftwareRecipeStepResponseArrayOutput) ToSoftwareRecipeStepResponseArray
 	return o
 }
 
-func (o SoftwareRecipeStepResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SoftwareRecipeStepResponse] {
-	return pulumix.Output[[]SoftwareRecipeStepResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SoftwareRecipeStepResponseArrayOutput) Index(i pulumi.IntInput) SoftwareRecipeStepResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SoftwareRecipeStepResponse {
 		return vs[0].([]SoftwareRecipeStepResponse)[vs[1].(int)]
@@ -7031,12 +6112,6 @@ func (i SoftwareRecipeStepRunScriptArgs) ToSoftwareRecipeStepRunScriptOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepRunScriptOutput)
 }
 
-func (i SoftwareRecipeStepRunScriptArgs) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepRunScript] {
-	return pulumix.Output[SoftwareRecipeStepRunScript]{
-		OutputState: i.ToSoftwareRecipeStepRunScriptOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SoftwareRecipeStepRunScriptArgs) ToSoftwareRecipeStepRunScriptPtrOutput() SoftwareRecipeStepRunScriptPtrOutput {
 	return i.ToSoftwareRecipeStepRunScriptPtrOutputWithContext(context.Background())
 }
@@ -7078,12 +6153,6 @@ func (i *softwareRecipeStepRunScriptPtrType) ToSoftwareRecipeStepRunScriptPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepRunScriptPtrOutput)
 }
 
-func (i *softwareRecipeStepRunScriptPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepRunScript] {
-	return pulumix.Output[*SoftwareRecipeStepRunScript]{
-		OutputState: i.ToSoftwareRecipeStepRunScriptPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Runs a script through an interpreter.
 type SoftwareRecipeStepRunScriptOutput struct{ *pulumi.OutputState }
 
@@ -7107,12 +6176,6 @@ func (o SoftwareRecipeStepRunScriptOutput) ToSoftwareRecipeStepRunScriptPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepRunScript) *SoftwareRecipeStepRunScript {
 		return &v
 	}).(SoftwareRecipeStepRunScriptPtrOutput)
-}
-
-func (o SoftwareRecipeStepRunScriptOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepRunScript] {
-	return pulumix.Output[SoftwareRecipeStepRunScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -7142,12 +6205,6 @@ func (o SoftwareRecipeStepRunScriptPtrOutput) ToSoftwareRecipeStepRunScriptPtrOu
 
 func (o SoftwareRecipeStepRunScriptPtrOutput) ToSoftwareRecipeStepRunScriptPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptPtrOutput {
 	return o
-}
-
-func (o SoftwareRecipeStepRunScriptPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepRunScript] {
-	return pulumix.Output[*SoftwareRecipeStepRunScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SoftwareRecipeStepRunScriptPtrOutput) Elem() SoftwareRecipeStepRunScriptOutput {
@@ -7215,12 +6272,6 @@ func (o SoftwareRecipeStepRunScriptResponseOutput) ToSoftwareRecipeStepRunScript
 	return o
 }
 
-func (o SoftwareRecipeStepRunScriptResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoftwareRecipeStepRunScriptResponse] {
-	return pulumix.Output[SoftwareRecipeStepRunScriptResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
 func (o SoftwareRecipeStepRunScriptResponseOutput) AllowedExitCodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepRunScriptResponse) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
@@ -7283,12 +6334,6 @@ func (i TimeOfDayArgs) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfD
 	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayOutput)
 }
 
-func (i TimeOfDayArgs) ToOutput(ctx context.Context) pulumix.Output[TimeOfDay] {
-	return pulumix.Output[TimeOfDay]{
-		OutputState: i.ToTimeOfDayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type TimeOfDayOutput struct{ *pulumi.OutputState }
 
@@ -7302,12 +6347,6 @@ func (o TimeOfDayOutput) ToTimeOfDayOutput() TimeOfDayOutput {
 
 func (o TimeOfDayOutput) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfDayOutput {
 	return o
-}
-
-func (o TimeOfDayOutput) ToOutput(ctx context.Context) pulumix.Output[TimeOfDay] {
-	return pulumix.Output[TimeOfDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -7355,12 +6394,6 @@ func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutput() TimeOfDayResponseOu
 
 func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
 	return o
-}
-
-func (o TimeOfDayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeOfDayResponse] {
-	return pulumix.Output[TimeOfDayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -7422,12 +6455,6 @@ func (i TimeZoneArgs) ToTimeZoneOutputWithContext(ctx context.Context) TimeZoneO
 	return pulumi.ToOutputWithContext(ctx, i).(TimeZoneOutput)
 }
 
-func (i TimeZoneArgs) ToOutput(ctx context.Context) pulumix.Output[TimeZone] {
-	return pulumix.Output[TimeZone]{
-		OutputState: i.ToTimeZoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 type TimeZoneOutput struct{ *pulumi.OutputState }
 
@@ -7441,12 +6468,6 @@ func (o TimeZoneOutput) ToTimeZoneOutput() TimeZoneOutput {
 
 func (o TimeZoneOutput) ToTimeZoneOutputWithContext(ctx context.Context) TimeZoneOutput {
 	return o
-}
-
-func (o TimeZoneOutput) ToOutput(ctx context.Context) pulumix.Output[TimeZone] {
-	return pulumix.Output[TimeZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IANA Time Zone Database time zone, e.g. "America/New_York".
@@ -7478,12 +6499,6 @@ func (o TimeZoneResponseOutput) ToTimeZoneResponseOutput() TimeZoneResponseOutpu
 
 func (o TimeZoneResponseOutput) ToTimeZoneResponseOutputWithContext(ctx context.Context) TimeZoneResponseOutput {
 	return o
-}
-
-func (o TimeZoneResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeZoneResponse] {
-	return pulumix.Output[TimeZoneResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. IANA Time Zone Database version number, e.g. "2019a".
@@ -7534,12 +6549,6 @@ func (i WeekDayOfMonthArgs) ToWeekDayOfMonthOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WeekDayOfMonthOutput)
 }
 
-func (i WeekDayOfMonthArgs) ToOutput(ctx context.Context) pulumix.Output[WeekDayOfMonth] {
-	return pulumix.Output[WeekDayOfMonth]{
-		OutputState: i.ToWeekDayOfMonthOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonthOutput struct{ *pulumi.OutputState }
 
@@ -7553,12 +6562,6 @@ func (o WeekDayOfMonthOutput) ToWeekDayOfMonthOutput() WeekDayOfMonthOutput {
 
 func (o WeekDayOfMonthOutput) ToWeekDayOfMonthOutputWithContext(ctx context.Context) WeekDayOfMonthOutput {
 	return o
-}
-
-func (o WeekDayOfMonthOutput) ToOutput(ctx context.Context) pulumix.Output[WeekDayOfMonth] {
-	return pulumix.Output[WeekDayOfMonth]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A day of the week.
@@ -7599,12 +6602,6 @@ func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponseOutput() WeekDayOf
 
 func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponseOutputWithContext(ctx context.Context) WeekDayOfMonthResponseOutput {
 	return o
-}
-
-func (o WeekDayOfMonthResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WeekDayOfMonthResponse] {
-	return pulumix.Output[WeekDayOfMonthResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A day of the week.
@@ -7657,12 +6654,6 @@ func (i WeeklyScheduleArgs) ToWeeklyScheduleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleOutput)
 }
 
-func (i WeeklyScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[WeeklySchedule] {
-	return pulumix.Output[WeeklySchedule]{
-		OutputState: i.ToWeeklyScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a weekly schedule.
 type WeeklyScheduleOutput struct{ *pulumi.OutputState }
 
@@ -7676,12 +6667,6 @@ func (o WeeklyScheduleOutput) ToWeeklyScheduleOutput() WeeklyScheduleOutput {
 
 func (o WeeklyScheduleOutput) ToWeeklyScheduleOutputWithContext(ctx context.Context) WeeklyScheduleOutput {
 	return o
-}
-
-func (o WeeklyScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklySchedule] {
-	return pulumix.Output[WeeklySchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of the week.
@@ -7708,12 +6693,6 @@ func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutput() WeeklySch
 
 func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutputWithContext(ctx context.Context) WeeklyScheduleResponseOutput {
 	return o
-}
-
-func (o WeeklyScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyScheduleResponse] {
-	return pulumix.Output[WeeklyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of the week.
@@ -7764,12 +6743,6 @@ func (i WindowsUpdateSettingsArgs) ToWindowsUpdateSettingsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateSettingsOutput)
 }
 
-func (i WindowsUpdateSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[WindowsUpdateSettings] {
-	return pulumix.Output[WindowsUpdateSettings]{
-		OutputState: i.ToWindowsUpdateSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WindowsUpdateSettingsArgs) ToWindowsUpdateSettingsPtrOutput() WindowsUpdateSettingsPtrOutput {
 	return i.ToWindowsUpdateSettingsPtrOutputWithContext(context.Background())
 }
@@ -7811,12 +6784,6 @@ func (i *windowsUpdateSettingsPtrType) ToWindowsUpdateSettingsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateSettingsPtrOutput)
 }
 
-func (i *windowsUpdateSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*WindowsUpdateSettings] {
-	return pulumix.Output[*WindowsUpdateSettings]{
-		OutputState: i.ToWindowsUpdateSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Windows patching is performed using the Windows Update Agent.
 type WindowsUpdateSettingsOutput struct{ *pulumi.OutputState }
 
@@ -7840,12 +6807,6 @@ func (o WindowsUpdateSettingsOutput) ToWindowsUpdateSettingsPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsUpdateSettings) *WindowsUpdateSettings {
 		return &v
 	}).(WindowsUpdateSettingsPtrOutput)
-}
-
-func (o WindowsUpdateSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[WindowsUpdateSettings] {
-	return pulumix.Output[WindowsUpdateSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
@@ -7875,12 +6836,6 @@ func (o WindowsUpdateSettingsPtrOutput) ToWindowsUpdateSettingsPtrOutput() Windo
 
 func (o WindowsUpdateSettingsPtrOutput) ToWindowsUpdateSettingsPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsPtrOutput {
 	return o
-}
-
-func (o WindowsUpdateSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WindowsUpdateSettings] {
-	return pulumix.Output[*WindowsUpdateSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WindowsUpdateSettingsPtrOutput) Elem() WindowsUpdateSettingsOutput {
@@ -7948,12 +6903,6 @@ func (o WindowsUpdateSettingsResponseOutput) ToWindowsUpdateSettingsResponseOutp
 	return o
 }
 
-func (o WindowsUpdateSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WindowsUpdateSettingsResponse] {
-	return pulumix.Output[WindowsUpdateSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
 func (o WindowsUpdateSettingsResponseOutput) Classifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WindowsUpdateSettingsResponse) []string { return v.Classifications }).(pulumi.StringArrayOutput)
@@ -8016,12 +6965,6 @@ func (i YumRepositoryArgs) ToYumRepositoryOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(YumRepositoryOutput)
 }
 
-func (i YumRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[YumRepository] {
-	return pulumix.Output[YumRepository]{
-		OutputState: i.ToYumRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i YumRepositoryArgs) ToYumRepositoryPtrOutput() YumRepositoryPtrOutput {
 	return i.ToYumRepositoryPtrOutputWithContext(context.Background())
 }
@@ -8063,12 +7006,6 @@ func (i *yumRepositoryPtrType) ToYumRepositoryPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(YumRepositoryPtrOutput)
 }
 
-func (i *yumRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*YumRepository] {
-	return pulumix.Output[*YumRepository]{
-		OutputState: i.ToYumRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
 type YumRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -8092,12 +7029,6 @@ func (o YumRepositoryOutput) ToYumRepositoryPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v YumRepository) *YumRepository {
 		return &v
 	}).(YumRepositoryPtrOutput)
-}
-
-func (o YumRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[YumRepository] {
-	return pulumix.Output[YumRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the repository directory.
@@ -8132,12 +7063,6 @@ func (o YumRepositoryPtrOutput) ToYumRepositoryPtrOutput() YumRepositoryPtrOutpu
 
 func (o YumRepositoryPtrOutput) ToYumRepositoryPtrOutputWithContext(ctx context.Context) YumRepositoryPtrOutput {
 	return o
-}
-
-func (o YumRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*YumRepository] {
-	return pulumix.Output[*YumRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o YumRepositoryPtrOutput) Elem() YumRepositoryOutput {
@@ -8215,12 +7140,6 @@ func (o YumRepositoryResponseOutput) ToYumRepositoryResponseOutputWithContext(ct
 	return o
 }
 
-func (o YumRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[YumRepositoryResponse] {
-	return pulumix.Output[YumRepositoryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The location of the repository directory.
 func (o YumRepositoryResponseOutput) BaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v YumRepositoryResponse) string { return v.BaseUrl }).(pulumi.StringOutput)
@@ -8283,12 +7202,6 @@ func (i YumSettingsArgs) ToYumSettingsOutputWithContext(ctx context.Context) Yum
 	return pulumi.ToOutputWithContext(ctx, i).(YumSettingsOutput)
 }
 
-func (i YumSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[YumSettings] {
-	return pulumix.Output[YumSettings]{
-		OutputState: i.ToYumSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i YumSettingsArgs) ToYumSettingsPtrOutput() YumSettingsPtrOutput {
 	return i.ToYumSettingsPtrOutputWithContext(context.Background())
 }
@@ -8330,12 +7243,6 @@ func (i *yumSettingsPtrType) ToYumSettingsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(YumSettingsPtrOutput)
 }
 
-func (i *yumSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*YumSettings] {
-	return pulumix.Output[*YumSettings]{
-		OutputState: i.ToYumSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
 type YumSettingsOutput struct{ *pulumi.OutputState }
 
@@ -8359,12 +7266,6 @@ func (o YumSettingsOutput) ToYumSettingsPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v YumSettings) *YumSettings {
 		return &v
 	}).(YumSettingsPtrOutput)
-}
-
-func (o YumSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[YumSettings] {
-	return pulumix.Output[YumSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
@@ -8399,12 +7300,6 @@ func (o YumSettingsPtrOutput) ToYumSettingsPtrOutput() YumSettingsPtrOutput {
 
 func (o YumSettingsPtrOutput) ToYumSettingsPtrOutputWithContext(ctx context.Context) YumSettingsPtrOutput {
 	return o
-}
-
-func (o YumSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*YumSettings] {
-	return pulumix.Output[*YumSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o YumSettingsPtrOutput) Elem() YumSettingsOutput {
@@ -8484,12 +7379,6 @@ func (o YumSettingsResponseOutput) ToYumSettingsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o YumSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[YumSettingsResponse] {
-	return pulumix.Output[YumSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
 func (o YumSettingsResponseOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v YumSettingsResponse) []string { return v.Excludes }).(pulumi.StringArrayOutput)
@@ -8557,12 +7446,6 @@ func (i ZypperRepositoryArgs) ToZypperRepositoryOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ZypperRepositoryOutput)
 }
 
-func (i ZypperRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[ZypperRepository] {
-	return pulumix.Output[ZypperRepository]{
-		OutputState: i.ToZypperRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ZypperRepositoryArgs) ToZypperRepositoryPtrOutput() ZypperRepositoryPtrOutput {
 	return i.ToZypperRepositoryPtrOutputWithContext(context.Background())
 }
@@ -8604,12 +7487,6 @@ func (i *zypperRepositoryPtrType) ToZypperRepositoryPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ZypperRepositoryPtrOutput)
 }
 
-func (i *zypperRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*ZypperRepository] {
-	return pulumix.Output[*ZypperRepository]{
-		OutputState: i.ToZypperRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
 type ZypperRepositoryOutput struct{ *pulumi.OutputState }
 
@@ -8633,12 +7510,6 @@ func (o ZypperRepositoryOutput) ToZypperRepositoryPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZypperRepository) *ZypperRepository {
 		return &v
 	}).(ZypperRepositoryPtrOutput)
-}
-
-func (o ZypperRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[ZypperRepository] {
-	return pulumix.Output[ZypperRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the repository directory.
@@ -8673,12 +7544,6 @@ func (o ZypperRepositoryPtrOutput) ToZypperRepositoryPtrOutput() ZypperRepositor
 
 func (o ZypperRepositoryPtrOutput) ToZypperRepositoryPtrOutputWithContext(ctx context.Context) ZypperRepositoryPtrOutput {
 	return o
-}
-
-func (o ZypperRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ZypperRepository] {
-	return pulumix.Output[*ZypperRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZypperRepositoryPtrOutput) Elem() ZypperRepositoryOutput {
@@ -8756,12 +7621,6 @@ func (o ZypperRepositoryResponseOutput) ToZypperRepositoryResponseOutputWithCont
 	return o
 }
 
-func (o ZypperRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ZypperRepositoryResponse] {
-	return pulumix.Output[ZypperRepositoryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The location of the repository directory.
 func (o ZypperRepositoryResponseOutput) BaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ZypperRepositoryResponse) string { return v.BaseUrl }).(pulumi.StringOutput)
@@ -8832,12 +7691,6 @@ func (i ZypperSettingsArgs) ToZypperSettingsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ZypperSettingsOutput)
 }
 
-func (i ZypperSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ZypperSettings] {
-	return pulumix.Output[ZypperSettings]{
-		OutputState: i.ToZypperSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ZypperSettingsArgs) ToZypperSettingsPtrOutput() ZypperSettingsPtrOutput {
 	return i.ToZypperSettingsPtrOutputWithContext(context.Background())
 }
@@ -8879,12 +7732,6 @@ func (i *zypperSettingsPtrType) ToZypperSettingsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ZypperSettingsPtrOutput)
 }
 
-func (i *zypperSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ZypperSettings] {
-	return pulumix.Output[*ZypperSettings]{
-		OutputState: i.ToZypperSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
 type ZypperSettingsOutput struct{ *pulumi.OutputState }
 
@@ -8908,12 +7755,6 @@ func (o ZypperSettingsOutput) ToZypperSettingsPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZypperSettings) *ZypperSettings {
 		return &v
 	}).(ZypperSettingsPtrOutput)
-}
-
-func (o ZypperSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ZypperSettings] {
-	return pulumix.Output[ZypperSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Install only patches with these categories. Common categories include security, recommended, and feature.
@@ -8958,12 +7799,6 @@ func (o ZypperSettingsPtrOutput) ToZypperSettingsPtrOutput() ZypperSettingsPtrOu
 
 func (o ZypperSettingsPtrOutput) ToZypperSettingsPtrOutputWithContext(ctx context.Context) ZypperSettingsPtrOutput {
 	return o
-}
-
-func (o ZypperSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ZypperSettings] {
-	return pulumix.Output[*ZypperSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZypperSettingsPtrOutput) Elem() ZypperSettingsOutput {
@@ -9065,12 +7900,6 @@ func (o ZypperSettingsResponseOutput) ToZypperSettingsResponseOutput() ZypperSet
 
 func (o ZypperSettingsResponseOutput) ToZypperSettingsResponseOutputWithContext(ctx context.Context) ZypperSettingsResponseOutput {
 	return o
-}
-
-func (o ZypperSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ZypperSettingsResponse] {
-	return pulumix.Output[ZypperSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Install only patches with these categories. Common categories include security, recommended, and feature.

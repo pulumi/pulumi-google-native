@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -272,12 +260,6 @@ func (o CloudSqlPropertiesTypeOutput) ToCloudSqlPropertiesTypePtrOutputWithConte
 	}).(CloudSqlPropertiesTypePtrOutput)
 }
 
-func (o CloudSqlPropertiesTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CloudSqlPropertiesType] {
-	return pulumix.Output[CloudSqlPropertiesType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CloudSqlPropertiesTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o CloudSqlPropertiesTypePtrOutput) ToCloudSqlPropertiesTypePtrOutput() Clo
 
 func (o CloudSqlPropertiesTypePtrOutput) ToCloudSqlPropertiesTypePtrOutputWithContext(ctx context.Context) CloudSqlPropertiesTypePtrOutput {
 	return o
-}
-
-func (o CloudSqlPropertiesTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlPropertiesType] {
-	return pulumix.Output[*CloudSqlPropertiesType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudSqlPropertiesTypePtrOutput) Elem() CloudSqlPropertiesTypeOutput {

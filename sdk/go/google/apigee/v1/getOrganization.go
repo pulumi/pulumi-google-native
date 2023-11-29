@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the profile for an Apigee organization. See [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
@@ -123,12 +122,6 @@ func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutput() Looku
 
 func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutputWithContext(ctx context.Context) LookupOrganizationResultOutput {
 	return o
-}
-
-func (o LookupOrganizationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationResult] {
-	return pulumix.Output[LookupOrganizationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Addon configurations of the Apigee organization.

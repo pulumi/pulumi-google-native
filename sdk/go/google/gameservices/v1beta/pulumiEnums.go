@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -276,12 +264,6 @@ func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToAuthorizationLoggingO
 	}).(AuthorizationLoggingOptionsPermissionTypePtrOutput)
 }
 
-func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationLoggingOptionsPermissionType] {
-	return pulumix.Output[AuthorizationLoggingOptionsPermissionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthorizationLoggingOptionsPermissionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -315,12 +297,6 @@ func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggi
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx context.Context) AuthorizationLoggingOptionsPermissionTypePtrOutput {
 	return o
-}
-
-func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationLoggingOptionsPermissionType] {
-	return pulumix.Output[*AuthorizationLoggingOptionsPermissionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) Elem() AuthorizationLoggingOptionsPermissionTypeOutput {
@@ -463,12 +439,6 @@ func (o CloudAuditOptionsLogNameOutput) ToCloudAuditOptionsLogNamePtrOutputWithC
 	}).(CloudAuditOptionsLogNamePtrOutput)
 }
 
-func (o CloudAuditOptionsLogNameOutput) ToOutput(ctx context.Context) pulumix.Output[CloudAuditOptionsLogName] {
-	return pulumix.Output[CloudAuditOptionsLogName]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CloudAuditOptionsLogNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -502,12 +472,6 @@ func (o CloudAuditOptionsLogNamePtrOutput) ToCloudAuditOptionsLogNamePtrOutput()
 
 func (o CloudAuditOptionsLogNamePtrOutput) ToCloudAuditOptionsLogNamePtrOutputWithContext(ctx context.Context) CloudAuditOptionsLogNamePtrOutput {
 	return o
-}
-
-func (o CloudAuditOptionsLogNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudAuditOptionsLogName] {
-	return pulumix.Output[*CloudAuditOptionsLogName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudAuditOptionsLogNamePtrOutput) Elem() CloudAuditOptionsLogNameOutput {
@@ -660,12 +624,6 @@ func (o ConditionIamOutput) ToConditionIamPtrOutputWithContext(ctx context.Conte
 	}).(ConditionIamPtrOutput)
 }
 
-func (o ConditionIamOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionIam] {
-	return pulumix.Output[ConditionIam]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConditionIamOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -699,12 +657,6 @@ func (o ConditionIamPtrOutput) ToConditionIamPtrOutput() ConditionIamPtrOutput {
 
 func (o ConditionIamPtrOutput) ToConditionIamPtrOutputWithContext(ctx context.Context) ConditionIamPtrOutput {
 	return o
-}
-
-func (o ConditionIamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionIam] {
-	return pulumix.Output[*ConditionIam]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConditionIamPtrOutput) Elem() ConditionIamOutput {
@@ -853,12 +805,6 @@ func (o ConditionOpOutput) ToConditionOpPtrOutputWithContext(ctx context.Context
 	}).(ConditionOpPtrOutput)
 }
 
-func (o ConditionOpOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionOp] {
-	return pulumix.Output[ConditionOp]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConditionOpOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -892,12 +838,6 @@ func (o ConditionOpPtrOutput) ToConditionOpPtrOutput() ConditionOpPtrOutput {
 
 func (o ConditionOpPtrOutput) ToConditionOpPtrOutputWithContext(ctx context.Context) ConditionOpPtrOutput {
 	return o
-}
-
-func (o ConditionOpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionOp] {
-	return pulumix.Output[*ConditionOp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConditionOpPtrOutput) Elem() ConditionOpOutput {
@@ -1044,12 +984,6 @@ func (o ConditionSysOutput) ToConditionSysPtrOutputWithContext(ctx context.Conte
 	}).(ConditionSysPtrOutput)
 }
 
-func (o ConditionSysOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionSys] {
-	return pulumix.Output[ConditionSys]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConditionSysOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1083,12 +1017,6 @@ func (o ConditionSysPtrOutput) ToConditionSysPtrOutput() ConditionSysPtrOutput {
 
 func (o ConditionSysPtrOutput) ToConditionSysPtrOutputWithContext(ctx context.Context) ConditionSysPtrOutput {
 	return o
-}
-
-func (o ConditionSysPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionSys] {
-	return pulumix.Output[*ConditionSys]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConditionSysPtrOutput) Elem() ConditionSysOutput {
@@ -1228,12 +1156,6 @@ func (o DataAccessOptionsLogModeOutput) ToDataAccessOptionsLogModePtrOutputWithC
 	}).(DataAccessOptionsLogModePtrOutput)
 }
 
-func (o DataAccessOptionsLogModeOutput) ToOutput(ctx context.Context) pulumix.Output[DataAccessOptionsLogMode] {
-	return pulumix.Output[DataAccessOptionsLogMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataAccessOptionsLogModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1267,12 +1189,6 @@ func (o DataAccessOptionsLogModePtrOutput) ToDataAccessOptionsLogModePtrOutput()
 
 func (o DataAccessOptionsLogModePtrOutput) ToDataAccessOptionsLogModePtrOutputWithContext(ctx context.Context) DataAccessOptionsLogModePtrOutput {
 	return o
-}
-
-func (o DataAccessOptionsLogModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataAccessOptionsLogMode] {
-	return pulumix.Output[*DataAccessOptionsLogMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataAccessOptionsLogModePtrOutput) Elem() DataAccessOptionsLogModeOutput {
@@ -1421,12 +1337,6 @@ func (o RuleActionOutput) ToRuleActionPtrOutputWithContext(ctx context.Context) 
 	}).(RuleActionPtrOutput)
 }
 
-func (o RuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[RuleAction] {
-	return pulumix.Output[RuleAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RuleActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1460,12 +1370,6 @@ func (o RuleActionPtrOutput) ToRuleActionPtrOutput() RuleActionPtrOutput {
 
 func (o RuleActionPtrOutput) ToRuleActionPtrOutputWithContext(ctx context.Context) RuleActionPtrOutput {
 	return o
-}
-
-func (o RuleActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleAction] {
-	return pulumix.Output[*RuleAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuleActionPtrOutput) Elem() RuleActionOutput {

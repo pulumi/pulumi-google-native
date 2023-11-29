@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new FeatureOnlineStore in a given project and location.
@@ -154,12 +153,6 @@ func (i *FeatureOnlineStore) ToFeatureOnlineStoreOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureOnlineStoreOutput)
 }
 
-func (i *FeatureOnlineStore) ToOutput(ctx context.Context) pulumix.Output[*FeatureOnlineStore] {
-	return pulumix.Output[*FeatureOnlineStore]{
-		OutputState: i.ToFeatureOnlineStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureOnlineStoreOutput struct{ *pulumi.OutputState }
 
 func (FeatureOnlineStoreOutput) ElementType() reflect.Type {
@@ -172,12 +165,6 @@ func (o FeatureOnlineStoreOutput) ToFeatureOnlineStoreOutput() FeatureOnlineStor
 
 func (o FeatureOnlineStoreOutput) ToFeatureOnlineStoreOutputWithContext(ctx context.Context) FeatureOnlineStoreOutput {
 	return o
-}
-
-func (o FeatureOnlineStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureOnlineStore] {
-	return pulumix.Output[*FeatureOnlineStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.

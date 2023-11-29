@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *CertificateAuthorityIamPolicy) ToCertificateAuthorityIamPolicyOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityIamPolicyOutput)
 }
 
-func (i *CertificateAuthorityIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*CertificateAuthorityIamPolicy] {
-	return pulumix.Output[*CertificateAuthorityIamPolicy]{
-		OutputState: i.ToCertificateAuthorityIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CertificateAuthorityIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (CertificateAuthorityIamPolicyOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o CertificateAuthorityIamPolicyOutput) ToCertificateAuthorityIamPolicyOutp
 
 func (o CertificateAuthorityIamPolicyOutput) ToCertificateAuthorityIamPolicyOutputWithContext(ctx context.Context) CertificateAuthorityIamPolicyOutput {
 	return o
-}
-
-func (o CertificateAuthorityIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateAuthorityIamPolicy] {
-	return pulumix.Output[*CertificateAuthorityIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

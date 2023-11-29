@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -272,12 +260,6 @@ func (o ExternalAccessRuleActionOutput) ToExternalAccessRuleActionPtrOutputWithC
 	}).(ExternalAccessRuleActionPtrOutput)
 }
 
-func (o ExternalAccessRuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[ExternalAccessRuleAction] {
-	return pulumix.Output[ExternalAccessRuleAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExternalAccessRuleActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o ExternalAccessRuleActionPtrOutput) ToExternalAccessRuleActionPtrOutput()
 
 func (o ExternalAccessRuleActionPtrOutput) ToExternalAccessRuleActionPtrOutputWithContext(ctx context.Context) ExternalAccessRuleActionPtrOutput {
 	return o
-}
-
-func (o ExternalAccessRuleActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalAccessRuleAction] {
-	return pulumix.Output[*ExternalAccessRuleAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExternalAccessRuleActionPtrOutput) Elem() ExternalAccessRuleActionOutput {
@@ -459,12 +435,6 @@ func (o LoggingServerProtocolOutput) ToLoggingServerProtocolPtrOutputWithContext
 	}).(LoggingServerProtocolPtrOutput)
 }
 
-func (o LoggingServerProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[LoggingServerProtocol] {
-	return pulumix.Output[LoggingServerProtocol]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LoggingServerProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,12 +468,6 @@ func (o LoggingServerProtocolPtrOutput) ToLoggingServerProtocolPtrOutput() Loggi
 
 func (o LoggingServerProtocolPtrOutput) ToLoggingServerProtocolPtrOutputWithContext(ctx context.Context) LoggingServerProtocolPtrOutput {
 	return o
-}
-
-func (o LoggingServerProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoggingServerProtocol] {
-	return pulumix.Output[*LoggingServerProtocol]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoggingServerProtocolPtrOutput) Elem() LoggingServerProtocolOutput {
@@ -646,12 +610,6 @@ func (o LoggingServerSourceTypeOutput) ToLoggingServerSourceTypePtrOutputWithCon
 	}).(LoggingServerSourceTypePtrOutput)
 }
 
-func (o LoggingServerSourceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LoggingServerSourceType] {
-	return pulumix.Output[LoggingServerSourceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LoggingServerSourceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -685,12 +643,6 @@ func (o LoggingServerSourceTypePtrOutput) ToLoggingServerSourceTypePtrOutput() L
 
 func (o LoggingServerSourceTypePtrOutput) ToLoggingServerSourceTypePtrOutputWithContext(ctx context.Context) LoggingServerSourceTypePtrOutput {
 	return o
-}
-
-func (o LoggingServerSourceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoggingServerSourceType] {
-	return pulumix.Output[*LoggingServerSourceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoggingServerSourceTypePtrOutput) Elem() LoggingServerSourceTypeOutput {
@@ -841,12 +793,6 @@ func (o NetworkPeeringPeerNetworkTypeOutput) ToNetworkPeeringPeerNetworkTypePtrO
 	}).(NetworkPeeringPeerNetworkTypePtrOutput)
 }
 
-func (o NetworkPeeringPeerNetworkTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkPeeringPeerNetworkType] {
-	return pulumix.Output[NetworkPeeringPeerNetworkType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkPeeringPeerNetworkTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -880,12 +826,6 @@ func (o NetworkPeeringPeerNetworkTypePtrOutput) ToNetworkPeeringPeerNetworkTypeP
 
 func (o NetworkPeeringPeerNetworkTypePtrOutput) ToNetworkPeeringPeerNetworkTypePtrOutputWithContext(ctx context.Context) NetworkPeeringPeerNetworkTypePtrOutput {
 	return o
-}
-
-func (o NetworkPeeringPeerNetworkTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPeeringPeerNetworkType] {
-	return pulumix.Output[*NetworkPeeringPeerNetworkType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkPeeringPeerNetworkTypePtrOutput) Elem() NetworkPeeringPeerNetworkTypeOutput {
@@ -1028,12 +968,6 @@ func (o PrivateCloudTypeOutput) ToPrivateCloudTypePtrOutputWithContext(ctx conte
 	}).(PrivateCloudTypePtrOutput)
 }
 
-func (o PrivateCloudTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudType] {
-	return pulumix.Output[PrivateCloudType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateCloudTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1067,12 +1001,6 @@ func (o PrivateCloudTypePtrOutput) ToPrivateCloudTypePtrOutput() PrivateCloudTyp
 
 func (o PrivateCloudTypePtrOutput) ToPrivateCloudTypePtrOutputWithContext(ctx context.Context) PrivateCloudTypePtrOutput {
 	return o
-}
-
-func (o PrivateCloudTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudType] {
-	return pulumix.Output[*PrivateCloudType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateCloudTypePtrOutput) Elem() PrivateCloudTypeOutput {
@@ -1215,12 +1143,6 @@ func (o PrivateConnectionRoutingModeOutput) ToPrivateConnectionRoutingModePtrOut
 	}).(PrivateConnectionRoutingModePtrOutput)
 }
 
-func (o PrivateConnectionRoutingModeOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateConnectionRoutingMode] {
-	return pulumix.Output[PrivateConnectionRoutingMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateConnectionRoutingModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1254,12 +1176,6 @@ func (o PrivateConnectionRoutingModePtrOutput) ToPrivateConnectionRoutingModePtr
 
 func (o PrivateConnectionRoutingModePtrOutput) ToPrivateConnectionRoutingModePtrOutputWithContext(ctx context.Context) PrivateConnectionRoutingModePtrOutput {
 	return o
-}
-
-func (o PrivateConnectionRoutingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnectionRoutingMode] {
-	return pulumix.Output[*PrivateConnectionRoutingMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateConnectionRoutingModePtrOutput) Elem() PrivateConnectionRoutingModeOutput {
@@ -1406,12 +1322,6 @@ func (o PrivateConnectionTypeOutput) ToPrivateConnectionTypePtrOutputWithContext
 	}).(PrivateConnectionTypePtrOutput)
 }
 
-func (o PrivateConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateConnectionType] {
-	return pulumix.Output[PrivateConnectionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1445,12 +1355,6 @@ func (o PrivateConnectionTypePtrOutput) ToPrivateConnectionTypePtrOutput() Priva
 
 func (o PrivateConnectionTypePtrOutput) ToPrivateConnectionTypePtrOutputWithContext(ctx context.Context) PrivateConnectionTypePtrOutput {
 	return o
-}
-
-func (o PrivateConnectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnectionType] {
-	return pulumix.Output[*PrivateConnectionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateConnectionTypePtrOutput) Elem() PrivateConnectionTypeOutput {
@@ -1593,12 +1497,6 @@ func (o VmwareEngineNetworkTypeOutput) ToVmwareEngineNetworkTypePtrOutputWithCon
 	}).(VmwareEngineNetworkTypePtrOutput)
 }
 
-func (o VmwareEngineNetworkTypeOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareEngineNetworkType] {
-	return pulumix.Output[VmwareEngineNetworkType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VmwareEngineNetworkTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1632,12 +1530,6 @@ func (o VmwareEngineNetworkTypePtrOutput) ToVmwareEngineNetworkTypePtrOutput() V
 
 func (o VmwareEngineNetworkTypePtrOutput) ToVmwareEngineNetworkTypePtrOutputWithContext(ctx context.Context) VmwareEngineNetworkTypePtrOutput {
 	return o
-}
-
-func (o VmwareEngineNetworkTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareEngineNetworkType] {
-	return pulumix.Output[*VmwareEngineNetworkType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmwareEngineNetworkTypePtrOutput) Elem() VmwareEngineNetworkTypeOutput {

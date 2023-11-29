@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specific conversation.
@@ -81,12 +80,6 @@ func (o LookupConversationResultOutput) ToLookupConversationResultOutput() Looku
 
 func (o LookupConversationResultOutput) ToLookupConversationResultOutputWithContext(ctx context.Context) LookupConversationResultOutput {
 	return o
-}
-
-func (o LookupConversationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConversationResult] {
-	return pulumix.Output[LookupConversationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.

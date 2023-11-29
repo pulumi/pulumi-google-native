@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single ReportConfig.
@@ -79,12 +78,6 @@ func (o LookupReportConfigResultOutput) ToLookupReportConfigResultOutput() Looku
 
 func (o LookupReportConfigResultOutput) ToLookupReportConfigResultOutputWithContext(ctx context.Context) LookupReportConfigResultOutput {
 	return o
-}
-
-func (o LookupReportConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReportConfigResult] {
-	return pulumix.Output[LookupReportConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.

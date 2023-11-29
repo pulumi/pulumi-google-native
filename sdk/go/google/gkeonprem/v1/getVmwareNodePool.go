@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single VMware node pool.
@@ -99,12 +98,6 @@ func (o LookupVmwareNodePoolResultOutput) ToLookupVmwareNodePoolResultOutput() L
 
 func (o LookupVmwareNodePoolResultOutput) ToLookupVmwareNodePoolResultOutputWithContext(ctx context.Context) LookupVmwareNodePoolResultOutput {
 	return o
-}
-
-func (o LookupVmwareNodePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVmwareNodePoolResult] {
-	return pulumix.Output[LookupVmwareNodePoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.

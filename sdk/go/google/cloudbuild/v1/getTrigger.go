@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns information about a `BuildTrigger`.
@@ -121,12 +120,6 @@ func (o LookupTriggerResultOutput) ToLookupTriggerResultOutput() LookupTriggerRe
 
 func (o LookupTriggerResultOutput) ToLookupTriggerResultOutputWithContext(ctx context.Context) LookupTriggerResultOutput {
 	return o
-}
-
-func (o LookupTriggerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTriggerResult] {
-	return pulumix.Output[LookupTriggerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for manual approval to start a build invocation of this BuildTrigger.

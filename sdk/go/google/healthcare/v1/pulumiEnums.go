@@ -83,12 +83,6 @@ func (o AttributeDefinitionCategoryOutput) ToAttributeDefinitionCategoryPtrOutpu
 	}).(AttributeDefinitionCategoryPtrOutput)
 }
 
-func (o AttributeDefinitionCategoryOutput) ToOutput(ctx context.Context) pulumix.Output[AttributeDefinitionCategory] {
-	return pulumix.Output[AttributeDefinitionCategory]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AttributeDefinitionCategoryOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o AttributeDefinitionCategoryPtrOutput) ToAttributeDefinitionCategoryPtrOu
 
 func (o AttributeDefinitionCategoryPtrOutput) ToAttributeDefinitionCategoryPtrOutputWithContext(ctx context.Context) AttributeDefinitionCategoryPtrOutput {
 	return o
-}
-
-func (o AttributeDefinitionCategoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttributeDefinitionCategory] {
-	return pulumix.Output[*AttributeDefinitionCategory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttributeDefinitionCategoryPtrOutput) Elem() AttributeDefinitionCategoryOutput {
@@ -272,12 +260,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -465,12 +441,6 @@ func (o ConsentStateEnumOutput) ToConsentStateEnumPtrOutputWithContext(ctx conte
 	}).(ConsentStateEnumPtrOutput)
 }
 
-func (o ConsentStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ConsentStateEnum] {
-	return pulumix.Output[ConsentStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConsentStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -504,12 +474,6 @@ func (o ConsentStateEnumPtrOutput) ToConsentStateEnumPtrOutput() ConsentStateEnu
 
 func (o ConsentStateEnumPtrOutput) ToConsentStateEnumPtrOutputWithContext(ctx context.Context) ConsentStateEnumPtrOutput {
 	return o
-}
-
-func (o ConsentStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentStateEnum] {
-	return pulumix.Output[*ConsentStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsentStateEnumPtrOutput) Elem() ConsentStateEnumOutput {
@@ -656,12 +620,6 @@ func (o DicomConfigFilterProfileOutput) ToDicomConfigFilterProfilePtrOutputWithC
 	}).(DicomConfigFilterProfilePtrOutput)
 }
 
-func (o DicomConfigFilterProfileOutput) ToOutput(ctx context.Context) pulumix.Output[DicomConfigFilterProfile] {
-	return pulumix.Output[DicomConfigFilterProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DicomConfigFilterProfileOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -695,12 +653,6 @@ func (o DicomConfigFilterProfilePtrOutput) ToDicomConfigFilterProfilePtrOutput()
 
 func (o DicomConfigFilterProfilePtrOutput) ToDicomConfigFilterProfilePtrOutputWithContext(ctx context.Context) DicomConfigFilterProfilePtrOutput {
 	return o
-}
-
-func (o DicomConfigFilterProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomConfigFilterProfile] {
-	return pulumix.Output[*DicomConfigFilterProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomConfigFilterProfilePtrOutput) Elem() DicomConfigFilterProfileOutput {
@@ -843,12 +795,6 @@ func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToFhirStoreComplexDataTy
 	}).(FhirStoreComplexDataTypeReferenceParsingPtrOutput)
 }
 
-func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreComplexDataTypeReferenceParsing] {
-	return pulumix.Output[FhirStoreComplexDataTypeReferenceParsing]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -882,12 +828,6 @@ func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToFhirStoreComplexDat
 
 func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(ctx context.Context) FhirStoreComplexDataTypeReferenceParsingPtrOutput {
 	return o
-}
-
-func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreComplexDataTypeReferenceParsing] {
-	return pulumix.Output[*FhirStoreComplexDataTypeReferenceParsing]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) Elem() FhirStoreComplexDataTypeReferenceParsingOutput {
@@ -1032,12 +972,6 @@ func (o FhirStoreVersionOutput) ToFhirStoreVersionPtrOutputWithContext(ctx conte
 	}).(FhirStoreVersionPtrOutput)
 }
 
-func (o FhirStoreVersionOutput) ToOutput(ctx context.Context) pulumix.Output[FhirStoreVersion] {
-	return pulumix.Output[FhirStoreVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FhirStoreVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1071,12 +1005,6 @@ func (o FhirStoreVersionPtrOutput) ToFhirStoreVersionPtrOutput() FhirStoreVersio
 
 func (o FhirStoreVersionPtrOutput) ToFhirStoreVersionPtrOutputWithContext(ctx context.Context) FhirStoreVersionPtrOutput {
 	return o
-}
-
-func (o FhirStoreVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreVersion] {
-	return pulumix.Output[*FhirStoreVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreVersionPtrOutput) Elem() FhirStoreVersionOutput {
@@ -1221,12 +1149,6 @@ func (o FieldMetadataActionOutput) ToFieldMetadataActionPtrOutputWithContext(ctx
 	}).(FieldMetadataActionPtrOutput)
 }
 
-func (o FieldMetadataActionOutput) ToOutput(ctx context.Context) pulumix.Output[FieldMetadataAction] {
-	return pulumix.Output[FieldMetadataAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FieldMetadataActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1260,12 +1182,6 @@ func (o FieldMetadataActionPtrOutput) ToFieldMetadataActionPtrOutput() FieldMeta
 
 func (o FieldMetadataActionPtrOutput) ToFieldMetadataActionPtrOutputWithContext(ctx context.Context) FieldMetadataActionPtrOutput {
 	return o
-}
-
-func (o FieldMetadataActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FieldMetadataAction] {
-	return pulumix.Output[*FieldMetadataAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldMetadataActionPtrOutput) Elem() FieldMetadataActionOutput {
@@ -1410,12 +1326,6 @@ func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) T
 	}).(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput)
 }
 
-func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition] {
-	return pulumix.Output[GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1449,12 +1359,6 @@ func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput
 
 func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition] {
-	return pulumix.Output[*GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput) Elem() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput {
@@ -1599,12 +1503,6 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) To
 	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
 }
 
-func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition] {
-	return pulumix.Output[GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1638,12 +1536,6 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
 
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition] {
-	return pulumix.Output[*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) Elem() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput {
@@ -1788,12 +1680,6 @@ func (o ImageConfigTextRedactionModeOutput) ToImageConfigTextRedactionModePtrOut
 	}).(ImageConfigTextRedactionModePtrOutput)
 }
 
-func (o ImageConfigTextRedactionModeOutput) ToOutput(ctx context.Context) pulumix.Output[ImageConfigTextRedactionMode] {
-	return pulumix.Output[ImageConfigTextRedactionMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ImageConfigTextRedactionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1827,12 +1713,6 @@ func (o ImageConfigTextRedactionModePtrOutput) ToImageConfigTextRedactionModePtr
 
 func (o ImageConfigTextRedactionModePtrOutput) ToImageConfigTextRedactionModePtrOutputWithContext(ctx context.Context) ImageConfigTextRedactionModePtrOutput {
 	return o
-}
-
-func (o ImageConfigTextRedactionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageConfigTextRedactionMode] {
-	return pulumix.Output[*ImageConfigTextRedactionMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageConfigTextRedactionModePtrOutput) Elem() ImageConfigTextRedactionModeOutput {
@@ -1977,12 +1857,6 @@ func (o ParserConfigVersionOutput) ToParserConfigVersionPtrOutputWithContext(ctx
 	}).(ParserConfigVersionPtrOutput)
 }
 
-func (o ParserConfigVersionOutput) ToOutput(ctx context.Context) pulumix.Output[ParserConfigVersion] {
-	return pulumix.Output[ParserConfigVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ParserConfigVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2016,12 +1890,6 @@ func (o ParserConfigVersionPtrOutput) ToParserConfigVersionPtrOutput() ParserCon
 
 func (o ParserConfigVersionPtrOutput) ToParserConfigVersionPtrOutputWithContext(ctx context.Context) ParserConfigVersionPtrOutput {
 	return o
-}
-
-func (o ParserConfigVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ParserConfigVersion] {
-	return pulumix.Output[*ParserConfigVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParserConfigVersionPtrOutput) Elem() ParserConfigVersionOutput {
@@ -2164,12 +2032,6 @@ func (o SchemaConfigSchemaTypeOutput) ToSchemaConfigSchemaTypePtrOutputWithConte
 	}).(SchemaConfigSchemaTypePtrOutput)
 }
 
-func (o SchemaConfigSchemaTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchemaType] {
-	return pulumix.Output[SchemaConfigSchemaType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SchemaConfigSchemaTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2203,12 +2065,6 @@ func (o SchemaConfigSchemaTypePtrOutput) ToSchemaConfigSchemaTypePtrOutput() Sch
 
 func (o SchemaConfigSchemaTypePtrOutput) ToSchemaConfigSchemaTypePtrOutputWithContext(ctx context.Context) SchemaConfigSchemaTypePtrOutput {
 	return o
-}
-
-func (o SchemaConfigSchemaTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchemaConfigSchemaType] {
-	return pulumix.Output[*SchemaConfigSchemaType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchemaConfigSchemaTypePtrOutput) Elem() SchemaConfigSchemaTypeOutput {
@@ -2351,12 +2207,6 @@ func (o SchemaPackageSchematizedParsingTypeOutput) ToSchemaPackageSchematizedPar
 	}).(SchemaPackageSchematizedParsingTypePtrOutput)
 }
 
-func (o SchemaPackageSchematizedParsingTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaPackageSchematizedParsingType] {
-	return pulumix.Output[SchemaPackageSchematizedParsingType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SchemaPackageSchematizedParsingTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2390,12 +2240,6 @@ func (o SchemaPackageSchematizedParsingTypePtrOutput) ToSchemaPackageSchematized
 
 func (o SchemaPackageSchematizedParsingTypePtrOutput) ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(ctx context.Context) SchemaPackageSchematizedParsingTypePtrOutput {
 	return o
-}
-
-func (o SchemaPackageSchematizedParsingTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchemaPackageSchematizedParsingType] {
-	return pulumix.Output[*SchemaPackageSchematizedParsingType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchemaPackageSchematizedParsingTypePtrOutput) Elem() SchemaPackageSchematizedParsingTypeOutput {
@@ -2540,12 +2384,6 @@ func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToSchemaPackageUnexpectedS
 	}).(SchemaPackageUnexpectedSegmentHandlingPtrOutput)
 }
 
-func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaPackageUnexpectedSegmentHandling] {
-	return pulumix.Output[SchemaPackageUnexpectedSegmentHandling]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SchemaPackageUnexpectedSegmentHandlingOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2579,12 +2417,6 @@ func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToSchemaPackageUnexpect
 
 func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToSchemaPackageUnexpectedSegmentHandlingPtrOutputWithContext(ctx context.Context) SchemaPackageUnexpectedSegmentHandlingPtrOutput {
 	return o
-}
-
-func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchemaPackageUnexpectedSegmentHandling] {
-	return pulumix.Output[*SchemaPackageUnexpectedSegmentHandling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) Elem() SchemaPackageUnexpectedSegmentHandlingOutput {
@@ -2731,12 +2563,6 @@ func (o TimePartitioningTypeOutput) ToTimePartitioningTypePtrOutputWithContext(c
 	}).(TimePartitioningTypePtrOutput)
 }
 
-func (o TimePartitioningTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TimePartitioningType] {
-	return pulumix.Output[TimePartitioningType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TimePartitioningTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2770,12 +2596,6 @@ func (o TimePartitioningTypePtrOutput) ToTimePartitioningTypePtrOutput() TimePar
 
 func (o TimePartitioningTypePtrOutput) ToTimePartitioningTypePtrOutputWithContext(ctx context.Context) TimePartitioningTypePtrOutput {
 	return o
-}
-
-func (o TimePartitioningTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimePartitioningType] {
-	return pulumix.Output[*TimePartitioningType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimePartitioningTypePtrOutput) Elem() TimePartitioningTypeOutput {
@@ -2920,12 +2740,6 @@ func (o TypePrimitiveOutput) ToTypePrimitivePtrOutputWithContext(ctx context.Con
 	}).(TypePrimitivePtrOutput)
 }
 
-func (o TypePrimitiveOutput) ToOutput(ctx context.Context) pulumix.Output[TypePrimitive] {
-	return pulumix.Output[TypePrimitive]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TypePrimitiveOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2959,12 +2773,6 @@ func (o TypePrimitivePtrOutput) ToTypePrimitivePtrOutput() TypePrimitivePtrOutpu
 
 func (o TypePrimitivePtrOutput) ToTypePrimitivePtrOutputWithContext(ctx context.Context) TypePrimitivePtrOutput {
 	return o
-}
-
-func (o TypePrimitivePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TypePrimitive] {
-	return pulumix.Output[*TypePrimitive]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TypePrimitivePtrOutput) Elem() TypePrimitiveOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -69,12 +68,6 @@ func (i AllowedClientArgs) ToAllowedClientOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedClientOutput)
 }
 
-func (i AllowedClientArgs) ToOutput(ctx context.Context) pulumix.Output[AllowedClient] {
-	return pulumix.Output[AllowedClient]{
-		OutputState: i.ToAllowedClientOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AllowedClientArrayInput is an input type that accepts AllowedClientArray and AllowedClientArrayOutput values.
 // You can construct a concrete instance of `AllowedClientArrayInput` via:
 //
@@ -100,12 +93,6 @@ func (i AllowedClientArray) ToAllowedClientArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedClientArrayOutput)
 }
 
-func (i AllowedClientArray) ToOutput(ctx context.Context) pulumix.Output[[]AllowedClient] {
-	return pulumix.Output[[]AllowedClient]{
-		OutputState: i.ToAllowedClientArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an 'access point' for the share.
 type AllowedClientOutput struct{ *pulumi.OutputState }
 
@@ -119,12 +106,6 @@ func (o AllowedClientOutput) ToAllowedClientOutput() AllowedClientOutput {
 
 func (o AllowedClientOutput) ToAllowedClientOutputWithContext(ctx context.Context) AllowedClientOutput {
 	return o
-}
-
-func (o AllowedClientOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedClient] {
-	return pulumix.Output[AllowedClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow dev flag. Which controls whether to allow creation of devices.
@@ -171,12 +152,6 @@ func (o AllowedClientArrayOutput) ToAllowedClientArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o AllowedClientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AllowedClient] {
-	return pulumix.Output[[]AllowedClient]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AllowedClientArrayOutput) Index(i pulumi.IntInput) AllowedClientOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowedClient {
 		return vs[0].([]AllowedClient)[vs[1].(int)]
@@ -216,12 +191,6 @@ func (o AllowedClientResponseOutput) ToAllowedClientResponseOutput() AllowedClie
 
 func (o AllowedClientResponseOutput) ToAllowedClientResponseOutputWithContext(ctx context.Context) AllowedClientResponseOutput {
 	return o
-}
-
-func (o AllowedClientResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedClientResponse] {
-	return pulumix.Output[AllowedClientResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow dev flag. Which controls whether to allow creation of devices.
@@ -278,12 +247,6 @@ func (o AllowedClientResponseArrayOutput) ToAllowedClientResponseArrayOutputWith
 	return o
 }
 
-func (o AllowedClientResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AllowedClientResponse] {
-	return pulumix.Output[[]AllowedClientResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AllowedClientResponseArrayOutput) Index(i pulumi.IntInput) AllowedClientResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowedClientResponse {
 		return vs[0].([]AllowedClientResponse)[vs[1].(int)]
@@ -337,12 +300,6 @@ func (i GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs) ToGoogleCloudBaremet
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput)
 }
 
-func (i GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBaremetalsolutionV2LogicalInterface] {
-	return pulumix.Output[GoogleCloudBaremetalsolutionV2LogicalInterface]{
-		OutputState: i.ToGoogleCloudBaremetalsolutionV2LogicalInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput is an input type that accepts GoogleCloudBaremetalsolutionV2LogicalInterfaceArray and GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput` via:
 //
@@ -368,12 +325,6 @@ func (i GoogleCloudBaremetalsolutionV2LogicalInterfaceArray) ToGoogleCloudBareme
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput)
 }
 
-func (i GoogleCloudBaremetalsolutionV2LogicalInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudBaremetalsolutionV2LogicalInterface] {
-	return pulumix.Output[[]GoogleCloudBaremetalsolutionV2LogicalInterface]{
-		OutputState: i.ToGoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
 type GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput struct{ *pulumi.OutputState }
 
@@ -387,12 +338,6 @@ func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) ToGoogleCloudBarem
 
 func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceOutputWithContext(ctx context.Context) GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput {
 	return o
-}
-
-func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBaremetalsolutionV2LogicalInterface] {
-	return pulumix.Output[GoogleCloudBaremetalsolutionV2LogicalInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
@@ -428,12 +373,6 @@ func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudBaremetalsolutionV2LogicalInterface] {
-	return pulumix.Output[[]GoogleCloudBaremetalsolutionV2LogicalInterface]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput) Index(i pulumi.IntInput) GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudBaremetalsolutionV2LogicalInterface {
 		return vs[0].([]GoogleCloudBaremetalsolutionV2LogicalInterface)[vs[1].(int)]
@@ -467,12 +406,6 @@ func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse] {
-	return pulumix.Output[GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
 //
 // Deprecated: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
@@ -504,12 +437,6 @@ func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput) ToGoo
 
 func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutputWithContext(ctx context.Context) GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse] {
-	return pulumix.Output[[]GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput {
@@ -601,12 +528,6 @@ func (i InstanceConfigArgs) ToInstanceConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigOutput)
 }
 
-func (i InstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceConfig] {
-	return pulumix.Output[InstanceConfig]{
-		OutputState: i.ToInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceConfigArrayInput is an input type that accepts InstanceConfigArray and InstanceConfigArrayOutput values.
 // You can construct a concrete instance of `InstanceConfigArrayInput` via:
 //
@@ -632,12 +553,6 @@ func (i InstanceConfigArray) ToInstanceConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigArrayOutput)
 }
 
-func (i InstanceConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceConfig] {
-	return pulumix.Output[[]InstanceConfig]{
-		OutputState: i.ToInstanceConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration parameters for a new instance.
 type InstanceConfigOutput struct{ *pulumi.OutputState }
 
@@ -651,12 +566,6 @@ func (o InstanceConfigOutput) ToInstanceConfigOutput() InstanceConfigOutput {
 
 func (o InstanceConfigOutput) ToInstanceConfigOutputWithContext(ctx context.Context) InstanceConfigOutput {
 	return o
-}
-
-func (o InstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceConfig] {
-	return pulumix.Output[InstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true networks can be from different projects of the same vendor account.
@@ -738,12 +647,6 @@ func (o InstanceConfigArrayOutput) ToInstanceConfigArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o InstanceConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceConfig] {
-	return pulumix.Output[[]InstanceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceConfigArrayOutput) Index(i pulumi.IntInput) InstanceConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceConfig {
 		return vs[0].([]InstanceConfig)[vs[1].(int)]
@@ -791,12 +694,6 @@ func (o InstanceConfigResponseOutput) ToInstanceConfigResponseOutput() InstanceC
 
 func (o InstanceConfigResponseOutput) ToInstanceConfigResponseOutputWithContext(ctx context.Context) InstanceConfigResponseOutput {
 	return o
-}
-
-func (o InstanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceConfigResponse] {
-	return pulumix.Output[InstanceConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true networks can be from different projects of the same vendor account.
@@ -875,12 +772,6 @@ func (o InstanceConfigResponseArrayOutput) ToInstanceConfigResponseArrayOutputWi
 	return o
 }
 
-func (o InstanceConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceConfigResponse] {
-	return pulumix.Output[[]InstanceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceConfigResponseArrayOutput) Index(i pulumi.IntInput) InstanceConfigResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceConfigResponse {
 		return vs[0].([]InstanceConfigResponse)[vs[1].(int)]
@@ -926,12 +817,6 @@ func (i IntakeVlanAttachmentArgs) ToIntakeVlanAttachmentOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(IntakeVlanAttachmentOutput)
 }
 
-func (i IntakeVlanAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[IntakeVlanAttachment] {
-	return pulumix.Output[IntakeVlanAttachment]{
-		OutputState: i.ToIntakeVlanAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IntakeVlanAttachmentArrayInput is an input type that accepts IntakeVlanAttachmentArray and IntakeVlanAttachmentArrayOutput values.
 // You can construct a concrete instance of `IntakeVlanAttachmentArrayInput` via:
 //
@@ -957,12 +842,6 @@ func (i IntakeVlanAttachmentArray) ToIntakeVlanAttachmentArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(IntakeVlanAttachmentArrayOutput)
 }
 
-func (i IntakeVlanAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]IntakeVlanAttachment] {
-	return pulumix.Output[[]IntakeVlanAttachment]{
-		OutputState: i.ToIntakeVlanAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A GCP vlan attachment.
 type IntakeVlanAttachmentOutput struct{ *pulumi.OutputState }
 
@@ -976,12 +855,6 @@ func (o IntakeVlanAttachmentOutput) ToIntakeVlanAttachmentOutput() IntakeVlanAtt
 
 func (o IntakeVlanAttachmentOutput) ToIntakeVlanAttachmentOutputWithContext(ctx context.Context) IntakeVlanAttachmentOutput {
 	return o
-}
-
-func (o IntakeVlanAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[IntakeVlanAttachment] {
-	return pulumix.Output[IntakeVlanAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier of the VLAN attachment.
@@ -1006,12 +879,6 @@ func (o IntakeVlanAttachmentArrayOutput) ToIntakeVlanAttachmentArrayOutput() Int
 
 func (o IntakeVlanAttachmentArrayOutput) ToIntakeVlanAttachmentArrayOutputWithContext(ctx context.Context) IntakeVlanAttachmentArrayOutput {
 	return o
-}
-
-func (o IntakeVlanAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntakeVlanAttachment] {
-	return pulumix.Output[[]IntakeVlanAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntakeVlanAttachmentArrayOutput) Index(i pulumi.IntInput) IntakeVlanAttachmentOutput {
@@ -1041,12 +908,6 @@ func (o IntakeVlanAttachmentResponseOutput) ToIntakeVlanAttachmentResponseOutput
 	return o
 }
 
-func (o IntakeVlanAttachmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IntakeVlanAttachmentResponse] {
-	return pulumix.Output[IntakeVlanAttachmentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Attachment pairing key.
 func (o IntakeVlanAttachmentResponseOutput) PairingKey() pulumi.StringOutput {
 	return o.ApplyT(func(v IntakeVlanAttachmentResponse) string { return v.PairingKey }).(pulumi.StringOutput)
@@ -1064,12 +925,6 @@ func (o IntakeVlanAttachmentResponseArrayOutput) ToIntakeVlanAttachmentResponseA
 
 func (o IntakeVlanAttachmentResponseArrayOutput) ToIntakeVlanAttachmentResponseArrayOutputWithContext(ctx context.Context) IntakeVlanAttachmentResponseArrayOutput {
 	return o
-}
-
-func (o IntakeVlanAttachmentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntakeVlanAttachmentResponse] {
-	return pulumix.Output[[]IntakeVlanAttachmentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntakeVlanAttachmentResponseArrayOutput) Index(i pulumi.IntInput) IntakeVlanAttachmentResponseOutput {
@@ -1129,12 +984,6 @@ func (i LogicalNetworkInterfaceArgs) ToLogicalNetworkInterfaceOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(LogicalNetworkInterfaceOutput)
 }
 
-func (i LogicalNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[LogicalNetworkInterface] {
-	return pulumix.Output[LogicalNetworkInterface]{
-		OutputState: i.ToLogicalNetworkInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LogicalNetworkInterfaceArrayInput is an input type that accepts LogicalNetworkInterfaceArray and LogicalNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `LogicalNetworkInterfaceArrayInput` via:
 //
@@ -1160,12 +1009,6 @@ func (i LogicalNetworkInterfaceArray) ToLogicalNetworkInterfaceArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(LogicalNetworkInterfaceArrayOutput)
 }
 
-func (i LogicalNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]LogicalNetworkInterface] {
-	return pulumix.Output[[]LogicalNetworkInterface]{
-		OutputState: i.ToLogicalNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Each logical network interface is effectively a network and IP pair.
 type LogicalNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
@@ -1179,12 +1022,6 @@ func (o LogicalNetworkInterfaceOutput) ToLogicalNetworkInterfaceOutput() Logical
 
 func (o LogicalNetworkInterfaceOutput) ToLogicalNetworkInterfaceOutputWithContext(ctx context.Context) LogicalNetworkInterfaceOutput {
 	return o
-}
-
-func (o LogicalNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[LogicalNetworkInterface] {
-	return pulumix.Output[LogicalNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
@@ -1226,12 +1063,6 @@ func (o LogicalNetworkInterfaceArrayOutput) ToLogicalNetworkInterfaceArrayOutput
 	return o
 }
 
-func (o LogicalNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LogicalNetworkInterface] {
-	return pulumix.Output[[]LogicalNetworkInterface]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LogicalNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) LogicalNetworkInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogicalNetworkInterface {
 		return vs[0].([]LogicalNetworkInterface)[vs[1].(int)]
@@ -1263,12 +1094,6 @@ func (o LogicalNetworkInterfaceResponseOutput) ToLogicalNetworkInterfaceResponse
 
 func (o LogicalNetworkInterfaceResponseOutput) ToLogicalNetworkInterfaceResponseOutputWithContext(ctx context.Context) LogicalNetworkInterfaceResponseOutput {
 	return o
-}
-
-func (o LogicalNetworkInterfaceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogicalNetworkInterfaceResponse] {
-	return pulumix.Output[LogicalNetworkInterfaceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
@@ -1303,12 +1128,6 @@ func (o LogicalNetworkInterfaceResponseArrayOutput) ToLogicalNetworkInterfaceRes
 
 func (o LogicalNetworkInterfaceResponseArrayOutput) ToLogicalNetworkInterfaceResponseArrayOutputWithContext(ctx context.Context) LogicalNetworkInterfaceResponseArrayOutput {
 	return o
-}
-
-func (o LogicalNetworkInterfaceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LogicalNetworkInterfaceResponse] {
-	return pulumix.Output[[]LogicalNetworkInterfaceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogicalNetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) LogicalNetworkInterfaceResponseOutput {
@@ -1356,12 +1175,6 @@ func (i LunRangeArgs) ToLunRangeOutputWithContext(ctx context.Context) LunRangeO
 	return pulumi.ToOutputWithContext(ctx, i).(LunRangeOutput)
 }
 
-func (i LunRangeArgs) ToOutput(ctx context.Context) pulumix.Output[LunRange] {
-	return pulumix.Output[LunRange]{
-		OutputState: i.ToLunRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LunRangeArrayInput is an input type that accepts LunRangeArray and LunRangeArrayOutput values.
 // You can construct a concrete instance of `LunRangeArrayInput` via:
 //
@@ -1387,12 +1200,6 @@ func (i LunRangeArray) ToLunRangeArrayOutputWithContext(ctx context.Context) Lun
 	return pulumi.ToOutputWithContext(ctx, i).(LunRangeArrayOutput)
 }
 
-func (i LunRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]LunRange] {
-	return pulumix.Output[[]LunRange]{
-		OutputState: i.ToLunRangeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A LUN(Logical Unit Number) range.
 type LunRangeOutput struct{ *pulumi.OutputState }
 
@@ -1406,12 +1213,6 @@ func (o LunRangeOutput) ToLunRangeOutput() LunRangeOutput {
 
 func (o LunRangeOutput) ToLunRangeOutputWithContext(ctx context.Context) LunRangeOutput {
 	return o
-}
-
-func (o LunRangeOutput) ToOutput(ctx context.Context) pulumix.Output[LunRange] {
-	return pulumix.Output[LunRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of LUNs to create.
@@ -1436,12 +1237,6 @@ func (o LunRangeArrayOutput) ToLunRangeArrayOutput() LunRangeArrayOutput {
 
 func (o LunRangeArrayOutput) ToLunRangeArrayOutputWithContext(ctx context.Context) LunRangeArrayOutput {
 	return o
-}
-
-func (o LunRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LunRange] {
-	return pulumix.Output[[]LunRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LunRangeArrayOutput) Index(i pulumi.IntInput) LunRangeOutput {
@@ -1473,12 +1268,6 @@ func (o LunRangeResponseOutput) ToLunRangeResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o LunRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LunRangeResponse] {
-	return pulumix.Output[LunRangeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of LUNs to create.
 func (o LunRangeResponseOutput) Quantity() pulumi.IntOutput {
 	return o.ApplyT(func(v LunRangeResponse) int { return v.Quantity }).(pulumi.IntOutput)
@@ -1501,12 +1290,6 @@ func (o LunRangeResponseArrayOutput) ToLunRangeResponseArrayOutput() LunRangeRes
 
 func (o LunRangeResponseArrayOutput) ToLunRangeResponseArrayOutputWithContext(ctx context.Context) LunRangeResponseArrayOutput {
 	return o
-}
-
-func (o LunRangeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LunRangeResponse] {
-	return pulumix.Output[[]LunRangeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LunRangeResponseArrayOutput) Index(i pulumi.IntInput) LunRangeResponseOutput {
@@ -1558,12 +1341,6 @@ func (i NetworkAddressArgs) ToNetworkAddressOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAddressOutput)
 }
 
-func (i NetworkAddressArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkAddress] {
-	return pulumix.Output[NetworkAddress]{
-		OutputState: i.ToNetworkAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkAddressArgs) ToNetworkAddressPtrOutput() NetworkAddressPtrOutput {
 	return i.ToNetworkAddressPtrOutputWithContext(context.Background())
 }
@@ -1605,12 +1382,6 @@ func (i *networkAddressPtrType) ToNetworkAddressPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAddressPtrOutput)
 }
 
-func (i *networkAddressPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkAddress] {
-	return pulumix.Output[*NetworkAddress]{
-		OutputState: i.ToNetworkAddressPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A network.
 type NetworkAddressOutput struct{ *pulumi.OutputState }
 
@@ -1634,12 +1405,6 @@ func (o NetworkAddressOutput) ToNetworkAddressPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAddress) *NetworkAddress {
 		return &v
 	}).(NetworkAddressPtrOutput)
-}
-
-func (o NetworkAddressOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkAddress] {
-	return pulumix.Output[NetworkAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IPv4 address to be assigned to the server.
@@ -1669,12 +1434,6 @@ func (o NetworkAddressPtrOutput) ToNetworkAddressPtrOutput() NetworkAddressPtrOu
 
 func (o NetworkAddressPtrOutput) ToNetworkAddressPtrOutputWithContext(ctx context.Context) NetworkAddressPtrOutput {
 	return o
-}
-
-func (o NetworkAddressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkAddress] {
-	return pulumix.Output[*NetworkAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkAddressPtrOutput) Elem() NetworkAddressOutput {
@@ -1740,12 +1499,6 @@ func (o NetworkAddressResponseOutput) ToNetworkAddressResponseOutput() NetworkAd
 
 func (o NetworkAddressResponseOutput) ToNetworkAddressResponseOutputWithContext(ctx context.Context) NetworkAddressResponseOutput {
 	return o
-}
-
-func (o NetworkAddressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkAddressResponse] {
-	return pulumix.Output[NetworkAddressResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IPv4 address to be assigned to the server.
@@ -1834,12 +1587,6 @@ func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput)
 }
 
-func (i NetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: i.ToNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkConfigArrayInput is an input type that accepts NetworkConfigArray and NetworkConfigArrayOutput values.
 // You can construct a concrete instance of `NetworkConfigArrayInput` via:
 //
@@ -1865,12 +1612,6 @@ func (i NetworkConfigArray) ToNetworkConfigArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigArrayOutput)
 }
 
-func (i NetworkConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]NetworkConfig] {
-	return pulumix.Output[[]NetworkConfig]{
-		OutputState: i.ToNetworkConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration parameters for a new network.
 type NetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -1884,12 +1625,6 @@ func (o NetworkConfigOutput) ToNetworkConfigOutput() NetworkConfigOutput {
 
 func (o NetworkConfigOutput) ToNetworkConfigOutputWithContext(ctx context.Context) NetworkConfigOutput {
 	return o
-}
-
-func (o NetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
-	return pulumix.Output[NetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Interconnect bandwidth. Set only when type is CLIENT.
@@ -1956,12 +1691,6 @@ func (o NetworkConfigArrayOutput) ToNetworkConfigArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o NetworkConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkConfig] {
-	return pulumix.Output[[]NetworkConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkConfigArrayOutput) Index(i pulumi.IntInput) NetworkConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkConfig {
 		return vs[0].([]NetworkConfig)[vs[1].(int)]
@@ -2005,12 +1734,6 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutput() NetworkConf
 
 func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
 	return o
-}
-
-func (o NetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigResponse] {
-	return pulumix.Output[NetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Interconnect bandwidth. Set only when type is CLIENT.
@@ -2075,12 +1798,6 @@ func (o NetworkConfigResponseArrayOutput) ToNetworkConfigResponseArrayOutput() N
 
 func (o NetworkConfigResponseArrayOutput) ToNetworkConfigResponseArrayOutputWithContext(ctx context.Context) NetworkConfigResponseArrayOutput {
 	return o
-}
-
-func (o NetworkConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkConfigResponse] {
-	return pulumix.Output[[]NetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigResponseArrayOutput) Index(i pulumi.IntInput) NetworkConfigResponseOutput {
@@ -2148,12 +1865,6 @@ func (i NfsExportArgs) ToNfsExportOutputWithContext(ctx context.Context) NfsExpo
 	return pulumi.ToOutputWithContext(ctx, i).(NfsExportOutput)
 }
 
-func (i NfsExportArgs) ToOutput(ctx context.Context) pulumix.Output[NfsExport] {
-	return pulumix.Output[NfsExport]{
-		OutputState: i.ToNfsExportOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NfsExportArrayInput is an input type that accepts NfsExportArray and NfsExportArrayOutput values.
 // You can construct a concrete instance of `NfsExportArrayInput` via:
 //
@@ -2179,12 +1890,6 @@ func (i NfsExportArray) ToNfsExportArrayOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NfsExportArrayOutput)
 }
 
-func (i NfsExportArray) ToOutput(ctx context.Context) pulumix.Output[[]NfsExport] {
-	return pulumix.Output[[]NfsExport]{
-		OutputState: i.ToNfsExportArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A NFS export entry.
 type NfsExportOutput struct{ *pulumi.OutputState }
 
@@ -2198,12 +1903,6 @@ func (o NfsExportOutput) ToNfsExportOutput() NfsExportOutput {
 
 func (o NfsExportOutput) ToNfsExportOutputWithContext(ctx context.Context) NfsExportOutput {
 	return o
-}
-
-func (o NfsExportOutput) ToOutput(ctx context.Context) pulumix.Output[NfsExport] {
-	return pulumix.Output[NfsExport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow dev flag in NfsShare AllowedClientsRequest.
@@ -2255,12 +1954,6 @@ func (o NfsExportArrayOutput) ToNfsExportArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o NfsExportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NfsExport] {
-	return pulumix.Output[[]NfsExport]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NfsExportArrayOutput) Index(i pulumi.IntInput) NfsExportOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NfsExport {
 		return vs[0].([]NfsExport)[vs[1].(int)]
@@ -2298,12 +1991,6 @@ func (o NfsExportResponseOutput) ToNfsExportResponseOutput() NfsExportResponseOu
 
 func (o NfsExportResponseOutput) ToNfsExportResponseOutputWithContext(ctx context.Context) NfsExportResponseOutput {
 	return o
-}
-
-func (o NfsExportResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NfsExportResponse] {
-	return pulumix.Output[NfsExportResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow dev flag in NfsShare AllowedClientsRequest.
@@ -2353,12 +2040,6 @@ func (o NfsExportResponseArrayOutput) ToNfsExportResponseArrayOutput() NfsExport
 
 func (o NfsExportResponseArrayOutput) ToNfsExportResponseArrayOutputWithContext(ctx context.Context) NfsExportResponseArrayOutput {
 	return o
-}
-
-func (o NfsExportResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NfsExportResponse] {
-	return pulumix.Output[[]NfsExportResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NfsExportResponseArrayOutput) Index(i pulumi.IntInput) NfsExportResponseOutput {
@@ -2442,12 +2123,6 @@ func (i VolumeConfigArgs) ToVolumeConfigOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeConfigOutput)
 }
 
-func (i VolumeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeConfig] {
-	return pulumix.Output[VolumeConfig]{
-		OutputState: i.ToVolumeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeConfigArrayInput is an input type that accepts VolumeConfigArray and VolumeConfigArrayOutput values.
 // You can construct a concrete instance of `VolumeConfigArrayInput` via:
 //
@@ -2473,12 +2148,6 @@ func (i VolumeConfigArray) ToVolumeConfigArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeConfigArrayOutput)
 }
 
-func (i VolumeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]VolumeConfig] {
-	return pulumix.Output[[]VolumeConfig]{
-		OutputState: i.ToVolumeConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration parameters for a new volume.
 type VolumeConfigOutput struct{ *pulumi.OutputState }
 
@@ -2492,12 +2161,6 @@ func (o VolumeConfigOutput) ToVolumeConfigOutput() VolumeConfigOutput {
 
 func (o VolumeConfigOutput) ToVolumeConfigOutputWithContext(ctx context.Context) VolumeConfigOutput {
 	return o
-}
-
-func (o VolumeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeConfig] {
-	return pulumix.Output[VolumeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
@@ -2569,12 +2232,6 @@ func (o VolumeConfigArrayOutput) ToVolumeConfigArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o VolumeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeConfig] {
-	return pulumix.Output[[]VolumeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VolumeConfigArrayOutput) Index(i pulumi.IntInput) VolumeConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeConfig {
 		return vs[0].([]VolumeConfig)[vs[1].(int)]
@@ -2620,12 +2277,6 @@ func (o VolumeConfigResponseOutput) ToVolumeConfigResponseOutput() VolumeConfigR
 
 func (o VolumeConfigResponseOutput) ToVolumeConfigResponseOutputWithContext(ctx context.Context) VolumeConfigResponseOutput {
 	return o
-}
-
-func (o VolumeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeConfigResponse] {
-	return pulumix.Output[VolumeConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
@@ -2695,12 +2346,6 @@ func (o VolumeConfigResponseArrayOutput) ToVolumeConfigResponseArrayOutput() Vol
 
 func (o VolumeConfigResponseArrayOutput) ToVolumeConfigResponseArrayOutputWithContext(ctx context.Context) VolumeConfigResponseArrayOutput {
 	return o
-}
-
-func (o VolumeConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeConfigResponse] {
-	return pulumix.Output[[]VolumeConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeConfigResponseArrayOutput) Index(i pulumi.IntInput) VolumeConfigResponseOutput {

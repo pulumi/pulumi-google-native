@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
@@ -137,12 +136,6 @@ func (i *OrganizationsDeidentifyTemplate) ToOrganizationsDeidentifyTemplateOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationsDeidentifyTemplateOutput)
 }
 
-func (i *OrganizationsDeidentifyTemplate) ToOutput(ctx context.Context) pulumix.Output[*OrganizationsDeidentifyTemplate] {
-	return pulumix.Output[*OrganizationsDeidentifyTemplate]{
-		OutputState: i.ToOrganizationsDeidentifyTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationsDeidentifyTemplateOutput struct{ *pulumi.OutputState }
 
 func (OrganizationsDeidentifyTemplateOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o OrganizationsDeidentifyTemplateOutput) ToOrganizationsDeidentifyTemplate
 
 func (o OrganizationsDeidentifyTemplateOutput) ToOrganizationsDeidentifyTemplateOutputWithContext(ctx context.Context) OrganizationsDeidentifyTemplateOutput {
 	return o
-}
-
-func (o OrganizationsDeidentifyTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationsDeidentifyTemplate] {
-	return pulumix.Output[*OrganizationsDeidentifyTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of an inspectTemplate.

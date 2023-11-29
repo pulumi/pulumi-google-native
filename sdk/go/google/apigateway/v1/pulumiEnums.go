@@ -85,12 +85,6 @@ func (o ApigatewayAuditLogConfigLogTypeOutput) ToApigatewayAuditLogConfigLogType
 	}).(ApigatewayAuditLogConfigLogTypePtrOutput)
 }
 
-func (o ApigatewayAuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ApigatewayAuditLogConfigLogType] {
-	return pulumix.Output[ApigatewayAuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApigatewayAuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o ApigatewayAuditLogConfigLogTypePtrOutput) ToApigatewayAuditLogConfigLogT
 
 func (o ApigatewayAuditLogConfigLogTypePtrOutput) ToApigatewayAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) ApigatewayAuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o ApigatewayAuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApigatewayAuditLogConfigLogType] {
-	return pulumix.Output[*ApigatewayAuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApigatewayAuditLogConfigLogTypePtrOutput) Elem() ApigatewayAuditLogConfigLogTypeOutput {

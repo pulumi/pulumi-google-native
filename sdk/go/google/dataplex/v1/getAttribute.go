@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a Data Attribute resource.
@@ -93,12 +92,6 @@ func (o LookupAttributeResultOutput) ToLookupAttributeResultOutput() LookupAttri
 
 func (o LookupAttributeResultOutput) ToLookupAttributeResultOutputWithContext(ctx context.Context) LookupAttributeResultOutput {
 	return o
-}
-
-func (o LookupAttributeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttributeResult] {
-	return pulumix.Output[LookupAttributeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of child attributes present for this attribute.

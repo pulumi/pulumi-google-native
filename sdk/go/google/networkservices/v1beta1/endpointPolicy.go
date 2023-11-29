@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new EndpointPolicy in a given project and location.
@@ -173,12 +172,6 @@ func (i *EndpointPolicy) ToEndpointPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyOutput)
 }
 
-func (i *EndpointPolicy) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicy] {
-	return pulumix.Output[*EndpointPolicy]{
-		OutputState: i.ToEndpointPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EndpointPolicyOutput struct{ *pulumi.OutputState }
 
 func (EndpointPolicyOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o EndpointPolicyOutput) ToEndpointPolicyOutput() EndpointPolicyOutput {
 
 func (o EndpointPolicyOutput) ToEndpointPolicyOutputWithContext(ctx context.Context) EndpointPolicyOutput {
 	return o
-}
-
-func (o EndpointPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicy] {
-	return pulumix.Output[*EndpointPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.

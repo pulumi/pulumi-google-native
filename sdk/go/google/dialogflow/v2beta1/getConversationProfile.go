@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified conversation profile.
@@ -97,12 +96,6 @@ func (o LookupConversationProfileResultOutput) ToLookupConversationProfileResult
 
 func (o LookupConversationProfileResultOutput) ToLookupConversationProfileResultOutputWithContext(ctx context.Context) LookupConversationProfileResultOutput {
 	return o
-}
-
-func (o LookupConversationProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConversationProfileResult] {
-	return pulumix.Output[LookupConversationProfileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for an automated agent to use with this profile.

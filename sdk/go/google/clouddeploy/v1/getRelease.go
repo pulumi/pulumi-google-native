@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Release.
@@ -111,12 +110,6 @@ func (o LookupReleaseResultOutput) ToLookupReleaseResultOutput() LookupReleaseRe
 
 func (o LookupReleaseResultOutput) ToLookupReleaseResultOutputWithContext(ctx context.Context) LookupReleaseResultOutput {
 	return o
-}
-
-func (o LookupReleaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReleaseResult] {
-	return pulumix.Output[LookupReleaseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether this is an abandoned release.

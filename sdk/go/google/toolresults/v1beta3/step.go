@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Step. The returned Step will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist
@@ -207,12 +206,6 @@ func (i *Step) ToStepOutputWithContext(ctx context.Context) StepOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StepOutput)
 }
 
-func (i *Step) ToOutput(ctx context.Context) pulumix.Output[*Step] {
-	return pulumix.Output[*Step]{
-		OutputState: i.ToStepOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StepOutput struct{ *pulumi.OutputState }
 
 func (StepOutput) ElementType() reflect.Type {
@@ -225,12 +218,6 @@ func (o StepOutput) ToStepOutput() StepOutput {
 
 func (o StepOutput) ToStepOutputWithContext(ctx context.Context) StepOutput {
 	return o
-}
-
-func (o StepOutput) ToOutput(ctx context.Context) pulumix.Output[*Step] {
-	return pulumix.Output[*Step]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the step status was set to complete. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set

@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *ReusableConfigIamMember) ToReusableConfigIamMemberOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ReusableConfigIamMemberOutput)
 }
 
-func (i *ReusableConfigIamMember) ToOutput(ctx context.Context) pulumix.Output[*ReusableConfigIamMember] {
-	return pulumix.Output[*ReusableConfigIamMember]{
-		OutputState: i.ToReusableConfigIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReusableConfigIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ReusableConfigIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o ReusableConfigIamMemberOutput) ToReusableConfigIamMemberOutput() Reusabl
 
 func (o ReusableConfigIamMemberOutput) ToReusableConfigIamMemberOutputWithContext(ctx context.Context) ReusableConfigIamMemberOutput {
 	return o
-}
-
-func (o ReusableConfigIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ReusableConfigIamMember] {
-	return pulumix.Output[*ReusableConfigIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

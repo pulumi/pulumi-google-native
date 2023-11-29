@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a test case for the given agent.
@@ -155,12 +154,6 @@ func (i *TestCase) ToTestCaseOutputWithContext(ctx context.Context) TestCaseOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TestCaseOutput)
 }
 
-func (i *TestCase) ToOutput(ctx context.Context) pulumix.Output[*TestCase] {
-	return pulumix.Output[*TestCase]{
-		OutputState: i.ToTestCaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TestCaseOutput struct{ *pulumi.OutputState }
 
 func (TestCaseOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o TestCaseOutput) ToTestCaseOutput() TestCaseOutput {
 
 func (o TestCaseOutput) ToTestCaseOutputWithContext(ctx context.Context) TestCaseOutput {
 	return o
-}
-
-func (o TestCaseOutput) ToOutput(ctx context.Context) pulumix.Output[*TestCase] {
-	return pulumix.Output[*TestCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TestCaseOutput) AgentId() pulumi.StringOutput {

@@ -295,9 +295,6 @@ class Endpoint(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if enable_private_service_connect is not None and not opts.urn:
-                warnings.warn("""Deprecated: If true, expose the Endpoint via private service connect. Only one of the fields, network or enable_private_service_connect, can be set.""", DeprecationWarning)
-                pulumi.log.warn("""enable_private_service_connect is deprecated: Deprecated: If true, expose the Endpoint via private service connect. Only one of the fields, network or enable_private_service_connect, can be set.""")
             __props__.__dict__["enable_private_service_connect"] = enable_private_service_connect
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["endpoint_id"] = endpoint_id

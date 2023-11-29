@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i GoogleCloudRetailV2betaAudienceArgs) ToGoogleCloudRetailV2betaAudienceOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaAudienceOutput)
 }
 
-func (i GoogleCloudRetailV2betaAudienceArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaAudience] {
-	return pulumix.Output[GoogleCloudRetailV2betaAudience]{
-		OutputState: i.ToGoogleCloudRetailV2betaAudienceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaAudienceArgs) ToGoogleCloudRetailV2betaAudiencePtrOutput() GoogleCloudRetailV2betaAudiencePtrOutput {
 	return i.ToGoogleCloudRetailV2betaAudiencePtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *googleCloudRetailV2betaAudiencePtrType) ToGoogleCloudRetailV2betaAudien
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaAudiencePtrOutput)
 }
 
-func (i *googleCloudRetailV2betaAudiencePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaAudience] {
-	return pulumix.Output[*GoogleCloudRetailV2betaAudience]{
-		OutputState: i.ToGoogleCloudRetailV2betaAudiencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An intended audience of the Product for whom it's sold.
 type GoogleCloudRetailV2betaAudienceOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o GoogleCloudRetailV2betaAudienceOutput) ToGoogleCloudRetailV2betaAudience
 	}).(GoogleCloudRetailV2betaAudiencePtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaAudienceOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaAudience] {
-	return pulumix.Output[GoogleCloudRetailV2betaAudience]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
 func (o GoogleCloudRetailV2betaAudienceOutput) AgeGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaAudience) []string { return v.AgeGroups }).(pulumi.StringArrayOutput)
@@ -159,12 +140,6 @@ func (o GoogleCloudRetailV2betaAudiencePtrOutput) ToGoogleCloudRetailV2betaAudie
 
 func (o GoogleCloudRetailV2betaAudiencePtrOutput) ToGoogleCloudRetailV2betaAudiencePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaAudiencePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaAudiencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaAudience] {
-	return pulumix.Output[*GoogleCloudRetailV2betaAudience]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaAudiencePtrOutput) Elem() GoogleCloudRetailV2betaAudienceOutput {
@@ -220,12 +195,6 @@ func (o GoogleCloudRetailV2betaAudienceResponseOutput) ToGoogleCloudRetailV2beta
 	return o
 }
 
-func (o GoogleCloudRetailV2betaAudienceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaAudienceResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaAudienceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
 func (o GoogleCloudRetailV2betaAudienceResponseOutput) AgeGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaAudienceResponse) []string { return v.AgeGroups }).(pulumi.StringArrayOutput)
@@ -275,12 +244,6 @@ func (i GoogleCloudRetailV2betaColorInfoArgs) ToGoogleCloudRetailV2betaColorInfo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaColorInfoOutput)
 }
 
-func (i GoogleCloudRetailV2betaColorInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaColorInfo] {
-	return pulumix.Output[GoogleCloudRetailV2betaColorInfo]{
-		OutputState: i.ToGoogleCloudRetailV2betaColorInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaColorInfoArgs) ToGoogleCloudRetailV2betaColorInfoPtrOutput() GoogleCloudRetailV2betaColorInfoPtrOutput {
 	return i.ToGoogleCloudRetailV2betaColorInfoPtrOutputWithContext(context.Background())
 }
@@ -322,12 +285,6 @@ func (i *googleCloudRetailV2betaColorInfoPtrType) ToGoogleCloudRetailV2betaColor
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaColorInfoPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaColorInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaColorInfo] {
-	return pulumix.Output[*GoogleCloudRetailV2betaColorInfo]{
-		OutputState: i.ToGoogleCloudRetailV2betaColorInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The color information of a Product.
 type GoogleCloudRetailV2betaColorInfoOutput struct{ *pulumi.OutputState }
 
@@ -353,12 +310,6 @@ func (o GoogleCloudRetailV2betaColorInfoOutput) ToGoogleCloudRetailV2betaColorIn
 	}).(GoogleCloudRetailV2betaColorInfoPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaColorInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaColorInfo] {
-	return pulumix.Output[GoogleCloudRetailV2betaColorInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 func (o GoogleCloudRetailV2betaColorInfoOutput) ColorFamilies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaColorInfo) []string { return v.ColorFamilies }).(pulumi.StringArrayOutput)
@@ -381,12 +332,6 @@ func (o GoogleCloudRetailV2betaColorInfoPtrOutput) ToGoogleCloudRetailV2betaColo
 
 func (o GoogleCloudRetailV2betaColorInfoPtrOutput) ToGoogleCloudRetailV2betaColorInfoPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaColorInfoPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaColorInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaColorInfo] {
-	return pulumix.Output[*GoogleCloudRetailV2betaColorInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaColorInfoPtrOutput) Elem() GoogleCloudRetailV2betaColorInfoOutput {
@@ -442,12 +387,6 @@ func (o GoogleCloudRetailV2betaColorInfoResponseOutput) ToGoogleCloudRetailV2bet
 	return o
 }
 
-func (o GoogleCloudRetailV2betaColorInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaColorInfoResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaColorInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 func (o GoogleCloudRetailV2betaColorInfoResponseOutput) ColorFamilies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaColorInfoResponse) []string { return v.ColorFamilies }).(pulumi.StringArrayOutput)
@@ -501,12 +440,6 @@ func (i GoogleCloudRetailV2betaConditionArgs) ToGoogleCloudRetailV2betaCondition
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionOutput)
 }
 
-func (i GoogleCloudRetailV2betaConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaCondition] {
-	return pulumix.Output[GoogleCloudRetailV2betaCondition]{
-		OutputState: i.ToGoogleCloudRetailV2betaConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaConditionArgs) ToGoogleCloudRetailV2betaConditionPtrOutput() GoogleCloudRetailV2betaConditionPtrOutput {
 	return i.ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(context.Background())
 }
@@ -548,12 +481,6 @@ func (i *googleCloudRetailV2betaConditionPtrType) ToGoogleCloudRetailV2betaCondi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaCondition] {
-	return pulumix.Output[*GoogleCloudRetailV2betaCondition]{
-		OutputState: i.ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
 type GoogleCloudRetailV2betaConditionOutput struct{ *pulumi.OutputState }
 
@@ -577,12 +504,6 @@ func (o GoogleCloudRetailV2betaConditionOutput) ToGoogleCloudRetailV2betaConditi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaCondition) *GoogleCloudRetailV2betaCondition {
 		return &v
 	}).(GoogleCloudRetailV2betaConditionPtrOutput)
-}
-
-func (o GoogleCloudRetailV2betaConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaCondition] {
-	return pulumix.Output[GoogleCloudRetailV2betaCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Range of time(s) specifying when Condition is active. Condition true if any time range matches.
@@ -616,12 +537,6 @@ func (o GoogleCloudRetailV2betaConditionPtrOutput) ToGoogleCloudRetailV2betaCond
 
 func (o GoogleCloudRetailV2betaConditionPtrOutput) ToGoogleCloudRetailV2betaConditionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaCondition] {
-	return pulumix.Output[*GoogleCloudRetailV2betaCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaConditionPtrOutput) Elem() GoogleCloudRetailV2betaConditionOutput {
@@ -703,12 +618,6 @@ func (i GoogleCloudRetailV2betaConditionQueryTermArgs) ToGoogleCloudRetailV2beta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionQueryTermOutput)
 }
 
-func (i GoogleCloudRetailV2betaConditionQueryTermArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaConditionQueryTerm] {
-	return pulumix.Output[GoogleCloudRetailV2betaConditionQueryTerm]{
-		OutputState: i.ToGoogleCloudRetailV2betaConditionQueryTermOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRetailV2betaConditionQueryTermArrayInput is an input type that accepts GoogleCloudRetailV2betaConditionQueryTermArray and GoogleCloudRetailV2betaConditionQueryTermArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaConditionQueryTermArrayInput` via:
 //
@@ -734,12 +643,6 @@ func (i GoogleCloudRetailV2betaConditionQueryTermArray) ToGoogleCloudRetailV2bet
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionQueryTermArrayOutput)
 }
 
-func (i GoogleCloudRetailV2betaConditionQueryTermArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaConditionQueryTerm] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaConditionQueryTerm]{
-		OutputState: i.ToGoogleCloudRetailV2betaConditionQueryTermArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Query terms that we want to match on.
 type GoogleCloudRetailV2betaConditionQueryTermOutput struct{ *pulumi.OutputState }
 
@@ -753,12 +656,6 @@ func (o GoogleCloudRetailV2betaConditionQueryTermOutput) ToGoogleCloudRetailV2be
 
 func (o GoogleCloudRetailV2betaConditionQueryTermOutput) ToGoogleCloudRetailV2betaConditionQueryTermOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionQueryTermOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaConditionQueryTermOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaConditionQueryTerm] {
-	return pulumix.Output[GoogleCloudRetailV2betaConditionQueryTerm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether this is supposed to be a full or partial match.
@@ -783,12 +680,6 @@ func (o GoogleCloudRetailV2betaConditionQueryTermArrayOutput) ToGoogleCloudRetai
 
 func (o GoogleCloudRetailV2betaConditionQueryTermArrayOutput) ToGoogleCloudRetailV2betaConditionQueryTermArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionQueryTermArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaConditionQueryTermArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaConditionQueryTerm] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaConditionQueryTerm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaConditionQueryTermArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaConditionQueryTermOutput {
@@ -820,12 +711,6 @@ func (o GoogleCloudRetailV2betaConditionQueryTermResponseOutput) ToGoogleCloudRe
 	return o
 }
 
-func (o GoogleCloudRetailV2betaConditionQueryTermResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaConditionQueryTermResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaConditionQueryTermResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether this is supposed to be a full or partial match.
 func (o GoogleCloudRetailV2betaConditionQueryTermResponseOutput) FullMatch() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionQueryTermResponse) bool { return v.FullMatch }).(pulumi.BoolOutput)
@@ -848,12 +733,6 @@ func (o GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput) ToGoogleCl
 
 func (o GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput) ToGoogleCloudRetailV2betaConditionQueryTermResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaConditionQueryTermResponse] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaConditionQueryTermResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaConditionQueryTermResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaConditionQueryTermResponseOutput {
@@ -885,12 +764,6 @@ func (o GoogleCloudRetailV2betaConditionResponseOutput) ToGoogleCloudRetailV2bet
 
 func (o GoogleCloudRetailV2betaConditionResponseOutput) ToGoogleCloudRetailV2betaConditionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaConditionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaConditionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Range of time(s) specifying when Condition is active. Condition true if any time range matches.
@@ -951,12 +824,6 @@ func (i GoogleCloudRetailV2betaConditionTimeRangeArgs) ToGoogleCloudRetailV2beta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionTimeRangeOutput)
 }
 
-func (i GoogleCloudRetailV2betaConditionTimeRangeArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaConditionTimeRange] {
-	return pulumix.Output[GoogleCloudRetailV2betaConditionTimeRange]{
-		OutputState: i.ToGoogleCloudRetailV2betaConditionTimeRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRetailV2betaConditionTimeRangeArrayInput is an input type that accepts GoogleCloudRetailV2betaConditionTimeRangeArray and GoogleCloudRetailV2betaConditionTimeRangeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaConditionTimeRangeArrayInput` via:
 //
@@ -982,12 +849,6 @@ func (i GoogleCloudRetailV2betaConditionTimeRangeArray) ToGoogleCloudRetailV2bet
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaConditionTimeRangeArrayOutput)
 }
 
-func (i GoogleCloudRetailV2betaConditionTimeRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaConditionTimeRange] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaConditionTimeRange]{
-		OutputState: i.ToGoogleCloudRetailV2betaConditionTimeRangeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
 type GoogleCloudRetailV2betaConditionTimeRangeOutput struct{ *pulumi.OutputState }
 
@@ -1001,12 +862,6 @@ func (o GoogleCloudRetailV2betaConditionTimeRangeOutput) ToGoogleCloudRetailV2be
 
 func (o GoogleCloudRetailV2betaConditionTimeRangeOutput) ToGoogleCloudRetailV2betaConditionTimeRangeOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionTimeRangeOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaConditionTimeRangeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaConditionTimeRange] {
-	return pulumix.Output[GoogleCloudRetailV2betaConditionTimeRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 // End of time range. Range is inclusive.
@@ -1031,12 +886,6 @@ func (o GoogleCloudRetailV2betaConditionTimeRangeArrayOutput) ToGoogleCloudRetai
 
 func (o GoogleCloudRetailV2betaConditionTimeRangeArrayOutput) ToGoogleCloudRetailV2betaConditionTimeRangeArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionTimeRangeArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaConditionTimeRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaConditionTimeRange] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaConditionTimeRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaConditionTimeRangeArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaConditionTimeRangeOutput {
@@ -1068,12 +917,6 @@ func (o GoogleCloudRetailV2betaConditionTimeRangeResponseOutput) ToGoogleCloudRe
 	return o
 }
 
-func (o GoogleCloudRetailV2betaConditionTimeRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaConditionTimeRangeResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaConditionTimeRangeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // End of time range. Range is inclusive.
 func (o GoogleCloudRetailV2betaConditionTimeRangeResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionTimeRangeResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -1096,12 +939,6 @@ func (o GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput) ToGoogleCl
 
 func (o GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput) ToGoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaConditionTimeRangeResponse] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaConditionTimeRangeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaConditionTimeRangeResponseOutput {
@@ -1149,12 +986,6 @@ func (i GoogleCloudRetailV2betaFulfillmentInfoArgs) ToGoogleCloudRetailV2betaFul
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaFulfillmentInfoOutput)
 }
 
-func (i GoogleCloudRetailV2betaFulfillmentInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaFulfillmentInfo] {
-	return pulumix.Output[GoogleCloudRetailV2betaFulfillmentInfo]{
-		OutputState: i.ToGoogleCloudRetailV2betaFulfillmentInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRetailV2betaFulfillmentInfoArrayInput is an input type that accepts GoogleCloudRetailV2betaFulfillmentInfoArray and GoogleCloudRetailV2betaFulfillmentInfoArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaFulfillmentInfoArrayInput` via:
 //
@@ -1180,12 +1011,6 @@ func (i GoogleCloudRetailV2betaFulfillmentInfoArray) ToGoogleCloudRetailV2betaFu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaFulfillmentInfoArrayOutput)
 }
 
-func (i GoogleCloudRetailV2betaFulfillmentInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaFulfillmentInfo] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaFulfillmentInfo]{
-		OutputState: i.ToGoogleCloudRetailV2betaFulfillmentInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2betaFulfillmentInfoOutput struct{ *pulumi.OutputState }
 
@@ -1199,12 +1024,6 @@ func (o GoogleCloudRetailV2betaFulfillmentInfoOutput) ToGoogleCloudRetailV2betaF
 
 func (o GoogleCloudRetailV2betaFulfillmentInfoOutput) ToGoogleCloudRetailV2betaFulfillmentInfoOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaFulfillmentInfoOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaFulfillmentInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaFulfillmentInfo] {
-	return pulumix.Output[GoogleCloudRetailV2betaFulfillmentInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
@@ -1229,12 +1048,6 @@ func (o GoogleCloudRetailV2betaFulfillmentInfoArrayOutput) ToGoogleCloudRetailV2
 
 func (o GoogleCloudRetailV2betaFulfillmentInfoArrayOutput) ToGoogleCloudRetailV2betaFulfillmentInfoArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaFulfillmentInfoArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaFulfillmentInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaFulfillmentInfo] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaFulfillmentInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaFulfillmentInfoArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaFulfillmentInfoOutput {
@@ -1266,12 +1079,6 @@ func (o GoogleCloudRetailV2betaFulfillmentInfoResponseOutput) ToGoogleCloudRetai
 	return o
 }
 
-func (o GoogleCloudRetailV2betaFulfillmentInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaFulfillmentInfoResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaFulfillmentInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 func (o GoogleCloudRetailV2betaFulfillmentInfoResponseOutput) PlaceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaFulfillmentInfoResponse) []string { return v.PlaceIds }).(pulumi.StringArrayOutput)
@@ -1294,12 +1101,6 @@ func (o GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput) ToGoogleCloud
 
 func (o GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput) ToGoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaFulfillmentInfoResponse] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaFulfillmentInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaFulfillmentInfoResponseOutput {
@@ -1351,12 +1152,6 @@ func (i GoogleCloudRetailV2betaImageArgs) ToGoogleCloudRetailV2betaImageOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaImageOutput)
 }
 
-func (i GoogleCloudRetailV2betaImageArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaImage] {
-	return pulumix.Output[GoogleCloudRetailV2betaImage]{
-		OutputState: i.ToGoogleCloudRetailV2betaImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRetailV2betaImageArrayInput is an input type that accepts GoogleCloudRetailV2betaImageArray and GoogleCloudRetailV2betaImageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaImageArrayInput` via:
 //
@@ -1382,12 +1177,6 @@ func (i GoogleCloudRetailV2betaImageArray) ToGoogleCloudRetailV2betaImageArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaImageArrayOutput)
 }
 
-func (i GoogleCloudRetailV2betaImageArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaImage] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaImage]{
-		OutputState: i.ToGoogleCloudRetailV2betaImageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Product image. Recommendations AI and Retail Search do not use product images to improve prediction and search results. However, product images can be returned in results, and are shown in prediction or search previews in the console.
 type GoogleCloudRetailV2betaImageOutput struct{ *pulumi.OutputState }
 
@@ -1401,12 +1190,6 @@ func (o GoogleCloudRetailV2betaImageOutput) ToGoogleCloudRetailV2betaImageOutput
 
 func (o GoogleCloudRetailV2betaImageOutput) ToGoogleCloudRetailV2betaImageOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaImageOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaImageOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaImage] {
-	return pulumix.Output[GoogleCloudRetailV2betaImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -1436,12 +1219,6 @@ func (o GoogleCloudRetailV2betaImageArrayOutput) ToGoogleCloudRetailV2betaImageA
 
 func (o GoogleCloudRetailV2betaImageArrayOutput) ToGoogleCloudRetailV2betaImageArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaImageArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaImage] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaImageArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaImageOutput {
@@ -1475,12 +1252,6 @@ func (o GoogleCloudRetailV2betaImageResponseOutput) ToGoogleCloudRetailV2betaIma
 	return o
 }
 
-func (o GoogleCloudRetailV2betaImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaImageResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaImageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 func (o GoogleCloudRetailV2betaImageResponseOutput) Height() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaImageResponse) int { return v.Height }).(pulumi.IntOutput)
@@ -1508,12 +1279,6 @@ func (o GoogleCloudRetailV2betaImageResponseArrayOutput) ToGoogleCloudRetailV2be
 
 func (o GoogleCloudRetailV2betaImageResponseArrayOutput) ToGoogleCloudRetailV2betaImageResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaImageResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaImageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaImageResponse] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaImageResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaImageResponseOutput {
@@ -1569,12 +1334,6 @@ func (i GoogleCloudRetailV2betaIntervalArgs) ToGoogleCloudRetailV2betaIntervalOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaIntervalOutput)
 }
 
-func (i GoogleCloudRetailV2betaIntervalArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaInterval] {
-	return pulumix.Output[GoogleCloudRetailV2betaInterval]{
-		OutputState: i.ToGoogleCloudRetailV2betaIntervalOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRetailV2betaIntervalArrayInput is an input type that accepts GoogleCloudRetailV2betaIntervalArray and GoogleCloudRetailV2betaIntervalArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaIntervalArrayInput` via:
 //
@@ -1600,12 +1359,6 @@ func (i GoogleCloudRetailV2betaIntervalArray) ToGoogleCloudRetailV2betaIntervalA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaIntervalArrayOutput)
 }
 
-func (i GoogleCloudRetailV2betaIntervalArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaInterval] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaInterval]{
-		OutputState: i.ToGoogleCloudRetailV2betaIntervalArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A floating point interval.
 type GoogleCloudRetailV2betaIntervalOutput struct{ *pulumi.OutputState }
 
@@ -1619,12 +1372,6 @@ func (o GoogleCloudRetailV2betaIntervalOutput) ToGoogleCloudRetailV2betaInterval
 
 func (o GoogleCloudRetailV2betaIntervalOutput) ToGoogleCloudRetailV2betaIntervalOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaIntervalOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaInterval] {
-	return pulumix.Output[GoogleCloudRetailV2betaInterval]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Exclusive upper bound.
@@ -1661,12 +1408,6 @@ func (o GoogleCloudRetailV2betaIntervalArrayOutput) ToGoogleCloudRetailV2betaInt
 	return o
 }
 
-func (o GoogleCloudRetailV2betaIntervalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaInterval] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaInterval]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRetailV2betaIntervalArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaIntervalOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaInterval {
 		return vs[0].([]GoogleCloudRetailV2betaInterval)[vs[1].(int)]
@@ -1698,12 +1439,6 @@ func (o GoogleCloudRetailV2betaIntervalResponseOutput) ToGoogleCloudRetailV2beta
 
 func (o GoogleCloudRetailV2betaIntervalResponseOutput) ToGoogleCloudRetailV2betaIntervalResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaIntervalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaIntervalResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaIntervalResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Exclusive upper bound.
@@ -1740,12 +1475,6 @@ func (o GoogleCloudRetailV2betaIntervalResponseArrayOutput) ToGoogleCloudRetailV
 	return o
 }
 
-func (o GoogleCloudRetailV2betaIntervalResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaIntervalResponse] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaIntervalResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRetailV2betaIntervalResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaIntervalResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaIntervalResponse {
 		return vs[0].([]GoogleCloudRetailV2betaIntervalResponse)[vs[1].(int)]
@@ -1777,12 +1506,6 @@ func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) ToGoogleCloudRetail
 
 func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) ToGoogleCloudRetailV2betaLocalInventoryResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaLocalInventoryResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaLocalInventoryResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaLocalInventoryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
@@ -1819,12 +1542,6 @@ func (o GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput) ToGoogleCloudR
 
 func (o GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput) ToGoogleCloudRetailV2betaLocalInventoryResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaLocalInventoryResponse] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaLocalInventoryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaLocalInventoryResponseOutput {
@@ -1868,12 +1585,6 @@ func (i GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput)
 }
 
-func (i GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig] {
-	return pulumix.Output[GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig]{
-		OutputState: i.ToGoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigArgs) ToGoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
 	return i.ToGoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(context.Background())
 }
@@ -1915,12 +1626,6 @@ func (i *googleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig] {
-	return pulumix.Output[*GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig]{
-		OutputState: i.ToGoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional configs for the frequently-bought-together model type.
 type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput struct{ *pulumi.OutputState }
 
@@ -1946,12 +1651,6 @@ func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput
 	}).(GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig] {
-	return pulumix.Output[GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
 func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput) ContextProductsType() GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig) *GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType {
@@ -1971,12 +1670,6 @@ func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOut
 
 func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ToGoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig] {
-	return pulumix.Output[*GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) Elem() GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput {
@@ -2018,12 +1711,6 @@ func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigRespon
 
 func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ToGoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
@@ -2068,12 +1755,6 @@ func (i GoogleCloudRetailV2betaModelModelFeaturesConfigArgs) ToGoogleCloudRetail
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaModelModelFeaturesConfigOutput)
 }
 
-func (i GoogleCloudRetailV2betaModelModelFeaturesConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaModelModelFeaturesConfig] {
-	return pulumix.Output[GoogleCloudRetailV2betaModelModelFeaturesConfig]{
-		OutputState: i.ToGoogleCloudRetailV2betaModelModelFeaturesConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaModelModelFeaturesConfigArgs) ToGoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutput {
 	return i.ToGoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutputWithContext(context.Background())
 }
@@ -2115,12 +1796,6 @@ func (i *googleCloudRetailV2betaModelModelFeaturesConfigPtrType) ToGoogleCloudRe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaModelModelFeaturesConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaModelModelFeaturesConfig] {
-	return pulumix.Output[*GoogleCloudRetailV2betaModelModelFeaturesConfig]{
-		OutputState: i.ToGoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional model features config.
 type GoogleCloudRetailV2betaModelModelFeaturesConfigOutput struct{ *pulumi.OutputState }
 
@@ -2146,12 +1821,6 @@ func (o GoogleCloudRetailV2betaModelModelFeaturesConfigOutput) ToGoogleCloudReta
 	}).(GoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaModelModelFeaturesConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaModelModelFeaturesConfig] {
-	return pulumix.Output[GoogleCloudRetailV2betaModelModelFeaturesConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Additional configs for frequently-bought-together models.
 func (o GoogleCloudRetailV2betaModelModelFeaturesConfigOutput) FrequentlyBoughtTogetherConfig() GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaModelModelFeaturesConfig) *GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig {
@@ -2171,12 +1840,6 @@ func (o GoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutput) ToGoogleCloudR
 
 func (o GoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutput) ToGoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaModelModelFeaturesConfig] {
-	return pulumix.Output[*GoogleCloudRetailV2betaModelModelFeaturesConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaModelModelFeaturesConfigPtrOutput) Elem() GoogleCloudRetailV2betaModelModelFeaturesConfigOutput {
@@ -2220,12 +1883,6 @@ func (o GoogleCloudRetailV2betaModelModelFeaturesConfigResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudRetailV2betaModelModelFeaturesConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaModelModelFeaturesConfigResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaModelModelFeaturesConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Additional configs for frequently-bought-together models.
 func (o GoogleCloudRetailV2betaModelModelFeaturesConfigResponseOutput) FrequentlyBoughtTogetherConfig() GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaModelModelFeaturesConfigResponse) GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse {
@@ -2254,12 +1911,6 @@ func (o GoogleCloudRetailV2betaModelServingConfigListResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudRetailV2betaModelServingConfigListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaModelServingConfigListResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaModelServingConfigListResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
 func (o GoogleCloudRetailV2betaModelServingConfigListResponseOutput) ServingConfigIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaModelServingConfigListResponse) []string { return v.ServingConfigIds }).(pulumi.StringArrayOutput)
@@ -2277,12 +1928,6 @@ func (o GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput) ToGoog
 
 func (o GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput) ToGoogleCloudRetailV2betaModelServingConfigListResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaModelServingConfigListResponse] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaModelServingConfigListResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaModelServingConfigListResponseOutput {
@@ -2346,12 +1991,6 @@ func (i GoogleCloudRetailV2betaPriceInfoArgs) ToGoogleCloudRetailV2betaPriceInfo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoOutput)
 }
 
-func (i GoogleCloudRetailV2betaPriceInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaPriceInfo] {
-	return pulumix.Output[GoogleCloudRetailV2betaPriceInfo]{
-		OutputState: i.ToGoogleCloudRetailV2betaPriceInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaPriceInfoArgs) ToGoogleCloudRetailV2betaPriceInfoPtrOutput() GoogleCloudRetailV2betaPriceInfoPtrOutput {
 	return i.ToGoogleCloudRetailV2betaPriceInfoPtrOutputWithContext(context.Background())
 }
@@ -2393,12 +2032,6 @@ func (i *googleCloudRetailV2betaPriceInfoPtrType) ToGoogleCloudRetailV2betaPrice
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaPriceInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaPriceInfo] {
-	return pulumix.Output[*GoogleCloudRetailV2betaPriceInfo]{
-		OutputState: i.ToGoogleCloudRetailV2betaPriceInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The price information of a Product.
 type GoogleCloudRetailV2betaPriceInfoOutput struct{ *pulumi.OutputState }
 
@@ -2422,12 +2055,6 @@ func (o GoogleCloudRetailV2betaPriceInfoOutput) ToGoogleCloudRetailV2betaPriceIn
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaPriceInfo) *GoogleCloudRetailV2betaPriceInfo {
 		return &v
 	}).(GoogleCloudRetailV2betaPriceInfoPtrOutput)
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaPriceInfo] {
-	return pulumix.Output[GoogleCloudRetailV2betaPriceInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -2472,12 +2099,6 @@ func (o GoogleCloudRetailV2betaPriceInfoPtrOutput) ToGoogleCloudRetailV2betaPric
 
 func (o GoogleCloudRetailV2betaPriceInfoPtrOutput) ToGoogleCloudRetailV2betaPriceInfoPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaPriceInfo] {
-	return pulumix.Output[*GoogleCloudRetailV2betaPriceInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaPriceInfoPtrOutput) Elem() GoogleCloudRetailV2betaPriceInfoOutput {
@@ -2573,12 +2194,6 @@ func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput) ToGoogleCloudR
 	return o
 }
 
-func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaPriceInfoPriceRangeResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaPriceInfoPriceRangeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id.
 func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput) OriginalPrice() GoogleCloudRetailV2betaIntervalResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoPriceRangeResponse) GoogleCloudRetailV2betaIntervalResponse {
@@ -2624,12 +2239,6 @@ func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToGoogleCloudRetailV2bet
 
 func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToGoogleCloudRetailV2betaPriceInfoResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaPriceInfoResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaPriceInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -2754,12 +2363,6 @@ func (o GoogleCloudRetailV2betaProductResponseOutput) ToGoogleCloudRetailV2betaP
 
 func (o GoogleCloudRetailV2betaProductResponseOutput) ToGoogleCloudRetailV2betaProductResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaProductResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaProductResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaProductResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaProductResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
@@ -2957,12 +2560,6 @@ func (o GoogleCloudRetailV2betaProductResponseArrayOutput) ToGoogleCloudRetailV2
 	return o
 }
 
-func (o GoogleCloudRetailV2betaProductResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaProductResponse] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaProductResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRetailV2betaProductResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaProductResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaProductResponse {
 		return vs[0].([]GoogleCloudRetailV2betaProductResponse)[vs[1].(int)]
@@ -3004,12 +2601,6 @@ func (i GoogleCloudRetailV2betaPromotionArgs) ToGoogleCloudRetailV2betaPromotion
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPromotionOutput)
 }
 
-func (i GoogleCloudRetailV2betaPromotionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaPromotion] {
-	return pulumix.Output[GoogleCloudRetailV2betaPromotion]{
-		OutputState: i.ToGoogleCloudRetailV2betaPromotionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRetailV2betaPromotionArrayInput is an input type that accepts GoogleCloudRetailV2betaPromotionArray and GoogleCloudRetailV2betaPromotionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaPromotionArrayInput` via:
 //
@@ -3035,12 +2626,6 @@ func (i GoogleCloudRetailV2betaPromotionArray) ToGoogleCloudRetailV2betaPromotio
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPromotionArrayOutput)
 }
 
-func (i GoogleCloudRetailV2betaPromotionArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaPromotion] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaPromotion]{
-		OutputState: i.ToGoogleCloudRetailV2betaPromotionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Promotion specification.
 type GoogleCloudRetailV2betaPromotionOutput struct{ *pulumi.OutputState }
 
@@ -3054,12 +2639,6 @@ func (o GoogleCloudRetailV2betaPromotionOutput) ToGoogleCloudRetailV2betaPromoti
 
 func (o GoogleCloudRetailV2betaPromotionOutput) ToGoogleCloudRetailV2betaPromotionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPromotionOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaPromotionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaPromotion] {
-	return pulumix.Output[GoogleCloudRetailV2betaPromotion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Promotion identifier, which is the final component of name. For example, this field is "free_gift", if name is `projects/*/locations/global/catalogs/default_catalog/promotions/free_gift`. The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Corresponds to Google Merchant Center property [promotion_id](https://support.google.com/merchants/answer/7050148).
@@ -3079,12 +2658,6 @@ func (o GoogleCloudRetailV2betaPromotionArrayOutput) ToGoogleCloudRetailV2betaPr
 
 func (o GoogleCloudRetailV2betaPromotionArrayOutput) ToGoogleCloudRetailV2betaPromotionArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPromotionArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaPromotionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaPromotion] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaPromotion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaPromotionArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaPromotionOutput {
@@ -3114,12 +2687,6 @@ func (o GoogleCloudRetailV2betaPromotionResponseOutput) ToGoogleCloudRetailV2bet
 	return o
 }
 
-func (o GoogleCloudRetailV2betaPromotionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaPromotionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaPromotionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Promotion identifier, which is the final component of name. For example, this field is "free_gift", if name is `projects/*/locations/global/catalogs/default_catalog/promotions/free_gift`. The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Corresponds to Google Merchant Center property [promotion_id](https://support.google.com/merchants/answer/7050148).
 func (o GoogleCloudRetailV2betaPromotionResponseOutput) PromotionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPromotionResponse) string { return v.PromotionId }).(pulumi.StringOutput)
@@ -3137,12 +2704,6 @@ func (o GoogleCloudRetailV2betaPromotionResponseArrayOutput) ToGoogleCloudRetail
 
 func (o GoogleCloudRetailV2betaPromotionResponseArrayOutput) ToGoogleCloudRetailV2betaPromotionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPromotionResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaPromotionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaPromotionResponse] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaPromotionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaPromotionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaPromotionResponseOutput {
@@ -3194,12 +2755,6 @@ func (i GoogleCloudRetailV2betaRatingArgs) ToGoogleCloudRetailV2betaRatingOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRatingOutput)
 }
 
-func (i GoogleCloudRetailV2betaRatingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRating] {
-	return pulumix.Output[GoogleCloudRetailV2betaRating]{
-		OutputState: i.ToGoogleCloudRetailV2betaRatingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaRatingArgs) ToGoogleCloudRetailV2betaRatingPtrOutput() GoogleCloudRetailV2betaRatingPtrOutput {
 	return i.ToGoogleCloudRetailV2betaRatingPtrOutputWithContext(context.Background())
 }
@@ -3241,12 +2796,6 @@ func (i *googleCloudRetailV2betaRatingPtrType) ToGoogleCloudRetailV2betaRatingPt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRatingPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRatingPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRating] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRating]{
-		OutputState: i.ToGoogleCloudRetailV2betaRatingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The rating of a Product.
 type GoogleCloudRetailV2betaRatingOutput struct{ *pulumi.OutputState }
 
@@ -3270,12 +2819,6 @@ func (o GoogleCloudRetailV2betaRatingOutput) ToGoogleCloudRetailV2betaRatingPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRating) *GoogleCloudRetailV2betaRating {
 		return &v
 	}).(GoogleCloudRetailV2betaRatingPtrOutput)
-}
-
-func (o GoogleCloudRetailV2betaRatingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRating] {
-	return pulumix.Output[GoogleCloudRetailV2betaRating]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -3305,12 +2848,6 @@ func (o GoogleCloudRetailV2betaRatingPtrOutput) ToGoogleCloudRetailV2betaRatingP
 
 func (o GoogleCloudRetailV2betaRatingPtrOutput) ToGoogleCloudRetailV2betaRatingPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRatingPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRatingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRating] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRating]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRatingPtrOutput) Elem() GoogleCloudRetailV2betaRatingOutput {
@@ -3376,12 +2913,6 @@ func (o GoogleCloudRetailV2betaRatingResponseOutput) ToGoogleCloudRetailV2betaRa
 
 func (o GoogleCloudRetailV2betaRatingResponseOutput) ToGoogleCloudRetailV2betaRatingResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRatingResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRatingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRatingResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRatingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -3474,12 +3005,6 @@ func (i GoogleCloudRetailV2betaRuleArgs) ToGoogleCloudRetailV2betaRuleOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRule] {
-	return pulumix.Output[GoogleCloudRetailV2betaRule]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaRuleArgs) ToGoogleCloudRetailV2betaRulePtrOutput() GoogleCloudRetailV2betaRulePtrOutput {
 	return i.ToGoogleCloudRetailV2betaRulePtrOutputWithContext(context.Background())
 }
@@ -3521,12 +3046,6 @@ func (i *googleCloudRetailV2betaRulePtrType) ToGoogleCloudRetailV2betaRulePtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRulePtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRulePtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRule] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRule]{
-		OutputState: i.ToGoogleCloudRetailV2betaRulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
 type GoogleCloudRetailV2betaRuleOutput struct{ *pulumi.OutputState }
 
@@ -3550,12 +3069,6 @@ func (o GoogleCloudRetailV2betaRuleOutput) ToGoogleCloudRetailV2betaRulePtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRule) *GoogleCloudRetailV2betaRule {
 		return &v
 	}).(GoogleCloudRetailV2betaRulePtrOutput)
-}
-
-func (o GoogleCloudRetailV2betaRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRule] {
-	return pulumix.Output[GoogleCloudRetailV2betaRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A boost action.
@@ -3639,12 +3152,6 @@ func (o GoogleCloudRetailV2betaRulePtrOutput) ToGoogleCloudRetailV2betaRulePtrOu
 
 func (o GoogleCloudRetailV2betaRulePtrOutput) ToGoogleCloudRetailV2betaRulePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRulePtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRule] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRulePtrOutput) Elem() GoogleCloudRetailV2betaRuleOutput {
@@ -3806,12 +3313,6 @@ func (i GoogleCloudRetailV2betaRuleBoostActionArgs) ToGoogleCloudRetailV2betaRul
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleBoostActionOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleBoostActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleBoostAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleBoostAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleBoostActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaRuleBoostActionArgs) ToGoogleCloudRetailV2betaRuleBoostActionPtrOutput() GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
 	return i.ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(context.Background())
 }
@@ -3853,12 +3354,6 @@ func (i *googleCloudRetailV2betaRuleBoostActionPtrType) ToGoogleCloudRetailV2bet
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleBoostActionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRuleBoostActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleBoostAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleBoostAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A boost action to apply to results matching condition specified above.
 type GoogleCloudRetailV2betaRuleBoostActionOutput struct{ *pulumi.OutputState }
 
@@ -3884,12 +3379,6 @@ func (o GoogleCloudRetailV2betaRuleBoostActionOutput) ToGoogleCloudRetailV2betaR
 	}).(GoogleCloudRetailV2betaRuleBoostActionPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaRuleBoostActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleBoostAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleBoostAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
 func (o GoogleCloudRetailV2betaRuleBoostActionOutput) Boost() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleBoostAction) *float64 { return v.Boost }).(pulumi.Float64PtrOutput)
@@ -3912,12 +3401,6 @@ func (o GoogleCloudRetailV2betaRuleBoostActionPtrOutput) ToGoogleCloudRetailV2be
 
 func (o GoogleCloudRetailV2betaRuleBoostActionPtrOutput) ToGoogleCloudRetailV2betaRuleBoostActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleBoostActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleBoostActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleBoostAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleBoostAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleBoostActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleBoostActionOutput {
@@ -3973,12 +3456,6 @@ func (o GoogleCloudRetailV2betaRuleBoostActionResponseOutput) ToGoogleCloudRetai
 	return o
 }
 
-func (o GoogleCloudRetailV2betaRuleBoostActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleBoostActionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleBoostActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
 func (o GoogleCloudRetailV2betaRuleBoostActionResponseOutput) Boost() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleBoostActionResponse) float64 { return v.Boost }).(pulumi.Float64Output)
@@ -4032,12 +3509,6 @@ func (i GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs) ToGoogleCloudRetail
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleDoNotAssociateAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleDoNotAssociateAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleDoNotAssociateActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput() GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
 	return i.ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(context.Background())
 }
@@ -4079,12 +3550,6 @@ func (i *googleCloudRetailV2betaRuleDoNotAssociateActionPtrType) ToGoogleCloudRe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRuleDoNotAssociateActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleDoNotAssociateAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleDoNotAssociateAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
 type GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput struct{ *pulumi.OutputState }
 
@@ -4108,12 +3573,6 @@ func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput) ToGoogleCloudReta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleDoNotAssociateAction) *GoogleCloudRetailV2betaRuleDoNotAssociateAction {
 		return &v
 	}).(GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput)
-}
-
-func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleDoNotAssociateAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleDoNotAssociateAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cannot contain duplicates or the query term. Can specify up to 100 terms.
@@ -4143,12 +3602,6 @@ func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) ToGoogleCloudR
 
 func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) ToGoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleDoNotAssociateAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleDoNotAssociateAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput {
@@ -4216,12 +3669,6 @@ func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cannot contain duplicates or the query term. Can specify up to 100 terms.
 func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput) DoNotAssociateTerms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse) []string { return v.DoNotAssociateTerms }).(pulumi.StringArrayOutput)
@@ -4272,12 +3719,6 @@ func (i GoogleCloudRetailV2betaRuleFilterActionArgs) ToGoogleCloudRetailV2betaRu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleFilterActionOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleFilterActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleFilterAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleFilterAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleFilterActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaRuleFilterActionArgs) ToGoogleCloudRetailV2betaRuleFilterActionPtrOutput() GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
 	return i.ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(context.Background())
 }
@@ -4319,12 +3760,6 @@ func (i *googleCloudRetailV2betaRuleFilterActionPtrType) ToGoogleCloudRetailV2be
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleFilterActionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRuleFilterActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleFilterAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleFilterAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2betaRuleFilterActionOutput struct{ *pulumi.OutputState }
 
@@ -4350,12 +3785,6 @@ func (o GoogleCloudRetailV2betaRuleFilterActionOutput) ToGoogleCloudRetailV2beta
 	}).(GoogleCloudRetailV2betaRuleFilterActionPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaRuleFilterActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleFilterAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleFilterAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 func (o GoogleCloudRetailV2betaRuleFilterActionOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleFilterAction) *string { return v.Filter }).(pulumi.StringPtrOutput)
@@ -4373,12 +3802,6 @@ func (o GoogleCloudRetailV2betaRuleFilterActionPtrOutput) ToGoogleCloudRetailV2b
 
 func (o GoogleCloudRetailV2betaRuleFilterActionPtrOutput) ToGoogleCloudRetailV2betaRuleFilterActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleFilterActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleFilterActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleFilterAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleFilterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleFilterActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleFilterActionOutput {
@@ -4422,12 +3845,6 @@ func (o GoogleCloudRetailV2betaRuleFilterActionResponseOutput) ToGoogleCloudReta
 	return o
 }
 
-func (o GoogleCloudRetailV2betaRuleFilterActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleFilterActionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleFilterActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 func (o GoogleCloudRetailV2betaRuleFilterActionResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleFilterActionResponse) string { return v.Filter }).(pulumi.StringOutput)
@@ -4466,12 +3883,6 @@ func (i GoogleCloudRetailV2betaRuleForceReturnFacetActionArgs) ToGoogleCloudReta
 
 func (i GoogleCloudRetailV2betaRuleForceReturnFacetActionArgs) ToGoogleCloudRetailV2betaRuleForceReturnFacetActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleForceReturnFacetActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleForceReturnFacetActionOutput)
-}
-
-func (i GoogleCloudRetailV2betaRuleForceReturnFacetActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleForceReturnFacetActionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudRetailV2betaRuleForceReturnFacetActionArgs) ToGoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutput() GoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutput {
@@ -4515,12 +3926,6 @@ func (i *googleCloudRetailV2betaRuleForceReturnFacetActionPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRuleForceReturnFacetActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleForceReturnFacetAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleForceReturnFacetAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key "size" is not already in the top 8 slots, then the facet "size" will appear at a position close to 8. b) The facet key "size" in among the top 8 positions in the request, then it will stay at its current rank.
 type GoogleCloudRetailV2betaRuleForceReturnFacetActionOutput struct{ *pulumi.OutputState }
 
@@ -4546,12 +3951,6 @@ func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionOutput) ToGoogleCloudRe
 	}).(GoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
 func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionOutput) FacetPositionAdjustments() GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleForceReturnFacetAction) []GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment {
@@ -4571,12 +3970,6 @@ func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutput) ToGoogleClou
 
 func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutput) ToGoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleForceReturnFacetAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleForceReturnFacetAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleForceReturnFacetActionOutput {
@@ -4638,12 +4031,6 @@ func (i GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayInput is an input type that accepts GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArray and GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayInput` via:
 //
@@ -4669,12 +4056,6 @@ func (i GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified position.
 type GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentOutput struct{ *pulumi.OutputState }
 
@@ -4688,12 +4069,6 @@ func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment
 
 func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentOutput) ToGoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
@@ -4722,12 +4097,6 @@ func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment
 
 func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput) ToGoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentOutput {
@@ -4759,12 +4128,6 @@ func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment
 	return o
 }
 
-func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
 func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput) AttributeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse) string {
@@ -4793,12 +4156,6 @@ func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment
 	return o
 }
 
-func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse] {
-	return pulumix.Output[[]GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse {
 		return vs[0].([]GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse)[vs[1].(int)]
@@ -4824,12 +4181,6 @@ func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionResponseOutput) ToGoogl
 
 func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionResponseOutput) ToGoogleCloudRetailV2betaRuleForceReturnFacetActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleForceReturnFacetActionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleForceReturnFacetActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetActionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleForceReturnFacetActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
@@ -4874,12 +4225,6 @@ func (i GoogleCloudRetailV2betaRuleIgnoreActionArgs) ToGoogleCloudRetailV2betaRu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleIgnoreActionOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleIgnoreActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleIgnoreAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleIgnoreAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleIgnoreActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaRuleIgnoreActionArgs) ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutput() GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
 	return i.ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(context.Background())
 }
@@ -4921,12 +4266,6 @@ func (i *googleCloudRetailV2betaRuleIgnoreActionPtrType) ToGoogleCloudRetailV2be
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRuleIgnoreActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleIgnoreAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleIgnoreAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
 type GoogleCloudRetailV2betaRuleIgnoreActionOutput struct{ *pulumi.OutputState }
 
@@ -4952,12 +4291,6 @@ func (o GoogleCloudRetailV2betaRuleIgnoreActionOutput) ToGoogleCloudRetailV2beta
 	}).(GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaRuleIgnoreActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleIgnoreAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleIgnoreAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Terms to ignore in the search query.
 func (o GoogleCloudRetailV2betaRuleIgnoreActionOutput) IgnoreTerms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleIgnoreAction) []string { return v.IgnoreTerms }).(pulumi.StringArrayOutput)
@@ -4975,12 +4308,6 @@ func (o GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput) ToGoogleCloudRetailV2b
 
 func (o GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput) ToGoogleCloudRetailV2betaRuleIgnoreActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleIgnoreAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleIgnoreAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleIgnoreActionOutput {
@@ -5022,12 +4349,6 @@ func (o GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput) ToGoogleCloudReta
 
 func (o GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput) ToGoogleCloudRetailV2betaRuleIgnoreActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleIgnoreActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleIgnoreActionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleIgnoreActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Terms to ignore in the search query.
@@ -5078,12 +4399,6 @@ func (i GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs) ToGoogleCloudRetail
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleOnewaySynonymsAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleOnewaySynonymsAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
 	return i.ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(context.Background())
 }
@@ -5125,12 +4440,6 @@ func (i *googleCloudRetailV2betaRuleOnewaySynonymsActionPtrType) ToGoogleCloudRe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRuleOnewaySynonymsActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleOnewaySynonymsAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleOnewaySynonymsAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
 type GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput struct{ *pulumi.OutputState }
 
@@ -5154,12 +4463,6 @@ func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput) ToGoogleCloudReta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleOnewaySynonymsAction) *GoogleCloudRetailV2betaRuleOnewaySynonymsAction {
 		return &v
 	}).(GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput)
-}
-
-func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleOnewaySynonymsAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleOnewaySynonymsAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Will be [deprecated = true] post migration;
@@ -5189,12 +4492,6 @@ func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) ToGoogleCloudR
 
 func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) ToGoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleOnewaySynonymsAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleOnewaySynonymsAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput {
@@ -5262,12 +4559,6 @@ func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Will be [deprecated = true] post migration;
 func (o GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponseOutput) OnewayTerms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse) []string { return v.OnewayTerms }).(pulumi.StringArrayOutput)
@@ -5318,12 +4609,6 @@ func (i GoogleCloudRetailV2betaRuleRedirectActionArgs) ToGoogleCloudRetailV2beta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleRedirectActionOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleRedirectActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleRedirectAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleRedirectAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleRedirectActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaRuleRedirectActionArgs) ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutput() GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
 	return i.ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(context.Background())
 }
@@ -5365,12 +4650,6 @@ func (i *googleCloudRetailV2betaRuleRedirectActionPtrType) ToGoogleCloudRetailV2
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleRedirectActionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRuleRedirectActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleRedirectAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleRedirectAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
 type GoogleCloudRetailV2betaRuleRedirectActionOutput struct{ *pulumi.OutputState }
 
@@ -5396,12 +4675,6 @@ func (o GoogleCloudRetailV2betaRuleRedirectActionOutput) ToGoogleCloudRetailV2be
 	}).(GoogleCloudRetailV2betaRuleRedirectActionPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaRuleRedirectActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleRedirectAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleRedirectAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // URL must have length equal or less than 2000 characters.
 func (o GoogleCloudRetailV2betaRuleRedirectActionOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleRedirectAction) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
@@ -5419,12 +4692,6 @@ func (o GoogleCloudRetailV2betaRuleRedirectActionPtrOutput) ToGoogleCloudRetailV
 
 func (o GoogleCloudRetailV2betaRuleRedirectActionPtrOutput) ToGoogleCloudRetailV2betaRuleRedirectActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRedirectActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleRedirectActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleRedirectAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleRedirectAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleRedirectActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleRedirectActionOutput {
@@ -5468,12 +4735,6 @@ func (o GoogleCloudRetailV2betaRuleRedirectActionResponseOutput) ToGoogleCloudRe
 	return o
 }
 
-func (o GoogleCloudRetailV2betaRuleRedirectActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleRedirectActionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleRedirectActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // URL must have length equal or less than 2000 characters.
 func (o GoogleCloudRetailV2betaRuleRedirectActionResponseOutput) RedirectUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleRedirectActionResponse) string { return v.RedirectUri }).(pulumi.StringOutput)
@@ -5512,12 +4773,6 @@ func (i GoogleCloudRetailV2betaRuleRemoveFacetActionArgs) ToGoogleCloudRetailV2b
 
 func (i GoogleCloudRetailV2betaRuleRemoveFacetActionArgs) ToGoogleCloudRetailV2betaRuleRemoveFacetActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRemoveFacetActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleRemoveFacetActionOutput)
-}
-
-func (i GoogleCloudRetailV2betaRuleRemoveFacetActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleRemoveFacetAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleRemoveFacetAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleRemoveFacetActionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudRetailV2betaRuleRemoveFacetActionArgs) ToGoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutput() GoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutput {
@@ -5561,12 +4816,6 @@ func (i *googleCloudRetailV2betaRuleRemoveFacetActionPtrType) ToGoogleCloudRetai
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRuleRemoveFacetActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleRemoveFacetAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleRemoveFacetAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name "size", then facet key "size" will be removed from the request (if it is present).
 type GoogleCloudRetailV2betaRuleRemoveFacetActionOutput struct{ *pulumi.OutputState }
 
@@ -5592,12 +4841,6 @@ func (o GoogleCloudRetailV2betaRuleRemoveFacetActionOutput) ToGoogleCloudRetailV
 	}).(GoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaRuleRemoveFacetActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleRemoveFacetAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleRemoveFacetAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
 func (o GoogleCloudRetailV2betaRuleRemoveFacetActionOutput) AttributeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleRemoveFacetAction) []string { return v.AttributeNames }).(pulumi.StringArrayOutput)
@@ -5615,12 +4858,6 @@ func (o GoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutput) ToGoogleCloudReta
 
 func (o GoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutput) ToGoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleRemoveFacetAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleRemoveFacetAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleRemoveFacetActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleRemoveFacetActionOutput {
@@ -5662,12 +4899,6 @@ func (o GoogleCloudRetailV2betaRuleRemoveFacetActionResponseOutput) ToGoogleClou
 
 func (o GoogleCloudRetailV2betaRuleRemoveFacetActionResponseOutput) ToGoogleCloudRetailV2betaRuleRemoveFacetActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleRemoveFacetActionResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleRemoveFacetActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleRemoveFacetActionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleRemoveFacetActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
@@ -5718,12 +4949,6 @@ func (i GoogleCloudRetailV2betaRuleReplacementActionArgs) ToGoogleCloudRetailV2b
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleReplacementActionOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleReplacementActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleReplacementAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleReplacementAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleReplacementActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaRuleReplacementActionArgs) ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutput() GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
 	return i.ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(context.Background())
 }
@@ -5765,12 +4990,6 @@ func (i *googleCloudRetailV2betaRuleReplacementActionPtrType) ToGoogleCloudRetai
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleReplacementActionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRuleReplacementActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleReplacementAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleReplacementAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
 type GoogleCloudRetailV2betaRuleReplacementActionOutput struct{ *pulumi.OutputState }
 
@@ -5794,12 +5013,6 @@ func (o GoogleCloudRetailV2betaRuleReplacementActionOutput) ToGoogleCloudRetailV
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRuleReplacementAction) *GoogleCloudRetailV2betaRuleReplacementAction {
 		return &v
 	}).(GoogleCloudRetailV2betaRuleReplacementActionPtrOutput)
-}
-
-func (o GoogleCloudRetailV2betaRuleReplacementActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleReplacementAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleReplacementAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
@@ -5829,12 +5042,6 @@ func (o GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) ToGoogleCloudReta
 
 func (o GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) ToGoogleCloudRetailV2betaRuleReplacementActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleReplacementActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleReplacementAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleReplacementAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleReplacementActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleReplacementActionOutput {
@@ -5902,12 +5109,6 @@ func (o GoogleCloudRetailV2betaRuleReplacementActionResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudRetailV2betaRuleReplacementActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleReplacementActionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleReplacementActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
 func (o GoogleCloudRetailV2betaRuleReplacementActionResponseOutput) QueryTerms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleReplacementActionResponse) []string { return v.QueryTerms }).(pulumi.StringArrayOutput)
@@ -5962,12 +5163,6 @@ func (o GoogleCloudRetailV2betaRuleResponseOutput) ToGoogleCloudRetailV2betaRule
 
 func (o GoogleCloudRetailV2betaRuleResponseOutput) ToGoogleCloudRetailV2betaRuleResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A boost action.
@@ -6082,12 +5277,6 @@ func (i GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs) ToGoogleCloudRetail
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput)
 }
 
-func (i GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleTwowaySynonymsAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleTwowaySynonymsAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput() GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
 	return i.ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(context.Background())
 }
@@ -6129,12 +5318,6 @@ func (i *googleCloudRetailV2betaRuleTwowaySynonymsActionPtrType) ToGoogleCloudRe
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaRuleTwowaySynonymsActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleTwowaySynonymsAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleTwowaySynonymsAction]{
-		OutputState: i.ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
 type GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput struct{ *pulumi.OutputState }
 
@@ -6160,12 +5343,6 @@ func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput) ToGoogleCloudReta
 	}).(GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleTwowaySynonymsAction] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleTwowaySynonymsAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
 func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput) Synonyms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleTwowaySynonymsAction) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
@@ -6183,12 +5360,6 @@ func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput) ToGoogleCloudR
 
 func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput) ToGoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaRuleTwowaySynonymsAction] {
-	return pulumix.Output[*GoogleCloudRetailV2betaRuleTwowaySynonymsAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput) Elem() GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput {
@@ -6232,12 +5403,6 @@ func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
 func (o GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponseOutput) Synonyms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
@@ -6276,12 +5441,6 @@ func (i GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) ToGoogleCloudR
 
 func (i GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput)
-}
-
-func (i GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec]{
-		OutputState: i.ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput {
@@ -6325,12 +5484,6 @@ func (i *googleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrType) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec] {
-	return pulumix.Output[*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec]{
-		OutputState: i.ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specifications of dynamically generated facets.
 type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput struct{ *pulumi.OutputState }
 
@@ -6356,12 +5509,6 @@ func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput) ToGoogleClou
 	}).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
 func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput) Mode() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec) *GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode {
@@ -6381,12 +5528,6 @@ func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput) ToGoogleC
 
 func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec] {
-	return pulumix.Output[*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput) Elem() GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput {
@@ -6428,12 +5569,6 @@ func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput) ToGo
 
 func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
@@ -6488,12 +5623,6 @@ func (i GoogleCloudRetailV2betaSearchRequestFacetSpecArgs) ToGoogleCloudRetailV2
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestFacetSpecOutput)
 }
 
-func (i GoogleCloudRetailV2betaSearchRequestFacetSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpec] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpec]{
-		OutputState: i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaSearchRequestFacetSpecArgs) ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput {
 	return i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(context.Background())
 }
@@ -6535,12 +5664,6 @@ func (i *googleCloudRetailV2betaSearchRequestFacetSpecPtrType) ToGoogleCloudReta
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaSearchRequestFacetSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaSearchRequestFacetSpec] {
-	return pulumix.Output[*GoogleCloudRetailV2betaSearchRequestFacetSpec]{
-		OutputState: i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A facet specification to perform faceted search.
 type GoogleCloudRetailV2betaSearchRequestFacetSpecOutput struct{ *pulumi.OutputState }
 
@@ -6564,12 +5687,6 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) ToGoogleCloudRetail
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaSearchRequestFacetSpec) *GoogleCloudRetailV2betaSearchRequestFacetSpec {
 		return &v
 	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput)
-}
-
-func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpec] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position values are false.
@@ -6606,12 +5723,6 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) ToGoogleCloudRet
 
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaSearchRequestFacetSpec] {
-	return pulumix.Output[*GoogleCloudRetailV2betaSearchRequestFacetSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) Elem() GoogleCloudRetailV2betaSearchRequestFacetSpecOutput {
@@ -6731,12 +5842,6 @@ func (i GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput)
 }
 
-func (i GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey]{
-		OutputState: i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
 	return i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(context.Background())
 }
@@ -6778,12 +5883,6 @@ func (i *googleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey] {
-	return pulumix.Output[*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey]{
-		OutputState: i.ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how a facet is computed.
 type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput struct{ *pulumi.OutputState }
 
@@ -6807,12 +5906,6 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) ToGoogleClo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey {
 		return &v
 	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput)
-}
-
-func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
@@ -6874,12 +5967,6 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) ToGoogle
 
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey] {
-	return pulumix.Output[*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Elem() GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput {
@@ -7019,12 +6106,6 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) ToG
 	return o
 }
 
-func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) CaseInsensitive() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) bool { return v.CaseInsensitive }).(pulumi.BoolOutput)
@@ -7101,12 +6182,6 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpecResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestFacetSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position values are false.
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) EnableDynamicPosition() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecResponse) bool { return v.EnableDynamicPosition }).(pulumi.BoolOutput)
@@ -7164,12 +6239,6 @@ func (i GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput)
 }
 
-func (i GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestPersonalizationSpec] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestPersonalizationSpec]{
-		OutputState: i.ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput {
 	return i.ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(context.Background())
 }
@@ -7211,12 +6280,6 @@ func (i *googleCloudRetailV2betaSearchRequestPersonalizationSpecPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput)
 }
 
-func (i *googleCloudRetailV2betaSearchRequestPersonalizationSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaSearchRequestPersonalizationSpec] {
-	return pulumix.Output[*GoogleCloudRetailV2betaSearchRequestPersonalizationSpec]{
-		OutputState: i.ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specification for personalization.
 type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput struct{ *pulumi.OutputState }
 
@@ -7242,12 +6305,6 @@ func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput) ToGoogleC
 	}).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput)
 }
 
-func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestPersonalizationSpec] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestPersonalizationSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defaults to Mode.AUTO.
 func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput) Mode() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModePtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestPersonalizationSpec) *GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode {
@@ -7267,12 +6324,6 @@ func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput) ToGoog
 
 func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaSearchRequestPersonalizationSpec] {
-	return pulumix.Output[*GoogleCloudRetailV2betaSearchRequestPersonalizationSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput) Elem() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput {
@@ -7314,12 +6365,6 @@ func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput) T
 
 func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse] {
-	return pulumix.Output[GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defaults to Mode.AUTO.

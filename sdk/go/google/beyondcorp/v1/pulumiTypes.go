@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -37,12 +36,6 @@ func (o AllocatedConnectionResponseOutput) ToAllocatedConnectionResponseOutputWi
 	return o
 }
 
-func (o AllocatedConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AllocatedConnectionResponse] {
-	return pulumix.Output[AllocatedConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ingress port of an allocated connection
 func (o AllocatedConnectionResponseOutput) IngressPort() pulumi.IntOutput {
 	return o.ApplyT(func(v AllocatedConnectionResponse) int { return v.IngressPort }).(pulumi.IntOutput)
@@ -65,12 +58,6 @@ func (o AllocatedConnectionResponseArrayOutput) ToAllocatedConnectionResponseArr
 
 func (o AllocatedConnectionResponseArrayOutput) ToAllocatedConnectionResponseArrayOutputWithContext(ctx context.Context) AllocatedConnectionResponseArrayOutput {
 	return o
-}
-
-func (o AllocatedConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AllocatedConnectionResponse] {
-	return pulumix.Output[[]AllocatedConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AllocatedConnectionResponseArrayOutput) Index(i pulumi.IntInput) AllocatedConnectionResponseOutput {
@@ -118,12 +105,6 @@ func (i GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointArg
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointOutput)
 }
 
-func (i GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint]{
-		OutputState: i.ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationEndpoint represents a remote application endpoint.
 type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointOutput struct{ *pulumi.OutputState }
 
@@ -137,12 +118,6 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointOut
 
 func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointOutput) ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostname or IP address of the remote application endpoint.
@@ -176,12 +151,6 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointRes
 
 func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponseOutput) ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponseOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponse] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostname or IP address of the remote application endpoint.
@@ -237,12 +206,6 @@ func (i GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayOutput)
 }
 
-func (i GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway]{
-		OutputState: i.ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs) ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutput() GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutput {
 	return i.ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutputWithContext(context.Background())
 }
@@ -284,12 +247,6 @@ func (i *googleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutput)
 }
 
-func (i *googleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway] {
-	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway]{
-		OutputState: i.ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gateway represents a user facing component that serves as an entrance to enable connectivity.
 type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayOutput struct{ *pulumi.OutputState }
 
@@ -313,12 +270,6 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayOutput) ToGoogl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway) *GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
 		return &v
 	}).(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutput)
-}
-
-func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
@@ -345,12 +296,6 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutput) ToGo
 
 func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutput) ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway] {
-	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayPtrOutput) Elem() GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayOutput {
@@ -410,12 +355,6 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponseOutput)
 
 func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponseOutput) ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponseOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
@@ -478,12 +417,6 @@ func (i GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoArgs) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoOutput)
 }
 
-func (i GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo]{
-		OutputState: i.ToGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrincipalInfo represents an Identity oneof.
 type GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoOutput struct{ *pulumi.OutputState }
 
@@ -497,12 +430,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoOutput) ToG
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoOutput) ToGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A GCP service account.
@@ -531,12 +458,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponseOut
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponseOutput) ToGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A GCP service account.
@@ -581,12 +502,6 @@ func (i GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAcco
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountOutput)
 }
 
-func (i GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount]{
-		OutputState: i.ToGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs) ToGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutput() GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutput {
 	return i.ToGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutputWithContext(context.Background())
 }
@@ -628,12 +543,6 @@ func (i *googleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAcc
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutput)
 }
 
-func (i *googleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount] {
-	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount]{
-		OutputState: i.ToGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceAccount represents a GCP service account.
 type GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountOutput struct{ *pulumi.OutputState }
 
@@ -659,12 +568,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAcco
 	}).(GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutput)
 }
 
-func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Email address of the service account.
 func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount) *string {
@@ -684,12 +587,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAcco
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutput) ToGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount] {
-	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountPtrOutput) Elem() GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountOutput {
@@ -731,12 +628,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAcco
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponseOutput) ToGoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponseOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponse] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email address of the service account.
@@ -797,12 +688,6 @@ func (i GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs) ToGoogleCloudBeyon
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput)
 }
 
-func (i GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo]{
-		OutputState: i.ToGoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs) ToGoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput() GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput {
 	return i.ToGoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutputWithContext(context.Background())
 }
@@ -844,12 +729,6 @@ func (i *googleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrType) ToGoogleCloudB
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput)
 }
 
-func (i *googleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo] {
-	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo]{
-		OutputState: i.ToGoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayInput is an input type that accepts GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArray and GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayInput` via:
 //
@@ -875,12 +754,6 @@ func (i GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArray) ToGoogleCloudBeyo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayOutput)
 }
 
-func (i GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo] {
-	return pulumix.Output[[]GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo]{
-		OutputState: i.ToGoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput struct{ *pulumi.OutputState }
 
@@ -904,12 +777,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput) ToGoogleCloudBey
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo) *GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
 		return &v
 	}).(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput)
-}
-
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique Id for the resource.
@@ -953,12 +820,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput) ToGoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo] {
-	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput) Elem() GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput {
@@ -1035,12 +896,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo] {
-	return pulumix.Output[[]GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayOutput) Index(i pulumi.IntInput) GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
 		return vs[0].([]GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo)[vs[1].(int)]
@@ -1072,12 +927,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) ToGoogle
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) ToGoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse] {
-	return pulumix.Output[GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specific details for the resource. This is for internal use only.
@@ -1114,12 +963,6 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseArrayOutput) ToG
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseArrayOutput) ToGoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseArrayOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse] {
-	return pulumix.Output[[]GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput {
@@ -1167,12 +1010,6 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigOutput)
 }
 
-func (i GoogleIamV1AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
-	return pulumix.Output[GoogleIamV1AuditConfig]{
-		OutputState: i.ToGoogleIamV1AuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
@@ -1198,12 +1035,6 @@ func (i GoogleIamV1AuditConfigArray) ToGoogleIamV1AuditConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigArrayOutput)
 }
 
-func (i GoogleIamV1AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditConfig]{
-		OutputState: i.ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -1217,12 +1048,6 @@ func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutput() GoogleIam
 
 func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfig] {
-	return pulumix.Output[GoogleIamV1AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -1247,12 +1072,6 @@ func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutput()
 
 func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigOutput {
@@ -1284,12 +1103,6 @@ func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOu
 	return o
 }
 
-func (o GoogleIamV1AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditConfigResponse] {
-	return pulumix.Output[GoogleIamV1AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o GoogleIamV1AuditConfigResponseOutput) AuditLogConfigs() GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) []GoogleIamV1AuditLogConfigResponse { return v.AuditLogConfigs }).(GoogleIamV1AuditLogConfigResponseArrayOutput)
@@ -1312,12 +1125,6 @@ func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigRespo
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditConfigResponse] {
-	return pulumix.Output[[]GoogleIamV1AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigResponseOutput {
@@ -1365,12 +1172,6 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigOutput)
 }
 
-func (i GoogleIamV1AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[GoogleIamV1AuditLogConfig]{
-		OutputState: i.ToGoogleIamV1AuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
@@ -1396,12 +1197,6 @@ func (i GoogleIamV1AuditLogConfigArray) ToGoogleIamV1AuditLogConfigArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigArrayOutput)
 }
 
-func (i GoogleIamV1AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
-		OutputState: i.ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type GoogleIamV1AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -1415,12 +1210,6 @@ func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutput() Goo
 
 func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[GoogleIamV1AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -1445,12 +1234,6 @@ func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOu
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfig] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigOutput {
@@ -1482,12 +1265,6 @@ func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResp
 	return o
 }
 
-func (o GoogleIamV1AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigResponse] {
-	return pulumix.Output[GoogleIamV1AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o GoogleIamV1AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -1510,12 +1287,6 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfi
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1AuditLogConfigResponse] {
-	return pulumix.Output[[]GoogleIamV1AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigResponseOutput {
@@ -1567,12 +1338,6 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingOutput)
 }
 
-func (i GoogleIamV1BindingArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
-	return pulumix.Output[GoogleIamV1Binding]{
-		OutputState: i.ToGoogleIamV1BindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
@@ -1598,12 +1363,6 @@ func (i GoogleIamV1BindingArray) ToGoogleIamV1BindingArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingArrayOutput)
 }
 
-func (i GoogleIamV1BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
-	return pulumix.Output[[]GoogleIamV1Binding]{
-		OutputState: i.ToGoogleIamV1BindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type GoogleIamV1BindingOutput struct{ *pulumi.OutputState }
 
@@ -1617,12 +1376,6 @@ func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutput() GoogleIamV1Bindin
 
 func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutputWithContext(ctx context.Context) GoogleIamV1BindingOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1Binding] {
-	return pulumix.Output[GoogleIamV1Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -1652,12 +1405,6 @@ func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutput() GoogleI
 
 func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1Binding] {
-	return pulumix.Output[[]GoogleIamV1Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingOutput {
@@ -1691,12 +1438,6 @@ func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutputWith
 	return o
 }
 
-func (o GoogleIamV1BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1BindingResponse] {
-	return pulumix.Output[GoogleIamV1BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
@@ -1724,12 +1465,6 @@ func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArray
 
 func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
 	return o
-}
-
-func (o GoogleIamV1BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleIamV1BindingResponse] {
-	return pulumix.Output[[]GoogleIamV1BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingResponseOutput {
@@ -1785,12 +1520,6 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput)
 }
 
-func (i GoogleTypeExprArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
 	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
 }
@@ -1832,12 +1561,6 @@ func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprPtrOutput)
 }
 
-func (i *googleTypeExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: i.ToGoogleTypeExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type GoogleTypeExprOutput struct{ *pulumi.OutputState }
 
@@ -1861,12 +1584,6 @@ func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
 		return &v
 	}).(GoogleTypeExprPtrOutput)
-}
-
-func (o GoogleTypeExprOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExpr] {
-	return pulumix.Output[GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1901,12 +1618,6 @@ func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOu
 
 func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
 	return o
-}
-
-func (o GoogleTypeExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleTypeExpr] {
-	return pulumix.Output[*GoogleTypeExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
@@ -1984,12 +1695,6 @@ func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutput() GoogleTyp
 
 func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(ctx context.Context) GoogleTypeExprResponseOutput {
 	return o
-}
-
-func (o GoogleTypeExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleTypeExprResponse] {
-	return pulumix.Output[GoogleTypeExprResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

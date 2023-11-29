@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a GcpUserAccessBinding. If the client specifies a name, the server ignores it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time.
@@ -125,12 +124,6 @@ func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingOutput)
 }
 
-func (i *GcpUserAccessBinding) ToOutput(ctx context.Context) pulumix.Output[*GcpUserAccessBinding] {
-	return pulumix.Output[*GcpUserAccessBinding]{
-		OutputState: i.ToGcpUserAccessBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GcpUserAccessBindingOutput struct{ *pulumi.OutputState }
 
 func (GcpUserAccessBindingOutput) ElementType() reflect.Type {
@@ -143,12 +136,6 @@ func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingOutput() GcpUserAccess
 
 func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingOutputWithContext(ctx context.Context) GcpUserAccessBindingOutput {
 	return o
-}
-
-func (o GcpUserAccessBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*GcpUserAccessBinding] {
-	return pulumix.Output[*GcpUserAccessBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"

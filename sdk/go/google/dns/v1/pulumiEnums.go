@@ -82,12 +82,6 @@ func (o DnsKeySpecAlgorithmOutput) ToDnsKeySpecAlgorithmPtrOutputWithContext(ctx
 	}).(DnsKeySpecAlgorithmPtrOutput)
 }
 
-func (o DnsKeySpecAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[DnsKeySpecAlgorithm] {
-	return pulumix.Output[DnsKeySpecAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DnsKeySpecAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -121,12 +115,6 @@ func (o DnsKeySpecAlgorithmPtrOutput) ToDnsKeySpecAlgorithmPtrOutput() DnsKeySpe
 
 func (o DnsKeySpecAlgorithmPtrOutput) ToDnsKeySpecAlgorithmPtrOutputWithContext(ctx context.Context) DnsKeySpecAlgorithmPtrOutput {
 	return o
-}
-
-func (o DnsKeySpecAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsKeySpecAlgorithm] {
-	return pulumix.Output[*DnsKeySpecAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsKeySpecAlgorithmPtrOutput) Elem() DnsKeySpecAlgorithmOutput {
@@ -265,12 +253,6 @@ func (o DnsKeySpecKeyTypeOutput) ToDnsKeySpecKeyTypePtrOutputWithContext(ctx con
 	}).(DnsKeySpecKeyTypePtrOutput)
 }
 
-func (o DnsKeySpecKeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DnsKeySpecKeyType] {
-	return pulumix.Output[DnsKeySpecKeyType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DnsKeySpecKeyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -304,12 +286,6 @@ func (o DnsKeySpecKeyTypePtrOutput) ToDnsKeySpecKeyTypePtrOutput() DnsKeySpecKey
 
 func (o DnsKeySpecKeyTypePtrOutput) ToDnsKeySpecKeyTypePtrOutputWithContext(ctx context.Context) DnsKeySpecKeyTypePtrOutput {
 	return o
-}
-
-func (o DnsKeySpecKeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsKeySpecKeyType] {
-	return pulumix.Output[*DnsKeySpecKeyType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsKeySpecKeyTypePtrOutput) Elem() DnsKeySpecKeyTypeOutput {
@@ -454,12 +430,6 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTy
 	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
-func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[GoogleIamV1AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -493,12 +463,6 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
@@ -637,12 +601,6 @@ func (o ManagedZoneDnsSecConfigNonExistenceOutput) ToManagedZoneDnsSecConfigNonE
 	}).(ManagedZoneDnsSecConfigNonExistencePtrOutput)
 }
 
-func (o ManagedZoneDnsSecConfigNonExistenceOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneDnsSecConfigNonExistence] {
-	return pulumix.Output[ManagedZoneDnsSecConfigNonExistence]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedZoneDnsSecConfigNonExistenceOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -676,12 +634,6 @@ func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) ToManagedZoneDnsSecConfigN
 
 func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) ToManagedZoneDnsSecConfigNonExistencePtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigNonExistencePtrOutput {
 	return o
-}
-
-func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneDnsSecConfigNonExistence] {
-	return pulumix.Output[*ManagedZoneDnsSecConfigNonExistence]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) Elem() ManagedZoneDnsSecConfigNonExistenceOutput {
@@ -824,12 +776,6 @@ func (o ManagedZoneDnsSecConfigStateOutput) ToManagedZoneDnsSecConfigStatePtrOut
 	}).(ManagedZoneDnsSecConfigStatePtrOutput)
 }
 
-func (o ManagedZoneDnsSecConfigStateOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneDnsSecConfigState] {
-	return pulumix.Output[ManagedZoneDnsSecConfigState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedZoneDnsSecConfigStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -863,12 +809,6 @@ func (o ManagedZoneDnsSecConfigStatePtrOutput) ToManagedZoneDnsSecConfigStatePtr
 
 func (o ManagedZoneDnsSecConfigStatePtrOutput) ToManagedZoneDnsSecConfigStatePtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigStatePtrOutput {
 	return o
-}
-
-func (o ManagedZoneDnsSecConfigStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneDnsSecConfigState] {
-	return pulumix.Output[*ManagedZoneDnsSecConfigState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedZoneDnsSecConfigStatePtrOutput) Elem() ManagedZoneDnsSecConfigStateOutput {
@@ -1009,12 +949,6 @@ func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput) ToManag
 	}).(ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput)
 }
 
-func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneForwardingConfigNameServerTargetForwardingPath] {
-	return pulumix.Output[ManagedZoneForwardingConfigNameServerTargetForwardingPath]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1048,12 +982,6 @@ func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ToMa
 
 func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ToManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput {
 	return o
-}
-
-func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneForwardingConfigNameServerTargetForwardingPath] {
-	return pulumix.Output[*ManagedZoneForwardingConfigNameServerTargetForwardingPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) Elem() ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput {
@@ -1192,12 +1120,6 @@ func (o ManagedZoneVisibilityOutput) ToManagedZoneVisibilityPtrOutputWithContext
 	}).(ManagedZoneVisibilityPtrOutput)
 }
 
-func (o ManagedZoneVisibilityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneVisibility] {
-	return pulumix.Output[ManagedZoneVisibility]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedZoneVisibilityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1231,12 +1153,6 @@ func (o ManagedZoneVisibilityPtrOutput) ToManagedZoneVisibilityPtrOutput() Manag
 
 func (o ManagedZoneVisibilityPtrOutput) ToManagedZoneVisibilityPtrOutputWithContext(ctx context.Context) ManagedZoneVisibilityPtrOutput {
 	return o
-}
-
-func (o ManagedZoneVisibilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneVisibility] {
-	return pulumix.Output[*ManagedZoneVisibility]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedZoneVisibilityPtrOutput) Elem() ManagedZoneVisibilityOutput {
@@ -1377,12 +1293,6 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput) T
 	}).(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput)
 }
 
-func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAlternativeNameServerConfigTargetNameServerForwardingPath] {
-	return pulumix.Output[PolicyAlternativeNameServerConfigTargetNameServerForwardingPath]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1416,12 +1326,6 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput) ToPolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput {
 	return o
-}
-
-func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyAlternativeNameServerConfigTargetNameServerForwardingPath] {
-	return pulumix.Output[*PolicyAlternativeNameServerConfigTargetNameServerForwardingPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput) Elem() PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput {
@@ -1561,12 +1465,6 @@ func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToRRSetRoutingPoli
 	}).(RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput)
 }
 
-func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[RRSetRoutingPolicyLoadBalancerTargetIpProtocol] {
-	return pulumix.Output[RRSetRoutingPolicyLoadBalancerTargetIpProtocol]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1600,12 +1498,6 @@ func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) ToRRSetRoutingP
 
 func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
 	return o
-}
-
-func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RRSetRoutingPolicyLoadBalancerTargetIpProtocol] {
-	return pulumix.Output[*RRSetRoutingPolicyLoadBalancerTargetIpProtocol]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) Elem() RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput {
@@ -1746,12 +1638,6 @@ func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToRRSetRouti
 	}).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput)
 }
 
-func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType] {
-	return pulumix.Output[RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1785,12 +1671,6 @@ func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) ToRRSetRo
 
 func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
 	return o
-}
-
-func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType] {
-	return pulumix.Output[*RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) Elem() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput {

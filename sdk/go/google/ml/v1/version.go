@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new version of a model from a trained TensorFlow model. If the version created in the cloud by this call is the first deployed version of the specified model, it will be made the default version of the model. When you add a version to a model that already has one or more versions, the default version does not automatically change. If you want a new version to be the default, you must call projects.models.versions.setDefault.
@@ -236,12 +235,6 @@ func (i *Version) ToVersionOutputWithContext(ctx context.Context) VersionOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(VersionOutput)
 }
 
-func (i *Version) ToOutput(ctx context.Context) pulumix.Output[*Version] {
-	return pulumix.Output[*Version]{
-		OutputState: i.ToVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VersionOutput struct{ *pulumi.OutputState }
 
 func (VersionOutput) ElementType() reflect.Type {
@@ -254,12 +247,6 @@ func (o VersionOutput) ToVersionOutput() VersionOutput {
 
 func (o VersionOutput) ToVersionOutputWithContext(ctx context.Context) VersionOutput {
 	return o
-}
-
-func (o VersionOutput) ToOutput(ctx context.Context) pulumix.Output[*Version] {
-	return pulumix.Output[*Version]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).

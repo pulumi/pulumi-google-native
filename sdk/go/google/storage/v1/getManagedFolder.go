@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns metadata of the specified managed folder.
@@ -83,12 +82,6 @@ func (o LookupManagedFolderResultOutput) ToLookupManagedFolderResultOutput() Loo
 
 func (o LookupManagedFolderResultOutput) ToLookupManagedFolderResultOutputWithContext(ctx context.Context) LookupManagedFolderResultOutput {
 	return o
-}
-
-func (o LookupManagedFolderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedFolderResult] {
-	return pulumix.Output[LookupManagedFolderResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the bucket containing this managed folder.

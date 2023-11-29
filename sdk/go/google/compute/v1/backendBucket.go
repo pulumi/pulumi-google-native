@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a BackendBucket resource in the specified project using the data included in the request.
@@ -154,12 +153,6 @@ func (i *BackendBucket) ToBackendBucketOutputWithContext(ctx context.Context) Ba
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketOutput)
 }
 
-func (i *BackendBucket) ToOutput(ctx context.Context) pulumix.Output[*BackendBucket] {
-	return pulumix.Output[*BackendBucket]{
-		OutputState: i.ToBackendBucketOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackendBucketOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketOutput) ElementType() reflect.Type {
@@ -172,12 +165,6 @@ func (o BackendBucketOutput) ToBackendBucketOutput() BackendBucketOutput {
 
 func (o BackendBucketOutput) ToBackendBucketOutputWithContext(ctx context.Context) BackendBucketOutput {
 	return o
-}
-
-func (o BackendBucketOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendBucket] {
-	return pulumix.Output[*BackendBucket]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Storage bucket name.

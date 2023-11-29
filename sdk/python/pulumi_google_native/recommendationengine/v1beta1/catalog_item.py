@@ -296,9 +296,6 @@ class CatalogItem(pulumi.CustomResource):
             __props__.__dict__["id"] = id
             __props__.__dict__["item_attributes"] = item_attributes
             __props__.__dict__["item_group_id"] = item_group_id
-            if language_code is not None and not opts.urn:
-                warnings.warn("""Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""", DeprecationWarning)
-                pulumi.log.warn("""language_code is deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""")
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["location"] = location
             __props__.__dict__["product_metadata"] = product_metadata

@@ -82,12 +82,6 @@ func (o AppProfilePriorityOutput) ToAppProfilePriorityPtrOutputWithContext(ctx c
 	}).(AppProfilePriorityPtrOutput)
 }
 
-func (o AppProfilePriorityOutput) ToOutput(ctx context.Context) pulumix.Output[AppProfilePriority] {
-	return pulumix.Output[AppProfilePriority]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppProfilePriorityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -121,12 +115,6 @@ func (o AppProfilePriorityPtrOutput) ToAppProfilePriorityPtrOutput() AppProfileP
 
 func (o AppProfilePriorityPtrOutput) ToAppProfilePriorityPtrOutputWithContext(ctx context.Context) AppProfilePriorityPtrOutput {
 	return o
-}
-
-func (o AppProfilePriorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppProfilePriority] {
-	return pulumix.Output[*AppProfilePriority]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppProfilePriorityPtrOutput) Elem() AppProfilePriorityOutput {
@@ -271,12 +259,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -310,12 +292,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -458,12 +434,6 @@ func (o ClusterDefaultStorageTypeOutput) ToClusterDefaultStorageTypePtrOutputWit
 	}).(ClusterDefaultStorageTypePtrOutput)
 }
 
-func (o ClusterDefaultStorageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterDefaultStorageType] {
-	return pulumix.Output[ClusterDefaultStorageType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterDefaultStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -497,12 +467,6 @@ func (o ClusterDefaultStorageTypePtrOutput) ToClusterDefaultStorageTypePtrOutput
 
 func (o ClusterDefaultStorageTypePtrOutput) ToClusterDefaultStorageTypePtrOutputWithContext(ctx context.Context) ClusterDefaultStorageTypePtrOutput {
 	return o
-}
-
-func (o ClusterDefaultStorageTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterDefaultStorageType] {
-	return pulumix.Output[*ClusterDefaultStorageType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterDefaultStorageTypePtrOutput) Elem() ClusterDefaultStorageTypeOutput {
@@ -645,12 +609,6 @@ func (o InstanceTypeOutput) ToInstanceTypePtrOutputWithContext(ctx context.Conte
 	}).(InstanceTypePtrOutput)
 }
 
-func (o InstanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceType] {
-	return pulumix.Output[InstanceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -684,12 +642,6 @@ func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
 
 func (o InstanceTypePtrOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
 	return o
-}
-
-func (o InstanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceType] {
-	return pulumix.Output[*InstanceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
@@ -831,12 +783,6 @@ func (o StandardIsolationPriorityOutput) ToStandardIsolationPriorityPtrOutputWit
 	}).(StandardIsolationPriorityPtrOutput)
 }
 
-func (o StandardIsolationPriorityOutput) ToOutput(ctx context.Context) pulumix.Output[StandardIsolationPriority] {
-	return pulumix.Output[StandardIsolationPriority]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StandardIsolationPriorityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -870,12 +816,6 @@ func (o StandardIsolationPriorityPtrOutput) ToStandardIsolationPriorityPtrOutput
 
 func (o StandardIsolationPriorityPtrOutput) ToStandardIsolationPriorityPtrOutputWithContext(ctx context.Context) StandardIsolationPriorityPtrOutput {
 	return o
-}
-
-func (o StandardIsolationPriorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardIsolationPriority] {
-	return pulumix.Output[*StandardIsolationPriority]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardIsolationPriorityPtrOutput) Elem() StandardIsolationPriorityOutput {
@@ -1016,12 +956,6 @@ func (o TableGranularityOutput) ToTableGranularityPtrOutputWithContext(ctx conte
 	}).(TableGranularityPtrOutput)
 }
 
-func (o TableGranularityOutput) ToOutput(ctx context.Context) pulumix.Output[TableGranularity] {
-	return pulumix.Output[TableGranularity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TableGranularityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1055,12 +989,6 @@ func (o TableGranularityPtrOutput) ToTableGranularityPtrOutput() TableGranularit
 
 func (o TableGranularityPtrOutput) ToTableGranularityPtrOutputWithContext(ctx context.Context) TableGranularityPtrOutput {
 	return o
-}
-
-func (o TableGranularityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableGranularity] {
-	return pulumix.Output[*TableGranularity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableGranularityPtrOutput) Elem() TableGranularityOutput {

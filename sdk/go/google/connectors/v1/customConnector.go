@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new CustomConnector in a given project and location.
@@ -151,12 +150,6 @@ func (i *CustomConnector) ToCustomConnectorOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CustomConnectorOutput)
 }
 
-func (i *CustomConnector) ToOutput(ctx context.Context) pulumix.Output[*CustomConnector] {
-	return pulumix.Output[*CustomConnector]{
-		OutputState: i.ToCustomConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomConnectorOutput struct{ *pulumi.OutputState }
 
 func (CustomConnectorOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o CustomConnectorOutput) ToCustomConnectorOutput() CustomConnectorOutput {
 
 func (o CustomConnectorOutput) ToCustomConnectorOutputWithContext(ctx context.Context) CustomConnectorOutput {
 	return o
-}
-
-func (o CustomConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConnector] {
-	return pulumix.Output[*CustomConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Created time.

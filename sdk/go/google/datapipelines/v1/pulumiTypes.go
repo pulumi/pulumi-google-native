@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -109,12 +108,6 @@ func (i GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentOutput)
 }
 
-func (i GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput {
 	return i.ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutputWithContext(context.Background())
 }
@@ -156,12 +149,6 @@ func (i *googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrType) ToGoog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput)
 }
 
-func (i *googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The environment values to be set at runtime for a Flex Template.
 type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentOutput struct{ *pulumi.OutputState }
 
@@ -185,12 +172,6 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentOutput) ToGoogle
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment) *GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
 		return &v
 	}).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput)
-}
-
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional experiment flags for the job.
@@ -293,12 +274,6 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput) ToGoo
 
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput) ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput) Elem() GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentOutput {
@@ -522,12 +497,6 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput) 
 	return o
 }
 
-func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Additional experiment flags for the job.
 func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponseOutput) AdditionalExperiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentResponse) []string {
@@ -677,12 +646,6 @@ func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterOutput)
 }
 
-func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput {
 	return i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutputWithContext(context.Background())
 }
@@ -724,12 +687,6 @@ func (i *googleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrType) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput)
 }
 
-func (i *googleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Launch Flex Template parameter.
 type GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterOutput struct{ *pulumi.OutputState }
 
@@ -753,12 +710,6 @@ func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterOutput) ToGoogleClo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter) *GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
 		return &v
 	}).(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput)
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
@@ -814,12 +765,6 @@ func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput) ToGoogle
 
 func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput) Elem() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterOutput {
@@ -935,12 +880,6 @@ func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput) ToG
 	return o
 }
 
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
 func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput) ContainerSpecGcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse) string {
@@ -1033,12 +972,6 @@ func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs) ToGoogleCloudDa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestOutput)
 }
 
-func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput {
 	return i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutputWithContext(context.Background())
 }
@@ -1080,12 +1013,6 @@ func (i *googleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrType) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput)
 }
 
-func (i *googleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A request to launch a Dataflow job from a Flex Template.
 type GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestOutput struct{ *pulumi.OutputState }
 
@@ -1109,12 +1036,6 @@ func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestOutput) ToGoogleCloud
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest) *GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest {
 		return &v
 	}).(GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput)
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Parameter to launch a job from a Flex Template.
@@ -1151,12 +1072,6 @@ func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput) ToGoogleCl
 
 func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput) ToGoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput) Elem() GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestOutput {
@@ -1236,12 +1151,6 @@ func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput) ToGoo
 	return o
 }
 
-func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Parameter to launch a job from a Flex Template.
 func (o GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponseOutput) LaunchParameter() GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse) GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse {
@@ -1315,12 +1224,6 @@ func (i GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs) ToGoogleCloudDat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchTemplateParametersOutput)
 }
 
-func (i GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateParameters] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateParameters]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1LaunchTemplateParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput {
 	return i.ToGoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutputWithContext(context.Background())
 }
@@ -1362,12 +1265,6 @@ func (i *googleCloudDatapipelinesV1LaunchTemplateParametersPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput)
 }
 
-func (i *googleCloudDatapipelinesV1LaunchTemplateParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1LaunchTemplateParameters] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1LaunchTemplateParameters]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Parameters to provide to the template being launched.
 type GoogleCloudDatapipelinesV1LaunchTemplateParametersOutput struct{ *pulumi.OutputState }
 
@@ -1391,12 +1288,6 @@ func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersOutput) ToGoogleCloudD
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1LaunchTemplateParameters) *GoogleCloudDatapipelinesV1LaunchTemplateParameters {
 		return &v
 	}).(GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput)
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateParameters] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The runtime environment for the job.
@@ -1440,12 +1331,6 @@ func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput) ToGoogleClo
 
 func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1LaunchTemplateParameters] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1LaunchTemplateParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput) Elem() GoogleCloudDatapipelinesV1LaunchTemplateParametersOutput {
@@ -1537,12 +1422,6 @@ func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput) ToGoog
 	return o
 }
 
-func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The runtime environment for the job.
 func (o GoogleCloudDatapipelinesV1LaunchTemplateParametersResponseOutput) Environment() GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1LaunchTemplateParametersResponse) GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse {
@@ -1625,12 +1504,6 @@ func (i GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs) ToGoogleCloudDatapi
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchTemplateRequestOutput)
 }
 
-func (i GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateRequest] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateRequest]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1LaunchTemplateRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput() GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput {
 	return i.ToGoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutputWithContext(context.Background())
 }
@@ -1672,12 +1545,6 @@ func (i *googleCloudDatapipelinesV1LaunchTemplateRequestPtrType) ToGoogleCloudDa
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput)
 }
 
-func (i *googleCloudDatapipelinesV1LaunchTemplateRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1LaunchTemplateRequest] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1LaunchTemplateRequest]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A request to launch a template.
 type GoogleCloudDatapipelinesV1LaunchTemplateRequestOutput struct{ *pulumi.OutputState }
 
@@ -1701,12 +1568,6 @@ func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestOutput) ToGoogleCloudData
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1LaunchTemplateRequest) *GoogleCloudDatapipelinesV1LaunchTemplateRequest {
 		return &v
 	}).(GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput)
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateRequest] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
@@ -1748,12 +1609,6 @@ func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput) ToGoogleCloudD
 
 func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1LaunchTemplateRequest] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1LaunchTemplateRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput) Elem() GoogleCloudDatapipelinesV1LaunchTemplateRequestOutput {
@@ -1843,12 +1698,6 @@ func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput) ToGoogleC
 
 func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput) ToGoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1LaunchTemplateRequestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1LaunchTemplateRequestResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
@@ -1973,12 +1822,6 @@ func (i GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs) ToGoogleCloudDatapipel
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1RuntimeEnvironmentOutput)
 }
 
-func (i GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1RuntimeEnvironment] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1RuntimeEnvironment]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1RuntimeEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput() GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput {
 	return i.ToGoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutputWithContext(context.Background())
 }
@@ -2020,12 +1863,6 @@ func (i *googleCloudDatapipelinesV1RuntimeEnvironmentPtrType) ToGoogleCloudDatap
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput)
 }
 
-func (i *googleCloudDatapipelinesV1RuntimeEnvironmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1RuntimeEnvironment] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1RuntimeEnvironment]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The environment values to set at runtime.
 type GoogleCloudDatapipelinesV1RuntimeEnvironmentOutput struct{ *pulumi.OutputState }
 
@@ -2049,12 +1886,6 @@ func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentOutput) ToGoogleCloudDatapip
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1RuntimeEnvironment) *GoogleCloudDatapipelinesV1RuntimeEnvironment {
 		return &v
 	}).(GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput)
-}
-
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1RuntimeEnvironment] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1RuntimeEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional experiment flags for the job.
@@ -2151,12 +1982,6 @@ func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput) ToGoogleCloudData
 
 func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1RuntimeEnvironment] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1RuntimeEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput) Elem() GoogleCloudDatapipelinesV1RuntimeEnvironmentOutput {
@@ -2380,12 +2205,6 @@ func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput) ToGoogleClou
 	return o
 }
 
-func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Additional experiment flags for the job.
 func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentResponseOutput) AdditionalExperiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1RuntimeEnvironmentResponse) []string { return v.AdditionalExperiments }).(pulumi.StringArrayOutput)
@@ -2507,12 +2326,6 @@ func (i GoogleCloudDatapipelinesV1ScheduleSpecArgs) ToGoogleCloudDatapipelinesV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1ScheduleSpecOutput)
 }
 
-func (i GoogleCloudDatapipelinesV1ScheduleSpecArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1ScheduleSpec] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1ScheduleSpec]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1ScheduleSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDatapipelinesV1ScheduleSpecArgs) ToGoogleCloudDatapipelinesV1ScheduleSpecPtrOutput() GoogleCloudDatapipelinesV1ScheduleSpecPtrOutput {
 	return i.ToGoogleCloudDatapipelinesV1ScheduleSpecPtrOutputWithContext(context.Background())
 }
@@ -2554,12 +2367,6 @@ func (i *googleCloudDatapipelinesV1ScheduleSpecPtrType) ToGoogleCloudDatapipelin
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1ScheduleSpecPtrOutput)
 }
 
-func (i *googleCloudDatapipelinesV1ScheduleSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1ScheduleSpec] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1ScheduleSpec]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1ScheduleSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details of the schedule the pipeline runs on.
 type GoogleCloudDatapipelinesV1ScheduleSpecOutput struct{ *pulumi.OutputState }
 
@@ -2585,12 +2392,6 @@ func (o GoogleCloudDatapipelinesV1ScheduleSpecOutput) ToGoogleCloudDatapipelines
 	}).(GoogleCloudDatapipelinesV1ScheduleSpecPtrOutput)
 }
 
-func (o GoogleCloudDatapipelinesV1ScheduleSpecOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1ScheduleSpec] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1ScheduleSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
 func (o GoogleCloudDatapipelinesV1ScheduleSpecOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1ScheduleSpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
@@ -2613,12 +2414,6 @@ func (o GoogleCloudDatapipelinesV1ScheduleSpecPtrOutput) ToGoogleCloudDatapipeli
 
 func (o GoogleCloudDatapipelinesV1ScheduleSpecPtrOutput) ToGoogleCloudDatapipelinesV1ScheduleSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1ScheduleSpecPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1ScheduleSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1ScheduleSpec] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1ScheduleSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1ScheduleSpecPtrOutput) Elem() GoogleCloudDatapipelinesV1ScheduleSpecOutput {
@@ -2676,12 +2471,6 @@ func (o GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput) ToGoogleCloudDatap
 	return o
 }
 
-func (o GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1ScheduleSpecResponse] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1ScheduleSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // When the next Scheduler job is going to run.
 func (o GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput) NextJobTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatapipelinesV1ScheduleSpecResponse) string { return v.NextJobTime }).(pulumi.StringOutput)
@@ -2736,12 +2525,6 @@ func (i GoogleCloudDatapipelinesV1WorkloadArgs) ToGoogleCloudDatapipelinesV1Work
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1WorkloadOutput)
 }
 
-func (i GoogleCloudDatapipelinesV1WorkloadArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1Workload] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1Workload]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1WorkloadOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudDatapipelinesV1WorkloadArgs) ToGoogleCloudDatapipelinesV1WorkloadPtrOutput() GoogleCloudDatapipelinesV1WorkloadPtrOutput {
 	return i.ToGoogleCloudDatapipelinesV1WorkloadPtrOutputWithContext(context.Background())
 }
@@ -2783,12 +2566,6 @@ func (i *googleCloudDatapipelinesV1WorkloadPtrType) ToGoogleCloudDatapipelinesV1
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatapipelinesV1WorkloadPtrOutput)
 }
 
-func (i *googleCloudDatapipelinesV1WorkloadPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1Workload] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1Workload]{
-		OutputState: i.ToGoogleCloudDatapipelinesV1WorkloadPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Workload details for creating the pipeline jobs.
 type GoogleCloudDatapipelinesV1WorkloadOutput struct{ *pulumi.OutputState }
 
@@ -2812,12 +2589,6 @@ func (o GoogleCloudDatapipelinesV1WorkloadOutput) ToGoogleCloudDatapipelinesV1Wo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatapipelinesV1Workload) *GoogleCloudDatapipelinesV1Workload {
 		return &v
 	}).(GoogleCloudDatapipelinesV1WorkloadPtrOutput)
-}
-
-func (o GoogleCloudDatapipelinesV1WorkloadOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1Workload] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1Workload]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
@@ -2846,12 +2617,6 @@ func (o GoogleCloudDatapipelinesV1WorkloadPtrOutput) ToGoogleCloudDatapipelinesV
 
 func (o GoogleCloudDatapipelinesV1WorkloadPtrOutput) ToGoogleCloudDatapipelinesV1WorkloadPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1WorkloadPtrOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1WorkloadPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1Workload] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1Workload]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudDatapipelinesV1WorkloadPtrOutput) Elem() GoogleCloudDatapipelinesV1WorkloadOutput {
@@ -2905,12 +2670,6 @@ func (o GoogleCloudDatapipelinesV1WorkloadResponseOutput) ToGoogleCloudDatapipel
 
 func (o GoogleCloudDatapipelinesV1WorkloadResponseOutput) ToGoogleCloudDatapipelinesV1WorkloadResponseOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1WorkloadResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatapipelinesV1WorkloadResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDatapipelinesV1WorkloadResponse] {
-	return pulumix.Output[GoogleCloudDatapipelinesV1WorkloadResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Template information and additional parameters needed to launch a Dataflow job using the flex launch API.

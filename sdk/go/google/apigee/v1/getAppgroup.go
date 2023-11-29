@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the AppGroup details for the provided AppGroup name in the request URI.
@@ -85,12 +84,6 @@ func (o LookupAppgroupResultOutput) ToLookupAppgroupResultOutput() LookupAppgrou
 
 func (o LookupAppgroupResultOutput) ToLookupAppgroupResultOutputWithContext(ctx context.Context) LookupAppgroupResultOutput {
 	return o
-}
-
-func (o LookupAppgroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppgroupResult] {
-	return pulumix.Output[LookupAppgroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Internal identifier that cannot be edited

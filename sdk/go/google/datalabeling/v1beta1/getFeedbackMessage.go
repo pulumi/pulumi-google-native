@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a FeedbackMessage object.
@@ -81,12 +80,6 @@ func (o LookupFeedbackMessageResultOutput) ToLookupFeedbackMessageResultOutput()
 
 func (o LookupFeedbackMessageResultOutput) ToLookupFeedbackMessageResultOutputWithContext(ctx context.Context) LookupFeedbackMessageResultOutput {
 	return o
-}
-
-func (o LookupFeedbackMessageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFeedbackMessageResult] {
-	return pulumix.Output[LookupFeedbackMessageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // String content of the feedback. Maximum of 10000 characters.

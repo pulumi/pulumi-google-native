@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter.
@@ -87,12 +86,6 @@ func (o LookupWorkflowTemplateResultOutput) ToLookupWorkflowTemplateResultOutput
 
 func (o LookupWorkflowTemplateResultOutput) ToLookupWorkflowTemplateResultOutputWithContext(ctx context.Context) LookupWorkflowTemplateResultOutput {
 	return o
-}
-
-func (o LookupWorkflowTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkflowTemplateResult] {
-	return pulumix.Output[LookupWorkflowTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time template was created.

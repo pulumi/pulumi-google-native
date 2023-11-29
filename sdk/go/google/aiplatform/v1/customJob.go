@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a CustomJob. A created CustomJob right away will be attempted to be run.
@@ -146,12 +145,6 @@ func (i *CustomJob) ToCustomJobOutputWithContext(ctx context.Context) CustomJobO
 	return pulumi.ToOutputWithContext(ctx, i).(CustomJobOutput)
 }
 
-func (i *CustomJob) ToOutput(ctx context.Context) pulumix.Output[*CustomJob] {
-	return pulumix.Output[*CustomJob]{
-		OutputState: i.ToCustomJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomJobOutput struct{ *pulumi.OutputState }
 
 func (CustomJobOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o CustomJobOutput) ToCustomJobOutput() CustomJobOutput {
 
 func (o CustomJobOutput) ToCustomJobOutputWithContext(ctx context.Context) CustomJobOutput {
 	return o
-}
-
-func (o CustomJobOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomJob] {
-	return pulumix.Output[*CustomJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the CustomJob was created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an instruction by resource name.
@@ -85,12 +84,6 @@ func (o LookupInstructionResultOutput) ToLookupInstructionResultOutput() LookupI
 
 func (o LookupInstructionResultOutput) ToLookupInstructionResultOutputWithContext(ctx context.Context) LookupInstructionResultOutput {
 	return o
-}
-
-func (o LookupInstructionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstructionResult] {
-	return pulumix.Output[LookupInstructionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The names of any related resources that are blocking changes to the instruction.

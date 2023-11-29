@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified IosApp.
@@ -87,12 +86,6 @@ func (o LookupIosAppResultOutput) ToLookupIosAppResultOutput() LookupIosAppResul
 
 func (o LookupIosAppResultOutput) ToLookupIosAppResultOutputWithContext(ctx context.Context) LookupIosAppResultOutput {
 	return o
-}
-
-func (o LookupIosAppResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIosAppResult] {
-	return pulumix.Output[LookupIosAppResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the `IosApp`. Be aware that this value is the UID of the API key, _not_ the [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key. The `keyString` is the value that can be found in the App's [configuration artifact](../../rest/v1beta1/projects.iosApps/getConfig). If `api_key_id` is not set in requests to [`iosApps.Create`](../../rest/v1beta1/projects.iosApps/create), then Firebase automatically associates an `api_key_id` with the `IosApp`. This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned. In patch requests, `api_key_id` cannot be set to an empty value, and the new UID must have no restrictions or only have restrictions that are valid for the associated `IosApp`. We recommend using the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) to manage API keys.

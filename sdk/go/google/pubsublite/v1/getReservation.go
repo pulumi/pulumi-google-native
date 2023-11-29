@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the reservation configuration.
@@ -71,12 +70,6 @@ func (o LookupReservationResultOutput) ToLookupReservationResultOutput() LookupR
 
 func (o LookupReservationResultOutput) ToLookupReservationResultOutputWithContext(ctx context.Context) LookupReservationResultOutput {
 	return o
-}
-
-func (o LookupReservationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReservationResult] {
-	return pulumix.Output[LookupReservationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}

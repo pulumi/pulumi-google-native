@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a trace configuration override. The response contains a system-generated UUID, that can be used to view, update, or delete the configuration override. Use the List API to view the existing trace configuration overrides.
@@ -123,12 +122,6 @@ func (i *Override) ToOverrideOutputWithContext(ctx context.Context) OverrideOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OverrideOutput)
 }
 
-func (i *Override) ToOutput(ctx context.Context) pulumix.Output[*Override] {
-	return pulumix.Output[*Override]{
-		OutputState: i.ToOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OverrideOutput struct{ *pulumi.OutputState }
 
 func (OverrideOutput) ElementType() reflect.Type {
@@ -141,12 +134,6 @@ func (o OverrideOutput) ToOverrideOutput() OverrideOutput {
 
 func (o OverrideOutput) ToOverrideOutputWithContext(ctx context.Context) OverrideOutput {
 	return o
-}
-
-func (o OverrideOutput) ToOutput(ctx context.Context) pulumix.Output[*Override] {
-	return pulumix.Output[*Override]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of the API proxy that will have its trace configuration overridden.

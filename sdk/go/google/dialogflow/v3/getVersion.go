@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified Version.
@@ -83,12 +82,6 @@ func (o LookupVersionResultOutput) ToLookupVersionResultOutput() LookupVersionRe
 
 func (o LookupVersionResultOutput) ToLookupVersionResultOutputWithContext(ctx context.Context) LookupVersionResultOutput {
 	return o
-}
-
-func (o LookupVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVersionResult] {
-	return pulumix.Output[LookupVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Create time of the version.

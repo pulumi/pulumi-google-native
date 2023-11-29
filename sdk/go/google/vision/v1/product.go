@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates and returns a new product resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if description is longer than 4096 characters. * Returns INVALID_ARGUMENT if product_category is missing or invalid.
@@ -134,12 +133,6 @@ func (i *Product) ToProductOutputWithContext(ctx context.Context) ProductOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProductOutput)
 }
 
-func (i *Product) ToOutput(ctx context.Context) pulumix.Output[*Product] {
-	return pulumix.Output[*Product]{
-		OutputState: i.ToProductOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProductOutput struct{ *pulumi.OutputState }
 
 func (ProductOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o ProductOutput) ToProductOutput() ProductOutput {
 
 func (o ProductOutput) ToProductOutputWithContext(ctx context.Context) ProductOutput {
 	return o
-}
-
-func (o ProductOutput) ToOutput(ctx context.Context) pulumix.Output[*Product] {
-	return pulumix.Output[*Product]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User-provided metadata to be stored with this product. Must be at most 4096 characters long.

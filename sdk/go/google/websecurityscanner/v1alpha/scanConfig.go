@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new ScanConfig.
@@ -161,12 +160,6 @@ func (i *ScanConfig) ToScanConfigOutputWithContext(ctx context.Context) ScanConf
 	return pulumi.ToOutputWithContext(ctx, i).(ScanConfigOutput)
 }
 
-func (i *ScanConfig) ToOutput(ctx context.Context) pulumix.Output[*ScanConfig] {
-	return pulumix.Output[*ScanConfig]{
-		OutputState: i.ToScanConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScanConfigOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigOutput) ElementType() reflect.Type {
@@ -179,12 +172,6 @@ func (o ScanConfigOutput) ToScanConfigOutput() ScanConfigOutput {
 
 func (o ScanConfigOutput) ToScanConfigOutputWithContext(ctx context.Context) ScanConfigOutput {
 	return o
-}
-
-func (o ScanConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ScanConfig] {
-	return pulumix.Output[*ScanConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authentication configuration. If specified, service will use the authentication configuration during scanning.

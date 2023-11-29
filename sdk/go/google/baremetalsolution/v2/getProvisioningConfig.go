@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get ProvisioningConfig by name.
@@ -99,12 +98,6 @@ func (o LookupProvisioningConfigResultOutput) ToLookupProvisioningConfigResultOu
 
 func (o LookupProvisioningConfigResultOutput) ToLookupProvisioningConfigResultOutputWithContext(ctx context.Context) LookupProvisioningConfigResultOutput {
 	return o
-}
-
-func (o LookupProvisioningConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProvisioningConfigResult] {
-	return pulumix.Output[LookupProvisioningConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URI to Cloud Console UI view of this provisioning config.

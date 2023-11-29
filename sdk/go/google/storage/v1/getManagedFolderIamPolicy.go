@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an IAM policy for the specified managed folder.
@@ -79,12 +78,6 @@ func (o LookupManagedFolderIamPolicyResultOutput) ToLookupManagedFolderIamPolicy
 
 func (o LookupManagedFolderIamPolicyResultOutput) ToLookupManagedFolderIamPolicyResultOutputWithContext(ctx context.Context) LookupManagedFolderIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupManagedFolderIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedFolderIamPolicyResult] {
-	return pulumix.Output[LookupManagedFolderIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An association between a role, which comes with a set of permissions, and members who may assume that role.

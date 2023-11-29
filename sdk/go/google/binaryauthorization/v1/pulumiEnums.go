@@ -115,12 +115,6 @@ func (o PkixPublicKeySignatureAlgorithmOutput) ToPkixPublicKeySignatureAlgorithm
 	}).(PkixPublicKeySignatureAlgorithmPtrOutput)
 }
 
-func (o PkixPublicKeySignatureAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[PkixPublicKeySignatureAlgorithm] {
-	return pulumix.Output[PkixPublicKeySignatureAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PkixPublicKeySignatureAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -154,12 +148,6 @@ func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToPkixPublicKeySignatureAlgori
 
 func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(ctx context.Context) PkixPublicKeySignatureAlgorithmPtrOutput {
 	return o
-}
-
-func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PkixPublicKeySignatureAlgorithm] {
-	return pulumix.Output[*PkixPublicKeySignatureAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PkixPublicKeySignatureAlgorithmPtrOutput) Elem() PkixPublicKeySignatureAlgorithmOutput {
@@ -300,12 +288,6 @@ func (o VerificationRuleTrustedBuilderOutput) ToVerificationRuleTrustedBuilderPt
 	}).(VerificationRuleTrustedBuilderPtrOutput)
 }
 
-func (o VerificationRuleTrustedBuilderOutput) ToOutput(ctx context.Context) pulumix.Output[VerificationRuleTrustedBuilder] {
-	return pulumix.Output[VerificationRuleTrustedBuilder]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VerificationRuleTrustedBuilderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -339,12 +321,6 @@ func (o VerificationRuleTrustedBuilderPtrOutput) ToVerificationRuleTrustedBuilde
 
 func (o VerificationRuleTrustedBuilderPtrOutput) ToVerificationRuleTrustedBuilderPtrOutputWithContext(ctx context.Context) VerificationRuleTrustedBuilderPtrOutput {
 	return o
-}
-
-func (o VerificationRuleTrustedBuilderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VerificationRuleTrustedBuilder] {
-	return pulumix.Output[*VerificationRuleTrustedBuilder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VerificationRuleTrustedBuilderPtrOutput) Elem() VerificationRuleTrustedBuilderOutput {
@@ -497,12 +473,6 @@ func (o VulnerabilityCheckMaximumFixableSeverityOutput) ToVulnerabilityCheckMaxi
 	}).(VulnerabilityCheckMaximumFixableSeverityPtrOutput)
 }
 
-func (o VulnerabilityCheckMaximumFixableSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[VulnerabilityCheckMaximumFixableSeverity] {
-	return pulumix.Output[VulnerabilityCheckMaximumFixableSeverity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VulnerabilityCheckMaximumFixableSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -536,12 +506,6 @@ func (o VulnerabilityCheckMaximumFixableSeverityPtrOutput) ToVulnerabilityCheckM
 
 func (o VulnerabilityCheckMaximumFixableSeverityPtrOutput) ToVulnerabilityCheckMaximumFixableSeverityPtrOutputWithContext(ctx context.Context) VulnerabilityCheckMaximumFixableSeverityPtrOutput {
 	return o
-}
-
-func (o VulnerabilityCheckMaximumFixableSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VulnerabilityCheckMaximumFixableSeverity] {
-	return pulumix.Output[*VulnerabilityCheckMaximumFixableSeverity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VulnerabilityCheckMaximumFixableSeverityPtrOutput) Elem() VulnerabilityCheckMaximumFixableSeverityOutput {
@@ -694,12 +658,6 @@ func (o VulnerabilityCheckMaximumUnfixableSeverityOutput) ToVulnerabilityCheckMa
 	}).(VulnerabilityCheckMaximumUnfixableSeverityPtrOutput)
 }
 
-func (o VulnerabilityCheckMaximumUnfixableSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[VulnerabilityCheckMaximumUnfixableSeverity] {
-	return pulumix.Output[VulnerabilityCheckMaximumUnfixableSeverity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VulnerabilityCheckMaximumUnfixableSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -733,12 +691,6 @@ func (o VulnerabilityCheckMaximumUnfixableSeverityPtrOutput) ToVulnerabilityChec
 
 func (o VulnerabilityCheckMaximumUnfixableSeverityPtrOutput) ToVulnerabilityCheckMaximumUnfixableSeverityPtrOutputWithContext(ctx context.Context) VulnerabilityCheckMaximumUnfixableSeverityPtrOutput {
 	return o
-}
-
-func (o VulnerabilityCheckMaximumUnfixableSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VulnerabilityCheckMaximumUnfixableSeverity] {
-	return pulumix.Output[*VulnerabilityCheckMaximumUnfixableSeverity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VulnerabilityCheckMaximumUnfixableSeverityPtrOutput) Elem() VulnerabilityCheckMaximumUnfixableSeverityOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -133,12 +114,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -170,12 +145,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -198,12 +167,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -251,12 +214,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -282,12 +239,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -301,12 +252,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -331,12 +276,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -368,12 +307,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -396,12 +329,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -453,12 +380,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -484,12 +405,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -503,12 +418,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -538,12 +447,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -577,12 +480,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -610,12 +507,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -659,12 +550,6 @@ func (i CertificateArgs) ToCertificateOutputWithContext(ctx context.Context) Cer
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateOutput)
 }
 
-func (i CertificateArgs) ToOutput(ctx context.Context) pulumix.Output[Certificate] {
-	return pulumix.Output[Certificate]{
-		OutputState: i.ToCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CertificateArrayInput is an input type that accepts CertificateArray and CertificateArrayOutput values.
 // You can construct a concrete instance of `CertificateArrayInput` via:
 //
@@ -690,12 +575,6 @@ func (i CertificateArray) ToCertificateArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateArrayOutput)
 }
 
-func (i CertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]Certificate] {
-	return pulumix.Output[[]Certificate]{
-		OutputState: i.ToCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
 type CertificateOutput struct{ *pulumi.OutputState }
 
@@ -709,12 +588,6 @@ func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
 
 func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
 	return o
-}
-
-func (o CertificateOutput) ToOutput(ctx context.Context) pulumix.Output[Certificate] {
-	return pulumix.Output[Certificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The raw certificate bytes in DER format.
@@ -734,12 +607,6 @@ func (o CertificateArrayOutput) ToCertificateArrayOutput() CertificateArrayOutpu
 
 func (o CertificateArrayOutput) ToCertificateArrayOutputWithContext(ctx context.Context) CertificateArrayOutput {
 	return o
-}
-
-func (o CertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Certificate] {
-	return pulumix.Output[[]Certificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateArrayOutput) Index(i pulumi.IntInput) CertificateOutput {
@@ -771,12 +638,6 @@ func (o CertificateChainsResponseOutput) ToCertificateChainsResponseOutput() Cer
 
 func (o CertificateChainsResponseOutput) ToCertificateChainsResponseOutputWithContext(ctx context.Context) CertificateChainsResponseOutput {
 	return o
-}
-
-func (o CertificateChainsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateChainsResponse] {
-	return pulumix.Output[CertificateChainsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cavium certificate chain corresponding to the attestation.
@@ -829,12 +690,6 @@ func (o CertificateResponseOutput) ToCertificateResponseOutput() CertificateResp
 
 func (o CertificateResponseOutput) ToCertificateResponseOutputWithContext(ctx context.Context) CertificateResponseOutput {
 	return o
-}
-
-func (o CertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateResponse] {
-	return pulumix.Output[CertificateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
@@ -896,12 +751,6 @@ func (o CertificateResponseArrayOutput) ToCertificateResponseArrayOutputWithCont
 	return o
 }
 
-func (o CertificateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertificateResponse] {
-	return pulumix.Output[[]CertificateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateResponseArrayOutput) Index(i pulumi.IntInput) CertificateResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateResponse {
 		return vs[0].([]CertificateResponse)[vs[1].(int)]
@@ -957,12 +806,6 @@ func (o CryptoKeyVersionResponseOutput) ToCryptoKeyVersionResponseOutput() Crypt
 
 func (o CryptoKeyVersionResponseOutput) ToCryptoKeyVersionResponseOutputWithContext(ctx context.Context) CryptoKeyVersionResponseOutput {
 	return o
-}
-
-func (o CryptoKeyVersionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionResponse] {
-	return pulumix.Output[CryptoKeyVersionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
@@ -1086,12 +929,6 @@ func (i CryptoKeyVersionTemplateArgs) ToCryptoKeyVersionTemplateOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTemplateOutput)
 }
 
-func (i CryptoKeyVersionTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionTemplate] {
-	return pulumix.Output[CryptoKeyVersionTemplate]{
-		OutputState: i.ToCryptoKeyVersionTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CryptoKeyVersionTemplateArgs) ToCryptoKeyVersionTemplatePtrOutput() CryptoKeyVersionTemplatePtrOutput {
 	return i.ToCryptoKeyVersionTemplatePtrOutputWithContext(context.Background())
 }
@@ -1133,12 +970,6 @@ func (i *cryptoKeyVersionTemplatePtrType) ToCryptoKeyVersionTemplatePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTemplatePtrOutput)
 }
 
-func (i *cryptoKeyVersionTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionTemplate] {
-	return pulumix.Output[*CryptoKeyVersionTemplate]{
-		OutputState: i.ToCryptoKeyVersionTemplatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 type CryptoKeyVersionTemplateOutput struct{ *pulumi.OutputState }
 
@@ -1164,12 +995,6 @@ func (o CryptoKeyVersionTemplateOutput) ToCryptoKeyVersionTemplatePtrOutputWithC
 	}).(CryptoKeyVersionTemplatePtrOutput)
 }
 
-func (o CryptoKeyVersionTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionTemplate] {
-	return pulumix.Output[CryptoKeyVersionTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
 func (o CryptoKeyVersionTemplateOutput) Algorithm() CryptoKeyVersionTemplateAlgorithmOutput {
 	return o.ApplyT(func(v CryptoKeyVersionTemplate) CryptoKeyVersionTemplateAlgorithm { return v.Algorithm }).(CryptoKeyVersionTemplateAlgorithmOutput)
@@ -1192,12 +1017,6 @@ func (o CryptoKeyVersionTemplatePtrOutput) ToCryptoKeyVersionTemplatePtrOutput()
 
 func (o CryptoKeyVersionTemplatePtrOutput) ToCryptoKeyVersionTemplatePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplatePtrOutput {
 	return o
-}
-
-func (o CryptoKeyVersionTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionTemplate] {
-	return pulumix.Output[*CryptoKeyVersionTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CryptoKeyVersionTemplatePtrOutput) Elem() CryptoKeyVersionTemplateOutput {
@@ -1251,12 +1070,6 @@ func (o CryptoKeyVersionTemplateResponseOutput) ToCryptoKeyVersionTemplateRespon
 
 func (o CryptoKeyVersionTemplateResponseOutput) ToCryptoKeyVersionTemplateResponseOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateResponseOutput {
 	return o
-}
-
-func (o CryptoKeyVersionTemplateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionTemplateResponse] {
-	return pulumix.Output[CryptoKeyVersionTemplateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
@@ -1316,12 +1129,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1363,12 +1170,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1392,12 +1193,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1432,12 +1227,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1517,12 +1306,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1582,12 +1365,6 @@ func (i ExternalProtectionLevelOptionsArgs) ToExternalProtectionLevelOptionsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalProtectionLevelOptionsOutput)
 }
 
-func (i ExternalProtectionLevelOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[ExternalProtectionLevelOptions] {
-	return pulumix.Output[ExternalProtectionLevelOptions]{
-		OutputState: i.ToExternalProtectionLevelOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExternalProtectionLevelOptionsArgs) ToExternalProtectionLevelOptionsPtrOutput() ExternalProtectionLevelOptionsPtrOutput {
 	return i.ToExternalProtectionLevelOptionsPtrOutputWithContext(context.Background())
 }
@@ -1629,12 +1406,6 @@ func (i *externalProtectionLevelOptionsPtrType) ToExternalProtectionLevelOptions
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalProtectionLevelOptionsPtrOutput)
 }
 
-func (i *externalProtectionLevelOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExternalProtectionLevelOptions] {
-	return pulumix.Output[*ExternalProtectionLevelOptions]{
-		OutputState: i.ToExternalProtectionLevelOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 type ExternalProtectionLevelOptionsOutput struct{ *pulumi.OutputState }
 
@@ -1660,12 +1431,6 @@ func (o ExternalProtectionLevelOptionsOutput) ToExternalProtectionLevelOptionsPt
 	}).(ExternalProtectionLevelOptionsPtrOutput)
 }
 
-func (o ExternalProtectionLevelOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[ExternalProtectionLevelOptions] {
-	return pulumix.Output[ExternalProtectionLevelOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
 func (o ExternalProtectionLevelOptionsOutput) EkmConnectionKeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalProtectionLevelOptions) *string { return v.EkmConnectionKeyPath }).(pulumi.StringPtrOutput)
@@ -1688,12 +1453,6 @@ func (o ExternalProtectionLevelOptionsPtrOutput) ToExternalProtectionLevelOption
 
 func (o ExternalProtectionLevelOptionsPtrOutput) ToExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) ExternalProtectionLevelOptionsPtrOutput {
 	return o
-}
-
-func (o ExternalProtectionLevelOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalProtectionLevelOptions] {
-	return pulumix.Output[*ExternalProtectionLevelOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExternalProtectionLevelOptionsPtrOutput) Elem() ExternalProtectionLevelOptionsOutput {
@@ -1749,12 +1508,6 @@ func (o ExternalProtectionLevelOptionsResponseOutput) ToExternalProtectionLevelO
 	return o
 }
 
-func (o ExternalProtectionLevelOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExternalProtectionLevelOptionsResponse] {
-	return pulumix.Output[ExternalProtectionLevelOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
 func (o ExternalProtectionLevelOptionsResponseOutput) EkmConnectionKeyPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ExternalProtectionLevelOptionsResponse) string { return v.EkmConnectionKeyPath }).(pulumi.StringOutput)
@@ -1788,12 +1541,6 @@ func (o KeyOperationAttestationResponseOutput) ToKeyOperationAttestationResponse
 
 func (o KeyOperationAttestationResponseOutput) ToKeyOperationAttestationResponseOutputWithContext(ctx context.Context) KeyOperationAttestationResponseOutput {
 	return o
-}
-
-func (o KeyOperationAttestationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyOperationAttestationResponse] {
-	return pulumix.Output[KeyOperationAttestationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The certificate chains needed to validate the attestation
@@ -1858,12 +1605,6 @@ func (i ServiceResolverArgs) ToServiceResolverOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceResolverOutput)
 }
 
-func (i ServiceResolverArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceResolver] {
-	return pulumix.Output[ServiceResolver]{
-		OutputState: i.ToServiceResolverOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceResolverArrayInput is an input type that accepts ServiceResolverArray and ServiceResolverArrayOutput values.
 // You can construct a concrete instance of `ServiceResolverArrayInput` via:
 //
@@ -1889,12 +1630,6 @@ func (i ServiceResolverArray) ToServiceResolverArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceResolverArrayOutput)
 }
 
-func (i ServiceResolverArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceResolver] {
-	return pulumix.Output[[]ServiceResolver]{
-		OutputState: i.ToServiceResolverArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
 type ServiceResolverOutput struct{ *pulumi.OutputState }
 
@@ -1908,12 +1643,6 @@ func (o ServiceResolverOutput) ToServiceResolverOutput() ServiceResolverOutput {
 
 func (o ServiceResolverOutput) ToServiceResolverOutputWithContext(ctx context.Context) ServiceResolverOutput {
 	return o
-}
-
-func (o ServiceResolverOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceResolver] {
-	return pulumix.Output[ServiceResolver]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
@@ -1950,12 +1679,6 @@ func (o ServiceResolverArrayOutput) ToServiceResolverArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ServiceResolverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceResolver] {
-	return pulumix.Output[[]ServiceResolver]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceResolverArrayOutput) Index(i pulumi.IntInput) ServiceResolverOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceResolver {
 		return vs[0].([]ServiceResolver)[vs[1].(int)]
@@ -1987,12 +1710,6 @@ func (o ServiceResolverResponseOutput) ToServiceResolverResponseOutput() Service
 
 func (o ServiceResolverResponseOutput) ToServiceResolverResponseOutputWithContext(ctx context.Context) ServiceResolverResponseOutput {
 	return o
-}
-
-func (o ServiceResolverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceResolverResponse] {
-	return pulumix.Output[ServiceResolverResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
@@ -2029,12 +1746,6 @@ func (o ServiceResolverResponseArrayOutput) ToServiceResolverResponseArrayOutput
 	return o
 }
 
-func (o ServiceResolverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceResolverResponse] {
-	return pulumix.Output[[]ServiceResolverResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceResolverResponseArrayOutput) Index(i pulumi.IntInput) ServiceResolverResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceResolverResponse {
 		return vs[0].([]ServiceResolverResponse)[vs[1].(int)]
@@ -2060,12 +1771,6 @@ func (o WrappingPublicKeyResponseOutput) ToWrappingPublicKeyResponseOutput() Wra
 
 func (o WrappingPublicKeyResponseOutput) ToWrappingPublicKeyResponseOutputWithContext(ctx context.Context) WrappingPublicKeyResponseOutput {
 	return o
-}
-
-func (o WrappingPublicKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WrappingPublicKeyResponse] {
-	return pulumix.Output[WrappingPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13).

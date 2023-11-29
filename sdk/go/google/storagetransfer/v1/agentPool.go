@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an agent pool resource.
@@ -125,12 +124,6 @@ func (i *AgentPool) ToAgentPoolOutputWithContext(ctx context.Context) AgentPoolO
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolOutput)
 }
 
-func (i *AgentPool) ToOutput(ctx context.Context) pulumix.Output[*AgentPool] {
-	return pulumix.Output[*AgentPool]{
-		OutputState: i.ToAgentPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AgentPoolOutput struct{ *pulumi.OutputState }
 
 func (AgentPoolOutput) ElementType() reflect.Type {
@@ -143,12 +136,6 @@ func (o AgentPoolOutput) ToAgentPoolOutput() AgentPoolOutput {
 
 func (o AgentPoolOutput) ToAgentPoolOutputWithContext(ctx context.Context) AgentPoolOutput {
 	return o
-}
-
-func (o AgentPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPool] {
-	return pulumix.Output[*AgentPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.

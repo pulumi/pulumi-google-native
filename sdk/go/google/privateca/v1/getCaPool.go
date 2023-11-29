@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a CaPool.
@@ -77,12 +76,6 @@ func (o LookupCaPoolResultOutput) ToLookupCaPoolResultOutput() LookupCaPoolResul
 
 func (o LookupCaPoolResultOutput) ToLookupCaPoolResultOutputWithContext(ctx context.Context) LookupCaPoolResultOutput {
 	return o
-}
-
-func (o LookupCaPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCaPoolResult] {
-	return pulumix.Output[LookupCaPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.

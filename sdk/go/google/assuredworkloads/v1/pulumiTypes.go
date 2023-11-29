@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput) ToG
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of current resource violations which are not acknowledged.
@@ -98,12 +91,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutp
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates Ekm provisioning error if any.
@@ -166,12 +153,6 @@ func (i GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) ToGoogleCloudAssur
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput)
 }
 
-func (i GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadKMSSettings] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadKMSSettings]{
-		OutputState: i.ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
 	return i.ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(context.Background())
 }
@@ -213,12 +194,6 @@ func (i *googleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrType) ToGoogleCloudA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput)
 }
 
-func (i *googleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1WorkloadKMSSettings] {
-	return pulumix.Output[*GoogleCloudAssuredworkloadsV1WorkloadKMSSettings]{
-		OutputState: i.ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput struct{ *pulumi.OutputState }
 
@@ -244,12 +219,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ToGoogleCloudAss
 	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput)
 }
 
-func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadKMSSettings] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadKMSSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) NextRotationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) string { return v.NextRotationTime }).(pulumi.StringOutput)
@@ -272,12 +241,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1WorkloadKMSSettings] {
-	return pulumix.Output[*GoogleCloudAssuredworkloadsV1WorkloadKMSSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput {
@@ -333,12 +296,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) NextRotationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) string { return v.NextRotationTime }).(pulumi.StringOutput)
@@ -392,12 +349,6 @@ func (i GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput)
 }
 
-func (i GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions]{
-		OutputState: i.ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput {
 	return i.ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
 }
@@ -439,12 +390,6 @@ func (i *googleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrType) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput)
 }
 
-func (i *googleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions] {
-	return pulumix.Output[*GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions]{
-		OutputState: i.ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Permissions granted to the AW Partner SA account for the customer workload
 type GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput struct{ *pulumi.OutputState }
 
@@ -468,12 +413,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput) ToGoogleC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions) *GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
 		return &v
 	}).(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput)
-}
-
-func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Allow partner to view violation alerts.
@@ -505,12 +444,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput) ToGoog
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput {
 	return o
-}
-
-func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions] {
-	return pulumix.Output[*GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput {
@@ -578,12 +511,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput) T
 	return o
 }
 
-func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Allow partner to view violation alerts.
 func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput) AssuredWorkloadsMonitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse) bool {
@@ -626,12 +553,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseOutput) ToGoogl
 	return o
 }
 
-func (o GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource identifier. For a project this represents project_number.
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse) string { return v.ResourceId }).(pulumi.StringOutput)
@@ -654,12 +575,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput) To
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput {
 	return o
-}
-
-func (o GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse] {
-	return pulumix.Output[[]GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseOutput {
@@ -711,12 +626,6 @@ func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput)
 }
 
-func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadResourceSettings] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadResourceSettings]{
-		OutputState: i.ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput` via:
 //
@@ -742,12 +651,6 @@ func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput)
 }
 
-func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAssuredworkloadsV1WorkloadResourceSettings] {
-	return pulumix.Output[[]GoogleCloudAssuredworkloadsV1WorkloadResourceSettings]{
-		OutputState: i.ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represent the custom settings for the resources to be created.
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput struct{ *pulumi.OutputState }
 
@@ -761,12 +664,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ToGoogleClo
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput {
 	return o
-}
-
-func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadResourceSettings] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadResourceSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
@@ -800,12 +697,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput) ToGoog
 	return o
 }
 
-func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAssuredworkloadsV1WorkloadResourceSettings] {
-	return pulumix.Output[[]GoogleCloudAssuredworkloadsV1WorkloadResourceSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput) Index(i pulumi.IntInput) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
 		return vs[0].([]GoogleCloudAssuredworkloadsV1WorkloadResourceSettings)[vs[1].(int)]
@@ -837,12 +728,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ToG
 	return o
 }
 
-func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -872,12 +757,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput
 	return o
 }
 
-func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse] {
-	return pulumix.Output[[]GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse {
 		return vs[0].([]GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse)[vs[1].(int)]
@@ -905,12 +784,6 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput {
 	return o
-}
-
-func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse] {
-	return pulumix.Output[GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates SAA enrollment setup error if any.

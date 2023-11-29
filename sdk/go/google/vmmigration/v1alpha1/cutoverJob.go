@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Initiates a Cutover of a specific migrating VM. The returned LRO is completed when the cutover job resource is created and the job is initiated.
@@ -164,12 +163,6 @@ func (i *CutoverJob) ToCutoverJobOutputWithContext(ctx context.Context) CutoverJ
 	return pulumi.ToOutputWithContext(ctx, i).(CutoverJobOutput)
 }
 
-func (i *CutoverJob) ToOutput(ctx context.Context) pulumix.Output[*CutoverJob] {
-	return pulumix.Output[*CutoverJob]{
-		OutputState: i.ToCutoverJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CutoverJobOutput struct{ *pulumi.OutputState }
 
 func (CutoverJobOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o CutoverJobOutput) ToCutoverJobOutput() CutoverJobOutput {
 
 func (o CutoverJobOutput) ToCutoverJobOutputWithContext(ctx context.Context) CutoverJobOutput {
 	return o
-}
-
-func (o CutoverJobOutput) ToOutput(ctx context.Context) pulumix.Output[*CutoverJob] {
-	return pulumix.Output[*CutoverJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Details of the target Persistent Disks in Compute Engine.

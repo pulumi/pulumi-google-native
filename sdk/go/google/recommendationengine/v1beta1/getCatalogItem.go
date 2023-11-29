@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific catalog item.
@@ -87,12 +86,6 @@ func (o LookupCatalogItemResultOutput) ToLookupCatalogItemResultOutput() LookupC
 
 func (o LookupCatalogItemResultOutput) ToLookupCatalogItemResultOutputWithContext(ctx context.Context) LookupCatalogItemResultOutput {
 	return o
-}
-
-func (o LookupCatalogItemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCatalogItemResult] {
-	return pulumix.Output[LookupCatalogItemResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]

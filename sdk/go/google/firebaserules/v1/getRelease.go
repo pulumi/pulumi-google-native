@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a `Release` by name.
@@ -73,12 +72,6 @@ func (o LookupReleaseResultOutput) ToLookupReleaseResultOutput() LookupReleaseRe
 
 func (o LookupReleaseResultOutput) ToLookupReleaseResultOutputWithContext(ctx context.Context) LookupReleaseResultOutput {
 	return o
-}
-
-func (o LookupReleaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReleaseResult] {
-	return pulumix.Output[LookupReleaseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the release was created.

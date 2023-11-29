@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -133,12 +114,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -170,12 +145,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -198,12 +167,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -251,12 +214,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -282,12 +239,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -301,12 +252,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -331,12 +276,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -368,12 +307,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -396,12 +329,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -453,12 +380,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -484,12 +405,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -503,12 +418,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -538,12 +447,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -577,12 +480,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -610,12 +507,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -659,12 +550,6 @@ func (i EndpointMatcherArgs) ToEndpointMatcherOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherOutput)
 }
 
-func (i EndpointMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointMatcher] {
-	return pulumix.Output[EndpointMatcher]{
-		OutputState: i.ToEndpointMatcherOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A definition of a matcher that selects endpoints to which the policies should be applied.
 type EndpointMatcherOutput struct{ *pulumi.OutputState }
 
@@ -678,12 +563,6 @@ func (o EndpointMatcherOutput) ToEndpointMatcherOutput() EndpointMatcherOutput {
 
 func (o EndpointMatcherOutput) ToEndpointMatcherOutputWithContext(ctx context.Context) EndpointMatcherOutput {
 	return o
-}
-
-func (o EndpointMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointMatcher] {
-	return pulumix.Output[EndpointMatcher]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The matcher is based on node metadata presented by xDS clients.
@@ -730,12 +609,6 @@ func (i EndpointMatcherMetadataLabelMatcherArgs) ToEndpointMatcherMetadataLabelM
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherOutput)
 }
 
-func (i EndpointMatcherMetadataLabelMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointMatcherMetadataLabelMatcher] {
-	return pulumix.Output[EndpointMatcherMetadataLabelMatcher]{
-		OutputState: i.ToEndpointMatcherMetadataLabelMatcherOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EndpointMatcherMetadataLabelMatcherArgs) ToEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointMatcherMetadataLabelMatcherPtrOutput {
 	return i.ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(context.Background())
 }
@@ -777,12 +650,6 @@ func (i *endpointMatcherMetadataLabelMatcherPtrType) ToEndpointMatcherMetadataLa
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherPtrOutput)
 }
 
-func (i *endpointMatcherMetadataLabelMatcherPtrType) ToOutput(ctx context.Context) pulumix.Output[*EndpointMatcherMetadataLabelMatcher] {
-	return pulumix.Output[*EndpointMatcherMetadataLabelMatcher]{
-		OutputState: i.ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The matcher that is based on node metadata presented by xDS clients.
 type EndpointMatcherMetadataLabelMatcherOutput struct{ *pulumi.OutputState }
 
@@ -806,12 +673,6 @@ func (o EndpointMatcherMetadataLabelMatcherOutput) ToEndpointMatcherMetadataLabe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointMatcherMetadataLabelMatcher) *EndpointMatcherMetadataLabelMatcher {
 		return &v
 	}).(EndpointMatcherMetadataLabelMatcherPtrOutput)
-}
-
-func (o EndpointMatcherMetadataLabelMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointMatcherMetadataLabelMatcher] {
-	return pulumix.Output[EndpointMatcherMetadataLabelMatcher]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
@@ -840,12 +701,6 @@ func (o EndpointMatcherMetadataLabelMatcherPtrOutput) ToEndpointMatcherMetadataL
 
 func (o EndpointMatcherMetadataLabelMatcherPtrOutput) ToEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherPtrOutput {
 	return o
-}
-
-func (o EndpointMatcherMetadataLabelMatcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointMatcherMetadataLabelMatcher] {
-	return pulumix.Output[*EndpointMatcherMetadataLabelMatcher]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointMatcherMetadataLabelMatcherPtrOutput) Elem() EndpointMatcherMetadataLabelMatcherOutput {
@@ -917,12 +772,6 @@ func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs) ToEndpointMatcher
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput)
 }
 
-func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointMatcherMetadataLabelMatcherMetadataLabels] {
-	return pulumix.Output[EndpointMatcherMetadataLabelMatcherMetadataLabels]{
-		OutputState: i.ToEndpointMatcherMetadataLabelMatcherMetadataLabelsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayInput is an input type that accepts EndpointMatcherMetadataLabelMatcherMetadataLabelsArray and EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput values.
 // You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayInput` via:
 //
@@ -948,12 +797,6 @@ func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsArray) ToEndpointMatche
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput)
 }
 
-func (i EndpointMatcherMetadataLabelMatcherMetadataLabelsArray) ToOutput(ctx context.Context) pulumix.Output[[]EndpointMatcherMetadataLabelMatcherMetadataLabels] {
-	return pulumix.Output[[]EndpointMatcherMetadataLabelMatcherMetadataLabels]{
-		OutputState: i.ToEndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a name-pair value for a single label.
 type EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput struct{ *pulumi.OutputState }
 
@@ -967,12 +810,6 @@ func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput) ToEndpointMatch
 
 func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput {
 	return o
-}
-
-func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointMatcherMetadataLabelMatcherMetadataLabels] {
-	return pulumix.Output[EndpointMatcherMetadataLabelMatcherMetadataLabels]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Label name presented as key in xDS Node Metadata.
@@ -997,12 +834,6 @@ func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput) ToEndpoint
 
 func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput {
 	return o
-}
-
-func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointMatcherMetadataLabelMatcherMetadataLabels] {
-	return pulumix.Output[[]EndpointMatcherMetadataLabelMatcherMetadataLabels]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsArrayOutput) Index(i pulumi.IntInput) EndpointMatcherMetadataLabelMatcherMetadataLabelsOutput {
@@ -1034,12 +865,6 @@ func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput) ToEndpo
 	return o
 }
 
-func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse] {
-	return pulumix.Output[EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Label name presented as key in xDS Node Metadata.
 func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput) LabelName() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse) string { return v.LabelName }).(pulumi.StringOutput)
@@ -1062,12 +887,6 @@ func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput) To
 
 func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput) ToEndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput {
 	return o
-}
-
-func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse] {
-	return pulumix.Output[[]EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseArrayOutput) Index(i pulumi.IntInput) EndpointMatcherMetadataLabelMatcherMetadataLabelsResponseOutput {
@@ -1097,12 +916,6 @@ func (o EndpointMatcherMetadataLabelMatcherResponseOutput) ToEndpointMatcherMeta
 
 func (o EndpointMatcherMetadataLabelMatcherResponseOutput) ToEndpointMatcherMetadataLabelMatcherResponseOutputWithContext(ctx context.Context) EndpointMatcherMetadataLabelMatcherResponseOutput {
 	return o
-}
-
-func (o EndpointMatcherMetadataLabelMatcherResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointMatcherMetadataLabelMatcherResponse] {
-	return pulumix.Output[EndpointMatcherMetadataLabelMatcherResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
@@ -1136,12 +949,6 @@ func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponseOutput() Endpoin
 
 func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponseOutputWithContext(ctx context.Context) EndpointMatcherResponseOutput {
 	return o
-}
-
-func (o EndpointMatcherResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointMatcherResponse] {
-	return pulumix.Output[EndpointMatcherResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The matcher is based on node metadata presented by xDS clients.
@@ -1198,12 +1005,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1245,12 +1046,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1274,12 +1069,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1314,12 +1103,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1399,12 +1182,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1464,12 +1241,6 @@ func (i GrpcRouteDestinationArgs) ToGrpcRouteDestinationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteDestinationOutput)
 }
 
-func (i GrpcRouteDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteDestination] {
-	return pulumix.Output[GrpcRouteDestination]{
-		OutputState: i.ToGrpcRouteDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GrpcRouteDestinationArrayInput is an input type that accepts GrpcRouteDestinationArray and GrpcRouteDestinationArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteDestinationArrayInput` via:
 //
@@ -1495,12 +1266,6 @@ func (i GrpcRouteDestinationArray) ToGrpcRouteDestinationArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteDestinationArrayOutput)
 }
 
-func (i GrpcRouteDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteDestination] {
-	return pulumix.Output[[]GrpcRouteDestination]{
-		OutputState: i.ToGrpcRouteDestinationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The destination to which traffic will be routed.
 type GrpcRouteDestinationOutput struct{ *pulumi.OutputState }
 
@@ -1514,12 +1279,6 @@ func (o GrpcRouteDestinationOutput) ToGrpcRouteDestinationOutput() GrpcRouteDest
 
 func (o GrpcRouteDestinationOutput) ToGrpcRouteDestinationOutputWithContext(ctx context.Context) GrpcRouteDestinationOutput {
 	return o
-}
-
-func (o GrpcRouteDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteDestination] {
-	return pulumix.Output[GrpcRouteDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL of a destination service to which to route traffic. Must refer to either a BackendService or ServiceDirectoryService.
@@ -1544,12 +1303,6 @@ func (o GrpcRouteDestinationArrayOutput) ToGrpcRouteDestinationArrayOutput() Grp
 
 func (o GrpcRouteDestinationArrayOutput) ToGrpcRouteDestinationArrayOutputWithContext(ctx context.Context) GrpcRouteDestinationArrayOutput {
 	return o
-}
-
-func (o GrpcRouteDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteDestination] {
-	return pulumix.Output[[]GrpcRouteDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteDestinationArrayOutput) Index(i pulumi.IntInput) GrpcRouteDestinationOutput {
@@ -1581,12 +1334,6 @@ func (o GrpcRouteDestinationResponseOutput) ToGrpcRouteDestinationResponseOutput
 	return o
 }
 
-func (o GrpcRouteDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteDestinationResponse] {
-	return pulumix.Output[GrpcRouteDestinationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL of a destination service to which to route traffic. Must refer to either a BackendService or ServiceDirectoryService.
 func (o GrpcRouteDestinationResponseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GrpcRouteDestinationResponse) string { return v.ServiceName }).(pulumi.StringOutput)
@@ -1609,12 +1356,6 @@ func (o GrpcRouteDestinationResponseArrayOutput) ToGrpcRouteDestinationResponseA
 
 func (o GrpcRouteDestinationResponseArrayOutput) ToGrpcRouteDestinationResponseArrayOutputWithContext(ctx context.Context) GrpcRouteDestinationResponseArrayOutput {
 	return o
-}
-
-func (o GrpcRouteDestinationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteDestinationResponse] {
-	return pulumix.Output[[]GrpcRouteDestinationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteDestinationResponseArrayOutput) Index(i pulumi.IntInput) GrpcRouteDestinationResponseOutput {
@@ -1662,12 +1403,6 @@ func (i GrpcRouteFaultInjectionPolicyArgs) ToGrpcRouteFaultInjectionPolicyOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteFaultInjectionPolicyOutput)
 }
 
-func (i GrpcRouteFaultInjectionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteFaultInjectionPolicy] {
-	return pulumix.Output[GrpcRouteFaultInjectionPolicy]{
-		OutputState: i.ToGrpcRouteFaultInjectionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GrpcRouteFaultInjectionPolicyArgs) ToGrpcRouteFaultInjectionPolicyPtrOutput() GrpcRouteFaultInjectionPolicyPtrOutput {
 	return i.ToGrpcRouteFaultInjectionPolicyPtrOutputWithContext(context.Background())
 }
@@ -1709,12 +1444,6 @@ func (i *grpcRouteFaultInjectionPolicyPtrType) ToGrpcRouteFaultInjectionPolicyPt
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteFaultInjectionPolicyPtrOutput)
 }
 
-func (i *grpcRouteFaultInjectionPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteFaultInjectionPolicy] {
-	return pulumix.Output[*GrpcRouteFaultInjectionPolicy]{
-		OutputState: i.ToGrpcRouteFaultInjectionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests.
 type GrpcRouteFaultInjectionPolicyOutput struct{ *pulumi.OutputState }
 
@@ -1740,12 +1469,6 @@ func (o GrpcRouteFaultInjectionPolicyOutput) ToGrpcRouteFaultInjectionPolicyPtrO
 	}).(GrpcRouteFaultInjectionPolicyPtrOutput)
 }
 
-func (o GrpcRouteFaultInjectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteFaultInjectionPolicy] {
-	return pulumix.Output[GrpcRouteFaultInjectionPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The specification for aborting to client requests.
 func (o GrpcRouteFaultInjectionPolicyOutput) Abort() GrpcRouteFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v GrpcRouteFaultInjectionPolicy) *GrpcRouteFaultInjectionPolicyAbort { return v.Abort }).(GrpcRouteFaultInjectionPolicyAbortPtrOutput)
@@ -1768,12 +1491,6 @@ func (o GrpcRouteFaultInjectionPolicyPtrOutput) ToGrpcRouteFaultInjectionPolicyP
 
 func (o GrpcRouteFaultInjectionPolicyPtrOutput) ToGrpcRouteFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteFaultInjectionPolicyPtrOutput {
 	return o
-}
-
-func (o GrpcRouteFaultInjectionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteFaultInjectionPolicy] {
-	return pulumix.Output[*GrpcRouteFaultInjectionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteFaultInjectionPolicyPtrOutput) Elem() GrpcRouteFaultInjectionPolicyOutput {
@@ -1845,12 +1562,6 @@ func (i GrpcRouteFaultInjectionPolicyAbortArgs) ToGrpcRouteFaultInjectionPolicyA
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteFaultInjectionPolicyAbortOutput)
 }
 
-func (i GrpcRouteFaultInjectionPolicyAbortArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteFaultInjectionPolicyAbort] {
-	return pulumix.Output[GrpcRouteFaultInjectionPolicyAbort]{
-		OutputState: i.ToGrpcRouteFaultInjectionPolicyAbortOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GrpcRouteFaultInjectionPolicyAbortArgs) ToGrpcRouteFaultInjectionPolicyAbortPtrOutput() GrpcRouteFaultInjectionPolicyAbortPtrOutput {
 	return i.ToGrpcRouteFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
 }
@@ -1892,12 +1603,6 @@ func (i *grpcRouteFaultInjectionPolicyAbortPtrType) ToGrpcRouteFaultInjectionPol
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteFaultInjectionPolicyAbortPtrOutput)
 }
 
-func (i *grpcRouteFaultInjectionPolicyAbortPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteFaultInjectionPolicyAbort] {
-	return pulumix.Output[*GrpcRouteFaultInjectionPolicyAbort]{
-		OutputState: i.ToGrpcRouteFaultInjectionPolicyAbortPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specification of how client requests are aborted as part of fault injection before being sent to a destination.
 type GrpcRouteFaultInjectionPolicyAbortOutput struct{ *pulumi.OutputState }
 
@@ -1923,12 +1628,6 @@ func (o GrpcRouteFaultInjectionPolicyAbortOutput) ToGrpcRouteFaultInjectionPolic
 	}).(GrpcRouteFaultInjectionPolicyAbortPtrOutput)
 }
 
-func (o GrpcRouteFaultInjectionPolicyAbortOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteFaultInjectionPolicyAbort] {
-	return pulumix.Output[GrpcRouteFaultInjectionPolicyAbort]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
 func (o GrpcRouteFaultInjectionPolicyAbortOutput) HttpStatus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GrpcRouteFaultInjectionPolicyAbort) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
@@ -1951,12 +1650,6 @@ func (o GrpcRouteFaultInjectionPolicyAbortPtrOutput) ToGrpcRouteFaultInjectionPo
 
 func (o GrpcRouteFaultInjectionPolicyAbortPtrOutput) ToGrpcRouteFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) GrpcRouteFaultInjectionPolicyAbortPtrOutput {
 	return o
-}
-
-func (o GrpcRouteFaultInjectionPolicyAbortPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteFaultInjectionPolicyAbort] {
-	return pulumix.Output[*GrpcRouteFaultInjectionPolicyAbort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteFaultInjectionPolicyAbortPtrOutput) Elem() GrpcRouteFaultInjectionPolicyAbortOutput {
@@ -2012,12 +1705,6 @@ func (o GrpcRouteFaultInjectionPolicyAbortResponseOutput) ToGrpcRouteFaultInject
 	return o
 }
 
-func (o GrpcRouteFaultInjectionPolicyAbortResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteFaultInjectionPolicyAbortResponse] {
-	return pulumix.Output[GrpcRouteFaultInjectionPolicyAbortResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
 func (o GrpcRouteFaultInjectionPolicyAbortResponseOutput) HttpStatus() pulumi.IntOutput {
 	return o.ApplyT(func(v GrpcRouteFaultInjectionPolicyAbortResponse) int { return v.HttpStatus }).(pulumi.IntOutput)
@@ -2067,12 +1754,6 @@ func (i GrpcRouteFaultInjectionPolicyDelayArgs) ToGrpcRouteFaultInjectionPolicyD
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteFaultInjectionPolicyDelayOutput)
 }
 
-func (i GrpcRouteFaultInjectionPolicyDelayArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteFaultInjectionPolicyDelay] {
-	return pulumix.Output[GrpcRouteFaultInjectionPolicyDelay]{
-		OutputState: i.ToGrpcRouteFaultInjectionPolicyDelayOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GrpcRouteFaultInjectionPolicyDelayArgs) ToGrpcRouteFaultInjectionPolicyDelayPtrOutput() GrpcRouteFaultInjectionPolicyDelayPtrOutput {
 	return i.ToGrpcRouteFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
 }
@@ -2114,12 +1795,6 @@ func (i *grpcRouteFaultInjectionPolicyDelayPtrType) ToGrpcRouteFaultInjectionPol
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteFaultInjectionPolicyDelayPtrOutput)
 }
 
-func (i *grpcRouteFaultInjectionPolicyDelayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteFaultInjectionPolicyDelay] {
-	return pulumix.Output[*GrpcRouteFaultInjectionPolicyDelay]{
-		OutputState: i.ToGrpcRouteFaultInjectionPolicyDelayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specification of how client requests are delayed as part of fault injection before being sent to a destination.
 type GrpcRouteFaultInjectionPolicyDelayOutput struct{ *pulumi.OutputState }
 
@@ -2145,12 +1820,6 @@ func (o GrpcRouteFaultInjectionPolicyDelayOutput) ToGrpcRouteFaultInjectionPolic
 	}).(GrpcRouteFaultInjectionPolicyDelayPtrOutput)
 }
 
-func (o GrpcRouteFaultInjectionPolicyDelayOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteFaultInjectionPolicyDelay] {
-	return pulumix.Output[GrpcRouteFaultInjectionPolicyDelay]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specify a fixed delay before forwarding the request.
 func (o GrpcRouteFaultInjectionPolicyDelayOutput) FixedDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrpcRouteFaultInjectionPolicyDelay) *string { return v.FixedDelay }).(pulumi.StringPtrOutput)
@@ -2173,12 +1842,6 @@ func (o GrpcRouteFaultInjectionPolicyDelayPtrOutput) ToGrpcRouteFaultInjectionPo
 
 func (o GrpcRouteFaultInjectionPolicyDelayPtrOutput) ToGrpcRouteFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) GrpcRouteFaultInjectionPolicyDelayPtrOutput {
 	return o
-}
-
-func (o GrpcRouteFaultInjectionPolicyDelayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteFaultInjectionPolicyDelay] {
-	return pulumix.Output[*GrpcRouteFaultInjectionPolicyDelay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteFaultInjectionPolicyDelayPtrOutput) Elem() GrpcRouteFaultInjectionPolicyDelayOutput {
@@ -2234,12 +1897,6 @@ func (o GrpcRouteFaultInjectionPolicyDelayResponseOutput) ToGrpcRouteFaultInject
 	return o
 }
 
-func (o GrpcRouteFaultInjectionPolicyDelayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteFaultInjectionPolicyDelayResponse] {
-	return pulumix.Output[GrpcRouteFaultInjectionPolicyDelayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specify a fixed delay before forwarding the request.
 func (o GrpcRouteFaultInjectionPolicyDelayResponseOutput) FixedDelay() pulumi.StringOutput {
 	return o.ApplyT(func(v GrpcRouteFaultInjectionPolicyDelayResponse) string { return v.FixedDelay }).(pulumi.StringOutput)
@@ -2271,12 +1928,6 @@ func (o GrpcRouteFaultInjectionPolicyResponseOutput) ToGrpcRouteFaultInjectionPo
 
 func (o GrpcRouteFaultInjectionPolicyResponseOutput) ToGrpcRouteFaultInjectionPolicyResponseOutputWithContext(ctx context.Context) GrpcRouteFaultInjectionPolicyResponseOutput {
 	return o
-}
-
-func (o GrpcRouteFaultInjectionPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteFaultInjectionPolicyResponse] {
-	return pulumix.Output[GrpcRouteFaultInjectionPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The specification for aborting to client requests.
@@ -2336,12 +1987,6 @@ func (i GrpcRouteHeaderMatchArgs) ToGrpcRouteHeaderMatchOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteHeaderMatchOutput)
 }
 
-func (i GrpcRouteHeaderMatchArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteHeaderMatch] {
-	return pulumix.Output[GrpcRouteHeaderMatch]{
-		OutputState: i.ToGrpcRouteHeaderMatchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GrpcRouteHeaderMatchArrayInput is an input type that accepts GrpcRouteHeaderMatchArray and GrpcRouteHeaderMatchArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteHeaderMatchArrayInput` via:
 //
@@ -2367,12 +2012,6 @@ func (i GrpcRouteHeaderMatchArray) ToGrpcRouteHeaderMatchArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteHeaderMatchArrayOutput)
 }
 
-func (i GrpcRouteHeaderMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteHeaderMatch] {
-	return pulumix.Output[[]GrpcRouteHeaderMatch]{
-		OutputState: i.ToGrpcRouteHeaderMatchArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A match against a collection of headers.
 type GrpcRouteHeaderMatchOutput struct{ *pulumi.OutputState }
 
@@ -2386,12 +2025,6 @@ func (o GrpcRouteHeaderMatchOutput) ToGrpcRouteHeaderMatchOutput() GrpcRouteHead
 
 func (o GrpcRouteHeaderMatchOutput) ToGrpcRouteHeaderMatchOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchOutput {
 	return o
-}
-
-func (o GrpcRouteHeaderMatchOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteHeaderMatch] {
-	return pulumix.Output[GrpcRouteHeaderMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of the header.
@@ -2421,12 +2054,6 @@ func (o GrpcRouteHeaderMatchArrayOutput) ToGrpcRouteHeaderMatchArrayOutput() Grp
 
 func (o GrpcRouteHeaderMatchArrayOutput) ToGrpcRouteHeaderMatchArrayOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchArrayOutput {
 	return o
-}
-
-func (o GrpcRouteHeaderMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteHeaderMatch] {
-	return pulumix.Output[[]GrpcRouteHeaderMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteHeaderMatchArrayOutput) Index(i pulumi.IntInput) GrpcRouteHeaderMatchOutput {
@@ -2460,12 +2087,6 @@ func (o GrpcRouteHeaderMatchResponseOutput) ToGrpcRouteHeaderMatchResponseOutput
 	return o
 }
 
-func (o GrpcRouteHeaderMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteHeaderMatchResponse] {
-	return pulumix.Output[GrpcRouteHeaderMatchResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The key of the header.
 func (o GrpcRouteHeaderMatchResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GrpcRouteHeaderMatchResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -2493,12 +2114,6 @@ func (o GrpcRouteHeaderMatchResponseArrayOutput) ToGrpcRouteHeaderMatchResponseA
 
 func (o GrpcRouteHeaderMatchResponseArrayOutput) ToGrpcRouteHeaderMatchResponseArrayOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchResponseArrayOutput {
 	return o
-}
-
-func (o GrpcRouteHeaderMatchResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteHeaderMatchResponse] {
-	return pulumix.Output[[]GrpcRouteHeaderMatchResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteHeaderMatchResponseArrayOutput) Index(i pulumi.IntInput) GrpcRouteHeaderMatchResponseOutput {
@@ -2554,12 +2169,6 @@ func (i GrpcRouteMethodMatchArgs) ToGrpcRouteMethodMatchOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteMethodMatchOutput)
 }
 
-func (i GrpcRouteMethodMatchArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteMethodMatch] {
-	return pulumix.Output[GrpcRouteMethodMatch]{
-		OutputState: i.ToGrpcRouteMethodMatchOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GrpcRouteMethodMatchArgs) ToGrpcRouteMethodMatchPtrOutput() GrpcRouteMethodMatchPtrOutput {
 	return i.ToGrpcRouteMethodMatchPtrOutputWithContext(context.Background())
 }
@@ -2601,12 +2210,6 @@ func (i *grpcRouteMethodMatchPtrType) ToGrpcRouteMethodMatchPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteMethodMatchPtrOutput)
 }
 
-func (i *grpcRouteMethodMatchPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteMethodMatch] {
-	return pulumix.Output[*GrpcRouteMethodMatch]{
-		OutputState: i.ToGrpcRouteMethodMatchPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies a match against a method.
 type GrpcRouteMethodMatchOutput struct{ *pulumi.OutputState }
 
@@ -2630,12 +2233,6 @@ func (o GrpcRouteMethodMatchOutput) ToGrpcRouteMethodMatchPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteMethodMatch) *GrpcRouteMethodMatch {
 		return &v
 	}).(GrpcRouteMethodMatchPtrOutput)
-}
-
-func (o GrpcRouteMethodMatchOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteMethodMatch] {
-	return pulumix.Output[GrpcRouteMethodMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Specifies that matches are case sensitive. The default value is true. case_sensitive must not be used with a type of REGULAR_EXPRESSION.
@@ -2670,12 +2267,6 @@ func (o GrpcRouteMethodMatchPtrOutput) ToGrpcRouteMethodMatchPtrOutput() GrpcRou
 
 func (o GrpcRouteMethodMatchPtrOutput) ToGrpcRouteMethodMatchPtrOutputWithContext(ctx context.Context) GrpcRouteMethodMatchPtrOutput {
 	return o
-}
-
-func (o GrpcRouteMethodMatchPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteMethodMatch] {
-	return pulumix.Output[*GrpcRouteMethodMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteMethodMatchPtrOutput) Elem() GrpcRouteMethodMatchOutput {
@@ -2755,12 +2346,6 @@ func (o GrpcRouteMethodMatchResponseOutput) ToGrpcRouteMethodMatchResponseOutput
 	return o
 }
 
-func (o GrpcRouteMethodMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteMethodMatchResponse] {
-	return pulumix.Output[GrpcRouteMethodMatchResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Specifies that matches are case sensitive. The default value is true. case_sensitive must not be used with a type of REGULAR_EXPRESSION.
 func (o GrpcRouteMethodMatchResponseOutput) CaseSensitive() pulumi.BoolOutput {
 	return o.ApplyT(func(v GrpcRouteMethodMatchResponse) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
@@ -2820,12 +2405,6 @@ func (i GrpcRouteRetryPolicyArgs) ToGrpcRouteRetryPolicyOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRetryPolicyOutput)
 }
 
-func (i GrpcRouteRetryPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRetryPolicy] {
-	return pulumix.Output[GrpcRouteRetryPolicy]{
-		OutputState: i.ToGrpcRouteRetryPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GrpcRouteRetryPolicyArgs) ToGrpcRouteRetryPolicyPtrOutput() GrpcRouteRetryPolicyPtrOutput {
 	return i.ToGrpcRouteRetryPolicyPtrOutputWithContext(context.Background())
 }
@@ -2867,12 +2446,6 @@ func (i *grpcRouteRetryPolicyPtrType) ToGrpcRouteRetryPolicyPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRetryPolicyPtrOutput)
 }
 
-func (i *grpcRouteRetryPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRetryPolicy] {
-	return pulumix.Output[*GrpcRouteRetryPolicy]{
-		OutputState: i.ToGrpcRouteRetryPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specifications for retries.
 type GrpcRouteRetryPolicyOutput struct{ *pulumi.OutputState }
 
@@ -2898,12 +2471,6 @@ func (o GrpcRouteRetryPolicyOutput) ToGrpcRouteRetryPolicyPtrOutputWithContext(c
 	}).(GrpcRouteRetryPolicyPtrOutput)
 }
 
-func (o GrpcRouteRetryPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRetryPolicy] {
-	return pulumix.Output[GrpcRouteRetryPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the allowed number of retries. This number must be > 0. If not specified, default to 1.
 func (o GrpcRouteRetryPolicyOutput) NumRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GrpcRouteRetryPolicy) *int { return v.NumRetries }).(pulumi.IntPtrOutput)
@@ -2926,12 +2493,6 @@ func (o GrpcRouteRetryPolicyPtrOutput) ToGrpcRouteRetryPolicyPtrOutput() GrpcRou
 
 func (o GrpcRouteRetryPolicyPtrOutput) ToGrpcRouteRetryPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRetryPolicyPtrOutput {
 	return o
-}
-
-func (o GrpcRouteRetryPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRetryPolicy] {
-	return pulumix.Output[*GrpcRouteRetryPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteRetryPolicyPtrOutput) Elem() GrpcRouteRetryPolicyOutput {
@@ -2985,12 +2546,6 @@ func (o GrpcRouteRetryPolicyResponseOutput) ToGrpcRouteRetryPolicyResponseOutput
 
 func (o GrpcRouteRetryPolicyResponseOutput) ToGrpcRouteRetryPolicyResponseOutputWithContext(ctx context.Context) GrpcRouteRetryPolicyResponseOutput {
 	return o
-}
-
-func (o GrpcRouteRetryPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRetryPolicyResponse] {
-	return pulumix.Output[GrpcRouteRetryPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the allowed number of retries. This number must be > 0. If not specified, default to 1.
@@ -3054,12 +2609,6 @@ func (i GrpcRouteRouteActionArgs) ToGrpcRouteRouteActionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRouteActionOutput)
 }
 
-func (i GrpcRouteRouteActionArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRouteAction] {
-	return pulumix.Output[GrpcRouteRouteAction]{
-		OutputState: i.ToGrpcRouteRouteActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how to route matched traffic.
 type GrpcRouteRouteActionOutput struct{ *pulumi.OutputState }
 
@@ -3073,12 +2622,6 @@ func (o GrpcRouteRouteActionOutput) ToGrpcRouteRouteActionOutput() GrpcRouteRout
 
 func (o GrpcRouteRouteActionOutput) ToGrpcRouteRouteActionOutputWithContext(ctx context.Context) GrpcRouteRouteActionOutput {
 	return o
-}
-
-func (o GrpcRouteRouteActionOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRouteAction] {
-	return pulumix.Output[GrpcRouteRouteAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The destination services to which traffic should be forwarded. If multiple destinations are specified, traffic will be split between Backend Service(s) according to the weight field of these destinations.
@@ -3133,12 +2676,6 @@ func (o GrpcRouteRouteActionResponseOutput) ToGrpcRouteRouteActionResponseOutput
 
 func (o GrpcRouteRouteActionResponseOutput) ToGrpcRouteRouteActionResponseOutputWithContext(ctx context.Context) GrpcRouteRouteActionResponseOutput {
 	return o
-}
-
-func (o GrpcRouteRouteActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRouteActionResponse] {
-	return pulumix.Output[GrpcRouteRouteActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The destination services to which traffic should be forwarded. If multiple destinations are specified, traffic will be split between Backend Service(s) according to the weight field of these destinations.
@@ -3209,12 +2746,6 @@ func (i GrpcRouteRouteMatchArgs) ToGrpcRouteRouteMatchOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRouteMatchOutput)
 }
 
-func (i GrpcRouteRouteMatchArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRouteMatch] {
-	return pulumix.Output[GrpcRouteRouteMatch]{
-		OutputState: i.ToGrpcRouteRouteMatchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GrpcRouteRouteMatchArrayInput is an input type that accepts GrpcRouteRouteMatchArray and GrpcRouteRouteMatchArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteRouteMatchArrayInput` via:
 //
@@ -3240,12 +2771,6 @@ func (i GrpcRouteRouteMatchArray) ToGrpcRouteRouteMatchArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRouteMatchArrayOutput)
 }
 
-func (i GrpcRouteRouteMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRouteMatch] {
-	return pulumix.Output[[]GrpcRouteRouteMatch]{
-		OutputState: i.ToGrpcRouteRouteMatchArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Criteria for matching traffic. A RouteMatch will be considered to match when all supplied fields match.
 type GrpcRouteRouteMatchOutput struct{ *pulumi.OutputState }
 
@@ -3259,12 +2784,6 @@ func (o GrpcRouteRouteMatchOutput) ToGrpcRouteRouteMatchOutput() GrpcRouteRouteM
 
 func (o GrpcRouteRouteMatchOutput) ToGrpcRouteRouteMatchOutputWithContext(ctx context.Context) GrpcRouteRouteMatchOutput {
 	return o
-}
-
-func (o GrpcRouteRouteMatchOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRouteMatch] {
-	return pulumix.Output[GrpcRouteRouteMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Specifies a collection of headers to match.
@@ -3289,12 +2808,6 @@ func (o GrpcRouteRouteMatchArrayOutput) ToGrpcRouteRouteMatchArrayOutput() GrpcR
 
 func (o GrpcRouteRouteMatchArrayOutput) ToGrpcRouteRouteMatchArrayOutputWithContext(ctx context.Context) GrpcRouteRouteMatchArrayOutput {
 	return o
-}
-
-func (o GrpcRouteRouteMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRouteMatch] {
-	return pulumix.Output[[]GrpcRouteRouteMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteRouteMatchArrayOutput) Index(i pulumi.IntInput) GrpcRouteRouteMatchOutput {
@@ -3326,12 +2839,6 @@ func (o GrpcRouteRouteMatchResponseOutput) ToGrpcRouteRouteMatchResponseOutputWi
 	return o
 }
 
-func (o GrpcRouteRouteMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRouteMatchResponse] {
-	return pulumix.Output[GrpcRouteRouteMatchResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Specifies a collection of headers to match.
 func (o GrpcRouteRouteMatchResponseOutput) Headers() GrpcRouteHeaderMatchResponseArrayOutput {
 	return o.ApplyT(func(v GrpcRouteRouteMatchResponse) []GrpcRouteHeaderMatchResponse { return v.Headers }).(GrpcRouteHeaderMatchResponseArrayOutput)
@@ -3354,12 +2861,6 @@ func (o GrpcRouteRouteMatchResponseArrayOutput) ToGrpcRouteRouteMatchResponseArr
 
 func (o GrpcRouteRouteMatchResponseArrayOutput) ToGrpcRouteRouteMatchResponseArrayOutputWithContext(ctx context.Context) GrpcRouteRouteMatchResponseArrayOutput {
 	return o
-}
-
-func (o GrpcRouteRouteMatchResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRouteMatchResponse] {
-	return pulumix.Output[[]GrpcRouteRouteMatchResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteRouteMatchResponseArrayOutput) Index(i pulumi.IntInput) GrpcRouteRouteMatchResponseOutput {
@@ -3407,12 +2908,6 @@ func (i GrpcRouteRouteRuleArgs) ToGrpcRouteRouteRuleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRouteRuleOutput)
 }
 
-func (i GrpcRouteRouteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRouteRule] {
-	return pulumix.Output[GrpcRouteRouteRule]{
-		OutputState: i.ToGrpcRouteRouteRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GrpcRouteRouteRuleArrayInput is an input type that accepts GrpcRouteRouteRuleArray and GrpcRouteRouteRuleArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteRouteRuleArrayInput` via:
 //
@@ -3438,12 +2933,6 @@ func (i GrpcRouteRouteRuleArray) ToGrpcRouteRouteRuleArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRouteRuleArrayOutput)
 }
 
-func (i GrpcRouteRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRouteRule] {
-	return pulumix.Output[[]GrpcRouteRouteRule]{
-		OutputState: i.ToGrpcRouteRouteRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes how to route traffic.
 type GrpcRouteRouteRuleOutput struct{ *pulumi.OutputState }
 
@@ -3457,12 +2946,6 @@ func (o GrpcRouteRouteRuleOutput) ToGrpcRouteRouteRuleOutput() GrpcRouteRouteRul
 
 func (o GrpcRouteRouteRuleOutput) ToGrpcRouteRouteRuleOutputWithContext(ctx context.Context) GrpcRouteRouteRuleOutput {
 	return o
-}
-
-func (o GrpcRouteRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRouteRule] {
-	return pulumix.Output[GrpcRouteRouteRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A detailed rule defining how to route traffic. This field is required.
@@ -3487,12 +2970,6 @@ func (o GrpcRouteRouteRuleArrayOutput) ToGrpcRouteRouteRuleArrayOutput() GrpcRou
 
 func (o GrpcRouteRouteRuleArrayOutput) ToGrpcRouteRouteRuleArrayOutputWithContext(ctx context.Context) GrpcRouteRouteRuleArrayOutput {
 	return o
-}
-
-func (o GrpcRouteRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRouteRule] {
-	return pulumix.Output[[]GrpcRouteRouteRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteRouteRuleArrayOutput) Index(i pulumi.IntInput) GrpcRouteRouteRuleOutput {
@@ -3524,12 +3001,6 @@ func (o GrpcRouteRouteRuleResponseOutput) ToGrpcRouteRouteRuleResponseOutputWith
 	return o
 }
 
-func (o GrpcRouteRouteRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRouteRuleResponse] {
-	return pulumix.Output[GrpcRouteRouteRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A detailed rule defining how to route traffic. This field is required.
 func (o GrpcRouteRouteRuleResponseOutput) Action() GrpcRouteRouteActionResponseOutput {
 	return o.ApplyT(func(v GrpcRouteRouteRuleResponse) GrpcRouteRouteActionResponse { return v.Action }).(GrpcRouteRouteActionResponseOutput)
@@ -3552,12 +3023,6 @@ func (o GrpcRouteRouteRuleResponseArrayOutput) ToGrpcRouteRouteRuleResponseArray
 
 func (o GrpcRouteRouteRuleResponseArrayOutput) ToGrpcRouteRouteRuleResponseArrayOutputWithContext(ctx context.Context) GrpcRouteRouteRuleResponseArrayOutput {
 	return o
-}
-
-func (o GrpcRouteRouteRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRouteRuleResponse] {
-	return pulumix.Output[[]GrpcRouteRouteRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) GrpcRouteRouteRuleResponseOutput {
@@ -3601,12 +3066,6 @@ func (i GrpcRouteStatefulSessionAffinityPolicyArgs) ToGrpcRouteStatefulSessionAf
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteStatefulSessionAffinityPolicyOutput)
 }
 
-func (i GrpcRouteStatefulSessionAffinityPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteStatefulSessionAffinityPolicy] {
-	return pulumix.Output[GrpcRouteStatefulSessionAffinityPolicy]{
-		OutputState: i.ToGrpcRouteStatefulSessionAffinityPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GrpcRouteStatefulSessionAffinityPolicyArgs) ToGrpcRouteStatefulSessionAffinityPolicyPtrOutput() GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
 	return i.ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(context.Background())
 }
@@ -3648,12 +3107,6 @@ func (i *grpcRouteStatefulSessionAffinityPolicyPtrType) ToGrpcRouteStatefulSessi
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteStatefulSessionAffinityPolicyPtrOutput)
 }
 
-func (i *grpcRouteStatefulSessionAffinityPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteStatefulSessionAffinityPolicy] {
-	return pulumix.Output[*GrpcRouteStatefulSessionAffinityPolicy]{
-		OutputState: i.ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
 type GrpcRouteStatefulSessionAffinityPolicyOutput struct{ *pulumi.OutputState }
 
@@ -3679,12 +3132,6 @@ func (o GrpcRouteStatefulSessionAffinityPolicyOutput) ToGrpcRouteStatefulSession
 	}).(GrpcRouteStatefulSessionAffinityPolicyPtrOutput)
 }
 
-func (o GrpcRouteStatefulSessionAffinityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteStatefulSessionAffinityPolicy] {
-	return pulumix.Output[GrpcRouteStatefulSessionAffinityPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
 func (o GrpcRouteStatefulSessionAffinityPolicyOutput) CookieTtl() pulumi.StringOutput {
 	return o.ApplyT(func(v GrpcRouteStatefulSessionAffinityPolicy) string { return v.CookieTtl }).(pulumi.StringOutput)
@@ -3702,12 +3149,6 @@ func (o GrpcRouteStatefulSessionAffinityPolicyPtrOutput) ToGrpcRouteStatefulSess
 
 func (o GrpcRouteStatefulSessionAffinityPolicyPtrOutput) ToGrpcRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteStatefulSessionAffinityPolicyPtrOutput {
 	return o
-}
-
-func (o GrpcRouteStatefulSessionAffinityPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteStatefulSessionAffinityPolicy] {
-	return pulumix.Output[*GrpcRouteStatefulSessionAffinityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteStatefulSessionAffinityPolicyPtrOutput) Elem() GrpcRouteStatefulSessionAffinityPolicyOutput {
@@ -3749,12 +3190,6 @@ func (o GrpcRouteStatefulSessionAffinityPolicyResponseOutput) ToGrpcRouteStatefu
 
 func (o GrpcRouteStatefulSessionAffinityPolicyResponseOutput) ToGrpcRouteStatefulSessionAffinityPolicyResponseOutputWithContext(ctx context.Context) GrpcRouteStatefulSessionAffinityPolicyResponseOutput {
 	return o
-}
-
-func (o GrpcRouteStatefulSessionAffinityPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteStatefulSessionAffinityPolicyResponse] {
-	return pulumix.Output[GrpcRouteStatefulSessionAffinityPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
@@ -3825,12 +3260,6 @@ func (i HttpRouteCorsPolicyArgs) ToHttpRouteCorsPolicyOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteCorsPolicyOutput)
 }
 
-func (i HttpRouteCorsPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteCorsPolicy] {
-	return pulumix.Output[HttpRouteCorsPolicy]{
-		OutputState: i.ToHttpRouteCorsPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteCorsPolicyArgs) ToHttpRouteCorsPolicyPtrOutput() HttpRouteCorsPolicyPtrOutput {
 	return i.ToHttpRouteCorsPolicyPtrOutputWithContext(context.Background())
 }
@@ -3872,12 +3301,6 @@ func (i *httpRouteCorsPolicyPtrType) ToHttpRouteCorsPolicyPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteCorsPolicyPtrOutput)
 }
 
-func (i *httpRouteCorsPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteCorsPolicy] {
-	return pulumix.Output[*HttpRouteCorsPolicy]{
-		OutputState: i.ToHttpRouteCorsPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Specification for allowing client side cross-origin requests.
 type HttpRouteCorsPolicyOutput struct{ *pulumi.OutputState }
 
@@ -3901,12 +3324,6 @@ func (o HttpRouteCorsPolicyOutput) ToHttpRouteCorsPolicyPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteCorsPolicy) *HttpRouteCorsPolicy {
 		return &v
 	}).(HttpRouteCorsPolicyPtrOutput)
-}
-
-func (o HttpRouteCorsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteCorsPolicy] {
-	return pulumix.Output[HttpRouteCorsPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
@@ -3961,12 +3378,6 @@ func (o HttpRouteCorsPolicyPtrOutput) ToHttpRouteCorsPolicyPtrOutput() HttpRoute
 
 func (o HttpRouteCorsPolicyPtrOutput) ToHttpRouteCorsPolicyPtrOutputWithContext(ctx context.Context) HttpRouteCorsPolicyPtrOutput {
 	return o
-}
-
-func (o HttpRouteCorsPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteCorsPolicy] {
-	return pulumix.Output[*HttpRouteCorsPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteCorsPolicyPtrOutput) Elem() HttpRouteCorsPolicyOutput {
@@ -4094,12 +3505,6 @@ func (o HttpRouteCorsPolicyResponseOutput) ToHttpRouteCorsPolicyResponseOutputWi
 	return o
 }
 
-func (o HttpRouteCorsPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteCorsPolicyResponse] {
-	return pulumix.Output[HttpRouteCorsPolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
 func (o HttpRouteCorsPolicyResponseOutput) AllowCredentials() pulumi.BoolOutput {
 	return o.ApplyT(func(v HttpRouteCorsPolicyResponse) bool { return v.AllowCredentials }).(pulumi.BoolOutput)
@@ -4179,12 +3584,6 @@ func (i HttpRouteDestinationArgs) ToHttpRouteDestinationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteDestinationOutput)
 }
 
-func (i HttpRouteDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteDestination] {
-	return pulumix.Output[HttpRouteDestination]{
-		OutputState: i.ToHttpRouteDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteDestinationArgs) ToHttpRouteDestinationPtrOutput() HttpRouteDestinationPtrOutput {
 	return i.ToHttpRouteDestinationPtrOutputWithContext(context.Background())
 }
@@ -4226,12 +3625,6 @@ func (i *httpRouteDestinationPtrType) ToHttpRouteDestinationPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteDestinationPtrOutput)
 }
 
-func (i *httpRouteDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteDestination] {
-	return pulumix.Output[*HttpRouteDestination]{
-		OutputState: i.ToHttpRouteDestinationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HttpRouteDestinationArrayInput is an input type that accepts HttpRouteDestinationArray and HttpRouteDestinationArrayOutput values.
 // You can construct a concrete instance of `HttpRouteDestinationArrayInput` via:
 //
@@ -4255,12 +3648,6 @@ func (i HttpRouteDestinationArray) ToHttpRouteDestinationArrayOutput() HttpRoute
 
 func (i HttpRouteDestinationArray) ToHttpRouteDestinationArrayOutputWithContext(ctx context.Context) HttpRouteDestinationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteDestinationArrayOutput)
-}
-
-func (i HttpRouteDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteDestination] {
-	return pulumix.Output[[]HttpRouteDestination]{
-		OutputState: i.ToHttpRouteDestinationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifications of a destination to which the request should be routed to.
@@ -4288,12 +3675,6 @@ func (o HttpRouteDestinationOutput) ToHttpRouteDestinationPtrOutputWithContext(c
 	}).(HttpRouteDestinationPtrOutput)
 }
 
-func (o HttpRouteDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteDestination] {
-	return pulumix.Output[HttpRouteDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL of a BackendService to route traffic to.
 func (o HttpRouteDestinationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteDestination) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
@@ -4316,12 +3697,6 @@ func (o HttpRouteDestinationPtrOutput) ToHttpRouteDestinationPtrOutput() HttpRou
 
 func (o HttpRouteDestinationPtrOutput) ToHttpRouteDestinationPtrOutputWithContext(ctx context.Context) HttpRouteDestinationPtrOutput {
 	return o
-}
-
-func (o HttpRouteDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteDestination] {
-	return pulumix.Output[*HttpRouteDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteDestinationPtrOutput) Elem() HttpRouteDestinationOutput {
@@ -4368,12 +3743,6 @@ func (o HttpRouteDestinationArrayOutput) ToHttpRouteDestinationArrayOutputWithCo
 	return o
 }
 
-func (o HttpRouteDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteDestination] {
-	return pulumix.Output[[]HttpRouteDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpRouteDestinationArrayOutput) Index(i pulumi.IntInput) HttpRouteDestinationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteDestination {
 		return vs[0].([]HttpRouteDestination)[vs[1].(int)]
@@ -4403,12 +3772,6 @@ func (o HttpRouteDestinationResponseOutput) ToHttpRouteDestinationResponseOutput
 	return o
 }
 
-func (o HttpRouteDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteDestinationResponse] {
-	return pulumix.Output[HttpRouteDestinationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL of a BackendService to route traffic to.
 func (o HttpRouteDestinationResponseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteDestinationResponse) string { return v.ServiceName }).(pulumi.StringOutput)
@@ -4431,12 +3794,6 @@ func (o HttpRouteDestinationResponseArrayOutput) ToHttpRouteDestinationResponseA
 
 func (o HttpRouteDestinationResponseArrayOutput) ToHttpRouteDestinationResponseArrayOutputWithContext(ctx context.Context) HttpRouteDestinationResponseArrayOutput {
 	return o
-}
-
-func (o HttpRouteDestinationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteDestinationResponse] {
-	return pulumix.Output[[]HttpRouteDestinationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteDestinationResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteDestinationResponseOutput {
@@ -4484,12 +3841,6 @@ func (i HttpRouteFaultInjectionPolicyArgs) ToHttpRouteFaultInjectionPolicyOutput
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteFaultInjectionPolicyOutput)
 }
 
-func (i HttpRouteFaultInjectionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteFaultInjectionPolicy] {
-	return pulumix.Output[HttpRouteFaultInjectionPolicy]{
-		OutputState: i.ToHttpRouteFaultInjectionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteFaultInjectionPolicyArgs) ToHttpRouteFaultInjectionPolicyPtrOutput() HttpRouteFaultInjectionPolicyPtrOutput {
 	return i.ToHttpRouteFaultInjectionPolicyPtrOutputWithContext(context.Background())
 }
@@ -4531,12 +3882,6 @@ func (i *httpRouteFaultInjectionPolicyPtrType) ToHttpRouteFaultInjectionPolicyPt
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteFaultInjectionPolicyPtrOutput)
 }
 
-func (i *httpRouteFaultInjectionPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteFaultInjectionPolicy] {
-	return pulumix.Output[*HttpRouteFaultInjectionPolicy]{
-		OutputState: i.ToHttpRouteFaultInjectionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced by client proxy on a percentage of requests before sending those requests to the destination service. Similarly requests can be aborted by client proxy for a percentage of requests.
 type HttpRouteFaultInjectionPolicyOutput struct{ *pulumi.OutputState }
 
@@ -4562,12 +3907,6 @@ func (o HttpRouteFaultInjectionPolicyOutput) ToHttpRouteFaultInjectionPolicyPtrO
 	}).(HttpRouteFaultInjectionPolicyPtrOutput)
 }
 
-func (o HttpRouteFaultInjectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteFaultInjectionPolicy] {
-	return pulumix.Output[HttpRouteFaultInjectionPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The specification for aborting to client requests.
 func (o HttpRouteFaultInjectionPolicyOutput) Abort() HttpRouteFaultInjectionPolicyAbortPtrOutput {
 	return o.ApplyT(func(v HttpRouteFaultInjectionPolicy) *HttpRouteFaultInjectionPolicyAbort { return v.Abort }).(HttpRouteFaultInjectionPolicyAbortPtrOutput)
@@ -4590,12 +3929,6 @@ func (o HttpRouteFaultInjectionPolicyPtrOutput) ToHttpRouteFaultInjectionPolicyP
 
 func (o HttpRouteFaultInjectionPolicyPtrOutput) ToHttpRouteFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) HttpRouteFaultInjectionPolicyPtrOutput {
 	return o
-}
-
-func (o HttpRouteFaultInjectionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteFaultInjectionPolicy] {
-	return pulumix.Output[*HttpRouteFaultInjectionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteFaultInjectionPolicyPtrOutput) Elem() HttpRouteFaultInjectionPolicyOutput {
@@ -4667,12 +4000,6 @@ func (i HttpRouteFaultInjectionPolicyAbortArgs) ToHttpRouteFaultInjectionPolicyA
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteFaultInjectionPolicyAbortOutput)
 }
 
-func (i HttpRouteFaultInjectionPolicyAbortArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteFaultInjectionPolicyAbort] {
-	return pulumix.Output[HttpRouteFaultInjectionPolicyAbort]{
-		OutputState: i.ToHttpRouteFaultInjectionPolicyAbortOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteFaultInjectionPolicyAbortArgs) ToHttpRouteFaultInjectionPolicyAbortPtrOutput() HttpRouteFaultInjectionPolicyAbortPtrOutput {
 	return i.ToHttpRouteFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
 }
@@ -4714,12 +4041,6 @@ func (i *httpRouteFaultInjectionPolicyAbortPtrType) ToHttpRouteFaultInjectionPol
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteFaultInjectionPolicyAbortPtrOutput)
 }
 
-func (i *httpRouteFaultInjectionPolicyAbortPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteFaultInjectionPolicyAbort] {
-	return pulumix.Output[*HttpRouteFaultInjectionPolicyAbort]{
-		OutputState: i.ToHttpRouteFaultInjectionPolicyAbortPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specification of how client requests are aborted as part of fault injection before being sent to a destination.
 type HttpRouteFaultInjectionPolicyAbortOutput struct{ *pulumi.OutputState }
 
@@ -4745,12 +4066,6 @@ func (o HttpRouteFaultInjectionPolicyAbortOutput) ToHttpRouteFaultInjectionPolic
 	}).(HttpRouteFaultInjectionPolicyAbortPtrOutput)
 }
 
-func (o HttpRouteFaultInjectionPolicyAbortOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteFaultInjectionPolicyAbort] {
-	return pulumix.Output[HttpRouteFaultInjectionPolicyAbort]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
 func (o HttpRouteFaultInjectionPolicyAbortOutput) HttpStatus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpRouteFaultInjectionPolicyAbort) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
@@ -4773,12 +4088,6 @@ func (o HttpRouteFaultInjectionPolicyAbortPtrOutput) ToHttpRouteFaultInjectionPo
 
 func (o HttpRouteFaultInjectionPolicyAbortPtrOutput) ToHttpRouteFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) HttpRouteFaultInjectionPolicyAbortPtrOutput {
 	return o
-}
-
-func (o HttpRouteFaultInjectionPolicyAbortPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteFaultInjectionPolicyAbort] {
-	return pulumix.Output[*HttpRouteFaultInjectionPolicyAbort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteFaultInjectionPolicyAbortPtrOutput) Elem() HttpRouteFaultInjectionPolicyAbortOutput {
@@ -4834,12 +4143,6 @@ func (o HttpRouteFaultInjectionPolicyAbortResponseOutput) ToHttpRouteFaultInject
 	return o
 }
 
-func (o HttpRouteFaultInjectionPolicyAbortResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteFaultInjectionPolicyAbortResponse] {
-	return pulumix.Output[HttpRouteFaultInjectionPolicyAbortResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
 func (o HttpRouteFaultInjectionPolicyAbortResponseOutput) HttpStatus() pulumi.IntOutput {
 	return o.ApplyT(func(v HttpRouteFaultInjectionPolicyAbortResponse) int { return v.HttpStatus }).(pulumi.IntOutput)
@@ -4889,12 +4192,6 @@ func (i HttpRouteFaultInjectionPolicyDelayArgs) ToHttpRouteFaultInjectionPolicyD
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteFaultInjectionPolicyDelayOutput)
 }
 
-func (i HttpRouteFaultInjectionPolicyDelayArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteFaultInjectionPolicyDelay] {
-	return pulumix.Output[HttpRouteFaultInjectionPolicyDelay]{
-		OutputState: i.ToHttpRouteFaultInjectionPolicyDelayOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteFaultInjectionPolicyDelayArgs) ToHttpRouteFaultInjectionPolicyDelayPtrOutput() HttpRouteFaultInjectionPolicyDelayPtrOutput {
 	return i.ToHttpRouteFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
 }
@@ -4936,12 +4233,6 @@ func (i *httpRouteFaultInjectionPolicyDelayPtrType) ToHttpRouteFaultInjectionPol
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteFaultInjectionPolicyDelayPtrOutput)
 }
 
-func (i *httpRouteFaultInjectionPolicyDelayPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteFaultInjectionPolicyDelay] {
-	return pulumix.Output[*HttpRouteFaultInjectionPolicyDelay]{
-		OutputState: i.ToHttpRouteFaultInjectionPolicyDelayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specification of how client requests are delayed as part of fault injection before being sent to a destination.
 type HttpRouteFaultInjectionPolicyDelayOutput struct{ *pulumi.OutputState }
 
@@ -4967,12 +4258,6 @@ func (o HttpRouteFaultInjectionPolicyDelayOutput) ToHttpRouteFaultInjectionPolic
 	}).(HttpRouteFaultInjectionPolicyDelayPtrOutput)
 }
 
-func (o HttpRouteFaultInjectionPolicyDelayOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteFaultInjectionPolicyDelay] {
-	return pulumix.Output[HttpRouteFaultInjectionPolicyDelay]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specify a fixed delay before forwarding the request.
 func (o HttpRouteFaultInjectionPolicyDelayOutput) FixedDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteFaultInjectionPolicyDelay) *string { return v.FixedDelay }).(pulumi.StringPtrOutput)
@@ -4995,12 +4280,6 @@ func (o HttpRouteFaultInjectionPolicyDelayPtrOutput) ToHttpRouteFaultInjectionPo
 
 func (o HttpRouteFaultInjectionPolicyDelayPtrOutput) ToHttpRouteFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) HttpRouteFaultInjectionPolicyDelayPtrOutput {
 	return o
-}
-
-func (o HttpRouteFaultInjectionPolicyDelayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteFaultInjectionPolicyDelay] {
-	return pulumix.Output[*HttpRouteFaultInjectionPolicyDelay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteFaultInjectionPolicyDelayPtrOutput) Elem() HttpRouteFaultInjectionPolicyDelayOutput {
@@ -5056,12 +4335,6 @@ func (o HttpRouteFaultInjectionPolicyDelayResponseOutput) ToHttpRouteFaultInject
 	return o
 }
 
-func (o HttpRouteFaultInjectionPolicyDelayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteFaultInjectionPolicyDelayResponse] {
-	return pulumix.Output[HttpRouteFaultInjectionPolicyDelayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specify a fixed delay before forwarding the request.
 func (o HttpRouteFaultInjectionPolicyDelayResponseOutput) FixedDelay() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteFaultInjectionPolicyDelayResponse) string { return v.FixedDelay }).(pulumi.StringOutput)
@@ -5093,12 +4366,6 @@ func (o HttpRouteFaultInjectionPolicyResponseOutput) ToHttpRouteFaultInjectionPo
 
 func (o HttpRouteFaultInjectionPolicyResponseOutput) ToHttpRouteFaultInjectionPolicyResponseOutputWithContext(ctx context.Context) HttpRouteFaultInjectionPolicyResponseOutput {
 	return o
-}
-
-func (o HttpRouteFaultInjectionPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteFaultInjectionPolicyResponse] {
-	return pulumix.Output[HttpRouteFaultInjectionPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The specification for aborting to client requests.
@@ -5178,12 +4445,6 @@ func (i HttpRouteHeaderMatchArgs) ToHttpRouteHeaderMatchOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteHeaderMatchOutput)
 }
 
-func (i HttpRouteHeaderMatchArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteHeaderMatch] {
-	return pulumix.Output[HttpRouteHeaderMatch]{
-		OutputState: i.ToHttpRouteHeaderMatchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HttpRouteHeaderMatchArrayInput is an input type that accepts HttpRouteHeaderMatchArray and HttpRouteHeaderMatchArrayOutput values.
 // You can construct a concrete instance of `HttpRouteHeaderMatchArrayInput` via:
 //
@@ -5209,12 +4470,6 @@ func (i HttpRouteHeaderMatchArray) ToHttpRouteHeaderMatchArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteHeaderMatchArrayOutput)
 }
 
-func (i HttpRouteHeaderMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteHeaderMatch] {
-	return pulumix.Output[[]HttpRouteHeaderMatch]{
-		OutputState: i.ToHttpRouteHeaderMatchArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how to select a route rule based on HTTP request headers.
 type HttpRouteHeaderMatchOutput struct{ *pulumi.OutputState }
 
@@ -5228,12 +4483,6 @@ func (o HttpRouteHeaderMatchOutput) ToHttpRouteHeaderMatchOutput() HttpRouteHead
 
 func (o HttpRouteHeaderMatchOutput) ToHttpRouteHeaderMatchOutputWithContext(ctx context.Context) HttpRouteHeaderMatchOutput {
 	return o
-}
-
-func (o HttpRouteHeaderMatchOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteHeaderMatch] {
-	return pulumix.Output[HttpRouteHeaderMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value of the header should match exactly the content of exact_match.
@@ -5290,12 +4539,6 @@ func (o HttpRouteHeaderMatchArrayOutput) ToHttpRouteHeaderMatchArrayOutputWithCo
 	return o
 }
 
-func (o HttpRouteHeaderMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteHeaderMatch] {
-	return pulumix.Output[[]HttpRouteHeaderMatch]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpRouteHeaderMatchArrayOutput) Index(i pulumi.IntInput) HttpRouteHeaderMatchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteHeaderMatch {
 		return vs[0].([]HttpRouteHeaderMatch)[vs[1].(int)]
@@ -5341,12 +4584,6 @@ func (i HttpRouteHeaderMatchIntegerRangeArgs) ToHttpRouteHeaderMatchIntegerRange
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteHeaderMatchIntegerRangeOutput)
 }
 
-func (i HttpRouteHeaderMatchIntegerRangeArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteHeaderMatchIntegerRange] {
-	return pulumix.Output[HttpRouteHeaderMatchIntegerRange]{
-		OutputState: i.ToHttpRouteHeaderMatchIntegerRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteHeaderMatchIntegerRangeArgs) ToHttpRouteHeaderMatchIntegerRangePtrOutput() HttpRouteHeaderMatchIntegerRangePtrOutput {
 	return i.ToHttpRouteHeaderMatchIntegerRangePtrOutputWithContext(context.Background())
 }
@@ -5388,12 +4625,6 @@ func (i *httpRouteHeaderMatchIntegerRangePtrType) ToHttpRouteHeaderMatchIntegerR
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteHeaderMatchIntegerRangePtrOutput)
 }
 
-func (i *httpRouteHeaderMatchIntegerRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteHeaderMatchIntegerRange] {
-	return pulumix.Output[*HttpRouteHeaderMatchIntegerRange]{
-		OutputState: i.ToHttpRouteHeaderMatchIntegerRangePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an integer value range.
 type HttpRouteHeaderMatchIntegerRangeOutput struct{ *pulumi.OutputState }
 
@@ -5419,12 +4650,6 @@ func (o HttpRouteHeaderMatchIntegerRangeOutput) ToHttpRouteHeaderMatchIntegerRan
 	}).(HttpRouteHeaderMatchIntegerRangePtrOutput)
 }
 
-func (o HttpRouteHeaderMatchIntegerRangeOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteHeaderMatchIntegerRange] {
-	return pulumix.Output[HttpRouteHeaderMatchIntegerRange]{
-		OutputState: o.OutputState,
-	}
-}
-
 // End of the range (exclusive)
 func (o HttpRouteHeaderMatchIntegerRangeOutput) End() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpRouteHeaderMatchIntegerRange) *int { return v.End }).(pulumi.IntPtrOutput)
@@ -5447,12 +4672,6 @@ func (o HttpRouteHeaderMatchIntegerRangePtrOutput) ToHttpRouteHeaderMatchInteger
 
 func (o HttpRouteHeaderMatchIntegerRangePtrOutput) ToHttpRouteHeaderMatchIntegerRangePtrOutputWithContext(ctx context.Context) HttpRouteHeaderMatchIntegerRangePtrOutput {
 	return o
-}
-
-func (o HttpRouteHeaderMatchIntegerRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteHeaderMatchIntegerRange] {
-	return pulumix.Output[*HttpRouteHeaderMatchIntegerRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteHeaderMatchIntegerRangePtrOutput) Elem() HttpRouteHeaderMatchIntegerRangeOutput {
@@ -5508,12 +4727,6 @@ func (o HttpRouteHeaderMatchIntegerRangeResponseOutput) ToHttpRouteHeaderMatchIn
 	return o
 }
 
-func (o HttpRouteHeaderMatchIntegerRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteHeaderMatchIntegerRangeResponse] {
-	return pulumix.Output[HttpRouteHeaderMatchIntegerRangeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // End of the range (exclusive)
 func (o HttpRouteHeaderMatchIntegerRangeResponseOutput) End() pulumi.IntOutput {
 	return o.ApplyT(func(v HttpRouteHeaderMatchIntegerRangeResponse) int { return v.End }).(pulumi.IntOutput)
@@ -5557,12 +4770,6 @@ func (o HttpRouteHeaderMatchResponseOutput) ToHttpRouteHeaderMatchResponseOutput
 
 func (o HttpRouteHeaderMatchResponseOutput) ToHttpRouteHeaderMatchResponseOutputWithContext(ctx context.Context) HttpRouteHeaderMatchResponseOutput {
 	return o
-}
-
-func (o HttpRouteHeaderMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteHeaderMatchResponse] {
-	return pulumix.Output[HttpRouteHeaderMatchResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value of the header should match exactly the content of exact_match.
@@ -5619,12 +4826,6 @@ func (o HttpRouteHeaderMatchResponseArrayOutput) ToHttpRouteHeaderMatchResponseA
 	return o
 }
 
-func (o HttpRouteHeaderMatchResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteHeaderMatchResponse] {
-	return pulumix.Output[[]HttpRouteHeaderMatchResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpRouteHeaderMatchResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteHeaderMatchResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteHeaderMatchResponse {
 		return vs[0].([]HttpRouteHeaderMatchResponse)[vs[1].(int)]
@@ -5674,12 +4875,6 @@ func (i HttpRouteHeaderModifierArgs) ToHttpRouteHeaderModifierOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteHeaderModifierOutput)
 }
 
-func (i HttpRouteHeaderModifierArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteHeaderModifier] {
-	return pulumix.Output[HttpRouteHeaderModifier]{
-		OutputState: i.ToHttpRouteHeaderModifierOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteHeaderModifierArgs) ToHttpRouteHeaderModifierPtrOutput() HttpRouteHeaderModifierPtrOutput {
 	return i.ToHttpRouteHeaderModifierPtrOutputWithContext(context.Background())
 }
@@ -5721,12 +4916,6 @@ func (i *httpRouteHeaderModifierPtrType) ToHttpRouteHeaderModifierPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteHeaderModifierPtrOutput)
 }
 
-func (i *httpRouteHeaderModifierPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteHeaderModifier] {
-	return pulumix.Output[*HttpRouteHeaderModifier]{
-		OutputState: i.ToHttpRouteHeaderModifierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specification for modifying HTTP header in HTTP request and HTTP response.
 type HttpRouteHeaderModifierOutput struct{ *pulumi.OutputState }
 
@@ -5750,12 +4939,6 @@ func (o HttpRouteHeaderModifierOutput) ToHttpRouteHeaderModifierPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteHeaderModifier) *HttpRouteHeaderModifier {
 		return &v
 	}).(HttpRouteHeaderModifierPtrOutput)
-}
-
-func (o HttpRouteHeaderModifierOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteHeaderModifier] {
-	return pulumix.Output[HttpRouteHeaderModifier]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Add the headers with given map where key is the name of the header, value is the value of the header.
@@ -5785,12 +4968,6 @@ func (o HttpRouteHeaderModifierPtrOutput) ToHttpRouteHeaderModifierPtrOutput() H
 
 func (o HttpRouteHeaderModifierPtrOutput) ToHttpRouteHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteHeaderModifierPtrOutput {
 	return o
-}
-
-func (o HttpRouteHeaderModifierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteHeaderModifier] {
-	return pulumix.Output[*HttpRouteHeaderModifier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteHeaderModifierPtrOutput) Elem() HttpRouteHeaderModifierOutput {
@@ -5858,12 +5035,6 @@ func (o HttpRouteHeaderModifierResponseOutput) ToHttpRouteHeaderModifierResponse
 	return o
 }
 
-func (o HttpRouteHeaderModifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteHeaderModifierResponse] {
-	return pulumix.Output[HttpRouteHeaderModifierResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Add the headers with given map where key is the name of the header, value is the value of the header.
 func (o HttpRouteHeaderModifierResponseOutput) Add() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HttpRouteHeaderModifierResponse) map[string]string { return v.Add }).(pulumi.StringMapOutput)
@@ -5926,12 +5097,6 @@ func (i HttpRouteQueryParameterMatchArgs) ToHttpRouteQueryParameterMatchOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteQueryParameterMatchOutput)
 }
 
-func (i HttpRouteQueryParameterMatchArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteQueryParameterMatch] {
-	return pulumix.Output[HttpRouteQueryParameterMatch]{
-		OutputState: i.ToHttpRouteQueryParameterMatchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HttpRouteQueryParameterMatchArrayInput is an input type that accepts HttpRouteQueryParameterMatchArray and HttpRouteQueryParameterMatchArrayOutput values.
 // You can construct a concrete instance of `HttpRouteQueryParameterMatchArrayInput` via:
 //
@@ -5957,12 +5122,6 @@ func (i HttpRouteQueryParameterMatchArray) ToHttpRouteQueryParameterMatchArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteQueryParameterMatchArrayOutput)
 }
 
-func (i HttpRouteQueryParameterMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteQueryParameterMatch] {
-	return pulumix.Output[[]HttpRouteQueryParameterMatch]{
-		OutputState: i.ToHttpRouteQueryParameterMatchArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifications to match a query parameter in the request.
 type HttpRouteQueryParameterMatchOutput struct{ *pulumi.OutputState }
 
@@ -5976,12 +5135,6 @@ func (o HttpRouteQueryParameterMatchOutput) ToHttpRouteQueryParameterMatchOutput
 
 func (o HttpRouteQueryParameterMatchOutput) ToHttpRouteQueryParameterMatchOutputWithContext(ctx context.Context) HttpRouteQueryParameterMatchOutput {
 	return o
-}
-
-func (o HttpRouteQueryParameterMatchOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteQueryParameterMatch] {
-	return pulumix.Output[HttpRouteQueryParameterMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value of the query parameter must exactly match the contents of exact_match. Only one of exact_match, regex_match, or present_match must be set.
@@ -6018,12 +5171,6 @@ func (o HttpRouteQueryParameterMatchArrayOutput) ToHttpRouteQueryParameterMatchA
 	return o
 }
 
-func (o HttpRouteQueryParameterMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteQueryParameterMatch] {
-	return pulumix.Output[[]HttpRouteQueryParameterMatch]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpRouteQueryParameterMatchArrayOutput) Index(i pulumi.IntInput) HttpRouteQueryParameterMatchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteQueryParameterMatch {
 		return vs[0].([]HttpRouteQueryParameterMatch)[vs[1].(int)]
@@ -6055,12 +5202,6 @@ func (o HttpRouteQueryParameterMatchResponseOutput) ToHttpRouteQueryParameterMat
 
 func (o HttpRouteQueryParameterMatchResponseOutput) ToHttpRouteQueryParameterMatchResponseOutputWithContext(ctx context.Context) HttpRouteQueryParameterMatchResponseOutput {
 	return o
-}
-
-func (o HttpRouteQueryParameterMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteQueryParameterMatchResponse] {
-	return pulumix.Output[HttpRouteQueryParameterMatchResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value of the query parameter must exactly match the contents of exact_match. Only one of exact_match, regex_match, or present_match must be set.
@@ -6095,12 +5236,6 @@ func (o HttpRouteQueryParameterMatchResponseArrayOutput) ToHttpRouteQueryParamet
 
 func (o HttpRouteQueryParameterMatchResponseArrayOutput) ToHttpRouteQueryParameterMatchResponseArrayOutputWithContext(ctx context.Context) HttpRouteQueryParameterMatchResponseArrayOutput {
 	return o
-}
-
-func (o HttpRouteQueryParameterMatchResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteQueryParameterMatchResponse] {
-	return pulumix.Output[[]HttpRouteQueryParameterMatchResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteQueryParameterMatchResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteQueryParameterMatchResponseOutput {
@@ -6168,12 +5303,6 @@ func (i HttpRouteRedirectArgs) ToHttpRouteRedirectOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRedirectOutput)
 }
 
-func (i HttpRouteRedirectArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRedirect] {
-	return pulumix.Output[HttpRouteRedirect]{
-		OutputState: i.ToHttpRouteRedirectOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteRedirectArgs) ToHttpRouteRedirectPtrOutput() HttpRouteRedirectPtrOutput {
 	return i.ToHttpRouteRedirectPtrOutputWithContext(context.Background())
 }
@@ -6215,12 +5344,6 @@ func (i *httpRouteRedirectPtrType) ToHttpRouteRedirectPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRedirectPtrOutput)
 }
 
-func (i *httpRouteRedirectPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRedirect] {
-	return pulumix.Output[*HttpRouteRedirect]{
-		OutputState: i.ToHttpRouteRedirectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specification for redirecting traffic.
 type HttpRouteRedirectOutput struct{ *pulumi.OutputState }
 
@@ -6244,12 +5367,6 @@ func (o HttpRouteRedirectOutput) ToHttpRouteRedirectPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRedirect) *HttpRouteRedirect {
 		return &v
 	}).(HttpRouteRedirectPtrOutput)
-}
-
-func (o HttpRouteRedirectOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRedirect] {
-	return pulumix.Output[HttpRouteRedirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The host that will be used in the redirect response instead of the one that was supplied in the request.
@@ -6299,12 +5416,6 @@ func (o HttpRouteRedirectPtrOutput) ToHttpRouteRedirectPtrOutput() HttpRouteRedi
 
 func (o HttpRouteRedirectPtrOutput) ToHttpRouteRedirectPtrOutputWithContext(ctx context.Context) HttpRouteRedirectPtrOutput {
 	return o
-}
-
-func (o HttpRouteRedirectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRedirect] {
-	return pulumix.Output[*HttpRouteRedirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteRedirectPtrOutput) Elem() HttpRouteRedirectOutput {
@@ -6420,12 +5531,6 @@ func (o HttpRouteRedirectResponseOutput) ToHttpRouteRedirectResponseOutputWithCo
 	return o
 }
 
-func (o HttpRouteRedirectResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRedirectResponse] {
-	return pulumix.Output[HttpRouteRedirectResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The host that will be used in the redirect response instead of the one that was supplied in the request.
 func (o HttpRouteRedirectResponseOutput) HostRedirect() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteRedirectResponse) string { return v.HostRedirect }).(pulumi.StringOutput)
@@ -6496,12 +5601,6 @@ func (i HttpRouteRequestMirrorPolicyArgs) ToHttpRouteRequestMirrorPolicyOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRequestMirrorPolicyOutput)
 }
 
-func (i HttpRouteRequestMirrorPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRequestMirrorPolicy] {
-	return pulumix.Output[HttpRouteRequestMirrorPolicy]{
-		OutputState: i.ToHttpRouteRequestMirrorPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteRequestMirrorPolicyArgs) ToHttpRouteRequestMirrorPolicyPtrOutput() HttpRouteRequestMirrorPolicyPtrOutput {
 	return i.ToHttpRouteRequestMirrorPolicyPtrOutputWithContext(context.Background())
 }
@@ -6543,12 +5642,6 @@ func (i *httpRouteRequestMirrorPolicyPtrType) ToHttpRouteRequestMirrorPolicyPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRequestMirrorPolicyPtrOutput)
 }
 
-func (i *httpRouteRequestMirrorPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRequestMirrorPolicy] {
-	return pulumix.Output[*HttpRouteRequestMirrorPolicy]{
-		OutputState: i.ToHttpRouteRequestMirrorPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the policy on how requests are shadowed to a separate mirrored destination service. The proxy does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
 type HttpRouteRequestMirrorPolicyOutput struct{ *pulumi.OutputState }
 
@@ -6574,12 +5667,6 @@ func (o HttpRouteRequestMirrorPolicyOutput) ToHttpRouteRequestMirrorPolicyPtrOut
 	}).(HttpRouteRequestMirrorPolicyPtrOutput)
 }
 
-func (o HttpRouteRequestMirrorPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRequestMirrorPolicy] {
-	return pulumix.Output[HttpRouteRequestMirrorPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The destination the requests will be mirrored to. The weight of the destination will be ignored.
 func (o HttpRouteRequestMirrorPolicyOutput) Destination() HttpRouteDestinationPtrOutput {
 	return o.ApplyT(func(v HttpRouteRequestMirrorPolicy) *HttpRouteDestination { return v.Destination }).(HttpRouteDestinationPtrOutput)
@@ -6597,12 +5684,6 @@ func (o HttpRouteRequestMirrorPolicyPtrOutput) ToHttpRouteRequestMirrorPolicyPtr
 
 func (o HttpRouteRequestMirrorPolicyPtrOutput) ToHttpRouteRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRequestMirrorPolicyPtrOutput {
 	return o
-}
-
-func (o HttpRouteRequestMirrorPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRequestMirrorPolicy] {
-	return pulumix.Output[*HttpRouteRequestMirrorPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteRequestMirrorPolicyPtrOutput) Elem() HttpRouteRequestMirrorPolicyOutput {
@@ -6644,12 +5725,6 @@ func (o HttpRouteRequestMirrorPolicyResponseOutput) ToHttpRouteRequestMirrorPoli
 
 func (o HttpRouteRequestMirrorPolicyResponseOutput) ToHttpRouteRequestMirrorPolicyResponseOutputWithContext(ctx context.Context) HttpRouteRequestMirrorPolicyResponseOutput {
 	return o
-}
-
-func (o HttpRouteRequestMirrorPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRequestMirrorPolicyResponse] {
-	return pulumix.Output[HttpRouteRequestMirrorPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The destination the requests will be mirrored to. The weight of the destination will be ignored.
@@ -6700,12 +5775,6 @@ func (i HttpRouteRetryPolicyArgs) ToHttpRouteRetryPolicyOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRetryPolicyOutput)
 }
 
-func (i HttpRouteRetryPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRetryPolicy] {
-	return pulumix.Output[HttpRouteRetryPolicy]{
-		OutputState: i.ToHttpRouteRetryPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteRetryPolicyArgs) ToHttpRouteRetryPolicyPtrOutput() HttpRouteRetryPolicyPtrOutput {
 	return i.ToHttpRouteRetryPolicyPtrOutputWithContext(context.Background())
 }
@@ -6747,12 +5816,6 @@ func (i *httpRouteRetryPolicyPtrType) ToHttpRouteRetryPolicyPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRetryPolicyPtrOutput)
 }
 
-func (i *httpRouteRetryPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRetryPolicy] {
-	return pulumix.Output[*HttpRouteRetryPolicy]{
-		OutputState: i.ToHttpRouteRetryPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specifications for retries.
 type HttpRouteRetryPolicyOutput struct{ *pulumi.OutputState }
 
@@ -6776,12 +5839,6 @@ func (o HttpRouteRetryPolicyOutput) ToHttpRouteRetryPolicyPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRetryPolicy) *HttpRouteRetryPolicy {
 		return &v
 	}).(HttpRouteRetryPolicyPtrOutput)
-}
-
-func (o HttpRouteRetryPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRetryPolicy] {
-	return pulumix.Output[HttpRouteRetryPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the allowed number of retries. This number must be > 0. If not specified, default to 1.
@@ -6811,12 +5868,6 @@ func (o HttpRouteRetryPolicyPtrOutput) ToHttpRouteRetryPolicyPtrOutput() HttpRou
 
 func (o HttpRouteRetryPolicyPtrOutput) ToHttpRouteRetryPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRetryPolicyPtrOutput {
 	return o
-}
-
-func (o HttpRouteRetryPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRetryPolicy] {
-	return pulumix.Output[*HttpRouteRetryPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteRetryPolicyPtrOutput) Elem() HttpRouteRetryPolicyOutput {
@@ -6882,12 +5933,6 @@ func (o HttpRouteRetryPolicyResponseOutput) ToHttpRouteRetryPolicyResponseOutput
 
 func (o HttpRouteRetryPolicyResponseOutput) ToHttpRouteRetryPolicyResponseOutputWithContext(ctx context.Context) HttpRouteRetryPolicyResponseOutput {
 	return o
-}
-
-func (o HttpRouteRetryPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRetryPolicyResponse] {
-	return pulumix.Output[HttpRouteRetryPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the allowed number of retries. This number must be > 0. If not specified, default to 1.
@@ -6980,12 +6025,6 @@ func (i HttpRouteRouteActionArgs) ToHttpRouteRouteActionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRouteActionOutput)
 }
 
-func (i HttpRouteRouteActionArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRouteAction] {
-	return pulumix.Output[HttpRouteRouteAction]{
-		OutputState: i.ToHttpRouteRouteActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteRouteActionArgs) ToHttpRouteRouteActionPtrOutput() HttpRouteRouteActionPtrOutput {
 	return i.ToHttpRouteRouteActionPtrOutputWithContext(context.Background())
 }
@@ -7027,12 +6066,6 @@ func (i *httpRouteRouteActionPtrType) ToHttpRouteRouteActionPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRouteActionPtrOutput)
 }
 
-func (i *httpRouteRouteActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRouteAction] {
-	return pulumix.Output[*HttpRouteRouteAction]{
-		OutputState: i.ToHttpRouteRouteActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specifications for routing traffic and applying associated policies.
 type HttpRouteRouteActionOutput struct{ *pulumi.OutputState }
 
@@ -7056,12 +6089,6 @@ func (o HttpRouteRouteActionOutput) ToHttpRouteRouteActionPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRouteAction) *HttpRouteRouteAction {
 		return &v
 	}).(HttpRouteRouteActionPtrOutput)
-}
-
-func (o HttpRouteRouteActionOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRouteAction] {
-	return pulumix.Output[HttpRouteRouteAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The specification for allowing client side cross-origin requests.
@@ -7131,12 +6158,6 @@ func (o HttpRouteRouteActionPtrOutput) ToHttpRouteRouteActionPtrOutput() HttpRou
 
 func (o HttpRouteRouteActionPtrOutput) ToHttpRouteRouteActionPtrOutputWithContext(ctx context.Context) HttpRouteRouteActionPtrOutput {
 	return o
-}
-
-func (o HttpRouteRouteActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRouteAction] {
-	return pulumix.Output[*HttpRouteRouteAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteRouteActionPtrOutput) Elem() HttpRouteRouteActionOutput {
@@ -7300,12 +6321,6 @@ func (o HttpRouteRouteActionResponseOutput) ToHttpRouteRouteActionResponseOutput
 	return o
 }
 
-func (o HttpRouteRouteActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRouteActionResponse] {
-	return pulumix.Output[HttpRouteRouteActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The specification for allowing client side cross-origin requests.
 func (o HttpRouteRouteActionResponseOutput) CorsPolicy() HttpRouteCorsPolicyResponseOutput {
 	return o.ApplyT(func(v HttpRouteRouteActionResponse) HttpRouteCorsPolicyResponse { return v.CorsPolicy }).(HttpRouteCorsPolicyResponseOutput)
@@ -7422,12 +6437,6 @@ func (i HttpRouteRouteMatchArgs) ToHttpRouteRouteMatchOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRouteMatchOutput)
 }
 
-func (i HttpRouteRouteMatchArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRouteMatch] {
-	return pulumix.Output[HttpRouteRouteMatch]{
-		OutputState: i.ToHttpRouteRouteMatchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HttpRouteRouteMatchArrayInput is an input type that accepts HttpRouteRouteMatchArray and HttpRouteRouteMatchArrayOutput values.
 // You can construct a concrete instance of `HttpRouteRouteMatchArrayInput` via:
 //
@@ -7453,12 +6462,6 @@ func (i HttpRouteRouteMatchArray) ToHttpRouteRouteMatchArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRouteMatchArrayOutput)
 }
 
-func (i HttpRouteRouteMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRouteMatch] {
-	return pulumix.Output[[]HttpRouteRouteMatch]{
-		OutputState: i.ToHttpRouteRouteMatchArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RouteMatch defines specifications used to match requests. If multiple match types are set, this RouteMatch will match if ALL type of matches are matched.
 type HttpRouteRouteMatchOutput struct{ *pulumi.OutputState }
 
@@ -7472,12 +6475,6 @@ func (o HttpRouteRouteMatchOutput) ToHttpRouteRouteMatchOutput() HttpRouteRouteM
 
 func (o HttpRouteRouteMatchOutput) ToHttpRouteRouteMatchOutputWithContext(ctx context.Context) HttpRouteRouteMatchOutput {
 	return o
-}
-
-func (o HttpRouteRouteMatchOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRouteMatch] {
-	return pulumix.Output[HttpRouteRouteMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The HTTP request path value should exactly match this value. Only one of full_path_match, prefix_match, or regex_match should be used.
@@ -7524,12 +6521,6 @@ func (o HttpRouteRouteMatchArrayOutput) ToHttpRouteRouteMatchArrayOutputWithCont
 	return o
 }
 
-func (o HttpRouteRouteMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRouteMatch] {
-	return pulumix.Output[[]HttpRouteRouteMatch]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpRouteRouteMatchArrayOutput) Index(i pulumi.IntInput) HttpRouteRouteMatchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRouteMatch {
 		return vs[0].([]HttpRouteRouteMatch)[vs[1].(int)]
@@ -7565,12 +6556,6 @@ func (o HttpRouteRouteMatchResponseOutput) ToHttpRouteRouteMatchResponseOutput()
 
 func (o HttpRouteRouteMatchResponseOutput) ToHttpRouteRouteMatchResponseOutputWithContext(ctx context.Context) HttpRouteRouteMatchResponseOutput {
 	return o
-}
-
-func (o HttpRouteRouteMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRouteMatchResponse] {
-	return pulumix.Output[HttpRouteRouteMatchResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The HTTP request path value should exactly match this value. Only one of full_path_match, prefix_match, or regex_match should be used.
@@ -7615,12 +6600,6 @@ func (o HttpRouteRouteMatchResponseArrayOutput) ToHttpRouteRouteMatchResponseArr
 
 func (o HttpRouteRouteMatchResponseArrayOutput) ToHttpRouteRouteMatchResponseArrayOutputWithContext(ctx context.Context) HttpRouteRouteMatchResponseArrayOutput {
 	return o
-}
-
-func (o HttpRouteRouteMatchResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRouteMatchResponse] {
-	return pulumix.Output[[]HttpRouteRouteMatchResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteRouteMatchResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteRouteMatchResponseOutput {
@@ -7668,12 +6647,6 @@ func (i HttpRouteRouteRuleArgs) ToHttpRouteRouteRuleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRouteRuleOutput)
 }
 
-func (i HttpRouteRouteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRouteRule] {
-	return pulumix.Output[HttpRouteRouteRule]{
-		OutputState: i.ToHttpRouteRouteRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HttpRouteRouteRuleArrayInput is an input type that accepts HttpRouteRouteRuleArray and HttpRouteRouteRuleArrayOutput values.
 // You can construct a concrete instance of `HttpRouteRouteRuleArrayInput` via:
 //
@@ -7699,12 +6672,6 @@ func (i HttpRouteRouteRuleArray) ToHttpRouteRouteRuleArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRouteRuleArrayOutput)
 }
 
-func (i HttpRouteRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRouteRule] {
-	return pulumix.Output[[]HttpRouteRouteRule]{
-		OutputState: i.ToHttpRouteRouteRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how to match traffic and how to route traffic when traffic is matched.
 type HttpRouteRouteRuleOutput struct{ *pulumi.OutputState }
 
@@ -7718,12 +6685,6 @@ func (o HttpRouteRouteRuleOutput) ToHttpRouteRouteRuleOutput() HttpRouteRouteRul
 
 func (o HttpRouteRouteRuleOutput) ToHttpRouteRouteRuleOutputWithContext(ctx context.Context) HttpRouteRouteRuleOutput {
 	return o
-}
-
-func (o HttpRouteRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRouteRule] {
-	return pulumix.Output[HttpRouteRouteRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The detailed rule defining how to route matched traffic.
@@ -7748,12 +6709,6 @@ func (o HttpRouteRouteRuleArrayOutput) ToHttpRouteRouteRuleArrayOutput() HttpRou
 
 func (o HttpRouteRouteRuleArrayOutput) ToHttpRouteRouteRuleArrayOutputWithContext(ctx context.Context) HttpRouteRouteRuleArrayOutput {
 	return o
-}
-
-func (o HttpRouteRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRouteRule] {
-	return pulumix.Output[[]HttpRouteRouteRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteRouteRuleArrayOutput) Index(i pulumi.IntInput) HttpRouteRouteRuleOutput {
@@ -7785,12 +6740,6 @@ func (o HttpRouteRouteRuleResponseOutput) ToHttpRouteRouteRuleResponseOutputWith
 	return o
 }
 
-func (o HttpRouteRouteRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRouteRuleResponse] {
-	return pulumix.Output[HttpRouteRouteRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The detailed rule defining how to route matched traffic.
 func (o HttpRouteRouteRuleResponseOutput) Action() HttpRouteRouteActionResponseOutput {
 	return o.ApplyT(func(v HttpRouteRouteRuleResponse) HttpRouteRouteActionResponse { return v.Action }).(HttpRouteRouteActionResponseOutput)
@@ -7813,12 +6762,6 @@ func (o HttpRouteRouteRuleResponseArrayOutput) ToHttpRouteRouteRuleResponseArray
 
 func (o HttpRouteRouteRuleResponseArrayOutput) ToHttpRouteRouteRuleResponseArrayOutputWithContext(ctx context.Context) HttpRouteRouteRuleResponseArrayOutput {
 	return o
-}
-
-func (o HttpRouteRouteRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRouteRuleResponse] {
-	return pulumix.Output[[]HttpRouteRouteRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteRouteRuleResponseOutput {
@@ -7862,12 +6805,6 @@ func (i HttpRouteStatefulSessionAffinityPolicyArgs) ToHttpRouteStatefulSessionAf
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteStatefulSessionAffinityPolicyOutput)
 }
 
-func (i HttpRouteStatefulSessionAffinityPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteStatefulSessionAffinityPolicy] {
-	return pulumix.Output[HttpRouteStatefulSessionAffinityPolicy]{
-		OutputState: i.ToHttpRouteStatefulSessionAffinityPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteStatefulSessionAffinityPolicyArgs) ToHttpRouteStatefulSessionAffinityPolicyPtrOutput() HttpRouteStatefulSessionAffinityPolicyPtrOutput {
 	return i.ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(context.Background())
 }
@@ -7909,12 +6846,6 @@ func (i *httpRouteStatefulSessionAffinityPolicyPtrType) ToHttpRouteStatefulSessi
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteStatefulSessionAffinityPolicyPtrOutput)
 }
 
-func (i *httpRouteStatefulSessionAffinityPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteStatefulSessionAffinityPolicy] {
-	return pulumix.Output[*HttpRouteStatefulSessionAffinityPolicy]{
-		OutputState: i.ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie” with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or sidecar proxy will manage the session cookie but the client application code is responsible for copying the cookie from each RPC in the session to the next.
 type HttpRouteStatefulSessionAffinityPolicyOutput struct{ *pulumi.OutputState }
 
@@ -7940,12 +6871,6 @@ func (o HttpRouteStatefulSessionAffinityPolicyOutput) ToHttpRouteStatefulSession
 	}).(HttpRouteStatefulSessionAffinityPolicyPtrOutput)
 }
 
-func (o HttpRouteStatefulSessionAffinityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteStatefulSessionAffinityPolicy] {
-	return pulumix.Output[HttpRouteStatefulSessionAffinityPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
 func (o HttpRouteStatefulSessionAffinityPolicyOutput) CookieTtl() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteStatefulSessionAffinityPolicy) string { return v.CookieTtl }).(pulumi.StringOutput)
@@ -7963,12 +6888,6 @@ func (o HttpRouteStatefulSessionAffinityPolicyPtrOutput) ToHttpRouteStatefulSess
 
 func (o HttpRouteStatefulSessionAffinityPolicyPtrOutput) ToHttpRouteStatefulSessionAffinityPolicyPtrOutputWithContext(ctx context.Context) HttpRouteStatefulSessionAffinityPolicyPtrOutput {
 	return o
-}
-
-func (o HttpRouteStatefulSessionAffinityPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteStatefulSessionAffinityPolicy] {
-	return pulumix.Output[*HttpRouteStatefulSessionAffinityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteStatefulSessionAffinityPolicyPtrOutput) Elem() HttpRouteStatefulSessionAffinityPolicyOutput {
@@ -8010,12 +6929,6 @@ func (o HttpRouteStatefulSessionAffinityPolicyResponseOutput) ToHttpRouteStatefu
 
 func (o HttpRouteStatefulSessionAffinityPolicyResponseOutput) ToHttpRouteStatefulSessionAffinityPolicyResponseOutputWithContext(ctx context.Context) HttpRouteStatefulSessionAffinityPolicyResponseOutput {
 	return o
-}
-
-func (o HttpRouteStatefulSessionAffinityPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteStatefulSessionAffinityPolicyResponse] {
-	return pulumix.Output[HttpRouteStatefulSessionAffinityPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
@@ -8062,12 +6975,6 @@ func (i HttpRouteURLRewriteArgs) ToHttpRouteURLRewriteOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteURLRewriteOutput)
 }
 
-func (i HttpRouteURLRewriteArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteURLRewrite] {
-	return pulumix.Output[HttpRouteURLRewrite]{
-		OutputState: i.ToHttpRouteURLRewriteOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpRouteURLRewriteArgs) ToHttpRouteURLRewritePtrOutput() HttpRouteURLRewritePtrOutput {
 	return i.ToHttpRouteURLRewritePtrOutputWithContext(context.Background())
 }
@@ -8109,12 +7016,6 @@ func (i *httpRouteURLRewritePtrType) ToHttpRouteURLRewritePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteURLRewritePtrOutput)
 }
 
-func (i *httpRouteURLRewritePtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteURLRewrite] {
-	return pulumix.Output[*HttpRouteURLRewrite]{
-		OutputState: i.ToHttpRouteURLRewritePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specification for modifying the URL of the request, prior to forwarding the request to the destination.
 type HttpRouteURLRewriteOutput struct{ *pulumi.OutputState }
 
@@ -8140,12 +7041,6 @@ func (o HttpRouteURLRewriteOutput) ToHttpRouteURLRewritePtrOutputWithContext(ctx
 	}).(HttpRouteURLRewritePtrOutput)
 }
 
-func (o HttpRouteURLRewriteOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteURLRewrite] {
-	return pulumix.Output[HttpRouteURLRewrite]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
 func (o HttpRouteURLRewriteOutput) HostRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteURLRewrite) *string { return v.HostRewrite }).(pulumi.StringPtrOutput)
@@ -8168,12 +7063,6 @@ func (o HttpRouteURLRewritePtrOutput) ToHttpRouteURLRewritePtrOutput() HttpRoute
 
 func (o HttpRouteURLRewritePtrOutput) ToHttpRouteURLRewritePtrOutputWithContext(ctx context.Context) HttpRouteURLRewritePtrOutput {
 	return o
-}
-
-func (o HttpRouteURLRewritePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteURLRewrite] {
-	return pulumix.Output[*HttpRouteURLRewrite]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteURLRewritePtrOutput) Elem() HttpRouteURLRewriteOutput {
@@ -8229,12 +7118,6 @@ func (o HttpRouteURLRewriteResponseOutput) ToHttpRouteURLRewriteResponseOutputWi
 	return o
 }
 
-func (o HttpRouteURLRewriteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteURLRewriteResponse] {
-	return pulumix.Output[HttpRouteURLRewriteResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
 func (o HttpRouteURLRewriteResponseOutput) HostRewrite() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteURLRewriteResponse) string { return v.HostRewrite }).(pulumi.StringOutput)
@@ -8284,12 +7167,6 @@ func (i TcpRouteRouteActionArgs) ToTcpRouteRouteActionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRouteActionOutput)
 }
 
-func (i TcpRouteRouteActionArgs) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteAction] {
-	return pulumix.Output[TcpRouteRouteAction]{
-		OutputState: i.ToTcpRouteRouteActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specifications for routing traffic and applying associated policies.
 type TcpRouteRouteActionOutput struct{ *pulumi.OutputState }
 
@@ -8303,12 +7180,6 @@ func (o TcpRouteRouteActionOutput) ToTcpRouteRouteActionOutput() TcpRouteRouteAc
 
 func (o TcpRouteRouteActionOutput) ToTcpRouteRouteActionOutputWithContext(ctx context.Context) TcpRouteRouteActionOutput {
 	return o
-}
-
-func (o TcpRouteRouteActionOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteAction] {
-	return pulumix.Output[TcpRouteRouteAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
@@ -8342,12 +7213,6 @@ func (o TcpRouteRouteActionResponseOutput) ToTcpRouteRouteActionResponseOutput()
 
 func (o TcpRouteRouteActionResponseOutput) ToTcpRouteRouteActionResponseOutputWithContext(ctx context.Context) TcpRouteRouteActionResponseOutput {
 	return o
-}
-
-func (o TcpRouteRouteActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteActionResponse] {
-	return pulumix.Output[TcpRouteRouteActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
@@ -8399,12 +7264,6 @@ func (i TcpRouteRouteDestinationArgs) ToTcpRouteRouteDestinationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRouteDestinationOutput)
 }
 
-func (i TcpRouteRouteDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteDestination] {
-	return pulumix.Output[TcpRouteRouteDestination]{
-		OutputState: i.ToTcpRouteRouteDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TcpRouteRouteDestinationArrayInput is an input type that accepts TcpRouteRouteDestinationArray and TcpRouteRouteDestinationArrayOutput values.
 // You can construct a concrete instance of `TcpRouteRouteDestinationArrayInput` via:
 //
@@ -8430,12 +7289,6 @@ func (i TcpRouteRouteDestinationArray) ToTcpRouteRouteDestinationArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRouteDestinationArrayOutput)
 }
 
-func (i TcpRouteRouteDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRouteDestination] {
-	return pulumix.Output[[]TcpRouteRouteDestination]{
-		OutputState: i.ToTcpRouteRouteDestinationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describe the destination for traffic to be routed to.
 type TcpRouteRouteDestinationOutput struct{ *pulumi.OutputState }
 
@@ -8449,12 +7302,6 @@ func (o TcpRouteRouteDestinationOutput) ToTcpRouteRouteDestinationOutput() TcpRo
 
 func (o TcpRouteRouteDestinationOutput) ToTcpRouteRouteDestinationOutputWithContext(ctx context.Context) TcpRouteRouteDestinationOutput {
 	return o
-}
-
-func (o TcpRouteRouteDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteDestination] {
-	return pulumix.Output[TcpRouteRouteDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL of a BackendService to route traffic to.
@@ -8479,12 +7326,6 @@ func (o TcpRouteRouteDestinationArrayOutput) ToTcpRouteRouteDestinationArrayOutp
 
 func (o TcpRouteRouteDestinationArrayOutput) ToTcpRouteRouteDestinationArrayOutputWithContext(ctx context.Context) TcpRouteRouteDestinationArrayOutput {
 	return o
-}
-
-func (o TcpRouteRouteDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRouteDestination] {
-	return pulumix.Output[[]TcpRouteRouteDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TcpRouteRouteDestinationArrayOutput) Index(i pulumi.IntInput) TcpRouteRouteDestinationOutput {
@@ -8516,12 +7357,6 @@ func (o TcpRouteRouteDestinationResponseOutput) ToTcpRouteRouteDestinationRespon
 	return o
 }
 
-func (o TcpRouteRouteDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteDestinationResponse] {
-	return pulumix.Output[TcpRouteRouteDestinationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL of a BackendService to route traffic to.
 func (o TcpRouteRouteDestinationResponseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v TcpRouteRouteDestinationResponse) string { return v.ServiceName }).(pulumi.StringOutput)
@@ -8544,12 +7379,6 @@ func (o TcpRouteRouteDestinationResponseArrayOutput) ToTcpRouteRouteDestinationR
 
 func (o TcpRouteRouteDestinationResponseArrayOutput) ToTcpRouteRouteDestinationResponseArrayOutputWithContext(ctx context.Context) TcpRouteRouteDestinationResponseArrayOutput {
 	return o
-}
-
-func (o TcpRouteRouteDestinationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRouteDestinationResponse] {
-	return pulumix.Output[[]TcpRouteRouteDestinationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TcpRouteRouteDestinationResponseArrayOutput) Index(i pulumi.IntInput) TcpRouteRouteDestinationResponseOutput {
@@ -8597,12 +7426,6 @@ func (i TcpRouteRouteMatchArgs) ToTcpRouteRouteMatchOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRouteMatchOutput)
 }
 
-func (i TcpRouteRouteMatchArgs) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteMatch] {
-	return pulumix.Output[TcpRouteRouteMatch]{
-		OutputState: i.ToTcpRouteRouteMatchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TcpRouteRouteMatchArrayInput is an input type that accepts TcpRouteRouteMatchArray and TcpRouteRouteMatchArrayOutput values.
 // You can construct a concrete instance of `TcpRouteRouteMatchArrayInput` via:
 //
@@ -8628,12 +7451,6 @@ func (i TcpRouteRouteMatchArray) ToTcpRouteRouteMatchArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRouteMatchArrayOutput)
 }
 
-func (i TcpRouteRouteMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRouteMatch] {
-	return pulumix.Output[[]TcpRouteRouteMatch]{
-		OutputState: i.ToTcpRouteRouteMatchArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
 type TcpRouteRouteMatchOutput struct{ *pulumi.OutputState }
 
@@ -8647,12 +7464,6 @@ func (o TcpRouteRouteMatchOutput) ToTcpRouteRouteMatchOutput() TcpRouteRouteMatc
 
 func (o TcpRouteRouteMatchOutput) ToTcpRouteRouteMatchOutputWithContext(ctx context.Context) TcpRouteRouteMatchOutput {
 	return o
-}
-
-func (o TcpRouteRouteMatchOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteMatch] {
-	return pulumix.Output[TcpRouteRouteMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask. By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
@@ -8677,12 +7488,6 @@ func (o TcpRouteRouteMatchArrayOutput) ToTcpRouteRouteMatchArrayOutput() TcpRout
 
 func (o TcpRouteRouteMatchArrayOutput) ToTcpRouteRouteMatchArrayOutputWithContext(ctx context.Context) TcpRouteRouteMatchArrayOutput {
 	return o
-}
-
-func (o TcpRouteRouteMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRouteMatch] {
-	return pulumix.Output[[]TcpRouteRouteMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TcpRouteRouteMatchArrayOutput) Index(i pulumi.IntInput) TcpRouteRouteMatchOutput {
@@ -8714,12 +7519,6 @@ func (o TcpRouteRouteMatchResponseOutput) ToTcpRouteRouteMatchResponseOutputWith
 	return o
 }
 
-func (o TcpRouteRouteMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteMatchResponse] {
-	return pulumix.Output[TcpRouteRouteMatchResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask. By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
 func (o TcpRouteRouteMatchResponseOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v TcpRouteRouteMatchResponse) string { return v.Address }).(pulumi.StringOutput)
@@ -8742,12 +7541,6 @@ func (o TcpRouteRouteMatchResponseArrayOutput) ToTcpRouteRouteMatchResponseArray
 
 func (o TcpRouteRouteMatchResponseArrayOutput) ToTcpRouteRouteMatchResponseArrayOutputWithContext(ctx context.Context) TcpRouteRouteMatchResponseArrayOutput {
 	return o
-}
-
-func (o TcpRouteRouteMatchResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRouteMatchResponse] {
-	return pulumix.Output[[]TcpRouteRouteMatchResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TcpRouteRouteMatchResponseArrayOutput) Index(i pulumi.IntInput) TcpRouteRouteMatchResponseOutput {
@@ -8795,12 +7588,6 @@ func (i TcpRouteRouteRuleArgs) ToTcpRouteRouteRuleOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRouteRuleOutput)
 }
 
-func (i TcpRouteRouteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteRule] {
-	return pulumix.Output[TcpRouteRouteRule]{
-		OutputState: i.ToTcpRouteRouteRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TcpRouteRouteRuleArrayInput is an input type that accepts TcpRouteRouteRuleArray and TcpRouteRouteRuleArrayOutput values.
 // You can construct a concrete instance of `TcpRouteRouteRuleArrayInput` via:
 //
@@ -8826,12 +7613,6 @@ func (i TcpRouteRouteRuleArray) ToTcpRouteRouteRuleArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRouteRuleArrayOutput)
 }
 
-func (i TcpRouteRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRouteRule] {
-	return pulumix.Output[[]TcpRouteRouteRule]{
-		OutputState: i.ToTcpRouteRouteRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how to match traffic and how to route traffic when traffic is matched.
 type TcpRouteRouteRuleOutput struct{ *pulumi.OutputState }
 
@@ -8845,12 +7626,6 @@ func (o TcpRouteRouteRuleOutput) ToTcpRouteRouteRuleOutput() TcpRouteRouteRuleOu
 
 func (o TcpRouteRouteRuleOutput) ToTcpRouteRouteRuleOutputWithContext(ctx context.Context) TcpRouteRouteRuleOutput {
 	return o
-}
-
-func (o TcpRouteRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteRule] {
-	return pulumix.Output[TcpRouteRouteRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The detailed rule defining how to route matched traffic.
@@ -8875,12 +7650,6 @@ func (o TcpRouteRouteRuleArrayOutput) ToTcpRouteRouteRuleArrayOutput() TcpRouteR
 
 func (o TcpRouteRouteRuleArrayOutput) ToTcpRouteRouteRuleArrayOutputWithContext(ctx context.Context) TcpRouteRouteRuleArrayOutput {
 	return o
-}
-
-func (o TcpRouteRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRouteRule] {
-	return pulumix.Output[[]TcpRouteRouteRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TcpRouteRouteRuleArrayOutput) Index(i pulumi.IntInput) TcpRouteRouteRuleOutput {
@@ -8912,12 +7681,6 @@ func (o TcpRouteRouteRuleResponseOutput) ToTcpRouteRouteRuleResponseOutputWithCo
 	return o
 }
 
-func (o TcpRouteRouteRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRouteRuleResponse] {
-	return pulumix.Output[TcpRouteRouteRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The detailed rule defining how to route matched traffic.
 func (o TcpRouteRouteRuleResponseOutput) Action() TcpRouteRouteActionResponseOutput {
 	return o.ApplyT(func(v TcpRouteRouteRuleResponse) TcpRouteRouteActionResponse { return v.Action }).(TcpRouteRouteActionResponseOutput)
@@ -8940,12 +7703,6 @@ func (o TcpRouteRouteRuleResponseArrayOutput) ToTcpRouteRouteRuleResponseArrayOu
 
 func (o TcpRouteRouteRuleResponseArrayOutput) ToTcpRouteRouteRuleResponseArrayOutputWithContext(ctx context.Context) TcpRouteRouteRuleResponseArrayOutput {
 	return o
-}
-
-func (o TcpRouteRouteRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRouteRuleResponse] {
-	return pulumix.Output[[]TcpRouteRouteRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TcpRouteRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) TcpRouteRouteRuleResponseOutput {
@@ -8989,12 +7746,6 @@ func (i TlsRouteRouteActionArgs) ToTlsRouteRouteActionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRouteActionOutput)
 }
 
-func (i TlsRouteRouteActionArgs) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteAction] {
-	return pulumix.Output[TlsRouteRouteAction]{
-		OutputState: i.ToTlsRouteRouteActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specifications for routing traffic and applying associated policies.
 type TlsRouteRouteActionOutput struct{ *pulumi.OutputState }
 
@@ -9008,12 +7759,6 @@ func (o TlsRouteRouteActionOutput) ToTlsRouteRouteActionOutput() TlsRouteRouteAc
 
 func (o TlsRouteRouteActionOutput) ToTlsRouteRouteActionOutputWithContext(ctx context.Context) TlsRouteRouteActionOutput {
 	return o
-}
-
-func (o TlsRouteRouteActionOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteAction] {
-	return pulumix.Output[TlsRouteRouteAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The destination services to which traffic should be forwarded. At least one destination service is required.
@@ -9040,12 +7785,6 @@ func (o TlsRouteRouteActionResponseOutput) ToTlsRouteRouteActionResponseOutput()
 
 func (o TlsRouteRouteActionResponseOutput) ToTlsRouteRouteActionResponseOutputWithContext(ctx context.Context) TlsRouteRouteActionResponseOutput {
 	return o
-}
-
-func (o TlsRouteRouteActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteActionResponse] {
-	return pulumix.Output[TlsRouteRouteActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The destination services to which traffic should be forwarded. At least one destination service is required.
@@ -9092,12 +7831,6 @@ func (i TlsRouteRouteDestinationArgs) ToTlsRouteRouteDestinationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRouteDestinationOutput)
 }
 
-func (i TlsRouteRouteDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteDestination] {
-	return pulumix.Output[TlsRouteRouteDestination]{
-		OutputState: i.ToTlsRouteRouteDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TlsRouteRouteDestinationArrayInput is an input type that accepts TlsRouteRouteDestinationArray and TlsRouteRouteDestinationArrayOutput values.
 // You can construct a concrete instance of `TlsRouteRouteDestinationArrayInput` via:
 //
@@ -9123,12 +7856,6 @@ func (i TlsRouteRouteDestinationArray) ToTlsRouteRouteDestinationArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRouteDestinationArrayOutput)
 }
 
-func (i TlsRouteRouteDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRouteDestination] {
-	return pulumix.Output[[]TlsRouteRouteDestination]{
-		OutputState: i.ToTlsRouteRouteDestinationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describe the destination for traffic to be routed to.
 type TlsRouteRouteDestinationOutput struct{ *pulumi.OutputState }
 
@@ -9142,12 +7869,6 @@ func (o TlsRouteRouteDestinationOutput) ToTlsRouteRouteDestinationOutput() TlsRo
 
 func (o TlsRouteRouteDestinationOutput) ToTlsRouteRouteDestinationOutputWithContext(ctx context.Context) TlsRouteRouteDestinationOutput {
 	return o
-}
-
-func (o TlsRouteRouteDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteDestination] {
-	return pulumix.Output[TlsRouteRouteDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL of a BackendService to route traffic to.
@@ -9172,12 +7893,6 @@ func (o TlsRouteRouteDestinationArrayOutput) ToTlsRouteRouteDestinationArrayOutp
 
 func (o TlsRouteRouteDestinationArrayOutput) ToTlsRouteRouteDestinationArrayOutputWithContext(ctx context.Context) TlsRouteRouteDestinationArrayOutput {
 	return o
-}
-
-func (o TlsRouteRouteDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRouteDestination] {
-	return pulumix.Output[[]TlsRouteRouteDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsRouteRouteDestinationArrayOutput) Index(i pulumi.IntInput) TlsRouteRouteDestinationOutput {
@@ -9209,12 +7924,6 @@ func (o TlsRouteRouteDestinationResponseOutput) ToTlsRouteRouteDestinationRespon
 	return o
 }
 
-func (o TlsRouteRouteDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteDestinationResponse] {
-	return pulumix.Output[TlsRouteRouteDestinationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL of a BackendService to route traffic to.
 func (o TlsRouteRouteDestinationResponseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v TlsRouteRouteDestinationResponse) string { return v.ServiceName }).(pulumi.StringOutput)
@@ -9237,12 +7946,6 @@ func (o TlsRouteRouteDestinationResponseArrayOutput) ToTlsRouteRouteDestinationR
 
 func (o TlsRouteRouteDestinationResponseArrayOutput) ToTlsRouteRouteDestinationResponseArrayOutputWithContext(ctx context.Context) TlsRouteRouteDestinationResponseArrayOutput {
 	return o
-}
-
-func (o TlsRouteRouteDestinationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRouteDestinationResponse] {
-	return pulumix.Output[[]TlsRouteRouteDestinationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsRouteRouteDestinationResponseArrayOutput) Index(i pulumi.IntInput) TlsRouteRouteDestinationResponseOutput {
@@ -9290,12 +7993,6 @@ func (i TlsRouteRouteMatchArgs) ToTlsRouteRouteMatchOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRouteMatchOutput)
 }
 
-func (i TlsRouteRouteMatchArgs) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteMatch] {
-	return pulumix.Output[TlsRouteRouteMatch]{
-		OutputState: i.ToTlsRouteRouteMatchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TlsRouteRouteMatchArrayInput is an input type that accepts TlsRouteRouteMatchArray and TlsRouteRouteMatchArrayOutput values.
 // You can construct a concrete instance of `TlsRouteRouteMatchArrayInput` via:
 //
@@ -9321,12 +8018,6 @@ func (i TlsRouteRouteMatchArray) ToTlsRouteRouteMatchArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRouteMatchArrayOutput)
 }
 
-func (i TlsRouteRouteMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRouteMatch] {
-	return pulumix.Output[[]TlsRouteRouteMatch]{
-		OutputState: i.ToTlsRouteRouteMatchArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "AND"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
 type TlsRouteRouteMatchOutput struct{ *pulumi.OutputState }
 
@@ -9340,12 +8031,6 @@ func (o TlsRouteRouteMatchOutput) ToTlsRouteRouteMatchOutput() TlsRouteRouteMatc
 
 func (o TlsRouteRouteMatchOutput) ToTlsRouteRouteMatchOutputWithContext(ctx context.Context) TlsRouteRouteMatchOutput {
 	return o
-}
-
-func (o TlsRouteRouteMatchOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteMatch] {
-	return pulumix.Output[TlsRouteRouteMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sni_host and alpn is required. Up to 5 alpns across all matches can be set.
@@ -9370,12 +8055,6 @@ func (o TlsRouteRouteMatchArrayOutput) ToTlsRouteRouteMatchArrayOutput() TlsRout
 
 func (o TlsRouteRouteMatchArrayOutput) ToTlsRouteRouteMatchArrayOutputWithContext(ctx context.Context) TlsRouteRouteMatchArrayOutput {
 	return o
-}
-
-func (o TlsRouteRouteMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRouteMatch] {
-	return pulumix.Output[[]TlsRouteRouteMatch]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsRouteRouteMatchArrayOutput) Index(i pulumi.IntInput) TlsRouteRouteMatchOutput {
@@ -9407,12 +8086,6 @@ func (o TlsRouteRouteMatchResponseOutput) ToTlsRouteRouteMatchResponseOutputWith
 	return o
 }
 
-func (o TlsRouteRouteMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteMatchResponse] {
-	return pulumix.Output[TlsRouteRouteMatchResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sni_host and alpn is required. Up to 5 alpns across all matches can be set.
 func (o TlsRouteRouteMatchResponseOutput) Alpn() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TlsRouteRouteMatchResponse) []string { return v.Alpn }).(pulumi.StringArrayOutput)
@@ -9435,12 +8108,6 @@ func (o TlsRouteRouteMatchResponseArrayOutput) ToTlsRouteRouteMatchResponseArray
 
 func (o TlsRouteRouteMatchResponseArrayOutput) ToTlsRouteRouteMatchResponseArrayOutputWithContext(ctx context.Context) TlsRouteRouteMatchResponseArrayOutput {
 	return o
-}
-
-func (o TlsRouteRouteMatchResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRouteMatchResponse] {
-	return pulumix.Output[[]TlsRouteRouteMatchResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsRouteRouteMatchResponseArrayOutput) Index(i pulumi.IntInput) TlsRouteRouteMatchResponseOutput {
@@ -9488,12 +8155,6 @@ func (i TlsRouteRouteRuleArgs) ToTlsRouteRouteRuleOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRouteRuleOutput)
 }
 
-func (i TlsRouteRouteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteRule] {
-	return pulumix.Output[TlsRouteRouteRule]{
-		OutputState: i.ToTlsRouteRouteRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TlsRouteRouteRuleArrayInput is an input type that accepts TlsRouteRouteRuleArray and TlsRouteRouteRuleArrayOutput values.
 // You can construct a concrete instance of `TlsRouteRouteRuleArrayInput` via:
 //
@@ -9519,12 +8180,6 @@ func (i TlsRouteRouteRuleArray) ToTlsRouteRouteRuleArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRouteRuleArrayOutput)
 }
 
-func (i TlsRouteRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRouteRule] {
-	return pulumix.Output[[]TlsRouteRouteRule]{
-		OutputState: i.ToTlsRouteRouteRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how to match traffic and how to route traffic when traffic is matched.
 type TlsRouteRouteRuleOutput struct{ *pulumi.OutputState }
 
@@ -9538,12 +8193,6 @@ func (o TlsRouteRouteRuleOutput) ToTlsRouteRouteRuleOutput() TlsRouteRouteRuleOu
 
 func (o TlsRouteRouteRuleOutput) ToTlsRouteRouteRuleOutputWithContext(ctx context.Context) TlsRouteRouteRuleOutput {
 	return o
-}
-
-func (o TlsRouteRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteRule] {
-	return pulumix.Output[TlsRouteRouteRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The detailed rule defining how to route matched traffic.
@@ -9568,12 +8217,6 @@ func (o TlsRouteRouteRuleArrayOutput) ToTlsRouteRouteRuleArrayOutput() TlsRouteR
 
 func (o TlsRouteRouteRuleArrayOutput) ToTlsRouteRouteRuleArrayOutputWithContext(ctx context.Context) TlsRouteRouteRuleArrayOutput {
 	return o
-}
-
-func (o TlsRouteRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRouteRule] {
-	return pulumix.Output[[]TlsRouteRouteRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsRouteRouteRuleArrayOutput) Index(i pulumi.IntInput) TlsRouteRouteRuleOutput {
@@ -9605,12 +8248,6 @@ func (o TlsRouteRouteRuleResponseOutput) ToTlsRouteRouteRuleResponseOutputWithCo
 	return o
 }
 
-func (o TlsRouteRouteRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRouteRuleResponse] {
-	return pulumix.Output[TlsRouteRouteRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The detailed rule defining how to route matched traffic.
 func (o TlsRouteRouteRuleResponseOutput) Action() TlsRouteRouteActionResponseOutput {
 	return o.ApplyT(func(v TlsRouteRouteRuleResponse) TlsRouteRouteActionResponse { return v.Action }).(TlsRouteRouteActionResponseOutput)
@@ -9633,12 +8270,6 @@ func (o TlsRouteRouteRuleResponseArrayOutput) ToTlsRouteRouteRuleResponseArrayOu
 
 func (o TlsRouteRouteRuleResponseArrayOutput) ToTlsRouteRouteRuleResponseArrayOutputWithContext(ctx context.Context) TlsRouteRouteRuleResponseArrayOutput {
 	return o
-}
-
-func (o TlsRouteRouteRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRouteRuleResponse] {
-	return pulumix.Output[[]TlsRouteRouteRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsRouteRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) TlsRouteRouteRuleResponseOutput {
@@ -9682,12 +8313,6 @@ func (i TrafficPortSelectorArgs) ToTrafficPortSelectorOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorOutput)
 }
 
-func (i TrafficPortSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[TrafficPortSelector] {
-	return pulumix.Output[TrafficPortSelector]{
-		OutputState: i.ToTrafficPortSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TrafficPortSelectorArgs) ToTrafficPortSelectorPtrOutput() TrafficPortSelectorPtrOutput {
 	return i.ToTrafficPortSelectorPtrOutputWithContext(context.Background())
 }
@@ -9729,12 +8354,6 @@ func (i *trafficPortSelectorPtrType) ToTrafficPortSelectorPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorPtrOutput)
 }
 
-func (i *trafficPortSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*TrafficPortSelector] {
-	return pulumix.Output[*TrafficPortSelector]{
-		OutputState: i.ToTrafficPortSelectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specification of a port-based selector.
 type TrafficPortSelectorOutput struct{ *pulumi.OutputState }
 
@@ -9760,12 +8379,6 @@ func (o TrafficPortSelectorOutput) ToTrafficPortSelectorPtrOutputWithContext(ctx
 	}).(TrafficPortSelectorPtrOutput)
 }
 
-func (o TrafficPortSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[TrafficPortSelector] {
-	return pulumix.Output[TrafficPortSelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
 func (o TrafficPortSelectorOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TrafficPortSelector) []string { return v.Ports }).(pulumi.StringArrayOutput)
@@ -9783,12 +8396,6 @@ func (o TrafficPortSelectorPtrOutput) ToTrafficPortSelectorPtrOutput() TrafficPo
 
 func (o TrafficPortSelectorPtrOutput) ToTrafficPortSelectorPtrOutputWithContext(ctx context.Context) TrafficPortSelectorPtrOutput {
 	return o
-}
-
-func (o TrafficPortSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrafficPortSelector] {
-	return pulumix.Output[*TrafficPortSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrafficPortSelectorPtrOutput) Elem() TrafficPortSelectorOutput {
@@ -9830,12 +8437,6 @@ func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponseOutput()
 
 func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponseOutputWithContext(ctx context.Context) TrafficPortSelectorResponseOutput {
 	return o
-}
-
-func (o TrafficPortSelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrafficPortSelectorResponse] {
-	return pulumix.Output[TrafficPortSelectorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.

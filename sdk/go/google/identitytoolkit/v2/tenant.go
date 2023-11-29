@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a tenant. Requires write permission on the Agent project.
@@ -189,12 +188,6 @@ func (i *Tenant) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TenantOutput)
 }
 
-func (i *Tenant) ToOutput(ctx context.Context) pulumix.Output[*Tenant] {
-	return pulumix.Output[*Tenant]{
-		OutputState: i.ToTenantOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TenantOutput struct{ *pulumi.OutputState }
 
 func (TenantOutput) ElementType() reflect.Type {
@@ -207,12 +200,6 @@ func (o TenantOutput) ToTenantOutput() TenantOutput {
 
 func (o TenantOutput) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
 	return o
-}
-
-func (o TenantOutput) ToOutput(ctx context.Context) pulumix.Output[*Tenant] {
-	return pulumix.Output[*Tenant]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to allow email/password user authentication.

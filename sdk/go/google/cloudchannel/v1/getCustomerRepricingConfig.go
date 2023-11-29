@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about how a Reseller modifies their bill before sending it to a Customer. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The CustomerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the CustomerRepricingConfig resource, otherwise returns an error.
@@ -73,12 +72,6 @@ func (o LookupCustomerRepricingConfigResultOutput) ToLookupCustomerRepricingConf
 
 func (o LookupCustomerRepricingConfigResultOutput) ToLookupCustomerRepricingConfigResultOutputWithContext(ctx context.Context) LookupCustomerRepricingConfigResultOutput {
 	return o
-}
-
-func (o LookupCustomerRepricingConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomerRepricingConfigResult] {
-	return pulumix.Output[LookupCustomerRepricingConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.

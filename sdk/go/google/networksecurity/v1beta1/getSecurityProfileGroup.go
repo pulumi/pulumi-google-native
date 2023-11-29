@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single SecurityProfileGroup.
@@ -81,12 +80,6 @@ func (o LookupSecurityProfileGroupResultOutput) ToLookupSecurityProfileGroupResu
 
 func (o LookupSecurityProfileGroupResultOutput) ToLookupSecurityProfileGroupResultOutputWithContext(ctx context.Context) LookupSecurityProfileGroupResultOutput {
 	return o
-}
-
-func (o LookupSecurityProfileGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecurityProfileGroupResult] {
-	return pulumix.Output[LookupSecurityProfileGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource creation timestamp.

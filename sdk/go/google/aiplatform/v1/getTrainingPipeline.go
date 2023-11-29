@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a TrainingPipeline.
@@ -101,12 +100,6 @@ func (o LookupTrainingPipelineResultOutput) ToLookupTrainingPipelineResultOutput
 
 func (o LookupTrainingPipelineResultOutput) ToLookupTrainingPipelineResultOutputWithContext(ctx context.Context) LookupTrainingPipelineResultOutput {
 	return o
-}
-
-func (o LookupTrainingPipelineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTrainingPipelineResult] {
-	return pulumix.Output[LookupTrainingPipelineResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the TrainingPipeline was created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single GrpcRoute.
@@ -87,12 +86,6 @@ func (o LookupGrpcRouteResultOutput) ToLookupGrpcRouteResultOutput() LookupGrpcR
 
 func (o LookupGrpcRouteResultOutput) ToLookupGrpcRouteResultOutputWithContext(ctx context.Context) LookupGrpcRouteResultOutput {
 	return o
-}
-
-func (o LookupGrpcRouteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGrpcRouteResult] {
-	return pulumix.Output[LookupGrpcRouteResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.

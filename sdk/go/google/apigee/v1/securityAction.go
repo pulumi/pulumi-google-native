@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // CreateSecurityAction creates a SecurityAction.
@@ -181,12 +180,6 @@ func (i *SecurityAction) ToSecurityActionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionOutput)
 }
 
-func (i *SecurityAction) ToOutput(ctx context.Context) pulumix.Output[*SecurityAction] {
-	return pulumix.Output[*SecurityAction]{
-		OutputState: i.ToSecurityActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityActionOutput struct{ *pulumi.OutputState }
 
 func (SecurityActionOutput) ElementType() reflect.Type {
@@ -199,12 +192,6 @@ func (o SecurityActionOutput) ToSecurityActionOutput() SecurityActionOutput {
 
 func (o SecurityActionOutput) ToSecurityActionOutputWithContext(ctx context.Context) SecurityActionOutput {
 	return o
-}
-
-func (o SecurityActionOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAction] {
-	return pulumix.Output[*SecurityAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow a request through if it matches this SecurityAction.

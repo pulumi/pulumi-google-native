@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy for a billing account. Replaces any existing policy. The caller must have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
@@ -128,12 +127,6 @@ func (i *BillingAccountIamPolicy) ToBillingAccountIamPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountIamPolicyOutput)
 }
 
-func (i *BillingAccountIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountIamPolicy] {
-	return pulumix.Output[*BillingAccountIamPolicy]{
-		OutputState: i.ToBillingAccountIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BillingAccountIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountIamPolicyOutput) ElementType() reflect.Type {
@@ -146,12 +139,6 @@ func (o BillingAccountIamPolicyOutput) ToBillingAccountIamPolicyOutput() Billing
 
 func (o BillingAccountIamPolicyOutput) ToBillingAccountIamPolicyOutputWithContext(ctx context.Context) BillingAccountIamPolicyOutput {
 	return o
-}
-
-func (o BillingAccountIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountIamPolicy] {
-	return pulumix.Output[*BillingAccountIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

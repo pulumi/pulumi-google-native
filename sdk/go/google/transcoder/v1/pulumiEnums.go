@@ -83,12 +83,6 @@ func (o AnimationFadeFadeTypeOutput) ToAnimationFadeFadeTypePtrOutputWithContext
 	}).(AnimationFadeFadeTypePtrOutput)
 }
 
-func (o AnimationFadeFadeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AnimationFadeFadeType] {
-	return pulumix.Output[AnimationFadeFadeType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AnimationFadeFadeTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o AnimationFadeFadeTypePtrOutput) ToAnimationFadeFadeTypePtrOutput() Anima
 
 func (o AnimationFadeFadeTypePtrOutput) ToAnimationFadeFadeTypePtrOutputWithContext(ctx context.Context) AnimationFadeFadeTypePtrOutput {
 	return o
-}
-
-func (o AnimationFadeFadeTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AnimationFadeFadeType] {
-	return pulumix.Output[*AnimationFadeFadeType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AnimationFadeFadeTypePtrOutput) Elem() AnimationFadeFadeTypeOutput {
@@ -270,12 +258,6 @@ func (o DashConfigSegmentReferenceSchemeOutput) ToDashConfigSegmentReferenceSche
 	}).(DashConfigSegmentReferenceSchemePtrOutput)
 }
 
-func (o DashConfigSegmentReferenceSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[DashConfigSegmentReferenceScheme] {
-	return pulumix.Output[DashConfigSegmentReferenceScheme]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DashConfigSegmentReferenceSchemeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o DashConfigSegmentReferenceSchemePtrOutput) ToDashConfigSegmentReferenceS
 
 func (o DashConfigSegmentReferenceSchemePtrOutput) ToDashConfigSegmentReferenceSchemePtrOutputWithContext(ctx context.Context) DashConfigSegmentReferenceSchemePtrOutput {
 	return o
-}
-
-func (o DashConfigSegmentReferenceSchemePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DashConfigSegmentReferenceScheme] {
-	return pulumix.Output[*DashConfigSegmentReferenceScheme]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashConfigSegmentReferenceSchemePtrOutput) Elem() DashConfigSegmentReferenceSchemeOutput {
@@ -457,12 +433,6 @@ func (o JobModeOutput) ToJobModePtrOutputWithContext(ctx context.Context) JobMod
 	}).(JobModePtrOutput)
 }
 
-func (o JobModeOutput) ToOutput(ctx context.Context) pulumix.Output[JobMode] {
-	return pulumix.Output[JobMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -496,12 +466,6 @@ func (o JobModePtrOutput) ToJobModePtrOutput() JobModePtrOutput {
 
 func (o JobModePtrOutput) ToJobModePtrOutputWithContext(ctx context.Context) JobModePtrOutput {
 	return o
-}
-
-func (o JobModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobMode] {
-	return pulumix.Output[*JobMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobModePtrOutput) Elem() JobModeOutput {
@@ -644,12 +608,6 @@ func (o JobOptimizationOutput) ToJobOptimizationPtrOutputWithContext(ctx context
 	}).(JobOptimizationPtrOutput)
 }
 
-func (o JobOptimizationOutput) ToOutput(ctx context.Context) pulumix.Output[JobOptimization] {
-	return pulumix.Output[JobOptimization]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobOptimizationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -683,12 +641,6 @@ func (o JobOptimizationPtrOutput) ToJobOptimizationPtrOutput() JobOptimizationPt
 
 func (o JobOptimizationPtrOutput) ToJobOptimizationPtrOutputWithContext(ctx context.Context) JobOptimizationPtrOutput {
 	return o
-}
-
-func (o JobOptimizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobOptimization] {
-	return pulumix.Output[*JobOptimization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobOptimizationPtrOutput) Elem() JobOptimizationOutput {
@@ -831,12 +783,6 @@ func (o ManifestTypeOutput) ToManifestTypePtrOutputWithContext(ctx context.Conte
 	}).(ManifestTypePtrOutput)
 }
 
-func (o ManifestTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ManifestType] {
-	return pulumix.Output[ManifestType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManifestTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -870,12 +816,6 @@ func (o ManifestTypePtrOutput) ToManifestTypePtrOutput() ManifestTypePtrOutput {
 
 func (o ManifestTypePtrOutput) ToManifestTypePtrOutputWithContext(ctx context.Context) ManifestTypePtrOutput {
 	return o
-}
-
-func (o ManifestTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManifestType] {
-	return pulumix.Output[*ManifestType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManifestTypePtrOutput) Elem() ManifestTypeOutput {

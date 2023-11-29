@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new VMware Engine network that can be used by a private cloud.
@@ -149,12 +148,6 @@ func (i *VmwareEngineNetwork) ToVmwareEngineNetworkOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareEngineNetworkOutput)
 }
 
-func (i *VmwareEngineNetwork) ToOutput(ctx context.Context) pulumix.Output[*VmwareEngineNetwork] {
-	return pulumix.Output[*VmwareEngineNetwork]{
-		OutputState: i.ToVmwareEngineNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VmwareEngineNetworkOutput struct{ *pulumi.OutputState }
 
 func (VmwareEngineNetworkOutput) ElementType() reflect.Type {
@@ -167,12 +160,6 @@ func (o VmwareEngineNetworkOutput) ToVmwareEngineNetworkOutput() VmwareEngineNet
 
 func (o VmwareEngineNetworkOutput) ToVmwareEngineNetworkOutputWithContext(ctx context.Context) VmwareEngineNetworkOutput {
 	return o
-}
-
-func (o VmwareEngineNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareEngineNetwork] {
-	return pulumix.Output[*VmwareEngineNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

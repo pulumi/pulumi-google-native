@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
@@ -127,12 +126,6 @@ func (i *PerfSampleSeries) ToPerfSampleSeriesOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PerfSampleSeriesOutput)
 }
 
-func (i *PerfSampleSeries) ToOutput(ctx context.Context) pulumix.Output[*PerfSampleSeries] {
-	return pulumix.Output[*PerfSampleSeries]{
-		OutputState: i.ToPerfSampleSeriesOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PerfSampleSeriesOutput struct{ *pulumi.OutputState }
 
 func (PerfSampleSeriesOutput) ElementType() reflect.Type {
@@ -145,12 +138,6 @@ func (o PerfSampleSeriesOutput) ToPerfSampleSeriesOutput() PerfSampleSeriesOutpu
 
 func (o PerfSampleSeriesOutput) ToPerfSampleSeriesOutputWithContext(ctx context.Context) PerfSampleSeriesOutput {
 	return o
-}
-
-func (o PerfSampleSeriesOutput) ToOutput(ctx context.Context) pulumix.Output[*PerfSampleSeries] {
-	return pulumix.Output[*PerfSampleSeries]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Basic series represented by a line chart

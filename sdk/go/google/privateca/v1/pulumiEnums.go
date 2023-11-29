@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -272,12 +260,6 @@ func (o CaPoolTierOutput) ToCaPoolTierPtrOutputWithContext(ctx context.Context) 
 	}).(CaPoolTierPtrOutput)
 }
 
-func (o CaPoolTierOutput) ToOutput(ctx context.Context) pulumix.Output[CaPoolTier] {
-	return pulumix.Output[CaPoolTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CaPoolTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o CaPoolTierPtrOutput) ToCaPoolTierPtrOutput() CaPoolTierPtrOutput {
 
 func (o CaPoolTierPtrOutput) ToCaPoolTierPtrOutputWithContext(ctx context.Context) CaPoolTierPtrOutput {
 	return o
-}
-
-func (o CaPoolTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CaPoolTier] {
-	return pulumix.Output[*CaPoolTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CaPoolTierPtrOutput) Elem() CaPoolTierOutput {
@@ -459,12 +435,6 @@ func (o CertificateAuthorityTypeOutput) ToCertificateAuthorityTypePtrOutputWithC
 	}).(CertificateAuthorityTypePtrOutput)
 }
 
-func (o CertificateAuthorityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateAuthorityType] {
-	return pulumix.Output[CertificateAuthorityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateAuthorityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -498,12 +468,6 @@ func (o CertificateAuthorityTypePtrOutput) ToCertificateAuthorityTypePtrOutput()
 
 func (o CertificateAuthorityTypePtrOutput) ToCertificateAuthorityTypePtrOutputWithContext(ctx context.Context) CertificateAuthorityTypePtrOutput {
 	return o
-}
-
-func (o CertificateAuthorityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateAuthorityType] {
-	return pulumix.Output[*CertificateAuthorityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateAuthorityTypePtrOutput) Elem() CertificateAuthorityTypeOutput {
@@ -653,12 +617,6 @@ func (o CertificateExtensionConstraintsKnownExtensionsItemOutput) ToCertificateE
 	}).(CertificateExtensionConstraintsKnownExtensionsItemPtrOutput)
 }
 
-func (o CertificateExtensionConstraintsKnownExtensionsItemOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateExtensionConstraintsKnownExtensionsItem] {
-	return pulumix.Output[CertificateExtensionConstraintsKnownExtensionsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateExtensionConstraintsKnownExtensionsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -692,12 +650,6 @@ func (o CertificateExtensionConstraintsKnownExtensionsItemPtrOutput) ToCertifica
 
 func (o CertificateExtensionConstraintsKnownExtensionsItemPtrOutput) ToCertificateExtensionConstraintsKnownExtensionsItemPtrOutputWithContext(ctx context.Context) CertificateExtensionConstraintsKnownExtensionsItemPtrOutput {
 	return o
-}
-
-func (o CertificateExtensionConstraintsKnownExtensionsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateExtensionConstraintsKnownExtensionsItem] {
-	return pulumix.Output[*CertificateExtensionConstraintsKnownExtensionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateExtensionConstraintsKnownExtensionsItemPtrOutput) Elem() CertificateExtensionConstraintsKnownExtensionsItemOutput {
@@ -793,12 +745,6 @@ func (i CertificateExtensionConstraintsKnownExtensionsItemArray) ToCertificateEx
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateExtensionConstraintsKnownExtensionsItemArrayOutput)
 }
 
-func (i CertificateExtensionConstraintsKnownExtensionsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]CertificateExtensionConstraintsKnownExtensionsItem] {
-	return pulumix.Output[[]CertificateExtensionConstraintsKnownExtensionsItem]{
-		OutputState: i.ToCertificateExtensionConstraintsKnownExtensionsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CertificateExtensionConstraintsKnownExtensionsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (CertificateExtensionConstraintsKnownExtensionsItemArrayOutput) ElementType() reflect.Type {
@@ -811,12 +757,6 @@ func (o CertificateExtensionConstraintsKnownExtensionsItemArrayOutput) ToCertifi
 
 func (o CertificateExtensionConstraintsKnownExtensionsItemArrayOutput) ToCertificateExtensionConstraintsKnownExtensionsItemArrayOutputWithContext(ctx context.Context) CertificateExtensionConstraintsKnownExtensionsItemArrayOutput {
 	return o
-}
-
-func (o CertificateExtensionConstraintsKnownExtensionsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertificateExtensionConstraintsKnownExtensionsItem] {
-	return pulumix.Output[[]CertificateExtensionConstraintsKnownExtensionsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateExtensionConstraintsKnownExtensionsItemArrayOutput) Index(i pulumi.IntInput) CertificateExtensionConstraintsKnownExtensionsItemOutput {
@@ -897,12 +837,6 @@ func (o CertificateSubjectModeOutput) ToCertificateSubjectModePtrOutputWithConte
 	}).(CertificateSubjectModePtrOutput)
 }
 
-func (o CertificateSubjectModeOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateSubjectMode] {
-	return pulumix.Output[CertificateSubjectMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateSubjectModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -936,12 +870,6 @@ func (o CertificateSubjectModePtrOutput) ToCertificateSubjectModePtrOutput() Cer
 
 func (o CertificateSubjectModePtrOutput) ToCertificateSubjectModePtrOutputWithContext(ctx context.Context) CertificateSubjectModePtrOutput {
 	return o
-}
-
-func (o CertificateSubjectModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateSubjectMode] {
-	return pulumix.Output[*CertificateSubjectMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateSubjectModePtrOutput) Elem() CertificateSubjectModeOutput {
@@ -1086,12 +1014,6 @@ func (o EcKeyTypeSignatureAlgorithmOutput) ToEcKeyTypeSignatureAlgorithmPtrOutpu
 	}).(EcKeyTypeSignatureAlgorithmPtrOutput)
 }
 
-func (o EcKeyTypeSignatureAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[EcKeyTypeSignatureAlgorithm] {
-	return pulumix.Output[EcKeyTypeSignatureAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EcKeyTypeSignatureAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1125,12 +1047,6 @@ func (o EcKeyTypeSignatureAlgorithmPtrOutput) ToEcKeyTypeSignatureAlgorithmPtrOu
 
 func (o EcKeyTypeSignatureAlgorithmPtrOutput) ToEcKeyTypeSignatureAlgorithmPtrOutputWithContext(ctx context.Context) EcKeyTypeSignatureAlgorithmPtrOutput {
 	return o
-}
-
-func (o EcKeyTypeSignatureAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EcKeyTypeSignatureAlgorithm] {
-	return pulumix.Output[*EcKeyTypeSignatureAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcKeyTypeSignatureAlgorithmPtrOutput) Elem() EcKeyTypeSignatureAlgorithmOutput {
@@ -1285,12 +1201,6 @@ func (o KeyVersionSpecAlgorithmOutput) ToKeyVersionSpecAlgorithmPtrOutputWithCon
 	}).(KeyVersionSpecAlgorithmPtrOutput)
 }
 
-func (o KeyVersionSpecAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVersionSpecAlgorithm] {
-	return pulumix.Output[KeyVersionSpecAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeyVersionSpecAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1324,12 +1234,6 @@ func (o KeyVersionSpecAlgorithmPtrOutput) ToKeyVersionSpecAlgorithmPtrOutput() K
 
 func (o KeyVersionSpecAlgorithmPtrOutput) ToKeyVersionSpecAlgorithmPtrOutputWithContext(ctx context.Context) KeyVersionSpecAlgorithmPtrOutput {
 	return o
-}
-
-func (o KeyVersionSpecAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVersionSpecAlgorithm] {
-	return pulumix.Output[*KeyVersionSpecAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVersionSpecAlgorithmPtrOutput) Elem() KeyVersionSpecAlgorithmOutput {
@@ -1470,12 +1374,6 @@ func (o PublicKeyFormatOutput) ToPublicKeyFormatPtrOutputWithContext(ctx context
 	}).(PublicKeyFormatPtrOutput)
 }
 
-func (o PublicKeyFormatOutput) ToOutput(ctx context.Context) pulumix.Output[PublicKeyFormat] {
-	return pulumix.Output[PublicKeyFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublicKeyFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1509,12 +1407,6 @@ func (o PublicKeyFormatPtrOutput) ToPublicKeyFormatPtrOutput() PublicKeyFormatPt
 
 func (o PublicKeyFormatPtrOutput) ToPublicKeyFormatPtrOutputWithContext(ctx context.Context) PublicKeyFormatPtrOutput {
 	return o
-}
-
-func (o PublicKeyFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicKeyFormat] {
-	return pulumix.Output[*PublicKeyFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublicKeyFormatPtrOutput) Elem() PublicKeyFormatOutput {
@@ -1657,12 +1549,6 @@ func (o PublishingOptionsEncodingFormatOutput) ToPublishingOptionsEncodingFormat
 	}).(PublishingOptionsEncodingFormatPtrOutput)
 }
 
-func (o PublishingOptionsEncodingFormatOutput) ToOutput(ctx context.Context) pulumix.Output[PublishingOptionsEncodingFormat] {
-	return pulumix.Output[PublishingOptionsEncodingFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublishingOptionsEncodingFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1696,12 +1582,6 @@ func (o PublishingOptionsEncodingFormatPtrOutput) ToPublishingOptionsEncodingFor
 
 func (o PublishingOptionsEncodingFormatPtrOutput) ToPublishingOptionsEncodingFormatPtrOutputWithContext(ctx context.Context) PublishingOptionsEncodingFormatPtrOutput {
 	return o
-}
-
-func (o PublishingOptionsEncodingFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublishingOptionsEncodingFormat] {
-	return pulumix.Output[*PublishingOptionsEncodingFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublishingOptionsEncodingFormatPtrOutput) Elem() PublishingOptionsEncodingFormatOutput {

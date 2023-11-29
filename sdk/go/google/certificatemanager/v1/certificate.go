@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Certificate in a given project and location.
@@ -155,12 +154,6 @@ func (i *Certificate) ToCertificateOutputWithContext(ctx context.Context) Certif
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateOutput)
 }
 
-func (i *Certificate) ToOutput(ctx context.Context) pulumix.Output[*Certificate] {
-	return pulumix.Output[*Certificate]{
-		OutputState: i.ToCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CertificateOutput struct{ *pulumi.OutputState }
 
 func (CertificateOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
 
 func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
 	return o
-}
-
-func (o CertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*Certificate] {
-	return pulumix.Output[*Certificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. A user-provided name of the certificate.

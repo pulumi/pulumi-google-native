@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a keystore or truststore. - Keystore: Contains certificates and their associated keys. - Truststore: Contains trusted certificates used to validate a server's certificate. These certificates are typically self-signed certificates or certificates that are not signed by a trusted CA.
@@ -113,12 +112,6 @@ func (i *Keystore) ToKeystoreOutputWithContext(ctx context.Context) KeystoreOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoreOutput)
 }
 
-func (i *Keystore) ToOutput(ctx context.Context) pulumix.Output[*Keystore] {
-	return pulumix.Output[*Keystore]{
-		OutputState: i.ToKeystoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeystoreOutput struct{ *pulumi.OutputState }
 
 func (KeystoreOutput) ElementType() reflect.Type {
@@ -131,12 +124,6 @@ func (o KeystoreOutput) ToKeystoreOutput() KeystoreOutput {
 
 func (o KeystoreOutput) ToKeystoreOutputWithContext(ctx context.Context) KeystoreOutput {
 	return o
-}
-
-func (o KeystoreOutput) ToOutput(ctx context.Context) pulumix.Output[*Keystore] {
-	return pulumix.Output[*Keystore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Aliases in this keystore.

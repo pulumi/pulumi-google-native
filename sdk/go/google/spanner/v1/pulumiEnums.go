@@ -83,12 +83,6 @@ func (o DatabaseDatabaseDialectOutput) ToDatabaseDatabaseDialectPtrOutputWithCon
 	}).(DatabaseDatabaseDialectPtrOutput)
 }
 
-func (o DatabaseDatabaseDialectOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseDatabaseDialect] {
-	return pulumix.Output[DatabaseDatabaseDialect]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseDatabaseDialectOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o DatabaseDatabaseDialectPtrOutput) ToDatabaseDatabaseDialectPtrOutput() D
 
 func (o DatabaseDatabaseDialectPtrOutput) ToDatabaseDatabaseDialectPtrOutputWithContext(ctx context.Context) DatabaseDatabaseDialectPtrOutput {
 	return o
-}
-
-func (o DatabaseDatabaseDialectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDatabaseDialect] {
-	return pulumix.Output[*DatabaseDatabaseDialect]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseDatabaseDialectPtrOutput) Elem() DatabaseDatabaseDialectOutput {
@@ -270,12 +258,6 @@ func (o FreeInstanceMetadataExpireBehaviorOutput) ToFreeInstanceMetadataExpireBe
 	}).(FreeInstanceMetadataExpireBehaviorPtrOutput)
 }
 
-func (o FreeInstanceMetadataExpireBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[FreeInstanceMetadataExpireBehavior] {
-	return pulumix.Output[FreeInstanceMetadataExpireBehavior]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FreeInstanceMetadataExpireBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o FreeInstanceMetadataExpireBehaviorPtrOutput) ToFreeInstanceMetadataExpir
 
 func (o FreeInstanceMetadataExpireBehaviorPtrOutput) ToFreeInstanceMetadataExpireBehaviorPtrOutputWithContext(ctx context.Context) FreeInstanceMetadataExpireBehaviorPtrOutput {
 	return o
-}
-
-func (o FreeInstanceMetadataExpireBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FreeInstanceMetadataExpireBehavior] {
-	return pulumix.Output[*FreeInstanceMetadataExpireBehavior]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FreeInstanceMetadataExpireBehaviorPtrOutput) Elem() FreeInstanceMetadataExpireBehaviorOutput {
@@ -457,12 +433,6 @@ func (o InstanceInstanceTypeOutput) ToInstanceInstanceTypePtrOutputWithContext(c
 	}).(InstanceInstanceTypePtrOutput)
 }
 
-func (o InstanceInstanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceInstanceType] {
-	return pulumix.Output[InstanceInstanceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceInstanceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -496,12 +466,6 @@ func (o InstanceInstanceTypePtrOutput) ToInstanceInstanceTypePtrOutput() Instanc
 
 func (o InstanceInstanceTypePtrOutput) ToInstanceInstanceTypePtrOutputWithContext(ctx context.Context) InstanceInstanceTypePtrOutput {
 	return o
-}
-
-func (o InstanceInstanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceInstanceType] {
-	return pulumix.Output[*InstanceInstanceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceInstanceTypePtrOutput) Elem() InstanceInstanceTypeOutput {
@@ -646,12 +610,6 @@ func (o ReplicaInfoTypeOutput) ToReplicaInfoTypePtrOutputWithContext(ctx context
 	}).(ReplicaInfoTypePtrOutput)
 }
 
-func (o ReplicaInfoTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicaInfoType] {
-	return pulumix.Output[ReplicaInfoType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReplicaInfoTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -685,12 +643,6 @@ func (o ReplicaInfoTypePtrOutput) ToReplicaInfoTypePtrOutput() ReplicaInfoTypePt
 
 func (o ReplicaInfoTypePtrOutput) ToReplicaInfoTypePtrOutputWithContext(ctx context.Context) ReplicaInfoTypePtrOutput {
 	return o
-}
-
-func (o ReplicaInfoTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicaInfoType] {
-	return pulumix.Output[*ReplicaInfoType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReplicaInfoTypePtrOutput) Elem() ReplicaInfoTypeOutput {

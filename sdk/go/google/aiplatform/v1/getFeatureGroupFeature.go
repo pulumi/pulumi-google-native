@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Feature.
@@ -89,12 +88,6 @@ func (o LookupFeatureGroupFeatureResultOutput) ToLookupFeatureGroupFeatureResult
 
 func (o LookupFeatureGroupFeatureResultOutput) ToLookupFeatureGroupFeatureResultOutputWithContext(ctx context.Context) LookupFeatureGroupFeatureResultOutput {
 	return o
-}
-
-func (o LookupFeatureGroupFeatureResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFeatureGroupFeatureResult] {
-	return pulumix.Output[LookupFeatureGroupFeatureResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an attachment. **Note:** Not supported for Apigee hybrid.
@@ -73,12 +72,6 @@ func (o LookupInstanceAttachmentResultOutput) ToLookupInstanceAttachmentResultOu
 
 func (o LookupInstanceAttachmentResultOutput) ToLookupInstanceAttachmentResultOutputWithContext(ctx context.Context) LookupInstanceAttachmentResultOutput {
 	return o
-}
-
-func (o LookupInstanceAttachmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceAttachmentResult] {
-	return pulumix.Output[LookupInstanceAttachmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the attachment was created in milliseconds since epoch.

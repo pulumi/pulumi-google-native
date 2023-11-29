@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a set of phrase hints. Each item in the set can be a single word or a multi-word phrase. The items in the PhraseSet are favored by the recognition model when you send a call that includes the PhraseSet.
@@ -144,12 +143,6 @@ func (i *PhraseSet) ToPhraseSetOutputWithContext(ctx context.Context) PhraseSetO
 	return pulumi.ToOutputWithContext(ctx, i).(PhraseSetOutput)
 }
 
-func (i *PhraseSet) ToOutput(ctx context.Context) pulumix.Output[*PhraseSet] {
-	return pulumix.Output[*PhraseSet]{
-		OutputState: i.ToPhraseSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PhraseSetOutput struct{ *pulumi.OutputState }
 
 func (PhraseSetOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o PhraseSetOutput) ToPhraseSetOutput() PhraseSetOutput {
 
 func (o PhraseSetOutput) ToPhraseSetOutputWithContext(ctx context.Context) PhraseSetOutput {
 	return o
-}
-
-func (o PhraseSetOutput) ToOutput(ctx context.Context) pulumix.Output[*PhraseSet] {
-	return pulumix.Output[*PhraseSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.

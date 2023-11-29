@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
@@ -137,12 +136,6 @@ func (i *OrganizationInspectTemplate) ToOrganizationInspectTemplateOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationInspectTemplateOutput)
 }
 
-func (i *OrganizationInspectTemplate) ToOutput(ctx context.Context) pulumix.Output[*OrganizationInspectTemplate] {
-	return pulumix.Output[*OrganizationInspectTemplate]{
-		OutputState: i.ToOrganizationInspectTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationInspectTemplateOutput struct{ *pulumi.OutputState }
 
 func (OrganizationInspectTemplateOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o OrganizationInspectTemplateOutput) ToOrganizationInspectTemplateOutput()
 
 func (o OrganizationInspectTemplateOutput) ToOrganizationInspectTemplateOutputWithContext(ctx context.Context) OrganizationInspectTemplateOutput {
 	return o
-}
-
-func (o OrganizationInspectTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationInspectTemplate] {
-	return pulumix.Output[*OrganizationInspectTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of an inspectTemplate.

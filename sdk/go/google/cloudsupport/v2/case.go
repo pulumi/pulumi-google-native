@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new case and associate it with a parent. It must have the following fields set: `display_name`, `description`, `classification`, and `priority`. If you're just testing the API and don't want to route your case to an agent, set `testCase=true`. EXAMPLES: cURL: ``` shell parent="projects/some-project" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "display_name": "Test case created by me.", "description": "a random test case, feel free to close", "classification": { "id": "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8" }, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "bar@domain.com" ], "testCase": true, "priority": "P3" }' \ "https://cloudsupport.googleapis.com/v2/$parent/cases"  ``` Python: ``` python import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().create( parent="projects/some-project", body={ "displayName": "A Test Case", "description": "This is a test case.", "testCase": True, "priority": "P2", "classification": { "id": "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8" }, }, ) print(request.execute())  ```
@@ -185,12 +184,6 @@ func (i *Case) ToCaseOutputWithContext(ctx context.Context) CaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaseOutput)
 }
 
-func (i *Case) ToOutput(ctx context.Context) pulumix.Output[*Case] {
-	return pulumix.Output[*Case]{
-		OutputState: i.ToCaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CaseOutput struct{ *pulumi.OutputState }
 
 func (CaseOutput) ElementType() reflect.Type {
@@ -203,12 +196,6 @@ func (o CaseOutput) ToCaseOutput() CaseOutput {
 
 func (o CaseOutput) ToCaseOutputWithContext(ctx context.Context) CaseOutput {
 	return o
-}
-
-func (o CaseOutput) ToOutput(ctx context.Context) pulumix.Output[*Case] {
-	return pulumix.Output[*Case]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The issue classification applicable to this case.

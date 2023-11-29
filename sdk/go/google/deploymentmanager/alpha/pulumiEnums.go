@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -282,12 +270,6 @@ func (o DiagnosticLevelOutput) ToDiagnosticLevelPtrOutputWithContext(ctx context
 	}).(DiagnosticLevelPtrOutput)
 }
 
-func (o DiagnosticLevelOutput) ToOutput(ctx context.Context) pulumix.Output[DiagnosticLevel] {
-	return pulumix.Output[DiagnosticLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiagnosticLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -321,12 +303,6 @@ func (o DiagnosticLevelPtrOutput) ToDiagnosticLevelPtrOutput() DiagnosticLevelPt
 
 func (o DiagnosticLevelPtrOutput) ToDiagnosticLevelPtrOutputWithContext(ctx context.Context) DiagnosticLevelPtrOutput {
 	return o
-}
-
-func (o DiagnosticLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticLevel] {
-	return pulumix.Output[*DiagnosticLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiagnosticLevelPtrOutput) Elem() DiagnosticLevelOutput {
@@ -468,12 +444,6 @@ func (o InputMappingLocationOutput) ToInputMappingLocationPtrOutputWithContext(c
 	}).(InputMappingLocationPtrOutput)
 }
 
-func (o InputMappingLocationOutput) ToOutput(ctx context.Context) pulumix.Output[InputMappingLocation] {
-	return pulumix.Output[InputMappingLocation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InputMappingLocationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -507,12 +477,6 @@ func (o InputMappingLocationPtrOutput) ToInputMappingLocationPtrOutput() InputMa
 
 func (o InputMappingLocationPtrOutput) ToInputMappingLocationPtrOutputWithContext(ctx context.Context) InputMappingLocationPtrOutput {
 	return o
-}
-
-func (o InputMappingLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InputMappingLocation] {
-	return pulumix.Output[*InputMappingLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InputMappingLocationPtrOutput) Elem() InputMappingLocationOutput {
@@ -652,12 +616,6 @@ func (o TemplateContentsInterpreterOutput) ToTemplateContentsInterpreterPtrOutpu
 	}).(TemplateContentsInterpreterPtrOutput)
 }
 
-func (o TemplateContentsInterpreterOutput) ToOutput(ctx context.Context) pulumix.Output[TemplateContentsInterpreter] {
-	return pulumix.Output[TemplateContentsInterpreter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TemplateContentsInterpreterOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -691,12 +649,6 @@ func (o TemplateContentsInterpreterPtrOutput) ToTemplateContentsInterpreterPtrOu
 
 func (o TemplateContentsInterpreterPtrOutput) ToTemplateContentsInterpreterPtrOutputWithContext(ctx context.Context) TemplateContentsInterpreterPtrOutput {
 	return o
-}
-
-func (o TemplateContentsInterpreterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TemplateContentsInterpreter] {
-	return pulumix.Output[*TemplateContentsInterpreter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemplateContentsInterpreterPtrOutput) Elem() TemplateContentsInterpreterOutput {
@@ -840,12 +792,6 @@ func (o ValidationOptionsSchemaValidationOutput) ToValidationOptionsSchemaValida
 	}).(ValidationOptionsSchemaValidationPtrOutput)
 }
 
-func (o ValidationOptionsSchemaValidationOutput) ToOutput(ctx context.Context) pulumix.Output[ValidationOptionsSchemaValidation] {
-	return pulumix.Output[ValidationOptionsSchemaValidation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ValidationOptionsSchemaValidationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -879,12 +825,6 @@ func (o ValidationOptionsSchemaValidationPtrOutput) ToValidationOptionsSchemaVal
 
 func (o ValidationOptionsSchemaValidationPtrOutput) ToValidationOptionsSchemaValidationPtrOutputWithContext(ctx context.Context) ValidationOptionsSchemaValidationPtrOutput {
 	return o
-}
-
-func (o ValidationOptionsSchemaValidationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ValidationOptionsSchemaValidation] {
-	return pulumix.Output[*ValidationOptionsSchemaValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ValidationOptionsSchemaValidationPtrOutput) Elem() ValidationOptionsSchemaValidationOutput {
@@ -1032,12 +972,6 @@ func (o ValidationOptionsUndeclaredPropertiesOutput) ToValidationOptionsUndeclar
 	}).(ValidationOptionsUndeclaredPropertiesPtrOutput)
 }
 
-func (o ValidationOptionsUndeclaredPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ValidationOptionsUndeclaredProperties] {
-	return pulumix.Output[ValidationOptionsUndeclaredProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ValidationOptionsUndeclaredPropertiesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1071,12 +1005,6 @@ func (o ValidationOptionsUndeclaredPropertiesPtrOutput) ToValidationOptionsUndec
 
 func (o ValidationOptionsUndeclaredPropertiesPtrOutput) ToValidationOptionsUndeclaredPropertiesPtrOutputWithContext(ctx context.Context) ValidationOptionsUndeclaredPropertiesPtrOutput {
 	return o
-}
-
-func (o ValidationOptionsUndeclaredPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ValidationOptionsUndeclaredProperties] {
-	return pulumix.Output[*ValidationOptionsUndeclaredProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ValidationOptionsUndeclaredPropertiesPtrOutput) Elem() ValidationOptionsUndeclaredPropertiesOutput {

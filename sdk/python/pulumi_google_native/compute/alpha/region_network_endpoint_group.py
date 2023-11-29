@@ -425,9 +425,6 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["cloud_run"] = cloud_run
             __props__.__dict__["default_port"] = default_port
             __props__.__dict__["description"] = description
-            if load_balancer is not None and not opts.urn:
-                warnings.warn("""This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""", DeprecationWarning)
-                pulumi.log.warn("""load_balancer is deprecated: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""")
             __props__.__dict__["load_balancer"] = load_balancer
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network

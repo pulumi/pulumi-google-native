@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -274,12 +262,6 @@ func (o ContactSettingsPrivacyOutput) ToContactSettingsPrivacyPtrOutputWithConte
 	}).(ContactSettingsPrivacyPtrOutput)
 }
 
-func (o ContactSettingsPrivacyOutput) ToOutput(ctx context.Context) pulumix.Output[ContactSettingsPrivacy] {
-	return pulumix.Output[ContactSettingsPrivacy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContactSettingsPrivacyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -313,12 +295,6 @@ func (o ContactSettingsPrivacyPtrOutput) ToContactSettingsPrivacyPtrOutput() Con
 
 func (o ContactSettingsPrivacyPtrOutput) ToContactSettingsPrivacyPtrOutputWithContext(ctx context.Context) ContactSettingsPrivacyPtrOutput {
 	return o
-}
-
-func (o ContactSettingsPrivacyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContactSettingsPrivacy] {
-	return pulumix.Output[*ContactSettingsPrivacy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContactSettingsPrivacyPtrOutput) Elem() ContactSettingsPrivacyOutput {
@@ -491,12 +467,6 @@ func (o DsRecordAlgorithmOutput) ToDsRecordAlgorithmPtrOutputWithContext(ctx con
 	}).(DsRecordAlgorithmPtrOutput)
 }
 
-func (o DsRecordAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[DsRecordAlgorithm] {
-	return pulumix.Output[DsRecordAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DsRecordAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -530,12 +500,6 @@ func (o DsRecordAlgorithmPtrOutput) ToDsRecordAlgorithmPtrOutput() DsRecordAlgor
 
 func (o DsRecordAlgorithmPtrOutput) ToDsRecordAlgorithmPtrOutputWithContext(ctx context.Context) DsRecordAlgorithmPtrOutput {
 	return o
-}
-
-func (o DsRecordAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DsRecordAlgorithm] {
-	return pulumix.Output[*DsRecordAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DsRecordAlgorithmPtrOutput) Elem() DsRecordAlgorithmOutput {
@@ -682,12 +646,6 @@ func (o DsRecordDigestTypeOutput) ToDsRecordDigestTypePtrOutputWithContext(ctx c
 	}).(DsRecordDigestTypePtrOutput)
 }
 
-func (o DsRecordDigestTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DsRecordDigestType] {
-	return pulumix.Output[DsRecordDigestType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DsRecordDigestTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -721,12 +679,6 @@ func (o DsRecordDigestTypePtrOutput) ToDsRecordDigestTypePtrOutput() DsRecordDig
 
 func (o DsRecordDigestTypePtrOutput) ToDsRecordDigestTypePtrOutputWithContext(ctx context.Context) DsRecordDigestTypePtrOutput {
 	return o
-}
-
-func (o DsRecordDigestTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DsRecordDigestType] {
-	return pulumix.Output[*DsRecordDigestType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DsRecordDigestTypePtrOutput) Elem() DsRecordDigestTypeOutput {
@@ -869,12 +821,6 @@ func (o GoogleDomainsDnsDsStateOutput) ToGoogleDomainsDnsDsStatePtrOutputWithCon
 	}).(GoogleDomainsDnsDsStatePtrOutput)
 }
 
-func (o GoogleDomainsDnsDsStateOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleDomainsDnsDsState] {
-	return pulumix.Output[GoogleDomainsDnsDsState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleDomainsDnsDsStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -908,12 +854,6 @@ func (o GoogleDomainsDnsDsStatePtrOutput) ToGoogleDomainsDnsDsStatePtrOutput() G
 
 func (o GoogleDomainsDnsDsStatePtrOutput) ToGoogleDomainsDnsDsStatePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsDsStatePtrOutput {
 	return o
-}
-
-func (o GoogleDomainsDnsDsStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleDomainsDnsDsState] {
-	return pulumix.Output[*GoogleDomainsDnsDsState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleDomainsDnsDsStatePtrOutput) Elem() GoogleDomainsDnsDsStateOutput {
@@ -1058,12 +998,6 @@ func (o ManagementSettingsPreferredRenewalMethodOutput) ToManagementSettingsPref
 	}).(ManagementSettingsPreferredRenewalMethodPtrOutput)
 }
 
-func (o ManagementSettingsPreferredRenewalMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementSettingsPreferredRenewalMethod] {
-	return pulumix.Output[ManagementSettingsPreferredRenewalMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagementSettingsPreferredRenewalMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1097,12 +1031,6 @@ func (o ManagementSettingsPreferredRenewalMethodPtrOutput) ToManagementSettingsP
 
 func (o ManagementSettingsPreferredRenewalMethodPtrOutput) ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(ctx context.Context) ManagementSettingsPreferredRenewalMethodPtrOutput {
 	return o
-}
-
-func (o ManagementSettingsPreferredRenewalMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementSettingsPreferredRenewalMethod] {
-	return pulumix.Output[*ManagementSettingsPreferredRenewalMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementSettingsPreferredRenewalMethodPtrOutput) Elem() ManagementSettingsPreferredRenewalMethodOutput {
@@ -1245,12 +1173,6 @@ func (o ManagementSettingsTransferLockStateOutput) ToManagementSettingsTransferL
 	}).(ManagementSettingsTransferLockStatePtrOutput)
 }
 
-func (o ManagementSettingsTransferLockStateOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementSettingsTransferLockState] {
-	return pulumix.Output[ManagementSettingsTransferLockState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagementSettingsTransferLockStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1284,12 +1206,6 @@ func (o ManagementSettingsTransferLockStatePtrOutput) ToManagementSettingsTransf
 
 func (o ManagementSettingsTransferLockStatePtrOutput) ToManagementSettingsTransferLockStatePtrOutputWithContext(ctx context.Context) ManagementSettingsTransferLockStatePtrOutput {
 	return o
-}
-
-func (o ManagementSettingsTransferLockStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementSettingsTransferLockState] {
-	return pulumix.Output[*ManagementSettingsTransferLockState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementSettingsTransferLockStatePtrOutput) Elem() ManagementSettingsTransferLockStateOutput {
@@ -1429,12 +1345,6 @@ func (o RegistrationContactNoticesItemOutput) ToRegistrationContactNoticesItemPt
 	}).(RegistrationContactNoticesItemPtrOutput)
 }
 
-func (o RegistrationContactNoticesItemOutput) ToOutput(ctx context.Context) pulumix.Output[RegistrationContactNoticesItem] {
-	return pulumix.Output[RegistrationContactNoticesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegistrationContactNoticesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1468,12 +1378,6 @@ func (o RegistrationContactNoticesItemPtrOutput) ToRegistrationContactNoticesIte
 
 func (o RegistrationContactNoticesItemPtrOutput) ToRegistrationContactNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationContactNoticesItemPtrOutput {
 	return o
-}
-
-func (o RegistrationContactNoticesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistrationContactNoticesItem] {
-	return pulumix.Output[*RegistrationContactNoticesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistrationContactNoticesItemPtrOutput) Elem() RegistrationContactNoticesItemOutput {
@@ -1569,12 +1473,6 @@ func (i RegistrationContactNoticesItemArray) ToRegistrationContactNoticesItemArr
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationContactNoticesItemArrayOutput)
 }
 
-func (i RegistrationContactNoticesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]RegistrationContactNoticesItem] {
-	return pulumix.Output[[]RegistrationContactNoticesItem]{
-		OutputState: i.ToRegistrationContactNoticesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistrationContactNoticesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (RegistrationContactNoticesItemArrayOutput) ElementType() reflect.Type {
@@ -1587,12 +1485,6 @@ func (o RegistrationContactNoticesItemArrayOutput) ToRegistrationContactNoticesI
 
 func (o RegistrationContactNoticesItemArrayOutput) ToRegistrationContactNoticesItemArrayOutputWithContext(ctx context.Context) RegistrationContactNoticesItemArrayOutput {
 	return o
-}
-
-func (o RegistrationContactNoticesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegistrationContactNoticesItem] {
-	return pulumix.Output[[]RegistrationContactNoticesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistrationContactNoticesItemArrayOutput) Index(i pulumi.IntInput) RegistrationContactNoticesItemOutput {
@@ -1670,12 +1562,6 @@ func (o RegistrationDomainNoticesItemOutput) ToRegistrationDomainNoticesItemPtrO
 	}).(RegistrationDomainNoticesItemPtrOutput)
 }
 
-func (o RegistrationDomainNoticesItemOutput) ToOutput(ctx context.Context) pulumix.Output[RegistrationDomainNoticesItem] {
-	return pulumix.Output[RegistrationDomainNoticesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegistrationDomainNoticesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1709,12 +1595,6 @@ func (o RegistrationDomainNoticesItemPtrOutput) ToRegistrationDomainNoticesItemP
 
 func (o RegistrationDomainNoticesItemPtrOutput) ToRegistrationDomainNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationDomainNoticesItemPtrOutput {
 	return o
-}
-
-func (o RegistrationDomainNoticesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistrationDomainNoticesItem] {
-	return pulumix.Output[*RegistrationDomainNoticesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistrationDomainNoticesItemPtrOutput) Elem() RegistrationDomainNoticesItemOutput {
@@ -1810,12 +1690,6 @@ func (i RegistrationDomainNoticesItemArray) ToRegistrationDomainNoticesItemArray
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationDomainNoticesItemArrayOutput)
 }
 
-func (i RegistrationDomainNoticesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]RegistrationDomainNoticesItem] {
-	return pulumix.Output[[]RegistrationDomainNoticesItem]{
-		OutputState: i.ToRegistrationDomainNoticesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistrationDomainNoticesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (RegistrationDomainNoticesItemArrayOutput) ElementType() reflect.Type {
@@ -1828,12 +1702,6 @@ func (o RegistrationDomainNoticesItemArrayOutput) ToRegistrationDomainNoticesIte
 
 func (o RegistrationDomainNoticesItemArrayOutput) ToRegistrationDomainNoticesItemArrayOutputWithContext(ctx context.Context) RegistrationDomainNoticesItemArrayOutput {
 	return o
-}
-
-func (o RegistrationDomainNoticesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegistrationDomainNoticesItem] {
-	return pulumix.Output[[]RegistrationDomainNoticesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistrationDomainNoticesItemArrayOutput) Index(i pulumi.IntInput) RegistrationDomainNoticesItemOutput {

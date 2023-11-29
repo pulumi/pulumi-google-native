@@ -277,9 +277,6 @@ class User(pulumi.CustomResource):
             __props__ = UserArgs.__new__(UserArgs)
 
             __props__.__dict__["dual_password_type"] = dual_password_type
-            if etag is not None and not opts.urn:
-                warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
-                pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
             __props__.__dict__["etag"] = etag
             __props__.__dict__["host"] = host
             if instance is None and not opts.urn:

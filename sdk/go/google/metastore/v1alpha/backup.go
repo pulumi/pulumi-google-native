@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new backup in a given project and location.
@@ -144,12 +143,6 @@ func (i *Backup) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupOutput)
 }
 
-func (i *Backup) ToOutput(ctx context.Context) pulumix.Output[*Backup] {
-	return pulumix.Output[*Backup]{
-		OutputState: i.ToBackupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupOutput struct{ *pulumi.OutputState }
 
 func (BackupOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o BackupOutput) ToBackupOutput() BackupOutput {
 
 func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
 	return o
-}
-
-func (o BackupOutput) ToOutput(ctx context.Context) pulumix.Output[*Backup] {
-	return pulumix.Output[*Backup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The ID of the backup, which is used as the final component of the backup's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.

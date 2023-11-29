@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets IAM policies on a WorkforcePool.
@@ -73,12 +72,6 @@ func (o LookupWorkforcePoolIamPolicyResultOutput) ToLookupWorkforcePoolIamPolicy
 
 func (o LookupWorkforcePoolIamPolicyResultOutput) ToLookupWorkforcePoolIamPolicyResultOutputWithContext(ctx context.Context) LookupWorkforcePoolIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupWorkforcePoolIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkforcePoolIamPolicyResult] {
-	return pulumix.Output[LookupWorkforcePoolIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

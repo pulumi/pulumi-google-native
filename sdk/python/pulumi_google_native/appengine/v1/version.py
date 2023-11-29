@@ -846,9 +846,6 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["threadsafe"] = threadsafe
             __props__.__dict__["vm"] = vm
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
-            if zones is not None and not opts.urn:
-                warnings.warn("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""", DeprecationWarning)
-                pulumi.log.warn("""zones is deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
             __props__.__dict__["zones"] = zones
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_by"] = None

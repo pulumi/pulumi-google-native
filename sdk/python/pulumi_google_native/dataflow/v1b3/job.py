@@ -596,9 +596,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["current_state"] = current_state
             __props__.__dict__["current_state_time"] = current_state_time
             __props__.__dict__["environment"] = environment
-            if execution_info is not None and not opts.urn:
-                warnings.warn("""Deprecated.""", DeprecationWarning)
-                pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
             __props__.__dict__["execution_info"] = execution_info
             __props__.__dict__["id"] = id
             __props__.__dict__["job_metadata"] = job_metadata

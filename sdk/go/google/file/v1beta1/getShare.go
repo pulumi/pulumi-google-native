@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a specific share.
@@ -87,12 +86,6 @@ func (o LookupShareResultOutput) ToLookupShareResultOutput() LookupShareResultOu
 
 func (o LookupShareResultOutput) ToLookupShareResultOutputWithContext(ctx context.Context) LookupShareResultOutput {
 	return o
-}
-
-func (o LookupShareResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupShareResult] {
-	return pulumix.Output[LookupShareResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.

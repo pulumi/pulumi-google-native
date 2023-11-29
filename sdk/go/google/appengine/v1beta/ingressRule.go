@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a firewall rule for the application.
@@ -123,12 +122,6 @@ func (i *IngressRule) ToIngressRuleOutputWithContext(ctx context.Context) Ingres
 	return pulumi.ToOutputWithContext(ctx, i).(IngressRuleOutput)
 }
 
-func (i *IngressRule) ToOutput(ctx context.Context) pulumix.Output[*IngressRule] {
-	return pulumix.Output[*IngressRule]{
-		OutputState: i.ToIngressRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IngressRuleOutput struct{ *pulumi.OutputState }
 
 func (IngressRuleOutput) ElementType() reflect.Type {
@@ -141,12 +134,6 @@ func (o IngressRuleOutput) ToIngressRuleOutput() IngressRuleOutput {
 
 func (o IngressRuleOutput) ToIngressRuleOutputWithContext(ctx context.Context) IngressRuleOutput {
 	return o
-}
-
-func (o IngressRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*IngressRule] {
-	return pulumix.Output[*IngressRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action to take on matched requests.

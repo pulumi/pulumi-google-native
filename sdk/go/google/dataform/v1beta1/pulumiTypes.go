@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -88,12 +81,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -107,12 +94,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -142,12 +123,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -181,12 +156,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -214,12 +183,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -291,12 +254,6 @@ func (i CodeCompilationConfigArgs) ToCodeCompilationConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CodeCompilationConfigOutput)
 }
 
-func (i CodeCompilationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[CodeCompilationConfig] {
-	return pulumix.Output[CodeCompilationConfig]{
-		OutputState: i.ToCodeCompilationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CodeCompilationConfigArgs) ToCodeCompilationConfigPtrOutput() CodeCompilationConfigPtrOutput {
 	return i.ToCodeCompilationConfigPtrOutputWithContext(context.Background())
 }
@@ -338,12 +295,6 @@ func (i *codeCompilationConfigPtrType) ToCodeCompilationConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CodeCompilationConfigPtrOutput)
 }
 
-func (i *codeCompilationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*CodeCompilationConfig] {
-	return pulumix.Output[*CodeCompilationConfig]{
-		OutputState: i.ToCodeCompilationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configures various aspects of Dataform code compilation.
 type CodeCompilationConfigOutput struct{ *pulumi.OutputState }
 
@@ -367,12 +318,6 @@ func (o CodeCompilationConfigOutput) ToCodeCompilationConfigPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CodeCompilationConfig) *CodeCompilationConfig {
 		return &v
 	}).(CodeCompilationConfigPtrOutput)
-}
-
-func (o CodeCompilationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[CodeCompilationConfig] {
-	return pulumix.Output[CodeCompilationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The default schema (BigQuery dataset ID) for assertions.
@@ -427,12 +372,6 @@ func (o CodeCompilationConfigPtrOutput) ToCodeCompilationConfigPtrOutput() CodeC
 
 func (o CodeCompilationConfigPtrOutput) ToCodeCompilationConfigPtrOutputWithContext(ctx context.Context) CodeCompilationConfigPtrOutput {
 	return o
-}
-
-func (o CodeCompilationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CodeCompilationConfig] {
-	return pulumix.Output[*CodeCompilationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CodeCompilationConfigPtrOutput) Elem() CodeCompilationConfigOutput {
@@ -560,12 +499,6 @@ func (o CodeCompilationConfigResponseOutput) ToCodeCompilationConfigResponseOutp
 	return o
 }
 
-func (o CodeCompilationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CodeCompilationConfigResponse] {
-	return pulumix.Output[CodeCompilationConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The default schema (BigQuery dataset ID) for assertions.
 func (o CodeCompilationConfigResponseOutput) AssertionSchema() pulumi.StringOutput {
 	return o.ApplyT(func(v CodeCompilationConfigResponse) string { return v.AssertionSchema }).(pulumi.StringOutput)
@@ -633,12 +566,6 @@ func (o CompilationErrorResponseOutput) ToCompilationErrorResponseOutputWithCont
 	return o
 }
 
-func (o CompilationErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CompilationErrorResponse] {
-	return pulumix.Output[CompilationErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identifier of the action where this error occurred, if available.
 func (o CompilationErrorResponseOutput) ActionTarget() TargetResponseOutput {
 	return o.ApplyT(func(v CompilationErrorResponse) TargetResponse { return v.ActionTarget }).(TargetResponseOutput)
@@ -671,12 +598,6 @@ func (o CompilationErrorResponseArrayOutput) ToCompilationErrorResponseArrayOutp
 
 func (o CompilationErrorResponseArrayOutput) ToCompilationErrorResponseArrayOutputWithContext(ctx context.Context) CompilationErrorResponseArrayOutput {
 	return o
-}
-
-func (o CompilationErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CompilationErrorResponse] {
-	return pulumix.Output[[]CompilationErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompilationErrorResponseArrayOutput) Index(i pulumi.IntInput) CompilationErrorResponseOutput {
@@ -732,12 +653,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -779,12 +694,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -808,12 +717,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -848,12 +751,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -933,12 +830,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1006,12 +897,6 @@ func (i GitRemoteSettingsArgs) ToGitRemoteSettingsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GitRemoteSettingsOutput)
 }
 
-func (i GitRemoteSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[GitRemoteSettings] {
-	return pulumix.Output[GitRemoteSettings]{
-		OutputState: i.ToGitRemoteSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitRemoteSettingsArgs) ToGitRemoteSettingsPtrOutput() GitRemoteSettingsPtrOutput {
 	return i.ToGitRemoteSettingsPtrOutputWithContext(context.Background())
 }
@@ -1053,12 +938,6 @@ func (i *gitRemoteSettingsPtrType) ToGitRemoteSettingsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GitRemoteSettingsPtrOutput)
 }
 
-func (i *gitRemoteSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitRemoteSettings] {
-	return pulumix.Output[*GitRemoteSettings]{
-		OutputState: i.ToGitRemoteSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Controls Git remote configuration for a repository.
 type GitRemoteSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1082,12 +961,6 @@ func (o GitRemoteSettingsOutput) ToGitRemoteSettingsPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitRemoteSettings) *GitRemoteSettings {
 		return &v
 	}).(GitRemoteSettingsPtrOutput)
-}
-
-func (o GitRemoteSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[GitRemoteSettings] {
-	return pulumix.Output[GitRemoteSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
@@ -1122,12 +995,6 @@ func (o GitRemoteSettingsPtrOutput) ToGitRemoteSettingsPtrOutput() GitRemoteSett
 
 func (o GitRemoteSettingsPtrOutput) ToGitRemoteSettingsPtrOutputWithContext(ctx context.Context) GitRemoteSettingsPtrOutput {
 	return o
-}
-
-func (o GitRemoteSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitRemoteSettings] {
-	return pulumix.Output[*GitRemoteSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitRemoteSettingsPtrOutput) Elem() GitRemoteSettingsOutput {
@@ -1211,12 +1078,6 @@ func (o GitRemoteSettingsResponseOutput) ToGitRemoteSettingsResponseOutputWithCo
 	return o
 }
 
-func (o GitRemoteSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitRemoteSettingsResponse] {
-	return pulumix.Output[GitRemoteSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
 func (o GitRemoteSettingsResponseOutput) AuthenticationTokenSecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRemoteSettingsResponse) string { return v.AuthenticationTokenSecretVersion }).(pulumi.StringOutput)
@@ -1265,12 +1126,6 @@ func (o IntervalResponseOutput) ToIntervalResponseOutput() IntervalResponseOutpu
 
 func (o IntervalResponseOutput) ToIntervalResponseOutputWithContext(ctx context.Context) IntervalResponseOutput {
 	return o
-}
-
-func (o IntervalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IntervalResponse] {
-	return pulumix.Output[IntervalResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
@@ -1338,12 +1193,6 @@ func (i InvocationConfigArgs) ToInvocationConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(InvocationConfigOutput)
 }
 
-func (i InvocationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InvocationConfig] {
-	return pulumix.Output[InvocationConfig]{
-		OutputState: i.ToInvocationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InvocationConfigArgs) ToInvocationConfigPtrOutput() InvocationConfigPtrOutput {
 	return i.ToInvocationConfigPtrOutputWithContext(context.Background())
 }
@@ -1385,12 +1234,6 @@ func (i *invocationConfigPtrType) ToInvocationConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(InvocationConfigPtrOutput)
 }
 
-func (i *invocationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InvocationConfig] {
-	return pulumix.Output[*InvocationConfig]{
-		OutputState: i.ToInvocationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Includes various configuration options for a workflow invocation. If both `included_targets` and `included_tags` are unset, all actions will be included.
 type InvocationConfigOutput struct{ *pulumi.OutputState }
 
@@ -1414,12 +1257,6 @@ func (o InvocationConfigOutput) ToInvocationConfigPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InvocationConfig) *InvocationConfig {
 		return &v
 	}).(InvocationConfigPtrOutput)
-}
-
-func (o InvocationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InvocationConfig] {
-	return pulumix.Output[InvocationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. When set to true, any incremental tables will be fully refreshed.
@@ -1464,12 +1301,6 @@ func (o InvocationConfigPtrOutput) ToInvocationConfigPtrOutput() InvocationConfi
 
 func (o InvocationConfigPtrOutput) ToInvocationConfigPtrOutputWithContext(ctx context.Context) InvocationConfigPtrOutput {
 	return o
-}
-
-func (o InvocationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InvocationConfig] {
-	return pulumix.Output[*InvocationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InvocationConfigPtrOutput) Elem() InvocationConfigOutput {
@@ -1573,12 +1404,6 @@ func (o InvocationConfigResponseOutput) ToInvocationConfigResponseOutputWithCont
 	return o
 }
 
-func (o InvocationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InvocationConfigResponse] {
-	return pulumix.Output[InvocationConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. When set to true, any incremental tables will be fully refreshed.
 func (o InvocationConfigResponseOutput) FullyRefreshIncrementalTablesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v InvocationConfigResponse) bool { return v.FullyRefreshIncrementalTablesEnabled }).(pulumi.BoolOutput)
@@ -1634,12 +1459,6 @@ func (o ScheduledExecutionRecordResponseOutput) ToScheduledExecutionRecordRespon
 	return o
 }
 
-func (o ScheduledExecutionRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduledExecutionRecordResponse] {
-	return pulumix.Output[ScheduledExecutionRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
 func (o ScheduledExecutionRecordResponseOutput) ErrorStatus() StatusResponseOutput {
 	return o.ApplyT(func(v ScheduledExecutionRecordResponse) StatusResponse { return v.ErrorStatus }).(StatusResponseOutput)
@@ -1667,12 +1486,6 @@ func (o ScheduledExecutionRecordResponseArrayOutput) ToScheduledExecutionRecordR
 
 func (o ScheduledExecutionRecordResponseArrayOutput) ToScheduledExecutionRecordResponseArrayOutputWithContext(ctx context.Context) ScheduledExecutionRecordResponseArrayOutput {
 	return o
-}
-
-func (o ScheduledExecutionRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScheduledExecutionRecordResponse] {
-	return pulumix.Output[[]ScheduledExecutionRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduledExecutionRecordResponseArrayOutput) Index(i pulumi.IntInput) ScheduledExecutionRecordResponseOutput {
@@ -1706,12 +1519,6 @@ func (o ScheduledReleaseRecordResponseOutput) ToScheduledReleaseRecordResponseOu
 	return o
 }
 
-func (o ScheduledReleaseRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduledReleaseRecordResponse] {
-	return pulumix.Output[ScheduledReleaseRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the created compilation result, if one was successfully created. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
 func (o ScheduledReleaseRecordResponseOutput) CompilationResult() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduledReleaseRecordResponse) string { return v.CompilationResult }).(pulumi.StringOutput)
@@ -1739,12 +1546,6 @@ func (o ScheduledReleaseRecordResponseArrayOutput) ToScheduledReleaseRecordRespo
 
 func (o ScheduledReleaseRecordResponseArrayOutput) ToScheduledReleaseRecordResponseArrayOutputWithContext(ctx context.Context) ScheduledReleaseRecordResponseArrayOutput {
 	return o
-}
-
-func (o ScheduledReleaseRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScheduledReleaseRecordResponse] {
-	return pulumix.Output[[]ScheduledReleaseRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduledReleaseRecordResponseArrayOutput) Index(i pulumi.IntInput) ScheduledReleaseRecordResponseOutput {
@@ -1792,12 +1593,6 @@ func (i SshAuthenticationConfigArgs) ToSshAuthenticationConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SshAuthenticationConfigOutput)
 }
 
-func (i SshAuthenticationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SshAuthenticationConfig] {
-	return pulumix.Output[SshAuthenticationConfig]{
-		OutputState: i.ToSshAuthenticationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SshAuthenticationConfigArgs) ToSshAuthenticationConfigPtrOutput() SshAuthenticationConfigPtrOutput {
 	return i.ToSshAuthenticationConfigPtrOutputWithContext(context.Background())
 }
@@ -1839,12 +1634,6 @@ func (i *sshAuthenticationConfigPtrType) ToSshAuthenticationConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SshAuthenticationConfigPtrOutput)
 }
 
-func (i *sshAuthenticationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SshAuthenticationConfig] {
-	return pulumix.Output[*SshAuthenticationConfig]{
-		OutputState: i.ToSshAuthenticationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configures fields for performing SSH authentication.
 type SshAuthenticationConfigOutput struct{ *pulumi.OutputState }
 
@@ -1870,12 +1659,6 @@ func (o SshAuthenticationConfigOutput) ToSshAuthenticationConfigPtrOutputWithCon
 	}).(SshAuthenticationConfigPtrOutput)
 }
 
-func (o SshAuthenticationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SshAuthenticationConfig] {
-	return pulumix.Output[SshAuthenticationConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Content of a public SSH key to verify an identity of a remote Git host.
 func (o SshAuthenticationConfigOutput) HostPublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SshAuthenticationConfig) string { return v.HostPublicKey }).(pulumi.StringOutput)
@@ -1898,12 +1681,6 @@ func (o SshAuthenticationConfigPtrOutput) ToSshAuthenticationConfigPtrOutput() S
 
 func (o SshAuthenticationConfigPtrOutput) ToSshAuthenticationConfigPtrOutputWithContext(ctx context.Context) SshAuthenticationConfigPtrOutput {
 	return o
-}
-
-func (o SshAuthenticationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SshAuthenticationConfig] {
-	return pulumix.Output[*SshAuthenticationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SshAuthenticationConfigPtrOutput) Elem() SshAuthenticationConfigOutput {
@@ -1959,12 +1736,6 @@ func (o SshAuthenticationConfigResponseOutput) ToSshAuthenticationConfigResponse
 	return o
 }
 
-func (o SshAuthenticationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SshAuthenticationConfigResponse] {
-	return pulumix.Output[SshAuthenticationConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Content of a public SSH key to verify an identity of a remote Git host.
 func (o SshAuthenticationConfigResponseOutput) HostPublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SshAuthenticationConfigResponse) string { return v.HostPublicKey }).(pulumi.StringOutput)
@@ -1998,12 +1769,6 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
-}
-
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -2064,12 +1829,6 @@ func (i TargetArgs) ToTargetOutputWithContext(ctx context.Context) TargetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetOutput)
 }
 
-func (i TargetArgs) ToOutput(ctx context.Context) pulumix.Output[Target] {
-	return pulumix.Output[Target]{
-		OutputState: i.ToTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetArrayInput is an input type that accepts TargetArray and TargetArrayOutput values.
 // You can construct a concrete instance of `TargetArrayInput` via:
 //
@@ -2095,12 +1854,6 @@ func (i TargetArray) ToTargetArrayOutputWithContext(ctx context.Context) TargetA
 	return pulumi.ToOutputWithContext(ctx, i).(TargetArrayOutput)
 }
 
-func (i TargetArray) ToOutput(ctx context.Context) pulumix.Output[[]Target] {
-	return pulumix.Output[[]Target]{
-		OutputState: i.ToTargetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an action identifier. If the action writes output, the output will be written to the referenced database object.
 type TargetOutput struct{ *pulumi.OutputState }
 
@@ -2114,12 +1867,6 @@ func (o TargetOutput) ToTargetOutput() TargetOutput {
 
 func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 	return o
-}
-
-func (o TargetOutput) ToOutput(ctx context.Context) pulumix.Output[Target] {
-	return pulumix.Output[Target]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action's database (Google Cloud project ID) .
@@ -2149,12 +1896,6 @@ func (o TargetArrayOutput) ToTargetArrayOutput() TargetArrayOutput {
 
 func (o TargetArrayOutput) ToTargetArrayOutputWithContext(ctx context.Context) TargetArrayOutput {
 	return o
-}
-
-func (o TargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Target] {
-	return pulumix.Output[[]Target]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetArrayOutput) Index(i pulumi.IntInput) TargetOutput {
@@ -2188,12 +1929,6 @@ func (o TargetResponseOutput) ToTargetResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o TargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetResponse] {
-	return pulumix.Output[TargetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The action's database (Google Cloud project ID) .
 func (o TargetResponseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetResponse) string { return v.Database }).(pulumi.StringOutput)
@@ -2221,12 +1956,6 @@ func (o TargetResponseArrayOutput) ToTargetResponseArrayOutput() TargetResponseA
 
 func (o TargetResponseArrayOutput) ToTargetResponseArrayOutputWithContext(ctx context.Context) TargetResponseArrayOutput {
 	return o
-}
-
-func (o TargetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetResponse] {
-	return pulumix.Output[[]TargetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetResponseArrayOutput) Index(i pulumi.IntInput) TargetResponseOutput {
@@ -2278,12 +2007,6 @@ func (i WorkspaceCompilationOverridesArgs) ToWorkspaceCompilationOverridesOutput
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCompilationOverridesOutput)
 }
 
-func (i WorkspaceCompilationOverridesArgs) ToOutput(ctx context.Context) pulumix.Output[WorkspaceCompilationOverrides] {
-	return pulumix.Output[WorkspaceCompilationOverrides]{
-		OutputState: i.ToWorkspaceCompilationOverridesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WorkspaceCompilationOverridesArgs) ToWorkspaceCompilationOverridesPtrOutput() WorkspaceCompilationOverridesPtrOutput {
 	return i.ToWorkspaceCompilationOverridesPtrOutputWithContext(context.Background())
 }
@@ -2325,12 +2048,6 @@ func (i *workspaceCompilationOverridesPtrType) ToWorkspaceCompilationOverridesPt
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCompilationOverridesPtrOutput)
 }
 
-func (i *workspaceCompilationOverridesPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceCompilationOverrides] {
-	return pulumix.Output[*WorkspaceCompilationOverrides]{
-		OutputState: i.ToWorkspaceCompilationOverridesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results.
 type WorkspaceCompilationOverridesOutput struct{ *pulumi.OutputState }
 
@@ -2354,12 +2071,6 @@ func (o WorkspaceCompilationOverridesOutput) ToWorkspaceCompilationOverridesPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceCompilationOverrides) *WorkspaceCompilationOverrides {
 		return &v
 	}).(WorkspaceCompilationOverridesPtrOutput)
-}
-
-func (o WorkspaceCompilationOverridesOutput) ToOutput(ctx context.Context) pulumix.Output[WorkspaceCompilationOverrides] {
-	return pulumix.Output[WorkspaceCompilationOverrides]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The default database (Google Cloud project ID).
@@ -2389,12 +2100,6 @@ func (o WorkspaceCompilationOverridesPtrOutput) ToWorkspaceCompilationOverridesP
 
 func (o WorkspaceCompilationOverridesPtrOutput) ToWorkspaceCompilationOverridesPtrOutputWithContext(ctx context.Context) WorkspaceCompilationOverridesPtrOutput {
 	return o
-}
-
-func (o WorkspaceCompilationOverridesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceCompilationOverrides] {
-	return pulumix.Output[*WorkspaceCompilationOverrides]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkspaceCompilationOverridesPtrOutput) Elem() WorkspaceCompilationOverridesOutput {
@@ -2460,12 +2165,6 @@ func (o WorkspaceCompilationOverridesResponseOutput) ToWorkspaceCompilationOverr
 
 func (o WorkspaceCompilationOverridesResponseOutput) ToWorkspaceCompilationOverridesResponseOutputWithContext(ctx context.Context) WorkspaceCompilationOverridesResponseOutput {
 	return o
-}
-
-func (o WorkspaceCompilationOverridesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkspaceCompilationOverridesResponse] {
-	return pulumix.Output[WorkspaceCompilationOverridesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The default database (Google Cloud project ID).

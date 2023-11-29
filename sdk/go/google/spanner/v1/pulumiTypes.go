@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AutoscalingConfigArgs) ToAutoscalingConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigOutput)
 }
 
-func (i AutoscalingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingConfig] {
-	return pulumix.Output[AutoscalingConfig]{
-		OutputState: i.ToAutoscalingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingConfigArgs) ToAutoscalingConfigPtrOutput() AutoscalingConfigPtrOutput {
 	return i.ToAutoscalingConfigPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *autoscalingConfigPtrType) ToAutoscalingConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigPtrOutput)
 }
 
-func (i *autoscalingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingConfig] {
-	return pulumix.Output[*AutoscalingConfig]{
-		OutputState: i.ToAutoscalingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Autoscaling config for an instance.
 type AutoscalingConfigOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o AutoscalingConfigOutput) ToAutoscalingConfigPtrOutputWithContext(ctx con
 	}).(AutoscalingConfigPtrOutput)
 }
 
-func (o AutoscalingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingConfig] {
-	return pulumix.Output[AutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Autoscaling limits for an instance.
 func (o AutoscalingConfigOutput) AutoscalingLimits() AutoscalingLimitsOutput {
 	return o.ApplyT(func(v AutoscalingConfig) AutoscalingLimits { return v.AutoscalingLimits }).(AutoscalingLimitsOutput)
@@ -159,12 +140,6 @@ func (o AutoscalingConfigPtrOutput) ToAutoscalingConfigPtrOutput() AutoscalingCo
 
 func (o AutoscalingConfigPtrOutput) ToAutoscalingConfigPtrOutputWithContext(ctx context.Context) AutoscalingConfigPtrOutput {
 	return o
-}
-
-func (o AutoscalingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingConfig] {
-	return pulumix.Output[*AutoscalingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingConfigPtrOutput) Elem() AutoscalingConfigOutput {
@@ -218,12 +193,6 @@ func (o AutoscalingConfigResponseOutput) ToAutoscalingConfigResponseOutput() Aut
 
 func (o AutoscalingConfigResponseOutput) ToAutoscalingConfigResponseOutputWithContext(ctx context.Context) AutoscalingConfigResponseOutput {
 	return o
-}
-
-func (o AutoscalingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingConfigResponse] {
-	return pulumix.Output[AutoscalingConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Autoscaling limits for an instance.
@@ -283,12 +252,6 @@ func (i AutoscalingLimitsArgs) ToAutoscalingLimitsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingLimitsOutput)
 }
 
-func (i AutoscalingLimitsArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingLimits] {
-	return pulumix.Output[AutoscalingLimits]{
-		OutputState: i.ToAutoscalingLimitsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingLimitsArgs) ToAutoscalingLimitsPtrOutput() AutoscalingLimitsPtrOutput {
 	return i.ToAutoscalingLimitsPtrOutputWithContext(context.Background())
 }
@@ -330,12 +293,6 @@ func (i *autoscalingLimitsPtrType) ToAutoscalingLimitsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingLimitsPtrOutput)
 }
 
-func (i *autoscalingLimitsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingLimits] {
-	return pulumix.Output[*AutoscalingLimits]{
-		OutputState: i.ToAutoscalingLimitsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The autoscaling limits for the instance. Users can define the minimum and maximum compute capacity allocated to the instance, and the autoscaler will only scale within that range. Users can either use nodes or processing units to specify the limits, but should use the same unit to set both the min_limit and max_limit.
 type AutoscalingLimitsOutput struct{ *pulumi.OutputState }
 
@@ -359,12 +316,6 @@ func (o AutoscalingLimitsOutput) ToAutoscalingLimitsPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingLimits) *AutoscalingLimits {
 		return &v
 	}).(AutoscalingLimitsPtrOutput)
-}
-
-func (o AutoscalingLimitsOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingLimits] {
-	return pulumix.Output[AutoscalingLimits]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number of nodes allocated to the instance. If set, this number should be greater than or equal to min_nodes.
@@ -399,12 +350,6 @@ func (o AutoscalingLimitsPtrOutput) ToAutoscalingLimitsPtrOutput() AutoscalingLi
 
 func (o AutoscalingLimitsPtrOutput) ToAutoscalingLimitsPtrOutputWithContext(ctx context.Context) AutoscalingLimitsPtrOutput {
 	return o
-}
-
-func (o AutoscalingLimitsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingLimits] {
-	return pulumix.Output[*AutoscalingLimits]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingLimitsPtrOutput) Elem() AutoscalingLimitsOutput {
@@ -484,12 +429,6 @@ func (o AutoscalingLimitsResponseOutput) ToAutoscalingLimitsResponseOutputWithCo
 	return o
 }
 
-func (o AutoscalingLimitsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingLimitsResponse] {
-	return pulumix.Output[AutoscalingLimitsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of nodes allocated to the instance. If set, this number should be greater than or equal to min_nodes.
 func (o AutoscalingLimitsResponseOutput) MaxNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingLimitsResponse) int { return v.MaxNodes }).(pulumi.IntOutput)
@@ -549,12 +488,6 @@ func (i AutoscalingTargetsArgs) ToAutoscalingTargetsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingTargetsOutput)
 }
 
-func (i AutoscalingTargetsArgs) ToOutput(ctx context.Context) pulumix.Output[AutoscalingTargets] {
-	return pulumix.Output[AutoscalingTargets]{
-		OutputState: i.ToAutoscalingTargetsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoscalingTargetsArgs) ToAutoscalingTargetsPtrOutput() AutoscalingTargetsPtrOutput {
 	return i.ToAutoscalingTargetsPtrOutputWithContext(context.Background())
 }
@@ -596,12 +529,6 @@ func (i *autoscalingTargetsPtrType) ToAutoscalingTargetsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingTargetsPtrOutput)
 }
 
-func (i *autoscalingTargetsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingTargets] {
-	return pulumix.Output[*AutoscalingTargets]{
-		OutputState: i.ToAutoscalingTargetsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The autoscaling targets for an instance.
 type AutoscalingTargetsOutput struct{ *pulumi.OutputState }
 
@@ -627,12 +554,6 @@ func (o AutoscalingTargetsOutput) ToAutoscalingTargetsPtrOutputWithContext(ctx c
 	}).(AutoscalingTargetsPtrOutput)
 }
 
-func (o AutoscalingTargetsOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingTargets] {
-	return pulumix.Output[AutoscalingTargets]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
 func (o AutoscalingTargetsOutput) HighPriorityCpuUtilizationPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingTargets) int { return v.HighPriorityCpuUtilizationPercent }).(pulumi.IntOutput)
@@ -655,12 +576,6 @@ func (o AutoscalingTargetsPtrOutput) ToAutoscalingTargetsPtrOutput() Autoscaling
 
 func (o AutoscalingTargetsPtrOutput) ToAutoscalingTargetsPtrOutputWithContext(ctx context.Context) AutoscalingTargetsPtrOutput {
 	return o
-}
-
-func (o AutoscalingTargetsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingTargets] {
-	return pulumix.Output[*AutoscalingTargets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingTargetsPtrOutput) Elem() AutoscalingTargetsOutput {
@@ -716,12 +631,6 @@ func (o AutoscalingTargetsResponseOutput) ToAutoscalingTargetsResponseOutputWith
 	return o
 }
 
-func (o AutoscalingTargetsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoscalingTargetsResponse] {
-	return pulumix.Output[AutoscalingTargetsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
 func (o AutoscalingTargetsResponseOutput) HighPriorityCpuUtilizationPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingTargetsResponse) int { return v.HighPriorityCpuUtilizationPercent }).(pulumi.IntOutput)
@@ -757,12 +666,6 @@ func (o BackupInfoResponseOutput) ToBackupInfoResponseOutput() BackupInfoRespons
 
 func (o BackupInfoResponseOutput) ToBackupInfoResponseOutputWithContext(ctx context.Context) BackupInfoResponseOutput {
 	return o
-}
-
-func (o BackupInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackupInfoResponse] {
-	return pulumix.Output[BackupInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the backup.
@@ -828,12 +731,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -859,12 +756,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -878,12 +769,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -913,12 +798,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -952,12 +831,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -985,12 +858,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -1034,12 +901,6 @@ func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
 }
 
-func (i EncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
-	return pulumix.Output[EncryptionConfig]{
-		OutputState: i.ToEncryptionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
 	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -1081,12 +942,6 @@ func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
 }
 
-func (i *encryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
-	return pulumix.Output[*EncryptionConfig]{
-		OutputState: i.ToEncryptionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encryption configuration for a Cloud Spanner database.
 type EncryptionConfigOutput struct{ *pulumi.OutputState }
 
@@ -1112,12 +967,6 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx conte
 	}).(EncryptionConfigPtrOutput)
 }
 
-func (o EncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfig] {
-	return pulumix.Output[EncryptionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
 func (o EncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
@@ -1135,12 +984,6 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfi
 
 func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
 	return o
-}
-
-func (o EncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfig] {
-	return pulumix.Output[*EncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
@@ -1184,12 +1027,6 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithCont
 	return o
 }
 
-func (o EncryptionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfigResponse] {
-	return pulumix.Output[EncryptionConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
 func (o EncryptionConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -1220,12 +1057,6 @@ func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponseOutputWithContext(
 	return o
 }
 
-func (o EncryptionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionInfoResponse] {
-	return pulumix.Output[EncryptionInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
 func (o EncryptionInfoResponseOutput) EncryptionStatus() StatusResponseOutput {
 	return o.ApplyT(func(v EncryptionInfoResponse) StatusResponse { return v.EncryptionStatus }).(StatusResponseOutput)
@@ -1253,12 +1084,6 @@ func (o EncryptionInfoResponseArrayOutput) ToEncryptionInfoResponseArrayOutput()
 
 func (o EncryptionInfoResponseArrayOutput) ToEncryptionInfoResponseArrayOutputWithContext(ctx context.Context) EncryptionInfoResponseArrayOutput {
 	return o
-}
-
-func (o EncryptionInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EncryptionInfoResponse] {
-	return pulumix.Output[[]EncryptionInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionInfoResponseArrayOutput) Index(i pulumi.IntInput) EncryptionInfoResponseOutput {
@@ -1314,12 +1139,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1361,12 +1180,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1390,12 +1203,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1430,12 +1237,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1515,12 +1316,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1576,12 +1371,6 @@ func (i FreeInstanceMetadataArgs) ToFreeInstanceMetadataOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FreeInstanceMetadataOutput)
 }
 
-func (i FreeInstanceMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[FreeInstanceMetadata] {
-	return pulumix.Output[FreeInstanceMetadata]{
-		OutputState: i.ToFreeInstanceMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FreeInstanceMetadataArgs) ToFreeInstanceMetadataPtrOutput() FreeInstanceMetadataPtrOutput {
 	return i.ToFreeInstanceMetadataPtrOutputWithContext(context.Background())
 }
@@ -1623,12 +1412,6 @@ func (i *freeInstanceMetadataPtrType) ToFreeInstanceMetadataPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(FreeInstanceMetadataPtrOutput)
 }
 
-func (i *freeInstanceMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*FreeInstanceMetadata] {
-	return pulumix.Output[*FreeInstanceMetadata]{
-		OutputState: i.ToFreeInstanceMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes.
 type FreeInstanceMetadataOutput struct{ *pulumi.OutputState }
 
@@ -1654,12 +1437,6 @@ func (o FreeInstanceMetadataOutput) ToFreeInstanceMetadataPtrOutputWithContext(c
 	}).(FreeInstanceMetadataPtrOutput)
 }
 
-func (o FreeInstanceMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[FreeInstanceMetadata] {
-	return pulumix.Output[FreeInstanceMetadata]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
 func (o FreeInstanceMetadataOutput) ExpireBehavior() FreeInstanceMetadataExpireBehaviorPtrOutput {
 	return o.ApplyT(func(v FreeInstanceMetadata) *FreeInstanceMetadataExpireBehavior { return v.ExpireBehavior }).(FreeInstanceMetadataExpireBehaviorPtrOutput)
@@ -1677,12 +1454,6 @@ func (o FreeInstanceMetadataPtrOutput) ToFreeInstanceMetadataPtrOutput() FreeIns
 
 func (o FreeInstanceMetadataPtrOutput) ToFreeInstanceMetadataPtrOutputWithContext(ctx context.Context) FreeInstanceMetadataPtrOutput {
 	return o
-}
-
-func (o FreeInstanceMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FreeInstanceMetadata] {
-	return pulumix.Output[*FreeInstanceMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FreeInstanceMetadataPtrOutput) Elem() FreeInstanceMetadataOutput {
@@ -1728,12 +1499,6 @@ func (o FreeInstanceMetadataResponseOutput) ToFreeInstanceMetadataResponseOutput
 
 func (o FreeInstanceMetadataResponseOutput) ToFreeInstanceMetadataResponseOutputWithContext(ctx context.Context) FreeInstanceMetadataResponseOutput {
 	return o
-}
-
-func (o FreeInstanceMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FreeInstanceMetadataResponse] {
-	return pulumix.Output[FreeInstanceMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
@@ -1792,12 +1557,6 @@ func (i ReplicaInfoArgs) ToReplicaInfoOutputWithContext(ctx context.Context) Rep
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicaInfoOutput)
 }
 
-func (i ReplicaInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ReplicaInfo] {
-	return pulumix.Output[ReplicaInfo]{
-		OutputState: i.ToReplicaInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReplicaInfoArrayInput is an input type that accepts ReplicaInfoArray and ReplicaInfoArrayOutput values.
 // You can construct a concrete instance of `ReplicaInfoArrayInput` via:
 //
@@ -1823,12 +1582,6 @@ func (i ReplicaInfoArray) ToReplicaInfoArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicaInfoArrayOutput)
 }
 
-func (i ReplicaInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]ReplicaInfo] {
-	return pulumix.Output[[]ReplicaInfo]{
-		OutputState: i.ToReplicaInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReplicaInfoOutput struct{ *pulumi.OutputState }
 
 func (ReplicaInfoOutput) ElementType() reflect.Type {
@@ -1841,12 +1594,6 @@ func (o ReplicaInfoOutput) ToReplicaInfoOutput() ReplicaInfoOutput {
 
 func (o ReplicaInfoOutput) ToReplicaInfoOutputWithContext(ctx context.Context) ReplicaInfoOutput {
 	return o
-}
-
-func (o ReplicaInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicaInfo] {
-	return pulumix.Output[ReplicaInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details.
@@ -1878,12 +1625,6 @@ func (o ReplicaInfoArrayOutput) ToReplicaInfoArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ReplicaInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReplicaInfo] {
-	return pulumix.Output[[]ReplicaInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReplicaInfoArrayOutput) Index(i pulumi.IntInput) ReplicaInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReplicaInfo {
 		return vs[0].([]ReplicaInfo)[vs[1].(int)]
@@ -1911,12 +1652,6 @@ func (o ReplicaInfoResponseOutput) ToReplicaInfoResponseOutput() ReplicaInfoResp
 
 func (o ReplicaInfoResponseOutput) ToReplicaInfoResponseOutputWithContext(ctx context.Context) ReplicaInfoResponseOutput {
 	return o
-}
-
-func (o ReplicaInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicaInfoResponse] {
-	return pulumix.Output[ReplicaInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details.
@@ -1948,12 +1683,6 @@ func (o ReplicaInfoResponseArrayOutput) ToReplicaInfoResponseArrayOutputWithCont
 	return o
 }
 
-func (o ReplicaInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReplicaInfoResponse] {
-	return pulumix.Output[[]ReplicaInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReplicaInfoResponseArrayOutput) Index(i pulumi.IntInput) ReplicaInfoResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReplicaInfoResponse {
 		return vs[0].([]ReplicaInfoResponse)[vs[1].(int)]
@@ -1981,12 +1710,6 @@ func (o RestoreInfoResponseOutput) ToRestoreInfoResponseOutput() RestoreInfoResp
 
 func (o RestoreInfoResponseOutput) ToRestoreInfoResponseOutputWithContext(ctx context.Context) RestoreInfoResponseOutput {
 	return o
-}
-
-func (o RestoreInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreInfoResponse] {
-	return pulumix.Output[RestoreInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Information about the backup used to restore the database. The backup may no longer exist.
@@ -2022,12 +1745,6 @@ func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 
 func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
-}
-
-func (o StatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusResponse] {
-	return pulumix.Output[StatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

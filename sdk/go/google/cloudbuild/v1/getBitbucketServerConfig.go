@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve a `BitbucketServerConfig`. This API is experimental.
@@ -89,12 +88,6 @@ func (o LookupBitbucketServerConfigResultOutput) ToLookupBitbucketServerConfigRe
 
 func (o LookupBitbucketServerConfigResultOutput) ToLookupBitbucketServerConfigResultOutputWithContext(ctx context.Context) LookupBitbucketServerConfigResultOutput {
 	return o
-}
-
-func (o LookupBitbucketServerConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBitbucketServerConfigResult] {
-	return pulumix.Output[LookupBitbucketServerConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.

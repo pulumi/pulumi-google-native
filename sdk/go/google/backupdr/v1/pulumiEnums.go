@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -270,12 +258,6 @@ func (o ManagementServerTypeOutput) ToManagementServerTypePtrOutputWithContext(c
 	}).(ManagementServerTypePtrOutput)
 }
 
-func (o ManagementServerTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementServerType] {
-	return pulumix.Output[ManagementServerType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagementServerTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o ManagementServerTypePtrOutput) ToManagementServerTypePtrOutput() Managem
 
 func (o ManagementServerTypePtrOutput) ToManagementServerTypePtrOutputWithContext(ctx context.Context) ManagementServerTypePtrOutput {
 	return o
-}
-
-func (o ManagementServerTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementServerType] {
-	return pulumix.Output[*ManagementServerType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementServerTypePtrOutput) Elem() ManagementServerTypeOutput {
@@ -455,12 +431,6 @@ func (o NetworkConfigPeeringModeOutput) ToNetworkConfigPeeringModePtrOutputWithC
 	}).(NetworkConfigPeeringModePtrOutput)
 }
 
-func (o NetworkConfigPeeringModeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigPeeringMode] {
-	return pulumix.Output[NetworkConfigPeeringMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkConfigPeeringModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -494,12 +464,6 @@ func (o NetworkConfigPeeringModePtrOutput) ToNetworkConfigPeeringModePtrOutput()
 
 func (o NetworkConfigPeeringModePtrOutput) ToNetworkConfigPeeringModePtrOutputWithContext(ctx context.Context) NetworkConfigPeeringModePtrOutput {
 	return o
-}
-
-func (o NetworkConfigPeeringModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigPeeringMode] {
-	return pulumix.Output[*NetworkConfigPeeringMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkConfigPeeringModePtrOutput) Elem() NetworkConfigPeeringModeOutput {

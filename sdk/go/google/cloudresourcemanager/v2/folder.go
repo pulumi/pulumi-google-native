@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of the folder creation workflow. Upon success the Operation.response field will be populated with the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the CreateFolder request, with status code FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field. The caller must have `resourcemanager.folders.create` permission on the identified parent.
@@ -114,12 +113,6 @@ func (i *Folder) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderOutput)
 }
 
-func (i *Folder) ToOutput(ctx context.Context) pulumix.Output[*Folder] {
-	return pulumix.Output[*Folder]{
-		OutputState: i.ToFolderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderOutput struct{ *pulumi.OutputState }
 
 func (FolderOutput) ElementType() reflect.Type {
@@ -132,12 +125,6 @@ func (o FolderOutput) ToFolderOutput() FolderOutput {
 
 func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
 	return o
-}
-
-func (o FolderOutput) ToOutput(ctx context.Context) pulumix.Output[*Folder] {
-	return pulumix.Output[*Folder]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when the Folder was created. Assigned by the server.

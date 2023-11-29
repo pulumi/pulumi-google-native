@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an authorized orgs desc. The long-running operation from this RPC has a successful status after the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors, an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc` will be assigned during creation.
@@ -128,12 +127,6 @@ func (i *AuthorizedOrgsDesc) ToAuthorizedOrgsDescOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedOrgsDescOutput)
 }
 
-func (i *AuthorizedOrgsDesc) ToOutput(ctx context.Context) pulumix.Output[*AuthorizedOrgsDesc] {
-	return pulumix.Output[*AuthorizedOrgsDesc]{
-		OutputState: i.ToAuthorizedOrgsDescOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizedOrgsDescOutput struct{ *pulumi.OutputState }
 
 func (AuthorizedOrgsDescOutput) ElementType() reflect.Type {
@@ -146,12 +139,6 @@ func (o AuthorizedOrgsDescOutput) ToAuthorizedOrgsDescOutput() AuthorizedOrgsDes
 
 func (o AuthorizedOrgsDescOutput) ToAuthorizedOrgsDescOutputWithContext(ctx context.Context) AuthorizedOrgsDescOutput {
 	return o
-}
-
-func (o AuthorizedOrgsDescOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizedOrgsDesc] {
-	return pulumix.Output[*AuthorizedOrgsDesc]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizedOrgsDescOutput) AccessPolicyId() pulumi.StringOutput {

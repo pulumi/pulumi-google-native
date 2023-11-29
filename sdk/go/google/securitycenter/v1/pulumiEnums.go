@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -274,12 +262,6 @@ func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) T
 	}).(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
 }
 
-func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
-	return pulumix.Output[FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -313,12 +295,6 @@ func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput
 
 func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
 	return o
-}
-
-func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
-	return pulumix.Output[*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) Elem() FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
@@ -465,12 +441,6 @@ func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToGoogleCloudSecu
 	}).(GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput)
 }
 
-func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudSecuritycenterV1CustomConfigSeverity] {
-	return pulumix.Output[GoogleCloudSecuritycenterV1CustomConfigSeverity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -504,12 +474,6 @@ func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToGoogleCloudS
 
 func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
 	return o
-}
-
-func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudSecuritycenterV1CustomConfigSeverity] {
-	return pulumix.Output[*GoogleCloudSecuritycenterV1CustomConfigSeverity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) Elem() GoogleCloudSecuritycenterV1CustomConfigSeverityOutput {
@@ -652,12 +616,6 @@ func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput
 	}).(OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput)
 }
 
-func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationEventThreatDetectionSettingCustomModuleEnablementState] {
-	return pulumix.Output[OrganizationEventThreatDetectionSettingCustomModuleEnablementState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -691,12 +649,6 @@ func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOut
 
 func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
 	return o
-}
-
-func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationEventThreatDetectionSettingCustomModuleEnablementState] {
-	return pulumix.Output[*OrganizationEventThreatDetectionSettingCustomModuleEnablementState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) Elem() OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput {
@@ -841,12 +793,6 @@ func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOut
 	}).(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
 }
 
-func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
-	return pulumix.Output[OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -880,12 +826,6 @@ func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr
 
 func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
 	return o
-}
-
-func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
-	return pulumix.Output[*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) Elem() OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
@@ -1030,12 +970,6 @@ func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) 
 	}).(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
 }
 
-func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
-	return pulumix.Output[ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1069,12 +1003,6 @@ func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutpu
 
 func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
 	return o
-}
-
-func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
-	return pulumix.Output[*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) Elem() ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {

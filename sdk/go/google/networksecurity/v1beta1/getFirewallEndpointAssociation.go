@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single FirewallEndpointAssociation.
@@ -85,12 +84,6 @@ func (o LookupFirewallEndpointAssociationResultOutput) ToLookupFirewallEndpointA
 
 func (o LookupFirewallEndpointAssociationResultOutput) ToLookupFirewallEndpointAssociationResultOutputWithContext(ctx context.Context) LookupFirewallEndpointAssociationResultOutput {
 	return o
-}
-
-func (o LookupFirewallEndpointAssociationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFirewallEndpointAssociationResult] {
-	return pulumix.Output[LookupFirewallEndpointAssociationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Create time stamp

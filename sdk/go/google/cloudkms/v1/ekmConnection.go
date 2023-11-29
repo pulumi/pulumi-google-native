@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new EkmConnection in a given Project and Location.
@@ -135,12 +134,6 @@ func (i *EkmConnection) ToEkmConnectionOutputWithContext(ctx context.Context) Ek
 	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionOutput)
 }
 
-func (i *EkmConnection) ToOutput(ctx context.Context) pulumix.Output[*EkmConnection] {
-	return pulumix.Output[*EkmConnection]{
-		OutputState: i.ToEkmConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EkmConnectionOutput struct{ *pulumi.OutputState }
 
 func (EkmConnectionOutput) ElementType() reflect.Type {
@@ -153,12 +146,6 @@ func (o EkmConnectionOutput) ToEkmConnectionOutput() EkmConnectionOutput {
 
 func (o EkmConnectionOutput) ToEkmConnectionOutputWithContext(ctx context.Context) EkmConnectionOutput {
 	return o
-}
-
-func (o EkmConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*EkmConnection] {
-	return pulumix.Output[*EkmConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the EkmConnection was created.

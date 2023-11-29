@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a specific composite type.
@@ -80,12 +79,6 @@ func (o LookupCompositeTypeResultOutput) ToLookupCompositeTypeResultOutput() Loo
 
 func (o LookupCompositeTypeResultOutput) ToLookupCompositeTypeResultOutputWithContext(ctx context.Context) LookupCompositeTypeResultOutput {
 	return o
-}
-
-func (o LookupCompositeTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCompositeTypeResult] {
-	return pulumix.Output[LookupCompositeTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional textual description of the resource; provided by the client when the resource is created.

@@ -300,9 +300,6 @@ class Instance(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if endpoint_uris is not None and not opts.urn:
-                warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
-                pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
             __props__.__dict__["endpoint_uris"] = endpoint_uris
             __props__.__dict__["free_instance_metadata"] = free_instance_metadata
             if instance_id is None and not opts.urn:

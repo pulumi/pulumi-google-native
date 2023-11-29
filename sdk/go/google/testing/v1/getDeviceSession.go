@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents the allocation status and whether the device is allocated. Clients making requests from this API must poll GetDeviceSession.
@@ -85,12 +84,6 @@ func (o LookupDeviceSessionResultOutput) ToLookupDeviceSessionResultOutput() Loo
 
 func (o LookupDeviceSessionResultOutput) ToLookupDeviceSessionResultOutputWithContext(ctx context.Context) LookupDeviceSessionResultOutput {
 	return o
-}
-
-func (o LookupDeviceSessionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeviceSessionResult] {
-	return pulumix.Output[LookupDeviceSessionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp that the session first became ACTIVE.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a `Registration` resource.
@@ -97,12 +96,6 @@ func (o LookupRegistrationResultOutput) ToLookupRegistrationResultOutput() Looku
 
 func (o LookupRegistrationResultOutput) ToLookupRegistrationResultOutputWithContext(ctx context.Context) LookupRegistrationResultOutput {
 	return o
-}
-
-func (o LookupRegistrationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegistrationResult] {
-	return pulumix.Output[LookupRegistrationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.

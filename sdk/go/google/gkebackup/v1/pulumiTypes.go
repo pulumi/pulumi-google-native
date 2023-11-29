@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
 }
 
-func (i AuditConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: i.ToAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-func (i AuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: i.ToAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
 
 func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
 	return o
-}
-
-func (o AuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfig] {
-	return pulumix.Output[AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.
@@ -133,12 +114,6 @@ func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutpu
 
 func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
 	return o
-}
-
-func (o AuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfig] {
-	return pulumix.Output[[]AuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
@@ -170,12 +145,6 @@ func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditConfigResponse] {
-	return pulumix.Output[AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration for logging of each type of permission.
 func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
 	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
@@ -198,12 +167,6 @@ func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() Audit
 
 func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditConfigResponse] {
-	return pulumix.Output[[]AuditConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
@@ -251,12 +214,6 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i AuditLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -282,12 +239,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
 }
 
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
@@ -301,12 +252,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfig] {
-	return pulumix.Output[AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -331,12 +276,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigA
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfig] {
-	return pulumix.Output[[]AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
@@ -368,12 +307,6 @@ func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(
 	return o
 }
 
-func (o AuditLogConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigResponse] {
-	return pulumix.Output[AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
@@ -396,12 +329,6 @@ func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput()
 
 func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
 	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuditLogConfigResponse] {
-	return pulumix.Output[[]AuditLogConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
@@ -465,12 +392,6 @@ func (i BackupConfigArgs) ToBackupConfigOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BackupConfigOutput)
 }
 
-func (i BackupConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BackupConfig] {
-	return pulumix.Output[BackupConfig]{
-		OutputState: i.ToBackupConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackupConfigArgs) ToBackupConfigPtrOutput() BackupConfigPtrOutput {
 	return i.ToBackupConfigPtrOutputWithContext(context.Background())
 }
@@ -512,12 +433,6 @@ func (i *backupConfigPtrType) ToBackupConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BackupConfigPtrOutput)
 }
 
-func (i *backupConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupConfig] {
-	return pulumix.Output[*BackupConfig]{
-		OutputState: i.ToBackupConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BackupConfig defines the configuration of Backups created via this BackupPlan.
 type BackupConfigOutput struct{ *pulumi.OutputState }
 
@@ -541,12 +456,6 @@ func (o BackupConfigOutput) ToBackupConfigPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupConfig) *BackupConfig {
 		return &v
 	}).(BackupConfigPtrOutput)
-}
-
-func (o BackupConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BackupConfig] {
-	return pulumix.Output[BackupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If True, include all namespaced resources
@@ -591,12 +500,6 @@ func (o BackupConfigPtrOutput) ToBackupConfigPtrOutput() BackupConfigPtrOutput {
 
 func (o BackupConfigPtrOutput) ToBackupConfigPtrOutputWithContext(ctx context.Context) BackupConfigPtrOutput {
 	return o
-}
-
-func (o BackupConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupConfig] {
-	return pulumix.Output[*BackupConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupConfigPtrOutput) Elem() BackupConfigOutput {
@@ -700,12 +603,6 @@ func (o BackupConfigResponseOutput) ToBackupConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o BackupConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackupConfigResponse] {
-	return pulumix.Output[BackupConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If True, include all namespaced resources
 func (o BackupConfigResponseOutput) AllNamespaces() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackupConfigResponse) bool { return v.AllNamespaces }).(pulumi.BoolOutput)
@@ -779,12 +676,6 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
 }
 
-func (i BindingArgs) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: i.ToBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
@@ -810,12 +701,6 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-func (i BindingArray) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: i.ToBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
@@ -829,12 +714,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) ToOutput(ctx context.Context) pulumix.Output[Binding] {
-	return pulumix.Output[Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -864,12 +743,6 @@ func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
 
 func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
 	return o
-}
-
-func (o BindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Binding] {
-	return pulumix.Output[[]Binding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
@@ -903,12 +776,6 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BindingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BindingResponse] {
-	return pulumix.Output[BindingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
@@ -936,12 +803,6 @@ func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingRespon
 
 func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
 	return o
-}
-
-func (o BindingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BindingResponse] {
-	return pulumix.Output[[]BindingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
@@ -977,12 +838,6 @@ func (o ClusterMetadataResponseOutput) ToClusterMetadataResponseOutput() Cluster
 
 func (o ClusterMetadataResponseOutput) ToClusterMetadataResponseOutputWithContext(ctx context.Context) ClusterMetadataResponseOutput {
 	return o
-}
-
-func (o ClusterMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterMetadataResponse] {
-	return pulumix.Output[ClusterMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Anthos version
@@ -1057,12 +912,6 @@ func (i ClusterResourceRestoreScopeArgs) ToClusterResourceRestoreScopeOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterResourceRestoreScopeOutput)
 }
 
-func (i ClusterResourceRestoreScopeArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterResourceRestoreScope] {
-	return pulumix.Output[ClusterResourceRestoreScope]{
-		OutputState: i.ToClusterResourceRestoreScopeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterResourceRestoreScopeArgs) ToClusterResourceRestoreScopePtrOutput() ClusterResourceRestoreScopePtrOutput {
 	return i.ToClusterResourceRestoreScopePtrOutputWithContext(context.Background())
 }
@@ -1104,12 +953,6 @@ func (i *clusterResourceRestoreScopePtrType) ToClusterResourceRestoreScopePtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterResourceRestoreScopePtrOutput)
 }
 
-func (i *clusterResourceRestoreScopePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterResourceRestoreScope] {
-	return pulumix.Output[*ClusterResourceRestoreScope]{
-		OutputState: i.ToClusterResourceRestoreScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the scope of cluster-scoped resources to restore. Some group kinds are not reasonable choices for a restore, and will cause an error if selected here. Any scope selection that would restore "all valid" resources automatically excludes these group kinds. - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob - metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState - migration.k8s.io/StorageVersionMigration - Node - snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some group kinds are driven by restore configuration elsewhere, and will cause an error if selected here. - Namespace - PersistentVolume
 type ClusterResourceRestoreScopeOutput struct{ *pulumi.OutputState }
 
@@ -1133,12 +976,6 @@ func (o ClusterResourceRestoreScopeOutput) ToClusterResourceRestoreScopePtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterResourceRestoreScope) *ClusterResourceRestoreScope {
 		return &v
 	}).(ClusterResourceRestoreScopePtrOutput)
-}
-
-func (o ClusterResourceRestoreScopeOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterResourceRestoreScope] {
-	return pulumix.Output[ClusterResourceRestoreScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
@@ -1173,12 +1010,6 @@ func (o ClusterResourceRestoreScopePtrOutput) ToClusterResourceRestoreScopePtrOu
 
 func (o ClusterResourceRestoreScopePtrOutput) ToClusterResourceRestoreScopePtrOutputWithContext(ctx context.Context) ClusterResourceRestoreScopePtrOutput {
 	return o
-}
-
-func (o ClusterResourceRestoreScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterResourceRestoreScope] {
-	return pulumix.Output[*ClusterResourceRestoreScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterResourceRestoreScopePtrOutput) Elem() ClusterResourceRestoreScopeOutput {
@@ -1258,12 +1089,6 @@ func (o ClusterResourceRestoreScopeResponseOutput) ToClusterResourceRestoreScope
 	return o
 }
 
-func (o ClusterResourceRestoreScopeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterResourceRestoreScopeResponse] {
-	return pulumix.Output[ClusterResourceRestoreScopeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message.
 func (o ClusterResourceRestoreScopeResponseOutput) AllGroupKinds() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterResourceRestoreScopeResponse) bool { return v.AllGroupKinds }).(pulumi.BoolOutput)
@@ -1319,12 +1144,6 @@ func (i EncryptionKeyArgs) ToEncryptionKeyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyOutput)
 }
 
-func (i EncryptionKeyArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionKey] {
-	return pulumix.Output[EncryptionKey]{
-		OutputState: i.ToEncryptionKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EncryptionKeyArgs) ToEncryptionKeyPtrOutput() EncryptionKeyPtrOutput {
 	return i.ToEncryptionKeyPtrOutputWithContext(context.Background())
 }
@@ -1366,12 +1185,6 @@ func (i *encryptionKeyPtrType) ToEncryptionKeyPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyPtrOutput)
 }
 
-func (i *encryptionKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKey] {
-	return pulumix.Output[*EncryptionKey]{
-		OutputState: i.ToEncryptionKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
 type EncryptionKeyOutput struct{ *pulumi.OutputState }
 
@@ -1397,12 +1210,6 @@ func (o EncryptionKeyOutput) ToEncryptionKeyPtrOutputWithContext(ctx context.Con
 	}).(EncryptionKeyPtrOutput)
 }
 
-func (o EncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionKey] {
-	return pulumix.Output[EncryptionKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 func (o EncryptionKeyOutput) GcpKmsEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionKey) *string { return v.GcpKmsEncryptionKey }).(pulumi.StringPtrOutput)
@@ -1420,12 +1227,6 @@ func (o EncryptionKeyPtrOutput) ToEncryptionKeyPtrOutput() EncryptionKeyPtrOutpu
 
 func (o EncryptionKeyPtrOutput) ToEncryptionKeyPtrOutputWithContext(ctx context.Context) EncryptionKeyPtrOutput {
 	return o
-}
-
-func (o EncryptionKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKey] {
-	return pulumix.Output[*EncryptionKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionKeyPtrOutput) Elem() EncryptionKeyOutput {
@@ -1467,12 +1268,6 @@ func (o EncryptionKeyResponseOutput) ToEncryptionKeyResponseOutput() EncryptionK
 
 func (o EncryptionKeyResponseOutput) ToEncryptionKeyResponseOutputWithContext(ctx context.Context) EncryptionKeyResponseOutput {
 	return o
-}
-
-func (o EncryptionKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionKeyResponse] {
-	return pulumix.Output[EncryptionKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
@@ -1527,12 +1322,6 @@ func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
 }
 
-func (i ExprArgs) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: i.ToExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
 	return i.ToExprPtrOutputWithContext(context.Background())
 }
@@ -1574,12 +1363,6 @@ func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
 }
 
-func (i *exprPtrType) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: i.ToExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprOutput struct{ *pulumi.OutputState }
 
@@ -1603,12 +1386,6 @@ func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
-}
-
-func (o ExprOutput) ToOutput(ctx context.Context) pulumix.Output[Expr] {
-	return pulumix.Output[Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1643,12 +1420,6 @@ func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
 
 func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
 	return o
-}
-
-func (o ExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Expr] {
-	return pulumix.Output[*Expr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
@@ -1728,12 +1499,6 @@ func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ExprResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExprResponse] {
-	return pulumix.Output[ExprResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o ExprResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -1793,12 +1558,6 @@ func (i GroupKindArgs) ToGroupKindOutputWithContext(ctx context.Context) GroupKi
 	return pulumi.ToOutputWithContext(ctx, i).(GroupKindOutput)
 }
 
-func (i GroupKindArgs) ToOutput(ctx context.Context) pulumix.Output[GroupKind] {
-	return pulumix.Output[GroupKind]{
-		OutputState: i.ToGroupKindOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupKindArrayInput is an input type that accepts GroupKindArray and GroupKindArrayOutput values.
 // You can construct a concrete instance of `GroupKindArrayInput` via:
 //
@@ -1824,12 +1583,6 @@ func (i GroupKindArray) ToGroupKindArrayOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GroupKindArrayOutput)
 }
 
-func (i GroupKindArray) ToOutput(ctx context.Context) pulumix.Output[[]GroupKind] {
-	return pulumix.Output[[]GroupKind]{
-		OutputState: i.ToGroupKindArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This is a direct map to the Kubernetes GroupKind type [GroupKind](https://godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind) and is used for identifying specific "types" of resources to restore.
 type GroupKindOutput struct{ *pulumi.OutputState }
 
@@ -1843,12 +1596,6 @@ func (o GroupKindOutput) ToGroupKindOutput() GroupKindOutput {
 
 func (o GroupKindOutput) ToGroupKindOutputWithContext(ctx context.Context) GroupKindOutput {
 	return o
-}
-
-func (o GroupKindOutput) ToOutput(ctx context.Context) pulumix.Output[GroupKind] {
-	return pulumix.Output[GroupKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
@@ -1873,12 +1620,6 @@ func (o GroupKindArrayOutput) ToGroupKindArrayOutput() GroupKindArrayOutput {
 
 func (o GroupKindArrayOutput) ToGroupKindArrayOutputWithContext(ctx context.Context) GroupKindArrayOutput {
 	return o
-}
-
-func (o GroupKindArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupKind] {
-	return pulumix.Output[[]GroupKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupKindArrayOutput) Index(i pulumi.IntInput) GroupKindOutput {
@@ -1910,12 +1651,6 @@ func (o GroupKindResponseOutput) ToGroupKindResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o GroupKindResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GroupKindResponse] {
-	return pulumix.Output[GroupKindResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
 func (o GroupKindResponseOutput) ResourceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupKindResponse) string { return v.ResourceGroup }).(pulumi.StringOutput)
@@ -1938,12 +1673,6 @@ func (o GroupKindResponseArrayOutput) ToGroupKindResponseArrayOutput() GroupKind
 
 func (o GroupKindResponseArrayOutput) ToGroupKindResponseArrayOutputWithContext(ctx context.Context) GroupKindResponseArrayOutput {
 	return o
-}
-
-func (o GroupKindResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupKindResponse] {
-	return pulumix.Output[[]GroupKindResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupKindResponseArrayOutput) Index(i pulumi.IntInput) GroupKindResponseOutput {
@@ -1991,12 +1720,6 @@ func (i NamespacedNameArgs) ToNamespacedNameOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacedNameOutput)
 }
 
-func (i NamespacedNameArgs) ToOutput(ctx context.Context) pulumix.Output[NamespacedName] {
-	return pulumix.Output[NamespacedName]{
-		OutputState: i.ToNamespacedNameOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NamespacedNameArrayInput is an input type that accepts NamespacedNameArray and NamespacedNameArrayOutput values.
 // You can construct a concrete instance of `NamespacedNameArrayInput` via:
 //
@@ -2022,12 +1745,6 @@ func (i NamespacedNameArray) ToNamespacedNameArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacedNameArrayOutput)
 }
 
-func (i NamespacedNameArray) ToOutput(ctx context.Context) pulumix.Output[[]NamespacedName] {
-	return pulumix.Output[[]NamespacedName]{
-		OutputState: i.ToNamespacedNameArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A reference to a namespaced resource in Kubernetes.
 type NamespacedNameOutput struct{ *pulumi.OutputState }
 
@@ -2041,12 +1758,6 @@ func (o NamespacedNameOutput) ToNamespacedNameOutput() NamespacedNameOutput {
 
 func (o NamespacedNameOutput) ToNamespacedNameOutputWithContext(ctx context.Context) NamespacedNameOutput {
 	return o
-}
-
-func (o NamespacedNameOutput) ToOutput(ctx context.Context) pulumix.Output[NamespacedName] {
-	return pulumix.Output[NamespacedName]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The name of the Kubernetes resource.
@@ -2071,12 +1782,6 @@ func (o NamespacedNameArrayOutput) ToNamespacedNameArrayOutput() NamespacedNameA
 
 func (o NamespacedNameArrayOutput) ToNamespacedNameArrayOutputWithContext(ctx context.Context) NamespacedNameArrayOutput {
 	return o
-}
-
-func (o NamespacedNameArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NamespacedName] {
-	return pulumix.Output[[]NamespacedName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NamespacedNameArrayOutput) Index(i pulumi.IntInput) NamespacedNameOutput {
@@ -2108,12 +1813,6 @@ func (o NamespacedNameResponseOutput) ToNamespacedNameResponseOutputWithContext(
 	return o
 }
 
-func (o NamespacedNameResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NamespacedNameResponse] {
-	return pulumix.Output[NamespacedNameResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The name of the Kubernetes resource.
 func (o NamespacedNameResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NamespacedNameResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -2136,12 +1835,6 @@ func (o NamespacedNameResponseArrayOutput) ToNamespacedNameResponseArrayOutput()
 
 func (o NamespacedNameResponseArrayOutput) ToNamespacedNameResponseArrayOutputWithContext(ctx context.Context) NamespacedNameResponseArrayOutput {
 	return o
-}
-
-func (o NamespacedNameResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NamespacedNameResponse] {
-	return pulumix.Output[[]NamespacedNameResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NamespacedNameResponseArrayOutput) Index(i pulumi.IntInput) NamespacedNameResponseOutput {
@@ -2185,12 +1878,6 @@ func (i NamespacedNamesArgs) ToNamespacedNamesOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacedNamesOutput)
 }
 
-func (i NamespacedNamesArgs) ToOutput(ctx context.Context) pulumix.Output[NamespacedNames] {
-	return pulumix.Output[NamespacedNames]{
-		OutputState: i.ToNamespacedNamesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NamespacedNamesArgs) ToNamespacedNamesPtrOutput() NamespacedNamesPtrOutput {
 	return i.ToNamespacedNamesPtrOutputWithContext(context.Background())
 }
@@ -2232,12 +1919,6 @@ func (i *namespacedNamesPtrType) ToNamespacedNamesPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacedNamesPtrOutput)
 }
 
-func (i *namespacedNamesPtrType) ToOutput(ctx context.Context) pulumix.Output[*NamespacedNames] {
-	return pulumix.Output[*NamespacedNames]{
-		OutputState: i.ToNamespacedNamesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A list of namespaced Kubernetes resources.
 type NamespacedNamesOutput struct{ *pulumi.OutputState }
 
@@ -2263,12 +1944,6 @@ func (o NamespacedNamesOutput) ToNamespacedNamesPtrOutputWithContext(ctx context
 	}).(NamespacedNamesPtrOutput)
 }
 
-func (o NamespacedNamesOutput) ToOutput(ctx context.Context) pulumix.Output[NamespacedNames] {
-	return pulumix.Output[NamespacedNames]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A list of namespaced Kubernetes resources.
 func (o NamespacedNamesOutput) NamespacedNames() NamespacedNameArrayOutput {
 	return o.ApplyT(func(v NamespacedNames) []NamespacedName { return v.NamespacedNames }).(NamespacedNameArrayOutput)
@@ -2286,12 +1961,6 @@ func (o NamespacedNamesPtrOutput) ToNamespacedNamesPtrOutput() NamespacedNamesPt
 
 func (o NamespacedNamesPtrOutput) ToNamespacedNamesPtrOutputWithContext(ctx context.Context) NamespacedNamesPtrOutput {
 	return o
-}
-
-func (o NamespacedNamesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespacedNames] {
-	return pulumix.Output[*NamespacedNames]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NamespacedNamesPtrOutput) Elem() NamespacedNamesOutput {
@@ -2335,12 +2004,6 @@ func (o NamespacedNamesResponseOutput) ToNamespacedNamesResponseOutputWithContex
 	return o
 }
 
-func (o NamespacedNamesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NamespacedNamesResponse] {
-	return pulumix.Output[NamespacedNamesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A list of namespaced Kubernetes resources.
 func (o NamespacedNamesResponseOutput) NamespacedNames() NamespacedNameResponseArrayOutput {
 	return o.ApplyT(func(v NamespacedNamesResponse) []NamespacedNameResponse { return v.NamespacedNames }).(NamespacedNameResponseArrayOutput)
@@ -2379,12 +2042,6 @@ func (i NamespacesArgs) ToNamespacesOutput() NamespacesOutput {
 
 func (i NamespacesArgs) ToNamespacesOutputWithContext(ctx context.Context) NamespacesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacesOutput)
-}
-
-func (i NamespacesArgs) ToOutput(ctx context.Context) pulumix.Output[Namespaces] {
-	return pulumix.Output[Namespaces]{
-		OutputState: i.ToNamespacesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i NamespacesArgs) ToNamespacesPtrOutput() NamespacesPtrOutput {
@@ -2428,12 +2085,6 @@ func (i *namespacesPtrType) ToNamespacesPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacesPtrOutput)
 }
 
-func (i *namespacesPtrType) ToOutput(ctx context.Context) pulumix.Output[*Namespaces] {
-	return pulumix.Output[*Namespaces]{
-		OutputState: i.ToNamespacesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A list of Kubernetes Namespaces
 type NamespacesOutput struct{ *pulumi.OutputState }
 
@@ -2459,12 +2110,6 @@ func (o NamespacesOutput) ToNamespacesPtrOutputWithContext(ctx context.Context) 
 	}).(NamespacesPtrOutput)
 }
 
-func (o NamespacesOutput) ToOutput(ctx context.Context) pulumix.Output[Namespaces] {
-	return pulumix.Output[Namespaces]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A list of Kubernetes Namespaces
 func (o NamespacesOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Namespaces) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
@@ -2482,12 +2127,6 @@ func (o NamespacesPtrOutput) ToNamespacesPtrOutput() NamespacesPtrOutput {
 
 func (o NamespacesPtrOutput) ToNamespacesPtrOutputWithContext(ctx context.Context) NamespacesPtrOutput {
 	return o
-}
-
-func (o NamespacesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Namespaces] {
-	return pulumix.Output[*Namespaces]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NamespacesPtrOutput) Elem() NamespacesOutput {
@@ -2529,12 +2168,6 @@ func (o NamespacesResponseOutput) ToNamespacesResponseOutput() NamespacesRespons
 
 func (o NamespacesResponseOutput) ToNamespacesResponseOutputWithContext(ctx context.Context) NamespacesResponseOutput {
 	return o
-}
-
-func (o NamespacesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NamespacesResponse] {
-	return pulumix.Output[NamespacesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A list of Kubernetes Namespaces
@@ -2585,12 +2218,6 @@ func (i ResourceFilterArgs) ToResourceFilterOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceFilterOutput)
 }
 
-func (i ResourceFilterArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceFilter] {
-	return pulumix.Output[ResourceFilter]{
-		OutputState: i.ToResourceFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceFilterArgs) ToResourceFilterPtrOutput() ResourceFilterPtrOutput {
 	return i.ToResourceFilterPtrOutputWithContext(context.Background())
 }
@@ -2632,12 +2259,6 @@ func (i *resourceFilterPtrType) ToResourceFilterPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceFilterPtrOutput)
 }
 
-func (i *resourceFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceFilter] {
-	return pulumix.Output[*ResourceFilter]{
-		OutputState: i.ToResourceFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup.
 type ResourceFilterOutput struct{ *pulumi.OutputState }
 
@@ -2661,12 +2282,6 @@ func (o ResourceFilterOutput) ToResourceFilterPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceFilter) *ResourceFilter {
 		return &v
 	}).(ResourceFilterPtrOutput)
-}
-
-func (o ResourceFilterOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceFilter] {
-	return pulumix.Output[ResourceFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
@@ -2696,12 +2311,6 @@ func (o ResourceFilterPtrOutput) ToResourceFilterPtrOutput() ResourceFilterPtrOu
 
 func (o ResourceFilterPtrOutput) ToResourceFilterPtrOutputWithContext(ctx context.Context) ResourceFilterPtrOutput {
 	return o
-}
-
-func (o ResourceFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceFilter] {
-	return pulumix.Output[*ResourceFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceFilterPtrOutput) Elem() ResourceFilterOutput {
@@ -2767,12 +2376,6 @@ func (o ResourceFilterResponseOutput) ToResourceFilterResponseOutput() ResourceF
 
 func (o ResourceFilterResponseOutput) ToResourceFilterResponseOutputWithContext(ctx context.Context) ResourceFilterResponseOutput {
 	return o
-}
-
-func (o ResourceFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceFilterResponse] {
-	return pulumix.Output[ResourceFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
@@ -2865,12 +2468,6 @@ func (i RestoreConfigArgs) ToRestoreConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RestoreConfigOutput)
 }
 
-func (i RestoreConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RestoreConfig] {
-	return pulumix.Output[RestoreConfig]{
-		OutputState: i.ToRestoreConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration of a restore. Next id: 13
 type RestoreConfigOutput struct{ *pulumi.OutputState }
 
@@ -2884,12 +2481,6 @@ func (o RestoreConfigOutput) ToRestoreConfigOutput() RestoreConfigOutput {
 
 func (o RestoreConfigOutput) ToRestoreConfigOutputWithContext(ctx context.Context) RestoreConfigOutput {
 	return o
-}
-
-func (o RestoreConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreConfig] {
-	return pulumix.Output[RestoreConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error.
@@ -2992,12 +2583,6 @@ func (o RestoreConfigResponseOutput) ToRestoreConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o RestoreConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreConfigResponse] {
-	return pulumix.Output[RestoreConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error.
 func (o RestoreConfigResponseOutput) AllNamespaces() pulumi.BoolOutput {
 	return o.ApplyT(func(v RestoreConfigResponse) bool { return v.AllNamespaces }).(pulumi.BoolOutput)
@@ -3098,12 +2683,6 @@ func (i RetentionPolicyArgs) ToRetentionPolicyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyOutput)
 }
 
-func (i RetentionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicy] {
-	return pulumix.Output[RetentionPolicy]{
-		OutputState: i.ToRetentionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RetentionPolicyArgs) ToRetentionPolicyPtrOutput() RetentionPolicyPtrOutput {
 	return i.ToRetentionPolicyPtrOutputWithContext(context.Background())
 }
@@ -3145,12 +2724,6 @@ func (i *retentionPolicyPtrType) ToRetentionPolicyPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyPtrOutput)
 }
 
-func (i *retentionPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicy] {
-	return pulumix.Output[*RetentionPolicy]{
-		OutputState: i.ToRetentionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RetentionPolicy defines a Backup retention policy for a BackupPlan.
 type RetentionPolicyOutput struct{ *pulumi.OutputState }
 
@@ -3174,12 +2747,6 @@ func (o RetentionPolicyOutput) ToRetentionPolicyPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetentionPolicy) *RetentionPolicy {
 		return &v
 	}).(RetentionPolicyPtrOutput)
-}
-
-func (o RetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicy] {
-	return pulumix.Output[RetentionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
@@ -3209,12 +2776,6 @@ func (o RetentionPolicyPtrOutput) ToRetentionPolicyPtrOutput() RetentionPolicyPt
 
 func (o RetentionPolicyPtrOutput) ToRetentionPolicyPtrOutputWithContext(ctx context.Context) RetentionPolicyPtrOutput {
 	return o
-}
-
-func (o RetentionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicy] {
-	return pulumix.Output[*RetentionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RetentionPolicyPtrOutput) Elem() RetentionPolicyOutput {
@@ -3282,12 +2843,6 @@ func (o RetentionPolicyResponseOutput) ToRetentionPolicyResponseOutputWithContex
 	return o
 }
 
-func (o RetentionPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetentionPolicyResponse] {
-	return pulumix.Output[RetentionPolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
 func (o RetentionPolicyResponseOutput) BackupDeleteLockDays() pulumi.IntOutput {
 	return o.ApplyT(func(v RetentionPolicyResponse) int { return v.BackupDeleteLockDays }).(pulumi.IntOutput)
@@ -3342,12 +2897,6 @@ func (i ScheduleArgs) ToScheduleOutputWithContext(ctx context.Context) ScheduleO
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
-func (i ScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
-	return pulumix.Output[Schedule]{
-		OutputState: i.ToScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScheduleArgs) ToSchedulePtrOutput() SchedulePtrOutput {
 	return i.ToSchedulePtrOutputWithContext(context.Background())
 }
@@ -3389,12 +2938,6 @@ func (i *schedulePtrType) ToSchedulePtrOutputWithContext(ctx context.Context) Sc
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulePtrOutput)
 }
 
-func (i *schedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: i.ToSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines scheduling parameters for automatically creating Backups via this BackupPlan.
 type ScheduleOutput struct{ *pulumi.OutputState }
 
@@ -3420,12 +2963,6 @@ func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) Sche
 	}).(SchedulePtrOutput)
 }
 
-func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
-	return pulumix.Output[Schedule]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 func (o ScheduleOutput) CronSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schedule) *string { return v.CronSchedule }).(pulumi.StringPtrOutput)
@@ -3448,12 +2985,6 @@ func (o SchedulePtrOutput) ToSchedulePtrOutput() SchedulePtrOutput {
 
 func (o SchedulePtrOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
 	return o
-}
-
-func (o SchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchedulePtrOutput) Elem() ScheduleOutput {
@@ -3507,12 +3038,6 @@ func (o ScheduleResponseOutput) ToScheduleResponseOutput() ScheduleResponseOutpu
 
 func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
 	return o
-}
-
-func (o ScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleResponse] {
-	return pulumix.Output[ScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
@@ -3576,12 +3101,6 @@ func (i SubstitutionRuleArgs) ToSubstitutionRuleOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SubstitutionRuleOutput)
 }
 
-func (i SubstitutionRuleArgs) ToOutput(ctx context.Context) pulumix.Output[SubstitutionRule] {
-	return pulumix.Output[SubstitutionRule]{
-		OutputState: i.ToSubstitutionRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubstitutionRuleArrayInput is an input type that accepts SubstitutionRuleArray and SubstitutionRuleArrayOutput values.
 // You can construct a concrete instance of `SubstitutionRuleArrayInput` via:
 //
@@ -3607,12 +3126,6 @@ func (i SubstitutionRuleArray) ToSubstitutionRuleArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SubstitutionRuleArrayOutput)
 }
 
-func (i SubstitutionRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]SubstitutionRule] {
-	return pulumix.Output[[]SubstitutionRule]{
-		OutputState: i.ToSubstitutionRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to substitution) and substitution logic.
 type SubstitutionRuleOutput struct{ *pulumi.OutputState }
 
@@ -3626,12 +3139,6 @@ func (o SubstitutionRuleOutput) ToSubstitutionRuleOutput() SubstitutionRuleOutpu
 
 func (o SubstitutionRuleOutput) ToSubstitutionRuleOutputWithContext(ctx context.Context) SubstitutionRuleOutput {
 	return o
-}
-
-func (o SubstitutionRuleOutput) ToOutput(ctx context.Context) pulumix.Output[SubstitutionRule] {
-	return pulumix.Output[SubstitutionRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
@@ -3673,12 +3180,6 @@ func (o SubstitutionRuleArrayOutput) ToSubstitutionRuleArrayOutputWithContext(ct
 	return o
 }
 
-func (o SubstitutionRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubstitutionRule] {
-	return pulumix.Output[[]SubstitutionRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubstitutionRuleArrayOutput) Index(i pulumi.IntInput) SubstitutionRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubstitutionRule {
 		return vs[0].([]SubstitutionRule)[vs[1].(int)]
@@ -3712,12 +3213,6 @@ func (o SubstitutionRuleResponseOutput) ToSubstitutionRuleResponseOutput() Subst
 
 func (o SubstitutionRuleResponseOutput) ToSubstitutionRuleResponseOutputWithContext(ctx context.Context) SubstitutionRuleResponseOutput {
 	return o
-}
-
-func (o SubstitutionRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubstitutionRuleResponse] {
-	return pulumix.Output[SubstitutionRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
@@ -3757,12 +3252,6 @@ func (o SubstitutionRuleResponseArrayOutput) ToSubstitutionRuleResponseArrayOutp
 
 func (o SubstitutionRuleResponseArrayOutput) ToSubstitutionRuleResponseArrayOutputWithContext(ctx context.Context) SubstitutionRuleResponseArrayOutput {
 	return o
-}
-
-func (o SubstitutionRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubstitutionRuleResponse] {
-	return pulumix.Output[[]SubstitutionRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubstitutionRuleResponseArrayOutput) Index(i pulumi.IntInput) SubstitutionRuleResponseOutput {
@@ -3814,12 +3303,6 @@ func (i TransformationRuleArgs) ToTransformationRuleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TransformationRuleOutput)
 }
 
-func (i TransformationRuleArgs) ToOutput(ctx context.Context) pulumix.Output[TransformationRule] {
-	return pulumix.Output[TransformationRule]{
-		OutputState: i.ToTransformationRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransformationRuleArrayInput is an input type that accepts TransformationRuleArray and TransformationRuleArrayOutput values.
 // You can construct a concrete instance of `TransformationRuleArrayInput` via:
 //
@@ -3845,12 +3328,6 @@ func (i TransformationRuleArray) ToTransformationRuleArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TransformationRuleArrayOutput)
 }
 
-func (i TransformationRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRule] {
-	return pulumix.Output[[]TransformationRule]{
-		OutputState: i.ToTransformationRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic.
 type TransformationRuleOutput struct{ *pulumi.OutputState }
 
@@ -3864,12 +3341,6 @@ func (o TransformationRuleOutput) ToTransformationRuleOutput() TransformationRul
 
 func (o TransformationRuleOutput) ToTransformationRuleOutputWithContext(ctx context.Context) TransformationRuleOutput {
 	return o
-}
-
-func (o TransformationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationRule] {
-	return pulumix.Output[TransformationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The description is a user specified string description of the transformation rule.
@@ -3899,12 +3370,6 @@ func (o TransformationRuleArrayOutput) ToTransformationRuleArrayOutput() Transfo
 
 func (o TransformationRuleArrayOutput) ToTransformationRuleArrayOutputWithContext(ctx context.Context) TransformationRuleArrayOutput {
 	return o
-}
-
-func (o TransformationRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRule] {
-	return pulumix.Output[[]TransformationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransformationRuleArrayOutput) Index(i pulumi.IntInput) TransformationRuleOutput {
@@ -3960,12 +3425,6 @@ func (i TransformationRuleActionArgs) ToTransformationRuleActionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TransformationRuleActionOutput)
 }
 
-func (i TransformationRuleActionArgs) ToOutput(ctx context.Context) pulumix.Output[TransformationRuleAction] {
-	return pulumix.Output[TransformationRuleAction]{
-		OutputState: i.ToTransformationRuleActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransformationRuleActionArrayInput is an input type that accepts TransformationRuleActionArray and TransformationRuleActionArrayOutput values.
 // You can construct a concrete instance of `TransformationRuleActionArrayInput` via:
 //
@@ -3991,12 +3450,6 @@ func (i TransformationRuleActionArray) ToTransformationRuleActionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TransformationRuleActionArrayOutput)
 }
 
-func (i TransformationRuleActionArray) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRuleAction] {
-	return pulumix.Output[[]TransformationRuleAction]{
-		OutputState: i.ToTransformationRuleActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
 type TransformationRuleActionOutput struct{ *pulumi.OutputState }
 
@@ -4010,12 +3463,6 @@ func (o TransformationRuleActionOutput) ToTransformationRuleActionOutput() Trans
 
 func (o TransformationRuleActionOutput) ToTransformationRuleActionOutputWithContext(ctx context.Context) TransformationRuleActionOutput {
 	return o
-}
-
-func (o TransformationRuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationRuleAction] {
-	return pulumix.Output[TransformationRuleAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
@@ -4052,12 +3499,6 @@ func (o TransformationRuleActionArrayOutput) ToTransformationRuleActionArrayOutp
 	return o
 }
 
-func (o TransformationRuleActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRuleAction] {
-	return pulumix.Output[[]TransformationRuleAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransformationRuleActionArrayOutput) Index(i pulumi.IntInput) TransformationRuleActionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformationRuleAction {
 		return vs[0].([]TransformationRuleAction)[vs[1].(int)]
@@ -4089,12 +3530,6 @@ func (o TransformationRuleActionResponseOutput) ToTransformationRuleActionRespon
 
 func (o TransformationRuleActionResponseOutput) ToTransformationRuleActionResponseOutputWithContext(ctx context.Context) TransformationRuleActionResponseOutput {
 	return o
-}
-
-func (o TransformationRuleActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationRuleActionResponse] {
-	return pulumix.Output[TransformationRuleActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
@@ -4131,12 +3566,6 @@ func (o TransformationRuleActionResponseArrayOutput) ToTransformationRuleActionR
 	return o
 }
 
-func (o TransformationRuleActionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRuleActionResponse] {
-	return pulumix.Output[[]TransformationRuleActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransformationRuleActionResponseArrayOutput) Index(i pulumi.IntInput) TransformationRuleActionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransformationRuleActionResponse {
 		return vs[0].([]TransformationRuleActionResponse)[vs[1].(int)]
@@ -4168,12 +3597,6 @@ func (o TransformationRuleResponseOutput) ToTransformationRuleResponseOutputWith
 	return o
 }
 
-func (o TransformationRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationRuleResponse] {
-	return pulumix.Output[TransformationRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. The description is a user specified string description of the transformation rule.
 func (o TransformationRuleResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v TransformationRuleResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -4201,12 +3624,6 @@ func (o TransformationRuleResponseArrayOutput) ToTransformationRuleResponseArray
 
 func (o TransformationRuleResponseArrayOutput) ToTransformationRuleResponseArrayOutputWithContext(ctx context.Context) TransformationRuleResponseArrayOutput {
 	return o
-}
-
-func (o TransformationRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformationRuleResponse] {
-	return pulumix.Output[[]TransformationRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransformationRuleResponseArrayOutput) Index(i pulumi.IntInput) TransformationRuleResponseOutput {

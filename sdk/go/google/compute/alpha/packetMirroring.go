@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a PacketMirroring resource in the specified project and region using the data included in the request.
@@ -164,12 +163,6 @@ func (i *PacketMirroring) ToPacketMirroringOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringOutput)
 }
 
-func (i *PacketMirroring) ToOutput(ctx context.Context) pulumix.Output[*PacketMirroring] {
-	return pulumix.Output[*PacketMirroring]{
-		OutputState: i.ToPacketMirroringOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PacketMirroringOutput struct{ *pulumi.OutputState }
 
 func (PacketMirroringOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o PacketMirroringOutput) ToPacketMirroringOutput() PacketMirroringOutput {
 
 func (o PacketMirroringOutput) ToPacketMirroringOutputWithContext(ctx context.Context) PacketMirroringOutput {
 	return o
-}
-
-func (o PacketMirroringOutput) ToOutput(ctx context.Context) pulumix.Output[*PacketMirroring] {
-	return pulumix.Output[*PacketMirroring]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.

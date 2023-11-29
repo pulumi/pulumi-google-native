@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a specific Artifact.
@@ -93,12 +92,6 @@ func (o LookupArtifactResultOutput) ToLookupArtifactResultOutput() LookupArtifac
 
 func (o LookupArtifactResultOutput) ToLookupArtifactResultOutputWithContext(ctx context.Context) LookupArtifactResultOutput {
 	return o
-}
-
-func (o LookupArtifactResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupArtifactResult] {
-	return pulumix.Output[LookupArtifactResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this Artifact was created.

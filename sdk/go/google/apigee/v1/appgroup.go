@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an AppGroup. Once created, user can register apps under the AppGroup to obtain secret key and password. At creation time, the AppGroup's state is set as `active`.
@@ -142,12 +141,6 @@ func (i *Appgroup) ToAppgroupOutputWithContext(ctx context.Context) AppgroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AppgroupOutput)
 }
 
-func (i *Appgroup) ToOutput(ctx context.Context) pulumix.Output[*Appgroup] {
-	return pulumix.Output[*Appgroup]{
-		OutputState: i.ToAppgroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppgroupOutput struct{ *pulumi.OutputState }
 
 func (AppgroupOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o AppgroupOutput) ToAppgroupOutput() AppgroupOutput {
 
 func (o AppgroupOutput) ToAppgroupOutputWithContext(ctx context.Context) AppgroupOutput {
 	return o
-}
-
-func (o AppgroupOutput) ToOutput(ctx context.Context) pulumix.Output[*Appgroup] {
-	return pulumix.Output[*Appgroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Internal identifier that cannot be edited

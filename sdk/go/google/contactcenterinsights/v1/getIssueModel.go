@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an issue model.
@@ -87,12 +86,6 @@ func (o LookupIssueModelResultOutput) ToLookupIssueModelResultOutput() LookupIss
 
 func (o LookupIssueModelResultOutput) ToLookupIssueModelResultOutputWithContext(ctx context.Context) LookupIssueModelResultOutput {
 	return o
-}
-
-func (o LookupIssueModelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIssueModelResult] {
-	return pulumix.Output[LookupIssueModelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which this issue model was created.

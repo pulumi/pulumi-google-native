@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Uploads the specified SSL certificate.
@@ -123,12 +122,6 @@ func (i *AuthorizedCertificate) ToAuthorizedCertificateOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedCertificateOutput)
 }
 
-func (i *AuthorizedCertificate) ToOutput(ctx context.Context) pulumix.Output[*AuthorizedCertificate] {
-	return pulumix.Output[*AuthorizedCertificate]{
-		OutputState: i.ToAuthorizedCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizedCertificateOutput struct{ *pulumi.OutputState }
 
 func (AuthorizedCertificateOutput) ElementType() reflect.Type {
@@ -141,12 +134,6 @@ func (o AuthorizedCertificateOutput) ToAuthorizedCertificateOutput() AuthorizedC
 
 func (o AuthorizedCertificateOutput) ToAuthorizedCertificateOutputWithContext(ctx context.Context) AuthorizedCertificateOutput {
 	return o
-}
-
-func (o AuthorizedCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizedCertificate] {
-	return pulumix.Output[*AuthorizedCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizedCertificateOutput) AppId() pulumi.StringOutput {

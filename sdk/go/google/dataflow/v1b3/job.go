@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter confidential information when you supply string values using the API.
@@ -260,12 +259,6 @@ func (i *Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutput)
 }
 
-func (i *Job) ToOutput(ctx context.Context) pulumix.Output[*Job] {
-	return pulumix.Output[*Job]{
-		OutputState: i.ToJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobOutput struct{ *pulumi.OutputState }
 
 func (JobOutput) ElementType() reflect.Type {
@@ -278,12 +271,6 @@ func (o JobOutput) ToJobOutput() JobOutput {
 
 func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
-}
-
-func (o JobOutput) ToOutput(ctx context.Context) pulumix.Output[*Job] {
-	return pulumix.Output[*Job]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client's unique identifier of the job, re-used across retried attempts. If this field is set, the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a previously submitted job with the same client's ID and job name. The caller may use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it.

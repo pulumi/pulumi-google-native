@@ -85,12 +85,6 @@ func (o AliasContextKindOutput) ToAliasContextKindPtrOutputWithContext(ctx conte
 	}).(AliasContextKindPtrOutput)
 }
 
-func (o AliasContextKindOutput) ToOutput(ctx context.Context) pulumix.Output[AliasContextKind] {
-	return pulumix.Output[AliasContextKind]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AliasContextKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AliasContextKindPtrOutput) ToAliasContextKindPtrOutput() AliasContextKin
 
 func (o AliasContextKindPtrOutput) ToAliasContextKindPtrOutputWithContext(ctx context.Context) AliasContextKindPtrOutput {
 	return o
-}
-
-func (o AliasContextKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AliasContextKind] {
-	return pulumix.Output[*AliasContextKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AliasContextKindPtrOutput) Elem() AliasContextKindOutput {
@@ -276,12 +264,6 @@ func (o AssessmentStateOutput) ToAssessmentStatePtrOutputWithContext(ctx context
 	}).(AssessmentStatePtrOutput)
 }
 
-func (o AssessmentStateOutput) ToOutput(ctx context.Context) pulumix.Output[AssessmentState] {
-	return pulumix.Output[AssessmentState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AssessmentStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -315,12 +297,6 @@ func (o AssessmentStatePtrOutput) ToAssessmentStatePtrOutput() AssessmentStatePt
 
 func (o AssessmentStatePtrOutput) ToAssessmentStatePtrOutputWithContext(ctx context.Context) AssessmentStatePtrOutput {
 	return o
-}
-
-func (o AssessmentStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssessmentState] {
-	return pulumix.Output[*AssessmentState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssessmentStatePtrOutput) Elem() AssessmentStateOutput {
@@ -460,12 +436,6 @@ func (o CVSSAttackComplexityOutput) ToCVSSAttackComplexityPtrOutputWithContext(c
 	}).(CVSSAttackComplexityPtrOutput)
 }
 
-func (o CVSSAttackComplexityOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSAttackComplexity] {
-	return pulumix.Output[CVSSAttackComplexity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSAttackComplexityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -499,12 +469,6 @@ func (o CVSSAttackComplexityPtrOutput) ToCVSSAttackComplexityPtrOutput() CVSSAtt
 
 func (o CVSSAttackComplexityPtrOutput) ToCVSSAttackComplexityPtrOutputWithContext(ctx context.Context) CVSSAttackComplexityPtrOutput {
 	return o
-}
-
-func (o CVSSAttackComplexityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSAttackComplexity] {
-	return pulumix.Output[*CVSSAttackComplexity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSAttackComplexityPtrOutput) Elem() CVSSAttackComplexityOutput {
@@ -646,12 +610,6 @@ func (o CVSSAttackVectorOutput) ToCVSSAttackVectorPtrOutputWithContext(ctx conte
 	}).(CVSSAttackVectorPtrOutput)
 }
 
-func (o CVSSAttackVectorOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSAttackVector] {
-	return pulumix.Output[CVSSAttackVector]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSAttackVectorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -685,12 +643,6 @@ func (o CVSSAttackVectorPtrOutput) ToCVSSAttackVectorPtrOutput() CVSSAttackVecto
 
 func (o CVSSAttackVectorPtrOutput) ToCVSSAttackVectorPtrOutputWithContext(ctx context.Context) CVSSAttackVectorPtrOutput {
 	return o
-}
-
-func (o CVSSAttackVectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSAttackVector] {
-	return pulumix.Output[*CVSSAttackVector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSAttackVectorPtrOutput) Elem() CVSSAttackVectorOutput {
@@ -830,12 +782,6 @@ func (o CVSSAuthenticationOutput) ToCVSSAuthenticationPtrOutputWithContext(ctx c
 	}).(CVSSAuthenticationPtrOutput)
 }
 
-func (o CVSSAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSAuthentication] {
-	return pulumix.Output[CVSSAuthentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSAuthenticationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -869,12 +815,6 @@ func (o CVSSAuthenticationPtrOutput) ToCVSSAuthenticationPtrOutput() CVSSAuthent
 
 func (o CVSSAuthenticationPtrOutput) ToCVSSAuthenticationPtrOutputWithContext(ctx context.Context) CVSSAuthenticationPtrOutput {
 	return o
-}
-
-func (o CVSSAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSAuthentication] {
-	return pulumix.Output[*CVSSAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSAuthenticationPtrOutput) Elem() CVSSAuthenticationOutput {
@@ -1016,12 +956,6 @@ func (o CVSSAvailabilityImpactOutput) ToCVSSAvailabilityImpactPtrOutputWithConte
 	}).(CVSSAvailabilityImpactPtrOutput)
 }
 
-func (o CVSSAvailabilityImpactOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSAvailabilityImpact] {
-	return pulumix.Output[CVSSAvailabilityImpact]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSAvailabilityImpactOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1055,12 +989,6 @@ func (o CVSSAvailabilityImpactPtrOutput) ToCVSSAvailabilityImpactPtrOutput() CVS
 
 func (o CVSSAvailabilityImpactPtrOutput) ToCVSSAvailabilityImpactPtrOutputWithContext(ctx context.Context) CVSSAvailabilityImpactPtrOutput {
 	return o
-}
-
-func (o CVSSAvailabilityImpactPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSAvailabilityImpact] {
-	return pulumix.Output[*CVSSAvailabilityImpact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSAvailabilityImpactPtrOutput) Elem() CVSSAvailabilityImpactOutput {
@@ -1202,12 +1130,6 @@ func (o CVSSConfidentialityImpactOutput) ToCVSSConfidentialityImpactPtrOutputWit
 	}).(CVSSConfidentialityImpactPtrOutput)
 }
 
-func (o CVSSConfidentialityImpactOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSConfidentialityImpact] {
-	return pulumix.Output[CVSSConfidentialityImpact]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSConfidentialityImpactOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1241,12 +1163,6 @@ func (o CVSSConfidentialityImpactPtrOutput) ToCVSSConfidentialityImpactPtrOutput
 
 func (o CVSSConfidentialityImpactPtrOutput) ToCVSSConfidentialityImpactPtrOutputWithContext(ctx context.Context) CVSSConfidentialityImpactPtrOutput {
 	return o
-}
-
-func (o CVSSConfidentialityImpactPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSConfidentialityImpact] {
-	return pulumix.Output[*CVSSConfidentialityImpact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSConfidentialityImpactPtrOutput) Elem() CVSSConfidentialityImpactOutput {
@@ -1388,12 +1304,6 @@ func (o CVSSIntegrityImpactOutput) ToCVSSIntegrityImpactPtrOutputWithContext(ctx
 	}).(CVSSIntegrityImpactPtrOutput)
 }
 
-func (o CVSSIntegrityImpactOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSIntegrityImpact] {
-	return pulumix.Output[CVSSIntegrityImpact]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSIntegrityImpactOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1427,12 +1337,6 @@ func (o CVSSIntegrityImpactPtrOutput) ToCVSSIntegrityImpactPtrOutput() CVSSInteg
 
 func (o CVSSIntegrityImpactPtrOutput) ToCVSSIntegrityImpactPtrOutputWithContext(ctx context.Context) CVSSIntegrityImpactPtrOutput {
 	return o
-}
-
-func (o CVSSIntegrityImpactPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSIntegrityImpact] {
-	return pulumix.Output[*CVSSIntegrityImpact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSIntegrityImpactPtrOutput) Elem() CVSSIntegrityImpactOutput {
@@ -1572,12 +1476,6 @@ func (o CVSSPrivilegesRequiredOutput) ToCVSSPrivilegesRequiredPtrOutputWithConte
 	}).(CVSSPrivilegesRequiredPtrOutput)
 }
 
-func (o CVSSPrivilegesRequiredOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSPrivilegesRequired] {
-	return pulumix.Output[CVSSPrivilegesRequired]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSPrivilegesRequiredOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1611,12 +1509,6 @@ func (o CVSSPrivilegesRequiredPtrOutput) ToCVSSPrivilegesRequiredPtrOutput() CVS
 
 func (o CVSSPrivilegesRequiredPtrOutput) ToCVSSPrivilegesRequiredPtrOutputWithContext(ctx context.Context) CVSSPrivilegesRequiredPtrOutput {
 	return o
-}
-
-func (o CVSSPrivilegesRequiredPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSPrivilegesRequired] {
-	return pulumix.Output[*CVSSPrivilegesRequired]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSPrivilegesRequiredPtrOutput) Elem() CVSSPrivilegesRequiredOutput {
@@ -1755,12 +1647,6 @@ func (o CVSSScopeOutput) ToCVSSScopePtrOutputWithContext(ctx context.Context) CV
 	}).(CVSSScopePtrOutput)
 }
 
-func (o CVSSScopeOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSScope] {
-	return pulumix.Output[CVSSScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1794,12 +1680,6 @@ func (o CVSSScopePtrOutput) ToCVSSScopePtrOutput() CVSSScopePtrOutput {
 
 func (o CVSSScopePtrOutput) ToCVSSScopePtrOutputWithContext(ctx context.Context) CVSSScopePtrOutput {
 	return o
-}
-
-func (o CVSSScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSScope] {
-	return pulumix.Output[*CVSSScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSScopePtrOutput) Elem() CVSSScopeOutput {
@@ -1938,12 +1818,6 @@ func (o CVSSUserInteractionOutput) ToCVSSUserInteractionPtrOutputWithContext(ctx
 	}).(CVSSUserInteractionPtrOutput)
 }
 
-func (o CVSSUserInteractionOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSUserInteraction] {
-	return pulumix.Output[CVSSUserInteraction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSUserInteractionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1977,12 +1851,6 @@ func (o CVSSUserInteractionPtrOutput) ToCVSSUserInteractionPtrOutput() CVSSUserI
 
 func (o CVSSUserInteractionPtrOutput) ToCVSSUserInteractionPtrOutputWithContext(ctx context.Context) CVSSUserInteractionPtrOutput {
 	return o
-}
-
-func (o CVSSUserInteractionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSUserInteraction] {
-	return pulumix.Output[*CVSSUserInteraction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSUserInteractionPtrOutput) Elem() CVSSUserInteractionOutput {
@@ -2121,12 +1989,6 @@ func (o CVSSv3AttackComplexityOutput) ToCVSSv3AttackComplexityPtrOutputWithConte
 	}).(CVSSv3AttackComplexityPtrOutput)
 }
 
-func (o CVSSv3AttackComplexityOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSv3AttackComplexity] {
-	return pulumix.Output[CVSSv3AttackComplexity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSv3AttackComplexityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2160,12 +2022,6 @@ func (o CVSSv3AttackComplexityPtrOutput) ToCVSSv3AttackComplexityPtrOutput() CVS
 
 func (o CVSSv3AttackComplexityPtrOutput) ToCVSSv3AttackComplexityPtrOutputWithContext(ctx context.Context) CVSSv3AttackComplexityPtrOutput {
 	return o
-}
-
-func (o CVSSv3AttackComplexityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3AttackComplexity] {
-	return pulumix.Output[*CVSSv3AttackComplexity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSv3AttackComplexityPtrOutput) Elem() CVSSv3AttackComplexityOutput {
@@ -2307,12 +2163,6 @@ func (o CVSSv3AttackVectorOutput) ToCVSSv3AttackVectorPtrOutputWithContext(ctx c
 	}).(CVSSv3AttackVectorPtrOutput)
 }
 
-func (o CVSSv3AttackVectorOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSv3AttackVector] {
-	return pulumix.Output[CVSSv3AttackVector]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSv3AttackVectorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2346,12 +2196,6 @@ func (o CVSSv3AttackVectorPtrOutput) ToCVSSv3AttackVectorPtrOutput() CVSSv3Attac
 
 func (o CVSSv3AttackVectorPtrOutput) ToCVSSv3AttackVectorPtrOutputWithContext(ctx context.Context) CVSSv3AttackVectorPtrOutput {
 	return o
-}
-
-func (o CVSSv3AttackVectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3AttackVector] {
-	return pulumix.Output[*CVSSv3AttackVector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSv3AttackVectorPtrOutput) Elem() CVSSv3AttackVectorOutput {
@@ -2491,12 +2335,6 @@ func (o CVSSv3AvailabilityImpactOutput) ToCVSSv3AvailabilityImpactPtrOutputWithC
 	}).(CVSSv3AvailabilityImpactPtrOutput)
 }
 
-func (o CVSSv3AvailabilityImpactOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSv3AvailabilityImpact] {
-	return pulumix.Output[CVSSv3AvailabilityImpact]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSv3AvailabilityImpactOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2530,12 +2368,6 @@ func (o CVSSv3AvailabilityImpactPtrOutput) ToCVSSv3AvailabilityImpactPtrOutput()
 
 func (o CVSSv3AvailabilityImpactPtrOutput) ToCVSSv3AvailabilityImpactPtrOutputWithContext(ctx context.Context) CVSSv3AvailabilityImpactPtrOutput {
 	return o
-}
-
-func (o CVSSv3AvailabilityImpactPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3AvailabilityImpact] {
-	return pulumix.Output[*CVSSv3AvailabilityImpact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSv3AvailabilityImpactPtrOutput) Elem() CVSSv3AvailabilityImpactOutput {
@@ -2675,12 +2507,6 @@ func (o CVSSv3ConfidentialityImpactOutput) ToCVSSv3ConfidentialityImpactPtrOutpu
 	}).(CVSSv3ConfidentialityImpactPtrOutput)
 }
 
-func (o CVSSv3ConfidentialityImpactOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSv3ConfidentialityImpact] {
-	return pulumix.Output[CVSSv3ConfidentialityImpact]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSv3ConfidentialityImpactOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2714,12 +2540,6 @@ func (o CVSSv3ConfidentialityImpactPtrOutput) ToCVSSv3ConfidentialityImpactPtrOu
 
 func (o CVSSv3ConfidentialityImpactPtrOutput) ToCVSSv3ConfidentialityImpactPtrOutputWithContext(ctx context.Context) CVSSv3ConfidentialityImpactPtrOutput {
 	return o
-}
-
-func (o CVSSv3ConfidentialityImpactPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3ConfidentialityImpact] {
-	return pulumix.Output[*CVSSv3ConfidentialityImpact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSv3ConfidentialityImpactPtrOutput) Elem() CVSSv3ConfidentialityImpactOutput {
@@ -2859,12 +2679,6 @@ func (o CVSSv3IntegrityImpactOutput) ToCVSSv3IntegrityImpactPtrOutputWithContext
 	}).(CVSSv3IntegrityImpactPtrOutput)
 }
 
-func (o CVSSv3IntegrityImpactOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSv3IntegrityImpact] {
-	return pulumix.Output[CVSSv3IntegrityImpact]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSv3IntegrityImpactOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2898,12 +2712,6 @@ func (o CVSSv3IntegrityImpactPtrOutput) ToCVSSv3IntegrityImpactPtrOutput() CVSSv
 
 func (o CVSSv3IntegrityImpactPtrOutput) ToCVSSv3IntegrityImpactPtrOutputWithContext(ctx context.Context) CVSSv3IntegrityImpactPtrOutput {
 	return o
-}
-
-func (o CVSSv3IntegrityImpactPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3IntegrityImpact] {
-	return pulumix.Output[*CVSSv3IntegrityImpact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSv3IntegrityImpactPtrOutput) Elem() CVSSv3IntegrityImpactOutput {
@@ -3043,12 +2851,6 @@ func (o CVSSv3PrivilegesRequiredOutput) ToCVSSv3PrivilegesRequiredPtrOutputWithC
 	}).(CVSSv3PrivilegesRequiredPtrOutput)
 }
 
-func (o CVSSv3PrivilegesRequiredOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSv3PrivilegesRequired] {
-	return pulumix.Output[CVSSv3PrivilegesRequired]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSv3PrivilegesRequiredOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3082,12 +2884,6 @@ func (o CVSSv3PrivilegesRequiredPtrOutput) ToCVSSv3PrivilegesRequiredPtrOutput()
 
 func (o CVSSv3PrivilegesRequiredPtrOutput) ToCVSSv3PrivilegesRequiredPtrOutputWithContext(ctx context.Context) CVSSv3PrivilegesRequiredPtrOutput {
 	return o
-}
-
-func (o CVSSv3PrivilegesRequiredPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3PrivilegesRequired] {
-	return pulumix.Output[*CVSSv3PrivilegesRequired]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSv3PrivilegesRequiredPtrOutput) Elem() CVSSv3PrivilegesRequiredOutput {
@@ -3226,12 +3022,6 @@ func (o CVSSv3ScopeOutput) ToCVSSv3ScopePtrOutputWithContext(ctx context.Context
 	}).(CVSSv3ScopePtrOutput)
 }
 
-func (o CVSSv3ScopeOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSv3Scope] {
-	return pulumix.Output[CVSSv3Scope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSv3ScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3265,12 +3055,6 @@ func (o CVSSv3ScopePtrOutput) ToCVSSv3ScopePtrOutput() CVSSv3ScopePtrOutput {
 
 func (o CVSSv3ScopePtrOutput) ToCVSSv3ScopePtrOutputWithContext(ctx context.Context) CVSSv3ScopePtrOutput {
 	return o
-}
-
-func (o CVSSv3ScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3Scope] {
-	return pulumix.Output[*CVSSv3Scope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSv3ScopePtrOutput) Elem() CVSSv3ScopeOutput {
@@ -3409,12 +3193,6 @@ func (o CVSSv3UserInteractionOutput) ToCVSSv3UserInteractionPtrOutputWithContext
 	}).(CVSSv3UserInteractionPtrOutput)
 }
 
-func (o CVSSv3UserInteractionOutput) ToOutput(ctx context.Context) pulumix.Output[CVSSv3UserInteraction] {
-	return pulumix.Output[CVSSv3UserInteraction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CVSSv3UserInteractionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3448,12 +3226,6 @@ func (o CVSSv3UserInteractionPtrOutput) ToCVSSv3UserInteractionPtrOutput() CVSSv
 
 func (o CVSSv3UserInteractionPtrOutput) ToCVSSv3UserInteractionPtrOutputWithContext(ctx context.Context) CVSSv3UserInteractionPtrOutput {
 	return o
-}
-
-func (o CVSSv3UserInteractionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3UserInteraction] {
-	return pulumix.Output[*CVSSv3UserInteraction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CVSSv3UserInteractionPtrOutput) Elem() CVSSv3UserInteractionOutput {
@@ -3601,12 +3373,6 @@ func (o CisBenchmarkSeverityOutput) ToCisBenchmarkSeverityPtrOutputWithContext(c
 	}).(CisBenchmarkSeverityPtrOutput)
 }
 
-func (o CisBenchmarkSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[CisBenchmarkSeverity] {
-	return pulumix.Output[CisBenchmarkSeverity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CisBenchmarkSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3640,12 +3406,6 @@ func (o CisBenchmarkSeverityPtrOutput) ToCisBenchmarkSeverityPtrOutput() CisBenc
 
 func (o CisBenchmarkSeverityPtrOutput) ToCisBenchmarkSeverityPtrOutputWithContext(ctx context.Context) CisBenchmarkSeverityPtrOutput {
 	return o
-}
-
-func (o CisBenchmarkSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CisBenchmarkSeverity] {
-	return pulumix.Output[*CisBenchmarkSeverity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CisBenchmarkSeverityPtrOutput) Elem() CisBenchmarkSeverityOutput {
@@ -3790,12 +3550,6 @@ func (o DeploymentOccurrencePlatformOutput) ToDeploymentOccurrencePlatformPtrOut
 	}).(DeploymentOccurrencePlatformPtrOutput)
 }
 
-func (o DeploymentOccurrencePlatformOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentOccurrencePlatform] {
-	return pulumix.Output[DeploymentOccurrencePlatform]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeploymentOccurrencePlatformOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -3829,12 +3583,6 @@ func (o DeploymentOccurrencePlatformPtrOutput) ToDeploymentOccurrencePlatformPtr
 
 func (o DeploymentOccurrencePlatformPtrOutput) ToDeploymentOccurrencePlatformPtrOutputWithContext(ctx context.Context) DeploymentOccurrencePlatformPtrOutput {
 	return o
-}
-
-func (o DeploymentOccurrencePlatformPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentOccurrencePlatform] {
-	return pulumix.Output[*DeploymentOccurrencePlatform]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeploymentOccurrencePlatformPtrOutput) Elem() DeploymentOccurrencePlatformOutput {
@@ -3997,12 +3745,6 @@ func (o DiscoveryNoteAnalysisKindOutput) ToDiscoveryNoteAnalysisKindPtrOutputWit
 	}).(DiscoveryNoteAnalysisKindPtrOutput)
 }
 
-func (o DiscoveryNoteAnalysisKindOutput) ToOutput(ctx context.Context) pulumix.Output[DiscoveryNoteAnalysisKind] {
-	return pulumix.Output[DiscoveryNoteAnalysisKind]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiscoveryNoteAnalysisKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4036,12 +3778,6 @@ func (o DiscoveryNoteAnalysisKindPtrOutput) ToDiscoveryNoteAnalysisKindPtrOutput
 
 func (o DiscoveryNoteAnalysisKindPtrOutput) ToDiscoveryNoteAnalysisKindPtrOutputWithContext(ctx context.Context) DiscoveryNoteAnalysisKindPtrOutput {
 	return o
-}
-
-func (o DiscoveryNoteAnalysisKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiscoveryNoteAnalysisKind] {
-	return pulumix.Output[*DiscoveryNoteAnalysisKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiscoveryNoteAnalysisKindPtrOutput) Elem() DiscoveryNoteAnalysisKindOutput {
@@ -4192,12 +3928,6 @@ func (o DiscoveryOccurrenceAnalysisStatusOutput) ToDiscoveryOccurrenceAnalysisSt
 	}).(DiscoveryOccurrenceAnalysisStatusPtrOutput)
 }
 
-func (o DiscoveryOccurrenceAnalysisStatusOutput) ToOutput(ctx context.Context) pulumix.Output[DiscoveryOccurrenceAnalysisStatus] {
-	return pulumix.Output[DiscoveryOccurrenceAnalysisStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiscoveryOccurrenceAnalysisStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4231,12 +3961,6 @@ func (o DiscoveryOccurrenceAnalysisStatusPtrOutput) ToDiscoveryOccurrenceAnalysi
 
 func (o DiscoveryOccurrenceAnalysisStatusPtrOutput) ToDiscoveryOccurrenceAnalysisStatusPtrOutputWithContext(ctx context.Context) DiscoveryOccurrenceAnalysisStatusPtrOutput {
 	return o
-}
-
-func (o DiscoveryOccurrenceAnalysisStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiscoveryOccurrenceAnalysisStatus] {
-	return pulumix.Output[*DiscoveryOccurrenceAnalysisStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiscoveryOccurrenceAnalysisStatusPtrOutput) Elem() DiscoveryOccurrenceAnalysisStatusOutput {
@@ -4379,12 +4103,6 @@ func (o DiscoveryOccurrenceContinuousAnalysisOutput) ToDiscoveryOccurrenceContin
 	}).(DiscoveryOccurrenceContinuousAnalysisPtrOutput)
 }
 
-func (o DiscoveryOccurrenceContinuousAnalysisOutput) ToOutput(ctx context.Context) pulumix.Output[DiscoveryOccurrenceContinuousAnalysis] {
-	return pulumix.Output[DiscoveryOccurrenceContinuousAnalysis]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiscoveryOccurrenceContinuousAnalysisOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4418,12 +4136,6 @@ func (o DiscoveryOccurrenceContinuousAnalysisPtrOutput) ToDiscoveryOccurrenceCon
 
 func (o DiscoveryOccurrenceContinuousAnalysisPtrOutput) ToDiscoveryOccurrenceContinuousAnalysisPtrOutputWithContext(ctx context.Context) DiscoveryOccurrenceContinuousAnalysisPtrOutput {
 	return o
-}
-
-func (o DiscoveryOccurrenceContinuousAnalysisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiscoveryOccurrenceContinuousAnalysis] {
-	return pulumix.Output[*DiscoveryOccurrenceContinuousAnalysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiscoveryOccurrenceContinuousAnalysisPtrOutput) Elem() DiscoveryOccurrenceContinuousAnalysisOutput {
@@ -4566,12 +4278,6 @@ func (o DistributionArchitectureOutput) ToDistributionArchitecturePtrOutputWithC
 	}).(DistributionArchitecturePtrOutput)
 }
 
-func (o DistributionArchitectureOutput) ToOutput(ctx context.Context) pulumix.Output[DistributionArchitecture] {
-	return pulumix.Output[DistributionArchitecture]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DistributionArchitectureOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4605,12 +4311,6 @@ func (o DistributionArchitecturePtrOutput) ToDistributionArchitecturePtrOutput()
 
 func (o DistributionArchitecturePtrOutput) ToDistributionArchitecturePtrOutputWithContext(ctx context.Context) DistributionArchitecturePtrOutput {
 	return o
-}
-
-func (o DistributionArchitecturePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DistributionArchitecture] {
-	return pulumix.Output[*DistributionArchitecture]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DistributionArchitecturePtrOutput) Elem() DistributionArchitectureOutput {
@@ -4759,12 +4459,6 @@ func (o JustificationJustificationTypeOutput) ToJustificationJustificationTypePt
 	}).(JustificationJustificationTypePtrOutput)
 }
 
-func (o JustificationJustificationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[JustificationJustificationType] {
-	return pulumix.Output[JustificationJustificationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JustificationJustificationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4798,12 +4492,6 @@ func (o JustificationJustificationTypePtrOutput) ToJustificationJustificationTyp
 
 func (o JustificationJustificationTypePtrOutput) ToJustificationJustificationTypePtrOutputWithContext(ctx context.Context) JustificationJustificationTypePtrOutput {
 	return o
-}
-
-func (o JustificationJustificationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JustificationJustificationType] {
-	return pulumix.Output[*JustificationJustificationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JustificationJustificationTypePtrOutput) Elem() JustificationJustificationTypeOutput {
@@ -4946,12 +4634,6 @@ func (o PackageNoteArchitectureOutput) ToPackageNoteArchitecturePtrOutputWithCon
 	}).(PackageNoteArchitecturePtrOutput)
 }
 
-func (o PackageNoteArchitectureOutput) ToOutput(ctx context.Context) pulumix.Output[PackageNoteArchitecture] {
-	return pulumix.Output[PackageNoteArchitecture]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PackageNoteArchitectureOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -4985,12 +4667,6 @@ func (o PackageNoteArchitecturePtrOutput) ToPackageNoteArchitecturePtrOutput() P
 
 func (o PackageNoteArchitecturePtrOutput) ToPackageNoteArchitecturePtrOutputWithContext(ctx context.Context) PackageNoteArchitecturePtrOutput {
 	return o
-}
-
-func (o PackageNoteArchitecturePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PackageNoteArchitecture] {
-	return pulumix.Output[*PackageNoteArchitecture]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PackageNoteArchitecturePtrOutput) Elem() PackageNoteArchitectureOutput {
@@ -5139,12 +4815,6 @@ func (o RemediationRemediationTypeOutput) ToRemediationRemediationTypePtrOutputW
 	}).(RemediationRemediationTypePtrOutput)
 }
 
-func (o RemediationRemediationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RemediationRemediationType] {
-	return pulumix.Output[RemediationRemediationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RemediationRemediationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5178,12 +4848,6 @@ func (o RemediationRemediationTypePtrOutput) ToRemediationRemediationTypePtrOutp
 
 func (o RemediationRemediationTypePtrOutput) ToRemediationRemediationTypePtrOutputWithContext(ctx context.Context) RemediationRemediationTypePtrOutput {
 	return o
-}
-
-func (o RemediationRemediationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RemediationRemediationType] {
-	return pulumix.Output[*RemediationRemediationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RemediationRemediationTypePtrOutput) Elem() RemediationRemediationTypeOutput {
@@ -5326,12 +4990,6 @@ func (o SBOMStatusSbomStateOutput) ToSBOMStatusSbomStatePtrOutputWithContext(ctx
 	}).(SBOMStatusSbomStatePtrOutput)
 }
 
-func (o SBOMStatusSbomStateOutput) ToOutput(ctx context.Context) pulumix.Output[SBOMStatusSbomState] {
-	return pulumix.Output[SBOMStatusSbomState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SBOMStatusSbomStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5365,12 +5023,6 @@ func (o SBOMStatusSbomStatePtrOutput) ToSBOMStatusSbomStatePtrOutput() SBOMStatu
 
 func (o SBOMStatusSbomStatePtrOutput) ToSBOMStatusSbomStatePtrOutputWithContext(ctx context.Context) SBOMStatusSbomStatePtrOutput {
 	return o
-}
-
-func (o SBOMStatusSbomStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SBOMStatusSbomState] {
-	return pulumix.Output[*SBOMStatusSbomState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SBOMStatusSbomStatePtrOutput) Elem() SBOMStatusSbomStateOutput {
@@ -5515,12 +5167,6 @@ func (o VersionKindOutput) ToVersionKindPtrOutputWithContext(ctx context.Context
 	}).(VersionKindPtrOutput)
 }
 
-func (o VersionKindOutput) ToOutput(ctx context.Context) pulumix.Output[VersionKind] {
-	return pulumix.Output[VersionKind]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VersionKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5554,12 +5200,6 @@ func (o VersionKindPtrOutput) ToVersionKindPtrOutput() VersionKindPtrOutput {
 
 func (o VersionKindPtrOutput) ToVersionKindPtrOutputWithContext(ctx context.Context) VersionKindPtrOutput {
 	return o
-}
-
-func (o VersionKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VersionKind] {
-	return pulumix.Output[*VersionKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VersionKindPtrOutput) Elem() VersionKindOutput {
@@ -5706,12 +5346,6 @@ func (o VexAssessmentStateOutput) ToVexAssessmentStatePtrOutputWithContext(ctx c
 	}).(VexAssessmentStatePtrOutput)
 }
 
-func (o VexAssessmentStateOutput) ToOutput(ctx context.Context) pulumix.Output[VexAssessmentState] {
-	return pulumix.Output[VexAssessmentState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VexAssessmentStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5745,12 +5379,6 @@ func (o VexAssessmentStatePtrOutput) ToVexAssessmentStatePtrOutput() VexAssessme
 
 func (o VexAssessmentStatePtrOutput) ToVexAssessmentStatePtrOutputWithContext(ctx context.Context) VexAssessmentStatePtrOutput {
 	return o
-}
-
-func (o VexAssessmentStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VexAssessmentState] {
-	return pulumix.Output[*VexAssessmentState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VexAssessmentStatePtrOutput) Elem() VexAssessmentStateOutput {
@@ -5890,12 +5518,6 @@ func (o VulnerabilityNoteCvssVersionOutput) ToVulnerabilityNoteCvssVersionPtrOut
 	}).(VulnerabilityNoteCvssVersionPtrOutput)
 }
 
-func (o VulnerabilityNoteCvssVersionOutput) ToOutput(ctx context.Context) pulumix.Output[VulnerabilityNoteCvssVersion] {
-	return pulumix.Output[VulnerabilityNoteCvssVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VulnerabilityNoteCvssVersionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -5929,12 +5551,6 @@ func (o VulnerabilityNoteCvssVersionPtrOutput) ToVulnerabilityNoteCvssVersionPtr
 
 func (o VulnerabilityNoteCvssVersionPtrOutput) ToVulnerabilityNoteCvssVersionPtrOutputWithContext(ctx context.Context) VulnerabilityNoteCvssVersionPtrOutput {
 	return o
-}
-
-func (o VulnerabilityNoteCvssVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VulnerabilityNoteCvssVersion] {
-	return pulumix.Output[*VulnerabilityNoteCvssVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VulnerabilityNoteCvssVersionPtrOutput) Elem() VulnerabilityNoteCvssVersionOutput {
@@ -6083,12 +5699,6 @@ func (o VulnerabilityNoteSeverityOutput) ToVulnerabilityNoteSeverityPtrOutputWit
 	}).(VulnerabilityNoteSeverityPtrOutput)
 }
 
-func (o VulnerabilityNoteSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[VulnerabilityNoteSeverity] {
-	return pulumix.Output[VulnerabilityNoteSeverity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VulnerabilityNoteSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6122,12 +5732,6 @@ func (o VulnerabilityNoteSeverityPtrOutput) ToVulnerabilityNoteSeverityPtrOutput
 
 func (o VulnerabilityNoteSeverityPtrOutput) ToVulnerabilityNoteSeverityPtrOutputWithContext(ctx context.Context) VulnerabilityNoteSeverityPtrOutput {
 	return o
-}
-
-func (o VulnerabilityNoteSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VulnerabilityNoteSeverity] {
-	return pulumix.Output[*VulnerabilityNoteSeverity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VulnerabilityNoteSeverityPtrOutput) Elem() VulnerabilityNoteSeverityOutput {
@@ -6276,12 +5880,6 @@ func (o VulnerabilityOccurrenceEffectiveSeverityOutput) ToVulnerabilityOccurrenc
 	}).(VulnerabilityOccurrenceEffectiveSeverityPtrOutput)
 }
 
-func (o VulnerabilityOccurrenceEffectiveSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[VulnerabilityOccurrenceEffectiveSeverity] {
-	return pulumix.Output[VulnerabilityOccurrenceEffectiveSeverity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VulnerabilityOccurrenceEffectiveSeverityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -6315,12 +5913,6 @@ func (o VulnerabilityOccurrenceEffectiveSeverityPtrOutput) ToVulnerabilityOccurr
 
 func (o VulnerabilityOccurrenceEffectiveSeverityPtrOutput) ToVulnerabilityOccurrenceEffectiveSeverityPtrOutputWithContext(ctx context.Context) VulnerabilityOccurrenceEffectiveSeverityPtrOutput {
 	return o
-}
-
-func (o VulnerabilityOccurrenceEffectiveSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VulnerabilityOccurrenceEffectiveSeverity] {
-	return pulumix.Output[*VulnerabilityOccurrenceEffectiveSeverity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VulnerabilityOccurrenceEffectiveSeverityPtrOutput) Elem() VulnerabilityOccurrenceEffectiveSeverityOutput {

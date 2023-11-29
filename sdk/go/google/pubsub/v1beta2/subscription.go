@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a subscription to a given topic. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic. Note that for REST API requests, you must specify a name.
@@ -126,12 +125,6 @@ func (i *Subscription) ToSubscriptionOutputWithContext(ctx context.Context) Subs
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionOutput)
 }
 
-func (i *Subscription) ToOutput(ctx context.Context) pulumix.Output[*Subscription] {
-	return pulumix.Output[*Subscription]{
-		OutputState: i.ToSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubscriptionOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionOutput) ElementType() reflect.Type {
@@ -144,12 +137,6 @@ func (o SubscriptionOutput) ToSubscriptionOutput() SubscriptionOutput {
 
 func (o SubscriptionOutput) ToSubscriptionOutputWithContext(ctx context.Context) SubscriptionOutput {
 	return o
-}
-
-func (o SubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*Subscription] {
-	return pulumix.Output[*Subscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the message. After message delivery but before the ack deadline expires and before the message is acknowledged, it is an outstanding message and will not be delivered again during that time (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using pull. The maximum custom deadline you can specify is 600 seconds (10 minutes). For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message. If this parameter is 0, a default value of 10 seconds is used.

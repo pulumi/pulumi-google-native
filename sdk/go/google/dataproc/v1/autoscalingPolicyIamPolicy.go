@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -126,12 +125,6 @@ func (i *AutoscalingPolicyIamPolicy) ToAutoscalingPolicyIamPolicyOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamPolicyOutput)
 }
 
-func (i *AutoscalingPolicyIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamPolicy] {
-	return pulumix.Output[*AutoscalingPolicyIamPolicy]{
-		OutputState: i.ToAutoscalingPolicyIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscalingPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyIamPolicyOutput) ElementType() reflect.Type {
@@ -144,12 +137,6 @@ func (o AutoscalingPolicyIamPolicyOutput) ToAutoscalingPolicyIamPolicyOutput() A
 
 func (o AutoscalingPolicyIamPolicyOutput) ToAutoscalingPolicyIamPolicyOutputWithContext(ctx context.Context) AutoscalingPolicyIamPolicyOutput {
 	return o
-}
-
-func (o AutoscalingPolicyIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamPolicy] {
-	return pulumix.Output[*AutoscalingPolicyIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoscalingPolicyIamPolicyOutput) AutoscalingPolicyId() pulumi.StringOutput {

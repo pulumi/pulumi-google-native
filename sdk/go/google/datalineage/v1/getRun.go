@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the specified run.
@@ -81,12 +80,6 @@ func (o LookupRunResultOutput) ToLookupRunResultOutput() LookupRunResultOutput {
 
 func (o LookupRunResultOutput) ToLookupRunResultOutputWithContext(ctx context.Context) LookupRunResultOutput {
 	return o
-}
-
-func (o LookupRunResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRunResult] {
-	return pulumix.Output[LookupRunResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.

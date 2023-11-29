@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a single federation.
@@ -87,12 +86,6 @@ func (o LookupFederationResultOutput) ToLookupFederationResultOutput() LookupFed
 
 func (o LookupFederationResultOutput) ToLookupFederationResultOutputWithContext(ctx context.Context) LookupFederationResultOutput {
 	return o
-}
-
-func (o LookupFederationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFederationResult] {
-	return pulumix.Output[LookupFederationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.

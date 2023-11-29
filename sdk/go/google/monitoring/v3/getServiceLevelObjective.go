@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a ServiceLevelObjective by name.
@@ -85,12 +84,6 @@ func (o LookupServiceLevelObjectiveResultOutput) ToLookupServiceLevelObjectiveRe
 
 func (o LookupServiceLevelObjectiveResultOutput) ToLookupServiceLevelObjectiveResultOutputWithContext(ctx context.Context) LookupServiceLevelObjectiveResultOutput {
 	return o
-}
-
-func (o LookupServiceLevelObjectiveResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceLevelObjectiveResult] {
-	return pulumix.Output[LookupServiceLevelObjectiveResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.

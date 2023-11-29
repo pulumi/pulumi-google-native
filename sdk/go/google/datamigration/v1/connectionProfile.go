@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new connection profile in a given project and location.
@@ -187,12 +186,6 @@ func (i *ConnectionProfile) ToConnectionProfileOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOutput)
 }
 
-func (i *ConnectionProfile) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfile] {
-	return pulumix.Output[*ConnectionProfile]{
-		OutputState: i.ToConnectionProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileOutput) ElementType() reflect.Type {
@@ -205,12 +198,6 @@ func (o ConnectionProfileOutput) ToConnectionProfileOutput() ConnectionProfileOu
 
 func (o ConnectionProfileOutput) ToConnectionProfileOutputWithContext(ctx context.Context) ConnectionProfileOutput {
 	return o
-}
-
-func (o ConnectionProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfile] {
-	return pulumix.Output[*ConnectionProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An AlloyDB cluster connection profile.

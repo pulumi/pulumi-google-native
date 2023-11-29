@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
@@ -129,12 +128,6 @@ func (i *BillingAccountExclusion) ToBillingAccountExclusionOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountExclusionOutput)
 }
 
-func (i *BillingAccountExclusion) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountExclusion] {
-	return pulumix.Output[*BillingAccountExclusion]{
-		OutputState: i.ToBillingAccountExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BillingAccountExclusionOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountExclusionOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o BillingAccountExclusionOutput) ToBillingAccountExclusionOutput() Billing
 
 func (o BillingAccountExclusionOutput) ToBillingAccountExclusionOutputWithContext(ctx context.Context) BillingAccountExclusionOutput {
 	return o
-}
-
-func (o BillingAccountExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountExclusion] {
-	return pulumix.Output[*BillingAccountExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BillingAccountExclusionOutput) BillingAccountId() pulumi.StringOutput {

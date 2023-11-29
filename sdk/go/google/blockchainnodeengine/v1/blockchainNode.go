@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new blockchain node in a given project and location.
@@ -150,12 +149,6 @@ func (i *BlockchainNode) ToBlockchainNodeOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BlockchainNodeOutput)
 }
 
-func (i *BlockchainNode) ToOutput(ctx context.Context) pulumix.Output[*BlockchainNode] {
-	return pulumix.Output[*BlockchainNode]{
-		OutputState: i.ToBlockchainNodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlockchainNodeOutput struct{ *pulumi.OutputState }
 
 func (BlockchainNodeOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o BlockchainNodeOutput) ToBlockchainNodeOutput() BlockchainNodeOutput {
 
 func (o BlockchainNodeOutput) ToBlockchainNodeOutputWithContext(ctx context.Context) BlockchainNodeOutput {
 	return o
-}
-
-func (o BlockchainNodeOutput) ToOutput(ctx context.Context) pulumix.Output[*BlockchainNode] {
-	return pulumix.Output[*BlockchainNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. ID of the requesting object.

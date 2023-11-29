@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified intent.
@@ -115,12 +114,6 @@ func (o LookupIntentResultOutput) ToLookupIntentResultOutput() LookupIntentResul
 
 func (o LookupIntentResultOutput) ToLookupIntentResultOutputWithContext(ctx context.Context) LookupIntentResultOutput {
 	return o
-}
-
-func (o LookupIntentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntentResult] {
-	return pulumix.Output[LookupIntentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.

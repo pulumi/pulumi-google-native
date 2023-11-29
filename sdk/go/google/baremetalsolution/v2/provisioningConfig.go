@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create new ProvisioningConfig.
@@ -175,12 +174,6 @@ func (i *ProvisioningConfig) ToProvisioningConfigOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ProvisioningConfigOutput)
 }
 
-func (i *ProvisioningConfig) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningConfig] {
-	return pulumix.Output[*ProvisioningConfig]{
-		OutputState: i.ToProvisioningConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProvisioningConfigOutput struct{ *pulumi.OutputState }
 
 func (ProvisioningConfigOutput) ElementType() reflect.Type {
@@ -193,12 +186,6 @@ func (o ProvisioningConfigOutput) ToProvisioningConfigOutput() ProvisioningConfi
 
 func (o ProvisioningConfigOutput) ToProvisioningConfigOutputWithContext(ctx context.Context) ProvisioningConfigOutput {
 	return o
-}
-
-func (o ProvisioningConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningConfig] {
-	return pulumix.Output[*ProvisioningConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URI to Cloud Console UI view of this provisioning config.

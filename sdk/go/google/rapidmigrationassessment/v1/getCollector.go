@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single Collector.
@@ -97,12 +96,6 @@ func (o LookupCollectorResultOutput) ToLookupCollectorResultOutput() LookupColle
 
 func (o LookupCollectorResultOutput) ToLookupCollectorResultOutputWithContext(ctx context.Context) LookupCollectorResultOutput {
 	return o
-}
-
-func (o LookupCollectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCollectorResult] {
-	return pulumix.Output[LookupCollectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Store cloud storage bucket name (which is a guid) created with this Collector.

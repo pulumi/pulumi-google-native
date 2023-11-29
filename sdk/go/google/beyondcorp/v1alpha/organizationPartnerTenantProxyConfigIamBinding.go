@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -141,12 +140,6 @@ func (i *OrganizationPartnerTenantProxyConfigIamBinding) ToOrganizationPartnerTe
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPartnerTenantProxyConfigIamBindingOutput)
 }
 
-func (i *OrganizationPartnerTenantProxyConfigIamBinding) ToOutput(ctx context.Context) pulumix.Output[*OrganizationPartnerTenantProxyConfigIamBinding] {
-	return pulumix.Output[*OrganizationPartnerTenantProxyConfigIamBinding]{
-		OutputState: i.ToOrganizationPartnerTenantProxyConfigIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationPartnerTenantProxyConfigIamBindingOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPartnerTenantProxyConfigIamBindingOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o OrganizationPartnerTenantProxyConfigIamBindingOutput) ToOrganizationPart
 
 func (o OrganizationPartnerTenantProxyConfigIamBindingOutput) ToOrganizationPartnerTenantProxyConfigIamBindingOutputWithContext(ctx context.Context) OrganizationPartnerTenantProxyConfigIamBindingOutput {
 	return o
-}
-
-func (o OrganizationPartnerTenantProxyConfigIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationPartnerTenantProxyConfigIamBinding] {
-	return pulumix.Output[*OrganizationPartnerTenantProxyConfigIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

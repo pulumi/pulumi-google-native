@@ -185,9 +185,6 @@ class ServiceAccount(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if etag is not None and not opts.urn:
-                warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
-                pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
             __props__.__dict__["etag"] = etag
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a new logging server for a given private cloud.
@@ -167,12 +166,6 @@ func (i *LoggingServer) ToLoggingServerOutputWithContext(ctx context.Context) Lo
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingServerOutput)
 }
 
-func (i *LoggingServer) ToOutput(ctx context.Context) pulumix.Output[*LoggingServer] {
-	return pulumix.Output[*LoggingServer]{
-		OutputState: i.ToLoggingServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LoggingServerOutput struct{ *pulumi.OutputState }
 
 func (LoggingServerOutput) ElementType() reflect.Type {
@@ -185,12 +178,6 @@ func (o LoggingServerOutput) ToLoggingServerOutput() LoggingServerOutput {
 
 func (o LoggingServerOutput) ToLoggingServerOutputWithContext(ctx context.Context) LoggingServerOutput {
 	return o
-}
-
-func (o LoggingServerOutput) ToOutput(ctx context.Context) pulumix.Output[*LoggingServer] {
-	return pulumix.Output[*LoggingServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of this resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a preference set.
@@ -79,12 +78,6 @@ func (o LookupPreferenceSetResultOutput) ToLookupPreferenceSetResultOutput() Loo
 
 func (o LookupPreferenceSetResultOutput) ToLookupPreferenceSetResultOutputWithContext(ctx context.Context) LookupPreferenceSetResultOutput {
 	return o
-}
-
-func (o LookupPreferenceSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPreferenceSetResult] {
-	return pulumix.Output[LookupPreferenceSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the preference set was created.

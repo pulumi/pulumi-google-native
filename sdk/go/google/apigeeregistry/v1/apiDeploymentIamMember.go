@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *ApiDeploymentIamMember) ToApiDeploymentIamMemberOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ApiDeploymentIamMemberOutput)
 }
 
-func (i *ApiDeploymentIamMember) ToOutput(ctx context.Context) pulumix.Output[*ApiDeploymentIamMember] {
-	return pulumix.Output[*ApiDeploymentIamMember]{
-		OutputState: i.ToApiDeploymentIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiDeploymentIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ApiDeploymentIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o ApiDeploymentIamMemberOutput) ToApiDeploymentIamMemberOutput() ApiDeploy
 
 func (o ApiDeploymentIamMemberOutput) ToApiDeploymentIamMemberOutputWithContext(ctx context.Context) ApiDeploymentIamMemberOutput {
 	return o
-}
-
-func (o ApiDeploymentIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiDeploymentIamMember] {
-	return pulumix.Output[*ApiDeploymentIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

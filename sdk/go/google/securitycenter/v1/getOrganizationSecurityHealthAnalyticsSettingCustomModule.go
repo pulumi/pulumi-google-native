@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a SecurityHealthAnalyticsCustomModule.
@@ -79,12 +78,6 @@ func (o LookupOrganizationSecurityHealthAnalyticsSettingCustomModuleResultOutput
 
 func (o LookupOrganizationSecurityHealthAnalyticsSettingCustomModuleResultOutput) ToLookupOrganizationSecurityHealthAnalyticsSettingCustomModuleResultOutputWithContext(ctx context.Context) LookupOrganizationSecurityHealthAnalyticsSettingCustomModuleResultOutput {
 	return o
-}
-
-func (o LookupOrganizationSecurityHealthAnalyticsSettingCustomModuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationSecurityHealthAnalyticsSettingCustomModuleResult] {
-	return pulumix.Output[LookupOrganizationSecurityHealthAnalyticsSettingCustomModuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If empty, indicates that the custom module was created in the organization, folder, or project in which you are viewing the custom module. Otherwise, `ancestor_module` specifies the organization or folder from which the custom module is inherited.

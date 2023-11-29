@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single CustomConnectorVersion.
@@ -85,12 +84,6 @@ func (o LookupCustomConnectorVersionResultOutput) ToLookupCustomConnectorVersion
 
 func (o LookupCustomConnectorVersionResultOutput) ToLookupCustomConnectorVersionResultOutputWithContext(ctx context.Context) LookupCustomConnectorVersionResultOutput {
 	return o
-}
-
-func (o LookupCustomConnectorVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomConnectorVersionResult] {
-	return pulumix.Output[LookupCustomConnectorVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for establishing the authentication to the connector destination.

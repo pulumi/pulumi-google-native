@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy.
@@ -136,12 +135,6 @@ func (i *SubnetworkIamMember) ToSubnetworkIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIamMemberOutput)
 }
 
-func (i *SubnetworkIamMember) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkIamMember] {
-	return pulumix.Output[*SubnetworkIamMember]{
-		OutputState: i.ToSubnetworkIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubnetworkIamMemberOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIamMemberOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o SubnetworkIamMemberOutput) ToSubnetworkIamMemberOutput() SubnetworkIamMe
 
 func (o SubnetworkIamMemberOutput) ToSubnetworkIamMemberOutputWithContext(ctx context.Context) SubnetworkIamMemberOutput {
 	return o
-}
-
-func (o SubnetworkIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkIamMember] {
-	return pulumix.Output[*SubnetworkIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

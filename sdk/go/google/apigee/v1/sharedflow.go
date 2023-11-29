@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Uploads a ZIP-formatted shared flow configuration bundle to an organization. If the shared flow already exists, this creates a new revision of it. If the shared flow does not exist, this creates it. Once imported, the shared flow revision must be deployed before it can be accessed at runtime. The size limit of a shared flow bundle is 15 MB.
@@ -133,12 +132,6 @@ func (i *Sharedflow) ToSharedflowOutputWithContext(ctx context.Context) Sharedfl
 	return pulumi.ToOutputWithContext(ctx, i).(SharedflowOutput)
 }
 
-func (i *Sharedflow) ToOutput(ctx context.Context) pulumix.Output[*Sharedflow] {
-	return pulumix.Output[*Sharedflow]{
-		OutputState: i.ToSharedflowOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SharedflowOutput struct{ *pulumi.OutputState }
 
 func (SharedflowOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o SharedflowOutput) ToSharedflowOutput() SharedflowOutput {
 
 func (o SharedflowOutput) ToSharedflowOutputWithContext(ctx context.Context) SharedflowOutput {
 	return o
-}
-
-func (o SharedflowOutput) ToOutput(ctx context.Context) pulumix.Output[*Sharedflow] {
-	return pulumix.Output[*Sharedflow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Must be set to either `import` or `validate`.

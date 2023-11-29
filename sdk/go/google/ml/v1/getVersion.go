@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a model version. Models can have multiple versions. You can call projects.models.versions.list to get the same information that this method returns for all of the versions of a model.
@@ -119,12 +118,6 @@ func (o LookupVersionResultOutput) ToLookupVersionResultOutput() LookupVersionRe
 
 func (o LookupVersionResultOutput) ToLookupVersionResultOutputWithContext(ctx context.Context) LookupVersionResultOutput {
 	return o
-}
-
-func (o LookupVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVersionResult] {
-	return pulumix.Output[LookupVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).

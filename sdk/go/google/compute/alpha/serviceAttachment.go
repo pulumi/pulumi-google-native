@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a ServiceAttachment in the specified project in the given scope using the parameters that are included in the request.
@@ -198,12 +197,6 @@ func (i *ServiceAttachment) ToServiceAttachmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentOutput)
 }
 
-func (i *ServiceAttachment) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachment] {
-	return pulumix.Output[*ServiceAttachment]{
-		OutputState: i.ToServiceAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ServiceAttachmentOutput) ElementType() reflect.Type {
@@ -216,12 +209,6 @@ func (o ServiceAttachmentOutput) ToServiceAttachmentOutput() ServiceAttachmentOu
 
 func (o ServiceAttachmentOutput) ToServiceAttachmentOutputWithContext(ctx context.Context) ServiceAttachmentOutput {
 	return o
-}
-
-func (o ServiceAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachment] {
-	return pulumix.Output[*ServiceAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An array of connections for all the consumers connected to this service attachment.

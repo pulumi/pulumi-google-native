@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a trial.
@@ -89,12 +88,6 @@ func (o LookupTrialResultOutput) ToLookupTrialResultOutput() LookupTrialResultOu
 
 func (o LookupTrialResultOutput) ToLookupTrialResultOutputWithContext(ctx context.Context) LookupTrialResultOutput {
 	return o
-}
-
-func (o LookupTrialResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTrialResult] {
-	return pulumix.Output[LookupTrialResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier of the client that originally requested this trial.

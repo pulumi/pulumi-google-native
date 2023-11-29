@@ -413,9 +413,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["initial_user"] = initial_user
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            if network is not None and not opts.urn:
-                warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
-                pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""")
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new document. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata - `response`: Document Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`.
@@ -179,12 +178,6 @@ func (i *Document) ToDocumentOutputWithContext(ctx context.Context) DocumentOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentOutput)
 }
 
-func (i *Document) ToOutput(ctx context.Context) pulumix.Output[*Document] {
-	return pulumix.Output[*Document]{
-		OutputState: i.ToDocumentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentOutput struct{ *pulumi.OutputState }
 
 func (DocumentOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o DocumentOutput) ToDocumentOutput() DocumentOutput {
 
 func (o DocumentOutput) ToDocumentOutputWithContext(ctx context.Context) DocumentOutput {
 	return o
-}
-
-func (o DocumentOutput) ToOutput(ctx context.Context) pulumix.Output[*Document] {
-	return pulumix.Output[*Document]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types. Note: This field is in the process of being deprecated, please use raw_content instead.

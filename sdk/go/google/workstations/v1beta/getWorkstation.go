@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the requested workstation.
@@ -99,12 +98,6 @@ func (o LookupWorkstationResultOutput) ToLookupWorkstationResultOutput() LookupW
 
 func (o LookupWorkstationResultOutput) ToLookupWorkstationResultOutputWithContext(ctx context.Context) LookupWorkstationResultOutput {
 	return o
-}
-
-func (o LookupWorkstationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkstationResult] {
-	return pulumix.Output[LookupWorkstationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Client-specified annotations.

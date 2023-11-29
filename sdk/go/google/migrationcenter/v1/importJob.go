@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an import job.
@@ -151,12 +150,6 @@ func (i *ImportJob) ToImportJobOutputWithContext(ctx context.Context) ImportJobO
 	return pulumi.ToOutputWithContext(ctx, i).(ImportJobOutput)
 }
 
-func (i *ImportJob) ToOutput(ctx context.Context) pulumix.Output[*ImportJob] {
-	return pulumix.Output[*ImportJob]{
-		OutputState: i.ToImportJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImportJobOutput struct{ *pulumi.OutputState }
 
 func (ImportJobOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o ImportJobOutput) ToImportJobOutput() ImportJobOutput {
 
 func (o ImportJobOutput) ToImportJobOutputWithContext(ctx context.Context) ImportJobOutput {
 	return o
-}
-
-func (o ImportJobOutput) ToOutput(ctx context.Context) pulumix.Output[*ImportJob] {
-	return pulumix.Output[*ImportJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Reference to a source.

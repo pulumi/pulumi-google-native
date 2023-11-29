@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Adds a new contact for a resource.
@@ -137,12 +136,6 @@ func (i *Contact) ToContactOutputWithContext(ctx context.Context) ContactOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ContactOutput)
 }
 
-func (i *Contact) ToOutput(ctx context.Context) pulumix.Output[*Contact] {
-	return pulumix.Output[*Contact]{
-		OutputState: i.ToContactOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContactOutput struct{ *pulumi.OutputState }
 
 func (ContactOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o ContactOutput) ToContactOutput() ContactOutput {
 
 func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOutput {
 	return o
-}
-
-func (o ContactOutput) ToOutput(ctx context.Context) pulumix.Output[*Contact] {
-	return pulumix.Output[*Contact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email address to send notifications to. The email address does not need to be a Google Account.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new SecurityProfileGroup in a given organization and location.
@@ -143,12 +142,6 @@ func (i *SecurityProfileGroup) ToSecurityProfileGroupOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileGroupOutput)
 }
 
-func (i *SecurityProfileGroup) ToOutput(ctx context.Context) pulumix.Output[*SecurityProfileGroup] {
-	return pulumix.Output[*SecurityProfileGroup]{
-		OutputState: i.ToSecurityProfileGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityProfileGroupOutput struct{ *pulumi.OutputState }
 
 func (SecurityProfileGroupOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o SecurityProfileGroupOutput) ToSecurityProfileGroupOutput() SecurityProfi
 
 func (o SecurityProfileGroupOutput) ToSecurityProfileGroupOutputWithContext(ctx context.Context) SecurityProfileGroupOutput {
 	return o
-}
-
-func (o SecurityProfileGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityProfileGroup] {
-	return pulumix.Output[*SecurityProfileGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource creation timestamp.

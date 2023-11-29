@@ -99,12 +99,6 @@ func (o AcceleratorConfigTypeOutput) ToAcceleratorConfigTypePtrOutputWithContext
 	}).(AcceleratorConfigTypePtrOutput)
 }
 
-func (o AcceleratorConfigTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AcceleratorConfigType] {
-	return pulumix.Output[AcceleratorConfigType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AcceleratorConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -138,12 +132,6 @@ func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutput() Accel
 
 func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
 	return o
-}
-
-func (o AcceleratorConfigTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfigType] {
-	return pulumix.Output[*AcceleratorConfigType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AcceleratorConfigTypePtrOutput) Elem() AcceleratorConfigTypeOutput {
@@ -286,12 +274,6 @@ func (o BootDiskDiskEncryptionOutput) ToBootDiskDiskEncryptionPtrOutputWithConte
 	}).(BootDiskDiskEncryptionPtrOutput)
 }
 
-func (o BootDiskDiskEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskDiskEncryption] {
-	return pulumix.Output[BootDiskDiskEncryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BootDiskDiskEncryptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -325,12 +307,6 @@ func (o BootDiskDiskEncryptionPtrOutput) ToBootDiskDiskEncryptionPtrOutput() Boo
 
 func (o BootDiskDiskEncryptionPtrOutput) ToBootDiskDiskEncryptionPtrOutputWithContext(ctx context.Context) BootDiskDiskEncryptionPtrOutput {
 	return o
-}
-
-func (o BootDiskDiskEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BootDiskDiskEncryption] {
-	return pulumix.Output[*BootDiskDiskEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BootDiskDiskEncryptionPtrOutput) Elem() BootDiskDiskEncryptionOutput {
@@ -477,12 +453,6 @@ func (o BootDiskDiskTypeOutput) ToBootDiskDiskTypePtrOutputWithContext(ctx conte
 	}).(BootDiskDiskTypePtrOutput)
 }
 
-func (o BootDiskDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskDiskType] {
-	return pulumix.Output[BootDiskDiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BootDiskDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -516,12 +486,6 @@ func (o BootDiskDiskTypePtrOutput) ToBootDiskDiskTypePtrOutput() BootDiskDiskTyp
 
 func (o BootDiskDiskTypePtrOutput) ToBootDiskDiskTypePtrOutputWithContext(ctx context.Context) BootDiskDiskTypePtrOutput {
 	return o
-}
-
-func (o BootDiskDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BootDiskDiskType] {
-	return pulumix.Output[*BootDiskDiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BootDiskDiskTypePtrOutput) Elem() BootDiskDiskTypeOutput {
@@ -664,12 +628,6 @@ func (o DataDiskDiskEncryptionOutput) ToDataDiskDiskEncryptionPtrOutputWithConte
 	}).(DataDiskDiskEncryptionPtrOutput)
 }
 
-func (o DataDiskDiskEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[DataDiskDiskEncryption] {
-	return pulumix.Output[DataDiskDiskEncryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataDiskDiskEncryptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -703,12 +661,6 @@ func (o DataDiskDiskEncryptionPtrOutput) ToDataDiskDiskEncryptionPtrOutput() Dat
 
 func (o DataDiskDiskEncryptionPtrOutput) ToDataDiskDiskEncryptionPtrOutputWithContext(ctx context.Context) DataDiskDiskEncryptionPtrOutput {
 	return o
-}
-
-func (o DataDiskDiskEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataDiskDiskEncryption] {
-	return pulumix.Output[*DataDiskDiskEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataDiskDiskEncryptionPtrOutput) Elem() DataDiskDiskEncryptionOutput {
@@ -855,12 +807,6 @@ func (o DataDiskDiskTypeOutput) ToDataDiskDiskTypePtrOutputWithContext(ctx conte
 	}).(DataDiskDiskTypePtrOutput)
 }
 
-func (o DataDiskDiskTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DataDiskDiskType] {
-	return pulumix.Output[DataDiskDiskType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataDiskDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -894,12 +840,6 @@ func (o DataDiskDiskTypePtrOutput) ToDataDiskDiskTypePtrOutput() DataDiskDiskTyp
 
 func (o DataDiskDiskTypePtrOutput) ToDataDiskDiskTypePtrOutputWithContext(ctx context.Context) DataDiskDiskTypePtrOutput {
 	return o
-}
-
-func (o DataDiskDiskTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataDiskDiskType] {
-	return pulumix.Output[*DataDiskDiskType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataDiskDiskTypePtrOutput) Elem() DataDiskDiskTypeOutput {
@@ -1042,12 +982,6 @@ func (o NetworkInterfaceNicTypeOutput) ToNetworkInterfaceNicTypePtrOutputWithCon
 	}).(NetworkInterfaceNicTypePtrOutput)
 }
 
-func (o NetworkInterfaceNicTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkInterfaceNicType] {
-	return pulumix.Output[NetworkInterfaceNicType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkInterfaceNicTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1081,12 +1015,6 @@ func (o NetworkInterfaceNicTypePtrOutput) ToNetworkInterfaceNicTypePtrOutput() N
 
 func (o NetworkInterfaceNicTypePtrOutput) ToNetworkInterfaceNicTypePtrOutputWithContext(ctx context.Context) NetworkInterfaceNicTypePtrOutput {
 	return o
-}
-
-func (o NetworkInterfaceNicTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceNicType] {
-	return pulumix.Output[*NetworkInterfaceNicType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkInterfaceNicTypePtrOutput) Elem() NetworkInterfaceNicTypeOutput {

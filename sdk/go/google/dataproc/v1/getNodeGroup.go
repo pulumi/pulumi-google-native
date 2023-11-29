@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the resource representation for a node group in a cluster.
@@ -77,12 +76,6 @@ func (o LookupNodeGroupResultOutput) ToLookupNodeGroupResultOutput() LookupNodeG
 
 func (o LookupNodeGroupResultOutput) ToLookupNodeGroupResultOutputWithContext(ctx context.Context) LookupNodeGroupResultOutput {
 	return o
-}
-
-func (o LookupNodeGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodeGroupResult] {
-	return pulumix.Output[LookupNodeGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.

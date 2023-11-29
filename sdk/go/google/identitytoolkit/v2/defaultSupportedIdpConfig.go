@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a default supported Idp configuration for an Identity Toolkit project.
@@ -138,12 +137,6 @@ func (i *DefaultSupportedIdpConfig) ToDefaultSupportedIdpConfigOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultSupportedIdpConfigOutput)
 }
 
-func (i *DefaultSupportedIdpConfig) ToOutput(ctx context.Context) pulumix.Output[*DefaultSupportedIdpConfig] {
-	return pulumix.Output[*DefaultSupportedIdpConfig]{
-		OutputState: i.ToDefaultSupportedIdpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DefaultSupportedIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (DefaultSupportedIdpConfigOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o DefaultSupportedIdpConfigOutput) ToDefaultSupportedIdpConfigOutput() Def
 
 func (o DefaultSupportedIdpConfigOutput) ToDefaultSupportedIdpConfigOutputWithContext(ctx context.Context) DefaultSupportedIdpConfigOutput {
 	return o
-}
-
-func (o DefaultSupportedIdpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultSupportedIdpConfig] {
-	return pulumix.Output[*DefaultSupportedIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional config for Apple-based projects.

@@ -87,12 +87,6 @@ func (o EntryTypeOutput) ToEntryTypePtrOutputWithContext(ctx context.Context) En
 	}).(EntryTypePtrOutput)
 }
 
-func (o EntryTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EntryType] {
-	return pulumix.Output[EntryType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EntryTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -126,12 +120,6 @@ func (o EntryTypePtrOutput) ToEntryTypePtrOutput() EntryTypePtrOutput {
 
 func (o EntryTypePtrOutput) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
 	return o
-}
-
-func (o EntryTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryType] {
-	return pulumix.Output[*EntryType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntryTypePtrOutput) Elem() EntryTypeOutput {
@@ -271,12 +259,6 @@ func (o TaxonomyActivatedPolicyTypesItemOutput) ToTaxonomyActivatedPolicyTypesIt
 	}).(TaxonomyActivatedPolicyTypesItemPtrOutput)
 }
 
-func (o TaxonomyActivatedPolicyTypesItemOutput) ToOutput(ctx context.Context) pulumix.Output[TaxonomyActivatedPolicyTypesItem] {
-	return pulumix.Output[TaxonomyActivatedPolicyTypesItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -310,12 +292,6 @@ func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyType
 
 func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
 	return o
-}
-
-func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyActivatedPolicyTypesItem] {
-	return pulumix.Output[*TaxonomyActivatedPolicyTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TaxonomyActivatedPolicyTypesItemPtrOutput) Elem() TaxonomyActivatedPolicyTypesItemOutput {
@@ -411,12 +387,6 @@ func (i TaxonomyActivatedPolicyTypesItemArray) ToTaxonomyActivatedPolicyTypesIte
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyActivatedPolicyTypesItemArrayOutput)
 }
 
-func (i TaxonomyActivatedPolicyTypesItemArray) ToOutput(ctx context.Context) pulumix.Output[[]TaxonomyActivatedPolicyTypesItem] {
-	return pulumix.Output[[]TaxonomyActivatedPolicyTypesItem]{
-		OutputState: i.ToTaxonomyActivatedPolicyTypesItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TaxonomyActivatedPolicyTypesItemArrayOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyActivatedPolicyTypesItemArrayOutput) ElementType() reflect.Type {
@@ -429,12 +399,6 @@ func (o TaxonomyActivatedPolicyTypesItemArrayOutput) ToTaxonomyActivatedPolicyTy
 
 func (o TaxonomyActivatedPolicyTypesItemArrayOutput) ToTaxonomyActivatedPolicyTypesItemArrayOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemArrayOutput {
 	return o
-}
-
-func (o TaxonomyActivatedPolicyTypesItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TaxonomyActivatedPolicyTypesItem] {
-	return pulumix.Output[[]TaxonomyActivatedPolicyTypesItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) TaxonomyActivatedPolicyTypesItemOutput {

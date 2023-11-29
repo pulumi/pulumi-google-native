@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a specific Execution.
@@ -91,12 +90,6 @@ func (o LookupExecutionResultOutput) ToLookupExecutionResultOutput() LookupExecu
 
 func (o LookupExecutionResultOutput) ToLookupExecutionResultOutputWithContext(ctx context.Context) LookupExecutionResultOutput {
 	return o
-}
-
-func (o LookupExecutionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExecutionResult] {
-	return pulumix.Output[LookupExecutionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this Execution was created.

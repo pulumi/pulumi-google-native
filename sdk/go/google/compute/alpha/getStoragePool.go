@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a specified storage pool. Gets a list of available storage pools by making a list() request.
@@ -103,12 +102,6 @@ func (o LookupStoragePoolResultOutput) ToLookupStoragePoolResultOutput() LookupS
 
 func (o LookupStoragePoolResultOutput) ToLookupStoragePoolResultOutputWithContext(ctx context.Context) LookupStoragePoolResultOutput {
 	return o
-}
-
-func (o LookupStoragePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStoragePoolResult] {
-	return pulumix.Output[LookupStoragePoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Provisioning type of the byte capacity of the pool.

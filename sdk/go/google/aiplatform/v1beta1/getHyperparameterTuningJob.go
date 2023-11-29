@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a HyperparameterTuningJob
@@ -99,12 +98,6 @@ func (o LookupHyperparameterTuningJobResultOutput) ToLookupHyperparameterTuningJ
 
 func (o LookupHyperparameterTuningJobResultOutput) ToLookupHyperparameterTuningJobResultOutputWithContext(ctx context.Context) LookupHyperparameterTuningJobResultOutput {
 	return o
-}
-
-func (o LookupHyperparameterTuningJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHyperparameterTuningJobResult] {
-	return pulumix.Output[LookupHyperparameterTuningJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the HyperparameterTuningJob was created.

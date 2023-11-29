@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the IAM access control policy on the specified function. Replaces any existing policy.
@@ -136,12 +135,6 @@ func (i *FunctionIamBinding) ToFunctionIamBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamBindingOutput)
 }
 
-func (i *FunctionIamBinding) ToOutput(ctx context.Context) pulumix.Output[*FunctionIamBinding] {
-	return pulumix.Output[*FunctionIamBinding]{
-		OutputState: i.ToFunctionIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionIamBindingOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o FunctionIamBindingOutput) ToFunctionIamBindingOutput() FunctionIamBindin
 
 func (o FunctionIamBindingOutput) ToFunctionIamBindingOutputWithContext(ctx context.Context) FunctionIamBindingOutput {
 	return o
-}
-
-func (o FunctionIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionIamBinding] {
-	return pulumix.Output[*FunctionIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

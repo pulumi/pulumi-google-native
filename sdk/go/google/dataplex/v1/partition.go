@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create a metadata partition.
@@ -137,12 +136,6 @@ func (i *Partition) ToPartitionOutputWithContext(ctx context.Context) PartitionO
 	return pulumi.ToOutputWithContext(ctx, i).(PartitionOutput)
 }
 
-func (i *Partition) ToOutput(ctx context.Context) pulumix.Output[*Partition] {
-	return pulumix.Output[*Partition]{
-		OutputState: i.ToPartitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PartitionOutput struct{ *pulumi.OutputState }
 
 func (PartitionOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o PartitionOutput) ToPartitionOutput() PartitionOutput {
 
 func (o PartitionOutput) ToPartitionOutputWithContext(ctx context.Context) PartitionOutput {
 	return o
-}
-
-func (o PartitionOutput) ToOutput(ctx context.Context) pulumix.Output[*Partition] {
-	return pulumix.Output[*Partition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PartitionOutput) EntityId() pulumi.StringOutput {

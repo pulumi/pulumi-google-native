@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom constraint does not exist.
@@ -81,12 +80,6 @@ func (o LookupCustomConstraintResultOutput) ToLookupCustomConstraintResultOutput
 
 func (o LookupCustomConstraintResultOutput) ToLookupCustomConstraintResultOutputWithContext(ctx context.Context) LookupCustomConstraintResultOutput {
 	return o
-}
-
-func (o LookupCustomConstraintResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomConstraintResult] {
-	return pulumix.Output[LookupCustomConstraintResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow or deny type.

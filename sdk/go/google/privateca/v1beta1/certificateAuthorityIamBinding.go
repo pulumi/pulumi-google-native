@@ -11,7 +11,6 @@ import (
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -136,12 +135,6 @@ func (i *CertificateAuthorityIamBinding) ToCertificateAuthorityIamBindingOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityIamBindingOutput)
 }
 
-func (i *CertificateAuthorityIamBinding) ToOutput(ctx context.Context) pulumix.Output[*CertificateAuthorityIamBinding] {
-	return pulumix.Output[*CertificateAuthorityIamBinding]{
-		OutputState: i.ToCertificateAuthorityIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CertificateAuthorityIamBindingOutput struct{ *pulumi.OutputState }
 
 func (CertificateAuthorityIamBindingOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o CertificateAuthorityIamBindingOutput) ToCertificateAuthorityIamBindingOu
 
 func (o CertificateAuthorityIamBindingOutput) ToCertificateAuthorityIamBindingOutputWithContext(ctx context.Context) CertificateAuthorityIamBindingOutput {
 	return o
-}
-
-func (o CertificateAuthorityIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateAuthorityIamBinding] {
-	return pulumix.Output[*CertificateAuthorityIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -43,12 +42,6 @@ func (i AvroFileFormatArgs) ToAvroFileFormatOutput() AvroFileFormatOutput {
 
 func (i AvroFileFormatArgs) ToAvroFileFormatOutputWithContext(ctx context.Context) AvroFileFormatOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AvroFileFormatOutput)
-}
-
-func (i AvroFileFormatArgs) ToOutput(ctx context.Context) pulumix.Output[AvroFileFormat] {
-	return pulumix.Output[AvroFileFormat]{
-		OutputState: i.ToAvroFileFormatOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AvroFileFormatArgs) ToAvroFileFormatPtrOutput() AvroFileFormatPtrOutput {
@@ -92,12 +85,6 @@ func (i *avroFileFormatPtrType) ToAvroFileFormatPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AvroFileFormatPtrOutput)
 }
 
-func (i *avroFileFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*AvroFileFormat] {
-	return pulumix.Output[*AvroFileFormat]{
-		OutputState: i.ToAvroFileFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AVRO file format configuration.
 type AvroFileFormatOutput struct{ *pulumi.OutputState }
 
@@ -123,12 +110,6 @@ func (o AvroFileFormatOutput) ToAvroFileFormatPtrOutputWithContext(ctx context.C
 	}).(AvroFileFormatPtrOutput)
 }
 
-func (o AvroFileFormatOutput) ToOutput(ctx context.Context) pulumix.Output[AvroFileFormat] {
-	return pulumix.Output[AvroFileFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 type AvroFileFormatPtrOutput struct{ *pulumi.OutputState }
 
 func (AvroFileFormatPtrOutput) ElementType() reflect.Type {
@@ -141,12 +122,6 @@ func (o AvroFileFormatPtrOutput) ToAvroFileFormatPtrOutput() AvroFileFormatPtrOu
 
 func (o AvroFileFormatPtrOutput) ToAvroFileFormatPtrOutputWithContext(ctx context.Context) AvroFileFormatPtrOutput {
 	return o
-}
-
-func (o AvroFileFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AvroFileFormat] {
-	return pulumix.Output[*AvroFileFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AvroFileFormatPtrOutput) Elem() AvroFileFormatOutput {
@@ -176,12 +151,6 @@ func (o AvroFileFormatResponseOutput) ToAvroFileFormatResponseOutput() AvroFileF
 
 func (o AvroFileFormatResponseOutput) ToAvroFileFormatResponseOutputWithContext(ctx context.Context) AvroFileFormatResponseOutput {
 	return o
-}
-
-func (o AvroFileFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AvroFileFormatResponse] {
-	return pulumix.Output[AvroFileFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
@@ -227,12 +196,6 @@ func (i BackfillAllStrategyArgs) ToBackfillAllStrategyOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(BackfillAllStrategyOutput)
 }
 
-func (i BackfillAllStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[BackfillAllStrategy] {
-	return pulumix.Output[BackfillAllStrategy]{
-		OutputState: i.ToBackfillAllStrategyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackfillAllStrategyArgs) ToBackfillAllStrategyPtrOutput() BackfillAllStrategyPtrOutput {
 	return i.ToBackfillAllStrategyPtrOutputWithContext(context.Background())
 }
@@ -274,12 +237,6 @@ func (i *backfillAllStrategyPtrType) ToBackfillAllStrategyPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(BackfillAllStrategyPtrOutput)
 }
 
-func (i *backfillAllStrategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackfillAllStrategy] {
-	return pulumix.Output[*BackfillAllStrategy]{
-		OutputState: i.ToBackfillAllStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
 type BackfillAllStrategyOutput struct{ *pulumi.OutputState }
 
@@ -303,12 +260,6 @@ func (o BackfillAllStrategyOutput) ToBackfillAllStrategyPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackfillAllStrategy) *BackfillAllStrategy {
 		return &v
 	}).(BackfillAllStrategyPtrOutput)
-}
-
-func (o BackfillAllStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[BackfillAllStrategy] {
-	return pulumix.Output[BackfillAllStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL data source objects to avoid backfilling.
@@ -338,12 +289,6 @@ func (o BackfillAllStrategyPtrOutput) ToBackfillAllStrategyPtrOutput() BackfillA
 
 func (o BackfillAllStrategyPtrOutput) ToBackfillAllStrategyPtrOutputWithContext(ctx context.Context) BackfillAllStrategyPtrOutput {
 	return o
-}
-
-func (o BackfillAllStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackfillAllStrategy] {
-	return pulumix.Output[*BackfillAllStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackfillAllStrategyPtrOutput) Elem() BackfillAllStrategyOutput {
@@ -411,12 +356,6 @@ func (o BackfillAllStrategyResponseOutput) ToBackfillAllStrategyResponseOutputWi
 	return o
 }
 
-func (o BackfillAllStrategyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackfillAllStrategyResponse] {
-	return pulumix.Output[BackfillAllStrategyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // MySQL data source objects to avoid backfilling.
 func (o BackfillAllStrategyResponseOutput) MysqlExcludedObjects() MysqlRdbmsResponseOutput {
 	return o.ApplyT(func(v BackfillAllStrategyResponse) MysqlRdbmsResponse { return v.MysqlExcludedObjects }).(MysqlRdbmsResponseOutput)
@@ -463,12 +402,6 @@ func (i BackfillNoneStrategyArgs) ToBackfillNoneStrategyOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BackfillNoneStrategyOutput)
 }
 
-func (i BackfillNoneStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[BackfillNoneStrategy] {
-	return pulumix.Output[BackfillNoneStrategy]{
-		OutputState: i.ToBackfillNoneStrategyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackfillNoneStrategyArgs) ToBackfillNoneStrategyPtrOutput() BackfillNoneStrategyPtrOutput {
 	return i.ToBackfillNoneStrategyPtrOutputWithContext(context.Background())
 }
@@ -510,12 +443,6 @@ func (i *backfillNoneStrategyPtrType) ToBackfillNoneStrategyPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BackfillNoneStrategyPtrOutput)
 }
 
-func (i *backfillNoneStrategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackfillNoneStrategy] {
-	return pulumix.Output[*BackfillNoneStrategy]{
-		OutputState: i.ToBackfillNoneStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Backfill strategy to disable automatic backfill for the Stream's objects.
 type BackfillNoneStrategyOutput struct{ *pulumi.OutputState }
 
@@ -541,12 +468,6 @@ func (o BackfillNoneStrategyOutput) ToBackfillNoneStrategyPtrOutputWithContext(c
 	}).(BackfillNoneStrategyPtrOutput)
 }
 
-func (o BackfillNoneStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[BackfillNoneStrategy] {
-	return pulumix.Output[BackfillNoneStrategy]{
-		OutputState: o.OutputState,
-	}
-}
-
 type BackfillNoneStrategyPtrOutput struct{ *pulumi.OutputState }
 
 func (BackfillNoneStrategyPtrOutput) ElementType() reflect.Type {
@@ -559,12 +480,6 @@ func (o BackfillNoneStrategyPtrOutput) ToBackfillNoneStrategyPtrOutput() Backfil
 
 func (o BackfillNoneStrategyPtrOutput) ToBackfillNoneStrategyPtrOutputWithContext(ctx context.Context) BackfillNoneStrategyPtrOutput {
 	return o
-}
-
-func (o BackfillNoneStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackfillNoneStrategy] {
-	return pulumix.Output[*BackfillNoneStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackfillNoneStrategyPtrOutput) Elem() BackfillNoneStrategyOutput {
@@ -594,12 +509,6 @@ func (o BackfillNoneStrategyResponseOutput) ToBackfillNoneStrategyResponseOutput
 
 func (o BackfillNoneStrategyResponseOutput) ToBackfillNoneStrategyResponseOutputWithContext(ctx context.Context) BackfillNoneStrategyResponseOutput {
 	return o
-}
-
-func (o BackfillNoneStrategyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackfillNoneStrategyResponse] {
-	return pulumix.Output[BackfillNoneStrategyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BigQuery destination configuration
@@ -645,12 +554,6 @@ func (i BigQueryDestinationConfigArgs) ToBigQueryDestinationConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDestinationConfigOutput)
 }
 
-func (i BigQueryDestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BigQueryDestinationConfig] {
-	return pulumix.Output[BigQueryDestinationConfig]{
-		OutputState: i.ToBigQueryDestinationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BigQueryDestinationConfigArgs) ToBigQueryDestinationConfigPtrOutput() BigQueryDestinationConfigPtrOutput {
 	return i.ToBigQueryDestinationConfigPtrOutputWithContext(context.Background())
 }
@@ -692,12 +595,6 @@ func (i *bigQueryDestinationConfigPtrType) ToBigQueryDestinationConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDestinationConfigPtrOutput)
 }
 
-func (i *bigQueryDestinationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BigQueryDestinationConfig] {
-	return pulumix.Output[*BigQueryDestinationConfig]{
-		OutputState: i.ToBigQueryDestinationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BigQuery destination configuration
 type BigQueryDestinationConfigOutput struct{ *pulumi.OutputState }
 
@@ -721,12 +618,6 @@ func (o BigQueryDestinationConfigOutput) ToBigQueryDestinationConfigPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryDestinationConfig) *BigQueryDestinationConfig {
 		return &v
 	}).(BigQueryDestinationConfigPtrOutput)
-}
-
-func (o BigQueryDestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryDestinationConfig] {
-	return pulumix.Output[BigQueryDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -756,12 +647,6 @@ func (o BigQueryDestinationConfigPtrOutput) ToBigQueryDestinationConfigPtrOutput
 
 func (o BigQueryDestinationConfigPtrOutput) ToBigQueryDestinationConfigPtrOutputWithContext(ctx context.Context) BigQueryDestinationConfigPtrOutput {
 	return o
-}
-
-func (o BigQueryDestinationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BigQueryDestinationConfig] {
-	return pulumix.Output[*BigQueryDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BigQueryDestinationConfigPtrOutput) Elem() BigQueryDestinationConfigOutput {
@@ -829,12 +714,6 @@ func (o BigQueryDestinationConfigResponseOutput) ToBigQueryDestinationConfigResp
 	return o
 }
 
-func (o BigQueryDestinationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryDestinationConfigResponse] {
-	return pulumix.Output[BigQueryDestinationConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
 func (o BigQueryDestinationConfigResponseOutput) DataFreshness() pulumi.StringOutput {
 	return o.ApplyT(func(v BigQueryDestinationConfigResponse) string { return v.DataFreshness }).(pulumi.StringOutput)
@@ -883,12 +762,6 @@ func (i BigQueryProfileArgs) ToBigQueryProfileOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryProfileOutput)
 }
 
-func (i BigQueryProfileArgs) ToOutput(ctx context.Context) pulumix.Output[BigQueryProfile] {
-	return pulumix.Output[BigQueryProfile]{
-		OutputState: i.ToBigQueryProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BigQueryProfileArgs) ToBigQueryProfilePtrOutput() BigQueryProfilePtrOutput {
 	return i.ToBigQueryProfilePtrOutputWithContext(context.Background())
 }
@@ -930,12 +803,6 @@ func (i *bigQueryProfilePtrType) ToBigQueryProfilePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryProfilePtrOutput)
 }
 
-func (i *bigQueryProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*BigQueryProfile] {
-	return pulumix.Output[*BigQueryProfile]{
-		OutputState: i.ToBigQueryProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BigQuery warehouse profile.
 type BigQueryProfileOutput struct{ *pulumi.OutputState }
 
@@ -961,12 +828,6 @@ func (o BigQueryProfileOutput) ToBigQueryProfilePtrOutputWithContext(ctx context
 	}).(BigQueryProfilePtrOutput)
 }
 
-func (o BigQueryProfileOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryProfile] {
-	return pulumix.Output[BigQueryProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 type BigQueryProfilePtrOutput struct{ *pulumi.OutputState }
 
 func (BigQueryProfilePtrOutput) ElementType() reflect.Type {
@@ -979,12 +840,6 @@ func (o BigQueryProfilePtrOutput) ToBigQueryProfilePtrOutput() BigQueryProfilePt
 
 func (o BigQueryProfilePtrOutput) ToBigQueryProfilePtrOutputWithContext(ctx context.Context) BigQueryProfilePtrOutput {
 	return o
-}
-
-func (o BigQueryProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BigQueryProfile] {
-	return pulumix.Output[*BigQueryProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BigQueryProfilePtrOutput) Elem() BigQueryProfileOutput {
@@ -1014,12 +869,6 @@ func (o BigQueryProfileResponseOutput) ToBigQueryProfileResponseOutput() BigQuer
 
 func (o BigQueryProfileResponseOutput) ToBigQueryProfileResponseOutputWithContext(ctx context.Context) BigQueryProfileResponseOutput {
 	return o
-}
-
-func (o BigQueryProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BigQueryProfileResponse] {
-	return pulumix.Output[BigQueryProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dataset template used for dynamic dataset creation.
@@ -1065,12 +914,6 @@ func (i DatasetTemplateArgs) ToDatasetTemplateOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetTemplateOutput)
 }
 
-func (i DatasetTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetTemplate] {
-	return pulumix.Output[DatasetTemplate]{
-		OutputState: i.ToDatasetTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatasetTemplateArgs) ToDatasetTemplatePtrOutput() DatasetTemplatePtrOutput {
 	return i.ToDatasetTemplatePtrOutputWithContext(context.Background())
 }
@@ -1112,12 +955,6 @@ func (i *datasetTemplatePtrType) ToDatasetTemplatePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetTemplatePtrOutput)
 }
 
-func (i *datasetTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*DatasetTemplate] {
-	return pulumix.Output[*DatasetTemplate]{
-		OutputState: i.ToDatasetTemplatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Dataset template used for dynamic dataset creation.
 type DatasetTemplateOutput struct{ *pulumi.OutputState }
 
@@ -1141,12 +978,6 @@ func (o DatasetTemplateOutput) ToDatasetTemplatePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetTemplate) *DatasetTemplate {
 		return &v
 	}).(DatasetTemplatePtrOutput)
-}
-
-func (o DatasetTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetTemplate] {
-	return pulumix.Output[DatasetTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
@@ -1176,12 +1007,6 @@ func (o DatasetTemplatePtrOutput) ToDatasetTemplatePtrOutput() DatasetTemplatePt
 
 func (o DatasetTemplatePtrOutput) ToDatasetTemplatePtrOutputWithContext(ctx context.Context) DatasetTemplatePtrOutput {
 	return o
-}
-
-func (o DatasetTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetTemplate] {
-	return pulumix.Output[*DatasetTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetTemplatePtrOutput) Elem() DatasetTemplateOutput {
@@ -1249,12 +1074,6 @@ func (o DatasetTemplateResponseOutput) ToDatasetTemplateResponseOutputWithContex
 	return o
 }
 
-func (o DatasetTemplateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetTemplateResponse] {
-	return pulumix.Output[DatasetTemplateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
 func (o DatasetTemplateResponseOutput) DatasetIdPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v DatasetTemplateResponse) string { return v.DatasetIdPrefix }).(pulumi.StringOutput)
@@ -1313,12 +1132,6 @@ func (i DestinationConfigArgs) ToDestinationConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigOutput)
 }
 
-func (i DestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DestinationConfig] {
-	return pulumix.Output[DestinationConfig]{
-		OutputState: i.ToDestinationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration of the stream destination.
 type DestinationConfigOutput struct{ *pulumi.OutputState }
 
@@ -1332,12 +1145,6 @@ func (o DestinationConfigOutput) ToDestinationConfigOutput() DestinationConfigOu
 
 func (o DestinationConfigOutput) ToDestinationConfigOutputWithContext(ctx context.Context) DestinationConfigOutput {
 	return o
-}
-
-func (o DestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationConfig] {
-	return pulumix.Output[DestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BigQuery destination configuration.
@@ -1378,12 +1185,6 @@ func (o DestinationConfigResponseOutput) ToDestinationConfigResponseOutput() Des
 
 func (o DestinationConfigResponseOutput) ToDestinationConfigResponseOutputWithContext(ctx context.Context) DestinationConfigResponseOutput {
 	return o
-}
-
-func (o DestinationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationConfigResponse] {
-	return pulumix.Output[DestinationConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BigQuery destination configuration.
@@ -1434,12 +1235,6 @@ func (i DropLargeObjectsArgs) ToDropLargeObjectsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DropLargeObjectsOutput)
 }
 
-func (i DropLargeObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[DropLargeObjects] {
-	return pulumix.Output[DropLargeObjects]{
-		OutputState: i.ToDropLargeObjectsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DropLargeObjectsArgs) ToDropLargeObjectsPtrOutput() DropLargeObjectsPtrOutput {
 	return i.ToDropLargeObjectsPtrOutputWithContext(context.Background())
 }
@@ -1481,12 +1276,6 @@ func (i *dropLargeObjectsPtrType) ToDropLargeObjectsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DropLargeObjectsPtrOutput)
 }
 
-func (i *dropLargeObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DropLargeObjects] {
-	return pulumix.Output[*DropLargeObjects]{
-		OutputState: i.ToDropLargeObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration to drop large object values.
 type DropLargeObjectsOutput struct{ *pulumi.OutputState }
 
@@ -1512,12 +1301,6 @@ func (o DropLargeObjectsOutput) ToDropLargeObjectsPtrOutputWithContext(ctx conte
 	}).(DropLargeObjectsPtrOutput)
 }
 
-func (o DropLargeObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[DropLargeObjects] {
-	return pulumix.Output[DropLargeObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 type DropLargeObjectsPtrOutput struct{ *pulumi.OutputState }
 
 func (DropLargeObjectsPtrOutput) ElementType() reflect.Type {
@@ -1530,12 +1313,6 @@ func (o DropLargeObjectsPtrOutput) ToDropLargeObjectsPtrOutput() DropLargeObject
 
 func (o DropLargeObjectsPtrOutput) ToDropLargeObjectsPtrOutputWithContext(ctx context.Context) DropLargeObjectsPtrOutput {
 	return o
-}
-
-func (o DropLargeObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DropLargeObjects] {
-	return pulumix.Output[*DropLargeObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DropLargeObjectsPtrOutput) Elem() DropLargeObjectsOutput {
@@ -1567,12 +1344,6 @@ func (o DropLargeObjectsResponseOutput) ToDropLargeObjectsResponseOutputWithCont
 	return o
 }
 
-func (o DropLargeObjectsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DropLargeObjectsResponse] {
-	return pulumix.Output[DropLargeObjectsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Represent a user-facing Error.
 type ErrorResponse struct {
 	// Additional information about the error.
@@ -1600,12 +1371,6 @@ func (o ErrorResponseOutput) ToErrorResponseOutput() ErrorResponseOutput {
 
 func (o ErrorResponseOutput) ToErrorResponseOutputWithContext(ctx context.Context) ErrorResponseOutput {
 	return o
-}
-
-func (o ErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorResponse] {
-	return pulumix.Output[ErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional information about the error.
@@ -1645,12 +1410,6 @@ func (o ErrorResponseArrayOutput) ToErrorResponseArrayOutput() ErrorResponseArra
 
 func (o ErrorResponseArrayOutput) ToErrorResponseArrayOutputWithContext(ctx context.Context) ErrorResponseArrayOutput {
 	return o
-}
-
-func (o ErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorResponse] {
-	return pulumix.Output[[]ErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorResponseArrayOutput) Index(i pulumi.IntInput) ErrorResponseOutput {
@@ -1710,12 +1469,6 @@ func (i ForwardSshTunnelConnectivityArgs) ToForwardSshTunnelConnectivityOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardSshTunnelConnectivityOutput)
 }
 
-func (i ForwardSshTunnelConnectivityArgs) ToOutput(ctx context.Context) pulumix.Output[ForwardSshTunnelConnectivity] {
-	return pulumix.Output[ForwardSshTunnelConnectivity]{
-		OutputState: i.ToForwardSshTunnelConnectivityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ForwardSshTunnelConnectivityArgs) ToForwardSshTunnelConnectivityPtrOutput() ForwardSshTunnelConnectivityPtrOutput {
 	return i.ToForwardSshTunnelConnectivityPtrOutputWithContext(context.Background())
 }
@@ -1757,12 +1510,6 @@ func (i *forwardSshTunnelConnectivityPtrType) ToForwardSshTunnelConnectivityPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardSshTunnelConnectivityPtrOutput)
 }
 
-func (i *forwardSshTunnelConnectivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ForwardSshTunnelConnectivity] {
-	return pulumix.Output[*ForwardSshTunnelConnectivity]{
-		OutputState: i.ToForwardSshTunnelConnectivityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Forward SSH Tunnel connectivity.
 type ForwardSshTunnelConnectivityOutput struct{ *pulumi.OutputState }
 
@@ -1786,12 +1533,6 @@ func (o ForwardSshTunnelConnectivityOutput) ToForwardSshTunnelConnectivityPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardSshTunnelConnectivity) *ForwardSshTunnelConnectivity {
 		return &v
 	}).(ForwardSshTunnelConnectivityPtrOutput)
-}
-
-func (o ForwardSshTunnelConnectivityOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardSshTunnelConnectivity] {
-	return pulumix.Output[ForwardSshTunnelConnectivity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostname for the SSH tunnel.
@@ -1831,12 +1572,6 @@ func (o ForwardSshTunnelConnectivityPtrOutput) ToForwardSshTunnelConnectivityPtr
 
 func (o ForwardSshTunnelConnectivityPtrOutput) ToForwardSshTunnelConnectivityPtrOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityPtrOutput {
 	return o
-}
-
-func (o ForwardSshTunnelConnectivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardSshTunnelConnectivity] {
-	return pulumix.Output[*ForwardSshTunnelConnectivity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ForwardSshTunnelConnectivityPtrOutput) Elem() ForwardSshTunnelConnectivityOutput {
@@ -1928,12 +1663,6 @@ func (o ForwardSshTunnelConnectivityResponseOutput) ToForwardSshTunnelConnectivi
 	return o
 }
 
-func (o ForwardSshTunnelConnectivityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardSshTunnelConnectivityResponse] {
-	return pulumix.Output[ForwardSshTunnelConnectivityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Hostname for the SSH tunnel.
 func (o ForwardSshTunnelConnectivityResponseOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardSshTunnelConnectivityResponse) string { return v.Hostname }).(pulumi.StringOutput)
@@ -2010,12 +1739,6 @@ func (i GcsDestinationConfigArgs) ToGcsDestinationConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GcsDestinationConfigOutput)
 }
 
-func (i GcsDestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GcsDestinationConfig] {
-	return pulumix.Output[GcsDestinationConfig]{
-		OutputState: i.ToGcsDestinationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GcsDestinationConfigArgs) ToGcsDestinationConfigPtrOutput() GcsDestinationConfigPtrOutput {
 	return i.ToGcsDestinationConfigPtrOutputWithContext(context.Background())
 }
@@ -2057,12 +1780,6 @@ func (i *gcsDestinationConfigPtrType) ToGcsDestinationConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(GcsDestinationConfigPtrOutput)
 }
 
-func (i *gcsDestinationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GcsDestinationConfig] {
-	return pulumix.Output[*GcsDestinationConfig]{
-		OutputState: i.ToGcsDestinationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Google Cloud Storage destination configuration
 type GcsDestinationConfigOutput struct{ *pulumi.OutputState }
 
@@ -2086,12 +1803,6 @@ func (o GcsDestinationConfigOutput) ToGcsDestinationConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsDestinationConfig) *GcsDestinationConfig {
 		return &v
 	}).(GcsDestinationConfigPtrOutput)
-}
-
-func (o GcsDestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GcsDestinationConfig] {
-	return pulumix.Output[GcsDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AVRO file format configuration.
@@ -2131,12 +1842,6 @@ func (o GcsDestinationConfigPtrOutput) ToGcsDestinationConfigPtrOutput() GcsDest
 
 func (o GcsDestinationConfigPtrOutput) ToGcsDestinationConfigPtrOutputWithContext(ctx context.Context) GcsDestinationConfigPtrOutput {
 	return o
-}
-
-func (o GcsDestinationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GcsDestinationConfig] {
-	return pulumix.Output[*GcsDestinationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GcsDestinationConfigPtrOutput) Elem() GcsDestinationConfigOutput {
@@ -2228,12 +1933,6 @@ func (o GcsDestinationConfigResponseOutput) ToGcsDestinationConfigResponseOutput
 	return o
 }
 
-func (o GcsDestinationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GcsDestinationConfigResponse] {
-	return pulumix.Output[GcsDestinationConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // AVRO file format configuration.
 func (o GcsDestinationConfigResponseOutput) AvroFileFormat() AvroFileFormatResponseOutput {
 	return o.ApplyT(func(v GcsDestinationConfigResponse) AvroFileFormatResponse { return v.AvroFileFormat }).(AvroFileFormatResponseOutput)
@@ -2298,12 +1997,6 @@ func (i GcsProfileArgs) ToGcsProfileOutputWithContext(ctx context.Context) GcsPr
 	return pulumi.ToOutputWithContext(ctx, i).(GcsProfileOutput)
 }
 
-func (i GcsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[GcsProfile] {
-	return pulumix.Output[GcsProfile]{
-		OutputState: i.ToGcsProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GcsProfileArgs) ToGcsProfilePtrOutput() GcsProfilePtrOutput {
 	return i.ToGcsProfilePtrOutputWithContext(context.Background())
 }
@@ -2345,12 +2038,6 @@ func (i *gcsProfilePtrType) ToGcsProfilePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GcsProfilePtrOutput)
 }
 
-func (i *gcsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*GcsProfile] {
-	return pulumix.Output[*GcsProfile]{
-		OutputState: i.ToGcsProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cloud Storage bucket profile.
 type GcsProfileOutput struct{ *pulumi.OutputState }
 
@@ -2376,12 +2063,6 @@ func (o GcsProfileOutput) ToGcsProfilePtrOutputWithContext(ctx context.Context) 
 	}).(GcsProfilePtrOutput)
 }
 
-func (o GcsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[GcsProfile] {
-	return pulumix.Output[GcsProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud Storage bucket name.
 func (o GcsProfileOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsProfile) string { return v.Bucket }).(pulumi.StringOutput)
@@ -2404,12 +2085,6 @@ func (o GcsProfilePtrOutput) ToGcsProfilePtrOutput() GcsProfilePtrOutput {
 
 func (o GcsProfilePtrOutput) ToGcsProfilePtrOutputWithContext(ctx context.Context) GcsProfilePtrOutput {
 	return o
-}
-
-func (o GcsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GcsProfile] {
-	return pulumix.Output[*GcsProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GcsProfilePtrOutput) Elem() GcsProfileOutput {
@@ -2465,12 +2140,6 @@ func (o GcsProfileResponseOutput) ToGcsProfileResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o GcsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GcsProfileResponse] {
-	return pulumix.Output[GcsProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud Storage bucket name.
 func (o GcsProfileResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsProfileResponse) string { return v.Bucket }).(pulumi.StringOutput)
@@ -2520,12 +2189,6 @@ func (i JsonFileFormatArgs) ToJsonFileFormatOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(JsonFileFormatOutput)
 }
 
-func (i JsonFileFormatArgs) ToOutput(ctx context.Context) pulumix.Output[JsonFileFormat] {
-	return pulumix.Output[JsonFileFormat]{
-		OutputState: i.ToJsonFileFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JsonFileFormatArgs) ToJsonFileFormatPtrOutput() JsonFileFormatPtrOutput {
 	return i.ToJsonFileFormatPtrOutputWithContext(context.Background())
 }
@@ -2567,12 +2230,6 @@ func (i *jsonFileFormatPtrType) ToJsonFileFormatPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(JsonFileFormatPtrOutput)
 }
 
-func (i *jsonFileFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*JsonFileFormat] {
-	return pulumix.Output[*JsonFileFormat]{
-		OutputState: i.ToJsonFileFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JSON file format configuration.
 type JsonFileFormatOutput struct{ *pulumi.OutputState }
 
@@ -2598,12 +2255,6 @@ func (o JsonFileFormatOutput) ToJsonFileFormatPtrOutputWithContext(ctx context.C
 	}).(JsonFileFormatPtrOutput)
 }
 
-func (o JsonFileFormatOutput) ToOutput(ctx context.Context) pulumix.Output[JsonFileFormat] {
-	return pulumix.Output[JsonFileFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Compression of the loaded JSON file.
 func (o JsonFileFormatOutput) Compression() JsonFileFormatCompressionPtrOutput {
 	return o.ApplyT(func(v JsonFileFormat) *JsonFileFormatCompression { return v.Compression }).(JsonFileFormatCompressionPtrOutput)
@@ -2626,12 +2277,6 @@ func (o JsonFileFormatPtrOutput) ToJsonFileFormatPtrOutput() JsonFileFormatPtrOu
 
 func (o JsonFileFormatPtrOutput) ToJsonFileFormatPtrOutputWithContext(ctx context.Context) JsonFileFormatPtrOutput {
 	return o
-}
-
-func (o JsonFileFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JsonFileFormat] {
-	return pulumix.Output[*JsonFileFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JsonFileFormatPtrOutput) Elem() JsonFileFormatOutput {
@@ -2685,12 +2330,6 @@ func (o JsonFileFormatResponseOutput) ToJsonFileFormatResponseOutput() JsonFileF
 
 func (o JsonFileFormatResponseOutput) ToJsonFileFormatResponseOutputWithContext(ctx context.Context) JsonFileFormatResponseOutput {
 	return o
-}
-
-func (o JsonFileFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JsonFileFormatResponse] {
-	return pulumix.Output[JsonFileFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Compression of the loaded JSON file.
@@ -2770,12 +2409,6 @@ func (i MysqlColumnArgs) ToMysqlColumnOutputWithContext(ctx context.Context) Mys
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlColumnOutput)
 }
 
-func (i MysqlColumnArgs) ToOutput(ctx context.Context) pulumix.Output[MysqlColumn] {
-	return pulumix.Output[MysqlColumn]{
-		OutputState: i.ToMysqlColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MysqlColumnArrayInput is an input type that accepts MysqlColumnArray and MysqlColumnArrayOutput values.
 // You can construct a concrete instance of `MysqlColumnArrayInput` via:
 //
@@ -2801,12 +2434,6 @@ func (i MysqlColumnArray) ToMysqlColumnArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlColumnArrayOutput)
 }
 
-func (i MysqlColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]MysqlColumn] {
-	return pulumix.Output[[]MysqlColumn]{
-		OutputState: i.ToMysqlColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MySQL Column.
 type MysqlColumnOutput struct{ *pulumi.OutputState }
 
@@ -2820,12 +2447,6 @@ func (o MysqlColumnOutput) ToMysqlColumnOutput() MysqlColumnOutput {
 
 func (o MysqlColumnOutput) ToMysqlColumnOutputWithContext(ctx context.Context) MysqlColumnOutput {
 	return o
-}
-
-func (o MysqlColumnOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlColumn] {
-	return pulumix.Output[MysqlColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column collation.
@@ -2887,12 +2508,6 @@ func (o MysqlColumnArrayOutput) ToMysqlColumnArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o MysqlColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MysqlColumn] {
-	return pulumix.Output[[]MysqlColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MysqlColumnArrayOutput) Index(i pulumi.IntInput) MysqlColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MysqlColumn {
 		return vs[0].([]MysqlColumn)[vs[1].(int)]
@@ -2934,12 +2549,6 @@ func (o MysqlColumnResponseOutput) ToMysqlColumnResponseOutput() MysqlColumnResp
 
 func (o MysqlColumnResponseOutput) ToMysqlColumnResponseOutputWithContext(ctx context.Context) MysqlColumnResponseOutput {
 	return o
-}
-
-func (o MysqlColumnResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlColumnResponse] {
-	return pulumix.Output[MysqlColumnResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column collation.
@@ -3001,12 +2610,6 @@ func (o MysqlColumnResponseArrayOutput) ToMysqlColumnResponseArrayOutputWithCont
 	return o
 }
 
-func (o MysqlColumnResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MysqlColumnResponse] {
-	return pulumix.Output[[]MysqlColumnResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MysqlColumnResponseArrayOutput) Index(i pulumi.IntInput) MysqlColumnResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MysqlColumnResponse {
 		return vs[0].([]MysqlColumnResponse)[vs[1].(int)]
@@ -3052,12 +2655,6 @@ func (i MysqlDatabaseArgs) ToMysqlDatabaseOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlDatabaseOutput)
 }
 
-func (i MysqlDatabaseArgs) ToOutput(ctx context.Context) pulumix.Output[MysqlDatabase] {
-	return pulumix.Output[MysqlDatabase]{
-		OutputState: i.ToMysqlDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MysqlDatabaseArrayInput is an input type that accepts MysqlDatabaseArray and MysqlDatabaseArrayOutput values.
 // You can construct a concrete instance of `MysqlDatabaseArrayInput` via:
 //
@@ -3083,12 +2680,6 @@ func (i MysqlDatabaseArray) ToMysqlDatabaseArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlDatabaseArrayOutput)
 }
 
-func (i MysqlDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]MysqlDatabase] {
-	return pulumix.Output[[]MysqlDatabase]{
-		OutputState: i.ToMysqlDatabaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MySQL database.
 type MysqlDatabaseOutput struct{ *pulumi.OutputState }
 
@@ -3102,12 +2693,6 @@ func (o MysqlDatabaseOutput) ToMysqlDatabaseOutput() MysqlDatabaseOutput {
 
 func (o MysqlDatabaseOutput) ToMysqlDatabaseOutputWithContext(ctx context.Context) MysqlDatabaseOutput {
 	return o
-}
-
-func (o MysqlDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlDatabase] {
-	return pulumix.Output[MysqlDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database name.
@@ -3132,12 +2717,6 @@ func (o MysqlDatabaseArrayOutput) ToMysqlDatabaseArrayOutput() MysqlDatabaseArra
 
 func (o MysqlDatabaseArrayOutput) ToMysqlDatabaseArrayOutputWithContext(ctx context.Context) MysqlDatabaseArrayOutput {
 	return o
-}
-
-func (o MysqlDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MysqlDatabase] {
-	return pulumix.Output[[]MysqlDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MysqlDatabaseArrayOutput) Index(i pulumi.IntInput) MysqlDatabaseOutput {
@@ -3169,12 +2748,6 @@ func (o MysqlDatabaseResponseOutput) ToMysqlDatabaseResponseOutputWithContext(ct
 	return o
 }
 
-func (o MysqlDatabaseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlDatabaseResponse] {
-	return pulumix.Output[MysqlDatabaseResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Database name.
 func (o MysqlDatabaseResponseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v MysqlDatabaseResponse) string { return v.Database }).(pulumi.StringOutput)
@@ -3197,12 +2770,6 @@ func (o MysqlDatabaseResponseArrayOutput) ToMysqlDatabaseResponseArrayOutput() M
 
 func (o MysqlDatabaseResponseArrayOutput) ToMysqlDatabaseResponseArrayOutputWithContext(ctx context.Context) MysqlDatabaseResponseArrayOutput {
 	return o
-}
-
-func (o MysqlDatabaseResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MysqlDatabaseResponse] {
-	return pulumix.Output[[]MysqlDatabaseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MysqlDatabaseResponseArrayOutput) Index(i pulumi.IntInput) MysqlDatabaseResponseOutput {
@@ -3262,12 +2829,6 @@ func (i MysqlProfileArgs) ToMysqlProfileOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlProfileOutput)
 }
 
-func (i MysqlProfileArgs) ToOutput(ctx context.Context) pulumix.Output[MysqlProfile] {
-	return pulumix.Output[MysqlProfile]{
-		OutputState: i.ToMysqlProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MysqlProfileArgs) ToMysqlProfilePtrOutput() MysqlProfilePtrOutput {
 	return i.ToMysqlProfilePtrOutputWithContext(context.Background())
 }
@@ -3309,12 +2870,6 @@ func (i *mysqlProfilePtrType) ToMysqlProfilePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlProfilePtrOutput)
 }
 
-func (i *mysqlProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*MysqlProfile] {
-	return pulumix.Output[*MysqlProfile]{
-		OutputState: i.ToMysqlProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MySQL database profile.
 type MysqlProfileOutput struct{ *pulumi.OutputState }
 
@@ -3338,12 +2893,6 @@ func (o MysqlProfileOutput) ToMysqlProfilePtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MysqlProfile) *MysqlProfile {
 		return &v
 	}).(MysqlProfilePtrOutput)
-}
-
-func (o MysqlProfileOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlProfile] {
-	return pulumix.Output[MysqlProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostname for the MySQL connection.
@@ -3383,12 +2932,6 @@ func (o MysqlProfilePtrOutput) ToMysqlProfilePtrOutput() MysqlProfilePtrOutput {
 
 func (o MysqlProfilePtrOutput) ToMysqlProfilePtrOutputWithContext(ctx context.Context) MysqlProfilePtrOutput {
 	return o
-}
-
-func (o MysqlProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MysqlProfile] {
-	return pulumix.Output[*MysqlProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MysqlProfilePtrOutput) Elem() MysqlProfileOutput {
@@ -3480,12 +3023,6 @@ func (o MysqlProfileResponseOutput) ToMysqlProfileResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o MysqlProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlProfileResponse] {
-	return pulumix.Output[MysqlProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Hostname for the MySQL connection.
 func (o MysqlProfileResponseOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v MysqlProfileResponse) string { return v.Hostname }).(pulumi.StringOutput)
@@ -3546,12 +3083,6 @@ func (i MysqlRdbmsArgs) ToMysqlRdbmsOutputWithContext(ctx context.Context) Mysql
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlRdbmsOutput)
 }
 
-func (i MysqlRdbmsArgs) ToOutput(ctx context.Context) pulumix.Output[MysqlRdbms] {
-	return pulumix.Output[MysqlRdbms]{
-		OutputState: i.ToMysqlRdbmsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MysqlRdbmsArgs) ToMysqlRdbmsPtrOutput() MysqlRdbmsPtrOutput {
 	return i.ToMysqlRdbmsPtrOutputWithContext(context.Background())
 }
@@ -3593,12 +3124,6 @@ func (i *mysqlRdbmsPtrType) ToMysqlRdbmsPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlRdbmsPtrOutput)
 }
 
-func (i *mysqlRdbmsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MysqlRdbms] {
-	return pulumix.Output[*MysqlRdbms]{
-		OutputState: i.ToMysqlRdbmsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MySQL database structure
 type MysqlRdbmsOutput struct{ *pulumi.OutputState }
 
@@ -3624,12 +3149,6 @@ func (o MysqlRdbmsOutput) ToMysqlRdbmsPtrOutputWithContext(ctx context.Context) 
 	}).(MysqlRdbmsPtrOutput)
 }
 
-func (o MysqlRdbmsOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlRdbms] {
-	return pulumix.Output[MysqlRdbms]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Mysql databases on the server
 func (o MysqlRdbmsOutput) MysqlDatabases() MysqlDatabaseArrayOutput {
 	return o.ApplyT(func(v MysqlRdbms) []MysqlDatabase { return v.MysqlDatabases }).(MysqlDatabaseArrayOutput)
@@ -3647,12 +3166,6 @@ func (o MysqlRdbmsPtrOutput) ToMysqlRdbmsPtrOutput() MysqlRdbmsPtrOutput {
 
 func (o MysqlRdbmsPtrOutput) ToMysqlRdbmsPtrOutputWithContext(ctx context.Context) MysqlRdbmsPtrOutput {
 	return o
-}
-
-func (o MysqlRdbmsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MysqlRdbms] {
-	return pulumix.Output[*MysqlRdbms]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MysqlRdbmsPtrOutput) Elem() MysqlRdbmsOutput {
@@ -3694,12 +3207,6 @@ func (o MysqlRdbmsResponseOutput) ToMysqlRdbmsResponseOutput() MysqlRdbmsRespons
 
 func (o MysqlRdbmsResponseOutput) ToMysqlRdbmsResponseOutputWithContext(ctx context.Context) MysqlRdbmsResponseOutput {
 	return o
-}
-
-func (o MysqlRdbmsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlRdbmsResponse] {
-	return pulumix.Output[MysqlRdbmsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Mysql databases on the server
@@ -3754,12 +3261,6 @@ func (i MysqlSourceConfigArgs) ToMysqlSourceConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlSourceConfigOutput)
 }
 
-func (i MysqlSourceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MysqlSourceConfig] {
-	return pulumix.Output[MysqlSourceConfig]{
-		OutputState: i.ToMysqlSourceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MysqlSourceConfigArgs) ToMysqlSourceConfigPtrOutput() MysqlSourceConfigPtrOutput {
 	return i.ToMysqlSourceConfigPtrOutputWithContext(context.Background())
 }
@@ -3801,12 +3302,6 @@ func (i *mysqlSourceConfigPtrType) ToMysqlSourceConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlSourceConfigPtrOutput)
 }
 
-func (i *mysqlSourceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MysqlSourceConfig] {
-	return pulumix.Output[*MysqlSourceConfig]{
-		OutputState: i.ToMysqlSourceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MySQL source configuration
 type MysqlSourceConfigOutput struct{ *pulumi.OutputState }
 
@@ -3830,12 +3325,6 @@ func (o MysqlSourceConfigOutput) ToMysqlSourceConfigPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MysqlSourceConfig) *MysqlSourceConfig {
 		return &v
 	}).(MysqlSourceConfigPtrOutput)
-}
-
-func (o MysqlSourceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlSourceConfig] {
-	return pulumix.Output[MysqlSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL objects to exclude from the stream.
@@ -3870,12 +3359,6 @@ func (o MysqlSourceConfigPtrOutput) ToMysqlSourceConfigPtrOutput() MysqlSourceCo
 
 func (o MysqlSourceConfigPtrOutput) ToMysqlSourceConfigPtrOutputWithContext(ctx context.Context) MysqlSourceConfigPtrOutput {
 	return o
-}
-
-func (o MysqlSourceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MysqlSourceConfig] {
-	return pulumix.Output[*MysqlSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MysqlSourceConfigPtrOutput) Elem() MysqlSourceConfigOutput {
@@ -3955,12 +3438,6 @@ func (o MysqlSourceConfigResponseOutput) ToMysqlSourceConfigResponseOutputWithCo
 	return o
 }
 
-func (o MysqlSourceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlSourceConfigResponse] {
-	return pulumix.Output[MysqlSourceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // MySQL objects to exclude from the stream.
 func (o MysqlSourceConfigResponseOutput) ExcludeObjects() MysqlRdbmsResponseOutput {
 	return o.ApplyT(func(v MysqlSourceConfigResponse) MysqlRdbmsResponse { return v.ExcludeObjects }).(MysqlRdbmsResponseOutput)
@@ -4024,12 +3501,6 @@ func (i MysqlSslConfigArgs) ToMysqlSslConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlSslConfigOutput)
 }
 
-func (i MysqlSslConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MysqlSslConfig] {
-	return pulumix.Output[MysqlSslConfig]{
-		OutputState: i.ToMysqlSslConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MysqlSslConfigArgs) ToMysqlSslConfigPtrOutput() MysqlSslConfigPtrOutput {
 	return i.ToMysqlSslConfigPtrOutputWithContext(context.Background())
 }
@@ -4071,12 +3542,6 @@ func (i *mysqlSslConfigPtrType) ToMysqlSslConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlSslConfigPtrOutput)
 }
 
-func (i *mysqlSslConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MysqlSslConfig] {
-	return pulumix.Output[*MysqlSslConfig]{
-		OutputState: i.ToMysqlSslConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MySQL SSL configuration information.
 type MysqlSslConfigOutput struct{ *pulumi.OutputState }
 
@@ -4100,12 +3565,6 @@ func (o MysqlSslConfigOutput) ToMysqlSslConfigPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MysqlSslConfig) *MysqlSslConfig {
 		return &v
 	}).(MysqlSslConfigPtrOutput)
-}
-
-func (o MysqlSslConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlSslConfig] {
-	return pulumix.Output[MysqlSslConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
@@ -4135,12 +3594,6 @@ func (o MysqlSslConfigPtrOutput) ToMysqlSslConfigPtrOutput() MysqlSslConfigPtrOu
 
 func (o MysqlSslConfigPtrOutput) ToMysqlSslConfigPtrOutputWithContext(ctx context.Context) MysqlSslConfigPtrOutput {
 	return o
-}
-
-func (o MysqlSslConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MysqlSslConfig] {
-	return pulumix.Output[*MysqlSslConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MysqlSslConfigPtrOutput) Elem() MysqlSslConfigOutput {
@@ -4214,12 +3667,6 @@ func (o MysqlSslConfigResponseOutput) ToMysqlSslConfigResponseOutputWithContext(
 	return o
 }
 
-func (o MysqlSslConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlSslConfigResponse] {
-	return pulumix.Output[MysqlSslConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
 func (o MysqlSslConfigResponseOutput) CaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v MysqlSslConfigResponse) string { return v.CaCertificate }).(pulumi.StringOutput)
@@ -4289,12 +3736,6 @@ func (i MysqlTableArgs) ToMysqlTableOutputWithContext(ctx context.Context) Mysql
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlTableOutput)
 }
 
-func (i MysqlTableArgs) ToOutput(ctx context.Context) pulumix.Output[MysqlTable] {
-	return pulumix.Output[MysqlTable]{
-		OutputState: i.ToMysqlTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MysqlTableArrayInput is an input type that accepts MysqlTableArray and MysqlTableArrayOutput values.
 // You can construct a concrete instance of `MysqlTableArrayInput` via:
 //
@@ -4320,12 +3761,6 @@ func (i MysqlTableArray) ToMysqlTableArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlTableArrayOutput)
 }
 
-func (i MysqlTableArray) ToOutput(ctx context.Context) pulumix.Output[[]MysqlTable] {
-	return pulumix.Output[[]MysqlTable]{
-		OutputState: i.ToMysqlTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MySQL table.
 type MysqlTableOutput struct{ *pulumi.OutputState }
 
@@ -4339,12 +3774,6 @@ func (o MysqlTableOutput) ToMysqlTableOutput() MysqlTableOutput {
 
 func (o MysqlTableOutput) ToMysqlTableOutputWithContext(ctx context.Context) MysqlTableOutput {
 	return o
-}
-
-func (o MysqlTableOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlTable] {
-	return pulumix.Output[MysqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -4369,12 +3798,6 @@ func (o MysqlTableArrayOutput) ToMysqlTableArrayOutput() MysqlTableArrayOutput {
 
 func (o MysqlTableArrayOutput) ToMysqlTableArrayOutputWithContext(ctx context.Context) MysqlTableArrayOutput {
 	return o
-}
-
-func (o MysqlTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MysqlTable] {
-	return pulumix.Output[[]MysqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MysqlTableArrayOutput) Index(i pulumi.IntInput) MysqlTableOutput {
@@ -4406,12 +3829,6 @@ func (o MysqlTableResponseOutput) ToMysqlTableResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o MysqlTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MysqlTableResponse] {
-	return pulumix.Output[MysqlTableResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
 func (o MysqlTableResponseOutput) MysqlColumns() MysqlColumnResponseArrayOutput {
 	return o.ApplyT(func(v MysqlTableResponse) []MysqlColumnResponse { return v.MysqlColumns }).(MysqlColumnResponseArrayOutput)
@@ -4434,12 +3851,6 @@ func (o MysqlTableResponseArrayOutput) ToMysqlTableResponseArrayOutput() MysqlTa
 
 func (o MysqlTableResponseArrayOutput) ToMysqlTableResponseArrayOutputWithContext(ctx context.Context) MysqlTableResponseArrayOutput {
 	return o
-}
-
-func (o MysqlTableResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MysqlTableResponse] {
-	return pulumix.Output[[]MysqlTableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MysqlTableResponseArrayOutput) Index(i pulumi.IntInput) MysqlTableResponseOutput {
@@ -4515,12 +3926,6 @@ func (i OracleColumnArgs) ToOracleColumnOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, i).(OracleColumnOutput)
 }
 
-func (i OracleColumnArgs) ToOutput(ctx context.Context) pulumix.Output[OracleColumn] {
-	return pulumix.Output[OracleColumn]{
-		OutputState: i.ToOracleColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OracleColumnArrayInput is an input type that accepts OracleColumnArray and OracleColumnArrayOutput values.
 // You can construct a concrete instance of `OracleColumnArrayInput` via:
 //
@@ -4546,12 +3951,6 @@ func (i OracleColumnArray) ToOracleColumnArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OracleColumnArrayOutput)
 }
 
-func (i OracleColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]OracleColumn] {
-	return pulumix.Output[[]OracleColumn]{
-		OutputState: i.ToOracleColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Oracle Column.
 type OracleColumnOutput struct{ *pulumi.OutputState }
 
@@ -4565,12 +3964,6 @@ func (o OracleColumnOutput) ToOracleColumnOutput() OracleColumnOutput {
 
 func (o OracleColumnOutput) ToOracleColumnOutputWithContext(ctx context.Context) OracleColumnOutput {
 	return o
-}
-
-func (o OracleColumnOutput) ToOutput(ctx context.Context) pulumix.Output[OracleColumn] {
-	return pulumix.Output[OracleColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name.
@@ -4632,12 +4025,6 @@ func (o OracleColumnArrayOutput) ToOracleColumnArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o OracleColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OracleColumn] {
-	return pulumix.Output[[]OracleColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OracleColumnArrayOutput) Index(i pulumi.IntInput) OracleColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OracleColumn {
 		return vs[0].([]OracleColumn)[vs[1].(int)]
@@ -4679,12 +4066,6 @@ func (o OracleColumnResponseOutput) ToOracleColumnResponseOutput() OracleColumnR
 
 func (o OracleColumnResponseOutput) ToOracleColumnResponseOutputWithContext(ctx context.Context) OracleColumnResponseOutput {
 	return o
-}
-
-func (o OracleColumnResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OracleColumnResponse] {
-	return pulumix.Output[OracleColumnResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name.
@@ -4744,12 +4125,6 @@ func (o OracleColumnResponseArrayOutput) ToOracleColumnResponseArrayOutput() Ora
 
 func (o OracleColumnResponseArrayOutput) ToOracleColumnResponseArrayOutputWithContext(ctx context.Context) OracleColumnResponseArrayOutput {
 	return o
-}
-
-func (o OracleColumnResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OracleColumnResponse] {
-	return pulumix.Output[[]OracleColumnResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OracleColumnResponseArrayOutput) Index(i pulumi.IntInput) OracleColumnResponseOutput {
@@ -4817,12 +4192,6 @@ func (i OracleProfileArgs) ToOracleProfileOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(OracleProfileOutput)
 }
 
-func (i OracleProfileArgs) ToOutput(ctx context.Context) pulumix.Output[OracleProfile] {
-	return pulumix.Output[OracleProfile]{
-		OutputState: i.ToOracleProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OracleProfileArgs) ToOracleProfilePtrOutput() OracleProfilePtrOutput {
 	return i.ToOracleProfilePtrOutputWithContext(context.Background())
 }
@@ -4864,12 +4233,6 @@ func (i *oracleProfilePtrType) ToOracleProfilePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OracleProfilePtrOutput)
 }
 
-func (i *oracleProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OracleProfile] {
-	return pulumix.Output[*OracleProfile]{
-		OutputState: i.ToOracleProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Oracle database profile.
 type OracleProfileOutput struct{ *pulumi.OutputState }
 
@@ -4893,12 +4256,6 @@ func (o OracleProfileOutput) ToOracleProfilePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleProfile) *OracleProfile {
 		return &v
 	}).(OracleProfilePtrOutput)
-}
-
-func (o OracleProfileOutput) ToOutput(ctx context.Context) pulumix.Output[OracleProfile] {
-	return pulumix.Output[OracleProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Connection string attributes
@@ -4948,12 +4305,6 @@ func (o OracleProfilePtrOutput) ToOracleProfilePtrOutput() OracleProfilePtrOutpu
 
 func (o OracleProfilePtrOutput) ToOracleProfilePtrOutputWithContext(ctx context.Context) OracleProfilePtrOutput {
 	return o
-}
-
-func (o OracleProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OracleProfile] {
-	return pulumix.Output[*OracleProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OracleProfilePtrOutput) Elem() OracleProfileOutput {
@@ -5069,12 +4420,6 @@ func (o OracleProfileResponseOutput) ToOracleProfileResponseOutputWithContext(ct
 	return o
 }
 
-func (o OracleProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OracleProfileResponse] {
-	return pulumix.Output[OracleProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Connection string attributes
 func (o OracleProfileResponseOutput) ConnectionAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v OracleProfileResponse) map[string]string { return v.ConnectionAttributes }).(pulumi.StringMapOutput)
@@ -5145,12 +4490,6 @@ func (i OracleRdbmsArgs) ToOracleRdbmsOutputWithContext(ctx context.Context) Ora
 	return pulumi.ToOutputWithContext(ctx, i).(OracleRdbmsOutput)
 }
 
-func (i OracleRdbmsArgs) ToOutput(ctx context.Context) pulumix.Output[OracleRdbms] {
-	return pulumix.Output[OracleRdbms]{
-		OutputState: i.ToOracleRdbmsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OracleRdbmsArgs) ToOracleRdbmsPtrOutput() OracleRdbmsPtrOutput {
 	return i.ToOracleRdbmsPtrOutputWithContext(context.Background())
 }
@@ -5192,12 +4531,6 @@ func (i *oracleRdbmsPtrType) ToOracleRdbmsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OracleRdbmsPtrOutput)
 }
 
-func (i *oracleRdbmsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OracleRdbms] {
-	return pulumix.Output[*OracleRdbms]{
-		OutputState: i.ToOracleRdbmsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Oracle database structure.
 type OracleRdbmsOutput struct{ *pulumi.OutputState }
 
@@ -5223,12 +4556,6 @@ func (o OracleRdbmsOutput) ToOracleRdbmsPtrOutputWithContext(ctx context.Context
 	}).(OracleRdbmsPtrOutput)
 }
 
-func (o OracleRdbmsOutput) ToOutput(ctx context.Context) pulumix.Output[OracleRdbms] {
-	return pulumix.Output[OracleRdbms]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Oracle schemas/databases in the database server.
 func (o OracleRdbmsOutput) OracleSchemas() OracleSchemaArrayOutput {
 	return o.ApplyT(func(v OracleRdbms) []OracleSchema { return v.OracleSchemas }).(OracleSchemaArrayOutput)
@@ -5246,12 +4573,6 @@ func (o OracleRdbmsPtrOutput) ToOracleRdbmsPtrOutput() OracleRdbmsPtrOutput {
 
 func (o OracleRdbmsPtrOutput) ToOracleRdbmsPtrOutputWithContext(ctx context.Context) OracleRdbmsPtrOutput {
 	return o
-}
-
-func (o OracleRdbmsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OracleRdbms] {
-	return pulumix.Output[*OracleRdbms]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OracleRdbmsPtrOutput) Elem() OracleRdbmsOutput {
@@ -5293,12 +4614,6 @@ func (o OracleRdbmsResponseOutput) ToOracleRdbmsResponseOutput() OracleRdbmsResp
 
 func (o OracleRdbmsResponseOutput) ToOracleRdbmsResponseOutputWithContext(ctx context.Context) OracleRdbmsResponseOutput {
 	return o
-}
-
-func (o OracleRdbmsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OracleRdbmsResponse] {
-	return pulumix.Output[OracleRdbmsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Oracle schemas/databases in the database server.
@@ -5345,12 +4660,6 @@ func (i OracleSchemaArgs) ToOracleSchemaOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, i).(OracleSchemaOutput)
 }
 
-func (i OracleSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[OracleSchema] {
-	return pulumix.Output[OracleSchema]{
-		OutputState: i.ToOracleSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OracleSchemaArrayInput is an input type that accepts OracleSchemaArray and OracleSchemaArrayOutput values.
 // You can construct a concrete instance of `OracleSchemaArrayInput` via:
 //
@@ -5376,12 +4685,6 @@ func (i OracleSchemaArray) ToOracleSchemaArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OracleSchemaArrayOutput)
 }
 
-func (i OracleSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]OracleSchema] {
-	return pulumix.Output[[]OracleSchema]{
-		OutputState: i.ToOracleSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Oracle schema.
 type OracleSchemaOutput struct{ *pulumi.OutputState }
 
@@ -5395,12 +4698,6 @@ func (o OracleSchemaOutput) ToOracleSchemaOutput() OracleSchemaOutput {
 
 func (o OracleSchemaOutput) ToOracleSchemaOutputWithContext(ctx context.Context) OracleSchemaOutput {
 	return o
-}
-
-func (o OracleSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[OracleSchema] {
-	return pulumix.Output[OracleSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tables in the schema.
@@ -5425,12 +4722,6 @@ func (o OracleSchemaArrayOutput) ToOracleSchemaArrayOutput() OracleSchemaArrayOu
 
 func (o OracleSchemaArrayOutput) ToOracleSchemaArrayOutputWithContext(ctx context.Context) OracleSchemaArrayOutput {
 	return o
-}
-
-func (o OracleSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OracleSchema] {
-	return pulumix.Output[[]OracleSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OracleSchemaArrayOutput) Index(i pulumi.IntInput) OracleSchemaOutput {
@@ -5462,12 +4753,6 @@ func (o OracleSchemaResponseOutput) ToOracleSchemaResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o OracleSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OracleSchemaResponse] {
-	return pulumix.Output[OracleSchemaResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Tables in the schema.
 func (o OracleSchemaResponseOutput) OracleTables() OracleTableResponseArrayOutput {
 	return o.ApplyT(func(v OracleSchemaResponse) []OracleTableResponse { return v.OracleTables }).(OracleTableResponseArrayOutput)
@@ -5490,12 +4775,6 @@ func (o OracleSchemaResponseArrayOutput) ToOracleSchemaResponseArrayOutput() Ora
 
 func (o OracleSchemaResponseArrayOutput) ToOracleSchemaResponseArrayOutputWithContext(ctx context.Context) OracleSchemaResponseArrayOutput {
 	return o
-}
-
-func (o OracleSchemaResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OracleSchemaResponse] {
-	return pulumix.Output[[]OracleSchemaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OracleSchemaResponseArrayOutput) Index(i pulumi.IntInput) OracleSchemaResponseOutput {
@@ -5559,12 +4838,6 @@ func (i OracleSourceConfigArgs) ToOracleSourceConfigOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(OracleSourceConfigOutput)
 }
 
-func (i OracleSourceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[OracleSourceConfig] {
-	return pulumix.Output[OracleSourceConfig]{
-		OutputState: i.ToOracleSourceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OracleSourceConfigArgs) ToOracleSourceConfigPtrOutput() OracleSourceConfigPtrOutput {
 	return i.ToOracleSourceConfigPtrOutputWithContext(context.Background())
 }
@@ -5606,12 +4879,6 @@ func (i *oracleSourceConfigPtrType) ToOracleSourceConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(OracleSourceConfigPtrOutput)
 }
 
-func (i *oracleSourceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*OracleSourceConfig] {
-	return pulumix.Output[*OracleSourceConfig]{
-		OutputState: i.ToOracleSourceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Oracle data source configuration
 type OracleSourceConfigOutput struct{ *pulumi.OutputState }
 
@@ -5635,12 +4902,6 @@ func (o OracleSourceConfigOutput) ToOracleSourceConfigPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleSourceConfig) *OracleSourceConfig {
 		return &v
 	}).(OracleSourceConfigPtrOutput)
-}
-
-func (o OracleSourceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[OracleSourceConfig] {
-	return pulumix.Output[OracleSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Drop large object values.
@@ -5685,12 +4946,6 @@ func (o OracleSourceConfigPtrOutput) ToOracleSourceConfigPtrOutput() OracleSourc
 
 func (o OracleSourceConfigPtrOutput) ToOracleSourceConfigPtrOutputWithContext(ctx context.Context) OracleSourceConfigPtrOutput {
 	return o
-}
-
-func (o OracleSourceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OracleSourceConfig] {
-	return pulumix.Output[*OracleSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OracleSourceConfigPtrOutput) Elem() OracleSourceConfigOutput {
@@ -5794,12 +5049,6 @@ func (o OracleSourceConfigResponseOutput) ToOracleSourceConfigResponseOutputWith
 	return o
 }
 
-func (o OracleSourceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OracleSourceConfigResponse] {
-	return pulumix.Output[OracleSourceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Drop large object values.
 func (o OracleSourceConfigResponseOutput) DropLargeObjects() DropLargeObjectsResponseOutput {
 	return o.ApplyT(func(v OracleSourceConfigResponse) DropLargeObjectsResponse { return v.DropLargeObjects }).(DropLargeObjectsResponseOutput)
@@ -5865,12 +5114,6 @@ func (i OracleSslConfigArgs) ToOracleSslConfigOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OracleSslConfigOutput)
 }
 
-func (i OracleSslConfigArgs) ToOutput(ctx context.Context) pulumix.Output[OracleSslConfig] {
-	return pulumix.Output[OracleSslConfig]{
-		OutputState: i.ToOracleSslConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OracleSslConfigArgs) ToOracleSslConfigPtrOutput() OracleSslConfigPtrOutput {
 	return i.ToOracleSslConfigPtrOutputWithContext(context.Background())
 }
@@ -5912,12 +5155,6 @@ func (i *oracleSslConfigPtrType) ToOracleSslConfigPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(OracleSslConfigPtrOutput)
 }
 
-func (i *oracleSslConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*OracleSslConfig] {
-	return pulumix.Output[*OracleSslConfig]{
-		OutputState: i.ToOracleSslConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Oracle SSL configuration information.
 type OracleSslConfigOutput struct{ *pulumi.OutputState }
 
@@ -5943,12 +5180,6 @@ func (o OracleSslConfigOutput) ToOracleSslConfigPtrOutputWithContext(ctx context
 	}).(OracleSslConfigPtrOutput)
 }
 
-func (o OracleSslConfigOutput) ToOutput(ctx context.Context) pulumix.Output[OracleSslConfig] {
-	return pulumix.Output[OracleSslConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
 func (o OracleSslConfigOutput) CaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OracleSslConfig) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
@@ -5966,12 +5197,6 @@ func (o OracleSslConfigPtrOutput) ToOracleSslConfigPtrOutput() OracleSslConfigPt
 
 func (o OracleSslConfigPtrOutput) ToOracleSslConfigPtrOutputWithContext(ctx context.Context) OracleSslConfigPtrOutput {
 	return o
-}
-
-func (o OracleSslConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OracleSslConfig] {
-	return pulumix.Output[*OracleSslConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OracleSslConfigPtrOutput) Elem() OracleSslConfigOutput {
@@ -6015,12 +5240,6 @@ func (o OracleSslConfigResponseOutput) ToOracleSslConfigResponseOutput() OracleS
 
 func (o OracleSslConfigResponseOutput) ToOracleSslConfigResponseOutputWithContext(ctx context.Context) OracleSslConfigResponseOutput {
 	return o
-}
-
-func (o OracleSslConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OracleSslConfigResponse] {
-	return pulumix.Output[OracleSslConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
@@ -6072,12 +5291,6 @@ func (i OracleTableArgs) ToOracleTableOutputWithContext(ctx context.Context) Ora
 	return pulumi.ToOutputWithContext(ctx, i).(OracleTableOutput)
 }
 
-func (i OracleTableArgs) ToOutput(ctx context.Context) pulumix.Output[OracleTable] {
-	return pulumix.Output[OracleTable]{
-		OutputState: i.ToOracleTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OracleTableArrayInput is an input type that accepts OracleTableArray and OracleTableArrayOutput values.
 // You can construct a concrete instance of `OracleTableArrayInput` via:
 //
@@ -6103,12 +5316,6 @@ func (i OracleTableArray) ToOracleTableArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(OracleTableArrayOutput)
 }
 
-func (i OracleTableArray) ToOutput(ctx context.Context) pulumix.Output[[]OracleTable] {
-	return pulumix.Output[[]OracleTable]{
-		OutputState: i.ToOracleTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Oracle table.
 type OracleTableOutput struct{ *pulumi.OutputState }
 
@@ -6122,12 +5329,6 @@ func (o OracleTableOutput) ToOracleTableOutput() OracleTableOutput {
 
 func (o OracleTableOutput) ToOracleTableOutputWithContext(ctx context.Context) OracleTableOutput {
 	return o
-}
-
-func (o OracleTableOutput) ToOutput(ctx context.Context) pulumix.Output[OracleTable] {
-	return pulumix.Output[OracleTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -6152,12 +5353,6 @@ func (o OracleTableArrayOutput) ToOracleTableArrayOutput() OracleTableArrayOutpu
 
 func (o OracleTableArrayOutput) ToOracleTableArrayOutputWithContext(ctx context.Context) OracleTableArrayOutput {
 	return o
-}
-
-func (o OracleTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OracleTable] {
-	return pulumix.Output[[]OracleTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OracleTableArrayOutput) Index(i pulumi.IntInput) OracleTableOutput {
@@ -6189,12 +5384,6 @@ func (o OracleTableResponseOutput) ToOracleTableResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o OracleTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OracleTableResponse] {
-	return pulumix.Output[OracleTableResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 func (o OracleTableResponseOutput) OracleColumns() OracleColumnResponseArrayOutput {
 	return o.ApplyT(func(v OracleTableResponse) []OracleColumnResponse { return v.OracleColumns }).(OracleColumnResponseArrayOutput)
@@ -6217,12 +5406,6 @@ func (o OracleTableResponseArrayOutput) ToOracleTableResponseArrayOutput() Oracl
 
 func (o OracleTableResponseArrayOutput) ToOracleTableResponseArrayOutputWithContext(ctx context.Context) OracleTableResponseArrayOutput {
 	return o
-}
-
-func (o OracleTableResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OracleTableResponse] {
-	return pulumix.Output[[]OracleTableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OracleTableResponseArrayOutput) Index(i pulumi.IntInput) OracleTableResponseOutput {
@@ -6294,12 +5477,6 @@ func (i PostgresqlColumnArgs) ToPostgresqlColumnOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlColumnOutput)
 }
 
-func (i PostgresqlColumnArgs) ToOutput(ctx context.Context) pulumix.Output[PostgresqlColumn] {
-	return pulumix.Output[PostgresqlColumn]{
-		OutputState: i.ToPostgresqlColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgresqlColumnArrayInput is an input type that accepts PostgresqlColumnArray and PostgresqlColumnArrayOutput values.
 // You can construct a concrete instance of `PostgresqlColumnArrayInput` via:
 //
@@ -6325,12 +5502,6 @@ func (i PostgresqlColumnArray) ToPostgresqlColumnArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlColumnArrayOutput)
 }
 
-func (i PostgresqlColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]PostgresqlColumn] {
-	return pulumix.Output[[]PostgresqlColumn]{
-		OutputState: i.ToPostgresqlColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgreSQL Column.
 type PostgresqlColumnOutput struct{ *pulumi.OutputState }
 
@@ -6344,12 +5515,6 @@ func (o PostgresqlColumnOutput) ToPostgresqlColumnOutput() PostgresqlColumnOutpu
 
 func (o PostgresqlColumnOutput) ToPostgresqlColumnOutputWithContext(ctx context.Context) PostgresqlColumnOutput {
 	return o
-}
-
-func (o PostgresqlColumnOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlColumn] {
-	return pulumix.Output[PostgresqlColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name.
@@ -6406,12 +5571,6 @@ func (o PostgresqlColumnArrayOutput) ToPostgresqlColumnArrayOutputWithContext(ct
 	return o
 }
 
-func (o PostgresqlColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PostgresqlColumn] {
-	return pulumix.Output[[]PostgresqlColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PostgresqlColumnArrayOutput) Index(i pulumi.IntInput) PostgresqlColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PostgresqlColumn {
 		return vs[0].([]PostgresqlColumn)[vs[1].(int)]
@@ -6451,12 +5610,6 @@ func (o PostgresqlColumnResponseOutput) ToPostgresqlColumnResponseOutput() Postg
 
 func (o PostgresqlColumnResponseOutput) ToPostgresqlColumnResponseOutputWithContext(ctx context.Context) PostgresqlColumnResponseOutput {
 	return o
-}
-
-func (o PostgresqlColumnResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlColumnResponse] {
-	return pulumix.Output[PostgresqlColumnResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name.
@@ -6511,12 +5664,6 @@ func (o PostgresqlColumnResponseArrayOutput) ToPostgresqlColumnResponseArrayOutp
 
 func (o PostgresqlColumnResponseArrayOutput) ToPostgresqlColumnResponseArrayOutputWithContext(ctx context.Context) PostgresqlColumnResponseArrayOutput {
 	return o
-}
-
-func (o PostgresqlColumnResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PostgresqlColumnResponse] {
-	return pulumix.Output[[]PostgresqlColumnResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PostgresqlColumnResponseArrayOutput) Index(i pulumi.IntInput) PostgresqlColumnResponseOutput {
@@ -6576,12 +5723,6 @@ func (i PostgresqlProfileArgs) ToPostgresqlProfileOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlProfileOutput)
 }
 
-func (i PostgresqlProfileArgs) ToOutput(ctx context.Context) pulumix.Output[PostgresqlProfile] {
-	return pulumix.Output[PostgresqlProfile]{
-		OutputState: i.ToPostgresqlProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PostgresqlProfileArgs) ToPostgresqlProfilePtrOutput() PostgresqlProfilePtrOutput {
 	return i.ToPostgresqlProfilePtrOutputWithContext(context.Background())
 }
@@ -6623,12 +5764,6 @@ func (i *postgresqlProfilePtrType) ToPostgresqlProfilePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlProfilePtrOutput)
 }
 
-func (i *postgresqlProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*PostgresqlProfile] {
-	return pulumix.Output[*PostgresqlProfile]{
-		OutputState: i.ToPostgresqlProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgreSQL database profile.
 type PostgresqlProfileOutput struct{ *pulumi.OutputState }
 
@@ -6652,12 +5787,6 @@ func (o PostgresqlProfileOutput) ToPostgresqlProfilePtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresqlProfile) *PostgresqlProfile {
 		return &v
 	}).(PostgresqlProfilePtrOutput)
-}
-
-func (o PostgresqlProfileOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlProfile] {
-	return pulumix.Output[PostgresqlProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database for the PostgreSQL connection.
@@ -6697,12 +5826,6 @@ func (o PostgresqlProfilePtrOutput) ToPostgresqlProfilePtrOutput() PostgresqlPro
 
 func (o PostgresqlProfilePtrOutput) ToPostgresqlProfilePtrOutputWithContext(ctx context.Context) PostgresqlProfilePtrOutput {
 	return o
-}
-
-func (o PostgresqlProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PostgresqlProfile] {
-	return pulumix.Output[*PostgresqlProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PostgresqlProfilePtrOutput) Elem() PostgresqlProfileOutput {
@@ -6794,12 +5917,6 @@ func (o PostgresqlProfileResponseOutput) ToPostgresqlProfileResponseOutputWithCo
 	return o
 }
 
-func (o PostgresqlProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlProfileResponse] {
-	return pulumix.Output[PostgresqlProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Database for the PostgreSQL connection.
 func (o PostgresqlProfileResponseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgresqlProfileResponse) string { return v.Database }).(pulumi.StringOutput)
@@ -6860,12 +5977,6 @@ func (i PostgresqlRdbmsArgs) ToPostgresqlRdbmsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlRdbmsOutput)
 }
 
-func (i PostgresqlRdbmsArgs) ToOutput(ctx context.Context) pulumix.Output[PostgresqlRdbms] {
-	return pulumix.Output[PostgresqlRdbms]{
-		OutputState: i.ToPostgresqlRdbmsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PostgresqlRdbmsArgs) ToPostgresqlRdbmsPtrOutput() PostgresqlRdbmsPtrOutput {
 	return i.ToPostgresqlRdbmsPtrOutputWithContext(context.Background())
 }
@@ -6907,12 +6018,6 @@ func (i *postgresqlRdbmsPtrType) ToPostgresqlRdbmsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlRdbmsPtrOutput)
 }
 
-func (i *postgresqlRdbmsPtrType) ToOutput(ctx context.Context) pulumix.Output[*PostgresqlRdbms] {
-	return pulumix.Output[*PostgresqlRdbms]{
-		OutputState: i.ToPostgresqlRdbmsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgreSQL database structure.
 type PostgresqlRdbmsOutput struct{ *pulumi.OutputState }
 
@@ -6938,12 +6043,6 @@ func (o PostgresqlRdbmsOutput) ToPostgresqlRdbmsPtrOutputWithContext(ctx context
 	}).(PostgresqlRdbmsPtrOutput)
 }
 
-func (o PostgresqlRdbmsOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlRdbms] {
-	return pulumix.Output[PostgresqlRdbms]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PostgreSQL schemas in the database server.
 func (o PostgresqlRdbmsOutput) PostgresqlSchemas() PostgresqlSchemaArrayOutput {
 	return o.ApplyT(func(v PostgresqlRdbms) []PostgresqlSchema { return v.PostgresqlSchemas }).(PostgresqlSchemaArrayOutput)
@@ -6961,12 +6060,6 @@ func (o PostgresqlRdbmsPtrOutput) ToPostgresqlRdbmsPtrOutput() PostgresqlRdbmsPt
 
 func (o PostgresqlRdbmsPtrOutput) ToPostgresqlRdbmsPtrOutputWithContext(ctx context.Context) PostgresqlRdbmsPtrOutput {
 	return o
-}
-
-func (o PostgresqlRdbmsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PostgresqlRdbms] {
-	return pulumix.Output[*PostgresqlRdbms]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PostgresqlRdbmsPtrOutput) Elem() PostgresqlRdbmsOutput {
@@ -7008,12 +6101,6 @@ func (o PostgresqlRdbmsResponseOutput) ToPostgresqlRdbmsResponseOutput() Postgre
 
 func (o PostgresqlRdbmsResponseOutput) ToPostgresqlRdbmsResponseOutputWithContext(ctx context.Context) PostgresqlRdbmsResponseOutput {
 	return o
-}
-
-func (o PostgresqlRdbmsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlRdbmsResponse] {
-	return pulumix.Output[PostgresqlRdbmsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PostgreSQL schemas in the database server.
@@ -7060,12 +6147,6 @@ func (i PostgresqlSchemaArgs) ToPostgresqlSchemaOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlSchemaOutput)
 }
 
-func (i PostgresqlSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[PostgresqlSchema] {
-	return pulumix.Output[PostgresqlSchema]{
-		OutputState: i.ToPostgresqlSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgresqlSchemaArrayInput is an input type that accepts PostgresqlSchemaArray and PostgresqlSchemaArrayOutput values.
 // You can construct a concrete instance of `PostgresqlSchemaArrayInput` via:
 //
@@ -7091,12 +6172,6 @@ func (i PostgresqlSchemaArray) ToPostgresqlSchemaArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlSchemaArrayOutput)
 }
 
-func (i PostgresqlSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]PostgresqlSchema] {
-	return pulumix.Output[[]PostgresqlSchema]{
-		OutputState: i.ToPostgresqlSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgreSQL schema.
 type PostgresqlSchemaOutput struct{ *pulumi.OutputState }
 
@@ -7110,12 +6185,6 @@ func (o PostgresqlSchemaOutput) ToPostgresqlSchemaOutput() PostgresqlSchemaOutpu
 
 func (o PostgresqlSchemaOutput) ToPostgresqlSchemaOutputWithContext(ctx context.Context) PostgresqlSchemaOutput {
 	return o
-}
-
-func (o PostgresqlSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlSchema] {
-	return pulumix.Output[PostgresqlSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tables in the schema.
@@ -7140,12 +6209,6 @@ func (o PostgresqlSchemaArrayOutput) ToPostgresqlSchemaArrayOutput() PostgresqlS
 
 func (o PostgresqlSchemaArrayOutput) ToPostgresqlSchemaArrayOutputWithContext(ctx context.Context) PostgresqlSchemaArrayOutput {
 	return o
-}
-
-func (o PostgresqlSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PostgresqlSchema] {
-	return pulumix.Output[[]PostgresqlSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PostgresqlSchemaArrayOutput) Index(i pulumi.IntInput) PostgresqlSchemaOutput {
@@ -7177,12 +6240,6 @@ func (o PostgresqlSchemaResponseOutput) ToPostgresqlSchemaResponseOutputWithCont
 	return o
 }
 
-func (o PostgresqlSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlSchemaResponse] {
-	return pulumix.Output[PostgresqlSchemaResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Tables in the schema.
 func (o PostgresqlSchemaResponseOutput) PostgresqlTables() PostgresqlTableResponseArrayOutput {
 	return o.ApplyT(func(v PostgresqlSchemaResponse) []PostgresqlTableResponse { return v.PostgresqlTables }).(PostgresqlTableResponseArrayOutput)
@@ -7205,12 +6262,6 @@ func (o PostgresqlSchemaResponseArrayOutput) ToPostgresqlSchemaResponseArrayOutp
 
 func (o PostgresqlSchemaResponseArrayOutput) ToPostgresqlSchemaResponseArrayOutputWithContext(ctx context.Context) PostgresqlSchemaResponseArrayOutput {
 	return o
-}
-
-func (o PostgresqlSchemaResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PostgresqlSchemaResponse] {
-	return pulumix.Output[[]PostgresqlSchemaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PostgresqlSchemaResponseArrayOutput) Index(i pulumi.IntInput) PostgresqlSchemaResponseOutput {
@@ -7270,12 +6321,6 @@ func (i PostgresqlSourceConfigArgs) ToPostgresqlSourceConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlSourceConfigOutput)
 }
 
-func (i PostgresqlSourceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PostgresqlSourceConfig] {
-	return pulumix.Output[PostgresqlSourceConfig]{
-		OutputState: i.ToPostgresqlSourceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PostgresqlSourceConfigArgs) ToPostgresqlSourceConfigPtrOutput() PostgresqlSourceConfigPtrOutput {
 	return i.ToPostgresqlSourceConfigPtrOutputWithContext(context.Background())
 }
@@ -7317,12 +6362,6 @@ func (i *postgresqlSourceConfigPtrType) ToPostgresqlSourceConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlSourceConfigPtrOutput)
 }
 
-func (i *postgresqlSourceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PostgresqlSourceConfig] {
-	return pulumix.Output[*PostgresqlSourceConfig]{
-		OutputState: i.ToPostgresqlSourceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgreSQL data source configuration
 type PostgresqlSourceConfigOutput struct{ *pulumi.OutputState }
 
@@ -7346,12 +6385,6 @@ func (o PostgresqlSourceConfigOutput) ToPostgresqlSourceConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresqlSourceConfig) *PostgresqlSourceConfig {
 		return &v
 	}).(PostgresqlSourceConfigPtrOutput)
-}
-
-func (o PostgresqlSourceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlSourceConfig] {
-	return pulumix.Output[PostgresqlSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PostgreSQL objects to exclude from the stream.
@@ -7391,12 +6424,6 @@ func (o PostgresqlSourceConfigPtrOutput) ToPostgresqlSourceConfigPtrOutput() Pos
 
 func (o PostgresqlSourceConfigPtrOutput) ToPostgresqlSourceConfigPtrOutputWithContext(ctx context.Context) PostgresqlSourceConfigPtrOutput {
 	return o
-}
-
-func (o PostgresqlSourceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PostgresqlSourceConfig] {
-	return pulumix.Output[*PostgresqlSourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PostgresqlSourceConfigPtrOutput) Elem() PostgresqlSourceConfigOutput {
@@ -7488,12 +6515,6 @@ func (o PostgresqlSourceConfigResponseOutput) ToPostgresqlSourceConfigResponseOu
 	return o
 }
 
-func (o PostgresqlSourceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlSourceConfigResponse] {
-	return pulumix.Output[PostgresqlSourceConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PostgreSQL objects to exclude from the stream.
 func (o PostgresqlSourceConfigResponseOutput) ExcludeObjects() PostgresqlRdbmsResponseOutput {
 	return o.ApplyT(func(v PostgresqlSourceConfigResponse) PostgresqlRdbmsResponse { return v.ExcludeObjects }).(PostgresqlRdbmsResponseOutput)
@@ -7558,12 +6579,6 @@ func (i PostgresqlTableArgs) ToPostgresqlTableOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlTableOutput)
 }
 
-func (i PostgresqlTableArgs) ToOutput(ctx context.Context) pulumix.Output[PostgresqlTable] {
-	return pulumix.Output[PostgresqlTable]{
-		OutputState: i.ToPostgresqlTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgresqlTableArrayInput is an input type that accepts PostgresqlTableArray and PostgresqlTableArrayOutput values.
 // You can construct a concrete instance of `PostgresqlTableArrayInput` via:
 //
@@ -7589,12 +6604,6 @@ func (i PostgresqlTableArray) ToPostgresqlTableArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlTableArrayOutput)
 }
 
-func (i PostgresqlTableArray) ToOutput(ctx context.Context) pulumix.Output[[]PostgresqlTable] {
-	return pulumix.Output[[]PostgresqlTable]{
-		OutputState: i.ToPostgresqlTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgreSQL table.
 type PostgresqlTableOutput struct{ *pulumi.OutputState }
 
@@ -7608,12 +6617,6 @@ func (o PostgresqlTableOutput) ToPostgresqlTableOutput() PostgresqlTableOutput {
 
 func (o PostgresqlTableOutput) ToPostgresqlTableOutputWithContext(ctx context.Context) PostgresqlTableOutput {
 	return o
-}
-
-func (o PostgresqlTableOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlTable] {
-	return pulumix.Output[PostgresqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -7638,12 +6641,6 @@ func (o PostgresqlTableArrayOutput) ToPostgresqlTableArrayOutput() PostgresqlTab
 
 func (o PostgresqlTableArrayOutput) ToPostgresqlTableArrayOutputWithContext(ctx context.Context) PostgresqlTableArrayOutput {
 	return o
-}
-
-func (o PostgresqlTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PostgresqlTable] {
-	return pulumix.Output[[]PostgresqlTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PostgresqlTableArrayOutput) Index(i pulumi.IntInput) PostgresqlTableOutput {
@@ -7675,12 +6672,6 @@ func (o PostgresqlTableResponseOutput) ToPostgresqlTableResponseOutputWithContex
 	return o
 }
 
-func (o PostgresqlTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresqlTableResponse] {
-	return pulumix.Output[PostgresqlTableResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 func (o PostgresqlTableResponseOutput) PostgresqlColumns() PostgresqlColumnResponseArrayOutput {
 	return o.ApplyT(func(v PostgresqlTableResponse) []PostgresqlColumnResponse { return v.PostgresqlColumns }).(PostgresqlColumnResponseArrayOutput)
@@ -7703,12 +6694,6 @@ func (o PostgresqlTableResponseArrayOutput) ToPostgresqlTableResponseArrayOutput
 
 func (o PostgresqlTableResponseArrayOutput) ToPostgresqlTableResponseArrayOutputWithContext(ctx context.Context) PostgresqlTableResponseArrayOutput {
 	return o
-}
-
-func (o PostgresqlTableResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PostgresqlTableResponse] {
-	return pulumix.Output[[]PostgresqlTableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PostgresqlTableResponseArrayOutput) Index(i pulumi.IntInput) PostgresqlTableResponseOutput {
@@ -7752,12 +6737,6 @@ func (i PrivateConnectivityArgs) ToPrivateConnectivityOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectivityOutput)
 }
 
-func (i PrivateConnectivityArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateConnectivity] {
-	return pulumix.Output[PrivateConnectivity]{
-		OutputState: i.ToPrivateConnectivityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateConnectivityArgs) ToPrivateConnectivityPtrOutput() PrivateConnectivityPtrOutput {
 	return i.ToPrivateConnectivityPtrOutputWithContext(context.Background())
 }
@@ -7799,12 +6778,6 @@ func (i *privateConnectivityPtrType) ToPrivateConnectivityPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectivityPtrOutput)
 }
 
-func (i *privateConnectivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnectivity] {
-	return pulumix.Output[*PrivateConnectivity]{
-		OutputState: i.ToPrivateConnectivityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Private Connectivity
 type PrivateConnectivityOutput struct{ *pulumi.OutputState }
 
@@ -7830,12 +6803,6 @@ func (o PrivateConnectivityOutput) ToPrivateConnectivityPtrOutputWithContext(ctx
 	}).(PrivateConnectivityPtrOutput)
 }
 
-func (o PrivateConnectivityOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateConnectivity] {
-	return pulumix.Output[PrivateConnectivity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
 func (o PrivateConnectivityOutput) PrivateConnection() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateConnectivity) string { return v.PrivateConnection }).(pulumi.StringOutput)
@@ -7853,12 +6820,6 @@ func (o PrivateConnectivityPtrOutput) ToPrivateConnectivityPtrOutput() PrivateCo
 
 func (o PrivateConnectivityPtrOutput) ToPrivateConnectivityPtrOutputWithContext(ctx context.Context) PrivateConnectivityPtrOutput {
 	return o
-}
-
-func (o PrivateConnectivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnectivity] {
-	return pulumix.Output[*PrivateConnectivity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateConnectivityPtrOutput) Elem() PrivateConnectivityOutput {
@@ -7902,12 +6863,6 @@ func (o PrivateConnectivityResponseOutput) ToPrivateConnectivityResponseOutputWi
 	return o
 }
 
-func (o PrivateConnectivityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateConnectivityResponse] {
-	return pulumix.Output[PrivateConnectivityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
 func (o PrivateConnectivityResponseOutput) PrivateConnection() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateConnectivityResponse) string { return v.PrivateConnection }).(pulumi.StringOutput)
@@ -7946,12 +6901,6 @@ func (i SingleTargetDatasetArgs) ToSingleTargetDatasetOutput() SingleTargetDatas
 
 func (i SingleTargetDatasetArgs) ToSingleTargetDatasetOutputWithContext(ctx context.Context) SingleTargetDatasetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SingleTargetDatasetOutput)
-}
-
-func (i SingleTargetDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[SingleTargetDataset] {
-	return pulumix.Output[SingleTargetDataset]{
-		OutputState: i.ToSingleTargetDatasetOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i SingleTargetDatasetArgs) ToSingleTargetDatasetPtrOutput() SingleTargetDatasetPtrOutput {
@@ -7995,12 +6944,6 @@ func (i *singleTargetDatasetPtrType) ToSingleTargetDatasetPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SingleTargetDatasetPtrOutput)
 }
 
-func (i *singleTargetDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*SingleTargetDataset] {
-	return pulumix.Output[*SingleTargetDataset]{
-		OutputState: i.ToSingleTargetDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A single target dataset to which all data will be streamed.
 type SingleTargetDatasetOutput struct{ *pulumi.OutputState }
 
@@ -8026,12 +6969,6 @@ func (o SingleTargetDatasetOutput) ToSingleTargetDatasetPtrOutputWithContext(ctx
 	}).(SingleTargetDatasetPtrOutput)
 }
 
-func (o SingleTargetDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[SingleTargetDataset] {
-	return pulumix.Output[SingleTargetDataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
 func (o SingleTargetDatasetOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleTargetDataset) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
@@ -8049,12 +6986,6 @@ func (o SingleTargetDatasetPtrOutput) ToSingleTargetDatasetPtrOutput() SingleTar
 
 func (o SingleTargetDatasetPtrOutput) ToSingleTargetDatasetPtrOutputWithContext(ctx context.Context) SingleTargetDatasetPtrOutput {
 	return o
-}
-
-func (o SingleTargetDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SingleTargetDataset] {
-	return pulumix.Output[*SingleTargetDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SingleTargetDatasetPtrOutput) Elem() SingleTargetDatasetOutput {
@@ -8096,12 +7027,6 @@ func (o SingleTargetDatasetResponseOutput) ToSingleTargetDatasetResponseOutput()
 
 func (o SingleTargetDatasetResponseOutput) ToSingleTargetDatasetResponseOutputWithContext(ctx context.Context) SingleTargetDatasetResponseOutput {
 	return o
-}
-
-func (o SingleTargetDatasetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SingleTargetDatasetResponse] {
-	return pulumix.Output[SingleTargetDatasetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
@@ -8156,12 +7081,6 @@ func (i SourceConfigArgs) ToSourceConfigOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigOutput)
 }
 
-func (i SourceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SourceConfig] {
-	return pulumix.Output[SourceConfig]{
-		OutputState: i.ToSourceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration of the stream source.
 type SourceConfigOutput struct{ *pulumi.OutputState }
 
@@ -8175,12 +7094,6 @@ func (o SourceConfigOutput) ToSourceConfigOutput() SourceConfigOutput {
 
 func (o SourceConfigOutput) ToSourceConfigOutputWithContext(ctx context.Context) SourceConfigOutput {
 	return o
-}
-
-func (o SourceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SourceConfig] {
-	return pulumix.Output[SourceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL data source configuration.
@@ -8228,12 +7141,6 @@ func (o SourceConfigResponseOutput) ToSourceConfigResponseOutput() SourceConfigR
 
 func (o SourceConfigResponseOutput) ToSourceConfigResponseOutputWithContext(ctx context.Context) SourceConfigResponseOutput {
 	return o
-}
-
-func (o SourceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceConfigResponse] {
-	return pulumix.Output[SourceConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // MySQL data source configuration.
@@ -8291,12 +7198,6 @@ func (i SourceHierarchyDatasetsArgs) ToSourceHierarchyDatasetsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SourceHierarchyDatasetsOutput)
 }
 
-func (i SourceHierarchyDatasetsArgs) ToOutput(ctx context.Context) pulumix.Output[SourceHierarchyDatasets] {
-	return pulumix.Output[SourceHierarchyDatasets]{
-		OutputState: i.ToSourceHierarchyDatasetsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SourceHierarchyDatasetsArgs) ToSourceHierarchyDatasetsPtrOutput() SourceHierarchyDatasetsPtrOutput {
 	return i.ToSourceHierarchyDatasetsPtrOutputWithContext(context.Background())
 }
@@ -8338,12 +7239,6 @@ func (i *sourceHierarchyDatasetsPtrType) ToSourceHierarchyDatasetsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SourceHierarchyDatasetsPtrOutput)
 }
 
-func (i *sourceHierarchyDatasetsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceHierarchyDatasets] {
-	return pulumix.Output[*SourceHierarchyDatasets]{
-		OutputState: i.ToSourceHierarchyDatasetsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
 type SourceHierarchyDatasetsOutput struct{ *pulumi.OutputState }
 
@@ -8369,12 +7264,6 @@ func (o SourceHierarchyDatasetsOutput) ToSourceHierarchyDatasetsPtrOutputWithCon
 	}).(SourceHierarchyDatasetsPtrOutput)
 }
 
-func (o SourceHierarchyDatasetsOutput) ToOutput(ctx context.Context) pulumix.Output[SourceHierarchyDatasets] {
-	return pulumix.Output[SourceHierarchyDatasets]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The dataset template to use for dynamic dataset creation.
 func (o SourceHierarchyDatasetsOutput) DatasetTemplate() DatasetTemplatePtrOutput {
 	return o.ApplyT(func(v SourceHierarchyDatasets) *DatasetTemplate { return v.DatasetTemplate }).(DatasetTemplatePtrOutput)
@@ -8392,12 +7281,6 @@ func (o SourceHierarchyDatasetsPtrOutput) ToSourceHierarchyDatasetsPtrOutput() S
 
 func (o SourceHierarchyDatasetsPtrOutput) ToSourceHierarchyDatasetsPtrOutputWithContext(ctx context.Context) SourceHierarchyDatasetsPtrOutput {
 	return o
-}
-
-func (o SourceHierarchyDatasetsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceHierarchyDatasets] {
-	return pulumix.Output[*SourceHierarchyDatasets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceHierarchyDatasetsPtrOutput) Elem() SourceHierarchyDatasetsOutput {
@@ -8441,12 +7324,6 @@ func (o SourceHierarchyDatasetsResponseOutput) ToSourceHierarchyDatasetsResponse
 	return o
 }
 
-func (o SourceHierarchyDatasetsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceHierarchyDatasetsResponse] {
-	return pulumix.Output[SourceHierarchyDatasetsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The dataset template to use for dynamic dataset creation.
 func (o SourceHierarchyDatasetsResponseOutput) DatasetTemplate() DatasetTemplateResponseOutput {
 	return o.ApplyT(func(v SourceHierarchyDatasetsResponse) DatasetTemplateResponse { return v.DatasetTemplate }).(DatasetTemplateResponseOutput)
@@ -8481,12 +7358,6 @@ func (i StaticServiceIpConnectivityArgs) ToStaticServiceIpConnectivityOutput() S
 
 func (i StaticServiceIpConnectivityArgs) ToStaticServiceIpConnectivityOutputWithContext(ctx context.Context) StaticServiceIpConnectivityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StaticServiceIpConnectivityOutput)
-}
-
-func (i StaticServiceIpConnectivityArgs) ToOutput(ctx context.Context) pulumix.Output[StaticServiceIpConnectivity] {
-	return pulumix.Output[StaticServiceIpConnectivity]{
-		OutputState: i.ToStaticServiceIpConnectivityOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StaticServiceIpConnectivityArgs) ToStaticServiceIpConnectivityPtrOutput() StaticServiceIpConnectivityPtrOutput {
@@ -8530,12 +7401,6 @@ func (i *staticServiceIpConnectivityPtrType) ToStaticServiceIpConnectivityPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(StaticServiceIpConnectivityPtrOutput)
 }
 
-func (i *staticServiceIpConnectivityPtrType) ToOutput(ctx context.Context) pulumix.Output[*StaticServiceIpConnectivity] {
-	return pulumix.Output[*StaticServiceIpConnectivity]{
-		OutputState: i.ToStaticServiceIpConnectivityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
 type StaticServiceIpConnectivityOutput struct{ *pulumi.OutputState }
 
@@ -8561,12 +7426,6 @@ func (o StaticServiceIpConnectivityOutput) ToStaticServiceIpConnectivityPtrOutpu
 	}).(StaticServiceIpConnectivityPtrOutput)
 }
 
-func (o StaticServiceIpConnectivityOutput) ToOutput(ctx context.Context) pulumix.Output[StaticServiceIpConnectivity] {
-	return pulumix.Output[StaticServiceIpConnectivity]{
-		OutputState: o.OutputState,
-	}
-}
-
 type StaticServiceIpConnectivityPtrOutput struct{ *pulumi.OutputState }
 
 func (StaticServiceIpConnectivityPtrOutput) ElementType() reflect.Type {
@@ -8579,12 +7438,6 @@ func (o StaticServiceIpConnectivityPtrOutput) ToStaticServiceIpConnectivityPtrOu
 
 func (o StaticServiceIpConnectivityPtrOutput) ToStaticServiceIpConnectivityPtrOutputWithContext(ctx context.Context) StaticServiceIpConnectivityPtrOutput {
 	return o
-}
-
-func (o StaticServiceIpConnectivityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticServiceIpConnectivity] {
-	return pulumix.Output[*StaticServiceIpConnectivity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StaticServiceIpConnectivityPtrOutput) Elem() StaticServiceIpConnectivityOutput {
@@ -8616,12 +7469,6 @@ func (o StaticServiceIpConnectivityResponseOutput) ToStaticServiceIpConnectivity
 	return o
 }
 
-func (o StaticServiceIpConnectivityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StaticServiceIpConnectivityResponse] {
-	return pulumix.Output[StaticServiceIpConnectivityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration to stream large object values.
 type StreamLargeObjects struct {
 }
@@ -8651,12 +7498,6 @@ func (i StreamLargeObjectsArgs) ToStreamLargeObjectsOutput() StreamLargeObjectsO
 
 func (i StreamLargeObjectsArgs) ToStreamLargeObjectsOutputWithContext(ctx context.Context) StreamLargeObjectsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamLargeObjectsOutput)
-}
-
-func (i StreamLargeObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[StreamLargeObjects] {
-	return pulumix.Output[StreamLargeObjects]{
-		OutputState: i.ToStreamLargeObjectsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StreamLargeObjectsArgs) ToStreamLargeObjectsPtrOutput() StreamLargeObjectsPtrOutput {
@@ -8700,12 +7541,6 @@ func (i *streamLargeObjectsPtrType) ToStreamLargeObjectsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(StreamLargeObjectsPtrOutput)
 }
 
-func (i *streamLargeObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StreamLargeObjects] {
-	return pulumix.Output[*StreamLargeObjects]{
-		OutputState: i.ToStreamLargeObjectsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration to stream large object values.
 type StreamLargeObjectsOutput struct{ *pulumi.OutputState }
 
@@ -8731,12 +7566,6 @@ func (o StreamLargeObjectsOutput) ToStreamLargeObjectsPtrOutputWithContext(ctx c
 	}).(StreamLargeObjectsPtrOutput)
 }
 
-func (o StreamLargeObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[StreamLargeObjects] {
-	return pulumix.Output[StreamLargeObjects]{
-		OutputState: o.OutputState,
-	}
-}
-
 type StreamLargeObjectsPtrOutput struct{ *pulumi.OutputState }
 
 func (StreamLargeObjectsPtrOutput) ElementType() reflect.Type {
@@ -8749,12 +7578,6 @@ func (o StreamLargeObjectsPtrOutput) ToStreamLargeObjectsPtrOutput() StreamLarge
 
 func (o StreamLargeObjectsPtrOutput) ToStreamLargeObjectsPtrOutputWithContext(ctx context.Context) StreamLargeObjectsPtrOutput {
 	return o
-}
-
-func (o StreamLargeObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamLargeObjects] {
-	return pulumix.Output[*StreamLargeObjects]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamLargeObjectsPtrOutput) Elem() StreamLargeObjectsOutput {
@@ -8784,12 +7607,6 @@ func (o StreamLargeObjectsResponseOutput) ToStreamLargeObjectsResponseOutput() S
 
 func (o StreamLargeObjectsResponseOutput) ToStreamLargeObjectsResponseOutputWithContext(ctx context.Context) StreamLargeObjectsResponseOutput {
 	return o
-}
-
-func (o StreamLargeObjectsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StreamLargeObjectsResponse] {
-	return pulumix.Output[StreamLargeObjectsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
@@ -8829,12 +7646,6 @@ func (i VpcPeeringConfigArgs) ToVpcPeeringConfigOutput() VpcPeeringConfigOutput 
 
 func (i VpcPeeringConfigArgs) ToVpcPeeringConfigOutputWithContext(ctx context.Context) VpcPeeringConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConfigOutput)
-}
-
-func (i VpcPeeringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VpcPeeringConfig] {
-	return pulumix.Output[VpcPeeringConfig]{
-		OutputState: i.ToVpcPeeringConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i VpcPeeringConfigArgs) ToVpcPeeringConfigPtrOutput() VpcPeeringConfigPtrOutput {
@@ -8878,12 +7689,6 @@ func (i *vpcPeeringConfigPtrType) ToVpcPeeringConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConfigPtrOutput)
 }
 
-func (i *vpcPeeringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VpcPeeringConfig] {
-	return pulumix.Output[*VpcPeeringConfig]{
-		OutputState: i.ToVpcPeeringConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
 type VpcPeeringConfigOutput struct{ *pulumi.OutputState }
 
@@ -8909,12 +7714,6 @@ func (o VpcPeeringConfigOutput) ToVpcPeeringConfigPtrOutputWithContext(ctx conte
 	}).(VpcPeeringConfigPtrOutput)
 }
 
-func (o VpcPeeringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VpcPeeringConfig] {
-	return pulumix.Output[VpcPeeringConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A free subnet for peering. (CIDR of /29)
 func (o VpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
@@ -8937,12 +7736,6 @@ func (o VpcPeeringConfigPtrOutput) ToVpcPeeringConfigPtrOutput() VpcPeeringConfi
 
 func (o VpcPeeringConfigPtrOutput) ToVpcPeeringConfigPtrOutputWithContext(ctx context.Context) VpcPeeringConfigPtrOutput {
 	return o
-}
-
-func (o VpcPeeringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcPeeringConfig] {
-	return pulumix.Output[*VpcPeeringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VpcPeeringConfigPtrOutput) Elem() VpcPeeringConfigOutput {
@@ -8996,12 +7789,6 @@ func (o VpcPeeringConfigResponseOutput) ToVpcPeeringConfigResponseOutput() VpcPe
 
 func (o VpcPeeringConfigResponseOutput) ToVpcPeeringConfigResponseOutputWithContext(ctx context.Context) VpcPeeringConfigResponseOutput {
 	return o
-}
-
-func (o VpcPeeringConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VpcPeeringConfigResponse] {
-	return pulumix.Output[VpcPeeringConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A free subnet for peering. (CIDR of /29)

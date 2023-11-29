@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a single CertificateMapEntry.
@@ -87,12 +86,6 @@ func (o LookupCertificateMapEntryResultOutput) ToLookupCertificateMapEntryResult
 
 func (o LookupCertificateMapEntryResultOutput) ToLookupCertificateMapEntryResultOutputWithContext(ctx context.Context) LookupCertificateMapEntryResultOutput {
 	return o
-}
-
-func (o LookupCertificateMapEntryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCertificateMapEntryResult] {
-	return pulumix.Output[LookupCertificateMapEntryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.

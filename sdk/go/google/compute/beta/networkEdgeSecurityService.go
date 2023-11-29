@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new service in the specified project using the data included in the request.
@@ -136,12 +135,6 @@ func (i *NetworkEdgeSecurityService) ToNetworkEdgeSecurityServiceOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEdgeSecurityServiceOutput)
 }
 
-func (i *NetworkEdgeSecurityService) ToOutput(ctx context.Context) pulumix.Output[*NetworkEdgeSecurityService] {
-	return pulumix.Output[*NetworkEdgeSecurityService]{
-		OutputState: i.ToNetworkEdgeSecurityServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkEdgeSecurityServiceOutput struct{ *pulumi.OutputState }
 
 func (NetworkEdgeSecurityServiceOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o NetworkEdgeSecurityServiceOutput) ToNetworkEdgeSecurityServiceOutput() N
 
 func (o NetworkEdgeSecurityServiceOutput) ToNetworkEdgeSecurityServiceOutputWithContext(ctx context.Context) NetworkEdgeSecurityServiceOutput {
 	return o
-}
-
-func (o NetworkEdgeSecurityServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkEdgeSecurityService] {
-	return pulumix.Output[*NetworkEdgeSecurityService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a test case.
@@ -85,12 +84,6 @@ func (o LookupTestCaseResultOutput) ToLookupTestCaseResultOutput() LookupTestCas
 
 func (o LookupTestCaseResultOutput) ToLookupTestCaseResultOutputWithContext(ctx context.Context) LookupTestCaseResultOutput {
 	return o
-}
-
-func (o LookupTestCaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTestCaseResult] {
-	return pulumix.Output[LookupTestCaseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the test was created.

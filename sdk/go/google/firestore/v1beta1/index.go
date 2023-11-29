@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single field cannot be created.
@@ -126,12 +125,6 @@ func (i *Index) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndexOutput)
 }
 
-func (i *Index) ToOutput(ctx context.Context) pulumix.Output[*Index] {
-	return pulumix.Output[*Index]{
-		OutputState: i.ToIndexOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IndexOutput struct{ *pulumi.OutputState }
 
 func (IndexOutput) ElementType() reflect.Type {
@@ -144,12 +137,6 @@ func (o IndexOutput) ToIndexOutput() IndexOutput {
 
 func (o IndexOutput) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return o
-}
-
-func (o IndexOutput) ToOutput(ctx context.Context) pulumix.Output[*Index] {
-	return pulumix.Output[*Index]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection ID to which this index applies. Required.

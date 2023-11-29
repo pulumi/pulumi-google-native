@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the specified knowledge base.
@@ -73,12 +72,6 @@ func (o LookupKnowledgeBaseResultOutput) ToLookupKnowledgeBaseResultOutput() Loo
 
 func (o LookupKnowledgeBaseResultOutput) ToLookupKnowledgeBaseResultOutputWithContext(ctx context.Context) LookupKnowledgeBaseResultOutput {
 	return o
-}
-
-func (o LookupKnowledgeBaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKnowledgeBaseResult] {
-	return pulumix.Output[LookupKnowledgeBaseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.

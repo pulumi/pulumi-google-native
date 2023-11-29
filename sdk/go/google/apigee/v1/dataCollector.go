@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new data collector.
@@ -126,12 +125,6 @@ func (i *DataCollector) ToDataCollectorOutputWithContext(ctx context.Context) Da
 	return pulumi.ToOutputWithContext(ctx, i).(DataCollectorOutput)
 }
 
-func (i *DataCollector) ToOutput(ctx context.Context) pulumix.Output[*DataCollector] {
-	return pulumix.Output[*DataCollector]{
-		OutputState: i.ToDataCollectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataCollectorOutput struct{ *pulumi.OutputState }
 
 func (DataCollectorOutput) ElementType() reflect.Type {
@@ -144,12 +137,6 @@ func (o DataCollectorOutput) ToDataCollectorOutput() DataCollectorOutput {
 
 func (o DataCollectorOutput) ToDataCollectorOutputWithContext(ctx context.Context) DataCollectorOutput {
 	return o
-}
-
-func (o DataCollectorOutput) ToOutput(ctx context.Context) pulumix.Output[*DataCollector] {
-	return pulumix.Output[*DataCollector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time at which the data collector was created in milliseconds since the epoch.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.
@@ -129,12 +128,6 @@ func (i *EndpointAttachment) ToEndpointAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAttachmentOutput)
 }
 
-func (i *EndpointAttachment) ToOutput(ctx context.Context) pulumix.Output[*EndpointAttachment] {
-	return pulumix.Output[*EndpointAttachment]{
-		OutputState: i.ToEndpointAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EndpointAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EndpointAttachmentOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o EndpointAttachmentOutput) ToEndpointAttachmentOutput() EndpointAttachmen
 
 func (o EndpointAttachmentOutput) ToEndpointAttachmentOutputWithContext(ctx context.Context) EndpointAttachmentOutput {
 	return o
-}
-
-func (o EndpointAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointAttachment] {
-	return pulumix.Output[*EndpointAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // State of the endpoint attachment connection to the service attachment.

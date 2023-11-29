@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of the specified `LbTrafficExtension` resource.
@@ -83,12 +82,6 @@ func (o LookupLbTrafficExtensionResultOutput) ToLookupLbTrafficExtensionResultOu
 
 func (o LookupLbTrafficExtensionResultOutput) ToLookupLbTrafficExtensionResultOutputWithContext(ctx context.Context) LookupLbTrafficExtensionResultOutput {
 	return o
-}
-
-func (o LookupLbTrafficExtensionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLbTrafficExtensionResult] {
-	return pulumix.Output[LookupLbTrafficExtensionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp when the resource was created.

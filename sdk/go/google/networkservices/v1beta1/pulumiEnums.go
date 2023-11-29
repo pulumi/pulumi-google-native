@@ -85,12 +85,6 @@ func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext
 	}).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (o AuditLogConfigLogTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AuditLogConfigLogType] {
-	return pulumix.Output[AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -124,12 +118,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
-}
-
-func (o AuditLogConfigLogTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
@@ -272,12 +260,6 @@ func (o EndpointPolicyTypeOutput) ToEndpointPolicyTypePtrOutputWithContext(ctx c
 	}).(EndpointPolicyTypePtrOutput)
 }
 
-func (o EndpointPolicyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPolicyType] {
-	return pulumix.Output[EndpointPolicyType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EndpointPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -311,12 +293,6 @@ func (o EndpointPolicyTypePtrOutput) ToEndpointPolicyTypePtrOutput() EndpointPol
 
 func (o EndpointPolicyTypePtrOutput) ToEndpointPolicyTypePtrOutputWithContext(ctx context.Context) EndpointPolicyTypePtrOutput {
 	return o
-}
-
-func (o EndpointPolicyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyType] {
-	return pulumix.Output[*EndpointPolicyType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointPolicyTypePtrOutput) Elem() EndpointPolicyTypeOutput {
@@ -462,12 +438,6 @@ func (o ExtensionChainExtensionSupportedEventsItemOutput) ToExtensionChainExtens
 	}).(ExtensionChainExtensionSupportedEventsItemPtrOutput)
 }
 
-func (o ExtensionChainExtensionSupportedEventsItemOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionChainExtensionSupportedEventsItem] {
-	return pulumix.Output[ExtensionChainExtensionSupportedEventsItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExtensionChainExtensionSupportedEventsItemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -501,12 +471,6 @@ func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) ToExtensionChainExt
 
 func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemPtrOutput {
 	return o
-}
-
-func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionChainExtensionSupportedEventsItem] {
-	return pulumix.Output[*ExtensionChainExtensionSupportedEventsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) Elem() ExtensionChainExtensionSupportedEventsItemOutput {
@@ -602,12 +566,6 @@ func (i ExtensionChainExtensionSupportedEventsItemArray) ToExtensionChainExtensi
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionChainExtensionSupportedEventsItemArrayOutput)
 }
 
-func (i ExtensionChainExtensionSupportedEventsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionChainExtensionSupportedEventsItem] {
-	return pulumix.Output[[]ExtensionChainExtensionSupportedEventsItem]{
-		OutputState: i.ToExtensionChainExtensionSupportedEventsItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExtensionChainExtensionSupportedEventsItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ExtensionChainExtensionSupportedEventsItemArrayOutput) ElementType() reflect.Type {
@@ -620,12 +578,6 @@ func (o ExtensionChainExtensionSupportedEventsItemArrayOutput) ToExtensionChainE
 
 func (o ExtensionChainExtensionSupportedEventsItemArrayOutput) ToExtensionChainExtensionSupportedEventsItemArrayOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemArrayOutput {
 	return o
-}
-
-func (o ExtensionChainExtensionSupportedEventsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionChainExtensionSupportedEventsItem] {
-	return pulumix.Output[[]ExtensionChainExtensionSupportedEventsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionChainExtensionSupportedEventsItemArrayOutput) Index(i pulumi.IntInput) ExtensionChainExtensionSupportedEventsItemOutput {
@@ -706,12 +658,6 @@ func (o GatewayTypeOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context
 	}).(GatewayTypePtrOutput)
 }
 
-func (o GatewayTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayType] {
-	return pulumix.Output[GatewayType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -745,12 +691,6 @@ func (o GatewayTypePtrOutput) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
 
 func (o GatewayTypePtrOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
 	return o
-}
-
-func (o GatewayTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayType] {
-	return pulumix.Output[*GatewayType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayTypePtrOutput) Elem() GatewayTypeOutput {
@@ -893,12 +833,6 @@ func (o GrpcRouteHeaderMatchTypeOutput) ToGrpcRouteHeaderMatchTypePtrOutputWithC
 	}).(GrpcRouteHeaderMatchTypePtrOutput)
 }
 
-func (o GrpcRouteHeaderMatchTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteHeaderMatchType] {
-	return pulumix.Output[GrpcRouteHeaderMatchType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GrpcRouteHeaderMatchTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -932,12 +866,6 @@ func (o GrpcRouteHeaderMatchTypePtrOutput) ToGrpcRouteHeaderMatchTypePtrOutput()
 
 func (o GrpcRouteHeaderMatchTypePtrOutput) ToGrpcRouteHeaderMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchTypePtrOutput {
 	return o
-}
-
-func (o GrpcRouteHeaderMatchTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteHeaderMatchType] {
-	return pulumix.Output[*GrpcRouteHeaderMatchType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteHeaderMatchTypePtrOutput) Elem() GrpcRouteHeaderMatchTypeOutput {
@@ -1080,12 +1008,6 @@ func (o GrpcRouteMethodMatchTypeOutput) ToGrpcRouteMethodMatchTypePtrOutputWithC
 	}).(GrpcRouteMethodMatchTypePtrOutput)
 }
 
-func (o GrpcRouteMethodMatchTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteMethodMatchType] {
-	return pulumix.Output[GrpcRouteMethodMatchType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GrpcRouteMethodMatchTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1119,12 +1041,6 @@ func (o GrpcRouteMethodMatchTypePtrOutput) ToGrpcRouteMethodMatchTypePtrOutput()
 
 func (o GrpcRouteMethodMatchTypePtrOutput) ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteMethodMatchTypePtrOutput {
 	return o
-}
-
-func (o GrpcRouteMethodMatchTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteMethodMatchType] {
-	return pulumix.Output[*GrpcRouteMethodMatchType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrpcRouteMethodMatchTypePtrOutput) Elem() GrpcRouteMethodMatchTypeOutput {
@@ -1273,12 +1189,6 @@ func (o HttpRouteRedirectResponseCodeOutput) ToHttpRouteRedirectResponseCodePtrO
 	}).(HttpRouteRedirectResponseCodePtrOutput)
 }
 
-func (o HttpRouteRedirectResponseCodeOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRedirectResponseCode] {
-	return pulumix.Output[HttpRouteRedirectResponseCode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpRouteRedirectResponseCodeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1312,12 +1222,6 @@ func (o HttpRouteRedirectResponseCodePtrOutput) ToHttpRouteRedirectResponseCodeP
 
 func (o HttpRouteRedirectResponseCodePtrOutput) ToHttpRouteRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRouteRedirectResponseCodePtrOutput {
 	return o
-}
-
-func (o HttpRouteRedirectResponseCodePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRedirectResponseCode] {
-	return pulumix.Output[*HttpRouteRedirectResponseCode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteRedirectResponseCodePtrOutput) Elem() HttpRouteRedirectResponseCodeOutput {
@@ -1460,12 +1364,6 @@ func (o LbRouteExtensionLoadBalancingSchemeOutput) ToLbRouteExtensionLoadBalanci
 	}).(LbRouteExtensionLoadBalancingSchemePtrOutput)
 }
 
-func (o LbRouteExtensionLoadBalancingSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[LbRouteExtensionLoadBalancingScheme] {
-	return pulumix.Output[LbRouteExtensionLoadBalancingScheme]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LbRouteExtensionLoadBalancingSchemeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1499,12 +1397,6 @@ func (o LbRouteExtensionLoadBalancingSchemePtrOutput) ToLbRouteExtensionLoadBala
 
 func (o LbRouteExtensionLoadBalancingSchemePtrOutput) ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbRouteExtensionLoadBalancingSchemePtrOutput {
 	return o
-}
-
-func (o LbRouteExtensionLoadBalancingSchemePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LbRouteExtensionLoadBalancingScheme] {
-	return pulumix.Output[*LbRouteExtensionLoadBalancingScheme]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LbRouteExtensionLoadBalancingSchemePtrOutput) Elem() LbRouteExtensionLoadBalancingSchemeOutput {
@@ -1647,12 +1539,6 @@ func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToLbTrafficExtensionLoadBal
 	}).(LbTrafficExtensionLoadBalancingSchemePtrOutput)
 }
 
-func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[LbTrafficExtensionLoadBalancingScheme] {
-	return pulumix.Output[LbTrafficExtensionLoadBalancingScheme]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1686,12 +1572,6 @@ func (o LbTrafficExtensionLoadBalancingSchemePtrOutput) ToLbTrafficExtensionLoad
 
 func (o LbTrafficExtensionLoadBalancingSchemePtrOutput) ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbTrafficExtensionLoadBalancingSchemePtrOutput {
 	return o
-}
-
-func (o LbTrafficExtensionLoadBalancingSchemePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LbTrafficExtensionLoadBalancingScheme] {
-	return pulumix.Output[*LbTrafficExtensionLoadBalancingScheme]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LbTrafficExtensionLoadBalancingSchemePtrOutput) Elem() LbTrafficExtensionLoadBalancingSchemeOutput {
@@ -1834,12 +1714,6 @@ func (o MetadataLabelMatcherMetadataLabelMatchCriteriaOutput) ToMetadataLabelMat
 	}).(MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput)
 }
 
-func (o MetadataLabelMatcherMetadataLabelMatchCriteriaOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataLabelMatcherMetadataLabelMatchCriteria] {
-	return pulumix.Output[MetadataLabelMatcherMetadataLabelMatchCriteria]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetadataLabelMatcherMetadataLabelMatchCriteriaOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1873,12 +1747,6 @@ func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToMetadataLabel
 
 func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutputWithContext(ctx context.Context) MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput {
 	return o
-}
-
-func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataLabelMatcherMetadataLabelMatchCriteria] {
-	return pulumix.Output[*MetadataLabelMatcherMetadataLabelMatchCriteria]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) Elem() MetadataLabelMatcherMetadataLabelMatchCriteriaOutput {
@@ -2025,12 +1893,6 @@ func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToServiceLbPolicyLoadBalanc
 	}).(ServiceLbPolicyLoadBalancingAlgorithmPtrOutput)
 }
 
-func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceLbPolicyLoadBalancingAlgorithm] {
-	return pulumix.Output[ServiceLbPolicyLoadBalancingAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2064,12 +1926,6 @@ func (o ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) ToServiceLbPolicyLoadBal
 
 func (o ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) ServiceLbPolicyLoadBalancingAlgorithmPtrOutput {
 	return o
-}
-
-func (o ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicyLoadBalancingAlgorithm] {
-	return pulumix.Output[*ServiceLbPolicyLoadBalancingAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) Elem() ServiceLbPolicyLoadBalancingAlgorithmOutput {

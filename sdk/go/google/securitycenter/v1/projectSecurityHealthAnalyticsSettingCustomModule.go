@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given parent. These modules are enabled by default.
@@ -125,12 +124,6 @@ func (i *ProjectSecurityHealthAnalyticsSettingCustomModule) ToProjectSecurityHea
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSecurityHealthAnalyticsSettingCustomModuleOutput)
 }
 
-func (i *ProjectSecurityHealthAnalyticsSettingCustomModule) ToOutput(ctx context.Context) pulumix.Output[*ProjectSecurityHealthAnalyticsSettingCustomModule] {
-	return pulumix.Output[*ProjectSecurityHealthAnalyticsSettingCustomModule]{
-		OutputState: i.ToProjectSecurityHealthAnalyticsSettingCustomModuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectSecurityHealthAnalyticsSettingCustomModuleOutput struct{ *pulumi.OutputState }
 
 func (ProjectSecurityHealthAnalyticsSettingCustomModuleOutput) ElementType() reflect.Type {
@@ -143,12 +136,6 @@ func (o ProjectSecurityHealthAnalyticsSettingCustomModuleOutput) ToProjectSecuri
 
 func (o ProjectSecurityHealthAnalyticsSettingCustomModuleOutput) ToProjectSecurityHealthAnalyticsSettingCustomModuleOutputWithContext(ctx context.Context) ProjectSecurityHealthAnalyticsSettingCustomModuleOutput {
 	return o
-}
-
-func (o ProjectSecurityHealthAnalyticsSettingCustomModuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectSecurityHealthAnalyticsSettingCustomModule] {
-	return pulumix.Output[*ProjectSecurityHealthAnalyticsSettingCustomModule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If empty, indicates that the custom module was created in the organization, folder, or project in which you are viewing the custom module. Otherwise, `ancestor_module` specifies the organization or folder from which the custom module is inherited.

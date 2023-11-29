@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the access control policy on a TagKey, replacing any existing policy. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `resourcemanager.tagKeys.setIamPolicy` permission on the identified tagValue.
@@ -128,12 +127,6 @@ func (i *TagKeyIamPolicy) ToTagKeyIamPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamPolicyOutput)
 }
 
-func (i *TagKeyIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*TagKeyIamPolicy] {
-	return pulumix.Output[*TagKeyIamPolicy]{
-		OutputState: i.ToTagKeyIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagKeyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamPolicyOutput) ElementType() reflect.Type {
@@ -146,12 +139,6 @@ func (o TagKeyIamPolicyOutput) ToTagKeyIamPolicyOutput() TagKeyIamPolicyOutput {
 
 func (o TagKeyIamPolicyOutput) ToTagKeyIamPolicyOutputWithContext(ctx context.Context) TagKeyIamPolicyOutput {
 	return o
-}
-
-func (o TagKeyIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TagKeyIamPolicy] {
-	return pulumix.Output[*TagKeyIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies cloud audit logging configuration for this policy.

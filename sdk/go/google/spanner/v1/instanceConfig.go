@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an instance config and begins preparing it to be used. The returned long-running operation can be used to track the progress of preparing the new instance config. The instance config name is assigned by the caller. If the named instance config already exists, `CreateInstanceConfig` returns `ALREADY_EXISTS`. Immediately after the request returns: * The instance config is readable via the API, with all requested attributes. The instance config's reconciling field is set to true. Its state is `CREATING`. While the operation is pending: * Cancelling the operation renders the instance config immediately unreadable via the API. * Except for deleting the creating resource, all other attempts to modify the instance config are rejected. Upon completion of the returned operation: * Instances can be created using the instance configuration. * The instance config's reconciling field becomes false. Its state becomes `READY`. The returned long-running operation will have a name of the format `/operations/` and can be used to track creation of the instance config. The metadata field type is CreateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization requires `spanner.instanceConfigs.create` permission on the resource parent.
@@ -158,12 +157,6 @@ func (i *InstanceConfig) ToInstanceConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceConfigOutput)
 }
 
-func (i *InstanceConfig) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfig] {
-	return pulumix.Output[*InstanceConfig]{
-		OutputState: i.ToInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceConfigOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o InstanceConfigOutput) ToInstanceConfigOutput() InstanceConfigOutput {
 
 func (o InstanceConfigOutput) ToInstanceConfigOutputWithContext(ctx context.Context) InstanceConfigOutput {
 	return o
-}
-
-func (o InstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfig] {
-	return pulumix.Output[*InstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base configuration name, e.g. projects//instanceConfigs/nam3, based on which this configuration is created. Only set for user managed configurations. `base_config` must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.

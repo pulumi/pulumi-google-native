@@ -303,9 +303,6 @@ class ProvisioningConfig(pulumi.CustomResource):
             __props__ = ProvisioningConfigArgs.__new__(ProvisioningConfigArgs)
 
             __props__.__dict__["custom_id"] = custom_id
-            if email is not None and not opts.urn:
-                warnings.warn("""Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""", DeprecationWarning)
-                pulumi.log.warn("""email is deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""")
             __props__.__dict__["email"] = email
             __props__.__dict__["handover_service_account"] = handover_service_account
             __props__.__dict__["instances"] = instances

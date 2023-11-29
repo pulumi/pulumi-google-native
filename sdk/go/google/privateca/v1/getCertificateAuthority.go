@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a CertificateAuthority.
@@ -103,12 +102,6 @@ func (o LookupCertificateAuthorityResultOutput) ToLookupCertificateAuthorityResu
 
 func (o LookupCertificateAuthorityResultOutput) ToLookupCertificateAuthorityResultOutputWithContext(ctx context.Context) LookupCertificateAuthorityResultOutput {
 	return o
-}
-
-func (o LookupCertificateAuthorityResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCertificateAuthorityResult] {
-	return pulumix.Output[LookupCertificateAuthorityResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URLs for accessing content published by this CA, such as the CA certificate and CRLs.
