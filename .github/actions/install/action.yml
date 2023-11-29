@@ -12,7 +12,7 @@ runs:
     - name: Install Go
       uses: actions/setup-go@v3
       with:
-        go-version: "1.19.x"
+        go-version: "1.21.x"
 
     - name: Install Pulumi CLI
       uses: pulumi/setup-pulumi@v2
@@ -31,12 +31,8 @@ runs:
     - name: Setup DotNet
       if: inputs.skip_dotnet_and_java != 'true'
       uses: actions/setup-dotnet@v3
-      # Codegen emits 3.1 projects but we want to start using 6.0 
-      # Once codegen is updated, 3.1 can be removed.
       with:
-        dotnet-version: |
-          3.1.301
-          6.0.x
+        dotnet-version: 6.0.x
 
     - name: Setup Java
       if: inputs.skip_dotnet_and_java != 'true'
