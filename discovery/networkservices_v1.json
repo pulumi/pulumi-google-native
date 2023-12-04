@@ -2148,7 +2148,7 @@
       }
     }
   },
-  "revision": "20231025",
+  "revision": "20231107",
   "rootUrl": "https://networkservices.googleapis.com/",
   "schemas": {
     "AuditConfig": {
