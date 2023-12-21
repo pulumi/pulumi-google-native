@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o ExternalAccessRuleActionPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExternalAccessRuleActionInput is an input type that accepts ExternalAccessRuleActionArgs and ExternalAccessRuleActionOutput values.
-// You can construct a concrete instance of `ExternalAccessRuleActionInput` via:
+// ExternalAccessRuleActionInput is an input type that accepts values of the ExternalAccessRuleAction enum
+// A concrete instance of `ExternalAccessRuleActionInput` can be one of the following:
 //
-//	ExternalAccessRuleActionArgs{...}
+//	ExternalAccessRuleActionActionUnspecified
+//	ExternalAccessRuleActionAllow
+//	ExternalAccessRuleActionDeny
 type ExternalAccessRuleActionInput interface {
 	pulumi.Input
 
@@ -494,10 +499,12 @@ func (o LoggingServerProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// LoggingServerProtocolInput is an input type that accepts LoggingServerProtocolArgs and LoggingServerProtocolOutput values.
-// You can construct a concrete instance of `LoggingServerProtocolInput` via:
+// LoggingServerProtocolInput is an input type that accepts values of the LoggingServerProtocol enum
+// A concrete instance of `LoggingServerProtocolInput` can be one of the following:
 //
-//	LoggingServerProtocolArgs{...}
+//	LoggingServerProtocolProtocolUnspecified
+//	LoggingServerProtocolUdp
+//	LoggingServerProtocolTcp
 type LoggingServerProtocolInput interface {
 	pulumi.Input
 
@@ -669,10 +676,12 @@ func (o LoggingServerSourceTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// LoggingServerSourceTypeInput is an input type that accepts LoggingServerSourceTypeArgs and LoggingServerSourceTypeOutput values.
-// You can construct a concrete instance of `LoggingServerSourceTypeInput` via:
+// LoggingServerSourceTypeInput is an input type that accepts values of the LoggingServerSourceType enum
+// A concrete instance of `LoggingServerSourceTypeInput` can be one of the following:
 //
-//	LoggingServerSourceTypeArgs{...}
+//	LoggingServerSourceTypeSourceTypeUnspecified
+//	LoggingServerSourceTypeEsxi
+//	LoggingServerSourceTypeVcsa
 type LoggingServerSourceTypeInput interface {
 	pulumi.Input
 
@@ -852,10 +861,16 @@ func (o NetworkPeeringPeerNetworkTypePtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkPeeringPeerNetworkTypeInput is an input type that accepts NetworkPeeringPeerNetworkTypeArgs and NetworkPeeringPeerNetworkTypeOutput values.
-// You can construct a concrete instance of `NetworkPeeringPeerNetworkTypeInput` via:
+// NetworkPeeringPeerNetworkTypeInput is an input type that accepts values of the NetworkPeeringPeerNetworkType enum
+// A concrete instance of `NetworkPeeringPeerNetworkTypeInput` can be one of the following:
 //
-//	NetworkPeeringPeerNetworkTypeArgs{...}
+//	NetworkPeeringPeerNetworkTypePeerNetworkTypeUnspecified
+//	NetworkPeeringPeerNetworkTypeStandard
+//	NetworkPeeringPeerNetworkTypeVmwareEngineNetwork
+//	NetworkPeeringPeerNetworkTypePrivateServicesAccess
+//	NetworkPeeringPeerNetworkTypeNetappCloudVolumes
+//	NetworkPeeringPeerNetworkTypeThirdPartyService
+//	NetworkPeeringPeerNetworkTypeDellPowerscale
 type NetworkPeeringPeerNetworkTypeInput interface {
 	pulumi.Input
 
@@ -1027,10 +1042,12 @@ func (o PrivateCloudTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// PrivateCloudTypeInput is an input type that accepts PrivateCloudTypeArgs and PrivateCloudTypeOutput values.
-// You can construct a concrete instance of `PrivateCloudTypeInput` via:
+// PrivateCloudTypeInput is an input type that accepts values of the PrivateCloudType enum
+// A concrete instance of `PrivateCloudTypeInput` can be one of the following:
 //
-//	PrivateCloudTypeArgs{...}
+//	PrivateCloudTypeStandard
+//	PrivateCloudTypeTimeLimited
+//	PrivateCloudTypeStretched
 type PrivateCloudTypeInput interface {
 	pulumi.Input
 
@@ -1202,10 +1219,12 @@ func (o PrivateConnectionRoutingModePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// PrivateConnectionRoutingModeInput is an input type that accepts PrivateConnectionRoutingModeArgs and PrivateConnectionRoutingModeOutput values.
-// You can construct a concrete instance of `PrivateConnectionRoutingModeInput` via:
+// PrivateConnectionRoutingModeInput is an input type that accepts values of the PrivateConnectionRoutingMode enum
+// A concrete instance of `PrivateConnectionRoutingModeInput` can be one of the following:
 //
-//	PrivateConnectionRoutingModeArgs{...}
+//	PrivateConnectionRoutingModeRoutingModeUnspecified
+//	PrivateConnectionRoutingModeGlobal
+//	PrivateConnectionRoutingModeRegional
 type PrivateConnectionRoutingModeInput interface {
 	pulumi.Input
 
@@ -1381,10 +1400,14 @@ func (o PrivateConnectionTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// PrivateConnectionTypeInput is an input type that accepts PrivateConnectionTypeArgs and PrivateConnectionTypeOutput values.
-// You can construct a concrete instance of `PrivateConnectionTypeInput` via:
+// PrivateConnectionTypeInput is an input type that accepts values of the PrivateConnectionType enum
+// A concrete instance of `PrivateConnectionTypeInput` can be one of the following:
 //
-//	PrivateConnectionTypeArgs{...}
+//	PrivateConnectionTypeTypeUnspecified
+//	PrivateConnectionTypePrivateServiceAccess
+//	PrivateConnectionTypeNetappCloudVolumes
+//	PrivateConnectionTypeDellPowerscale
+//	PrivateConnectionTypeThirdPartyService
 type PrivateConnectionTypeInput interface {
 	pulumi.Input
 
@@ -1556,10 +1579,12 @@ func (o VmwareEngineNetworkTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// VmwareEngineNetworkTypeInput is an input type that accepts VmwareEngineNetworkTypeArgs and VmwareEngineNetworkTypeOutput values.
-// You can construct a concrete instance of `VmwareEngineNetworkTypeInput` via:
+// VmwareEngineNetworkTypeInput is an input type that accepts values of the VmwareEngineNetworkType enum
+// A concrete instance of `VmwareEngineNetworkTypeInput` can be one of the following:
 //
-//	VmwareEngineNetworkTypeArgs{...}
+//	VmwareEngineNetworkTypeTypeUnspecified
+//	VmwareEngineNetworkTypeLegacy
+//	VmwareEngineNetworkTypeStandard
 type VmwareEngineNetworkTypeInput interface {
 	pulumi.Input
 

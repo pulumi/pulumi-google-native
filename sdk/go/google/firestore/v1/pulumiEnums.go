@@ -142,10 +142,12 @@ func (o DatabaseAppEngineIntegrationModePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseAppEngineIntegrationModeInput is an input type that accepts DatabaseAppEngineIntegrationModeArgs and DatabaseAppEngineIntegrationModeOutput values.
-// You can construct a concrete instance of `DatabaseAppEngineIntegrationModeInput` via:
+// DatabaseAppEngineIntegrationModeInput is an input type that accepts values of the DatabaseAppEngineIntegrationMode enum
+// A concrete instance of `DatabaseAppEngineIntegrationModeInput` can be one of the following:
 //
-//	DatabaseAppEngineIntegrationModeArgs{...}
+//	DatabaseAppEngineIntegrationModeAppEngineIntegrationModeUnspecified
+//	DatabaseAppEngineIntegrationModeEnabled
+//	DatabaseAppEngineIntegrationModeDisabled
 type DatabaseAppEngineIntegrationModeInput interface {
 	pulumi.Input
 
@@ -319,10 +321,13 @@ func (o DatabaseConcurrencyModePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseConcurrencyModeInput is an input type that accepts DatabaseConcurrencyModeArgs and DatabaseConcurrencyModeOutput values.
-// You can construct a concrete instance of `DatabaseConcurrencyModeInput` via:
+// DatabaseConcurrencyModeInput is an input type that accepts values of the DatabaseConcurrencyMode enum
+// A concrete instance of `DatabaseConcurrencyModeInput` can be one of the following:
 //
-//	DatabaseConcurrencyModeArgs{...}
+//	DatabaseConcurrencyModeConcurrencyModeUnspecified
+//	DatabaseConcurrencyModeOptimistic
+//	DatabaseConcurrencyModePessimistic
+//	DatabaseConcurrencyModeOptimisticWithEntityGroups
 type DatabaseConcurrencyModeInput interface {
 	pulumi.Input
 
@@ -494,10 +499,12 @@ func (o DatabaseDeleteProtectionStatePtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseDeleteProtectionStateInput is an input type that accepts DatabaseDeleteProtectionStateArgs and DatabaseDeleteProtectionStateOutput values.
-// You can construct a concrete instance of `DatabaseDeleteProtectionStateInput` via:
+// DatabaseDeleteProtectionStateInput is an input type that accepts values of the DatabaseDeleteProtectionState enum
+// A concrete instance of `DatabaseDeleteProtectionStateInput` can be one of the following:
 //
-//	DatabaseDeleteProtectionStateArgs{...}
+//	DatabaseDeleteProtectionStateDeleteProtectionStateUnspecified
+//	DatabaseDeleteProtectionStateDeleteProtectionDisabled
+//	DatabaseDeleteProtectionStateDeleteProtectionEnabled
 type DatabaseDeleteProtectionStateInput interface {
 	pulumi.Input
 
@@ -669,10 +676,12 @@ func (o DatabasePointInTimeRecoveryEnablementPtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabasePointInTimeRecoveryEnablementInput is an input type that accepts DatabasePointInTimeRecoveryEnablementArgs and DatabasePointInTimeRecoveryEnablementOutput values.
-// You can construct a concrete instance of `DatabasePointInTimeRecoveryEnablementInput` via:
+// DatabasePointInTimeRecoveryEnablementInput is an input type that accepts values of the DatabasePointInTimeRecoveryEnablement enum
+// A concrete instance of `DatabasePointInTimeRecoveryEnablementInput` can be one of the following:
 //
-//	DatabasePointInTimeRecoveryEnablementArgs{...}
+//	DatabasePointInTimeRecoveryEnablementPointInTimeRecoveryEnablementUnspecified
+//	DatabasePointInTimeRecoveryEnablementPointInTimeRecoveryEnabled
+//	DatabasePointInTimeRecoveryEnablementPointInTimeRecoveryDisabled
 type DatabasePointInTimeRecoveryEnablementInput interface {
 	pulumi.Input
 
@@ -844,10 +853,12 @@ func (o DatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseTypeInput is an input type that accepts DatabaseTypeArgs and DatabaseTypeOutput values.
-// You can construct a concrete instance of `DatabaseTypeInput` via:
+// DatabaseTypeInput is an input type that accepts values of the DatabaseType enum
+// A concrete instance of `DatabaseTypeInput` can be one of the following:
 //
-//	DatabaseTypeArgs{...}
+//	DatabaseTypeDatabaseTypeUnspecified
+//	DatabaseTypeFirestoreNative
+//	DatabaseTypeDatastoreMode
 type DatabaseTypeInput interface {
 	pulumi.Input
 
@@ -1017,10 +1028,11 @@ func (o GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput) ToStringPtrOutputW
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleFirestoreAdminV1IndexFieldArrayConfigInput is an input type that accepts GoogleFirestoreAdminV1IndexFieldArrayConfigArgs and GoogleFirestoreAdminV1IndexFieldArrayConfigOutput values.
-// You can construct a concrete instance of `GoogleFirestoreAdminV1IndexFieldArrayConfigInput` via:
+// GoogleFirestoreAdminV1IndexFieldArrayConfigInput is an input type that accepts values of the GoogleFirestoreAdminV1IndexFieldArrayConfig enum
+// A concrete instance of `GoogleFirestoreAdminV1IndexFieldArrayConfigInput` can be one of the following:
 //
-//	GoogleFirestoreAdminV1IndexFieldArrayConfigArgs{...}
+//	GoogleFirestoreAdminV1IndexFieldArrayConfigArrayConfigUnspecified
+//	GoogleFirestoreAdminV1IndexFieldArrayConfigContains
 type GoogleFirestoreAdminV1IndexFieldArrayConfigInput interface {
 	pulumi.Input
 
@@ -1192,10 +1204,12 @@ func (o GoogleFirestoreAdminV1IndexFieldOrderPtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleFirestoreAdminV1IndexFieldOrderInput is an input type that accepts GoogleFirestoreAdminV1IndexFieldOrderArgs and GoogleFirestoreAdminV1IndexFieldOrderOutput values.
-// You can construct a concrete instance of `GoogleFirestoreAdminV1IndexFieldOrderInput` via:
+// GoogleFirestoreAdminV1IndexFieldOrderInput is an input type that accepts values of the GoogleFirestoreAdminV1IndexFieldOrder enum
+// A concrete instance of `GoogleFirestoreAdminV1IndexFieldOrderInput` can be one of the following:
 //
-//	GoogleFirestoreAdminV1IndexFieldOrderArgs{...}
+//	GoogleFirestoreAdminV1IndexFieldOrderOrderUnspecified
+//	GoogleFirestoreAdminV1IndexFieldOrderAscending
+//	GoogleFirestoreAdminV1IndexFieldOrderDescending
 type GoogleFirestoreAdminV1IndexFieldOrderInput interface {
 	pulumi.Input
 
@@ -1377,10 +1391,17 @@ func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) ToStringPtrOutputWit
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleFirestoreAdminV1WeeklyRecurrenceDayInput is an input type that accepts GoogleFirestoreAdminV1WeeklyRecurrenceDayArgs and GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput values.
-// You can construct a concrete instance of `GoogleFirestoreAdminV1WeeklyRecurrenceDayInput` via:
+// GoogleFirestoreAdminV1WeeklyRecurrenceDayInput is an input type that accepts values of the GoogleFirestoreAdminV1WeeklyRecurrenceDay enum
+// A concrete instance of `GoogleFirestoreAdminV1WeeklyRecurrenceDayInput` can be one of the following:
 //
-//	GoogleFirestoreAdminV1WeeklyRecurrenceDayArgs{...}
+//	GoogleFirestoreAdminV1WeeklyRecurrenceDayDayOfWeekUnspecified
+//	GoogleFirestoreAdminV1WeeklyRecurrenceDayMonday
+//	GoogleFirestoreAdminV1WeeklyRecurrenceDayTuesday
+//	GoogleFirestoreAdminV1WeeklyRecurrenceDayWednesday
+//	GoogleFirestoreAdminV1WeeklyRecurrenceDayThursday
+//	GoogleFirestoreAdminV1WeeklyRecurrenceDayFriday
+//	GoogleFirestoreAdminV1WeeklyRecurrenceDaySaturday
+//	GoogleFirestoreAdminV1WeeklyRecurrenceDaySunday
 type GoogleFirestoreAdminV1WeeklyRecurrenceDayInput interface {
 	pulumi.Input
 
@@ -1550,10 +1571,11 @@ func (o IndexApiScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// IndexApiScopeInput is an input type that accepts IndexApiScopeArgs and IndexApiScopeOutput values.
-// You can construct a concrete instance of `IndexApiScopeInput` via:
+// IndexApiScopeInput is an input type that accepts values of the IndexApiScope enum
+// A concrete instance of `IndexApiScopeInput` can be one of the following:
 //
-//	IndexApiScopeArgs{...}
+//	IndexApiScopeAnyApi
+//	IndexApiScopeDatastoreModeApi
 type IndexApiScopeInput interface {
 	pulumi.Input
 
@@ -1727,10 +1749,13 @@ func (o IndexQueryScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// IndexQueryScopeInput is an input type that accepts IndexQueryScopeArgs and IndexQueryScopeOutput values.
-// You can construct a concrete instance of `IndexQueryScopeInput` via:
+// IndexQueryScopeInput is an input type that accepts values of the IndexQueryScope enum
+// A concrete instance of `IndexQueryScopeInput` can be one of the following:
 //
-//	IndexQueryScopeArgs{...}
+//	IndexQueryScopeQueryScopeUnspecified
+//	IndexQueryScopeCollection
+//	IndexQueryScopeCollectionGroup
+//	IndexQueryScopeCollectionRecursive
 type IndexQueryScopeInput interface {
 	pulumi.Input
 

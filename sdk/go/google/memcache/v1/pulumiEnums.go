@@ -142,10 +142,12 @@ func (o InstanceMemcacheVersionPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceMemcacheVersionInput is an input type that accepts InstanceMemcacheVersionArgs and InstanceMemcacheVersionOutput values.
-// You can construct a concrete instance of `InstanceMemcacheVersionInput` via:
+// InstanceMemcacheVersionInput is an input type that accepts values of the InstanceMemcacheVersion enum
+// A concrete instance of `InstanceMemcacheVersionInput` can be one of the following:
 //
-//	InstanceMemcacheVersionArgs{...}
+//	InstanceMemcacheVersionMemcacheVersionUnspecified
+//	InstanceMemcacheVersionMemcache15
+//	InstanceMemcacheVersionMemcache1615
 type InstanceMemcacheVersionInput interface {
 	pulumi.Input
 
@@ -315,10 +317,11 @@ func (o InstanceMessageCodePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceMessageCodeInput is an input type that accepts InstanceMessageCodeArgs and InstanceMessageCodeOutput values.
-// You can construct a concrete instance of `InstanceMessageCodeInput` via:
+// InstanceMessageCodeInput is an input type that accepts values of the InstanceMessageCode enum
+// A concrete instance of `InstanceMessageCodeInput` can be one of the following:
 //
-//	InstanceMessageCodeArgs{...}
+//	InstanceMessageCodeCodeUnspecified
+//	InstanceMessageCodeZoneDistributionUnbalanced
 type InstanceMessageCodeInput interface {
 	pulumi.Input
 
@@ -500,10 +503,17 @@ func (o WeeklyMaintenanceWindowDayPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// WeeklyMaintenanceWindowDayInput is an input type that accepts WeeklyMaintenanceWindowDayArgs and WeeklyMaintenanceWindowDayOutput values.
-// You can construct a concrete instance of `WeeklyMaintenanceWindowDayInput` via:
+// WeeklyMaintenanceWindowDayInput is an input type that accepts values of the WeeklyMaintenanceWindowDay enum
+// A concrete instance of `WeeklyMaintenanceWindowDayInput` can be one of the following:
 //
-//	WeeklyMaintenanceWindowDayArgs{...}
+//	WeeklyMaintenanceWindowDayDayOfWeekUnspecified
+//	WeeklyMaintenanceWindowDayMonday
+//	WeeklyMaintenanceWindowDayTuesday
+//	WeeklyMaintenanceWindowDayWednesday
+//	WeeklyMaintenanceWindowDayThursday
+//	WeeklyMaintenanceWindowDayFriday
+//	WeeklyMaintenanceWindowDaySaturday
+//	WeeklyMaintenanceWindowDaySunday
 type WeeklyMaintenanceWindowDayInput interface {
 	pulumi.Input
 

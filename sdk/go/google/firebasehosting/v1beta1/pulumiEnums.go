@@ -146,10 +146,14 @@ func (o CustomDomainCertPreferencePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// CustomDomainCertPreferenceInput is an input type that accepts CustomDomainCertPreferenceArgs and CustomDomainCertPreferenceOutput values.
-// You can construct a concrete instance of `CustomDomainCertPreferenceInput` via:
+// CustomDomainCertPreferenceInput is an input type that accepts values of the CustomDomainCertPreference enum
+// A concrete instance of `CustomDomainCertPreferenceInput` can be one of the following:
 //
-//	CustomDomainCertPreferenceArgs{...}
+//	CustomDomainCertPreferenceTypeUnspecified
+//	CustomDomainCertPreferenceTemporary
+//	CustomDomainCertPreferenceGrouped
+//	CustomDomainCertPreferenceProjectGrouped
+//	CustomDomainCertPreferenceDedicated
 type CustomDomainCertPreferenceInput interface {
 	pulumi.Input
 
@@ -319,10 +323,11 @@ func (o DomainRedirectTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// DomainRedirectTypeInput is an input type that accepts DomainRedirectTypeArgs and DomainRedirectTypeOutput values.
-// You can construct a concrete instance of `DomainRedirectTypeInput` via:
+// DomainRedirectTypeInput is an input type that accepts values of the DomainRedirectType enum
+// A concrete instance of `DomainRedirectTypeInput` can be one of the following:
 //
-//	DomainRedirectTypeArgs{...}
+//	DomainRedirectTypeRedirectTypeUnspecified
+//	DomainRedirectTypeMovedPermanently
 type DomainRedirectTypeInput interface {
 	pulumi.Input
 
@@ -496,10 +501,13 @@ func (o ReleaseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// ReleaseTypeInput is an input type that accepts ReleaseTypeArgs and ReleaseTypeOutput values.
-// You can construct a concrete instance of `ReleaseTypeInput` via:
+// ReleaseTypeInput is an input type that accepts values of the ReleaseType enum
+// A concrete instance of `ReleaseTypeInput` can be one of the following:
 //
-//	ReleaseTypeArgs{...}
+//	ReleaseTypeTypeUnspecified
+//	ReleaseTypeDeploy
+//	ReleaseTypeRollback
+//	ReleaseTypeSiteDisable
 type ReleaseTypeInput interface {
 	pulumi.Input
 
@@ -669,10 +677,11 @@ func (o ServingConfigAppAssociationPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServingConfigAppAssociationInput is an input type that accepts ServingConfigAppAssociationArgs and ServingConfigAppAssociationOutput values.
-// You can construct a concrete instance of `ServingConfigAppAssociationInput` via:
+// ServingConfigAppAssociationInput is an input type that accepts values of the ServingConfigAppAssociation enum
+// A concrete instance of `ServingConfigAppAssociationInput` can be one of the following:
 //
-//	ServingConfigAppAssociationArgs{...}
+//	ServingConfigAppAssociationAuto
+//	ServingConfigAppAssociationNone
 type ServingConfigAppAssociationInput interface {
 	pulumi.Input
 
@@ -844,10 +853,12 @@ func (o ServingConfigTrailingSlashBehaviorPtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServingConfigTrailingSlashBehaviorInput is an input type that accepts ServingConfigTrailingSlashBehaviorArgs and ServingConfigTrailingSlashBehaviorOutput values.
-// You can construct a concrete instance of `ServingConfigTrailingSlashBehaviorInput` via:
+// ServingConfigTrailingSlashBehaviorInput is an input type that accepts values of the ServingConfigTrailingSlashBehavior enum
+// A concrete instance of `ServingConfigTrailingSlashBehaviorInput` can be one of the following:
 //
-//	ServingConfigTrailingSlashBehaviorArgs{...}
+//	ServingConfigTrailingSlashBehaviorTrailingSlashBehaviorUnspecified
+//	ServingConfigTrailingSlashBehaviorAdd
+//	ServingConfigTrailingSlashBehaviorRemove
 type ServingConfigTrailingSlashBehaviorInput interface {
 	pulumi.Input
 

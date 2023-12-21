@@ -140,10 +140,11 @@ func (o BasicLevelCombiningFunctionPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// BasicLevelCombiningFunctionInput is an input type that accepts BasicLevelCombiningFunctionArgs and BasicLevelCombiningFunctionOutput values.
-// You can construct a concrete instance of `BasicLevelCombiningFunctionInput` via:
+// BasicLevelCombiningFunctionInput is an input type that accepts values of the BasicLevelCombiningFunction enum
+// A concrete instance of `BasicLevelCombiningFunctionInput` can be one of the following:
 //
-//	BasicLevelCombiningFunctionArgs{...}
+//	BasicLevelCombiningFunctionAnd
+//	BasicLevelCombiningFunctionOr
 type BasicLevelCombiningFunctionInput interface {
 	pulumi.Input
 
@@ -316,10 +317,13 @@ func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ToStringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// DevicePolicyAllowedDeviceManagementLevelsItemInput is an input type that accepts DevicePolicyAllowedDeviceManagementLevelsItemArgs and DevicePolicyAllowedDeviceManagementLevelsItemOutput values.
-// You can construct a concrete instance of `DevicePolicyAllowedDeviceManagementLevelsItemInput` via:
+// DevicePolicyAllowedDeviceManagementLevelsItemInput is an input type that accepts values of the DevicePolicyAllowedDeviceManagementLevelsItem enum
+// A concrete instance of `DevicePolicyAllowedDeviceManagementLevelsItemInput` can be one of the following:
 //
-//	DevicePolicyAllowedDeviceManagementLevelsItemArgs{...}
+//	DevicePolicyAllowedDeviceManagementLevelsItemManagementUnspecified
+//	DevicePolicyAllowedDeviceManagementLevelsItemNone
+//	DevicePolicyAllowedDeviceManagementLevelsItemBasic
+//	DevicePolicyAllowedDeviceManagementLevelsItemComplete
 type DevicePolicyAllowedDeviceManagementLevelsItemInput interface {
 	pulumi.Input
 
@@ -537,10 +541,13 @@ func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ToStringPtrOutputWit
 	}).(pulumi.StringPtrOutput)
 }
 
-// DevicePolicyAllowedEncryptionStatusesItemInput is an input type that accepts DevicePolicyAllowedEncryptionStatusesItemArgs and DevicePolicyAllowedEncryptionStatusesItemOutput values.
-// You can construct a concrete instance of `DevicePolicyAllowedEncryptionStatusesItemInput` via:
+// DevicePolicyAllowedEncryptionStatusesItemInput is an input type that accepts values of the DevicePolicyAllowedEncryptionStatusesItem enum
+// A concrete instance of `DevicePolicyAllowedEncryptionStatusesItemInput` can be one of the following:
 //
-//	DevicePolicyAllowedEncryptionStatusesItemArgs{...}
+//	DevicePolicyAllowedEncryptionStatusesItemEncryptionUnspecified
+//	DevicePolicyAllowedEncryptionStatusesItemEncryptionUnsupported
+//	DevicePolicyAllowedEncryptionStatusesItemUnencrypted
+//	DevicePolicyAllowedEncryptionStatusesItemEncrypted
 type DevicePolicyAllowedEncryptionStatusesItemInput interface {
 	pulumi.Input
 
@@ -765,10 +772,16 @@ func (o OsConstraintOsTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// OsConstraintOsTypeInput is an input type that accepts OsConstraintOsTypeArgs and OsConstraintOsTypeOutput values.
-// You can construct a concrete instance of `OsConstraintOsTypeInput` via:
+// OsConstraintOsTypeInput is an input type that accepts values of the OsConstraintOsType enum
+// A concrete instance of `OsConstraintOsTypeInput` can be one of the following:
 //
-//	OsConstraintOsTypeArgs{...}
+//	OsConstraintOsTypeOsUnspecified
+//	OsConstraintOsTypeDesktopMac
+//	OsConstraintOsTypeDesktopWindows
+//	OsConstraintOsTypeDesktopLinux
+//	OsConstraintOsTypeDesktopChromeOs
+//	OsConstraintOsTypeAndroid
+//	OsConstraintOsTypeIos
 type OsConstraintOsTypeInput interface {
 	pulumi.Input
 
@@ -938,10 +951,11 @@ func (o ServicePerimeterPerimeterTypePtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServicePerimeterPerimeterTypeInput is an input type that accepts ServicePerimeterPerimeterTypeArgs and ServicePerimeterPerimeterTypeOutput values.
-// You can construct a concrete instance of `ServicePerimeterPerimeterTypeInput` via:
+// ServicePerimeterPerimeterTypeInput is an input type that accepts values of the ServicePerimeterPerimeterType enum
+// A concrete instance of `ServicePerimeterPerimeterTypeInput` can be one of the following:
 //
-//	ServicePerimeterPerimeterTypeArgs{...}
+//	ServicePerimeterPerimeterTypePerimeterTypeRegular
+//	ServicePerimeterPerimeterTypePerimeterTypeBridge
 type ServicePerimeterPerimeterTypeInput interface {
 	pulumi.Input
 

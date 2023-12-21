@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -321,10 +324,13 @@ func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput is an input type that accepts FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs and FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput values.
-// You can construct a concrete instance of `FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput` via:
+// FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput is an input type that accepts values of the FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState enum
+// A concrete instance of `FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput` can be one of the following:
 //
-//	FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs{...}
+//	FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnablementStateUnspecified
+//	FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnabled
+//	FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateDisabled
+//	FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInherited
 type FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput interface {
 	pulumi.Input
 
@@ -500,10 +506,14 @@ func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToStringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudSecuritycenterV1CustomConfigSeverityInput is an input type that accepts GoogleCloudSecuritycenterV1CustomConfigSeverityArgs and GoogleCloudSecuritycenterV1CustomConfigSeverityOutput values.
-// You can construct a concrete instance of `GoogleCloudSecuritycenterV1CustomConfigSeverityInput` via:
+// GoogleCloudSecuritycenterV1CustomConfigSeverityInput is an input type that accepts values of the GoogleCloudSecuritycenterV1CustomConfigSeverity enum
+// A concrete instance of `GoogleCloudSecuritycenterV1CustomConfigSeverityInput` can be one of the following:
 //
-//	GoogleCloudSecuritycenterV1CustomConfigSeverityArgs{...}
+//	GoogleCloudSecuritycenterV1CustomConfigSeveritySeverityUnspecified
+//	GoogleCloudSecuritycenterV1CustomConfigSeverityCritical
+//	GoogleCloudSecuritycenterV1CustomConfigSeverityHigh
+//	GoogleCloudSecuritycenterV1CustomConfigSeverityMedium
+//	GoogleCloudSecuritycenterV1CustomConfigSeverityLow
 type GoogleCloudSecuritycenterV1CustomConfigSeverityInput interface {
 	pulumi.Input
 
@@ -675,10 +685,12 @@ func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInput is an input type that accepts OrganizationEventThreatDetectionSettingCustomModuleEnablementStateArgs and OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput values.
-// You can construct a concrete instance of `OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInput` via:
+// OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInput is an input type that accepts values of the OrganizationEventThreatDetectionSettingCustomModuleEnablementState enum
+// A concrete instance of `OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInput` can be one of the following:
 //
-//	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateArgs{...}
+//	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateEnablementStateUnspecified
+//	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateEnabled
+//	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateDisabled
 type OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInput interface {
 	pulumi.Input
 
@@ -852,10 +864,13 @@ func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput is an input type that accepts OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs and OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput values.
-// You can construct a concrete instance of `OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput` via:
+// OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput is an input type that accepts values of the OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState enum
+// A concrete instance of `OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput` can be one of the following:
 //
-//	OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs{...}
+//	OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnablementStateUnspecified
+//	OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnabled
+//	OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateDisabled
+//	OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInherited
 type OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput interface {
 	pulumi.Input
 
@@ -1029,10 +1044,13 @@ func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput is an input type that accepts ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs and ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput values.
-// You can construct a concrete instance of `ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput` via:
+// ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput is an input type that accepts values of the ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState enum
+// A concrete instance of `ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput` can be one of the following:
 //
-//	ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs{...}
+//	ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnablementStateUnspecified
+//	ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnabled
+//	ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateDisabled
+//	ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInherited
 type ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput interface {
 	pulumi.Input
 

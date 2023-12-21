@@ -142,10 +142,12 @@ func (o AddressGroupTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// AddressGroupTypeInput is an input type that accepts AddressGroupTypeArgs and AddressGroupTypeOutput values.
-// You can construct a concrete instance of `AddressGroupTypeInput` via:
+// AddressGroupTypeInput is an input type that accepts values of the AddressGroupType enum
+// A concrete instance of `AddressGroupTypeInput` can be one of the following:
 //
-//	AddressGroupTypeArgs{...}
+//	AddressGroupTypeTypeUnspecified
+//	AddressGroupTypeIpv4
+//	AddressGroupTypeIpv6
 type AddressGroupTypeInput interface {
 	pulumi.Input
 
@@ -317,10 +319,12 @@ func (o AuthorizationPolicyActionPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuthorizationPolicyActionInput is an input type that accepts AuthorizationPolicyActionArgs and AuthorizationPolicyActionOutput values.
-// You can construct a concrete instance of `AuthorizationPolicyActionInput` via:
+// AuthorizationPolicyActionInput is an input type that accepts values of the AuthorizationPolicyAction enum
+// A concrete instance of `AuthorizationPolicyActionInput` can be one of the following:
 //
-//	AuthorizationPolicyActionArgs{...}
+//	AuthorizationPolicyActionActionUnspecified
+//	AuthorizationPolicyActionAllow
+//	AuthorizationPolicyActionDeny
 type AuthorizationPolicyActionInput interface {
 	pulumi.Input
 
@@ -494,10 +498,13 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
+// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts values of the GoogleIamV1AuditLogConfigLogType enum
+// A concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeLogTypeUnspecified
+//	GoogleIamV1AuditLogConfigLogTypeAdminRead
+//	GoogleIamV1AuditLogConfigLogTypeDataWrite
+//	GoogleIamV1AuditLogConfigLogTypeDataRead
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -669,10 +676,12 @@ func (o MTLSPolicyClientValidationModePtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// MTLSPolicyClientValidationModeInput is an input type that accepts MTLSPolicyClientValidationModeArgs and MTLSPolicyClientValidationModeOutput values.
-// You can construct a concrete instance of `MTLSPolicyClientValidationModeInput` via:
+// MTLSPolicyClientValidationModeInput is an input type that accepts values of the MTLSPolicyClientValidationMode enum
+// A concrete instance of `MTLSPolicyClientValidationModeInput` can be one of the following:
 //
-//	MTLSPolicyClientValidationModeArgs{...}
+//	MTLSPolicyClientValidationModeClientValidationModeUnspecified
+//	MTLSPolicyClientValidationModeAllowInvalidOrMissingClientCert
+//	MTLSPolicyClientValidationModeRejectInvalid
 type MTLSPolicyClientValidationModeInput interface {
 	pulumi.Input
 
@@ -844,10 +853,12 @@ func (o OrganizationAddressGroupTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// OrganizationAddressGroupTypeInput is an input type that accepts OrganizationAddressGroupTypeArgs and OrganizationAddressGroupTypeOutput values.
-// You can construct a concrete instance of `OrganizationAddressGroupTypeInput` via:
+// OrganizationAddressGroupTypeInput is an input type that accepts values of the OrganizationAddressGroupType enum
+// A concrete instance of `OrganizationAddressGroupTypeInput` can be one of the following:
 //
-//	OrganizationAddressGroupTypeArgs{...}
+//	OrganizationAddressGroupTypeTypeUnspecified
+//	OrganizationAddressGroupTypeIpv4
+//	OrganizationAddressGroupTypeIpv6
 type OrganizationAddressGroupTypeInput interface {
 	pulumi.Input
 
@@ -1019,10 +1030,12 @@ func (o RuleBasicProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// RuleBasicProfileInput is an input type that accepts RuleBasicProfileArgs and RuleBasicProfileOutput values.
-// You can construct a concrete instance of `RuleBasicProfileInput` via:
+// RuleBasicProfileInput is an input type that accepts values of the RuleBasicProfile enum
+// A concrete instance of `RuleBasicProfileInput` can be one of the following:
 //
-//	RuleBasicProfileArgs{...}
+//	RuleBasicProfileBasicProfileUnspecified
+//	RuleBasicProfileAllow
+//	RuleBasicProfileDeny
 type RuleBasicProfileInput interface {
 	pulumi.Input
 
@@ -1192,10 +1205,11 @@ func (o SecurityProfileTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// SecurityProfileTypeInput is an input type that accepts SecurityProfileTypeArgs and SecurityProfileTypeOutput values.
-// You can construct a concrete instance of `SecurityProfileTypeInput` via:
+// SecurityProfileTypeInput is an input type that accepts values of the SecurityProfileType enum
+// A concrete instance of `SecurityProfileTypeInput` can be one of the following:
 //
-//	SecurityProfileTypeArgs{...}
+//	SecurityProfileTypeProfileTypeUnspecified
+//	SecurityProfileTypeThreatPrevention
 type SecurityProfileTypeInput interface {
 	pulumi.Input
 
@@ -1371,10 +1385,14 @@ func (o SeverityOverrideActionPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// SeverityOverrideActionInput is an input type that accepts SeverityOverrideActionArgs and SeverityOverrideActionOutput values.
-// You can construct a concrete instance of `SeverityOverrideActionInput` via:
+// SeverityOverrideActionInput is an input type that accepts values of the SeverityOverrideAction enum
+// A concrete instance of `SeverityOverrideActionInput` can be one of the following:
 //
-//	SeverityOverrideActionArgs{...}
+//	SeverityOverrideActionThreatActionUnspecified
+//	SeverityOverrideActionDefaultAction
+//	SeverityOverrideActionAllow
+//	SeverityOverrideActionAlert
+//	SeverityOverrideActionDeny
 type SeverityOverrideActionInput interface {
 	pulumi.Input
 
@@ -1552,10 +1570,15 @@ func (o SeverityOverrideSeverityPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// SeverityOverrideSeverityInput is an input type that accepts SeverityOverrideSeverityArgs and SeverityOverrideSeverityOutput values.
-// You can construct a concrete instance of `SeverityOverrideSeverityInput` via:
+// SeverityOverrideSeverityInput is an input type that accepts values of the SeverityOverrideSeverity enum
+// A concrete instance of `SeverityOverrideSeverityInput` can be one of the following:
 //
-//	SeverityOverrideSeverityArgs{...}
+//	SeverityOverrideSeveritySeverityUnspecified
+//	SeverityOverrideSeverityInformational
+//	SeverityOverrideSeverityLow
+//	SeverityOverrideSeverityMedium
+//	SeverityOverrideSeverityHigh
+//	SeverityOverrideSeverityCritical
 type SeverityOverrideSeverityInput interface {
 	pulumi.Input
 
@@ -1731,10 +1754,14 @@ func (o ThreatOverrideActionPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ThreatOverrideActionInput is an input type that accepts ThreatOverrideActionArgs and ThreatOverrideActionOutput values.
-// You can construct a concrete instance of `ThreatOverrideActionInput` via:
+// ThreatOverrideActionInput is an input type that accepts values of the ThreatOverrideAction enum
+// A concrete instance of `ThreatOverrideActionInput` can be one of the following:
 //
-//	ThreatOverrideActionArgs{...}
+//	ThreatOverrideActionThreatActionUnspecified
+//	ThreatOverrideActionDefaultAction
+//	ThreatOverrideActionAllow
+//	ThreatOverrideActionAlert
+//	ThreatOverrideActionDeny
 type ThreatOverrideActionInput interface {
 	pulumi.Input
 
@@ -1910,10 +1937,14 @@ func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// TlsInspectionPolicyMinTlsVersionInput is an input type that accepts TlsInspectionPolicyMinTlsVersionArgs and TlsInspectionPolicyMinTlsVersionOutput values.
-// You can construct a concrete instance of `TlsInspectionPolicyMinTlsVersionInput` via:
+// TlsInspectionPolicyMinTlsVersionInput is an input type that accepts values of the TlsInspectionPolicyMinTlsVersion enum
+// A concrete instance of `TlsInspectionPolicyMinTlsVersionInput` can be one of the following:
 //
-//	TlsInspectionPolicyMinTlsVersionArgs{...}
+//	TlsInspectionPolicyMinTlsVersionTlsVersionUnspecified
+//	TlsInspectionPolicyMinTlsVersionTls10
+//	TlsInspectionPolicyMinTlsVersionTls11
+//	TlsInspectionPolicyMinTlsVersionTls12
+//	TlsInspectionPolicyMinTlsVersionTls13
 type TlsInspectionPolicyMinTlsVersionInput interface {
 	pulumi.Input
 
@@ -2089,10 +2120,14 @@ func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// TlsInspectionPolicyTlsFeatureProfileInput is an input type that accepts TlsInspectionPolicyTlsFeatureProfileArgs and TlsInspectionPolicyTlsFeatureProfileOutput values.
-// You can construct a concrete instance of `TlsInspectionPolicyTlsFeatureProfileInput` via:
+// TlsInspectionPolicyTlsFeatureProfileInput is an input type that accepts values of the TlsInspectionPolicyTlsFeatureProfile enum
+// A concrete instance of `TlsInspectionPolicyTlsFeatureProfileInput` can be one of the following:
 //
-//	TlsInspectionPolicyTlsFeatureProfileArgs{...}
+//	TlsInspectionPolicyTlsFeatureProfileProfileUnspecified
+//	TlsInspectionPolicyTlsFeatureProfileProfileCompatible
+//	TlsInspectionPolicyTlsFeatureProfileProfileModern
+//	TlsInspectionPolicyTlsFeatureProfileProfileRestricted
+//	TlsInspectionPolicyTlsFeatureProfileProfileCustom
 type TlsInspectionPolicyTlsFeatureProfileInput interface {
 	pulumi.Input
 

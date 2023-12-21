@@ -141,10 +141,12 @@ func (o BudgetOwnershipScopePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// BudgetOwnershipScopeInput is an input type that accepts BudgetOwnershipScopeArgs and BudgetOwnershipScopeOutput values.
-// You can construct a concrete instance of `BudgetOwnershipScopeInput` via:
+// BudgetOwnershipScopeInput is an input type that accepts values of the BudgetOwnershipScope enum
+// A concrete instance of `BudgetOwnershipScopeInput` can be one of the following:
 //
-//	BudgetOwnershipScopeArgs{...}
+//	BudgetOwnershipScopeOwnershipScopeUnspecified
+//	BudgetOwnershipScopeAllUsers
+//	BudgetOwnershipScopeBillingAccount
 type BudgetOwnershipScopeInput interface {
 	pulumi.Input
 
@@ -318,10 +320,13 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ToStringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodArgs and GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput values.
-// You can construct a concrete instance of `GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodInput` via:
+// GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodInput is an input type that accepts values of the GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod enum
+// A concrete instance of `GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodInput` can be one of the following:
 //
-//	GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodArgs{...}
+//	GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodCalendarPeriodUnspecified
+//	GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodMonth
+//	GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodQuarter
+//	GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodYear
 type GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodInput interface {
 	pulumi.Input
 
@@ -494,10 +499,13 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ToS
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentArgs and GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput values.
-// You can construct a concrete instance of `GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentInput` via:
+// GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentInput is an input type that accepts values of the GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment enum
+// A concrete instance of `GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentInput` can be one of the following:
 //
-//	GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentArgs{...}
+//	GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentCreditTypesTreatmentUnspecified
+//	GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentIncludeAllCredits
+//	GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentExcludeAllCredits
+//	GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentIncludeSpecifiedCredits
 type GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentInput interface {
 	pulumi.Input
 
@@ -669,10 +677,12 @@ func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ToStri
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisArgs and GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput values.
-// You can construct a concrete instance of `GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisInput` via:
+// GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisInput is an input type that accepts values of the GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis enum
+// A concrete instance of `GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisInput` can be one of the following:
 //
-//	GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisArgs{...}
+//	GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisBasisUnspecified
+//	GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisCurrentSpend
+//	GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisForecastedSpend
 type GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisInput interface {
 	pulumi.Input
 

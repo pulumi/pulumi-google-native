@@ -141,10 +141,13 @@ func (o AppProfilePriorityPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// AppProfilePriorityInput is an input type that accepts AppProfilePriorityArgs and AppProfilePriorityOutput values.
-// You can construct a concrete instance of `AppProfilePriorityInput` via:
+// AppProfilePriorityInput is an input type that accepts values of the AppProfilePriority enum
+// A concrete instance of `AppProfilePriorityInput` can be one of the following:
 //
-//	AppProfilePriorityArgs{...}
+//	AppProfilePriorityPriorityUnspecified
+//	AppProfilePriorityPriorityLow
+//	AppProfilePriorityPriorityMedium
+//	AppProfilePriorityPriorityHigh
 type AppProfilePriorityInput interface {
 	pulumi.Input
 
@@ -318,10 +321,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -493,10 +499,12 @@ func (o ClusterDefaultStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// ClusterDefaultStorageTypeInput is an input type that accepts ClusterDefaultStorageTypeArgs and ClusterDefaultStorageTypeOutput values.
-// You can construct a concrete instance of `ClusterDefaultStorageTypeInput` via:
+// ClusterDefaultStorageTypeInput is an input type that accepts values of the ClusterDefaultStorageType enum
+// A concrete instance of `ClusterDefaultStorageTypeInput` can be one of the following:
 //
-//	ClusterDefaultStorageTypeArgs{...}
+//	ClusterDefaultStorageTypeStorageTypeUnspecified
+//	ClusterDefaultStorageTypeSsd
+//	ClusterDefaultStorageTypeHdd
 type ClusterDefaultStorageTypeInput interface {
 	pulumi.Input
 
@@ -668,10 +676,12 @@ func (o InstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceTypeInput is an input type that accepts InstanceTypeArgs and InstanceTypeOutput values.
-// You can construct a concrete instance of `InstanceTypeInput` via:
+// InstanceTypeInput is an input type that accepts values of the InstanceType enum
+// A concrete instance of `InstanceTypeInput` can be one of the following:
 //
-//	InstanceTypeArgs{...}
+//	InstanceTypeTypeUnspecified
+//	InstanceTypeProduction
+//	InstanceTypeDevelopment
 type InstanceTypeInput interface {
 	pulumi.Input
 
@@ -842,10 +852,13 @@ func (o StandardIsolationPriorityPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// StandardIsolationPriorityInput is an input type that accepts StandardIsolationPriorityArgs and StandardIsolationPriorityOutput values.
-// You can construct a concrete instance of `StandardIsolationPriorityInput` via:
+// StandardIsolationPriorityInput is an input type that accepts values of the StandardIsolationPriority enum
+// A concrete instance of `StandardIsolationPriorityInput` can be one of the following:
 //
-//	StandardIsolationPriorityArgs{...}
+//	StandardIsolationPriorityPriorityUnspecified
+//	StandardIsolationPriorityPriorityLow
+//	StandardIsolationPriorityPriorityMedium
+//	StandardIsolationPriorityPriorityHigh
 type StandardIsolationPriorityInput interface {
 	pulumi.Input
 
@@ -1015,10 +1028,11 @@ func (o TableGranularityPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// TableGranularityInput is an input type that accepts TableGranularityArgs and TableGranularityOutput values.
-// You can construct a concrete instance of `TableGranularityInput` via:
+// TableGranularityInput is an input type that accepts values of the TableGranularity enum
+// A concrete instance of `TableGranularityInput` can be one of the following:
 //
-//	TableGranularityArgs{...}
+//	TableGranularityTimestampGranularityUnspecified
+//	TableGranularityMillis
 type TableGranularityInput interface {
 	pulumi.Input
 

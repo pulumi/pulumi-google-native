@@ -144,10 +144,13 @@ func (o CapacityCommitmentEditionPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// CapacityCommitmentEditionInput is an input type that accepts CapacityCommitmentEditionArgs and CapacityCommitmentEditionOutput values.
-// You can construct a concrete instance of `CapacityCommitmentEditionInput` via:
+// CapacityCommitmentEditionInput is an input type that accepts values of the CapacityCommitmentEdition enum
+// A concrete instance of `CapacityCommitmentEditionInput` can be one of the following:
 //
-//	CapacityCommitmentEditionArgs{...}
+//	CapacityCommitmentEditionEditionUnspecified
+//	CapacityCommitmentEditionStandard
+//	CapacityCommitmentEditionEnterprise
+//	CapacityCommitmentEditionEnterprisePlus
 type CapacityCommitmentEditionInput interface {
 	pulumi.Input
 
@@ -333,10 +336,19 @@ func (o CapacityCommitmentPlanPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// CapacityCommitmentPlanInput is an input type that accepts CapacityCommitmentPlanArgs and CapacityCommitmentPlanOutput values.
-// You can construct a concrete instance of `CapacityCommitmentPlanInput` via:
+// CapacityCommitmentPlanInput is an input type that accepts values of the CapacityCommitmentPlan enum
+// A concrete instance of `CapacityCommitmentPlanInput` can be one of the following:
 //
-//	CapacityCommitmentPlanArgs{...}
+//	CapacityCommitmentPlanCommitmentPlanUnspecified
+//	CapacityCommitmentPlanFlex
+//	CapacityCommitmentPlanFlexFlatRate
+//	CapacityCommitmentPlanTrial
+//	CapacityCommitmentPlanMonthly
+//	CapacityCommitmentPlanMonthlyFlatRate
+//	CapacityCommitmentPlanAnnual
+//	CapacityCommitmentPlanAnnualFlatRate
+//	CapacityCommitmentPlanThreeYear
+//	CapacityCommitmentPlanNone
 type CapacityCommitmentPlanInput interface {
 	pulumi.Input
 
@@ -522,10 +534,19 @@ func (o CapacityCommitmentRenewalPlanPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// CapacityCommitmentRenewalPlanInput is an input type that accepts CapacityCommitmentRenewalPlanArgs and CapacityCommitmentRenewalPlanOutput values.
-// You can construct a concrete instance of `CapacityCommitmentRenewalPlanInput` via:
+// CapacityCommitmentRenewalPlanInput is an input type that accepts values of the CapacityCommitmentRenewalPlan enum
+// A concrete instance of `CapacityCommitmentRenewalPlanInput` can be one of the following:
 //
-//	CapacityCommitmentRenewalPlanArgs{...}
+//	CapacityCommitmentRenewalPlanCommitmentPlanUnspecified
+//	CapacityCommitmentRenewalPlanFlex
+//	CapacityCommitmentRenewalPlanFlexFlatRate
+//	CapacityCommitmentRenewalPlanTrial
+//	CapacityCommitmentRenewalPlanMonthly
+//	CapacityCommitmentRenewalPlanMonthlyFlatRate
+//	CapacityCommitmentRenewalPlanAnnual
+//	CapacityCommitmentRenewalPlanAnnualFlatRate
+//	CapacityCommitmentRenewalPlanThreeYear
+//	CapacityCommitmentRenewalPlanNone
 type CapacityCommitmentRenewalPlanInput interface {
 	pulumi.Input
 
@@ -699,10 +720,13 @@ func (o ReservationEditionPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ReservationEditionInput is an input type that accepts ReservationEditionArgs and ReservationEditionOutput values.
-// You can construct a concrete instance of `ReservationEditionInput` via:
+// ReservationEditionInput is an input type that accepts values of the ReservationEdition enum
+// A concrete instance of `ReservationEditionInput` can be one of the following:
 //
-//	ReservationEditionArgs{...}
+//	ReservationEditionEditionUnspecified
+//	ReservationEditionStandard
+//	ReservationEditionEnterprise
+//	ReservationEditionEnterprisePlus
 type ReservationEditionInput interface {
 	pulumi.Input
 
