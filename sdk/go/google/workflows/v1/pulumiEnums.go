@@ -144,10 +144,13 @@ func (o WorkflowCallLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkflowCallLogLevelInput is an input type that accepts WorkflowCallLogLevelArgs and WorkflowCallLogLevelOutput values.
-// You can construct a concrete instance of `WorkflowCallLogLevelInput` via:
+// WorkflowCallLogLevelInput is an input type that accepts values of the WorkflowCallLogLevel enum
+// A concrete instance of `WorkflowCallLogLevelInput` can be one of the following:
 //
-//	WorkflowCallLogLevelArgs{...}
+//	WorkflowCallLogLevelCallLogLevelUnspecified
+//	WorkflowCallLogLevelLogAllCalls
+//	WorkflowCallLogLevelLogErrorsOnly
+//	WorkflowCallLogLevelLogNone
 type WorkflowCallLogLevelInput interface {
 	pulumi.Input
 

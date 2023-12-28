@@ -150,10 +150,16 @@ func (o GoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutput) ToStringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDatacatalogLineageV1OriginSourceTypeInput is an input type that accepts GoogleCloudDatacatalogLineageV1OriginSourceTypeArgs and GoogleCloudDatacatalogLineageV1OriginSourceTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogLineageV1OriginSourceTypeInput` via:
+// GoogleCloudDatacatalogLineageV1OriginSourceTypeInput is an input type that accepts values of the GoogleCloudDatacatalogLineageV1OriginSourceType enum
+// A concrete instance of `GoogleCloudDatacatalogLineageV1OriginSourceTypeInput` can be one of the following:
 //
-//	GoogleCloudDatacatalogLineageV1OriginSourceTypeArgs{...}
+//	GoogleCloudDatacatalogLineageV1OriginSourceTypeSourceTypeUnspecified
+//	GoogleCloudDatacatalogLineageV1OriginSourceTypeCustom
+//	GoogleCloudDatacatalogLineageV1OriginSourceTypeBigquery
+//	GoogleCloudDatacatalogLineageV1OriginSourceTypeDataFusion
+//	GoogleCloudDatacatalogLineageV1OriginSourceTypeComposer
+//	GoogleCloudDatacatalogLineageV1OriginSourceTypeLookerStudio
+//	GoogleCloudDatacatalogLineageV1OriginSourceTypeDataproc
 type GoogleCloudDatacatalogLineageV1OriginSourceTypeInput interface {
 	pulumi.Input
 
@@ -329,10 +335,14 @@ func (o RunStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// RunStateEnumInput is an input type that accepts RunStateEnumArgs and RunStateEnumOutput values.
-// You can construct a concrete instance of `RunStateEnumInput` via:
+// RunStateEnumInput is an input type that accepts values of the RunStateEnum enum
+// A concrete instance of `RunStateEnumInput` can be one of the following:
 //
-//	RunStateEnumArgs{...}
+//	RunStateEnumUnknown
+//	RunStateEnumStarted
+//	RunStateEnumCompleted
+//	RunStateEnumFailed
+//	RunStateEnumAborted
 type RunStateEnumInput interface {
 	pulumi.Input
 

@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -317,10 +320,11 @@ func (o FilterProtocolVersionPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// FilterProtocolVersionInput is an input type that accepts FilterProtocolVersionArgs and FilterProtocolVersionOutput values.
-// You can construct a concrete instance of `FilterProtocolVersionInput` via:
+// FilterProtocolVersionInput is an input type that accepts values of the FilterProtocolVersion enum
+// A concrete instance of `FilterProtocolVersionInput` can be one of the following:
 //
-//	FilterProtocolVersionArgs{...}
+//	FilterProtocolVersionProtocolVersionUnspecified
+//	FilterProtocolVersionIpv4
 type FilterProtocolVersionInput interface {
 	pulumi.Input
 
@@ -491,10 +495,12 @@ func (o InternalRangeOverlapsItemPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// InternalRangeOverlapsItemInput is an input type that accepts InternalRangeOverlapsItemArgs and InternalRangeOverlapsItemOutput values.
-// You can construct a concrete instance of `InternalRangeOverlapsItemInput` via:
+// InternalRangeOverlapsItemInput is an input type that accepts values of the InternalRangeOverlapsItem enum
+// A concrete instance of `InternalRangeOverlapsItemInput` can be one of the following:
 //
-//	InternalRangeOverlapsItemArgs{...}
+//	InternalRangeOverlapsItemOverlapUnspecified
+//	InternalRangeOverlapsItemOverlapRouteRange
+//	InternalRangeOverlapsItemOverlapExistingSubnetRange
 type InternalRangeOverlapsItemInput interface {
 	pulumi.Input
 
@@ -713,10 +719,13 @@ func (o InternalRangePeeringPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// InternalRangePeeringInput is an input type that accepts InternalRangePeeringArgs and InternalRangePeeringOutput values.
-// You can construct a concrete instance of `InternalRangePeeringInput` via:
+// InternalRangePeeringInput is an input type that accepts values of the InternalRangePeering enum
+// A concrete instance of `InternalRangePeeringInput` can be one of the following:
 //
-//	InternalRangePeeringArgs{...}
+//	InternalRangePeeringPeeringUnspecified
+//	InternalRangePeeringForSelf
+//	InternalRangePeeringForPeer
+//	InternalRangePeeringNotShared
 type InternalRangePeeringInput interface {
 	pulumi.Input
 
@@ -888,10 +897,12 @@ func (o InternalRangeUsagePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// InternalRangeUsageInput is an input type that accepts InternalRangeUsageArgs and InternalRangeUsageOutput values.
-// You can construct a concrete instance of `InternalRangeUsageInput` via:
+// InternalRangeUsageInput is an input type that accepts values of the InternalRangeUsage enum
+// A concrete instance of `InternalRangeUsageInput` can be one of the following:
 //
-//	InternalRangeUsageArgs{...}
+//	InternalRangeUsageUsageUnspecified
+//	InternalRangeUsageForVpc
+//	InternalRangeUsageExternalToVpc
 type InternalRangeUsageInput interface {
 	pulumi.Input
 
@@ -1061,10 +1072,11 @@ func (o PolicyBasedRouteNextHopOtherRoutesPtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// PolicyBasedRouteNextHopOtherRoutesInput is an input type that accepts PolicyBasedRouteNextHopOtherRoutesArgs and PolicyBasedRouteNextHopOtherRoutesOutput values.
-// You can construct a concrete instance of `PolicyBasedRouteNextHopOtherRoutesInput` via:
+// PolicyBasedRouteNextHopOtherRoutesInput is an input type that accepts values of the PolicyBasedRouteNextHopOtherRoutes enum
+// A concrete instance of `PolicyBasedRouteNextHopOtherRoutesInput` can be one of the following:
 //
-//	PolicyBasedRouteNextHopOtherRoutesArgs{...}
+//	PolicyBasedRouteNextHopOtherRoutesOtherRoutesUnspecified
+//	PolicyBasedRouteNextHopOtherRoutesDefaultRouting
 type PolicyBasedRouteNextHopOtherRoutesInput interface {
 	pulumi.Input
 

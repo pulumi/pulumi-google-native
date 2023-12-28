@@ -141,10 +141,12 @@ func (o ControlSearchSolutionUseCaseItemPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// ControlSearchSolutionUseCaseItemInput is an input type that accepts ControlSearchSolutionUseCaseItemArgs and ControlSearchSolutionUseCaseItemOutput values.
-// You can construct a concrete instance of `ControlSearchSolutionUseCaseItemInput` via:
+// ControlSearchSolutionUseCaseItemInput is an input type that accepts values of the ControlSearchSolutionUseCaseItem enum
+// A concrete instance of `ControlSearchSolutionUseCaseItemInput` can be one of the following:
 //
-//	ControlSearchSolutionUseCaseItemArgs{...}
+//	ControlSearchSolutionUseCaseItemSearchSolutionUseCaseUnspecified
+//	ControlSearchSolutionUseCaseItemSearchSolutionUseCaseSearch
+//	ControlSearchSolutionUseCaseItemSearchSolutionUseCaseBrowse
 type ControlSearchSolutionUseCaseItemInput interface {
 	pulumi.Input
 
@@ -360,10 +362,12 @@ func (o ControlSolutionTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// ControlSolutionTypesItemInput is an input type that accepts ControlSolutionTypesItemArgs and ControlSolutionTypesItemOutput values.
-// You can construct a concrete instance of `ControlSolutionTypesItemInput` via:
+// ControlSolutionTypesItemInput is an input type that accepts values of the ControlSolutionTypesItem enum
+// A concrete instance of `ControlSolutionTypesItemInput` can be one of the following:
 //
-//	ControlSolutionTypesItemArgs{...}
+//	ControlSolutionTypesItemSolutionTypeUnspecified
+//	ControlSolutionTypesItemSolutionTypeRecommendation
+//	ControlSolutionTypesItemSolutionTypeSearch
 type ControlSolutionTypesItemInput interface {
 	pulumi.Input
 
@@ -580,10 +584,12 @@ func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextPro
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeInput is an input type that accepts GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeArgs and GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeInput` via:
+// GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeInput is an input type that accepts values of the GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType enum
+// A concrete instance of `GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeInput` can be one of the following:
 //
-//	GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeArgs{...}
+//	GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeContextProductsTypeUnspecified
+//	GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeSingleContextProduct
+//	GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeMultipleContextProducts
 type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeInput interface {
 	pulumi.Input
 
@@ -755,10 +761,12 @@ func (o GoogleCloudRetailV2SearchRequestDynamicFacetSpecModePtrOutput) ToStringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeInput is an input type that accepts GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeArgs and GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeInput` via:
+// GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeInput is an input type that accepts values of the GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode enum
+// A concrete instance of `GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeInput` can be one of the following:
 //
-//	GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeArgs{...}
+//	GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeModeUnspecified
+//	GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeDisabled
+//	GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeEnabled
 type GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeInput interface {
 	pulumi.Input
 
@@ -930,10 +938,12 @@ func (o GoogleCloudRetailV2SearchRequestPersonalizationSpecModePtrOutput) ToStri
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRetailV2SearchRequestPersonalizationSpecModeInput is an input type that accepts GoogleCloudRetailV2SearchRequestPersonalizationSpecModeArgs and GoogleCloudRetailV2SearchRequestPersonalizationSpecModeOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2SearchRequestPersonalizationSpecModeInput` via:
+// GoogleCloudRetailV2SearchRequestPersonalizationSpecModeInput is an input type that accepts values of the GoogleCloudRetailV2SearchRequestPersonalizationSpecMode enum
+// A concrete instance of `GoogleCloudRetailV2SearchRequestPersonalizationSpecModeInput` can be one of the following:
 //
-//	GoogleCloudRetailV2SearchRequestPersonalizationSpecModeArgs{...}
+//	GoogleCloudRetailV2SearchRequestPersonalizationSpecModeModeUnspecified
+//	GoogleCloudRetailV2SearchRequestPersonalizationSpecModeAuto
+//	GoogleCloudRetailV2SearchRequestPersonalizationSpecModeDisabled
 type GoogleCloudRetailV2SearchRequestPersonalizationSpecModeInput interface {
 	pulumi.Input
 
@@ -1105,10 +1115,12 @@ func (o ModelFilteringOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ModelFilteringOptionInput is an input type that accepts ModelFilteringOptionArgs and ModelFilteringOptionOutput values.
-// You can construct a concrete instance of `ModelFilteringOptionInput` via:
+// ModelFilteringOptionInput is an input type that accepts values of the ModelFilteringOption enum
+// A concrete instance of `ModelFilteringOptionInput` can be one of the following:
 //
-//	ModelFilteringOptionArgs{...}
+//	ModelFilteringOptionRecommendationsFilteringOptionUnspecified
+//	ModelFilteringOptionRecommendationsFilteringDisabled
+//	ModelFilteringOptionRecommendationsFilteringEnabled
 type ModelFilteringOptionInput interface {
 	pulumi.Input
 
@@ -1282,10 +1294,13 @@ func (o ModelPeriodicTuningStatePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// ModelPeriodicTuningStateInput is an input type that accepts ModelPeriodicTuningStateArgs and ModelPeriodicTuningStateOutput values.
-// You can construct a concrete instance of `ModelPeriodicTuningStateInput` via:
+// ModelPeriodicTuningStateInput is an input type that accepts values of the ModelPeriodicTuningState enum
+// A concrete instance of `ModelPeriodicTuningStateInput` can be one of the following:
 //
-//	ModelPeriodicTuningStateArgs{...}
+//	ModelPeriodicTuningStatePeriodicTuningStateUnspecified
+//	ModelPeriodicTuningStatePeriodicTuningDisabled
+//	ModelPeriodicTuningStateAllTuningDisabled
+//	ModelPeriodicTuningStatePeriodicTuningEnabled
 type ModelPeriodicTuningStateInput interface {
 	pulumi.Input
 
@@ -1457,10 +1472,12 @@ func (o ModelTrainingStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ModelTrainingStateInput is an input type that accepts ModelTrainingStateArgs and ModelTrainingStateOutput values.
-// You can construct a concrete instance of `ModelTrainingStateInput` via:
+// ModelTrainingStateInput is an input type that accepts values of the ModelTrainingState enum
+// A concrete instance of `ModelTrainingStateInput` can be one of the following:
 //
-//	ModelTrainingStateArgs{...}
+//	ModelTrainingStateTrainingStateUnspecified
+//	ModelTrainingStatePaused
+//	ModelTrainingStateTraining
 type ModelTrainingStateInput interface {
 	pulumi.Input
 
@@ -1636,10 +1653,14 @@ func (o ProductAvailabilityPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ProductAvailabilityInput is an input type that accepts ProductAvailabilityArgs and ProductAvailabilityOutput values.
-// You can construct a concrete instance of `ProductAvailabilityInput` via:
+// ProductAvailabilityInput is an input type that accepts values of the ProductAvailability enum
+// A concrete instance of `ProductAvailabilityInput` can be one of the following:
 //
-//	ProductAvailabilityArgs{...}
+//	ProductAvailabilityAvailabilityUnspecified
+//	ProductAvailabilityInStock
+//	ProductAvailabilityOutOfStock
+//	ProductAvailabilityPreorder
+//	ProductAvailabilityBackorder
 type ProductAvailabilityInput interface {
 	pulumi.Input
 
@@ -1813,10 +1834,13 @@ func (o ProductTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// ProductTypeInput is an input type that accepts ProductTypeArgs and ProductTypeOutput values.
-// You can construct a concrete instance of `ProductTypeInput` via:
+// ProductTypeInput is an input type that accepts values of the ProductType enum
+// A concrete instance of `ProductTypeInput` can be one of the following:
 //
-//	ProductTypeArgs{...}
+//	ProductTypeTypeUnspecified
+//	ProductTypePrimary
+//	ProductTypeVariant
+//	ProductTypeCollection
 type ProductTypeInput interface {
 	pulumi.Input
 
@@ -1988,10 +2012,12 @@ func (o ServingConfigDiversityTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServingConfigDiversityTypeInput is an input type that accepts ServingConfigDiversityTypeArgs and ServingConfigDiversityTypeOutput values.
-// You can construct a concrete instance of `ServingConfigDiversityTypeInput` via:
+// ServingConfigDiversityTypeInput is an input type that accepts values of the ServingConfigDiversityType enum
+// A concrete instance of `ServingConfigDiversityTypeInput` can be one of the following:
 //
-//	ServingConfigDiversityTypeArgs{...}
+//	ServingConfigDiversityTypeDiversityTypeUnspecified
+//	ServingConfigDiversityTypeRuleBasedDiversity
+//	ServingConfigDiversityTypeDataDrivenDiversity
 type ServingConfigDiversityTypeInput interface {
 	pulumi.Input
 
@@ -2162,10 +2188,12 @@ func (o ServingConfigSolutionTypesItemPtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServingConfigSolutionTypesItemInput is an input type that accepts ServingConfigSolutionTypesItemArgs and ServingConfigSolutionTypesItemOutput values.
-// You can construct a concrete instance of `ServingConfigSolutionTypesItemInput` via:
+// ServingConfigSolutionTypesItemInput is an input type that accepts values of the ServingConfigSolutionTypesItem enum
+// A concrete instance of `ServingConfigSolutionTypesItemInput` can be one of the following:
 //
-//	ServingConfigSolutionTypesItemArgs{...}
+//	ServingConfigSolutionTypesItemSolutionTypeUnspecified
+//	ServingConfigSolutionTypesItemSolutionTypeRecommendation
+//	ServingConfigSolutionTypesItemSolutionTypeSearch
 type ServingConfigSolutionTypesItemInput interface {
 	pulumi.Input
 

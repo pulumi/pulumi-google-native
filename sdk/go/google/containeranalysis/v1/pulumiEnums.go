@@ -144,10 +144,13 @@ func (o AliasContextKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// AliasContextKindInput is an input type that accepts AliasContextKindArgs and AliasContextKindOutput values.
-// You can construct a concrete instance of `AliasContextKindInput` via:
+// AliasContextKindInput is an input type that accepts values of the AliasContextKind enum
+// A concrete instance of `AliasContextKindInput` can be one of the following:
 //
-//	AliasContextKindArgs{...}
+//	AliasContextKindKindUnspecified
+//	AliasContextKindFixed
+//	AliasContextKindMovable
+//	AliasContextKindOther
 type AliasContextKindInput interface {
 	pulumi.Input
 
@@ -323,10 +326,14 @@ func (o AssessmentStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// AssessmentStateInput is an input type that accepts AssessmentStateArgs and AssessmentStateOutput values.
-// You can construct a concrete instance of `AssessmentStateInput` via:
+// AssessmentStateInput is an input type that accepts values of the AssessmentState enum
+// A concrete instance of `AssessmentStateInput` can be one of the following:
 //
-//	AssessmentStateArgs{...}
+//	AssessmentStateStateUnspecified
+//	AssessmentStateAffected
+//	AssessmentStateNotAffected
+//	AssessmentStateFixed
+//	AssessmentStateUnderInvestigation
 type AssessmentStateInput interface {
 	pulumi.Input
 
@@ -495,10 +502,13 @@ func (o CVSSAttackComplexityPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSAttackComplexityInput is an input type that accepts CVSSAttackComplexityArgs and CVSSAttackComplexityOutput values.
-// You can construct a concrete instance of `CVSSAttackComplexityInput` via:
+// CVSSAttackComplexityInput is an input type that accepts values of the CVSSAttackComplexity enum
+// A concrete instance of `CVSSAttackComplexityInput` can be one of the following:
 //
-//	CVSSAttackComplexityArgs{...}
+//	CVSSAttackComplexityAttackComplexityUnspecified
+//	CVSSAttackComplexityAttackComplexityLow
+//	CVSSAttackComplexityAttackComplexityHigh
+//	CVSSAttackComplexityAttackComplexityMedium
 type CVSSAttackComplexityInput interface {
 	pulumi.Input
 
@@ -669,10 +679,14 @@ func (o CVSSAttackVectorPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSAttackVectorInput is an input type that accepts CVSSAttackVectorArgs and CVSSAttackVectorOutput values.
-// You can construct a concrete instance of `CVSSAttackVectorInput` via:
+// CVSSAttackVectorInput is an input type that accepts values of the CVSSAttackVector enum
+// A concrete instance of `CVSSAttackVectorInput` can be one of the following:
 //
-//	CVSSAttackVectorArgs{...}
+//	CVSSAttackVectorAttackVectorUnspecified
+//	CVSSAttackVectorAttackVectorNetwork
+//	CVSSAttackVectorAttackVectorAdjacent
+//	CVSSAttackVectorAttackVectorLocal
+//	CVSSAttackVectorAttackVectorPhysical
 type CVSSAttackVectorInput interface {
 	pulumi.Input
 
@@ -841,10 +855,13 @@ func (o CVSSAuthenticationPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSAuthenticationInput is an input type that accepts CVSSAuthenticationArgs and CVSSAuthenticationOutput values.
-// You can construct a concrete instance of `CVSSAuthenticationInput` via:
+// CVSSAuthenticationInput is an input type that accepts values of the CVSSAuthentication enum
+// A concrete instance of `CVSSAuthenticationInput` can be one of the following:
 //
-//	CVSSAuthenticationArgs{...}
+//	CVSSAuthenticationAuthenticationUnspecified
+//	CVSSAuthenticationAuthenticationMultiple
+//	CVSSAuthenticationAuthenticationSingle
+//	CVSSAuthenticationAuthenticationNone
 type CVSSAuthenticationInput interface {
 	pulumi.Input
 
@@ -1015,10 +1032,15 @@ func (o CVSSAvailabilityImpactPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSAvailabilityImpactInput is an input type that accepts CVSSAvailabilityImpactArgs and CVSSAvailabilityImpactOutput values.
-// You can construct a concrete instance of `CVSSAvailabilityImpactInput` via:
+// CVSSAvailabilityImpactInput is an input type that accepts values of the CVSSAvailabilityImpact enum
+// A concrete instance of `CVSSAvailabilityImpactInput` can be one of the following:
 //
-//	CVSSAvailabilityImpactArgs{...}
+//	CVSSAvailabilityImpactImpactUnspecified
+//	CVSSAvailabilityImpactImpactHigh
+//	CVSSAvailabilityImpactImpactLow
+//	CVSSAvailabilityImpactImpactNone
+//	CVSSAvailabilityImpactImpactPartial
+//	CVSSAvailabilityImpactImpactComplete
 type CVSSAvailabilityImpactInput interface {
 	pulumi.Input
 
@@ -1189,10 +1211,15 @@ func (o CVSSConfidentialityImpactPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSConfidentialityImpactInput is an input type that accepts CVSSConfidentialityImpactArgs and CVSSConfidentialityImpactOutput values.
-// You can construct a concrete instance of `CVSSConfidentialityImpactInput` via:
+// CVSSConfidentialityImpactInput is an input type that accepts values of the CVSSConfidentialityImpact enum
+// A concrete instance of `CVSSConfidentialityImpactInput` can be one of the following:
 //
-//	CVSSConfidentialityImpactArgs{...}
+//	CVSSConfidentialityImpactImpactUnspecified
+//	CVSSConfidentialityImpactImpactHigh
+//	CVSSConfidentialityImpactImpactLow
+//	CVSSConfidentialityImpactImpactNone
+//	CVSSConfidentialityImpactImpactPartial
+//	CVSSConfidentialityImpactImpactComplete
 type CVSSConfidentialityImpactInput interface {
 	pulumi.Input
 
@@ -1363,10 +1390,15 @@ func (o CVSSIntegrityImpactPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSIntegrityImpactInput is an input type that accepts CVSSIntegrityImpactArgs and CVSSIntegrityImpactOutput values.
-// You can construct a concrete instance of `CVSSIntegrityImpactInput` via:
+// CVSSIntegrityImpactInput is an input type that accepts values of the CVSSIntegrityImpact enum
+// A concrete instance of `CVSSIntegrityImpactInput` can be one of the following:
 //
-//	CVSSIntegrityImpactArgs{...}
+//	CVSSIntegrityImpactImpactUnspecified
+//	CVSSIntegrityImpactImpactHigh
+//	CVSSIntegrityImpactImpactLow
+//	CVSSIntegrityImpactImpactNone
+//	CVSSIntegrityImpactImpactPartial
+//	CVSSIntegrityImpactImpactComplete
 type CVSSIntegrityImpactInput interface {
 	pulumi.Input
 
@@ -1535,10 +1567,13 @@ func (o CVSSPrivilegesRequiredPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSPrivilegesRequiredInput is an input type that accepts CVSSPrivilegesRequiredArgs and CVSSPrivilegesRequiredOutput values.
-// You can construct a concrete instance of `CVSSPrivilegesRequiredInput` via:
+// CVSSPrivilegesRequiredInput is an input type that accepts values of the CVSSPrivilegesRequired enum
+// A concrete instance of `CVSSPrivilegesRequiredInput` can be one of the following:
 //
-//	CVSSPrivilegesRequiredArgs{...}
+//	CVSSPrivilegesRequiredPrivilegesRequiredUnspecified
+//	CVSSPrivilegesRequiredPrivilegesRequiredNone
+//	CVSSPrivilegesRequiredPrivilegesRequiredLow
+//	CVSSPrivilegesRequiredPrivilegesRequiredHigh
 type CVSSPrivilegesRequiredInput interface {
 	pulumi.Input
 
@@ -1706,10 +1741,12 @@ func (o CVSSScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSScopeInput is an input type that accepts CVSSScopeArgs and CVSSScopeOutput values.
-// You can construct a concrete instance of `CVSSScopeInput` via:
+// CVSSScopeInput is an input type that accepts values of the CVSSScope enum
+// A concrete instance of `CVSSScopeInput` can be one of the following:
 //
-//	CVSSScopeArgs{...}
+//	CVSSScopeScopeUnspecified
+//	CVSSScopeScopeUnchanged
+//	CVSSScopeScopeChanged
 type CVSSScopeInput interface {
 	pulumi.Input
 
@@ -1877,10 +1914,12 @@ func (o CVSSUserInteractionPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSUserInteractionInput is an input type that accepts CVSSUserInteractionArgs and CVSSUserInteractionOutput values.
-// You can construct a concrete instance of `CVSSUserInteractionInput` via:
+// CVSSUserInteractionInput is an input type that accepts values of the CVSSUserInteraction enum
+// A concrete instance of `CVSSUserInteractionInput` can be one of the following:
 //
-//	CVSSUserInteractionArgs{...}
+//	CVSSUserInteractionUserInteractionUnspecified
+//	CVSSUserInteractionUserInteractionNone
+//	CVSSUserInteractionUserInteractionRequired
 type CVSSUserInteractionInput interface {
 	pulumi.Input
 
@@ -2048,10 +2087,12 @@ func (o CVSSv3AttackComplexityPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSv3AttackComplexityInput is an input type that accepts CVSSv3AttackComplexityArgs and CVSSv3AttackComplexityOutput values.
-// You can construct a concrete instance of `CVSSv3AttackComplexityInput` via:
+// CVSSv3AttackComplexityInput is an input type that accepts values of the CVSSv3AttackComplexity enum
+// A concrete instance of `CVSSv3AttackComplexityInput` can be one of the following:
 //
-//	CVSSv3AttackComplexityArgs{...}
+//	CVSSv3AttackComplexityAttackComplexityUnspecified
+//	CVSSv3AttackComplexityAttackComplexityLow
+//	CVSSv3AttackComplexityAttackComplexityHigh
 type CVSSv3AttackComplexityInput interface {
 	pulumi.Input
 
@@ -2222,10 +2263,14 @@ func (o CVSSv3AttackVectorPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSv3AttackVectorInput is an input type that accepts CVSSv3AttackVectorArgs and CVSSv3AttackVectorOutput values.
-// You can construct a concrete instance of `CVSSv3AttackVectorInput` via:
+// CVSSv3AttackVectorInput is an input type that accepts values of the CVSSv3AttackVector enum
+// A concrete instance of `CVSSv3AttackVectorInput` can be one of the following:
 //
-//	CVSSv3AttackVectorArgs{...}
+//	CVSSv3AttackVectorAttackVectorUnspecified
+//	CVSSv3AttackVectorAttackVectorNetwork
+//	CVSSv3AttackVectorAttackVectorAdjacent
+//	CVSSv3AttackVectorAttackVectorLocal
+//	CVSSv3AttackVectorAttackVectorPhysical
 type CVSSv3AttackVectorInput interface {
 	pulumi.Input
 
@@ -2394,10 +2439,13 @@ func (o CVSSv3AvailabilityImpactPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSv3AvailabilityImpactInput is an input type that accepts CVSSv3AvailabilityImpactArgs and CVSSv3AvailabilityImpactOutput values.
-// You can construct a concrete instance of `CVSSv3AvailabilityImpactInput` via:
+// CVSSv3AvailabilityImpactInput is an input type that accepts values of the CVSSv3AvailabilityImpact enum
+// A concrete instance of `CVSSv3AvailabilityImpactInput` can be one of the following:
 //
-//	CVSSv3AvailabilityImpactArgs{...}
+//	CVSSv3AvailabilityImpactImpactUnspecified
+//	CVSSv3AvailabilityImpactImpactHigh
+//	CVSSv3AvailabilityImpactImpactLow
+//	CVSSv3AvailabilityImpactImpactNone
 type CVSSv3AvailabilityImpactInput interface {
 	pulumi.Input
 
@@ -2566,10 +2614,13 @@ func (o CVSSv3ConfidentialityImpactPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSv3ConfidentialityImpactInput is an input type that accepts CVSSv3ConfidentialityImpactArgs and CVSSv3ConfidentialityImpactOutput values.
-// You can construct a concrete instance of `CVSSv3ConfidentialityImpactInput` via:
+// CVSSv3ConfidentialityImpactInput is an input type that accepts values of the CVSSv3ConfidentialityImpact enum
+// A concrete instance of `CVSSv3ConfidentialityImpactInput` can be one of the following:
 //
-//	CVSSv3ConfidentialityImpactArgs{...}
+//	CVSSv3ConfidentialityImpactImpactUnspecified
+//	CVSSv3ConfidentialityImpactImpactHigh
+//	CVSSv3ConfidentialityImpactImpactLow
+//	CVSSv3ConfidentialityImpactImpactNone
 type CVSSv3ConfidentialityImpactInput interface {
 	pulumi.Input
 
@@ -2738,10 +2789,13 @@ func (o CVSSv3IntegrityImpactPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSv3IntegrityImpactInput is an input type that accepts CVSSv3IntegrityImpactArgs and CVSSv3IntegrityImpactOutput values.
-// You can construct a concrete instance of `CVSSv3IntegrityImpactInput` via:
+// CVSSv3IntegrityImpactInput is an input type that accepts values of the CVSSv3IntegrityImpact enum
+// A concrete instance of `CVSSv3IntegrityImpactInput` can be one of the following:
 //
-//	CVSSv3IntegrityImpactArgs{...}
+//	CVSSv3IntegrityImpactImpactUnspecified
+//	CVSSv3IntegrityImpactImpactHigh
+//	CVSSv3IntegrityImpactImpactLow
+//	CVSSv3IntegrityImpactImpactNone
 type CVSSv3IntegrityImpactInput interface {
 	pulumi.Input
 
@@ -2910,10 +2964,13 @@ func (o CVSSv3PrivilegesRequiredPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSv3PrivilegesRequiredInput is an input type that accepts CVSSv3PrivilegesRequiredArgs and CVSSv3PrivilegesRequiredOutput values.
-// You can construct a concrete instance of `CVSSv3PrivilegesRequiredInput` via:
+// CVSSv3PrivilegesRequiredInput is an input type that accepts values of the CVSSv3PrivilegesRequired enum
+// A concrete instance of `CVSSv3PrivilegesRequiredInput` can be one of the following:
 //
-//	CVSSv3PrivilegesRequiredArgs{...}
+//	CVSSv3PrivilegesRequiredPrivilegesRequiredUnspecified
+//	CVSSv3PrivilegesRequiredPrivilegesRequiredNone
+//	CVSSv3PrivilegesRequiredPrivilegesRequiredLow
+//	CVSSv3PrivilegesRequiredPrivilegesRequiredHigh
 type CVSSv3PrivilegesRequiredInput interface {
 	pulumi.Input
 
@@ -3081,10 +3138,12 @@ func (o CVSSv3ScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSv3ScopeInput is an input type that accepts CVSSv3ScopeArgs and CVSSv3ScopeOutput values.
-// You can construct a concrete instance of `CVSSv3ScopeInput` via:
+// CVSSv3ScopeInput is an input type that accepts values of the CVSSv3Scope enum
+// A concrete instance of `CVSSv3ScopeInput` can be one of the following:
 //
-//	CVSSv3ScopeArgs{...}
+//	CVSSv3ScopeScopeUnspecified
+//	CVSSv3ScopeScopeUnchanged
+//	CVSSv3ScopeScopeChanged
 type CVSSv3ScopeInput interface {
 	pulumi.Input
 
@@ -3252,10 +3311,12 @@ func (o CVSSv3UserInteractionPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// CVSSv3UserInteractionInput is an input type that accepts CVSSv3UserInteractionArgs and CVSSv3UserInteractionOutput values.
-// You can construct a concrete instance of `CVSSv3UserInteractionInput` via:
+// CVSSv3UserInteractionInput is an input type that accepts values of the CVSSv3UserInteraction enum
+// A concrete instance of `CVSSv3UserInteractionInput` can be one of the following:
 //
-//	CVSSv3UserInteractionArgs{...}
+//	CVSSv3UserInteractionUserInteractionUnspecified
+//	CVSSv3UserInteractionUserInteractionNone
+//	CVSSv3UserInteractionUserInteractionRequired
 type CVSSv3UserInteractionInput interface {
 	pulumi.Input
 
@@ -3432,10 +3493,15 @@ func (o CisBenchmarkSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// CisBenchmarkSeverityInput is an input type that accepts CisBenchmarkSeverityArgs and CisBenchmarkSeverityOutput values.
-// You can construct a concrete instance of `CisBenchmarkSeverityInput` via:
+// CisBenchmarkSeverityInput is an input type that accepts values of the CisBenchmarkSeverity enum
+// A concrete instance of `CisBenchmarkSeverityInput` can be one of the following:
 //
-//	CisBenchmarkSeverityArgs{...}
+//	CisBenchmarkSeveritySeverityUnspecified
+//	CisBenchmarkSeverityMinimal
+//	CisBenchmarkSeverityLow
+//	CisBenchmarkSeverityMedium
+//	CisBenchmarkSeverityHigh
+//	CisBenchmarkSeverityCritical
 type CisBenchmarkSeverityInput interface {
 	pulumi.Input
 
@@ -3609,10 +3675,13 @@ func (o DeploymentOccurrencePlatformPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// DeploymentOccurrencePlatformInput is an input type that accepts DeploymentOccurrencePlatformArgs and DeploymentOccurrencePlatformOutput values.
-// You can construct a concrete instance of `DeploymentOccurrencePlatformInput` via:
+// DeploymentOccurrencePlatformInput is an input type that accepts values of the DeploymentOccurrencePlatform enum
+// A concrete instance of `DeploymentOccurrencePlatformInput` can be one of the following:
 //
-//	DeploymentOccurrencePlatformArgs{...}
+//	DeploymentOccurrencePlatformPlatformUnspecified
+//	DeploymentOccurrencePlatformGke
+//	DeploymentOccurrencePlatformFlex
+//	DeploymentOccurrencePlatformCustom
 type DeploymentOccurrencePlatformInput interface {
 	pulumi.Input
 
@@ -3804,10 +3873,22 @@ func (o DiscoveryNoteAnalysisKindPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// DiscoveryNoteAnalysisKindInput is an input type that accepts DiscoveryNoteAnalysisKindArgs and DiscoveryNoteAnalysisKindOutput values.
-// You can construct a concrete instance of `DiscoveryNoteAnalysisKindInput` via:
+// DiscoveryNoteAnalysisKindInput is an input type that accepts values of the DiscoveryNoteAnalysisKind enum
+// A concrete instance of `DiscoveryNoteAnalysisKindInput` can be one of the following:
 //
-//	DiscoveryNoteAnalysisKindArgs{...}
+//	DiscoveryNoteAnalysisKindNoteKindUnspecified
+//	DiscoveryNoteAnalysisKindVulnerability
+//	DiscoveryNoteAnalysisKindBuild
+//	DiscoveryNoteAnalysisKindImage
+//	DiscoveryNoteAnalysisKindPackage
+//	DiscoveryNoteAnalysisKindDeployment
+//	DiscoveryNoteAnalysisKindDiscovery
+//	DiscoveryNoteAnalysisKindAttestation
+//	DiscoveryNoteAnalysisKindUpgrade
+//	DiscoveryNoteAnalysisKindCompliance
+//	DiscoveryNoteAnalysisKindDsseAttestation
+//	DiscoveryNoteAnalysisKindVulnerabilityAssessment
+//	DiscoveryNoteAnalysisKindSbomReference
 type DiscoveryNoteAnalysisKindInput interface {
 	pulumi.Input
 
@@ -3987,10 +4068,16 @@ func (o DiscoveryOccurrenceAnalysisStatusPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// DiscoveryOccurrenceAnalysisStatusInput is an input type that accepts DiscoveryOccurrenceAnalysisStatusArgs and DiscoveryOccurrenceAnalysisStatusOutput values.
-// You can construct a concrete instance of `DiscoveryOccurrenceAnalysisStatusInput` via:
+// DiscoveryOccurrenceAnalysisStatusInput is an input type that accepts values of the DiscoveryOccurrenceAnalysisStatus enum
+// A concrete instance of `DiscoveryOccurrenceAnalysisStatusInput` can be one of the following:
 //
-//	DiscoveryOccurrenceAnalysisStatusArgs{...}
+//	DiscoveryOccurrenceAnalysisStatusAnalysisStatusUnspecified
+//	DiscoveryOccurrenceAnalysisStatusPending
+//	DiscoveryOccurrenceAnalysisStatusScanning
+//	DiscoveryOccurrenceAnalysisStatusFinishedSuccess
+//	DiscoveryOccurrenceAnalysisStatusComplete
+//	DiscoveryOccurrenceAnalysisStatusFinishedFailed
+//	DiscoveryOccurrenceAnalysisStatusFinishedUnsupported
 type DiscoveryOccurrenceAnalysisStatusInput interface {
 	pulumi.Input
 
@@ -4162,10 +4249,12 @@ func (o DiscoveryOccurrenceContinuousAnalysisPtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// DiscoveryOccurrenceContinuousAnalysisInput is an input type that accepts DiscoveryOccurrenceContinuousAnalysisArgs and DiscoveryOccurrenceContinuousAnalysisOutput values.
-// You can construct a concrete instance of `DiscoveryOccurrenceContinuousAnalysisInput` via:
+// DiscoveryOccurrenceContinuousAnalysisInput is an input type that accepts values of the DiscoveryOccurrenceContinuousAnalysis enum
+// A concrete instance of `DiscoveryOccurrenceContinuousAnalysisInput` can be one of the following:
 //
-//	DiscoveryOccurrenceContinuousAnalysisArgs{...}
+//	DiscoveryOccurrenceContinuousAnalysisContinuousAnalysisUnspecified
+//	DiscoveryOccurrenceContinuousAnalysisActive
+//	DiscoveryOccurrenceContinuousAnalysisInactive
 type DiscoveryOccurrenceContinuousAnalysisInput interface {
 	pulumi.Input
 
@@ -4337,10 +4426,12 @@ func (o DistributionArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// DistributionArchitectureInput is an input type that accepts DistributionArchitectureArgs and DistributionArchitectureOutput values.
-// You can construct a concrete instance of `DistributionArchitectureInput` via:
+// DistributionArchitectureInput is an input type that accepts values of the DistributionArchitecture enum
+// A concrete instance of `DistributionArchitectureInput` can be one of the following:
 //
-//	DistributionArchitectureArgs{...}
+//	DistributionArchitectureArchitectureUnspecified
+//	DistributionArchitectureX86
+//	DistributionArchitectureX64
 type DistributionArchitectureInput interface {
 	pulumi.Input
 
@@ -4518,10 +4609,15 @@ func (o JustificationJustificationTypePtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// JustificationJustificationTypeInput is an input type that accepts JustificationJustificationTypeArgs and JustificationJustificationTypeOutput values.
-// You can construct a concrete instance of `JustificationJustificationTypeInput` via:
+// JustificationJustificationTypeInput is an input type that accepts values of the JustificationJustificationType enum
+// A concrete instance of `JustificationJustificationTypeInput` can be one of the following:
 //
-//	JustificationJustificationTypeArgs{...}
+//	JustificationJustificationTypeJustificationTypeUnspecified
+//	JustificationJustificationTypeComponentNotPresent
+//	JustificationJustificationTypeVulnerableCodeNotPresent
+//	JustificationJustificationTypeVulnerableCodeNotInExecutePath
+//	JustificationJustificationTypeVulnerableCodeCannotBeControlledByAdversary
+//	JustificationJustificationTypeInlineMitigationsAlreadyExist
 type JustificationJustificationTypeInput interface {
 	pulumi.Input
 
@@ -4693,10 +4789,12 @@ func (o PackageNoteArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// PackageNoteArchitectureInput is an input type that accepts PackageNoteArchitectureArgs and PackageNoteArchitectureOutput values.
-// You can construct a concrete instance of `PackageNoteArchitectureInput` via:
+// PackageNoteArchitectureInput is an input type that accepts values of the PackageNoteArchitecture enum
+// A concrete instance of `PackageNoteArchitectureInput` can be one of the following:
 //
-//	PackageNoteArchitectureArgs{...}
+//	PackageNoteArchitectureArchitectureUnspecified
+//	PackageNoteArchitectureX86
+//	PackageNoteArchitectureX64
 type PackageNoteArchitectureInput interface {
 	pulumi.Input
 
@@ -4874,10 +4972,15 @@ func (o RemediationRemediationTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// RemediationRemediationTypeInput is an input type that accepts RemediationRemediationTypeArgs and RemediationRemediationTypeOutput values.
-// You can construct a concrete instance of `RemediationRemediationTypeInput` via:
+// RemediationRemediationTypeInput is an input type that accepts values of the RemediationRemediationType enum
+// A concrete instance of `RemediationRemediationTypeInput` can be one of the following:
 //
-//	RemediationRemediationTypeArgs{...}
+//	RemediationRemediationTypeRemediationTypeUnspecified
+//	RemediationRemediationTypeMitigation
+//	RemediationRemediationTypeNoFixPlanned
+//	RemediationRemediationTypeNoneAvailable
+//	RemediationRemediationTypeVendorFix
+//	RemediationRemediationTypeWorkaround
 type RemediationRemediationTypeInput interface {
 	pulumi.Input
 
@@ -5049,10 +5152,12 @@ func (o SBOMStatusSbomStatePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// SBOMStatusSbomStateInput is an input type that accepts SBOMStatusSbomStateArgs and SBOMStatusSbomStateOutput values.
-// You can construct a concrete instance of `SBOMStatusSbomStateInput` via:
+// SBOMStatusSbomStateInput is an input type that accepts values of the SBOMStatusSbomState enum
+// A concrete instance of `SBOMStatusSbomStateInput` can be one of the following:
 //
-//	SBOMStatusSbomStateArgs{...}
+//	SBOMStatusSbomStateSbomStateUnspecified
+//	SBOMStatusSbomStatePending
+//	SBOMStatusSbomStateComplete
 type SBOMStatusSbomStateInput interface {
 	pulumi.Input
 
@@ -5226,10 +5331,13 @@ func (o VersionKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// VersionKindInput is an input type that accepts VersionKindArgs and VersionKindOutput values.
-// You can construct a concrete instance of `VersionKindInput` via:
+// VersionKindInput is an input type that accepts values of the VersionKind enum
+// A concrete instance of `VersionKindInput` can be one of the following:
 //
-//	VersionKindArgs{...}
+//	VersionKindVersionKindUnspecified
+//	VersionKindNormal
+//	VersionKindMinimum
+//	VersionKindMaximum
 type VersionKindInput interface {
 	pulumi.Input
 
@@ -5405,10 +5513,14 @@ func (o VexAssessmentStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// VexAssessmentStateInput is an input type that accepts VexAssessmentStateArgs and VexAssessmentStateOutput values.
-// You can construct a concrete instance of `VexAssessmentStateInput` via:
+// VexAssessmentStateInput is an input type that accepts values of the VexAssessmentState enum
+// A concrete instance of `VexAssessmentStateInput` can be one of the following:
 //
-//	VexAssessmentStateArgs{...}
+//	VexAssessmentStateStateUnspecified
+//	VexAssessmentStateAffected
+//	VexAssessmentStateNotAffected
+//	VexAssessmentStateFixed
+//	VexAssessmentStateUnderInvestigation
 type VexAssessmentStateInput interface {
 	pulumi.Input
 
@@ -5577,10 +5689,12 @@ func (o VulnerabilityNoteCvssVersionPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// VulnerabilityNoteCvssVersionInput is an input type that accepts VulnerabilityNoteCvssVersionArgs and VulnerabilityNoteCvssVersionOutput values.
-// You can construct a concrete instance of `VulnerabilityNoteCvssVersionInput` via:
+// VulnerabilityNoteCvssVersionInput is an input type that accepts values of the VulnerabilityNoteCvssVersion enum
+// A concrete instance of `VulnerabilityNoteCvssVersionInput` can be one of the following:
 //
-//	VulnerabilityNoteCvssVersionArgs{...}
+//	VulnerabilityNoteCvssVersionCvssVersionUnspecified
+//	VulnerabilityNoteCvssVersionCvssVersion2
+//	VulnerabilityNoteCvssVersionCvssVersion3
 type VulnerabilityNoteCvssVersionInput interface {
 	pulumi.Input
 
@@ -5758,10 +5872,15 @@ func (o VulnerabilityNoteSeverityPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// VulnerabilityNoteSeverityInput is an input type that accepts VulnerabilityNoteSeverityArgs and VulnerabilityNoteSeverityOutput values.
-// You can construct a concrete instance of `VulnerabilityNoteSeverityInput` via:
+// VulnerabilityNoteSeverityInput is an input type that accepts values of the VulnerabilityNoteSeverity enum
+// A concrete instance of `VulnerabilityNoteSeverityInput` can be one of the following:
 //
-//	VulnerabilityNoteSeverityArgs{...}
+//	VulnerabilityNoteSeveritySeverityUnspecified
+//	VulnerabilityNoteSeverityMinimal
+//	VulnerabilityNoteSeverityLow
+//	VulnerabilityNoteSeverityMedium
+//	VulnerabilityNoteSeverityHigh
+//	VulnerabilityNoteSeverityCritical
 type VulnerabilityNoteSeverityInput interface {
 	pulumi.Input
 
@@ -5939,10 +6058,15 @@ func (o VulnerabilityOccurrenceEffectiveSeverityPtrOutput) ToStringPtrOutputWith
 	}).(pulumi.StringPtrOutput)
 }
 
-// VulnerabilityOccurrenceEffectiveSeverityInput is an input type that accepts VulnerabilityOccurrenceEffectiveSeverityArgs and VulnerabilityOccurrenceEffectiveSeverityOutput values.
-// You can construct a concrete instance of `VulnerabilityOccurrenceEffectiveSeverityInput` via:
+// VulnerabilityOccurrenceEffectiveSeverityInput is an input type that accepts values of the VulnerabilityOccurrenceEffectiveSeverity enum
+// A concrete instance of `VulnerabilityOccurrenceEffectiveSeverityInput` can be one of the following:
 //
-//	VulnerabilityOccurrenceEffectiveSeverityArgs{...}
+//	VulnerabilityOccurrenceEffectiveSeveritySeverityUnspecified
+//	VulnerabilityOccurrenceEffectiveSeverityMinimal
+//	VulnerabilityOccurrenceEffectiveSeverityLow
+//	VulnerabilityOccurrenceEffectiveSeverityMedium
+//	VulnerabilityOccurrenceEffectiveSeverityHigh
+//	VulnerabilityOccurrenceEffectiveSeverityCritical
 type VulnerabilityOccurrenceEffectiveSeverityInput interface {
 	pulumi.Input
 

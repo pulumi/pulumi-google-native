@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -332,10 +335,29 @@ func (o ListingCategoriesItemPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ListingCategoriesItemInput is an input type that accepts ListingCategoriesItemArgs and ListingCategoriesItemOutput values.
-// You can construct a concrete instance of `ListingCategoriesItemInput` via:
+// ListingCategoriesItemInput is an input type that accepts values of the ListingCategoriesItem enum
+// A concrete instance of `ListingCategoriesItemInput` can be one of the following:
 //
-//	ListingCategoriesItemArgs{...}
+//	ListingCategoriesItemCategoryUnspecified
+//	ListingCategoriesItemCategoryOthers
+//	ListingCategoriesItemCategoryAdvertisingAndMarketing
+//	ListingCategoriesItemCategoryCommerce
+//	ListingCategoriesItemCategoryClimateAndEnvironment
+//	ListingCategoriesItemCategoryDemographics
+//	ListingCategoriesItemCategoryEconomics
+//	ListingCategoriesItemCategoryEducation
+//	ListingCategoriesItemCategoryEnergy
+//	ListingCategoriesItemCategoryFinancial
+//	ListingCategoriesItemCategoryGaming
+//	ListingCategoriesItemCategoryGeospatial
+//	ListingCategoriesItemCategoryHealthcareAndLifeScience
+//	ListingCategoriesItemCategoryMedia
+//	ListingCategoriesItemCategoryPublicSector
+//	ListingCategoriesItemCategoryRetail
+//	ListingCategoriesItemCategorySports
+//	ListingCategoriesItemCategoryScienceAndResearch
+//	ListingCategoriesItemCategoryTransportationAndLogistics
+//	ListingCategoriesItemCategoryTravelAndTourism
 type ListingCategoriesItemInput interface {
 	pulumi.Input
 

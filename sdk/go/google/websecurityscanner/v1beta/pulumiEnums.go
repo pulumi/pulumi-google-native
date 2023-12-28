@@ -222,10 +222,52 @@ func (o ScanConfigErrorCodePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanConfigErrorCodeInput is an input type that accepts ScanConfigErrorCodeArgs and ScanConfigErrorCodeOutput values.
-// You can construct a concrete instance of `ScanConfigErrorCodeInput` via:
+// ScanConfigErrorCodeInput is an input type that accepts values of the ScanConfigErrorCode enum
+// A concrete instance of `ScanConfigErrorCodeInput` can be one of the following:
 //
-//	ScanConfigErrorCodeArgs{...}
+//	ScanConfigErrorCodeCodeUnspecified
+//	ScanConfigErrorCodeOk
+//	ScanConfigErrorCodeInternalError
+//	ScanConfigErrorCodeAppengineApiBackendError
+//	ScanConfigErrorCodeAppengineApiNotAccessible
+//	ScanConfigErrorCodeAppengineDefaultHostMissing
+//	ScanConfigErrorCodeCannotUseGoogleComAccount
+//	ScanConfigErrorCodeCannotUseOwnerAccount
+//	ScanConfigErrorCodeComputeApiBackendError
+//	ScanConfigErrorCodeComputeApiNotAccessible
+//	ScanConfigErrorCodeCustomLoginUrlDoesNotBelongToCurrentProject
+//	ScanConfigErrorCodeCustomLoginUrlMalformed
+//	ScanConfigErrorCodeCustomLoginUrlMappedToNonRoutableAddress
+//	ScanConfigErrorCodeCustomLoginUrlMappedToUnreservedAddress
+//	ScanConfigErrorCodeCustomLoginUrlHasNonRoutableIpAddress
+//	ScanConfigErrorCodeCustomLoginUrlHasUnreservedIpAddress
+//	ScanConfigErrorCodeDuplicateScanName
+//	ScanConfigErrorCodeInvalidFieldValue
+//	ScanConfigErrorCodeFailedToAuthenticateToTarget
+//	ScanConfigErrorCodeFindingTypeUnspecified
+//	ScanConfigErrorCodeForbiddenToScanCompute
+//	ScanConfigErrorCodeForbiddenUpdateToManagedScan
+//	ScanConfigErrorCodeMalformedFilter
+//	ScanConfigErrorCodeMalformedResourceName
+//	ScanConfigErrorCodeProjectInactive
+//	ScanConfigErrorCodeRequiredField
+//	ScanConfigErrorCodeResourceNameInconsistent
+//	ScanConfigErrorCodeScanAlreadyRunning
+//	ScanConfigErrorCodeScanNotRunning
+//	ScanConfigErrorCodeSeedUrlDoesNotBelongToCurrentProject
+//	ScanConfigErrorCodeSeedUrlMalformed
+//	ScanConfigErrorCodeSeedUrlMappedToNonRoutableAddress
+//	ScanConfigErrorCodeSeedUrlMappedToUnreservedAddress
+//	ScanConfigErrorCodeSeedUrlHasNonRoutableIpAddress
+//	ScanConfigErrorCodeSeedUrlHasUnreservedIpAddress
+//	ScanConfigErrorCodeServiceAccountNotConfigured
+//	ScanConfigErrorCodeTooManyScans
+//	ScanConfigErrorCodeUnableToResolveProjectInfo
+//	ScanConfigErrorCodeUnsupportedBlacklistPatternFormat
+//	ScanConfigErrorCodeUnsupportedFilter
+//	ScanConfigErrorCodeUnsupportedFindingType
+//	ScanConfigErrorCodeUnsupportedUrlScheme
+//	ScanConfigErrorCodeCloudAssetInventoryAssetNotFound
 type ScanConfigErrorCodeInput interface {
 	pulumi.Input
 
@@ -397,10 +439,12 @@ func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToStringPtrOutputWithC
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanConfigExportToSecurityCommandCenterInput is an input type that accepts ScanConfigExportToSecurityCommandCenterArgs and ScanConfigExportToSecurityCommandCenterOutput values.
-// You can construct a concrete instance of `ScanConfigExportToSecurityCommandCenterInput` via:
+// ScanConfigExportToSecurityCommandCenterInput is an input type that accepts values of the ScanConfigExportToSecurityCommandCenter enum
+// A concrete instance of `ScanConfigExportToSecurityCommandCenterInput` can be one of the following:
 //
-//	ScanConfigExportToSecurityCommandCenterArgs{...}
+//	ScanConfigExportToSecurityCommandCenterExportToSecurityCommandCenterUnspecified
+//	ScanConfigExportToSecurityCommandCenterEnabled
+//	ScanConfigExportToSecurityCommandCenterDisabled
 type ScanConfigExportToSecurityCommandCenterInput interface {
 	pulumi.Input
 
@@ -572,10 +616,12 @@ func (o ScanConfigRiskLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanConfigRiskLevelInput is an input type that accepts ScanConfigRiskLevelArgs and ScanConfigRiskLevelOutput values.
-// You can construct a concrete instance of `ScanConfigRiskLevelInput` via:
+// ScanConfigRiskLevelInput is an input type that accepts values of the ScanConfigRiskLevel enum
+// A concrete instance of `ScanConfigRiskLevelInput` can be one of the following:
 //
-//	ScanConfigRiskLevelArgs{...}
+//	ScanConfigRiskLevelRiskLevelUnspecified
+//	ScanConfigRiskLevelNormal
+//	ScanConfigRiskLevelLow
 type ScanConfigRiskLevelInput interface {
 	pulumi.Input
 
@@ -750,10 +796,14 @@ func (o ScanConfigTargetPlatformsItemPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanConfigTargetPlatformsItemInput is an input type that accepts ScanConfigTargetPlatformsItemArgs and ScanConfigTargetPlatformsItemOutput values.
-// You can construct a concrete instance of `ScanConfigTargetPlatformsItemInput` via:
+// ScanConfigTargetPlatformsItemInput is an input type that accepts values of the ScanConfigTargetPlatformsItem enum
+// A concrete instance of `ScanConfigTargetPlatformsItemInput` can be one of the following:
 //
-//	ScanConfigTargetPlatformsItemArgs{...}
+//	ScanConfigTargetPlatformsItemTargetPlatformUnspecified
+//	ScanConfigTargetPlatformsItemAppEngine
+//	ScanConfigTargetPlatformsItemCompute
+//	ScanConfigTargetPlatformsItemCloudRun
+//	ScanConfigTargetPlatformsItemCloudFunctions
 type ScanConfigTargetPlatformsItemInput interface {
 	pulumi.Input
 
@@ -972,10 +1022,13 @@ func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanConfigUserAgentInput is an input type that accepts ScanConfigUserAgentArgs and ScanConfigUserAgentOutput values.
-// You can construct a concrete instance of `ScanConfigUserAgentInput` via:
+// ScanConfigUserAgentInput is an input type that accepts values of the ScanConfigUserAgent enum
+// A concrete instance of `ScanConfigUserAgentInput` can be one of the following:
 //
-//	ScanConfigUserAgentArgs{...}
+//	ScanConfigUserAgentUserAgentUnspecified
+//	ScanConfigUserAgentChromeLinux
+//	ScanConfigUserAgentChromeAndroid
+//	ScanConfigUserAgentSafariIphone
 type ScanConfigUserAgentInput interface {
 	pulumi.Input
 
@@ -1157,10 +1210,17 @@ func (o ScanRunErrorTraceCodePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanRunErrorTraceCodeInput is an input type that accepts ScanRunErrorTraceCodeArgs and ScanRunErrorTraceCodeOutput values.
-// You can construct a concrete instance of `ScanRunErrorTraceCodeInput` via:
+// ScanRunErrorTraceCodeInput is an input type that accepts values of the ScanRunErrorTraceCode enum
+// A concrete instance of `ScanRunErrorTraceCodeInput` can be one of the following:
 //
-//	ScanRunErrorTraceCodeArgs{...}
+//	ScanRunErrorTraceCodeCodeUnspecified
+//	ScanRunErrorTraceCodeInternalError
+//	ScanRunErrorTraceCodeScanConfigIssue
+//	ScanRunErrorTraceCodeAuthenticationConfigIssue
+//	ScanRunErrorTraceCodeTimedOutWhileScanning
+//	ScanRunErrorTraceCodeTooManyRedirects
+//	ScanRunErrorTraceCodeTooManyHttpErrors
+//	ScanRunErrorTraceCodeStartingUrlsCrawlHttpErrors
 type ScanRunErrorTraceCodeInput interface {
 	pulumi.Input
 
@@ -1334,10 +1394,13 @@ func (o ScanRunExecutionStatePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanRunExecutionStateInput is an input type that accepts ScanRunExecutionStateArgs and ScanRunExecutionStateOutput values.
-// You can construct a concrete instance of `ScanRunExecutionStateInput` via:
+// ScanRunExecutionStateInput is an input type that accepts values of the ScanRunExecutionState enum
+// A concrete instance of `ScanRunExecutionStateInput` can be one of the following:
 //
-//	ScanRunExecutionStateArgs{...}
+//	ScanRunExecutionStateExecutionStateUnspecified
+//	ScanRunExecutionStateQueued
+//	ScanRunExecutionStateScanning
+//	ScanRunExecutionStateFinished
 type ScanRunExecutionStateInput interface {
 	pulumi.Input
 
@@ -1511,10 +1574,13 @@ func (o ScanRunResultStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanRunResultStateInput is an input type that accepts ScanRunResultStateArgs and ScanRunResultStateOutput values.
-// You can construct a concrete instance of `ScanRunResultStateInput` via:
+// ScanRunResultStateInput is an input type that accepts values of the ScanRunResultState enum
+// A concrete instance of `ScanRunResultStateInput` can be one of the following:
 //
-//	ScanRunResultStateArgs{...}
+//	ScanRunResultStateResultStateUnspecified
+//	ScanRunResultStateSuccess
+//	ScanRunResultStateError
+//	ScanRunResultStateKilled
 type ScanRunResultStateInput interface {
 	pulumi.Input
 
@@ -1692,10 +1758,15 @@ func (o ScanRunWarningTraceCodePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanRunWarningTraceCodeInput is an input type that accepts ScanRunWarningTraceCodeArgs and ScanRunWarningTraceCodeOutput values.
-// You can construct a concrete instance of `ScanRunWarningTraceCodeInput` via:
+// ScanRunWarningTraceCodeInput is an input type that accepts values of the ScanRunWarningTraceCode enum
+// A concrete instance of `ScanRunWarningTraceCodeInput` can be one of the following:
 //
-//	ScanRunWarningTraceCodeArgs{...}
+//	ScanRunWarningTraceCodeCodeUnspecified
+//	ScanRunWarningTraceCodeInsufficientCrawlResults
+//	ScanRunWarningTraceCodeTooManyCrawlResults
+//	ScanRunWarningTraceCodeTooManyFuzzTasks
+//	ScanRunWarningTraceCodeBlockedByIap
+//	ScanRunWarningTraceCodeNoStartingUrlFoundForManagedScan
 type ScanRunWarningTraceCodeInput interface {
 	pulumi.Input
 

@@ -144,10 +144,13 @@ func (o AccessDeterminationLogConfigLogLevelPtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// AccessDeterminationLogConfigLogLevelInput is an input type that accepts AccessDeterminationLogConfigLogLevelArgs and AccessDeterminationLogConfigLogLevelOutput values.
-// You can construct a concrete instance of `AccessDeterminationLogConfigLogLevelInput` via:
+// AccessDeterminationLogConfigLogLevelInput is an input type that accepts values of the AccessDeterminationLogConfigLogLevel enum
+// A concrete instance of `AccessDeterminationLogConfigLogLevelInput` can be one of the following:
 //
-//	AccessDeterminationLogConfigLogLevelArgs{...}
+//	AccessDeterminationLogConfigLogLevelLogLevelUnspecified
+//	AccessDeterminationLogConfigLogLevelDisabled
+//	AccessDeterminationLogConfigLogLevelMinimum
+//	AccessDeterminationLogConfigLogLevelVerbose
 type AccessDeterminationLogConfigLogLevelInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o AttributeDefinitionCategoryPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// AttributeDefinitionCategoryInput is an input type that accepts AttributeDefinitionCategoryArgs and AttributeDefinitionCategoryOutput values.
-// You can construct a concrete instance of `AttributeDefinitionCategoryInput` via:
+// AttributeDefinitionCategoryInput is an input type that accepts values of the AttributeDefinitionCategory enum
+// A concrete instance of `AttributeDefinitionCategoryInput` can be one of the following:
 //
-//	AttributeDefinitionCategoryArgs{...}
+//	AttributeDefinitionCategoryCategoryUnspecified
+//	AttributeDefinitionCategoryResource
+//	AttributeDefinitionCategoryRequest
 type AttributeDefinitionCategoryInput interface {
 	pulumi.Input
 
@@ -496,10 +501,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -669,10 +677,11 @@ func (o ConsentConfigVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConsentConfigVersionInput is an input type that accepts ConsentConfigVersionArgs and ConsentConfigVersionOutput values.
-// You can construct a concrete instance of `ConsentConfigVersionInput` via:
+// ConsentConfigVersionInput is an input type that accepts values of the ConsentConfigVersion enum
+// A concrete instance of `ConsentConfigVersionInput` can be one of the following:
 //
-//	ConsentConfigVersionArgs{...}
+//	ConsentConfigVersionConsentEnforcementVersionUnspecified
+//	ConsentConfigVersionV1
 type ConsentConfigVersionInput interface {
 	pulumi.Input
 
@@ -844,10 +853,12 @@ func (o ConsentHeaderHandlingProfilePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConsentHeaderHandlingProfileInput is an input type that accepts ConsentHeaderHandlingProfileArgs and ConsentHeaderHandlingProfileOutput values.
-// You can construct a concrete instance of `ConsentHeaderHandlingProfileInput` via:
+// ConsentHeaderHandlingProfileInput is an input type that accepts values of the ConsentHeaderHandlingProfile enum
+// A concrete instance of `ConsentHeaderHandlingProfileInput` can be one of the following:
 //
-//	ConsentHeaderHandlingProfileArgs{...}
+//	ConsentHeaderHandlingProfileScopeProfileUnspecified
+//	ConsentHeaderHandlingProfilePermitEmptyScope
+//	ConsentHeaderHandlingProfileRequiredOnRead
 type ConsentHeaderHandlingProfileInput interface {
 	pulumi.Input
 
@@ -1025,10 +1036,15 @@ func (o ConsentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConsentStateEnumInput is an input type that accepts ConsentStateEnumArgs and ConsentStateEnumOutput values.
-// You can construct a concrete instance of `ConsentStateEnumInput` via:
+// ConsentStateEnumInput is an input type that accepts values of the ConsentStateEnum enum
+// A concrete instance of `ConsentStateEnumInput` can be one of the following:
 //
-//	ConsentStateEnumArgs{...}
+//	ConsentStateEnumStateUnspecified
+//	ConsentStateEnumActive
+//	ConsentStateEnumArchived
+//	ConsentStateEnumRevoked
+//	ConsentStateEnumDraft
+//	ConsentStateEnumRejected
 type ConsentStateEnumInput interface {
 	pulumi.Input
 
@@ -1204,10 +1220,14 @@ func (o DicomConfigFilterProfilePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// DicomConfigFilterProfileInput is an input type that accepts DicomConfigFilterProfileArgs and DicomConfigFilterProfileOutput values.
-// You can construct a concrete instance of `DicomConfigFilterProfileInput` via:
+// DicomConfigFilterProfileInput is an input type that accepts values of the DicomConfigFilterProfile enum
+// A concrete instance of `DicomConfigFilterProfileInput` can be one of the following:
 //
-//	DicomConfigFilterProfileArgs{...}
+//	DicomConfigFilterProfileTagFilterProfileUnspecified
+//	DicomConfigFilterProfileMinimalKeepListProfile
+//	DicomConfigFilterProfileAttributeConfidentialityBasicProfile
+//	DicomConfigFilterProfileKeepAllProfile
+//	DicomConfigFilterProfileDeidentifyTagContents
 type DicomConfigFilterProfileInput interface {
 	pulumi.Input
 
@@ -1383,10 +1403,14 @@ func (o DicomTagConfigProfileTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// DicomTagConfigProfileTypeInput is an input type that accepts DicomTagConfigProfileTypeArgs and DicomTagConfigProfileTypeOutput values.
-// You can construct a concrete instance of `DicomTagConfigProfileTypeInput` via:
+// DicomTagConfigProfileTypeInput is an input type that accepts values of the DicomTagConfigProfileType enum
+// A concrete instance of `DicomTagConfigProfileTypeInput` can be one of the following:
 //
-//	DicomTagConfigProfileTypeArgs{...}
+//	DicomTagConfigProfileTypeProfileTypeUnspecified
+//	DicomTagConfigProfileTypeMinimalKeepListProfile
+//	DicomTagConfigProfileTypeAttributeConfidentialityBasicProfile
+//	DicomTagConfigProfileTypeKeepAllProfile
+//	DicomTagConfigProfileTypeDeidentifyTagContents
 type DicomTagConfigProfileTypeInput interface {
 	pulumi.Input
 
@@ -1560,10 +1584,13 @@ func (o FhirFieldConfigProfileTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// FhirFieldConfigProfileTypeInput is an input type that accepts FhirFieldConfigProfileTypeArgs and FhirFieldConfigProfileTypeOutput values.
-// You can construct a concrete instance of `FhirFieldConfigProfileTypeInput` via:
+// FhirFieldConfigProfileTypeInput is an input type that accepts values of the FhirFieldConfigProfileType enum
+// A concrete instance of `FhirFieldConfigProfileTypeInput` can be one of the following:
 //
-//	FhirFieldConfigProfileTypeArgs{...}
+//	FhirFieldConfigProfileTypeProfileTypeUnspecified
+//	FhirFieldConfigProfileTypeKeepAll
+//	FhirFieldConfigProfileTypeBasic
+//	FhirFieldConfigProfileTypeCleanAll
 type FhirFieldConfigProfileTypeInput interface {
 	pulumi.Input
 
@@ -1735,10 +1762,12 @@ func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToStringPtrOutputWith
 	}).(pulumi.StringPtrOutput)
 }
 
-// FhirStoreComplexDataTypeReferenceParsingInput is an input type that accepts FhirStoreComplexDataTypeReferenceParsingArgs and FhirStoreComplexDataTypeReferenceParsingOutput values.
-// You can construct a concrete instance of `FhirStoreComplexDataTypeReferenceParsingInput` via:
+// FhirStoreComplexDataTypeReferenceParsingInput is an input type that accepts values of the FhirStoreComplexDataTypeReferenceParsing enum
+// A concrete instance of `FhirStoreComplexDataTypeReferenceParsingInput` can be one of the following:
 //
-//	FhirStoreComplexDataTypeReferenceParsingArgs{...}
+//	FhirStoreComplexDataTypeReferenceParsingComplexDataTypeReferenceParsingUnspecified
+//	FhirStoreComplexDataTypeReferenceParsingDisabled
+//	FhirStoreComplexDataTypeReferenceParsingEnabled
 type FhirStoreComplexDataTypeReferenceParsingInput interface {
 	pulumi.Input
 
@@ -1912,10 +1941,13 @@ func (o FhirStoreVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// FhirStoreVersionInput is an input type that accepts FhirStoreVersionArgs and FhirStoreVersionOutput values.
-// You can construct a concrete instance of `FhirStoreVersionInput` via:
+// FhirStoreVersionInput is an input type that accepts values of the FhirStoreVersion enum
+// A concrete instance of `FhirStoreVersionInput` can be one of the following:
 //
-//	FhirStoreVersionArgs{...}
+//	FhirStoreVersionVersionUnspecified
+//	FhirStoreVersionDstu2
+//	FhirStoreVersionStu3
+//	FhirStoreVersionR4
 type FhirStoreVersionInput interface {
 	pulumi.Input
 
@@ -2089,10 +2121,13 @@ func (o FieldMetadataActionPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// FieldMetadataActionInput is an input type that accepts FieldMetadataActionArgs and FieldMetadataActionOutput values.
-// You can construct a concrete instance of `FieldMetadataActionInput` via:
+// FieldMetadataActionInput is an input type that accepts values of the FieldMetadataAction enum
+// A concrete instance of `FieldMetadataActionInput` can be one of the following:
 //
-//	FieldMetadataActionArgs{...}
+//	FieldMetadataActionActionUnspecified
+//	FieldMetadataActionTransform
+//	FieldMetadataActionInspectAndTransform
+//	FieldMetadataActionDoNotTransform
 type FieldMetadataActionInput interface {
 	pulumi.Input
 
@@ -2266,10 +2301,13 @@ func (o GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionInput is an input type that accepts GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionArgs and GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionOutput values.
-// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionInput` via:
+// GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionInput is an input type that accepts values of the GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition enum
+// A concrete instance of `GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionInput` can be one of the following:
 //
-//	GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionArgs{...}
+//	GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionWriteDispositionUnspecified
+//	GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionWriteEmpty
+//	GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionWriteTruncate
+//	GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionWriteAppend
 type GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionInput interface {
 	pulumi.Input
 
@@ -2443,10 +2481,13 @@ func (o GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionInput is an input type that accepts GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionArgs and GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionOutput values.
-// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionInput` via:
+// GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionInput is an input type that accepts values of the GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition enum
+// A concrete instance of `GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionInput` can be one of the following:
 //
-//	GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionArgs{...}
+//	GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionWriteDispositionUnspecified
+//	GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionWriteEmpty
+//	GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionWriteTruncate
+//	GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionWriteAppend
 type GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionInput interface {
 	pulumi.Input
 
@@ -2622,10 +2663,14 @@ func (o ImageConfigTextRedactionModePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// ImageConfigTextRedactionModeInput is an input type that accepts ImageConfigTextRedactionModeArgs and ImageConfigTextRedactionModeOutput values.
-// You can construct a concrete instance of `ImageConfigTextRedactionModeInput` via:
+// ImageConfigTextRedactionModeInput is an input type that accepts values of the ImageConfigTextRedactionMode enum
+// A concrete instance of `ImageConfigTextRedactionModeInput` can be one of the following:
 //
-//	ImageConfigTextRedactionModeArgs{...}
+//	ImageConfigTextRedactionModeTextRedactionModeUnspecified
+//	ImageConfigTextRedactionModeRedactAllText
+//	ImageConfigTextRedactionModeRedactSensitiveText
+//	ImageConfigTextRedactionModeRedactNoText
+//	ImageConfigTextRedactionModeRedactSensitiveTextCleanDescriptors
 type ImageConfigTextRedactionModeInput interface {
 	pulumi.Input
 
@@ -2797,10 +2842,12 @@ func (o OptionsPrimaryIdsPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// OptionsPrimaryIdsInput is an input type that accepts OptionsPrimaryIdsArgs and OptionsPrimaryIdsOutput values.
-// You can construct a concrete instance of `OptionsPrimaryIdsInput` via:
+// OptionsPrimaryIdsInput is an input type that accepts values of the OptionsPrimaryIds enum
+// A concrete instance of `OptionsPrimaryIdsInput` can be one of the following:
 //
-//	OptionsPrimaryIdsArgs{...}
+//	OptionsPrimaryIdsPrimaryIdsOptionUnspecified
+//	OptionsPrimaryIdsKeep
+//	OptionsPrimaryIdsRegen
 type OptionsPrimaryIdsInput interface {
 	pulumi.Input
 
@@ -2974,10 +3021,13 @@ func (o ParserConfigVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ParserConfigVersionInput is an input type that accepts ParserConfigVersionArgs and ParserConfigVersionOutput values.
-// You can construct a concrete instance of `ParserConfigVersionInput` via:
+// ParserConfigVersionInput is an input type that accepts values of the ParserConfigVersion enum
+// A concrete instance of `ParserConfigVersionInput` can be one of the following:
 //
-//	ParserConfigVersionArgs{...}
+//	ParserConfigVersionParserVersionUnspecified
+//	ParserConfigVersionV1
+//	ParserConfigVersionV2
+//	ParserConfigVersionV3
 type ParserConfigVersionInput interface {
 	pulumi.Input
 
@@ -3151,10 +3201,13 @@ func (o SchemaConfigSchemaTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// SchemaConfigSchemaTypeInput is an input type that accepts SchemaConfigSchemaTypeArgs and SchemaConfigSchemaTypeOutput values.
-// You can construct a concrete instance of `SchemaConfigSchemaTypeInput` via:
+// SchemaConfigSchemaTypeInput is an input type that accepts values of the SchemaConfigSchemaType enum
+// A concrete instance of `SchemaConfigSchemaTypeInput` can be one of the following:
 //
-//	SchemaConfigSchemaTypeArgs{...}
+//	SchemaConfigSchemaTypeSchemaTypeUnspecified
+//	SchemaConfigSchemaTypeLossless
+//	SchemaConfigSchemaTypeAnalytics
+//	SchemaConfigSchemaTypeAnalyticsV2
 type SchemaConfigSchemaTypeInput interface {
 	pulumi.Input
 
@@ -3326,10 +3379,12 @@ func (o SchemaPackageSchematizedParsingTypePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SchemaPackageSchematizedParsingTypeInput is an input type that accepts SchemaPackageSchematizedParsingTypeArgs and SchemaPackageSchematizedParsingTypeOutput values.
-// You can construct a concrete instance of `SchemaPackageSchematizedParsingTypeInput` via:
+// SchemaPackageSchematizedParsingTypeInput is an input type that accepts values of the SchemaPackageSchematizedParsingType enum
+// A concrete instance of `SchemaPackageSchematizedParsingTypeInput` can be one of the following:
 //
-//	SchemaPackageSchematizedParsingTypeArgs{...}
+//	SchemaPackageSchematizedParsingTypeSchematizedParsingTypeUnspecified
+//	SchemaPackageSchematizedParsingTypeSoftFail
+//	SchemaPackageSchematizedParsingTypeHardFail
 type SchemaPackageSchematizedParsingTypeInput interface {
 	pulumi.Input
 
@@ -3503,10 +3558,13 @@ func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// SchemaPackageUnexpectedSegmentHandlingInput is an input type that accepts SchemaPackageUnexpectedSegmentHandlingArgs and SchemaPackageUnexpectedSegmentHandlingOutput values.
-// You can construct a concrete instance of `SchemaPackageUnexpectedSegmentHandlingInput` via:
+// SchemaPackageUnexpectedSegmentHandlingInput is an input type that accepts values of the SchemaPackageUnexpectedSegmentHandling enum
+// A concrete instance of `SchemaPackageUnexpectedSegmentHandlingInput` can be one of the following:
 //
-//	SchemaPackageUnexpectedSegmentHandlingArgs{...}
+//	SchemaPackageUnexpectedSegmentHandlingUnexpectedSegmentHandlingModeUnspecified
+//	SchemaPackageUnexpectedSegmentHandlingFail
+//	SchemaPackageUnexpectedSegmentHandlingSkip
+//	SchemaPackageUnexpectedSegmentHandlingParse
 type SchemaPackageUnexpectedSegmentHandlingInput interface {
 	pulumi.Input
 
@@ -3678,10 +3736,12 @@ func (o TextConfigProfileTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// TextConfigProfileTypeInput is an input type that accepts TextConfigProfileTypeArgs and TextConfigProfileTypeOutput values.
-// You can construct a concrete instance of `TextConfigProfileTypeInput` via:
+// TextConfigProfileTypeInput is an input type that accepts values of the TextConfigProfileType enum
+// A concrete instance of `TextConfigProfileTypeInput` can be one of the following:
 //
-//	TextConfigProfileTypeArgs{...}
+//	TextConfigProfileTypeProfileTypeUnspecified
+//	TextConfigProfileTypeEmpty
+//	TextConfigProfileTypeBasic
 type TextConfigProfileTypeInput interface {
 	pulumi.Input
 
@@ -3857,10 +3917,14 @@ func (o TimePartitioningTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// TimePartitioningTypeInput is an input type that accepts TimePartitioningTypeArgs and TimePartitioningTypeOutput values.
-// You can construct a concrete instance of `TimePartitioningTypeInput` via:
+// TimePartitioningTypeInput is an input type that accepts values of the TimePartitioningType enum
+// A concrete instance of `TimePartitioningTypeInput` can be one of the following:
 //
-//	TimePartitioningTypeArgs{...}
+//	TimePartitioningTypePartitionTypeUnspecified
+//	TimePartitioningTypeHour
+//	TimePartitioningTypeDay
+//	TimePartitioningTypeMonth
+//	TimePartitioningTypeYear
 type TimePartitioningTypeInput interface {
 	pulumi.Input
 
@@ -4034,10 +4098,13 @@ func (o TypePrimitivePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// TypePrimitiveInput is an input type that accepts TypePrimitiveArgs and TypePrimitiveOutput values.
-// You can construct a concrete instance of `TypePrimitiveInput` via:
+// TypePrimitiveInput is an input type that accepts values of the TypePrimitive enum
+// A concrete instance of `TypePrimitiveInput` can be one of the following:
 //
-//	TypePrimitiveArgs{...}
+//	TypePrimitivePrimitiveUnspecified
+//	TypePrimitiveString
+//	TypePrimitiveVaries
+//	TypePrimitiveUnescapedString
 type TypePrimitiveInput interface {
 	pulumi.Input
 

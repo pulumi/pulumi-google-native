@@ -142,10 +142,12 @@ func (o SchemaSettingsEncodingPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// SchemaSettingsEncodingInput is an input type that accepts SchemaSettingsEncodingArgs and SchemaSettingsEncodingOutput values.
-// You can construct a concrete instance of `SchemaSettingsEncodingInput` via:
+// SchemaSettingsEncodingInput is an input type that accepts values of the SchemaSettingsEncoding enum
+// A concrete instance of `SchemaSettingsEncodingInput` can be one of the following:
 //
-//	SchemaSettingsEncodingArgs{...}
+//	SchemaSettingsEncodingEncodingUnspecified
+//	SchemaSettingsEncodingJson
+//	SchemaSettingsEncodingBinary
 type SchemaSettingsEncodingInput interface {
 	pulumi.Input
 
@@ -317,10 +319,12 @@ func (o SchemaTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 	}).(pulumi.StringPtrOutput)
 }
 
-// SchemaTypeInput is an input type that accepts SchemaTypeArgs and SchemaTypeOutput values.
-// You can construct a concrete instance of `SchemaTypeInput` via:
+// SchemaTypeInput is an input type that accepts values of the SchemaType enum
+// A concrete instance of `SchemaTypeInput` can be one of the following:
 //
-//	SchemaTypeArgs{...}
+//	SchemaTypeTypeUnspecified
+//	SchemaTypeProtocolBuffer
+//	SchemaTypeAvro
 type SchemaTypeInput interface {
 	pulumi.Input
 

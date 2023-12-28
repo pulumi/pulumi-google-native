@@ -142,10 +142,12 @@ func (o AllowedClientMountPermissionsPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// AllowedClientMountPermissionsInput is an input type that accepts AllowedClientMountPermissionsArgs and AllowedClientMountPermissionsOutput values.
-// You can construct a concrete instance of `AllowedClientMountPermissionsInput` via:
+// AllowedClientMountPermissionsInput is an input type that accepts values of the AllowedClientMountPermissions enum
+// A concrete instance of `AllowedClientMountPermissionsInput` can be one of the following:
 //
-//	AllowedClientMountPermissionsArgs{...}
+//	AllowedClientMountPermissionsMountPermissionsUnspecified
+//	AllowedClientMountPermissionsRead
+//	AllowedClientMountPermissionsReadWrite
 type AllowedClientMountPermissionsInput interface {
 	pulumi.Input
 
@@ -317,10 +319,12 @@ func (o InstanceConfigNetworkConfigPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceConfigNetworkConfigInput is an input type that accepts InstanceConfigNetworkConfigArgs and InstanceConfigNetworkConfigOutput values.
-// You can construct a concrete instance of `InstanceConfigNetworkConfigInput` via:
+// InstanceConfigNetworkConfigInput is an input type that accepts values of the InstanceConfigNetworkConfig enum
+// A concrete instance of `InstanceConfigNetworkConfigInput` can be one of the following:
 //
-//	InstanceConfigNetworkConfigArgs{...}
+//	InstanceConfigNetworkConfigNetworkconfigUnspecified
+//	InstanceConfigNetworkConfigSingleVlan
+//	InstanceConfigNetworkConfigMultiVlan
 type InstanceConfigNetworkConfigInput interface {
 	pulumi.Input
 
@@ -492,10 +496,12 @@ func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// LogicalNetworkInterfaceNetworkTypeInput is an input type that accepts LogicalNetworkInterfaceNetworkTypeArgs and LogicalNetworkInterfaceNetworkTypeOutput values.
-// You can construct a concrete instance of `LogicalNetworkInterfaceNetworkTypeInput` via:
+// LogicalNetworkInterfaceNetworkTypeInput is an input type that accepts values of the LogicalNetworkInterfaceNetworkType enum
+// A concrete instance of `LogicalNetworkInterfaceNetworkTypeInput` can be one of the following:
 //
-//	LogicalNetworkInterfaceNetworkTypeArgs{...}
+//	LogicalNetworkInterfaceNetworkTypeTypeUnspecified
+//	LogicalNetworkInterfaceNetworkTypeClient
+//	LogicalNetworkInterfaceNetworkTypePrivate
 type LogicalNetworkInterfaceNetworkTypeInput interface {
 	pulumi.Input
 
@@ -671,10 +677,14 @@ func (o NetworkConfigBandwidthPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkConfigBandwidthInput is an input type that accepts NetworkConfigBandwidthArgs and NetworkConfigBandwidthOutput values.
-// You can construct a concrete instance of `NetworkConfigBandwidthInput` via:
+// NetworkConfigBandwidthInput is an input type that accepts values of the NetworkConfigBandwidth enum
+// A concrete instance of `NetworkConfigBandwidthInput` can be one of the following:
 //
-//	NetworkConfigBandwidthArgs{...}
+//	NetworkConfigBandwidthBandwidthUnspecified
+//	NetworkConfigBandwidthBw1Gbps
+//	NetworkConfigBandwidthBw2Gbps
+//	NetworkConfigBandwidthBw5Gbps
+//	NetworkConfigBandwidthBw10Gbps
 type NetworkConfigBandwidthInput interface {
 	pulumi.Input
 
@@ -850,10 +860,14 @@ func (o NetworkConfigServiceCidrPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkConfigServiceCidrInput is an input type that accepts NetworkConfigServiceCidrArgs and NetworkConfigServiceCidrOutput values.
-// You can construct a concrete instance of `NetworkConfigServiceCidrInput` via:
+// NetworkConfigServiceCidrInput is an input type that accepts values of the NetworkConfigServiceCidr enum
+// A concrete instance of `NetworkConfigServiceCidrInput` can be one of the following:
 //
-//	NetworkConfigServiceCidrArgs{...}
+//	NetworkConfigServiceCidrServiceCidrUnspecified
+//	NetworkConfigServiceCidrDisabled
+//	NetworkConfigServiceCidrHigh26
+//	NetworkConfigServiceCidrHigh27
+//	NetworkConfigServiceCidrHigh28
 type NetworkConfigServiceCidrInput interface {
 	pulumi.Input
 
@@ -1025,10 +1039,12 @@ func (o NetworkConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkConfigTypeInput is an input type that accepts NetworkConfigTypeArgs and NetworkConfigTypeOutput values.
-// You can construct a concrete instance of `NetworkConfigTypeInput` via:
+// NetworkConfigTypeInput is an input type that accepts values of the NetworkConfigType enum
+// A concrete instance of `NetworkConfigTypeInput` can be one of the following:
 //
-//	NetworkConfigTypeArgs{...}
+//	NetworkConfigTypeTypeUnspecified
+//	NetworkConfigTypeClient
+//	NetworkConfigTypePrivate
 type NetworkConfigTypeInput interface {
 	pulumi.Input
 
@@ -1200,10 +1216,12 @@ func (o NfsExportPermissionsPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// NfsExportPermissionsInput is an input type that accepts NfsExportPermissionsArgs and NfsExportPermissionsOutput values.
-// You can construct a concrete instance of `NfsExportPermissionsInput` via:
+// NfsExportPermissionsInput is an input type that accepts values of the NfsExportPermissions enum
+// A concrete instance of `NfsExportPermissionsInput` can be one of the following:
 //
-//	NfsExportPermissionsArgs{...}
+//	NfsExportPermissionsPermissionsUnspecified
+//	NfsExportPermissionsReadOnly
+//	NfsExportPermissionsReadWrite
 type NfsExportPermissionsInput interface {
 	pulumi.Input
 
@@ -1375,10 +1393,12 @@ func (o NfsShareStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// NfsShareStorageTypeInput is an input type that accepts NfsShareStorageTypeArgs and NfsShareStorageTypeOutput values.
-// You can construct a concrete instance of `NfsShareStorageTypeInput` via:
+// NfsShareStorageTypeInput is an input type that accepts values of the NfsShareStorageType enum
+// A concrete instance of `NfsShareStorageTypeInput` can be one of the following:
 //
-//	NfsShareStorageTypeArgs{...}
+//	NfsShareStorageTypeStorageTypeUnspecified
+//	NfsShareStorageTypeSsd
+//	NfsShareStorageTypeHdd
 type NfsShareStorageTypeInput interface {
 	pulumi.Input
 
@@ -1552,10 +1572,13 @@ func (o VolumeConfigPerformanceTierPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// VolumeConfigPerformanceTierInput is an input type that accepts VolumeConfigPerformanceTierArgs and VolumeConfigPerformanceTierOutput values.
-// You can construct a concrete instance of `VolumeConfigPerformanceTierInput` via:
+// VolumeConfigPerformanceTierInput is an input type that accepts values of the VolumeConfigPerformanceTier enum
+// A concrete instance of `VolumeConfigPerformanceTierInput` can be one of the following:
 //
-//	VolumeConfigPerformanceTierArgs{...}
+//	VolumeConfigPerformanceTierVolumePerformanceTierUnspecified
+//	VolumeConfigPerformanceTierVolumePerformanceTierShared
+//	VolumeConfigPerformanceTierVolumePerformanceTierAssigned
+//	VolumeConfigPerformanceTierVolumePerformanceTierHt
 type VolumeConfigPerformanceTierInput interface {
 	pulumi.Input
 
@@ -1727,10 +1750,12 @@ func (o VolumeConfigProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// VolumeConfigProtocolInput is an input type that accepts VolumeConfigProtocolArgs and VolumeConfigProtocolOutput values.
-// You can construct a concrete instance of `VolumeConfigProtocolInput` via:
+// VolumeConfigProtocolInput is an input type that accepts values of the VolumeConfigProtocol enum
+// A concrete instance of `VolumeConfigProtocolInput` can be one of the following:
 //
-//	VolumeConfigProtocolArgs{...}
+//	VolumeConfigProtocolProtocolUnspecified
+//	VolumeConfigProtocolProtocolFc
+//	VolumeConfigProtocolProtocolNfs
 type VolumeConfigProtocolInput interface {
 	pulumi.Input
 
@@ -1902,10 +1927,12 @@ func (o VolumeConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// VolumeConfigTypeInput is an input type that accepts VolumeConfigTypeArgs and VolumeConfigTypeOutput values.
-// You can construct a concrete instance of `VolumeConfigTypeInput` via:
+// VolumeConfigTypeInput is an input type that accepts values of the VolumeConfigType enum
+// A concrete instance of `VolumeConfigTypeInput` can be one of the following:
 //
-//	VolumeConfigTypeArgs{...}
+//	VolumeConfigTypeTypeUnspecified
+//	VolumeConfigTypeFlash
+//	VolumeConfigTypeDisk
 type VolumeConfigTypeInput interface {
 	pulumi.Input
 

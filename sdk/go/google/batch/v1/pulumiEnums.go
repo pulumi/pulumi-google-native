@@ -144,10 +144,13 @@ func (o InstancePolicyProvisioningModelPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstancePolicyProvisioningModelInput is an input type that accepts InstancePolicyProvisioningModelArgs and InstancePolicyProvisioningModelOutput values.
-// You can construct a concrete instance of `InstancePolicyProvisioningModelInput` via:
+// InstancePolicyProvisioningModelInput is an input type that accepts values of the InstancePolicyProvisioningModel enum
+// A concrete instance of `InstancePolicyProvisioningModelInput` can be one of the following:
 //
-//	InstancePolicyProvisioningModelArgs{...}
+//	InstancePolicyProvisioningModelProvisioningModelUnspecified
+//	InstancePolicyProvisioningModelStandard
+//	InstancePolicyProvisioningModelSpot
+//	InstancePolicyProvisioningModelPreemptible
 type InstancePolicyProvisioningModelInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o LifecyclePolicyActionPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// LifecyclePolicyActionInput is an input type that accepts LifecyclePolicyActionArgs and LifecyclePolicyActionOutput values.
-// You can construct a concrete instance of `LifecyclePolicyActionInput` via:
+// LifecyclePolicyActionInput is an input type that accepts values of the LifecyclePolicyAction enum
+// A concrete instance of `LifecyclePolicyActionInput` can be one of the following:
 //
-//	LifecyclePolicyActionArgs{...}
+//	LifecyclePolicyActionActionUnspecified
+//	LifecyclePolicyActionRetryTask
+//	LifecyclePolicyActionFailTask
 type LifecyclePolicyActionInput interface {
 	pulumi.Input
 
@@ -494,10 +499,12 @@ func (o LogsPolicyDestinationPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// LogsPolicyDestinationInput is an input type that accepts LogsPolicyDestinationArgs and LogsPolicyDestinationOutput values.
-// You can construct a concrete instance of `LogsPolicyDestinationInput` via:
+// LogsPolicyDestinationInput is an input type that accepts values of the LogsPolicyDestination enum
+// A concrete instance of `LogsPolicyDestinationInput` can be one of the following:
 //
-//	LogsPolicyDestinationArgs{...}
+//	LogsPolicyDestinationDestinationUnspecified
+//	LogsPolicyDestinationCloudLogging
+//	LogsPolicyDestinationPath
 type LogsPolicyDestinationInput interface {
 	pulumi.Input
 
@@ -677,10 +684,16 @@ func (o MessageNewJobStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// MessageNewJobStateInput is an input type that accepts MessageNewJobStateArgs and MessageNewJobStateOutput values.
-// You can construct a concrete instance of `MessageNewJobStateInput` via:
+// MessageNewJobStateInput is an input type that accepts values of the MessageNewJobState enum
+// A concrete instance of `MessageNewJobStateInput` can be one of the following:
 //
-//	MessageNewJobStateArgs{...}
+//	MessageNewJobStateStateUnspecified
+//	MessageNewJobStateQueued
+//	MessageNewJobStateScheduled
+//	MessageNewJobStateRunning
+//	MessageNewJobStateSucceeded
+//	MessageNewJobStateFailed
+//	MessageNewJobStateDeletionInProgress
 type MessageNewJobStateInput interface {
 	pulumi.Input
 
@@ -860,10 +873,16 @@ func (o MessageNewTaskStatePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// MessageNewTaskStateInput is an input type that accepts MessageNewTaskStateArgs and MessageNewTaskStateOutput values.
-// You can construct a concrete instance of `MessageNewTaskStateInput` via:
+// MessageNewTaskStateInput is an input type that accepts values of the MessageNewTaskState enum
+// A concrete instance of `MessageNewTaskStateInput` can be one of the following:
 //
-//	MessageNewTaskStateArgs{...}
+//	MessageNewTaskStateStateUnspecified
+//	MessageNewTaskStatePending
+//	MessageNewTaskStateAssigned
+//	MessageNewTaskStateRunning
+//	MessageNewTaskStateFailed
+//	MessageNewTaskStateSucceeded
+//	MessageNewTaskStateUnexecuted
 type MessageNewTaskStateInput interface {
 	pulumi.Input
 
@@ -1035,10 +1054,12 @@ func (o MessageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// MessageTypeInput is an input type that accepts MessageTypeArgs and MessageTypeOutput values.
-// You can construct a concrete instance of `MessageTypeInput` via:
+// MessageTypeInput is an input type that accepts values of the MessageType enum
+// A concrete instance of `MessageTypeInput` can be one of the following:
 //
-//	MessageTypeArgs{...}
+//	MessageTypeTypeUnspecified
+//	MessageTypeJobStateChanged
+//	MessageTypeTaskStateChanged
 type MessageTypeInput interface {
 	pulumi.Input
 
@@ -1210,10 +1231,12 @@ func (o TaskGroupSchedulingPolicyPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// TaskGroupSchedulingPolicyInput is an input type that accepts TaskGroupSchedulingPolicyArgs and TaskGroupSchedulingPolicyOutput values.
-// You can construct a concrete instance of `TaskGroupSchedulingPolicyInput` via:
+// TaskGroupSchedulingPolicyInput is an input type that accepts values of the TaskGroupSchedulingPolicy enum
+// A concrete instance of `TaskGroupSchedulingPolicyInput` can be one of the following:
 //
-//	TaskGroupSchedulingPolicyArgs{...}
+//	TaskGroupSchedulingPolicySchedulingPolicyUnspecified
+//	TaskGroupSchedulingPolicyAsSoonAsPossible
+//	TaskGroupSchedulingPolicyInOrder
 type TaskGroupSchedulingPolicyInput interface {
 	pulumi.Input
 

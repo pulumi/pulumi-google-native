@@ -144,10 +144,13 @@ func (o EnvironmentConfigEnvironmentSizePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnvironmentConfigEnvironmentSizeInput is an input type that accepts EnvironmentConfigEnvironmentSizeArgs and EnvironmentConfigEnvironmentSizeOutput values.
-// You can construct a concrete instance of `EnvironmentConfigEnvironmentSizeInput` via:
+// EnvironmentConfigEnvironmentSizeInput is an input type that accepts values of the EnvironmentConfigEnvironmentSize enum
+// A concrete instance of `EnvironmentConfigEnvironmentSizeInput` can be one of the following:
 //
-//	EnvironmentConfigEnvironmentSizeArgs{...}
+//	EnvironmentConfigEnvironmentSizeEnvironmentSizeUnspecified
+//	EnvironmentConfigEnvironmentSizeEnvironmentSizeSmall
+//	EnvironmentConfigEnvironmentSizeEnvironmentSizeMedium
+//	EnvironmentConfigEnvironmentSizeEnvironmentSizeLarge
 type EnvironmentConfigEnvironmentSizeInput interface {
 	pulumi.Input
 
@@ -317,10 +320,11 @@ func (o EnvironmentConfigResilienceModePtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnvironmentConfigResilienceModeInput is an input type that accepts EnvironmentConfigResilienceModeArgs and EnvironmentConfigResilienceModeOutput values.
-// You can construct a concrete instance of `EnvironmentConfigResilienceModeInput` via:
+// EnvironmentConfigResilienceModeInput is an input type that accepts values of the EnvironmentConfigResilienceMode enum
+// A concrete instance of `EnvironmentConfigResilienceModeInput` can be one of the following:
 //
-//	EnvironmentConfigResilienceModeArgs{...}
+//	EnvironmentConfigResilienceModeResilienceModeUnspecified
+//	EnvironmentConfigResilienceModeHighResilience
 type EnvironmentConfigResilienceModeInput interface {
 	pulumi.Input
 
@@ -498,10 +502,15 @@ func (o EnvironmentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnvironmentStateEnumInput is an input type that accepts EnvironmentStateEnumArgs and EnvironmentStateEnumOutput values.
-// You can construct a concrete instance of `EnvironmentStateEnumInput` via:
+// EnvironmentStateEnumInput is an input type that accepts values of the EnvironmentStateEnum enum
+// A concrete instance of `EnvironmentStateEnumInput` can be one of the following:
 //
-//	EnvironmentStateEnumArgs{...}
+//	EnvironmentStateEnumStateUnspecified
+//	EnvironmentStateEnumCreating
+//	EnvironmentStateEnumRunning
+//	EnvironmentStateEnumUpdating
+//	EnvironmentStateEnumDeleting
+//	EnvironmentStateEnumError
 type EnvironmentStateEnumInput interface {
 	pulumi.Input
 
@@ -673,10 +682,12 @@ func (o NetworkingConfigConnectionTypePtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkingConfigConnectionTypeInput is an input type that accepts NetworkingConfigConnectionTypeArgs and NetworkingConfigConnectionTypeOutput values.
-// You can construct a concrete instance of `NetworkingConfigConnectionTypeInput` via:
+// NetworkingConfigConnectionTypeInput is an input type that accepts values of the NetworkingConfigConnectionType enum
+// A concrete instance of `NetworkingConfigConnectionTypeInput` can be one of the following:
 //
-//	NetworkingConfigConnectionTypeArgs{...}
+//	NetworkingConfigConnectionTypeConnectionTypeUnspecified
+//	NetworkingConfigConnectionTypeVpcPeering
+//	NetworkingConfigConnectionTypePrivateServiceConnect
 type NetworkingConfigConnectionTypeInput interface {
 	pulumi.Input
 

@@ -152,10 +152,17 @@ func (o CompanySizePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// CompanySizeInput is an input type that accepts CompanySizeArgs and CompanySizeOutput values.
-// You can construct a concrete instance of `CompanySizeInput` via:
+// CompanySizeInput is an input type that accepts values of the CompanySize enum
+// A concrete instance of `CompanySizeInput` can be one of the following:
 //
-//	CompanySizeArgs{...}
+//	CompanySizeCompanySizeUnspecified
+//	CompanySizeMini
+//	CompanySizeSmall
+//	CompanySizeSmedium
+//	CompanySizeMedium
+//	CompanySizeBig
+//	CompanySizeBigger
+//	CompanySizeGiant
 type CompanySizeInput interface {
 	pulumi.Input
 
@@ -339,10 +346,18 @@ func (o CompensationEntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// CompensationEntryTypeInput is an input type that accepts CompensationEntryTypeArgs and CompensationEntryTypeOutput values.
-// You can construct a concrete instance of `CompensationEntryTypeInput` via:
+// CompensationEntryTypeInput is an input type that accepts values of the CompensationEntryType enum
+// A concrete instance of `CompensationEntryTypeInput` can be one of the following:
 //
-//	CompensationEntryTypeArgs{...}
+//	CompensationEntryTypeCompensationTypeUnspecified
+//	CompensationEntryTypeBase
+//	CompensationEntryTypeBonus
+//	CompensationEntryTypeSigningBonus
+//	CompensationEntryTypeEquity
+//	CompensationEntryTypeProfitSharing
+//	CompensationEntryTypeCommissions
+//	CompensationEntryTypeTips
+//	CompensationEntryTypeOtherCompensationType
 type CompensationEntryTypeInput interface {
 	pulumi.Input
 
@@ -524,10 +539,17 @@ func (o CompensationEntryUnitPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// CompensationEntryUnitInput is an input type that accepts CompensationEntryUnitArgs and CompensationEntryUnitOutput values.
-// You can construct a concrete instance of `CompensationEntryUnitInput` via:
+// CompensationEntryUnitInput is an input type that accepts values of the CompensationEntryUnit enum
+// A concrete instance of `CompensationEntryUnitInput` can be one of the following:
 //
-//	CompensationEntryUnitArgs{...}
+//	CompensationEntryUnitCompensationUnitUnspecified
+//	CompensationEntryUnitHourly
+//	CompensationEntryUnitDaily
+//	CompensationEntryUnitWeekly
+//	CompensationEntryUnitMonthly
+//	CompensationEntryUnitYearly
+//	CompensationEntryUnitOneTime
+//	CompensationEntryUnitOtherCompensationUnit
 type CompensationEntryUnitInput interface {
 	pulumi.Input
 
@@ -710,10 +732,18 @@ func (o JobDegreeTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobDegreeTypesItemInput is an input type that accepts JobDegreeTypesItemArgs and JobDegreeTypesItemOutput values.
-// You can construct a concrete instance of `JobDegreeTypesItemInput` via:
+// JobDegreeTypesItemInput is an input type that accepts values of the JobDegreeTypesItem enum
+// A concrete instance of `JobDegreeTypesItemInput` can be one of the following:
 //
-//	JobDegreeTypesItemArgs{...}
+//	JobDegreeTypesItemDegreeTypeUnspecified
+//	JobDegreeTypesItemPrimaryEducation
+//	JobDegreeTypesItemLowerSecondaryEducation
+//	JobDegreeTypesItemUpperSecondaryEducation
+//	JobDegreeTypesItemAdultRemedialEducation
+//	JobDegreeTypesItemAssociatesOrEquivalent
+//	JobDegreeTypesItemBachelorsOrEquivalent
+//	JobDegreeTypesItemMastersOrEquivalent
+//	JobDegreeTypesItemDoctoralOrEquivalent
 type JobDegreeTypesItemInput interface {
 	pulumi.Input
 
@@ -945,10 +975,20 @@ func (o JobEmploymentTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobEmploymentTypesItemInput is an input type that accepts JobEmploymentTypesItemArgs and JobEmploymentTypesItemOutput values.
-// You can construct a concrete instance of `JobEmploymentTypesItemInput` via:
+// JobEmploymentTypesItemInput is an input type that accepts values of the JobEmploymentTypesItem enum
+// A concrete instance of `JobEmploymentTypesItemInput` can be one of the following:
 //
-//	JobEmploymentTypesItemArgs{...}
+//	JobEmploymentTypesItemEmploymentTypeUnspecified
+//	JobEmploymentTypesItemFullTime
+//	JobEmploymentTypesItemPartTime
+//	JobEmploymentTypesItemContractor
+//	JobEmploymentTypesItemContractToHire
+//	JobEmploymentTypesItemTemporary
+//	JobEmploymentTypesItemIntern
+//	JobEmploymentTypesItemVolunteer
+//	JobEmploymentTypesItemPerDiem
+//	JobEmploymentTypesItemFlyInFlyOut
+//	JobEmploymentTypesItemOtherEmploymentType
 type JobEmploymentTypesItemInput interface {
 	pulumi.Input
 
@@ -1182,10 +1222,21 @@ func (o JobJobBenefitsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobJobBenefitsItemInput is an input type that accepts JobJobBenefitsItemArgs and JobJobBenefitsItemOutput values.
-// You can construct a concrete instance of `JobJobBenefitsItemInput` via:
+// JobJobBenefitsItemInput is an input type that accepts values of the JobJobBenefitsItem enum
+// A concrete instance of `JobJobBenefitsItemInput` can be one of the following:
 //
-//	JobJobBenefitsItemArgs{...}
+//	JobJobBenefitsItemJobBenefitUnspecified
+//	JobJobBenefitsItemChildCare
+//	JobJobBenefitsItemDental
+//	JobJobBenefitsItemDomesticPartner
+//	JobJobBenefitsItemFlexibleHours
+//	JobJobBenefitsItemMedical
+//	JobJobBenefitsItemLifeInsurance
+//	JobJobBenefitsItemParentalLeave
+//	JobJobBenefitsItemRetirementPlan
+//	JobJobBenefitsItemSickDays
+//	JobJobBenefitsItemVacation
+//	JobJobBenefitsItemVision
 type JobJobBenefitsItemInput interface {
 	pulumi.Input
 
@@ -1408,10 +1459,15 @@ func (o JobJobLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobJobLevelInput is an input type that accepts JobJobLevelArgs and JobJobLevelOutput values.
-// You can construct a concrete instance of `JobJobLevelInput` via:
+// JobJobLevelInput is an input type that accepts values of the JobJobLevel enum
+// A concrete instance of `JobJobLevelInput` can be one of the following:
 //
-//	JobJobLevelArgs{...}
+//	JobJobLevelJobLevelUnspecified
+//	JobJobLevelEntryLevel
+//	JobJobLevelExperienced
+//	JobJobLevelManager
+//	JobJobLevelDirector
+//	JobJobLevelExecutive
 type JobJobLevelInput interface {
 	pulumi.Input
 
@@ -1585,10 +1641,13 @@ func (o JobPostingRegionPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobPostingRegionInput is an input type that accepts JobPostingRegionArgs and JobPostingRegionOutput values.
-// You can construct a concrete instance of `JobPostingRegionInput` via:
+// JobPostingRegionInput is an input type that accepts values of the JobPostingRegion enum
+// A concrete instance of `JobPostingRegionInput` can be one of the following:
 //
-//	JobPostingRegionArgs{...}
+//	JobPostingRegionPostingRegionUnspecified
+//	JobPostingRegionAdministrativeArea
+//	JobPostingRegionNation
+//	JobPostingRegionTelecommute
 type JobPostingRegionInput interface {
 	pulumi.Input
 
@@ -1762,10 +1821,13 @@ func (o JobVisibilityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobVisibilityInput is an input type that accepts JobVisibilityArgs and JobVisibilityOutput values.
-// You can construct a concrete instance of `JobVisibilityInput` via:
+// JobVisibilityInput is an input type that accepts values of the JobVisibility enum
+// A concrete instance of `JobVisibilityInput` can be one of the following:
 //
-//	JobVisibilityArgs{...}
+//	JobVisibilityVisibilityUnspecified
+//	JobVisibilityAccountOnly
+//	JobVisibilitySharedWithGoogle
+//	JobVisibilitySharedWithPublic
 type JobVisibilityInput interface {
 	pulumi.Input
 
@@ -1937,10 +1999,12 @@ func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// ProcessingOptionsHtmlSanitizationInput is an input type that accepts ProcessingOptionsHtmlSanitizationArgs and ProcessingOptionsHtmlSanitizationOutput values.
-// You can construct a concrete instance of `ProcessingOptionsHtmlSanitizationInput` via:
+// ProcessingOptionsHtmlSanitizationInput is an input type that accepts values of the ProcessingOptionsHtmlSanitization enum
+// A concrete instance of `ProcessingOptionsHtmlSanitizationInput` can be one of the following:
 //
-//	ProcessingOptionsHtmlSanitizationArgs{...}
+//	ProcessingOptionsHtmlSanitizationHtmlSanitizationUnspecified
+//	ProcessingOptionsHtmlSanitizationHtmlSanitizationDisabled
+//	ProcessingOptionsHtmlSanitizationSimpleFormattingOnly
 type ProcessingOptionsHtmlSanitizationInput interface {
 	pulumi.Input
 

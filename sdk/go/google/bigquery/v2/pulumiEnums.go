@@ -142,10 +142,12 @@ func (o ArgumentArgumentKindPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ArgumentArgumentKindInput is an input type that accepts ArgumentArgumentKindArgs and ArgumentArgumentKindOutput values.
-// You can construct a concrete instance of `ArgumentArgumentKindInput` via:
+// ArgumentArgumentKindInput is an input type that accepts values of the ArgumentArgumentKind enum
+// A concrete instance of `ArgumentArgumentKindInput` can be one of the following:
 //
-//	ArgumentArgumentKindArgs{...}
+//	ArgumentArgumentKindArgumentKindUnspecified
+//	ArgumentArgumentKindFixedType
+//	ArgumentArgumentKindAnyType
 type ArgumentArgumentKindInput interface {
 	pulumi.Input
 
@@ -319,10 +321,13 @@ func (o ArgumentModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// ArgumentModeInput is an input type that accepts ArgumentModeArgs and ArgumentModeOutput values.
-// You can construct a concrete instance of `ArgumentModeInput` via:
+// ArgumentModeInput is an input type that accepts values of the ArgumentMode enum
+// A concrete instance of `ArgumentModeInput` can be one of the following:
 //
-//	ArgumentModeArgs{...}
+//	ArgumentModeModeUnspecified
+//	ArgumentModeIn
+//	ArgumentModeOut
+//	ArgumentModeInout
 type ArgumentModeInput interface {
 	pulumi.Input
 
@@ -496,10 +501,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -670,10 +678,12 @@ func (o DatasetAccessEntryTargetTypesItemPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatasetAccessEntryTargetTypesItemInput is an input type that accepts DatasetAccessEntryTargetTypesItemArgs and DatasetAccessEntryTargetTypesItemOutput values.
-// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemInput` via:
+// DatasetAccessEntryTargetTypesItemInput is an input type that accepts values of the DatasetAccessEntryTargetTypesItem enum
+// A concrete instance of `DatasetAccessEntryTargetTypesItemInput` can be one of the following:
 //
-//	DatasetAccessEntryTargetTypesItemArgs{...}
+//	DatasetAccessEntryTargetTypesItemTargetTypeUnspecified
+//	DatasetAccessEntryTargetTypesItemViews
+//	DatasetAccessEntryTargetTypesItemRoutines
 type DatasetAccessEntryTargetTypesItemInput interface {
 	pulumi.Input
 
@@ -888,10 +898,11 @@ func (o RoutineDataGovernanceTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// RoutineDataGovernanceTypeInput is an input type that accepts RoutineDataGovernanceTypeArgs and RoutineDataGovernanceTypeOutput values.
-// You can construct a concrete instance of `RoutineDataGovernanceTypeInput` via:
+// RoutineDataGovernanceTypeInput is an input type that accepts values of the RoutineDataGovernanceType enum
+// A concrete instance of `RoutineDataGovernanceTypeInput` can be one of the following:
 //
-//	RoutineDataGovernanceTypeArgs{...}
+//	RoutineDataGovernanceTypeDataGovernanceTypeUnspecified
+//	RoutineDataGovernanceTypeDataMasking
 type RoutineDataGovernanceTypeInput interface {
 	pulumi.Input
 
@@ -1063,10 +1074,12 @@ func (o RoutineDeterminismLevelPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// RoutineDeterminismLevelInput is an input type that accepts RoutineDeterminismLevelArgs and RoutineDeterminismLevelOutput values.
-// You can construct a concrete instance of `RoutineDeterminismLevelInput` via:
+// RoutineDeterminismLevelInput is an input type that accepts values of the RoutineDeterminismLevel enum
+// A concrete instance of `RoutineDeterminismLevelInput` can be one of the following:
 //
-//	RoutineDeterminismLevelArgs{...}
+//	RoutineDeterminismLevelDeterminismLevelUnspecified
+//	RoutineDeterminismLevelDeterministic
+//	RoutineDeterminismLevelNotDeterministic
 type RoutineDeterminismLevelInput interface {
 	pulumi.Input
 
@@ -1244,10 +1257,15 @@ func (o RoutineLanguagePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// RoutineLanguageInput is an input type that accepts RoutineLanguageArgs and RoutineLanguageOutput values.
-// You can construct a concrete instance of `RoutineLanguageInput` via:
+// RoutineLanguageInput is an input type that accepts values of the RoutineLanguage enum
+// A concrete instance of `RoutineLanguageInput` can be one of the following:
 //
-//	RoutineLanguageArgs{...}
+//	RoutineLanguageLanguageUnspecified
+//	RoutineLanguageSql
+//	RoutineLanguageJavascript
+//	RoutineLanguagePython
+//	RoutineLanguageJava
+//	RoutineLanguageScala
 type RoutineLanguageInput interface {
 	pulumi.Input
 
@@ -1423,10 +1441,14 @@ func (o RoutineRoutineTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// RoutineRoutineTypeInput is an input type that accepts RoutineRoutineTypeArgs and RoutineRoutineTypeOutput values.
-// You can construct a concrete instance of `RoutineRoutineTypeInput` via:
+// RoutineRoutineTypeInput is an input type that accepts values of the RoutineRoutineType enum
+// A concrete instance of `RoutineRoutineTypeInput` can be one of the following:
 //
-//	RoutineRoutineTypeArgs{...}
+//	RoutineRoutineTypeRoutineTypeUnspecified
+//	RoutineRoutineTypeScalarFunction
+//	RoutineRoutineTypeProcedure
+//	RoutineRoutineTypeTableValuedFunction
+//	RoutineRoutineTypeAggregateFunction
 type RoutineRoutineTypeInput interface {
 	pulumi.Input
 
@@ -1598,10 +1620,12 @@ func (o RoutineSecurityModePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// RoutineSecurityModeInput is an input type that accepts RoutineSecurityModeArgs and RoutineSecurityModeOutput values.
-// You can construct a concrete instance of `RoutineSecurityModeInput` via:
+// RoutineSecurityModeInput is an input type that accepts values of the RoutineSecurityMode enum
+// A concrete instance of `RoutineSecurityModeInput` can be one of the following:
 //
-//	RoutineSecurityModeArgs{...}
+//	RoutineSecurityModeSecurityModeUnspecified
+//	RoutineSecurityModeDefiner
+//	RoutineSecurityModeInvoker
 type RoutineSecurityModeInput interface {
 	pulumi.Input
 
@@ -1803,10 +1827,27 @@ func (o StandardSqlDataTypeTypeKindPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// StandardSqlDataTypeTypeKindInput is an input type that accepts StandardSqlDataTypeTypeKindArgs and StandardSqlDataTypeTypeKindOutput values.
-// You can construct a concrete instance of `StandardSqlDataTypeTypeKindInput` via:
+// StandardSqlDataTypeTypeKindInput is an input type that accepts values of the StandardSqlDataTypeTypeKind enum
+// A concrete instance of `StandardSqlDataTypeTypeKindInput` can be one of the following:
 //
-//	StandardSqlDataTypeTypeKindArgs{...}
+//	StandardSqlDataTypeTypeKindTypeKindUnspecified
+//	StandardSqlDataTypeTypeKindInt64
+//	StandardSqlDataTypeTypeKindBool
+//	StandardSqlDataTypeTypeKindFloat64
+//	StandardSqlDataTypeTypeKindString
+//	StandardSqlDataTypeTypeKindBytes
+//	StandardSqlDataTypeTypeKindTimestamp
+//	StandardSqlDataTypeTypeKindDate
+//	StandardSqlDataTypeTypeKindTime
+//	StandardSqlDataTypeTypeKindDatetime
+//	StandardSqlDataTypeTypeKindInterval
+//	StandardSqlDataTypeTypeKindGeography
+//	StandardSqlDataTypeTypeKindNumeric
+//	StandardSqlDataTypeTypeKindBignumeric
+//	StandardSqlDataTypeTypeKindJson
+//	StandardSqlDataTypeTypeKindArray
+//	StandardSqlDataTypeTypeKindStruct
+//	StandardSqlDataTypeTypeKindRange
 type StandardSqlDataTypeTypeKindInput interface {
 	pulumi.Input
 

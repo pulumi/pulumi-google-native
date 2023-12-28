@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o TagKeyPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// TagKeyPurposeInput is an input type that accepts TagKeyPurposeArgs and TagKeyPurposeOutput values.
-// You can construct a concrete instance of `TagKeyPurposeInput` via:
+// TagKeyPurposeInput is an input type that accepts values of the TagKeyPurpose enum
+// A concrete instance of `TagKeyPurposeInput` can be one of the following:
 //
-//	TagKeyPurposeArgs{...}
+//	TagKeyPurposePurposeUnspecified
+//	TagKeyPurposeGceFirewall
+//	TagKeyPurposeDataGovernance
 type TagKeyPurposeInput interface {
 	pulumi.Input
 

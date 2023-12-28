@@ -164,10 +164,23 @@ func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// AggregationCrossSeriesReducerInput is an input type that accepts AggregationCrossSeriesReducerArgs and AggregationCrossSeriesReducerOutput values.
-// You can construct a concrete instance of `AggregationCrossSeriesReducerInput` via:
+// AggregationCrossSeriesReducerInput is an input type that accepts values of the AggregationCrossSeriesReducer enum
+// A concrete instance of `AggregationCrossSeriesReducerInput` can be one of the following:
 //
-//	AggregationCrossSeriesReducerArgs{...}
+//	AggregationCrossSeriesReducerReduceNone
+//	AggregationCrossSeriesReducerReduceMean
+//	AggregationCrossSeriesReducerReduceMin
+//	AggregationCrossSeriesReducerReduceMax
+//	AggregationCrossSeriesReducerReduceSum
+//	AggregationCrossSeriesReducerReduceStddev
+//	AggregationCrossSeriesReducerReduceCount
+//	AggregationCrossSeriesReducerReduceCountTrue
+//	AggregationCrossSeriesReducerReduceCountFalse
+//	AggregationCrossSeriesReducerReduceFractionTrue
+//	AggregationCrossSeriesReducerReducePercentile99
+//	AggregationCrossSeriesReducerReducePercentile95
+//	AggregationCrossSeriesReducerReducePercentile50
+//	AggregationCrossSeriesReducerReducePercentile05
 type AggregationCrossSeriesReducerInput interface {
 	pulumi.Input
 
@@ -371,10 +384,28 @@ func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// AggregationPerSeriesAlignerInput is an input type that accepts AggregationPerSeriesAlignerArgs and AggregationPerSeriesAlignerOutput values.
-// You can construct a concrete instance of `AggregationPerSeriesAlignerInput` via:
+// AggregationPerSeriesAlignerInput is an input type that accepts values of the AggregationPerSeriesAligner enum
+// A concrete instance of `AggregationPerSeriesAlignerInput` can be one of the following:
 //
-//	AggregationPerSeriesAlignerArgs{...}
+//	AggregationPerSeriesAlignerAlignNone
+//	AggregationPerSeriesAlignerAlignDelta
+//	AggregationPerSeriesAlignerAlignRate
+//	AggregationPerSeriesAlignerAlignInterpolate
+//	AggregationPerSeriesAlignerAlignNextOlder
+//	AggregationPerSeriesAlignerAlignMin
+//	AggregationPerSeriesAlignerAlignMax
+//	AggregationPerSeriesAlignerAlignMean
+//	AggregationPerSeriesAlignerAlignCount
+//	AggregationPerSeriesAlignerAlignSum
+//	AggregationPerSeriesAlignerAlignStddev
+//	AggregationPerSeriesAlignerAlignCountTrue
+//	AggregationPerSeriesAlignerAlignCountFalse
+//	AggregationPerSeriesAlignerAlignFractionTrue
+//	AggregationPerSeriesAlignerAlignPercentile99
+//	AggregationPerSeriesAlignerAlignPercentile95
+//	AggregationPerSeriesAlignerAlignPercentile50
+//	AggregationPerSeriesAlignerAlignPercentile05
+//	AggregationPerSeriesAlignerAlignPercentChange
 type AggregationPerSeriesAlignerInput interface {
 	pulumi.Input
 
@@ -548,10 +579,13 @@ func (o AlertPolicyCombinerPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// AlertPolicyCombinerInput is an input type that accepts AlertPolicyCombinerArgs and AlertPolicyCombinerOutput values.
-// You can construct a concrete instance of `AlertPolicyCombinerInput` via:
+// AlertPolicyCombinerInput is an input type that accepts values of the AlertPolicyCombiner enum
+// A concrete instance of `AlertPolicyCombinerInput` can be one of the following:
 //
-//	AlertPolicyCombinerArgs{...}
+//	AlertPolicyCombinerCombineUnspecified
+//	AlertPolicyCombinerAnd
+//	AlertPolicyCombinerOr
+//	AlertPolicyCombinerAndWithMatchingResource
 type AlertPolicyCombinerInput interface {
 	pulumi.Input
 
@@ -725,10 +759,13 @@ func (o AlertPolicySeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// AlertPolicySeverityInput is an input type that accepts AlertPolicySeverityArgs and AlertPolicySeverityOutput values.
-// You can construct a concrete instance of `AlertPolicySeverityInput` via:
+// AlertPolicySeverityInput is an input type that accepts values of the AlertPolicySeverity enum
+// A concrete instance of `AlertPolicySeverityInput` can be one of the following:
 //
-//	AlertPolicySeverityArgs{...}
+//	AlertPolicySeveritySeverityUnspecified
+//	AlertPolicySeverityCritical
+//	AlertPolicySeverityError
+//	AlertPolicySeverityWarning
 type AlertPolicySeverityInput interface {
 	pulumi.Input
 
@@ -908,10 +945,16 @@ func (o ContentMatcherMatcherPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ContentMatcherMatcherInput is an input type that accepts ContentMatcherMatcherArgs and ContentMatcherMatcherOutput values.
-// You can construct a concrete instance of `ContentMatcherMatcherInput` via:
+// ContentMatcherMatcherInput is an input type that accepts values of the ContentMatcherMatcher enum
+// A concrete instance of `ContentMatcherMatcherInput` can be one of the following:
 //
-//	ContentMatcherMatcherArgs{...}
+//	ContentMatcherMatcherContentMatcherOptionUnspecified
+//	ContentMatcherMatcherContainsString
+//	ContentMatcherMatcherNotContainsString
+//	ContentMatcherMatcherMatchesRegex
+//	ContentMatcherMatcherNotMatchesRegex
+//	ContentMatcherMatcherMatchesJsonPath
+//	ContentMatcherMatcherNotMatchesJsonPath
 type ContentMatcherMatcherInput interface {
 	pulumi.Input
 
@@ -1083,10 +1126,12 @@ func (o HttpCheckContentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// HttpCheckContentTypeInput is an input type that accepts HttpCheckContentTypeArgs and HttpCheckContentTypeOutput values.
-// You can construct a concrete instance of `HttpCheckContentTypeInput` via:
+// HttpCheckContentTypeInput is an input type that accepts values of the HttpCheckContentType enum
+// A concrete instance of `HttpCheckContentTypeInput` can be one of the following:
 //
-//	HttpCheckContentTypeArgs{...}
+//	HttpCheckContentTypeTypeUnspecified
+//	HttpCheckContentTypeUrlEncoded
+//	HttpCheckContentTypeUserProvided
 type HttpCheckContentTypeInput interface {
 	pulumi.Input
 
@@ -1258,10 +1303,12 @@ func (o HttpCheckRequestMethodPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// HttpCheckRequestMethodInput is an input type that accepts HttpCheckRequestMethodArgs and HttpCheckRequestMethodOutput values.
-// You can construct a concrete instance of `HttpCheckRequestMethodInput` via:
+// HttpCheckRequestMethodInput is an input type that accepts values of the HttpCheckRequestMethod enum
+// A concrete instance of `HttpCheckRequestMethodInput` can be one of the following:
 //
-//	HttpCheckRequestMethodArgs{...}
+//	HttpCheckRequestMethodMethodUnspecified
+//	HttpCheckRequestMethodGet
+//	HttpCheckRequestMethodPost
 type HttpCheckRequestMethodInput interface {
 	pulumi.Input
 
@@ -1433,10 +1480,12 @@ func (o InternalCheckerStatePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// InternalCheckerStateInput is an input type that accepts InternalCheckerStateArgs and InternalCheckerStateOutput values.
-// You can construct a concrete instance of `InternalCheckerStateInput` via:
+// InternalCheckerStateInput is an input type that accepts values of the InternalCheckerState enum
+// A concrete instance of `InternalCheckerStateInput` can be one of the following:
 //
-//	InternalCheckerStateArgs{...}
+//	InternalCheckerStateUnspecified
+//	InternalCheckerStateCreating
+//	InternalCheckerStateRunning
 type InternalCheckerStateInput interface {
 	pulumi.Input
 
@@ -1608,10 +1657,12 @@ func (o JsonPathMatcherJsonMatcherPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// JsonPathMatcherJsonMatcherInput is an input type that accepts JsonPathMatcherJsonMatcherArgs and JsonPathMatcherJsonMatcherOutput values.
-// You can construct a concrete instance of `JsonPathMatcherJsonMatcherInput` via:
+// JsonPathMatcherJsonMatcherInput is an input type that accepts values of the JsonPathMatcherJsonMatcher enum
+// A concrete instance of `JsonPathMatcherJsonMatcherInput` can be one of the following:
 //
-//	JsonPathMatcherJsonMatcherArgs{...}
+//	JsonPathMatcherJsonMatcherJsonPathMatcherOptionUnspecified
+//	JsonPathMatcherJsonMatcherExactMatch
+//	JsonPathMatcherJsonMatcherRegexMatch
 type JsonPathMatcherJsonMatcherInput interface {
 	pulumi.Input
 
@@ -1783,10 +1834,12 @@ func (o LabelDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// LabelDescriptorValueTypeInput is an input type that accepts LabelDescriptorValueTypeArgs and LabelDescriptorValueTypeOutput values.
-// You can construct a concrete instance of `LabelDescriptorValueTypeInput` via:
+// LabelDescriptorValueTypeInput is an input type that accepts values of the LabelDescriptorValueType enum
+// A concrete instance of `LabelDescriptorValueTypeInput` can be one of the following:
 //
-//	LabelDescriptorValueTypeArgs{...}
+//	LabelDescriptorValueTypeString
+//	LabelDescriptorValueTypeBool
+//	LabelDescriptorValueTypeInt64
 type LabelDescriptorValueTypeInput interface {
 	pulumi.Input
 
@@ -1968,10 +2021,17 @@ func (o MetricDescriptorLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricDescriptorLaunchStageInput is an input type that accepts MetricDescriptorLaunchStageArgs and MetricDescriptorLaunchStageOutput values.
-// You can construct a concrete instance of `MetricDescriptorLaunchStageInput` via:
+// MetricDescriptorLaunchStageInput is an input type that accepts values of the MetricDescriptorLaunchStage enum
+// A concrete instance of `MetricDescriptorLaunchStageInput` can be one of the following:
 //
-//	MetricDescriptorLaunchStageArgs{...}
+//	MetricDescriptorLaunchStageLaunchStageUnspecified
+//	MetricDescriptorLaunchStageUnimplemented
+//	MetricDescriptorLaunchStagePrelaunch
+//	MetricDescriptorLaunchStageEarlyAccess
+//	MetricDescriptorLaunchStageAlpha
+//	MetricDescriptorLaunchStageBeta
+//	MetricDescriptorLaunchStageGa
+//	MetricDescriptorLaunchStageDeprecated
 type MetricDescriptorLaunchStageInput interface {
 	pulumi.Input
 
@@ -2153,10 +2213,17 @@ func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricDescriptorMetadataLaunchStageInput is an input type that accepts MetricDescriptorMetadataLaunchStageArgs and MetricDescriptorMetadataLaunchStageOutput values.
-// You can construct a concrete instance of `MetricDescriptorMetadataLaunchStageInput` via:
+// MetricDescriptorMetadataLaunchStageInput is an input type that accepts values of the MetricDescriptorMetadataLaunchStage enum
+// A concrete instance of `MetricDescriptorMetadataLaunchStageInput` can be one of the following:
 //
-//	MetricDescriptorMetadataLaunchStageArgs{...}
+//	MetricDescriptorMetadataLaunchStageLaunchStageUnspecified
+//	MetricDescriptorMetadataLaunchStageUnimplemented
+//	MetricDescriptorMetadataLaunchStagePrelaunch
+//	MetricDescriptorMetadataLaunchStageEarlyAccess
+//	MetricDescriptorMetadataLaunchStageAlpha
+//	MetricDescriptorMetadataLaunchStageBeta
+//	MetricDescriptorMetadataLaunchStageGa
+//	MetricDescriptorMetadataLaunchStageDeprecated
 type MetricDescriptorMetadataLaunchStageInput interface {
 	pulumi.Input
 
@@ -2330,10 +2397,13 @@ func (o MetricDescriptorMetricKindPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricDescriptorMetricKindInput is an input type that accepts MetricDescriptorMetricKindArgs and MetricDescriptorMetricKindOutput values.
-// You can construct a concrete instance of `MetricDescriptorMetricKindInput` via:
+// MetricDescriptorMetricKindInput is an input type that accepts values of the MetricDescriptorMetricKind enum
+// A concrete instance of `MetricDescriptorMetricKindInput` can be one of the following:
 //
-//	MetricDescriptorMetricKindArgs{...}
+//	MetricDescriptorMetricKindMetricKindUnspecified
+//	MetricDescriptorMetricKindGauge
+//	MetricDescriptorMetricKindDelta
+//	MetricDescriptorMetricKindCumulative
 type MetricDescriptorMetricKindInput interface {
 	pulumi.Input
 
@@ -2513,10 +2583,16 @@ func (o MetricDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricDescriptorValueTypeInput is an input type that accepts MetricDescriptorValueTypeArgs and MetricDescriptorValueTypeOutput values.
-// You can construct a concrete instance of `MetricDescriptorValueTypeInput` via:
+// MetricDescriptorValueTypeInput is an input type that accepts values of the MetricDescriptorValueType enum
+// A concrete instance of `MetricDescriptorValueTypeInput` can be one of the following:
 //
-//	MetricDescriptorValueTypeArgs{...}
+//	MetricDescriptorValueTypeValueTypeUnspecified
+//	MetricDescriptorValueTypeBool
+//	MetricDescriptorValueTypeInt64
+//	MetricDescriptorValueTypeDouble
+//	MetricDescriptorValueTypeString
+//	MetricDescriptorValueTypeDistribution
+//	MetricDescriptorValueTypeMoney
 type MetricDescriptorValueTypeInput interface {
 	pulumi.Input
 
@@ -2696,10 +2772,16 @@ func (o MetricThresholdComparisonPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricThresholdComparisonInput is an input type that accepts MetricThresholdComparisonArgs and MetricThresholdComparisonOutput values.
-// You can construct a concrete instance of `MetricThresholdComparisonInput` via:
+// MetricThresholdComparisonInput is an input type that accepts values of the MetricThresholdComparison enum
+// A concrete instance of `MetricThresholdComparisonInput` can be one of the following:
 //
-//	MetricThresholdComparisonArgs{...}
+//	MetricThresholdComparisonComparisonUnspecified
+//	MetricThresholdComparisonComparisonGt
+//	MetricThresholdComparisonComparisonGe
+//	MetricThresholdComparisonComparisonLt
+//	MetricThresholdComparisonComparisonLe
+//	MetricThresholdComparisonComparisonEq
+//	MetricThresholdComparisonComparisonNe
 type MetricThresholdComparisonInput interface {
 	pulumi.Input
 
@@ -2873,10 +2955,13 @@ func (o MetricThresholdEvaluationMissingDataPtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricThresholdEvaluationMissingDataInput is an input type that accepts MetricThresholdEvaluationMissingDataArgs and MetricThresholdEvaluationMissingDataOutput values.
-// You can construct a concrete instance of `MetricThresholdEvaluationMissingDataInput` via:
+// MetricThresholdEvaluationMissingDataInput is an input type that accepts values of the MetricThresholdEvaluationMissingData enum
+// A concrete instance of `MetricThresholdEvaluationMissingDataInput` can be one of the following:
 //
-//	MetricThresholdEvaluationMissingDataArgs{...}
+//	MetricThresholdEvaluationMissingDataEvaluationMissingDataUnspecified
+//	MetricThresholdEvaluationMissingDataEvaluationMissingDataInactive
+//	MetricThresholdEvaluationMissingDataEvaluationMissingDataActive
+//	MetricThresholdEvaluationMissingDataEvaluationMissingDataNoOp
 type MetricThresholdEvaluationMissingDataInput interface {
 	pulumi.Input
 
@@ -3050,10 +3135,13 @@ func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) ToString
 	}).(pulumi.StringPtrOutput)
 }
 
-// MonitoringQueryLanguageConditionEvaluationMissingDataInput is an input type that accepts MonitoringQueryLanguageConditionEvaluationMissingDataArgs and MonitoringQueryLanguageConditionEvaluationMissingDataOutput values.
-// You can construct a concrete instance of `MonitoringQueryLanguageConditionEvaluationMissingDataInput` via:
+// MonitoringQueryLanguageConditionEvaluationMissingDataInput is an input type that accepts values of the MonitoringQueryLanguageConditionEvaluationMissingData enum
+// A concrete instance of `MonitoringQueryLanguageConditionEvaluationMissingDataInput` can be one of the following:
 //
-//	MonitoringQueryLanguageConditionEvaluationMissingDataArgs{...}
+//	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataUnspecified
+//	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataInactive
+//	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataActive
+//	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataNoOp
 type MonitoringQueryLanguageConditionEvaluationMissingDataInput interface {
 	pulumi.Input
 
@@ -3225,10 +3313,12 @@ func (o NotificationChannelVerificationStatusPtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// NotificationChannelVerificationStatusInput is an input type that accepts NotificationChannelVerificationStatusArgs and NotificationChannelVerificationStatusOutput values.
-// You can construct a concrete instance of `NotificationChannelVerificationStatusInput` via:
+// NotificationChannelVerificationStatusInput is an input type that accepts values of the NotificationChannelVerificationStatus enum
+// A concrete instance of `NotificationChannelVerificationStatusInput` can be one of the following:
 //
-//	NotificationChannelVerificationStatusArgs{...}
+//	NotificationChannelVerificationStatusVerificationStatusUnspecified
+//	NotificationChannelVerificationStatusUnverified
+//	NotificationChannelVerificationStatusVerified
 type NotificationChannelVerificationStatusInput interface {
 	pulumi.Input
 
@@ -3400,10 +3490,12 @@ func (o ResourceGroupResourceTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceGroupResourceTypeInput is an input type that accepts ResourceGroupResourceTypeArgs and ResourceGroupResourceTypeOutput values.
-// You can construct a concrete instance of `ResourceGroupResourceTypeInput` via:
+// ResourceGroupResourceTypeInput is an input type that accepts values of the ResourceGroupResourceType enum
+// A concrete instance of `ResourceGroupResourceTypeInput` can be one of the following:
 //
-//	ResourceGroupResourceTypeArgs{...}
+//	ResourceGroupResourceTypeResourceTypeUnspecified
+//	ResourceGroupResourceTypeInstance
+//	ResourceGroupResourceTypeAwsElbLoadBalancer
 type ResourceGroupResourceTypeInput interface {
 	pulumi.Input
 
@@ -3583,10 +3675,16 @@ func (o ResponseStatusCodeStatusClassPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResponseStatusCodeStatusClassInput is an input type that accepts ResponseStatusCodeStatusClassArgs and ResponseStatusCodeStatusClassOutput values.
-// You can construct a concrete instance of `ResponseStatusCodeStatusClassInput` via:
+// ResponseStatusCodeStatusClassInput is an input type that accepts values of the ResponseStatusCodeStatusClass enum
+// A concrete instance of `ResponseStatusCodeStatusClassInput` can be one of the following:
 //
-//	ResponseStatusCodeStatusClassArgs{...}
+//	ResponseStatusCodeStatusClassStatusClassUnspecified
+//	ResponseStatusCodeStatusClassStatusClass1xx
+//	ResponseStatusCodeStatusClassStatusClass2xx
+//	ResponseStatusCodeStatusClassStatusClass3xx
+//	ResponseStatusCodeStatusClassStatusClass4xx
+//	ResponseStatusCodeStatusClassStatusClass5xx
+//	ResponseStatusCodeStatusClassStatusClassAny
 type ResponseStatusCodeStatusClassInput interface {
 	pulumi.Input
 
@@ -3768,10 +3866,17 @@ func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceLevelObjectiveCalendarPeriodInput is an input type that accepts ServiceLevelObjectiveCalendarPeriodArgs and ServiceLevelObjectiveCalendarPeriodOutput values.
-// You can construct a concrete instance of `ServiceLevelObjectiveCalendarPeriodInput` via:
+// ServiceLevelObjectiveCalendarPeriodInput is an input type that accepts values of the ServiceLevelObjectiveCalendarPeriod enum
+// A concrete instance of `ServiceLevelObjectiveCalendarPeriodInput` can be one of the following:
 //
-//	ServiceLevelObjectiveCalendarPeriodArgs{...}
+//	ServiceLevelObjectiveCalendarPeriodCalendarPeriodUnspecified
+//	ServiceLevelObjectiveCalendarPeriodDay
+//	ServiceLevelObjectiveCalendarPeriodWeek
+//	ServiceLevelObjectiveCalendarPeriodFortnight
+//	ServiceLevelObjectiveCalendarPeriodMonth
+//	ServiceLevelObjectiveCalendarPeriodQuarter
+//	ServiceLevelObjectiveCalendarPeriodHalf
+//	ServiceLevelObjectiveCalendarPeriodYear
 type ServiceLevelObjectiveCalendarPeriodInput interface {
 	pulumi.Input
 
@@ -3943,10 +4048,12 @@ func (o UptimeCheckConfigCheckerTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// UptimeCheckConfigCheckerTypeInput is an input type that accepts UptimeCheckConfigCheckerTypeArgs and UptimeCheckConfigCheckerTypeOutput values.
-// You can construct a concrete instance of `UptimeCheckConfigCheckerTypeInput` via:
+// UptimeCheckConfigCheckerTypeInput is an input type that accepts values of the UptimeCheckConfigCheckerType enum
+// A concrete instance of `UptimeCheckConfigCheckerTypeInput` can be one of the following:
 //
-//	UptimeCheckConfigCheckerTypeArgs{...}
+//	UptimeCheckConfigCheckerTypeCheckerTypeUnspecified
+//	UptimeCheckConfigCheckerTypeStaticIpCheckers
+//	UptimeCheckConfigCheckerTypeVpcCheckers
 type UptimeCheckConfigCheckerTypeInput interface {
 	pulumi.Input
 
@@ -4127,10 +4234,17 @@ func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// UptimeCheckConfigSelectedRegionsItemInput is an input type that accepts UptimeCheckConfigSelectedRegionsItemArgs and UptimeCheckConfigSelectedRegionsItemOutput values.
-// You can construct a concrete instance of `UptimeCheckConfigSelectedRegionsItemInput` via:
+// UptimeCheckConfigSelectedRegionsItemInput is an input type that accepts values of the UptimeCheckConfigSelectedRegionsItem enum
+// A concrete instance of `UptimeCheckConfigSelectedRegionsItemInput` can be one of the following:
 //
-//	UptimeCheckConfigSelectedRegionsItemArgs{...}
+//	UptimeCheckConfigSelectedRegionsItemRegionUnspecified
+//	UptimeCheckConfigSelectedRegionsItemUsa
+//	UptimeCheckConfigSelectedRegionsItemEurope
+//	UptimeCheckConfigSelectedRegionsItemSouthAmerica
+//	UptimeCheckConfigSelectedRegionsItemAsiaPacific
+//	UptimeCheckConfigSelectedRegionsItemUsaOregon
+//	UptimeCheckConfigSelectedRegionsItemUsaIowa
+//	UptimeCheckConfigSelectedRegionsItemUsaVirginia
 type UptimeCheckConfigSelectedRegionsItemInput interface {
 	pulumi.Input
 

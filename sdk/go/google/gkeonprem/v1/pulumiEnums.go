@@ -142,10 +142,12 @@ func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// BareMetalClusterUpgradePolicyPolicyInput is an input type that accepts BareMetalClusterUpgradePolicyPolicyArgs and BareMetalClusterUpgradePolicyPolicyOutput values.
-// You can construct a concrete instance of `BareMetalClusterUpgradePolicyPolicyInput` via:
+// BareMetalClusterUpgradePolicyPolicyInput is an input type that accepts values of the BareMetalClusterUpgradePolicyPolicy enum
+// A concrete instance of `BareMetalClusterUpgradePolicyPolicyInput` can be one of the following:
 //
-//	BareMetalClusterUpgradePolicyPolicyArgs{...}
+//	BareMetalClusterUpgradePolicyPolicyNodePoolPolicyUnspecified
+//	BareMetalClusterUpgradePolicyPolicySerial
+//	BareMetalClusterUpgradePolicyPolicyConcurrent
 type BareMetalClusterUpgradePolicyPolicyInput interface {
 	pulumi.Input
 
@@ -315,10 +317,11 @@ func (o BareMetalNodePoolConfigOperatingSystemPtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// BareMetalNodePoolConfigOperatingSystemInput is an input type that accepts BareMetalNodePoolConfigOperatingSystemArgs and BareMetalNodePoolConfigOperatingSystemOutput values.
-// You can construct a concrete instance of `BareMetalNodePoolConfigOperatingSystemInput` via:
+// BareMetalNodePoolConfigOperatingSystemInput is an input type that accepts values of the BareMetalNodePoolConfigOperatingSystem enum
+// A concrete instance of `BareMetalNodePoolConfigOperatingSystemInput` can be one of the following:
 //
-//	BareMetalNodePoolConfigOperatingSystemArgs{...}
+//	BareMetalNodePoolConfigOperatingSystemOperatingSystemUnspecified
+//	BareMetalNodePoolConfigOperatingSystemLinux
 type BareMetalNodePoolConfigOperatingSystemInput interface {
 	pulumi.Input
 
@@ -488,10 +491,11 @@ func (o BareMetalWorkloadNodeConfigContainerRuntimePtrOutput) ToStringPtrOutputW
 	}).(pulumi.StringPtrOutput)
 }
 
-// BareMetalWorkloadNodeConfigContainerRuntimeInput is an input type that accepts BareMetalWorkloadNodeConfigContainerRuntimeArgs and BareMetalWorkloadNodeConfigContainerRuntimeOutput values.
-// You can construct a concrete instance of `BareMetalWorkloadNodeConfigContainerRuntimeInput` via:
+// BareMetalWorkloadNodeConfigContainerRuntimeInput is an input type that accepts values of the BareMetalWorkloadNodeConfigContainerRuntime enum
+// A concrete instance of `BareMetalWorkloadNodeConfigContainerRuntimeInput` can be one of the following:
 //
-//	BareMetalWorkloadNodeConfigContainerRuntimeArgs{...}
+//	BareMetalWorkloadNodeConfigContainerRuntimeContainerRuntimeUnspecified
+//	BareMetalWorkloadNodeConfigContainerRuntimeContainerd
 type BareMetalWorkloadNodeConfigContainerRuntimeInput interface {
 	pulumi.Input
 
@@ -663,10 +667,12 @@ func (o BinaryAuthorizationEvaluationModePtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// BinaryAuthorizationEvaluationModeInput is an input type that accepts BinaryAuthorizationEvaluationModeArgs and BinaryAuthorizationEvaluationModeOutput values.
-// You can construct a concrete instance of `BinaryAuthorizationEvaluationModeInput` via:
+// BinaryAuthorizationEvaluationModeInput is an input type that accepts values of the BinaryAuthorizationEvaluationMode enum
+// A concrete instance of `BinaryAuthorizationEvaluationModeInput` can be one of the following:
 //
-//	BinaryAuthorizationEvaluationModeArgs{...}
+//	BinaryAuthorizationEvaluationModeEvaluationModeUnspecified
+//	BinaryAuthorizationEvaluationModeDisabled
+//	BinaryAuthorizationEvaluationModeProjectSingletonPolicyEnforce
 type BinaryAuthorizationEvaluationModeInput interface {
 	pulumi.Input
 
@@ -840,10 +846,13 @@ func (o NodeTaintEffectPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// NodeTaintEffectInput is an input type that accepts NodeTaintEffectArgs and NodeTaintEffectOutput values.
-// You can construct a concrete instance of `NodeTaintEffectInput` via:
+// NodeTaintEffectInput is an input type that accepts values of the NodeTaintEffect enum
+// A concrete instance of `NodeTaintEffectInput` can be one of the following:
 //
-//	NodeTaintEffectArgs{...}
+//	NodeTaintEffectEffectUnspecified
+//	NodeTaintEffectNoSchedule
+//	NodeTaintEffectPreferNoSchedule
+//	NodeTaintEffectNoExecute
 type NodeTaintEffectInput interface {
 	pulumi.Input
 

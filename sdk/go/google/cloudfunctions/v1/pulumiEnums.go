@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o FunctionDockerRegistryPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// FunctionDockerRegistryInput is an input type that accepts FunctionDockerRegistryArgs and FunctionDockerRegistryOutput values.
-// You can construct a concrete instance of `FunctionDockerRegistryInput` via:
+// FunctionDockerRegistryInput is an input type that accepts values of the FunctionDockerRegistry enum
+// A concrete instance of `FunctionDockerRegistryInput` can be one of the following:
 //
-//	FunctionDockerRegistryArgs{...}
+//	FunctionDockerRegistryDockerRegistryUnspecified
+//	FunctionDockerRegistryContainerRegistry
+//	FunctionDockerRegistryArtifactRegistry
 type FunctionDockerRegistryInput interface {
 	pulumi.Input
 
@@ -496,10 +501,13 @@ func (o FunctionIngressSettingsPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// FunctionIngressSettingsInput is an input type that accepts FunctionIngressSettingsArgs and FunctionIngressSettingsOutput values.
-// You can construct a concrete instance of `FunctionIngressSettingsInput` via:
+// FunctionIngressSettingsInput is an input type that accepts values of the FunctionIngressSettings enum
+// A concrete instance of `FunctionIngressSettingsInput` can be one of the following:
 //
-//	FunctionIngressSettingsArgs{...}
+//	FunctionIngressSettingsIngressSettingsUnspecified
+//	FunctionIngressSettingsAllowAll
+//	FunctionIngressSettingsAllowInternalOnly
+//	FunctionIngressSettingsAllowInternalAndGclb
 type FunctionIngressSettingsInput interface {
 	pulumi.Input
 
@@ -671,10 +679,12 @@ func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// FunctionVpcConnectorEgressSettingsInput is an input type that accepts FunctionVpcConnectorEgressSettingsArgs and FunctionVpcConnectorEgressSettingsOutput values.
-// You can construct a concrete instance of `FunctionVpcConnectorEgressSettingsInput` via:
+// FunctionVpcConnectorEgressSettingsInput is an input type that accepts values of the FunctionVpcConnectorEgressSettings enum
+// A concrete instance of `FunctionVpcConnectorEgressSettingsInput` can be one of the following:
 //
-//	FunctionVpcConnectorEgressSettingsArgs{...}
+//	FunctionVpcConnectorEgressSettingsVpcConnectorEgressSettingsUnspecified
+//	FunctionVpcConnectorEgressSettingsPrivateRangesOnly
+//	FunctionVpcConnectorEgressSettingsAllTraffic
 type FunctionVpcConnectorEgressSettingsInput interface {
 	pulumi.Input
 
@@ -846,10 +856,12 @@ func (o HttpsTriggerSecurityLevelPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// HttpsTriggerSecurityLevelInput is an input type that accepts HttpsTriggerSecurityLevelArgs and HttpsTriggerSecurityLevelOutput values.
-// You can construct a concrete instance of `HttpsTriggerSecurityLevelInput` via:
+// HttpsTriggerSecurityLevelInput is an input type that accepts values of the HttpsTriggerSecurityLevel enum
+// A concrete instance of `HttpsTriggerSecurityLevelInput` can be one of the following:
 //
-//	HttpsTriggerSecurityLevelArgs{...}
+//	HttpsTriggerSecurityLevelSecurityLevelUnspecified
+//	HttpsTriggerSecurityLevelSecureAlways
+//	HttpsTriggerSecurityLevelSecureOptional
 type HttpsTriggerSecurityLevelInput interface {
 	pulumi.Input
 

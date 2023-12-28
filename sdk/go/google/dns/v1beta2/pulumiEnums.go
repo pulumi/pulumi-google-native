@@ -141,10 +141,14 @@ func (o DnsKeySpecAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// DnsKeySpecAlgorithmInput is an input type that accepts DnsKeySpecAlgorithmArgs and DnsKeySpecAlgorithmOutput values.
-// You can construct a concrete instance of `DnsKeySpecAlgorithmInput` via:
+// DnsKeySpecAlgorithmInput is an input type that accepts values of the DnsKeySpecAlgorithm enum
+// A concrete instance of `DnsKeySpecAlgorithmInput` can be one of the following:
 //
-//	DnsKeySpecAlgorithmArgs{...}
+//	DnsKeySpecAlgorithmRsasha1
+//	DnsKeySpecAlgorithmRsasha256
+//	DnsKeySpecAlgorithmRsasha512
+//	DnsKeySpecAlgorithmEcdsap256sha256
+//	DnsKeySpecAlgorithmEcdsap384sha384
 type DnsKeySpecAlgorithmInput interface {
 	pulumi.Input
 
@@ -312,10 +316,11 @@ func (o DnsKeySpecKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// DnsKeySpecKeyTypeInput is an input type that accepts DnsKeySpecKeyTypeArgs and DnsKeySpecKeyTypeOutput values.
-// You can construct a concrete instance of `DnsKeySpecKeyTypeInput` via:
+// DnsKeySpecKeyTypeInput is an input type that accepts values of the DnsKeySpecKeyType enum
+// A concrete instance of `DnsKeySpecKeyTypeInput` can be one of the following:
 //
-//	DnsKeySpecKeyTypeArgs{...}
+//	DnsKeySpecKeyTypeKeySigning
+//	DnsKeySpecKeyTypeZoneSigning
 type DnsKeySpecKeyTypeInput interface {
 	pulumi.Input
 
@@ -489,10 +494,13 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
+// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts values of the GoogleIamV1AuditLogConfigLogType enum
+// A concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeLogTypeUnspecified
+//	GoogleIamV1AuditLogConfigLogTypeAdminRead
+//	GoogleIamV1AuditLogConfigLogTypeDataWrite
+//	GoogleIamV1AuditLogConfigLogTypeDataRead
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -660,10 +668,11 @@ func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// ManagedZoneDnsSecConfigNonExistenceInput is an input type that accepts ManagedZoneDnsSecConfigNonExistenceArgs and ManagedZoneDnsSecConfigNonExistenceOutput values.
-// You can construct a concrete instance of `ManagedZoneDnsSecConfigNonExistenceInput` via:
+// ManagedZoneDnsSecConfigNonExistenceInput is an input type that accepts values of the ManagedZoneDnsSecConfigNonExistence enum
+// A concrete instance of `ManagedZoneDnsSecConfigNonExistenceInput` can be one of the following:
 //
-//	ManagedZoneDnsSecConfigNonExistenceArgs{...}
+//	ManagedZoneDnsSecConfigNonExistenceNsec
+//	ManagedZoneDnsSecConfigNonExistenceNsec3
 type ManagedZoneDnsSecConfigNonExistenceInput interface {
 	pulumi.Input
 
@@ -835,10 +844,12 @@ func (o ManagedZoneDnsSecConfigStatePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// ManagedZoneDnsSecConfigStateInput is an input type that accepts ManagedZoneDnsSecConfigStateArgs and ManagedZoneDnsSecConfigStateOutput values.
-// You can construct a concrete instance of `ManagedZoneDnsSecConfigStateInput` via:
+// ManagedZoneDnsSecConfigStateInput is an input type that accepts values of the ManagedZoneDnsSecConfigState enum
+// A concrete instance of `ManagedZoneDnsSecConfigStateInput` can be one of the following:
 //
-//	ManagedZoneDnsSecConfigStateArgs{...}
+//	ManagedZoneDnsSecConfigStateOff
+//	ManagedZoneDnsSecConfigStateOn
+//	ManagedZoneDnsSecConfigStateTransfer
 type ManagedZoneDnsSecConfigStateInput interface {
 	pulumi.Input
 
@@ -1008,10 +1019,11 @@ func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ToSt
 	}).(pulumi.StringPtrOutput)
 }
 
-// ManagedZoneForwardingConfigNameServerTargetForwardingPathInput is an input type that accepts ManagedZoneForwardingConfigNameServerTargetForwardingPathArgs and ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput values.
-// You can construct a concrete instance of `ManagedZoneForwardingConfigNameServerTargetForwardingPathInput` via:
+// ManagedZoneForwardingConfigNameServerTargetForwardingPathInput is an input type that accepts values of the ManagedZoneForwardingConfigNameServerTargetForwardingPath enum
+// A concrete instance of `ManagedZoneForwardingConfigNameServerTargetForwardingPathInput` can be one of the following:
 //
-//	ManagedZoneForwardingConfigNameServerTargetForwardingPathArgs{...}
+//	ManagedZoneForwardingConfigNameServerTargetForwardingPathDefault
+//	ManagedZoneForwardingConfigNameServerTargetForwardingPathPrivate
 type ManagedZoneForwardingConfigNameServerTargetForwardingPathInput interface {
 	pulumi.Input
 
@@ -1179,10 +1191,11 @@ func (o ManagedZoneVisibilityPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ManagedZoneVisibilityInput is an input type that accepts ManagedZoneVisibilityArgs and ManagedZoneVisibilityOutput values.
-// You can construct a concrete instance of `ManagedZoneVisibilityInput` via:
+// ManagedZoneVisibilityInput is an input type that accepts values of the ManagedZoneVisibility enum
+// A concrete instance of `ManagedZoneVisibilityInput` can be one of the following:
 //
-//	ManagedZoneVisibilityArgs{...}
+//	ManagedZoneVisibilityPublic
+//	ManagedZoneVisibilityPrivate
 type ManagedZoneVisibilityInput interface {
 	pulumi.Input
 
@@ -1352,10 +1365,11 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput is an input type that accepts PolicyAlternativeNameServerConfigTargetNameServerForwardingPathArgs and PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput values.
-// You can construct a concrete instance of `PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput` via:
+// PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput is an input type that accepts values of the PolicyAlternativeNameServerConfigTargetNameServerForwardingPath enum
+// A concrete instance of `PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput` can be one of the following:
 //
-//	PolicyAlternativeNameServerConfigTargetNameServerForwardingPathArgs{...}
+//	PolicyAlternativeNameServerConfigTargetNameServerForwardingPathDefault
+//	PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPrivate
 type PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput interface {
 	pulumi.Input
 
@@ -1524,10 +1538,12 @@ func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) ToStringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// RRSetRoutingPolicyLoadBalancerTargetIpProtocolInput is an input type that accepts RRSetRoutingPolicyLoadBalancerTargetIpProtocolArgs and RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyLoadBalancerTargetIpProtocolInput` via:
+// RRSetRoutingPolicyLoadBalancerTargetIpProtocolInput is an input type that accepts values of the RRSetRoutingPolicyLoadBalancerTargetIpProtocol enum
+// A concrete instance of `RRSetRoutingPolicyLoadBalancerTargetIpProtocolInput` can be one of the following:
 //
-//	RRSetRoutingPolicyLoadBalancerTargetIpProtocolArgs{...}
+//	RRSetRoutingPolicyLoadBalancerTargetIpProtocolUndefined
+//	RRSetRoutingPolicyLoadBalancerTargetIpProtocolTcp
+//	RRSetRoutingPolicyLoadBalancerTargetIpProtocolUdp
 type RRSetRoutingPolicyLoadBalancerTargetIpProtocolInput interface {
 	pulumi.Input
 
@@ -1697,10 +1713,13 @@ func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) ToStringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeInput is an input type that accepts RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeArgs and RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeInput` via:
+// RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeInput is an input type that accepts values of the RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType enum
+// A concrete instance of `RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeInput` can be one of the following:
 //
-//	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeArgs{...}
+//	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeNone
+//	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeGlobalL7ilb
+//	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeRegionalL4ilb
+//	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeRegionalL7ilb
 type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeInput interface {
 	pulumi.Input
 
@@ -1869,10 +1888,11 @@ func (o ResponsePolicyRuleBehaviorPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResponsePolicyRuleBehaviorInput is an input type that accepts ResponsePolicyRuleBehaviorArgs and ResponsePolicyRuleBehaviorOutput values.
-// You can construct a concrete instance of `ResponsePolicyRuleBehaviorInput` via:
+// ResponsePolicyRuleBehaviorInput is an input type that accepts values of the ResponsePolicyRuleBehavior enum
+// A concrete instance of `ResponsePolicyRuleBehaviorInput` can be one of the following:
 //
-//	ResponsePolicyRuleBehaviorArgs{...}
+//	ResponsePolicyRuleBehaviorBehaviorUnspecified
+//	ResponsePolicyRuleBehaviorBypassResponsePolicy
 type ResponsePolicyRuleBehaviorInput interface {
 	pulumi.Input
 

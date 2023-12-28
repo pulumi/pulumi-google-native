@@ -139,10 +139,11 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersIt
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArgs and GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemOutput values.
-// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemInput` via:
+// GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemInput is an input type that accepts values of the GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem enum
+// A concrete instance of `GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemInput` can be one of the following:
 //
-//	GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArgs{...}
+//	GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemProviderUnspecified
+//	GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemPhoneSms
 type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemInput interface {
 	pulumi.Input
 
@@ -361,10 +362,13 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput) To
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateArgs and GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateOutput values.
-// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateInput` via:
+// GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateInput is an input type that accepts values of the GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState enum
+// A concrete instance of `GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateInput` can be one of the following:
 //
-//	GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateArgs{...}
+//	GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateStateUnspecified
+//	GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateDisabled
+//	GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateEnabled
+//	GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateMandatory
 type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateInput interface {
 	pulumi.Input
 
@@ -536,10 +540,12 @@ func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnfor
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateArgs and GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateOutput values.
-// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateInput` via:
+// GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateInput is an input type that accepts values of the GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState enum
+// A concrete instance of `GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateInput` can be one of the following:
 //
-//	GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateArgs{...}
+//	GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePasswordPolicyEnforcementStateUnspecified
+//	GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateOff
+//	GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateEnforce
 type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateInput interface {
 	pulumi.Input
 
@@ -713,10 +719,13 @@ func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) ToStringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateArgs and GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput values.
-// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateInput` via:
+// GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateInput is an input type that accepts values of the GoogleCloudIdentitytoolkitAdminV2ProviderConfigState enum
+// A concrete instance of `GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateInput` can be one of the following:
 //
-//	GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateArgs{...}
+//	GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateMfaStateUnspecified
+//	GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateDisabled
+//	GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateEnabled
+//	GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateMandatory
 type GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateInput interface {
 	pulumi.Input
 
@@ -890,10 +899,13 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcement
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateArgs and GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput values.
-// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateInput` via:
+// GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateInput is an input type that accepts values of the GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState enum
+// A concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateInput` can be one of the following:
 //
-//	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateArgs{...}
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateRecaptchaProviderEnforcementStateUnspecified
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOff
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateAudit
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateEnforce
 type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateInput interface {
 	pulumi.Input
 
@@ -1063,10 +1075,11 @@ func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) To
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionArgs and GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput values.
-// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionInput` via:
+// GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionInput is an input type that accepts values of the GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction enum
+// A concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionInput` can be one of the following:
 //
-//	GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionArgs{...}
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionRecaptchaActionUnspecified
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionBlock
 type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionInput interface {
 	pulumi.Input
 
@@ -1240,10 +1253,13 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
+// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts values of the GoogleIamV1AuditLogConfigLogType enum
+// A concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeLogTypeUnspecified
+//	GoogleIamV1AuditLogConfigLogTypeAdminRead
+//	GoogleIamV1AuditLogConfigLogTypeDataWrite
+//	GoogleIamV1AuditLogConfigLogTypeDataRead
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 

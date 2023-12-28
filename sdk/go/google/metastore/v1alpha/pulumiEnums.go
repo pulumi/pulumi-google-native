@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -317,10 +320,11 @@ func (o DatabaseDumpDatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseDumpDatabaseTypeInput is an input type that accepts DatabaseDumpDatabaseTypeArgs and DatabaseDumpDatabaseTypeOutput values.
-// You can construct a concrete instance of `DatabaseDumpDatabaseTypeInput` via:
+// DatabaseDumpDatabaseTypeInput is an input type that accepts values of the DatabaseDumpDatabaseType enum
+// A concrete instance of `DatabaseDumpDatabaseTypeInput` can be one of the following:
 //
-//	DatabaseDumpDatabaseTypeArgs{...}
+//	DatabaseDumpDatabaseTypeDatabaseTypeUnspecified
+//	DatabaseDumpDatabaseTypeMysql
 type DatabaseDumpDatabaseTypeInput interface {
 	pulumi.Input
 
@@ -492,10 +496,12 @@ func (o DatabaseDumpTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseDumpTypeInput is an input type that accepts DatabaseDumpTypeArgs and DatabaseDumpTypeOutput values.
-// You can construct a concrete instance of `DatabaseDumpTypeInput` via:
+// DatabaseDumpTypeInput is an input type that accepts values of the DatabaseDumpType enum
+// A concrete instance of `DatabaseDumpTypeInput` can be one of the following:
 //
-//	DatabaseDumpTypeArgs{...}
+//	DatabaseDumpTypeTypeUnspecified
+//	DatabaseDumpTypeMysql
+//	DatabaseDumpTypeAvro
 type DatabaseDumpTypeInput interface {
 	pulumi.Input
 
@@ -667,10 +673,12 @@ func (o HiveMetastoreConfigEndpointProtocolPtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// HiveMetastoreConfigEndpointProtocolInput is an input type that accepts HiveMetastoreConfigEndpointProtocolArgs and HiveMetastoreConfigEndpointProtocolOutput values.
-// You can construct a concrete instance of `HiveMetastoreConfigEndpointProtocolInput` via:
+// HiveMetastoreConfigEndpointProtocolInput is an input type that accepts values of the HiveMetastoreConfigEndpointProtocol enum
+// A concrete instance of `HiveMetastoreConfigEndpointProtocolInput` can be one of the following:
 //
-//	HiveMetastoreConfigEndpointProtocolArgs{...}
+//	HiveMetastoreConfigEndpointProtocolEndpointProtocolUnspecified
+//	HiveMetastoreConfigEndpointProtocolThrift
+//	HiveMetastoreConfigEndpointProtocolGrpc
 type HiveMetastoreConfigEndpointProtocolInput interface {
 	pulumi.Input
 
@@ -852,10 +860,17 @@ func (o MaintenanceWindowDayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// MaintenanceWindowDayOfWeekInput is an input type that accepts MaintenanceWindowDayOfWeekArgs and MaintenanceWindowDayOfWeekOutput values.
-// You can construct a concrete instance of `MaintenanceWindowDayOfWeekInput` via:
+// MaintenanceWindowDayOfWeekInput is an input type that accepts values of the MaintenanceWindowDayOfWeek enum
+// A concrete instance of `MaintenanceWindowDayOfWeekInput` can be one of the following:
 //
-//	MaintenanceWindowDayOfWeekArgs{...}
+//	MaintenanceWindowDayOfWeekDayOfWeekUnspecified
+//	MaintenanceWindowDayOfWeekMonday
+//	MaintenanceWindowDayOfWeekTuesday
+//	MaintenanceWindowDayOfWeekWednesday
+//	MaintenanceWindowDayOfWeekThursday
+//	MaintenanceWindowDayOfWeekFriday
+//	MaintenanceWindowDayOfWeekSaturday
+//	MaintenanceWindowDayOfWeekSunday
 type MaintenanceWindowDayOfWeekInput interface {
 	pulumi.Input
 
@@ -1033,10 +1048,15 @@ func (o ScalingConfigInstanceSizePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScalingConfigInstanceSizeInput is an input type that accepts ScalingConfigInstanceSizeArgs and ScalingConfigInstanceSizeOutput values.
-// You can construct a concrete instance of `ScalingConfigInstanceSizeInput` via:
+// ScalingConfigInstanceSizeInput is an input type that accepts values of the ScalingConfigInstanceSize enum
+// A concrete instance of `ScalingConfigInstanceSizeInput` can be one of the following:
 //
-//	ScalingConfigInstanceSizeArgs{...}
+//	ScalingConfigInstanceSizeInstanceSizeUnspecified
+//	ScalingConfigInstanceSizeExtraSmall
+//	ScalingConfigInstanceSizeSmall
+//	ScalingConfigInstanceSizeMedium
+//	ScalingConfigInstanceSizeLarge
+//	ScalingConfigInstanceSizeExtraLarge
 type ScalingConfigInstanceSizeInput interface {
 	pulumi.Input
 
@@ -1208,10 +1228,12 @@ func (o ServiceDatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceDatabaseTypeInput is an input type that accepts ServiceDatabaseTypeArgs and ServiceDatabaseTypeOutput values.
-// You can construct a concrete instance of `ServiceDatabaseTypeInput` via:
+// ServiceDatabaseTypeInput is an input type that accepts values of the ServiceDatabaseType enum
+// A concrete instance of `ServiceDatabaseTypeInput` can be one of the following:
 //
-//	ServiceDatabaseTypeArgs{...}
+//	ServiceDatabaseTypeDatabaseTypeUnspecified
+//	ServiceDatabaseTypeMysql
+//	ServiceDatabaseTypeSpanner
 type ServiceDatabaseTypeInput interface {
 	pulumi.Input
 
@@ -1383,10 +1405,12 @@ func (o ServiceReleaseChannelPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceReleaseChannelInput is an input type that accepts ServiceReleaseChannelArgs and ServiceReleaseChannelOutput values.
-// You can construct a concrete instance of `ServiceReleaseChannelInput` via:
+// ServiceReleaseChannelInput is an input type that accepts values of the ServiceReleaseChannel enum
+// A concrete instance of `ServiceReleaseChannelInput` can be one of the following:
 //
-//	ServiceReleaseChannelArgs{...}
+//	ServiceReleaseChannelReleaseChannelUnspecified
+//	ServiceReleaseChannelCanary
+//	ServiceReleaseChannelStable
 type ServiceReleaseChannelInput interface {
 	pulumi.Input
 
@@ -1558,10 +1582,12 @@ func (o ServiceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceTierInput is an input type that accepts ServiceTierArgs and ServiceTierOutput values.
-// You can construct a concrete instance of `ServiceTierInput` via:
+// ServiceTierInput is an input type that accepts values of the ServiceTier enum
+// A concrete instance of `ServiceTierInput` can be one of the following:
 //
-//	ServiceTierArgs{...}
+//	ServiceTierTierUnspecified
+//	ServiceTierDeveloper
+//	ServiceTierEnterprise
 type ServiceTierInput interface {
 	pulumi.Input
 
@@ -1733,10 +1759,12 @@ func (o TelemetryConfigLogFormatPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// TelemetryConfigLogFormatInput is an input type that accepts TelemetryConfigLogFormatArgs and TelemetryConfigLogFormatOutput values.
-// You can construct a concrete instance of `TelemetryConfigLogFormatInput` via:
+// TelemetryConfigLogFormatInput is an input type that accepts values of the TelemetryConfigLogFormat enum
+// A concrete instance of `TelemetryConfigLogFormatInput` can be one of the following:
 //
-//	TelemetryConfigLogFormatArgs{...}
+//	TelemetryConfigLogFormatLogFormatUnspecified
+//	TelemetryConfigLogFormatLegacy
+//	TelemetryConfigLogFormatJson
 type TelemetryConfigLogFormatInput interface {
 	pulumi.Input
 

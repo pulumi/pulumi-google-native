@@ -140,10 +140,11 @@ func (o AppConnectionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// AppConnectionTypeInput is an input type that accepts AppConnectionTypeArgs and AppConnectionTypeOutput values.
-// You can construct a concrete instance of `AppConnectionTypeInput` via:
+// AppConnectionTypeInput is an input type that accepts values of the AppConnectionType enum
+// A concrete instance of `AppConnectionTypeInput` can be one of the following:
 //
-//	AppConnectionTypeArgs{...}
+//	AppConnectionTypeTypeUnspecified
+//	AppConnectionTypeTcpProxy
 type AppConnectionTypeInput interface {
 	pulumi.Input
 
@@ -313,10 +314,11 @@ func (o AppGatewayHostTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// AppGatewayHostTypeInput is an input type that accepts AppGatewayHostTypeArgs and AppGatewayHostTypeOutput values.
-// You can construct a concrete instance of `AppGatewayHostTypeInput` via:
+// AppGatewayHostTypeInput is an input type that accepts values of the AppGatewayHostType enum
+// A concrete instance of `AppGatewayHostTypeInput` can be one of the following:
 //
-//	AppGatewayHostTypeArgs{...}
+//	AppGatewayHostTypeHostTypeUnspecified
+//	AppGatewayHostTypeGcpRegionalMig
 type AppGatewayHostTypeInput interface {
 	pulumi.Input
 
@@ -486,10 +488,11 @@ func (o AppGatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// AppGatewayTypeInput is an input type that accepts AppGatewayTypeArgs and AppGatewayTypeOutput values.
-// You can construct a concrete instance of `AppGatewayTypeInput` via:
+// AppGatewayTypeInput is an input type that accepts values of the AppGatewayType enum
+// A concrete instance of `AppGatewayTypeInput` can be one of the following:
 //
-//	AppGatewayTypeArgs{...}
+//	AppGatewayTypeTypeUnspecified
+//	AppGatewayTypeTcpProxy
 type AppGatewayTypeInput interface {
 	pulumi.Input
 
@@ -659,10 +662,11 @@ func (o ConnectionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConnectionTypeInput is an input type that accepts ConnectionTypeArgs and ConnectionTypeOutput values.
-// You can construct a concrete instance of `ConnectionTypeInput` via:
+// ConnectionTypeInput is an input type that accepts values of the ConnectionType enum
+// A concrete instance of `ConnectionTypeInput` can be one of the following:
 //
-//	ConnectionTypeArgs{...}
+//	ConnectionTypeTypeUnspecified
+//	ConnectionTypeTcpProxy
 type ConnectionTypeInput interface {
 	pulumi.Input
 
@@ -832,10 +836,11 @@ func (o GatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// GatewayTypeInput is an input type that accepts GatewayTypeArgs and GatewayTypeOutput values.
-// You can construct a concrete instance of `GatewayTypeInput` via:
+// GatewayTypeInput is an input type that accepts values of the GatewayType enum
+// A concrete instance of `GatewayTypeInput` can be one of the following:
 //
-//	GatewayTypeArgs{...}
+//	GatewayTypeTypeUnspecified
+//	GatewayTypeGcpRegionalMig
 type GatewayTypeInput interface {
 	pulumi.Input
 
@@ -1005,10 +1010,11 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeInput is an input type that accepts GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeArgs and GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeInput` via:
+// GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeInput is an input type that accepts values of the GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType enum
+// A concrete instance of `GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeInput` can be one of the following:
 //
-//	GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeArgs{...}
+//	GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeTypeUnspecified
+//	GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeGcpRegionalMig
 type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeInput interface {
 	pulumi.Input
 
@@ -1184,10 +1190,14 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput) To
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusInput is an input type that accepts GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusArgs and GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusOutput values.
-// You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusInput` via:
+// GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusInput is an input type that accepts values of the GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus enum
+// A concrete instance of `GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusInput` can be one of the following:
 //
-//	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusArgs{...}
+//	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusHealthStatusUnspecified
+//	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusHealthy
+//	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusUnhealthy
+//	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusUnresponsive
+//	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusDegraded
 type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusInput interface {
 	pulumi.Input
 
@@ -1361,10 +1371,13 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
+// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts values of the GoogleIamV1AuditLogConfigLogType enum
+// A concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeLogTypeUnspecified
+//	GoogleIamV1AuditLogConfigLogTypeAdminRead
+//	GoogleIamV1AuditLogConfigLogTypeDataWrite
+//	GoogleIamV1AuditLogConfigLogTypeDataRead
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -1540,10 +1553,14 @@ func (o ResourceInfoStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceInfoStatusInput is an input type that accepts ResourceInfoStatusArgs and ResourceInfoStatusOutput values.
-// You can construct a concrete instance of `ResourceInfoStatusInput` via:
+// ResourceInfoStatusInput is an input type that accepts values of the ResourceInfoStatus enum
+// A concrete instance of `ResourceInfoStatusInput` can be one of the following:
 //
-//	ResourceInfoStatusArgs{...}
+//	ResourceInfoStatusHealthStatusUnspecified
+//	ResourceInfoStatusHealthy
+//	ResourceInfoStatusUnhealthy
+//	ResourceInfoStatusUnresponsive
+//	ResourceInfoStatusDegraded
 type ResourceInfoStatusInput interface {
 	pulumi.Input
 
@@ -1713,10 +1730,11 @@ func (o SubscriptionSkuPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SubscriptionSkuInput is an input type that accepts SubscriptionSkuArgs and SubscriptionSkuOutput values.
-// You can construct a concrete instance of `SubscriptionSkuInput` via:
+// SubscriptionSkuInput is an input type that accepts values of the SubscriptionSku enum
+// A concrete instance of `SubscriptionSkuInput` can be one of the following:
 //
-//	SubscriptionSkuArgs{...}
+//	SubscriptionSkuSkuUnspecified
+//	SubscriptionSkuBceStandardSku
 type SubscriptionSkuInput interface {
 	pulumi.Input
 
@@ -1890,10 +1908,13 @@ func (o SubscriptionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// SubscriptionTypeInput is an input type that accepts SubscriptionTypeArgs and SubscriptionTypeOutput values.
-// You can construct a concrete instance of `SubscriptionTypeInput` via:
+// SubscriptionTypeInput is an input type that accepts values of the SubscriptionType enum
+// A concrete instance of `SubscriptionTypeInput` can be one of the following:
 //
-//	SubscriptionTypeArgs{...}
+//	SubscriptionTypeTypeUnspecified
+//	SubscriptionTypeTrial
+//	SubscriptionTypePaid
+//	SubscriptionTypeAllowlist
 type SubscriptionTypeInput interface {
 	pulumi.Input
 
