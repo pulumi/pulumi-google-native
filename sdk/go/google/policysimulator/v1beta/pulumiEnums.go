@@ -140,10 +140,11 @@ func (o GoogleCloudPolicysimulatorV1betaReplayConfigLogSourcePtrOutput) ToString
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceInput is an input type that accepts GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceArgs and GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceOutput values.
-// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceInput` via:
+// GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceInput is an input type that accepts values of the GoogleCloudPolicysimulatorV1betaReplayConfigLogSource enum
+// A concrete instance of `GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceInput` can be one of the following:
 //
-//	GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceArgs{...}
+//	GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceLogSourceUnspecified
+//	GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceRecentAccesses
 type GoogleCloudPolicysimulatorV1betaReplayConfigLogSourceInput interface {
 	pulumi.Input
 

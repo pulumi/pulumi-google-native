@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -317,10 +320,11 @@ func (o ManagementServerTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ManagementServerTypeInput is an input type that accepts ManagementServerTypeArgs and ManagementServerTypeOutput values.
-// You can construct a concrete instance of `ManagementServerTypeInput` via:
+// ManagementServerTypeInput is an input type that accepts values of the ManagementServerType enum
+// A concrete instance of `ManagementServerTypeInput` can be one of the following:
 //
-//	ManagementServerTypeArgs{...}
+//	ManagementServerTypeInstanceTypeUnspecified
+//	ManagementServerTypeBackupRestore
 type ManagementServerTypeInput interface {
 	pulumi.Input
 
@@ -490,10 +494,11 @@ func (o NetworkConfigPeeringModePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkConfigPeeringModeInput is an input type that accepts NetworkConfigPeeringModeArgs and NetworkConfigPeeringModeOutput values.
-// You can construct a concrete instance of `NetworkConfigPeeringModeInput` via:
+// NetworkConfigPeeringModeInput is an input type that accepts values of the NetworkConfigPeeringMode enum
+// A concrete instance of `NetworkConfigPeeringModeInput` can be one of the following:
 //
-//	NetworkConfigPeeringModeArgs{...}
+//	NetworkConfigPeeringModePeeringModeUnspecified
+//	NetworkConfigPeeringModePrivateServiceAccess
 type NetworkConfigPeeringModeInput interface {
 	pulumi.Input
 

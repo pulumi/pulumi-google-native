@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -329,10 +332,13 @@ func (o DiagnosticLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// DiagnosticLevelInput is an input type that accepts DiagnosticLevelArgs and DiagnosticLevelOutput values.
-// You can construct a concrete instance of `DiagnosticLevelInput` via:
+// DiagnosticLevelInput is an input type that accepts values of the DiagnosticLevel enum
+// A concrete instance of `DiagnosticLevelInput` can be one of the following:
 //
-//	DiagnosticLevelArgs{...}
+//	DiagnosticLevelUnknown
+//	DiagnosticLevelInformation
+//	DiagnosticLevelWarning
+//	DiagnosticLevelError
 type DiagnosticLevelInput interface {
 	pulumi.Input
 
@@ -503,10 +509,14 @@ func (o InputMappingLocationPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// InputMappingLocationInput is an input type that accepts InputMappingLocationArgs and InputMappingLocationOutput values.
-// You can construct a concrete instance of `InputMappingLocationInput` via:
+// InputMappingLocationInput is an input type that accepts values of the InputMappingLocation enum
+// A concrete instance of `InputMappingLocationInput` can be one of the following:
 //
-//	InputMappingLocationArgs{...}
+//	InputMappingLocationUnknown
+//	InputMappingLocationPath
+//	InputMappingLocationQuery
+//	InputMappingLocationBody
+//	InputMappingLocationHeader
 type InputMappingLocationInput interface {
 	pulumi.Input
 
@@ -675,10 +685,12 @@ func (o TemplateContentsInterpreterPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// TemplateContentsInterpreterInput is an input type that accepts TemplateContentsInterpreterArgs and TemplateContentsInterpreterOutput values.
-// You can construct a concrete instance of `TemplateContentsInterpreterInput` via:
+// TemplateContentsInterpreterInput is an input type that accepts values of the TemplateContentsInterpreter enum
+// A concrete instance of `TemplateContentsInterpreterInput` can be one of the following:
 //
-//	TemplateContentsInterpreterArgs{...}
+//	TemplateContentsInterpreterUnknownInterpreter
+//	TemplateContentsInterpreterPython
+//	TemplateContentsInterpreterJinja
 type TemplateContentsInterpreterInput interface {
 	pulumi.Input
 
@@ -851,10 +863,13 @@ func (o ValidationOptionsSchemaValidationPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// ValidationOptionsSchemaValidationInput is an input type that accepts ValidationOptionsSchemaValidationArgs and ValidationOptionsSchemaValidationOutput values.
-// You can construct a concrete instance of `ValidationOptionsSchemaValidationInput` via:
+// ValidationOptionsSchemaValidationInput is an input type that accepts values of the ValidationOptionsSchemaValidation enum
+// A concrete instance of `ValidationOptionsSchemaValidationInput` can be one of the following:
 //
-//	ValidationOptionsSchemaValidationArgs{...}
+//	ValidationOptionsSchemaValidationUnknown
+//	ValidationOptionsSchemaValidationIgnore
+//	ValidationOptionsSchemaValidationIgnoreWithWarnings
+//	ValidationOptionsSchemaValidationFail
 type ValidationOptionsSchemaValidationInput interface {
 	pulumi.Input
 
@@ -1031,10 +1046,15 @@ func (o ValidationOptionsUndeclaredPropertiesPtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// ValidationOptionsUndeclaredPropertiesInput is an input type that accepts ValidationOptionsUndeclaredPropertiesArgs and ValidationOptionsUndeclaredPropertiesOutput values.
-// You can construct a concrete instance of `ValidationOptionsUndeclaredPropertiesInput` via:
+// ValidationOptionsUndeclaredPropertiesInput is an input type that accepts values of the ValidationOptionsUndeclaredProperties enum
+// A concrete instance of `ValidationOptionsUndeclaredPropertiesInput` can be one of the following:
 //
-//	ValidationOptionsUndeclaredPropertiesArgs{...}
+//	ValidationOptionsUndeclaredPropertiesUnknown
+//	ValidationOptionsUndeclaredPropertiesInclude
+//	ValidationOptionsUndeclaredPropertiesIgnore
+//	ValidationOptionsUndeclaredPropertiesIncludeWithWarnings
+//	ValidationOptionsUndeclaredPropertiesIgnoreWithWarnings
+//	ValidationOptionsUndeclaredPropertiesFail
 type ValidationOptionsUndeclaredPropertiesInput interface {
 	pulumi.Input
 

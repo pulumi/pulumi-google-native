@@ -146,10 +146,14 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateArgs and GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutput values.
-// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateInput` via:
+// GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateInput is an input type that accepts values of the GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState enum
+// A concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateInput` can be one of the following:
 //
-//	GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateArgs{...}
+//	GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateStockStateUnspecified
+//	GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateInStock
+//	GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateOutOfStock
+//	GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePreorder
+//	GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateBackorder
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateInput interface {
 	pulumi.Input
 

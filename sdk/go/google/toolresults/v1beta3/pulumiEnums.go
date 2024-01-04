@@ -140,10 +140,14 @@ func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// BasicPerfSampleSeriesPerfMetricTypeInput is an input type that accepts BasicPerfSampleSeriesPerfMetricTypeArgs and BasicPerfSampleSeriesPerfMetricTypeOutput values.
-// You can construct a concrete instance of `BasicPerfSampleSeriesPerfMetricTypeInput` via:
+// BasicPerfSampleSeriesPerfMetricTypeInput is an input type that accepts values of the BasicPerfSampleSeriesPerfMetricType enum
+// A concrete instance of `BasicPerfSampleSeriesPerfMetricTypeInput` can be one of the following:
 //
-//	BasicPerfSampleSeriesPerfMetricTypeArgs{...}
+//	BasicPerfSampleSeriesPerfMetricTypePerfMetricTypeUnspecified
+//	BasicPerfSampleSeriesPerfMetricTypeMemory
+//	BasicPerfSampleSeriesPerfMetricTypeCpu
+//	BasicPerfSampleSeriesPerfMetricTypeNetwork
+//	BasicPerfSampleSeriesPerfMetricTypeGraphics
 type BasicPerfSampleSeriesPerfMetricTypeInput interface {
 	pulumi.Input
 
@@ -314,10 +318,15 @@ func (o BasicPerfSampleSeriesPerfUnitPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// BasicPerfSampleSeriesPerfUnitInput is an input type that accepts BasicPerfSampleSeriesPerfUnitArgs and BasicPerfSampleSeriesPerfUnitOutput values.
-// You can construct a concrete instance of `BasicPerfSampleSeriesPerfUnitInput` via:
+// BasicPerfSampleSeriesPerfUnitInput is an input type that accepts values of the BasicPerfSampleSeriesPerfUnit enum
+// A concrete instance of `BasicPerfSampleSeriesPerfUnitInput` can be one of the following:
 //
-//	BasicPerfSampleSeriesPerfUnitArgs{...}
+//	BasicPerfSampleSeriesPerfUnitPerfUnitUnspecified
+//	BasicPerfSampleSeriesPerfUnitKibibyte
+//	BasicPerfSampleSeriesPerfUnitPercent
+//	BasicPerfSampleSeriesPerfUnitBytesPerSecond
+//	BasicPerfSampleSeriesPerfUnitFramesPerSecond
+//	BasicPerfSampleSeriesPerfUnitByte
 type BasicPerfSampleSeriesPerfUnitInput interface {
 	pulumi.Input
 
@@ -499,10 +508,22 @@ func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// BasicPerfSampleSeriesSampleSeriesLabelInput is an input type that accepts BasicPerfSampleSeriesSampleSeriesLabelArgs and BasicPerfSampleSeriesSampleSeriesLabelOutput values.
-// You can construct a concrete instance of `BasicPerfSampleSeriesSampleSeriesLabelInput` via:
+// BasicPerfSampleSeriesSampleSeriesLabelInput is an input type that accepts values of the BasicPerfSampleSeriesSampleSeriesLabel enum
+// A concrete instance of `BasicPerfSampleSeriesSampleSeriesLabelInput` can be one of the following:
 //
-//	BasicPerfSampleSeriesSampleSeriesLabelArgs{...}
+//	BasicPerfSampleSeriesSampleSeriesLabelSampleSeriesTypeUnspecified
+//	BasicPerfSampleSeriesSampleSeriesLabelMemoryRssPrivate
+//	BasicPerfSampleSeriesSampleSeriesLabelMemoryRssShared
+//	BasicPerfSampleSeriesSampleSeriesLabelMemoryRssTotal
+//	BasicPerfSampleSeriesSampleSeriesLabelMemoryTotal
+//	BasicPerfSampleSeriesSampleSeriesLabelCpuUser
+//	BasicPerfSampleSeriesSampleSeriesLabelCpuKernel
+//	BasicPerfSampleSeriesSampleSeriesLabelCpuTotal
+//	BasicPerfSampleSeriesSampleSeriesLabelNtBytesTransferred
+//	BasicPerfSampleSeriesSampleSeriesLabelNtBytesReceived
+//	BasicPerfSampleSeriesSampleSeriesLabelNetworkSent
+//	BasicPerfSampleSeriesSampleSeriesLabelNetworkReceived
+//	BasicPerfSampleSeriesSampleSeriesLabelGraphicsFrameRate
 type BasicPerfSampleSeriesSampleSeriesLabelInput interface {
 	pulumi.Input
 
@@ -676,10 +697,13 @@ func (o ExecutionStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExecutionStateEnumInput is an input type that accepts ExecutionStateEnumArgs and ExecutionStateEnumOutput values.
-// You can construct a concrete instance of `ExecutionStateEnumInput` via:
+// ExecutionStateEnumInput is an input type that accepts values of the ExecutionStateEnum enum
+// A concrete instance of `ExecutionStateEnumInput` can be one of the following:
 //
-//	ExecutionStateEnumArgs{...}
+//	ExecutionStateEnumUnknownState
+//	ExecutionStateEnumPending
+//	ExecutionStateEnumInProgress
+//	ExecutionStateEnumComplete
 type ExecutionStateEnumInput interface {
 	pulumi.Input
 
@@ -848,10 +872,12 @@ func (o HistoryTestPlatformPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// HistoryTestPlatformInput is an input type that accepts HistoryTestPlatformArgs and HistoryTestPlatformOutput values.
-// You can construct a concrete instance of `HistoryTestPlatformInput` via:
+// HistoryTestPlatformInput is an input type that accepts values of the HistoryTestPlatform enum
+// A concrete instance of `HistoryTestPlatformInput` can be one of the following:
 //
-//	HistoryTestPlatformArgs{...}
+//	HistoryTestPlatformUnknownPlatform
+//	HistoryTestPlatformAndroid
+//	HistoryTestPlatformIos
 type HistoryTestPlatformInput interface {
 	pulumi.Input
 
@@ -1028,10 +1054,15 @@ func (o IndividualOutcomeOutcomeSummaryPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// IndividualOutcomeOutcomeSummaryInput is an input type that accepts IndividualOutcomeOutcomeSummaryArgs and IndividualOutcomeOutcomeSummaryOutput values.
-// You can construct a concrete instance of `IndividualOutcomeOutcomeSummaryInput` via:
+// IndividualOutcomeOutcomeSummaryInput is an input type that accepts values of the IndividualOutcomeOutcomeSummary enum
+// A concrete instance of `IndividualOutcomeOutcomeSummaryInput` can be one of the following:
 //
-//	IndividualOutcomeOutcomeSummaryArgs{...}
+//	IndividualOutcomeOutcomeSummaryUnset
+//	IndividualOutcomeOutcomeSummarySuccess
+//	IndividualOutcomeOutcomeSummaryFailure
+//	IndividualOutcomeOutcomeSummaryInconclusive
+//	IndividualOutcomeOutcomeSummarySkipped
+//	IndividualOutcomeOutcomeSummaryFlaky
 type IndividualOutcomeOutcomeSummaryInput interface {
 	pulumi.Input
 
@@ -1209,10 +1240,15 @@ func (o OutcomeSummaryPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// OutcomeSummaryInput is an input type that accepts OutcomeSummaryArgs and OutcomeSummaryOutput values.
-// You can construct a concrete instance of `OutcomeSummaryInput` via:
+// OutcomeSummaryInput is an input type that accepts values of the OutcomeSummary enum
+// A concrete instance of `OutcomeSummaryInput` can be one of the following:
 //
-//	OutcomeSummaryArgs{...}
+//	OutcomeSummaryUnset
+//	OutcomeSummarySuccess
+//	OutcomeSummaryFailure
+//	OutcomeSummaryInconclusive
+//	OutcomeSummarySkipped
+//	OutcomeSummaryFlaky
 type OutcomeSummaryInput interface {
 	pulumi.Input
 
@@ -1390,10 +1426,15 @@ func (o PrimaryStepRollUpPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// PrimaryStepRollUpInput is an input type that accepts PrimaryStepRollUpArgs and PrimaryStepRollUpOutput values.
-// You can construct a concrete instance of `PrimaryStepRollUpInput` via:
+// PrimaryStepRollUpInput is an input type that accepts values of the PrimaryStepRollUp enum
+// A concrete instance of `PrimaryStepRollUpInput` can be one of the following:
 //
-//	PrimaryStepRollUpArgs{...}
+//	PrimaryStepRollUpUnset
+//	PrimaryStepRollUpSuccess
+//	PrimaryStepRollUpFailure
+//	PrimaryStepRollUpInconclusive
+//	PrimaryStepRollUpSkipped
+//	PrimaryStepRollUpFlaky
 type PrimaryStepRollUpInput interface {
 	pulumi.Input
 
@@ -1567,10 +1608,13 @@ func (o StepStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// StepStateEnumInput is an input type that accepts StepStateEnumArgs and StepStateEnumOutput values.
-// You can construct a concrete instance of `StepStateEnumInput` via:
+// StepStateEnumInput is an input type that accepts values of the StepStateEnum enum
+// A concrete instance of `StepStateEnumInput` can be one of the following:
 //
-//	StepStateEnumArgs{...}
+//	StepStateEnumUnknownState
+//	StepStateEnumPending
+//	StepStateEnumInProgress
+//	StepStateEnumComplete
 type StepStateEnumInput interface {
 	pulumi.Input
 
@@ -1742,10 +1786,12 @@ func (o TestIssueCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// TestIssueCategoryInput is an input type that accepts TestIssueCategoryArgs and TestIssueCategoryOutput values.
-// You can construct a concrete instance of `TestIssueCategoryInput` via:
+// TestIssueCategoryInput is an input type that accepts values of the TestIssueCategory enum
+// A concrete instance of `TestIssueCategoryInput` can be one of the following:
 //
-//	TestIssueCategoryArgs{...}
+//	TestIssueCategoryUnspecifiedCategory
+//	TestIssueCategoryCommon
+//	TestIssueCategoryRobo
 type TestIssueCategoryInput interface {
 	pulumi.Input
 
@@ -1921,10 +1967,14 @@ func (o TestIssueSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// TestIssueSeverityInput is an input type that accepts TestIssueSeverityArgs and TestIssueSeverityOutput values.
-// You can construct a concrete instance of `TestIssueSeverityInput` via:
+// TestIssueSeverityInput is an input type that accepts values of the TestIssueSeverity enum
+// A concrete instance of `TestIssueSeverityInput` can be one of the following:
 //
-//	TestIssueSeverityArgs{...}
+//	TestIssueSeverityUnspecifiedSeverity
+//	TestIssueSeverityInfo
+//	TestIssueSeveritySuggestion
+//	TestIssueSeverityWarning
+//	TestIssueSeveritySevere
 type TestIssueSeverityInput interface {
 	pulumi.Input
 
@@ -2156,10 +2206,42 @@ func (o TestIssueTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// TestIssueTypeInput is an input type that accepts TestIssueTypeArgs and TestIssueTypeOutput values.
-// You can construct a concrete instance of `TestIssueTypeInput` via:
+// TestIssueTypeInput is an input type that accepts values of the TestIssueType enum
+// A concrete instance of `TestIssueTypeInput` can be one of the following:
 //
-//	TestIssueTypeArgs{...}
+//	TestIssueTypeUnspecifiedType
+//	TestIssueTypeFatalException
+//	TestIssueTypeNativeCrash
+//	TestIssueTypeAnr
+//	TestIssueTypeUnusedRoboDirective
+//	TestIssueTypeCompatibleWithOrchestrator
+//	TestIssueTypeLauncherActivityNotFound
+//	TestIssueTypeStartActivityNotFound
+//	TestIssueTypeIncompleteRoboScriptExecution
+//	TestIssueTypeCompleteRoboScriptExecution
+//	TestIssueTypeFailedToInstall
+//	TestIssueTypeAvailableDeepLinks
+//	TestIssueTypeNonSdkApiUsageViolation
+//	TestIssueTypeNonSdkApiUsageReport
+//	TestIssueTypeEncounteredNonAndroidUiWidgetScreen
+//	TestIssueTypeEncounteredLoginScreen
+//	TestIssueTypePerformedGoogleLogin
+//	TestIssueTypeIosException
+//	TestIssueTypeIosCrash
+//	TestIssueTypePerformedMonkeyActions
+//	TestIssueTypeUsedRoboDirective
+//	TestIssueTypeUsedRoboIgnoreDirective
+//	TestIssueTypeInsufficientCoverage
+//	TestIssueTypeInAppPurchases
+//	TestIssueTypeCrashDialogError
+//	TestIssueTypeUiElementsTooDeep
+//	TestIssueTypeBlankScreen
+//	TestIssueTypeOverlappingUiElements
+//	TestIssueTypeUnityException
+//	TestIssueTypeDeviceOutOfMemory
+//	TestIssueTypeLogcatCollectionError
+//	TestIssueTypeDetectedAppSplashScreen
+//	TestIssueTypeAssetIssue
 type TestIssueTypeInput interface {
 	pulumi.Input
 

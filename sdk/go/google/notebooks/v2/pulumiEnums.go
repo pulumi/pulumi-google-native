@@ -158,10 +158,20 @@ func (o AcceleratorConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AcceleratorConfigTypeInput is an input type that accepts AcceleratorConfigTypeArgs and AcceleratorConfigTypeOutput values.
-// You can construct a concrete instance of `AcceleratorConfigTypeInput` via:
+// AcceleratorConfigTypeInput is an input type that accepts values of the AcceleratorConfigType enum
+// A concrete instance of `AcceleratorConfigTypeInput` can be one of the following:
 //
-//	AcceleratorConfigTypeArgs{...}
+//	AcceleratorConfigTypeAcceleratorTypeUnspecified
+//	AcceleratorConfigTypeNvidiaTeslaP100
+//	AcceleratorConfigTypeNvidiaTeslaV100
+//	AcceleratorConfigTypeNvidiaTeslaP4
+//	AcceleratorConfigTypeNvidiaTeslaT4
+//	AcceleratorConfigTypeNvidiaTeslaA100
+//	AcceleratorConfigTypeNvidiaA10080gb
+//	AcceleratorConfigTypeNvidiaL4
+//	AcceleratorConfigTypeNvidiaTeslaT4Vws
+//	AcceleratorConfigTypeNvidiaTeslaP100Vws
+//	AcceleratorConfigTypeNvidiaTeslaP4Vws
 type AcceleratorConfigTypeInput interface {
 	pulumi.Input
 
@@ -333,10 +343,12 @@ func (o BootDiskDiskEncryptionPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// BootDiskDiskEncryptionInput is an input type that accepts BootDiskDiskEncryptionArgs and BootDiskDiskEncryptionOutput values.
-// You can construct a concrete instance of `BootDiskDiskEncryptionInput` via:
+// BootDiskDiskEncryptionInput is an input type that accepts values of the BootDiskDiskEncryption enum
+// A concrete instance of `BootDiskDiskEncryptionInput` can be one of the following:
 //
-//	BootDiskDiskEncryptionArgs{...}
+//	BootDiskDiskEncryptionDiskEncryptionUnspecified
+//	BootDiskDiskEncryptionGmek
+//	BootDiskDiskEncryptionCmek
 type BootDiskDiskEncryptionInput interface {
 	pulumi.Input
 
@@ -512,10 +524,14 @@ func (o BootDiskDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// BootDiskDiskTypeInput is an input type that accepts BootDiskDiskTypeArgs and BootDiskDiskTypeOutput values.
-// You can construct a concrete instance of `BootDiskDiskTypeInput` via:
+// BootDiskDiskTypeInput is an input type that accepts values of the BootDiskDiskType enum
+// A concrete instance of `BootDiskDiskTypeInput` can be one of the following:
 //
-//	BootDiskDiskTypeArgs{...}
+//	BootDiskDiskTypeDiskTypeUnspecified
+//	BootDiskDiskTypePdStandard
+//	BootDiskDiskTypePdSsd
+//	BootDiskDiskTypePdBalanced
+//	BootDiskDiskTypePdExtreme
 type BootDiskDiskTypeInput interface {
 	pulumi.Input
 
@@ -687,10 +703,12 @@ func (o DataDiskDiskEncryptionPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataDiskDiskEncryptionInput is an input type that accepts DataDiskDiskEncryptionArgs and DataDiskDiskEncryptionOutput values.
-// You can construct a concrete instance of `DataDiskDiskEncryptionInput` via:
+// DataDiskDiskEncryptionInput is an input type that accepts values of the DataDiskDiskEncryption enum
+// A concrete instance of `DataDiskDiskEncryptionInput` can be one of the following:
 //
-//	DataDiskDiskEncryptionArgs{...}
+//	DataDiskDiskEncryptionDiskEncryptionUnspecified
+//	DataDiskDiskEncryptionGmek
+//	DataDiskDiskEncryptionCmek
 type DataDiskDiskEncryptionInput interface {
 	pulumi.Input
 
@@ -866,10 +884,14 @@ func (o DataDiskDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataDiskDiskTypeInput is an input type that accepts DataDiskDiskTypeArgs and DataDiskDiskTypeOutput values.
-// You can construct a concrete instance of `DataDiskDiskTypeInput` via:
+// DataDiskDiskTypeInput is an input type that accepts values of the DataDiskDiskType enum
+// A concrete instance of `DataDiskDiskTypeInput` can be one of the following:
 //
-//	DataDiskDiskTypeArgs{...}
+//	DataDiskDiskTypeDiskTypeUnspecified
+//	DataDiskDiskTypePdStandard
+//	DataDiskDiskTypePdSsd
+//	DataDiskDiskTypePdBalanced
+//	DataDiskDiskTypePdExtreme
 type DataDiskDiskTypeInput interface {
 	pulumi.Input
 
@@ -1041,10 +1063,12 @@ func (o NetworkInterfaceNicTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkInterfaceNicTypeInput is an input type that accepts NetworkInterfaceNicTypeArgs and NetworkInterfaceNicTypeOutput values.
-// You can construct a concrete instance of `NetworkInterfaceNicTypeInput` via:
+// NetworkInterfaceNicTypeInput is an input type that accepts values of the NetworkInterfaceNicType enum
+// A concrete instance of `NetworkInterfaceNicTypeInput` can be one of the following:
 //
-//	NetworkInterfaceNicTypeArgs{...}
+//	NetworkInterfaceNicTypeNicTypeUnspecified
+//	NetworkInterfaceNicTypeVirtioNet
+//	NetworkInterfaceNicTypeGvnic
 type NetworkInterfaceNicTypeInput interface {
 	pulumi.Input
 

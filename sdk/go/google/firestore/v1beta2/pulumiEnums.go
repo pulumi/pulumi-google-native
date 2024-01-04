@@ -140,10 +140,11 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput) ToStringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleFirestoreAdminV1beta2IndexFieldArrayConfigInput is an input type that accepts GoogleFirestoreAdminV1beta2IndexFieldArrayConfigArgs and GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput values.
-// You can construct a concrete instance of `GoogleFirestoreAdminV1beta2IndexFieldArrayConfigInput` via:
+// GoogleFirestoreAdminV1beta2IndexFieldArrayConfigInput is an input type that accepts values of the GoogleFirestoreAdminV1beta2IndexFieldArrayConfig enum
+// A concrete instance of `GoogleFirestoreAdminV1beta2IndexFieldArrayConfigInput` can be one of the following:
 //
-//	GoogleFirestoreAdminV1beta2IndexFieldArrayConfigArgs{...}
+//	GoogleFirestoreAdminV1beta2IndexFieldArrayConfigArrayConfigUnspecified
+//	GoogleFirestoreAdminV1beta2IndexFieldArrayConfigContains
 type GoogleFirestoreAdminV1beta2IndexFieldArrayConfigInput interface {
 	pulumi.Input
 
@@ -315,10 +316,12 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleFirestoreAdminV1beta2IndexFieldOrderInput is an input type that accepts GoogleFirestoreAdminV1beta2IndexFieldOrderArgs and GoogleFirestoreAdminV1beta2IndexFieldOrderOutput values.
-// You can construct a concrete instance of `GoogleFirestoreAdminV1beta2IndexFieldOrderInput` via:
+// GoogleFirestoreAdminV1beta2IndexFieldOrderInput is an input type that accepts values of the GoogleFirestoreAdminV1beta2IndexFieldOrder enum
+// A concrete instance of `GoogleFirestoreAdminV1beta2IndexFieldOrderInput` can be one of the following:
 //
-//	GoogleFirestoreAdminV1beta2IndexFieldOrderArgs{...}
+//	GoogleFirestoreAdminV1beta2IndexFieldOrderOrderUnspecified
+//	GoogleFirestoreAdminV1beta2IndexFieldOrderAscending
+//	GoogleFirestoreAdminV1beta2IndexFieldOrderDescending
 type GoogleFirestoreAdminV1beta2IndexFieldOrderInput interface {
 	pulumi.Input
 
@@ -490,10 +493,12 @@ func (o IndexQueryScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// IndexQueryScopeInput is an input type that accepts IndexQueryScopeArgs and IndexQueryScopeOutput values.
-// You can construct a concrete instance of `IndexQueryScopeInput` via:
+// IndexQueryScopeInput is an input type that accepts values of the IndexQueryScope enum
+// A concrete instance of `IndexQueryScopeInput` can be one of the following:
 //
-//	IndexQueryScopeArgs{...}
+//	IndexQueryScopeQueryScopeUnspecified
+//	IndexQueryScopeCollection
+//	IndexQueryScopeCollectionGroup
 type IndexQueryScopeInput interface {
 	pulumi.Input
 

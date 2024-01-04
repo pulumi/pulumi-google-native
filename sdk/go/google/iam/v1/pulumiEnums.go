@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBeha
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorInput is an input type that accepts GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorArgs and GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput values.
-// You can construct a concrete instance of `GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorInput` via:
+// GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorInput is an input type that accepts values of the GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior enum
+// A concrete instance of `GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorInput` can be one of the following:
 //
-//	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorArgs{...}
+//	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorAssertionClaimsBehaviorUnspecified
+//	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorMergeUserInfoOverIdTokenClaims
+//	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOnlyIdTokenClaims
 type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorInput interface {
 	pulumi.Input
 
@@ -494,10 +499,12 @@ func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeInput is an input type that accepts GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeArgs and GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput values.
-// You can construct a concrete instance of `GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeInput` via:
+// GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeInput is an input type that accepts values of the GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType enum
+// A concrete instance of `GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeInput` can be one of the following:
 //
-//	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeArgs{...}
+//	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeResponseTypeUnspecified
+//	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeCode
+//	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeIdToken
 type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeInput interface {
 	pulumi.Input
 
@@ -671,10 +678,13 @@ func (o KeyDataKeySpecPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// KeyDataKeySpecInput is an input type that accepts KeyDataKeySpecArgs and KeyDataKeySpecOutput values.
-// You can construct a concrete instance of `KeyDataKeySpecInput` via:
+// KeyDataKeySpecInput is an input type that accepts values of the KeyDataKeySpec enum
+// A concrete instance of `KeyDataKeySpecInput` can be one of the following:
 //
-//	KeyDataKeySpecArgs{...}
+//	KeyDataKeySpecKeySpecUnspecified
+//	KeyDataKeySpecRsa2048
+//	KeyDataKeySpecRsa3072
+//	KeyDataKeySpecRsa4096
 type KeyDataKeySpecInput interface {
 	pulumi.Input
 
@@ -846,10 +856,12 @@ func (o KeyKeyAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// KeyKeyAlgorithmInput is an input type that accepts KeyKeyAlgorithmArgs and KeyKeyAlgorithmOutput values.
-// You can construct a concrete instance of `KeyKeyAlgorithmInput` via:
+// KeyKeyAlgorithmInput is an input type that accepts values of the KeyKeyAlgorithm enum
+// A concrete instance of `KeyKeyAlgorithmInput` can be one of the following:
 //
-//	KeyKeyAlgorithmArgs{...}
+//	KeyKeyAlgorithmKeyAlgUnspecified
+//	KeyKeyAlgorithmKeyAlgRsa1024
+//	KeyKeyAlgorithmKeyAlgRsa2048
 type KeyKeyAlgorithmInput interface {
 	pulumi.Input
 
@@ -1021,10 +1033,12 @@ func (o KeyPrivateKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// KeyPrivateKeyTypeInput is an input type that accepts KeyPrivateKeyTypeArgs and KeyPrivateKeyTypeOutput values.
-// You can construct a concrete instance of `KeyPrivateKeyTypeInput` via:
+// KeyPrivateKeyTypeInput is an input type that accepts values of the KeyPrivateKeyType enum
+// A concrete instance of `KeyPrivateKeyTypeInput` can be one of the following:
 //
-//	KeyPrivateKeyTypeArgs{...}
+//	KeyPrivateKeyTypeTypeUnspecified
+//	KeyPrivateKeyTypeTypePkcs12File
+//	KeyPrivateKeyTypeTypeGoogleCredentialsFile
 type KeyPrivateKeyTypeInput interface {
 	pulumi.Input
 
@@ -1202,10 +1216,15 @@ func (o OrganizationRoleStagePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// OrganizationRoleStageInput is an input type that accepts OrganizationRoleStageArgs and OrganizationRoleStageOutput values.
-// You can construct a concrete instance of `OrganizationRoleStageInput` via:
+// OrganizationRoleStageInput is an input type that accepts values of the OrganizationRoleStage enum
+// A concrete instance of `OrganizationRoleStageInput` can be one of the following:
 //
-//	OrganizationRoleStageArgs{...}
+//	OrganizationRoleStageAlpha
+//	OrganizationRoleStageBeta
+//	OrganizationRoleStageGa
+//	OrganizationRoleStageDeprecated
+//	OrganizationRoleStageDisabled
+//	OrganizationRoleStageEap
 type OrganizationRoleStageInput interface {
 	pulumi.Input
 
@@ -1383,10 +1402,15 @@ func (o RoleStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// RoleStageInput is an input type that accepts RoleStageArgs and RoleStageOutput values.
-// You can construct a concrete instance of `RoleStageInput` via:
+// RoleStageInput is an input type that accepts values of the RoleStage enum
+// A concrete instance of `RoleStageInput` can be one of the following:
 //
-//	RoleStageArgs{...}
+//	RoleStageAlpha
+//	RoleStageBeta
+//	RoleStageGa
+//	RoleStageDeprecated
+//	RoleStageDisabled
+//	RoleStageEap
 type RoleStageInput interface {
 	pulumi.Input
 
@@ -1556,10 +1580,11 @@ func (o WorkforcePoolKeyUsePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkforcePoolKeyUseInput is an input type that accepts WorkforcePoolKeyUseArgs and WorkforcePoolKeyUseOutput values.
-// You can construct a concrete instance of `WorkforcePoolKeyUseInput` via:
+// WorkforcePoolKeyUseInput is an input type that accepts values of the WorkforcePoolKeyUse enum
+// A concrete instance of `WorkforcePoolKeyUseInput` can be one of the following:
 //
-//	WorkforcePoolKeyUseArgs{...}
+//	WorkforcePoolKeyUseKeyUseUnspecified
+//	WorkforcePoolKeyUseEncryption
 type WorkforcePoolKeyUseInput interface {
 	pulumi.Input
 
@@ -1729,10 +1754,11 @@ func (o WorkloadIdentityPoolKeyUsePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkloadIdentityPoolKeyUseInput is an input type that accepts WorkloadIdentityPoolKeyUseArgs and WorkloadIdentityPoolKeyUseOutput values.
-// You can construct a concrete instance of `WorkloadIdentityPoolKeyUseInput` via:
+// WorkloadIdentityPoolKeyUseInput is an input type that accepts values of the WorkloadIdentityPoolKeyUse enum
+// A concrete instance of `WorkloadIdentityPoolKeyUseInput` can be one of the following:
 //
-//	WorkloadIdentityPoolKeyUseArgs{...}
+//	WorkloadIdentityPoolKeyUseKeyUseUnspecified
+//	WorkloadIdentityPoolKeyUseEncryption
 type WorkloadIdentityPoolKeyUseInput interface {
 	pulumi.Input
 

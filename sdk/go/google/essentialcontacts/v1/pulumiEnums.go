@@ -153,10 +153,18 @@ func (o ContactNotificationCategorySubscriptionsItemPtrOutput) ToStringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// ContactNotificationCategorySubscriptionsItemInput is an input type that accepts ContactNotificationCategorySubscriptionsItemArgs and ContactNotificationCategorySubscriptionsItemOutput values.
-// You can construct a concrete instance of `ContactNotificationCategorySubscriptionsItemInput` via:
+// ContactNotificationCategorySubscriptionsItemInput is an input type that accepts values of the ContactNotificationCategorySubscriptionsItem enum
+// A concrete instance of `ContactNotificationCategorySubscriptionsItemInput` can be one of the following:
 //
-//	ContactNotificationCategorySubscriptionsItemArgs{...}
+//	ContactNotificationCategorySubscriptionsItemNotificationCategoryUnspecified
+//	ContactNotificationCategorySubscriptionsItemAll
+//	ContactNotificationCategorySubscriptionsItemSuspension
+//	ContactNotificationCategorySubscriptionsItemSecurity
+//	ContactNotificationCategorySubscriptionsItemTechnical
+//	ContactNotificationCategorySubscriptionsItemBilling
+//	ContactNotificationCategorySubscriptionsItemLegal
+//	ContactNotificationCategorySubscriptionsItemProductUpdates
+//	ContactNotificationCategorySubscriptionsItemTechnicalIncidents
 type ContactNotificationCategorySubscriptionsItemInput interface {
 	pulumi.Input
 
@@ -373,10 +381,12 @@ func (o ContactValidationStatePtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ContactValidationStateInput is an input type that accepts ContactValidationStateArgs and ContactValidationStateOutput values.
-// You can construct a concrete instance of `ContactValidationStateInput` via:
+// ContactValidationStateInput is an input type that accepts values of the ContactValidationState enum
+// A concrete instance of `ContactValidationStateInput` can be one of the following:
 //
-//	ContactValidationStateArgs{...}
+//	ContactValidationStateValidationStateUnspecified
+//	ContactValidationStateValid
+//	ContactValidationStateInvalid
 type ContactValidationStateInput interface {
 	pulumi.Input
 
@@ -559,10 +569,18 @@ func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) ToStringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// FolderContactNotificationCategorySubscriptionsItemInput is an input type that accepts FolderContactNotificationCategorySubscriptionsItemArgs and FolderContactNotificationCategorySubscriptionsItemOutput values.
-// You can construct a concrete instance of `FolderContactNotificationCategorySubscriptionsItemInput` via:
+// FolderContactNotificationCategorySubscriptionsItemInput is an input type that accepts values of the FolderContactNotificationCategorySubscriptionsItem enum
+// A concrete instance of `FolderContactNotificationCategorySubscriptionsItemInput` can be one of the following:
 //
-//	FolderContactNotificationCategorySubscriptionsItemArgs{...}
+//	FolderContactNotificationCategorySubscriptionsItemNotificationCategoryUnspecified
+//	FolderContactNotificationCategorySubscriptionsItemAll
+//	FolderContactNotificationCategorySubscriptionsItemSuspension
+//	FolderContactNotificationCategorySubscriptionsItemSecurity
+//	FolderContactNotificationCategorySubscriptionsItemTechnical
+//	FolderContactNotificationCategorySubscriptionsItemBilling
+//	FolderContactNotificationCategorySubscriptionsItemLegal
+//	FolderContactNotificationCategorySubscriptionsItemProductUpdates
+//	FolderContactNotificationCategorySubscriptionsItemTechnicalIncidents
 type FolderContactNotificationCategorySubscriptionsItemInput interface {
 	pulumi.Input
 
@@ -779,10 +797,12 @@ func (o FolderContactValidationStatePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// FolderContactValidationStateInput is an input type that accepts FolderContactValidationStateArgs and FolderContactValidationStateOutput values.
-// You can construct a concrete instance of `FolderContactValidationStateInput` via:
+// FolderContactValidationStateInput is an input type that accepts values of the FolderContactValidationState enum
+// A concrete instance of `FolderContactValidationStateInput` can be one of the following:
 //
-//	FolderContactValidationStateArgs{...}
+//	FolderContactValidationStateValidationStateUnspecified
+//	FolderContactValidationStateValid
+//	FolderContactValidationStateInvalid
 type FolderContactValidationStateInput interface {
 	pulumi.Input
 
@@ -965,10 +985,18 @@ func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ToStr
 	}).(pulumi.StringPtrOutput)
 }
 
-// OrganizationContactNotificationCategorySubscriptionsItemInput is an input type that accepts OrganizationContactNotificationCategorySubscriptionsItemArgs and OrganizationContactNotificationCategorySubscriptionsItemOutput values.
-// You can construct a concrete instance of `OrganizationContactNotificationCategorySubscriptionsItemInput` via:
+// OrganizationContactNotificationCategorySubscriptionsItemInput is an input type that accepts values of the OrganizationContactNotificationCategorySubscriptionsItem enum
+// A concrete instance of `OrganizationContactNotificationCategorySubscriptionsItemInput` can be one of the following:
 //
-//	OrganizationContactNotificationCategorySubscriptionsItemArgs{...}
+//	OrganizationContactNotificationCategorySubscriptionsItemNotificationCategoryUnspecified
+//	OrganizationContactNotificationCategorySubscriptionsItemAll
+//	OrganizationContactNotificationCategorySubscriptionsItemSuspension
+//	OrganizationContactNotificationCategorySubscriptionsItemSecurity
+//	OrganizationContactNotificationCategorySubscriptionsItemTechnical
+//	OrganizationContactNotificationCategorySubscriptionsItemBilling
+//	OrganizationContactNotificationCategorySubscriptionsItemLegal
+//	OrganizationContactNotificationCategorySubscriptionsItemProductUpdates
+//	OrganizationContactNotificationCategorySubscriptionsItemTechnicalIncidents
 type OrganizationContactNotificationCategorySubscriptionsItemInput interface {
 	pulumi.Input
 
@@ -1185,10 +1213,12 @@ func (o OrganizationContactValidationStatePtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// OrganizationContactValidationStateInput is an input type that accepts OrganizationContactValidationStateArgs and OrganizationContactValidationStateOutput values.
-// You can construct a concrete instance of `OrganizationContactValidationStateInput` via:
+// OrganizationContactValidationStateInput is an input type that accepts values of the OrganizationContactValidationState enum
+// A concrete instance of `OrganizationContactValidationStateInput` can be one of the following:
 //
-//	OrganizationContactValidationStateArgs{...}
+//	OrganizationContactValidationStateValidationStateUnspecified
+//	OrganizationContactValidationStateValid
+//	OrganizationContactValidationStateInvalid
 type OrganizationContactValidationStateInput interface {
 	pulumi.Input
 

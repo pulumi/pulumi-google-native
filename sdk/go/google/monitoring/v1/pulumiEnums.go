@@ -164,10 +164,23 @@ func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// AggregationCrossSeriesReducerInput is an input type that accepts AggregationCrossSeriesReducerArgs and AggregationCrossSeriesReducerOutput values.
-// You can construct a concrete instance of `AggregationCrossSeriesReducerInput` via:
+// AggregationCrossSeriesReducerInput is an input type that accepts values of the AggregationCrossSeriesReducer enum
+// A concrete instance of `AggregationCrossSeriesReducerInput` can be one of the following:
 //
-//	AggregationCrossSeriesReducerArgs{...}
+//	AggregationCrossSeriesReducerReduceNone
+//	AggregationCrossSeriesReducerReduceMean
+//	AggregationCrossSeriesReducerReduceMin
+//	AggregationCrossSeriesReducerReduceMax
+//	AggregationCrossSeriesReducerReduceSum
+//	AggregationCrossSeriesReducerReduceStddev
+//	AggregationCrossSeriesReducerReduceCount
+//	AggregationCrossSeriesReducerReduceCountTrue
+//	AggregationCrossSeriesReducerReduceCountFalse
+//	AggregationCrossSeriesReducerReduceFractionTrue
+//	AggregationCrossSeriesReducerReducePercentile99
+//	AggregationCrossSeriesReducerReducePercentile95
+//	AggregationCrossSeriesReducerReducePercentile50
+//	AggregationCrossSeriesReducerReducePercentile05
 type AggregationCrossSeriesReducerInput interface {
 	pulumi.Input
 
@@ -371,10 +384,28 @@ func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// AggregationPerSeriesAlignerInput is an input type that accepts AggregationPerSeriesAlignerArgs and AggregationPerSeriesAlignerOutput values.
-// You can construct a concrete instance of `AggregationPerSeriesAlignerInput` via:
+// AggregationPerSeriesAlignerInput is an input type that accepts values of the AggregationPerSeriesAligner enum
+// A concrete instance of `AggregationPerSeriesAlignerInput` can be one of the following:
 //
-//	AggregationPerSeriesAlignerArgs{...}
+//	AggregationPerSeriesAlignerAlignNone
+//	AggregationPerSeriesAlignerAlignDelta
+//	AggregationPerSeriesAlignerAlignRate
+//	AggregationPerSeriesAlignerAlignInterpolate
+//	AggregationPerSeriesAlignerAlignNextOlder
+//	AggregationPerSeriesAlignerAlignMin
+//	AggregationPerSeriesAlignerAlignMax
+//	AggregationPerSeriesAlignerAlignMean
+//	AggregationPerSeriesAlignerAlignCount
+//	AggregationPerSeriesAlignerAlignSum
+//	AggregationPerSeriesAlignerAlignStddev
+//	AggregationPerSeriesAlignerAlignCountTrue
+//	AggregationPerSeriesAlignerAlignCountFalse
+//	AggregationPerSeriesAlignerAlignFractionTrue
+//	AggregationPerSeriesAlignerAlignPercentile99
+//	AggregationPerSeriesAlignerAlignPercentile95
+//	AggregationPerSeriesAlignerAlignPercentile50
+//	AggregationPerSeriesAlignerAlignPercentile05
+//	AggregationPerSeriesAlignerAlignPercentChange
 type AggregationPerSeriesAlignerInput interface {
 	pulumi.Input
 
@@ -546,10 +577,12 @@ func (o AxisScalePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// AxisScaleInput is an input type that accepts AxisScaleArgs and AxisScaleOutput values.
-// You can construct a concrete instance of `AxisScaleInput` via:
+// AxisScaleInput is an input type that accepts values of the AxisScale enum
+// A concrete instance of `AxisScaleInput` can be one of the following:
 //
-//	AxisScaleArgs{...}
+//	AxisScaleScaleUnspecified
+//	AxisScaleLinear
+//	AxisScaleLog10
 type AxisScaleInput interface {
 	pulumi.Input
 
@@ -723,10 +756,13 @@ func (o BreakdownSortOrderPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// BreakdownSortOrderInput is an input type that accepts BreakdownSortOrderArgs and BreakdownSortOrderOutput values.
-// You can construct a concrete instance of `BreakdownSortOrderInput` via:
+// BreakdownSortOrderInput is an input type that accepts values of the BreakdownSortOrder enum
+// A concrete instance of `BreakdownSortOrderInput` can be one of the following:
 //
-//	BreakdownSortOrderArgs{...}
+//	BreakdownSortOrderSortOrderUnspecified
+//	BreakdownSortOrderSortOrderNone
+//	BreakdownSortOrderSortOrderAscending
+//	BreakdownSortOrderSortOrderDescending
 type BreakdownSortOrderInput interface {
 	pulumi.Input
 
@@ -900,10 +936,13 @@ func (o ChartOptionsModePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// ChartOptionsModeInput is an input type that accepts ChartOptionsModeArgs and ChartOptionsModeOutput values.
-// You can construct a concrete instance of `ChartOptionsModeInput` via:
+// ChartOptionsModeInput is an input type that accepts values of the ChartOptionsMode enum
+// A concrete instance of `ChartOptionsModeInput` can be one of the following:
 //
-//	ChartOptionsModeArgs{...}
+//	ChartOptionsModeModeUnspecified
+//	ChartOptionsModeColor
+//	ChartOptionsModeXRay
+//	ChartOptionsModeStats
 type ChartOptionsModeInput interface {
 	pulumi.Input
 
@@ -1081,10 +1120,15 @@ func (o DashboardFilterFilterTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// DashboardFilterFilterTypeInput is an input type that accepts DashboardFilterFilterTypeArgs and DashboardFilterFilterTypeOutput values.
-// You can construct a concrete instance of `DashboardFilterFilterTypeInput` via:
+// DashboardFilterFilterTypeInput is an input type that accepts values of the DashboardFilterFilterType enum
+// A concrete instance of `DashboardFilterFilterTypeInput` can be one of the following:
 //
-//	DashboardFilterFilterTypeArgs{...}
+//	DashboardFilterFilterTypeFilterTypeUnspecified
+//	DashboardFilterFilterTypeResourceLabel
+//	DashboardFilterFilterTypeMetricLabel
+//	DashboardFilterFilterTypeUserMetadataLabel
+//	DashboardFilterFilterTypeSystemMetadataLabel
+//	DashboardFilterFilterTypeGroup
 type DashboardFilterFilterTypeInput interface {
 	pulumi.Input
 
@@ -1260,10 +1304,14 @@ func (o DataSetPlotTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataSetPlotTypeInput is an input type that accepts DataSetPlotTypeArgs and DataSetPlotTypeOutput values.
-// You can construct a concrete instance of `DataSetPlotTypeInput` via:
+// DataSetPlotTypeInput is an input type that accepts values of the DataSetPlotType enum
+// A concrete instance of `DataSetPlotTypeInput` can be one of the following:
 //
-//	DataSetPlotTypeArgs{...}
+//	DataSetPlotTypePlotTypeUnspecified
+//	DataSetPlotTypeLine
+//	DataSetPlotTypeStackedArea
+//	DataSetPlotTypeStackedBar
+//	DataSetPlotTypeHeatmap
 type DataSetPlotTypeInput interface {
 	pulumi.Input
 
@@ -1435,10 +1483,12 @@ func (o DataSetTargetAxisPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataSetTargetAxisInput is an input type that accepts DataSetTargetAxisArgs and DataSetTargetAxisOutput values.
-// You can construct a concrete instance of `DataSetTargetAxisInput` via:
+// DataSetTargetAxisInput is an input type that accepts values of the DataSetTargetAxis enum
+// A concrete instance of `DataSetTargetAxisInput` can be one of the following:
 //
-//	DataSetTargetAxisArgs{...}
+//	DataSetTargetAxisTargetAxisUnspecified
+//	DataSetTargetAxisY1
+//	DataSetTargetAxisY2
 type DataSetTargetAxisInput interface {
 	pulumi.Input
 
@@ -1612,10 +1662,13 @@ func (o DimensionSortOrderPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// DimensionSortOrderInput is an input type that accepts DimensionSortOrderArgs and DimensionSortOrderOutput values.
-// You can construct a concrete instance of `DimensionSortOrderInput` via:
+// DimensionSortOrderInput is an input type that accepts values of the DimensionSortOrder enum
+// A concrete instance of `DimensionSortOrderInput` can be one of the following:
 //
-//	DimensionSortOrderArgs{...}
+//	DimensionSortOrderSortOrderUnspecified
+//	DimensionSortOrderSortOrderNone
+//	DimensionSortOrderSortOrderAscending
+//	DimensionSortOrderSortOrderDescending
 type DimensionSortOrderInput interface {
 	pulumi.Input
 
@@ -1787,10 +1840,12 @@ func (o PickTimeSeriesFilterDirectionPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// PickTimeSeriesFilterDirectionInput is an input type that accepts PickTimeSeriesFilterDirectionArgs and PickTimeSeriesFilterDirectionOutput values.
-// You can construct a concrete instance of `PickTimeSeriesFilterDirectionInput` via:
+// PickTimeSeriesFilterDirectionInput is an input type that accepts values of the PickTimeSeriesFilterDirection enum
+// A concrete instance of `PickTimeSeriesFilterDirectionInput` can be one of the following:
 //
-//	PickTimeSeriesFilterDirectionArgs{...}
+//	PickTimeSeriesFilterDirectionDirectionUnspecified
+//	PickTimeSeriesFilterDirectionTop
+//	PickTimeSeriesFilterDirectionBottom
 type PickTimeSeriesFilterDirectionInput interface {
 	pulumi.Input
 
@@ -1968,10 +2023,15 @@ func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// PickTimeSeriesFilterRankingMethodInput is an input type that accepts PickTimeSeriesFilterRankingMethodArgs and PickTimeSeriesFilterRankingMethodOutput values.
-// You can construct a concrete instance of `PickTimeSeriesFilterRankingMethodInput` via:
+// PickTimeSeriesFilterRankingMethodInput is an input type that accepts values of the PickTimeSeriesFilterRankingMethod enum
+// A concrete instance of `PickTimeSeriesFilterRankingMethodInput` can be one of the following:
 //
-//	PickTimeSeriesFilterRankingMethodArgs{...}
+//	PickTimeSeriesFilterRankingMethodMethodUnspecified
+//	PickTimeSeriesFilterRankingMethodMethodMean
+//	PickTimeSeriesFilterRankingMethodMethodMax
+//	PickTimeSeriesFilterRankingMethodMethodMin
+//	PickTimeSeriesFilterRankingMethodMethodSum
+//	PickTimeSeriesFilterRankingMethodMethodLatest
 type PickTimeSeriesFilterRankingMethodInput interface {
 	pulumi.Input
 
@@ -2143,10 +2203,12 @@ func (o PieChartChartTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// PieChartChartTypeInput is an input type that accepts PieChartChartTypeArgs and PieChartChartTypeOutput values.
-// You can construct a concrete instance of `PieChartChartTypeInput` via:
+// PieChartChartTypeInput is an input type that accepts values of the PieChartChartType enum
+// A concrete instance of `PieChartChartTypeInput` can be one of the following:
 //
-//	PieChartChartTypeArgs{...}
+//	PieChartChartTypePieChartTypeUnspecified
+//	PieChartChartTypePie
+//	PieChartChartTypeDonut
 type PieChartChartTypeInput interface {
 	pulumi.Input
 
@@ -2318,10 +2380,12 @@ func (o SparkChartViewSparkChartTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// SparkChartViewSparkChartTypeInput is an input type that accepts SparkChartViewSparkChartTypeArgs and SparkChartViewSparkChartTypeOutput values.
-// You can construct a concrete instance of `SparkChartViewSparkChartTypeInput` via:
+// SparkChartViewSparkChartTypeInput is an input type that accepts values of the SparkChartViewSparkChartType enum
+// A concrete instance of `SparkChartViewSparkChartTypeInput` can be one of the following:
 //
-//	SparkChartViewSparkChartTypeArgs{...}
+//	SparkChartViewSparkChartTypeSparkChartTypeUnspecified
+//	SparkChartViewSparkChartTypeSparkLine
+//	SparkChartViewSparkChartTypeSparkBar
 type SparkChartViewSparkChartTypeInput interface {
 	pulumi.Input
 
@@ -2491,10 +2555,11 @@ func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) ToStringPtrOutputWith
 	}).(pulumi.StringPtrOutput)
 }
 
-// StatisticalTimeSeriesFilterRankingMethodInput is an input type that accepts StatisticalTimeSeriesFilterRankingMethodArgs and StatisticalTimeSeriesFilterRankingMethodOutput values.
-// You can construct a concrete instance of `StatisticalTimeSeriesFilterRankingMethodInput` via:
+// StatisticalTimeSeriesFilterRankingMethodInput is an input type that accepts values of the StatisticalTimeSeriesFilterRankingMethod enum
+// A concrete instance of `StatisticalTimeSeriesFilterRankingMethodInput` can be one of the following:
 //
-//	StatisticalTimeSeriesFilterRankingMethodArgs{...}
+//	StatisticalTimeSeriesFilterRankingMethodMethodUnspecified
+//	StatisticalTimeSeriesFilterRankingMethodMethodClusterOutlier
 type StatisticalTimeSeriesFilterRankingMethodInput interface {
 	pulumi.Input
 
@@ -2666,10 +2731,12 @@ func (o TextFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 	}).(pulumi.StringPtrOutput)
 }
 
-// TextFormatInput is an input type that accepts TextFormatArgs and TextFormatOutput values.
-// You can construct a concrete instance of `TextFormatInput` via:
+// TextFormatInput is an input type that accepts values of the TextFormat enum
+// A concrete instance of `TextFormatInput` can be one of the following:
 //
-//	TextFormatArgs{...}
+//	TextFormatFormatUnspecified
+//	TextFormatMarkdown
+//	TextFormatRaw
 type TextFormatInput interface {
 	pulumi.Input
 
@@ -2847,10 +2914,15 @@ func (o TextStyleFontSizePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// TextStyleFontSizeInput is an input type that accepts TextStyleFontSizeArgs and TextStyleFontSizeOutput values.
-// You can construct a concrete instance of `TextStyleFontSizeInput` via:
+// TextStyleFontSizeInput is an input type that accepts values of the TextStyleFontSize enum
+// A concrete instance of `TextStyleFontSizeInput` can be one of the following:
 //
-//	TextStyleFontSizeArgs{...}
+//	TextStyleFontSizeFontSizeUnspecified
+//	TextStyleFontSizeFsExtraSmall
+//	TextStyleFontSizeFsSmall
+//	TextStyleFontSizeFsMedium
+//	TextStyleFontSizeFsLarge
+//	TextStyleFontSizeFsExtraLarge
 type TextStyleFontSizeInput interface {
 	pulumi.Input
 
@@ -3024,10 +3096,13 @@ func (o TextStyleHorizontalAlignmentPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// TextStyleHorizontalAlignmentInput is an input type that accepts TextStyleHorizontalAlignmentArgs and TextStyleHorizontalAlignmentOutput values.
-// You can construct a concrete instance of `TextStyleHorizontalAlignmentInput` via:
+// TextStyleHorizontalAlignmentInput is an input type that accepts values of the TextStyleHorizontalAlignment enum
+// A concrete instance of `TextStyleHorizontalAlignmentInput` can be one of the following:
 //
-//	TextStyleHorizontalAlignmentArgs{...}
+//	TextStyleHorizontalAlignmentHorizontalAlignmentUnspecified
+//	TextStyleHorizontalAlignmentHLeft
+//	TextStyleHorizontalAlignmentHCenter
+//	TextStyleHorizontalAlignmentHRight
 type TextStyleHorizontalAlignmentInput interface {
 	pulumi.Input
 
@@ -3205,10 +3280,15 @@ func (o TextStylePaddingPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// TextStylePaddingInput is an input type that accepts TextStylePaddingArgs and TextStylePaddingOutput values.
-// You can construct a concrete instance of `TextStylePaddingInput` via:
+// TextStylePaddingInput is an input type that accepts values of the TextStylePadding enum
+// A concrete instance of `TextStylePaddingInput` can be one of the following:
 //
-//	TextStylePaddingArgs{...}
+//	TextStylePaddingPaddingSizeUnspecified
+//	TextStylePaddingPExtraSmall
+//	TextStylePaddingPSmall
+//	TextStylePaddingPMedium
+//	TextStylePaddingPLarge
+//	TextStylePaddingPExtraLarge
 type TextStylePaddingInput interface {
 	pulumi.Input
 
@@ -3400,10 +3480,22 @@ func (o TextStylePointerLocationPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// TextStylePointerLocationInput is an input type that accepts TextStylePointerLocationArgs and TextStylePointerLocationOutput values.
-// You can construct a concrete instance of `TextStylePointerLocationInput` via:
+// TextStylePointerLocationInput is an input type that accepts values of the TextStylePointerLocation enum
+// A concrete instance of `TextStylePointerLocationInput` can be one of the following:
 //
-//	TextStylePointerLocationArgs{...}
+//	TextStylePointerLocationPointerLocationUnspecified
+//	TextStylePointerLocationPlTop
+//	TextStylePointerLocationPlRight
+//	TextStylePointerLocationPlBottom
+//	TextStylePointerLocationPlLeft
+//	TextStylePointerLocationPlTopLeft
+//	TextStylePointerLocationPlTopRight
+//	TextStylePointerLocationPlRightTop
+//	TextStylePointerLocationPlRightBottom
+//	TextStylePointerLocationPlBottomRight
+//	TextStylePointerLocationPlBottomLeft
+//	TextStylePointerLocationPlLeftBottom
+//	TextStylePointerLocationPlLeftTop
 type TextStylePointerLocationInput interface {
 	pulumi.Input
 
@@ -3577,10 +3669,13 @@ func (o TextStyleVerticalAlignmentPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// TextStyleVerticalAlignmentInput is an input type that accepts TextStyleVerticalAlignmentArgs and TextStyleVerticalAlignmentOutput values.
-// You can construct a concrete instance of `TextStyleVerticalAlignmentInput` via:
+// TextStyleVerticalAlignmentInput is an input type that accepts values of the TextStyleVerticalAlignment enum
+// A concrete instance of `TextStyleVerticalAlignmentInput` can be one of the following:
 //
-//	TextStyleVerticalAlignmentArgs{...}
+//	TextStyleVerticalAlignmentVerticalAlignmentUnspecified
+//	TextStyleVerticalAlignmentVTop
+//	TextStyleVerticalAlignmentVCenter
+//	TextStyleVerticalAlignmentVBottom
 type TextStyleVerticalAlignmentInput interface {
 	pulumi.Input
 
@@ -3752,10 +3847,12 @@ func (o ThresholdColorPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ThresholdColorInput is an input type that accepts ThresholdColorArgs and ThresholdColorOutput values.
-// You can construct a concrete instance of `ThresholdColorInput` via:
+// ThresholdColorInput is an input type that accepts values of the ThresholdColor enum
+// A concrete instance of `ThresholdColorInput` can be one of the following:
 //
-//	ThresholdColorArgs{...}
+//	ThresholdColorColorUnspecified
+//	ThresholdColorYellow
+//	ThresholdColorRed
 type ThresholdColorInput interface {
 	pulumi.Input
 
@@ -3927,10 +4024,12 @@ func (o ThresholdDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ThresholdDirectionInput is an input type that accepts ThresholdDirectionArgs and ThresholdDirectionOutput values.
-// You can construct a concrete instance of `ThresholdDirectionInput` via:
+// ThresholdDirectionInput is an input type that accepts values of the ThresholdDirection enum
+// A concrete instance of `ThresholdDirectionInput` can be one of the following:
 //
-//	ThresholdDirectionArgs{...}
+//	ThresholdDirectionDirectionUnspecified
+//	ThresholdDirectionAbove
+//	ThresholdDirectionBelow
 type ThresholdDirectionInput interface {
 	pulumi.Input
 
@@ -4102,10 +4201,12 @@ func (o ThresholdTargetAxisPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ThresholdTargetAxisInput is an input type that accepts ThresholdTargetAxisArgs and ThresholdTargetAxisOutput values.
-// You can construct a concrete instance of `ThresholdTargetAxisInput` via:
+// ThresholdTargetAxisInput is an input type that accepts values of the ThresholdTargetAxis enum
+// A concrete instance of `ThresholdTargetAxisInput` can be one of the following:
 //
-//	ThresholdTargetAxisArgs{...}
+//	ThresholdTargetAxisTargetAxisUnspecified
+//	ThresholdTargetAxisY1
+//	ThresholdTargetAxisY2
 type ThresholdTargetAxisInput interface {
 	pulumi.Input
 
@@ -4277,10 +4378,12 @@ func (o TimeSeriesTableMetricVisualizationPtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// TimeSeriesTableMetricVisualizationInput is an input type that accepts TimeSeriesTableMetricVisualizationArgs and TimeSeriesTableMetricVisualizationOutput values.
-// You can construct a concrete instance of `TimeSeriesTableMetricVisualizationInput` via:
+// TimeSeriesTableMetricVisualizationInput is an input type that accepts values of the TimeSeriesTableMetricVisualization enum
+// A concrete instance of `TimeSeriesTableMetricVisualizationInput` can be one of the following:
 //
-//	TimeSeriesTableMetricVisualizationArgs{...}
+//	TimeSeriesTableMetricVisualizationMetricVisualizationUnspecified
+//	TimeSeriesTableMetricVisualizationNumber
+//	TimeSeriesTableMetricVisualizationBar
 type TimeSeriesTableMetricVisualizationInput interface {
 	pulumi.Input
 

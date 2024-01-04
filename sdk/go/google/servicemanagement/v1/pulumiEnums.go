@@ -142,10 +142,12 @@ func (o ApiSyntaxPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// ApiSyntaxInput is an input type that accepts ApiSyntaxArgs and ApiSyntaxOutput values.
-// You can construct a concrete instance of `ApiSyntaxInput` via:
+// ApiSyntaxInput is an input type that accepts values of the ApiSyntax enum
+// A concrete instance of `ApiSyntaxInput` can be one of the following:
 //
-//	ApiSyntaxArgs{...}
+//	ApiSyntaxSyntaxProto2
+//	ApiSyntaxSyntaxProto3
+//	ApiSyntaxSyntaxEditions
 type ApiSyntaxInput interface {
 	pulumi.Input
 
@@ -319,10 +321,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -492,10 +497,12 @@ func (o BackendRulePathTranslationPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// BackendRulePathTranslationInput is an input type that accepts BackendRulePathTranslationArgs and BackendRulePathTranslationOutput values.
-// You can construct a concrete instance of `BackendRulePathTranslationInput` via:
+// BackendRulePathTranslationInput is an input type that accepts values of the BackendRulePathTranslation enum
+// A concrete instance of `BackendRulePathTranslationInput` can be one of the following:
 //
-//	BackendRulePathTranslationArgs{...}
+//	BackendRulePathTranslationPathTranslationUnspecified
+//	BackendRulePathTranslationConstantAddress
+//	BackendRulePathTranslationAppendPathToAddress
 type BackendRulePathTranslationInput interface {
 	pulumi.Input
 
@@ -677,10 +684,17 @@ func (o ClientLibrarySettingsLaunchStagePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// ClientLibrarySettingsLaunchStageInput is an input type that accepts ClientLibrarySettingsLaunchStageArgs and ClientLibrarySettingsLaunchStageOutput values.
-// You can construct a concrete instance of `ClientLibrarySettingsLaunchStageInput` via:
+// ClientLibrarySettingsLaunchStageInput is an input type that accepts values of the ClientLibrarySettingsLaunchStage enum
+// A concrete instance of `ClientLibrarySettingsLaunchStageInput` can be one of the following:
 //
-//	ClientLibrarySettingsLaunchStageArgs{...}
+//	ClientLibrarySettingsLaunchStageLaunchStageUnspecified
+//	ClientLibrarySettingsLaunchStageUnimplemented
+//	ClientLibrarySettingsLaunchStagePrelaunch
+//	ClientLibrarySettingsLaunchStageEarlyAccess
+//	ClientLibrarySettingsLaunchStageAlpha
+//	ClientLibrarySettingsLaunchStageBeta
+//	ClientLibrarySettingsLaunchStageGa
+//	ClientLibrarySettingsLaunchStageDeprecated
 type ClientLibrarySettingsLaunchStageInput interface {
 	pulumi.Input
 
@@ -851,10 +865,12 @@ func (o CommonLanguageSettingsDestinationsItemPtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// CommonLanguageSettingsDestinationsItemInput is an input type that accepts CommonLanguageSettingsDestinationsItemArgs and CommonLanguageSettingsDestinationsItemOutput values.
-// You can construct a concrete instance of `CommonLanguageSettingsDestinationsItemInput` via:
+// CommonLanguageSettingsDestinationsItemInput is an input type that accepts values of the CommonLanguageSettingsDestinationsItem enum
+// A concrete instance of `CommonLanguageSettingsDestinationsItemInput` can be one of the following:
 //
-//	CommonLanguageSettingsDestinationsItemArgs{...}
+//	CommonLanguageSettingsDestinationsItemClientLibraryDestinationUnspecified
+//	CommonLanguageSettingsDestinationsItemGithub
+//	CommonLanguageSettingsDestinationsItemPackageManager
 type CommonLanguageSettingsDestinationsItemInput interface {
 	pulumi.Input
 
@@ -1071,10 +1087,12 @@ func (o EnumSyntaxPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnumSyntaxInput is an input type that accepts EnumSyntaxArgs and EnumSyntaxOutput values.
-// You can construct a concrete instance of `EnumSyntaxInput` via:
+// EnumSyntaxInput is an input type that accepts values of the EnumSyntax enum
+// A concrete instance of `EnumSyntaxInput` can be one of the following:
 //
-//	EnumSyntaxArgs{...}
+//	EnumSyntaxSyntaxProto2
+//	EnumSyntaxSyntaxProto3
+//	EnumSyntaxSyntaxEditions
 type EnumSyntaxInput interface {
 	pulumi.Input
 
@@ -1248,10 +1266,13 @@ func (o FieldCardinalityPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// FieldCardinalityInput is an input type that accepts FieldCardinalityArgs and FieldCardinalityOutput values.
-// You can construct a concrete instance of `FieldCardinalityInput` via:
+// FieldCardinalityInput is an input type that accepts values of the FieldCardinality enum
+// A concrete instance of `FieldCardinalityInput` can be one of the following:
 //
-//	FieldCardinalityArgs{...}
+//	FieldCardinalityCardinalityUnknown
+//	FieldCardinalityCardinalityOptional
+//	FieldCardinalityCardinalityRequired
+//	FieldCardinalityCardinalityRepeated
 type FieldCardinalityInput interface {
 	pulumi.Input
 
@@ -1455,10 +1476,28 @@ func (o FieldKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// FieldKindInput is an input type that accepts FieldKindArgs and FieldKindOutput values.
-// You can construct a concrete instance of `FieldKindInput` via:
+// FieldKindInput is an input type that accepts values of the FieldKind enum
+// A concrete instance of `FieldKindInput` can be one of the following:
 //
-//	FieldKindArgs{...}
+//	FieldKindTypeUnknown
+//	FieldKindTypeDouble
+//	FieldKindTypeFloat
+//	FieldKindTypeInt64
+//	FieldKindTypeUint64
+//	FieldKindTypeInt32
+//	FieldKindTypeFixed64
+//	FieldKindTypeFixed32
+//	FieldKindTypeBool
+//	FieldKindTypeString
+//	FieldKindTypeGroup
+//	FieldKindTypeMessage
+//	FieldKindTypeBytes
+//	FieldKindTypeUint32
+//	FieldKindTypeEnum
+//	FieldKindTypeSfixed32
+//	FieldKindTypeSfixed64
+//	FieldKindTypeSint32
+//	FieldKindTypeSint64
 type FieldKindInput interface {
 	pulumi.Input
 
@@ -1630,10 +1669,12 @@ func (o LabelDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// LabelDescriptorValueTypeInput is an input type that accepts LabelDescriptorValueTypeArgs and LabelDescriptorValueTypeOutput values.
-// You can construct a concrete instance of `LabelDescriptorValueTypeInput` via:
+// LabelDescriptorValueTypeInput is an input type that accepts values of the LabelDescriptorValueType enum
+// A concrete instance of `LabelDescriptorValueTypeInput` can be one of the following:
 //
-//	LabelDescriptorValueTypeArgs{...}
+//	LabelDescriptorValueTypeString
+//	LabelDescriptorValueTypeBool
+//	LabelDescriptorValueTypeInt64
 type LabelDescriptorValueTypeInput interface {
 	pulumi.Input
 
@@ -1805,10 +1846,12 @@ func (o MethodSyntaxPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// MethodSyntaxInput is an input type that accepts MethodSyntaxArgs and MethodSyntaxOutput values.
-// You can construct a concrete instance of `MethodSyntaxInput` via:
+// MethodSyntaxInput is an input type that accepts values of the MethodSyntax enum
+// A concrete instance of `MethodSyntaxInput` can be one of the following:
 //
-//	MethodSyntaxArgs{...}
+//	MethodSyntaxSyntaxProto2
+//	MethodSyntaxSyntaxProto3
+//	MethodSyntaxSyntaxEditions
 type MethodSyntaxInput interface {
 	pulumi.Input
 
@@ -1990,10 +2033,17 @@ func (o MetricDescriptorLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricDescriptorLaunchStageInput is an input type that accepts MetricDescriptorLaunchStageArgs and MetricDescriptorLaunchStageOutput values.
-// You can construct a concrete instance of `MetricDescriptorLaunchStageInput` via:
+// MetricDescriptorLaunchStageInput is an input type that accepts values of the MetricDescriptorLaunchStage enum
+// A concrete instance of `MetricDescriptorLaunchStageInput` can be one of the following:
 //
-//	MetricDescriptorLaunchStageArgs{...}
+//	MetricDescriptorLaunchStageLaunchStageUnspecified
+//	MetricDescriptorLaunchStageUnimplemented
+//	MetricDescriptorLaunchStagePrelaunch
+//	MetricDescriptorLaunchStageEarlyAccess
+//	MetricDescriptorLaunchStageAlpha
+//	MetricDescriptorLaunchStageBeta
+//	MetricDescriptorLaunchStageGa
+//	MetricDescriptorLaunchStageDeprecated
 type MetricDescriptorLaunchStageInput interface {
 	pulumi.Input
 
@@ -2175,10 +2225,17 @@ func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricDescriptorMetadataLaunchStageInput is an input type that accepts MetricDescriptorMetadataLaunchStageArgs and MetricDescriptorMetadataLaunchStageOutput values.
-// You can construct a concrete instance of `MetricDescriptorMetadataLaunchStageInput` via:
+// MetricDescriptorMetadataLaunchStageInput is an input type that accepts values of the MetricDescriptorMetadataLaunchStage enum
+// A concrete instance of `MetricDescriptorMetadataLaunchStageInput` can be one of the following:
 //
-//	MetricDescriptorMetadataLaunchStageArgs{...}
+//	MetricDescriptorMetadataLaunchStageLaunchStageUnspecified
+//	MetricDescriptorMetadataLaunchStageUnimplemented
+//	MetricDescriptorMetadataLaunchStagePrelaunch
+//	MetricDescriptorMetadataLaunchStageEarlyAccess
+//	MetricDescriptorMetadataLaunchStageAlpha
+//	MetricDescriptorMetadataLaunchStageBeta
+//	MetricDescriptorMetadataLaunchStageGa
+//	MetricDescriptorMetadataLaunchStageDeprecated
 type MetricDescriptorMetadataLaunchStageInput interface {
 	pulumi.Input
 
@@ -2352,10 +2409,13 @@ func (o MetricDescriptorMetricKindPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricDescriptorMetricKindInput is an input type that accepts MetricDescriptorMetricKindArgs and MetricDescriptorMetricKindOutput values.
-// You can construct a concrete instance of `MetricDescriptorMetricKindInput` via:
+// MetricDescriptorMetricKindInput is an input type that accepts values of the MetricDescriptorMetricKind enum
+// A concrete instance of `MetricDescriptorMetricKindInput` can be one of the following:
 //
-//	MetricDescriptorMetricKindArgs{...}
+//	MetricDescriptorMetricKindMetricKindUnspecified
+//	MetricDescriptorMetricKindGauge
+//	MetricDescriptorMetricKindDelta
+//	MetricDescriptorMetricKindCumulative
 type MetricDescriptorMetricKindInput interface {
 	pulumi.Input
 
@@ -2535,10 +2595,16 @@ func (o MetricDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricDescriptorValueTypeInput is an input type that accepts MetricDescriptorValueTypeArgs and MetricDescriptorValueTypeOutput values.
-// You can construct a concrete instance of `MetricDescriptorValueTypeInput` via:
+// MetricDescriptorValueTypeInput is an input type that accepts values of the MetricDescriptorValueType enum
+// A concrete instance of `MetricDescriptorValueTypeInput` can be one of the following:
 //
-//	MetricDescriptorValueTypeArgs{...}
+//	MetricDescriptorValueTypeValueTypeUnspecified
+//	MetricDescriptorValueTypeBool
+//	MetricDescriptorValueTypeInt64
+//	MetricDescriptorValueTypeDouble
+//	MetricDescriptorValueTypeString
+//	MetricDescriptorValueTypeDistribution
+//	MetricDescriptorValueTypeMoney
 type MetricDescriptorValueTypeInput interface {
 	pulumi.Input
 
@@ -2720,10 +2786,17 @@ func (o MonitoredResourceDescriptorLaunchStagePtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// MonitoredResourceDescriptorLaunchStageInput is an input type that accepts MonitoredResourceDescriptorLaunchStageArgs and MonitoredResourceDescriptorLaunchStageOutput values.
-// You can construct a concrete instance of `MonitoredResourceDescriptorLaunchStageInput` via:
+// MonitoredResourceDescriptorLaunchStageInput is an input type that accepts values of the MonitoredResourceDescriptorLaunchStage enum
+// A concrete instance of `MonitoredResourceDescriptorLaunchStageInput` can be one of the following:
 //
-//	MonitoredResourceDescriptorLaunchStageArgs{...}
+//	MonitoredResourceDescriptorLaunchStageLaunchStageUnspecified
+//	MonitoredResourceDescriptorLaunchStageUnimplemented
+//	MonitoredResourceDescriptorLaunchStagePrelaunch
+//	MonitoredResourceDescriptorLaunchStageEarlyAccess
+//	MonitoredResourceDescriptorLaunchStageAlpha
+//	MonitoredResourceDescriptorLaunchStageBeta
+//	MonitoredResourceDescriptorLaunchStageGa
+//	MonitoredResourceDescriptorLaunchStageDeprecated
 type MonitoredResourceDescriptorLaunchStageInput interface {
 	pulumi.Input
 
@@ -2905,10 +2978,17 @@ func (o PublishingOrganizationPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// PublishingOrganizationInput is an input type that accepts PublishingOrganizationArgs and PublishingOrganizationOutput values.
-// You can construct a concrete instance of `PublishingOrganizationInput` via:
+// PublishingOrganizationInput is an input type that accepts values of the PublishingOrganization enum
+// A concrete instance of `PublishingOrganizationInput` can be one of the following:
 //
-//	PublishingOrganizationArgs{...}
+//	PublishingOrganizationClientLibraryOrganizationUnspecified
+//	PublishingOrganizationCloud
+//	PublishingOrganizationAds
+//	PublishingOrganizationPhotos
+//	PublishingOrganizationStreetView
+//	PublishingOrganizationShopping
+//	PublishingOrganizationGeo
+//	PublishingOrganizationGenerativeAi
 type PublishingOrganizationInput interface {
 	pulumi.Input
 
@@ -3100,10 +3180,12 @@ func (o TypeSyntaxPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 	}).(pulumi.StringPtrOutput)
 }
 
-// TypeSyntaxInput is an input type that accepts TypeSyntaxArgs and TypeSyntaxOutput values.
-// You can construct a concrete instance of `TypeSyntaxInput` via:
+// TypeSyntaxInput is an input type that accepts values of the TypeSyntax enum
+// A concrete instance of `TypeSyntaxInput` can be one of the following:
 //
-//	TypeSyntaxArgs{...}
+//	TypeSyntaxSyntaxProto2
+//	TypeSyntaxSyntaxProto3
+//	TypeSyntaxSyntaxEditions
 type TypeSyntaxInput interface {
 	pulumi.Input
 

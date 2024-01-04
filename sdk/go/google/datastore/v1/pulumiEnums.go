@@ -142,10 +142,12 @@ func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToStringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleDatastoreAdminV1IndexedPropertyDirectionInput is an input type that accepts GoogleDatastoreAdminV1IndexedPropertyDirectionArgs and GoogleDatastoreAdminV1IndexedPropertyDirectionOutput values.
-// You can construct a concrete instance of `GoogleDatastoreAdminV1IndexedPropertyDirectionInput` via:
+// GoogleDatastoreAdminV1IndexedPropertyDirectionInput is an input type that accepts values of the GoogleDatastoreAdminV1IndexedPropertyDirection enum
+// A concrete instance of `GoogleDatastoreAdminV1IndexedPropertyDirectionInput` can be one of the following:
 //
-//	GoogleDatastoreAdminV1IndexedPropertyDirectionArgs{...}
+//	GoogleDatastoreAdminV1IndexedPropertyDirectionDirectionUnspecified
+//	GoogleDatastoreAdminV1IndexedPropertyDirectionAscending
+//	GoogleDatastoreAdminV1IndexedPropertyDirectionDescending
 type GoogleDatastoreAdminV1IndexedPropertyDirectionInput interface {
 	pulumi.Input
 
@@ -317,10 +319,12 @@ func (o IndexAncestorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// IndexAncestorInput is an input type that accepts IndexAncestorArgs and IndexAncestorOutput values.
-// You can construct a concrete instance of `IndexAncestorInput` via:
+// IndexAncestorInput is an input type that accepts values of the IndexAncestor enum
+// A concrete instance of `IndexAncestorInput` can be one of the following:
 //
-//	IndexAncestorArgs{...}
+//	IndexAncestorAncestorModeUnspecified
+//	IndexAncestorNone
+//	IndexAncestorAllAncestors
 type IndexAncestorInput interface {
 	pulumi.Input
 

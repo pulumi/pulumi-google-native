@@ -142,10 +142,12 @@ func (o ArtifactStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// ArtifactStateEnumInput is an input type that accepts ArtifactStateEnumArgs and ArtifactStateEnumOutput values.
-// You can construct a concrete instance of `ArtifactStateEnumInput` via:
+// ArtifactStateEnumInput is an input type that accepts values of the ArtifactStateEnum enum
+// A concrete instance of `ArtifactStateEnumInput` can be one of the following:
 //
-//	ArtifactStateEnumArgs{...}
+//	ArtifactStateEnumStateUnspecified
+//	ArtifactStateEnumPending
+//	ArtifactStateEnumLive
 type ArtifactStateEnumInput interface {
 	pulumi.Input
 
@@ -325,10 +327,16 @@ func (o ExecutionStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExecutionStateEnumInput is an input type that accepts ExecutionStateEnumArgs and ExecutionStateEnumOutput values.
-// You can construct a concrete instance of `ExecutionStateEnumInput` via:
+// ExecutionStateEnumInput is an input type that accepts values of the ExecutionStateEnum enum
+// A concrete instance of `ExecutionStateEnumInput` can be one of the following:
 //
-//	ExecutionStateEnumArgs{...}
+//	ExecutionStateEnumStateUnspecified
+//	ExecutionStateEnumNew
+//	ExecutionStateEnumRunning
+//	ExecutionStateEnumComplete
+//	ExecutionStateEnumFailed
+//	ExecutionStateEnumCached
+//	ExecutionStateEnumCancelled
 type ExecutionStateEnumInput interface {
 	pulumi.Input
 
@@ -514,10 +522,19 @@ func (o FeatureGroupFeatureValueTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// FeatureGroupFeatureValueTypeInput is an input type that accepts FeatureGroupFeatureValueTypeArgs and FeatureGroupFeatureValueTypeOutput values.
-// You can construct a concrete instance of `FeatureGroupFeatureValueTypeInput` via:
+// FeatureGroupFeatureValueTypeInput is an input type that accepts values of the FeatureGroupFeatureValueType enum
+// A concrete instance of `FeatureGroupFeatureValueTypeInput` can be one of the following:
 //
-//	FeatureGroupFeatureValueTypeArgs{...}
+//	FeatureGroupFeatureValueTypeValueTypeUnspecified
+//	FeatureGroupFeatureValueTypeBool
+//	FeatureGroupFeatureValueTypeBoolArray
+//	FeatureGroupFeatureValueTypeDouble
+//	FeatureGroupFeatureValueTypeDoubleArray
+//	FeatureGroupFeatureValueTypeInt64
+//	FeatureGroupFeatureValueTypeInt64Array
+//	FeatureGroupFeatureValueTypeString
+//	FeatureGroupFeatureValueTypeStringArray
+//	FeatureGroupFeatureValueTypeBytes
 type FeatureGroupFeatureValueTypeInput interface {
 	pulumi.Input
 
@@ -703,10 +720,19 @@ func (o FeatureStoreFeatureValueTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// FeatureStoreFeatureValueTypeInput is an input type that accepts FeatureStoreFeatureValueTypeArgs and FeatureStoreFeatureValueTypeOutput values.
-// You can construct a concrete instance of `FeatureStoreFeatureValueTypeInput` via:
+// FeatureStoreFeatureValueTypeInput is an input type that accepts values of the FeatureStoreFeatureValueType enum
+// A concrete instance of `FeatureStoreFeatureValueTypeInput` can be one of the following:
 //
-//	FeatureStoreFeatureValueTypeArgs{...}
+//	FeatureStoreFeatureValueTypeValueTypeUnspecified
+//	FeatureStoreFeatureValueTypeBool
+//	FeatureStoreFeatureValueTypeBoolArray
+//	FeatureStoreFeatureValueTypeDouble
+//	FeatureStoreFeatureValueTypeDoubleArray
+//	FeatureStoreFeatureValueTypeInt64
+//	FeatureStoreFeatureValueTypeInt64Array
+//	FeatureStoreFeatureValueTypeString
+//	FeatureStoreFeatureValueTypeStringArray
+//	FeatureStoreFeatureValueTypeBytes
 type FeatureStoreFeatureValueTypeInput interface {
 	pulumi.Input
 
@@ -876,10 +902,11 @@ func (o GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatInput is an input type that accepts GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatArgs and GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatInput` via:
+// GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatArgs{...}
+//	GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatDataFormatUnspecified
+//	GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatJsonl
 type GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatInput interface {
 	pulumi.Input
 
@@ -1053,10 +1080,13 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasure
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeArgs and GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeInput` via:
+// GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeArgs{...}
+//	GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeDistanceMeasureTypeUnspecified
+//	GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeSquaredL2Distance
+//	GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeCosineDistance
+//	GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeDotProductDistance
 type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeInput interface {
 	pulumi.Input
 
@@ -1230,10 +1260,13 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAn
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineInput is an input type that accepts GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineArgs and GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineInput` via:
+// GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineArgs{...}
+//	GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineBaselineUnspecified
+//	GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineLatestStats
+//	GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineMostRecentSnapshotStats
+//	GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselinePreviousImportFeaturesStats
 type GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineInput interface {
 	pulumi.Input
 
@@ -1407,10 +1440,13 @@ func (o GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAn
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateInput is an input type that accepts GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateArgs and GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateInput` via:
+// GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisState enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateArgs{...}
+//	GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateStateUnspecified
+//	GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateDefault
+//	GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateEnabled
+//	GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateDisabled
 type GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateInput interface {
 	pulumi.Input
 
@@ -1604,10 +1640,23 @@ func (o GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypePtrOutput) ToStrin
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeInput is an input type that accepts GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeArgs and GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeInput` via:
+// GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeArgs{...}
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeAcceleratorTypeUnspecified
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeNvidiaTeslaK80
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeNvidiaTeslaP100
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeNvidiaTeslaV100
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeNvidiaTeslaP4
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeNvidiaTeslaT4
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeNvidiaTeslaA100
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeNvidiaA10080gb
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeNvidiaL4
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeNvidiaH10080gb
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeTpuV2
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeTpuV3
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeTpuV4Pod
+//	GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeTpuV5Litepod
 type GoogleCloudAiplatformV1beta1MachineSpecAcceleratorTypeInput interface {
 	pulumi.Input
 
@@ -1779,10 +1828,12 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatInput is an input type that accepts GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatArgs and GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatInput` via:
+// GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatArgs{...}
+//	GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatPredictionFormatUnspecified
+//	GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatJsonl
+//	GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatBigquery
 type GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatInput interface {
 	pulumi.Input
 
@@ -1958,10 +2009,14 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectivePtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveInput is an input type that accepts GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveArgs and GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveInput` via:
+// GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveArgs{...}
+//	GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveModelDeploymentMonitoringObjectiveTypeUnspecified
+//	GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveRawFeatureSkew
+//	GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveRawFeatureDrift
+//	GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveFeatureAttributionSkew
+//	GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveFeatureAttributionDrift
 type GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjectiveInput interface {
 	pulumi.Input
 
@@ -2133,10 +2188,12 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecG
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalInput is an input type that accepts GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalArgs and GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalInput` via:
+// GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalArgs{...}
+//	GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalGoalTypeUnspecified
+//	GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalMaximize
+//	GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalMinimize
 type GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalInput interface {
 	pulumi.Input
 
@@ -2308,10 +2365,12 @@ func (o GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialA
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmInput is an input type that accepts GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmArgs and GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmInput` via:
+// GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmArgs{...}
+//	GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmMultiTrialAlgorithmUnspecified
+//	GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmReinforcementLearning
+//	GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmGridSearch
 type GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmInput interface {
 	pulumi.Input
 
@@ -2483,10 +2542,12 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyInput is an input type that accepts GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyArgs and GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyInput` via:
+// GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyArgs{...}
+//	GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPipelineFailurePolicyUnspecified
+//	GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPipelineFailurePolicyFailSlow
+//	GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPipelineFailurePolicyFailFast
 type GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyInput interface {
 	pulumi.Input
 
@@ -2660,10 +2721,13 @@ func (o GoogleCloudAiplatformV1beta1PresetsModalityPtrOutput) ToStringPtrOutputW
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1PresetsModalityInput is an input type that accepts GoogleCloudAiplatformV1beta1PresetsModalityArgs and GoogleCloudAiplatformV1beta1PresetsModalityOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1PresetsModalityInput` via:
+// GoogleCloudAiplatformV1beta1PresetsModalityInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1PresetsModality enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1PresetsModalityInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1PresetsModalityArgs{...}
+//	GoogleCloudAiplatformV1beta1PresetsModalityModalityUnspecified
+//	GoogleCloudAiplatformV1beta1PresetsModalityImage
+//	GoogleCloudAiplatformV1beta1PresetsModalityText
+//	GoogleCloudAiplatformV1beta1PresetsModalityTabular
 type GoogleCloudAiplatformV1beta1PresetsModalityInput interface {
 	pulumi.Input
 
@@ -2833,10 +2897,11 @@ func (o GoogleCloudAiplatformV1beta1PresetsQueryPtrOutput) ToStringPtrOutputWith
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1PresetsQueryInput is an input type that accepts GoogleCloudAiplatformV1beta1PresetsQueryArgs and GoogleCloudAiplatformV1beta1PresetsQueryOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1PresetsQueryInput` via:
+// GoogleCloudAiplatformV1beta1PresetsQueryInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1PresetsQuery enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1PresetsQueryInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1PresetsQueryArgs{...}
+//	GoogleCloudAiplatformV1beta1PresetsQueryPrecise
+//	GoogleCloudAiplatformV1beta1PresetsQueryFast
 type GoogleCloudAiplatformV1beta1PresetsQueryInput interface {
 	pulumi.Input
 
@@ -3006,10 +3071,11 @@ func (o GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyPtrOutput) ToStrin
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyInput is an input type that accepts GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyArgs and GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyInput` via:
+// GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyArgs{...}
+//	GoogleCloudAiplatformV1beta1SampleConfigSampleStrategySampleStrategyUnspecified
+//	GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyUncertainty
 type GoogleCloudAiplatformV1beta1SampleConfigSampleStrategyInput interface {
 	pulumi.Input
 
@@ -3181,10 +3247,12 @@ func (o GoogleCloudAiplatformV1beta1StudySpecAlgorithmPtrOutput) ToStringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1StudySpecAlgorithmInput is an input type that accepts GoogleCloudAiplatformV1beta1StudySpecAlgorithmArgs and GoogleCloudAiplatformV1beta1StudySpecAlgorithmOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1StudySpecAlgorithmInput` via:
+// GoogleCloudAiplatformV1beta1StudySpecAlgorithmInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1StudySpecAlgorithm enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1StudySpecAlgorithmInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1StudySpecAlgorithmArgs{...}
+//	GoogleCloudAiplatformV1beta1StudySpecAlgorithmAlgorithmUnspecified
+//	GoogleCloudAiplatformV1beta1StudySpecAlgorithmGridSearch
+//	GoogleCloudAiplatformV1beta1StudySpecAlgorithmRandomSearch
 type GoogleCloudAiplatformV1beta1StudySpecAlgorithmInput interface {
 	pulumi.Input
 
@@ -3356,10 +3424,12 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypePtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeInput is an input type that accepts GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeArgs and GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeInput` via:
+// GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeArgs{...}
+//	GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeMeasurementSelectionTypeUnspecified
+//	GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeLastMeasurement
+//	GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeBestMeasurement
 type GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionTypeInput interface {
 	pulumi.Input
 
@@ -3531,10 +3601,12 @@ func (o GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalPtrOutput) ToStringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalInput is an input type that accepts GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalArgs and GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalInput` via:
+// GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoal enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalArgs{...}
+//	GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalGoalTypeUnspecified
+//	GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalMaximize
+//	GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalMinimize
 type GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoalInput interface {
 	pulumi.Input
 
@@ -3706,10 +3778,12 @@ func (o GoogleCloudAiplatformV1beta1StudySpecObservationNoisePtrOutput) ToString
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1StudySpecObservationNoiseInput is an input type that accepts GoogleCloudAiplatformV1beta1StudySpecObservationNoiseArgs and GoogleCloudAiplatformV1beta1StudySpecObservationNoiseOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1StudySpecObservationNoiseInput` via:
+// GoogleCloudAiplatformV1beta1StudySpecObservationNoiseInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1StudySpecObservationNoise enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1StudySpecObservationNoiseInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1StudySpecObservationNoiseArgs{...}
+//	GoogleCloudAiplatformV1beta1StudySpecObservationNoiseObservationNoiseUnspecified
+//	GoogleCloudAiplatformV1beta1StudySpecObservationNoiseLow
+//	GoogleCloudAiplatformV1beta1StudySpecObservationNoiseHigh
 type GoogleCloudAiplatformV1beta1StudySpecObservationNoiseInput interface {
 	pulumi.Input
 
@@ -3883,10 +3957,13 @@ func (o GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypePtrOutput) To
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeInput is an input type that accepts GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeArgs and GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeInput` via:
+// GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleType enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeInput` can be one of the following:
 //
-//	GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeArgs{...}
+//	GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeScaleTypeUnspecified
+//	GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeUnitLinearScale
+//	GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeUnitLogScale
+//	GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeUnitReverseLogScale
 type GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleTypeInput interface {
 	pulumi.Input
 
@@ -4058,10 +4135,12 @@ func (o IndexIndexUpdateMethodPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// IndexIndexUpdateMethodInput is an input type that accepts IndexIndexUpdateMethodArgs and IndexIndexUpdateMethodOutput values.
-// You can construct a concrete instance of `IndexIndexUpdateMethodInput` via:
+// IndexIndexUpdateMethodInput is an input type that accepts values of the IndexIndexUpdateMethod enum
+// A concrete instance of `IndexIndexUpdateMethodInput` can be one of the following:
 //
-//	IndexIndexUpdateMethodArgs{...}
+//	IndexIndexUpdateMethodIndexUpdateMethodUnspecified
+//	IndexIndexUpdateMethodBatchUpdate
+//	IndexIndexUpdateMethodStreamUpdate
 type IndexIndexUpdateMethodInput interface {
 	pulumi.Input
 
@@ -4235,10 +4314,13 @@ func (o MetadataSchemaSchemaTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataSchemaSchemaTypeInput is an input type that accepts MetadataSchemaSchemaTypeArgs and MetadataSchemaSchemaTypeOutput values.
-// You can construct a concrete instance of `MetadataSchemaSchemaTypeInput` via:
+// MetadataSchemaSchemaTypeInput is an input type that accepts values of the MetadataSchemaSchemaType enum
+// A concrete instance of `MetadataSchemaSchemaTypeInput` can be one of the following:
 //
-//	MetadataSchemaSchemaTypeArgs{...}
+//	MetadataSchemaSchemaTypeMetadataSchemaTypeUnspecified
+//	MetadataSchemaSchemaTypeArtifactType
+//	MetadataSchemaSchemaTypeExecutionType
+//	MetadataSchemaSchemaTypeContextType
 type MetadataSchemaSchemaTypeInput interface {
 	pulumi.Input
 
@@ -4410,10 +4492,12 @@ func (o NotebookRuntimeTemplateNotebookRuntimeTypePtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// NotebookRuntimeTemplateNotebookRuntimeTypeInput is an input type that accepts NotebookRuntimeTemplateNotebookRuntimeTypeArgs and NotebookRuntimeTemplateNotebookRuntimeTypeOutput values.
-// You can construct a concrete instance of `NotebookRuntimeTemplateNotebookRuntimeTypeInput` via:
+// NotebookRuntimeTemplateNotebookRuntimeTypeInput is an input type that accepts values of the NotebookRuntimeTemplateNotebookRuntimeType enum
+// A concrete instance of `NotebookRuntimeTemplateNotebookRuntimeTypeInput` can be one of the following:
 //
-//	NotebookRuntimeTemplateNotebookRuntimeTypeArgs{...}
+//	NotebookRuntimeTemplateNotebookRuntimeTypeNotebookRuntimeTypeUnspecified
+//	NotebookRuntimeTemplateNotebookRuntimeTypeUserDefined
+//	NotebookRuntimeTemplateNotebookRuntimeTypeOneClick
 type NotebookRuntimeTemplateNotebookRuntimeTypeInput interface {
 	pulumi.Input
 
@@ -4587,10 +4671,13 @@ func (o TimeSeriesValueTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// TimeSeriesValueTypeInput is an input type that accepts TimeSeriesValueTypeArgs and TimeSeriesValueTypeOutput values.
-// You can construct a concrete instance of `TimeSeriesValueTypeInput` via:
+// TimeSeriesValueTypeInput is an input type that accepts values of the TimeSeriesValueType enum
+// A concrete instance of `TimeSeriesValueTypeInput` can be one of the following:
 //
-//	TimeSeriesValueTypeArgs{...}
+//	TimeSeriesValueTypeValueTypeUnspecified
+//	TimeSeriesValueTypeScalar
+//	TimeSeriesValueTypeTensor
+//	TimeSeriesValueTypeBlobSequence
 type TimeSeriesValueTypeInput interface {
 	pulumi.Input
 

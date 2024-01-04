@@ -142,10 +142,12 @@ func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToStringPtrOutputWithC
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanConfigExportToSecurityCommandCenterInput is an input type that accepts ScanConfigExportToSecurityCommandCenterArgs and ScanConfigExportToSecurityCommandCenterOutput values.
-// You can construct a concrete instance of `ScanConfigExportToSecurityCommandCenterInput` via:
+// ScanConfigExportToSecurityCommandCenterInput is an input type that accepts values of the ScanConfigExportToSecurityCommandCenter enum
+// A concrete instance of `ScanConfigExportToSecurityCommandCenterInput` can be one of the following:
 //
-//	ScanConfigExportToSecurityCommandCenterArgs{...}
+//	ScanConfigExportToSecurityCommandCenterExportToSecurityCommandCenterUnspecified
+//	ScanConfigExportToSecurityCommandCenterEnabled
+//	ScanConfigExportToSecurityCommandCenterDisabled
 type ScanConfigExportToSecurityCommandCenterInput interface {
 	pulumi.Input
 
@@ -317,10 +319,12 @@ func (o ScanConfigRiskLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanConfigRiskLevelInput is an input type that accepts ScanConfigRiskLevelArgs and ScanConfigRiskLevelOutput values.
-// You can construct a concrete instance of `ScanConfigRiskLevelInput` via:
+// ScanConfigRiskLevelInput is an input type that accepts values of the ScanConfigRiskLevel enum
+// A concrete instance of `ScanConfigRiskLevelInput` can be one of the following:
 //
-//	ScanConfigRiskLevelArgs{...}
+//	ScanConfigRiskLevelRiskLevelUnspecified
+//	ScanConfigRiskLevelNormal
+//	ScanConfigRiskLevelLow
 type ScanConfigRiskLevelInput interface {
 	pulumi.Input
 
@@ -494,10 +498,13 @@ func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScanConfigUserAgentInput is an input type that accepts ScanConfigUserAgentArgs and ScanConfigUserAgentOutput values.
-// You can construct a concrete instance of `ScanConfigUserAgentInput` via:
+// ScanConfigUserAgentInput is an input type that accepts values of the ScanConfigUserAgent enum
+// A concrete instance of `ScanConfigUserAgentInput` can be one of the following:
 //
-//	ScanConfigUserAgentArgs{...}
+//	ScanConfigUserAgentUserAgentUnspecified
+//	ScanConfigUserAgentChromeLinux
+//	ScanConfigUserAgentChromeAndroid
+//	ScanConfigUserAgentSafariIphone
 type ScanConfigUserAgentInput interface {
 	pulumi.Input
 

@@ -174,10 +174,28 @@ func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// PkixPublicKeySignatureAlgorithmInput is an input type that accepts PkixPublicKeySignatureAlgorithmArgs and PkixPublicKeySignatureAlgorithmOutput values.
-// You can construct a concrete instance of `PkixPublicKeySignatureAlgorithmInput` via:
+// PkixPublicKeySignatureAlgorithmInput is an input type that accepts values of the PkixPublicKeySignatureAlgorithm enum
+// A concrete instance of `PkixPublicKeySignatureAlgorithmInput` can be one of the following:
 //
-//	PkixPublicKeySignatureAlgorithmArgs{...}
+//	PkixPublicKeySignatureAlgorithmSignatureAlgorithmUnspecified
+//	PkixPublicKeySignatureAlgorithmRsaPss2048Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPss2048Sha256
+//	PkixPublicKeySignatureAlgorithmRsaPss3072Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPss3072Sha256
+//	PkixPublicKeySignatureAlgorithmRsaPss4096Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPss4096Sha256
+//	PkixPublicKeySignatureAlgorithmRsaPss4096Sha512
+//	PkixPublicKeySignatureAlgorithmRsaSignPss4096Sha512
+//	PkixPublicKeySignatureAlgorithmRsaSignPkcs12048Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPkcs13072Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPkcs14096Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPkcs14096Sha512
+//	PkixPublicKeySignatureAlgorithmEcdsaP256Sha256
+//	PkixPublicKeySignatureAlgorithmEcSignP256Sha256
+//	PkixPublicKeySignatureAlgorithmEcdsaP384Sha384
+//	PkixPublicKeySignatureAlgorithmEcSignP384Sha384
+//	PkixPublicKeySignatureAlgorithmEcdsaP521Sha512
+//	PkixPublicKeySignatureAlgorithmEcSignP521Sha512
 type PkixPublicKeySignatureAlgorithmInput interface {
 	pulumi.Input
 
@@ -347,10 +365,11 @@ func (o VerificationRuleTrustedBuilderPtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// VerificationRuleTrustedBuilderInput is an input type that accepts VerificationRuleTrustedBuilderArgs and VerificationRuleTrustedBuilderOutput values.
-// You can construct a concrete instance of `VerificationRuleTrustedBuilderInput` via:
+// VerificationRuleTrustedBuilderInput is an input type that accepts values of the VerificationRuleTrustedBuilder enum
+// A concrete instance of `VerificationRuleTrustedBuilderInput` can be one of the following:
 //
-//	VerificationRuleTrustedBuilderArgs{...}
+//	VerificationRuleTrustedBuilderBuilderUnspecified
+//	VerificationRuleTrustedBuilderGoogleCloudBuild
 type VerificationRuleTrustedBuilderInput interface {
 	pulumi.Input
 
@@ -532,10 +551,17 @@ func (o VulnerabilityCheckMaximumFixableSeverityPtrOutput) ToStringPtrOutputWith
 	}).(pulumi.StringPtrOutput)
 }
 
-// VulnerabilityCheckMaximumFixableSeverityInput is an input type that accepts VulnerabilityCheckMaximumFixableSeverityArgs and VulnerabilityCheckMaximumFixableSeverityOutput values.
-// You can construct a concrete instance of `VulnerabilityCheckMaximumFixableSeverityInput` via:
+// VulnerabilityCheckMaximumFixableSeverityInput is an input type that accepts values of the VulnerabilityCheckMaximumFixableSeverity enum
+// A concrete instance of `VulnerabilityCheckMaximumFixableSeverityInput` can be one of the following:
 //
-//	VulnerabilityCheckMaximumFixableSeverityArgs{...}
+//	VulnerabilityCheckMaximumFixableSeverityMaximumAllowedSeverityUnspecified
+//	VulnerabilityCheckMaximumFixableSeverityBlockAll
+//	VulnerabilityCheckMaximumFixableSeverityMinimal
+//	VulnerabilityCheckMaximumFixableSeverityLow
+//	VulnerabilityCheckMaximumFixableSeverityMedium
+//	VulnerabilityCheckMaximumFixableSeverityHigh
+//	VulnerabilityCheckMaximumFixableSeverityCritical
+//	VulnerabilityCheckMaximumFixableSeverityAllowAll
 type VulnerabilityCheckMaximumFixableSeverityInput interface {
 	pulumi.Input
 
@@ -717,10 +743,17 @@ func (o VulnerabilityCheckMaximumUnfixableSeverityPtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// VulnerabilityCheckMaximumUnfixableSeverityInput is an input type that accepts VulnerabilityCheckMaximumUnfixableSeverityArgs and VulnerabilityCheckMaximumUnfixableSeverityOutput values.
-// You can construct a concrete instance of `VulnerabilityCheckMaximumUnfixableSeverityInput` via:
+// VulnerabilityCheckMaximumUnfixableSeverityInput is an input type that accepts values of the VulnerabilityCheckMaximumUnfixableSeverity enum
+// A concrete instance of `VulnerabilityCheckMaximumUnfixableSeverityInput` can be one of the following:
 //
-//	VulnerabilityCheckMaximumUnfixableSeverityArgs{...}
+//	VulnerabilityCheckMaximumUnfixableSeverityMaximumAllowedSeverityUnspecified
+//	VulnerabilityCheckMaximumUnfixableSeverityBlockAll
+//	VulnerabilityCheckMaximumUnfixableSeverityMinimal
+//	VulnerabilityCheckMaximumUnfixableSeverityLow
+//	VulnerabilityCheckMaximumUnfixableSeverityMedium
+//	VulnerabilityCheckMaximumUnfixableSeverityHigh
+//	VulnerabilityCheckMaximumUnfixableSeverityCritical
+//	VulnerabilityCheckMaximumUnfixableSeverityAllowAll
 type VulnerabilityCheckMaximumUnfixableSeverityInput interface {
 	pulumi.Input
 

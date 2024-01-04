@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o MembershipInfrastructureTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// MembershipInfrastructureTypeInput is an input type that accepts MembershipInfrastructureTypeArgs and MembershipInfrastructureTypeOutput values.
-// You can construct a concrete instance of `MembershipInfrastructureTypeInput` via:
+// MembershipInfrastructureTypeInput is an input type that accepts values of the MembershipInfrastructureType enum
+// A concrete instance of `MembershipInfrastructureTypeInput` can be one of the following:
 //
-//	MembershipInfrastructureTypeArgs{...}
+//	MembershipInfrastructureTypeInfrastructureTypeUnspecified
+//	MembershipInfrastructureTypeOnPrem
+//	MembershipInfrastructureTypeMultiCloud
 type MembershipInfrastructureTypeInput interface {
 	pulumi.Input
 
@@ -498,10 +503,14 @@ func (o OnPremClusterClusterTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// OnPremClusterClusterTypeInput is an input type that accepts OnPremClusterClusterTypeArgs and OnPremClusterClusterTypeOutput values.
-// You can construct a concrete instance of `OnPremClusterClusterTypeInput` via:
+// OnPremClusterClusterTypeInput is an input type that accepts values of the OnPremClusterClusterType enum
+// A concrete instance of `OnPremClusterClusterTypeInput` can be one of the following:
 //
-//	OnPremClusterClusterTypeArgs{...}
+//	OnPremClusterClusterTypeClustertypeUnspecified
+//	OnPremClusterClusterTypeBootstrap
+//	OnPremClusterClusterTypeHybrid
+//	OnPremClusterClusterTypeStandalone
+//	OnPremClusterClusterTypeUser
 type OnPremClusterClusterTypeInput interface {
 	pulumi.Input
 

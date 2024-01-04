@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -327,10 +330,16 @@ func (o CustomDomainStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// CustomDomainStateInput is an input type that accepts CustomDomainStateArgs and CustomDomainStateOutput values.
-// You can construct a concrete instance of `CustomDomainStateInput` via:
+// CustomDomainStateInput is an input type that accepts values of the CustomDomainState enum
+// A concrete instance of `CustomDomainStateInput` can be one of the following:
 //
-//	CustomDomainStateArgs{...}
+//	CustomDomainStateCustomDomainStateUnspecified
+//	CustomDomainStateUnverified
+//	CustomDomainStateVerified
+//	CustomDomainStateModifying
+//	CustomDomainStateAvailable
+//	CustomDomainStateUnavailable
+//	CustomDomainStateUnknown
 type CustomDomainStateInput interface {
 	pulumi.Input
 
@@ -508,10 +517,15 @@ func (o InstancePlatformEditionPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstancePlatformEditionInput is an input type that accepts InstancePlatformEditionArgs and InstancePlatformEditionOutput values.
-// You can construct a concrete instance of `InstancePlatformEditionInput` via:
+// InstancePlatformEditionInput is an input type that accepts values of the InstancePlatformEdition enum
+// A concrete instance of `InstancePlatformEditionInput` can be one of the following:
 //
-//	InstancePlatformEditionArgs{...}
+//	InstancePlatformEditionPlatformEditionUnspecified
+//	InstancePlatformEditionLookerCoreTrial
+//	InstancePlatformEditionLookerCoreStandard
+//	InstancePlatformEditionLookerCoreStandardAnnual
+//	InstancePlatformEditionLookerCoreEnterpriseAnnual
+//	InstancePlatformEditionLookerCoreEmbedAnnual
 type InstancePlatformEditionInput interface {
 	pulumi.Input
 
@@ -693,10 +707,17 @@ func (o MaintenanceWindowDayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// MaintenanceWindowDayOfWeekInput is an input type that accepts MaintenanceWindowDayOfWeekArgs and MaintenanceWindowDayOfWeekOutput values.
-// You can construct a concrete instance of `MaintenanceWindowDayOfWeekInput` via:
+// MaintenanceWindowDayOfWeekInput is an input type that accepts values of the MaintenanceWindowDayOfWeek enum
+// A concrete instance of `MaintenanceWindowDayOfWeekInput` can be one of the following:
 //
-//	MaintenanceWindowDayOfWeekArgs{...}
+//	MaintenanceWindowDayOfWeekDayOfWeekUnspecified
+//	MaintenanceWindowDayOfWeekMonday
+//	MaintenanceWindowDayOfWeekTuesday
+//	MaintenanceWindowDayOfWeekWednesday
+//	MaintenanceWindowDayOfWeekThursday
+//	MaintenanceWindowDayOfWeekFriday
+//	MaintenanceWindowDayOfWeekSaturday
+//	MaintenanceWindowDayOfWeekSunday
 type MaintenanceWindowDayOfWeekInput interface {
 	pulumi.Input
 

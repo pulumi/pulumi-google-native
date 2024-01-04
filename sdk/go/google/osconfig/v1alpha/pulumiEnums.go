@@ -142,10 +142,12 @@ func (o OSPolicyModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// OSPolicyModeInput is an input type that accepts OSPolicyModeArgs and OSPolicyModeOutput values.
-// You can construct a concrete instance of `OSPolicyModeInput` via:
+// OSPolicyModeInput is an input type that accepts values of the OSPolicyMode enum
+// A concrete instance of `OSPolicyModeInput` can be one of the following:
 //
-//	OSPolicyModeArgs{...}
+//	OSPolicyModeModeUnspecified
+//	OSPolicyModeValidation
+//	OSPolicyModeEnforcement
 type OSPolicyModeInput interface {
 	pulumi.Input
 
@@ -319,10 +321,13 @@ func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToStringPtrOutputW
 	}).(pulumi.StringPtrOutput)
 }
 
-// OSPolicyResourceExecResourceExecInterpreterInput is an input type that accepts OSPolicyResourceExecResourceExecInterpreterArgs and OSPolicyResourceExecResourceExecInterpreterOutput values.
-// You can construct a concrete instance of `OSPolicyResourceExecResourceExecInterpreterInput` via:
+// OSPolicyResourceExecResourceExecInterpreterInput is an input type that accepts values of the OSPolicyResourceExecResourceExecInterpreter enum
+// A concrete instance of `OSPolicyResourceExecResourceExecInterpreterInput` can be one of the following:
 //
-//	OSPolicyResourceExecResourceExecInterpreterArgs{...}
+//	OSPolicyResourceExecResourceExecInterpreterInterpreterUnspecified
+//	OSPolicyResourceExecResourceExecInterpreterNone
+//	OSPolicyResourceExecResourceExecInterpreterShell
+//	OSPolicyResourceExecResourceExecInterpreterPowershell
 type OSPolicyResourceExecResourceExecInterpreterInput interface {
 	pulumi.Input
 
@@ -496,10 +501,13 @@ func (o OSPolicyResourceFileResourceStatePtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// OSPolicyResourceFileResourceStateInput is an input type that accepts OSPolicyResourceFileResourceStateArgs and OSPolicyResourceFileResourceStateOutput values.
-// You can construct a concrete instance of `OSPolicyResourceFileResourceStateInput` via:
+// OSPolicyResourceFileResourceStateInput is an input type that accepts values of the OSPolicyResourceFileResourceState enum
+// A concrete instance of `OSPolicyResourceFileResourceStateInput` can be one of the following:
 //
-//	OSPolicyResourceFileResourceStateArgs{...}
+//	OSPolicyResourceFileResourceStateDesiredStateUnspecified
+//	OSPolicyResourceFileResourceStatePresent
+//	OSPolicyResourceFileResourceStateAbsent
+//	OSPolicyResourceFileResourceStateContentsMatch
 type OSPolicyResourceFileResourceStateInput interface {
 	pulumi.Input
 
@@ -671,10 +679,12 @@ func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToStringPtrOutputW
 	}).(pulumi.StringPtrOutput)
 }
 
-// OSPolicyResourcePackageResourceDesiredStateInput is an input type that accepts OSPolicyResourcePackageResourceDesiredStateArgs and OSPolicyResourcePackageResourceDesiredStateOutput values.
-// You can construct a concrete instance of `OSPolicyResourcePackageResourceDesiredStateInput` via:
+// OSPolicyResourcePackageResourceDesiredStateInput is an input type that accepts values of the OSPolicyResourcePackageResourceDesiredState enum
+// A concrete instance of `OSPolicyResourcePackageResourceDesiredStateInput` can be one of the following:
 //
-//	OSPolicyResourcePackageResourceDesiredStateArgs{...}
+//	OSPolicyResourcePackageResourceDesiredStateDesiredStateUnspecified
+//	OSPolicyResourcePackageResourceDesiredStateInstalled
+//	OSPolicyResourcePackageResourceDesiredStateRemoved
 type OSPolicyResourcePackageResourceDesiredStateInput interface {
 	pulumi.Input
 
@@ -846,10 +856,12 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToS
 	}).(pulumi.StringPtrOutput)
 }
 
-// OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput is an input type that accepts OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeArgs and OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput values.
-// You can construct a concrete instance of `OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput` via:
+// OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput is an input type that accepts values of the OSPolicyResourceRepositoryResourceAptRepositoryArchiveType enum
+// A concrete instance of `OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput` can be one of the following:
 //
-//	OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeArgs{...}
+//	OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeArchiveTypeUnspecified
+//	OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeDeb
+//	OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeDebSrc
 type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput interface {
 	pulumi.Input
 
