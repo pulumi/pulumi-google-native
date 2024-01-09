@@ -128,7 +128,7 @@ func TestWebserverTs(t *testing.T) {
 			SkipRefresh: true,
 			EditDirs: []integration.EditDir{
 				{
-					Dir:      "step2",
+					Dir:      filepath.Join(getCwd(t), "webserver-ts", "step2"),
 					Additive: true,
 					ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 						assertHTTPMatchesContent(t, stack.Outputs["instanceIP"].(string), "Hello, World!\n", nil)
