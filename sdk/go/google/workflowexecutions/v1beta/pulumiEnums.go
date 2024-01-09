@@ -142,10 +142,12 @@ func (o ExecutionCallLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExecutionCallLogLevelInput is an input type that accepts ExecutionCallLogLevelArgs and ExecutionCallLogLevelOutput values.
-// You can construct a concrete instance of `ExecutionCallLogLevelInput` via:
+// ExecutionCallLogLevelInput is an input type that accepts values of the ExecutionCallLogLevel enum
+// A concrete instance of `ExecutionCallLogLevelInput` can be one of the following:
 //
-//	ExecutionCallLogLevelArgs{...}
+//	ExecutionCallLogLevelCallLogLevelUnspecified
+//	ExecutionCallLogLevelLogAllCalls
+//	ExecutionCallLogLevelLogErrorsOnly
 type ExecutionCallLogLevelInput interface {
 	pulumi.Input
 

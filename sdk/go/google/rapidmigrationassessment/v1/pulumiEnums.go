@@ -142,10 +142,12 @@ func (o AnnotationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// AnnotationTypeInput is an input type that accepts AnnotationTypeArgs and AnnotationTypeOutput values.
-// You can construct a concrete instance of `AnnotationTypeInput` via:
+// AnnotationTypeInput is an input type that accepts values of the AnnotationType enum
+// A concrete instance of `AnnotationTypeInput` can be one of the following:
 //
-//	AnnotationTypeArgs{...}
+//	AnnotationTypeTypeUnspecified
+//	AnnotationTypeTypeLegacyExportConsent
+//	AnnotationTypeTypeQwiklab
 type AnnotationTypeInput interface {
 	pulumi.Input
 

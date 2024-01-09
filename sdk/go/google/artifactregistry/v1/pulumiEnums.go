@@ -140,10 +140,11 @@ func (o DockerRepositoryPublicRepositoryPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// DockerRepositoryPublicRepositoryInput is an input type that accepts DockerRepositoryPublicRepositoryArgs and DockerRepositoryPublicRepositoryOutput values.
-// You can construct a concrete instance of `DockerRepositoryPublicRepositoryInput` via:
+// DockerRepositoryPublicRepositoryInput is an input type that accepts values of the DockerRepositoryPublicRepository enum
+// A concrete instance of `DockerRepositoryPublicRepositoryInput` can be one of the following:
 //
-//	DockerRepositoryPublicRepositoryArgs{...}
+//	DockerRepositoryPublicRepositoryPublicRepositoryUnspecified
+//	DockerRepositoryPublicRepositoryDockerHub
 type DockerRepositoryPublicRepositoryInput interface {
 	pulumi.Input
 
@@ -317,10 +318,13 @@ func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPubli
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseArgs and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseInput` via:
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseInput is an input type that accepts values of the GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase enum
+// A concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseInput` can be one of the following:
 //
-//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseArgs{...}
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseRepositoryBaseUnspecified
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseDebian
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseUbuntu
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseDebianSnapshot
 type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseInput interface {
 	pulumi.Input
 
@@ -500,10 +504,16 @@ func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPubli
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseArgs and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseOutput values.
-// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseInput` via:
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseInput is an input type that accepts values of the GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase enum
+// A concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseInput` can be one of the following:
 //
-//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseArgs{...}
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseRepositoryBaseUnspecified
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseCentos
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseCentosDebug
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseCentosVault
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseCentosStream
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseRocky
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEpel
 type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseInput interface {
 	pulumi.Input
 
@@ -675,10 +685,12 @@ func (o MavenRepositoryConfigVersionPolicyPtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// MavenRepositoryConfigVersionPolicyInput is an input type that accepts MavenRepositoryConfigVersionPolicyArgs and MavenRepositoryConfigVersionPolicyOutput values.
-// You can construct a concrete instance of `MavenRepositoryConfigVersionPolicyInput` via:
+// MavenRepositoryConfigVersionPolicyInput is an input type that accepts values of the MavenRepositoryConfigVersionPolicy enum
+// A concrete instance of `MavenRepositoryConfigVersionPolicyInput` can be one of the following:
 //
-//	MavenRepositoryConfigVersionPolicyArgs{...}
+//	MavenRepositoryConfigVersionPolicyVersionPolicyUnspecified
+//	MavenRepositoryConfigVersionPolicyRelease
+//	MavenRepositoryConfigVersionPolicySnapshot
 type MavenRepositoryConfigVersionPolicyInput interface {
 	pulumi.Input
 
@@ -848,10 +860,11 @@ func (o MavenRepositoryPublicRepositoryPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// MavenRepositoryPublicRepositoryInput is an input type that accepts MavenRepositoryPublicRepositoryArgs and MavenRepositoryPublicRepositoryOutput values.
-// You can construct a concrete instance of `MavenRepositoryPublicRepositoryInput` via:
+// MavenRepositoryPublicRepositoryInput is an input type that accepts values of the MavenRepositoryPublicRepository enum
+// A concrete instance of `MavenRepositoryPublicRepositoryInput` can be one of the following:
 //
-//	MavenRepositoryPublicRepositoryArgs{...}
+//	MavenRepositoryPublicRepositoryPublicRepositoryUnspecified
+//	MavenRepositoryPublicRepositoryMavenCentral
 type MavenRepositoryPublicRepositoryInput interface {
 	pulumi.Input
 
@@ -1021,10 +1034,11 @@ func (o NpmRepositoryPublicRepositoryPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// NpmRepositoryPublicRepositoryInput is an input type that accepts NpmRepositoryPublicRepositoryArgs and NpmRepositoryPublicRepositoryOutput values.
-// You can construct a concrete instance of `NpmRepositoryPublicRepositoryInput` via:
+// NpmRepositoryPublicRepositoryInput is an input type that accepts values of the NpmRepositoryPublicRepository enum
+// A concrete instance of `NpmRepositoryPublicRepositoryInput` can be one of the following:
 //
-//	NpmRepositoryPublicRepositoryArgs{...}
+//	NpmRepositoryPublicRepositoryPublicRepositoryUnspecified
+//	NpmRepositoryPublicRepositoryNpmjs
 type NpmRepositoryPublicRepositoryInput interface {
 	pulumi.Input
 
@@ -1194,10 +1208,11 @@ func (o PythonRepositoryPublicRepositoryPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// PythonRepositoryPublicRepositoryInput is an input type that accepts PythonRepositoryPublicRepositoryArgs and PythonRepositoryPublicRepositoryOutput values.
-// You can construct a concrete instance of `PythonRepositoryPublicRepositoryInput` via:
+// PythonRepositoryPublicRepositoryInput is an input type that accepts values of the PythonRepositoryPublicRepository enum
+// A concrete instance of `PythonRepositoryPublicRepositoryInput` can be one of the following:
 //
-//	PythonRepositoryPublicRepositoryArgs{...}
+//	PythonRepositoryPublicRepositoryPublicRepositoryUnspecified
+//	PythonRepositoryPublicRepositoryPypi
 type PythonRepositoryPublicRepositoryInput interface {
 	pulumi.Input
 
@@ -1383,10 +1398,19 @@ func (o RepositoryFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// RepositoryFormatInput is an input type that accepts RepositoryFormatArgs and RepositoryFormatOutput values.
-// You can construct a concrete instance of `RepositoryFormatInput` via:
+// RepositoryFormatInput is an input type that accepts values of the RepositoryFormat enum
+// A concrete instance of `RepositoryFormatInput` can be one of the following:
 //
-//	RepositoryFormatArgs{...}
+//	RepositoryFormatFormatUnspecified
+//	RepositoryFormatDocker
+//	RepositoryFormatMaven
+//	RepositoryFormatNpm
+//	RepositoryFormatApt
+//	RepositoryFormatYum
+//	RepositoryFormatGooget
+//	RepositoryFormatPython
+//	RepositoryFormatKfp
+//	RepositoryFormatGo
 type RepositoryFormatInput interface {
 	pulumi.Input
 
@@ -1560,10 +1584,13 @@ func (o RepositoryModePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// RepositoryModeInput is an input type that accepts RepositoryModeArgs and RepositoryModeOutput values.
-// You can construct a concrete instance of `RepositoryModeInput` via:
+// RepositoryModeInput is an input type that accepts values of the RepositoryMode enum
+// A concrete instance of `RepositoryModeInput` can be one of the following:
 //
-//	RepositoryModeArgs{...}
+//	RepositoryModeModeUnspecified
+//	RepositoryModeStandardRepository
+//	RepositoryModeVirtualRepository
+//	RepositoryModeRemoteRepository
 type RepositoryModeInput interface {
 	pulumi.Input
 

@@ -142,10 +142,12 @@ func (o DeliveryConfigDeliveryRequirementPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// DeliveryConfigDeliveryRequirementInput is an input type that accepts DeliveryConfigDeliveryRequirementArgs and DeliveryConfigDeliveryRequirementOutput values.
-// You can construct a concrete instance of `DeliveryConfigDeliveryRequirementInput` via:
+// DeliveryConfigDeliveryRequirementInput is an input type that accepts values of the DeliveryConfigDeliveryRequirement enum
+// A concrete instance of `DeliveryConfigDeliveryRequirementInput` can be one of the following:
 //
-//	DeliveryConfigDeliveryRequirementArgs{...}
+//	DeliveryConfigDeliveryRequirementDeliveryRequirementUnspecified
+//	DeliveryConfigDeliveryRequirementDeliverImmediately
+//	DeliveryConfigDeliveryRequirementDeliverAfterStored
 type DeliveryConfigDeliveryRequirementInput interface {
 	pulumi.Input
 
@@ -321,10 +323,14 @@ func (o ExportConfigDesiredStatePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExportConfigDesiredStateInput is an input type that accepts ExportConfigDesiredStateArgs and ExportConfigDesiredStateOutput values.
-// You can construct a concrete instance of `ExportConfigDesiredStateInput` via:
+// ExportConfigDesiredStateInput is an input type that accepts values of the ExportConfigDesiredState enum
+// A concrete instance of `ExportConfigDesiredStateInput` can be one of the following:
 //
-//	ExportConfigDesiredStateArgs{...}
+//	ExportConfigDesiredStateStateUnspecified
+//	ExportConfigDesiredStateActive
+//	ExportConfigDesiredStatePaused
+//	ExportConfigDesiredStatePermissionDenied
+//	ExportConfigDesiredStateNotFound
 type ExportConfigDesiredStateInput interface {
 	pulumi.Input
 

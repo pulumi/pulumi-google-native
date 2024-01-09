@@ -144,10 +144,13 @@ func (o AdvancedDatapathObservabilityConfigRelayModePtrOutput) ToStringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// AdvancedDatapathObservabilityConfigRelayModeInput is an input type that accepts AdvancedDatapathObservabilityConfigRelayModeArgs and AdvancedDatapathObservabilityConfigRelayModeOutput values.
-// You can construct a concrete instance of `AdvancedDatapathObservabilityConfigRelayModeInput` via:
+// AdvancedDatapathObservabilityConfigRelayModeInput is an input type that accepts values of the AdvancedDatapathObservabilityConfigRelayMode enum
+// A concrete instance of `AdvancedDatapathObservabilityConfigRelayModeInput` can be one of the following:
 //
-//	AdvancedDatapathObservabilityConfigRelayModeArgs{...}
+//	AdvancedDatapathObservabilityConfigRelayModeRelayModeUnspecified
+//	AdvancedDatapathObservabilityConfigRelayModeDisabled
+//	AdvancedDatapathObservabilityConfigRelayModeInternalVpcLb
+//	AdvancedDatapathObservabilityConfigRelayModeExternalLb
 type AdvancedDatapathObservabilityConfigRelayModeInput interface {
 	pulumi.Input
 
@@ -323,10 +326,14 @@ func (o BinaryAuthorizationEvaluationModePtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// BinaryAuthorizationEvaluationModeInput is an input type that accepts BinaryAuthorizationEvaluationModeArgs and BinaryAuthorizationEvaluationModeOutput values.
-// You can construct a concrete instance of `BinaryAuthorizationEvaluationModeInput` via:
+// BinaryAuthorizationEvaluationModeInput is an input type that accepts values of the BinaryAuthorizationEvaluationMode enum
+// A concrete instance of `BinaryAuthorizationEvaluationModeInput` can be one of the following:
 //
-//	BinaryAuthorizationEvaluationModeArgs{...}
+//	BinaryAuthorizationEvaluationModeEvaluationModeUnspecified
+//	BinaryAuthorizationEvaluationModeDisabled
+//	BinaryAuthorizationEvaluationModeProjectSingletonPolicyEnforce
+//	BinaryAuthorizationEvaluationModePolicyBindings
+//	BinaryAuthorizationEvaluationModePolicyBindingsAndProjectSingletonPolicyEnforce
 type BinaryAuthorizationEvaluationModeInput interface {
 	pulumi.Input
 
@@ -498,10 +505,12 @@ func (o CloudRunConfigLoadBalancerTypePtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// CloudRunConfigLoadBalancerTypeInput is an input type that accepts CloudRunConfigLoadBalancerTypeArgs and CloudRunConfigLoadBalancerTypeOutput values.
-// You can construct a concrete instance of `CloudRunConfigLoadBalancerTypeInput` via:
+// CloudRunConfigLoadBalancerTypeInput is an input type that accepts values of the CloudRunConfigLoadBalancerType enum
+// A concrete instance of `CloudRunConfigLoadBalancerTypeInput` can be one of the following:
 //
-//	CloudRunConfigLoadBalancerTypeArgs{...}
+//	CloudRunConfigLoadBalancerTypeLoadBalancerTypeUnspecified
+//	CloudRunConfigLoadBalancerTypeLoadBalancerTypeExternal
+//	CloudRunConfigLoadBalancerTypeLoadBalancerTypeInternal
 type CloudRunConfigLoadBalancerTypeInput interface {
 	pulumi.Input
 
@@ -673,10 +682,12 @@ func (o ClusterAutoscalingAutoscalingProfilePtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// ClusterAutoscalingAutoscalingProfileInput is an input type that accepts ClusterAutoscalingAutoscalingProfileArgs and ClusterAutoscalingAutoscalingProfileOutput values.
-// You can construct a concrete instance of `ClusterAutoscalingAutoscalingProfileInput` via:
+// ClusterAutoscalingAutoscalingProfileInput is an input type that accepts values of the ClusterAutoscalingAutoscalingProfile enum
+// A concrete instance of `ClusterAutoscalingAutoscalingProfileInput` can be one of the following:
 //
-//	ClusterAutoscalingAutoscalingProfileArgs{...}
+//	ClusterAutoscalingAutoscalingProfileProfileUnspecified
+//	ClusterAutoscalingAutoscalingProfileOptimizeUtilization
+//	ClusterAutoscalingAutoscalingProfileBalanced
 type ClusterAutoscalingAutoscalingProfileInput interface {
 	pulumi.Input
 
@@ -846,10 +857,11 @@ func (o ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToStri
 	}).(pulumi.StringPtrOutput)
 }
 
-// ClusterNetworkPerformanceConfigTotalEgressBandwidthTierInput is an input type that accepts ClusterNetworkPerformanceConfigTotalEgressBandwidthTierArgs and ClusterNetworkPerformanceConfigTotalEgressBandwidthTierOutput values.
-// You can construct a concrete instance of `ClusterNetworkPerformanceConfigTotalEgressBandwidthTierInput` via:
+// ClusterNetworkPerformanceConfigTotalEgressBandwidthTierInput is an input type that accepts values of the ClusterNetworkPerformanceConfigTotalEgressBandwidthTier enum
+// A concrete instance of `ClusterNetworkPerformanceConfigTotalEgressBandwidthTierInput` can be one of the following:
 //
-//	ClusterNetworkPerformanceConfigTotalEgressBandwidthTierArgs{...}
+//	ClusterNetworkPerformanceConfigTotalEgressBandwidthTierTierUnspecified
+//	ClusterNetworkPerformanceConfigTotalEgressBandwidthTierTier1
 type ClusterNetworkPerformanceConfigTotalEgressBandwidthTierInput interface {
 	pulumi.Input
 
@@ -1023,10 +1035,13 @@ func (o ClusterTelemetryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ClusterTelemetryTypeInput is an input type that accepts ClusterTelemetryTypeArgs and ClusterTelemetryTypeOutput values.
-// You can construct a concrete instance of `ClusterTelemetryTypeInput` via:
+// ClusterTelemetryTypeInput is an input type that accepts values of the ClusterTelemetryType enum
+// A concrete instance of `ClusterTelemetryTypeInput` can be one of the following:
 //
-//	ClusterTelemetryTypeArgs{...}
+//	ClusterTelemetryTypeUnspecified
+//	ClusterTelemetryTypeDisabled
+//	ClusterTelemetryTypeEnabled
+//	ClusterTelemetryTypeSystemOnly
 type ClusterTelemetryTypeInput interface {
 	pulumi.Input
 
@@ -1250,10 +1265,13 @@ func (o DNSConfigClusterDnsPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// DNSConfigClusterDnsInput is an input type that accepts DNSConfigClusterDnsArgs and DNSConfigClusterDnsOutput values.
-// You can construct a concrete instance of `DNSConfigClusterDnsInput` via:
+// DNSConfigClusterDnsInput is an input type that accepts values of the DNSConfigClusterDns enum
+// A concrete instance of `DNSConfigClusterDnsInput` can be one of the following:
 //
-//	DNSConfigClusterDnsArgs{...}
+//	DNSConfigClusterDnsProviderUnspecified
+//	DNSConfigClusterDnsPlatformDefault
+//	DNSConfigClusterDnsCloudDns
+//	DNSConfigClusterDnsKubeDns
 type DNSConfigClusterDnsInput interface {
 	pulumi.Input
 
@@ -1425,10 +1443,12 @@ func (o DNSConfigClusterDnsScopePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// DNSConfigClusterDnsScopeInput is an input type that accepts DNSConfigClusterDnsScopeArgs and DNSConfigClusterDnsScopeOutput values.
-// You can construct a concrete instance of `DNSConfigClusterDnsScopeInput` via:
+// DNSConfigClusterDnsScopeInput is an input type that accepts values of the DNSConfigClusterDnsScope enum
+// A concrete instance of `DNSConfigClusterDnsScopeInput` can be one of the following:
 //
-//	DNSConfigClusterDnsScopeArgs{...}
+//	DNSConfigClusterDnsScopeDnsScopeUnspecified
+//	DNSConfigClusterDnsScopeClusterScope
+//	DNSConfigClusterDnsScopeVpcScope
 type DNSConfigClusterDnsScopeInput interface {
 	pulumi.Input
 
@@ -1600,10 +1620,12 @@ func (o DatabaseEncryptionStatePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseEncryptionStateInput is an input type that accepts DatabaseEncryptionStateArgs and DatabaseEncryptionStateOutput values.
-// You can construct a concrete instance of `DatabaseEncryptionStateInput` via:
+// DatabaseEncryptionStateInput is an input type that accepts values of the DatabaseEncryptionState enum
+// A concrete instance of `DatabaseEncryptionStateInput` can be one of the following:
 //
-//	DatabaseEncryptionStateArgs{...}
+//	DatabaseEncryptionStateUnknown
+//	DatabaseEncryptionStateEncrypted
+//	DatabaseEncryptionStateDecrypted
 type DatabaseEncryptionStateInput interface {
 	pulumi.Input
 
@@ -1776,10 +1798,13 @@ func (o FilterEventTypeItemPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// FilterEventTypeItemInput is an input type that accepts FilterEventTypeItemArgs and FilterEventTypeItemOutput values.
-// You can construct a concrete instance of `FilterEventTypeItemInput` via:
+// FilterEventTypeItemInput is an input type that accepts values of the FilterEventTypeItem enum
+// A concrete instance of `FilterEventTypeItemInput` can be one of the following:
 //
-//	FilterEventTypeItemArgs{...}
+//	FilterEventTypeItemEventTypeUnspecified
+//	FilterEventTypeItemUpgradeAvailableEvent
+//	FilterEventTypeItemUpgradeEvent
+//	FilterEventTypeItemSecurityBulletinEvent
 type FilterEventTypeItemInput interface {
 	pulumi.Input
 
@@ -1998,10 +2023,13 @@ func (o GPUDriverInstallationConfigGpuDriverVersionPtrOutput) ToStringPtrOutputW
 	}).(pulumi.StringPtrOutput)
 }
 
-// GPUDriverInstallationConfigGpuDriverVersionInput is an input type that accepts GPUDriverInstallationConfigGpuDriverVersionArgs and GPUDriverInstallationConfigGpuDriverVersionOutput values.
-// You can construct a concrete instance of `GPUDriverInstallationConfigGpuDriverVersionInput` via:
+// GPUDriverInstallationConfigGpuDriverVersionInput is an input type that accepts values of the GPUDriverInstallationConfigGpuDriverVersion enum
+// A concrete instance of `GPUDriverInstallationConfigGpuDriverVersionInput` can be one of the following:
 //
-//	GPUDriverInstallationConfigGpuDriverVersionArgs{...}
+//	GPUDriverInstallationConfigGpuDriverVersionGpuDriverVersionUnspecified
+//	GPUDriverInstallationConfigGpuDriverVersionInstallationDisabled
+//	GPUDriverInstallationConfigGpuDriverVersionDefault
+//	GPUDriverInstallationConfigGpuDriverVersionLatest
 type GPUDriverInstallationConfigGpuDriverVersionInput interface {
 	pulumi.Input
 
@@ -2171,10 +2199,11 @@ func (o GPUSharingConfigGpuSharingStrategyPtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// GPUSharingConfigGpuSharingStrategyInput is an input type that accepts GPUSharingConfigGpuSharingStrategyArgs and GPUSharingConfigGpuSharingStrategyOutput values.
-// You can construct a concrete instance of `GPUSharingConfigGpuSharingStrategyInput` via:
+// GPUSharingConfigGpuSharingStrategyInput is an input type that accepts values of the GPUSharingConfigGpuSharingStrategy enum
+// A concrete instance of `GPUSharingConfigGpuSharingStrategyInput` can be one of the following:
 //
-//	GPUSharingConfigGpuSharingStrategyArgs{...}
+//	GPUSharingConfigGpuSharingStrategyGpuSharingStrategyUnspecified
+//	GPUSharingConfigGpuSharingStrategyTimeSharing
 type GPUSharingConfigGpuSharingStrategyInput interface {
 	pulumi.Input
 
@@ -2348,10 +2377,13 @@ func (o GatewayAPIConfigChannelPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// GatewayAPIConfigChannelInput is an input type that accepts GatewayAPIConfigChannelArgs and GatewayAPIConfigChannelOutput values.
-// You can construct a concrete instance of `GatewayAPIConfigChannelInput` via:
+// GatewayAPIConfigChannelInput is an input type that accepts values of the GatewayAPIConfigChannel enum
+// A concrete instance of `GatewayAPIConfigChannelInput` can be one of the following:
 //
-//	GatewayAPIConfigChannelArgs{...}
+//	GatewayAPIConfigChannelChannelUnspecified
+//	GatewayAPIConfigChannelChannelDisabled
+//	GatewayAPIConfigChannelChannelExperimental
+//	GatewayAPIConfigChannelChannelStandard
 type GatewayAPIConfigChannelInput interface {
 	pulumi.Input
 
@@ -2523,10 +2555,12 @@ func (o HostMaintenancePolicyMaintenanceIntervalPtrOutput) ToStringPtrOutputWith
 	}).(pulumi.StringPtrOutput)
 }
 
-// HostMaintenancePolicyMaintenanceIntervalInput is an input type that accepts HostMaintenancePolicyMaintenanceIntervalArgs and HostMaintenancePolicyMaintenanceIntervalOutput values.
-// You can construct a concrete instance of `HostMaintenancePolicyMaintenanceIntervalInput` via:
+// HostMaintenancePolicyMaintenanceIntervalInput is an input type that accepts values of the HostMaintenancePolicyMaintenanceInterval enum
+// A concrete instance of `HostMaintenancePolicyMaintenanceIntervalInput` can be one of the following:
 //
-//	HostMaintenancePolicyMaintenanceIntervalArgs{...}
+//	HostMaintenancePolicyMaintenanceIntervalMaintenanceIntervalUnspecified
+//	HostMaintenancePolicyMaintenanceIntervalAsNeeded
+//	HostMaintenancePolicyMaintenanceIntervalPeriodic
 type HostMaintenancePolicyMaintenanceIntervalInput interface {
 	pulumi.Input
 
@@ -2698,10 +2732,12 @@ func (o IPAllocationPolicyIpv6AccessTypePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPAllocationPolicyIpv6AccessTypeInput is an input type that accepts IPAllocationPolicyIpv6AccessTypeArgs and IPAllocationPolicyIpv6AccessTypeOutput values.
-// You can construct a concrete instance of `IPAllocationPolicyIpv6AccessTypeInput` via:
+// IPAllocationPolicyIpv6AccessTypeInput is an input type that accepts values of the IPAllocationPolicyIpv6AccessType enum
+// A concrete instance of `IPAllocationPolicyIpv6AccessTypeInput` can be one of the following:
 //
-//	IPAllocationPolicyIpv6AccessTypeArgs{...}
+//	IPAllocationPolicyIpv6AccessTypeIpv6AccessTypeUnspecified
+//	IPAllocationPolicyIpv6AccessTypeInternal
+//	IPAllocationPolicyIpv6AccessTypeExternal
 type IPAllocationPolicyIpv6AccessTypeInput interface {
 	pulumi.Input
 
@@ -2873,10 +2909,12 @@ func (o IPAllocationPolicyStackTypePtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPAllocationPolicyStackTypeInput is an input type that accepts IPAllocationPolicyStackTypeArgs and IPAllocationPolicyStackTypeOutput values.
-// You can construct a concrete instance of `IPAllocationPolicyStackTypeInput` via:
+// IPAllocationPolicyStackTypeInput is an input type that accepts values of the IPAllocationPolicyStackType enum
+// A concrete instance of `IPAllocationPolicyStackTypeInput` can be one of the following:
 //
-//	IPAllocationPolicyStackTypeArgs{...}
+//	IPAllocationPolicyStackTypeStackTypeUnspecified
+//	IPAllocationPolicyStackTypeIpv4
+//	IPAllocationPolicyStackTypeIpv4Ipv6
 type IPAllocationPolicyStackTypeInput interface {
 	pulumi.Input
 
@@ -3046,10 +3084,11 @@ func (o IstioConfigAuthPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// IstioConfigAuthInput is an input type that accepts IstioConfigAuthArgs and IstioConfigAuthOutput values.
-// You can construct a concrete instance of `IstioConfigAuthInput` via:
+// IstioConfigAuthInput is an input type that accepts values of the IstioConfigAuth enum
+// A concrete instance of `IstioConfigAuthInput` can be one of the following:
 //
-//	IstioConfigAuthArgs{...}
+//	IstioConfigAuthAuthNone
+//	IstioConfigAuthAuthMutualTls
 type IstioConfigAuthInput interface {
 	pulumi.Input
 
@@ -3221,10 +3260,12 @@ func (o LinuxNodeConfigCgroupModePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// LinuxNodeConfigCgroupModeInput is an input type that accepts LinuxNodeConfigCgroupModeArgs and LinuxNodeConfigCgroupModeOutput values.
-// You can construct a concrete instance of `LinuxNodeConfigCgroupModeInput` via:
+// LinuxNodeConfigCgroupModeInput is an input type that accepts values of the LinuxNodeConfigCgroupMode enum
+// A concrete instance of `LinuxNodeConfigCgroupModeInput` can be one of the following:
 //
-//	LinuxNodeConfigCgroupModeArgs{...}
+//	LinuxNodeConfigCgroupModeCgroupModeUnspecified
+//	LinuxNodeConfigCgroupModeCgroupModeV1
+//	LinuxNodeConfigCgroupModeCgroupModeV2
 type LinuxNodeConfigCgroupModeInput interface {
 	pulumi.Input
 
@@ -3401,10 +3442,15 @@ func (o LoggingComponentConfigEnableComponentsItemPtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// LoggingComponentConfigEnableComponentsItemInput is an input type that accepts LoggingComponentConfigEnableComponentsItemArgs and LoggingComponentConfigEnableComponentsItemOutput values.
-// You can construct a concrete instance of `LoggingComponentConfigEnableComponentsItemInput` via:
+// LoggingComponentConfigEnableComponentsItemInput is an input type that accepts values of the LoggingComponentConfigEnableComponentsItem enum
+// A concrete instance of `LoggingComponentConfigEnableComponentsItemInput` can be one of the following:
 //
-//	LoggingComponentConfigEnableComponentsItemArgs{...}
+//	LoggingComponentConfigEnableComponentsItemComponentUnspecified
+//	LoggingComponentConfigEnableComponentsItemSystemComponents
+//	LoggingComponentConfigEnableComponentsItemWorkloads
+//	LoggingComponentConfigEnableComponentsItemApiserver
+//	LoggingComponentConfigEnableComponentsItemScheduler
+//	LoggingComponentConfigEnableComponentsItemControllerManager
 type LoggingComponentConfigEnableComponentsItemInput interface {
 	pulumi.Input
 
@@ -3621,10 +3667,12 @@ func (o LoggingVariantConfigVariantPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// LoggingVariantConfigVariantInput is an input type that accepts LoggingVariantConfigVariantArgs and LoggingVariantConfigVariantOutput values.
-// You can construct a concrete instance of `LoggingVariantConfigVariantInput` via:
+// LoggingVariantConfigVariantInput is an input type that accepts values of the LoggingVariantConfigVariant enum
+// A concrete instance of `LoggingVariantConfigVariantInput` can be one of the following:
 //
-//	LoggingVariantConfigVariantArgs{...}
+//	LoggingVariantConfigVariantVariantUnspecified
+//	LoggingVariantConfigVariantDefault
+//	LoggingVariantConfigVariantMaxThroughput
 type LoggingVariantConfigVariantInput interface {
 	pulumi.Input
 
@@ -3796,10 +3844,12 @@ func (o MaintenanceExclusionOptionsScopePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// MaintenanceExclusionOptionsScopeInput is an input type that accepts MaintenanceExclusionOptionsScopeArgs and MaintenanceExclusionOptionsScopeOutput values.
-// You can construct a concrete instance of `MaintenanceExclusionOptionsScopeInput` via:
+// MaintenanceExclusionOptionsScopeInput is an input type that accepts values of the MaintenanceExclusionOptionsScope enum
+// A concrete instance of `MaintenanceExclusionOptionsScopeInput` can be one of the following:
 //
-//	MaintenanceExclusionOptionsScopeArgs{...}
+//	MaintenanceExclusionOptionsScopeNoUpgrades
+//	MaintenanceExclusionOptionsScopeNoMinorUpgrades
+//	MaintenanceExclusionOptionsScopeNoMinorOrNodeUpgrades
 type MaintenanceExclusionOptionsScopeInput interface {
 	pulumi.Input
 
@@ -3988,10 +4038,21 @@ func (o MonitoringComponentConfigEnableComponentsItemPtrOutput) ToStringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// MonitoringComponentConfigEnableComponentsItemInput is an input type that accepts MonitoringComponentConfigEnableComponentsItemArgs and MonitoringComponentConfigEnableComponentsItemOutput values.
-// You can construct a concrete instance of `MonitoringComponentConfigEnableComponentsItemInput` via:
+// MonitoringComponentConfigEnableComponentsItemInput is an input type that accepts values of the MonitoringComponentConfigEnableComponentsItem enum
+// A concrete instance of `MonitoringComponentConfigEnableComponentsItemInput` can be one of the following:
 //
-//	MonitoringComponentConfigEnableComponentsItemArgs{...}
+//	MonitoringComponentConfigEnableComponentsItemComponentUnspecified
+//	MonitoringComponentConfigEnableComponentsItemSystemComponents
+//	MonitoringComponentConfigEnableComponentsItemWorkloads
+//	MonitoringComponentConfigEnableComponentsItemApiserver
+//	MonitoringComponentConfigEnableComponentsItemScheduler
+//	MonitoringComponentConfigEnableComponentsItemControllerManager
+//	MonitoringComponentConfigEnableComponentsItemStorage
+//	MonitoringComponentConfigEnableComponentsItemHpa
+//	MonitoringComponentConfigEnableComponentsItemPod
+//	MonitoringComponentConfigEnableComponentsItemDaemonset
+//	MonitoringComponentConfigEnableComponentsItemDeployment
+//	MonitoringComponentConfigEnableComponentsItemStatefulset
 type MonitoringComponentConfigEnableComponentsItemInput interface {
 	pulumi.Input
 
@@ -4208,10 +4269,12 @@ func (o NetworkConfigDatapathProviderPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkConfigDatapathProviderInput is an input type that accepts NetworkConfigDatapathProviderArgs and NetworkConfigDatapathProviderOutput values.
-// You can construct a concrete instance of `NetworkConfigDatapathProviderInput` via:
+// NetworkConfigDatapathProviderInput is an input type that accepts values of the NetworkConfigDatapathProvider enum
+// A concrete instance of `NetworkConfigDatapathProviderInput` can be one of the following:
 //
-//	NetworkConfigDatapathProviderArgs{...}
+//	NetworkConfigDatapathProviderDatapathProviderUnspecified
+//	NetworkConfigDatapathProviderLegacyDatapath
+//	NetworkConfigDatapathProviderAdvancedDatapath
 type NetworkConfigDatapathProviderInput interface {
 	pulumi.Input
 
@@ -4383,10 +4446,12 @@ func (o NetworkConfigInTransitEncryptionConfigPtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkConfigInTransitEncryptionConfigInput is an input type that accepts NetworkConfigInTransitEncryptionConfigArgs and NetworkConfigInTransitEncryptionConfigOutput values.
-// You can construct a concrete instance of `NetworkConfigInTransitEncryptionConfigInput` via:
+// NetworkConfigInTransitEncryptionConfigInput is an input type that accepts values of the NetworkConfigInTransitEncryptionConfig enum
+// A concrete instance of `NetworkConfigInTransitEncryptionConfigInput` can be one of the following:
 //
-//	NetworkConfigInTransitEncryptionConfigArgs{...}
+//	NetworkConfigInTransitEncryptionConfigInTransitEncryptionConfigUnspecified
+//	NetworkConfigInTransitEncryptionConfigInTransitEncryptionDisabled
+//	NetworkConfigInTransitEncryptionConfigInTransitEncryptionInterNodeTransparent
 type NetworkConfigInTransitEncryptionConfigInput interface {
 	pulumi.Input
 
@@ -4560,10 +4625,13 @@ func (o NetworkConfigPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkConfigPrivateIpv6GoogleAccessInput is an input type that accepts NetworkConfigPrivateIpv6GoogleAccessArgs and NetworkConfigPrivateIpv6GoogleAccessOutput values.
-// You can construct a concrete instance of `NetworkConfigPrivateIpv6GoogleAccessInput` via:
+// NetworkConfigPrivateIpv6GoogleAccessInput is an input type that accepts values of the NetworkConfigPrivateIpv6GoogleAccess enum
+// A concrete instance of `NetworkConfigPrivateIpv6GoogleAccessInput` can be one of the following:
 //
-//	NetworkConfigPrivateIpv6GoogleAccessArgs{...}
+//	NetworkConfigPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessUnspecified
+//	NetworkConfigPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessDisabled
+//	NetworkConfigPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessToGoogle
+//	NetworkConfigPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessBidirectional
 type NetworkConfigPrivateIpv6GoogleAccessInput interface {
 	pulumi.Input
 
@@ -4733,10 +4801,11 @@ func (o NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput) ToString
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkPerformanceConfigExternalIpEgressBandwidthTierInput is an input type that accepts NetworkPerformanceConfigExternalIpEgressBandwidthTierArgs and NetworkPerformanceConfigExternalIpEgressBandwidthTierOutput values.
-// You can construct a concrete instance of `NetworkPerformanceConfigExternalIpEgressBandwidthTierInput` via:
+// NetworkPerformanceConfigExternalIpEgressBandwidthTierInput is an input type that accepts values of the NetworkPerformanceConfigExternalIpEgressBandwidthTier enum
+// A concrete instance of `NetworkPerformanceConfigExternalIpEgressBandwidthTierInput` can be one of the following:
 //
-//	NetworkPerformanceConfigExternalIpEgressBandwidthTierArgs{...}
+//	NetworkPerformanceConfigExternalIpEgressBandwidthTierTierUnspecified
+//	NetworkPerformanceConfigExternalIpEgressBandwidthTierTier1
 type NetworkPerformanceConfigExternalIpEgressBandwidthTierInput interface {
 	pulumi.Input
 
@@ -4906,10 +4975,11 @@ func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToStringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkPerformanceConfigTotalEgressBandwidthTierInput is an input type that accepts NetworkPerformanceConfigTotalEgressBandwidthTierArgs and NetworkPerformanceConfigTotalEgressBandwidthTierOutput values.
-// You can construct a concrete instance of `NetworkPerformanceConfigTotalEgressBandwidthTierInput` via:
+// NetworkPerformanceConfigTotalEgressBandwidthTierInput is an input type that accepts values of the NetworkPerformanceConfigTotalEgressBandwidthTier enum
+// A concrete instance of `NetworkPerformanceConfigTotalEgressBandwidthTierInput` can be one of the following:
 //
-//	NetworkPerformanceConfigTotalEgressBandwidthTierArgs{...}
+//	NetworkPerformanceConfigTotalEgressBandwidthTierTierUnspecified
+//	NetworkPerformanceConfigTotalEgressBandwidthTierTier1
 type NetworkPerformanceConfigTotalEgressBandwidthTierInput interface {
 	pulumi.Input
 
@@ -5079,10 +5149,11 @@ func (o NetworkPolicyProviderPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkPolicyProviderInput is an input type that accepts NetworkPolicyProviderArgs and NetworkPolicyProviderOutput values.
-// You can construct a concrete instance of `NetworkPolicyProviderInput` via:
+// NetworkPolicyProviderInput is an input type that accepts values of the NetworkPolicyProvider enum
+// A concrete instance of `NetworkPolicyProviderInput` can be one of the following:
 //
-//	NetworkPolicyProviderArgs{...}
+//	NetworkPolicyProviderProviderUnspecified
+//	NetworkPolicyProviderCalico
 type NetworkPolicyProviderInput interface {
 	pulumi.Input
 
@@ -5254,10 +5325,12 @@ func (o NodeAffinityOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// NodeAffinityOperatorInput is an input type that accepts NodeAffinityOperatorArgs and NodeAffinityOperatorOutput values.
-// You can construct a concrete instance of `NodeAffinityOperatorInput` via:
+// NodeAffinityOperatorInput is an input type that accepts values of the NodeAffinityOperator enum
+// A concrete instance of `NodeAffinityOperatorInput` can be one of the following:
 //
-//	NodeAffinityOperatorArgs{...}
+//	NodeAffinityOperatorOperatorUnspecified
+//	NodeAffinityOperatorIn
+//	NodeAffinityOperatorNotIn
 type NodeAffinityOperatorInput interface {
 	pulumi.Input
 
@@ -5429,10 +5502,12 @@ func (o NodePoolAutoscalingLocationPolicyPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// NodePoolAutoscalingLocationPolicyInput is an input type that accepts NodePoolAutoscalingLocationPolicyArgs and NodePoolAutoscalingLocationPolicyOutput values.
-// You can construct a concrete instance of `NodePoolAutoscalingLocationPolicyInput` via:
+// NodePoolAutoscalingLocationPolicyInput is an input type that accepts values of the NodePoolAutoscalingLocationPolicy enum
+// A concrete instance of `NodePoolAutoscalingLocationPolicyInput` can be one of the following:
 //
-//	NodePoolAutoscalingLocationPolicyArgs{...}
+//	NodePoolAutoscalingLocationPolicyLocationPolicyUnspecified
+//	NodePoolAutoscalingLocationPolicyBalanced
+//	NodePoolAutoscalingLocationPolicyAny
 type NodePoolAutoscalingLocationPolicyInput interface {
 	pulumi.Input
 
@@ -5606,10 +5681,13 @@ func (o NodeTaintEffectPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// NodeTaintEffectInput is an input type that accepts NodeTaintEffectArgs and NodeTaintEffectOutput values.
-// You can construct a concrete instance of `NodeTaintEffectInput` via:
+// NodeTaintEffectInput is an input type that accepts values of the NodeTaintEffect enum
+// A concrete instance of `NodeTaintEffectInput` can be one of the following:
 //
-//	NodeTaintEffectArgs{...}
+//	NodeTaintEffectEffectUnspecified
+//	NodeTaintEffectNoSchedule
+//	NodeTaintEffectPreferNoSchedule
+//	NodeTaintEffectNoExecute
 type NodeTaintEffectInput interface {
 	pulumi.Input
 
@@ -5779,10 +5857,11 @@ func (o PlacementPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// PlacementPolicyTypeInput is an input type that accepts PlacementPolicyTypeArgs and PlacementPolicyTypeOutput values.
-// You can construct a concrete instance of `PlacementPolicyTypeInput` via:
+// PlacementPolicyTypeInput is an input type that accepts values of the PlacementPolicyType enum
+// A concrete instance of `PlacementPolicyTypeInput` can be one of the following:
 //
-//	PlacementPolicyTypeArgs{...}
+//	PlacementPolicyTypeTypeUnspecified
+//	PlacementPolicyTypeCompact
 type PlacementPolicyTypeInput interface {
 	pulumi.Input
 
@@ -5954,10 +6033,12 @@ func (o ProtectConfigWorkloadVulnerabilityModePtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// ProtectConfigWorkloadVulnerabilityModeInput is an input type that accepts ProtectConfigWorkloadVulnerabilityModeArgs and ProtectConfigWorkloadVulnerabilityModeOutput values.
-// You can construct a concrete instance of `ProtectConfigWorkloadVulnerabilityModeInput` via:
+// ProtectConfigWorkloadVulnerabilityModeInput is an input type that accepts values of the ProtectConfigWorkloadVulnerabilityMode enum
+// A concrete instance of `ProtectConfigWorkloadVulnerabilityModeInput` can be one of the following:
 //
-//	ProtectConfigWorkloadVulnerabilityModeArgs{...}
+//	ProtectConfigWorkloadVulnerabilityModeWorkloadVulnerabilityModeUnspecified
+//	ProtectConfigWorkloadVulnerabilityModeDisabled
+//	ProtectConfigWorkloadVulnerabilityModeBasic
 type ProtectConfigWorkloadVulnerabilityModeInput interface {
 	pulumi.Input
 
@@ -6131,10 +6212,13 @@ func (o ReleaseChannelChannelPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ReleaseChannelChannelInput is an input type that accepts ReleaseChannelChannelArgs and ReleaseChannelChannelOutput values.
-// You can construct a concrete instance of `ReleaseChannelChannelInput` via:
+// ReleaseChannelChannelInput is an input type that accepts values of the ReleaseChannelChannel enum
+// A concrete instance of `ReleaseChannelChannelInput` can be one of the following:
 //
-//	ReleaseChannelChannelArgs{...}
+//	ReleaseChannelChannelUnspecified
+//	ReleaseChannelChannelRapid
+//	ReleaseChannelChannelRegular
+//	ReleaseChannelChannelStable
 type ReleaseChannelChannelInput interface {
 	pulumi.Input
 
@@ -6308,10 +6392,13 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutputWit
 	}).(pulumi.StringPtrOutput)
 }
 
-// ReservationAffinityConsumeReservationTypeInput is an input type that accepts ReservationAffinityConsumeReservationTypeArgs and ReservationAffinityConsumeReservationTypeOutput values.
-// You can construct a concrete instance of `ReservationAffinityConsumeReservationTypeInput` via:
+// ReservationAffinityConsumeReservationTypeInput is an input type that accepts values of the ReservationAffinityConsumeReservationType enum
+// A concrete instance of `ReservationAffinityConsumeReservationTypeInput` can be one of the following:
 //
-//	ReservationAffinityConsumeReservationTypeArgs{...}
+//	ReservationAffinityConsumeReservationTypeUnspecified
+//	ReservationAffinityConsumeReservationTypeNoReservation
+//	ReservationAffinityConsumeReservationTypeAnyReservation
+//	ReservationAffinityConsumeReservationTypeSpecificReservation
 type ReservationAffinityConsumeReservationTypeInput interface {
 	pulumi.Input
 
@@ -6481,10 +6568,11 @@ func (o SandboxConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// SandboxConfigTypeInput is an input type that accepts SandboxConfigTypeArgs and SandboxConfigTypeOutput values.
-// You can construct a concrete instance of `SandboxConfigTypeInput` via:
+// SandboxConfigTypeInput is an input type that accepts values of the SandboxConfigType enum
+// A concrete instance of `SandboxConfigTypeInput` can be one of the following:
 //
-//	SandboxConfigTypeArgs{...}
+//	SandboxConfigTypeUnspecified
+//	SandboxConfigTypeGvisor
 type SandboxConfigTypeInput interface {
 	pulumi.Input
 
@@ -6656,10 +6744,12 @@ func (o SecurityPostureConfigModePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// SecurityPostureConfigModeInput is an input type that accepts SecurityPostureConfigModeArgs and SecurityPostureConfigModeOutput values.
-// You can construct a concrete instance of `SecurityPostureConfigModeInput` via:
+// SecurityPostureConfigModeInput is an input type that accepts values of the SecurityPostureConfigMode enum
+// A concrete instance of `SecurityPostureConfigModeInput` can be one of the following:
 //
-//	SecurityPostureConfigModeArgs{...}
+//	SecurityPostureConfigModeModeUnspecified
+//	SecurityPostureConfigModeDisabled
+//	SecurityPostureConfigModeBasic
 type SecurityPostureConfigModeInput interface {
 	pulumi.Input
 
@@ -6833,10 +6923,13 @@ func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// SecurityPostureConfigVulnerabilityModeInput is an input type that accepts SecurityPostureConfigVulnerabilityModeArgs and SecurityPostureConfigVulnerabilityModeOutput values.
-// You can construct a concrete instance of `SecurityPostureConfigVulnerabilityModeInput` via:
+// SecurityPostureConfigVulnerabilityModeInput is an input type that accepts values of the SecurityPostureConfigVulnerabilityMode enum
+// A concrete instance of `SecurityPostureConfigVulnerabilityModeInput` can be one of the following:
 //
-//	SecurityPostureConfigVulnerabilityModeArgs{...}
+//	SecurityPostureConfigVulnerabilityModeVulnerabilityModeUnspecified
+//	SecurityPostureConfigVulnerabilityModeVulnerabilityDisabled
+//	SecurityPostureConfigVulnerabilityModeVulnerabilityBasic
+//	SecurityPostureConfigVulnerabilityModeVulnerabilityEnterprise
 type SecurityPostureConfigVulnerabilityModeInput interface {
 	pulumi.Input
 
@@ -7036,10 +7129,26 @@ func (o StatusConditionCanonicalCodePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// StatusConditionCanonicalCodeInput is an input type that accepts StatusConditionCanonicalCodeArgs and StatusConditionCanonicalCodeOutput values.
-// You can construct a concrete instance of `StatusConditionCanonicalCodeInput` via:
+// StatusConditionCanonicalCodeInput is an input type that accepts values of the StatusConditionCanonicalCode enum
+// A concrete instance of `StatusConditionCanonicalCodeInput` can be one of the following:
 //
-//	StatusConditionCanonicalCodeArgs{...}
+//	StatusConditionCanonicalCodeOk
+//	StatusConditionCanonicalCodeCancelled
+//	StatusConditionCanonicalCodeUnknown
+//	StatusConditionCanonicalCodeInvalidArgument
+//	StatusConditionCanonicalCodeDeadlineExceeded
+//	StatusConditionCanonicalCodeNotFound
+//	StatusConditionCanonicalCodeAlreadyExists
+//	StatusConditionCanonicalCodePermissionDenied
+//	StatusConditionCanonicalCodeUnauthenticated
+//	StatusConditionCanonicalCodeResourceExhausted
+//	StatusConditionCanonicalCodeFailedPrecondition
+//	StatusConditionCanonicalCodeAborted
+//	StatusConditionCanonicalCodeOutOfRange
+//	StatusConditionCanonicalCodeUnimplemented
+//	StatusConditionCanonicalCodeInternal
+//	StatusConditionCanonicalCodeUnavailable
+//	StatusConditionCanonicalCodeDataLoss
 type StatusConditionCanonicalCodeInput interface {
 	pulumi.Input
 
@@ -7219,10 +7328,16 @@ func (o StatusConditionCodePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// StatusConditionCodeInput is an input type that accepts StatusConditionCodeArgs and StatusConditionCodeOutput values.
-// You can construct a concrete instance of `StatusConditionCodeInput` via:
+// StatusConditionCodeInput is an input type that accepts values of the StatusConditionCode enum
+// A concrete instance of `StatusConditionCodeInput` can be one of the following:
 //
-//	StatusConditionCodeArgs{...}
+//	StatusConditionCodeUnknown
+//	StatusConditionCodeGceStockout
+//	StatusConditionCodeGkeServiceAccountDeleted
+//	StatusConditionCodeGceQuotaExceeded
+//	StatusConditionCodeSetByOperator
+//	StatusConditionCodeCloudKmsKeyError
+//	StatusConditionCodeCaExpiring
 type StatusConditionCodeInput interface {
 	pulumi.Input
 
@@ -7394,10 +7509,12 @@ func (o UpgradeSettingsStrategyPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// UpgradeSettingsStrategyInput is an input type that accepts UpgradeSettingsStrategyArgs and UpgradeSettingsStrategyOutput values.
-// You can construct a concrete instance of `UpgradeSettingsStrategyInput` via:
+// UpgradeSettingsStrategyInput is an input type that accepts values of the UpgradeSettingsStrategy enum
+// A concrete instance of `UpgradeSettingsStrategyInput` can be one of the following:
 //
-//	UpgradeSettingsStrategyArgs{...}
+//	UpgradeSettingsStrategyNodePoolUpdateStrategyUnspecified
+//	UpgradeSettingsStrategyBlueGreen
+//	UpgradeSettingsStrategySurge
 type UpgradeSettingsStrategyInput interface {
 	pulumi.Input
 
@@ -7569,10 +7686,12 @@ func (o WindowsNodeConfigOsVersionPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// WindowsNodeConfigOsVersionInput is an input type that accepts WindowsNodeConfigOsVersionArgs and WindowsNodeConfigOsVersionOutput values.
-// You can construct a concrete instance of `WindowsNodeConfigOsVersionInput` via:
+// WindowsNodeConfigOsVersionInput is an input type that accepts values of the WindowsNodeConfigOsVersion enum
+// A concrete instance of `WindowsNodeConfigOsVersionInput` can be one of the following:
 //
-//	WindowsNodeConfigOsVersionArgs{...}
+//	WindowsNodeConfigOsVersionOsVersionUnspecified
+//	WindowsNodeConfigOsVersionOsVersionLtsc2019
+//	WindowsNodeConfigOsVersionOsVersionLtsc2022
 type WindowsNodeConfigOsVersionInput interface {
 	pulumi.Input
 
@@ -7748,10 +7867,14 @@ func (o WorkloadConfigAuditModePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkloadConfigAuditModeInput is an input type that accepts WorkloadConfigAuditModeArgs and WorkloadConfigAuditModeOutput values.
-// You can construct a concrete instance of `WorkloadConfigAuditModeInput` via:
+// WorkloadConfigAuditModeInput is an input type that accepts values of the WorkloadConfigAuditMode enum
+// A concrete instance of `WorkloadConfigAuditModeInput` can be one of the following:
 //
-//	WorkloadConfigAuditModeArgs{...}
+//	WorkloadConfigAuditModeModeUnspecified
+//	WorkloadConfigAuditModeDisabled
+//	WorkloadConfigAuditModeBasic
+//	WorkloadConfigAuditModeBaseline
+//	WorkloadConfigAuditModeRestricted
 type WorkloadConfigAuditModeInput interface {
 	pulumi.Input
 
@@ -7923,10 +8046,12 @@ func (o WorkloadMetadataConfigModePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkloadMetadataConfigModeInput is an input type that accepts WorkloadMetadataConfigModeArgs and WorkloadMetadataConfigModeOutput values.
-// You can construct a concrete instance of `WorkloadMetadataConfigModeInput` via:
+// WorkloadMetadataConfigModeInput is an input type that accepts values of the WorkloadMetadataConfigMode enum
+// A concrete instance of `WorkloadMetadataConfigModeInput` can be one of the following:
 //
-//	WorkloadMetadataConfigModeArgs{...}
+//	WorkloadMetadataConfigModeModeUnspecified
+//	WorkloadMetadataConfigModeGceMetadata
+//	WorkloadMetadataConfigModeGkeMetadata
 type WorkloadMetadataConfigModeInput interface {
 	pulumi.Input
 
@@ -8100,10 +8225,13 @@ func (o WorkloadMetadataConfigNodeMetadataPtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkloadMetadataConfigNodeMetadataInput is an input type that accepts WorkloadMetadataConfigNodeMetadataArgs and WorkloadMetadataConfigNodeMetadataOutput values.
-// You can construct a concrete instance of `WorkloadMetadataConfigNodeMetadataInput` via:
+// WorkloadMetadataConfigNodeMetadataInput is an input type that accepts values of the WorkloadMetadataConfigNodeMetadata enum
+// A concrete instance of `WorkloadMetadataConfigNodeMetadataInput` can be one of the following:
 //
-//	WorkloadMetadataConfigNodeMetadataArgs{...}
+//	WorkloadMetadataConfigNodeMetadataUnspecified
+//	WorkloadMetadataConfigNodeMetadataSecure
+//	WorkloadMetadataConfigNodeMetadataExpose
+//	WorkloadMetadataConfigNodeMetadataGkeMetadataServer
 type WorkloadMetadataConfigNodeMetadataInput interface {
 	pulumi.Input
 

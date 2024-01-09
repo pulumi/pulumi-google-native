@@ -152,10 +152,17 @@ func (o AppEngineHttpRequestHttpMethodPtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// AppEngineHttpRequestHttpMethodInput is an input type that accepts AppEngineHttpRequestHttpMethodArgs and AppEngineHttpRequestHttpMethodOutput values.
-// You can construct a concrete instance of `AppEngineHttpRequestHttpMethodInput` via:
+// AppEngineHttpRequestHttpMethodInput is an input type that accepts values of the AppEngineHttpRequestHttpMethod enum
+// A concrete instance of `AppEngineHttpRequestHttpMethodInput` can be one of the following:
 //
-//	AppEngineHttpRequestHttpMethodArgs{...}
+//	AppEngineHttpRequestHttpMethodHttpMethodUnspecified
+//	AppEngineHttpRequestHttpMethodPost
+//	AppEngineHttpRequestHttpMethodGet
+//	AppEngineHttpRequestHttpMethodHead
+//	AppEngineHttpRequestHttpMethodPut
+//	AppEngineHttpRequestHttpMethodDelete
+//	AppEngineHttpRequestHttpMethodPatch
+//	AppEngineHttpRequestHttpMethodOptions
 type AppEngineHttpRequestHttpMethodInput interface {
 	pulumi.Input
 
@@ -337,10 +344,17 @@ func (o HttpRequestHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// HttpRequestHttpMethodInput is an input type that accepts HttpRequestHttpMethodArgs and HttpRequestHttpMethodOutput values.
-// You can construct a concrete instance of `HttpRequestHttpMethodInput` via:
+// HttpRequestHttpMethodInput is an input type that accepts values of the HttpRequestHttpMethod enum
+// A concrete instance of `HttpRequestHttpMethodInput` can be one of the following:
 //
-//	HttpRequestHttpMethodArgs{...}
+//	HttpRequestHttpMethodHttpMethodUnspecified
+//	HttpRequestHttpMethodPost
+//	HttpRequestHttpMethodGet
+//	HttpRequestHttpMethodHead
+//	HttpRequestHttpMethodPut
+//	HttpRequestHttpMethodDelete
+//	HttpRequestHttpMethodPatch
+//	HttpRequestHttpMethodOptions
 type HttpRequestHttpMethodInput interface {
 	pulumi.Input
 
@@ -522,10 +536,17 @@ func (o HttpTargetHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// HttpTargetHttpMethodInput is an input type that accepts HttpTargetHttpMethodArgs and HttpTargetHttpMethodOutput values.
-// You can construct a concrete instance of `HttpTargetHttpMethodInput` via:
+// HttpTargetHttpMethodInput is an input type that accepts values of the HttpTargetHttpMethod enum
+// A concrete instance of `HttpTargetHttpMethodInput` can be one of the following:
 //
-//	HttpTargetHttpMethodArgs{...}
+//	HttpTargetHttpMethodHttpMethodUnspecified
+//	HttpTargetHttpMethodPost
+//	HttpTargetHttpMethodGet
+//	HttpTargetHttpMethodHead
+//	HttpTargetHttpMethodPut
+//	HttpTargetHttpMethodDelete
+//	HttpTargetHttpMethodPatch
+//	HttpTargetHttpMethodOptions
 type HttpTargetHttpMethodInput interface {
 	pulumi.Input
 
@@ -697,10 +718,12 @@ func (o TaskResponseViewPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// TaskResponseViewInput is an input type that accepts TaskResponseViewArgs and TaskResponseViewOutput values.
-// You can construct a concrete instance of `TaskResponseViewInput` via:
+// TaskResponseViewInput is an input type that accepts values of the TaskResponseView enum
+// A concrete instance of `TaskResponseViewInput` can be one of the following:
 //
-//	TaskResponseViewArgs{...}
+//	TaskResponseViewViewUnspecified
+//	TaskResponseViewBasic
+//	TaskResponseViewFull
 type TaskResponseViewInput interface {
 	pulumi.Input
 
@@ -872,10 +895,12 @@ func (o UriOverrideSchemePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// UriOverrideSchemeInput is an input type that accepts UriOverrideSchemeArgs and UriOverrideSchemeOutput values.
-// You can construct a concrete instance of `UriOverrideSchemeInput` via:
+// UriOverrideSchemeInput is an input type that accepts values of the UriOverrideScheme enum
+// A concrete instance of `UriOverrideSchemeInput` can be one of the following:
 //
-//	UriOverrideSchemeArgs{...}
+//	UriOverrideSchemeSchemeUnspecified
+//	UriOverrideSchemeHttp
+//	UriOverrideSchemeHttps
 type UriOverrideSchemeInput interface {
 	pulumi.Input
 
@@ -1047,10 +1072,12 @@ func (o UriOverrideUriOverrideEnforceModePtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// UriOverrideUriOverrideEnforceModeInput is an input type that accepts UriOverrideUriOverrideEnforceModeArgs and UriOverrideUriOverrideEnforceModeOutput values.
-// You can construct a concrete instance of `UriOverrideUriOverrideEnforceModeInput` via:
+// UriOverrideUriOverrideEnforceModeInput is an input type that accepts values of the UriOverrideUriOverrideEnforceMode enum
+// A concrete instance of `UriOverrideUriOverrideEnforceModeInput` can be one of the following:
 //
-//	UriOverrideUriOverrideEnforceModeArgs{...}
+//	UriOverrideUriOverrideEnforceModeUriOverrideEnforceModeUnspecified
+//	UriOverrideUriOverrideEnforceModeIfNotExists
+//	UriOverrideUriOverrideEnforceModeAlways
 type UriOverrideUriOverrideEnforceModeInput interface {
 	pulumi.Input
 

@@ -142,10 +142,12 @@ func (o EntitySystemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// EntitySystemInput is an input type that accepts EntitySystemArgs and EntitySystemOutput values.
-// You can construct a concrete instance of `EntitySystemInput` via:
+// EntitySystemInput is an input type that accepts values of the EntitySystem enum
+// A concrete instance of `EntitySystemInput` can be one of the following:
 //
-//	EntitySystemArgs{...}
+//	EntitySystemStorageSystemUnspecified
+//	EntitySystemCloudStorage
+//	EntitySystemBigquery
 type EntitySystemInput interface {
 	pulumi.Input
 
@@ -317,10 +319,12 @@ func (o EntityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 	}).(pulumi.StringPtrOutput)
 }
 
-// EntityTypeInput is an input type that accepts EntityTypeArgs and EntityTypeOutput values.
-// You can construct a concrete instance of `EntityTypeInput` via:
+// EntityTypeInput is an input type that accepts values of the EntityType enum
+// A concrete instance of `EntityTypeInput` can be one of the following:
 //
-//	EntityTypeArgs{...}
+//	EntityTypeTypeUnspecified
+//	EntityTypeTable
+//	EntityTypeFileset
 type EntityTypeInput interface {
 	pulumi.Input
 
@@ -492,10 +496,12 @@ func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) ToStringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1AssetResourceSpecReadAccessModeInput is an input type that accepts GoogleCloudDataplexV1AssetResourceSpecReadAccessModeArgs and GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1AssetResourceSpecReadAccessModeInput` via:
+// GoogleCloudDataplexV1AssetResourceSpecReadAccessModeInput is an input type that accepts values of the GoogleCloudDataplexV1AssetResourceSpecReadAccessMode enum
+// A concrete instance of `GoogleCloudDataplexV1AssetResourceSpecReadAccessModeInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1AssetResourceSpecReadAccessModeArgs{...}
+//	GoogleCloudDataplexV1AssetResourceSpecReadAccessModeAccessModeUnspecified
+//	GoogleCloudDataplexV1AssetResourceSpecReadAccessModeDirect
+//	GoogleCloudDataplexV1AssetResourceSpecReadAccessModeManaged
 type GoogleCloudDataplexV1AssetResourceSpecReadAccessModeInput interface {
 	pulumi.Input
 
@@ -667,10 +673,12 @@ func (o GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1AssetResourceSpecTypeInput is an input type that accepts GoogleCloudDataplexV1AssetResourceSpecTypeArgs and GoogleCloudDataplexV1AssetResourceSpecTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1AssetResourceSpecTypeInput` via:
+// GoogleCloudDataplexV1AssetResourceSpecTypeInput is an input type that accepts values of the GoogleCloudDataplexV1AssetResourceSpecType enum
+// A concrete instance of `GoogleCloudDataplexV1AssetResourceSpecTypeInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1AssetResourceSpecTypeArgs{...}
+//	GoogleCloudDataplexV1AssetResourceSpecTypeTypeUnspecified
+//	GoogleCloudDataplexV1AssetResourceSpecTypeStorageBucket
+//	GoogleCloudDataplexV1AssetResourceSpecTypeBigqueryDataset
 type GoogleCloudDataplexV1AssetResourceSpecTypeInput interface {
 	pulumi.Input
 
@@ -840,10 +848,11 @@ func (o GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput) ToStringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1ContentNotebookKernelTypeInput is an input type that accepts GoogleCloudDataplexV1ContentNotebookKernelTypeArgs and GoogleCloudDataplexV1ContentNotebookKernelTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1ContentNotebookKernelTypeInput` via:
+// GoogleCloudDataplexV1ContentNotebookKernelTypeInput is an input type that accepts values of the GoogleCloudDataplexV1ContentNotebookKernelType enum
+// A concrete instance of `GoogleCloudDataplexV1ContentNotebookKernelTypeInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1ContentNotebookKernelTypeArgs{...}
+//	GoogleCloudDataplexV1ContentNotebookKernelTypeKernelTypeUnspecified
+//	GoogleCloudDataplexV1ContentNotebookKernelTypePython3
 type GoogleCloudDataplexV1ContentNotebookKernelTypeInput interface {
 	pulumi.Input
 
@@ -1013,10 +1022,11 @@ func (o GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput) ToStringPtrOutputW
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1ContentSqlScriptEngineInput is an input type that accepts GoogleCloudDataplexV1ContentSqlScriptEngineArgs and GoogleCloudDataplexV1ContentSqlScriptEngineOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1ContentSqlScriptEngineInput` via:
+// GoogleCloudDataplexV1ContentSqlScriptEngineInput is an input type that accepts values of the GoogleCloudDataplexV1ContentSqlScriptEngine enum
+// A concrete instance of `GoogleCloudDataplexV1ContentSqlScriptEngineInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1ContentSqlScriptEngineArgs{...}
+//	GoogleCloudDataplexV1ContentSqlScriptEngineQueryEngineUnspecified
+//	GoogleCloudDataplexV1ContentSqlScriptEngineSpark
 type GoogleCloudDataplexV1ContentSqlScriptEngineInput interface {
 	pulumi.Input
 
@@ -1190,10 +1200,13 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticArgs and GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticInput` via:
+// GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticInput is an input type that accepts values of the GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic enum
+// A concrete instance of `GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticArgs{...}
+//	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticStatisticUndefined
+//	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticMean
+//	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticMin
+//	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticMax
 type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticInput interface {
 	pulumi.Input
 
@@ -1391,10 +1404,25 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput) ToStringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1SchemaPartitionFieldTypeInput is an input type that accepts GoogleCloudDataplexV1SchemaPartitionFieldTypeArgs and GoogleCloudDataplexV1SchemaPartitionFieldTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1SchemaPartitionFieldTypeInput` via:
+// GoogleCloudDataplexV1SchemaPartitionFieldTypeInput is an input type that accepts values of the GoogleCloudDataplexV1SchemaPartitionFieldType enum
+// A concrete instance of `GoogleCloudDataplexV1SchemaPartitionFieldTypeInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1SchemaPartitionFieldTypeArgs{...}
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeTypeUnspecified
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeBoolean
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeByte
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeInt16
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeInt32
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeInt64
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeFloat
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeDouble
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeDecimal
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeString
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeBinary
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeTimestamp
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeDate
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeTime
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeRecord
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeNull
 type GoogleCloudDataplexV1SchemaPartitionFieldTypeInput interface {
 	pulumi.Input
 
@@ -1564,10 +1592,11 @@ func (o GoogleCloudDataplexV1SchemaPartitionStylePtrOutput) ToStringPtrOutputWit
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1SchemaPartitionStyleInput is an input type that accepts GoogleCloudDataplexV1SchemaPartitionStyleArgs and GoogleCloudDataplexV1SchemaPartitionStyleOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1SchemaPartitionStyleInput` via:
+// GoogleCloudDataplexV1SchemaPartitionStyleInput is an input type that accepts values of the GoogleCloudDataplexV1SchemaPartitionStyle enum
+// A concrete instance of `GoogleCloudDataplexV1SchemaPartitionStyleInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1SchemaPartitionStyleArgs{...}
+//	GoogleCloudDataplexV1SchemaPartitionStylePartitionStyleUnspecified
+//	GoogleCloudDataplexV1SchemaPartitionStyleHiveCompatible
 type GoogleCloudDataplexV1SchemaPartitionStyleInput interface {
 	pulumi.Input
 
@@ -1741,10 +1770,13 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldModePtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1SchemaSchemaFieldModeInput is an input type that accepts GoogleCloudDataplexV1SchemaSchemaFieldModeArgs and GoogleCloudDataplexV1SchemaSchemaFieldModeOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1SchemaSchemaFieldModeInput` via:
+// GoogleCloudDataplexV1SchemaSchemaFieldModeInput is an input type that accepts values of the GoogleCloudDataplexV1SchemaSchemaFieldMode enum
+// A concrete instance of `GoogleCloudDataplexV1SchemaSchemaFieldModeInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1SchemaSchemaFieldModeArgs{...}
+//	GoogleCloudDataplexV1SchemaSchemaFieldModeModeUnspecified
+//	GoogleCloudDataplexV1SchemaSchemaFieldModeRequired
+//	GoogleCloudDataplexV1SchemaSchemaFieldModeNullable
+//	GoogleCloudDataplexV1SchemaSchemaFieldModeRepeated
 type GoogleCloudDataplexV1SchemaSchemaFieldModeInput interface {
 	pulumi.Input
 
@@ -1942,10 +1974,25 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1SchemaSchemaFieldTypeInput is an input type that accepts GoogleCloudDataplexV1SchemaSchemaFieldTypeArgs and GoogleCloudDataplexV1SchemaSchemaFieldTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1SchemaSchemaFieldTypeInput` via:
+// GoogleCloudDataplexV1SchemaSchemaFieldTypeInput is an input type that accepts values of the GoogleCloudDataplexV1SchemaSchemaFieldType enum
+// A concrete instance of `GoogleCloudDataplexV1SchemaSchemaFieldTypeInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1SchemaSchemaFieldTypeArgs{...}
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeTypeUnspecified
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeBoolean
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeByte
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeInt16
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeInt32
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeInt64
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeFloat
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeDouble
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeDecimal
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeString
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeBinary
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeTimestamp
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeDate
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeTime
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeRecord
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeNull
 type GoogleCloudDataplexV1SchemaSchemaFieldTypeInput interface {
 	pulumi.Input
 
@@ -2117,10 +2164,12 @@ func (o GoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutput) ToStringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1StorageFormatCompressionFormatInput is an input type that accepts GoogleCloudDataplexV1StorageFormatCompressionFormatArgs and GoogleCloudDataplexV1StorageFormatCompressionFormatOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1StorageFormatCompressionFormatInput` via:
+// GoogleCloudDataplexV1StorageFormatCompressionFormatInput is an input type that accepts values of the GoogleCloudDataplexV1StorageFormatCompressionFormat enum
+// A concrete instance of `GoogleCloudDataplexV1StorageFormatCompressionFormatInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1StorageFormatCompressionFormatArgs{...}
+//	GoogleCloudDataplexV1StorageFormatCompressionFormatCompressionFormatUnspecified
+//	GoogleCloudDataplexV1StorageFormatCompressionFormatGzip
+//	GoogleCloudDataplexV1StorageFormatCompressionFormatBzip2
 type GoogleCloudDataplexV1StorageFormatCompressionFormatInput interface {
 	pulumi.Input
 
@@ -2292,10 +2341,12 @@ func (o GoogleCloudDataplexV1TaskTriggerSpecTypePtrOutput) ToStringPtrOutputWith
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1TaskTriggerSpecTypeInput is an input type that accepts GoogleCloudDataplexV1TaskTriggerSpecTypeArgs and GoogleCloudDataplexV1TaskTriggerSpecTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1TaskTriggerSpecTypeInput` via:
+// GoogleCloudDataplexV1TaskTriggerSpecTypeInput is an input type that accepts values of the GoogleCloudDataplexV1TaskTriggerSpecType enum
+// A concrete instance of `GoogleCloudDataplexV1TaskTriggerSpecTypeInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1TaskTriggerSpecTypeArgs{...}
+//	GoogleCloudDataplexV1TaskTriggerSpecTypeTypeUnspecified
+//	GoogleCloudDataplexV1TaskTriggerSpecTypeOnDemand
+//	GoogleCloudDataplexV1TaskTriggerSpecTypeRecurring
 type GoogleCloudDataplexV1TaskTriggerSpecTypeInput interface {
 	pulumi.Input
 
@@ -2467,10 +2518,12 @@ func (o GoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutput) ToStringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDataplexV1ZoneResourceSpecLocationTypeInput is an input type that accepts GoogleCloudDataplexV1ZoneResourceSpecLocationTypeArgs and GoogleCloudDataplexV1ZoneResourceSpecLocationTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDataplexV1ZoneResourceSpecLocationTypeInput` via:
+// GoogleCloudDataplexV1ZoneResourceSpecLocationTypeInput is an input type that accepts values of the GoogleCloudDataplexV1ZoneResourceSpecLocationType enum
+// A concrete instance of `GoogleCloudDataplexV1ZoneResourceSpecLocationTypeInput` can be one of the following:
 //
-//	GoogleCloudDataplexV1ZoneResourceSpecLocationTypeArgs{...}
+//	GoogleCloudDataplexV1ZoneResourceSpecLocationTypeLocationTypeUnspecified
+//	GoogleCloudDataplexV1ZoneResourceSpecLocationTypeSingleRegion
+//	GoogleCloudDataplexV1ZoneResourceSpecLocationTypeMultiRegion
 type GoogleCloudDataplexV1ZoneResourceSpecLocationTypeInput interface {
 	pulumi.Input
 
@@ -2644,10 +2697,13 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
+// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts values of the GoogleIamV1AuditLogConfigLogType enum
+// A concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeLogTypeUnspecified
+//	GoogleIamV1AuditLogConfigLogTypeAdminRead
+//	GoogleIamV1AuditLogConfigLogTypeDataWrite
+//	GoogleIamV1AuditLogConfigLogTypeDataRead
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -2819,10 +2875,12 @@ func (o ZoneTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// ZoneTypeInput is an input type that accepts ZoneTypeArgs and ZoneTypeOutput values.
-// You can construct a concrete instance of `ZoneTypeInput` via:
+// ZoneTypeInput is an input type that accepts values of the ZoneType enum
+// A concrete instance of `ZoneTypeInput` can be one of the following:
 //
-//	ZoneTypeArgs{...}
+//	ZoneTypeTypeUnspecified
+//	ZoneTypeRaw
+//	ZoneTypeCurated
 type ZoneTypeInput interface {
 	pulumi.Input
 

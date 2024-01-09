@@ -140,10 +140,11 @@ func (o DynamicGroupQueryResourceTypePtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// DynamicGroupQueryResourceTypeInput is an input type that accepts DynamicGroupQueryResourceTypeArgs and DynamicGroupQueryResourceTypeOutput values.
-// You can construct a concrete instance of `DynamicGroupQueryResourceTypeInput` via:
+// DynamicGroupQueryResourceTypeInput is an input type that accepts values of the DynamicGroupQueryResourceType enum
+// A concrete instance of `DynamicGroupQueryResourceTypeInput` can be one of the following:
 //
-//	DynamicGroupQueryResourceTypeArgs{...}
+//	DynamicGroupQueryResourceTypeResourceTypeUnspecified
+//	DynamicGroupQueryResourceTypeUser
 type DynamicGroupQueryResourceTypeInput interface {
 	pulumi.Input
 
@@ -317,10 +318,13 @@ func (o InboundSsoAssignmentSsoModePtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// InboundSsoAssignmentSsoModeInput is an input type that accepts InboundSsoAssignmentSsoModeArgs and InboundSsoAssignmentSsoModeOutput values.
-// You can construct a concrete instance of `InboundSsoAssignmentSsoModeInput` via:
+// InboundSsoAssignmentSsoModeInput is an input type that accepts values of the InboundSsoAssignmentSsoMode enum
+// A concrete instance of `InboundSsoAssignmentSsoModeInput` can be one of the following:
 //
-//	InboundSsoAssignmentSsoModeArgs{...}
+//	InboundSsoAssignmentSsoModeSsoModeUnspecified
+//	InboundSsoAssignmentSsoModeSsoOff
+//	InboundSsoAssignmentSsoModeSamlSso
+//	InboundSsoAssignmentSsoModeDomainWideSamlIfEnabled
 type InboundSsoAssignmentSsoModeInput interface {
 	pulumi.Input
 
@@ -490,10 +494,11 @@ func (o SignInBehaviorRedirectConditionPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// SignInBehaviorRedirectConditionInput is an input type that accepts SignInBehaviorRedirectConditionArgs and SignInBehaviorRedirectConditionOutput values.
-// You can construct a concrete instance of `SignInBehaviorRedirectConditionInput` via:
+// SignInBehaviorRedirectConditionInput is an input type that accepts values of the SignInBehaviorRedirectCondition enum
+// A concrete instance of `SignInBehaviorRedirectConditionInput` can be one of the following:
 //
-//	SignInBehaviorRedirectConditionArgs{...}
+//	SignInBehaviorRedirectConditionRedirectConditionUnspecified
+//	SignInBehaviorRedirectConditionNever
 type SignInBehaviorRedirectConditionInput interface {
 	pulumi.Input
 

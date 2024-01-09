@@ -168,10 +168,25 @@ func (o EntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// EntryTypeInput is an input type that accepts EntryTypeArgs and EntryTypeOutput values.
-// You can construct a concrete instance of `EntryTypeInput` via:
+// EntryTypeInput is an input type that accepts values of the EntryType enum
+// A concrete instance of `EntryTypeInput` can be one of the following:
 //
-//	EntryTypeArgs{...}
+//	EntryTypeEntryTypeUnspecified
+//	EntryTypeTable
+//	EntryTypeModel
+//	EntryTypeDataStream
+//	EntryTypeFileset
+//	EntryTypeCluster
+//	EntryTypeDatabase
+//	EntryTypeDataSourceConnection
+//	EntryTypeRoutine
+//	EntryTypeLake
+//	EntryTypeZone
+//	EntryTypeService
+//	EntryTypeDatabaseSchema
+//	EntryTypeDashboard
+//	EntryTypeExplore
+//	EntryTypeLook
 type EntryTypeInput interface {
 	pulumi.Input
 
@@ -347,10 +362,14 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) ToStri
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeArgs and GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeInput` via:
+// GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeInput is an input type that accepts values of the GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType enum
+// A concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeInput` can be one of the following:
 //
-//	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeArgs{...}
+//	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeIndexingTypeUnspecified
+//	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeIndexingTypeNone
+//	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeIndexingTypeNonUnique
+//	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeIndexingTypeUnique
+//	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeIndexingTypePrimaryKey
 type GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeInput interface {
 	pulumi.Input
 
@@ -528,10 +547,15 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) ToStr
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeArgs and GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput` via:
+// GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput is an input type that accepts values of the GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType enum
+// A concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput` can be one of the following:
 //
-//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeArgs{...}
+//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeLookerColumnTypeUnspecified
+//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeDimension
+//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeDimensionGroup
+//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeFilter
+//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeMeasure
+//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeParameter
 type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput interface {
 	pulumi.Input
 
@@ -703,10 +727,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeArgs and GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeInput` via:
+// GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeInput is an input type that accepts values of the GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType enum
+// A concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeInput` can be one of the following:
 //
-//	GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeArgs{...}
+//	GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeViewTypeUnspecified
+//	GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeStandardView
+//	GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeMaterializedView
 type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeInput interface {
 	pulumi.Input
 
@@ -878,10 +904,12 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToStringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecTypeArgs and GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput` via:
+// GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput is an input type that accepts values of the GoogleCloudDatacatalogV1DatabaseTableSpecType enum
+// A concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput` can be one of the following:
 //
-//	GoogleCloudDatacatalogV1DatabaseTableSpecTypeArgs{...}
+//	GoogleCloudDatacatalogV1DatabaseTableSpecTypeTableTypeUnspecified
+//	GoogleCloudDatacatalogV1DatabaseTableSpecTypeNative
+//	GoogleCloudDatacatalogV1DatabaseTableSpecTypeExternal
 type GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput interface {
 	pulumi.Input
 
@@ -1055,10 +1083,13 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToStringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgumentModeArgs and GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput` via:
+// GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput is an input type that accepts values of the GoogleCloudDatacatalogV1RoutineSpecArgumentMode enum
+// A concrete instance of `GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput` can be one of the following:
 //
-//	GoogleCloudDatacatalogV1RoutineSpecArgumentModeArgs{...}
+//	GoogleCloudDatacatalogV1RoutineSpecArgumentModeModeUnspecified
+//	GoogleCloudDatacatalogV1RoutineSpecArgumentModeIn
+//	GoogleCloudDatacatalogV1RoutineSpecArgumentModeOut
+//	GoogleCloudDatacatalogV1RoutineSpecArgumentModeInout
 type GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput interface {
 	pulumi.Input
 
@@ -1230,10 +1261,12 @@ func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToStringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecRoutineTypeArgs and GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput` via:
+// GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput is an input type that accepts values of the GoogleCloudDatacatalogV1RoutineSpecRoutineType enum
+// A concrete instance of `GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput` can be one of the following:
 //
-//	GoogleCloudDatacatalogV1RoutineSpecRoutineTypeArgs{...}
+//	GoogleCloudDatacatalogV1RoutineSpecRoutineTypeRoutineTypeUnspecified
+//	GoogleCloudDatacatalogV1RoutineSpecRoutineTypeScalarFunction
+//	GoogleCloudDatacatalogV1RoutineSpecRoutineTypeProcedure
 type GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput interface {
 	pulumi.Input
 
@@ -1425,10 +1458,22 @@ func (o GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput) ToStringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeInput is an input type that accepts GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeArgs and GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeInput` via:
+// GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeInput is an input type that accepts values of the GoogleCloudDatacatalogV1VertexDatasetSpecDataType enum
+// A concrete instance of `GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeInput` can be one of the following:
 //
-//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeArgs{...}
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeDataTypeUnspecified
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeTable
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeImage
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeText
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeVideo
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeConversation
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeTimeSeries
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeDocument
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeTextToSpeech
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeTranslation
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeStoreVision
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnterpriseKnowledgeGraph
+//	GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeTextPrompt
 type GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeInput interface {
 	pulumi.Input
 
@@ -1604,10 +1649,14 @@ func (o GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput) ToStri
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeInput is an input type that accepts GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeArgs and GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeInput` via:
+// GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeInput is an input type that accepts values of the GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType enum
+// A concrete instance of `GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeInput` can be one of the following:
 //
-//	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeArgs{...}
+//	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeModelSourceTypeUnspecified
+//	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeAutoml
+//	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeCustom
+//	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeBqml
+//	GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeModelGarden
 type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeInput interface {
 	pulumi.Input
 
@@ -1776,10 +1825,11 @@ func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// TaxonomyActivatedPolicyTypesItemInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArgs and TaxonomyActivatedPolicyTypesItemOutput values.
-// You can construct a concrete instance of `TaxonomyActivatedPolicyTypesItemInput` via:
+// TaxonomyActivatedPolicyTypesItemInput is an input type that accepts values of the TaxonomyActivatedPolicyTypesItem enum
+// A concrete instance of `TaxonomyActivatedPolicyTypesItemInput` can be one of the following:
 //
-//	TaxonomyActivatedPolicyTypesItemArgs{...}
+//	TaxonomyActivatedPolicyTypesItemPolicyTypeUnspecified
+//	TaxonomyActivatedPolicyTypesItemFineGrainedAccessControl
 type TaxonomyActivatedPolicyTypesItemInput interface {
 	pulumi.Input
 

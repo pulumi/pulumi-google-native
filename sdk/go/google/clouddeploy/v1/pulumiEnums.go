@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -324,10 +327,15 @@ func (o ExecutionConfigUsagesItemPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExecutionConfigUsagesItemInput is an input type that accepts ExecutionConfigUsagesItemArgs and ExecutionConfigUsagesItemOutput values.
-// You can construct a concrete instance of `ExecutionConfigUsagesItemInput` via:
+// ExecutionConfigUsagesItemInput is an input type that accepts values of the ExecutionConfigUsagesItem enum
+// A concrete instance of `ExecutionConfigUsagesItemInput` can be one of the following:
 //
-//	ExecutionConfigUsagesItemArgs{...}
+//	ExecutionConfigUsagesItemExecutionEnvironmentUsageUnspecified
+//	ExecutionConfigUsagesItemRender
+//	ExecutionConfigUsagesItemDeploy
+//	ExecutionConfigUsagesItemVerify
+//	ExecutionConfigUsagesItemPredeploy
+//	ExecutionConfigUsagesItemPostdeploy
 type ExecutionConfigUsagesItemInput interface {
 	pulumi.Input
 
@@ -544,10 +552,12 @@ func (o RetryBackoffModePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// RetryBackoffModeInput is an input type that accepts RetryBackoffModeArgs and RetryBackoffModeOutput values.
-// You can construct a concrete instance of `RetryBackoffModeInput` via:
+// RetryBackoffModeInput is an input type that accepts values of the RetryBackoffMode enum
+// A concrete instance of `RetryBackoffModeInput` can be one of the following:
 //
-//	RetryBackoffModeArgs{...}
+//	RetryBackoffModeBackoffModeUnspecified
+//	RetryBackoffModeBackoffModeLinear
+//	RetryBackoffModeBackoffModeExponential
 type RetryBackoffModeInput interface {
 	pulumi.Input
 

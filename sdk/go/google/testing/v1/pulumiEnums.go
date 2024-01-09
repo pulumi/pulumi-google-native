@@ -142,10 +142,12 @@ func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToStringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// AndroidInstrumentationTestOrchestratorOptionInput is an input type that accepts AndroidInstrumentationTestOrchestratorOptionArgs and AndroidInstrumentationTestOrchestratorOptionOutput values.
-// You can construct a concrete instance of `AndroidInstrumentationTestOrchestratorOptionInput` via:
+// AndroidInstrumentationTestOrchestratorOptionInput is an input type that accepts values of the AndroidInstrumentationTestOrchestratorOption enum
+// A concrete instance of `AndroidInstrumentationTestOrchestratorOptionInput` can be one of the following:
 //
-//	AndroidInstrumentationTestOrchestratorOptionArgs{...}
+//	AndroidInstrumentationTestOrchestratorOptionOrchestratorOptionUnspecified
+//	AndroidInstrumentationTestOrchestratorOptionUseOrchestrator
+//	AndroidInstrumentationTestOrchestratorOptionDoNotUseOrchestrator
 type AndroidInstrumentationTestOrchestratorOptionInput interface {
 	pulumi.Input
 
@@ -317,10 +319,12 @@ func (o AndroidRoboTestRoboModePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// AndroidRoboTestRoboModeInput is an input type that accepts AndroidRoboTestRoboModeArgs and AndroidRoboTestRoboModeOutput values.
-// You can construct a concrete instance of `AndroidRoboTestRoboModeInput` via:
+// AndroidRoboTestRoboModeInput is an input type that accepts values of the AndroidRoboTestRoboMode enum
+// A concrete instance of `AndroidRoboTestRoboModeInput` can be one of the following:
 //
-//	AndroidRoboTestRoboModeArgs{...}
+//	AndroidRoboTestRoboModeRoboModeUnspecified
+//	AndroidRoboTestRoboModeRoboVersion1
+//	AndroidRoboTestRoboModeRoboVersion2
 type AndroidRoboTestRoboModeInput interface {
 	pulumi.Input
 
@@ -494,10 +498,13 @@ func (o RoboDirectiveActionTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// RoboDirectiveActionTypeInput is an input type that accepts RoboDirectiveActionTypeArgs and RoboDirectiveActionTypeOutput values.
-// You can construct a concrete instance of `RoboDirectiveActionTypeInput` via:
+// RoboDirectiveActionTypeInput is an input type that accepts values of the RoboDirectiveActionType enum
+// A concrete instance of `RoboDirectiveActionTypeInput` can be one of the following:
 //
-//	RoboDirectiveActionTypeArgs{...}
+//	RoboDirectiveActionTypeActionTypeUnspecified
+//	RoboDirectiveActionTypeSingleClick
+//	RoboDirectiveActionTypeEnterText
+//	RoboDirectiveActionTypeIgnore
 type RoboDirectiveActionTypeInput interface {
 	pulumi.Input
 

@@ -140,10 +140,11 @@ func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRunV2EmptyDirVolumeSourceMediumInput is an input type that accepts GoogleCloudRunV2EmptyDirVolumeSourceMediumArgs and GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput values.
-// You can construct a concrete instance of `GoogleCloudRunV2EmptyDirVolumeSourceMediumInput` via:
+// GoogleCloudRunV2EmptyDirVolumeSourceMediumInput is an input type that accepts values of the GoogleCloudRunV2EmptyDirVolumeSourceMedium enum
+// A concrete instance of `GoogleCloudRunV2EmptyDirVolumeSourceMediumInput` can be one of the following:
 //
-//	GoogleCloudRunV2EmptyDirVolumeSourceMediumArgs{...}
+//	GoogleCloudRunV2EmptyDirVolumeSourceMediumMediumUnspecified
+//	GoogleCloudRunV2EmptyDirVolumeSourceMediumMemory
 type GoogleCloudRunV2EmptyDirVolumeSourceMediumInput interface {
 	pulumi.Input
 
@@ -315,10 +316,12 @@ func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToStringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput is an input type that accepts GoogleCloudRunV2RevisionTemplateExecutionEnvironmentArgs and GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput values.
-// You can construct a concrete instance of `GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput` via:
+// GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput is an input type that accepts values of the GoogleCloudRunV2RevisionTemplateExecutionEnvironment enum
+// A concrete instance of `GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput` can be one of the following:
 //
-//	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentArgs{...}
+//	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentUnspecified
+//	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentGen1
+//	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentGen2
 type GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput interface {
 	pulumi.Input
 
@@ -490,10 +493,12 @@ func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToStringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput is an input type that accepts GoogleCloudRunV2TaskTemplateExecutionEnvironmentArgs and GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput values.
-// You can construct a concrete instance of `GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput` via:
+// GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput is an input type that accepts values of the GoogleCloudRunV2TaskTemplateExecutionEnvironment enum
+// A concrete instance of `GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput` can be one of the following:
 //
-//	GoogleCloudRunV2TaskTemplateExecutionEnvironmentArgs{...}
+//	GoogleCloudRunV2TaskTemplateExecutionEnvironmentExecutionEnvironmentUnspecified
+//	GoogleCloudRunV2TaskTemplateExecutionEnvironmentExecutionEnvironmentGen1
+//	GoogleCloudRunV2TaskTemplateExecutionEnvironmentExecutionEnvironmentGen2
 type GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput interface {
 	pulumi.Input
 
@@ -665,10 +670,12 @@ func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRunV2TrafficTargetTypeInput is an input type that accepts GoogleCloudRunV2TrafficTargetTypeArgs and GoogleCloudRunV2TrafficTargetTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudRunV2TrafficTargetTypeInput` via:
+// GoogleCloudRunV2TrafficTargetTypeInput is an input type that accepts values of the GoogleCloudRunV2TrafficTargetType enum
+// A concrete instance of `GoogleCloudRunV2TrafficTargetTypeInput` can be one of the following:
 //
-//	GoogleCloudRunV2TrafficTargetTypeArgs{...}
+//	GoogleCloudRunV2TrafficTargetTypeTrafficTargetAllocationTypeUnspecified
+//	GoogleCloudRunV2TrafficTargetTypeTrafficTargetAllocationTypeLatest
+//	GoogleCloudRunV2TrafficTargetTypeTrafficTargetAllocationTypeRevision
 type GoogleCloudRunV2TrafficTargetTypeInput interface {
 	pulumi.Input
 
@@ -840,10 +847,12 @@ func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRunV2VpcAccessEgressInput is an input type that accepts GoogleCloudRunV2VpcAccessEgressArgs and GoogleCloudRunV2VpcAccessEgressOutput values.
-// You can construct a concrete instance of `GoogleCloudRunV2VpcAccessEgressInput` via:
+// GoogleCloudRunV2VpcAccessEgressInput is an input type that accepts values of the GoogleCloudRunV2VpcAccessEgress enum
+// A concrete instance of `GoogleCloudRunV2VpcAccessEgressInput` can be one of the following:
 //
-//	GoogleCloudRunV2VpcAccessEgressArgs{...}
+//	GoogleCloudRunV2VpcAccessEgressVpcEgressUnspecified
+//	GoogleCloudRunV2VpcAccessEgressAllTraffic
+//	GoogleCloudRunV2VpcAccessEgressPrivateRangesOnly
 type GoogleCloudRunV2VpcAccessEgressInput interface {
 	pulumi.Input
 
@@ -1017,10 +1026,13 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
+// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts values of the GoogleIamV1AuditLogConfigLogType enum
+// A concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeLogTypeUnspecified
+//	GoogleIamV1AuditLogConfigLogTypeAdminRead
+//	GoogleIamV1AuditLogConfigLogTypeDataWrite
+//	GoogleIamV1AuditLogConfigLogTypeDataRead
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -1202,10 +1214,17 @@ func (o JobLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobLaunchStageInput is an input type that accepts JobLaunchStageArgs and JobLaunchStageOutput values.
-// You can construct a concrete instance of `JobLaunchStageInput` via:
+// JobLaunchStageInput is an input type that accepts values of the JobLaunchStage enum
+// A concrete instance of `JobLaunchStageInput` can be one of the following:
 //
-//	JobLaunchStageArgs{...}
+//	JobLaunchStageLaunchStageUnspecified
+//	JobLaunchStageUnimplemented
+//	JobLaunchStagePrelaunch
+//	JobLaunchStageEarlyAccess
+//	JobLaunchStageAlpha
+//	JobLaunchStageBeta
+//	JobLaunchStageGa
+//	JobLaunchStageDeprecated
 type JobLaunchStageInput interface {
 	pulumi.Input
 
@@ -1379,10 +1398,13 @@ func (o ServiceIngressPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceIngressInput is an input type that accepts ServiceIngressArgs and ServiceIngressOutput values.
-// You can construct a concrete instance of `ServiceIngressInput` via:
+// ServiceIngressInput is an input type that accepts values of the ServiceIngress enum
+// A concrete instance of `ServiceIngressInput` can be one of the following:
 //
-//	ServiceIngressArgs{...}
+//	ServiceIngressIngressTrafficUnspecified
+//	ServiceIngressIngressTrafficAll
+//	ServiceIngressIngressTrafficInternalOnly
+//	ServiceIngressIngressTrafficInternalLoadBalancer
 type ServiceIngressInput interface {
 	pulumi.Input
 
@@ -1564,10 +1586,17 @@ func (o ServiceLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceLaunchStageInput is an input type that accepts ServiceLaunchStageArgs and ServiceLaunchStageOutput values.
-// You can construct a concrete instance of `ServiceLaunchStageInput` via:
+// ServiceLaunchStageInput is an input type that accepts values of the ServiceLaunchStage enum
+// A concrete instance of `ServiceLaunchStageInput` can be one of the following:
 //
-//	ServiceLaunchStageArgs{...}
+//	ServiceLaunchStageLaunchStageUnspecified
+//	ServiceLaunchStageUnimplemented
+//	ServiceLaunchStagePrelaunch
+//	ServiceLaunchStageEarlyAccess
+//	ServiceLaunchStageAlpha
+//	ServiceLaunchStageBeta
+//	ServiceLaunchStageGa
+//	ServiceLaunchStageDeprecated
 type ServiceLaunchStageInput interface {
 	pulumi.Input
 

@@ -142,10 +142,12 @@ func (o ConversationStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConversationStateEnumInput is an input type that accepts ConversationStateEnumArgs and ConversationStateEnumOutput values.
-// You can construct a concrete instance of `ConversationStateEnumInput` via:
+// ConversationStateEnumInput is an input type that accepts values of the ConversationStateEnum enum
+// A concrete instance of `ConversationStateEnumInput` can be one of the following:
 //
-//	ConversationStateEnumArgs{...}
+//	ConversationStateEnumStateUnspecified
+//	ConversationStateEnumInProgress
+//	ConversationStateEnumCompleted
 type ConversationStateEnumInput interface {
 	pulumi.Input
 
@@ -322,10 +324,15 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReaso
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArgs and GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemOutput values.
-// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemInput` via:
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemInput is an input type that accepts values of the GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem enum
+// A concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemInput` can be one of the following:
 //
-//	GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArgs{...}
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemSummarySkippedReasonUnspecified
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemAdversarialQueryIgnored
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemNonSummarySeekingQueryIgnored
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemOutOfDomainQueryIgnored
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPotentialPolicyViolation
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemLlmAddonNotEnabled
 type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemInput interface {
 	pulumi.Input
 

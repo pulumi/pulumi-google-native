@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -327,10 +330,16 @@ func (o AuthConfigAuthTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuthConfigAuthTypeInput is an input type that accepts AuthConfigAuthTypeArgs and AuthConfigAuthTypeOutput values.
-// You can construct a concrete instance of `AuthConfigAuthTypeInput` via:
+// AuthConfigAuthTypeInput is an input type that accepts values of the AuthConfigAuthType enum
+// A concrete instance of `AuthConfigAuthTypeInput` can be one of the following:
 //
-//	AuthConfigAuthTypeArgs{...}
+//	AuthConfigAuthTypeAuthTypeUnspecified
+//	AuthConfigAuthTypeUserPassword
+//	AuthConfigAuthTypeOauth2JwtBearer
+//	AuthConfigAuthTypeOauth2ClientCredentials
+//	AuthConfigAuthTypeSshPublicKey
+//	AuthConfigAuthTypeOauth2AuthCodeFlow
+//	AuthConfigAuthTypeGoogleAuthentication
 type AuthConfigAuthTypeInput interface {
 	pulumi.Input
 
@@ -502,10 +511,12 @@ func (o ConnectionEventingEnablementTypePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConnectionEventingEnablementTypeInput is an input type that accepts ConnectionEventingEnablementTypeArgs and ConnectionEventingEnablementTypeOutput values.
-// You can construct a concrete instance of `ConnectionEventingEnablementTypeInput` via:
+// ConnectionEventingEnablementTypeInput is an input type that accepts values of the ConnectionEventingEnablementType enum
+// A concrete instance of `ConnectionEventingEnablementTypeInput` can be one of the following:
 //
-//	ConnectionEventingEnablementTypeArgs{...}
+//	ConnectionEventingEnablementTypeEventingEnablementTypeUnspecified
+//	ConnectionEventingEnablementTypeEventingAndConnection
+//	ConnectionEventingEnablementTypeOnlyEventing
 type ConnectionEventingEnablementTypeInput interface {
 	pulumi.Input
 
@@ -677,10 +688,12 @@ func (o CustomConnectorCustomConnectorTypePtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// CustomConnectorCustomConnectorTypeInput is an input type that accepts CustomConnectorCustomConnectorTypeArgs and CustomConnectorCustomConnectorTypeOutput values.
-// You can construct a concrete instance of `CustomConnectorCustomConnectorTypeInput` via:
+// CustomConnectorCustomConnectorTypeInput is an input type that accepts values of the CustomConnectorCustomConnectorType enum
+// A concrete instance of `CustomConnectorCustomConnectorTypeInput` can be one of the following:
 //
-//	CustomConnectorCustomConnectorTypeArgs{...}
+//	CustomConnectorCustomConnectorTypeCustomConnectorTypeUnspecified
+//	CustomConnectorCustomConnectorTypeOpenApi
+//	CustomConnectorCustomConnectorTypeProto
 type CustomConnectorCustomConnectorTypeInput interface {
 	pulumi.Input
 
@@ -852,10 +865,12 @@ func (o EncryptionKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// EncryptionKeyTypeInput is an input type that accepts EncryptionKeyTypeArgs and EncryptionKeyTypeOutput values.
-// You can construct a concrete instance of `EncryptionKeyTypeInput` via:
+// EncryptionKeyTypeInput is an input type that accepts values of the EncryptionKeyType enum
+// A concrete instance of `EncryptionKeyTypeInput` can be one of the following:
 //
-//	EncryptionKeyTypeArgs{...}
+//	EncryptionKeyTypeTypeUnspecified
+//	EncryptionKeyTypeGoogleManaged
+//	EncryptionKeyTypeCustomerManaged
 type EncryptionKeyTypeInput interface {
 	pulumi.Input
 
@@ -1025,10 +1040,11 @@ func (o EventSubscriptionDestinationTypePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// EventSubscriptionDestinationTypeInput is an input type that accepts EventSubscriptionDestinationTypeArgs and EventSubscriptionDestinationTypeOutput values.
-// You can construct a concrete instance of `EventSubscriptionDestinationTypeInput` via:
+// EventSubscriptionDestinationTypeInput is an input type that accepts values of the EventSubscriptionDestinationType enum
+// A concrete instance of `EventSubscriptionDestinationTypeInput` can be one of the following:
 //
-//	EventSubscriptionDestinationTypeArgs{...}
+//	EventSubscriptionDestinationTypeTypeUnspecified
+//	EventSubscriptionDestinationTypeEndpoint
 type EventSubscriptionDestinationTypeInput interface {
 	pulumi.Input
 
@@ -1200,10 +1216,12 @@ func (o JMSTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// JMSTypeInput is an input type that accepts JMSTypeArgs and JMSTypeOutput values.
-// You can construct a concrete instance of `JMSTypeInput` via:
+// JMSTypeInput is an input type that accepts values of the JMSType enum
+// A concrete instance of `JMSTypeInput` can be one of the following:
 //
-//	JMSTypeArgs{...}
+//	JMSTypeTypeUnspecified
+//	JMSTypeQueue
+//	JMSTypeTopic
 type JMSTypeInput interface {
 	pulumi.Input
 
@@ -1373,10 +1391,11 @@ func (o SslConfigClientCertTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SslConfigClientCertTypeInput is an input type that accepts SslConfigClientCertTypeArgs and SslConfigClientCertTypeOutput values.
-// You can construct a concrete instance of `SslConfigClientCertTypeInput` via:
+// SslConfigClientCertTypeInput is an input type that accepts values of the SslConfigClientCertType enum
+// A concrete instance of `SslConfigClientCertTypeInput` can be one of the following:
 //
-//	SslConfigClientCertTypeArgs{...}
+//	SslConfigClientCertTypeCertTypeUnspecified
+//	SslConfigClientCertTypePem
 type SslConfigClientCertTypeInput interface {
 	pulumi.Input
 
@@ -1546,10 +1565,11 @@ func (o SslConfigServerCertTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SslConfigServerCertTypeInput is an input type that accepts SslConfigServerCertTypeArgs and SslConfigServerCertTypeOutput values.
-// You can construct a concrete instance of `SslConfigServerCertTypeInput` via:
+// SslConfigServerCertTypeInput is an input type that accepts values of the SslConfigServerCertType enum
+// A concrete instance of `SslConfigServerCertTypeInput` can be one of the following:
 //
-//	SslConfigServerCertTypeArgs{...}
+//	SslConfigServerCertTypeCertTypeUnspecified
+//	SslConfigServerCertTypePem
 type SslConfigServerCertTypeInput interface {
 	pulumi.Input
 
@@ -1721,10 +1741,12 @@ func (o SslConfigTrustModelPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// SslConfigTrustModelInput is an input type that accepts SslConfigTrustModelArgs and SslConfigTrustModelOutput values.
-// You can construct a concrete instance of `SslConfigTrustModelInput` via:
+// SslConfigTrustModelInput is an input type that accepts values of the SslConfigTrustModel enum
+// A concrete instance of `SslConfigTrustModelInput` can be one of the following:
 //
-//	SslConfigTrustModelArgs{...}
+//	SslConfigTrustModelPublic
+//	SslConfigTrustModelPrivate
+//	SslConfigTrustModelInsecure
 type SslConfigTrustModelInput interface {
 	pulumi.Input
 
@@ -1896,10 +1918,12 @@ func (o SslConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// SslConfigTypeInput is an input type that accepts SslConfigTypeArgs and SslConfigTypeOutput values.
-// You can construct a concrete instance of `SslConfigTypeInput` via:
+// SslConfigTypeInput is an input type that accepts values of the SslConfigType enum
+// A concrete instance of `SslConfigTypeInput` can be one of the following:
 //
-//	SslConfigTypeArgs{...}
+//	SslConfigTypeSslTypeUnspecified
+//	SslConfigTypeTls
+//	SslConfigTypeMtls
 type SslConfigTypeInput interface {
 	pulumi.Input
 

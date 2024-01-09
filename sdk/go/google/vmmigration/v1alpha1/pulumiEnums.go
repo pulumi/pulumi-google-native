@@ -144,10 +144,13 @@ func (o BootDiskDefaultsDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// BootDiskDefaultsDiskTypeInput is an input type that accepts BootDiskDefaultsDiskTypeArgs and BootDiskDefaultsDiskTypeOutput values.
-// You can construct a concrete instance of `BootDiskDefaultsDiskTypeInput` via:
+// BootDiskDefaultsDiskTypeInput is an input type that accepts values of the BootDiskDefaultsDiskType enum
+// A concrete instance of `BootDiskDefaultsDiskTypeInput` can be one of the following:
 //
-//	BootDiskDefaultsDiskTypeArgs{...}
+//	BootDiskDefaultsDiskTypeComputeEngineDiskTypeUnspecified
+//	BootDiskDefaultsDiskTypeComputeEngineDiskTypeStandard
+//	BootDiskDefaultsDiskTypeComputeEngineDiskTypeSsd
+//	BootDiskDefaultsDiskTypeComputeEngineDiskTypeBalanced
 type BootDiskDefaultsDiskTypeInput interface {
 	pulumi.Input
 
@@ -321,10 +324,13 @@ func (o ComputeEngineTargetDefaultsDiskTypePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// ComputeEngineTargetDefaultsDiskTypeInput is an input type that accepts ComputeEngineTargetDefaultsDiskTypeArgs and ComputeEngineTargetDefaultsDiskTypeOutput values.
-// You can construct a concrete instance of `ComputeEngineTargetDefaultsDiskTypeInput` via:
+// ComputeEngineTargetDefaultsDiskTypeInput is an input type that accepts values of the ComputeEngineTargetDefaultsDiskType enum
+// A concrete instance of `ComputeEngineTargetDefaultsDiskTypeInput` can be one of the following:
 //
-//	ComputeEngineTargetDefaultsDiskTypeArgs{...}
+//	ComputeEngineTargetDefaultsDiskTypeComputeEngineDiskTypeUnspecified
+//	ComputeEngineTargetDefaultsDiskTypeComputeEngineDiskTypeStandard
+//	ComputeEngineTargetDefaultsDiskTypeComputeEngineDiskTypeSsd
+//	ComputeEngineTargetDefaultsDiskTypeComputeEngineDiskTypeBalanced
 type ComputeEngineTargetDefaultsDiskTypeInput interface {
 	pulumi.Input
 
@@ -496,10 +502,12 @@ func (o ComputeEngineTargetDefaultsLicenseTypePtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// ComputeEngineTargetDefaultsLicenseTypeInput is an input type that accepts ComputeEngineTargetDefaultsLicenseTypeArgs and ComputeEngineTargetDefaultsLicenseTypeOutput values.
-// You can construct a concrete instance of `ComputeEngineTargetDefaultsLicenseTypeInput` via:
+// ComputeEngineTargetDefaultsLicenseTypeInput is an input type that accepts values of the ComputeEngineTargetDefaultsLicenseType enum
+// A concrete instance of `ComputeEngineTargetDefaultsLicenseTypeInput` can be one of the following:
 //
-//	ComputeEngineTargetDefaultsLicenseTypeArgs{...}
+//	ComputeEngineTargetDefaultsLicenseTypeComputeEngineLicenseTypeDefault
+//	ComputeEngineTargetDefaultsLicenseTypeComputeEngineLicenseTypePayg
+//	ComputeEngineTargetDefaultsLicenseTypeComputeEngineLicenseTypeByol
 type ComputeEngineTargetDefaultsLicenseTypeInput interface {
 	pulumi.Input
 
@@ -671,10 +679,12 @@ func (o ComputeSchedulingOnHostMaintenancePtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ComputeSchedulingOnHostMaintenanceInput is an input type that accepts ComputeSchedulingOnHostMaintenanceArgs and ComputeSchedulingOnHostMaintenanceOutput values.
-// You can construct a concrete instance of `ComputeSchedulingOnHostMaintenanceInput` via:
+// ComputeSchedulingOnHostMaintenanceInput is an input type that accepts values of the ComputeSchedulingOnHostMaintenance enum
+// A concrete instance of `ComputeSchedulingOnHostMaintenanceInput` can be one of the following:
 //
-//	ComputeSchedulingOnHostMaintenanceArgs{...}
+//	ComputeSchedulingOnHostMaintenanceOnHostMaintenanceUnspecified
+//	ComputeSchedulingOnHostMaintenanceTerminate
+//	ComputeSchedulingOnHostMaintenanceMigrate
 type ComputeSchedulingOnHostMaintenanceInput interface {
 	pulumi.Input
 
@@ -846,10 +856,12 @@ func (o ComputeSchedulingRestartTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// ComputeSchedulingRestartTypeInput is an input type that accepts ComputeSchedulingRestartTypeArgs and ComputeSchedulingRestartTypeOutput values.
-// You can construct a concrete instance of `ComputeSchedulingRestartTypeInput` via:
+// ComputeSchedulingRestartTypeInput is an input type that accepts values of the ComputeSchedulingRestartType enum
+// A concrete instance of `ComputeSchedulingRestartTypeInput` can be one of the following:
 //
-//	ComputeSchedulingRestartTypeArgs{...}
+//	ComputeSchedulingRestartTypeRestartTypeUnspecified
+//	ComputeSchedulingRestartTypeAutomaticRestart
+//	ComputeSchedulingRestartTypeNoAutomaticRestart
 type ComputeSchedulingRestartTypeInput interface {
 	pulumi.Input
 
@@ -1021,10 +1033,12 @@ func (o GroupMigrationTargetTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// GroupMigrationTargetTypeInput is an input type that accepts GroupMigrationTargetTypeArgs and GroupMigrationTargetTypeOutput values.
-// You can construct a concrete instance of `GroupMigrationTargetTypeInput` via:
+// GroupMigrationTargetTypeInput is an input type that accepts values of the GroupMigrationTargetType enum
+// A concrete instance of `GroupMigrationTargetTypeInput` can be one of the following:
 //
-//	GroupMigrationTargetTypeArgs{...}
+//	GroupMigrationTargetTypeMigrationTargetTypeUnspecified
+//	GroupMigrationTargetTypeMigrationTargetTypeGce
+//	GroupMigrationTargetTypeMigrationTargetTypeDisks
 type GroupMigrationTargetTypeInput interface {
 	pulumi.Input
 
@@ -1198,10 +1212,13 @@ func (o PersistentDiskDefaultsDiskTypePtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// PersistentDiskDefaultsDiskTypeInput is an input type that accepts PersistentDiskDefaultsDiskTypeArgs and PersistentDiskDefaultsDiskTypeOutput values.
-// You can construct a concrete instance of `PersistentDiskDefaultsDiskTypeInput` via:
+// PersistentDiskDefaultsDiskTypeInput is an input type that accepts values of the PersistentDiskDefaultsDiskType enum
+// A concrete instance of `PersistentDiskDefaultsDiskTypeInput` can be one of the following:
 //
-//	PersistentDiskDefaultsDiskTypeArgs{...}
+//	PersistentDiskDefaultsDiskTypeComputeEngineDiskTypeUnspecified
+//	PersistentDiskDefaultsDiskTypeComputeEngineDiskTypeStandard
+//	PersistentDiskDefaultsDiskTypeComputeEngineDiskTypeSsd
+//	PersistentDiskDefaultsDiskTypeComputeEngineDiskTypeBalanced
 type PersistentDiskDefaultsDiskTypeInput interface {
 	pulumi.Input
 
@@ -1373,10 +1390,12 @@ func (o SchedulingNodeAffinityOperatorPtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// SchedulingNodeAffinityOperatorInput is an input type that accepts SchedulingNodeAffinityOperatorArgs and SchedulingNodeAffinityOperatorOutput values.
-// You can construct a concrete instance of `SchedulingNodeAffinityOperatorInput` via:
+// SchedulingNodeAffinityOperatorInput is an input type that accepts values of the SchedulingNodeAffinityOperator enum
+// A concrete instance of `SchedulingNodeAffinityOperatorInput` can be one of the following:
 //
-//	SchedulingNodeAffinityOperatorArgs{...}
+//	SchedulingNodeAffinityOperatorOperatorUnspecified
+//	SchedulingNodeAffinityOperatorIn
+//	SchedulingNodeAffinityOperatorNotIn
 type SchedulingNodeAffinityOperatorInput interface {
 	pulumi.Input
 
@@ -1550,10 +1569,13 @@ func (o TargetVMDetailsDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// TargetVMDetailsDiskTypeInput is an input type that accepts TargetVMDetailsDiskTypeArgs and TargetVMDetailsDiskTypeOutput values.
-// You can construct a concrete instance of `TargetVMDetailsDiskTypeInput` via:
+// TargetVMDetailsDiskTypeInput is an input type that accepts values of the TargetVMDetailsDiskType enum
+// A concrete instance of `TargetVMDetailsDiskTypeInput` can be one of the following:
 //
-//	TargetVMDetailsDiskTypeArgs{...}
+//	TargetVMDetailsDiskTypeDiskTypeUnspecified
+//	TargetVMDetailsDiskTypeStandard
+//	TargetVMDetailsDiskTypeBalanced
+//	TargetVMDetailsDiskTypeSsd
 type TargetVMDetailsDiskTypeInput interface {
 	pulumi.Input
 
@@ -1725,10 +1747,12 @@ func (o TargetVMDetailsLicenseTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// TargetVMDetailsLicenseTypeInput is an input type that accepts TargetVMDetailsLicenseTypeArgs and TargetVMDetailsLicenseTypeOutput values.
-// You can construct a concrete instance of `TargetVMDetailsLicenseTypeInput` via:
+// TargetVMDetailsLicenseTypeInput is an input type that accepts values of the TargetVMDetailsLicenseType enum
+// A concrete instance of `TargetVMDetailsLicenseTypeInput` can be one of the following:
 //
-//	TargetVMDetailsLicenseTypeArgs{...}
+//	TargetVMDetailsLicenseTypeDefault
+//	TargetVMDetailsLicenseTypePayg
+//	TargetVMDetailsLicenseTypeByol
 type TargetVMDetailsLicenseTypeInput interface {
 	pulumi.Input
 
@@ -1902,10 +1926,13 @@ func (o UtilizationReportTimeFramePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// UtilizationReportTimeFrameInput is an input type that accepts UtilizationReportTimeFrameArgs and UtilizationReportTimeFrameOutput values.
-// You can construct a concrete instance of `UtilizationReportTimeFrameInput` via:
+// UtilizationReportTimeFrameInput is an input type that accepts values of the UtilizationReportTimeFrame enum
+// A concrete instance of `UtilizationReportTimeFrameInput` can be one of the following:
 //
-//	UtilizationReportTimeFrameArgs{...}
+//	UtilizationReportTimeFrameTimeFrameUnspecified
+//	UtilizationReportTimeFrameWeek
+//	UtilizationReportTimeFrameMonth
+//	UtilizationReportTimeFrameYear
 type UtilizationReportTimeFrameInput interface {
 	pulumi.Input
 
@@ -2079,10 +2106,13 @@ func (o VmwareVmDetailsPowerStatePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// VmwareVmDetailsPowerStateInput is an input type that accepts VmwareVmDetailsPowerStateArgs and VmwareVmDetailsPowerStateOutput values.
-// You can construct a concrete instance of `VmwareVmDetailsPowerStateInput` via:
+// VmwareVmDetailsPowerStateInput is an input type that accepts values of the VmwareVmDetailsPowerState enum
+// A concrete instance of `VmwareVmDetailsPowerStateInput` can be one of the following:
 //
-//	VmwareVmDetailsPowerStateArgs{...}
+//	VmwareVmDetailsPowerStatePowerStateUnspecified
+//	VmwareVmDetailsPowerStateOn
+//	VmwareVmDetailsPowerStateOff
+//	VmwareVmDetailsPowerStateSuspended
 type VmwareVmDetailsPowerStateInput interface {
 	pulumi.Input
 

@@ -146,10 +146,14 @@ func (o ChannelPartnerLinkLinkStatePtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// ChannelPartnerLinkLinkStateInput is an input type that accepts ChannelPartnerLinkLinkStateArgs and ChannelPartnerLinkLinkStateOutput values.
-// You can construct a concrete instance of `ChannelPartnerLinkLinkStateInput` via:
+// ChannelPartnerLinkLinkStateInput is an input type that accepts values of the ChannelPartnerLinkLinkState enum
+// A concrete instance of `ChannelPartnerLinkLinkStateInput` can be one of the following:
 //
-//	ChannelPartnerLinkLinkStateArgs{...}
+//	ChannelPartnerLinkLinkStateChannelPartnerLinkStateUnspecified
+//	ChannelPartnerLinkLinkStateInvited
+//	ChannelPartnerLinkLinkStateActive
+//	ChannelPartnerLinkLinkStateRevoked
+//	ChannelPartnerLinkLinkStateSuspended
 type ChannelPartnerLinkLinkStateInput interface {
 	pulumi.Input
 
@@ -321,10 +325,12 @@ func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) ToString
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudChannelV1ConditionalOverrideRebillingBasisInput is an input type that accepts GoogleCloudChannelV1ConditionalOverrideRebillingBasisArgs and GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1ConditionalOverrideRebillingBasisInput` via:
+// GoogleCloudChannelV1ConditionalOverrideRebillingBasisInput is an input type that accepts values of the GoogleCloudChannelV1ConditionalOverrideRebillingBasis enum
+// A concrete instance of `GoogleCloudChannelV1ConditionalOverrideRebillingBasisInput` can be one of the following:
 //
-//	GoogleCloudChannelV1ConditionalOverrideRebillingBasisArgs{...}
+//	GoogleCloudChannelV1ConditionalOverrideRebillingBasisRebillingBasisUnspecified
+//	GoogleCloudChannelV1ConditionalOverrideRebillingBasisCostAtList
+//	GoogleCloudChannelV1ConditionalOverrideRebillingBasisDirectCustomerCost
 type GoogleCloudChannelV1ConditionalOverrideRebillingBasisInput interface {
 	pulumi.Input
 
@@ -498,10 +504,13 @@ func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudChannelV1PeriodPeriodTypeInput is an input type that accepts GoogleCloudChannelV1PeriodPeriodTypeArgs and GoogleCloudChannelV1PeriodPeriodTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1PeriodPeriodTypeInput` via:
+// GoogleCloudChannelV1PeriodPeriodTypeInput is an input type that accepts values of the GoogleCloudChannelV1PeriodPeriodType enum
+// A concrete instance of `GoogleCloudChannelV1PeriodPeriodTypeInput` can be one of the following:
 //
-//	GoogleCloudChannelV1PeriodPeriodTypeArgs{...}
+//	GoogleCloudChannelV1PeriodPeriodTypePeriodTypeUnspecified
+//	GoogleCloudChannelV1PeriodPeriodTypeDay
+//	GoogleCloudChannelV1PeriodPeriodTypeMonth
+//	GoogleCloudChannelV1PeriodPeriodTypeYear
 type GoogleCloudChannelV1PeriodPeriodTypeInput interface {
 	pulumi.Input
 
@@ -679,10 +688,15 @@ func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToStringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudChannelV1RenewalSettingsPaymentPlanInput is an input type that accepts GoogleCloudChannelV1RenewalSettingsPaymentPlanArgs and GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1RenewalSettingsPaymentPlanInput` via:
+// GoogleCloudChannelV1RenewalSettingsPaymentPlanInput is an input type that accepts values of the GoogleCloudChannelV1RenewalSettingsPaymentPlan enum
+// A concrete instance of `GoogleCloudChannelV1RenewalSettingsPaymentPlanInput` can be one of the following:
 //
-//	GoogleCloudChannelV1RenewalSettingsPaymentPlanArgs{...}
+//	GoogleCloudChannelV1RenewalSettingsPaymentPlanPaymentPlanUnspecified
+//	GoogleCloudChannelV1RenewalSettingsPaymentPlanCommitment
+//	GoogleCloudChannelV1RenewalSettingsPaymentPlanFlexible
+//	GoogleCloudChannelV1RenewalSettingsPaymentPlanFree
+//	GoogleCloudChannelV1RenewalSettingsPaymentPlanTrial
+//	GoogleCloudChannelV1RenewalSettingsPaymentPlanOffline
 type GoogleCloudChannelV1RenewalSettingsPaymentPlanInput interface {
 	pulumi.Input
 
@@ -854,10 +868,12 @@ func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) ToStringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudChannelV1RepricingConfigRebillingBasisInput is an input type that accepts GoogleCloudChannelV1RepricingConfigRebillingBasisArgs and GoogleCloudChannelV1RepricingConfigRebillingBasisOutput values.
-// You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigRebillingBasisInput` via:
+// GoogleCloudChannelV1RepricingConfigRebillingBasisInput is an input type that accepts values of the GoogleCloudChannelV1RepricingConfigRebillingBasis enum
+// A concrete instance of `GoogleCloudChannelV1RepricingConfigRebillingBasisInput` can be one of the following:
 //
-//	GoogleCloudChannelV1RepricingConfigRebillingBasisArgs{...}
+//	GoogleCloudChannelV1RepricingConfigRebillingBasisRebillingBasisUnspecified
+//	GoogleCloudChannelV1RepricingConfigRebillingBasisCostAtList
+//	GoogleCloudChannelV1RepricingConfigRebillingBasisDirectCustomerCost
 type GoogleCloudChannelV1RepricingConfigRebillingBasisInput interface {
 	pulumi.Input
 

@@ -142,10 +142,12 @@ func (o AnimationFadeFadeTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AnimationFadeFadeTypeInput is an input type that accepts AnimationFadeFadeTypeArgs and AnimationFadeFadeTypeOutput values.
-// You can construct a concrete instance of `AnimationFadeFadeTypeInput` via:
+// AnimationFadeFadeTypeInput is an input type that accepts values of the AnimationFadeFadeType enum
+// A concrete instance of `AnimationFadeFadeTypeInput` can be one of the following:
 //
-//	AnimationFadeFadeTypeArgs{...}
+//	AnimationFadeFadeTypeFadeTypeUnspecified
+//	AnimationFadeFadeTypeFadeIn
+//	AnimationFadeFadeTypeFadeOut
 type AnimationFadeFadeTypeInput interface {
 	pulumi.Input
 
@@ -317,10 +319,12 @@ func (o DashConfigSegmentReferenceSchemePtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// DashConfigSegmentReferenceSchemeInput is an input type that accepts DashConfigSegmentReferenceSchemeArgs and DashConfigSegmentReferenceSchemeOutput values.
-// You can construct a concrete instance of `DashConfigSegmentReferenceSchemeInput` via:
+// DashConfigSegmentReferenceSchemeInput is an input type that accepts values of the DashConfigSegmentReferenceScheme enum
+// A concrete instance of `DashConfigSegmentReferenceSchemeInput` can be one of the following:
 //
-//	DashConfigSegmentReferenceSchemeArgs{...}
+//	DashConfigSegmentReferenceSchemeSegmentReferenceSchemeUnspecified
+//	DashConfigSegmentReferenceSchemeSegmentList
+//	DashConfigSegmentReferenceSchemeSegmentTemplateNumber
 type DashConfigSegmentReferenceSchemeInput interface {
 	pulumi.Input
 
@@ -492,10 +496,12 @@ func (o JobModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobModeInput is an input type that accepts JobModeArgs and JobModeOutput values.
-// You can construct a concrete instance of `JobModeInput` via:
+// JobModeInput is an input type that accepts values of the JobMode enum
+// A concrete instance of `JobModeInput` can be one of the following:
 //
-//	JobModeArgs{...}
+//	JobModeProcessingModeUnspecified
+//	JobModeProcessingModeInteractive
+//	JobModeProcessingModeBatch
 type JobModeInput interface {
 	pulumi.Input
 
@@ -667,10 +673,12 @@ func (o JobOptimizationPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobOptimizationInput is an input type that accepts JobOptimizationArgs and JobOptimizationOutput values.
-// You can construct a concrete instance of `JobOptimizationInput` via:
+// JobOptimizationInput is an input type that accepts values of the JobOptimization enum
+// A concrete instance of `JobOptimizationInput` can be one of the following:
 //
-//	JobOptimizationArgs{...}
+//	JobOptimizationOptimizationStrategyUnspecified
+//	JobOptimizationAutodetect
+//	JobOptimizationDisabled
 type JobOptimizationInput interface {
 	pulumi.Input
 
@@ -842,10 +850,12 @@ func (o ManifestTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// ManifestTypeInput is an input type that accepts ManifestTypeArgs and ManifestTypeOutput values.
-// You can construct a concrete instance of `ManifestTypeInput` via:
+// ManifestTypeInput is an input type that accepts values of the ManifestType enum
+// A concrete instance of `ManifestTypeInput` can be one of the following:
 //
-//	ManifestTypeArgs{...}
+//	ManifestTypeManifestTypeUnspecified
+//	ManifestTypeHls
+//	ManifestTypeDash
 type ManifestTypeInput interface {
 	pulumi.Input
 

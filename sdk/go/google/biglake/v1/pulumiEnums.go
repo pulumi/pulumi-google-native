@@ -140,10 +140,11 @@ func (o DatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseTypeInput is an input type that accepts DatabaseTypeArgs and DatabaseTypeOutput values.
-// You can construct a concrete instance of `DatabaseTypeInput` via:
+// DatabaseTypeInput is an input type that accepts values of the DatabaseType enum
+// A concrete instance of `DatabaseTypeInput` can be one of the following:
 //
-//	DatabaseTypeArgs{...}
+//	DatabaseTypeTypeUnspecified
+//	DatabaseTypeHive
 type DatabaseTypeInput interface {
 	pulumi.Input
 
@@ -313,10 +314,11 @@ func (o TableTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// TableTypeInput is an input type that accepts TableTypeArgs and TableTypeOutput values.
-// You can construct a concrete instance of `TableTypeInput` via:
+// TableTypeInput is an input type that accepts values of the TableType enum
+// A concrete instance of `TableTypeInput` can be one of the following:
 //
-//	TableTypeArgs{...}
+//	TableTypeTypeUnspecified
+//	TableTypeHive
 type TableTypeInput interface {
 	pulumi.Input
 

@@ -142,10 +142,12 @@ func (o AutoscalingSettingsAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// AutoscalingSettingsAlgorithmInput is an input type that accepts AutoscalingSettingsAlgorithmArgs and AutoscalingSettingsAlgorithmOutput values.
-// You can construct a concrete instance of `AutoscalingSettingsAlgorithmInput` via:
+// AutoscalingSettingsAlgorithmInput is an input type that accepts values of the AutoscalingSettingsAlgorithm enum
+// A concrete instance of `AutoscalingSettingsAlgorithmInput` can be one of the following:
 //
-//	AutoscalingSettingsAlgorithmArgs{...}
+//	AutoscalingSettingsAlgorithmAutoscalingAlgorithmUnknown
+//	AutoscalingSettingsAlgorithmAutoscalingAlgorithmNone
+//	AutoscalingSettingsAlgorithmAutoscalingAlgorithmBasic
 type AutoscalingSettingsAlgorithmInput interface {
 	pulumi.Input
 
@@ -318,10 +320,13 @@ func (o DataSamplingConfigBehaviorsItemPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataSamplingConfigBehaviorsItemInput is an input type that accepts DataSamplingConfigBehaviorsItemArgs and DataSamplingConfigBehaviorsItemOutput values.
-// You can construct a concrete instance of `DataSamplingConfigBehaviorsItemInput` via:
+// DataSamplingConfigBehaviorsItemInput is an input type that accepts values of the DataSamplingConfigBehaviorsItem enum
+// A concrete instance of `DataSamplingConfigBehaviorsItemInput` can be one of the following:
 //
-//	DataSamplingConfigBehaviorsItemArgs{...}
+//	DataSamplingConfigBehaviorsItemDataSamplingBehaviorUnspecified
+//	DataSamplingConfigBehaviorsItemDisabled
+//	DataSamplingConfigBehaviorsItemAlwaysOn
+//	DataSamplingConfigBehaviorsItemExceptions
 type DataSamplingConfigBehaviorsItemInput interface {
 	pulumi.Input
 
@@ -538,10 +543,12 @@ func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnvironmentFlexResourceSchedulingGoalInput is an input type that accepts EnvironmentFlexResourceSchedulingGoalArgs and EnvironmentFlexResourceSchedulingGoalOutput values.
-// You can construct a concrete instance of `EnvironmentFlexResourceSchedulingGoalInput` via:
+// EnvironmentFlexResourceSchedulingGoalInput is an input type that accepts values of the EnvironmentFlexResourceSchedulingGoal enum
+// A concrete instance of `EnvironmentFlexResourceSchedulingGoalInput` can be one of the following:
 //
-//	EnvironmentFlexResourceSchedulingGoalArgs{...}
+//	EnvironmentFlexResourceSchedulingGoalFlexrsUnspecified
+//	EnvironmentFlexResourceSchedulingGoalFlexrsSpeedOptimized
+//	EnvironmentFlexResourceSchedulingGoalFlexrsCostOptimized
 type EnvironmentFlexResourceSchedulingGoalInput interface {
 	pulumi.Input
 
@@ -733,10 +740,22 @@ func (o ExecutionStageStateExecutionStageStatePtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExecutionStageStateExecutionStageStateInput is an input type that accepts ExecutionStageStateExecutionStageStateArgs and ExecutionStageStateExecutionStageStateOutput values.
-// You can construct a concrete instance of `ExecutionStageStateExecutionStageStateInput` via:
+// ExecutionStageStateExecutionStageStateInput is an input type that accepts values of the ExecutionStageStateExecutionStageState enum
+// A concrete instance of `ExecutionStageStateExecutionStageStateInput` can be one of the following:
 //
-//	ExecutionStageStateExecutionStageStateArgs{...}
+//	ExecutionStageStateExecutionStageStateJobStateUnknown
+//	ExecutionStageStateExecutionStageStateJobStateStopped
+//	ExecutionStageStateExecutionStageStateJobStateRunning
+//	ExecutionStageStateExecutionStageStateJobStateDone
+//	ExecutionStageStateExecutionStageStateJobStateFailed
+//	ExecutionStageStateExecutionStageStateJobStateCancelled
+//	ExecutionStageStateExecutionStageStateJobStateUpdated
+//	ExecutionStageStateExecutionStageStateJobStateDraining
+//	ExecutionStageStateExecutionStageStateJobStateDrained
+//	ExecutionStageStateExecutionStageStateJobStatePending
+//	ExecutionStageStateExecutionStageStateJobStateCancelling
+//	ExecutionStageStateExecutionStageStateJobStateQueued
+//	ExecutionStageStateExecutionStageStateJobStateResourceCleaningUp
 type ExecutionStageStateExecutionStageStateInput interface {
 	pulumi.Input
 
@@ -920,10 +939,18 @@ func (o ExecutionStageSummaryKindPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExecutionStageSummaryKindInput is an input type that accepts ExecutionStageSummaryKindArgs and ExecutionStageSummaryKindOutput values.
-// You can construct a concrete instance of `ExecutionStageSummaryKindInput` via:
+// ExecutionStageSummaryKindInput is an input type that accepts values of the ExecutionStageSummaryKind enum
+// A concrete instance of `ExecutionStageSummaryKindInput` can be one of the following:
 //
-//	ExecutionStageSummaryKindArgs{...}
+//	ExecutionStageSummaryKindUnknownKind
+//	ExecutionStageSummaryKindParDoKind
+//	ExecutionStageSummaryKindGroupByKeyKind
+//	ExecutionStageSummaryKindFlattenKind
+//	ExecutionStageSummaryKindReadKind
+//	ExecutionStageSummaryKindWriteKind
+//	ExecutionStageSummaryKindConstantKind
+//	ExecutionStageSummaryKindSingletonKind
+//	ExecutionStageSummaryKindShuffleKind
 type ExecutionStageSummaryKindInput interface {
 	pulumi.Input
 
@@ -1115,10 +1142,22 @@ func (o JobCurrentStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobCurrentStateInput is an input type that accepts JobCurrentStateArgs and JobCurrentStateOutput values.
-// You can construct a concrete instance of `JobCurrentStateInput` via:
+// JobCurrentStateInput is an input type that accepts values of the JobCurrentState enum
+// A concrete instance of `JobCurrentStateInput` can be one of the following:
 //
-//	JobCurrentStateArgs{...}
+//	JobCurrentStateJobStateUnknown
+//	JobCurrentStateJobStateStopped
+//	JobCurrentStateJobStateRunning
+//	JobCurrentStateJobStateDone
+//	JobCurrentStateJobStateFailed
+//	JobCurrentStateJobStateCancelled
+//	JobCurrentStateJobStateUpdated
+//	JobCurrentStateJobStateDraining
+//	JobCurrentStateJobStateDrained
+//	JobCurrentStateJobStatePending
+//	JobCurrentStateJobStateCancelling
+//	JobCurrentStateJobStateQueued
+//	JobCurrentStateJobStateResourceCleaningUp
 type JobCurrentStateInput interface {
 	pulumi.Input
 
@@ -1310,10 +1349,22 @@ func (o JobRequestedStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobRequestedStateInput is an input type that accepts JobRequestedStateArgs and JobRequestedStateOutput values.
-// You can construct a concrete instance of `JobRequestedStateInput` via:
+// JobRequestedStateInput is an input type that accepts values of the JobRequestedState enum
+// A concrete instance of `JobRequestedStateInput` can be one of the following:
 //
-//	JobRequestedStateArgs{...}
+//	JobRequestedStateJobStateUnknown
+//	JobRequestedStateJobStateStopped
+//	JobRequestedStateJobStateRunning
+//	JobRequestedStateJobStateDone
+//	JobRequestedStateJobStateFailed
+//	JobRequestedStateJobStateCancelled
+//	JobRequestedStateJobStateUpdated
+//	JobRequestedStateJobStateDraining
+//	JobRequestedStateJobStateDrained
+//	JobRequestedStateJobStatePending
+//	JobRequestedStateJobStateCancelling
+//	JobRequestedStateJobStateQueued
+//	JobRequestedStateJobStateResourceCleaningUp
 type JobRequestedStateInput interface {
 	pulumi.Input
 
@@ -1485,10 +1536,12 @@ func (o JobTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobTypeInput is an input type that accepts JobTypeArgs and JobTypeOutput values.
-// You can construct a concrete instance of `JobTypeInput` via:
+// JobTypeInput is an input type that accepts values of the JobType enum
+// A concrete instance of `JobTypeInput` can be one of the following:
 //
-//	JobTypeArgs{...}
+//	JobTypeJobTypeUnknown
+//	JobTypeJobTypeBatch
+//	JobTypeJobTypeStreaming
 type JobTypeInput interface {
 	pulumi.Input
 
@@ -1660,10 +1713,12 @@ func (o RuntimeEnvironmentIpConfigurationPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// RuntimeEnvironmentIpConfigurationInput is an input type that accepts RuntimeEnvironmentIpConfigurationArgs and RuntimeEnvironmentIpConfigurationOutput values.
-// You can construct a concrete instance of `RuntimeEnvironmentIpConfigurationInput` via:
+// RuntimeEnvironmentIpConfigurationInput is an input type that accepts values of the RuntimeEnvironmentIpConfiguration enum
+// A concrete instance of `RuntimeEnvironmentIpConfigurationInput` can be one of the following:
 //
-//	RuntimeEnvironmentIpConfigurationArgs{...}
+//	RuntimeEnvironmentIpConfigurationWorkerIpUnspecified
+//	RuntimeEnvironmentIpConfigurationWorkerIpPublic
+//	RuntimeEnvironmentIpConfigurationWorkerIpPrivate
 type RuntimeEnvironmentIpConfigurationInput interface {
 	pulumi.Input
 
@@ -1839,10 +1894,14 @@ func (o SdkVersionSdkSupportStatusPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// SdkVersionSdkSupportStatusInput is an input type that accepts SdkVersionSdkSupportStatusArgs and SdkVersionSdkSupportStatusOutput values.
-// You can construct a concrete instance of `SdkVersionSdkSupportStatusInput` via:
+// SdkVersionSdkSupportStatusInput is an input type that accepts values of the SdkVersionSdkSupportStatus enum
+// A concrete instance of `SdkVersionSdkSupportStatusInput` can be one of the following:
 //
-//	SdkVersionSdkSupportStatusArgs{...}
+//	SdkVersionSdkSupportStatusUnknown
+//	SdkVersionSdkSupportStatusSupported
+//	SdkVersionSdkSupportStatusStale
+//	SdkVersionSdkSupportStatusDeprecated
+//	SdkVersionSdkSupportStatusUnsupported
 type SdkVersionSdkSupportStatusInput interface {
 	pulumi.Input
 
@@ -2026,10 +2085,18 @@ func (o TransformSummaryKindPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// TransformSummaryKindInput is an input type that accepts TransformSummaryKindArgs and TransformSummaryKindOutput values.
-// You can construct a concrete instance of `TransformSummaryKindInput` via:
+// TransformSummaryKindInput is an input type that accepts values of the TransformSummaryKind enum
+// A concrete instance of `TransformSummaryKindInput` can be one of the following:
 //
-//	TransformSummaryKindArgs{...}
+//	TransformSummaryKindUnknownKind
+//	TransformSummaryKindParDoKind
+//	TransformSummaryKindGroupByKeyKind
+//	TransformSummaryKindFlattenKind
+//	TransformSummaryKindReadKind
+//	TransformSummaryKindWriteKind
+//	TransformSummaryKindConstantKind
+//	TransformSummaryKindSingletonKind
+//	TransformSummaryKindShuffleKind
 type TransformSummaryKindInput interface {
 	pulumi.Input
 
@@ -2203,10 +2270,13 @@ func (o WorkerPoolDefaultPackageSetPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkerPoolDefaultPackageSetInput is an input type that accepts WorkerPoolDefaultPackageSetArgs and WorkerPoolDefaultPackageSetOutput values.
-// You can construct a concrete instance of `WorkerPoolDefaultPackageSetInput` via:
+// WorkerPoolDefaultPackageSetInput is an input type that accepts values of the WorkerPoolDefaultPackageSet enum
+// A concrete instance of `WorkerPoolDefaultPackageSetInput` can be one of the following:
 //
-//	WorkerPoolDefaultPackageSetArgs{...}
+//	WorkerPoolDefaultPackageSetDefaultPackageSetUnknown
+//	WorkerPoolDefaultPackageSetDefaultPackageSetNone
+//	WorkerPoolDefaultPackageSetDefaultPackageSetJava
+//	WorkerPoolDefaultPackageSetDefaultPackageSetPython
 type WorkerPoolDefaultPackageSetInput interface {
 	pulumi.Input
 
@@ -2378,10 +2448,12 @@ func (o WorkerPoolIpConfigurationPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkerPoolIpConfigurationInput is an input type that accepts WorkerPoolIpConfigurationArgs and WorkerPoolIpConfigurationOutput values.
-// You can construct a concrete instance of `WorkerPoolIpConfigurationInput` via:
+// WorkerPoolIpConfigurationInput is an input type that accepts values of the WorkerPoolIpConfiguration enum
+// A concrete instance of `WorkerPoolIpConfigurationInput` can be one of the following:
 //
-//	WorkerPoolIpConfigurationArgs{...}
+//	WorkerPoolIpConfigurationWorkerIpUnspecified
+//	WorkerPoolIpConfigurationWorkerIpPublic
+//	WorkerPoolIpConfigurationWorkerIpPrivate
 type WorkerPoolIpConfigurationInput interface {
 	pulumi.Input
 
@@ -2555,10 +2627,13 @@ func (o WorkerPoolTeardownPolicyPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkerPoolTeardownPolicyInput is an input type that accepts WorkerPoolTeardownPolicyArgs and WorkerPoolTeardownPolicyOutput values.
-// You can construct a concrete instance of `WorkerPoolTeardownPolicyInput` via:
+// WorkerPoolTeardownPolicyInput is an input type that accepts values of the WorkerPoolTeardownPolicy enum
+// A concrete instance of `WorkerPoolTeardownPolicyInput` can be one of the following:
 //
-//	WorkerPoolTeardownPolicyArgs{...}
+//	WorkerPoolTeardownPolicyTeardownPolicyUnknown
+//	WorkerPoolTeardownPolicyTeardownAlways
+//	WorkerPoolTeardownPolicyTeardownOnSuccess
+//	WorkerPoolTeardownPolicyTeardownNever
 type WorkerPoolTeardownPolicyInput interface {
 	pulumi.Input
 

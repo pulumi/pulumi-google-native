@@ -140,10 +140,11 @@ func (o BackupRetentionSettingsRetentionUnitPtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// BackupRetentionSettingsRetentionUnitInput is an input type that accepts BackupRetentionSettingsRetentionUnitArgs and BackupRetentionSettingsRetentionUnitOutput values.
-// You can construct a concrete instance of `BackupRetentionSettingsRetentionUnitInput` via:
+// BackupRetentionSettingsRetentionUnitInput is an input type that accepts values of the BackupRetentionSettingsRetentionUnit enum
+// A concrete instance of `BackupRetentionSettingsRetentionUnitInput` can be one of the following:
 //
-//	BackupRetentionSettingsRetentionUnitArgs{...}
+//	BackupRetentionSettingsRetentionUnitRetentionUnitUnspecified
+//	BackupRetentionSettingsRetentionUnitCount
 type BackupRetentionSettingsRetentionUnitInput interface {
 	pulumi.Input
 
@@ -315,10 +316,12 @@ func (o BackupRunBackupKindPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// BackupRunBackupKindInput is an input type that accepts BackupRunBackupKindArgs and BackupRunBackupKindOutput values.
-// You can construct a concrete instance of `BackupRunBackupKindInput` via:
+// BackupRunBackupKindInput is an input type that accepts values of the BackupRunBackupKind enum
+// A concrete instance of `BackupRunBackupKindInput` can be one of the following:
 //
-//	BackupRunBackupKindArgs{...}
+//	BackupRunBackupKindSqlBackupKindUnspecified
+//	BackupRunBackupKindSnapshot
+//	BackupRunBackupKindPhysical
 type BackupRunBackupKindInput interface {
 	pulumi.Input
 
@@ -516,10 +519,12 @@ func (o BackupRunTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// BackupRunTypeInput is an input type that accepts BackupRunTypeArgs and BackupRunTypeOutput values.
-// You can construct a concrete instance of `BackupRunTypeInput` via:
+// BackupRunTypeInput is an input type that accepts values of the BackupRunType enum
+// A concrete instance of `BackupRunTypeInput` can be one of the following:
 //
-//	BackupRunTypeArgs{...}
+//	BackupRunTypeSqlBackupRunTypeUnspecified
+//	BackupRunTypeAutomated
+//	BackupRunTypeOnDemand
 type BackupRunTypeInput interface {
 	pulumi.Input
 
@@ -693,10 +698,13 @@ func (o InstanceBackendTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceBackendTypeInput is an input type that accepts InstanceBackendTypeArgs and InstanceBackendTypeOutput values.
-// You can construct a concrete instance of `InstanceBackendTypeInput` via:
+// InstanceBackendTypeInput is an input type that accepts values of the InstanceBackendType enum
+// A concrete instance of `InstanceBackendTypeInput` can be one of the following:
 //
-//	InstanceBackendTypeArgs{...}
+//	InstanceBackendTypeSqlBackendTypeUnspecified
+//	InstanceBackendTypeFirstGen
+//	InstanceBackendTypeSecondGen
+//	InstanceBackendTypeExternal
 type InstanceBackendTypeInput interface {
 	pulumi.Input
 
@@ -936,10 +944,46 @@ func (o InstanceDatabaseVersionPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceDatabaseVersionInput is an input type that accepts InstanceDatabaseVersionArgs and InstanceDatabaseVersionOutput values.
-// You can construct a concrete instance of `InstanceDatabaseVersionInput` via:
+// InstanceDatabaseVersionInput is an input type that accepts values of the InstanceDatabaseVersion enum
+// A concrete instance of `InstanceDatabaseVersionInput` can be one of the following:
 //
-//	InstanceDatabaseVersionArgs{...}
+//	InstanceDatabaseVersionSqlDatabaseVersionUnspecified
+//	InstanceDatabaseVersionMysql51
+//	InstanceDatabaseVersionMysql55
+//	InstanceDatabaseVersionMysql56
+//	InstanceDatabaseVersionMysql57
+//	InstanceDatabaseVersionSqlserver2017Standard
+//	InstanceDatabaseVersionSqlserver2017Enterprise
+//	InstanceDatabaseVersionSqlserver2017Express
+//	InstanceDatabaseVersionSqlserver2017Web
+//	InstanceDatabaseVersionPostgres96
+//	InstanceDatabaseVersionPostgres10
+//	InstanceDatabaseVersionPostgres11
+//	InstanceDatabaseVersionPostgres12
+//	InstanceDatabaseVersionPostgres13
+//	InstanceDatabaseVersionPostgres14
+//	InstanceDatabaseVersionPostgres15
+//	InstanceDatabaseVersionMysql80
+//	InstanceDatabaseVersionMysql8018
+//	InstanceDatabaseVersionMysql8026
+//	InstanceDatabaseVersionMysql8027
+//	InstanceDatabaseVersionMysql8028
+//	InstanceDatabaseVersionMysql8029
+//	InstanceDatabaseVersionMysql8030
+//	InstanceDatabaseVersionMysql8031
+//	InstanceDatabaseVersionMysql8032
+//	InstanceDatabaseVersionMysql8033
+//	InstanceDatabaseVersionMysql8034
+//	InstanceDatabaseVersionMysql8035
+//	InstanceDatabaseVersionMysql8036
+//	InstanceDatabaseVersionSqlserver2019Standard
+//	InstanceDatabaseVersionSqlserver2019Enterprise
+//	InstanceDatabaseVersionSqlserver2019Express
+//	InstanceDatabaseVersionSqlserver2019Web
+//	InstanceDatabaseVersionSqlserver2022Standard
+//	InstanceDatabaseVersionSqlserver2022Enterprise
+//	InstanceDatabaseVersionSqlserver2022Express
+//	InstanceDatabaseVersionSqlserver2022Web
 type InstanceDatabaseVersionInput interface {
 	pulumi.Input
 
@@ -1113,10 +1157,13 @@ func (o InstanceInstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceInstanceTypeInput is an input type that accepts InstanceInstanceTypeArgs and InstanceInstanceTypeOutput values.
-// You can construct a concrete instance of `InstanceInstanceTypeInput` via:
+// InstanceInstanceTypeInput is an input type that accepts values of the InstanceInstanceType enum
+// A concrete instance of `InstanceInstanceTypeInput` can be one of the following:
 //
-//	InstanceInstanceTypeArgs{...}
+//	InstanceInstanceTypeSqlInstanceTypeUnspecified
+//	InstanceInstanceTypeCloudSqlInstance
+//	InstanceInstanceTypeOnPremisesInstance
+//	InstanceInstanceTypeReadReplicaInstance
 type InstanceInstanceTypeInput interface {
 	pulumi.Input
 
@@ -1287,10 +1334,12 @@ func (o InstanceSqlNetworkArchitecturePtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceSqlNetworkArchitectureInput is an input type that accepts InstanceSqlNetworkArchitectureArgs and InstanceSqlNetworkArchitectureOutput values.
-// You can construct a concrete instance of `InstanceSqlNetworkArchitectureInput` via:
+// InstanceSqlNetworkArchitectureInput is an input type that accepts values of the InstanceSqlNetworkArchitecture enum
+// A concrete instance of `InstanceSqlNetworkArchitectureInput` can be one of the following:
 //
-//	InstanceSqlNetworkArchitectureArgs{...}
+//	InstanceSqlNetworkArchitectureSqlNetworkArchitectureUnspecified
+//	InstanceSqlNetworkArchitectureNewNetworkArchitecture
+//	InstanceSqlNetworkArchitectureOldNetworkArchitecture
 type InstanceSqlNetworkArchitectureInput interface {
 	pulumi.Input
 
@@ -1472,10 +1521,17 @@ func (o InstanceStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceStateEnumInput is an input type that accepts InstanceStateEnumArgs and InstanceStateEnumOutput values.
-// You can construct a concrete instance of `InstanceStateEnumInput` via:
+// InstanceStateEnumInput is an input type that accepts values of the InstanceStateEnum enum
+// A concrete instance of `InstanceStateEnumInput` can be one of the following:
 //
-//	InstanceStateEnumArgs{...}
+//	InstanceStateEnumSqlInstanceStateUnspecified
+//	InstanceStateEnumRunnable
+//	InstanceStateEnumSuspended
+//	InstanceStateEnumPendingDelete
+//	InstanceStateEnumPendingCreate
+//	InstanceStateEnumMaintenance
+//	InstanceStateEnumFailed
+//	InstanceStateEnumOnlineMaintenance
 type InstanceStateEnumInput interface {
 	pulumi.Input
 
@@ -1650,10 +1706,14 @@ func (o InstanceSuspensionReasonItemPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceSuspensionReasonItemInput is an input type that accepts InstanceSuspensionReasonItemArgs and InstanceSuspensionReasonItemOutput values.
-// You can construct a concrete instance of `InstanceSuspensionReasonItemInput` via:
+// InstanceSuspensionReasonItemInput is an input type that accepts values of the InstanceSuspensionReasonItem enum
+// A concrete instance of `InstanceSuspensionReasonItemInput` can be one of the following:
 //
-//	InstanceSuspensionReasonItemArgs{...}
+//	InstanceSuspensionReasonItemSqlSuspensionReasonUnspecified
+//	InstanceSuspensionReasonItemBillingIssue
+//	InstanceSuspensionReasonItemLegalIssue
+//	InstanceSuspensionReasonItemOperationalIssue
+//	InstanceSuspensionReasonItemKmsKeyIssue
 type InstanceSuspensionReasonItemInput interface {
 	pulumi.Input
 
@@ -1872,10 +1932,13 @@ func (o IpConfigurationSslModePtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// IpConfigurationSslModeInput is an input type that accepts IpConfigurationSslModeArgs and IpConfigurationSslModeOutput values.
-// You can construct a concrete instance of `IpConfigurationSslModeInput` via:
+// IpConfigurationSslModeInput is an input type that accepts values of the IpConfigurationSslMode enum
+// A concrete instance of `IpConfigurationSslModeInput` can be one of the following:
 //
-//	IpConfigurationSslModeArgs{...}
+//	IpConfigurationSslModeSslModeUnspecified
+//	IpConfigurationSslModeAllowUnencryptedAndEncrypted
+//	IpConfigurationSslModeEncryptedOnly
+//	IpConfigurationSslModeTrustedClientCertificateRequired
 type IpConfigurationSslModeInput interface {
 	pulumi.Input
 
@@ -2051,10 +2114,14 @@ func (o IpMappingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// IpMappingTypeInput is an input type that accepts IpMappingTypeArgs and IpMappingTypeOutput values.
-// You can construct a concrete instance of `IpMappingTypeInput` via:
+// IpMappingTypeInput is an input type that accepts values of the IpMappingType enum
+// A concrete instance of `IpMappingTypeInput` can be one of the following:
 //
-//	IpMappingTypeArgs{...}
+//	IpMappingTypeSqlIpAddressTypeUnspecified
+//	IpMappingTypePrimary
+//	IpMappingTypeOutgoing
+//	IpMappingTypePrivate
+//	IpMappingTypeMigrated1stGen
 type IpMappingTypeInput interface {
 	pulumi.Input
 
@@ -2228,10 +2295,13 @@ func (o MaintenanceWindowUpdateTrackPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// MaintenanceWindowUpdateTrackInput is an input type that accepts MaintenanceWindowUpdateTrackArgs and MaintenanceWindowUpdateTrackOutput values.
-// You can construct a concrete instance of `MaintenanceWindowUpdateTrackInput` via:
+// MaintenanceWindowUpdateTrackInput is an input type that accepts values of the MaintenanceWindowUpdateTrack enum
+// A concrete instance of `MaintenanceWindowUpdateTrackInput` can be one of the following:
 //
-//	MaintenanceWindowUpdateTrackArgs{...}
+//	MaintenanceWindowUpdateTrackSqlUpdateTrackUnspecified
+//	MaintenanceWindowUpdateTrackCanary
+//	MaintenanceWindowUpdateTrackStable
+//	MaintenanceWindowUpdateTrackWeek5
 type MaintenanceWindowUpdateTrackInput interface {
 	pulumi.Input
 
@@ -2401,10 +2471,11 @@ func (o PasswordValidationPolicyComplexityPtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// PasswordValidationPolicyComplexityInput is an input type that accepts PasswordValidationPolicyComplexityArgs and PasswordValidationPolicyComplexityOutput values.
-// You can construct a concrete instance of `PasswordValidationPolicyComplexityInput` via:
+// PasswordValidationPolicyComplexityInput is an input type that accepts values of the PasswordValidationPolicyComplexity enum
+// A concrete instance of `PasswordValidationPolicyComplexityInput` can be one of the following:
 //
-//	PasswordValidationPolicyComplexityArgs{...}
+//	PasswordValidationPolicyComplexityComplexityUnspecified
+//	PasswordValidationPolicyComplexityComplexityDefault
 type PasswordValidationPolicyComplexityInput interface {
 	pulumi.Input
 
@@ -2578,10 +2649,13 @@ func (o SettingsActivationPolicyPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// SettingsActivationPolicyInput is an input type that accepts SettingsActivationPolicyArgs and SettingsActivationPolicyOutput values.
-// You can construct a concrete instance of `SettingsActivationPolicyInput` via:
+// SettingsActivationPolicyInput is an input type that accepts values of the SettingsActivationPolicy enum
+// A concrete instance of `SettingsActivationPolicyInput` can be one of the following:
 //
-//	SettingsActivationPolicyArgs{...}
+//	SettingsActivationPolicySqlActivationPolicyUnspecified
+//	SettingsActivationPolicyAlways
+//	SettingsActivationPolicyNever
+//	SettingsActivationPolicyOnDemand
 type SettingsActivationPolicyInput interface {
 	pulumi.Input
 
@@ -2753,10 +2827,12 @@ func (o SettingsAvailabilityTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// SettingsAvailabilityTypeInput is an input type that accepts SettingsAvailabilityTypeArgs and SettingsAvailabilityTypeOutput values.
-// You can construct a concrete instance of `SettingsAvailabilityTypeInput` via:
+// SettingsAvailabilityTypeInput is an input type that accepts values of the SettingsAvailabilityType enum
+// A concrete instance of `SettingsAvailabilityTypeInput` can be one of the following:
 //
-//	SettingsAvailabilityTypeArgs{...}
+//	SettingsAvailabilityTypeSqlAvailabilityTypeUnspecified
+//	SettingsAvailabilityTypeZonal
+//	SettingsAvailabilityTypeRegional
 type SettingsAvailabilityTypeInput interface {
 	pulumi.Input
 
@@ -2928,10 +3004,12 @@ func (o SettingsConnectorEnforcementPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// SettingsConnectorEnforcementInput is an input type that accepts SettingsConnectorEnforcementArgs and SettingsConnectorEnforcementOutput values.
-// You can construct a concrete instance of `SettingsConnectorEnforcementInput` via:
+// SettingsConnectorEnforcementInput is an input type that accepts values of the SettingsConnectorEnforcement enum
+// A concrete instance of `SettingsConnectorEnforcementInput` can be one of the following:
 //
-//	SettingsConnectorEnforcementArgs{...}
+//	SettingsConnectorEnforcementConnectorEnforcementUnspecified
+//	SettingsConnectorEnforcementNotRequired
+//	SettingsConnectorEnforcementRequired
 type SettingsConnectorEnforcementInput interface {
 	pulumi.Input
 
@@ -3105,10 +3183,13 @@ func (o SettingsDataDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// SettingsDataDiskTypeInput is an input type that accepts SettingsDataDiskTypeArgs and SettingsDataDiskTypeOutput values.
-// You can construct a concrete instance of `SettingsDataDiskTypeInput` via:
+// SettingsDataDiskTypeInput is an input type that accepts values of the SettingsDataDiskType enum
+// A concrete instance of `SettingsDataDiskTypeInput` can be one of the following:
 //
-//	SettingsDataDiskTypeArgs{...}
+//	SettingsDataDiskTypeSqlDataDiskTypeUnspecified
+//	SettingsDataDiskTypePdSsd
+//	SettingsDataDiskTypePdHdd
+//	SettingsDataDiskTypeObsoleteLocalSsd
 type SettingsDataDiskTypeInput interface {
 	pulumi.Input
 
@@ -3280,10 +3361,12 @@ func (o SettingsEditionPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SettingsEditionInput is an input type that accepts SettingsEditionArgs and SettingsEditionOutput values.
-// You can construct a concrete instance of `SettingsEditionInput` via:
+// SettingsEditionInput is an input type that accepts values of the SettingsEdition enum
+// A concrete instance of `SettingsEditionInput` can be one of the following:
 //
-//	SettingsEditionArgs{...}
+//	SettingsEditionEditionUnspecified
+//	SettingsEditionEnterprise
+//	SettingsEditionEnterprisePlus
 type SettingsEditionInput interface {
 	pulumi.Input
 
@@ -3455,10 +3538,12 @@ func (o SettingsPricingPlanPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// SettingsPricingPlanInput is an input type that accepts SettingsPricingPlanArgs and SettingsPricingPlanOutput values.
-// You can construct a concrete instance of `SettingsPricingPlanInput` via:
+// SettingsPricingPlanInput is an input type that accepts values of the SettingsPricingPlan enum
+// A concrete instance of `SettingsPricingPlanInput` can be one of the following:
 //
-//	SettingsPricingPlanArgs{...}
+//	SettingsPricingPlanSqlPricingPlanUnspecified
+//	SettingsPricingPlanPackage
+//	SettingsPricingPlanPerUse
 type SettingsPricingPlanInput interface {
 	pulumi.Input
 
@@ -3630,10 +3715,12 @@ func (o SettingsReplicationTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SettingsReplicationTypeInput is an input type that accepts SettingsReplicationTypeArgs and SettingsReplicationTypeOutput values.
-// You can construct a concrete instance of `SettingsReplicationTypeInput` via:
+// SettingsReplicationTypeInput is an input type that accepts values of the SettingsReplicationType enum
+// A concrete instance of `SettingsReplicationTypeInput` can be one of the following:
 //
-//	SettingsReplicationTypeArgs{...}
+//	SettingsReplicationTypeSqlReplicationTypeUnspecified
+//	SettingsReplicationTypeSynchronous
+//	SettingsReplicationTypeAsynchronous
 type SettingsReplicationTypeInput interface {
 	pulumi.Input
 
@@ -3805,10 +3892,12 @@ func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SqlOutOfDiskReportSqlOutOfDiskStateInput is an input type that accepts SqlOutOfDiskReportSqlOutOfDiskStateArgs and SqlOutOfDiskReportSqlOutOfDiskStateOutput values.
-// You can construct a concrete instance of `SqlOutOfDiskReportSqlOutOfDiskStateInput` via:
+// SqlOutOfDiskReportSqlOutOfDiskStateInput is an input type that accepts values of the SqlOutOfDiskReportSqlOutOfDiskState enum
+// A concrete instance of `SqlOutOfDiskReportSqlOutOfDiskStateInput` can be one of the following:
 //
-//	SqlOutOfDiskReportSqlOutOfDiskStateArgs{...}
+//	SqlOutOfDiskReportSqlOutOfDiskStateSqlOutOfDiskStateUnspecified
+//	SqlOutOfDiskReportSqlOutOfDiskStateNormal
+//	SqlOutOfDiskReportSqlOutOfDiskStateSoftShutdown
 type SqlOutOfDiskReportSqlOutOfDiskStateInput interface {
 	pulumi.Input
 
@@ -3982,10 +4071,13 @@ func (o UserDualPasswordTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// UserDualPasswordTypeInput is an input type that accepts UserDualPasswordTypeArgs and UserDualPasswordTypeOutput values.
-// You can construct a concrete instance of `UserDualPasswordTypeInput` via:
+// UserDualPasswordTypeInput is an input type that accepts values of the UserDualPasswordType enum
+// A concrete instance of `UserDualPasswordTypeInput` can be one of the following:
 //
-//	UserDualPasswordTypeArgs{...}
+//	UserDualPasswordTypeDualPasswordTypeUnspecified
+//	UserDualPasswordTypeNoModifyDualPassword
+//	UserDualPasswordTypeNoDualPassword
+//	UserDualPasswordTypeDualPassword
 type UserDualPasswordTypeInput interface {
 	pulumi.Input
 
@@ -4163,10 +4255,15 @@ func (o UserTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// UserTypeInput is an input type that accepts UserTypeArgs and UserTypeOutput values.
-// You can construct a concrete instance of `UserTypeInput` via:
+// UserTypeInput is an input type that accepts values of the UserType enum
+// A concrete instance of `UserTypeInput` can be one of the following:
 //
-//	UserTypeArgs{...}
+//	UserTypeBuiltIn
+//	UserTypeCloudIamUser
+//	UserTypeCloudIamServiceAccount
+//	UserTypeCloudIamGroup
+//	UserTypeCloudIamGroupUser
+//	UserTypeCloudIamGroupServiceAccount
 type UserTypeInput interface {
 	pulumi.Input
 

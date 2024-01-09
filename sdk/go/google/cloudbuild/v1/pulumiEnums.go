@@ -140,10 +140,11 @@ func (o BuildOptionsDefaultLogsBucketBehaviorPtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// BuildOptionsDefaultLogsBucketBehaviorInput is an input type that accepts BuildOptionsDefaultLogsBucketBehaviorArgs and BuildOptionsDefaultLogsBucketBehaviorOutput values.
-// You can construct a concrete instance of `BuildOptionsDefaultLogsBucketBehaviorInput` via:
+// BuildOptionsDefaultLogsBucketBehaviorInput is an input type that accepts values of the BuildOptionsDefaultLogsBucketBehavior enum
+// A concrete instance of `BuildOptionsDefaultLogsBucketBehaviorInput` can be one of the following:
 //
-//	BuildOptionsDefaultLogsBucketBehaviorArgs{...}
+//	BuildOptionsDefaultLogsBucketBehaviorDefaultLogsBucketBehaviorUnspecified
+//	BuildOptionsDefaultLogsBucketBehaviorRegionalUserOwnedBucket
 type BuildOptionsDefaultLogsBucketBehaviorInput interface {
 	pulumi.Input
 
@@ -315,10 +316,12 @@ func (o BuildOptionsLogStreamingOptionPtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// BuildOptionsLogStreamingOptionInput is an input type that accepts BuildOptionsLogStreamingOptionArgs and BuildOptionsLogStreamingOptionOutput values.
-// You can construct a concrete instance of `BuildOptionsLogStreamingOptionInput` via:
+// BuildOptionsLogStreamingOptionInput is an input type that accepts values of the BuildOptionsLogStreamingOption enum
+// A concrete instance of `BuildOptionsLogStreamingOptionInput` can be one of the following:
 //
-//	BuildOptionsLogStreamingOptionArgs{...}
+//	BuildOptionsLogStreamingOptionStreamDefault
+//	BuildOptionsLogStreamingOptionStreamOn
+//	BuildOptionsLogStreamingOptionStreamOff
 type BuildOptionsLogStreamingOptionInput interface {
 	pulumi.Input
 
@@ -496,10 +499,15 @@ func (o BuildOptionsLoggingPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// BuildOptionsLoggingInput is an input type that accepts BuildOptionsLoggingArgs and BuildOptionsLoggingOutput values.
-// You can construct a concrete instance of `BuildOptionsLoggingInput` via:
+// BuildOptionsLoggingInput is an input type that accepts values of the BuildOptionsLogging enum
+// A concrete instance of `BuildOptionsLoggingInput` can be one of the following:
 //
-//	BuildOptionsLoggingArgs{...}
+//	BuildOptionsLoggingLoggingUnspecified
+//	BuildOptionsLoggingLegacy
+//	BuildOptionsLoggingGcsOnly
+//	BuildOptionsLoggingStackdriverOnly
+//	BuildOptionsLoggingCloudLoggingOnly
+//	BuildOptionsLoggingNone
 type BuildOptionsLoggingInput interface {
 	pulumi.Input
 
@@ -677,10 +685,15 @@ func (o BuildOptionsMachineTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// BuildOptionsMachineTypeInput is an input type that accepts BuildOptionsMachineTypeArgs and BuildOptionsMachineTypeOutput values.
-// You can construct a concrete instance of `BuildOptionsMachineTypeInput` via:
+// BuildOptionsMachineTypeInput is an input type that accepts values of the BuildOptionsMachineType enum
+// A concrete instance of `BuildOptionsMachineTypeInput` can be one of the following:
 //
-//	BuildOptionsMachineTypeArgs{...}
+//	BuildOptionsMachineTypeUnspecified
+//	BuildOptionsMachineTypeN1Highcpu8
+//	BuildOptionsMachineTypeN1Highcpu32
+//	BuildOptionsMachineTypeE2Highcpu8
+//	BuildOptionsMachineTypeE2Highcpu32
+//	BuildOptionsMachineTypeE2Medium
 type BuildOptionsMachineTypeInput interface {
 	pulumi.Input
 
@@ -850,10 +863,11 @@ func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// BuildOptionsRequestedVerifyOptionInput is an input type that accepts BuildOptionsRequestedVerifyOptionArgs and BuildOptionsRequestedVerifyOptionOutput values.
-// You can construct a concrete instance of `BuildOptionsRequestedVerifyOptionInput` via:
+// BuildOptionsRequestedVerifyOptionInput is an input type that accepts values of the BuildOptionsRequestedVerifyOption enum
+// A concrete instance of `BuildOptionsRequestedVerifyOptionInput` can be one of the following:
 //
-//	BuildOptionsRequestedVerifyOptionArgs{...}
+//	BuildOptionsRequestedVerifyOptionNotVerified
+//	BuildOptionsRequestedVerifyOptionVerified
 type BuildOptionsRequestedVerifyOptionInput interface {
 	pulumi.Input
 
@@ -1026,10 +1040,13 @@ func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// BuildOptionsSourceProvenanceHashItemInput is an input type that accepts BuildOptionsSourceProvenanceHashItemArgs and BuildOptionsSourceProvenanceHashItemOutput values.
-// You can construct a concrete instance of `BuildOptionsSourceProvenanceHashItemInput` via:
+// BuildOptionsSourceProvenanceHashItemInput is an input type that accepts values of the BuildOptionsSourceProvenanceHashItem enum
+// A concrete instance of `BuildOptionsSourceProvenanceHashItemInput` can be one of the following:
 //
-//	BuildOptionsSourceProvenanceHashItemArgs{...}
+//	BuildOptionsSourceProvenanceHashItemNone
+//	BuildOptionsSourceProvenanceHashItemSha256
+//	BuildOptionsSourceProvenanceHashItemMd5
+//	BuildOptionsSourceProvenanceHashItemSha512
 type BuildOptionsSourceProvenanceHashItemInput interface {
 	pulumi.Input
 
@@ -1244,10 +1261,11 @@ func (o BuildOptionsSubstitutionOptionPtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// BuildOptionsSubstitutionOptionInput is an input type that accepts BuildOptionsSubstitutionOptionArgs and BuildOptionsSubstitutionOptionOutput values.
-// You can construct a concrete instance of `BuildOptionsSubstitutionOptionInput` via:
+// BuildOptionsSubstitutionOptionInput is an input type that accepts values of the BuildOptionsSubstitutionOption enum
+// A concrete instance of `BuildOptionsSubstitutionOptionInput` can be one of the following:
 //
-//	BuildOptionsSubstitutionOptionArgs{...}
+//	BuildOptionsSubstitutionOptionMustMatch
+//	BuildOptionsSubstitutionOptionAllowLoose
 type BuildOptionsSubstitutionOptionInput interface {
 	pulumi.Input
 
@@ -1425,10 +1443,15 @@ func (o GitFileSourceRepoTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// GitFileSourceRepoTypeInput is an input type that accepts GitFileSourceRepoTypeArgs and GitFileSourceRepoTypeOutput values.
-// You can construct a concrete instance of `GitFileSourceRepoTypeInput` via:
+// GitFileSourceRepoTypeInput is an input type that accepts values of the GitFileSourceRepoType enum
+// A concrete instance of `GitFileSourceRepoTypeInput` can be one of the following:
 //
-//	GitFileSourceRepoTypeArgs{...}
+//	GitFileSourceRepoTypeUnknown
+//	GitFileSourceRepoTypeCloudSourceRepositories
+//	GitFileSourceRepoTypeGithub
+//	GitFileSourceRepoTypeBitbucketServer
+//	GitFileSourceRepoTypeGitlab
+//	GitFileSourceRepoTypeBitbucketCloud
 type GitFileSourceRepoTypeInput interface {
 	pulumi.Input
 
@@ -1606,10 +1629,15 @@ func (o GitRepoSourceRepoTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// GitRepoSourceRepoTypeInput is an input type that accepts GitRepoSourceRepoTypeArgs and GitRepoSourceRepoTypeOutput values.
-// You can construct a concrete instance of `GitRepoSourceRepoTypeInput` via:
+// GitRepoSourceRepoTypeInput is an input type that accepts values of the GitRepoSourceRepoType enum
+// A concrete instance of `GitRepoSourceRepoTypeInput` can be one of the following:
 //
-//	GitRepoSourceRepoTypeArgs{...}
+//	GitRepoSourceRepoTypeUnknown
+//	GitRepoSourceRepoTypeCloudSourceRepositories
+//	GitRepoSourceRepoTypeGithub
+//	GitRepoSourceRepoTypeBitbucketServer
+//	GitRepoSourceRepoTypeGitlab
+//	GitRepoSourceRepoTypeBitbucketCloud
 type GitRepoSourceRepoTypeInput interface {
 	pulumi.Input
 
@@ -1781,10 +1809,12 @@ func (o NetworkConfigEgressOptionPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkConfigEgressOptionInput is an input type that accepts NetworkConfigEgressOptionArgs and NetworkConfigEgressOptionOutput values.
-// You can construct a concrete instance of `NetworkConfigEgressOptionInput` via:
+// NetworkConfigEgressOptionInput is an input type that accepts values of the NetworkConfigEgressOption enum
+// A concrete instance of `NetworkConfigEgressOptionInput` can be one of the following:
 //
-//	NetworkConfigEgressOptionArgs{...}
+//	NetworkConfigEgressOptionEgressOptionUnspecified
+//	NetworkConfigEgressOptionNoPublicEgress
+//	NetworkConfigEgressOptionPublicEgress
 type NetworkConfigEgressOptionInput interface {
 	pulumi.Input
 
@@ -1960,10 +1990,14 @@ func (o PubsubConfigStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// PubsubConfigStateInput is an input type that accepts PubsubConfigStateArgs and PubsubConfigStateOutput values.
-// You can construct a concrete instance of `PubsubConfigStateInput` via:
+// PubsubConfigStateInput is an input type that accepts values of the PubsubConfigState enum
+// A concrete instance of `PubsubConfigStateInput` can be one of the following:
 //
-//	PubsubConfigStateArgs{...}
+//	PubsubConfigStateStateUnspecified
+//	PubsubConfigStateOk
+//	PubsubConfigStateSubscriptionDeleted
+//	PubsubConfigStateTopicDeleted
+//	PubsubConfigStateSubscriptionMisconfigured
 type PubsubConfigStateInput interface {
 	pulumi.Input
 
@@ -2135,10 +2169,12 @@ func (o PullRequestFilterCommentControlPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// PullRequestFilterCommentControlInput is an input type that accepts PullRequestFilterCommentControlArgs and PullRequestFilterCommentControlOutput values.
-// You can construct a concrete instance of `PullRequestFilterCommentControlInput` via:
+// PullRequestFilterCommentControlInput is an input type that accepts values of the PullRequestFilterCommentControl enum
+// A concrete instance of `PullRequestFilterCommentControlInput` can be one of the following:
 //
-//	PullRequestFilterCommentControlArgs{...}
+//	PullRequestFilterCommentControlCommentsDisabled
+//	PullRequestFilterCommentControlCommentsEnabled
+//	PullRequestFilterCommentControlCommentsEnabledForExternalContributorsOnly
 type PullRequestFilterCommentControlInput interface {
 	pulumi.Input
 
@@ -2310,10 +2346,12 @@ func (o StorageSourceSourceFetcherPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// StorageSourceSourceFetcherInput is an input type that accepts StorageSourceSourceFetcherArgs and StorageSourceSourceFetcherOutput values.
-// You can construct a concrete instance of `StorageSourceSourceFetcherInput` via:
+// StorageSourceSourceFetcherInput is an input type that accepts values of the StorageSourceSourceFetcher enum
+// A concrete instance of `StorageSourceSourceFetcherInput` can be one of the following:
 //
-//	StorageSourceSourceFetcherArgs{...}
+//	StorageSourceSourceFetcherSourceFetcherUnspecified
+//	StorageSourceSourceFetcherGsutil
+//	StorageSourceSourceFetcherGcsFetcher
 type StorageSourceSourceFetcherInput interface {
 	pulumi.Input
 
@@ -2489,10 +2527,14 @@ func (o TriggerEventTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// TriggerEventTypeInput is an input type that accepts TriggerEventTypeArgs and TriggerEventTypeOutput values.
-// You can construct a concrete instance of `TriggerEventTypeInput` via:
+// TriggerEventTypeInput is an input type that accepts values of the TriggerEventType enum
+// A concrete instance of `TriggerEventTypeInput` can be one of the following:
 //
-//	TriggerEventTypeArgs{...}
+//	TriggerEventTypeEventTypeUnspecified
+//	TriggerEventTypeRepo
+//	TriggerEventTypeWebhook
+//	TriggerEventTypePubsub
+//	TriggerEventTypeManual
 type TriggerEventTypeInput interface {
 	pulumi.Input
 
@@ -2662,10 +2704,11 @@ func (o TriggerIncludeBuildLogsPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// TriggerIncludeBuildLogsInput is an input type that accepts TriggerIncludeBuildLogsArgs and TriggerIncludeBuildLogsOutput values.
-// You can construct a concrete instance of `TriggerIncludeBuildLogsInput` via:
+// TriggerIncludeBuildLogsInput is an input type that accepts values of the TriggerIncludeBuildLogs enum
+// A concrete instance of `TriggerIncludeBuildLogsInput` can be one of the following:
 //
-//	TriggerIncludeBuildLogsArgs{...}
+//	TriggerIncludeBuildLogsIncludeBuildLogsUnspecified
+//	TriggerIncludeBuildLogsIncludeBuildLogsWithStatus
 type TriggerIncludeBuildLogsInput interface {
 	pulumi.Input
 
@@ -2837,10 +2880,12 @@ func (o WebhookConfigStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// WebhookConfigStateInput is an input type that accepts WebhookConfigStateArgs and WebhookConfigStateOutput values.
-// You can construct a concrete instance of `WebhookConfigStateInput` via:
+// WebhookConfigStateInput is an input type that accepts values of the WebhookConfigState enum
+// A concrete instance of `WebhookConfigStateInput` can be one of the following:
 //
-//	WebhookConfigStateArgs{...}
+//	WebhookConfigStateStateUnspecified
+//	WebhookConfigStateOk
+//	WebhookConfigStateSecretDeleted
 type WebhookConfigStateInput interface {
 	pulumi.Input
 

@@ -152,10 +152,17 @@ func (o AppEngineHttpTargetHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// AppEngineHttpTargetHttpMethodInput is an input type that accepts AppEngineHttpTargetHttpMethodArgs and AppEngineHttpTargetHttpMethodOutput values.
-// You can construct a concrete instance of `AppEngineHttpTargetHttpMethodInput` via:
+// AppEngineHttpTargetHttpMethodInput is an input type that accepts values of the AppEngineHttpTargetHttpMethod enum
+// A concrete instance of `AppEngineHttpTargetHttpMethodInput` can be one of the following:
 //
-//	AppEngineHttpTargetHttpMethodArgs{...}
+//	AppEngineHttpTargetHttpMethodHttpMethodUnspecified
+//	AppEngineHttpTargetHttpMethodPost
+//	AppEngineHttpTargetHttpMethodGet
+//	AppEngineHttpTargetHttpMethodHead
+//	AppEngineHttpTargetHttpMethodPut
+//	AppEngineHttpTargetHttpMethodDelete
+//	AppEngineHttpTargetHttpMethodPatch
+//	AppEngineHttpTargetHttpMethodOptions
 type AppEngineHttpTargetHttpMethodInput interface {
 	pulumi.Input
 
@@ -337,10 +344,17 @@ func (o HttpTargetHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// HttpTargetHttpMethodInput is an input type that accepts HttpTargetHttpMethodArgs and HttpTargetHttpMethodOutput values.
-// You can construct a concrete instance of `HttpTargetHttpMethodInput` via:
+// HttpTargetHttpMethodInput is an input type that accepts values of the HttpTargetHttpMethod enum
+// A concrete instance of `HttpTargetHttpMethodInput` can be one of the following:
 //
-//	HttpTargetHttpMethodArgs{...}
+//	HttpTargetHttpMethodHttpMethodUnspecified
+//	HttpTargetHttpMethodPost
+//	HttpTargetHttpMethodGet
+//	HttpTargetHttpMethodHead
+//	HttpTargetHttpMethodPut
+//	HttpTargetHttpMethodDelete
+//	HttpTargetHttpMethodPatch
+//	HttpTargetHttpMethodOptions
 type HttpTargetHttpMethodInput interface {
 	pulumi.Input
 

@@ -146,10 +146,14 @@ func (o DeviceLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// DeviceLogLevelInput is an input type that accepts DeviceLogLevelArgs and DeviceLogLevelOutput values.
-// You can construct a concrete instance of `DeviceLogLevelInput` via:
+// DeviceLogLevelInput is an input type that accepts values of the DeviceLogLevel enum
+// A concrete instance of `DeviceLogLevelInput` can be one of the following:
 //
-//	DeviceLogLevelArgs{...}
+//	DeviceLogLevelLogLevelUnspecified
+//	DeviceLogLevelNone
+//	DeviceLogLevelError
+//	DeviceLogLevelInfo
+//	DeviceLogLevelDebug
 type DeviceLogLevelInput interface {
 	pulumi.Input
 
@@ -323,10 +327,13 @@ func (o GatewayConfigGatewayAuthMethodPtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// GatewayConfigGatewayAuthMethodInput is an input type that accepts GatewayConfigGatewayAuthMethodArgs and GatewayConfigGatewayAuthMethodOutput values.
-// You can construct a concrete instance of `GatewayConfigGatewayAuthMethodInput` via:
+// GatewayConfigGatewayAuthMethodInput is an input type that accepts values of the GatewayConfigGatewayAuthMethod enum
+// A concrete instance of `GatewayConfigGatewayAuthMethodInput` can be one of the following:
 //
-//	GatewayConfigGatewayAuthMethodArgs{...}
+//	GatewayConfigGatewayAuthMethodGatewayAuthMethodUnspecified
+//	GatewayConfigGatewayAuthMethodAssociationOnly
+//	GatewayConfigGatewayAuthMethodDeviceAuthTokenOnly
+//	GatewayConfigGatewayAuthMethodAssociationAndDeviceAuthToken
 type GatewayConfigGatewayAuthMethodInput interface {
 	pulumi.Input
 
@@ -498,10 +505,12 @@ func (o GatewayConfigGatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// GatewayConfigGatewayTypeInput is an input type that accepts GatewayConfigGatewayTypeArgs and GatewayConfigGatewayTypeOutput values.
-// You can construct a concrete instance of `GatewayConfigGatewayTypeInput` via:
+// GatewayConfigGatewayTypeInput is an input type that accepts values of the GatewayConfigGatewayType enum
+// A concrete instance of `GatewayConfigGatewayTypeInput` can be one of the following:
 //
-//	GatewayConfigGatewayTypeArgs{...}
+//	GatewayConfigGatewayTypeGatewayTypeUnspecified
+//	GatewayConfigGatewayTypeGateway
+//	GatewayConfigGatewayTypeNonGateway
 type GatewayConfigGatewayTypeInput interface {
 	pulumi.Input
 
@@ -673,10 +682,12 @@ func (o HttpConfigHttpEnabledStatePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// HttpConfigHttpEnabledStateInput is an input type that accepts HttpConfigHttpEnabledStateArgs and HttpConfigHttpEnabledStateOutput values.
-// You can construct a concrete instance of `HttpConfigHttpEnabledStateInput` via:
+// HttpConfigHttpEnabledStateInput is an input type that accepts values of the HttpConfigHttpEnabledState enum
+// A concrete instance of `HttpConfigHttpEnabledStateInput` can be one of the following:
 //
-//	HttpConfigHttpEnabledStateArgs{...}
+//	HttpConfigHttpEnabledStateHttpStateUnspecified
+//	HttpConfigHttpEnabledStateHttpEnabled
+//	HttpConfigHttpEnabledStateHttpDisabled
 type HttpConfigHttpEnabledStateInput interface {
 	pulumi.Input
 
@@ -848,10 +859,12 @@ func (o MqttConfigMqttEnabledStatePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// MqttConfigMqttEnabledStateInput is an input type that accepts MqttConfigMqttEnabledStateArgs and MqttConfigMqttEnabledStateOutput values.
-// You can construct a concrete instance of `MqttConfigMqttEnabledStateInput` via:
+// MqttConfigMqttEnabledStateInput is an input type that accepts values of the MqttConfigMqttEnabledState enum
+// A concrete instance of `MqttConfigMqttEnabledStateInput` can be one of the following:
 //
-//	MqttConfigMqttEnabledStateArgs{...}
+//	MqttConfigMqttEnabledStateMqttStateUnspecified
+//	MqttConfigMqttEnabledStateMqttEnabled
+//	MqttConfigMqttEnabledStateMqttDisabled
 type MqttConfigMqttEnabledStateInput interface {
 	pulumi.Input
 
@@ -1021,10 +1034,11 @@ func (o PublicKeyCertificateFormatPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// PublicKeyCertificateFormatInput is an input type that accepts PublicKeyCertificateFormatArgs and PublicKeyCertificateFormatOutput values.
-// You can construct a concrete instance of `PublicKeyCertificateFormatInput` via:
+// PublicKeyCertificateFormatInput is an input type that accepts values of the PublicKeyCertificateFormat enum
+// A concrete instance of `PublicKeyCertificateFormatInput` can be one of the following:
 //
-//	PublicKeyCertificateFormatArgs{...}
+//	PublicKeyCertificateFormatUnspecifiedPublicKeyCertificateFormat
+//	PublicKeyCertificateFormatX509CertificatePem
 type PublicKeyCertificateFormatInput interface {
 	pulumi.Input
 
@@ -1200,10 +1214,14 @@ func (o PublicKeyCredentialFormatPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// PublicKeyCredentialFormatInput is an input type that accepts PublicKeyCredentialFormatArgs and PublicKeyCredentialFormatOutput values.
-// You can construct a concrete instance of `PublicKeyCredentialFormatInput` via:
+// PublicKeyCredentialFormatInput is an input type that accepts values of the PublicKeyCredentialFormat enum
+// A concrete instance of `PublicKeyCredentialFormatInput` can be one of the following:
 //
-//	PublicKeyCredentialFormatArgs{...}
+//	PublicKeyCredentialFormatUnspecifiedPublicKeyFormat
+//	PublicKeyCredentialFormatRsaPem
+//	PublicKeyCredentialFormatRsaX509Pem
+//	PublicKeyCredentialFormatEs256Pem
+//	PublicKeyCredentialFormatEs256X509Pem
 type PublicKeyCredentialFormatInput interface {
 	pulumi.Input
 
@@ -1379,10 +1397,14 @@ func (o RegistryLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// RegistryLogLevelInput is an input type that accepts RegistryLogLevelArgs and RegistryLogLevelOutput values.
-// You can construct a concrete instance of `RegistryLogLevelInput` via:
+// RegistryLogLevelInput is an input type that accepts values of the RegistryLogLevel enum
+// A concrete instance of `RegistryLogLevelInput` can be one of the following:
 //
-//	RegistryLogLevelArgs{...}
+//	RegistryLogLevelLogLevelUnspecified
+//	RegistryLogLevelNone
+//	RegistryLogLevelError
+//	RegistryLogLevelInfo
+//	RegistryLogLevelDebug
 type RegistryLogLevelInput interface {
 	pulumi.Input
 

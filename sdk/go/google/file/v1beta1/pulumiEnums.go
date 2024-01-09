@@ -142,10 +142,12 @@ func (o InstanceProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceProtocolInput is an input type that accepts InstanceProtocolArgs and InstanceProtocolOutput values.
-// You can construct a concrete instance of `InstanceProtocolInput` via:
+// InstanceProtocolInput is an input type that accepts values of the InstanceProtocol enum
+// A concrete instance of `InstanceProtocolInput` can be one of the following:
 //
-//	InstanceProtocolArgs{...}
+//	InstanceProtocolFileProtocolUnspecified
+//	InstanceProtocolNfsV3
+//	InstanceProtocolNfsV41
 type InstanceProtocolInput interface {
 	pulumi.Input
 
@@ -329,10 +331,18 @@ func (o InstanceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceTierInput is an input type that accepts InstanceTierArgs and InstanceTierOutput values.
-// You can construct a concrete instance of `InstanceTierInput` via:
+// InstanceTierInput is an input type that accepts values of the InstanceTier enum
+// A concrete instance of `InstanceTierInput` can be one of the following:
 //
-//	InstanceTierArgs{...}
+//	InstanceTierTierUnspecified
+//	InstanceTierStandard
+//	InstanceTierPremium
+//	InstanceTierBasicHdd
+//	InstanceTierBasicSsd
+//	InstanceTierHighScaleSsd
+//	InstanceTierEnterprise
+//	InstanceTierZonal
+//	InstanceTierRegional
 type InstanceTierInput interface {
 	pulumi.Input
 
@@ -504,10 +514,12 @@ func (o NetworkConfigConnectModePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkConfigConnectModeInput is an input type that accepts NetworkConfigConnectModeArgs and NetworkConfigConnectModeOutput values.
-// You can construct a concrete instance of `NetworkConfigConnectModeInput` via:
+// NetworkConfigConnectModeInput is an input type that accepts values of the NetworkConfigConnectMode enum
+// A concrete instance of `NetworkConfigConnectModeInput` can be one of the following:
 //
-//	NetworkConfigConnectModeArgs{...}
+//	NetworkConfigConnectModeConnectModeUnspecified
+//	NetworkConfigConnectModeDirectPeering
+//	NetworkConfigConnectModePrivateServiceAccess
 type NetworkConfigConnectModeInput interface {
 	pulumi.Input
 
@@ -676,10 +688,11 @@ func (o NetworkConfigModesItemPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkConfigModesItemInput is an input type that accepts NetworkConfigModesItemArgs and NetworkConfigModesItemOutput values.
-// You can construct a concrete instance of `NetworkConfigModesItemInput` via:
+// NetworkConfigModesItemInput is an input type that accepts values of the NetworkConfigModesItem enum
+// A concrete instance of `NetworkConfigModesItemInput` can be one of the following:
 //
-//	NetworkConfigModesItemArgs{...}
+//	NetworkConfigModesItemAddressModeUnspecified
+//	NetworkConfigModesItemModeIpv4
 type NetworkConfigModesItemInput interface {
 	pulumi.Input
 
@@ -896,10 +909,12 @@ func (o NfsExportOptionsAccessModePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// NfsExportOptionsAccessModeInput is an input type that accepts NfsExportOptionsAccessModeArgs and NfsExportOptionsAccessModeOutput values.
-// You can construct a concrete instance of `NfsExportOptionsAccessModeInput` via:
+// NfsExportOptionsAccessModeInput is an input type that accepts values of the NfsExportOptionsAccessMode enum
+// A concrete instance of `NfsExportOptionsAccessModeInput` can be one of the following:
 //
-//	NfsExportOptionsAccessModeArgs{...}
+//	NfsExportOptionsAccessModeAccessModeUnspecified
+//	NfsExportOptionsAccessModeReadOnly
+//	NfsExportOptionsAccessModeReadWrite
 type NfsExportOptionsAccessModeInput interface {
 	pulumi.Input
 
@@ -1074,10 +1089,14 @@ func (o NfsExportOptionsSecurityFlavorsItemPtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// NfsExportOptionsSecurityFlavorsItemInput is an input type that accepts NfsExportOptionsSecurityFlavorsItemArgs and NfsExportOptionsSecurityFlavorsItemOutput values.
-// You can construct a concrete instance of `NfsExportOptionsSecurityFlavorsItemInput` via:
+// NfsExportOptionsSecurityFlavorsItemInput is an input type that accepts values of the NfsExportOptionsSecurityFlavorsItem enum
+// A concrete instance of `NfsExportOptionsSecurityFlavorsItemInput` can be one of the following:
 //
-//	NfsExportOptionsSecurityFlavorsItemArgs{...}
+//	NfsExportOptionsSecurityFlavorsItemSecurityFlavorUnspecified
+//	NfsExportOptionsSecurityFlavorsItemAuthSys
+//	NfsExportOptionsSecurityFlavorsItemKrb5
+//	NfsExportOptionsSecurityFlavorsItemKrb5i
+//	NfsExportOptionsSecurityFlavorsItemKrb5p
 type NfsExportOptionsSecurityFlavorsItemInput interface {
 	pulumi.Input
 
@@ -1294,10 +1313,12 @@ func (o NfsExportOptionsSquashModePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// NfsExportOptionsSquashModeInput is an input type that accepts NfsExportOptionsSquashModeArgs and NfsExportOptionsSquashModeOutput values.
-// You can construct a concrete instance of `NfsExportOptionsSquashModeInput` via:
+// NfsExportOptionsSquashModeInput is an input type that accepts values of the NfsExportOptionsSquashMode enum
+// A concrete instance of `NfsExportOptionsSquashModeInput` can be one of the following:
 //
-//	NfsExportOptionsSquashModeArgs{...}
+//	NfsExportOptionsSquashModeSquashModeUnspecified
+//	NfsExportOptionsSquashModeNoRootSquash
+//	NfsExportOptionsSquashModeRootSquash
 type NfsExportOptionsSquashModeInput interface {
 	pulumi.Input
 

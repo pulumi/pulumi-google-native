@@ -142,10 +142,12 @@ func (o ConversationStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConversationStateEnumInput is an input type that accepts ConversationStateEnumArgs and ConversationStateEnumOutput values.
-// You can construct a concrete instance of `ConversationStateEnumInput` via:
+// ConversationStateEnumInput is an input type that accepts values of the ConversationStateEnum enum
+// A concrete instance of `ConversationStateEnumInput` can be one of the following:
 //
-//	ConversationStateEnumArgs{...}
+//	ConversationStateEnumStateUnspecified
+//	ConversationStateEnumInProgress
+//	ConversationStateEnumCompleted
 type ConversationStateEnumInput interface {
 	pulumi.Input
 
@@ -319,10 +321,13 @@ func (o DataStoreContentConfigPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataStoreContentConfigInput is an input type that accepts DataStoreContentConfigArgs and DataStoreContentConfigOutput values.
-// You can construct a concrete instance of `DataStoreContentConfigInput` via:
+// DataStoreContentConfigInput is an input type that accepts values of the DataStoreContentConfig enum
+// A concrete instance of `DataStoreContentConfigInput` can be one of the following:
 //
-//	DataStoreContentConfigArgs{...}
+//	DataStoreContentConfigContentConfigUnspecified
+//	DataStoreContentConfigNoContent
+//	DataStoreContentConfigContentRequired
+//	DataStoreContentConfigPublicWebsite
 type DataStoreContentConfigInput interface {
 	pulumi.Input
 
@@ -494,10 +499,12 @@ func (o DataStoreIndustryVerticalPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataStoreIndustryVerticalInput is an input type that accepts DataStoreIndustryVerticalArgs and DataStoreIndustryVerticalOutput values.
-// You can construct a concrete instance of `DataStoreIndustryVerticalInput` via:
+// DataStoreIndustryVerticalInput is an input type that accepts values of the DataStoreIndustryVertical enum
+// A concrete instance of `DataStoreIndustryVerticalInput` can be one of the following:
 //
-//	DataStoreIndustryVerticalArgs{...}
+//	DataStoreIndustryVerticalIndustryVerticalUnspecified
+//	DataStoreIndustryVerticalGeneric
+//	DataStoreIndustryVerticalMedia
 type DataStoreIndustryVerticalInput interface {
 	pulumi.Input
 
@@ -670,10 +677,13 @@ func (o DataStoreSolutionTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataStoreSolutionTypesItemInput is an input type that accepts DataStoreSolutionTypesItemArgs and DataStoreSolutionTypesItemOutput values.
-// You can construct a concrete instance of `DataStoreSolutionTypesItemInput` via:
+// DataStoreSolutionTypesItemInput is an input type that accepts values of the DataStoreSolutionTypesItem enum
+// A concrete instance of `DataStoreSolutionTypesItemInput` can be one of the following:
 //
-//	DataStoreSolutionTypesItemArgs{...}
+//	DataStoreSolutionTypesItemSolutionTypeUnspecified
+//	DataStoreSolutionTypesItemSolutionTypeRecommendation
+//	DataStoreSolutionTypesItemSolutionTypeSearch
+//	DataStoreSolutionTypesItemSolutionTypeChat
 type DataStoreSolutionTypesItemInput interface {
 	pulumi.Input
 
@@ -890,10 +900,12 @@ func (o EngineIndustryVerticalPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// EngineIndustryVerticalInput is an input type that accepts EngineIndustryVerticalArgs and EngineIndustryVerticalOutput values.
-// You can construct a concrete instance of `EngineIndustryVerticalInput` via:
+// EngineIndustryVerticalInput is an input type that accepts values of the EngineIndustryVertical enum
+// A concrete instance of `EngineIndustryVerticalInput` can be one of the following:
 //
-//	EngineIndustryVerticalArgs{...}
+//	EngineIndustryVerticalIndustryVerticalUnspecified
+//	EngineIndustryVerticalGeneric
+//	EngineIndustryVerticalMedia
 type EngineIndustryVerticalInput interface {
 	pulumi.Input
 
@@ -1067,10 +1079,13 @@ func (o EngineSolutionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// EngineSolutionTypeInput is an input type that accepts EngineSolutionTypeArgs and EngineSolutionTypeOutput values.
-// You can construct a concrete instance of `EngineSolutionTypeInput` via:
+// EngineSolutionTypeInput is an input type that accepts values of the EngineSolutionType enum
+// A concrete instance of `EngineSolutionTypeInput` can be one of the following:
 //
-//	EngineSolutionTypeArgs{...}
+//	EngineSolutionTypeSolutionTypeUnspecified
+//	EngineSolutionTypeSolutionTypeRecommendation
+//	EngineSolutionTypeSolutionTypeSearch
+//	EngineSolutionTypeSolutionTypeChat
 type EngineSolutionTypeInput interface {
 	pulumi.Input
 
@@ -1242,10 +1257,12 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTr
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateInput is an input type that accepts GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateArgs and GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateOutput values.
-// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateInput` via:
+// GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateInput is an input type that accepts values of the GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState enum
+// A concrete instance of `GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateInput` can be one of the following:
 //
-//	GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateArgs{...}
+//	GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateTrainingStateUnspecified
+//	GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStatePaused
+//	GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateTraining
 type GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStateInput interface {
 	pulumi.Input
 
@@ -1414,10 +1431,11 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsIte
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemInput is an input type that accepts GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArgs and GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemOutput values.
-// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemInput` via:
+// GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemInput is an input type that accepts values of the GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem enum
+// A concrete instance of `GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemInput` can be one of the following:
 //
-//	GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArgs{...}
+//	GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemSearchAddOnUnspecified
+//	GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemSearchAddOnLlm
 type GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemInput interface {
 	pulumi.Input
 
@@ -1634,10 +1652,12 @@ func (o GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierInput is an input type that accepts GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierArgs and GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierOutput values.
-// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierInput` via:
+// GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierInput is an input type that accepts values of the GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier enum
+// A concrete instance of `GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierInput` can be one of the following:
 //
-//	GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierArgs{...}
+//	GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierSearchTierUnspecified
+//	GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierSearchTierStandard
+//	GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierSearchTierEnterprise
 type GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierInput interface {
 	pulumi.Input
 
@@ -1814,10 +1834,15 @@ func (o GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReas
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemInput is an input type that accepts GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArgs and GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemOutput values.
-// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemInput` via:
+// GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemInput is an input type that accepts values of the GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem enum
+// A concrete instance of `GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemInput` can be one of the following:
 //
-//	GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArgs{...}
+//	GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemSummarySkippedReasonUnspecified
+//	GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemAdversarialQueryIgnored
+//	GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemNonSummarySeekingQueryIgnored
+//	GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemOutOfDomainQueryIgnored
+//	GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPotentialPolicyViolation
+//	GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemLlmAddonNotEnabled
 type GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemInput interface {
 	pulumi.Input
 

@@ -142,10 +142,12 @@ func (o CustomConstraintActionTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// CustomConstraintActionTypeInput is an input type that accepts CustomConstraintActionTypeArgs and CustomConstraintActionTypeOutput values.
-// You can construct a concrete instance of `CustomConstraintActionTypeInput` via:
+// CustomConstraintActionTypeInput is an input type that accepts values of the CustomConstraintActionType enum
+// A concrete instance of `CustomConstraintActionTypeInput` can be one of the following:
 //
-//	CustomConstraintActionTypeArgs{...}
+//	CustomConstraintActionTypeActionTypeUnspecified
+//	CustomConstraintActionTypeAllow
+//	CustomConstraintActionTypeDeny
 type CustomConstraintActionTypeInput interface {
 	pulumi.Input
 
@@ -318,10 +320,13 @@ func (o CustomConstraintMethodTypesItemPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// CustomConstraintMethodTypesItemInput is an input type that accepts CustomConstraintMethodTypesItemArgs and CustomConstraintMethodTypesItemOutput values.
-// You can construct a concrete instance of `CustomConstraintMethodTypesItemInput` via:
+// CustomConstraintMethodTypesItemInput is an input type that accepts values of the CustomConstraintMethodTypesItem enum
+// A concrete instance of `CustomConstraintMethodTypesItemInput` can be one of the following:
 //
-//	CustomConstraintMethodTypesItemArgs{...}
+//	CustomConstraintMethodTypesItemMethodTypeUnspecified
+//	CustomConstraintMethodTypesItemCreate
+//	CustomConstraintMethodTypesItemUpdate
+//	CustomConstraintMethodTypesItemDelete
 type CustomConstraintMethodTypesItemInput interface {
 	pulumi.Input
 

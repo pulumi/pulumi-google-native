@@ -145,10 +145,14 @@ func (o WorkerPoolRegionsItemPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkerPoolRegionsItemInput is an input type that accepts WorkerPoolRegionsItemArgs and WorkerPoolRegionsItemOutput values.
-// You can construct a concrete instance of `WorkerPoolRegionsItemInput` via:
+// WorkerPoolRegionsItemInput is an input type that accepts values of the WorkerPoolRegionsItem enum
+// A concrete instance of `WorkerPoolRegionsItemInput` can be one of the following:
 //
-//	WorkerPoolRegionsItemArgs{...}
+//	WorkerPoolRegionsItemRegionUnspecified
+//	WorkerPoolRegionsItemUsCentral1
+//	WorkerPoolRegionsItemUsWest1
+//	WorkerPoolRegionsItemUsEast1
+//	WorkerPoolRegionsItemUsEast4
 type WorkerPoolRegionsItemInput interface {
 	pulumi.Input
 

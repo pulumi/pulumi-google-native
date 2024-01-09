@@ -174,10 +174,28 @@ func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// PkixPublicKeySignatureAlgorithmInput is an input type that accepts PkixPublicKeySignatureAlgorithmArgs and PkixPublicKeySignatureAlgorithmOutput values.
-// You can construct a concrete instance of `PkixPublicKeySignatureAlgorithmInput` via:
+// PkixPublicKeySignatureAlgorithmInput is an input type that accepts values of the PkixPublicKeySignatureAlgorithm enum
+// A concrete instance of `PkixPublicKeySignatureAlgorithmInput` can be one of the following:
 //
-//	PkixPublicKeySignatureAlgorithmArgs{...}
+//	PkixPublicKeySignatureAlgorithmSignatureAlgorithmUnspecified
+//	PkixPublicKeySignatureAlgorithmRsaPss2048Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPss2048Sha256
+//	PkixPublicKeySignatureAlgorithmRsaPss3072Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPss3072Sha256
+//	PkixPublicKeySignatureAlgorithmRsaPss4096Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPss4096Sha256
+//	PkixPublicKeySignatureAlgorithmRsaPss4096Sha512
+//	PkixPublicKeySignatureAlgorithmRsaSignPss4096Sha512
+//	PkixPublicKeySignatureAlgorithmRsaSignPkcs12048Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPkcs13072Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPkcs14096Sha256
+//	PkixPublicKeySignatureAlgorithmRsaSignPkcs14096Sha512
+//	PkixPublicKeySignatureAlgorithmEcdsaP256Sha256
+//	PkixPublicKeySignatureAlgorithmEcSignP256Sha256
+//	PkixPublicKeySignatureAlgorithmEcdsaP384Sha384
+//	PkixPublicKeySignatureAlgorithmEcSignP384Sha384
+//	PkixPublicKeySignatureAlgorithmEcdsaP521Sha512
+//	PkixPublicKeySignatureAlgorithmEcSignP521Sha512
 type PkixPublicKeySignatureAlgorithmInput interface {
 	pulumi.Input
 

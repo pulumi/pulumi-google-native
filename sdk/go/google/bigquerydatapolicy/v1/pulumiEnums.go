@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -329,10 +332,17 @@ func (o DataMaskingPolicyPredefinedExpressionPtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataMaskingPolicyPredefinedExpressionInput is an input type that accepts DataMaskingPolicyPredefinedExpressionArgs and DataMaskingPolicyPredefinedExpressionOutput values.
-// You can construct a concrete instance of `DataMaskingPolicyPredefinedExpressionInput` via:
+// DataMaskingPolicyPredefinedExpressionInput is an input type that accepts values of the DataMaskingPolicyPredefinedExpression enum
+// A concrete instance of `DataMaskingPolicyPredefinedExpressionInput` can be one of the following:
 //
-//	DataMaskingPolicyPredefinedExpressionArgs{...}
+//	DataMaskingPolicyPredefinedExpressionPredefinedExpressionUnspecified
+//	DataMaskingPolicyPredefinedExpressionSha256
+//	DataMaskingPolicyPredefinedExpressionAlwaysNull
+//	DataMaskingPolicyPredefinedExpressionDefaultMaskingValue
+//	DataMaskingPolicyPredefinedExpressionLastFourCharacters
+//	DataMaskingPolicyPredefinedExpressionFirstFourCharacters
+//	DataMaskingPolicyPredefinedExpressionEmailMask
+//	DataMaskingPolicyPredefinedExpressionDateYearMask
 type DataMaskingPolicyPredefinedExpressionInput interface {
 	pulumi.Input
 
@@ -504,10 +514,12 @@ func (o DataPolicyDataPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataPolicyDataPolicyTypeInput is an input type that accepts DataPolicyDataPolicyTypeArgs and DataPolicyDataPolicyTypeOutput values.
-// You can construct a concrete instance of `DataPolicyDataPolicyTypeInput` via:
+// DataPolicyDataPolicyTypeInput is an input type that accepts values of the DataPolicyDataPolicyType enum
+// A concrete instance of `DataPolicyDataPolicyTypeInput` can be one of the following:
 //
-//	DataPolicyDataPolicyTypeArgs{...}
+//	DataPolicyDataPolicyTypeDataPolicyTypeUnspecified
+//	DataPolicyDataPolicyTypeColumnLevelSecurityPolicy
+//	DataPolicyDataPolicyTypeDataMaskingPolicy
 type DataPolicyDataPolicyTypeInput interface {
 	pulumi.Input
 
