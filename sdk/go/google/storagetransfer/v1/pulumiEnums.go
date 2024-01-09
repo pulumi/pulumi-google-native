@@ -141,10 +141,12 @@ func (o LoggingConfigLogActionStatesItemPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// LoggingConfigLogActionStatesItemInput is an input type that accepts LoggingConfigLogActionStatesItemArgs and LoggingConfigLogActionStatesItemOutput values.
-// You can construct a concrete instance of `LoggingConfigLogActionStatesItemInput` via:
+// LoggingConfigLogActionStatesItemInput is an input type that accepts values of the LoggingConfigLogActionStatesItem enum
+// A concrete instance of `LoggingConfigLogActionStatesItemInput` can be one of the following:
 //
-//	LoggingConfigLogActionStatesItemArgs{...}
+//	LoggingConfigLogActionStatesItemLoggableActionStateUnspecified
+//	LoggingConfigLogActionStatesItemSucceeded
+//	LoggingConfigLogActionStatesItemFailed
 type LoggingConfigLogActionStatesItemInput interface {
 	pulumi.Input
 
@@ -362,10 +364,13 @@ func (o LoggingConfigLogActionsItemPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// LoggingConfigLogActionsItemInput is an input type that accepts LoggingConfigLogActionsItemArgs and LoggingConfigLogActionsItemOutput values.
-// You can construct a concrete instance of `LoggingConfigLogActionsItemInput` via:
+// LoggingConfigLogActionsItemInput is an input type that accepts values of the LoggingConfigLogActionsItem enum
+// A concrete instance of `LoggingConfigLogActionsItemInput` can be one of the following:
 //
-//	LoggingConfigLogActionsItemArgs{...}
+//	LoggingConfigLogActionsItemLoggableActionUnspecified
+//	LoggingConfigLogActionsItemFind
+//	LoggingConfigLogActionsItemDelete
+//	LoggingConfigLogActionsItemCopy
 type LoggingConfigLogActionsItemInput interface {
 	pulumi.Input
 
@@ -582,10 +587,12 @@ func (o MetadataOptionsAclPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataOptionsAclInput is an input type that accepts MetadataOptionsAclArgs and MetadataOptionsAclOutput values.
-// You can construct a concrete instance of `MetadataOptionsAclInput` via:
+// MetadataOptionsAclInput is an input type that accepts values of the MetadataOptionsAcl enum
+// A concrete instance of `MetadataOptionsAclInput` can be one of the following:
 //
-//	MetadataOptionsAclArgs{...}
+//	MetadataOptionsAclAclUnspecified
+//	MetadataOptionsAclAclDestinationBucketDefault
+//	MetadataOptionsAclAclPreserve
 type MetadataOptionsAclInput interface {
 	pulumi.Input
 
@@ -757,10 +764,12 @@ func (o MetadataOptionsGidPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataOptionsGidInput is an input type that accepts MetadataOptionsGidArgs and MetadataOptionsGidOutput values.
-// You can construct a concrete instance of `MetadataOptionsGidInput` via:
+// MetadataOptionsGidInput is an input type that accepts values of the MetadataOptionsGid enum
+// A concrete instance of `MetadataOptionsGidInput` can be one of the following:
 //
-//	MetadataOptionsGidArgs{...}
+//	MetadataOptionsGidGidUnspecified
+//	MetadataOptionsGidGidSkip
+//	MetadataOptionsGidGidNumber
 type MetadataOptionsGidInput interface {
 	pulumi.Input
 
@@ -932,10 +941,12 @@ func (o MetadataOptionsKmsKeyPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataOptionsKmsKeyInput is an input type that accepts MetadataOptionsKmsKeyArgs and MetadataOptionsKmsKeyOutput values.
-// You can construct a concrete instance of `MetadataOptionsKmsKeyInput` via:
+// MetadataOptionsKmsKeyInput is an input type that accepts values of the MetadataOptionsKmsKey enum
+// A concrete instance of `MetadataOptionsKmsKeyInput` can be one of the following:
 //
-//	MetadataOptionsKmsKeyArgs{...}
+//	MetadataOptionsKmsKeyKmsKeyUnspecified
+//	MetadataOptionsKmsKeyKmsKeyDestinationBucketDefault
+//	MetadataOptionsKmsKeyKmsKeyPreserve
 type MetadataOptionsKmsKeyInput interface {
 	pulumi.Input
 
@@ -1107,10 +1118,12 @@ func (o MetadataOptionsModePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataOptionsModeInput is an input type that accepts MetadataOptionsModeArgs and MetadataOptionsModeOutput values.
-// You can construct a concrete instance of `MetadataOptionsModeInput` via:
+// MetadataOptionsModeInput is an input type that accepts values of the MetadataOptionsMode enum
+// A concrete instance of `MetadataOptionsModeInput` can be one of the following:
 //
-//	MetadataOptionsModeArgs{...}
+//	MetadataOptionsModeModeUnspecified
+//	MetadataOptionsModeModeSkip
+//	MetadataOptionsModeModePreserve
 type MetadataOptionsModeInput interface {
 	pulumi.Input
 
@@ -1290,10 +1303,16 @@ func (o MetadataOptionsStorageClassPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataOptionsStorageClassInput is an input type that accepts MetadataOptionsStorageClassArgs and MetadataOptionsStorageClassOutput values.
-// You can construct a concrete instance of `MetadataOptionsStorageClassInput` via:
+// MetadataOptionsStorageClassInput is an input type that accepts values of the MetadataOptionsStorageClass enum
+// A concrete instance of `MetadataOptionsStorageClassInput` can be one of the following:
 //
-//	MetadataOptionsStorageClassArgs{...}
+//	MetadataOptionsStorageClassStorageClassUnspecified
+//	MetadataOptionsStorageClassStorageClassDestinationBucketDefault
+//	MetadataOptionsStorageClassStorageClassPreserve
+//	MetadataOptionsStorageClassStorageClassStandard
+//	MetadataOptionsStorageClassStorageClassNearline
+//	MetadataOptionsStorageClassStorageClassColdline
+//	MetadataOptionsStorageClassStorageClassArchive
 type MetadataOptionsStorageClassInput interface {
 	pulumi.Input
 
@@ -1465,10 +1484,12 @@ func (o MetadataOptionsSymlinkPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataOptionsSymlinkInput is an input type that accepts MetadataOptionsSymlinkArgs and MetadataOptionsSymlinkOutput values.
-// You can construct a concrete instance of `MetadataOptionsSymlinkInput` via:
+// MetadataOptionsSymlinkInput is an input type that accepts values of the MetadataOptionsSymlink enum
+// A concrete instance of `MetadataOptionsSymlinkInput` can be one of the following:
 //
-//	MetadataOptionsSymlinkArgs{...}
+//	MetadataOptionsSymlinkSymlinkUnspecified
+//	MetadataOptionsSymlinkSymlinkSkip
+//	MetadataOptionsSymlinkSymlinkPreserve
 type MetadataOptionsSymlinkInput interface {
 	pulumi.Input
 
@@ -1640,10 +1661,12 @@ func (o MetadataOptionsTemporaryHoldPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataOptionsTemporaryHoldInput is an input type that accepts MetadataOptionsTemporaryHoldArgs and MetadataOptionsTemporaryHoldOutput values.
-// You can construct a concrete instance of `MetadataOptionsTemporaryHoldInput` via:
+// MetadataOptionsTemporaryHoldInput is an input type that accepts values of the MetadataOptionsTemporaryHold enum
+// A concrete instance of `MetadataOptionsTemporaryHoldInput` can be one of the following:
 //
-//	MetadataOptionsTemporaryHoldArgs{...}
+//	MetadataOptionsTemporaryHoldTemporaryHoldUnspecified
+//	MetadataOptionsTemporaryHoldTemporaryHoldSkip
+//	MetadataOptionsTemporaryHoldTemporaryHoldPreserve
 type MetadataOptionsTemporaryHoldInput interface {
 	pulumi.Input
 
@@ -1815,10 +1838,12 @@ func (o MetadataOptionsTimeCreatedPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataOptionsTimeCreatedInput is an input type that accepts MetadataOptionsTimeCreatedArgs and MetadataOptionsTimeCreatedOutput values.
-// You can construct a concrete instance of `MetadataOptionsTimeCreatedInput` via:
+// MetadataOptionsTimeCreatedInput is an input type that accepts values of the MetadataOptionsTimeCreated enum
+// A concrete instance of `MetadataOptionsTimeCreatedInput` can be one of the following:
 //
-//	MetadataOptionsTimeCreatedArgs{...}
+//	MetadataOptionsTimeCreatedTimeCreatedUnspecified
+//	MetadataOptionsTimeCreatedTimeCreatedSkip
+//	MetadataOptionsTimeCreatedTimeCreatedPreserveAsCustomTime
 type MetadataOptionsTimeCreatedInput interface {
 	pulumi.Input
 
@@ -1990,10 +2015,12 @@ func (o MetadataOptionsUidPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataOptionsUidInput is an input type that accepts MetadataOptionsUidArgs and MetadataOptionsUidOutput values.
-// You can construct a concrete instance of `MetadataOptionsUidInput` via:
+// MetadataOptionsUidInput is an input type that accepts values of the MetadataOptionsUid enum
+// A concrete instance of `MetadataOptionsUidInput` can be one of the following:
 //
-//	MetadataOptionsUidArgs{...}
+//	MetadataOptionsUidUidUnspecified
+//	MetadataOptionsUidUidSkip
+//	MetadataOptionsUidUidNumber
 type MetadataOptionsUidInput interface {
 	pulumi.Input
 
@@ -2166,10 +2193,13 @@ func (o NotificationConfigEventTypesItemPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// NotificationConfigEventTypesItemInput is an input type that accepts NotificationConfigEventTypesItemArgs and NotificationConfigEventTypesItemOutput values.
-// You can construct a concrete instance of `NotificationConfigEventTypesItemInput` via:
+// NotificationConfigEventTypesItemInput is an input type that accepts values of the NotificationConfigEventTypesItem enum
+// A concrete instance of `NotificationConfigEventTypesItemInput` can be one of the following:
 //
-//	NotificationConfigEventTypesItemArgs{...}
+//	NotificationConfigEventTypesItemEventTypeUnspecified
+//	NotificationConfigEventTypesItemTransferOperationSuccess
+//	NotificationConfigEventTypesItemTransferOperationFailed
+//	NotificationConfigEventTypesItemTransferOperationAborted
 type NotificationConfigEventTypesItemInput interface {
 	pulumi.Input
 
@@ -2386,10 +2416,12 @@ func (o NotificationConfigPayloadFormatPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// NotificationConfigPayloadFormatInput is an input type that accepts NotificationConfigPayloadFormatArgs and NotificationConfigPayloadFormatOutput values.
-// You can construct a concrete instance of `NotificationConfigPayloadFormatInput` via:
+// NotificationConfigPayloadFormatInput is an input type that accepts values of the NotificationConfigPayloadFormat enum
+// A concrete instance of `NotificationConfigPayloadFormatInput` can be one of the following:
 //
-//	NotificationConfigPayloadFormatArgs{...}
+//	NotificationConfigPayloadFormatPayloadFormatUnspecified
+//	NotificationConfigPayloadFormatNone
+//	NotificationConfigPayloadFormatJson
 type NotificationConfigPayloadFormatInput interface {
 	pulumi.Input
 
@@ -2561,10 +2593,12 @@ func (o S3CompatibleMetadataAuthMethodPtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// S3CompatibleMetadataAuthMethodInput is an input type that accepts S3CompatibleMetadataAuthMethodArgs and S3CompatibleMetadataAuthMethodOutput values.
-// You can construct a concrete instance of `S3CompatibleMetadataAuthMethodInput` via:
+// S3CompatibleMetadataAuthMethodInput is an input type that accepts values of the S3CompatibleMetadataAuthMethod enum
+// A concrete instance of `S3CompatibleMetadataAuthMethodInput` can be one of the following:
 //
-//	S3CompatibleMetadataAuthMethodArgs{...}
+//	S3CompatibleMetadataAuthMethodAuthMethodUnspecified
+//	S3CompatibleMetadataAuthMethodAuthMethodAwsSignatureV4
+//	S3CompatibleMetadataAuthMethodAuthMethodAwsSignatureV2
 type S3CompatibleMetadataAuthMethodInput interface {
 	pulumi.Input
 
@@ -2736,10 +2770,12 @@ func (o S3CompatibleMetadataListApiPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// S3CompatibleMetadataListApiInput is an input type that accepts S3CompatibleMetadataListApiArgs and S3CompatibleMetadataListApiOutput values.
-// You can construct a concrete instance of `S3CompatibleMetadataListApiInput` via:
+// S3CompatibleMetadataListApiInput is an input type that accepts values of the S3CompatibleMetadataListApi enum
+// A concrete instance of `S3CompatibleMetadataListApiInput` can be one of the following:
 //
-//	S3CompatibleMetadataListApiArgs{...}
+//	S3CompatibleMetadataListApiListApiUnspecified
+//	S3CompatibleMetadataListApiListObjectsV2
+//	S3CompatibleMetadataListApiListObjects
 type S3CompatibleMetadataListApiInput interface {
 	pulumi.Input
 
@@ -2911,10 +2947,12 @@ func (o S3CompatibleMetadataProtocolPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// S3CompatibleMetadataProtocolInput is an input type that accepts S3CompatibleMetadataProtocolArgs and S3CompatibleMetadataProtocolOutput values.
-// You can construct a concrete instance of `S3CompatibleMetadataProtocolInput` via:
+// S3CompatibleMetadataProtocolInput is an input type that accepts values of the S3CompatibleMetadataProtocol enum
+// A concrete instance of `S3CompatibleMetadataProtocolInput` can be one of the following:
 //
-//	S3CompatibleMetadataProtocolArgs{...}
+//	S3CompatibleMetadataProtocolNetworkProtocolUnspecified
+//	S3CompatibleMetadataProtocolNetworkProtocolHttps
+//	S3CompatibleMetadataProtocolNetworkProtocolHttp
 type S3CompatibleMetadataProtocolInput interface {
 	pulumi.Input
 
@@ -3086,10 +3124,12 @@ func (o S3CompatibleMetadataRequestModelPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// S3CompatibleMetadataRequestModelInput is an input type that accepts S3CompatibleMetadataRequestModelArgs and S3CompatibleMetadataRequestModelOutput values.
-// You can construct a concrete instance of `S3CompatibleMetadataRequestModelInput` via:
+// S3CompatibleMetadataRequestModelInput is an input type that accepts values of the S3CompatibleMetadataRequestModel enum
+// A concrete instance of `S3CompatibleMetadataRequestModelInput` can be one of the following:
 //
-//	S3CompatibleMetadataRequestModelArgs{...}
+//	S3CompatibleMetadataRequestModelRequestModelUnspecified
+//	S3CompatibleMetadataRequestModelRequestModelVirtualHostedStyle
+//	S3CompatibleMetadataRequestModelRequestModelPathStyle
 type S3CompatibleMetadataRequestModelInput interface {
 	pulumi.Input
 
@@ -3263,10 +3303,13 @@ func (o TransferJobStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// TransferJobStatusInput is an input type that accepts TransferJobStatusArgs and TransferJobStatusOutput values.
-// You can construct a concrete instance of `TransferJobStatusInput` via:
+// TransferJobStatusInput is an input type that accepts values of the TransferJobStatus enum
+// A concrete instance of `TransferJobStatusInput` can be one of the following:
 //
-//	TransferJobStatusArgs{...}
+//	TransferJobStatusStatusUnspecified
+//	TransferJobStatusEnabled
+//	TransferJobStatusDisabled
+//	TransferJobStatusDeleted
 type TransferJobStatusInput interface {
 	pulumi.Input
 
@@ -3440,10 +3483,13 @@ func (o TransferOptionsOverwriteWhenPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// TransferOptionsOverwriteWhenInput is an input type that accepts TransferOptionsOverwriteWhenArgs and TransferOptionsOverwriteWhenOutput values.
-// You can construct a concrete instance of `TransferOptionsOverwriteWhenInput` via:
+// TransferOptionsOverwriteWhenInput is an input type that accepts values of the TransferOptionsOverwriteWhen enum
+// A concrete instance of `TransferOptionsOverwriteWhenInput` can be one of the following:
 //
-//	TransferOptionsOverwriteWhenArgs{...}
+//	TransferOptionsOverwriteWhenOverwriteWhenUnspecified
+//	TransferOptionsOverwriteWhenDifferent
+//	TransferOptionsOverwriteWhenNever
+//	TransferOptionsOverwriteWhenAlways
 type TransferOptionsOverwriteWhenInput interface {
 	pulumi.Input
 

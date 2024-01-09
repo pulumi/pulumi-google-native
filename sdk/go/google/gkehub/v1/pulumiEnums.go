@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o BinaryAuthorizationConfigEvaluationModePtrOutput) ToStringPtrOutputWithC
 	}).(pulumi.StringPtrOutput)
 }
 
-// BinaryAuthorizationConfigEvaluationModeInput is an input type that accepts BinaryAuthorizationConfigEvaluationModeArgs and BinaryAuthorizationConfigEvaluationModeOutput values.
-// You can construct a concrete instance of `BinaryAuthorizationConfigEvaluationModeInput` via:
+// BinaryAuthorizationConfigEvaluationModeInput is an input type that accepts values of the BinaryAuthorizationConfigEvaluationMode enum
+// A concrete instance of `BinaryAuthorizationConfigEvaluationModeInput` can be one of the following:
 //
-//	BinaryAuthorizationConfigEvaluationModeArgs{...}
+//	BinaryAuthorizationConfigEvaluationModeEvaluationModeUnspecified
+//	BinaryAuthorizationConfigEvaluationModeDisabled
+//	BinaryAuthorizationConfigEvaluationModePolicyBindings
 type BinaryAuthorizationConfigEvaluationModeInput interface {
 	pulumi.Input
 
@@ -493,10 +498,12 @@ func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) ToStrin
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConfigManagementPolicyControllerMonitoringBackendsItemInput is an input type that accepts ConfigManagementPolicyControllerMonitoringBackendsItemArgs and ConfigManagementPolicyControllerMonitoringBackendsItemOutput values.
-// You can construct a concrete instance of `ConfigManagementPolicyControllerMonitoringBackendsItemInput` via:
+// ConfigManagementPolicyControllerMonitoringBackendsItemInput is an input type that accepts values of the ConfigManagementPolicyControllerMonitoringBackendsItem enum
+// A concrete instance of `ConfigManagementPolicyControllerMonitoringBackendsItemInput` can be one of the following:
 //
-//	ConfigManagementPolicyControllerMonitoringBackendsItemArgs{...}
+//	ConfigManagementPolicyControllerMonitoringBackendsItemMonitoringBackendUnspecified
+//	ConfigManagementPolicyControllerMonitoringBackendsItemPrometheus
+//	ConfigManagementPolicyControllerMonitoringBackendsItemCloudMonitoring
 type ConfigManagementPolicyControllerMonitoringBackendsItemInput interface {
 	pulumi.Input
 
@@ -713,10 +720,12 @@ func (o FleetObservabilityRoutingConfigModePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// FleetObservabilityRoutingConfigModeInput is an input type that accepts FleetObservabilityRoutingConfigModeArgs and FleetObservabilityRoutingConfigModeOutput values.
-// You can construct a concrete instance of `FleetObservabilityRoutingConfigModeInput` via:
+// FleetObservabilityRoutingConfigModeInput is an input type that accepts values of the FleetObservabilityRoutingConfigMode enum
+// A concrete instance of `FleetObservabilityRoutingConfigModeInput` can be one of the following:
 //
-//	FleetObservabilityRoutingConfigModeArgs{...}
+//	FleetObservabilityRoutingConfigModeModeUnspecified
+//	FleetObservabilityRoutingConfigModeCopy
+//	FleetObservabilityRoutingConfigModeMove
 type FleetObservabilityRoutingConfigModeInput interface {
 	pulumi.Input
 
@@ -892,10 +901,14 @@ func (o OnPremClusterClusterTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// OnPremClusterClusterTypeInput is an input type that accepts OnPremClusterClusterTypeArgs and OnPremClusterClusterTypeOutput values.
-// You can construct a concrete instance of `OnPremClusterClusterTypeInput` via:
+// OnPremClusterClusterTypeInput is an input type that accepts values of the OnPremClusterClusterType enum
+// A concrete instance of `OnPremClusterClusterTypeInput` can be one of the following:
 //
-//	OnPremClusterClusterTypeArgs{...}
+//	OnPremClusterClusterTypeClustertypeUnspecified
+//	OnPremClusterClusterTypeBootstrap
+//	OnPremClusterClusterTypeHybrid
+//	OnPremClusterClusterTypeStandalone
+//	OnPremClusterClusterTypeUser
 type OnPremClusterClusterTypeInput interface {
 	pulumi.Input
 
@@ -1071,10 +1084,14 @@ func (o PolicyControllerHubConfigInstallSpecPtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// PolicyControllerHubConfigInstallSpecInput is an input type that accepts PolicyControllerHubConfigInstallSpecArgs and PolicyControllerHubConfigInstallSpecOutput values.
-// You can construct a concrete instance of `PolicyControllerHubConfigInstallSpecInput` via:
+// PolicyControllerHubConfigInstallSpecInput is an input type that accepts values of the PolicyControllerHubConfigInstallSpec enum
+// A concrete instance of `PolicyControllerHubConfigInstallSpecInput` can be one of the following:
 //
-//	PolicyControllerHubConfigInstallSpecArgs{...}
+//	PolicyControllerHubConfigInstallSpecInstallSpecUnspecified
+//	PolicyControllerHubConfigInstallSpecInstallSpecNotInstalled
+//	PolicyControllerHubConfigInstallSpecInstallSpecEnabled
+//	PolicyControllerHubConfigInstallSpecInstallSpecSuspended
+//	PolicyControllerHubConfigInstallSpecInstallSpecDetached
 type PolicyControllerHubConfigInstallSpecInput interface {
 	pulumi.Input
 
@@ -1245,10 +1262,12 @@ func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) ToStringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// PolicyControllerMonitoringConfigBackendsItemInput is an input type that accepts PolicyControllerMonitoringConfigBackendsItemArgs and PolicyControllerMonitoringConfigBackendsItemOutput values.
-// You can construct a concrete instance of `PolicyControllerMonitoringConfigBackendsItemInput` via:
+// PolicyControllerMonitoringConfigBackendsItemInput is an input type that accepts values of the PolicyControllerMonitoringConfigBackendsItem enum
+// A concrete instance of `PolicyControllerMonitoringConfigBackendsItemInput` can be one of the following:
 //
-//	PolicyControllerMonitoringConfigBackendsItemArgs{...}
+//	PolicyControllerMonitoringConfigBackendsItemMonitoringBackendUnspecified
+//	PolicyControllerMonitoringConfigBackendsItemPrometheus
+//	PolicyControllerMonitoringConfigBackendsItemCloudMonitoring
 type PolicyControllerMonitoringConfigBackendsItemInput interface {
 	pulumi.Input
 
@@ -1465,10 +1484,12 @@ func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) ToStringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// PolicyControllerTemplateLibraryConfigInstallationInput is an input type that accepts PolicyControllerTemplateLibraryConfigInstallationArgs and PolicyControllerTemplateLibraryConfigInstallationOutput values.
-// You can construct a concrete instance of `PolicyControllerTemplateLibraryConfigInstallationInput` via:
+// PolicyControllerTemplateLibraryConfigInstallationInput is an input type that accepts values of the PolicyControllerTemplateLibraryConfigInstallation enum
+// A concrete instance of `PolicyControllerTemplateLibraryConfigInstallationInput` can be one of the following:
 //
-//	PolicyControllerTemplateLibraryConfigInstallationArgs{...}
+//	PolicyControllerTemplateLibraryConfigInstallationInstallationUnspecified
+//	PolicyControllerTemplateLibraryConfigInstallationNotInstalled
+//	PolicyControllerTemplateLibraryConfigInstallationAll
 type PolicyControllerTemplateLibraryConfigInstallationInput interface {
 	pulumi.Input
 
@@ -1644,10 +1665,14 @@ func (o RolePredefinedRolePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// RolePredefinedRoleInput is an input type that accepts RolePredefinedRoleArgs and RolePredefinedRoleOutput values.
-// You can construct a concrete instance of `RolePredefinedRoleInput` via:
+// RolePredefinedRoleInput is an input type that accepts values of the RolePredefinedRole enum
+// A concrete instance of `RolePredefinedRoleInput` can be one of the following:
 //
-//	RolePredefinedRoleArgs{...}
+//	RolePredefinedRoleUnknown
+//	RolePredefinedRoleAdmin
+//	RolePredefinedRoleEdit
+//	RolePredefinedRoleView
+//	RolePredefinedRoleAnthosSupport
 type RolePredefinedRoleInput interface {
 	pulumi.Input
 
@@ -1819,10 +1844,12 @@ func (o SecurityPostureConfigModePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// SecurityPostureConfigModeInput is an input type that accepts SecurityPostureConfigModeArgs and SecurityPostureConfigModeOutput values.
-// You can construct a concrete instance of `SecurityPostureConfigModeInput` via:
+// SecurityPostureConfigModeInput is an input type that accepts values of the SecurityPostureConfigMode enum
+// A concrete instance of `SecurityPostureConfigModeInput` can be one of the following:
 //
-//	SecurityPostureConfigModeArgs{...}
+//	SecurityPostureConfigModeModeUnspecified
+//	SecurityPostureConfigModeDisabled
+//	SecurityPostureConfigModeBasic
 type SecurityPostureConfigModeInput interface {
 	pulumi.Input
 
@@ -1996,10 +2023,13 @@ func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// SecurityPostureConfigVulnerabilityModeInput is an input type that accepts SecurityPostureConfigVulnerabilityModeArgs and SecurityPostureConfigVulnerabilityModeOutput values.
-// You can construct a concrete instance of `SecurityPostureConfigVulnerabilityModeInput` via:
+// SecurityPostureConfigVulnerabilityModeInput is an input type that accepts values of the SecurityPostureConfigVulnerabilityMode enum
+// A concrete instance of `SecurityPostureConfigVulnerabilityModeInput` can be one of the following:
 //
-//	SecurityPostureConfigVulnerabilityModeArgs{...}
+//	SecurityPostureConfigVulnerabilityModeVulnerabilityModeUnspecified
+//	SecurityPostureConfigVulnerabilityModeVulnerabilityDisabled
+//	SecurityPostureConfigVulnerabilityModeVulnerabilityBasic
+//	SecurityPostureConfigVulnerabilityModeVulnerabilityEnterprise
 type SecurityPostureConfigVulnerabilityModeInput interface {
 	pulumi.Input
 
@@ -2171,10 +2201,12 @@ func (o ServiceMeshMembershipSpecControlPlanePtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceMeshMembershipSpecControlPlaneInput is an input type that accepts ServiceMeshMembershipSpecControlPlaneArgs and ServiceMeshMembershipSpecControlPlaneOutput values.
-// You can construct a concrete instance of `ServiceMeshMembershipSpecControlPlaneInput` via:
+// ServiceMeshMembershipSpecControlPlaneInput is an input type that accepts values of the ServiceMeshMembershipSpecControlPlane enum
+// A concrete instance of `ServiceMeshMembershipSpecControlPlaneInput` can be one of the following:
 //
-//	ServiceMeshMembershipSpecControlPlaneArgs{...}
+//	ServiceMeshMembershipSpecControlPlaneControlPlaneManagementUnspecified
+//	ServiceMeshMembershipSpecControlPlaneAutomatic
+//	ServiceMeshMembershipSpecControlPlaneManual
 type ServiceMeshMembershipSpecControlPlaneInput interface {
 	pulumi.Input
 
@@ -2346,10 +2378,12 @@ func (o ServiceMeshMembershipSpecManagementPtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceMeshMembershipSpecManagementInput is an input type that accepts ServiceMeshMembershipSpecManagementArgs and ServiceMeshMembershipSpecManagementOutput values.
-// You can construct a concrete instance of `ServiceMeshMembershipSpecManagementInput` via:
+// ServiceMeshMembershipSpecManagementInput is an input type that accepts values of the ServiceMeshMembershipSpecManagement enum
+// A concrete instance of `ServiceMeshMembershipSpecManagementInput` can be one of the following:
 //
-//	ServiceMeshMembershipSpecManagementArgs{...}
+//	ServiceMeshMembershipSpecManagementManagementUnspecified
+//	ServiceMeshMembershipSpecManagementManagementAutomatic
+//	ServiceMeshMembershipSpecManagementManagementManual
 type ServiceMeshMembershipSpecManagementInput interface {
 	pulumi.Input
 

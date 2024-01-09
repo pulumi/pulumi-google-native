@@ -146,10 +146,14 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeArgs and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput` via:
+// GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput is an input type that accepts values of the GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType enum
+// A concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput` can be one of the following:
 //
-//	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeArgs{...}
+//	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeResourceTypeUnspecified
+//	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeConsumerProject
+//	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeConsumerFolder
+//	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeEncryptionKeysProject
+//	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeKeyring
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput interface {
 	pulumi.Input
 
@@ -353,10 +357,28 @@ func (o WorkloadComplianceRegimePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkloadComplianceRegimeInput is an input type that accepts WorkloadComplianceRegimeArgs and WorkloadComplianceRegimeOutput values.
-// You can construct a concrete instance of `WorkloadComplianceRegimeInput` via:
+// WorkloadComplianceRegimeInput is an input type that accepts values of the WorkloadComplianceRegime enum
+// A concrete instance of `WorkloadComplianceRegimeInput` can be one of the following:
 //
-//	WorkloadComplianceRegimeArgs{...}
+//	WorkloadComplianceRegimeComplianceRegimeUnspecified
+//	WorkloadComplianceRegimeIl4
+//	WorkloadComplianceRegimeCjis
+//	WorkloadComplianceRegimeFedrampHigh
+//	WorkloadComplianceRegimeFedrampModerate
+//	WorkloadComplianceRegimeUsRegionalAccess
+//	WorkloadComplianceRegimeHipaa
+//	WorkloadComplianceRegimeHitrust
+//	WorkloadComplianceRegimeEuRegionsAndSupport
+//	WorkloadComplianceRegimeCaRegionsAndSupport
+//	WorkloadComplianceRegimeItar
+//	WorkloadComplianceRegimeAuRegionsAndUsSupport
+//	WorkloadComplianceRegimeAssuredWorkloadsForPartners
+//	WorkloadComplianceRegimeIsrRegions
+//	WorkloadComplianceRegimeIsrRegionsAndSupport
+//	WorkloadComplianceRegimeCaProtectedB
+//	WorkloadComplianceRegimeIl5
+//	WorkloadComplianceRegimeIl2
+//	WorkloadComplianceRegimeJpRegionsAndSupport
 type WorkloadComplianceRegimeInput interface {
 	pulumi.Input
 
@@ -531,10 +553,14 @@ func (o WorkloadPartnerPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkloadPartnerInput is an input type that accepts WorkloadPartnerArgs and WorkloadPartnerOutput values.
-// You can construct a concrete instance of `WorkloadPartnerInput` via:
+// WorkloadPartnerInput is an input type that accepts values of the WorkloadPartner enum
+// A concrete instance of `WorkloadPartnerInput` can be one of the following:
 //
-//	WorkloadPartnerArgs{...}
+//	WorkloadPartnerPartnerUnspecified
+//	WorkloadPartnerLocalControlsByS3ns
+//	WorkloadPartnerSovereignControlsByTSystems
+//	WorkloadPartnerSovereignControlsBySiaMinsait
+//	WorkloadPartnerSovereignControlsByPsn
 type WorkloadPartnerInput interface {
 	pulumi.Input
 

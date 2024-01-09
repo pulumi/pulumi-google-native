@@ -152,10 +152,17 @@ func (o InstanceConfigInstanceSizePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceConfigInstanceSizeInput is an input type that accepts InstanceConfigInstanceSizeArgs and InstanceConfigInstanceSizeOutput values.
-// You can construct a concrete instance of `InstanceConfigInstanceSizeInput` via:
+// InstanceConfigInstanceSizeInput is an input type that accepts values of the InstanceConfigInstanceSize enum
+// A concrete instance of `InstanceConfigInstanceSizeInput` can be one of the following:
 //
-//	InstanceConfigInstanceSizeArgs{...}
+//	InstanceConfigInstanceSizeInstanceSizeUnspecified
+//	InstanceConfigInstanceSizeStandardSmall
+//	InstanceConfigInstanceSizeStandardMedium
+//	InstanceConfigInstanceSizeStandardLarge
+//	InstanceConfigInstanceSizeStandardXlarge
+//	InstanceConfigInstanceSizeStandard2xlarge
+//	InstanceConfigInstanceSizeStandard3xlarge
+//	InstanceConfigInstanceSizeDevXsmall
 type InstanceConfigInstanceSizeInput interface {
 	pulumi.Input
 

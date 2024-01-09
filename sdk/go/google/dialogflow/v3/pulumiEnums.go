@@ -140,10 +140,11 @@ func (o EntityTypeAutoExpansionModePtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// EntityTypeAutoExpansionModeInput is an input type that accepts EntityTypeAutoExpansionModeArgs and EntityTypeAutoExpansionModeOutput values.
-// You can construct a concrete instance of `EntityTypeAutoExpansionModeInput` via:
+// EntityTypeAutoExpansionModeInput is an input type that accepts values of the EntityTypeAutoExpansionMode enum
+// A concrete instance of `EntityTypeAutoExpansionModeInput` can be one of the following:
 //
-//	EntityTypeAutoExpansionModeArgs{...}
+//	EntityTypeAutoExpansionModeAutoExpansionModeUnspecified
+//	EntityTypeAutoExpansionModeAutoExpansionModeDefault
 type EntityTypeAutoExpansionModeInput interface {
 	pulumi.Input
 
@@ -317,10 +318,13 @@ func (o EntityTypeKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// EntityTypeKindInput is an input type that accepts EntityTypeKindArgs and EntityTypeKindOutput values.
-// You can construct a concrete instance of `EntityTypeKindInput` via:
+// EntityTypeKindInput is an input type that accepts values of the EntityTypeKind enum
+// A concrete instance of `EntityTypeKindInput` can be one of the following:
 //
-//	EntityTypeKindArgs{...}
+//	EntityTypeKindKindUnspecified
+//	EntityTypeKindKindMap
+//	EntityTypeKindKindList
+//	EntityTypeKindKindRegexp
 type EntityTypeKindInput interface {
 	pulumi.Input
 
@@ -496,10 +500,14 @@ func (o ExperimentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExperimentStateEnumInput is an input type that accepts ExperimentStateEnumArgs and ExperimentStateEnumOutput values.
-// You can construct a concrete instance of `ExperimentStateEnumInput` via:
+// ExperimentStateEnumInput is an input type that accepts values of the ExperimentStateEnum enum
+// A concrete instance of `ExperimentStateEnumInput` can be one of the following:
 //
-//	ExperimentStateEnumArgs{...}
+//	ExperimentStateEnumStateUnspecified
+//	ExperimentStateEnumDraft
+//	ExperimentStateEnumRunning
+//	ExperimentStateEnumDone
+//	ExperimentStateEnumRolloutFailed
 type ExperimentStateEnumInput interface {
 	pulumi.Input
 
@@ -673,10 +681,13 @@ func (o GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypePtrOutput) ToSt
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeInput is an input type that accepts GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeArgs and GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeInput` via:
+// GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeInput is an input type that accepts values of the GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType enum
+// A concrete instance of `GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeArgs{...}
+//	GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeDataStoreTypeUnspecified
+//	GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypePublicWeb
+//	GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeUnstructured
+//	GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeStructured
 type GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreTypeInput interface {
 	pulumi.Input
 
@@ -850,10 +861,13 @@ func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ToStr
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeArgs and GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeInput` via:
+// GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeInput is an input type that accepts values of the GoogleCloudDialogflowCxV3ExperimentResultMetricCountType enum
+// A concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeArgs{...}
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeCountTypeUnspecified
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeTotalNoMatchCount
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeTotalTurnCount
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeAverageTurnCount
 type GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeInput interface {
 	pulumi.Input
 
@@ -1031,10 +1045,15 @@ func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ToStringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3ExperimentResultMetricTypeInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultMetricTypeArgs and GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultMetricTypeInput` via:
+// GoogleCloudDialogflowCxV3ExperimentResultMetricTypeInput is an input type that accepts values of the GoogleCloudDialogflowCxV3ExperimentResultMetricType enum
+// A concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultMetricTypeInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3ExperimentResultMetricTypeArgs{...}
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricTypeMetricUnspecified
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricTypeContainedSessionNoCallbackRate
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricTypeLiveAgentHandoffRate
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricTypeCallbackSessionRate
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricTypeAbandonedSessionRate
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricTypeSessionEndRate
 type GoogleCloudDialogflowCxV3ExperimentResultMetricTypeInput interface {
 	pulumi.Input
 
@@ -1216,10 +1235,17 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ToStrin
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingInput is an input type that accepts GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingArgs and GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingInput` via:
+// GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingInput is an input type that accepts values of the GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding enum
+// A concrete instance of `GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingArgs{...}
+//	GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingAudioEncodingUnspecified
+//	GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingAudioEncodingLinear16
+//	GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingAudioEncodingFlac
+//	GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingAudioEncodingMulaw
+//	GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingAudioEncodingAmr
+//	GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingAudioEncodingAmrWb
+//	GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingAudioEncodingOggOpus
+//	GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingAudioEncodingSpeexWithHeaderByte
 type GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingInput interface {
 	pulumi.Input
 
@@ -1393,10 +1419,13 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ToString
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3InputAudioConfigModelVariantInput is an input type that accepts GoogleCloudDialogflowCxV3InputAudioConfigModelVariantArgs and GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3InputAudioConfigModelVariantInput` via:
+// GoogleCloudDialogflowCxV3InputAudioConfigModelVariantInput is an input type that accepts values of the GoogleCloudDialogflowCxV3InputAudioConfigModelVariant enum
+// A concrete instance of `GoogleCloudDialogflowCxV3InputAudioConfigModelVariantInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3InputAudioConfigModelVariantArgs{...}
+//	GoogleCloudDialogflowCxV3InputAudioConfigModelVariantSpeechModelVariantUnspecified
+//	GoogleCloudDialogflowCxV3InputAudioConfigModelVariantUseBestAvailable
+//	GoogleCloudDialogflowCxV3InputAudioConfigModelVariantUseStandard
+//	GoogleCloudDialogflowCxV3InputAudioConfigModelVariantUseEnhanced
 type GoogleCloudDialogflowCxV3InputAudioConfigModelVariantInput interface {
 	pulumi.Input
 
@@ -1568,10 +1597,12 @@ func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ToString
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeInput is an input type that accepts GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeArgs and GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeInput` via:
+// GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeInput is an input type that accepts values of the GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode enum
+// A concrete instance of `GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeArgs{...}
+//	GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeModelTrainingModeUnspecified
+//	GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeModelTrainingModeAutomatic
+//	GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeModelTrainingModeManual
 type GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeInput interface {
 	pulumi.Input
 
@@ -1743,10 +1774,12 @@ func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ToStringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3NluSettingsModelTypeInput is an input type that accepts GoogleCloudDialogflowCxV3NluSettingsModelTypeArgs and GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3NluSettingsModelTypeInput` via:
+// GoogleCloudDialogflowCxV3NluSettingsModelTypeInput is an input type that accepts values of the GoogleCloudDialogflowCxV3NluSettingsModelType enum
+// A concrete instance of `GoogleCloudDialogflowCxV3NluSettingsModelTypeInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3NluSettingsModelTypeArgs{...}
+//	GoogleCloudDialogflowCxV3NluSettingsModelTypeModelTypeUnspecified
+//	GoogleCloudDialogflowCxV3NluSettingsModelTypeModelTypeStandard
+//	GoogleCloudDialogflowCxV3NluSettingsModelTypeModelTypeAdvanced
 type GoogleCloudDialogflowCxV3NluSettingsModelTypeInput interface {
 	pulumi.Input
 
@@ -1920,10 +1953,13 @@ func (o GoogleCloudDialogflowCxV3ResponseMessageResponseTypePtrOutput) ToStringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3ResponseMessageResponseTypeInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageResponseTypeArgs and GoogleCloudDialogflowCxV3ResponseMessageResponseTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageResponseTypeInput` via:
+// GoogleCloudDialogflowCxV3ResponseMessageResponseTypeInput is an input type that accepts values of the GoogleCloudDialogflowCxV3ResponseMessageResponseType enum
+// A concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageResponseTypeInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3ResponseMessageResponseTypeArgs{...}
+//	GoogleCloudDialogflowCxV3ResponseMessageResponseTypeResponseTypeUnspecified
+//	GoogleCloudDialogflowCxV3ResponseMessageResponseTypeEntryPrompt
+//	GoogleCloudDialogflowCxV3ResponseMessageResponseTypeParameterPrompt
+//	GoogleCloudDialogflowCxV3ResponseMessageResponseTypeHandlerPrompt
 type GoogleCloudDialogflowCxV3ResponseMessageResponseTypeInput interface {
 	pulumi.Input
 
@@ -2097,10 +2133,13 @@ func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatP
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatArgs and GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatInput` via:
+// GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatInput is an input type that accepts values of the GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat enum
+// A concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatArgs{...}
+//	GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatAudioFormatUnspecified
+//	GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatMulaw
+//	GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatMp3
+//	GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatOgg
 type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatInput interface {
 	pulumi.Input
 
@@ -2272,10 +2311,12 @@ func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ToStringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3TestCaseResultTestResultInput is an input type that accepts GoogleCloudDialogflowCxV3TestCaseResultTestResultArgs and GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3TestCaseResultTestResultInput` via:
+// GoogleCloudDialogflowCxV3TestCaseResultTestResultInput is an input type that accepts values of the GoogleCloudDialogflowCxV3TestCaseResultTestResult enum
+// A concrete instance of `GoogleCloudDialogflowCxV3TestCaseResultTestResultInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3TestCaseResultTestResultArgs{...}
+//	GoogleCloudDialogflowCxV3TestCaseResultTestResultTestResultUnspecified
+//	GoogleCloudDialogflowCxV3TestCaseResultTestResultPassed
+//	GoogleCloudDialogflowCxV3TestCaseResultTestResultFailed
 type GoogleCloudDialogflowCxV3TestCaseResultTestResultInput interface {
 	pulumi.Input
 
@@ -2457,10 +2498,17 @@ func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodPtrOutput) To
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodArgs and GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodInput` via:
+// GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodInput is an input type that accepts values of the GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod enum
+// A concrete instance of `GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodArgs{...}
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodHttpMethodUnspecified
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodPost
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodGet
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodHead
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodPut
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodDelete
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodPatch
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodOptions
 type GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodInput interface {
 	pulumi.Input
 
@@ -2632,10 +2680,12 @@ func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypePtrOutput) T
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeArgs and GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeInput` via:
+// GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeInput is an input type that accepts values of the GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType enum
+// A concrete instance of `GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeInput` can be one of the following:
 //
-//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeArgs{...}
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeWebhookTypeUnspecified
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeStandard
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeFlexible
 type GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypeInput interface {
 	pulumi.Input
 
@@ -2804,10 +2854,11 @@ func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// SecuritySettingPurgeDataTypesItemInput is an input type that accepts SecuritySettingPurgeDataTypesItemArgs and SecuritySettingPurgeDataTypesItemOutput values.
-// You can construct a concrete instance of `SecuritySettingPurgeDataTypesItemInput` via:
+// SecuritySettingPurgeDataTypesItemInput is an input type that accepts values of the SecuritySettingPurgeDataTypesItem enum
+// A concrete instance of `SecuritySettingPurgeDataTypesItemInput` can be one of the following:
 //
-//	SecuritySettingPurgeDataTypesItemArgs{...}
+//	SecuritySettingPurgeDataTypesItemPurgeDataTypeUnspecified
+//	SecuritySettingPurgeDataTypesItemDialogflowHistory
 type SecuritySettingPurgeDataTypesItemInput interface {
 	pulumi.Input
 
@@ -3022,10 +3073,11 @@ func (o SecuritySettingRedactionScopePtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// SecuritySettingRedactionScopeInput is an input type that accepts SecuritySettingRedactionScopeArgs and SecuritySettingRedactionScopeOutput values.
-// You can construct a concrete instance of `SecuritySettingRedactionScopeInput` via:
+// SecuritySettingRedactionScopeInput is an input type that accepts values of the SecuritySettingRedactionScope enum
+// A concrete instance of `SecuritySettingRedactionScopeInput` can be one of the following:
 //
-//	SecuritySettingRedactionScopeArgs{...}
+//	SecuritySettingRedactionScopeRedactionScopeUnspecified
+//	SecuritySettingRedactionScopeRedactDiskStorage
 type SecuritySettingRedactionScopeInput interface {
 	pulumi.Input
 
@@ -3195,10 +3247,11 @@ func (o SecuritySettingRedactionStrategyPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// SecuritySettingRedactionStrategyInput is an input type that accepts SecuritySettingRedactionStrategyArgs and SecuritySettingRedactionStrategyOutput values.
-// You can construct a concrete instance of `SecuritySettingRedactionStrategyInput` via:
+// SecuritySettingRedactionStrategyInput is an input type that accepts values of the SecuritySettingRedactionStrategy enum
+// A concrete instance of `SecuritySettingRedactionStrategyInput` can be one of the following:
 //
-//	SecuritySettingRedactionStrategyArgs{...}
+//	SecuritySettingRedactionStrategyRedactionStrategyUnspecified
+//	SecuritySettingRedactionStrategyRedactWithService
 type SecuritySettingRedactionStrategyInput interface {
 	pulumi.Input
 
@@ -3368,10 +3421,11 @@ func (o SecuritySettingRetentionStrategyPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// SecuritySettingRetentionStrategyInput is an input type that accepts SecuritySettingRetentionStrategyArgs and SecuritySettingRetentionStrategyOutput values.
-// You can construct a concrete instance of `SecuritySettingRetentionStrategyInput` via:
+// SecuritySettingRetentionStrategyInput is an input type that accepts values of the SecuritySettingRetentionStrategy enum
+// A concrete instance of `SecuritySettingRetentionStrategyInput` can be one of the following:
 //
-//	SecuritySettingRetentionStrategyArgs{...}
+//	SecuritySettingRetentionStrategyRetentionStrategyUnspecified
+//	SecuritySettingRetentionStrategyRemoveAfterConversation
 type SecuritySettingRetentionStrategyInput interface {
 	pulumi.Input
 
@@ -3543,10 +3597,12 @@ func (o SessionEntityTypeEntityOverrideModePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SessionEntityTypeEntityOverrideModeInput is an input type that accepts SessionEntityTypeEntityOverrideModeArgs and SessionEntityTypeEntityOverrideModeOutput values.
-// You can construct a concrete instance of `SessionEntityTypeEntityOverrideModeInput` via:
+// SessionEntityTypeEntityOverrideModeInput is an input type that accepts values of the SessionEntityTypeEntityOverrideMode enum
+// A concrete instance of `SessionEntityTypeEntityOverrideModeInput` can be one of the following:
 //
-//	SessionEntityTypeEntityOverrideModeArgs{...}
+//	SessionEntityTypeEntityOverrideModeEntityOverrideModeUnspecified
+//	SessionEntityTypeEntityOverrideModeEntityOverrideModeOverride
+//	SessionEntityTypeEntityOverrideModeEntityOverrideModeSupplement
 type SessionEntityTypeEntityOverrideModeInput interface {
 	pulumi.Input
 

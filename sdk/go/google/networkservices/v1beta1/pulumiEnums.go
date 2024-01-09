@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o EndpointPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// EndpointPolicyTypeInput is an input type that accepts EndpointPolicyTypeArgs and EndpointPolicyTypeOutput values.
-// You can construct a concrete instance of `EndpointPolicyTypeInput` via:
+// EndpointPolicyTypeInput is an input type that accepts values of the EndpointPolicyType enum
+// A concrete instance of `EndpointPolicyTypeInput` can be one of the following:
 //
-//	EndpointPolicyTypeArgs{...}
+//	EndpointPolicyTypeEndpointPolicyTypeUnspecified
+//	EndpointPolicyTypeSidecarProxy
+//	EndpointPolicyTypeGrpcServer
 type EndpointPolicyTypeInput interface {
 	pulumi.Input
 
@@ -497,10 +502,14 @@ func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// ExtensionChainExtensionSupportedEventsItemInput is an input type that accepts ExtensionChainExtensionSupportedEventsItemArgs and ExtensionChainExtensionSupportedEventsItemOutput values.
-// You can construct a concrete instance of `ExtensionChainExtensionSupportedEventsItemInput` via:
+// ExtensionChainExtensionSupportedEventsItemInput is an input type that accepts values of the ExtensionChainExtensionSupportedEventsItem enum
+// A concrete instance of `ExtensionChainExtensionSupportedEventsItemInput` can be one of the following:
 //
-//	ExtensionChainExtensionSupportedEventsItemArgs{...}
+//	ExtensionChainExtensionSupportedEventsItemEventTypeUnspecified
+//	ExtensionChainExtensionSupportedEventsItemRequestHeaders
+//	ExtensionChainExtensionSupportedEventsItemRequestBody
+//	ExtensionChainExtensionSupportedEventsItemResponseHeaders
+//	ExtensionChainExtensionSupportedEventsItemResponseBody
 type ExtensionChainExtensionSupportedEventsItemInput interface {
 	pulumi.Input
 
@@ -717,10 +726,12 @@ func (o GatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// GatewayTypeInput is an input type that accepts GatewayTypeArgs and GatewayTypeOutput values.
-// You can construct a concrete instance of `GatewayTypeInput` via:
+// GatewayTypeInput is an input type that accepts values of the GatewayType enum
+// A concrete instance of `GatewayTypeInput` can be one of the following:
 //
-//	GatewayTypeArgs{...}
+//	GatewayTypeTypeUnspecified
+//	GatewayTypeOpenMesh
+//	GatewayTypeSecureWebGateway
 type GatewayTypeInput interface {
 	pulumi.Input
 
@@ -892,10 +903,12 @@ func (o GrpcRouteHeaderMatchTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// GrpcRouteHeaderMatchTypeInput is an input type that accepts GrpcRouteHeaderMatchTypeArgs and GrpcRouteHeaderMatchTypeOutput values.
-// You can construct a concrete instance of `GrpcRouteHeaderMatchTypeInput` via:
+// GrpcRouteHeaderMatchTypeInput is an input type that accepts values of the GrpcRouteHeaderMatchType enum
+// A concrete instance of `GrpcRouteHeaderMatchTypeInput` can be one of the following:
 //
-//	GrpcRouteHeaderMatchTypeArgs{...}
+//	GrpcRouteHeaderMatchTypeTypeUnspecified
+//	GrpcRouteHeaderMatchTypeExact
+//	GrpcRouteHeaderMatchTypeRegularExpression
 type GrpcRouteHeaderMatchTypeInput interface {
 	pulumi.Input
 
@@ -1067,10 +1080,12 @@ func (o GrpcRouteMethodMatchTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// GrpcRouteMethodMatchTypeInput is an input type that accepts GrpcRouteMethodMatchTypeArgs and GrpcRouteMethodMatchTypeOutput values.
-// You can construct a concrete instance of `GrpcRouteMethodMatchTypeInput` via:
+// GrpcRouteMethodMatchTypeInput is an input type that accepts values of the GrpcRouteMethodMatchType enum
+// A concrete instance of `GrpcRouteMethodMatchTypeInput` can be one of the following:
 //
-//	GrpcRouteMethodMatchTypeArgs{...}
+//	GrpcRouteMethodMatchTypeTypeUnspecified
+//	GrpcRouteMethodMatchTypeExact
+//	GrpcRouteMethodMatchTypeRegularExpression
 type GrpcRouteMethodMatchTypeInput interface {
 	pulumi.Input
 
@@ -1248,10 +1263,15 @@ func (o HttpRouteRedirectResponseCodePtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// HttpRouteRedirectResponseCodeInput is an input type that accepts HttpRouteRedirectResponseCodeArgs and HttpRouteRedirectResponseCodeOutput values.
-// You can construct a concrete instance of `HttpRouteRedirectResponseCodeInput` via:
+// HttpRouteRedirectResponseCodeInput is an input type that accepts values of the HttpRouteRedirectResponseCode enum
+// A concrete instance of `HttpRouteRedirectResponseCodeInput` can be one of the following:
 //
-//	HttpRouteRedirectResponseCodeArgs{...}
+//	HttpRouteRedirectResponseCodeResponseCodeUnspecified
+//	HttpRouteRedirectResponseCodeMovedPermanentlyDefault
+//	HttpRouteRedirectResponseCodeFound
+//	HttpRouteRedirectResponseCodeSeeOther
+//	HttpRouteRedirectResponseCodeTemporaryRedirect
+//	HttpRouteRedirectResponseCodePermanentRedirect
 type HttpRouteRedirectResponseCodeInput interface {
 	pulumi.Input
 
@@ -1423,10 +1443,12 @@ func (o LbRouteExtensionLoadBalancingSchemePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// LbRouteExtensionLoadBalancingSchemeInput is an input type that accepts LbRouteExtensionLoadBalancingSchemeArgs and LbRouteExtensionLoadBalancingSchemeOutput values.
-// You can construct a concrete instance of `LbRouteExtensionLoadBalancingSchemeInput` via:
+// LbRouteExtensionLoadBalancingSchemeInput is an input type that accepts values of the LbRouteExtensionLoadBalancingScheme enum
+// A concrete instance of `LbRouteExtensionLoadBalancingSchemeInput` can be one of the following:
 //
-//	LbRouteExtensionLoadBalancingSchemeArgs{...}
+//	LbRouteExtensionLoadBalancingSchemeLoadBalancingSchemeUnspecified
+//	LbRouteExtensionLoadBalancingSchemeInternalManaged
+//	LbRouteExtensionLoadBalancingSchemeExternalManaged
 type LbRouteExtensionLoadBalancingSchemeInput interface {
 	pulumi.Input
 
@@ -1598,10 +1620,12 @@ func (o LbTrafficExtensionLoadBalancingSchemePtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// LbTrafficExtensionLoadBalancingSchemeInput is an input type that accepts LbTrafficExtensionLoadBalancingSchemeArgs and LbTrafficExtensionLoadBalancingSchemeOutput values.
-// You can construct a concrete instance of `LbTrafficExtensionLoadBalancingSchemeInput` via:
+// LbTrafficExtensionLoadBalancingSchemeInput is an input type that accepts values of the LbTrafficExtensionLoadBalancingScheme enum
+// A concrete instance of `LbTrafficExtensionLoadBalancingSchemeInput` can be one of the following:
 //
-//	LbTrafficExtensionLoadBalancingSchemeArgs{...}
+//	LbTrafficExtensionLoadBalancingSchemeLoadBalancingSchemeUnspecified
+//	LbTrafficExtensionLoadBalancingSchemeInternalManaged
+//	LbTrafficExtensionLoadBalancingSchemeExternalManaged
 type LbTrafficExtensionLoadBalancingSchemeInput interface {
 	pulumi.Input
 
@@ -1773,10 +1797,12 @@ func (o MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) ToStringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetadataLabelMatcherMetadataLabelMatchCriteriaInput is an input type that accepts MetadataLabelMatcherMetadataLabelMatchCriteriaArgs and MetadataLabelMatcherMetadataLabelMatchCriteriaOutput values.
-// You can construct a concrete instance of `MetadataLabelMatcherMetadataLabelMatchCriteriaInput` via:
+// MetadataLabelMatcherMetadataLabelMatchCriteriaInput is an input type that accepts values of the MetadataLabelMatcherMetadataLabelMatchCriteria enum
+// A concrete instance of `MetadataLabelMatcherMetadataLabelMatchCriteriaInput` can be one of the following:
 //
-//	MetadataLabelMatcherMetadataLabelMatchCriteriaArgs{...}
+//	MetadataLabelMatcherMetadataLabelMatchCriteriaMetadataLabelMatchCriteriaUnspecified
+//	MetadataLabelMatcherMetadataLabelMatchCriteriaMatchAny
+//	MetadataLabelMatcherMetadataLabelMatchCriteriaMatchAll
 type MetadataLabelMatcherMetadataLabelMatchCriteriaInput interface {
 	pulumi.Input
 
@@ -1952,10 +1978,14 @@ func (o ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) ToStringPtrOutputWithCon
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceLbPolicyLoadBalancingAlgorithmInput is an input type that accepts ServiceLbPolicyLoadBalancingAlgorithmArgs and ServiceLbPolicyLoadBalancingAlgorithmOutput values.
-// You can construct a concrete instance of `ServiceLbPolicyLoadBalancingAlgorithmInput` via:
+// ServiceLbPolicyLoadBalancingAlgorithmInput is an input type that accepts values of the ServiceLbPolicyLoadBalancingAlgorithm enum
+// A concrete instance of `ServiceLbPolicyLoadBalancingAlgorithmInput` can be one of the following:
 //
-//	ServiceLbPolicyLoadBalancingAlgorithmArgs{...}
+//	ServiceLbPolicyLoadBalancingAlgorithmLoadBalancingAlgorithmUnspecified
+//	ServiceLbPolicyLoadBalancingAlgorithmSprayToWorld
+//	ServiceLbPolicyLoadBalancingAlgorithmSprayToRegion
+//	ServiceLbPolicyLoadBalancingAlgorithmWaterfallByRegion
+//	ServiceLbPolicyLoadBalancingAlgorithmWaterfallByZone
 type ServiceLbPolicyLoadBalancingAlgorithmInput interface {
 	pulumi.Input
 

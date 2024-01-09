@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o BuildConfigDockerRegistryPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// BuildConfigDockerRegistryInput is an input type that accepts BuildConfigDockerRegistryArgs and BuildConfigDockerRegistryOutput values.
-// You can construct a concrete instance of `BuildConfigDockerRegistryInput` via:
+// BuildConfigDockerRegistryInput is an input type that accepts values of the BuildConfigDockerRegistry enum
+// A concrete instance of `BuildConfigDockerRegistryInput` can be one of the following:
 //
-//	BuildConfigDockerRegistryArgs{...}
+//	BuildConfigDockerRegistryDockerRegistryUnspecified
+//	BuildConfigDockerRegistryContainerRegistry
+//	BuildConfigDockerRegistryArtifactRegistry
 type BuildConfigDockerRegistryInput interface {
 	pulumi.Input
 
@@ -494,10 +499,12 @@ func (o EventTriggerRetryPolicyPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// EventTriggerRetryPolicyInput is an input type that accepts EventTriggerRetryPolicyArgs and EventTriggerRetryPolicyOutput values.
-// You can construct a concrete instance of `EventTriggerRetryPolicyInput` via:
+// EventTriggerRetryPolicyInput is an input type that accepts values of the EventTriggerRetryPolicy enum
+// A concrete instance of `EventTriggerRetryPolicyInput` can be one of the following:
 //
-//	EventTriggerRetryPolicyArgs{...}
+//	EventTriggerRetryPolicyRetryPolicyUnspecified
+//	EventTriggerRetryPolicyRetryPolicyDoNotRetry
+//	EventTriggerRetryPolicyRetryPolicyRetry
 type EventTriggerRetryPolicyInput interface {
 	pulumi.Input
 
@@ -669,10 +676,12 @@ func (o FunctionEnvironmentPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// FunctionEnvironmentInput is an input type that accepts FunctionEnvironmentArgs and FunctionEnvironmentOutput values.
-// You can construct a concrete instance of `FunctionEnvironmentInput` via:
+// FunctionEnvironmentInput is an input type that accepts values of the FunctionEnvironment enum
+// A concrete instance of `FunctionEnvironmentInput` can be one of the following:
 //
-//	FunctionEnvironmentArgs{...}
+//	FunctionEnvironmentEnvironmentUnspecified
+//	FunctionEnvironmentGen1
+//	FunctionEnvironmentGen2
 type FunctionEnvironmentInput interface {
 	pulumi.Input
 
@@ -846,10 +855,13 @@ func (o ServiceConfigIngressSettingsPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceConfigIngressSettingsInput is an input type that accepts ServiceConfigIngressSettingsArgs and ServiceConfigIngressSettingsOutput values.
-// You can construct a concrete instance of `ServiceConfigIngressSettingsInput` via:
+// ServiceConfigIngressSettingsInput is an input type that accepts values of the ServiceConfigIngressSettings enum
+// A concrete instance of `ServiceConfigIngressSettingsInput` can be one of the following:
 //
-//	ServiceConfigIngressSettingsArgs{...}
+//	ServiceConfigIngressSettingsIngressSettingsUnspecified
+//	ServiceConfigIngressSettingsAllowAll
+//	ServiceConfigIngressSettingsAllowInternalOnly
+//	ServiceConfigIngressSettingsAllowInternalAndGclb
 type ServiceConfigIngressSettingsInput interface {
 	pulumi.Input
 
@@ -1021,10 +1033,12 @@ func (o ServiceConfigSecurityLevelPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceConfigSecurityLevelInput is an input type that accepts ServiceConfigSecurityLevelArgs and ServiceConfigSecurityLevelOutput values.
-// You can construct a concrete instance of `ServiceConfigSecurityLevelInput` via:
+// ServiceConfigSecurityLevelInput is an input type that accepts values of the ServiceConfigSecurityLevel enum
+// A concrete instance of `ServiceConfigSecurityLevelInput` can be one of the following:
 //
-//	ServiceConfigSecurityLevelArgs{...}
+//	ServiceConfigSecurityLevelSecurityLevelUnspecified
+//	ServiceConfigSecurityLevelSecureAlways
+//	ServiceConfigSecurityLevelSecureOptional
 type ServiceConfigSecurityLevelInput interface {
 	pulumi.Input
 
@@ -1196,10 +1210,12 @@ func (o ServiceConfigVpcConnectorEgressSettingsPtrOutput) ToStringPtrOutputWithC
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceConfigVpcConnectorEgressSettingsInput is an input type that accepts ServiceConfigVpcConnectorEgressSettingsArgs and ServiceConfigVpcConnectorEgressSettingsOutput values.
-// You can construct a concrete instance of `ServiceConfigVpcConnectorEgressSettingsInput` via:
+// ServiceConfigVpcConnectorEgressSettingsInput is an input type that accepts values of the ServiceConfigVpcConnectorEgressSettings enum
+// A concrete instance of `ServiceConfigVpcConnectorEgressSettingsInput` can be one of the following:
 //
-//	ServiceConfigVpcConnectorEgressSettingsArgs{...}
+//	ServiceConfigVpcConnectorEgressSettingsVpcConnectorEgressSettingsUnspecified
+//	ServiceConfigVpcConnectorEgressSettingsPrivateRangesOnly
+//	ServiceConfigVpcConnectorEgressSettingsAllTraffic
 type ServiceConfigVpcConnectorEgressSettingsInput interface {
 	pulumi.Input
 

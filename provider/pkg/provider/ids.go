@@ -154,7 +154,7 @@ func getDefaultName(
 		return v, true
 	}
 
-	name := urn.Name().String()
+	name := urn.Name()
 
 	// Resource name is URN name + "-" + random suffix.
 	random, err := resource.NewUniqueName(randomSeed, name+"-", 7, 0, nil)

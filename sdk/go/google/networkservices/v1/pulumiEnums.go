@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaInput is an input type that accepts EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaArgs and EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaOutput values.
-// You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaInput` via:
+// EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaInput is an input type that accepts values of the EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria enum
+// A concrete instance of `EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaInput` can be one of the following:
 //
-//	EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaArgs{...}
+//	EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaMetadataLabelMatchCriteriaUnspecified
+//	EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaMatchAny
+//	EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaMatchAll
 type EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaInput interface {
 	pulumi.Input
 
@@ -494,10 +499,12 @@ func (o EndpointPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// EndpointPolicyTypeInput is an input type that accepts EndpointPolicyTypeArgs and EndpointPolicyTypeOutput values.
-// You can construct a concrete instance of `EndpointPolicyTypeInput` via:
+// EndpointPolicyTypeInput is an input type that accepts values of the EndpointPolicyType enum
+// A concrete instance of `EndpointPolicyTypeInput` can be one of the following:
 //
-//	EndpointPolicyTypeArgs{...}
+//	EndpointPolicyTypeEndpointPolicyTypeUnspecified
+//	EndpointPolicyTypeSidecarProxy
+//	EndpointPolicyTypeGrpcServer
 type EndpointPolicyTypeInput interface {
 	pulumi.Input
 
@@ -669,10 +676,12 @@ func (o GatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// GatewayTypeInput is an input type that accepts GatewayTypeArgs and GatewayTypeOutput values.
-// You can construct a concrete instance of `GatewayTypeInput` via:
+// GatewayTypeInput is an input type that accepts values of the GatewayType enum
+// A concrete instance of `GatewayTypeInput` can be one of the following:
 //
-//	GatewayTypeArgs{...}
+//	GatewayTypeTypeUnspecified
+//	GatewayTypeOpenMesh
+//	GatewayTypeSecureWebGateway
 type GatewayTypeInput interface {
 	pulumi.Input
 
@@ -844,10 +853,12 @@ func (o GrpcRouteHeaderMatchTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// GrpcRouteHeaderMatchTypeInput is an input type that accepts GrpcRouteHeaderMatchTypeArgs and GrpcRouteHeaderMatchTypeOutput values.
-// You can construct a concrete instance of `GrpcRouteHeaderMatchTypeInput` via:
+// GrpcRouteHeaderMatchTypeInput is an input type that accepts values of the GrpcRouteHeaderMatchType enum
+// A concrete instance of `GrpcRouteHeaderMatchTypeInput` can be one of the following:
 //
-//	GrpcRouteHeaderMatchTypeArgs{...}
+//	GrpcRouteHeaderMatchTypeTypeUnspecified
+//	GrpcRouteHeaderMatchTypeExact
+//	GrpcRouteHeaderMatchTypeRegularExpression
 type GrpcRouteHeaderMatchTypeInput interface {
 	pulumi.Input
 
@@ -1019,10 +1030,12 @@ func (o GrpcRouteMethodMatchTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// GrpcRouteMethodMatchTypeInput is an input type that accepts GrpcRouteMethodMatchTypeArgs and GrpcRouteMethodMatchTypeOutput values.
-// You can construct a concrete instance of `GrpcRouteMethodMatchTypeInput` via:
+// GrpcRouteMethodMatchTypeInput is an input type that accepts values of the GrpcRouteMethodMatchType enum
+// A concrete instance of `GrpcRouteMethodMatchTypeInput` can be one of the following:
 //
-//	GrpcRouteMethodMatchTypeArgs{...}
+//	GrpcRouteMethodMatchTypeTypeUnspecified
+//	GrpcRouteMethodMatchTypeExact
+//	GrpcRouteMethodMatchTypeRegularExpression
 type GrpcRouteMethodMatchTypeInput interface {
 	pulumi.Input
 
@@ -1200,10 +1213,15 @@ func (o HttpRouteRedirectResponseCodePtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// HttpRouteRedirectResponseCodeInput is an input type that accepts HttpRouteRedirectResponseCodeArgs and HttpRouteRedirectResponseCodeOutput values.
-// You can construct a concrete instance of `HttpRouteRedirectResponseCodeInput` via:
+// HttpRouteRedirectResponseCodeInput is an input type that accepts values of the HttpRouteRedirectResponseCode enum
+// A concrete instance of `HttpRouteRedirectResponseCodeInput` can be one of the following:
 //
-//	HttpRouteRedirectResponseCodeArgs{...}
+//	HttpRouteRedirectResponseCodeResponseCodeUnspecified
+//	HttpRouteRedirectResponseCodeMovedPermanentlyDefault
+//	HttpRouteRedirectResponseCodeFound
+//	HttpRouteRedirectResponseCodeSeeOther
+//	HttpRouteRedirectResponseCodeTemporaryRedirect
+//	HttpRouteRedirectResponseCodePermanentRedirect
 type HttpRouteRedirectResponseCodeInput interface {
 	pulumi.Input
 

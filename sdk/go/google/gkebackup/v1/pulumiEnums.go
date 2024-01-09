@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o RestoreConfigClusterResourceConflictPolicyPtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// RestoreConfigClusterResourceConflictPolicyInput is an input type that accepts RestoreConfigClusterResourceConflictPolicyArgs and RestoreConfigClusterResourceConflictPolicyOutput values.
-// You can construct a concrete instance of `RestoreConfigClusterResourceConflictPolicyInput` via:
+// RestoreConfigClusterResourceConflictPolicyInput is an input type that accepts values of the RestoreConfigClusterResourceConflictPolicy enum
+// A concrete instance of `RestoreConfigClusterResourceConflictPolicyInput` can be one of the following:
 //
-//	RestoreConfigClusterResourceConflictPolicyArgs{...}
+//	RestoreConfigClusterResourceConflictPolicyClusterResourceConflictPolicyUnspecified
+//	RestoreConfigClusterResourceConflictPolicyUseExistingVersion
+//	RestoreConfigClusterResourceConflictPolicyUseBackupVersion
 type RestoreConfigClusterResourceConflictPolicyInput interface {
 	pulumi.Input
 
@@ -494,10 +499,12 @@ func (o RestoreConfigNamespacedResourceRestoreModePtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// RestoreConfigNamespacedResourceRestoreModeInput is an input type that accepts RestoreConfigNamespacedResourceRestoreModeArgs and RestoreConfigNamespacedResourceRestoreModeOutput values.
-// You can construct a concrete instance of `RestoreConfigNamespacedResourceRestoreModeInput` via:
+// RestoreConfigNamespacedResourceRestoreModeInput is an input type that accepts values of the RestoreConfigNamespacedResourceRestoreMode enum
+// A concrete instance of `RestoreConfigNamespacedResourceRestoreModeInput` can be one of the following:
 //
-//	RestoreConfigNamespacedResourceRestoreModeArgs{...}
+//	RestoreConfigNamespacedResourceRestoreModeNamespacedResourceRestoreModeUnspecified
+//	RestoreConfigNamespacedResourceRestoreModeDeleteAndRestore
+//	RestoreConfigNamespacedResourceRestoreModeFailOnConflict
 type RestoreConfigNamespacedResourceRestoreModeInput interface {
 	pulumi.Input
 
@@ -671,10 +678,13 @@ func (o RestoreConfigVolumeDataRestorePolicyPtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-// RestoreConfigVolumeDataRestorePolicyInput is an input type that accepts RestoreConfigVolumeDataRestorePolicyArgs and RestoreConfigVolumeDataRestorePolicyOutput values.
-// You can construct a concrete instance of `RestoreConfigVolumeDataRestorePolicyInput` via:
+// RestoreConfigVolumeDataRestorePolicyInput is an input type that accepts values of the RestoreConfigVolumeDataRestorePolicy enum
+// A concrete instance of `RestoreConfigVolumeDataRestorePolicyInput` can be one of the following:
 //
-//	RestoreConfigVolumeDataRestorePolicyArgs{...}
+//	RestoreConfigVolumeDataRestorePolicyVolumeDataRestorePolicyUnspecified
+//	RestoreConfigVolumeDataRestorePolicyRestoreVolumeDataFromBackup
+//	RestoreConfigVolumeDataRestorePolicyReuseVolumeHandleFromBackup
+//	RestoreConfigVolumeDataRestorePolicyNoVolumeDataRestoration
 type RestoreConfigVolumeDataRestorePolicyInput interface {
 	pulumi.Input
 
@@ -854,10 +864,16 @@ func (o TransformationRuleActionOpPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// TransformationRuleActionOpInput is an input type that accepts TransformationRuleActionOpArgs and TransformationRuleActionOpOutput values.
-// You can construct a concrete instance of `TransformationRuleActionOpInput` via:
+// TransformationRuleActionOpInput is an input type that accepts values of the TransformationRuleActionOp enum
+// A concrete instance of `TransformationRuleActionOpInput` can be one of the following:
 //
-//	TransformationRuleActionOpArgs{...}
+//	TransformationRuleActionOpOpUnspecified
+//	TransformationRuleActionOpRemove
+//	TransformationRuleActionOpMove
+//	TransformationRuleActionOpCopy
+//	TransformationRuleActionOpAdd
+//	TransformationRuleActionOpTest
+//	TransformationRuleActionOpReplace
 type TransformationRuleActionOpInput interface {
 	pulumi.Input
 

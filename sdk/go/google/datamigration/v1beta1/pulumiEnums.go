@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o CloudSqlSettingsActivationPolicyPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// CloudSqlSettingsActivationPolicyInput is an input type that accepts CloudSqlSettingsActivationPolicyArgs and CloudSqlSettingsActivationPolicyOutput values.
-// You can construct a concrete instance of `CloudSqlSettingsActivationPolicyInput` via:
+// CloudSqlSettingsActivationPolicyInput is an input type that accepts values of the CloudSqlSettingsActivationPolicy enum
+// A concrete instance of `CloudSqlSettingsActivationPolicyInput` can be one of the following:
 //
-//	CloudSqlSettingsActivationPolicyArgs{...}
+//	CloudSqlSettingsActivationPolicySqlActivationPolicyUnspecified
+//	CloudSqlSettingsActivationPolicyAlways
+//	CloudSqlSettingsActivationPolicyNever
 type CloudSqlSettingsActivationPolicyInput interface {
 	pulumi.Input
 
@@ -494,10 +499,12 @@ func (o CloudSqlSettingsDataDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// CloudSqlSettingsDataDiskTypeInput is an input type that accepts CloudSqlSettingsDataDiskTypeArgs and CloudSqlSettingsDataDiskTypeOutput values.
-// You can construct a concrete instance of `CloudSqlSettingsDataDiskTypeInput` via:
+// CloudSqlSettingsDataDiskTypeInput is an input type that accepts values of the CloudSqlSettingsDataDiskType enum
+// A concrete instance of `CloudSqlSettingsDataDiskTypeInput` can be one of the following:
 //
-//	CloudSqlSettingsDataDiskTypeArgs{...}
+//	CloudSqlSettingsDataDiskTypeSqlDataDiskTypeUnspecified
+//	CloudSqlSettingsDataDiskTypePdSsd
+//	CloudSqlSettingsDataDiskTypePdHdd
 type CloudSqlSettingsDataDiskTypeInput interface {
 	pulumi.Input
 
@@ -671,10 +678,13 @@ func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// CloudSqlSettingsDatabaseVersionInput is an input type that accepts CloudSqlSettingsDatabaseVersionArgs and CloudSqlSettingsDatabaseVersionOutput values.
-// You can construct a concrete instance of `CloudSqlSettingsDatabaseVersionInput` via:
+// CloudSqlSettingsDatabaseVersionInput is an input type that accepts values of the CloudSqlSettingsDatabaseVersion enum
+// A concrete instance of `CloudSqlSettingsDatabaseVersionInput` can be one of the following:
 //
-//	CloudSqlSettingsDatabaseVersionArgs{...}
+//	CloudSqlSettingsDatabaseVersionSqlDatabaseVersionUnspecified
+//	CloudSqlSettingsDatabaseVersionMysql56
+//	CloudSqlSettingsDatabaseVersionMysql57
+//	CloudSqlSettingsDatabaseVersionMysql80
 type CloudSqlSettingsDatabaseVersionInput interface {
 	pulumi.Input
 
@@ -846,10 +856,12 @@ func (o ConnectionProfileProviderPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConnectionProfileProviderInput is an input type that accepts ConnectionProfileProviderArgs and ConnectionProfileProviderOutput values.
-// You can construct a concrete instance of `ConnectionProfileProviderInput` via:
+// ConnectionProfileProviderInput is an input type that accepts values of the ConnectionProfileProvider enum
+// A concrete instance of `ConnectionProfileProviderInput` can be one of the following:
 //
-//	ConnectionProfileProviderArgs{...}
+//	ConnectionProfileProviderDatabaseProviderUnspecified
+//	ConnectionProfileProviderCloudsql
+//	ConnectionProfileProviderRds
 type ConnectionProfileProviderInput interface {
 	pulumi.Input
 
@@ -1031,10 +1043,17 @@ func (o ConnectionProfileStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConnectionProfileStateEnumInput is an input type that accepts ConnectionProfileStateEnumArgs and ConnectionProfileStateEnumOutput values.
-// You can construct a concrete instance of `ConnectionProfileStateEnumInput` via:
+// ConnectionProfileStateEnumInput is an input type that accepts values of the ConnectionProfileStateEnum enum
+// A concrete instance of `ConnectionProfileStateEnumInput` can be one of the following:
 //
-//	ConnectionProfileStateEnumArgs{...}
+//	ConnectionProfileStateEnumStateUnspecified
+//	ConnectionProfileStateEnumDraft
+//	ConnectionProfileStateEnumCreating
+//	ConnectionProfileStateEnumReady
+//	ConnectionProfileStateEnumUpdating
+//	ConnectionProfileStateEnumDeleting
+//	ConnectionProfileStateEnumDeleted
+//	ConnectionProfileStateEnumFailed
 type ConnectionProfileStateEnumInput interface {
 	pulumi.Input
 
@@ -1204,10 +1223,11 @@ func (o DatabaseTypeEnginePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseTypeEngineInput is an input type that accepts DatabaseTypeEngineArgs and DatabaseTypeEngineOutput values.
-// You can construct a concrete instance of `DatabaseTypeEngineInput` via:
+// DatabaseTypeEngineInput is an input type that accepts values of the DatabaseTypeEngine enum
+// A concrete instance of `DatabaseTypeEngineInput` can be one of the following:
 //
-//	DatabaseTypeEngineArgs{...}
+//	DatabaseTypeEngineDatabaseEngineUnspecified
+//	DatabaseTypeEngineMysql
 type DatabaseTypeEngineInput interface {
 	pulumi.Input
 
@@ -1379,10 +1399,12 @@ func (o DatabaseTypeProviderPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// DatabaseTypeProviderInput is an input type that accepts DatabaseTypeProviderArgs and DatabaseTypeProviderOutput values.
-// You can construct a concrete instance of `DatabaseTypeProviderInput` via:
+// DatabaseTypeProviderInput is an input type that accepts values of the DatabaseTypeProvider enum
+// A concrete instance of `DatabaseTypeProviderInput` can be one of the following:
 //
-//	DatabaseTypeProviderArgs{...}
+//	DatabaseTypeProviderDatabaseProviderUnspecified
+//	DatabaseTypeProviderCloudsql
+//	DatabaseTypeProviderRds
 type DatabaseTypeProviderInput interface {
 	pulumi.Input
 
@@ -1580,10 +1602,25 @@ func (o MigrationJobStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// MigrationJobStateEnumInput is an input type that accepts MigrationJobStateEnumArgs and MigrationJobStateEnumOutput values.
-// You can construct a concrete instance of `MigrationJobStateEnumInput` via:
+// MigrationJobStateEnumInput is an input type that accepts values of the MigrationJobStateEnum enum
+// A concrete instance of `MigrationJobStateEnumInput` can be one of the following:
 //
-//	MigrationJobStateEnumArgs{...}
+//	MigrationJobStateEnumStateUnspecified
+//	MigrationJobStateEnumMaintenance
+//	MigrationJobStateEnumDraft
+//	MigrationJobStateEnumCreating
+//	MigrationJobStateEnumNotStarted
+//	MigrationJobStateEnumRunning
+//	MigrationJobStateEnumFailed
+//	MigrationJobStateEnumCompleted
+//	MigrationJobStateEnumDeleting
+//	MigrationJobStateEnumStopping
+//	MigrationJobStateEnumStopped
+//	MigrationJobStateEnumDeleted
+//	MigrationJobStateEnumUpdating
+//	MigrationJobStateEnumStarting
+//	MigrationJobStateEnumRestarting
+//	MigrationJobStateEnumResuming
 type MigrationJobStateEnumInput interface {
 	pulumi.Input
 
@@ -1755,10 +1792,12 @@ func (o MigrationJobTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// MigrationJobTypeInput is an input type that accepts MigrationJobTypeArgs and MigrationJobTypeOutput values.
-// You can construct a concrete instance of `MigrationJobTypeInput` via:
+// MigrationJobTypeInput is an input type that accepts values of the MigrationJobType enum
+// A concrete instance of `MigrationJobTypeInput` can be one of the following:
 //
-//	MigrationJobTypeArgs{...}
+//	MigrationJobTypeTypeUnspecified
+//	MigrationJobTypeOneTime
+//	MigrationJobTypeContinuous
 type MigrationJobTypeInput interface {
 	pulumi.Input
 

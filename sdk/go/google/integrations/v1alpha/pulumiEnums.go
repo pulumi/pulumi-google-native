@@ -160,10 +160,21 @@ func (o AuthConfigCredentialTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuthConfigCredentialTypeInput is an input type that accepts AuthConfigCredentialTypeArgs and AuthConfigCredentialTypeOutput values.
-// You can construct a concrete instance of `AuthConfigCredentialTypeInput` via:
+// AuthConfigCredentialTypeInput is an input type that accepts values of the AuthConfigCredentialType enum
+// A concrete instance of `AuthConfigCredentialTypeInput` can be one of the following:
 //
-//	AuthConfigCredentialTypeArgs{...}
+//	AuthConfigCredentialTypeCredentialTypeUnspecified
+//	AuthConfigCredentialTypeUsernameAndPassword
+//	AuthConfigCredentialTypeApiKey
+//	AuthConfigCredentialTypeOauth2AuthorizationCode
+//	AuthConfigCredentialTypeOauth2Implicit
+//	AuthConfigCredentialTypeOauth2ClientCredentials
+//	AuthConfigCredentialTypeOauth2ResourceOwnerCredentials
+//	AuthConfigCredentialTypeJwt
+//	AuthConfigCredentialTypeAuthToken
+//	AuthConfigCredentialTypeServiceAccount
+//	AuthConfigCredentialTypeClientCertificateOnly
+//	AuthConfigCredentialTypeOidcToken
 type AuthConfigCredentialTypeInput interface {
 	pulumi.Input
 
@@ -343,10 +354,16 @@ func (o AuthConfigStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuthConfigStateEnumInput is an input type that accepts AuthConfigStateEnumArgs and AuthConfigStateEnumOutput values.
-// You can construct a concrete instance of `AuthConfigStateEnumInput` via:
+// AuthConfigStateEnumInput is an input type that accepts values of the AuthConfigStateEnum enum
+// A concrete instance of `AuthConfigStateEnumInput` can be one of the following:
 //
-//	AuthConfigStateEnumArgs{...}
+//	AuthConfigStateEnumStateUnspecified
+//	AuthConfigStateEnumValid
+//	AuthConfigStateEnumInvalid
+//	AuthConfigStateEnumSoftDeleted
+//	AuthConfigStateEnumExpired
+//	AuthConfigStateEnumUnauthorized
+//	AuthConfigStateEnumUnsupported
 type AuthConfigStateEnumInput interface {
 	pulumi.Input
 
@@ -518,10 +535,12 @@ func (o AuthConfigVisibilityPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuthConfigVisibilityInput is an input type that accepts AuthConfigVisibilityArgs and AuthConfigVisibilityOutput values.
-// You can construct a concrete instance of `AuthConfigVisibilityInput` via:
+// AuthConfigVisibilityInput is an input type that accepts values of the AuthConfigVisibility enum
+// A concrete instance of `AuthConfigVisibilityInput` can be one of the following:
 //
-//	AuthConfigVisibilityArgs{...}
+//	AuthConfigVisibilityAuthConfigVisibilityUnspecified
+//	AuthConfigVisibilityPrivate
+//	AuthConfigVisibilityClientVisible
 type AuthConfigVisibilityInput interface {
 	pulumi.Input
 
@@ -693,10 +712,12 @@ func (o CertificateCertificateStatusPtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// CertificateCertificateStatusInput is an input type that accepts CertificateCertificateStatusArgs and CertificateCertificateStatusOutput values.
-// You can construct a concrete instance of `CertificateCertificateStatusInput` via:
+// CertificateCertificateStatusInput is an input type that accepts values of the CertificateCertificateStatus enum
+// A concrete instance of `CertificateCertificateStatusInput` can be one of the following:
 //
-//	CertificateCertificateStatusArgs{...}
+//	CertificateCertificateStatusStateUnspecified
+//	CertificateCertificateStatusActive
+//	CertificateCertificateStatusExpired
 type CertificateCertificateStatusInput interface {
 	pulumi.Input
 
@@ -869,10 +890,15 @@ func (o EnterpriseCrmEventbusProtoAttributesDataTypePtrOutput) ToStringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoAttributesDataTypeInput is an input type that accepts EnterpriseCrmEventbusProtoAttributesDataTypeArgs and EnterpriseCrmEventbusProtoAttributesDataTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoAttributesDataTypeInput` via:
+// EnterpriseCrmEventbusProtoAttributesDataTypeInput is an input type that accepts values of the EnterpriseCrmEventbusProtoAttributesDataType enum
+// A concrete instance of `EnterpriseCrmEventbusProtoAttributesDataTypeInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoAttributesDataTypeArgs{...}
+//	EnterpriseCrmEventbusProtoAttributesDataTypeDataTypeUnspecified
+//	EnterpriseCrmEventbusProtoAttributesDataTypeEmail
+//	EnterpriseCrmEventbusProtoAttributesDataTypeUrl
+//	EnterpriseCrmEventbusProtoAttributesDataTypeCurrency
+//	EnterpriseCrmEventbusProtoAttributesDataTypeTimestamp
+//	EnterpriseCrmEventbusProtoAttributesDataTypeDomainName
 type EnterpriseCrmEventbusProtoAttributesDataTypeInput interface {
 	pulumi.Input
 
@@ -1042,10 +1068,12 @@ func (o EnterpriseCrmEventbusProtoAttributesSearchablePtrOutput) ToStringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoAttributesSearchableInput is an input type that accepts EnterpriseCrmEventbusProtoAttributesSearchableArgs and EnterpriseCrmEventbusProtoAttributesSearchableOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoAttributesSearchableInput` via:
+// EnterpriseCrmEventbusProtoAttributesSearchableInput is an input type that accepts values of the EnterpriseCrmEventbusProtoAttributesSearchable enum
+// A concrete instance of `EnterpriseCrmEventbusProtoAttributesSearchableInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoAttributesSearchableArgs{...}
+//	EnterpriseCrmEventbusProtoAttributesSearchableUnspecified
+//	EnterpriseCrmEventbusProtoAttributesSearchableYes
+//	EnterpriseCrmEventbusProtoAttributesSearchableNo
 type EnterpriseCrmEventbusProtoAttributesSearchableInput interface {
 	pulumi.Input
 
@@ -1212,10 +1240,11 @@ func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypePtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeInput is an input type that accepts EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeArgs and EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeInput` via:
+// EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeInput is an input type that accepts values of the EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType enum
+// A concrete instance of `EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeArgs{...}
+//	EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeDefaultInclusive
+//	EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeExclusive
 type EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeInput interface {
 	pulumi.Input
 
@@ -1390,10 +1419,18 @@ func (o EnterpriseCrmEventbusProtoConditionOperatorPtrOutput) ToStringPtrOutputW
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoConditionOperatorInput is an input type that accepts EnterpriseCrmEventbusProtoConditionOperatorArgs and EnterpriseCrmEventbusProtoConditionOperatorOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoConditionOperatorInput` via:
+// EnterpriseCrmEventbusProtoConditionOperatorInput is an input type that accepts values of the EnterpriseCrmEventbusProtoConditionOperator enum
+// A concrete instance of `EnterpriseCrmEventbusProtoConditionOperatorInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoConditionOperatorArgs{...}
+//	EnterpriseCrmEventbusProtoConditionOperatorUnset
+//	EnterpriseCrmEventbusProtoConditionOperatorEquals
+//	EnterpriseCrmEventbusProtoConditionOperatorContains
+//	EnterpriseCrmEventbusProtoConditionOperatorLessThan
+//	EnterpriseCrmEventbusProtoConditionOperatorGreaterThan
+//	EnterpriseCrmEventbusProtoConditionOperatorExists
+//	EnterpriseCrmEventbusProtoConditionOperatorDoesNotExist
+//	EnterpriseCrmEventbusProtoConditionOperatorIsEmpty
+//	EnterpriseCrmEventbusProtoConditionOperatorIsNotEmpty
 type EnterpriseCrmEventbusProtoConditionOperatorInput interface {
 	pulumi.Input
 
@@ -1574,10 +1611,17 @@ func (o EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyPtrOutput) ToStringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyInput is an input type that accepts EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyArgs and EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyInput` via:
+// EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyInput is an input type that accepts values of the EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy enum
+// A concrete instance of `EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyArgs{...}
+//	EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyUnspecified
+//	EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyIgnore
+//	EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyNone
+//	EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyFatal
+//	EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyFixedInterval
+//	EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyLinearBackoff
+//	EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyExponentialBackoff
+//	EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyRestartWorkflowWithBackoff
 type EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyInput interface {
 	pulumi.Input
 
@@ -1749,10 +1793,13 @@ func (o EnterpriseCrmEventbusProtoLogSettingsSeedPeriodPtrOutput) ToStringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoLogSettingsSeedPeriodInput is an input type that accepts EnterpriseCrmEventbusProtoLogSettingsSeedPeriodArgs and EnterpriseCrmEventbusProtoLogSettingsSeedPeriodOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoLogSettingsSeedPeriodInput` via:
+// EnterpriseCrmEventbusProtoLogSettingsSeedPeriodInput is an input type that accepts values of the EnterpriseCrmEventbusProtoLogSettingsSeedPeriod enum
+// A concrete instance of `EnterpriseCrmEventbusProtoLogSettingsSeedPeriodInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoLogSettingsSeedPeriodArgs{...}
+//	EnterpriseCrmEventbusProtoLogSettingsSeedPeriodSeedPeriodUnspecified
+//	EnterpriseCrmEventbusProtoLogSettingsSeedPeriodDay
+//	EnterpriseCrmEventbusProtoLogSettingsSeedPeriodWeek
+//	EnterpriseCrmEventbusProtoLogSettingsSeedPeriodMonth
 type EnterpriseCrmEventbusProtoLogSettingsSeedPeriodInput interface {
 	pulumi.Input
 
@@ -1924,10 +1971,13 @@ func (o EnterpriseCrmEventbusProtoLogSettingsSeedScopePtrOutput) ToStringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoLogSettingsSeedScopeInput is an input type that accepts EnterpriseCrmEventbusProtoLogSettingsSeedScopeArgs and EnterpriseCrmEventbusProtoLogSettingsSeedScopeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoLogSettingsSeedScopeInput` via:
+// EnterpriseCrmEventbusProtoLogSettingsSeedScopeInput is an input type that accepts values of the EnterpriseCrmEventbusProtoLogSettingsSeedScope enum
+// A concrete instance of `EnterpriseCrmEventbusProtoLogSettingsSeedScopeInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoLogSettingsSeedScopeArgs{...}
+//	EnterpriseCrmEventbusProtoLogSettingsSeedScopeSeedScopeUnspecified
+//	EnterpriseCrmEventbusProtoLogSettingsSeedScopeEventName
+//	EnterpriseCrmEventbusProtoLogSettingsSeedScopeTimePeriod
+//	EnterpriseCrmEventbusProtoLogSettingsSeedScopeParamName
 type EnterpriseCrmEventbusProtoLogSettingsSeedScopeInput interface {
 	pulumi.Input
 
@@ -2096,10 +2146,12 @@ func (o EnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrOutput) ToStringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoNodeIdentifierElementTypeInput is an input type that accepts EnterpriseCrmEventbusProtoNodeIdentifierElementTypeArgs and EnterpriseCrmEventbusProtoNodeIdentifierElementTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoNodeIdentifierElementTypeInput` via:
+// EnterpriseCrmEventbusProtoNodeIdentifierElementTypeInput is an input type that accepts values of the EnterpriseCrmEventbusProtoNodeIdentifierElementType enum
+// A concrete instance of `EnterpriseCrmEventbusProtoNodeIdentifierElementTypeInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoNodeIdentifierElementTypeArgs{...}
+//	EnterpriseCrmEventbusProtoNodeIdentifierElementTypeUnknownType
+//	EnterpriseCrmEventbusProtoNodeIdentifierElementTypeTaskConfig
+//	EnterpriseCrmEventbusProtoNodeIdentifierElementTypeTriggerConfig
 type EnterpriseCrmEventbusProtoNodeIdentifierElementTypeInput interface {
 	pulumi.Input
 
@@ -2272,10 +2324,13 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionInput is an input type that accepts EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionArgs and EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionInput` via:
+// EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionInput is an input type that accepts values of the EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption enum
+// A concrete instance of `EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionArgs{...}
+//	EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionDefault
+//	EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionStringMultiLine
+//	EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionNumberSlider
+//	EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionBooleanToggle
 type EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionInput interface {
 	pulumi.Input
 
@@ -2448,10 +2503,13 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionInput is an input type that accepts EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionArgs and EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionInput` via:
+// EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionInput is an input type that accepts values of the EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption enum
+// A concrete instance of `EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionArgs{...}
+//	EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionDefaultNotParameterName
+//	EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionIsParameterName
+//	EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionKeyIsParameterName
+//	EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionValueIsParameterName
 type EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionInput interface {
 	pulumi.Input
 
@@ -2622,10 +2680,12 @@ func (o EnterpriseCrmEventbusProtoSuccessPolicyFinalStatePtrOutput) ToStringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoSuccessPolicyFinalStateInput is an input type that accepts EnterpriseCrmEventbusProtoSuccessPolicyFinalStateArgs and EnterpriseCrmEventbusProtoSuccessPolicyFinalStateOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoSuccessPolicyFinalStateInput` via:
+// EnterpriseCrmEventbusProtoSuccessPolicyFinalStateInput is an input type that accepts values of the EnterpriseCrmEventbusProtoSuccessPolicyFinalState enum
+// A concrete instance of `EnterpriseCrmEventbusProtoSuccessPolicyFinalStateInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoSuccessPolicyFinalStateArgs{...}
+//	EnterpriseCrmEventbusProtoSuccessPolicyFinalStateUnspecified
+//	EnterpriseCrmEventbusProtoSuccessPolicyFinalStateSucceeded
+//	EnterpriseCrmEventbusProtoSuccessPolicyFinalStateSuspended
 type EnterpriseCrmEventbusProtoSuccessPolicyFinalStateInput interface {
 	pulumi.Input
 
@@ -2802,10 +2862,15 @@ func (o EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypePtrOutput) ToStringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeInput is an input type that accepts EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeArgs and EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeInput` via:
+// EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeInput is an input type that accepts values of the EnterpriseCrmEventbusProtoTaskAlertConfigMetricType enum
+// A concrete instance of `EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeArgs{...}
+//	EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeMetricTypeUnspecified
+//	EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeTaskErrorRate
+//	EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeTaskWarningRate
+//	EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeTaskRate
+//	EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeTaskAverageDuration
+//	EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeTaskPercentileDuration
 type EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeInput interface {
 	pulumi.Input
 
@@ -2975,10 +3040,12 @@ func (o EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypePtrOutput) ToStrin
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeInput is an input type that accepts EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeArgs and EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeInput` via:
+// EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeInput is an input type that accepts values of the EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType enum
+// A concrete instance of `EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeArgs{...}
+//	EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeUnspecifiedThresholdType
+//	EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeExpectedMin
+//	EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeExpectedMax
 type EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeInput interface {
 	pulumi.Input
 
@@ -3157,10 +3224,19 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataCategoryPtrOutput) ToStringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoTaskMetadataCategoryInput is an input type that accepts EnterpriseCrmEventbusProtoTaskMetadataCategoryArgs and EnterpriseCrmEventbusProtoTaskMetadataCategoryOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataCategoryInput` via:
+// EnterpriseCrmEventbusProtoTaskMetadataCategoryInput is an input type that accepts values of the EnterpriseCrmEventbusProtoTaskMetadataCategory enum
+// A concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataCategoryInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoTaskMetadataCategoryArgs{...}
+//	EnterpriseCrmEventbusProtoTaskMetadataCategoryUnspecifiedCategory
+//	EnterpriseCrmEventbusProtoTaskMetadataCategoryCustom
+//	EnterpriseCrmEventbusProtoTaskMetadataCategoryFlowControl
+//	EnterpriseCrmEventbusProtoTaskMetadataCategoryDataManipulation
+//	EnterpriseCrmEventbusProtoTaskMetadataCategoryScripting
+//	EnterpriseCrmEventbusProtoTaskMetadataCategoryConnector
+//	EnterpriseCrmEventbusProtoTaskMetadataCategoryHidden
+//	EnterpriseCrmEventbusProtoTaskMetadataCategoryCloudSystems
+//	EnterpriseCrmEventbusProtoTaskMetadataCategoryCustomTaskTemplate
+//	EnterpriseCrmEventbusProtoTaskMetadataCategoryTaskRecommendations
 type EnterpriseCrmEventbusProtoTaskMetadataCategoryInput interface {
 	pulumi.Input
 
@@ -3336,10 +3412,14 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionInput is an input type that accepts EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionArgs and EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionInput` via:
+// EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionInput is an input type that accepts values of the EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption enum
+// A concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionArgs{...}
+//	EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionUnspecifiedJsonValidationOption
+//	EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionSkip
+//	EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPreExecution
+//	EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPostExecution
+//	EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPrePostExecution
 type EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionInput interface {
 	pulumi.Input
 
@@ -3531,10 +3611,24 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryPtrOutput) ToStrin
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryInput is an input type that accepts EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryArgs and EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryInput` via:
+// EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryInput is an input type that accepts values of the EnterpriseCrmEventbusProtoTaskMetadataExternalCategory enum
+// A concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryArgs{...}
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryUnspecifiedExternalCategory
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryCore
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryConnectors
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalHttp
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalIntegrationServices
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalCustomerActions
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalFlowControl
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalWorkspace
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalSecurity
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalDatabases
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalAnalytics
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalByoc
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalByot
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalArtificialInteligence
+//	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalDataManipulation
 type EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryInput interface {
 	pulumi.Input
 
@@ -3706,10 +3800,12 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataStatusPtrOutput) ToStringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoTaskMetadataStatusInput is an input type that accepts EnterpriseCrmEventbusProtoTaskMetadataStatusArgs and EnterpriseCrmEventbusProtoTaskMetadataStatusOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataStatusInput` via:
+// EnterpriseCrmEventbusProtoTaskMetadataStatusInput is an input type that accepts values of the EnterpriseCrmEventbusProtoTaskMetadataStatus enum
+// A concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataStatusInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoTaskMetadataStatusArgs{...}
+//	EnterpriseCrmEventbusProtoTaskMetadataStatusUnspecifiedStatus
+//	EnterpriseCrmEventbusProtoTaskMetadataStatusDefaultInactive
+//	EnterpriseCrmEventbusProtoTaskMetadataStatusActive
 type EnterpriseCrmEventbusProtoTaskMetadataStatusInput interface {
 	pulumi.Input
 
@@ -3885,10 +3981,20 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataSystemPtrOutput) ToStringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoTaskMetadataSystemInput is an input type that accepts EnterpriseCrmEventbusProtoTaskMetadataSystemArgs and EnterpriseCrmEventbusProtoTaskMetadataSystemOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataSystemInput` via:
+// EnterpriseCrmEventbusProtoTaskMetadataSystemInput is an input type that accepts values of the EnterpriseCrmEventbusProtoTaskMetadataSystem enum
+// A concrete instance of `EnterpriseCrmEventbusProtoTaskMetadataSystemInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoTaskMetadataSystemArgs{...}
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemUnspecifiedSystem
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemGeneric
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemBuganizer
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemSalesforce
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemCloudSql
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemPlx
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemSheets
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemGoogleGroups
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemEmail
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemSpanner
+//	EnterpriseCrmEventbusProtoTaskMetadataSystemDataBridge
 type EnterpriseCrmEventbusProtoTaskMetadataSystemInput interface {
 	pulumi.Input
 
@@ -4094,10 +4200,29 @@ func (o EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdPtrOutput) ToStringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdInput is an input type that accepts EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdArgs and EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdInput` via:
+// EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdInput is an input type that accepts values of the EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId enum
+// A concrete instance of `EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdArgs{...}
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdUnspecifiedTaskModule
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdLabel
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdErrorHandling
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdTaskParamTable
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdTaskParamForm
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdPrecondition
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdScriptEditor
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdRpc
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdTaskSummary
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdSuspension
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdRpcTyped
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdSubWorkflow
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdAppsScriptNavigator
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdSubWorkflowForEachLoop
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdFieldMapping
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdReadme
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdRestCaller
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdSubWorkflowScatterGather
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdCloudSql
+//	EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdGenericConnectorTask
 type EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdInput interface {
 	pulumi.Input
 
@@ -4284,10 +4409,20 @@ func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypePtrOutput) ToStri
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeInput is an input type that accepts EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeArgs and EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeInput` via:
+// EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeInput is an input type that accepts values of the EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType enum
+// A concrete instance of `EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeArgs{...}
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeMetricTypeUnspecified
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeEventErrorRate
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeEventWarningRate
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeTaskErrorRate
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeTaskWarningRate
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeTaskRate
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeEventRate
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeEventAverageDuration
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeEventPercentileDuration
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeTaskAverageDuration
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeTaskPercentileDuration
 type EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeInput interface {
 	pulumi.Input
 
@@ -4457,10 +4592,12 @@ func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypePtrOutput) ToS
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeInput is an input type that accepts EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeArgs and EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeInput` via:
+// EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeInput is an input type that accepts values of the EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType enum
+// A concrete instance of `EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeArgs{...}
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeUnspecifiedThresholdType
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeExpectedMin
+//	EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeExpectedMax
 type EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeInput interface {
 	pulumi.Input
 
@@ -4628,10 +4765,11 @@ func (o EnterpriseCrmEventbusStatsDimensionsEnumFilterTypePtrOutput) ToStringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeInput is an input type that accepts EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeArgs and EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeInput` via:
+// EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeInput is an input type that accepts values of the EnterpriseCrmEventbusStatsDimensionsEnumFilterType enum
+// A concrete instance of `EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeArgs{...}
+//	EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeDefaultInclusive
+//	EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeExclusive
 type EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeInput interface {
 	pulumi.Input
 
@@ -4803,10 +4941,13 @@ func (o EnterpriseCrmEventbusStatsDimensionsRetryAttemptPtrOutput) ToStringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmEventbusStatsDimensionsRetryAttemptInput is an input type that accepts EnterpriseCrmEventbusStatsDimensionsRetryAttemptArgs and EnterpriseCrmEventbusStatsDimensionsRetryAttemptOutput values.
-// You can construct a concrete instance of `EnterpriseCrmEventbusStatsDimensionsRetryAttemptInput` via:
+// EnterpriseCrmEventbusStatsDimensionsRetryAttemptInput is an input type that accepts values of the EnterpriseCrmEventbusStatsDimensionsRetryAttempt enum
+// A concrete instance of `EnterpriseCrmEventbusStatsDimensionsRetryAttemptInput` can be one of the following:
 //
-//	EnterpriseCrmEventbusStatsDimensionsRetryAttemptArgs{...}
+//	EnterpriseCrmEventbusStatsDimensionsRetryAttemptUnspecified
+//	EnterpriseCrmEventbusStatsDimensionsRetryAttemptFinal
+//	EnterpriseCrmEventbusStatsDimensionsRetryAttemptRetryable
+//	EnterpriseCrmEventbusStatsDimensionsRetryAttemptCanceled
 type EnterpriseCrmEventbusStatsDimensionsRetryAttemptInput interface {
 	pulumi.Input
 
@@ -4991,10 +5132,27 @@ func (o EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypePtrOutput) ToSt
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeArgs and EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeInput` via:
+// EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeDataTypeUnspecified
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeStringValue
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeIntValue
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeDoubleValue
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeBooleanValue
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeProtoValue
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeSerializedObjectValue
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeStringArray
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeIntArray
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeDoubleArray
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeProtoArray
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeProtoEnum
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeBooleanArray
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeProtoEnumArray
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeBytes
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeBytesArray
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeNonSerializableObject
+//	EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeJsonValue
 type EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeInput interface {
 	pulumi.Input
 
@@ -5179,10 +5337,27 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtrOutput) ToSt
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeArgs and EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeInput` via:
+// EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeDataTypeUnspecified
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeStringValue
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeIntValue
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeDoubleValue
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeBooleanValue
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeProtoValue
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeSerializedObjectValue
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeStringArray
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeIntArray
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeDoubleArray
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeProtoArray
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeProtoEnum
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeBooleanArray
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeProtoEnumArray
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeBytes
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeBytesArray
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeNonSerializableObject
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeJsonValue
 type EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeInput interface {
 	pulumi.Input
 
@@ -5353,10 +5528,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeArgs and EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeInput` via:
+// EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeExternalTaskTypeUnspecified
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeNormalTask
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeErrorTask
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeInput interface {
 	pulumi.Input
 
@@ -5532,10 +5709,14 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionArgs and EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionInput` via:
+// EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionUnspecifiedJsonValidationOption
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionSkip
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionPreExecution
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionPostExecution
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionPrePostExecution
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionInput interface {
 	pulumi.Input
 
@@ -5707,10 +5888,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyArgs and EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyInput` via:
+// EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyUnspecified
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyRunAllMatch
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyRunFirstMatch
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyInput interface {
 	pulumi.Input
 
@@ -5882,10 +6065,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyArgs and EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyInput` via:
+// EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategy enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyWhenAllSucceed
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyWhenAnySucceed
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyWhenAllTasksAndConditionsSucceed
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyInput interface {
 	pulumi.Input
 
@@ -6057,10 +6242,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypePtrOutput) ToString
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeArgs and EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeInput` via:
+// EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeTask
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeAsisTemplate
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeIoTemplate
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeInput interface {
 	pulumi.Input
 
@@ -6232,10 +6419,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypePtrOutput) ToString
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeArgs and EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeInput` via:
+// EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeTask
+//	EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeAsisTemplate
+//	EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeIoTemplate
 type EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeInput interface {
 	pulumi.Input
 
@@ -6407,10 +6596,12 @@ func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyArgs and EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyInput` via:
+// EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyUnspecified
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyRunAllMatch
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyRunFirstMatch
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyInput interface {
 	pulumi.Input
 
@@ -6590,10 +6781,24 @@ func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypePtrOutput) To
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeArgs and EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeInput` via:
+// EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeUnknown
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCloudPubsub
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeGoops
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcSync
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCron
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeApi
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeManifoldTrigger
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeDatalayerDataChange
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcChannel
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCloudPubsubExternal
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcCdcChannel
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeSfdcPlatformEventsChannel
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeCloudScheduler
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeIntegrationConnectorTrigger
+//	EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypePrivateTrigger
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeInput interface {
 	pulumi.Input
 
@@ -6778,10 +6983,27 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeArgs and EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeInput` via:
+// EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeDataTypeUnspecified
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeStringValue
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeIntValue
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeDoubleValue
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeBooleanValue
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeProtoValue
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeSerializedObjectValue
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeStringArray
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeIntArray
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeDoubleArray
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeProtoArray
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeProtoEnum
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeBooleanArray
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeProtoEnumArray
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeBytes
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeBytesArray
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeNonSerializableObject
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeJsonValue
 type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeInput interface {
 	pulumi.Input
 
@@ -6954,10 +7176,13 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypePtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeArgs and EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeInput` via:
+// EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeInput is an input type that accepts values of the EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType enum
+// A concrete instance of `EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeInput` can be one of the following:
 //
-//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeArgs{...}
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeInOutTypeUnspecified
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeIn
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeOut
+//	EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeInOut
 type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeInput interface {
 	pulumi.Input
 
@@ -7125,10 +7350,12 @@ func (o EnterpriseCrmLoggingGwsFieldLimitsLogActionPtrOutput) ToStringPtrOutputW
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmLoggingGwsFieldLimitsLogActionInput is an input type that accepts EnterpriseCrmLoggingGwsFieldLimitsLogActionArgs and EnterpriseCrmLoggingGwsFieldLimitsLogActionOutput values.
-// You can construct a concrete instance of `EnterpriseCrmLoggingGwsFieldLimitsLogActionInput` via:
+// EnterpriseCrmLoggingGwsFieldLimitsLogActionInput is an input type that accepts values of the EnterpriseCrmLoggingGwsFieldLimitsLogAction enum
+// A concrete instance of `EnterpriseCrmLoggingGwsFieldLimitsLogActionInput` can be one of the following:
 //
-//	EnterpriseCrmLoggingGwsFieldLimitsLogActionArgs{...}
+//	EnterpriseCrmLoggingGwsFieldLimitsLogActionLogActionUnspecified
+//	EnterpriseCrmLoggingGwsFieldLimitsLogActionDontLog
+//	EnterpriseCrmLoggingGwsFieldLimitsLogActionLog
 type EnterpriseCrmLoggingGwsFieldLimitsLogActionInput interface {
 	pulumi.Input
 
@@ -7300,10 +7527,13 @@ func (o EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemPtrOutput) ToStringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemInput is an input type that accepts EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemArgs and EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemOutput values.
-// You can construct a concrete instance of `EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemInput` via:
+// EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemInput is an input type that accepts values of the EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem enum
+// A concrete instance of `EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemInput` can be one of the following:
 //
-//	EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemArgs{...}
+//	EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemLogTypeUnspecified
+//	EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemGws
+//	EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemGts
+//	EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemAll
 type EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemInput interface {
 	pulumi.Input
 
@@ -7526,10 +7756,16 @@ func (o EnterpriseCrmLoggingGwsFieldLimitsShortenerTypePtrOutput) ToStringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeInput is an input type that accepts EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeArgs and EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeInput` via:
+// EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeInput is an input type that accepts values of the EnterpriseCrmLoggingGwsFieldLimitsShortenerType enum
+// A concrete instance of `EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeInput` can be one of the following:
 //
-//	EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeArgs{...}
+//	EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeShortenerTypeUnspecified
+//	EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeShorten
+//	EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeHash
+//	EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeShortenWithHash
+//	EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeShortenEmail
+//	EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeShortenEmailWithHash
+//	EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeShortenDomain
 type EnterpriseCrmLoggingGwsFieldLimitsShortenerTypeInput interface {
 	pulumi.Input
 
@@ -7701,10 +7937,13 @@ func (o EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemPtrOutput) ToStringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemInput is an input type that accepts EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemArgs and EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemOutput values.
-// You can construct a concrete instance of `EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemInput` via:
+// EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemInput is an input type that accepts values of the EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem enum
+// A concrete instance of `EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemInput` can be one of the following:
 //
-//	EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemArgs{...}
+//	EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemLogTypeUnspecified
+//	EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemGws
+//	EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemGts
+//	EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemAll
 type EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemInput interface {
 	pulumi.Input
 
@@ -7923,10 +8162,14 @@ func (o EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyPtrOutput) ToStringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyInput is an input type that accepts EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyArgs and EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyOutput values.
-// You can construct a concrete instance of `EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyInput` via:
+// EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyInput is an input type that accepts values of the EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy enum
+// A concrete instance of `EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyInput` can be one of the following:
 //
-//	EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyArgs{...}
+//	EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyPrivacyTypeUnspecified
+//	EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyNotPii
+//	EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyPii
+//	EnterpriseCrmLoggingGwsSanitizeOptionsPrivacySpii
+//	EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyUnsure
 type EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyInput interface {
 	pulumi.Input
 
@@ -8104,10 +8347,16 @@ func (o EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtrOutput) ToStringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeInput is an input type that accepts EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeArgs and EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeOutput values.
-// You can construct a concrete instance of `EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeInput` via:
+// EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeInput is an input type that accepts values of the EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType enum
+// A concrete instance of `EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeInput` can be one of the following:
 //
-//	EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeArgs{...}
+//	EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeSanitizeTypeUnspecified
+//	EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeScrub
+//	EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeAnonymize
+//	EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeAnonymizeLimitedRepeatable
+//	EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeObfuscate
+//	EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeEncrypt
+//	EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeDoNotSanitize
 type EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypeInput interface {
 	pulumi.Input
 
@@ -8289,10 +8538,17 @@ func (o GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput) ToStr
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyInput is an input type that accepts GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyArgs and GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyInput` via:
+// GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyArgs{...}
+//	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertionStrategyUnspecified
+//	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertSuccessfulExecution
+//	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertFailedExecution
+//	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertNoExecution
+//	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertEquals
+//	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertNotEquals
+//	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertContains
+//	GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyAssertCondition
 type GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyInput interface {
 	pulumi.Input
 
@@ -8468,10 +8724,14 @@ func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInput is an input type that accepts GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityArgs and GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInput` via:
+// GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityArgs{...}
+//	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityCloudLoggingSeverityUnspecified
+//	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityDefault
+//	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInfo
+//	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityError
+//	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityWarning
 type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityInput interface {
 	pulumi.Input
 
@@ -8661,10 +8921,21 @@ func (o GoogleCloudIntegrationsV1alphaCredentialCredentialTypePtrOutput) ToStrin
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaCredentialCredentialTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaCredentialCredentialTypeArgs and GoogleCloudIntegrationsV1alphaCredentialCredentialTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaCredentialCredentialTypeInput` via:
+// GoogleCloudIntegrationsV1alphaCredentialCredentialTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaCredentialCredentialType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaCredentialCredentialTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeCredentialTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeUsernameAndPassword
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeApiKey
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeOauth2AuthorizationCode
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeOauth2Implicit
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeOauth2ClientCredentials
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeOauth2ResourceOwnerCredentials
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeJwt
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeAuthToken
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeServiceAccount
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeClientCertificateOnly
+//	GoogleCloudIntegrationsV1alphaCredentialCredentialTypeOidcToken
 type GoogleCloudIntegrationsV1alphaCredentialCredentialTypeInput interface {
 	pulumi.Input
 
@@ -8846,10 +9117,17 @@ func (o GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtrOutput) ToStr
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyInput is an input type that accepts GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyArgs and GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyInput` via:
+// GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyArgs{...}
+//	GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyRetryStrategyUnspecified
+//	GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyIgnore
+//	GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyNone
+//	GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyFatal
+//	GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyFixedInterval
+//	GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyLinearBackoff
+//	GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyExponentialBackoff
+//	GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyRestartIntegrationWithBackoff
 type GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyInput interface {
 	pulumi.Input
 
@@ -9037,10 +9315,20 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypePtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeArgs and GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeInput` via:
+// GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeMetricTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEventErrorRate
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEventWarningRate
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeTaskErrorRate
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeTaskWarningRate
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeTaskRate
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEventRate
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEventAverageDuration
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEventPercentileDuration
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeTaskAverageDuration
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeTaskPercentileDuration
 type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeInput interface {
 	pulumi.Input
 
@@ -9212,10 +9500,12 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeArgs and GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeInput` via:
+// GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeThresholdTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeExpectedMin
+//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeExpectedMax
 type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeInput interface {
 	pulumi.Input
 
@@ -9405,10 +9695,21 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypePtrOutput) ToS
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeArgs and GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeInput` via:
+// GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaIntegrationParameterDataType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeIntegrationParameterDataTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeStringValue
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeIntValue
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeDoubleValue
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeBooleanValue
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeStringArray
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeIntArray
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeDoubleArray
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeBooleanArray
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeJsonValue
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeProtoValue
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeProtoArray
 type GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeInput interface {
 	pulumi.Input
 
@@ -9582,10 +9883,13 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeArgs and GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeInput` via:
+// GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeInOutTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeIn
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeOut
+//	GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeInOut
 type GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeInput interface {
 	pulumi.Input
 
@@ -9761,10 +10065,14 @@ func (o GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput) ToStringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaMockConfigMockStrategyInput is an input type that accepts GoogleCloudIntegrationsV1alphaMockConfigMockStrategyArgs and GoogleCloudIntegrationsV1alphaMockConfigMockStrategyOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaMockConfigMockStrategyInput` via:
+// GoogleCloudIntegrationsV1alphaMockConfigMockStrategyInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaMockConfigMockStrategy enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaMockConfigMockStrategyInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaMockConfigMockStrategyArgs{...}
+//	GoogleCloudIntegrationsV1alphaMockConfigMockStrategyMockStrategyUnspecified
+//	GoogleCloudIntegrationsV1alphaMockConfigMockStrategyNoMockStrategy
+//	GoogleCloudIntegrationsV1alphaMockConfigMockStrategySpecificMockStrategy
+//	GoogleCloudIntegrationsV1alphaMockConfigMockStrategyFailureMockStrategy
+//	GoogleCloudIntegrationsV1alphaMockConfigMockStrategySkipMockStrategy
 type GoogleCloudIntegrationsV1alphaMockConfigMockStrategyInput interface {
 	pulumi.Input
 
@@ -9938,10 +10246,13 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypePtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeArgs and GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeInput` via:
+// GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeRequestTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeRequestBody
+//	GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeQueryParameters
+//	GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeEncodedHeader
 type GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeInput interface {
 	pulumi.Input
 
@@ -10115,10 +10426,13 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypePtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeArgs and GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeInput` via:
+// GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeRequestTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeRequestBody
+//	GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeQueryParameters
+//	GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeEncodedHeader
 type GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeInput interface {
 	pulumi.Input
 
@@ -10292,10 +10606,13 @@ func (o GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeP
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeArgs and GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeInput` via:
+// GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeRequestTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeRequestBody
+//	GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeQueryParameters
+//	GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeEncodedHeader
 type GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeInput interface {
 	pulumi.Input
 
@@ -10485,10 +10802,21 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapKeyTypePtrOutput) ToStringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaParameterMapKeyTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaParameterMapKeyTypeArgs and GoogleCloudIntegrationsV1alphaParameterMapKeyTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaParameterMapKeyTypeInput` via:
+// GoogleCloudIntegrationsV1alphaParameterMapKeyTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaParameterMapKeyType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaParameterMapKeyTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeIntegrationParameterDataTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeStringValue
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeIntValue
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeDoubleValue
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeBooleanValue
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeStringArray
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeIntArray
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeDoubleArray
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeBooleanArray
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeJsonValue
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeProtoValue
+//	GoogleCloudIntegrationsV1alphaParameterMapKeyTypeProtoArray
 type GoogleCloudIntegrationsV1alphaParameterMapKeyTypeInput interface {
 	pulumi.Input
 
@@ -10678,10 +11006,21 @@ func (o GoogleCloudIntegrationsV1alphaParameterMapValueTypePtrOutput) ToStringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaParameterMapValueTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaParameterMapValueTypeArgs and GoogleCloudIntegrationsV1alphaParameterMapValueTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaParameterMapValueTypeInput` via:
+// GoogleCloudIntegrationsV1alphaParameterMapValueTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaParameterMapValueType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaParameterMapValueTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeIntegrationParameterDataTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeStringValue
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeIntValue
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeDoubleValue
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeBooleanValue
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeStringArray
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeIntArray
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeDoubleArray
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeBooleanArray
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeJsonValue
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeProtoValue
+//	GoogleCloudIntegrationsV1alphaParameterMapValueTypeProtoArray
 type GoogleCloudIntegrationsV1alphaParameterMapValueTypeInput interface {
 	pulumi.Input
 
@@ -10853,10 +11192,12 @@ func (o GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrOutput) ToString
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateInput is an input type that accepts GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateArgs and GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateInput` via:
+// GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateArgs{...}
+//	GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateFinalStateUnspecified
+//	GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateSucceeded
+//	GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateSuspended
 type GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateInput interface {
 	pulumi.Input
 
@@ -11028,10 +11369,12 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput) ToStr
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeArgs and GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeInput` via:
+// GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeExternalTaskTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeNormalTask
+//	GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeErrorTask
 type GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeInput interface {
 	pulumi.Input
 
@@ -11207,10 +11550,14 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPtrOutput) T
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionInput is an input type that accepts GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionArgs and GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionInput` via:
+// GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionArgs{...}
+//	GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionJsonValidationOptionUnspecified
+//	GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionSkip
+//	GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPreExecution
+//	GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPostExecution
+//	GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPrePostExecution
 type GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionInput interface {
 	pulumi.Input
 
@@ -11382,10 +11729,12 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyInput is an input type that accepts GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyArgs and GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyInput` via:
+// GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyArgs{...}
+//	GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyNextTasksExecutionPolicyUnspecified
+//	GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyRunAllMatch
+//	GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyRunFirstMatch
 type GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyInput interface {
 	pulumi.Input
 
@@ -11559,10 +11908,13 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyInput is an input type that accepts GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyArgs and GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyInput` via:
+// GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyArgs{...}
+//	GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyTaskExecutionStrategyUnspecified
+//	GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyWhenAllSucceed
+//	GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyWhenAnySucceed
+//	GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyWhenAllTasksAndConditionsSucceed
 type GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyInput interface {
 	pulumi.Input
 
@@ -11734,10 +12086,12 @@ func (o GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyInput is an input type that accepts GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyArgs and GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyInput` via:
+// GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyArgs{...}
+//	GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyNextTasksExecutionPolicyUnspecified
+//	GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyRunAllMatch
+//	GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyRunFirstMatch
 type GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyInput interface {
 	pulumi.Input
 
@@ -11921,10 +12275,18 @@ func (o GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypePtrOutput) ToStrin
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeArgs and GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeInput` via:
+// GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeInput is an input type that accepts values of the GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType enum
+// A concrete instance of `GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeInput` can be one of the following:
 //
-//	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeArgs{...}
+//	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeTriggerTypeUnspecified
+//	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeCron
+//	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeApi
+//	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeSfdcChannel
+//	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeCloudPubsubExternal
+//	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeSfdcCdcChannel
+//	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeCloudScheduler
+//	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeIntegrationConnectorTrigger
+//	GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypePrivateTrigger
 type GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeInput interface {
 	pulumi.Input
 
@@ -12096,10 +12458,12 @@ func (o TemplatesVersionDatabasePersistencePolicyPtrOutput) ToStringPtrOutputWit
 	}).(pulumi.StringPtrOutput)
 }
 
-// TemplatesVersionDatabasePersistencePolicyInput is an input type that accepts TemplatesVersionDatabasePersistencePolicyArgs and TemplatesVersionDatabasePersistencePolicyOutput values.
-// You can construct a concrete instance of `TemplatesVersionDatabasePersistencePolicyInput` via:
+// TemplatesVersionDatabasePersistencePolicyInput is an input type that accepts values of the TemplatesVersionDatabasePersistencePolicy enum
+// A concrete instance of `TemplatesVersionDatabasePersistencePolicyInput` can be one of the following:
 //
-//	TemplatesVersionDatabasePersistencePolicyArgs{...}
+//	TemplatesVersionDatabasePersistencePolicyDatabasePersistencePolicyUnspecified
+//	TemplatesVersionDatabasePersistencePolicyDatabasePersistenceDisabled
+//	TemplatesVersionDatabasePersistencePolicyDatabasePersistenceAsync
 type TemplatesVersionDatabasePersistencePolicyInput interface {
 	pulumi.Input
 
@@ -12282,10 +12646,12 @@ func (o TestCaseDatabasePersistencePolicyPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// TestCaseDatabasePersistencePolicyInput is an input type that accepts TestCaseDatabasePersistencePolicyArgs and TestCaseDatabasePersistencePolicyOutput values.
-// You can construct a concrete instance of `TestCaseDatabasePersistencePolicyInput` via:
+// TestCaseDatabasePersistencePolicyInput is an input type that accepts values of the TestCaseDatabasePersistencePolicy enum
+// A concrete instance of `TestCaseDatabasePersistencePolicyInput` can be one of the following:
 //
-//	TestCaseDatabasePersistencePolicyArgs{...}
+//	TestCaseDatabasePersistencePolicyDatabasePersistencePolicyUnspecified
+//	TestCaseDatabasePersistencePolicyDatabasePersistenceDisabled
+//	TestCaseDatabasePersistencePolicyDatabasePersistenceAsync
 type TestCaseDatabasePersistencePolicyInput interface {
 	pulumi.Input
 
@@ -12457,10 +12823,12 @@ func (o VersionDatabasePersistencePolicyPtrOutput) ToStringPtrOutputWithContext(
 	}).(pulumi.StringPtrOutput)
 }
 
-// VersionDatabasePersistencePolicyInput is an input type that accepts VersionDatabasePersistencePolicyArgs and VersionDatabasePersistencePolicyOutput values.
-// You can construct a concrete instance of `VersionDatabasePersistencePolicyInput` via:
+// VersionDatabasePersistencePolicyInput is an input type that accepts values of the VersionDatabasePersistencePolicy enum
+// A concrete instance of `VersionDatabasePersistencePolicyInput` can be one of the following:
 //
-//	VersionDatabasePersistencePolicyArgs{...}
+//	VersionDatabasePersistencePolicyDatabasePersistencePolicyUnspecified
+//	VersionDatabasePersistencePolicyDatabasePersistenceDisabled
+//	VersionDatabasePersistencePolicyDatabasePersistenceAsync
 type VersionDatabasePersistencePolicyInput interface {
 	pulumi.Input
 
@@ -12637,10 +13005,15 @@ func (o VersionOriginPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// VersionOriginInput is an input type that accepts VersionOriginArgs and VersionOriginOutput values.
-// You can construct a concrete instance of `VersionOriginInput` via:
+// VersionOriginInput is an input type that accepts values of the VersionOrigin enum
+// A concrete instance of `VersionOriginInput` can be one of the following:
 //
-//	VersionOriginArgs{...}
+//	VersionOriginUnspecified
+//	VersionOriginUi
+//	VersionOriginPiperV2
+//	VersionOriginPiperV3
+//	VersionOriginApplicationIpProvisioning
+//	VersionOriginTestCase
 type VersionOriginInput interface {
 	pulumi.Input
 

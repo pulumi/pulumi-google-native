@@ -144,10 +144,13 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
-// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+// AuditLogConfigLogTypeInput is an input type that accepts values of the AuditLogConfigLogType enum
+// A concrete instance of `AuditLogConfigLogTypeInput` can be one of the following:
 //
-//	AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeLogTypeUnspecified
+//	AuditLogConfigLogTypeAdminRead
+//	AuditLogConfigLogTypeDataWrite
+//	AuditLogConfigLogTypeDataRead
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,10 +322,12 @@ func (o GceRegionalPersistentDiskReclaimPolicyPtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// GceRegionalPersistentDiskReclaimPolicyInput is an input type that accepts GceRegionalPersistentDiskReclaimPolicyArgs and GceRegionalPersistentDiskReclaimPolicyOutput values.
-// You can construct a concrete instance of `GceRegionalPersistentDiskReclaimPolicyInput` via:
+// GceRegionalPersistentDiskReclaimPolicyInput is an input type that accepts values of the GceRegionalPersistentDiskReclaimPolicy enum
+// A concrete instance of `GceRegionalPersistentDiskReclaimPolicyInput` can be one of the following:
 //
-//	GceRegionalPersistentDiskReclaimPolicyArgs{...}
+//	GceRegionalPersistentDiskReclaimPolicyReclaimPolicyUnspecified
+//	GceRegionalPersistentDiskReclaimPolicyDelete
+//	GceRegionalPersistentDiskReclaimPolicyRetain
 type GceRegionalPersistentDiskReclaimPolicyInput interface {
 	pulumi.Input
 
