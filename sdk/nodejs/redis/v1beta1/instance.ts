@@ -152,6 +152,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly reservedIpRange!: pulumi.Output<string>;
     /**
+     * Optional. Output only. Reserved for future use. Zone Isolation compliance state of the instance. Field name and documentation is obfuscated according to go/per-resource-zi-bit-semantics.
+     */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
+    /**
      * Optional. Output only. Reserved for future use. Zone Separation compliance state of the instance. Field name and documentation is obfuscated according to go/zs-resource-status.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
@@ -238,6 +242,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["readEndpoint"] = undefined /*out*/;
             resourceInputs["readEndpointPort"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["serverCaCerts"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -273,6 +278,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["redisVersion"] = undefined /*out*/;
             resourceInputs["replicaCount"] = undefined /*out*/;
             resourceInputs["reservedIpRange"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["secondaryIpRange"] = undefined /*out*/;
             resourceInputs["serverCaCerts"] = undefined /*out*/;

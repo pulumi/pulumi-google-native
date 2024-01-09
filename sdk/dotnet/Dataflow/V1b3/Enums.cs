@@ -278,7 +278,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
     }
 
     /// <summary>
-    /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+    /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
     /// </summary>
     [EnumType]
     public readonly struct JobCurrentState : IEquatable<JobCurrentState>
@@ -440,7 +440,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
     }
 
     /// <summary>
-    /// The type of Cloud Dataflow job.
+    /// The type of Dataflow job.
     /// </summary>
     [EnumType]
     public readonly struct JobType : IEquatable<JobType>

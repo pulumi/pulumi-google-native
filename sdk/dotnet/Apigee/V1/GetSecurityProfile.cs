@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Display name of the security profile.
+        /// DEPRECATED: DO NOT USE Display name of the security profile.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string RevisionId;
         /// <summary>
-        /// The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+        /// DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
         /// </summary>
         public readonly string RevisionPublishTime;
         /// <summary>

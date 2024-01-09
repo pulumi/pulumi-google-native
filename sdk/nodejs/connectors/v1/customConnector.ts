@@ -63,10 +63,6 @@ export class CustomConnector extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Launch stage.
-     */
-    public /*out*/ readonly launchStage!: pulumi.Output<string>;
-    /**
      * Optional. Logo of the resource.
      */
     public readonly logo!: pulumi.Output<string>;
@@ -106,7 +102,6 @@ export class CustomConnector extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["launchStage"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -115,7 +110,6 @@ export class CustomConnector extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
-            resourceInputs["launchStage"] = undefined /*out*/;
             resourceInputs["logo"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;

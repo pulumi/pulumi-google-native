@@ -17,22 +17,36 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Outputs
     public sealed class NetworkConfigResponse
     {
         /// <summary>
-        /// The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the customer network.
+        /// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+        /// </summary>
+        public readonly string ConnectionType;
+        /// <summary>
+        /// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
         /// </summary>
         public readonly string IpAllocation;
         /// <summary>
-        /// Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+        /// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
         /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+        /// </summary>
+        public readonly Outputs.PrivateServiceConnectConfigResponse PrivateServiceConnectConfig;
 
         [OutputConstructor]
         private NetworkConfigResponse(
+            string connectionType,
+
             string ipAllocation,
 
-            string network)
+            string network,
+
+            Outputs.PrivateServiceConnectConfigResponse privateServiceConnectConfig)
         {
+            ConnectionType = connectionType;
             IpAllocation = ipAllocation;
             Network = network;
+            PrivateServiceConnectConfig = privateServiceConnectConfig;
         }
     }
 }

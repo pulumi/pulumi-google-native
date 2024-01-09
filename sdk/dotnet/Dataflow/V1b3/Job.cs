@@ -36,7 +36,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public Output<string> CreatedFromSnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+        /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
         /// </summary>
         [Output("currentState")]
         public Output<string> CurrentState { get; private set; } = null!;
@@ -75,7 +75,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+        /// The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public Output<ImmutableDictionary<string, string>> TransformNameMapping { get; private set; } = null!;
 
         /// <summary>
-        /// The type of Cloud Dataflow job.
+        /// The type of Dataflow job.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public Input<string>? CreatedFromSnapshotId { get; set; }
 
         /// <summary>
-        /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+        /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
         /// </summary>
         [Input("currentState")]
         public Input<Pulumi.GoogleNative.Dataflow.V1b3.JobCurrentState>? CurrentState { get; set; }
@@ -266,7 +266,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public Input<Inputs.JobExecutionInfoArgs>? ExecutionInfo { get; set; }
 
         /// <summary>
-        /// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+        /// The unique ID of this job. This field is set by the Dataflow service when the job is created, and is immutable for the life of the job.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+        /// The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -308,7 +308,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public Input<Inputs.PipelineDescriptionArgs>? PipelineDescription { get; set; }
 
         /// <summary>
-        /// The ID of the Cloud Platform project that the job belongs to.
+        /// The ID of the Google Cloud project that the job belongs to.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -404,7 +404,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         }
 
         /// <summary>
-        /// The type of Cloud Dataflow job.
+        /// The type of Dataflow job.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Dataflow.V1b3.JobType>? Type { get; set; }

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:translate/v3:AdaptiveMtDataset":
+		r = &AdaptiveMtDataset{}
 	case "google-native:translate/v3:Dataset":
 		r = &Dataset{}
 	case "google-native:translate/v3:Glossary":

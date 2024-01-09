@@ -5,7 +5,9 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .adaptive_mt_dataset import *
 from .dataset import *
+from .get_adaptive_mt_dataset import *
 from .get_dataset import *
 from .get_glossary import *
 from .get_glossary_entry import *

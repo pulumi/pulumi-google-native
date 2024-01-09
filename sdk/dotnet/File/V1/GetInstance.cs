@@ -98,6 +98,10 @@ namespace Pulumi.GoogleNative.File.V1
         /// <summary>
         /// Reserved for future use.
         /// </summary>
+        public readonly bool SatisfiesPzi;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
         /// The instance state.
@@ -134,6 +138,8 @@ namespace Pulumi.GoogleNative.File.V1
 
             ImmutableArray<Outputs.NetworkConfigResponse> networks,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             string state,
@@ -152,6 +158,7 @@ namespace Pulumi.GoogleNative.File.V1
             Labels = labels;
             Name = name;
             Networks = networks;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             State = state;
             StatusMessage = statusMessage;

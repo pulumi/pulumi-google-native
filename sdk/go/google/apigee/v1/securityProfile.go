@@ -18,7 +18,9 @@ type SecurityProfile struct {
 
 	// Description of the security profile.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Display name of the security profile.
+	// DEPRECATED: DO NOT USE Display name of the security profile.
+	//
+	// Deprecated: DEPRECATED: DO NOT USE Display name of the security profile.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// List of environments attached to security profile.
 	Environments GoogleCloudApigeeV1SecurityProfileEnvironmentResponseArrayOutput `pulumi:"environments"`
@@ -35,7 +37,9 @@ type SecurityProfile struct {
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
 	// Revision ID of the security profile.
 	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
-	// The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+	// DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+	//
+	// Deprecated: Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
 	RevisionPublishTime pulumi.StringOutput `pulumi:"revisionPublishTime"`
 	// The time when revision was updated.
 	RevisionUpdateTime pulumi.StringOutput `pulumi:"revisionUpdateTime"`
@@ -101,7 +105,9 @@ func (SecurityProfileState) ElementType() reflect.Type {
 type securityProfileArgs struct {
 	// Description of the security profile.
 	Description *string `pulumi:"description"`
-	// Display name of the security profile.
+	// DEPRECATED: DO NOT USE Display name of the security profile.
+	//
+	// Deprecated: DEPRECATED: DO NOT USE Display name of the security profile.
 	DisplayName *string `pulumi:"displayName"`
 	// List of environments attached to security profile.
 	Environments []GoogleCloudApigeeV1SecurityProfileEnvironment `pulumi:"environments"`
@@ -120,7 +126,9 @@ type securityProfileArgs struct {
 type SecurityProfileArgs struct {
 	// Description of the security profile.
 	Description pulumi.StringPtrInput
-	// Display name of the security profile.
+	// DEPRECATED: DO NOT USE Display name of the security profile.
+	//
+	// Deprecated: DEPRECATED: DO NOT USE Display name of the security profile.
 	DisplayName pulumi.StringPtrInput
 	// List of environments attached to security profile.
 	Environments GoogleCloudApigeeV1SecurityProfileEnvironmentArrayInput
@@ -177,7 +185,9 @@ func (o SecurityProfileOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Display name of the security profile.
+// DEPRECATED: DO NOT USE Display name of the security profile.
+//
+// Deprecated: DEPRECATED: DO NOT USE Display name of the security profile.
 func (o SecurityProfileOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -223,7 +233,9 @@ func (o SecurityProfileOutput) RevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
 }
 
-// The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+// DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+//
+// Deprecated: Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
 func (o SecurityProfileOutput) RevisionPublishTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringOutput { return v.RevisionPublishTime }).(pulumi.StringOutput)
 }

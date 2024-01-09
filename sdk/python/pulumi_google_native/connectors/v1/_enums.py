@@ -9,7 +9,6 @@ __all__ = [
     'AuthConfigAuthType',
     'ConnectionEventingEnablementType',
     'CustomConnectorCustomConnectorType',
-    'CustomConnectorVersionType',
     'EncryptionKeyType',
     'EventSubscriptionDestinationType',
     'JMSType',
@@ -70,6 +69,10 @@ class AuthConfigAuthType(str, Enum):
     """
     Oauth 2.0 Authorization Code Flow
     """
+    GOOGLE_AUTHENTICATION = "GOOGLE_AUTHENTICATION"
+    """
+    Google authentication
+    """
 
 
 class ConnectionEventingEnablementType(str, Enum):
@@ -93,24 +96,6 @@ class ConnectionEventingEnablementType(str, Enum):
 class CustomConnectorCustomConnectorType(str, Enum):
     """
     Required. Type of the custom connector.
-    """
-    CUSTOM_CONNECTOR_TYPE_UNSPECIFIED = "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
-    """
-    Connector type is not specified.
-    """
-    OPEN_API = "OPEN_API"
-    """
-    OpenAPI connector.
-    """
-    PROTO = "PROTO"
-    """
-    Proto connector.
-    """
-
-
-class CustomConnectorVersionType(str, Enum):
-    """
-    Required. Type of the customConnector.
     """
     CUSTOM_CONNECTOR_TYPE_UNSPECIFIED = "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
     """

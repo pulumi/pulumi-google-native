@@ -34,12 +34,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public Input<Inputs.AuthConfigArgs>? AuthConfig { get; set; }
 
         /// <summary>
-        /// Encryption key (can be either Google managed or CMEK).
-        /// </summary>
-        [Input("encryptionKey")]
-        public Input<Inputs.ConfigVariableArgs>? EncryptionKey { get; set; }
-
-        /// <summary>
         /// Enrichment Enabled.
         /// </summary>
         [Input("enrichmentEnabled")]
@@ -50,6 +44,12 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         /// </summary>
         [Input("eventsListenerIngressEndpoint")]
         public Input<string>? EventsListenerIngressEndpoint { get; set; }
+
+        /// <summary>
+        /// Optional. Auth details for the event listener.
+        /// </summary>
+        [Input("listenerAuthConfig")]
+        public Input<Inputs.AuthConfigArgs>? ListenerAuthConfig { get; set; }
 
         /// <summary>
         /// Optional. Private Connectivity Enabled.

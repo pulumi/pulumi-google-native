@@ -49,17 +49,17 @@ class JobArgs:
         :param pulumi.Input[str] client_request_id: The client's unique identifier of the job, re-used across retried attempts. If this field is set, the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a previously submitted job with the same client's ID and job name. The caller may use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it.
         :param pulumi.Input[str] create_time: The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service.
         :param pulumi.Input[str] created_from_snapshot_id: If this is specified, the job's initial state is populated from the given snapshot.
-        :param pulumi.Input['JobCurrentState'] current_state: The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+        :param pulumi.Input['JobCurrentState'] current_state: The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
         :param pulumi.Input[str] current_state_time: The timestamp associated with the current state.
         :param pulumi.Input['EnvironmentArgs'] environment: The environment for the job.
         :param pulumi.Input['JobExecutionInfoArgs'] execution_info: Deprecated.
-        :param pulumi.Input[str] id: The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+        :param pulumi.Input[str] id: The unique ID of this job. This field is set by the Dataflow service when the job is created, and is immutable for the life of the job.
         :param pulumi.Input['JobMetadataArgs'] job_metadata: This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62} * Values must conform to regexp: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
-        :param pulumi.Input[str] name: The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+        :param pulumi.Input[str] name: The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
         :param pulumi.Input['PipelineDescriptionArgs'] pipeline_description: Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
-        :param pulumi.Input[str] project: The ID of the Cloud Platform project that the job belongs to.
+        :param pulumi.Input[str] project: The ID of the Google Cloud project that the job belongs to.
         :param pulumi.Input[str] replace_job_id: If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
         :param pulumi.Input[str] replaced_by_job_id: If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
         :param pulumi.Input['JobRequestedState'] requested_state: The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
@@ -71,7 +71,7 @@ class JobArgs:
         :param pulumi.Input[str] steps_location: The Cloud Storage location where the steps are stored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] temp_files: A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
-        :param pulumi.Input['JobType'] type: The type of Cloud Dataflow job.
+        :param pulumi.Input['JobType'] type: The type of Dataflow job.
         :param pulumi.Input[str] view: The level of information requested in response.
         """
         if client_request_id is not None:
@@ -172,7 +172,7 @@ class JobArgs:
     @pulumi.getter(name="currentState")
     def current_state(self) -> Optional[pulumi.Input['JobCurrentState']]:
         """
-        The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+        The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
         """
         return pulumi.get(self, "current_state")
 
@@ -223,7 +223,7 @@ class JobArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+        The unique ID of this job. This field is set by the Dataflow service when the job is created, and is immutable for the life of the job.
         """
         return pulumi.get(self, "id")
 
@@ -271,7 +271,7 @@ class JobArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+        The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
         """
         return pulumi.get(self, "name")
 
@@ -295,7 +295,7 @@ class JobArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Cloud Platform project that the job belongs to.
+        The ID of the Google Cloud project that the job belongs to.
         """
         return pulumi.get(self, "project")
 
@@ -439,7 +439,7 @@ class JobArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['JobType']]:
         """
-        The type of Cloud Dataflow job.
+        The type of Dataflow job.
         """
         return pulumi.get(self, "type")
 
@@ -503,17 +503,17 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] client_request_id: The client's unique identifier of the job, re-used across retried attempts. If this field is set, the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a previously submitted job with the same client's ID and job name. The caller may use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it.
         :param pulumi.Input[str] create_time: The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service.
         :param pulumi.Input[str] created_from_snapshot_id: If this is specified, the job's initial state is populated from the given snapshot.
-        :param pulumi.Input['JobCurrentState'] current_state: The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+        :param pulumi.Input['JobCurrentState'] current_state: The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
         :param pulumi.Input[str] current_state_time: The timestamp associated with the current state.
         :param pulumi.Input[pulumi.InputType['EnvironmentArgs']] environment: The environment for the job.
         :param pulumi.Input[pulumi.InputType['JobExecutionInfoArgs']] execution_info: Deprecated.
-        :param pulumi.Input[str] id: The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+        :param pulumi.Input[str] id: The unique ID of this job. This field is set by the Dataflow service when the job is created, and is immutable for the life of the job.
         :param pulumi.Input[pulumi.InputType['JobMetadataArgs']] job_metadata: This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62} * Values must conform to regexp: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
-        :param pulumi.Input[str] name: The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+        :param pulumi.Input[str] name: The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
         :param pulumi.Input[pulumi.InputType['PipelineDescriptionArgs']] pipeline_description: Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
-        :param pulumi.Input[str] project: The ID of the Cloud Platform project that the job belongs to.
+        :param pulumi.Input[str] project: The ID of the Google Cloud project that the job belongs to.
         :param pulumi.Input[str] replace_job_id: If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
         :param pulumi.Input[str] replaced_by_job_id: If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
         :param pulumi.Input['JobRequestedState'] requested_state: The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
@@ -525,7 +525,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] steps_location: The Cloud Storage location where the steps are stored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] temp_files: A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
-        :param pulumi.Input['JobType'] type: The type of Cloud Dataflow job.
+        :param pulumi.Input['JobType'] type: The type of Dataflow job.
         :param pulumi.Input[str] view: The level of information requested in response.
         """
         ...
@@ -699,7 +699,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="currentState")
     def current_state(self) -> pulumi.Output[str]:
         """
-        The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+        The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
         """
         return pulumi.get(self, "current_state")
 
@@ -755,7 +755,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+        The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
         """
         return pulumi.get(self, "name")
 
@@ -872,7 +872,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of Cloud Dataflow job.
+        The type of Dataflow job.
         """
         return pulumi.get(self, "type")
 

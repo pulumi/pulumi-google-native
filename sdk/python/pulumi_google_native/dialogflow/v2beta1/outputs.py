@@ -32,6 +32,7 @@ __all__ = [
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponse',
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse',
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse',
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsResponse',
     'GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse',
     'GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse',
@@ -1124,7 +1125,8 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
                  dialogflow_query_source: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse',
                  document_query_source: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponse',
                  knowledge_base_query_source: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse',
-                 max_results: int):
+                 max_results: int,
+                 sections: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse'):
         """
         Config for suggestion query.
         :param float confidence_threshold: Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it is default to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
@@ -1133,6 +1135,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
         :param 'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponse' document_query_source: Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
         :param 'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse' knowledge_base_query_source: Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
         :param int max_results: Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
+        :param 'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse' sections: Optional. The customized sections chosen to return when requesting a summary of a conversation.
         """
         pulumi.set(__self__, "confidence_threshold", confidence_threshold)
         pulumi.set(__self__, "context_filter_settings", context_filter_settings)
@@ -1140,6 +1143,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
         pulumi.set(__self__, "document_query_source", document_query_source)
         pulumi.set(__self__, "knowledge_base_query_source", knowledge_base_query_source)
         pulumi.set(__self__, "max_results", max_results)
+        pulumi.set(__self__, "sections", sections)
 
     @property
     @pulumi.getter(name="confidenceThreshold")
@@ -1188,6 +1192,53 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
         Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
         """
         return pulumi.get(self, "max_results")
+
+    @property
+    @pulumi.getter
+    def sections(self) -> 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse':
+        """
+        Optional. The customized sections chosen to return when requesting a summary of a conversation.
+        """
+        return pulumi.get(self, "sections")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse(dict):
+    """
+    Custom sections to return when requesting a summary of a conversation. This is only supported when `baseline_model_version` == '2.0'. Supported features: CONVERSATION_SUMMARIZATION, CONVERSATION_SUMMARIZATION_VOICE.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sectionTypes":
+            suggest = "section_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 section_types: Sequence[str]):
+        """
+        Custom sections to return when requesting a summary of a conversation. This is only supported when `baseline_model_version` == '2.0'. Supported features: CONVERSATION_SUMMARIZATION, CONVERSATION_SUMMARIZATION_VOICE.
+        :param Sequence[str] section_types: The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected section will be treated as a single selected section. If section types are not provided, the default will be {SITUATION, ACTION, RESULT}.
+        """
+        pulumi.set(__self__, "section_types", section_types)
+
+    @property
+    @pulumi.getter(name="sectionTypes")
+    def section_types(self) -> Sequence[str]:
+        """
+        The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected section will be treated as a single selected section. If section types are not provided, the default will be {SITUATION, ACTION, RESULT}.
+        """
+        return pulumi.get(self, "section_types")
 
 
 @pulumi.output_type

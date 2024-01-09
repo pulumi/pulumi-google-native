@@ -918,47 +918,6 @@ func (i ConfigVariableArgs) ToConfigVariableOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigVariableOutput)
 }
 
-func (i ConfigVariableArgs) ToConfigVariablePtrOutput() ConfigVariablePtrOutput {
-	return i.ToConfigVariablePtrOutputWithContext(context.Background())
-}
-
-func (i ConfigVariableArgs) ToConfigVariablePtrOutputWithContext(ctx context.Context) ConfigVariablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigVariableOutput).ToConfigVariablePtrOutputWithContext(ctx)
-}
-
-// ConfigVariablePtrInput is an input type that accepts ConfigVariableArgs, ConfigVariablePtr and ConfigVariablePtrOutput values.
-// You can construct a concrete instance of `ConfigVariablePtrInput` via:
-//
-//	        ConfigVariableArgs{...}
-//
-//	or:
-//
-//	        nil
-type ConfigVariablePtrInput interface {
-	pulumi.Input
-
-	ToConfigVariablePtrOutput() ConfigVariablePtrOutput
-	ToConfigVariablePtrOutputWithContext(context.Context) ConfigVariablePtrOutput
-}
-
-type configVariablePtrType ConfigVariableArgs
-
-func ConfigVariablePtr(v *ConfigVariableArgs) ConfigVariablePtrInput {
-	return (*configVariablePtrType)(v)
-}
-
-func (*configVariablePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConfigVariable)(nil)).Elem()
-}
-
-func (i *configVariablePtrType) ToConfigVariablePtrOutput() ConfigVariablePtrOutput {
-	return i.ToConfigVariablePtrOutputWithContext(context.Background())
-}
-
-func (i *configVariablePtrType) ToConfigVariablePtrOutputWithContext(ctx context.Context) ConfigVariablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigVariablePtrOutput)
-}
-
 // ConfigVariableArrayInput is an input type that accepts ConfigVariableArray and ConfigVariableArrayOutput values.
 // You can construct a concrete instance of `ConfigVariableArrayInput` via:
 //
@@ -999,16 +958,6 @@ func (o ConfigVariableOutput) ToConfigVariableOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ConfigVariableOutput) ToConfigVariablePtrOutput() ConfigVariablePtrOutput {
-	return o.ToConfigVariablePtrOutputWithContext(context.Background())
-}
-
-func (o ConfigVariableOutput) ToConfigVariablePtrOutputWithContext(ctx context.Context) ConfigVariablePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigVariable) *ConfigVariable {
-		return &v
-	}).(ConfigVariablePtrOutput)
-}
-
 // Value is a bool.
 func (o ConfigVariableOutput) BoolValue() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfigVariable) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
@@ -1037,90 +986,6 @@ func (o ConfigVariableOutput) SecretValue() SecretPtrOutput {
 // Value is a string.
 func (o ConfigVariableOutput) StringValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigVariable) *string { return v.StringValue }).(pulumi.StringPtrOutput)
-}
-
-type ConfigVariablePtrOutput struct{ *pulumi.OutputState }
-
-func (ConfigVariablePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConfigVariable)(nil)).Elem()
-}
-
-func (o ConfigVariablePtrOutput) ToConfigVariablePtrOutput() ConfigVariablePtrOutput {
-	return o
-}
-
-func (o ConfigVariablePtrOutput) ToConfigVariablePtrOutputWithContext(ctx context.Context) ConfigVariablePtrOutput {
-	return o
-}
-
-func (o ConfigVariablePtrOutput) Elem() ConfigVariableOutput {
-	return o.ApplyT(func(v *ConfigVariable) ConfigVariable {
-		if v != nil {
-			return *v
-		}
-		var ret ConfigVariable
-		return ret
-	}).(ConfigVariableOutput)
-}
-
-// Value is a bool.
-func (o ConfigVariablePtrOutput) BoolValue() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ConfigVariable) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.BoolValue
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Value is a Encryption Key.
-func (o ConfigVariablePtrOutput) EncryptionKeyValue() EncryptionKeyPtrOutput {
-	return o.ApplyT(func(v *ConfigVariable) *EncryptionKey {
-		if v == nil {
-			return nil
-		}
-		return v.EncryptionKeyValue
-	}).(EncryptionKeyPtrOutput)
-}
-
-// Value is an integer
-func (o ConfigVariablePtrOutput) IntValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConfigVariable) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IntValue
-	}).(pulumi.StringPtrOutput)
-}
-
-// Key of the config variable.
-func (o ConfigVariablePtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConfigVariable) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Value is a secret.
-func (o ConfigVariablePtrOutput) SecretValue() SecretPtrOutput {
-	return o.ApplyT(func(v *ConfigVariable) *Secret {
-		if v == nil {
-			return nil
-		}
-		return v.SecretValue
-	}).(SecretPtrOutput)
-}
-
-// Value is a string.
-func (o ConfigVariablePtrOutput) StringValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConfigVariable) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StringValue
-	}).(pulumi.StringPtrOutput)
 }
 
 type ConfigVariableArrayOutput struct{ *pulumi.OutputState }
@@ -2573,12 +2438,12 @@ type EventingConfig struct {
 	AdditionalVariables []ConfigVariable `pulumi:"additionalVariables"`
 	// Auth details for the webhook adapter.
 	AuthConfig *AuthConfig `pulumi:"authConfig"`
-	// Encryption key (can be either Google managed or CMEK).
-	EncryptionKey *ConfigVariable `pulumi:"encryptionKey"`
 	// Enrichment Enabled.
 	EnrichmentEnabled *bool `pulumi:"enrichmentEnabled"`
 	// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
 	EventsListenerIngressEndpoint *string `pulumi:"eventsListenerIngressEndpoint"`
+	// Optional. Auth details for the event listener.
+	ListenerAuthConfig *AuthConfig `pulumi:"listenerAuthConfig"`
 	// Optional. Private Connectivity Enabled.
 	PrivateConnectivityEnabled *bool `pulumi:"privateConnectivityEnabled"`
 	// Registration endpoint for auto registration.
@@ -2602,12 +2467,12 @@ type EventingConfigArgs struct {
 	AdditionalVariables ConfigVariableArrayInput `pulumi:"additionalVariables"`
 	// Auth details for the webhook adapter.
 	AuthConfig AuthConfigPtrInput `pulumi:"authConfig"`
-	// Encryption key (can be either Google managed or CMEK).
-	EncryptionKey ConfigVariablePtrInput `pulumi:"encryptionKey"`
 	// Enrichment Enabled.
 	EnrichmentEnabled pulumi.BoolPtrInput `pulumi:"enrichmentEnabled"`
 	// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
 	EventsListenerIngressEndpoint pulumi.StringPtrInput `pulumi:"eventsListenerIngressEndpoint"`
+	// Optional. Auth details for the event listener.
+	ListenerAuthConfig AuthConfigPtrInput `pulumi:"listenerAuthConfig"`
 	// Optional. Private Connectivity Enabled.
 	PrivateConnectivityEnabled pulumi.BoolPtrInput `pulumi:"privateConnectivityEnabled"`
 	// Registration endpoint for auto registration.
@@ -2702,11 +2567,6 @@ func (o EventingConfigOutput) AuthConfig() AuthConfigPtrOutput {
 	return o.ApplyT(func(v EventingConfig) *AuthConfig { return v.AuthConfig }).(AuthConfigPtrOutput)
 }
 
-// Encryption key (can be either Google managed or CMEK).
-func (o EventingConfigOutput) EncryptionKey() ConfigVariablePtrOutput {
-	return o.ApplyT(func(v EventingConfig) *ConfigVariable { return v.EncryptionKey }).(ConfigVariablePtrOutput)
-}
-
 // Enrichment Enabled.
 func (o EventingConfigOutput) EnrichmentEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EventingConfig) *bool { return v.EnrichmentEnabled }).(pulumi.BoolPtrOutput)
@@ -2715,6 +2575,11 @@ func (o EventingConfigOutput) EnrichmentEnabled() pulumi.BoolPtrOutput {
 // Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
 func (o EventingConfigOutput) EventsListenerIngressEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventingConfig) *string { return v.EventsListenerIngressEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Auth details for the event listener.
+func (o EventingConfigOutput) ListenerAuthConfig() AuthConfigPtrOutput {
+	return o.ApplyT(func(v EventingConfig) *AuthConfig { return v.ListenerAuthConfig }).(AuthConfigPtrOutput)
 }
 
 // Optional. Private Connectivity Enabled.
@@ -2771,16 +2636,6 @@ func (o EventingConfigPtrOutput) AuthConfig() AuthConfigPtrOutput {
 	}).(AuthConfigPtrOutput)
 }
 
-// Encryption key (can be either Google managed or CMEK).
-func (o EventingConfigPtrOutput) EncryptionKey() ConfigVariablePtrOutput {
-	return o.ApplyT(func(v *EventingConfig) *ConfigVariable {
-		if v == nil {
-			return nil
-		}
-		return v.EncryptionKey
-	}).(ConfigVariablePtrOutput)
-}
-
 // Enrichment Enabled.
 func (o EventingConfigPtrOutput) EnrichmentEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EventingConfig) *bool {
@@ -2799,6 +2654,16 @@ func (o EventingConfigPtrOutput) EventsListenerIngressEndpoint() pulumi.StringPt
 		}
 		return v.EventsListenerIngressEndpoint
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Auth details for the event listener.
+func (o EventingConfigPtrOutput) ListenerAuthConfig() AuthConfigPtrOutput {
+	return o.ApplyT(func(v *EventingConfig) *AuthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ListenerAuthConfig
+	}).(AuthConfigPtrOutput)
 }
 
 // Optional. Private Connectivity Enabled.
@@ -2827,12 +2692,12 @@ type EventingConfigResponse struct {
 	AdditionalVariables []ConfigVariableResponse `pulumi:"additionalVariables"`
 	// Auth details for the webhook adapter.
 	AuthConfig AuthConfigResponse `pulumi:"authConfig"`
-	// Encryption key (can be either Google managed or CMEK).
-	EncryptionKey ConfigVariableResponse `pulumi:"encryptionKey"`
 	// Enrichment Enabled.
 	EnrichmentEnabled bool `pulumi:"enrichmentEnabled"`
 	// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
 	EventsListenerIngressEndpoint string `pulumi:"eventsListenerIngressEndpoint"`
+	// Optional. Auth details for the event listener.
+	ListenerAuthConfig AuthConfigResponse `pulumi:"listenerAuthConfig"`
 	// Optional. Private Connectivity Enabled.
 	PrivateConnectivityEnabled bool `pulumi:"privateConnectivityEnabled"`
 	// Registration endpoint for auto registration.
@@ -2864,11 +2729,6 @@ func (o EventingConfigResponseOutput) AuthConfig() AuthConfigResponseOutput {
 	return o.ApplyT(func(v EventingConfigResponse) AuthConfigResponse { return v.AuthConfig }).(AuthConfigResponseOutput)
 }
 
-// Encryption key (can be either Google managed or CMEK).
-func (o EventingConfigResponseOutput) EncryptionKey() ConfigVariableResponseOutput {
-	return o.ApplyT(func(v EventingConfigResponse) ConfigVariableResponse { return v.EncryptionKey }).(ConfigVariableResponseOutput)
-}
-
 // Enrichment Enabled.
 func (o EventingConfigResponseOutput) EnrichmentEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v EventingConfigResponse) bool { return v.EnrichmentEnabled }).(pulumi.BoolOutput)
@@ -2877,6 +2737,11 @@ func (o EventingConfigResponseOutput) EnrichmentEnabled() pulumi.BoolOutput {
 // Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
 func (o EventingConfigResponseOutput) EventsListenerIngressEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v EventingConfigResponse) string { return v.EventsListenerIngressEndpoint }).(pulumi.StringOutput)
+}
+
+// Optional. Auth details for the event listener.
+func (o EventingConfigResponseOutput) ListenerAuthConfig() AuthConfigResponseOutput {
+	return o.ApplyT(func(v EventingConfigResponse) AuthConfigResponse { return v.ListenerAuthConfig }).(AuthConfigResponseOutput)
 }
 
 // Optional. Private Connectivity Enabled.
@@ -6005,7 +5870,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableInput)(nil)).Elem(), ConfigVariableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariablePtrInput)(nil)).Elem(), ConfigVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableArrayInput)(nil)).Elem(), ConfigVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorsLogConfigInput)(nil)).Elem(), ConnectorsLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorsLogConfigPtrInput)(nil)).Elem(), ConnectorsLogConfigArgs{})
@@ -6064,7 +5928,6 @@ func init() {
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConfigVariableOutput{})
-	pulumi.RegisterOutputType(ConfigVariablePtrOutput{})
 	pulumi.RegisterOutputType(ConfigVariableArrayOutput{})
 	pulumi.RegisterOutputType(ConfigVariableResponseOutput{})
 	pulumi.RegisterOutputType(ConfigVariableResponseArrayOutput{})

@@ -65,16 +65,16 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Service account needed for runtime plane to access Custom Connector secrets.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Location of the custom connector spec.
         /// </summary>
         [Output("specLocation")]
         public Output<string> SpecLocation { get; private set; } = null!;
-
-        /// <summary>
-        /// Type of the customConnector.
-        /// </summary>
-        [Output("type")]
-        public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
         /// Updated time.
@@ -176,16 +176,16 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Service account needed for runtime plane to access Custom Connector secrets.
+        /// </summary>
+        [Input("serviceAccount", required: true)]
+        public Input<string> ServiceAccount { get; set; } = null!;
+
+        /// <summary>
         /// Optional. Location of the custom connector spec.
         /// </summary>
         [Input("specLocation")]
         public Input<string>? SpecLocation { get; set; }
-
-        /// <summary>
-        /// Type of the customConnector.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<Pulumi.GoogleNative.Connectors.V1.CustomConnectorVersionType> Type { get; set; } = null!;
 
         public CustomConnectorVersionArgs()
         {

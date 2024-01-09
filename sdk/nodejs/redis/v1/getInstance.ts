@@ -140,6 +140,10 @@ export interface GetInstanceResult {
      */
     readonly reservedIpRange: string;
     /**
+     * Optional. Output only. Reserved for future use. Zone Isolation compliance state of the instance. Field name and documentation is obfuscated according to go/per-resource-zi-bit-semantics.
+     */
+    readonly satisfiesPzi: boolean;
+    /**
      * Optional. Output only. Reserved for future use. Zone Separation compliance state of the instance. Field name and documentation is obfuscated according to go/zs-resource-status.
      */
     readonly satisfiesPzs: boolean;

@@ -30,7 +30,9 @@ type LookupSecurityProfileArgs struct {
 type LookupSecurityProfileResult struct {
 	// Description of the security profile.
 	Description string `pulumi:"description"`
-	// Display name of the security profile.
+	// DEPRECATED: DO NOT USE Display name of the security profile.
+	//
+	// Deprecated: DEPRECATED: DO NOT USE Display name of the security profile.
 	DisplayName string `pulumi:"displayName"`
 	// List of environments attached to security profile.
 	Environments []GoogleCloudApigeeV1SecurityProfileEnvironmentResponse `pulumi:"environments"`
@@ -46,7 +48,9 @@ type LookupSecurityProfileResult struct {
 	RevisionCreateTime string `pulumi:"revisionCreateTime"`
 	// Revision ID of the security profile.
 	RevisionId string `pulumi:"revisionId"`
-	// The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+	// DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+	//
+	// Deprecated: Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
 	RevisionPublishTime string `pulumi:"revisionPublishTime"`
 	// The time when revision was updated.
 	RevisionUpdateTime string `pulumi:"revisionUpdateTime"`
@@ -95,7 +99,9 @@ func (o LookupSecurityProfileResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityProfileResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Display name of the security profile.
+// DEPRECATED: DO NOT USE Display name of the security profile.
+//
+// Deprecated: DEPRECATED: DO NOT USE Display name of the security profile.
 func (o LookupSecurityProfileResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityProfileResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -137,7 +143,9 @@ func (o LookupSecurityProfileResultOutput) RevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityProfileResult) string { return v.RevisionId }).(pulumi.StringOutput)
 }
 
-// The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+// DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+//
+// Deprecated: Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
 func (o LookupSecurityProfileResultOutput) RevisionPublishTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityProfileResult) string { return v.RevisionPublishTime }).(pulumi.StringOutput)
 }

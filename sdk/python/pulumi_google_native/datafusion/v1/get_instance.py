@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, enable_zone_separation=None, event_publish_config=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, patch_revision=None, private_instance=None, satisfies_pzs=None, service_account=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, workforce_identity_service_endpoint=None, zone=None):
+    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataplex_data_lineage_integration_enabled=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, enable_zone_separation=None, event_publish_config=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, patch_revision=None, private_instance=None, satisfies_pzs=None, service_account=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, workforce_identity_service_endpoint=None, zone=None):
         if accelerators and not isinstance(accelerators, list):
             raise TypeError("Expected argument 'accelerators' to be a list")
         pulumi.set(__self__, "accelerators", accelerators)
@@ -35,6 +35,9 @@ class GetInstanceResult:
         if crypto_key_config and not isinstance(crypto_key_config, dict):
             raise TypeError("Expected argument 'crypto_key_config' to be a dict")
         pulumi.set(__self__, "crypto_key_config", crypto_key_config)
+        if dataplex_data_lineage_integration_enabled and not isinstance(dataplex_data_lineage_integration_enabled, bool):
+            raise TypeError("Expected argument 'dataplex_data_lineage_integration_enabled' to be a bool")
+        pulumi.set(__self__, "dataplex_data_lineage_integration_enabled", dataplex_data_lineage_integration_enabled)
         if dataproc_service_account and not isinstance(dataproc_service_account, str):
             raise TypeError("Expected argument 'dataproc_service_account' to be a str")
         pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
@@ -159,6 +162,14 @@ class GetInstanceResult:
         The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
         """
         return pulumi.get(self, "crypto_key_config")
+
+    @property
+    @pulumi.getter(name="dataplexDataLineageIntegrationEnabled")
+    def dataplex_data_lineage_integration_enabled(self) -> bool:
+        """
+        Optional. Reserved for future use.
+        """
+        return pulumi.get(self, "dataplex_data_lineage_integration_enabled")
 
     @property
     @pulumi.getter(name="dataprocServiceAccount")
@@ -399,6 +410,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             available_version=self.available_version,
             create_time=self.create_time,
             crypto_key_config=self.crypto_key_config,
+            dataplex_data_lineage_integration_enabled=self.dataplex_data_lineage_integration_enabled,
             dataproc_service_account=self.dataproc_service_account,
             description=self.description,
             disabled_reason=self.disabled_reason,
@@ -449,6 +461,7 @@ def get_instance(instance_id: Optional[str] = None,
         available_version=pulumi.get(__ret__, 'available_version'),
         create_time=pulumi.get(__ret__, 'create_time'),
         crypto_key_config=pulumi.get(__ret__, 'crypto_key_config'),
+        dataplex_data_lineage_integration_enabled=pulumi.get(__ret__, 'dataplex_data_lineage_integration_enabled'),
         dataproc_service_account=pulumi.get(__ret__, 'dataproc_service_account'),
         description=pulumi.get(__ret__, 'description'),
         disabled_reason=pulumi.get(__ret__, 'disabled_reason'),

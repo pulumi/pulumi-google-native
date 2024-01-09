@@ -89,6 +89,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// Oauth 2.0 Authorization Code Flow
         /// </summary>
         public static AuthConfigAuthType Oauth2AuthCodeFlow { get; } = new AuthConfigAuthType("OAUTH2_AUTH_CODE_FLOW");
+        /// <summary>
+        /// Google authentication
+        /// </summary>
+        public static AuthConfigAuthType GoogleAuthentication { get; } = new AuthConfigAuthType("GOOGLE_AUTHENTICATION");
 
         public static bool operator ==(AuthConfigAuthType left, AuthConfigAuthType right) => left.Equals(right);
         public static bool operator !=(AuthConfigAuthType left, AuthConfigAuthType right) => !left.Equals(right);
@@ -180,47 +184,6 @@ namespace Pulumi.GoogleNative.Connectors.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is CustomConnectorCustomConnectorType other && Equals(other);
         public bool Equals(CustomConnectorCustomConnectorType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// Required. Type of the customConnector.
-    /// </summary>
-    [EnumType]
-    public readonly struct CustomConnectorVersionType : IEquatable<CustomConnectorVersionType>
-    {
-        private readonly string _value;
-
-        private CustomConnectorVersionType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Connector type is not specified.
-        /// </summary>
-        public static CustomConnectorVersionType CustomConnectorTypeUnspecified { get; } = new CustomConnectorVersionType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED");
-        /// <summary>
-        /// OpenAPI connector.
-        /// </summary>
-        public static CustomConnectorVersionType OpenApi { get; } = new CustomConnectorVersionType("OPEN_API");
-        /// <summary>
-        /// Proto connector.
-        /// </summary>
-        public static CustomConnectorVersionType Proto { get; } = new CustomConnectorVersionType("PROTO");
-
-        public static bool operator ==(CustomConnectorVersionType left, CustomConnectorVersionType right) => left.Equals(right);
-        public static bool operator !=(CustomConnectorVersionType left, CustomConnectorVersionType right) => !left.Equals(right);
-
-        public static explicit operator string(CustomConnectorVersionType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is CustomConnectorVersionType other && Equals(other);
-        public bool Equals(CustomConnectorVersionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

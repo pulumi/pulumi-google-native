@@ -904,12 +904,12 @@ class EventingConfigResponse(dict):
             suggest = "additional_variables"
         elif key == "authConfig":
             suggest = "auth_config"
-        elif key == "encryptionKey":
-            suggest = "encryption_key"
         elif key == "enrichmentEnabled":
             suggest = "enrichment_enabled"
         elif key == "eventsListenerIngressEndpoint":
             suggest = "events_listener_ingress_endpoint"
+        elif key == "listenerAuthConfig":
+            suggest = "listener_auth_config"
         elif key == "privateConnectivityEnabled":
             suggest = "private_connectivity_enabled"
         elif key == "registrationDestinationConfig":
@@ -929,26 +929,26 @@ class EventingConfigResponse(dict):
     def __init__(__self__, *,
                  additional_variables: Sequence['outputs.ConfigVariableResponse'],
                  auth_config: 'outputs.AuthConfigResponse',
-                 encryption_key: 'outputs.ConfigVariableResponse',
                  enrichment_enabled: bool,
                  events_listener_ingress_endpoint: str,
+                 listener_auth_config: 'outputs.AuthConfigResponse',
                  private_connectivity_enabled: bool,
                  registration_destination_config: 'outputs.DestinationConfigResponse'):
         """
         Eventing Configuration of a connection
         :param Sequence['ConfigVariableResponse'] additional_variables: Additional eventing related field values
         :param 'AuthConfigResponse' auth_config: Auth details for the webhook adapter.
-        :param 'ConfigVariableResponse' encryption_key: Encryption key (can be either Google managed or CMEK).
         :param bool enrichment_enabled: Enrichment Enabled.
         :param str events_listener_ingress_endpoint: Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+        :param 'AuthConfigResponse' listener_auth_config: Optional. Auth details for the event listener.
         :param bool private_connectivity_enabled: Optional. Private Connectivity Enabled.
         :param 'DestinationConfigResponse' registration_destination_config: Registration endpoint for auto registration.
         """
         pulumi.set(__self__, "additional_variables", additional_variables)
         pulumi.set(__self__, "auth_config", auth_config)
-        pulumi.set(__self__, "encryption_key", encryption_key)
         pulumi.set(__self__, "enrichment_enabled", enrichment_enabled)
         pulumi.set(__self__, "events_listener_ingress_endpoint", events_listener_ingress_endpoint)
+        pulumi.set(__self__, "listener_auth_config", listener_auth_config)
         pulumi.set(__self__, "private_connectivity_enabled", private_connectivity_enabled)
         pulumi.set(__self__, "registration_destination_config", registration_destination_config)
 
@@ -969,14 +969,6 @@ class EventingConfigResponse(dict):
         return pulumi.get(self, "auth_config")
 
     @property
-    @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> 'outputs.ConfigVariableResponse':
-        """
-        Encryption key (can be either Google managed or CMEK).
-        """
-        return pulumi.get(self, "encryption_key")
-
-    @property
     @pulumi.getter(name="enrichmentEnabled")
     def enrichment_enabled(self) -> bool:
         """
@@ -991,6 +983,14 @@ class EventingConfigResponse(dict):
         Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
         """
         return pulumi.get(self, "events_listener_ingress_endpoint")
+
+    @property
+    @pulumi.getter(name="listenerAuthConfig")
+    def listener_auth_config(self) -> 'outputs.AuthConfigResponse':
+        """
+        Optional. Auth details for the event listener.
+        """
+        return pulumi.get(self, "listener_auth_config")
 
     @property
     @pulumi.getter(name="privateConnectivityEnabled")

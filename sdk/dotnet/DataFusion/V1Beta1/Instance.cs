@@ -47,6 +47,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Output<Outputs.CryptoKeyConfigResponse> CryptoKeyConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Reserved for future use.
+        /// </summary>
+        [Output("dataplexDataLineageIntegrationEnabled")]
+        public Output<bool> DataplexDataLineageIntegrationEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
         /// </summary>
         [Output("dataprocServiceAccount")]
@@ -282,6 +288,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// </summary>
         [Input("cryptoKeyConfig")]
         public Input<Inputs.CryptoKeyConfigArgs>? CryptoKeyConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Reserved for future use.
+        /// </summary>
+        [Input("dataplexDataLineageIntegrationEnabled")]
+        public Input<bool>? DataplexDataLineageIntegrationEnabled { get; set; }
 
         /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.

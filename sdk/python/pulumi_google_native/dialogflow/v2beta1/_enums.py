@@ -10,6 +10,7 @@ __all__ = [
     'EntityTypeAutoExpansionMode',
     'EntityTypeKind',
     'GoogleCloudDialogflowV2beta1FulfillmentFeatureType',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem',
     'GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint',
     'GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions',
     'GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment',
@@ -124,6 +125,37 @@ class GoogleCloudDialogflowV2beta1FulfillmentFeatureType(str, Enum):
     SMALLTALK = "SMALLTALK"
     """
     Fulfillment is enabled for SmallTalk.
+    """
+
+
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem(str, Enum):
+    SECTION_TYPE_UNSPECIFIED = "SECTION_TYPE_UNSPECIFIED"
+    """
+    Undefined section type, does not return anything.
+    """
+    SITUATION = "SITUATION"
+    """
+    What the customer needs help with or has question about. Section name: "situation".
+    """
+    ACTION = "ACTION"
+    """
+    What the agent does to help the customer. Section name: "action".
+    """
+    RESOLUTION = "RESOLUTION"
+    """
+    Result of the customer service. A single word describing the result of the conversation. Section name: "resolution".
+    """
+    REASON_FOR_CANCELLATION = "REASON_FOR_CANCELLATION"
+    """
+    Reason for cancellation if the customer requests for a cancellation. "N/A" otherwise. Section name: "reason_for_cancellation".
+    """
+    CUSTOMER_SATISFACTION = "CUSTOMER_SATISFACTION"
+    """
+    "Unsatisfied" or "Satisfied" depending on the customer's feelings at the end of the conversation. Section name: "customer_satisfaction".
+    """
+    ENTITIES = "ENTITIES"
+    """
+    Key entities extracted from the conversation, such as ticket number, order number, dollar amount, etc. Section names are prefixed by "entities/".
     """
 
 

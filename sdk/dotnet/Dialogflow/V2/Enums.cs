@@ -254,6 +254,60 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem : IEquatable<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Undefined section type, does not return anything.
+        /// </summary>
+        public static GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem SectionTypeUnspecified { get; } = new GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem("SECTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// What the customer needs help with or has question about. Section name: "situation".
+        /// </summary>
+        public static GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem Situation { get; } = new GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem("SITUATION");
+        /// <summary>
+        /// What the agent does to help the customer. Section name: "action".
+        /// </summary>
+        public static GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem Action { get; } = new GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem("ACTION");
+        /// <summary>
+        /// Result of the customer service. A single word describing the result of the conversation. Section name: "resolution".
+        /// </summary>
+        public static GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem Resolution { get; } = new GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem("RESOLUTION");
+        /// <summary>
+        /// Reason for cancellation if the customer requests for a cancellation. "N/A" otherwise. Section name: "reason_for_cancellation".
+        /// </summary>
+        public static GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem ReasonForCancellation { get; } = new GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem("REASON_FOR_CANCELLATION");
+        /// <summary>
+        /// "Unsatisfied" or "Satisfied" depending on the customer's feelings at the end of the conversation. Section name: "customer_satisfaction".
+        /// </summary>
+        public static GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem CustomerSatisfaction { get; } = new GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem("CUSTOMER_SATISFACTION");
+        /// <summary>
+        /// Key entities extracted from the conversation, such as ticket number, order number, dollar amount, etc. Section names are prefixed by "entities/".
+        /// </summary>
+        public static GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem Entities { get; } = new GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem("ENTITIES");
+
+        public static bool operator ==(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem left, GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem left, GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
     /// </summary>

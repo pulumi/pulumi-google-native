@@ -107,6 +107,10 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Reserved for future use.
      */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
+    /**
+     * Reserved for future use.
+     */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
      * The instance state.
@@ -158,6 +162,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["maxCapacityGb"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
@@ -181,6 +186,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["networks"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["protocol"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;

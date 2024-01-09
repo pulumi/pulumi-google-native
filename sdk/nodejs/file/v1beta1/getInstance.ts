@@ -90,6 +90,10 @@ export interface GetInstanceResult {
     /**
      * Reserved for future use.
      */
+    readonly satisfiesPzi: boolean;
+    /**
+     * Reserved for future use.
+     */
     readonly satisfiesPzs: boolean;
     /**
      * The instance state.

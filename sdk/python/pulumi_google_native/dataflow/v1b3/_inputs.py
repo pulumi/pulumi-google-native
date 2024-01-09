@@ -1757,16 +1757,20 @@ class RuntimeEnvironmentArgs:
 class RuntimeUpdatableParamsArgs:
     def __init__(__self__, *,
                  max_num_workers: Optional[pulumi.Input[int]] = None,
-                 min_num_workers: Optional[pulumi.Input[int]] = None):
+                 min_num_workers: Optional[pulumi.Input[int]] = None,
+                 worker_utilization_hint: Optional[pulumi.Input[float]] = None):
         """
         Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
         :param pulumi.Input[int] max_num_workers: The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
         :param pulumi.Input[int] min_num_workers: The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+        :param pulumi.Input[float] worker_utilization_hint: Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
         """
         if max_num_workers is not None:
             pulumi.set(__self__, "max_num_workers", max_num_workers)
         if min_num_workers is not None:
             pulumi.set(__self__, "min_num_workers", min_num_workers)
+        if worker_utilization_hint is not None:
+            pulumi.set(__self__, "worker_utilization_hint", worker_utilization_hint)
 
     @property
     @pulumi.getter(name="maxNumWorkers")
@@ -1791,6 +1795,18 @@ class RuntimeUpdatableParamsArgs:
     @min_num_workers.setter
     def min_num_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_num_workers", value)
+
+    @property
+    @pulumi.getter(name="workerUtilizationHint")
+    def worker_utilization_hint(self) -> Optional[pulumi.Input[float]]:
+        """
+        Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+        """
+        return pulumi.get(self, "worker_utilization_hint")
+
+    @worker_utilization_hint.setter
+    def worker_utilization_hint(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "worker_utilization_hint", value)
 
 
 @pulumi.input_type

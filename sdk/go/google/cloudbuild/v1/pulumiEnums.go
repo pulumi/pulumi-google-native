@@ -1302,6 +1302,8 @@ const (
 	GitFileSourceRepoTypeBitbucketServer = GitFileSourceRepoType("BITBUCKET_SERVER")
 	// A GitLab-hosted repo.
 	GitFileSourceRepoTypeGitlab = GitFileSourceRepoType("GITLAB")
+	// A Bitbucket Cloud-hosted repo.
+	GitFileSourceRepoTypeBitbucketCloud = GitFileSourceRepoType("BITBUCKET_CLOUD")
 )
 
 func (GitFileSourceRepoType) ElementType() reflect.Type {
@@ -1481,6 +1483,8 @@ const (
 	GitRepoSourceRepoTypeBitbucketServer = GitRepoSourceRepoType("BITBUCKET_SERVER")
 	// A GitLab-hosted repo.
 	GitRepoSourceRepoTypeGitlab = GitRepoSourceRepoType("GITLAB")
+	// A Bitbucket Cloud-hosted repo.
+	GitRepoSourceRepoTypeBitbucketCloud = GitRepoSourceRepoType("BITBUCKET_CLOUD")
 )
 
 func (GitRepoSourceRepoType) ElementType() reflect.Type {

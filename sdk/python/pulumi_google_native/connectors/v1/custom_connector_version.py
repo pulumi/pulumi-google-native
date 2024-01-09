@@ -21,7 +21,7 @@ class CustomConnectorVersionArgs:
                  custom_connector_id: pulumi.Input[str],
                  custom_connector_version_id: pulumi.Input[str],
                  destination_config: pulumi.Input['DestinationConfigArgs'],
-                 type: pulumi.Input['CustomConnectorVersionType'],
+                 service_account: pulumi.Input[str],
                  enable_backend_destination_config: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -31,7 +31,7 @@ class CustomConnectorVersionArgs:
         :param pulumi.Input['AuthConfigArgs'] auth_config: Configuration for establishing the authentication to the connector destination.
         :param pulumi.Input[str] custom_connector_version_id: Required. Identifier to assign to the CreateCustomConnectorVersion. Must be unique within scope of the parent resource.
         :param pulumi.Input['DestinationConfigArgs'] destination_config: Configuration of the customConnector's destination.
-        :param pulumi.Input['CustomConnectorVersionType'] type: Type of the customConnector.
+        :param pulumi.Input[str] service_account: Service account needed for runtime plane to access Custom Connector secrets.
         :param pulumi.Input[bool] enable_backend_destination_config: Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[str] spec_location: Optional. Location of the custom connector spec.
@@ -40,7 +40,7 @@ class CustomConnectorVersionArgs:
         pulumi.set(__self__, "custom_connector_id", custom_connector_id)
         pulumi.set(__self__, "custom_connector_version_id", custom_connector_version_id)
         pulumi.set(__self__, "destination_config", destination_config)
-        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "service_account", service_account)
         if enable_backend_destination_config is not None:
             pulumi.set(__self__, "enable_backend_destination_config", enable_backend_destination_config)
         if labels is not None:
@@ -96,16 +96,16 @@ class CustomConnectorVersionArgs:
         pulumi.set(self, "destination_config", value)
 
     @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input['CustomConnectorVersionType']:
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[str]:
         """
-        Type of the customConnector.
+        Service account needed for runtime plane to access Custom Connector secrets.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "service_account")
 
-    @type.setter
-    def type(self, value: pulumi.Input['CustomConnectorVersionType']):
-        pulumi.set(self, "type", value)
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account", value)
 
     @property
     @pulumi.getter(name="enableBackendDestinationConfig")
@@ -165,8 +165,8 @@ class CustomConnectorVersion(pulumi.CustomResource):
                  enable_backend_destination_config: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  spec_location: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['CustomConnectorVersionType']] = None,
                  __props__=None):
         """
         Creates a new CustomConnectorVersion in a given project and location.
@@ -179,8 +179,8 @@ class CustomConnectorVersion(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DestinationConfigArgs']] destination_config: Configuration of the customConnector's destination.
         :param pulumi.Input[bool] enable_backend_destination_config: Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        :param pulumi.Input[str] service_account: Service account needed for runtime plane to access Custom Connector secrets.
         :param pulumi.Input[str] spec_location: Optional. Location of the custom connector spec.
-        :param pulumi.Input['CustomConnectorVersionType'] type: Type of the customConnector.
         """
         ...
     @overload
@@ -214,8 +214,8 @@ class CustomConnectorVersion(pulumi.CustomResource):
                  enable_backend_destination_config: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  spec_location: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['CustomConnectorVersionType']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -240,10 +240,10 @@ class CustomConnectorVersion(pulumi.CustomResource):
             __props__.__dict__["enable_backend_destination_config"] = enable_backend_destination_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
+            if service_account is None and not opts.urn:
+                raise TypeError("Missing required property 'service_account'")
+            __props__.__dict__["service_account"] = service_account
             __props__.__dict__["spec_location"] = spec_location
-            if type is None and not opts.urn:
-                raise TypeError("Missing required property 'type'")
-            __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
@@ -280,8 +280,8 @@ class CustomConnectorVersion(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["service_account"] = None
         __props__.__dict__["spec_location"] = None
-        __props__.__dict__["type"] = None
         __props__.__dict__["update_time"] = None
         return CustomConnectorVersion(resource_name, opts=opts, __props__=__props__)
 
@@ -352,20 +352,20 @@ class CustomConnectorVersion(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[str]:
+        """
+        Service account needed for runtime plane to access Custom Connector secrets.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
     @pulumi.getter(name="specLocation")
     def spec_location(self) -> pulumi.Output[str]:
         """
         Optional. Location of the custom connector spec.
         """
         return pulumi.get(self, "spec_location")
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Output[str]:
-        """
-        Type of the customConnector.
-        """
-        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="updateTime")

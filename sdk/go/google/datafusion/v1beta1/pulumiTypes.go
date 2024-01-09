@@ -1176,7 +1176,7 @@ type NetworkConfig struct {
 	ConnectionType *NetworkConfigConnectionType `pulumi:"connectionType"`
 	// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
 	IpAllocation *string `pulumi:"ipAllocation"`
-	// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
+	// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 	Network *string `pulumi:"network"`
 	// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
 	PrivateServiceConnectConfig *PrivateServiceConnectConfig `pulumi:"privateServiceConnectConfig"`
@@ -1199,7 +1199,7 @@ type NetworkConfigArgs struct {
 	ConnectionType NetworkConfigConnectionTypePtrInput `pulumi:"connectionType"`
 	// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
 	IpAllocation pulumi.StringPtrInput `pulumi:"ipAllocation"`
-	// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
+	// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
 	PrivateServiceConnectConfig PrivateServiceConnectConfigPtrInput `pulumi:"privateServiceConnectConfig"`
@@ -1293,7 +1293,7 @@ func (o NetworkConfigOutput) IpAllocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.IpAllocation }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
+// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -1347,7 +1347,7 @@ func (o NetworkConfigPtrOutput) IpAllocation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
+// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
 		if v == nil {
@@ -1373,7 +1373,7 @@ type NetworkConfigResponse struct {
 	ConnectionType string `pulumi:"connectionType"`
 	// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
 	IpAllocation string `pulumi:"ipAllocation"`
-	// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
+	// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 	Network string `pulumi:"network"`
 	// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
 	PrivateServiceConnectConfig PrivateServiceConnectConfigResponse `pulumi:"privateServiceConnectConfig"`
@@ -1404,7 +1404,7 @@ func (o NetworkConfigResponseOutput) IpAllocation() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.IpAllocation }).(pulumi.StringOutput)
 }
 
-// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
+// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
 func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
 }

@@ -52,7 +52,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly createdFromSnapshotId!: pulumi.Output<string>;
     /**
-     * The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+     * The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
      */
     public readonly currentState!: pulumi.Output<string>;
     /**
@@ -79,7 +79,7 @@ export class Job extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+     * The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly transformNameMapping!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The type of Cloud Dataflow job.
+     * The type of Dataflow job.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -236,7 +236,7 @@ export interface JobArgs {
      */
     createdFromSnapshotId?: pulumi.Input<string>;
     /**
-     * The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+     * The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
      */
     currentState?: pulumi.Input<enums.dataflow.v1b3.JobCurrentState>;
     /**
@@ -254,7 +254,7 @@ export interface JobArgs {
      */
     executionInfo?: pulumi.Input<inputs.dataflow.v1b3.JobExecutionInfoArgs>;
     /**
-     * The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+     * The unique ID of this job. This field is set by the Dataflow service when the job is created, and is immutable for the life of the job.
      */
     id?: pulumi.Input<string>;
     /**
@@ -270,7 +270,7 @@ export interface JobArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+     * The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
      */
     name?: pulumi.Input<string>;
     /**
@@ -278,7 +278,7 @@ export interface JobArgs {
      */
     pipelineDescription?: pulumi.Input<inputs.dataflow.v1b3.PipelineDescriptionArgs>;
     /**
-     * The ID of the Cloud Platform project that the job belongs to.
+     * The ID of the Google Cloud project that the job belongs to.
      */
     project?: pulumi.Input<string>;
     /**
@@ -326,7 +326,7 @@ export interface JobArgs {
      */
     transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The type of Cloud Dataflow job.
+     * The type of Dataflow job.
      */
     type?: pulumi.Input<enums.dataflow.v1b3.JobType>;
     /**

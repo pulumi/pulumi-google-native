@@ -55,6 +55,10 @@ export interface GetBackupResult {
     /**
      * Reserved for future use.
      */
+    readonly satisfiesPzi: boolean;
+    /**
+     * Reserved for future use.
+     */
     readonly satisfiesPzs: boolean;
     /**
      * Name of the file share in the source Filestore instance that the backup is created from.

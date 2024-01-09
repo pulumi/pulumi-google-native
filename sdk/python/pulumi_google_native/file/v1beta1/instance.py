@@ -364,6 +364,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["max_capacity_gb"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["satisfies_pzi"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["status_message"] = None
@@ -410,6 +411,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["networks"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["protocol"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
@@ -554,6 +556,14 @@ class Instance(pulumi.CustomResource):
         Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
         """
         return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

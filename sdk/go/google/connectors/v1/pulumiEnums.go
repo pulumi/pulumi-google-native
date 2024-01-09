@@ -204,6 +204,8 @@ const (
 	AuthConfigAuthTypeSshPublicKey = AuthConfigAuthType("SSH_PUBLIC_KEY")
 	// Oauth 2.0 Authorization Code Flow
 	AuthConfigAuthTypeOauth2AuthCodeFlow = AuthConfigAuthType("OAUTH2_AUTH_CODE_FLOW")
+	// Google authentication
+	AuthConfigAuthTypeGoogleAuthentication = AuthConfigAuthType("GOOGLE_AUTHENTICATION")
 )
 
 func (AuthConfigAuthType) ElementType() reflect.Type {
@@ -716,181 +718,6 @@ func (in *customConnectorCustomConnectorTypePtr) ToCustomConnectorCustomConnecto
 func (in *customConnectorCustomConnectorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorCustomConnectorType] {
 	return pulumix.Output[*CustomConnectorCustomConnectorType]{
 		OutputState: in.ToCustomConnectorCustomConnectorTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-// Required. Type of the customConnector.
-type CustomConnectorVersionType string
-
-const (
-	// Connector type is not specified.
-	CustomConnectorVersionTypeCustomConnectorTypeUnspecified = CustomConnectorVersionType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED")
-	// OpenAPI connector.
-	CustomConnectorVersionTypeOpenApi = CustomConnectorVersionType("OPEN_API")
-	// Proto connector.
-	CustomConnectorVersionTypeProto = CustomConnectorVersionType("PROTO")
-)
-
-func (CustomConnectorVersionType) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomConnectorVersionType)(nil)).Elem()
-}
-
-func (e CustomConnectorVersionType) ToCustomConnectorVersionTypeOutput() CustomConnectorVersionTypeOutput {
-	return pulumi.ToOutput(e).(CustomConnectorVersionTypeOutput)
-}
-
-func (e CustomConnectorVersionType) ToCustomConnectorVersionTypeOutputWithContext(ctx context.Context) CustomConnectorVersionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(CustomConnectorVersionTypeOutput)
-}
-
-func (e CustomConnectorVersionType) ToCustomConnectorVersionTypePtrOutput() CustomConnectorVersionTypePtrOutput {
-	return e.ToCustomConnectorVersionTypePtrOutputWithContext(context.Background())
-}
-
-func (e CustomConnectorVersionType) ToCustomConnectorVersionTypePtrOutputWithContext(ctx context.Context) CustomConnectorVersionTypePtrOutput {
-	return CustomConnectorVersionType(e).ToCustomConnectorVersionTypeOutputWithContext(ctx).ToCustomConnectorVersionTypePtrOutputWithContext(ctx)
-}
-
-func (e CustomConnectorVersionType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e CustomConnectorVersionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e CustomConnectorVersionType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e CustomConnectorVersionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type CustomConnectorVersionTypeOutput struct{ *pulumi.OutputState }
-
-func (CustomConnectorVersionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomConnectorVersionType)(nil)).Elem()
-}
-
-func (o CustomConnectorVersionTypeOutput) ToCustomConnectorVersionTypeOutput() CustomConnectorVersionTypeOutput {
-	return o
-}
-
-func (o CustomConnectorVersionTypeOutput) ToCustomConnectorVersionTypeOutputWithContext(ctx context.Context) CustomConnectorVersionTypeOutput {
-	return o
-}
-
-func (o CustomConnectorVersionTypeOutput) ToCustomConnectorVersionTypePtrOutput() CustomConnectorVersionTypePtrOutput {
-	return o.ToCustomConnectorVersionTypePtrOutputWithContext(context.Background())
-}
-
-func (o CustomConnectorVersionTypeOutput) ToCustomConnectorVersionTypePtrOutputWithContext(ctx context.Context) CustomConnectorVersionTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomConnectorVersionType) *CustomConnectorVersionType {
-		return &v
-	}).(CustomConnectorVersionTypePtrOutput)
-}
-
-func (o CustomConnectorVersionTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o CustomConnectorVersionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomConnectorVersionType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o CustomConnectorVersionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o CustomConnectorVersionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomConnectorVersionType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type CustomConnectorVersionTypePtrOutput struct{ *pulumi.OutputState }
-
-func (CustomConnectorVersionTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomConnectorVersionType)(nil)).Elem()
-}
-
-func (o CustomConnectorVersionTypePtrOutput) ToCustomConnectorVersionTypePtrOutput() CustomConnectorVersionTypePtrOutput {
-	return o
-}
-
-func (o CustomConnectorVersionTypePtrOutput) ToCustomConnectorVersionTypePtrOutputWithContext(ctx context.Context) CustomConnectorVersionTypePtrOutput {
-	return o
-}
-
-func (o CustomConnectorVersionTypePtrOutput) Elem() CustomConnectorVersionTypeOutput {
-	return o.ApplyT(func(v *CustomConnectorVersionType) CustomConnectorVersionType {
-		if v != nil {
-			return *v
-		}
-		var ret CustomConnectorVersionType
-		return ret
-	}).(CustomConnectorVersionTypeOutput)
-}
-
-func (o CustomConnectorVersionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o CustomConnectorVersionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CustomConnectorVersionType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// CustomConnectorVersionTypeInput is an input type that accepts CustomConnectorVersionTypeArgs and CustomConnectorVersionTypeOutput values.
-// You can construct a concrete instance of `CustomConnectorVersionTypeInput` via:
-//
-//	CustomConnectorVersionTypeArgs{...}
-type CustomConnectorVersionTypeInput interface {
-	pulumi.Input
-
-	ToCustomConnectorVersionTypeOutput() CustomConnectorVersionTypeOutput
-	ToCustomConnectorVersionTypeOutputWithContext(context.Context) CustomConnectorVersionTypeOutput
-}
-
-var customConnectorVersionTypePtrType = reflect.TypeOf((**CustomConnectorVersionType)(nil)).Elem()
-
-type CustomConnectorVersionTypePtrInput interface {
-	pulumi.Input
-
-	ToCustomConnectorVersionTypePtrOutput() CustomConnectorVersionTypePtrOutput
-	ToCustomConnectorVersionTypePtrOutputWithContext(context.Context) CustomConnectorVersionTypePtrOutput
-}
-
-type customConnectorVersionTypePtr string
-
-func CustomConnectorVersionTypePtr(v string) CustomConnectorVersionTypePtrInput {
-	return (*customConnectorVersionTypePtr)(&v)
-}
-
-func (*customConnectorVersionTypePtr) ElementType() reflect.Type {
-	return customConnectorVersionTypePtrType
-}
-
-func (in *customConnectorVersionTypePtr) ToCustomConnectorVersionTypePtrOutput() CustomConnectorVersionTypePtrOutput {
-	return pulumi.ToOutput(in).(CustomConnectorVersionTypePtrOutput)
-}
-
-func (in *customConnectorVersionTypePtr) ToCustomConnectorVersionTypePtrOutputWithContext(ctx context.Context) CustomConnectorVersionTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(CustomConnectorVersionTypePtrOutput)
-}
-
-func (in *customConnectorVersionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorVersionType] {
-	return pulumix.Output[*CustomConnectorVersionType]{
-		OutputState: in.ToCustomConnectorVersionTypePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -2122,8 +1949,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionEventingEnablementTypePtrInput)(nil)).Elem(), ConnectionEventingEnablementType("EVENTING_ENABLEMENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomConnectorCustomConnectorTypeInput)(nil)).Elem(), CustomConnectorCustomConnectorType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomConnectorCustomConnectorTypePtrInput)(nil)).Elem(), CustomConnectorCustomConnectorType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomConnectorVersionTypeInput)(nil)).Elem(), CustomConnectorVersionType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomConnectorVersionTypePtrInput)(nil)).Elem(), CustomConnectorVersionType("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyTypeInput)(nil)).Elem(), EncryptionKeyType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyTypePtrInput)(nil)).Elem(), EncryptionKeyType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EventSubscriptionDestinationTypeInput)(nil)).Elem(), EventSubscriptionDestinationType("TYPE_UNSPECIFIED"))
@@ -2146,8 +1971,6 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionEventingEnablementTypePtrOutput{})
 	pulumi.RegisterOutputType(CustomConnectorCustomConnectorTypeOutput{})
 	pulumi.RegisterOutputType(CustomConnectorCustomConnectorTypePtrOutput{})
-	pulumi.RegisterOutputType(CustomConnectorVersionTypeOutput{})
-	pulumi.RegisterOutputType(CustomConnectorVersionTypePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionKeyTypeOutput{})
 	pulumi.RegisterOutputType(EncryptionKeyTypePtrOutput{})
 	pulumi.RegisterOutputType(EventSubscriptionDestinationTypeOutput{})

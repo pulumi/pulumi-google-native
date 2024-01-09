@@ -42,7 +42,9 @@ export class SecurityProfile extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Display name of the security profile.
+     * DEPRECATED: DO NOT USE Display name of the security profile.
+     *
+     * @deprecated DEPRECATED: DO NOT USE Display name of the security profile.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -75,7 +77,9 @@ export class SecurityProfile extends pulumi.CustomResource {
      */
     public /*out*/ readonly revisionId!: pulumi.Output<string>;
     /**
-     * The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+     * DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+     *
+     * @deprecated Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
      */
     public /*out*/ readonly revisionPublishTime!: pulumi.Output<string>;
     /**
@@ -157,7 +161,9 @@ export interface SecurityProfileArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Display name of the security profile.
+     * DEPRECATED: DO NOT USE Display name of the security profile.
+     *
+     * @deprecated DEPRECATED: DO NOT USE Display name of the security profile.
      */
     displayName?: pulumi.Input<string>;
     /**

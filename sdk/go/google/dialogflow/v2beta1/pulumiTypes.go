@@ -2622,6 +2622,8 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig 
 	KnowledgeBaseQuerySource *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource `pulumi:"knowledgeBaseQuerySource"`
 	// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
 	MaxResults *int `pulumi:"maxResults"`
+	// Optional. The customized sections chosen to return when requesting a summary of a conversation.
+	Sections *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections `pulumi:"sections"`
 }
 
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput values.
@@ -2649,6 +2651,8 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigA
 	KnowledgeBaseQuerySource GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput `pulumi:"knowledgeBaseQuerySource"`
 	// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
 	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
+	// Optional. The customized sections chosen to return when requesting a summary of a conversation.
+	Sections GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrInput `pulumi:"sections"`
 }
 
 func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs) ElementType() reflect.Type {
@@ -2771,6 +2775,13 @@ func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConf
 	}).(pulumi.IntPtrOutput)
 }
 
+// Optional. The customized sections chosen to return when requesting a summary of a conversation.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) Sections() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections {
+		return v.Sections
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput)
+}
+
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) ElementType() reflect.Type {
@@ -2853,6 +2864,16 @@ func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConf
 		}
 		return v.MaxResults
 	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The customized sections chosen to return when requesting a summary of a conversation.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) Sections() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections {
+		if v == nil {
+			return nil
+		}
+		return v.Sections
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput)
 }
 
 // Settings that determine how to filter recent conversation context when generating suggestions.
@@ -3809,6 +3830,8 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigR
 	KnowledgeBaseQuerySource GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse `pulumi:"knowledgeBaseQuerySource"`
 	// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
 	MaxResults int `pulumi:"maxResults"`
+	// Optional. The customized sections chosen to return when requesting a summary of a conversation.
+	Sections GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse `pulumi:"sections"`
 }
 
 // Config for suggestion query.
@@ -3866,6 +3889,183 @@ func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConf
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse) int {
 		return v.MaxResults
 	}).(pulumi.IntOutput)
+}
+
+// Optional. The customized sections chosen to return when requesting a summary of a conversation.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput) Sections() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse {
+		return v.Sections
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput)
+}
+
+// Custom sections to return when requesting a summary of a conversation. This is only supported when `baseline_model_version` == '2.0'. Supported features: CONVERSATION_SUMMARIZATION, CONVERSATION_SUMMARIZATION_VOICE.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections struct {
+	// The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected section will be treated as a single selected section. If section types are not provided, the default will be {SITUATION, ACTION, RESULT}.
+	SectionTypes []GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem `pulumi:"sectionTypes"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsInput` via:
+//
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput
+}
+
+// Custom sections to return when requesting a summary of a conversation. This is only supported when `baseline_model_version` == '2.0'. Supported features: CONVERSATION_SUMMARIZATION, CONVERSATION_SUMMARIZATION_VOICE.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs struct {
+	// The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected section will be treated as a single selected section. If section types are not provided, the default will be {SITUATION, ACTION, RESULT}.
+	SectionTypes GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemArrayInput `pulumi:"sectionTypes"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrInput` via:
+//
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput)
+}
+
+// Custom sections to return when requesting a summary of a conversation. This is only supported when `baseline_model_version` == '2.0'. Supported features: CONVERSATION_SUMMARIZATION, CONVERSATION_SUMMARIZATION_VOICE.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput)
+}
+
+// The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected section will be treated as a single selected section. If section types are not provided, the default will be {SITUATION, ACTION, RESULT}.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput) SectionTypes() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections) []GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem {
+		return v.SectionTypes
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemArrayOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections
+		return ret
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput)
+}
+
+// The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected section will be treated as a single selected section. If section types are not provided, the default will be {SITUATION, ACTION, RESULT}.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput) SectionTypes() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections) []GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem {
+		if v == nil {
+			return nil
+		}
+		return v.SectionTypes
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemArrayOutput)
+}
+
+// Custom sections to return when requesting a summary of a conversation. This is only supported when `baseline_model_version` == '2.0'. Supported features: CONVERSATION_SUMMARIZATION, CONVERSATION_SUMMARIZATION_VOICE.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse struct {
+	// The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected section will be treated as a single selected section. If section types are not provided, the default will be {SITUATION, ACTION, RESULT}.
+	SectionTypes []string `pulumi:"sectionTypes"`
+}
+
+// Custom sections to return when requesting a summary of a conversation. This is only supported when `baseline_model_version` == '2.0'. Supported features: CONVERSATION_SUMMARIZATION, CONVERSATION_SUMMARIZATION_VOICE.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput {
+	return o
+}
+
+// The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected section will be treated as a single selected section. If section types are not provided, the default will be {SITUATION, ACTION, RESULT}.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput) SectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse) []string {
+		return v.SectionTypes
+	}).(pulumi.StringArrayOutput)
 }
 
 // Settings of suggestion trigger.
@@ -15303,6 +15503,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs{})
@@ -15473,6 +15675,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutput{})

@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         public readonly string CreatedFromSnapshotId;
         /// <summary>
-        /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+        /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
         /// </summary>
         public readonly string CurrentState;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+        /// The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         public readonly Outputs.PipelineDescriptionResponse PipelineDescription;
         /// <summary>
-        /// The ID of the Cloud Platform project that the job belongs to.
+        /// The ID of the Google Cloud project that the job belongs to.
         /// </summary>
         public readonly string Project;
         /// <summary>
@@ -170,7 +170,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         public readonly ImmutableDictionary<string, string> TransformNameMapping;
         /// <summary>
-        /// The type of Cloud Dataflow job.
+        /// The type of Dataflow job.
         /// </summary>
         public readonly string Type;
 

@@ -31,6 +31,7 @@ __all__ = [
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs',
+    'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs',
@@ -996,6 +997,30 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowl
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs:
+    def __init__(__self__, *,
+                 section_types: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem']]]] = None):
+        """
+        Custom sections to return when requesting a summary of a conversation. This is only supported when `baseline_model_version` == '2.0'. Supported features: CONVERSATION_SUMMARIZATION, CONVERSATION_SUMMARIZATION_VOICE.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem']]] section_types: The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected section will be treated as a single selected section. If section types are not provided, the default will be {SITUATION, ACTION, RESULT}.
+        """
+        if section_types is not None:
+            pulumi.set(__self__, "section_types", section_types)
+
+    @property
+    @pulumi.getter(name="sectionTypes")
+    def section_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem']]]]:
+        """
+        The selected sections chosen to return when requesting a summary of a conversation. A duplicate selected section will be treated as a single selected section. If section types are not provided, the default will be {SITUATION, ACTION, RESULT}.
+        """
+        return pulumi.get(self, "section_types")
+
+    @section_types.setter
+    def section_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem']]]]):
+        pulumi.set(self, "section_types", value)
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs:
     def __init__(__self__, *,
                  confidence_threshold: Optional[pulumi.Input[float]] = None,
@@ -1003,7 +1028,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs:
                  dialogflow_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs']] = None,
                  document_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs']] = None,
                  knowledge_base_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs']] = None,
-                 max_results: Optional[pulumi.Input[int]] = None):
+                 max_results: Optional[pulumi.Input[int]] = None,
+                 sections: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs']] = None):
         """
         Config for suggestion query.
         :param pulumi.Input[float] confidence_threshold: Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
@@ -1012,6 +1038,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs:
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs'] document_query_source: Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs'] knowledge_base_query_source: Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
         :param pulumi.Input[int] max_results: Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs'] sections: Optional. The customized sections chosen to return when requesting a summary of a conversation.
         """
         if confidence_threshold is not None:
             pulumi.set(__self__, "confidence_threshold", confidence_threshold)
@@ -1025,6 +1052,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs:
             pulumi.set(__self__, "knowledge_base_query_source", knowledge_base_query_source)
         if max_results is not None:
             pulumi.set(__self__, "max_results", max_results)
+        if sections is not None:
+            pulumi.set(__self__, "sections", sections)
 
     @property
     @pulumi.getter(name="confidenceThreshold")
@@ -1097,6 +1126,18 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs:
     @max_results.setter
     def max_results(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_results", value)
+
+    @property
+    @pulumi.getter
+    def sections(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs']]:
+        """
+        Optional. The customized sections chosen to return when requesting a summary of a conversation.
+        """
+        return pulumi.get(self, "sections")
+
+    @sections.setter
+    def sections(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs']]):
+        pulumi.set(self, "sections", value)
 
 
 @pulumi.input_type

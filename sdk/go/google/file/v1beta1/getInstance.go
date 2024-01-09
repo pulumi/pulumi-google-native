@@ -60,6 +60,8 @@ type LookupInstanceResult struct {
 	// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
 	Protocol string `pulumi:"protocol"`
 	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The instance state.
 	State string `pulumi:"state"`
@@ -181,6 +183,11 @@ func (o LookupInstanceResultOutput) Networks() NetworkConfigResponseArrayOutput 
 // Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
 func (o LookupInstanceResultOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o LookupInstanceResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

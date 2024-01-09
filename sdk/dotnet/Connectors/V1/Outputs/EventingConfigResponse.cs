@@ -25,10 +25,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly Outputs.AuthConfigResponse AuthConfig;
         /// <summary>
-        /// Encryption key (can be either Google managed or CMEK).
-        /// </summary>
-        public readonly Outputs.ConfigVariableResponse EncryptionKey;
-        /// <summary>
         /// Enrichment Enabled.
         /// </summary>
         public readonly bool EnrichmentEnabled;
@@ -36,6 +32,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
         /// </summary>
         public readonly string EventsListenerIngressEndpoint;
+        /// <summary>
+        /// Optional. Auth details for the event listener.
+        /// </summary>
+        public readonly Outputs.AuthConfigResponse ListenerAuthConfig;
         /// <summary>
         /// Optional. Private Connectivity Enabled.
         /// </summary>
@@ -51,11 +51,11 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
 
             Outputs.AuthConfigResponse authConfig,
 
-            Outputs.ConfigVariableResponse encryptionKey,
-
             bool enrichmentEnabled,
 
             string eventsListenerIngressEndpoint,
+
+            Outputs.AuthConfigResponse listenerAuthConfig,
 
             bool privateConnectivityEnabled,
 
@@ -63,9 +63,9 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         {
             AdditionalVariables = additionalVariables;
             AuthConfig = authConfig;
-            EncryptionKey = encryptionKey;
             EnrichmentEnabled = enrichmentEnabled;
             EventsListenerIngressEndpoint = eventsListenerIngressEndpoint;
+            ListenerAuthConfig = listenerAuthConfig;
             PrivateConnectivityEnabled = privateConnectivityEnabled;
             RegistrationDestinationConfig = registrationDestinationConfig;
         }

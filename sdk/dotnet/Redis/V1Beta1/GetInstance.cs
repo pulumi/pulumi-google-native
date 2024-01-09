@@ -176,6 +176,10 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         public readonly string ReservedIpRange;
         /// <summary>
+        /// Optional. Output only. Reserved for future use. Zone Isolation compliance state of the instance. Field name and documentation is obfuscated according to go/per-resource-zi-bit-semantics.
+        /// </summary>
+        public readonly bool SatisfiesPzi;
+        /// <summary>
         /// Optional. Output only. Reserved for future use. Zone Separation compliance state of the instance. Field name and documentation is obfuscated according to go/zs-resource-status.
         /// </summary>
         public readonly bool SatisfiesPzs;
@@ -266,6 +270,8 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
 
             string reservedIpRange,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             string secondaryIpRange,
@@ -310,6 +316,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
             RedisVersion = redisVersion;
             ReplicaCount = replicaCount;
             ReservedIpRange = reservedIpRange;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             SecondaryIpRange = secondaryIpRange;
             ServerCaCerts = serverCaCerts;

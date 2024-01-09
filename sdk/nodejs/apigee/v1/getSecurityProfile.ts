@@ -30,7 +30,9 @@ export interface GetSecurityProfileResult {
      */
     readonly description: string;
     /**
-     * Display name of the security profile.
+     * DEPRECATED: DO NOT USE Display name of the security profile.
+     *
+     * @deprecated DEPRECATED: DO NOT USE Display name of the security profile.
      */
     readonly displayName: string;
     /**
@@ -62,7 +64,9 @@ export interface GetSecurityProfileResult {
      */
     readonly revisionId: string;
     /**
-     * The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+     * DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+     *
+     * @deprecated Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
      */
     readonly revisionPublishTime: string;
     /**

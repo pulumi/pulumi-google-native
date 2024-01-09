@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         [Input("maxResults")]
         public Input<int>? MaxResults { get; set; }
 
+        /// <summary>
+        /// Optional. The customized sections chosen to return when requesting a summary of a conversation.
+        /// </summary>
+        [Input("sections")]
+        public Input<Inputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsArgs>? Sections { get; set; }
+
         public GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs()
         {
         }

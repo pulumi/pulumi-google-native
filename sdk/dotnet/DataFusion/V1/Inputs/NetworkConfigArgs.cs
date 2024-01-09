@@ -16,16 +16,28 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Inputs
     public sealed class NetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the customer network.
+        /// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+        /// </summary>
+        [Input("connectionType")]
+        public Input<Pulumi.GoogleNative.DataFusion.V1.NetworkConfigConnectionType>? ConnectionType { get; set; }
+
+        /// <summary>
+        /// Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
         /// </summary>
         [Input("ipAllocation")]
         public Input<string>? IpAllocation { get; set; }
 
         /// <summary>
-        /// Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+        /// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+        /// </summary>
+        [Input("privateServiceConnectConfig")]
+        public Input<Inputs.PrivateServiceConnectConfigArgs>? PrivateServiceConnectConfig { get; set; }
 
         public NetworkConfigArgs()
         {

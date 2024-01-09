@@ -17,8 +17,8 @@ var _ = internal.GetEnvOrDefault
 type FileShareConfig struct {
 	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
 	CapacityGb *string `pulumi:"capacityGb"`
-	// The name of the file share (must be 16 characters or less).
-	Name *string `pulumi:"name"`
+	// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+	Name string `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions []NfsExportOptions `pulumi:"nfsExportOptions"`
 	// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
@@ -40,8 +40,8 @@ type FileShareConfigInput interface {
 type FileShareConfigArgs struct {
 	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
 	CapacityGb pulumi.StringPtrInput `pulumi:"capacityGb"`
-	// The name of the file share (must be 16 characters or less).
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions NfsExportOptionsArrayInput `pulumi:"nfsExportOptions"`
 	// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
@@ -105,9 +105,9 @@ func (o FileShareConfigOutput) CapacityGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileShareConfig) *string { return v.CapacityGb }).(pulumi.StringPtrOutput)
 }
 
-// The name of the file share (must be 16 characters or less).
-func (o FileShareConfigOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FileShareConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+func (o FileShareConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FileShareConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Nfs Export Options. There is a limit of 10 export options per file share.
@@ -144,7 +144,7 @@ func (o FileShareConfigArrayOutput) Index(i pulumi.IntInput) FileShareConfigOutp
 type FileShareConfigResponse struct {
 	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
 	CapacityGb string `pulumi:"capacityGb"`
-	// The name of the file share (must be 16 characters or less).
+	// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
 	Name string `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions []NfsExportOptionsResponse `pulumi:"nfsExportOptions"`
@@ -172,7 +172,7 @@ func (o FileShareConfigResponseOutput) CapacityGb() pulumi.StringOutput {
 	return o.ApplyT(func(v FileShareConfigResponse) string { return v.CapacityGb }).(pulumi.StringOutput)
 }
 
-// The name of the file share (must be 16 characters or less).
+// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
 func (o FileShareConfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FileShareConfigResponse) string { return v.Name }).(pulumi.StringOutput)
 }

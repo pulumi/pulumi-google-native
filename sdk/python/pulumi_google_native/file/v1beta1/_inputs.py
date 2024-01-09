@@ -45,25 +45,36 @@ class DirectoryServicesConfigArgs:
 @pulumi.input_type
 class FileShareConfigArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  capacity_gb: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input['NfsExportOptionsArgs']]]] = None,
                  source_backup: Optional[pulumi.Input[str]] = None):
         """
         File share configuration for the instance.
+        :param pulumi.Input[str] name: The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
         :param pulumi.Input[str] capacity_gb: File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
-        :param pulumi.Input[str] name: The name of the file share (must be 32 characters or less for Enterprise and High Scale SSD tiers and 16 characters or less for all other tiers).
         :param pulumi.Input[Sequence[pulumi.Input['NfsExportOptionsArgs']]] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
         :param pulumi.Input[str] source_backup: The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
         """
+        pulumi.set(__self__, "name", name)
         if capacity_gb is not None:
             pulumi.set(__self__, "capacity_gb", capacity_gb)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if nfs_export_options is not None:
             pulumi.set(__self__, "nfs_export_options", nfs_export_options)
         if source_backup is not None:
             pulumi.set(__self__, "source_backup", source_backup)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="capacityGb")
@@ -76,18 +87,6 @@ class FileShareConfigArgs:
     @capacity_gb.setter
     def capacity_gb(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "capacity_gb", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the file share (must be 32 characters or less for Enterprise and High Scale SSD tiers and 16 characters or less for all other tiers).
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="nfsExportOptions")

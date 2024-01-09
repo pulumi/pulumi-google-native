@@ -4304,6 +4304,7 @@ _utilities.register(
   "mod": "translate/v3",
   "fqn": "pulumi_google_native.translate.v3",
   "classes": {
+   "google-native:translate/v3:AdaptiveMtDataset": "AdaptiveMtDataset",
    "google-native:translate/v3:Dataset": "Dataset",
    "google-native:translate/v3:Glossary": "Glossary",
    "google-native:translate/v3:GlossaryEntry": "GlossaryEntry",

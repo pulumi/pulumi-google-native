@@ -52,6 +52,8 @@ type Instance struct {
 	// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// Reserved for future use.
+	SatisfiesPzi pulumi.BoolOutput `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The instance state.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -297,6 +299,11 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 // Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
 func (o InstanceOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o InstanceOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

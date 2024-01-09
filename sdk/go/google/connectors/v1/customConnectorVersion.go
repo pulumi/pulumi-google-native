@@ -33,10 +33,10 @@ type CustomConnectorVersion struct {
 	// Identifier. Resource name of the Version. Format: projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Service account needed for runtime plane to access Custom Connector secrets.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Optional. Location of the custom connector spec.
 	SpecLocation pulumi.StringOutput `pulumi:"specLocation"`
-	// Type of the customConnector.
-	Type pulumi.StringOutput `pulumi:"type"`
 	// Updated time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -60,8 +60,8 @@ func NewCustomConnectorVersion(ctx *pulumi.Context,
 	if args.DestinationConfig == nil {
 		return nil, errors.New("invalid value for required argument 'DestinationConfig'")
 	}
-	if args.Type == nil {
-		return nil, errors.New("invalid value for required argument 'Type'")
+	if args.ServiceAccount == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccount'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"customConnectorId",
@@ -114,10 +114,10 @@ type customConnectorVersionArgs struct {
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels  map[string]string `pulumi:"labels"`
 	Project *string           `pulumi:"project"`
+	// Service account needed for runtime plane to access Custom Connector secrets.
+	ServiceAccount string `pulumi:"serviceAccount"`
 	// Optional. Location of the custom connector spec.
 	SpecLocation *string `pulumi:"specLocation"`
-	// Type of the customConnector.
-	Type CustomConnectorVersionType `pulumi:"type"`
 }
 
 // The set of arguments for constructing a CustomConnectorVersion resource.
@@ -134,10 +134,10 @@ type CustomConnectorVersionArgs struct {
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels  pulumi.StringMapInput
 	Project pulumi.StringPtrInput
+	// Service account needed for runtime plane to access Custom Connector secrets.
+	ServiceAccount pulumi.StringInput
 	// Optional. Location of the custom connector spec.
 	SpecLocation pulumi.StringPtrInput
-	// Type of the customConnector.
-	Type CustomConnectorVersionTypeInput
 }
 
 func (CustomConnectorVersionArgs) ElementType() reflect.Type {
@@ -220,14 +220,14 @@ func (o CustomConnectorVersionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Service account needed for runtime plane to access Custom Connector secrets.
+func (o CustomConnectorVersionOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
 // Optional. Location of the custom connector spec.
 func (o CustomConnectorVersionOutput) SpecLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.StringOutput { return v.SpecLocation }).(pulumi.StringOutput)
-}
-
-// Type of the customConnector.
-func (o CustomConnectorVersionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v *CustomConnectorVersion) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // Updated time.

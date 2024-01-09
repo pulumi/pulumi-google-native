@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, authorized_network=None, available_maintenance_versions=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, host=None, labels=None, location=None, maintenance_policy=None, maintenance_schedule=None, maintenance_version=None, memory_size_gb=None, name=None, nodes=None, persistence_config=None, persistence_iam_identity=None, port=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, replica_count=None, reserved_ip_range=None, satisfies_pzs=None, secondary_ip_range=None, server_ca_certs=None, state=None, status_message=None, suspension_reasons=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, authorized_network=None, available_maintenance_versions=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, host=None, labels=None, location=None, maintenance_policy=None, maintenance_schedule=None, maintenance_version=None, memory_size_gb=None, name=None, nodes=None, persistence_config=None, persistence_iam_identity=None, port=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, replica_count=None, reserved_ip_range=None, satisfies_pzi=None, satisfies_pzs=None, secondary_ip_range=None, server_ca_certs=None, state=None, status_message=None, suspension_reasons=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -104,6 +104,9 @@ class GetInstanceResult:
         if reserved_ip_range and not isinstance(reserved_ip_range, str):
             raise TypeError("Expected argument 'reserved_ip_range' to be a str")
         pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -354,6 +357,14 @@ class GetInstanceResult:
         return pulumi.get(self, "reserved_ip_range")
 
     @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Optional. Output only. Reserved for future use. Zone Isolation compliance state of the instance. Field name and documentation is obfuscated according to go/per-resource-zi-bit-semantics.
+        """
+        return pulumi.get(self, "satisfies_pzi")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -452,6 +463,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             redis_version=self.redis_version,
             replica_count=self.replica_count,
             reserved_ip_range=self.reserved_ip_range,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             secondary_ip_range=self.secondary_ip_range,
             server_ca_certs=self.server_ca_certs,
@@ -505,6 +517,7 @@ def get_instance(instance_id: Optional[str] = None,
         redis_version=pulumi.get(__ret__, 'redis_version'),
         replica_count=pulumi.get(__ret__, 'replica_count'),
         reserved_ip_range=pulumi.get(__ret__, 'reserved_ip_range'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         secondary_ip_range=pulumi.get(__ret__, 'secondary_ip_range'),
         server_ca_certs=pulumi.get(__ret__, 'server_ca_certs'),

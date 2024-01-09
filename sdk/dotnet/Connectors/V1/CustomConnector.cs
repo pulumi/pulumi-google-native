@@ -53,12 +53,6 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Launch stage.
-        /// </summary>
-        [Output("launchStage")]
-        public Output<string> LaunchStage { get; private set; } = null!;
-
-        /// <summary>
         /// Optional. Logo of the resource.
         /// </summary>
         [Output("logo")]

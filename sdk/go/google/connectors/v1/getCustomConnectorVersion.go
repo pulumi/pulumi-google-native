@@ -41,10 +41,10 @@ type LookupCustomConnectorVersionResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Identifier. Resource name of the Version. Format: projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}
 	Name string `pulumi:"name"`
+	// Service account needed for runtime plane to access Custom Connector secrets.
+	ServiceAccount string `pulumi:"serviceAccount"`
 	// Optional. Location of the custom connector spec.
 	SpecLocation string `pulumi:"specLocation"`
-	// Type of the customConnector.
-	Type string `pulumi:"type"`
 	// Updated time.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -116,14 +116,14 @@ func (o LookupCustomConnectorVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomConnectorVersionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Service account needed for runtime plane to access Custom Connector secrets.
+func (o LookupCustomConnectorVersionResultOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomConnectorVersionResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
 // Optional. Location of the custom connector spec.
 func (o LookupCustomConnectorVersionResultOutput) SpecLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomConnectorVersionResult) string { return v.SpecLocation }).(pulumi.StringOutput)
-}
-
-// Type of the customConnector.
-func (o LookupCustomConnectorVersionResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomConnectorVersionResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Updated time.

@@ -1485,7 +1485,7 @@ type GooglePrivacyDlpV2BigQueryOptions struct {
 	IncludedFields []GooglePrivacyDlpV2FieldId `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit *string `pulumi:"rowsLimit"`
-	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
+	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
 	RowsLimitPercent *int                                           `pulumi:"rowsLimitPercent"`
 	SampleMethod     *GooglePrivacyDlpV2BigQueryOptionsSampleMethod `pulumi:"sampleMethod"`
 	// Complete BigQuery table reference.
@@ -1513,7 +1513,7 @@ type GooglePrivacyDlpV2BigQueryOptionsArgs struct {
 	IncludedFields GooglePrivacyDlpV2FieldIdArrayInput `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit pulumi.StringPtrInput `pulumi:"rowsLimit"`
-	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
+	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
 	RowsLimitPercent pulumi.IntPtrInput                                    `pulumi:"rowsLimitPercent"`
 	SampleMethod     GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrInput `pulumi:"sampleMethod"`
 	// Complete BigQuery table reference.
@@ -1618,7 +1618,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsOutput) RowsLimit() pulumi.StringPtrOut
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) *string { return v.RowsLimit }).(pulumi.StringPtrOutput)
 }
 
-// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
+// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
 func (o GooglePrivacyDlpV2BigQueryOptionsOutput) RowsLimitPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) *int { return v.RowsLimitPercent }).(pulumi.IntPtrOutput)
 }
@@ -1698,7 +1698,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) RowsLimit() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
+// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
 func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) RowsLimitPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptions) *int {
 		if v == nil {
@@ -1737,7 +1737,7 @@ type GooglePrivacyDlpV2BigQueryOptionsResponse struct {
 	IncludedFields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit string `pulumi:"rowsLimit"`
-	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
+	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
 	RowsLimitPercent int    `pulumi:"rowsLimitPercent"`
 	SampleMethod     string `pulumi:"sampleMethod"`
 	// Complete BigQuery table reference.
@@ -1785,7 +1785,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) RowsLimit() pulumi.Stri
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) string { return v.RowsLimit }).(pulumi.StringOutput)
 }
 
-// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
+// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
 func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) RowsLimitPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) int { return v.RowsLimitPercent }).(pulumi.IntOutput)
 }

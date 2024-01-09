@@ -27,6 +27,8 @@ type Instance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
 	CryptoKeyConfig CryptoKeyConfigResponseOutput `pulumi:"cryptoKeyConfig"`
+	// Optional. Reserved for future use.
+	DataplexDataLineageIntegrationEnabled pulumi.BoolOutput `pulumi:"dataplexDataLineageIntegrationEnabled"`
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
 	DataprocServiceAccount pulumi.StringOutput `pulumi:"dataprocServiceAccount"`
 	// A description of this instance.
@@ -145,6 +147,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
 	CryptoKeyConfig *CryptoKeyConfig `pulumi:"cryptoKeyConfig"`
+	// Optional. Reserved for future use.
+	DataplexDataLineageIntegrationEnabled *bool `pulumi:"dataplexDataLineageIntegrationEnabled"`
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
 	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// A description of this instance.
@@ -187,6 +191,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
 	CryptoKeyConfig CryptoKeyConfigPtrInput
+	// Optional. Reserved for future use.
+	DataplexDataLineageIntegrationEnabled pulumi.BoolPtrInput
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
 	DataprocServiceAccount pulumi.StringPtrInput
 	// A description of this instance.
@@ -285,6 +291,11 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 // The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
 func (o InstanceOutput) CryptoKeyConfig() CryptoKeyConfigResponseOutput {
 	return o.ApplyT(func(v *Instance) CryptoKeyConfigResponseOutput { return v.CryptoKeyConfig }).(CryptoKeyConfigResponseOutput)
+}
+
+// Optional. Reserved for future use.
+func (o InstanceOutput) DataplexDataLineageIntegrationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.DataplexDataLineageIntegrationEnabled }).(pulumi.BoolOutput)
 }
 
 // User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.

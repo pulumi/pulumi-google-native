@@ -51,7 +51,7 @@ class FileShareConfigResponse(dict):
         """
         File share configuration for the instance.
         :param str capacity_gb: File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
-        :param str name: The name of the file share (must be 16 characters or less).
+        :param str name: The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
         :param Sequence['NfsExportOptionsResponse'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
         :param str source_backup: The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
         """
@@ -72,7 +72,7 @@ class FileShareConfigResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the file share (must be 16 characters or less).
+        The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
         """
         return pulumi.get(self, "name")
 

@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
     public sealed class MethodSettingsResponse
     {
         /// <summary>
+        /// List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id
+        /// </summary>
+        public readonly ImmutableArray<string> AutoPopulatedFields;
+        /// <summary>
         /// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
         /// </summary>
         public readonly Outputs.LongRunningResponse LongRunning;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 
         [OutputConstructor]
         private MethodSettingsResponse(
+            ImmutableArray<string> autoPopulatedFields,
+
             Outputs.LongRunningResponse longRunning,
 
             string selector)
         {
+            AutoPopulatedFields = autoPopulatedFields;
             LongRunning = longRunning;
             Selector = selector;
         }

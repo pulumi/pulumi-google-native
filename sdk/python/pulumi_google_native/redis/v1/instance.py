@@ -574,6 +574,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["port"] = None
             __props__.__dict__["read_endpoint"] = None
             __props__.__dict__["read_endpoint_port"] = None
+            __props__.__dict__["satisfies_pzi"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["server_ca_certs"] = None
             __props__.__dict__["state"] = None
@@ -632,6 +633,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["redis_version"] = None
         __props__.__dict__["replica_count"] = None
         __props__.__dict__["reserved_ip_range"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["secondary_ip_range"] = None
         __props__.__dict__["server_ca_certs"] = None
@@ -875,6 +877,14 @@ class Instance(pulumi.CustomResource):
         Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
         """
         return pulumi.get(self, "reserved_ip_range")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Optional. Output only. Reserved for future use. Zone Isolation compliance state of the instance. Field name and documentation is obfuscated according to go/per-resource-zi-bit-semantics.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

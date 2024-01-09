@@ -187,6 +187,10 @@ class GitFileSourceRepoType(str, Enum):
     """
     A GitLab-hosted repo.
     """
+    BITBUCKET_CLOUD = "BITBUCKET_CLOUD"
+    """
+    A Bitbucket Cloud-hosted repo.
+    """
 
 
 class GitRepoSourceRepoType(str, Enum):
@@ -212,6 +216,10 @@ class GitRepoSourceRepoType(str, Enum):
     GITLAB = "GITLAB"
     """
     A GitLab-hosted repo.
+    """
+    BITBUCKET_CLOUD = "BITBUCKET_CLOUD"
+    """
+    A Bitbucket Cloud-hosted repo.
     """
 
 

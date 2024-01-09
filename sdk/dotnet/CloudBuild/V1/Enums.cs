@@ -340,6 +340,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// A GitLab-hosted repo.
         /// </summary>
         public static GitFileSourceRepoType Gitlab { get; } = new GitFileSourceRepoType("GITLAB");
+        /// <summary>
+        /// A Bitbucket Cloud-hosted repo.
+        /// </summary>
+        public static GitFileSourceRepoType BitbucketCloud { get; } = new GitFileSourceRepoType("BITBUCKET_CLOUD");
 
         public static bool operator ==(GitFileSourceRepoType left, GitFileSourceRepoType right) => left.Equals(right);
         public static bool operator !=(GitFileSourceRepoType left, GitFileSourceRepoType right) => !left.Equals(right);
@@ -389,6 +393,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// A GitLab-hosted repo.
         /// </summary>
         public static GitRepoSourceRepoType Gitlab { get; } = new GitRepoSourceRepoType("GITLAB");
+        /// <summary>
+        /// A Bitbucket Cloud-hosted repo.
+        /// </summary>
+        public static GitRepoSourceRepoType BitbucketCloud { get; } = new GitRepoSourceRepoType("BITBUCKET_CLOUD");
 
         public static bool operator ==(GitRepoSourceRepoType left, GitRepoSourceRepoType right) => left.Equals(right);
         public static bool operator !=(GitRepoSourceRepoType left, GitRepoSourceRepoType right) => !left.Equals(right);

@@ -190,6 +190,12 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<string> ReservedIpRange { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Output only. Reserved for future use. Zone Isolation compliance state of the instance. Field name and documentation is obfuscated according to go/per-resource-zi-bit-semantics.
+        /// </summary>
+        [Output("satisfiesPzi")]
+        public Output<bool> SatisfiesPzi { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Output only. Reserved for future use. Zone Separation compliance state of the instance. Field name and documentation is obfuscated according to go/zs-resource-status.
         /// </summary>
         [Output("satisfiesPzs")]

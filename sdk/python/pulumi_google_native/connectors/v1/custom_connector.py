@@ -225,7 +225,6 @@ class CustomConnector(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["launch_stage"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["custom_connector_id", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -257,7 +256,6 @@ class CustomConnector(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["labels"] = None
-        __props__.__dict__["launch_stage"] = None
         __props__.__dict__["logo"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -311,14 +309,6 @@ class CustomConnector(pulumi.CustomResource):
         Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         """
         return pulumi.get(self, "labels")
-
-    @property
-    @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> pulumi.Output[str]:
-        """
-        Launch stage.
-        """
-        return pulumi.get(self, "launch_stage")
 
     @property
     @pulumi.getter

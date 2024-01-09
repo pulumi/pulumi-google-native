@@ -59,6 +59,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly cryptoKeyConfig!: pulumi.Output<outputs.datafusion.v1.CryptoKeyConfigResponse>;
     /**
+     * Optional. Reserved for future use.
+     */
+    public readonly dataplexDataLineageIntegrationEnabled!: pulumi.Output<boolean>;
+    /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
      */
     public readonly dataprocServiceAccount!: pulumi.Output<string>;
@@ -197,6 +201,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["cryptoKeyConfig"] = args ? args.cryptoKeyConfig : undefined;
+            resourceInputs["dataplexDataLineageIntegrationEnabled"] = args ? args.dataplexDataLineageIntegrationEnabled : undefined;
             resourceInputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -238,6 +243,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["availableVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["cryptoKeyConfig"] = undefined /*out*/;
+            resourceInputs["dataplexDataLineageIntegrationEnabled"] = undefined /*out*/;
             resourceInputs["dataprocServiceAccount"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["disabledReason"] = undefined /*out*/;
@@ -285,6 +291,10 @@ export interface InstanceArgs {
      * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
      */
     cryptoKeyConfig?: pulumi.Input<inputs.datafusion.v1.CryptoKeyConfigArgs>;
+    /**
+     * Optional. Reserved for future use.
+     */
+    dataplexDataLineageIntegrationEnabled?: pulumi.Input<boolean>;
     /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
      */

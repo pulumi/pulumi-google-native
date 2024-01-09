@@ -2894,17 +2894,33 @@ class MethodPolicyArgs:
 @pulumi.input_type
 class MethodSettingsArgs:
     def __init__(__self__, *,
+                 auto_populated_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  long_running: Optional[pulumi.Input['LongRunningArgs']] = None,
                  selector: Optional[pulumi.Input[str]] = None):
         """
         Describes the generator configuration for a method.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] auto_populated_fields: List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id
         :param pulumi.Input['LongRunningArgs'] long_running: Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
         :param pulumi.Input[str] selector: The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
         """
+        if auto_populated_fields is not None:
+            pulumi.set(__self__, "auto_populated_fields", auto_populated_fields)
         if long_running is not None:
             pulumi.set(__self__, "long_running", long_running)
         if selector is not None:
             pulumi.set(__self__, "selector", selector)
+
+    @property
+    @pulumi.getter(name="autoPopulatedFields")
+    def auto_populated_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id
+        """
+        return pulumi.get(self, "auto_populated_fields")
+
+    @auto_populated_fields.setter
+    def auto_populated_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "auto_populated_fields", value)
 
     @property
     @pulumi.getter(name="longRunning")

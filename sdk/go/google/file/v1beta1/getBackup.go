@@ -44,6 +44,8 @@ type LookupBackupResult struct {
 	// The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
 	Name string `pulumi:"name"`
 	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Name of the file share in the source Filestore instance that the backup is created from.
 	SourceFileShare string `pulumi:"sourceFileShare"`
@@ -127,6 +129,11 @@ func (o LookupBackupResultOutput) Labels() pulumi.StringMapOutput {
 // The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
 func (o LookupBackupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o LookupBackupResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBackupResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

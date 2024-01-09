@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.File.V1
         /// <summary>
         /// Reserved for future use.
         /// </summary>
+        public readonly bool SatisfiesPzi;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
         /// Name of the file share in the source Filestore instance that the backup is created from.
@@ -132,6 +136,8 @@ namespace Pulumi.GoogleNative.File.V1
 
             string name,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             string sourceFileShare,
@@ -151,6 +157,7 @@ namespace Pulumi.GoogleNative.File.V1
             KmsKey = kmsKey;
             Labels = labels;
             Name = name;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             SourceFileShare = sourceFileShare;
             SourceInstance = sourceInstance;

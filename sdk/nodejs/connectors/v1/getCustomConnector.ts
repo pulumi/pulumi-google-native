@@ -43,10 +43,6 @@ export interface GetCustomConnectorResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Launch stage.
-     */
-    readonly launchStage: string;
-    /**
      * Optional. Logo of the resource.
      */
     readonly logo: string;

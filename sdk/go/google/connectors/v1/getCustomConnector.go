@@ -38,8 +38,6 @@ type LookupCustomConnectorResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels map[string]string `pulumi:"labels"`
-	// Launch stage.
-	LaunchStage string `pulumi:"launchStage"`
 	// Optional. Logo of the resource.
 	Logo string `pulumi:"logo"`
 	// Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}
@@ -107,11 +105,6 @@ func (o LookupCustomConnectorResultOutput) DisplayName() pulumi.StringOutput {
 // Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 func (o LookupCustomConnectorResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCustomConnectorResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// Launch stage.
-func (o LookupCustomConnectorResultOutput) LaunchStage() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomConnectorResult) string { return v.LaunchStage }).(pulumi.StringOutput)
 }
 
 // Optional. Logo of the resource.

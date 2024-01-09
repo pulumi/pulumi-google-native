@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Display name of the security profile.
+        /// DEPRECATED: DO NOT USE Display name of the security profile.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> RevisionId { get; private set; } = null!;
 
         /// <summary>
-        /// The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+        /// DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
         /// </summary>
         [Output("revisionPublishTime")]
         public Output<string> RevisionPublishTime { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Display name of the security profile.
+        /// DEPRECATED: DO NOT USE Display name of the security profile.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

@@ -51,6 +51,10 @@ export const AuthConfigAuthType = {
      * Oauth 2.0 Authorization Code Flow
      */
     Oauth2AuthCodeFlow: "OAUTH2_AUTH_CODE_FLOW",
+    /**
+     * Google authentication
+     */
+    GoogleAuthentication: "GOOGLE_AUTHENTICATION",
 } as const;
 
 /**
@@ -97,26 +101,6 @@ export const CustomConnectorCustomConnectorType = {
  * Required. Type of the custom connector.
  */
 export type CustomConnectorCustomConnectorType = (typeof CustomConnectorCustomConnectorType)[keyof typeof CustomConnectorCustomConnectorType];
-
-export const CustomConnectorVersionType = {
-    /**
-     * Connector type is not specified.
-     */
-    CustomConnectorTypeUnspecified: "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED",
-    /**
-     * OpenAPI connector.
-     */
-    OpenApi: "OPEN_API",
-    /**
-     * Proto connector.
-     */
-    Proto: "PROTO",
-} as const;
-
-/**
- * Required. Type of the customConnector.
- */
-export type CustomConnectorVersionType = (typeof CustomConnectorVersionType)[keyof typeof CustomConnectorVersionType];
 
 export const EncryptionKeyType = {
     /**

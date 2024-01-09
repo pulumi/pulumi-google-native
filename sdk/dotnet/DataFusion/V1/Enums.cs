@@ -96,4 +96,45 @@ namespace Pulumi.GoogleNative.DataFusion.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkConfigConnectionType : IEquatable<NetworkConfigConnectionType>
+    {
+        private readonly string _value;
+
+        private NetworkConfigConnectionType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No specific connection type was requested, the default value of VPC_PEERING is chosen.
+        /// </summary>
+        public static NetworkConfigConnectionType ConnectionTypeUnspecified { get; } = new NetworkConfigConnectionType("CONNECTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Requests the use of VPC peerings for connecting the consumer and tenant projects.
+        /// </summary>
+        public static NetworkConfigConnectionType VpcPeering { get; } = new NetworkConfigConnectionType("VPC_PEERING");
+        /// <summary>
+        /// Requests the use of Private Service Connect Interfaces for connecting the consumer and tenant projects.
+        /// </summary>
+        public static NetworkConfigConnectionType PrivateServiceConnectInterfaces { get; } = new NetworkConfigConnectionType("PRIVATE_SERVICE_CONNECT_INTERFACES");
+
+        public static bool operator ==(NetworkConfigConnectionType left, NetworkConfigConnectionType right) => left.Equals(right);
+        public static bool operator !=(NetworkConfigConnectionType left, NetworkConfigConnectionType right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkConfigConnectionType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkConfigConnectionType other && Equals(other);
+        public bool Equals(NetworkConfigConnectionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

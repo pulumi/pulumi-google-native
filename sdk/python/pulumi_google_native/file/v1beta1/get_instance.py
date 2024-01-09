@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, capacity_gb=None, capacity_step_size_gb=None, create_time=None, description=None, directory_services=None, etag=None, file_shares=None, kms_key_name=None, labels=None, max_capacity_gb=None, max_share_count=None, multi_share_enabled=None, name=None, networks=None, protocol=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
+    def __init__(__self__, capacity_gb=None, capacity_step_size_gb=None, create_time=None, description=None, directory_services=None, etag=None, file_shares=None, kms_key_name=None, labels=None, max_capacity_gb=None, max_share_count=None, multi_share_enabled=None, name=None, networks=None, protocol=None, satisfies_pzi=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
         if capacity_gb and not isinstance(capacity_gb, str):
             raise TypeError("Expected argument 'capacity_gb' to be a str")
         pulumi.set(__self__, "capacity_gb", capacity_gb)
@@ -65,6 +65,9 @@ class GetInstanceResult:
         if protocol and not isinstance(protocol, str):
             raise TypeError("Expected argument 'protocol' to be a str")
         pulumi.set(__self__, "protocol", protocol)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -202,6 +205,14 @@ class GetInstanceResult:
         return pulumi.get(self, "protocol")
 
     @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -263,6 +274,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             name=self.name,
             networks=self.networks,
             protocol=self.protocol,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             state=self.state,
             status_message=self.status_message,
@@ -300,6 +312,7 @@ def get_instance(instance_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         networks=pulumi.get(__ret__, 'networks'),
         protocol=pulumi.get(__ret__, 'protocol'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         state=pulumi.get(__ret__, 'state'),
         status_message=pulumi.get(__ret__, 'status_message'),

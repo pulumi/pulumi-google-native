@@ -473,7 +473,7 @@ class GooglePrivacyDlpV2BigQueryOptionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]] identifying_fields: Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]] included_fields: Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
         :param pulumi.Input[str] rows_limit: Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
-        :param pulumi.Input[int] rows_limit_percent: Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
+        :param pulumi.Input[int] rows_limit_percent: Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
         :param pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs'] table_reference: Complete BigQuery table reference.
         """
         if excluded_fields is not None:
@@ -543,7 +543,7 @@ class GooglePrivacyDlpV2BigQueryOptionsArgs:
     @pulumi.getter(name="rowsLimitPercent")
     def rows_limit_percent(self) -> Optional[pulumi.Input[int]]:
         """
-        Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
+        Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
         """
         return pulumi.get(self, "rows_limit_percent")
 

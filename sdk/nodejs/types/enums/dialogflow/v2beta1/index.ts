@@ -107,6 +107,39 @@ export const GoogleCloudDialogflowV2beta1FulfillmentFeatureType = {
  */
 export type GoogleCloudDialogflowV2beta1FulfillmentFeatureType = (typeof GoogleCloudDialogflowV2beta1FulfillmentFeatureType)[keyof typeof GoogleCloudDialogflowV2beta1FulfillmentFeatureType];
 
+export const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem = {
+    /**
+     * Undefined section type, does not return anything.
+     */
+    SectionTypeUnspecified: "SECTION_TYPE_UNSPECIFIED",
+    /**
+     * What the customer needs help with or has question about. Section name: "situation".
+     */
+    Situation: "SITUATION",
+    /**
+     * What the agent does to help the customer. Section name: "action".
+     */
+    Action: "ACTION",
+    /**
+     * Result of the customer service. A single word describing the result of the conversation. Section name: "resolution".
+     */
+    Resolution: "RESOLUTION",
+    /**
+     * Reason for cancellation if the customer requests for a cancellation. "N/A" otherwise. Section name: "reason_for_cancellation".
+     */
+    ReasonForCancellation: "REASON_FOR_CANCELLATION",
+    /**
+     * "Unsatisfied" or "Satisfied" depending on the customer's feelings at the end of the conversation. Section name: "customer_satisfaction".
+     */
+    CustomerSatisfaction: "CUSTOMER_SATISFACTION",
+    /**
+     * Key entities extracted from the conversation, such as ticket number, order number, dollar amount, etc. Section names are prefixed by "entities/".
+     */
+    Entities: "ENTITIES",
+} as const;
+
+export type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem = (typeof GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem)[keyof typeof GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem];
+
 export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint = {
     /**
      * Unspecified

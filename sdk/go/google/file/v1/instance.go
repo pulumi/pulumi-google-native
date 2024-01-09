@@ -38,6 +38,8 @@ type Instance struct {
 	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
 	Project  pulumi.StringOutput              `pulumi:"project"`
 	// Reserved for future use.
+	SatisfiesPzi pulumi.BoolOutput `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The instance state.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -228,6 +230,11 @@ func (o InstanceOutput) Networks() NetworkConfigResponseArrayOutput {
 
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o InstanceOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

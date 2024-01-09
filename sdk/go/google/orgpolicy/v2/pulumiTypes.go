@@ -209,7 +209,7 @@ func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) Spec() GoogleCl
 
 // Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
 type GoogleCloudOrgpolicyV2PolicySpec struct {
-	// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+	// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 	Etag *string `pulumi:"etag"`
 	// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
 	InheritFromParent *bool `pulumi:"inheritFromParent"`
@@ -232,7 +232,7 @@ type GoogleCloudOrgpolicyV2PolicySpecInput interface {
 
 // Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
 type GoogleCloudOrgpolicyV2PolicySpecArgs struct {
-	// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+	// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 	Etag pulumi.StringPtrInput `pulumi:"etag"`
 	// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
 	InheritFromParent pulumi.BoolPtrInput `pulumi:"inheritFromParent"`
@@ -320,7 +320,7 @@ func (o GoogleCloudOrgpolicyV2PolicySpecOutput) ToGoogleCloudOrgpolicyV2PolicySp
 	}).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
 }
 
-// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 func (o GoogleCloudOrgpolicyV2PolicySpecOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpec) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
@@ -364,7 +364,7 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) Elem() GoogleCloudOrgpolicyV2
 	}).(GoogleCloudOrgpolicyV2PolicySpecOutput)
 }
 
-// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpec) *string {
 		if v == nil {
@@ -814,7 +814,7 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponseOutput) De
 
 // Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
 type GoogleCloudOrgpolicyV2PolicySpecResponse struct {
-	// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+	// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 	Etag string `pulumi:"etag"`
 	// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
 	InheritFromParent bool `pulumi:"inheritFromParent"`
@@ -841,7 +841,7 @@ func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2
 	return o
 }
 
-// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+// An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecResponse) string { return v.Etag }).(pulumi.StringOutput)
 }

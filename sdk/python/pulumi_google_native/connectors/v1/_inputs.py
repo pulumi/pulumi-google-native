@@ -674,18 +674,18 @@ class EventingConfigArgs:
     def __init__(__self__, *,
                  additional_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]] = None,
                  auth_config: Optional[pulumi.Input['AuthConfigArgs']] = None,
-                 encryption_key: Optional[pulumi.Input['ConfigVariableArgs']] = None,
                  enrichment_enabled: Optional[pulumi.Input[bool]] = None,
                  events_listener_ingress_endpoint: Optional[pulumi.Input[str]] = None,
+                 listener_auth_config: Optional[pulumi.Input['AuthConfigArgs']] = None,
                  private_connectivity_enabled: Optional[pulumi.Input[bool]] = None,
                  registration_destination_config: Optional[pulumi.Input['DestinationConfigArgs']] = None):
         """
         Eventing Configuration of a connection
         :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] additional_variables: Additional eventing related field values
         :param pulumi.Input['AuthConfigArgs'] auth_config: Auth details for the webhook adapter.
-        :param pulumi.Input['ConfigVariableArgs'] encryption_key: Encryption key (can be either Google managed or CMEK).
         :param pulumi.Input[bool] enrichment_enabled: Enrichment Enabled.
         :param pulumi.Input[str] events_listener_ingress_endpoint: Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+        :param pulumi.Input['AuthConfigArgs'] listener_auth_config: Optional. Auth details for the event listener.
         :param pulumi.Input[bool] private_connectivity_enabled: Optional. Private Connectivity Enabled.
         :param pulumi.Input['DestinationConfigArgs'] registration_destination_config: Registration endpoint for auto registration.
         """
@@ -693,12 +693,12 @@ class EventingConfigArgs:
             pulumi.set(__self__, "additional_variables", additional_variables)
         if auth_config is not None:
             pulumi.set(__self__, "auth_config", auth_config)
-        if encryption_key is not None:
-            pulumi.set(__self__, "encryption_key", encryption_key)
         if enrichment_enabled is not None:
             pulumi.set(__self__, "enrichment_enabled", enrichment_enabled)
         if events_listener_ingress_endpoint is not None:
             pulumi.set(__self__, "events_listener_ingress_endpoint", events_listener_ingress_endpoint)
+        if listener_auth_config is not None:
+            pulumi.set(__self__, "listener_auth_config", listener_auth_config)
         if private_connectivity_enabled is not None:
             pulumi.set(__self__, "private_connectivity_enabled", private_connectivity_enabled)
         if registration_destination_config is not None:
@@ -729,18 +729,6 @@ class EventingConfigArgs:
         pulumi.set(self, "auth_config", value)
 
     @property
-    @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input['ConfigVariableArgs']]:
-        """
-        Encryption key (can be either Google managed or CMEK).
-        """
-        return pulumi.get(self, "encryption_key")
-
-    @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input['ConfigVariableArgs']]):
-        pulumi.set(self, "encryption_key", value)
-
-    @property
     @pulumi.getter(name="enrichmentEnabled")
     def enrichment_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -763,6 +751,18 @@ class EventingConfigArgs:
     @events_listener_ingress_endpoint.setter
     def events_listener_ingress_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "events_listener_ingress_endpoint", value)
+
+    @property
+    @pulumi.getter(name="listenerAuthConfig")
+    def listener_auth_config(self) -> Optional[pulumi.Input['AuthConfigArgs']]:
+        """
+        Optional. Auth details for the event listener.
+        """
+        return pulumi.get(self, "listener_auth_config")
+
+    @listener_auth_config.setter
+    def listener_auth_config(self, value: Optional[pulumi.Input['AuthConfigArgs']]):
+        pulumi.set(self, "listener_auth_config", value)
 
     @property
     @pulumi.getter(name="privateConnectivityEnabled")

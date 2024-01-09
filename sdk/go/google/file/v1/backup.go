@@ -36,6 +36,8 @@ type Backup struct {
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Reserved for future use.
+	SatisfiesPzi pulumi.BoolOutput `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Name of the file share in the source Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringOutput `pulumi:"sourceFileShare"`
@@ -215,6 +217,11 @@ func (o BackupOutput) Name() pulumi.StringOutput {
 
 func (o BackupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o BackupOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

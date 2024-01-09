@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         [Input("minNumWorkers")]
         public Input<int>? MinNumWorkers { get; set; }
 
+        /// <summary>
+        /// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+        /// </summary>
+        [Input("workerUtilizationHint")]
+        public Input<double>? WorkerUtilizationHint { get; set; }
+
         public RuntimeUpdatableParamsArgs()
         {
         }

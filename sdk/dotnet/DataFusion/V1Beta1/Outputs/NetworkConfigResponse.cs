@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Outputs
         /// </summary>
         public readonly string IpAllocation;
         /// <summary>
-        /// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
+        /// Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
         /// </summary>
         public readonly string Network;
         /// <summary>

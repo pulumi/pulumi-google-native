@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCustomConnectorResult:
-    def __init__(__self__, create_time=None, custom_connector_type=None, description=None, display_name=None, labels=None, launch_stage=None, logo=None, name=None, update_time=None):
+    def __init__(__self__, create_time=None, custom_connector_type=None, description=None, display_name=None, labels=None, logo=None, name=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -34,9 +34,6 @@ class GetCustomConnectorResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
-        if launch_stage and not isinstance(launch_stage, str):
-            raise TypeError("Expected argument 'launch_stage' to be a str")
-        pulumi.set(__self__, "launch_stage", launch_stage)
         if logo and not isinstance(logo, str):
             raise TypeError("Expected argument 'logo' to be a str")
         pulumi.set(__self__, "logo", logo)
@@ -88,14 +85,6 @@ class GetCustomConnectorResult:
         return pulumi.get(self, "labels")
 
     @property
-    @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> str:
-        """
-        Launch stage.
-        """
-        return pulumi.get(self, "launch_stage")
-
-    @property
     @pulumi.getter
     def logo(self) -> str:
         """
@@ -131,7 +120,6 @@ class AwaitableGetCustomConnectorResult(GetCustomConnectorResult):
             description=self.description,
             display_name=self.display_name,
             labels=self.labels,
-            launch_stage=self.launch_stage,
             logo=self.logo,
             name=self.name,
             update_time=self.update_time)
@@ -155,7 +143,6 @@ def get_custom_connector(custom_connector_id: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
         labels=pulumi.get(__ret__, 'labels'),
-        launch_stage=pulumi.get(__ret__, 'launch_stage'),
         logo=pulumi.get(__ret__, 'logo'),
         name=pulumi.get(__ret__, 'name'),
         update_time=pulumi.get(__ret__, 'update_time'))

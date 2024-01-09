@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCustomConnectorVersionResult:
-    def __init__(__self__, auth_config=None, create_time=None, destination_config=None, enable_backend_destination_config=None, labels=None, name=None, spec_location=None, type=None, update_time=None):
+    def __init__(__self__, auth_config=None, create_time=None, destination_config=None, enable_backend_destination_config=None, labels=None, name=None, service_account=None, spec_location=None, update_time=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
@@ -38,12 +38,12 @@ class GetCustomConnectorVersionResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if service_account and not isinstance(service_account, str):
+            raise TypeError("Expected argument 'service_account' to be a str")
+        pulumi.set(__self__, "service_account", service_account)
         if spec_location and not isinstance(spec_location, str):
             raise TypeError("Expected argument 'spec_location' to be a str")
         pulumi.set(__self__, "spec_location", spec_location)
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        pulumi.set(__self__, "type", type)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -97,20 +97,20 @@ class GetCustomConnectorVersionResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Service account needed for runtime plane to access Custom Connector secrets.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
     @pulumi.getter(name="specLocation")
     def spec_location(self) -> str:
         """
         Optional. Location of the custom connector spec.
         """
         return pulumi.get(self, "spec_location")
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        Type of the customConnector.
-        """
-        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -133,8 +133,8 @@ class AwaitableGetCustomConnectorVersionResult(GetCustomConnectorVersionResult):
             enable_backend_destination_config=self.enable_backend_destination_config,
             labels=self.labels,
             name=self.name,
+            service_account=self.service_account,
             spec_location=self.spec_location,
-            type=self.type,
             update_time=self.update_time)
 
 
@@ -159,8 +159,8 @@ def get_custom_connector_version(custom_connector_id: Optional[str] = None,
         enable_backend_destination_config=pulumi.get(__ret__, 'enable_backend_destination_config'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        service_account=pulumi.get(__ret__, 'service_account'),
         spec_location=pulumi.get(__ret__, 'spec_location'),
-        type=pulumi.get(__ret__, 'type'),
         update_time=pulumi.get(__ret__, 'update_time'))
 
 

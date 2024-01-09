@@ -262,6 +262,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tier"] = tier
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["satisfies_pzi"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["status_message"] = None
@@ -301,6 +302,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
@@ -389,6 +391,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

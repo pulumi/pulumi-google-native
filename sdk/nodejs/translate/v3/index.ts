@@ -5,10 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { AdaptiveMtDatasetArgs } from "./adaptiveMtDataset";
+export type AdaptiveMtDataset = import("./adaptiveMtDataset").AdaptiveMtDataset;
+export const AdaptiveMtDataset: typeof import("./adaptiveMtDataset").AdaptiveMtDataset = null as any;
+utilities.lazyLoad(exports, ["AdaptiveMtDataset"], () => require("./adaptiveMtDataset"));
+
 export { DatasetArgs } from "./dataset";
 export type Dataset = import("./dataset").Dataset;
 export const Dataset: typeof import("./dataset").Dataset = null as any;
 utilities.lazyLoad(exports, ["Dataset"], () => require("./dataset"));
+
+export { GetAdaptiveMtDatasetArgs, GetAdaptiveMtDatasetResult, GetAdaptiveMtDatasetOutputArgs } from "./getAdaptiveMtDataset";
+export const getAdaptiveMtDataset: typeof import("./getAdaptiveMtDataset").getAdaptiveMtDataset = null as any;
+export const getAdaptiveMtDatasetOutput: typeof import("./getAdaptiveMtDataset").getAdaptiveMtDatasetOutput = null as any;
+utilities.lazyLoad(exports, ["getAdaptiveMtDataset","getAdaptiveMtDatasetOutput"], () => require("./getAdaptiveMtDataset"));
 
 export { GetDatasetArgs, GetDatasetResult, GetDatasetOutputArgs } from "./getDataset";
 export const getDataset: typeof import("./getDataset").getDataset = null as any;
@@ -50,6 +60,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:translate/v3:AdaptiveMtDataset":
+                return new AdaptiveMtDataset(name, <any>undefined, { urn })
             case "google-native:translate/v3:Dataset":
                 return new Dataset(name, <any>undefined, { urn })
             case "google-native:translate/v3:Glossary":

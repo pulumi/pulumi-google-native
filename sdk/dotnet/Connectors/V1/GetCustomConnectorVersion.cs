@@ -88,13 +88,13 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Service account needed for runtime plane to access Custom Connector secrets.
+        /// </summary>
+        public readonly string ServiceAccount;
+        /// <summary>
         /// Optional. Location of the custom connector spec.
         /// </summary>
         public readonly string SpecLocation;
-        /// <summary>
-        /// Type of the customConnector.
-        /// </summary>
-        public readonly string Type;
         /// <summary>
         /// Updated time.
         /// </summary>
@@ -114,9 +114,9 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             string name,
 
-            string specLocation,
+            string serviceAccount,
 
-            string type,
+            string specLocation,
 
             string updateTime)
         {
@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.Connectors.V1
             EnableBackendDestinationConfig = enableBackendDestinationConfig;
             Labels = labels;
             Name = name;
+            ServiceAccount = serviceAccount;
             SpecLocation = specLocation;
-            Type = type;
             UpdateTime = updateTime;
         }
     }

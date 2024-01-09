@@ -52,13 +52,13 @@ export interface GetCustomConnectorVersionResult {
      */
     readonly name: string;
     /**
+     * Service account needed for runtime plane to access Custom Connector secrets.
+     */
+    readonly serviceAccount: string;
+    /**
      * Optional. Location of the custom connector spec.
      */
     readonly specLocation: string;
-    /**
-     * Type of the customConnector.
-     */
-    readonly type: string;
     /**
      * Updated time.
      */

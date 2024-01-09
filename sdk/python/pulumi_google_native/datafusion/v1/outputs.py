@@ -20,6 +20,7 @@ __all__ = [
     'EventPublishConfigResponse',
     'ExprResponse',
     'NetworkConfigResponse',
+    'PrivateServiceConnectConfigResponse',
     'VersionResponse',
 ]
 
@@ -354,8 +355,12 @@ class NetworkConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ipAllocation":
+        if key == "connectionType":
+            suggest = "connection_type"
+        elif key == "ipAllocation":
             suggest = "ip_allocation"
+        elif key == "privateServiceConnectConfig":
+            suggest = "private_service_connect_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NetworkConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -369,21 +374,35 @@ class NetworkConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 connection_type: str,
                  ip_allocation: str,
-                 network: str):
+                 network: str,
+                 private_service_connect_config: 'outputs.PrivateServiceConnectConfigResponse'):
         """
         Network configuration for a Data Fusion instance. These configurations are used for peering with the customer network. Configurations are optional when a public Data Fusion instance is to be created. However, providing these configurations allows several benefits, such as reduced network latency while accessing the customer resources from managed Data Fusion instance nodes, as well as access to the customer on-prem resources.
-        :param str ip_allocation: The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the customer network.
-        :param str network: Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+        :param str connection_type: Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+        :param str ip_allocation: Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
+        :param str network: Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
+        :param 'PrivateServiceConnectConfigResponse' private_service_connect_config: Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
         """
+        pulumi.set(__self__, "connection_type", connection_type)
         pulumi.set(__self__, "ip_allocation", ip_allocation)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "private_service_connect_config", private_service_connect_config)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> str:
+        """
+        Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
+        """
+        return pulumi.get(self, "connection_type")
 
     @property
     @pulumi.getter(name="ipAllocation")
     def ip_allocation(self) -> str:
         """
-        The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the customer network.
+        Optional. The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network. This is required only when using connection type VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
         """
         return pulumi.get(self, "ip_allocation")
 
@@ -391,9 +410,82 @@ class NetworkConfigResponse(dict):
     @pulumi.getter
     def network(self) -> str:
         """
-        Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+        Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="privateServiceConnectConfig")
+    def private_service_connect_config(self) -> 'outputs.PrivateServiceConnectConfigResponse':
+        """
+        Optional. Configuration for Private Service Connect. This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+        """
+        return pulumi.get(self, "private_service_connect_config")
+
+
+@pulumi.output_type
+class PrivateServiceConnectConfigResponse(dict):
+    """
+    Configuration for using Private Service Connect to establish connectivity between the Data Fusion consumer project and the corresponding tenant project.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "effectiveUnreachableCidrBlock":
+            suggest = "effective_unreachable_cidr_block"
+        elif key == "networkAttachment":
+            suggest = "network_attachment"
+        elif key == "unreachableCidrBlock":
+            suggest = "unreachable_cidr_block"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateServiceConnectConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateServiceConnectConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateServiceConnectConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effective_unreachable_cidr_block: str,
+                 network_attachment: str,
+                 unreachable_cidr_block: str):
+        """
+        Configuration for using Private Service Connect to establish connectivity between the Data Fusion consumer project and the corresponding tenant project.
+        :param str effective_unreachable_cidr_block: The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block is /25. The format of this field is governed by RFC 4632. Example: 240.0.0.0/25
+        :param str network_attachment: The reference to the network attachment used to establish private connectivity. It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+        :param str unreachable_cidr_block: Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment. This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses. If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632. Example: 192.168.0.0/25
+        """
+        pulumi.set(__self__, "effective_unreachable_cidr_block", effective_unreachable_cidr_block)
+        pulumi.set(__self__, "network_attachment", network_attachment)
+        pulumi.set(__self__, "unreachable_cidr_block", unreachable_cidr_block)
+
+    @property
+    @pulumi.getter(name="effectiveUnreachableCidrBlock")
+    def effective_unreachable_cidr_block(self) -> str:
+        """
+        The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block is /25. The format of this field is governed by RFC 4632. Example: 240.0.0.0/25
+        """
+        return pulumi.get(self, "effective_unreachable_cidr_block")
+
+    @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> str:
+        """
+        The reference to the network attachment used to establish private connectivity. It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @property
+    @pulumi.getter(name="unreachableCidrBlock")
+    def unreachable_cidr_block(self) -> str:
+        """
+        Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC. The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment. This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses. If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632. Example: 192.168.0.0/25
+        """
+        return pulumi.get(self, "unreachable_cidr_block")
 
 
 @pulumi.output_type

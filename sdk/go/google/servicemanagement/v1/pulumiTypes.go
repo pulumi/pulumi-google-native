@@ -8799,6 +8799,8 @@ func (o MethodResponseArrayOutput) Index(i pulumi.IntInput) MethodResponseOutput
 
 // Describes the generator configuration for a method.
 type MethodSettings struct {
+	// List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id
+	AutoPopulatedFields []string `pulumi:"autoPopulatedFields"`
 	// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
 	LongRunning *LongRunning `pulumi:"longRunning"`
 	// The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
@@ -8818,6 +8820,8 @@ type MethodSettingsInput interface {
 
 // Describes the generator configuration for a method.
 type MethodSettingsArgs struct {
+	// List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id
+	AutoPopulatedFields pulumi.StringArrayInput `pulumi:"autoPopulatedFields"`
 	// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
 	LongRunning LongRunningPtrInput `pulumi:"longRunning"`
 	// The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
@@ -8876,6 +8880,11 @@ func (o MethodSettingsOutput) ToMethodSettingsOutputWithContext(ctx context.Cont
 	return o
 }
 
+// List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id
+func (o MethodSettingsOutput) AutoPopulatedFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MethodSettings) []string { return v.AutoPopulatedFields }).(pulumi.StringArrayOutput)
+}
+
 // Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
 func (o MethodSettingsOutput) LongRunning() LongRunningPtrOutput {
 	return o.ApplyT(func(v MethodSettings) *LongRunning { return v.LongRunning }).(LongRunningPtrOutput)
@@ -8908,6 +8917,8 @@ func (o MethodSettingsArrayOutput) Index(i pulumi.IntInput) MethodSettingsOutput
 
 // Describes the generator configuration for a method.
 type MethodSettingsResponse struct {
+	// List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id
+	AutoPopulatedFields []string `pulumi:"autoPopulatedFields"`
 	// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
 	LongRunning LongRunningResponse `pulumi:"longRunning"`
 	// The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
@@ -8927,6 +8938,11 @@ func (o MethodSettingsResponseOutput) ToMethodSettingsResponseOutput() MethodSet
 
 func (o MethodSettingsResponseOutput) ToMethodSettingsResponseOutputWithContext(ctx context.Context) MethodSettingsResponseOutput {
 	return o
+}
+
+// List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id
+func (o MethodSettingsResponseOutput) AutoPopulatedFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MethodSettingsResponse) []string { return v.AutoPopulatedFields }).(pulumi.StringArrayOutput)
 }
 
 // Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes

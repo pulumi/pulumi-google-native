@@ -126,6 +126,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// <summary>
         /// Reserved for future use.
         /// </summary>
+        public readonly bool SatisfiesPzi;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
         /// The instance state.
@@ -176,6 +180,8 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
             string protocol,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             string state,
@@ -201,6 +207,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
             Name = name;
             Networks = networks;
             Protocol = protocol;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             State = state;
             StatusMessage = statusMessage;

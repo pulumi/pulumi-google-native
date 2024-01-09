@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
         /// </summary>
         public readonly int MinNumWorkers;
+        /// <summary>
+        /// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+        /// </summary>
+        public readonly double WorkerUtilizationHint;
 
         [OutputConstructor]
         private RuntimeUpdatableParamsResponse(
             int maxNumWorkers,
 
-            int minNumWorkers)
+            int minNumWorkers,
+
+            double workerUtilizationHint)
         {
             MaxNumWorkers = maxNumWorkers;
             MinNumWorkers = minNumWorkers;
+            WorkerUtilizationHint = workerUtilizationHint;
         }
     }
 }

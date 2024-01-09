@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupResult:
-    def __init__(__self__, capacity_gb=None, create_time=None, description=None, download_bytes=None, kms_key_name=None, labels=None, name=None, satisfies_pzs=None, source_file_share=None, source_instance=None, source_instance_tier=None, state=None, storage_bytes=None):
+    def __init__(__self__, capacity_gb=None, create_time=None, description=None, download_bytes=None, kms_key_name=None, labels=None, name=None, satisfies_pzi=None, satisfies_pzs=None, source_file_share=None, source_instance=None, source_instance_tier=None, state=None, storage_bytes=None):
         if capacity_gb and not isinstance(capacity_gb, str):
             raise TypeError("Expected argument 'capacity_gb' to be a str")
         pulumi.set(__self__, "capacity_gb", capacity_gb)
@@ -40,6 +40,9 @@ class GetBackupResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -116,6 +119,14 @@ class GetBackupResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -177,6 +188,7 @@ class AwaitableGetBackupResult(GetBackupResult):
             kms_key_name=self.kms_key_name,
             labels=self.labels,
             name=self.name,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             source_file_share=self.source_file_share,
             source_instance=self.source_instance,
@@ -207,6 +219,7 @@ def get_backup(backup_id: Optional[str] = None,
         kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         source_file_share=pulumi.get(__ret__, 'source_file_share'),
         source_instance=pulumi.get(__ret__, 'source_instance'),

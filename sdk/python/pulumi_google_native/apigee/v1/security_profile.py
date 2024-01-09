@@ -29,7 +29,7 @@ class SecurityProfileArgs:
         :param pulumi.Input['GoogleCloudApigeeV1ProfileConfigArgs'] profile_config: Customized profile configuration that computes the security score.
         :param pulumi.Input[str] security_profile_id: Required. The ID to use for the SecurityProfile, which will become the final component of the action's resource name. This value should be 1-63 characters and validated by "(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$)".
         :param pulumi.Input[str] description: Description of the security profile.
-        :param pulumi.Input[str] display_name: Display name of the security profile.
+        :param pulumi.Input[str] display_name: DEPRECATED: DO NOT USE Display name of the security profile.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1SecurityProfileEnvironmentArgs']]] environments: List of environments attached to security profile.
         :param pulumi.Input[str] name: Immutable. Name of the security profile resource. Format: organizations/{org}/securityProfiles/{profile}
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1SecurityProfileScoringConfigArgs']]] scoring_configs: List of profile scoring configs in this revision.
@@ -39,6 +39,9 @@ class SecurityProfileArgs:
         pulumi.set(__self__, "security_profile_id", security_profile_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            warnings.warn("""DEPRECATED: DO NOT USE Display name of the security profile.""", DeprecationWarning)
+            pulumi.log.warn("""display_name is deprecated: DEPRECATED: DO NOT USE Display name of the security profile.""")
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if environments is not None:
@@ -97,8 +100,11 @@ class SecurityProfileArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Display name of the security profile.
+        DEPRECATED: DO NOT USE Display name of the security profile.
         """
+        warnings.warn("""DEPRECATED: DO NOT USE Display name of the security profile.""", DeprecationWarning)
+        pulumi.log.warn("""display_name is deprecated: DEPRECATED: DO NOT USE Display name of the security profile.""")
+
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -162,7 +168,7 @@ class SecurityProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the security profile.
-        :param pulumi.Input[str] display_name: Display name of the security profile.
+        :param pulumi.Input[str] display_name: DEPRECATED: DO NOT USE Display name of the security profile.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityProfileEnvironmentArgs']]]] environments: List of environments attached to security profile.
         :param pulumi.Input[str] name: Immutable. Name of the security profile resource. Format: organizations/{org}/securityProfiles/{profile}
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1ProfileConfigArgs']] profile_config: Customized profile configuration that computes the security score.
@@ -282,8 +288,11 @@ class SecurityProfile(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Display name of the security profile.
+        DEPRECATED: DO NOT USE Display name of the security profile.
         """
+        warnings.warn("""DEPRECATED: DO NOT USE Display name of the security profile.""", DeprecationWarning)
+        pulumi.log.warn("""display_name is deprecated: DEPRECATED: DO NOT USE Display name of the security profile.""")
+
         return pulumi.get(self, "display_name")
 
     @property
@@ -351,8 +360,11 @@ class SecurityProfile(pulumi.CustomResource):
     @pulumi.getter(name="revisionPublishTime")
     def revision_publish_time(self) -> pulumi.Output[str]:
         """
-        The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
+        DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
         """
+        warnings.warn("""Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.""", DeprecationWarning)
+        pulumi.log.warn("""revision_publish_time is deprecated: Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.""")
+
         return pulumi.get(self, "revision_publish_time")
 
     @property

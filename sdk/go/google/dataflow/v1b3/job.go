@@ -23,7 +23,7 @@ type Job struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// If this is specified, the job's initial state is populated from the given snapshot.
 	CreatedFromSnapshotId pulumi.StringOutput `pulumi:"createdFromSnapshotId"`
-	// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+	// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
 	CurrentState pulumi.StringOutput `pulumi:"currentState"`
 	// The timestamp associated with the current state.
 	CurrentStateTime pulumi.StringOutput `pulumi:"currentStateTime"`
@@ -38,7 +38,7 @@ type Job struct {
 	// User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+	// The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription PipelineDescriptionResponseOutput `pulumi:"pipelineDescription"`
@@ -67,7 +67,7 @@ type Job struct {
 	TempFiles pulumi.StringArrayOutput `pulumi:"tempFiles"`
 	// The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
 	TransformNameMapping pulumi.StringMapOutput `pulumi:"transformNameMapping"`
-	// The type of Cloud Dataflow job.
+	// The type of Dataflow job.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The level of information requested in response.
 	View pulumi.StringPtrOutput `pulumi:"view"`
@@ -124,7 +124,7 @@ type jobArgs struct {
 	CreateTime *string `pulumi:"createTime"`
 	// If this is specified, the job's initial state is populated from the given snapshot.
 	CreatedFromSnapshotId *string `pulumi:"createdFromSnapshotId"`
-	// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+	// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
 	CurrentState *JobCurrentState `pulumi:"currentState"`
 	// The timestamp associated with the current state.
 	CurrentStateTime *string `pulumi:"currentStateTime"`
@@ -134,7 +134,7 @@ type jobArgs struct {
 	//
 	// Deprecated: Deprecated.
 	ExecutionInfo *JobExecutionInfo `pulumi:"executionInfo"`
-	// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+	// The unique ID of this job. This field is set by the Dataflow service when the job is created, and is immutable for the life of the job.
 	Id *string `pulumi:"id"`
 	// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
 	JobMetadata *JobMetadata `pulumi:"jobMetadata"`
@@ -142,11 +142,11 @@ type jobArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
 	Location *string `pulumi:"location"`
-	// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+	// The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
 	Name *string `pulumi:"name"`
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription *PipelineDescription `pulumi:"pipelineDescription"`
-	// The ID of the Cloud Platform project that the job belongs to.
+	// The ID of the Google Cloud project that the job belongs to.
 	Project *string `pulumi:"project"`
 	// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
 	ReplaceJobId *string `pulumi:"replaceJobId"`
@@ -170,7 +170,7 @@ type jobArgs struct {
 	TempFiles []string `pulumi:"tempFiles"`
 	// The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
 	TransformNameMapping map[string]string `pulumi:"transformNameMapping"`
-	// The type of Cloud Dataflow job.
+	// The type of Dataflow job.
 	Type *JobType `pulumi:"type"`
 	// The level of information requested in response.
 	View *string `pulumi:"view"`
@@ -184,7 +184,7 @@ type JobArgs struct {
 	CreateTime pulumi.StringPtrInput
 	// If this is specified, the job's initial state is populated from the given snapshot.
 	CreatedFromSnapshotId pulumi.StringPtrInput
-	// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+	// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
 	CurrentState JobCurrentStatePtrInput
 	// The timestamp associated with the current state.
 	CurrentStateTime pulumi.StringPtrInput
@@ -194,7 +194,7 @@ type JobArgs struct {
 	//
 	// Deprecated: Deprecated.
 	ExecutionInfo JobExecutionInfoPtrInput
-	// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+	// The unique ID of this job. This field is set by the Dataflow service when the job is created, and is immutable for the life of the job.
 	Id pulumi.StringPtrInput
 	// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
 	JobMetadata JobMetadataPtrInput
@@ -202,11 +202,11 @@ type JobArgs struct {
 	Labels pulumi.StringMapInput
 	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
 	Location pulumi.StringPtrInput
-	// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+	// The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
 	Name pulumi.StringPtrInput
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription PipelineDescriptionPtrInput
-	// The ID of the Cloud Platform project that the job belongs to.
+	// The ID of the Google Cloud project that the job belongs to.
 	Project pulumi.StringPtrInput
 	// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
 	ReplaceJobId pulumi.StringPtrInput
@@ -230,7 +230,7 @@ type JobArgs struct {
 	TempFiles pulumi.StringArrayInput
 	// The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
 	TransformNameMapping pulumi.StringMapInput
-	// The type of Cloud Dataflow job.
+	// The type of Dataflow job.
 	Type JobTypePtrInput
 	// The level of information requested in response.
 	View pulumi.StringPtrInput
@@ -288,7 +288,7 @@ func (o JobOutput) CreatedFromSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.CreatedFromSnapshotId }).(pulumi.StringOutput)
 }
 
-// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
 func (o JobOutput) CurrentState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.CurrentState }).(pulumi.StringOutput)
 }
@@ -324,7 +324,7 @@ func (o JobOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+// The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -398,7 +398,7 @@ func (o JobOutput) TransformNameMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.TransformNameMapping }).(pulumi.StringMapOutput)
 }
 
-// The type of Cloud Dataflow job.
+// The type of Dataflow job.
 func (o JobOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

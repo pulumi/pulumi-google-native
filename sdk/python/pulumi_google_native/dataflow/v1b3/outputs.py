@@ -1739,6 +1739,8 @@ class RuntimeUpdatableParamsResponse(dict):
             suggest = "max_num_workers"
         elif key == "minNumWorkers":
             suggest = "min_num_workers"
+        elif key == "workerUtilizationHint":
+            suggest = "worker_utilization_hint"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RuntimeUpdatableParamsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1753,14 +1755,17 @@ class RuntimeUpdatableParamsResponse(dict):
 
     def __init__(__self__, *,
                  max_num_workers: int,
-                 min_num_workers: int):
+                 min_num_workers: int,
+                 worker_utilization_hint: float):
         """
         Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
         :param int max_num_workers: The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
         :param int min_num_workers: The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+        :param float worker_utilization_hint: Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
         """
         pulumi.set(__self__, "max_num_workers", max_num_workers)
         pulumi.set(__self__, "min_num_workers", min_num_workers)
+        pulumi.set(__self__, "worker_utilization_hint", worker_utilization_hint)
 
     @property
     @pulumi.getter(name="maxNumWorkers")
@@ -1777,6 +1782,14 @@ class RuntimeUpdatableParamsResponse(dict):
         The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
         """
         return pulumi.get(self, "min_num_workers")
+
+    @property
+    @pulumi.getter(name="workerUtilizationHint")
+    def worker_utilization_hint(self) -> float:
+        """
+        Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+        """
+        return pulumi.get(self, "worker_utilization_hint")
 
 
 @pulumi.output_type

@@ -4846,6 +4846,8 @@ type RuntimeUpdatableParams struct {
 	MaxNumWorkers *int `pulumi:"maxNumWorkers"`
 	// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
 	MinNumWorkers *int `pulumi:"minNumWorkers"`
+	// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+	WorkerUtilizationHint *float64 `pulumi:"workerUtilizationHint"`
 }
 
 // RuntimeUpdatableParamsInput is an input type that accepts RuntimeUpdatableParamsArgs and RuntimeUpdatableParamsOutput values.
@@ -4865,6 +4867,8 @@ type RuntimeUpdatableParamsArgs struct {
 	MaxNumWorkers pulumi.IntPtrInput `pulumi:"maxNumWorkers"`
 	// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
 	MinNumWorkers pulumi.IntPtrInput `pulumi:"minNumWorkers"`
+	// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+	WorkerUtilizationHint pulumi.Float64PtrInput `pulumi:"workerUtilizationHint"`
 }
 
 func (RuntimeUpdatableParamsArgs) ElementType() reflect.Type {
@@ -4955,6 +4959,11 @@ func (o RuntimeUpdatableParamsOutput) MinNumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuntimeUpdatableParams) *int { return v.MinNumWorkers }).(pulumi.IntPtrOutput)
 }
 
+// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+func (o RuntimeUpdatableParamsOutput) WorkerUtilizationHint() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RuntimeUpdatableParams) *float64 { return v.WorkerUtilizationHint }).(pulumi.Float64PtrOutput)
+}
+
 type RuntimeUpdatableParamsPtrOutput struct{ *pulumi.OutputState }
 
 func (RuntimeUpdatableParamsPtrOutput) ElementType() reflect.Type {
@@ -4999,12 +5008,24 @@ func (o RuntimeUpdatableParamsPtrOutput) MinNumWorkers() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+func (o RuntimeUpdatableParamsPtrOutput) WorkerUtilizationHint() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RuntimeUpdatableParams) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerUtilizationHint
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
 type RuntimeUpdatableParamsResponse struct {
 	// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
 	MaxNumWorkers int `pulumi:"maxNumWorkers"`
 	// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
 	MinNumWorkers int `pulumi:"minNumWorkers"`
+	// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+	WorkerUtilizationHint float64 `pulumi:"workerUtilizationHint"`
 }
 
 // Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
@@ -5030,6 +5051,11 @@ func (o RuntimeUpdatableParamsResponseOutput) MaxNumWorkers() pulumi.IntOutput {
 // The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
 func (o RuntimeUpdatableParamsResponseOutput) MinNumWorkers() pulumi.IntOutput {
 	return o.ApplyT(func(v RuntimeUpdatableParamsResponse) int { return v.MinNumWorkers }).(pulumi.IntOutput)
+}
+
+// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+func (o RuntimeUpdatableParamsResponseOutput) WorkerUtilizationHint() pulumi.Float64Output {
+	return o.ApplyT(func(v RuntimeUpdatableParamsResponse) float64 { return v.WorkerUtilizationHint }).(pulumi.Float64Output)
 }
 
 // SDK Information.

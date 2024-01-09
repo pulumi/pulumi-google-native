@@ -40,6 +40,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
         /// </summary>
         public readonly int MaxResults;
+        /// <summary>
+        /// Optional. The customized sections chosen to return when requesting a summary of a conversation.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse Sections;
 
         [OutputConstructor]
         private GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse(
@@ -53,7 +57,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 
             Outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse knowledgeBaseQuerySource,
 
-            int maxResults)
+            int maxResults,
+
+            Outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSectionsResponse sections)
         {
             ConfidenceThreshold = confidenceThreshold;
             ContextFilterSettings = contextFilterSettings;
@@ -61,6 +67,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
             DocumentQuerySource = documentQuerySource;
             KnowledgeBaseQuerySource = knowledgeBaseQuerySource;
             MaxResults = maxResults;
+            Sections = sections;
         }
     }
 }

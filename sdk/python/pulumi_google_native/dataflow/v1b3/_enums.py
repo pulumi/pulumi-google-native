@@ -179,7 +179,7 @@ class ExecutionStageSummaryKind(str, Enum):
 
 class JobCurrentState(str, Enum):
     """
-    The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+    The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
     """
     JOB_STATE_UNKNOWN = "JOB_STATE_UNKNOWN"
     """
@@ -295,7 +295,7 @@ class JobRequestedState(str, Enum):
 
 class JobType(str, Enum):
     """
-    The type of Cloud Dataflow job.
+    The type of Dataflow job.
     """
     JOB_TYPE_UNKNOWN = "JOB_TYPE_UNKNOWN"
     """

@@ -78,10 +78,6 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Launch stage.
-        /// </summary>
-        public readonly string LaunchStage;
-        /// <summary>
         /// Optional. Logo of the resource.
         /// </summary>
         public readonly string Logo;
@@ -106,8 +102,6 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             ImmutableDictionary<string, string> labels,
 
-            string launchStage,
-
             string logo,
 
             string name,
@@ -119,7 +113,6 @@ namespace Pulumi.GoogleNative.Connectors.V1
             Description = description;
             DisplayName = displayName;
             Labels = labels;
-            LaunchStage = launchStage;
             Logo = logo;
             Name = name;
             UpdateTime = updateTime;

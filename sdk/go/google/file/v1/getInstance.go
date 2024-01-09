@@ -46,6 +46,8 @@ type LookupInstanceResult struct {
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []NetworkConfigResponse `pulumi:"networks"`
 	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The instance state.
 	State string `pulumi:"state"`
@@ -132,6 +134,11 @@ func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 // VPC networks to which the instance is connected. For this version, only a single network is supported.
 func (o LookupInstanceResultOutput) Networks() NetworkConfigResponseArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []NetworkConfigResponse { return v.Networks }).(NetworkConfigResponseArrayOutput)
+}
+
+// Reserved for future use.
+func (o LookupInstanceResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

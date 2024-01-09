@@ -69,13 +69,13 @@ export class CustomConnectorVersion extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Service account needed for runtime plane to access Custom Connector secrets.
+     */
+    public readonly serviceAccount!: pulumi.Output<string>;
+    /**
      * Optional. Location of the custom connector spec.
      */
     public readonly specLocation!: pulumi.Output<string>;
-    /**
-     * Type of the customConnector.
-     */
-    public readonly type!: pulumi.Output<string>;
     /**
      * Updated time.
      */
@@ -104,8 +104,8 @@ export class CustomConnectorVersion extends pulumi.CustomResource {
             if ((!args || args.destinationConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationConfig'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'type'");
+            if ((!args || args.serviceAccount === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceAccount'");
             }
             resourceInputs["authConfig"] = args ? args.authConfig : undefined;
             resourceInputs["customConnectorId"] = args ? args.customConnectorId : undefined;
@@ -114,8 +114,8 @@ export class CustomConnectorVersion extends pulumi.CustomResource {
             resourceInputs["enableBackendDestinationConfig"] = args ? args.enableBackendDestinationConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["specLocation"] = args ? args.specLocation : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -129,8 +129,8 @@ export class CustomConnectorVersion extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["specLocation"] = undefined /*out*/;
-            resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -167,11 +167,11 @@ export interface CustomConnectorVersionArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     project?: pulumi.Input<string>;
     /**
+     * Service account needed for runtime plane to access Custom Connector secrets.
+     */
+    serviceAccount: pulumi.Input<string>;
+    /**
      * Optional. Location of the custom connector spec.
      */
     specLocation?: pulumi.Input<string>;
-    /**
-     * Type of the customConnector.
-     */
-    type: pulumi.Input<enums.connectors.v1.CustomConnectorVersionType>;
 }
