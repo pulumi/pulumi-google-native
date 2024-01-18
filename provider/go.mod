@@ -13,8 +13,8 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/pkg/errors v0.9.1
-	github.com/pulumi/pulumi/pkg/v3 v3.100.0
-	github.com/pulumi/pulumi/sdk/v3 v3.100.0
+	github.com/pulumi/pulumi/pkg/v3 v3.101.1
+	github.com/pulumi/pulumi/sdk/v3 v3.101.1
 	github.com/stretchr/testify v1.8.4
 	golang.org/x/oauth2 v0.8.0
 	google.golang.org/api v0.126.0
