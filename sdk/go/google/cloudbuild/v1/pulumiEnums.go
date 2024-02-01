@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. Option to specify how default logs buckets are setup.
@@ -177,12 +176,6 @@ func (in *buildOptionsDefaultLogsBucketBehaviorPtr) ToBuildOptionsDefaultLogsBuc
 
 func (in *buildOptionsDefaultLogsBucketBehaviorPtr) ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(ctx context.Context) BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsDefaultLogsBucketBehaviorPtrOutput)
-}
-
-func (in *buildOptionsDefaultLogsBucketBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsDefaultLogsBucketBehavior] {
-	return pulumix.Output[*BuildOptionsDefaultLogsBucketBehavior]{
-		OutputState: in.ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Option to define build log streaming behavior to Cloud Storage.
@@ -354,12 +347,6 @@ func (in *buildOptionsLogStreamingOptionPtr) ToBuildOptionsLogStreamingOptionPtr
 
 func (in *buildOptionsLogStreamingOptionPtr) ToBuildOptionsLogStreamingOptionPtrOutputWithContext(ctx context.Context) BuildOptionsLogStreamingOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsLogStreamingOptionPtrOutput)
-}
-
-func (in *buildOptionsLogStreamingOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsLogStreamingOption] {
-	return pulumix.Output[*BuildOptionsLogStreamingOption]{
-		OutputState: in.ToBuildOptionsLogStreamingOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Option to specify the logging mode, which determines if and where build logs are stored.
@@ -542,12 +529,6 @@ func (in *buildOptionsLoggingPtr) ToBuildOptionsLoggingPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsLoggingPtrOutput)
 }
 
-func (in *buildOptionsLoggingPtr) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsLogging] {
-	return pulumix.Output[*BuildOptionsLogging]{
-		OutputState: in.ToBuildOptionsLoggingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Compute Engine machine type on which to run the build.
 type BuildOptionsMachineType string
 
@@ -728,12 +709,6 @@ func (in *buildOptionsMachineTypePtr) ToBuildOptionsMachineTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsMachineTypePtrOutput)
 }
 
-func (in *buildOptionsMachineTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsMachineType] {
-	return pulumix.Output[*BuildOptionsMachineType]{
-		OutputState: in.ToBuildOptionsMachineTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Requested verifiability options.
 type BuildOptionsRequestedVerifyOption string
 
@@ -900,12 +875,6 @@ func (in *buildOptionsRequestedVerifyOptionPtr) ToBuildOptionsRequestedVerifyOpt
 
 func (in *buildOptionsRequestedVerifyOptionPtr) ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(ctx context.Context) BuildOptionsRequestedVerifyOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsRequestedVerifyOptionPtrOutput)
-}
-
-func (in *buildOptionsRequestedVerifyOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsRequestedVerifyOption] {
-	return pulumix.Output[*BuildOptionsRequestedVerifyOption]{
-		OutputState: in.ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type BuildOptionsSourceProvenanceHashItem string
@@ -1079,12 +1048,6 @@ func (in *buildOptionsSourceProvenanceHashItemPtr) ToBuildOptionsSourceProvenanc
 
 func (in *buildOptionsSourceProvenanceHashItemPtr) ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(ctx context.Context) BuildOptionsSourceProvenanceHashItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsSourceProvenanceHashItemPtrOutput)
-}
-
-func (in *buildOptionsSourceProvenanceHashItemPtr) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsSourceProvenanceHashItem] {
-	return pulumix.Output[*BuildOptionsSourceProvenanceHashItem]{
-		OutputState: in.ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BuildOptionsSourceProvenanceHashItemArrayInput is an input type that accepts BuildOptionsSourceProvenanceHashItemArray and BuildOptionsSourceProvenanceHashItemArrayOutput values.
@@ -1300,12 +1263,6 @@ func (in *buildOptionsSubstitutionOptionPtr) ToBuildOptionsSubstitutionOptionPtr
 	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsSubstitutionOptionPtrOutput)
 }
 
-func (in *buildOptionsSubstitutionOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*BuildOptionsSubstitutionOption] {
-	return pulumix.Output[*BuildOptionsSubstitutionOption]{
-		OutputState: in.ToBuildOptionsSubstitutionOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // See RepoType above.
 type GitFileSourceRepoType string
 
@@ -1484,12 +1441,6 @@ func (in *gitFileSourceRepoTypePtr) ToGitFileSourceRepoTypePtrOutput() GitFileSo
 
 func (in *gitFileSourceRepoTypePtr) ToGitFileSourceRepoTypePtrOutputWithContext(ctx context.Context) GitFileSourceRepoTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GitFileSourceRepoTypePtrOutput)
-}
-
-func (in *gitFileSourceRepoTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GitFileSourceRepoType] {
-	return pulumix.Output[*GitFileSourceRepoType]{
-		OutputState: in.ToGitFileSourceRepoTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // See RepoType below.
@@ -1672,12 +1623,6 @@ func (in *gitRepoSourceRepoTypePtr) ToGitRepoSourceRepoTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(GitRepoSourceRepoTypePtrOutput)
 }
 
-func (in *gitRepoSourceRepoTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GitRepoSourceRepoType] {
-	return pulumix.Output[*GitRepoSourceRepoType]{
-		OutputState: in.ToGitRepoSourceRepoTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Option to configure network egress for the workers.
 type NetworkConfigEgressOption string
 
@@ -1847,12 +1792,6 @@ func (in *networkConfigEgressOptionPtr) ToNetworkConfigEgressOptionPtrOutput() N
 
 func (in *networkConfigEgressOptionPtr) ToNetworkConfigEgressOptionPtrOutputWithContext(ctx context.Context) NetworkConfigEgressOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigEgressOptionPtrOutput)
-}
-
-func (in *networkConfigEgressOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigEgressOption] {
-	return pulumix.Output[*NetworkConfigEgressOption]{
-		OutputState: in.ToNetworkConfigEgressOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
@@ -2032,12 +1971,6 @@ func (in *pubsubConfigStatePtr) ToPubsubConfigStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(PubsubConfigStatePtrOutput)
 }
 
-func (in *pubsubConfigStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PubsubConfigState] {
-	return pulumix.Output[*PubsubConfigState]{
-		OutputState: in.ToPubsubConfigStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 type PullRequestFilterCommentControl string
 
@@ -2209,12 +2142,6 @@ func (in *pullRequestFilterCommentControlPtr) ToPullRequestFilterCommentControlP
 	return pulumi.ToOutputWithContext(ctx, in).(PullRequestFilterCommentControlPtrOutput)
 }
 
-func (in *pullRequestFilterCommentControlPtr) ToOutput(ctx context.Context) pulumix.Output[*PullRequestFilterCommentControl] {
-	return pulumix.Output[*PullRequestFilterCommentControl]{
-		OutputState: in.ToPullRequestFilterCommentControlPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Option to specify the tool to fetch the source file for the build.
 type StorageSourceSourceFetcher string
 
@@ -2384,12 +2311,6 @@ func (in *storageSourceSourceFetcherPtr) ToStorageSourceSourceFetcherPtrOutput()
 
 func (in *storageSourceSourceFetcherPtr) ToStorageSourceSourceFetcherPtrOutputWithContext(ctx context.Context) StorageSourceSourceFetcherPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageSourceSourceFetcherPtrOutput)
-}
-
-func (in *storageSourceSourceFetcherPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageSourceSourceFetcher] {
-	return pulumix.Output[*StorageSourceSourceFetcher]{
-		OutputState: in.ToStorageSourceSourceFetcherPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
@@ -2569,12 +2490,6 @@ func (in *triggerEventTypePtr) ToTriggerEventTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerEventTypePtrOutput)
 }
 
-func (in *triggerEventTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerEventType] {
-	return pulumix.Output[*TriggerEventType]{
-		OutputState: in.ToTriggerEventTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
 type TriggerIncludeBuildLogs string
 
@@ -2741,12 +2656,6 @@ func (in *triggerIncludeBuildLogsPtr) ToTriggerIncludeBuildLogsPtrOutput() Trigg
 
 func (in *triggerIncludeBuildLogsPtr) ToTriggerIncludeBuildLogsPtrOutputWithContext(ctx context.Context) TriggerIncludeBuildLogsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerIncludeBuildLogsPtrOutput)
-}
-
-func (in *triggerIncludeBuildLogsPtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerIncludeBuildLogs] {
-	return pulumix.Output[*TriggerIncludeBuildLogs]{
-		OutputState: in.ToTriggerIncludeBuildLogsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
@@ -2918,12 +2827,6 @@ func (in *webhookConfigStatePtr) ToWebhookConfigStatePtrOutput() WebhookConfigSt
 
 func (in *webhookConfigStatePtr) ToWebhookConfigStatePtrOutputWithContext(ctx context.Context) WebhookConfigStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebhookConfigStatePtrOutput)
-}
-
-func (in *webhookConfigStatePtr) ToOutput(ctx context.Context) pulumix.Output[*WebhookConfigState] {
-	return pulumix.Output[*WebhookConfigState]{
-		OutputState: in.ToWebhookConfigStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

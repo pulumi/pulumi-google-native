@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The backup type, which suggests the trigger for the backup.
@@ -185,12 +184,6 @@ func (in *backupTypePtr) ToBackupTypePtrOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, in).(BackupTypePtrOutput)
 }
 
-func (in *backupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BackupType] {
-	return pulumix.Output[*BackupType]{
-		OutputState: in.ToBackupTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The database engine major version. This is an optional field and it is populated at the Cluster creation time. If a database version is not supplied at cluster creation time, then a default database version will be used.
 type ClusterDatabaseVersion string
 
@@ -365,12 +358,6 @@ func (in *clusterDatabaseVersionPtr) ToClusterDatabaseVersionPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterDatabaseVersionPtrOutput)
 }
 
-func (in *clusterDatabaseVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterDatabaseVersion] {
-	return pulumix.Output[*ClusterDatabaseVersion]{
-		OutputState: in.ToClusterDatabaseVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Availability type of an Instance. If empty, defaults to REGIONAL for primary instances. For read pools, availability_type is always UNSPECIFIED. Instances in the read pools are evenly distributed across available zones within the region (i.e. read pools with more than one node will have a node in at least two zones).
 type InstanceAvailabilityType string
 
@@ -540,12 +527,6 @@ func (in *instanceAvailabilityTypePtr) ToInstanceAvailabilityTypePtrOutput() Ins
 
 func (in *instanceAvailabilityTypePtr) ToInstanceAvailabilityTypePtrOutputWithContext(ctx context.Context) InstanceAvailabilityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceAvailabilityTypePtrOutput)
-}
-
-func (in *instanceAvailabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceAvailabilityType] {
-	return pulumix.Output[*InstanceAvailabilityType]{
-		OutputState: in.ToInstanceAvailabilityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The type of the instance. Specified at creation time.
@@ -722,12 +703,6 @@ func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceInstanceTypePtrOutput)
 }
 
-func (in *instanceInstanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceInstanceType] {
-	return pulumix.Output[*InstanceInstanceType]{
-		OutputState: in.ToInstanceInstanceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
 type SslConfigCaSource string
 
@@ -894,12 +869,6 @@ func (in *sslConfigCaSourcePtr) ToSslConfigCaSourcePtrOutput() SslConfigCaSource
 
 func (in *sslConfigCaSourcePtr) ToSslConfigCaSourcePtrOutputWithContext(ctx context.Context) SslConfigCaSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslConfigCaSourcePtrOutput)
-}
-
-func (in *sslConfigCaSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*SslConfigCaSource] {
-	return pulumix.Output[*SslConfigCaSource]{
-		OutputState: in.ToSslConfigCaSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
@@ -1082,12 +1051,6 @@ func (in *sslConfigSslModePtr) ToSslConfigSslModePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(SslConfigSslModePtrOutput)
 }
 
-func (in *sslConfigSslModePtr) ToOutput(ctx context.Context) pulumix.Output[*SslConfigSslMode] {
-	return pulumix.Output[*SslConfigSslMode]{
-		OutputState: in.ToSslConfigSslModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mode for updating the instance.
 type UpdatePolicyMode string
 
@@ -1259,12 +1222,6 @@ func (in *updatePolicyModePtr) ToUpdatePolicyModePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(UpdatePolicyModePtrOutput)
 }
 
-func (in *updatePolicyModePtr) ToOutput(ctx context.Context) pulumix.Output[*UpdatePolicyMode] {
-	return pulumix.Output[*UpdatePolicyMode]{
-		OutputState: in.ToUpdatePolicyModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Type of this user.
 type UserUserType string
 
@@ -1434,12 +1391,6 @@ func (in *userUserTypePtr) ToUserUserTypePtrOutput() UserUserTypePtrOutput {
 
 func (in *userUserTypePtr) ToUserUserTypePtrOutputWithContext(ctx context.Context) UserUserTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserUserTypePtrOutput)
-}
-
-func (in *userUserTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UserUserType] {
-	return pulumix.Output[*UserUserType]{
-		OutputState: in.ToUserUserTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type WeeklyScheduleDaysOfWeekItem string
@@ -1625,12 +1576,6 @@ func (in *weeklyScheduleDaysOfWeekItemPtr) ToWeeklyScheduleDaysOfWeekItemPtrOutp
 
 func (in *weeklyScheduleDaysOfWeekItemPtr) ToWeeklyScheduleDaysOfWeekItemPtrOutputWithContext(ctx context.Context) WeeklyScheduleDaysOfWeekItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeeklyScheduleDaysOfWeekItemPtrOutput)
-}
-
-func (in *weeklyScheduleDaysOfWeekItemPtr) ToOutput(ctx context.Context) pulumix.Output[*WeeklyScheduleDaysOfWeekItem] {
-	return pulumix.Output[*WeeklyScheduleDaysOfWeekItem]{
-		OutputState: in.ToWeeklyScheduleDaysOfWeekItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WeeklyScheduleDaysOfWeekItemArrayInput is an input type that accepts WeeklyScheduleDaysOfWeekItemArray and WeeklyScheduleDaysOfWeekItemArrayOutput values.

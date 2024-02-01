@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Privacy setting for the contacts associated with the `Registration`.
 type ContactSettingsPrivacy string
 
@@ -363,12 +356,6 @@ func (in *contactSettingsPrivacyPtr) ToContactSettingsPrivacyPtrOutput() Contact
 
 func (in *contactSettingsPrivacyPtr) ToContactSettingsPrivacyPtrOutputWithContext(ctx context.Context) ContactSettingsPrivacyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ContactSettingsPrivacyPtrOutput)
-}
-
-func (in *contactSettingsPrivacyPtr) ToOutput(ctx context.Context) pulumix.Output[*ContactSettingsPrivacy] {
-	return pulumix.Output[*ContactSettingsPrivacy]{
-		OutputState: in.ToContactSettingsPrivacyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The algorithm used to generate the referenced DNSKEY.
@@ -587,12 +574,6 @@ func (in *dsRecordAlgorithmPtr) ToDsRecordAlgorithmPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(DsRecordAlgorithmPtrOutput)
 }
 
-func (in *dsRecordAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*DsRecordAlgorithm] {
-	return pulumix.Output[*DsRecordAlgorithm]{
-		OutputState: in.ToDsRecordAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The hash function used to generate the digest of the referenced DNSKEY.
 type DsRecordDigestType string
 
@@ -770,12 +751,6 @@ func (in *dsRecordDigestTypePtr) ToDsRecordDigestTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(DsRecordDigestTypePtrOutput)
 }
 
-func (in *dsRecordDigestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DsRecordDigestType] {
-	return pulumix.Output[*DsRecordDigestType]{
-		OutputState: in.ToDsRecordDigestTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
 type GoogleDomainsDnsDsState string
 
@@ -945,12 +920,6 @@ func (in *googleDomainsDnsDsStatePtr) ToGoogleDomainsDnsDsStatePtrOutput() Googl
 
 func (in *googleDomainsDnsDsStatePtr) ToGoogleDomainsDnsDsStatePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsDsStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleDomainsDnsDsStatePtrOutput)
-}
-
-func (in *googleDomainsDnsDsStatePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleDomainsDnsDsState] {
-	return pulumix.Output[*GoogleDomainsDnsDsState]{
-		OutputState: in.ToGoogleDomainsDnsDsStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to `RENEWAL_DISABLED` during resource creation and can only be updated when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems with the Billing Account or reported domain abuse. In such cases check the `issues` field on the `Registration`. After the problem is resolved the `renewal_method` will be automatically updated to `preferred_renewal_method` in a few hours.
@@ -1127,12 +1096,6 @@ func (in *managementSettingsPreferredRenewalMethodPtr) ToManagementSettingsPrefe
 	return pulumi.ToOutputWithContext(ctx, in).(ManagementSettingsPreferredRenewalMethodPtrOutput)
 }
 
-func (in *managementSettingsPreferredRenewalMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagementSettingsPreferredRenewalMethod] {
-	return pulumix.Output[*ManagementSettingsPreferredRenewalMethod]{
-		OutputState: in.ToManagementSettingsPreferredRenewalMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Controls whether the domain can be transferred to another registrar.
 type ManagementSettingsTransferLockState string
 
@@ -1304,12 +1267,6 @@ func (in *managementSettingsTransferLockStatePtr) ToManagementSettingsTransferLo
 	return pulumi.ToOutputWithContext(ctx, in).(ManagementSettingsTransferLockStatePtrOutput)
 }
 
-func (in *managementSettingsTransferLockStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagementSettingsTransferLockState] {
-	return pulumix.Output[*ManagementSettingsTransferLockState]{
-		OutputState: in.ToManagementSettingsTransferLockStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistrationContactNoticesItem string
 
 const (
@@ -1475,12 +1432,6 @@ func (in *registrationContactNoticesItemPtr) ToRegistrationContactNoticesItemPtr
 
 func (in *registrationContactNoticesItemPtr) ToRegistrationContactNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationContactNoticesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegistrationContactNoticesItemPtrOutput)
-}
-
-func (in *registrationContactNoticesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*RegistrationContactNoticesItem] {
-	return pulumix.Output[*RegistrationContactNoticesItem]{
-		OutputState: in.ToRegistrationContactNoticesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegistrationContactNoticesItemArrayInput is an input type that accepts RegistrationContactNoticesItemArray and RegistrationContactNoticesItemArrayOutput values.
@@ -1693,12 +1644,6 @@ func (in *registrationDomainNoticesItemPtr) ToRegistrationDomainNoticesItemPtrOu
 
 func (in *registrationDomainNoticesItemPtr) ToRegistrationDomainNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationDomainNoticesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegistrationDomainNoticesItemPtrOutput)
-}
-
-func (in *registrationDomainNoticesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*RegistrationDomainNoticesItem] {
-	return pulumix.Output[*RegistrationDomainNoticesItem]{
-		OutputState: in.ToRegistrationDomainNoticesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegistrationDomainNoticesItemArrayInput is an input type that accepts RegistrationDomainNoticesItemArray and RegistrationDomainNoticesItemArrayOutput values.

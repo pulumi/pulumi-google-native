@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Method used to make Relay available
@@ -183,12 +182,6 @@ func (in *advancedDatapathObservabilityConfigRelayModePtr) ToAdvancedDatapathObs
 
 func (in *advancedDatapathObservabilityConfigRelayModePtr) ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigRelayModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AdvancedDatapathObservabilityConfigRelayModePtrOutput)
-}
-
-func (in *advancedDatapathObservabilityConfigRelayModePtr) ToOutput(ctx context.Context) pulumix.Output[*AdvancedDatapathObservabilityConfigRelayMode] {
-	return pulumix.Output[*AdvancedDatapathObservabilityConfigRelayMode]{
-		OutputState: in.ToAdvancedDatapathObservabilityConfigRelayModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
@@ -368,12 +361,6 @@ func (in *binaryAuthorizationEvaluationModePtr) ToBinaryAuthorizationEvaluationM
 	return pulumi.ToOutputWithContext(ctx, in).(BinaryAuthorizationEvaluationModePtrOutput)
 }
 
-func (in *binaryAuthorizationEvaluationModePtr) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorizationEvaluationMode] {
-	return pulumix.Output[*BinaryAuthorizationEvaluationMode]{
-		OutputState: in.ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Which load balancer type is installed for Cloud Run.
 type CloudRunConfigLoadBalancerType string
 
@@ -543,12 +530,6 @@ func (in *cloudRunConfigLoadBalancerTypePtr) ToCloudRunConfigLoadBalancerTypePtr
 
 func (in *cloudRunConfigLoadBalancerTypePtr) ToCloudRunConfigLoadBalancerTypePtrOutputWithContext(ctx context.Context) CloudRunConfigLoadBalancerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudRunConfigLoadBalancerTypePtrOutput)
-}
-
-func (in *cloudRunConfigLoadBalancerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudRunConfigLoadBalancerType] {
-	return pulumix.Output[*CloudRunConfigLoadBalancerType]{
-		OutputState: in.ToCloudRunConfigLoadBalancerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines autoscaling behaviour.
@@ -722,12 +703,6 @@ func (in *clusterAutoscalingAutoscalingProfilePtr) ToClusterAutoscalingAutoscali
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterAutoscalingAutoscalingProfilePtrOutput)
 }
 
-func (in *clusterAutoscalingAutoscalingProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterAutoscalingAutoscalingProfile] {
-	return pulumix.Output[*ClusterAutoscalingAutoscalingProfile]{
-		OutputState: in.ToClusterAutoscalingAutoscalingProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the total network bandwidth tier for the NodePool.
 type ClusterNetworkPerformanceConfigTotalEgressBandwidthTier string
 
@@ -894,12 +869,6 @@ func (in *clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtr) ToClusterN
 
 func (in *clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtr) ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
-}
-
-func (in *clusterNetworkPerformanceConfigTotalEgressBandwidthTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterNetworkPerformanceConfigTotalEgressBandwidthTier] {
-	return pulumix.Output[*ClusterNetworkPerformanceConfigTotalEgressBandwidthTier]{
-		OutputState: in.ToClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the integration.
@@ -1074,12 +1043,6 @@ func (in *clusterTelemetryTypePtr) ToClusterTelemetryTypePtrOutput() ClusterTele
 
 func (in *clusterTelemetryTypePtr) ToClusterTelemetryTypePtrOutputWithContext(ctx context.Context) ClusterTelemetryTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterTelemetryTypePtrOutput)
-}
-
-func (in *clusterTelemetryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterTelemetryType] {
-	return pulumix.Output[*ClusterTelemetryType]{
-		OutputState: in.ToClusterTelemetryTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The desired datapath provider for the cluster.
@@ -1306,12 +1269,6 @@ func (in *dnsconfigClusterDnsPtr) ToDNSConfigClusterDnsPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DNSConfigClusterDnsPtrOutput)
 }
 
-func (in *dnsconfigClusterDnsPtr) ToOutput(ctx context.Context) pulumix.Output[*DNSConfigClusterDns] {
-	return pulumix.Output[*DNSConfigClusterDns]{
-		OutputState: in.ToDNSConfigClusterDnsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // cluster_dns_scope indicates the scope of access to cluster DNS records.
 type DNSConfigClusterDnsScope string
 
@@ -1481,12 +1438,6 @@ func (in *dnsconfigClusterDnsScopePtr) ToDNSConfigClusterDnsScopePtrOutput() DNS
 
 func (in *dnsconfigClusterDnsScopePtr) ToDNSConfigClusterDnsScopePtrOutputWithContext(ctx context.Context) DNSConfigClusterDnsScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DNSConfigClusterDnsScopePtrOutput)
-}
-
-func (in *dnsconfigClusterDnsScopePtr) ToOutput(ctx context.Context) pulumix.Output[*DNSConfigClusterDnsScope] {
-	return pulumix.Output[*DNSConfigClusterDnsScope]{
-		OutputState: in.ToDNSConfigClusterDnsScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The desired state of etcd encryption.
@@ -1660,12 +1611,6 @@ func (in *databaseEncryptionStatePtr) ToDatabaseEncryptionStatePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseEncryptionStatePtrOutput)
 }
 
-func (in *databaseEncryptionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseEncryptionState] {
-	return pulumix.Output[*DatabaseEncryptionState]{
-		OutputState: in.ToDatabaseEncryptionStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FilterEventTypeItem string
 
 const (
@@ -1837,12 +1782,6 @@ func (in *filterEventTypeItemPtr) ToFilterEventTypeItemPtrOutput() FilterEventTy
 
 func (in *filterEventTypeItemPtr) ToFilterEventTypeItemPtrOutputWithContext(ctx context.Context) FilterEventTypeItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FilterEventTypeItemPtrOutput)
-}
-
-func (in *filterEventTypeItemPtr) ToOutput(ctx context.Context) pulumix.Output[*FilterEventTypeItem] {
-	return pulumix.Output[*FilterEventTypeItem]{
-		OutputState: in.ToFilterEventTypeItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FilterEventTypeItemArrayInput is an input type that accepts FilterEventTypeItemArray and FilterEventTypeItemArrayOutput values.
@@ -2064,12 +2003,6 @@ func (in *gpudriverInstallationConfigGpuDriverVersionPtr) ToGPUDriverInstallatio
 	return pulumi.ToOutputWithContext(ctx, in).(GPUDriverInstallationConfigGpuDriverVersionPtrOutput)
 }
 
-func (in *gpudriverInstallationConfigGpuDriverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*GPUDriverInstallationConfigGpuDriverVersion] {
-	return pulumix.Output[*GPUDriverInstallationConfigGpuDriverVersion]{
-		OutputState: in.ToGPUDriverInstallationConfigGpuDriverVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of GPU sharing strategy to enable on the GPU node.
 type GPUSharingConfigGpuSharingStrategy string
 
@@ -2236,12 +2169,6 @@ func (in *gpusharingConfigGpuSharingStrategyPtr) ToGPUSharingConfigGpuSharingStr
 
 func (in *gpusharingConfigGpuSharingStrategyPtr) ToGPUSharingConfigGpuSharingStrategyPtrOutputWithContext(ctx context.Context) GPUSharingConfigGpuSharingStrategyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GPUSharingConfigGpuSharingStrategyPtrOutput)
-}
-
-func (in *gpusharingConfigGpuSharingStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*GPUSharingConfigGpuSharingStrategy] {
-	return pulumix.Output[*GPUSharingConfigGpuSharingStrategy]{
-		OutputState: in.ToGPUSharingConfigGpuSharingStrategyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Gateway API release channel to use for Gateway API.
@@ -2418,12 +2345,6 @@ func (in *gatewayAPIConfigChannelPtr) ToGatewayAPIConfigChannelPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayAPIConfigChannelPtrOutput)
 }
 
-func (in *gatewayAPIConfigChannelPtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayAPIConfigChannel] {
-	return pulumix.Output[*GatewayAPIConfigChannel]{
-		OutputState: in.ToGatewayAPIConfigChannelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the frequency of planned maintenance events.
 type HostMaintenancePolicyMaintenanceInterval string
 
@@ -2593,12 +2514,6 @@ func (in *hostMaintenancePolicyMaintenanceIntervalPtr) ToHostMaintenancePolicyMa
 
 func (in *hostMaintenancePolicyMaintenanceIntervalPtr) ToHostMaintenancePolicyMaintenanceIntervalPtrOutputWithContext(ctx context.Context) HostMaintenancePolicyMaintenanceIntervalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HostMaintenancePolicyMaintenanceIntervalPtrOutput)
-}
-
-func (in *hostMaintenancePolicyMaintenanceIntervalPtr) ToOutput(ctx context.Context) pulumix.Output[*HostMaintenancePolicyMaintenanceInterval] {
-	return pulumix.Output[*HostMaintenancePolicyMaintenanceInterval]{
-		OutputState: in.ToHostMaintenancePolicyMaintenanceIntervalPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The ipv6 access type (internal or external) when create_subnetwork is true
@@ -2772,12 +2687,6 @@ func (in *ipallocationPolicyIpv6AccessTypePtr) ToIPAllocationPolicyIpv6AccessTyp
 	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationPolicyIpv6AccessTypePtrOutput)
 }
 
-func (in *ipallocationPolicyIpv6AccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IPAllocationPolicyIpv6AccessType] {
-	return pulumix.Output[*IPAllocationPolicyIpv6AccessType]{
-		OutputState: in.ToIPAllocationPolicyIpv6AccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IP stack type
 type IPAllocationPolicyStackType string
 
@@ -2949,12 +2858,6 @@ func (in *ipallocationPolicyStackTypePtr) ToIPAllocationPolicyStackTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationPolicyStackTypePtrOutput)
 }
 
-func (in *ipallocationPolicyStackTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IPAllocationPolicyStackType] {
-	return pulumix.Output[*IPAllocationPolicyStackType]{
-		OutputState: in.ToIPAllocationPolicyStackTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specified Istio auth mode, either none, or mutual TLS.
 type IstioConfigAuth string
 
@@ -3121,12 +3024,6 @@ func (in *istioConfigAuthPtr) ToIstioConfigAuthPtrOutput() IstioConfigAuthPtrOut
 
 func (in *istioConfigAuthPtr) ToIstioConfigAuthPtrOutputWithContext(ctx context.Context) IstioConfigAuthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IstioConfigAuthPtrOutput)
-}
-
-func (in *istioConfigAuthPtr) ToOutput(ctx context.Context) pulumix.Output[*IstioConfigAuth] {
-	return pulumix.Output[*IstioConfigAuth]{
-		OutputState: in.ToIstioConfigAuthPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // cgroup_mode specifies the cgroup mode to be used on the node.
@@ -3298,12 +3195,6 @@ func (in *linuxNodeConfigCgroupModePtr) ToLinuxNodeConfigCgroupModePtrOutput() L
 
 func (in *linuxNodeConfigCgroupModePtr) ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LinuxNodeConfigCgroupModePtrOutput)
-}
-
-func (in *linuxNodeConfigCgroupModePtr) ToOutput(ctx context.Context) pulumix.Output[*LinuxNodeConfigCgroupMode] {
-	return pulumix.Output[*LinuxNodeConfigCgroupMode]{
-		OutputState: in.ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type LoggingComponentConfigEnableComponentsItem string
@@ -3483,12 +3374,6 @@ func (in *loggingComponentConfigEnableComponentsItemPtr) ToLoggingComponentConfi
 
 func (in *loggingComponentConfigEnableComponentsItemPtr) ToLoggingComponentConfigEnableComponentsItemPtrOutputWithContext(ctx context.Context) LoggingComponentConfigEnableComponentsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoggingComponentConfigEnableComponentsItemPtrOutput)
-}
-
-func (in *loggingComponentConfigEnableComponentsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*LoggingComponentConfigEnableComponentsItem] {
-	return pulumix.Output[*LoggingComponentConfigEnableComponentsItem]{
-		OutputState: in.ToLoggingComponentConfigEnableComponentsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LoggingComponentConfigEnableComponentsItemArrayInput is an input type that accepts LoggingComponentConfigEnableComponentsItemArray and LoggingComponentConfigEnableComponentsItemArrayOutput values.
@@ -3707,12 +3592,6 @@ func (in *loggingVariantConfigVariantPtr) ToLoggingVariantConfigVariantPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(LoggingVariantConfigVariantPtrOutput)
 }
 
-func (in *loggingVariantConfigVariantPtr) ToOutput(ctx context.Context) pulumix.Output[*LoggingVariantConfigVariant] {
-	return pulumix.Output[*LoggingVariantConfigVariant]{
-		OutputState: in.ToLoggingVariantConfigVariantPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
 type MaintenanceExclusionOptionsScope string
 
@@ -3882,12 +3761,6 @@ func (in *maintenanceExclusionOptionsScopePtr) ToMaintenanceExclusionOptionsScop
 
 func (in *maintenanceExclusionOptionsScopePtr) ToMaintenanceExclusionOptionsScopePtrOutputWithContext(ctx context.Context) MaintenanceExclusionOptionsScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceExclusionOptionsScopePtrOutput)
-}
-
-func (in *maintenanceExclusionOptionsScopePtr) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceExclusionOptionsScope] {
-	return pulumix.Output[*MaintenanceExclusionOptionsScope]{
-		OutputState: in.ToMaintenanceExclusionOptionsScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type MonitoringComponentConfigEnableComponentsItem string
@@ -4085,12 +3958,6 @@ func (in *monitoringComponentConfigEnableComponentsItemPtr) ToMonitoringComponen
 
 func (in *monitoringComponentConfigEnableComponentsItemPtr) ToMonitoringComponentConfigEnableComponentsItemPtrOutputWithContext(ctx context.Context) MonitoringComponentConfigEnableComponentsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoringComponentConfigEnableComponentsItemPtrOutput)
-}
-
-func (in *monitoringComponentConfigEnableComponentsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*MonitoringComponentConfigEnableComponentsItem] {
-	return pulumix.Output[*MonitoringComponentConfigEnableComponentsItem]{
-		OutputState: in.ToMonitoringComponentConfigEnableComponentsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MonitoringComponentConfigEnableComponentsItemArrayInput is an input type that accepts MonitoringComponentConfigEnableComponentsItemArray and MonitoringComponentConfigEnableComponentsItemArrayOutput values.
@@ -4309,12 +4176,6 @@ func (in *networkConfigDatapathProviderPtr) ToNetworkConfigDatapathProviderPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigDatapathProviderPtrOutput)
 }
 
-func (in *networkConfigDatapathProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigDatapathProvider] {
-	return pulumix.Output[*NetworkConfigDatapathProvider]{
-		OutputState: in.ToNetworkConfigDatapathProviderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specify the details of in-transit encryption.
 type NetworkConfigInTransitEncryptionConfig string
 
@@ -4484,12 +4345,6 @@ func (in *networkConfigInTransitEncryptionConfigPtr) ToNetworkConfigInTransitEnc
 
 func (in *networkConfigInTransitEncryptionConfigPtr) ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(ctx context.Context) NetworkConfigInTransitEncryptionConfigPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigInTransitEncryptionConfigPtrOutput)
-}
-
-func (in *networkConfigInTransitEncryptionConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigInTransitEncryptionConfig] {
-	return pulumix.Output[*NetworkConfigInTransitEncryptionConfig]{
-		OutputState: in.ToNetworkConfigInTransitEncryptionConfigPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -4666,12 +4521,6 @@ func (in *networkConfigPrivateIpv6GoogleAccessPtr) ToNetworkConfigPrivateIpv6Goo
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigPrivateIpv6GoogleAccessPtrOutput)
 }
 
-func (in *networkConfigPrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigPrivateIpv6GoogleAccess] {
-	return pulumix.Output[*NetworkConfigPrivateIpv6GoogleAccess]{
-		OutputState: in.ToNetworkConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
 type NetworkPerformanceConfigExternalIpEgressBandwidthTier string
 
@@ -4838,12 +4687,6 @@ func (in *networkPerformanceConfigExternalIpEgressBandwidthTierPtr) ToNetworkPer
 
 func (in *networkPerformanceConfigExternalIpEgressBandwidthTierPtr) ToNetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput)
-}
-
-func (in *networkPerformanceConfigExternalIpEgressBandwidthTierPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPerformanceConfigExternalIpEgressBandwidthTier] {
-	return pulumix.Output[*NetworkPerformanceConfigExternalIpEgressBandwidthTier]{
-		OutputState: in.ToNetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the total network bandwidth tier for the NodePool.
@@ -5014,12 +4857,6 @@ func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToNetworkPerforma
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
 }
 
-func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPerformanceConfigTotalEgressBandwidthTier] {
-	return pulumix.Output[*NetworkPerformanceConfigTotalEgressBandwidthTier]{
-		OutputState: in.ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The selected network policy provider.
 type NetworkPolicyProvider string
 
@@ -5186,12 +5023,6 @@ func (in *networkPolicyProviderPtr) ToNetworkPolicyProviderPtrOutput() NetworkPo
 
 func (in *networkPolicyProviderPtr) ToNetworkPolicyProviderPtrOutputWithContext(ctx context.Context) NetworkPolicyProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPolicyProviderPtrOutput)
-}
-
-func (in *networkPolicyProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPolicyProvider] {
-	return pulumix.Output[*NetworkPolicyProvider]{
-		OutputState: in.ToNetworkPolicyProviderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Operator for NodeAffinity.
@@ -5365,12 +5196,6 @@ func (in *nodeAffinityOperatorPtr) ToNodeAffinityOperatorPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(NodeAffinityOperatorPtrOutput)
 }
 
-func (in *nodeAffinityOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeAffinityOperator] {
-	return pulumix.Output[*NodeAffinityOperator]{
-		OutputState: in.ToNodeAffinityOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Location policy used when scaling up a nodepool.
 type NodePoolAutoscalingLocationPolicy string
 
@@ -5540,12 +5365,6 @@ func (in *nodePoolAutoscalingLocationPolicyPtr) ToNodePoolAutoscalingLocationPol
 
 func (in *nodePoolAutoscalingLocationPolicyPtr) ToNodePoolAutoscalingLocationPolicyPtrOutputWithContext(ctx context.Context) NodePoolAutoscalingLocationPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodePoolAutoscalingLocationPolicyPtrOutput)
-}
-
-func (in *nodePoolAutoscalingLocationPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*NodePoolAutoscalingLocationPolicy] {
-	return pulumix.Output[*NodePoolAutoscalingLocationPolicy]{
-		OutputState: in.ToNodePoolAutoscalingLocationPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Effect for taint.
@@ -5722,12 +5541,6 @@ func (in *nodeTaintEffectPtr) ToNodeTaintEffectPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(NodeTaintEffectPtrOutput)
 }
 
-func (in *nodeTaintEffectPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeTaintEffect] {
-	return pulumix.Output[*NodeTaintEffect]{
-		OutputState: in.ToNodeTaintEffectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of placement.
 type PlacementPolicyType string
 
@@ -5894,12 +5707,6 @@ func (in *placementPolicyTypePtr) ToPlacementPolicyTypePtrOutput() PlacementPoli
 
 func (in *placementPolicyTypePtr) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PlacementPolicyTypePtrOutput)
-}
-
-func (in *placementPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PlacementPolicyType] {
-	return pulumix.Output[*PlacementPolicyType]{
-		OutputState: in.ToPlacementPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sets which mode to use for Protect workload vulnerability scanning feature.
@@ -6071,12 +5878,6 @@ func (in *protectConfigWorkloadVulnerabilityModePtr) ToProtectConfigWorkloadVuln
 
 func (in *protectConfigWorkloadVulnerabilityModePtr) ToProtectConfigWorkloadVulnerabilityModePtrOutputWithContext(ctx context.Context) ProtectConfigWorkloadVulnerabilityModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProtectConfigWorkloadVulnerabilityModePtrOutput)
-}
-
-func (in *protectConfigWorkloadVulnerabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*ProtectConfigWorkloadVulnerabilityMode] {
-	return pulumix.Output[*ProtectConfigWorkloadVulnerabilityMode]{
-		OutputState: in.ToProtectConfigWorkloadVulnerabilityModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // channel specifies which release channel the cluster is subscribed to.
@@ -6253,12 +6054,6 @@ func (in *releaseChannelChannelPtr) ToReleaseChannelChannelPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ReleaseChannelChannelPtrOutput)
 }
 
-func (in *releaseChannelChannelPtr) ToOutput(ctx context.Context) pulumix.Output[*ReleaseChannelChannel] {
-	return pulumix.Output[*ReleaseChannelChannel]{
-		OutputState: in.ToReleaseChannelChannelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Corresponds to the type of reservation consumption.
 type ReservationAffinityConsumeReservationType string
 
@@ -6433,12 +6228,6 @@ func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityCon
 	return pulumi.ToOutputWithContext(ctx, in).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
-func (in *reservationAffinityConsumeReservationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
-	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
-		OutputState: in.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the sandbox to use for the node.
 type SandboxConfigType string
 
@@ -6605,12 +6394,6 @@ func (in *sandboxConfigTypePtr) ToSandboxConfigTypePtrOutput() SandboxConfigType
 
 func (in *sandboxConfigTypePtr) ToSandboxConfigTypePtrOutputWithContext(ctx context.Context) SandboxConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SandboxConfigTypePtrOutput)
-}
-
-func (in *sandboxConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SandboxConfigType] {
-	return pulumix.Output[*SandboxConfigType]{
-		OutputState: in.ToSandboxConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sets which mode to use for Security Posture features.
@@ -6782,12 +6565,6 @@ func (in *securityPostureConfigModePtr) ToSecurityPostureConfigModePtrOutput() S
 
 func (in *securityPostureConfigModePtr) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPostureConfigModePtrOutput)
-}
-
-func (in *securityPostureConfigModePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigMode] {
-	return pulumix.Output[*SecurityPostureConfigMode]{
-		OutputState: in.ToSecurityPostureConfigModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sets which mode to use for vulnerability scanning.
@@ -6962,12 +6739,6 @@ func (in *securityPostureConfigVulnerabilityModePtr) ToSecurityPostureConfigVuln
 
 func (in *securityPostureConfigVulnerabilityModePtr) ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPostureConfigVulnerabilityModePtrOutput)
-}
-
-func (in *securityPostureConfigVulnerabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigVulnerabilityMode] {
-	return pulumix.Output[*SecurityPostureConfigVulnerabilityMode]{
-		OutputState: in.ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Canonical code of the condition.
@@ -7183,12 +6954,6 @@ func (in *statusConditionCanonicalCodePtr) ToStatusConditionCanonicalCodePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(StatusConditionCanonicalCodePtrOutput)
 }
 
-func (in *statusConditionCanonicalCodePtr) ToOutput(ctx context.Context) pulumix.Output[*StatusConditionCanonicalCode] {
-	return pulumix.Output[*StatusConditionCanonicalCode]{
-		OutputState: in.ToStatusConditionCanonicalCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
 type StatusConditionCode string
 
@@ -7372,12 +7137,6 @@ func (in *statusConditionCodePtr) ToStatusConditionCodePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(StatusConditionCodePtrOutput)
 }
 
-func (in *statusConditionCodePtr) ToOutput(ctx context.Context) pulumix.Output[*StatusConditionCode] {
-	return pulumix.Output[*StatusConditionCode]{
-		OutputState: in.ToStatusConditionCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Update strategy of the node pool.
 type UpgradeSettingsStrategy string
 
@@ -7549,12 +7308,6 @@ func (in *upgradeSettingsStrategyPtr) ToUpgradeSettingsStrategyPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeSettingsStrategyPtrOutput)
 }
 
-func (in *upgradeSettingsStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*UpgradeSettingsStrategy] {
-	return pulumix.Output[*UpgradeSettingsStrategy]{
-		OutputState: in.ToUpgradeSettingsStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OSVersion specifies the Windows node config to be used on the node
 type WindowsNodeConfigOsVersion string
 
@@ -7724,12 +7477,6 @@ func (in *windowsNodeConfigOsVersionPtr) ToWindowsNodeConfigOsVersionPtrOutput()
 
 func (in *windowsNodeConfigOsVersionPtr) ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsNodeConfigOsVersionPtrOutput)
-}
-
-func (in *windowsNodeConfigOsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsNodeConfigOsVersion] {
-	return pulumix.Output[*WindowsNodeConfigOsVersion]{
-		OutputState: in.ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sets which mode of auditing should be used for the cluster's workloads.
@@ -7909,12 +7656,6 @@ func (in *workloadConfigAuditModePtr) ToWorkloadConfigAuditModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadConfigAuditModePtrOutput)
 }
 
-func (in *workloadConfigAuditModePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadConfigAuditMode] {
-	return pulumix.Output[*WorkloadConfigAuditMode]{
-		OutputState: in.ToWorkloadConfigAuditModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mode is the configuration for how to expose metadata to workloads running on the node pool.
 type WorkloadMetadataConfigMode string
 
@@ -8084,12 +7825,6 @@ func (in *workloadMetadataConfigModePtr) ToWorkloadMetadataConfigModePtrOutput()
 
 func (in *workloadMetadataConfigModePtr) ToWorkloadMetadataConfigModePtrOutputWithContext(ctx context.Context) WorkloadMetadataConfigModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadMetadataConfigModePtrOutput)
-}
-
-func (in *workloadMetadataConfigModePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadMetadataConfigMode] {
-	return pulumix.Output[*WorkloadMetadataConfigMode]{
-		OutputState: in.ToWorkloadMetadataConfigModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
@@ -8264,12 +7999,6 @@ func (in *workloadMetadataConfigNodeMetadataPtr) ToWorkloadMetadataConfigNodeMet
 
 func (in *workloadMetadataConfigNodeMetadataPtr) ToWorkloadMetadataConfigNodeMetadataPtrOutputWithContext(ctx context.Context) WorkloadMetadataConfigNodeMetadataPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadMetadataConfigNodeMetadataPtrOutput)
-}
-
-func (in *workloadMetadataConfigNodeMetadataPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadMetadataConfigNodeMetadata] {
-	return pulumix.Output[*WorkloadMetadataConfigNodeMetadata]{
-		OutputState: in.ToWorkloadMetadataConfigNodeMetadataPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

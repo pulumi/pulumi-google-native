@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ControlSearchSolutionUseCaseItem string
@@ -179,12 +178,6 @@ func (in *controlSearchSolutionUseCaseItemPtr) ToControlSearchSolutionUseCaseIte
 
 func (in *controlSearchSolutionUseCaseItemPtr) ToControlSearchSolutionUseCaseItemPtrOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ControlSearchSolutionUseCaseItemPtrOutput)
-}
-
-func (in *controlSearchSolutionUseCaseItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ControlSearchSolutionUseCaseItem] {
-	return pulumix.Output[*ControlSearchSolutionUseCaseItem]{
-		OutputState: in.ToControlSearchSolutionUseCaseItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ControlSearchSolutionUseCaseItemArrayInput is an input type that accepts ControlSearchSolutionUseCaseItemArray and ControlSearchSolutionUseCaseItemArrayOutput values.
@@ -400,12 +393,6 @@ func (in *controlSolutionTypesItemPtr) ToControlSolutionTypesItemPtrOutput() Con
 
 func (in *controlSolutionTypesItemPtr) ToControlSolutionTypesItemPtrOutputWithContext(ctx context.Context) ControlSolutionTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ControlSolutionTypesItemPtrOutput)
-}
-
-func (in *controlSolutionTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ControlSolutionTypesItem] {
-	return pulumix.Output[*ControlSolutionTypesItem]{
-		OutputState: in.ToControlSolutionTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ControlSolutionTypesItemArrayInput is an input type that accepts ControlSolutionTypesItemArray and ControlSolutionTypesItemArrayOutput values.
@@ -624,12 +611,6 @@ func (in *googleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigCont
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput)
 }
 
-func (in *googleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType] {
-	return pulumix.Output[*GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType]{
-		OutputState: in.ToGoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
 type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode string
 
@@ -799,12 +780,6 @@ func (in *googleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtr) ToGoogleC
 
 func (in *googleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtr) ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrOutput)
-}
-
-func (in *googleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode] {
-	return pulumix.Output[*GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode]{
-		OutputState: in.ToGoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defaults to Mode.AUTO.
@@ -978,12 +953,6 @@ func (in *googleCloudRetailV2betaSearchRequestPersonalizationSpecModePtr) ToGoog
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModePtrOutput)
 }
 
-func (in *googleCloudRetailV2betaSearchRequestPersonalizationSpecModePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode] {
-	return pulumix.Output[*GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode]{
-		OutputState: in.ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
 type ModelFilteringOption string
 
@@ -1153,12 +1122,6 @@ func (in *modelFilteringOptionPtr) ToModelFilteringOptionPtrOutput() ModelFilter
 
 func (in *modelFilteringOptionPtr) ToModelFilteringOptionPtrOutputWithContext(ctx context.Context) ModelFilteringOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ModelFilteringOptionPtrOutput)
-}
-
-func (in *modelFilteringOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*ModelFilteringOption] {
-	return pulumix.Output[*ModelFilteringOption]{
-		OutputState: in.ToModelFilteringOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
@@ -1335,12 +1298,6 @@ func (in *modelPeriodicTuningStatePtr) ToModelPeriodicTuningStatePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ModelPeriodicTuningStatePtrOutput)
 }
 
-func (in *modelPeriodicTuningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ModelPeriodicTuningState] {
-	return pulumix.Output[*ModelPeriodicTuningState]{
-		OutputState: in.ToModelPeriodicTuningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.
 type ModelTrainingState string
 
@@ -1510,12 +1467,6 @@ func (in *modelTrainingStatePtr) ToModelTrainingStatePtrOutput() ModelTrainingSt
 
 func (in *modelTrainingStatePtr) ToModelTrainingStatePtrOutputWithContext(ctx context.Context) ModelTrainingStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ModelTrainingStatePtrOutput)
-}
-
-func (in *modelTrainingStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ModelTrainingState] {
-	return pulumix.Output[*ModelTrainingState]{
-		OutputState: in.ToModelTrainingStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
@@ -1695,12 +1646,6 @@ func (in *productAvailabilityPtr) ToProductAvailabilityPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ProductAvailabilityPtrOutput)
 }
 
-func (in *productAvailabilityPtr) ToOutput(ctx context.Context) pulumix.Output[*ProductAvailability] {
-	return pulumix.Output[*ProductAvailability]{
-		OutputState: in.ToProductAvailabilityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
 type ProductType string
 
@@ -1875,12 +1820,6 @@ func (in *productTypePtr) ToProductTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ProductTypePtrOutput)
 }
 
-func (in *productTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ProductType] {
-	return pulumix.Output[*ProductType]{
-		OutputState: in.ToProductTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
 type ServingConfigDiversityType string
 
@@ -2052,12 +1991,6 @@ func (in *servingConfigDiversityTypePtr) ToServingConfigDiversityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ServingConfigDiversityTypePtrOutput)
 }
 
-func (in *servingConfigDiversityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigDiversityType] {
-	return pulumix.Output[*ServingConfigDiversityType]{
-		OutputState: in.ToServingConfigDiversityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServingConfigSolutionTypesItem string
 
 const (
@@ -2226,12 +2159,6 @@ func (in *servingConfigSolutionTypesItemPtr) ToServingConfigSolutionTypesItemPtr
 
 func (in *servingConfigSolutionTypesItemPtr) ToServingConfigSolutionTypesItemPtrOutputWithContext(ctx context.Context) ServingConfigSolutionTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServingConfigSolutionTypesItemPtrOutput)
-}
-
-func (in *servingConfigSolutionTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigSolutionTypesItem] {
-	return pulumix.Output[*ServingConfigSolutionTypesItem]{
-		OutputState: in.ToServingConfigSolutionTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServingConfigSolutionTypesItemArrayInput is an input type that accepts ServingConfigSolutionTypesItemArray and ServingConfigSolutionTypesItemArrayOutput values.

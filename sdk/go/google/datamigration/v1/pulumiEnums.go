@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
@@ -180,12 +179,6 @@ func (in *alloyDbSettingsDatabaseVersionPtr) ToAlloyDbSettingsDatabaseVersionPtr
 
 func (in *alloyDbSettingsDatabaseVersionPtr) ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) AlloyDbSettingsDatabaseVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlloyDbSettingsDatabaseVersionPtrOutput)
-}
-
-func (in *alloyDbSettingsDatabaseVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*AlloyDbSettingsDatabaseVersion] {
-	return pulumix.Output[*AlloyDbSettingsDatabaseVersion]{
-		OutputState: in.ToAlloyDbSettingsDatabaseVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The log type that this config enables.
@@ -362,12 +355,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
 type CloudSqlSettingsActivationPolicy string
 
@@ -537,12 +524,6 @@ func (in *cloudSqlSettingsActivationPolicyPtr) ToCloudSqlSettingsActivationPolic
 
 func (in *cloudSqlSettingsActivationPolicyPtr) ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsActivationPolicyPtrOutput)
-}
-
-func (in *cloudSqlSettingsActivationPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsActivationPolicy] {
-	return pulumix.Output[*CloudSqlSettingsActivationPolicy]{
-		OutputState: in.ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
@@ -716,12 +697,6 @@ func (in *cloudSqlSettingsAvailabilityTypePtr) ToCloudSqlSettingsAvailabilityTyp
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsAvailabilityTypePtrOutput)
 }
 
-func (in *cloudSqlSettingsAvailabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsAvailabilityType] {
-	return pulumix.Output[*CloudSqlSettingsAvailabilityType]{
-		OutputState: in.ToCloudSqlSettingsAvailabilityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of storage: `PD_SSD` (default) or `PD_HDD`.
 type CloudSqlSettingsDataDiskType string
 
@@ -891,12 +866,6 @@ func (in *cloudSqlSettingsDataDiskTypePtr) ToCloudSqlSettingsDataDiskTypePtrOutp
 
 func (in *cloudSqlSettingsDataDiskTypePtr) ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsDataDiskTypePtrOutput)
-}
-
-func (in *cloudSqlSettingsDataDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDataDiskType] {
-	return pulumix.Output[*CloudSqlSettingsDataDiskType]{
-		OutputState: in.ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The database engine type and version.
@@ -1121,12 +1090,6 @@ func (in *cloudSqlSettingsDatabaseVersionPtr) ToCloudSqlSettingsDatabaseVersionP
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsDatabaseVersionPtrOutput)
 }
 
-func (in *cloudSqlSettingsDatabaseVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDatabaseVersion] {
-	return pulumix.Output[*CloudSqlSettingsDatabaseVersion]{
-		OutputState: in.ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The edition of the given Cloud SQL instance.
 type CloudSqlSettingsEdition string
 
@@ -1296,12 +1259,6 @@ func (in *cloudSqlSettingsEditionPtr) ToCloudSqlSettingsEditionPtrOutput() Cloud
 
 func (in *cloudSqlSettingsEditionPtr) ToCloudSqlSettingsEditionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsEditionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsEditionPtrOutput)
-}
-
-func (in *cloudSqlSettingsEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsEdition] {
-	return pulumix.Output[*CloudSqlSettingsEdition]{
-		OutputState: in.ToCloudSqlSettingsEditionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The database provider.
@@ -1479,12 +1436,6 @@ func (in *connectionProfileProviderPtr) ToConnectionProfileProviderPtrOutput() C
 
 func (in *connectionProfileProviderPtr) ToConnectionProfileProviderPtrOutputWithContext(ctx context.Context) ConnectionProfileProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionProfileProviderPtrOutput)
-}
-
-func (in *connectionProfileProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileProvider] {
-	return pulumix.Output[*ConnectionProfileProvider]{
-		OutputState: in.ToConnectionProfileProviderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current connection profile state (e.g. DRAFT, READY, or FAILED).
@@ -1673,12 +1624,6 @@ func (in *connectionProfileStateEnumPtr) ToConnectionProfileStateEnumPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionProfileStateEnumPtrOutput)
 }
 
-func (in *connectionProfileStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileStateEnum] {
-	return pulumix.Output[*ConnectionProfileStateEnum]{
-		OutputState: in.ToConnectionProfileStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Engine type.
 type DatabaseEngineInfoEngine string
 
@@ -1853,12 +1798,6 @@ func (in *databaseEngineInfoEnginePtr) ToDatabaseEngineInfoEnginePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseEngineInfoEnginePtrOutput)
 }
 
-func (in *databaseEngineInfoEnginePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseEngineInfoEngine] {
-	return pulumix.Output[*DatabaseEngineInfoEngine]{
-		OutputState: in.ToDatabaseEngineInfoEnginePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The database engine.
 type DatabaseTypeEngine string
 
@@ -2031,12 +1970,6 @@ func (in *databaseTypeEnginePtr) ToDatabaseTypeEnginePtrOutput() DatabaseTypeEng
 
 func (in *databaseTypeEnginePtr) ToDatabaseTypeEnginePtrOutputWithContext(ctx context.Context) DatabaseTypeEnginePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypeEnginePtrOutput)
-}
-
-func (in *databaseTypeEnginePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTypeEngine] {
-	return pulumix.Output[*DatabaseTypeEngine]{
-		OutputState: in.ToDatabaseTypeEnginePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The database provider.
@@ -2216,12 +2149,6 @@ func (in *databaseTypeProviderPtr) ToDatabaseTypeProviderPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypeProviderPtrOutput)
 }
 
-func (in *databaseTypeProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTypeProvider] {
-	return pulumix.Output[*DatabaseTypeProvider]{
-		OutputState: in.ToDatabaseTypeProviderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Relation between source value and compare value
 type DoubleComparisonFilterValueComparison string
 
@@ -2399,12 +2326,6 @@ func (in *doubleComparisonFilterValueComparisonPtr) ToDoubleComparisonFilterValu
 	return pulumi.ToOutputWithContext(ctx, in).(DoubleComparisonFilterValueComparisonPtrOutput)
 }
 
-func (in *doubleComparisonFilterValueComparisonPtr) ToOutput(ctx context.Context) pulumix.Output[*DoubleComparisonFilterValueComparison] {
-	return pulumix.Output[*DoubleComparisonFilterValueComparison]{
-		OutputState: in.ToDoubleComparisonFilterValueComparisonPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Relation between source value and compare value
 type IntComparisonFilterValueComparison string
 
@@ -2580,12 +2501,6 @@ func (in *intComparisonFilterValueComparisonPtr) ToIntComparisonFilterValueCompa
 
 func (in *intComparisonFilterValueComparisonPtr) ToIntComparisonFilterValueComparisonPtrOutputWithContext(ctx context.Context) IntComparisonFilterValueComparisonPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntComparisonFilterValueComparisonPtrOutput)
-}
-
-func (in *intComparisonFilterValueComparisonPtr) ToOutput(ctx context.Context) pulumix.Output[*IntComparisonFilterValueComparison] {
-	return pulumix.Output[*IntComparisonFilterValueComparison]{
-		OutputState: in.ToIntComparisonFilterValueComparisonPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The rule scope
@@ -2798,12 +2713,6 @@ func (in *mappingRuleRuleScopePtr) ToMappingRuleRuleScopePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(MappingRuleRuleScopePtrOutput)
 }
 
-func (in *mappingRuleRuleScopePtr) ToOutput(ctx context.Context) pulumix.Output[*MappingRuleRuleScope] {
-	return pulumix.Output[*MappingRuleRuleScope]{
-		OutputState: in.ToMappingRuleRuleScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The mapping rule state
 type MappingRuleStateEnum string
 
@@ -2976,12 +2885,6 @@ func (in *mappingRuleStateEnumPtr) ToMappingRuleStateEnumPtrOutput() MappingRule
 
 func (in *mappingRuleStateEnumPtr) ToMappingRuleStateEnumPtrOutputWithContext(ctx context.Context) MappingRuleStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MappingRuleStateEnumPtrOutput)
-}
-
-func (in *mappingRuleStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*MappingRuleStateEnum] {
-	return pulumix.Output[*MappingRuleStateEnum]{
-		OutputState: in.ToMappingRuleStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current migration job state.
@@ -3194,12 +3097,6 @@ func (in *migrationJobStateEnumPtr) ToMigrationJobStateEnumPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(MigrationJobStateEnumPtrOutput)
 }
 
-func (in *migrationJobStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*MigrationJobStateEnum] {
-	return pulumix.Output[*MigrationJobStateEnum]{
-		OutputState: in.ToMigrationJobStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The migration job type.
 type MigrationJobType string
 
@@ -3369,12 +3266,6 @@ func (in *migrationJobTypePtr) ToMigrationJobTypePtrOutput() MigrationJobTypePtr
 
 func (in *migrationJobTypePtr) ToMigrationJobTypePtrOutputWithContext(ctx context.Context) MigrationJobTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MigrationJobTypePtrOutput)
-}
-
-func (in *migrationJobTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MigrationJobType] {
-	return pulumix.Output[*MigrationJobType]{
-		OutputState: in.ToMigrationJobTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
@@ -3554,12 +3445,6 @@ func (in *multiEntityRenameSourceNameTransformationPtr) ToMultiEntityRenameSourc
 	return pulumi.ToOutputWithContext(ctx, in).(MultiEntityRenameSourceNameTransformationPtrOutput)
 }
 
-func (in *multiEntityRenameSourceNameTransformationPtr) ToOutput(ctx context.Context) pulumix.Output[*MultiEntityRenameSourceNameTransformation] {
-	return pulumix.Output[*MultiEntityRenameSourceNameTransformation]{
-		OutputState: in.ToMultiEntityRenameSourceNameTransformationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Initial dump parallelism level.
 type PerformanceConfigDumpParallelLevel string
 
@@ -3732,12 +3617,6 @@ func (in *performanceConfigDumpParallelLevelPtr) ToPerformanceConfigDumpParallel
 
 func (in *performanceConfigDumpParallelLevelPtr) ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(ctx context.Context) PerformanceConfigDumpParallelLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PerformanceConfigDumpParallelLevelPtrOutput)
-}
-
-func (in *performanceConfigDumpParallelLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*PerformanceConfigDumpParallelLevel] {
-	return pulumix.Output[*PerformanceConfigDumpParallelLevel]{
-		OutputState: in.ToPerformanceConfigDumpParallelLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Enum to set the option defining the datatypes numeric filter has to be applied to
@@ -3914,12 +3793,6 @@ func (in *sourceNumericFilterNumericFilterOptionPtr) ToSourceNumericFilterNumeri
 	return pulumi.ToOutputWithContext(ctx, in).(SourceNumericFilterNumericFilterOptionPtrOutput)
 }
 
-func (in *sourceNumericFilterNumericFilterOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*SourceNumericFilterNumericFilterOption] {
-	return pulumix.Output[*SourceNumericFilterNumericFilterOption]{
-		OutputState: in.ToSourceNumericFilterNumericFilterOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
 type ValueListFilterValuePresentList string
 
@@ -4089,12 +3962,6 @@ func (in *valueListFilterValuePresentListPtr) ToValueListFilterValuePresentListP
 
 func (in *valueListFilterValuePresentListPtr) ToValueListFilterValuePresentListPtrOutputWithContext(ctx context.Context) ValueListFilterValuePresentListPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValueListFilterValuePresentListPtrOutput)
-}
-
-func (in *valueListFilterValuePresentListPtr) ToOutput(ctx context.Context) pulumix.Output[*ValueListFilterValuePresentList] {
-	return pulumix.Output[*ValueListFilterValuePresentList]{
-		OutputState: in.ToValueListFilterValuePresentListPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

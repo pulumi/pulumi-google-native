@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -183,12 +182,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Domain state.
@@ -374,12 +367,6 @@ func (in *customDomainStatePtr) ToCustomDomainStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(CustomDomainStatePtrOutput)
 }
 
-func (in *customDomainStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomDomainState] {
-	return pulumix.Output[*CustomDomainState]{
-		OutputState: in.ToCustomDomainStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Platform edition.
 type InstancePlatformEdition string
 
@@ -558,12 +545,6 @@ func (in *instancePlatformEditionPtr) ToInstancePlatformEditionPtrOutput() Insta
 
 func (in *instancePlatformEditionPtr) ToInstancePlatformEditionPtrOutputWithContext(ctx context.Context) InstancePlatformEditionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePlatformEditionPtrOutput)
-}
-
-func (in *instancePlatformEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePlatformEdition] {
-	return pulumix.Output[*InstancePlatformEdition]{
-		OutputState: in.ToInstancePlatformEditionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Day of the week for this MaintenanceWindow (in UTC).
@@ -750,12 +731,6 @@ func (in *maintenanceWindowDayOfWeekPtr) ToMaintenanceWindowDayOfWeekPtrOutput()
 
 func (in *maintenanceWindowDayOfWeekPtr) ToMaintenanceWindowDayOfWeekPtrOutputWithContext(ctx context.Context) MaintenanceWindowDayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceWindowDayOfWeekPtrOutput)
-}
-
-func (in *maintenanceWindowDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowDayOfWeek] {
-	return pulumix.Output[*MaintenanceWindowDayOfWeek]{
-		OutputState: in.ToMaintenanceWindowDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

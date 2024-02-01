@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -183,12 +182,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ListingCategoriesItem string
@@ -390,12 +383,6 @@ func (in *listingCategoriesItemPtr) ToListingCategoriesItemPtrOutput() ListingCa
 
 func (in *listingCategoriesItemPtr) ToListingCategoriesItemPtrOutputWithContext(ctx context.Context) ListingCategoriesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ListingCategoriesItemPtrOutput)
-}
-
-func (in *listingCategoriesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ListingCategoriesItem] {
-	return pulumix.Output[*ListingCategoriesItem]{
-		OutputState: in.ToListingCategoriesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ListingCategoriesItemArrayInput is an input type that accepts ListingCategoriesItemArray and ListingCategoriesItemArrayOutput values.
