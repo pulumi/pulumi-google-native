@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -183,12 +182,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type CompositeTypeStatus string
@@ -373,12 +366,6 @@ func (in *diagnosticLevelPtr) ToDiagnosticLevelPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DiagnosticLevelPtrOutput)
 }
 
-func (in *diagnosticLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticLevel] {
-	return pulumix.Output[*DiagnosticLevel]{
-		OutputState: in.ToDiagnosticLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The location where this mapping applies.
 type InputMappingLocation string
 
@@ -551,12 +538,6 @@ func (in *inputMappingLocationPtr) ToInputMappingLocationPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(InputMappingLocationPtrOutput)
 }
 
-func (in *inputMappingLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*InputMappingLocation] {
-	return pulumix.Output[*InputMappingLocation]{
-		OutputState: in.ToInputMappingLocationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Which interpreter (python or jinja) should be used during expansion.
 type TemplateContentsInterpreter string
 
@@ -723,12 +704,6 @@ func (in *templateContentsInterpreterPtr) ToTemplateContentsInterpreterPtrOutput
 
 func (in *templateContentsInterpreterPtr) ToTemplateContentsInterpreterPtrOutputWithContext(ctx context.Context) TemplateContentsInterpreterPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TemplateContentsInterpreterPtrOutput)
-}
-
-func (in *templateContentsInterpreterPtr) ToOutput(ctx context.Context) pulumix.Output[*TemplateContentsInterpreter] {
-	return pulumix.Output[*TemplateContentsInterpreter]{
-		OutputState: in.ToTemplateContentsInterpreterPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Customize how deployment manager will validate the resource against schema errors.
@@ -902,12 +877,6 @@ func (in *validationOptionsSchemaValidationPtr) ToValidationOptionsSchemaValidat
 
 func (in *validationOptionsSchemaValidationPtr) ToValidationOptionsSchemaValidationPtrOutputWithContext(ctx context.Context) ValidationOptionsSchemaValidationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValidationOptionsSchemaValidationPtrOutput)
-}
-
-func (in *validationOptionsSchemaValidationPtr) ToOutput(ctx context.Context) pulumix.Output[*ValidationOptionsSchemaValidation] {
-	return pulumix.Output[*ValidationOptionsSchemaValidation]{
-		OutputState: in.ToValidationOptionsSchemaValidationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specify what to do with extra properties when executing a request.
@@ -1087,12 +1056,6 @@ func (in *validationOptionsUndeclaredPropertiesPtr) ToValidationOptionsUndeclare
 
 func (in *validationOptionsUndeclaredPropertiesPtr) ToValidationOptionsUndeclaredPropertiesPtrOutputWithContext(ctx context.Context) ValidationOptionsUndeclaredPropertiesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValidationOptionsUndeclaredPropertiesPtrOutput)
-}
-
-func (in *validationOptionsUndeclaredPropertiesPtr) ToOutput(ctx context.Context) pulumix.Output[*ValidationOptionsUndeclaredProperties] {
-	return pulumix.Output[*ValidationOptionsUndeclaredProperties]{
-		OutputState: in.ToValidationOptionsUndeclaredPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

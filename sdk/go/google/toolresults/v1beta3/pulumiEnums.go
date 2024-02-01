@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type BasicPerfSampleSeriesPerfMetricType string
@@ -182,12 +181,6 @@ func (in *basicPerfSampleSeriesPerfMetricTypePtr) ToBasicPerfSampleSeriesPerfMet
 	return pulumi.ToOutputWithContext(ctx, in).(BasicPerfSampleSeriesPerfMetricTypePtrOutput)
 }
 
-func (in *basicPerfSampleSeriesPerfMetricTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BasicPerfSampleSeriesPerfMetricType] {
-	return pulumix.Output[*BasicPerfSampleSeriesPerfMetricType]{
-		OutputState: in.ToBasicPerfSampleSeriesPerfMetricTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BasicPerfSampleSeriesPerfUnit string
 
 const (
@@ -359,12 +352,6 @@ func (in *basicPerfSampleSeriesPerfUnitPtr) ToBasicPerfSampleSeriesPerfUnitPtrOu
 
 func (in *basicPerfSampleSeriesPerfUnitPtr) ToBasicPerfSampleSeriesPerfUnitPtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesPerfUnitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BasicPerfSampleSeriesPerfUnitPtrOutput)
-}
-
-func (in *basicPerfSampleSeriesPerfUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*BasicPerfSampleSeriesPerfUnit] {
-	return pulumix.Output[*BasicPerfSampleSeriesPerfUnit]{
-		OutputState: in.ToBasicPerfSampleSeriesPerfUnitPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type BasicPerfSampleSeriesSampleSeriesLabel string
@@ -558,12 +545,6 @@ func (in *basicPerfSampleSeriesSampleSeriesLabelPtr) ToBasicPerfSampleSeriesSamp
 	return pulumi.ToOutputWithContext(ctx, in).(BasicPerfSampleSeriesSampleSeriesLabelPtrOutput)
 }
 
-func (in *basicPerfSampleSeriesSampleSeriesLabelPtr) ToOutput(ctx context.Context) pulumix.Output[*BasicPerfSampleSeriesSampleSeriesLabel] {
-	return pulumix.Output[*BasicPerfSampleSeriesSampleSeriesLabel]{
-		OutputState: in.ToBasicPerfSampleSeriesSampleSeriesLabelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
 type ExecutionStateEnum string
 
@@ -738,12 +719,6 @@ func (in *executionStateEnumPtr) ToExecutionStateEnumPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionStateEnumPtrOutput)
 }
 
-func (in *executionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionStateEnum] {
-	return pulumix.Output[*ExecutionStateEnum]{
-		OutputState: in.ToExecutionStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 type HistoryTestPlatform string
 
@@ -910,12 +885,6 @@ func (in *historyTestPlatformPtr) ToHistoryTestPlatformPtrOutput() HistoryTestPl
 
 func (in *historyTestPlatformPtr) ToHistoryTestPlatformPtrOutputWithContext(ctx context.Context) HistoryTestPlatformPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HistoryTestPlatformPtrOutput)
-}
-
-func (in *historyTestPlatformPtr) ToOutput(ctx context.Context) pulumix.Output[*HistoryTestPlatform] {
-	return pulumix.Output[*HistoryTestPlatform]{
-		OutputState: in.ToHistoryTestPlatformPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type IndividualOutcomeOutcomeSummary string
@@ -1095,12 +1064,6 @@ func (in *individualOutcomeOutcomeSummaryPtr) ToIndividualOutcomeOutcomeSummaryP
 
 func (in *individualOutcomeOutcomeSummaryPtr) ToIndividualOutcomeOutcomeSummaryPtrOutputWithContext(ctx context.Context) IndividualOutcomeOutcomeSummaryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IndividualOutcomeOutcomeSummaryPtrOutput)
-}
-
-func (in *individualOutcomeOutcomeSummaryPtr) ToOutput(ctx context.Context) pulumix.Output[*IndividualOutcomeOutcomeSummary] {
-	return pulumix.Output[*IndividualOutcomeOutcomeSummary]{
-		OutputState: in.ToIndividualOutcomeOutcomeSummaryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The simplest way to interpret a result. Required
@@ -1283,12 +1246,6 @@ func (in *outcomeSummaryPtr) ToOutcomeSummaryPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(OutcomeSummaryPtrOutput)
 }
 
-func (in *outcomeSummaryPtr) ToOutput(ctx context.Context) pulumix.Output[*OutcomeSummary] {
-	return pulumix.Output[*OutcomeSummary]{
-		OutputState: in.ToOutcomeSummaryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Rollup test status of multiple steps that were run with the same configuration as a group.
 type PrimaryStepRollUp string
 
@@ -1469,12 +1426,6 @@ func (in *primaryStepRollUpPtr) ToPrimaryStepRollUpPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(PrimaryStepRollUpPtrOutput)
 }
 
-func (in *primaryStepRollUpPtr) ToOutput(ctx context.Context) pulumix.Output[*PrimaryStepRollUp] {
-	return pulumix.Output[*PrimaryStepRollUp]{
-		OutputState: in.ToPrimaryStepRollUpPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with a state set to COMPLETE. The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is set to COMPLETE multiple times. - In response: always set - In create/update request: optional
 type StepStateEnum string
 
@@ -1649,12 +1600,6 @@ func (in *stepStateEnumPtr) ToStepStateEnumPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(StepStateEnumPtrOutput)
 }
 
-func (in *stepStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*StepStateEnum] {
-	return pulumix.Output[*StepStateEnum]{
-		OutputState: in.ToStepStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Category of issue. Required.
 type TestIssueCategory string
 
@@ -1824,12 +1769,6 @@ func (in *testIssueCategoryPtr) ToTestIssueCategoryPtrOutput() TestIssueCategory
 
 func (in *testIssueCategoryPtr) ToTestIssueCategoryPtrOutputWithContext(ctx context.Context) TestIssueCategoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TestIssueCategoryPtrOutput)
-}
-
-func (in *testIssueCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*TestIssueCategory] {
-	return pulumix.Output[*TestIssueCategory]{
-		OutputState: in.ToTestIssueCategoryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Severity of issue. Required.
@@ -2007,12 +1946,6 @@ func (in *testIssueSeverityPtr) ToTestIssueSeverityPtrOutput() TestIssueSeverity
 
 func (in *testIssueSeverityPtr) ToTestIssueSeverityPtrOutputWithContext(ctx context.Context) TestIssueSeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TestIssueSeverityPtrOutput)
-}
-
-func (in *testIssueSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*TestIssueSeverity] {
-	return pulumix.Output[*TestIssueSeverity]{
-		OutputState: in.ToTestIssueSeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of issue. Required.
@@ -2274,12 +2207,6 @@ func (in *testIssueTypePtr) ToTestIssueTypePtrOutput() TestIssueTypePtrOutput {
 
 func (in *testIssueTypePtr) ToTestIssueTypePtrOutputWithContext(ctx context.Context) TestIssueTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TestIssueTypePtrOutput)
-}
-
-func (in *testIssueTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TestIssueType] {
-	return pulumix.Output[*TestIssueType]{
-		OutputState: in.ToTestIssueTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

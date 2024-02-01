@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies which upgrade policy to use.
@@ -182,12 +181,6 @@ func (in *bareMetalClusterUpgradePolicyPolicyPtr) ToBareMetalClusterUpgradePolic
 	return pulumi.ToOutputWithContext(ctx, in).(BareMetalClusterUpgradePolicyPolicyPtrOutput)
 }
 
-func (in *bareMetalClusterUpgradePolicyPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicyPolicy] {
-	return pulumix.Output[*BareMetalClusterUpgradePolicyPolicy]{
-		OutputState: in.ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the nodes operating system (default: LINUX).
 type BareMetalNodePoolConfigOperatingSystem string
 
@@ -356,12 +349,6 @@ func (in *bareMetalNodePoolConfigOperatingSystemPtr) ToBareMetalNodePoolConfigOp
 	return pulumi.ToOutputWithContext(ctx, in).(BareMetalNodePoolConfigOperatingSystemPtrOutput)
 }
 
-func (in *bareMetalNodePoolConfigOperatingSystemPtr) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolConfigOperatingSystem] {
-	return pulumix.Output[*BareMetalNodePoolConfigOperatingSystem]{
-		OutputState: in.ToBareMetalNodePoolConfigOperatingSystemPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies which container runtime will be used.
 type BareMetalWorkloadNodeConfigContainerRuntime string
 
@@ -528,12 +515,6 @@ func (in *bareMetalWorkloadNodeConfigContainerRuntimePtr) ToBareMetalWorkloadNod
 
 func (in *bareMetalWorkloadNodeConfigContainerRuntimePtr) ToBareMetalWorkloadNodeConfigContainerRuntimePtrOutputWithContext(ctx context.Context) BareMetalWorkloadNodeConfigContainerRuntimePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BareMetalWorkloadNodeConfigContainerRuntimePtrOutput)
-}
-
-func (in *bareMetalWorkloadNodeConfigContainerRuntimePtr) ToOutput(ctx context.Context) pulumix.Output[*BareMetalWorkloadNodeConfigContainerRuntime] {
-	return pulumix.Output[*BareMetalWorkloadNodeConfigContainerRuntime]{
-		OutputState: in.ToBareMetalWorkloadNodeConfigContainerRuntimePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
@@ -705,12 +686,6 @@ func (in *binaryAuthorizationEvaluationModePtr) ToBinaryAuthorizationEvaluationM
 
 func (in *binaryAuthorizationEvaluationModePtr) ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BinaryAuthorizationEvaluationModePtrOutput)
-}
-
-func (in *binaryAuthorizationEvaluationModePtr) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorizationEvaluationMode] {
-	return pulumix.Output[*BinaryAuthorizationEvaluationMode]{
-		OutputState: in.ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The taint effect.
@@ -885,12 +860,6 @@ func (in *nodeTaintEffectPtr) ToNodeTaintEffectPtrOutput() NodeTaintEffectPtrOut
 
 func (in *nodeTaintEffectPtr) ToNodeTaintEffectPtrOutputWithContext(ctx context.Context) NodeTaintEffectPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeTaintEffectPtrOutput)
-}
-
-func (in *nodeTaintEffectPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeTaintEffect] {
-	return pulumix.Output[*NodeTaintEffect]{
-		OutputState: in.ToNodeTaintEffectPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

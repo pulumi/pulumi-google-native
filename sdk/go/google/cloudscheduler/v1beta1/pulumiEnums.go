@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
@@ -197,12 +196,6 @@ func (in *appEngineHttpTargetHttpMethodPtr) ToAppEngineHttpTargetHttpMethodPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(AppEngineHttpTargetHttpMethodPtrOutput)
 }
 
-func (in *appEngineHttpTargetHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AppEngineHttpTargetHttpMethod] {
-	return pulumix.Output[*AppEngineHttpTargetHttpMethod]{
-		OutputState: in.ToAppEngineHttpTargetHttpMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Which HTTP method to use for the request.
 type HttpTargetHttpMethod string
 
@@ -387,12 +380,6 @@ func (in *httpTargetHttpMethodPtr) ToHttpTargetHttpMethodPtrOutput() HttpTargetH
 
 func (in *httpTargetHttpMethodPtr) ToHttpTargetHttpMethodPtrOutputWithContext(ctx context.Context) HttpTargetHttpMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpTargetHttpMethodPtrOutput)
-}
-
-func (in *httpTargetHttpMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*HttpTargetHttpMethod] {
-	return pulumix.Output[*HttpTargetHttpMethod]{
-		OutputState: in.ToHttpTargetHttpMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

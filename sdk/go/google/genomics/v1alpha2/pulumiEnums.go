@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The type of the disk to create.
@@ -183,12 +182,6 @@ func (in *diskTypePtr) ToDiskTypePtrOutput() DiskTypePtrOutput {
 
 func (in *diskTypePtr) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskTypePtrOutput)
-}
-
-func (in *diskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskType] {
-	return pulumix.Output[*DiskType]{
-		OutputState: in.ToDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

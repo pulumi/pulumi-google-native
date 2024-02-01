@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The key algorithm to use when generating the private key.
@@ -182,12 +181,6 @@ func (in *certificateIssuanceConfigKeyAlgorithmPtr) ToCertificateIssuanceConfigK
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateIssuanceConfigKeyAlgorithmPtrOutput)
 }
 
-func (in *certificateIssuanceConfigKeyAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateIssuanceConfigKeyAlgorithm] {
-	return pulumix.Output[*CertificateIssuanceConfigKeyAlgorithm]{
-		OutputState: in.ToCertificateIssuanceConfigKeyAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A predefined matcher for particular cases, other than SNI selection.
 type CertificateMapEntryMatcher string
 
@@ -354,12 +347,6 @@ func (in *certificateMapEntryMatcherPtr) ToCertificateMapEntryMatcherPtrOutput()
 
 func (in *certificateMapEntryMatcherPtr) ToCertificateMapEntryMatcherPtrOutputWithContext(ctx context.Context) CertificateMapEntryMatcherPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateMapEntryMatcherPtrOutput)
-}
-
-func (in *certificateMapEntryMatcherPtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateMapEntryMatcher] {
-	return pulumix.Output[*CertificateMapEntryMatcher]{
-		OutputState: in.ToCertificateMapEntryMatcherPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Immutable. The scope of the certificate.
@@ -531,12 +518,6 @@ func (in *certificateScopePtr) ToCertificateScopePtrOutput() CertificateScopePtr
 
 func (in *certificateScopePtr) ToCertificateScopePtrOutputWithContext(ctx context.Context) CertificateScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateScopePtrOutput)
-}
-
-func (in *certificateScopePtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateScope] {
-	return pulumix.Output[*CertificateScope]{
-		OutputState: in.ToCertificateScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
