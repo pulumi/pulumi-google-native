@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allow or deny type.
@@ -182,12 +181,6 @@ func (in *customConstraintActionTypePtr) ToCustomConstraintActionTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(CustomConstraintActionTypePtrOutput)
 }
 
-func (in *customConstraintActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraintActionType] {
-	return pulumix.Output[*CustomConstraintActionType]{
-		OutputState: in.ToCustomConstraintActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomConstraintMethodTypesItem string
 
 const (
@@ -359,12 +352,6 @@ func (in *customConstraintMethodTypesItemPtr) ToCustomConstraintMethodTypesItemP
 
 func (in *customConstraintMethodTypesItemPtr) ToCustomConstraintMethodTypesItemPtrOutputWithContext(ctx context.Context) CustomConstraintMethodTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CustomConstraintMethodTypesItemPtrOutput)
-}
-
-func (in *customConstraintMethodTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraintMethodTypesItem] {
-	return pulumix.Output[*CustomConstraintMethodTypesItem]{
-		OutputState: in.ToCustomConstraintMethodTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CustomConstraintMethodTypesItemArrayInput is an input type that accepts CustomConstraintMethodTypesItemArray and CustomConstraintMethodTypesItemArrayOutput values.

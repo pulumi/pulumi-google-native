@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The database type.
@@ -179,12 +178,6 @@ func (in *databaseTypePtr) ToDatabaseTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypePtrOutput)
 }
 
-func (in *databaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseType] {
-	return pulumix.Output[*DatabaseType]{
-		OutputState: in.ToDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The table type.
 type TableType string
 
@@ -351,12 +344,6 @@ func (in *tableTypePtr) ToTableTypePtrOutput() TableTypePtrOutput {
 
 func (in *tableTypePtr) ToTableTypePtrOutputWithContext(ctx context.Context) TableTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TableTypePtrOutput)
-}
-
-func (in *tableTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TableType] {
-	return pulumix.Output[*TableType]{
-		OutputState: in.ToTableTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

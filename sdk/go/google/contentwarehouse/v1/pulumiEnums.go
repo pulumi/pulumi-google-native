@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates the category (image, audio, video etc.) of the original content.
@@ -183,12 +182,6 @@ func (in *documentContentCategoryPtr) ToDocumentContentCategoryPtrOutput() Docum
 
 func (in *documentContentCategoryPtr) ToDocumentContentCategoryPtrOutputWithContext(ctx context.Context) DocumentContentCategoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DocumentContentCategoryPtrOutput)
-}
-
-func (in *documentContentCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*DocumentContentCategory] {
-	return pulumix.Output[*DocumentContentCategory]{
-		OutputState: in.ToDocumentContentCategoryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This is used when DocAI was not used to load the document and parsing/ extracting is needed for the inline_raw_document. For example, if inline_raw_document is the byte representation of a PDF file, then this should be set to: RAW_DOCUMENT_FILE_TYPE_PDF.
@@ -374,12 +367,6 @@ func (in *documentRawDocumentFileTypePtr) ToDocumentRawDocumentFileTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(DocumentRawDocumentFileTypePtrOutput)
 }
 
-func (in *documentRawDocumentFileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DocumentRawDocumentFileType] {
-	return pulumix.Output[*DocumentRawDocumentFileType]{
-		OutputState: in.ToDocumentRawDocumentFileTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identifies the type of operation.
 type GoogleCloudContentwarehouseV1AccessControlActionOperationType string
 
@@ -552,12 +539,6 @@ func (in *googleCloudContentwarehouseV1AccessControlActionOperationTypePtr) ToGo
 
 func (in *googleCloudContentwarehouseV1AccessControlActionOperationTypePtr) ToGoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutput)
-}
-
-func (in *googleCloudContentwarehouseV1AccessControlActionOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1AccessControlActionOperationType] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1AccessControlActionOperationType]{
-		OutputState: in.ToGoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The retrieval importance of the property during search.
@@ -743,12 +724,6 @@ func (in *googleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtr)
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput)
 }
 
-func (in *googleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance]{
-		OutputState: in.ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identifies the trigger type for running the policy.
 type GoogleCloudContentwarehouseV1RuleTriggerType string
 
@@ -924,12 +899,6 @@ func (in *googleCloudContentwarehouseV1RuleTriggerTypePtr) ToGoogleCloudContentw
 
 func (in *googleCloudContentwarehouseV1RuleTriggerTypePtr) ToGoogleCloudContentwarehouseV1RuleTriggerTypePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1RuleTriggerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudContentwarehouseV1RuleTriggerTypePtrOutput)
-}
-
-func (in *googleCloudContentwarehouseV1RuleTriggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContentwarehouseV1RuleTriggerType] {
-	return pulumix.Output[*GoogleCloudContentwarehouseV1RuleTriggerType]{
-		OutputState: in.ToGoogleCloudContentwarehouseV1RuleTriggerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type for update.
@@ -1138,12 +1107,6 @@ func (in *googleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtr) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrOutput)
 }
 
-func (in *googleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType]{
-		OutputState: in.ToGoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Detected orientation for the Layout.
 type GoogleCloudDocumentaiV1DocumentPageLayoutOrientation string
 
@@ -1321,12 +1284,6 @@ func (in *googleCloudDocumentaiV1DocumentPageLayoutOrientationPtr) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDocumentaiV1DocumentPageLayoutOrientationPtrOutput)
 }
 
-func (in *googleCloudDocumentaiV1DocumentPageLayoutOrientationPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageLayoutOrientation] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageLayoutOrientation]{
-		OutputState: in.ToGoogleCloudDocumentaiV1DocumentPageLayoutOrientationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Detected break type.
 type GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType string
 
@@ -1499,12 +1456,6 @@ func (in *googleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtr) ToGoogle
 
 func (in *googleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtr) ToGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutput)
-}
-
-func (in *googleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType]{
-		OutputState: in.ToGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of provenance operation.
@@ -1693,12 +1644,6 @@ func (in *googleCloudDocumentaiV1DocumentProvenanceTypePtr) ToGoogleCloudDocumen
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDocumentaiV1DocumentProvenanceTypePtrOutput)
 }
 
-func (in *googleCloudDocumentaiV1DocumentProvenanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDocumentaiV1DocumentProvenanceType] {
-	return pulumix.Output[*GoogleCloudDocumentaiV1DocumentProvenanceType]{
-		OutputState: in.ToGoogleCloudDocumentaiV1DocumentProvenanceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The log type that this config enables.
 type GoogleIamV1AuditLogConfigLogType string
 
@@ -1871,12 +1816,6 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 
 func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
-		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

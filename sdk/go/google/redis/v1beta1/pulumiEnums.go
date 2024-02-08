@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
@@ -182,12 +181,6 @@ func (in *clusterAuthorizationModePtr) ToClusterAuthorizationModePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterAuthorizationModePtrOutput)
 }
 
-func (in *clusterAuthorizationModePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterAuthorizationMode] {
-	return pulumix.Output[*ClusterAuthorizationMode]{
-		OutputState: in.ToClusterAuthorizationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
 type ClusterTransitEncryptionMode string
 
@@ -357,12 +350,6 @@ func (in *clusterTransitEncryptionModePtr) ToClusterTransitEncryptionModePtrOutp
 
 func (in *clusterTransitEncryptionModePtr) ToClusterTransitEncryptionModePtrOutputWithContext(ctx context.Context) ClusterTransitEncryptionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterTransitEncryptionModePtrOutput)
-}
-
-func (in *clusterTransitEncryptionModePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterTransitEncryptionMode] {
-	return pulumix.Output[*ClusterTransitEncryptionMode]{
-		OutputState: in.ToClusterTransitEncryptionModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
@@ -536,12 +523,6 @@ func (in *instanceConnectModePtr) ToInstanceConnectModePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceConnectModePtrOutput)
 }
 
-func (in *instanceConnectModePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceConnectMode] {
-	return pulumix.Output[*InstanceConnectMode]{
-		OutputState: in.ToInstanceConnectModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
 type InstanceReadReplicasMode string
 
@@ -713,12 +694,6 @@ func (in *instanceReadReplicasModePtr) ToInstanceReadReplicasModePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceReadReplicasModePtrOutput)
 }
 
-func (in *instanceReadReplicasModePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceReadReplicasMode] {
-	return pulumix.Output[*InstanceReadReplicasMode]{
-		OutputState: in.ToInstanceReadReplicasModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceSuspensionReasonsItem string
 
 const (
@@ -884,12 +859,6 @@ func (in *instanceSuspensionReasonsItemPtr) ToInstanceSuspensionReasonsItemPtrOu
 
 func (in *instanceSuspensionReasonsItemPtr) ToInstanceSuspensionReasonsItemPtrOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceSuspensionReasonsItemPtrOutput)
-}
-
-func (in *instanceSuspensionReasonsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceSuspensionReasonsItem] {
-	return pulumix.Output[*InstanceSuspensionReasonsItem]{
-		OutputState: in.ToInstanceSuspensionReasonsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceSuspensionReasonsItemArrayInput is an input type that accepts InstanceSuspensionReasonsItemArray and InstanceSuspensionReasonsItemArrayOutput values.
@@ -1108,12 +1077,6 @@ func (in *instanceTierPtr) ToInstanceTierPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTierPtrOutput)
 }
 
-func (in *instanceTierPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceTier] {
-	return pulumix.Output[*InstanceTier]{
-		OutputState: in.ToInstanceTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
 type InstanceTransitEncryptionMode string
 
@@ -1285,12 +1248,6 @@ func (in *instanceTransitEncryptionModePtr) ToInstanceTransitEncryptionModePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTransitEncryptionModePtrOutput)
 }
 
-func (in *instanceTransitEncryptionModePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceTransitEncryptionMode] {
-	return pulumix.Output[*InstanceTransitEncryptionMode]{
-		OutputState: in.ToInstanceTransitEncryptionModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
 type PersistenceConfigPersistenceMode string
 
@@ -1460,12 +1417,6 @@ func (in *persistenceConfigPersistenceModePtr) ToPersistenceConfigPersistenceMod
 
 func (in *persistenceConfigPersistenceModePtr) ToPersistenceConfigPersistenceModePtrOutputWithContext(ctx context.Context) PersistenceConfigPersistenceModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PersistenceConfigPersistenceModePtrOutput)
-}
-
-func (in *persistenceConfigPersistenceModePtr) ToOutput(ctx context.Context) pulumix.Output[*PersistenceConfigPersistenceMode] {
-	return pulumix.Output[*PersistenceConfigPersistenceMode]{
-		OutputState: in.ToPersistenceConfigPersistenceModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
@@ -1643,12 +1594,6 @@ func (in *persistenceConfigRdbSnapshotPeriodPtr) ToPersistenceConfigRdbSnapshotP
 
 func (in *persistenceConfigRdbSnapshotPeriodPtr) ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(ctx context.Context) PersistenceConfigRdbSnapshotPeriodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PersistenceConfigRdbSnapshotPeriodPtrOutput)
-}
-
-func (in *persistenceConfigRdbSnapshotPeriodPtr) ToOutput(ctx context.Context) pulumix.Output[*PersistenceConfigRdbSnapshotPeriod] {
-	return pulumix.Output[*PersistenceConfigRdbSnapshotPeriod]{
-		OutputState: in.ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The day of week that maintenance updates occur.
@@ -1835,12 +1780,6 @@ func (in *weeklyMaintenanceWindowDayPtr) ToWeeklyMaintenanceWindowDayPtrOutput()
 
 func (in *weeklyMaintenanceWindowDayPtr) ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeeklyMaintenanceWindowDayPtrOutput)
-}
-
-func (in *weeklyMaintenanceWindowDayPtr) ToOutput(ctx context.Context) pulumix.Output[*WeeklyMaintenanceWindowDay] {
-	return pulumix.Output[*WeeklyMaintenanceWindowDay]{
-		OutputState: in.ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

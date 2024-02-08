@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The action that the external access rule performs.
 type ExternalAccessRuleAction string
 
@@ -360,12 +353,6 @@ func (in *externalAccessRuleActionPtr) ToExternalAccessRuleActionPtrOutput() Ext
 
 func (in *externalAccessRuleActionPtr) ToExternalAccessRuleActionPtrOutputWithContext(ctx context.Context) ExternalAccessRuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExternalAccessRuleActionPtrOutput)
-}
-
-func (in *externalAccessRuleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ExternalAccessRuleAction] {
-	return pulumix.Output[*ExternalAccessRuleAction]{
-		OutputState: in.ToExternalAccessRuleActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Protocol used by vCenter to send logs to a logging server.
@@ -539,12 +526,6 @@ func (in *loggingServerProtocolPtr) ToLoggingServerProtocolPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(LoggingServerProtocolPtrOutput)
 }
 
-func (in *loggingServerProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*LoggingServerProtocol] {
-	return pulumix.Output[*LoggingServerProtocol]{
-		OutputState: in.ToLoggingServerProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of component that produces logs that will be forwarded to this logging server.
 type LoggingServerSourceType string
 
@@ -714,12 +695,6 @@ func (in *loggingServerSourceTypePtr) ToLoggingServerSourceTypePtrOutput() Loggi
 
 func (in *loggingServerSourceTypePtr) ToLoggingServerSourceTypePtrOutputWithContext(ctx context.Context) LoggingServerSourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoggingServerSourceTypePtrOutput)
-}
-
-func (in *loggingServerSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoggingServerSourceType] {
-	return pulumix.Output[*LoggingServerSourceType]{
-		OutputState: in.ToLoggingServerSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The type of the network to peer with the VMware Engine network.
@@ -905,12 +880,6 @@ func (in *networkPeeringPeerNetworkTypePtr) ToNetworkPeeringPeerNetworkTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPeeringPeerNetworkTypePtrOutput)
 }
 
-func (in *networkPeeringPeerNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPeeringPeerNetworkType] {
-	return pulumix.Output[*NetworkPeeringPeerNetworkType]{
-		OutputState: in.ToNetworkPeeringPeerNetworkTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Type of the private cloud. Defaults to STANDARD.
 type PrivateCloudType string
 
@@ -1082,12 +1051,6 @@ func (in *privateCloudTypePtr) ToPrivateCloudTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateCloudTypePtrOutput)
 }
 
-func (in *privateCloudTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudType] {
-	return pulumix.Output[*PrivateCloudType]{
-		OutputState: in.ToPrivateCloudTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Routing Mode. Default value is set to GLOBAL. For type = PRIVATE_SERVICE_ACCESS, this field can be set to GLOBAL or REGIONAL, for other types only GLOBAL is supported.
 type PrivateConnectionRoutingMode string
 
@@ -1257,12 +1220,6 @@ func (in *privateConnectionRoutingModePtr) ToPrivateConnectionRoutingModePtrOutp
 
 func (in *privateConnectionRoutingModePtr) ToPrivateConnectionRoutingModePtrOutputWithContext(ctx context.Context) PrivateConnectionRoutingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateConnectionRoutingModePtrOutput)
-}
-
-func (in *privateConnectionRoutingModePtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnectionRoutingMode] {
-	return pulumix.Output[*PrivateConnectionRoutingMode]{
-		OutputState: in.ToPrivateConnectionRoutingModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Private connection type.
@@ -1442,12 +1399,6 @@ func (in *privateConnectionTypePtr) ToPrivateConnectionTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateConnectionTypePtrOutput)
 }
 
-func (in *privateConnectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnectionType] {
-	return pulumix.Output[*PrivateConnectionType]{
-		OutputState: in.ToPrivateConnectionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. VMware Engine network type.
 type VmwareEngineNetworkType string
 
@@ -1617,12 +1568,6 @@ func (in *vmwareEngineNetworkTypePtr) ToVmwareEngineNetworkTypePtrOutput() Vmwar
 
 func (in *vmwareEngineNetworkTypePtr) ToVmwareEngineNetworkTypePtrOutputWithContext(ctx context.Context) VmwareEngineNetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VmwareEngineNetworkTypePtrOutput)
-}
-
-func (in *vmwareEngineNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VmwareEngineNetworkType] {
-	return pulumix.Output[*VmwareEngineNetworkType]{
-		OutputState: in.ToVmwareEngineNetworkTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

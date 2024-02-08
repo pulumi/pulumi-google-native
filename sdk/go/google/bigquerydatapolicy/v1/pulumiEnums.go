@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -183,12 +182,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A predefined masking expression.
@@ -377,12 +370,6 @@ func (in *dataMaskingPolicyPredefinedExpressionPtr) ToDataMaskingPolicyPredefine
 	return pulumi.ToOutputWithContext(ctx, in).(DataMaskingPolicyPredefinedExpressionPtrOutput)
 }
 
-func (in *dataMaskingPolicyPredefinedExpressionPtr) ToOutput(ctx context.Context) pulumix.Output[*DataMaskingPolicyPredefinedExpression] {
-	return pulumix.Output[*DataMaskingPolicyPredefinedExpression]{
-		OutputState: in.ToDataMaskingPolicyPredefinedExpressionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of data policy.
 type DataPolicyDataPolicyType string
 
@@ -552,12 +539,6 @@ func (in *dataPolicyDataPolicyTypePtr) ToDataPolicyDataPolicyTypePtrOutput() Dat
 
 func (in *dataPolicyDataPolicyTypePtr) ToDataPolicyDataPolicyTypePtrOutputWithContext(ctx context.Context) DataPolicyDataPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataPolicyDataPolicyTypePtrOutput)
-}
-
-func (in *dataPolicyDataPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataPolicyDataPolicyType] {
-	return pulumix.Output[*DataPolicyDataPolicyType]{
-		OutputState: in.ToDataPolicyDataPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
