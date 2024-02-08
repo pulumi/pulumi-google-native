@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InternalRangeOverlapsItem string
 
 const (
@@ -359,12 +352,6 @@ func (in *internalRangeOverlapsItemPtr) ToInternalRangeOverlapsItemPtrOutput() I
 
 func (in *internalRangeOverlapsItemPtr) ToInternalRangeOverlapsItemPtrOutputWithContext(ctx context.Context) InternalRangeOverlapsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InternalRangeOverlapsItemPtrOutput)
-}
-
-func (in *internalRangeOverlapsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeOverlapsItem] {
-	return pulumix.Output[*InternalRangeOverlapsItem]{
-		OutputState: in.ToInternalRangeOverlapsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InternalRangeOverlapsItemArrayInput is an input type that accepts InternalRangeOverlapsItemArray and InternalRangeOverlapsItemArrayOutput values.
@@ -586,12 +573,6 @@ func (in *internalRangePeeringPtr) ToInternalRangePeeringPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(InternalRangePeeringPtrOutput)
 }
 
-func (in *internalRangePeeringPtr) ToOutput(ctx context.Context) pulumix.Output[*InternalRangePeering] {
-	return pulumix.Output[*InternalRangePeering]{
-		OutputState: in.ToInternalRangePeeringPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of usage set for this internal range.
 type InternalRangeUsage string
 
@@ -761,12 +742,6 @@ func (in *internalRangeUsagePtr) ToInternalRangeUsagePtrOutput() InternalRangeUs
 
 func (in *internalRangeUsagePtr) ToInternalRangeUsagePtrOutputWithContext(ctx context.Context) InternalRangeUsagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InternalRangeUsagePtrOutput)
-}
-
-func (in *internalRangeUsagePtr) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeUsage] {
-	return pulumix.Output[*InternalRangeUsage]{
-		OutputState: in.ToInternalRangeUsagePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

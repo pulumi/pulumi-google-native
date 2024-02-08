@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the entry. Only used for Entries with types in the EntryType enum.
@@ -188,12 +187,6 @@ func (in *entryTypePtr) ToEntryTypePtrOutputWithContext(ctx context.Context) Ent
 	return pulumi.ToOutputWithContext(ctx, in).(EntryTypePtrOutput)
 }
 
-func (in *entryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EntryType] {
-	return pulumix.Output[*EntryType]{
-		OutputState: in.ToEntryTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TaxonomyActivatedPolicyTypesItem string
 
 const (
@@ -359,12 +352,6 @@ func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesIte
 
 func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TaxonomyActivatedPolicyTypesItemPtrOutput)
-}
-
-func (in *taxonomyActivatedPolicyTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyActivatedPolicyTypesItem] {
-	return pulumix.Output[*TaxonomyActivatedPolicyTypesItem]{
-		OutputState: in.ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TaxonomyActivatedPolicyTypesItemArrayInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArray and TaxonomyActivatedPolicyTypesItemArrayOutput values.

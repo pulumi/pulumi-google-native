@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of archive files in this repository. The default behavior is DEB.
@@ -182,12 +181,6 @@ func (in *aptRepositoryArchiveTypePtr) ToAptRepositoryArchiveTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(AptRepositoryArchiveTypePtrOutput)
 }
 
-func (in *aptRepositoryArchiveTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AptRepositoryArchiveType] {
-	return pulumix.Output[*AptRepositoryArchiveType]{
-		OutputState: in.ToAptRepositoryArchiveTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
 type AptSettingsType string
 
@@ -357,12 +350,6 @@ func (in *aptSettingsTypePtr) ToAptSettingsTypePtrOutput() AptSettingsTypePtrOut
 
 func (in *aptSettingsTypePtr) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AptSettingsTypePtrOutput)
-}
-
-func (in *aptSettingsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AptSettingsType] {
-	return pulumix.Output[*AptSettingsType]{
-		OutputState: in.ToAptSettingsTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
@@ -539,12 +526,6 @@ func (in *execStepConfigInterpreterPtr) ToExecStepConfigInterpreterPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ExecStepConfigInterpreterPtrOutput)
 }
 
-func (in *execStepConfigInterpreterPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecStepConfigInterpreter] {
-	return pulumix.Output[*ExecStepConfigInterpreter]{
-		OutputState: in.ToExecStepConfigInterpreterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
 type PackageDesiredState string
 
@@ -717,12 +698,6 @@ func (in *packageDesiredStatePtr) ToPackageDesiredStatePtrOutput() PackageDesire
 
 func (in *packageDesiredStatePtr) ToPackageDesiredStatePtrOutputWithContext(ctx context.Context) PackageDesiredStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PackageDesiredStatePtrOutput)
-}
-
-func (in *packageDesiredStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PackageDesiredState] {
-	return pulumix.Output[*PackageDesiredState]{
-		OutputState: in.ToPackageDesiredStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
@@ -905,12 +880,6 @@ func (in *packageManagerPtr) ToPackageManagerPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(PackageManagerPtrOutput)
 }
 
-func (in *packageManagerPtr) ToOutput(ctx context.Context) pulumix.Output[*PackageManager] {
-	return pulumix.Output[*PackageManager]{
-		OutputState: in.ToPackageManagerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Post-patch reboot settings.
 type PatchConfigRebootConfig string
 
@@ -1085,12 +1054,6 @@ func (in *patchConfigRebootConfigPtr) ToPatchConfigRebootConfigPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PatchConfigRebootConfigPtrOutput)
 }
 
-func (in *patchConfigRebootConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*PatchConfigRebootConfig] {
-	return pulumix.Output[*PatchConfigRebootConfig]{
-		OutputState: in.ToPatchConfigRebootConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mode of the patch rollout.
 type PatchRolloutMode string
 
@@ -1260,12 +1223,6 @@ func (in *patchRolloutModePtr) ToPatchRolloutModePtrOutput() PatchRolloutModePtr
 
 func (in *patchRolloutModePtr) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PatchRolloutModePtrOutput)
-}
-
-func (in *patchRolloutModePtr) ToOutput(ctx context.Context) pulumix.Output[*PatchRolloutMode] {
-	return pulumix.Output[*PatchRolloutMode]{
-		OutputState: in.ToPatchRolloutModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The frequency unit of this recurring schedule.
@@ -1442,12 +1399,6 @@ func (in *recurringScheduleFrequencyPtr) ToRecurringScheduleFrequencyPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(RecurringScheduleFrequencyPtrOutput)
 }
 
-func (in *recurringScheduleFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurringScheduleFrequency] {
-	return pulumix.Output[*RecurringScheduleFrequency]{
-		OutputState: in.ToRecurringScheduleFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
 type SoftwareRecipeDesiredState string
 
@@ -1620,12 +1571,6 @@ func (in *softwareRecipeDesiredStatePtr) ToSoftwareRecipeDesiredStatePtrOutput()
 
 func (in *softwareRecipeDesiredStatePtr) ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx context.Context) SoftwareRecipeDesiredStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareRecipeDesiredStatePtrOutput)
-}
-
-func (in *softwareRecipeDesiredStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeDesiredState] {
-	return pulumix.Output[*SoftwareRecipeDesiredState]{
-		OutputState: in.ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The type of the archive to extract.
@@ -1811,12 +1756,6 @@ func (in *softwareRecipeStepExtractArchiveTypePtr) ToSoftwareRecipeStepExtractAr
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareRecipeStepExtractArchiveTypePtrOutput)
 }
 
-func (in *softwareRecipeStepExtractArchiveTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepExtractArchiveType] {
-	return pulumix.Output[*SoftwareRecipeStepExtractArchiveType]{
-		OutputState: in.ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
 type SoftwareRecipeStepRunScriptInterpreter string
 
@@ -1986,12 +1925,6 @@ func (in *softwareRecipeStepRunScriptInterpreterPtr) ToSoftwareRecipeStepRunScri
 
 func (in *softwareRecipeStepRunScriptInterpreterPtr) ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptInterpreterPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareRecipeStepRunScriptInterpreterPtrOutput)
-}
-
-func (in *softwareRecipeStepRunScriptInterpreterPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareRecipeStepRunScriptInterpreter] {
-	return pulumix.Output[*SoftwareRecipeStepRunScriptInterpreter]{
-		OutputState: in.ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. A day of the week.
@@ -2180,12 +2113,6 @@ func (in *weekDayOfMonthDayOfWeekPtr) ToWeekDayOfMonthDayOfWeekPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(WeekDayOfMonthDayOfWeekPtrOutput)
 }
 
-func (in *weekDayOfMonthDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekDayOfMonthDayOfWeek] {
-	return pulumix.Output[*WeekDayOfMonthDayOfWeek]{
-		OutputState: in.ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Day of the week.
 type WeeklyScheduleDayOfWeek string
 
@@ -2370,12 +2297,6 @@ func (in *weeklyScheduleDayOfWeekPtr) ToWeeklyScheduleDayOfWeekPtrOutput() Weekl
 
 func (in *weeklyScheduleDayOfWeekPtr) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeeklyScheduleDayOfWeekPtrOutput)
-}
-
-func (in *weeklyScheduleDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*WeeklyScheduleDayOfWeek] {
-	return pulumix.Output[*WeeklyScheduleDayOfWeek]{
-		OutputState: in.ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type WindowsUpdateSettingsClassificationsItem string
@@ -2567,12 +2488,6 @@ func (in *windowsUpdateSettingsClassificationsItemPtr) ToWindowsUpdateSettingsCl
 
 func (in *windowsUpdateSettingsClassificationsItemPtr) ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsUpdateSettingsClassificationsItemPtrOutput)
-}
-
-func (in *windowsUpdateSettingsClassificationsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsUpdateSettingsClassificationsItem] {
-	return pulumix.Output[*WindowsUpdateSettingsClassificationsItem]{
-		OutputState: in.ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WindowsUpdateSettingsClassificationsItemArrayInput is an input type that accepts WindowsUpdateSettingsClassificationsItemArray and WindowsUpdateSettingsClassificationsItemArrayOutput values.

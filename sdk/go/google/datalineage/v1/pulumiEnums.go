@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.
@@ -194,12 +193,6 @@ func (in *googleCloudDatacatalogLineageV1OriginSourceTypePtr) ToGoogleCloudDatac
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutput)
 }
 
-func (in *googleCloudDatacatalogLineageV1OriginSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogLineageV1OriginSourceType] {
-	return pulumix.Output[*GoogleCloudDatacatalogLineageV1OriginSourceType]{
-		OutputState: in.ToGoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The state of the run.
 type RunStateEnum string
 
@@ -375,12 +368,6 @@ func (in *runStateEnumPtr) ToRunStateEnumPtrOutput() RunStateEnumPtrOutput {
 
 func (in *runStateEnumPtr) ToRunStateEnumPtrOutputWithContext(ctx context.Context) RunStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RunStateEnumPtrOutput)
-}
-
-func (in *runStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*RunStateEnum] {
-	return pulumix.Output[*RunStateEnum]{
-		OutputState: in.ToRunStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
