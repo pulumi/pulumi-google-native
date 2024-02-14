@@ -1391,6 +1391,21 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 			Type: "object",
 			Ref:  referencedTypeName,
 		}, nil
+	case prop.Type == "object" && prop.AdditionalProperties != nil:
+		// The prop is a map with a string key and a simple value
+		// if it doesn't have a ref.
+		if prop.AdditionalProperties.Ref == "" {
+			return &schema.TypeSpec{
+				Type: "object",
+				AdditionalProperties: &schema.TypeSpec{
+					Type: "string",
+				},
+			}, nil
+		}
+
+		// Otherwise, the value in-turn is a complex type.
+		typePropName := fmt.Sprintf(`%s%s`, typeName, strings.Title(propName))
+		return g.genTypeSpec(typePropName, propName, prop.AdditionalProperties, isOutput)
 	case len(prop.Enum) > 0 && !isOutput:
 		return g.genEnumType(typeName, propName, prop)
 	case prop.Type != "":
