@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The call logging level associated to this execution.
@@ -180,12 +179,6 @@ func (in *executionCallLogLevelPtr) ToExecutionCallLogLevelPtrOutput() Execution
 
 func (in *executionCallLogLevelPtr) ToExecutionCallLogLevelPtrOutputWithContext(ctx context.Context) ExecutionCallLogLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionCallLogLevelPtrOutput)
-}
-
-func (in *executionCallLogLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionCallLogLevel] {
-	return pulumix.Output[*ExecutionCallLogLevel]{
-		OutputState: in.ToExecutionCallLogLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The type of network connectivity used by the AppConnection.
@@ -179,12 +178,6 @@ func (in *appConnectionTypePtr) ToAppConnectionTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(AppConnectionTypePtrOutput)
 }
 
-func (in *appConnectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AppConnectionType] {
-	return pulumix.Output[*AppConnectionType]{
-		OutputState: in.ToAppConnectionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of hosting used by the AppGateway.
 type AppGatewayHostType string
 
@@ -351,12 +344,6 @@ func (in *appGatewayHostTypePtr) ToAppGatewayHostTypePtrOutput() AppGatewayHostT
 
 func (in *appGatewayHostTypePtr) ToAppGatewayHostTypePtrOutputWithContext(ctx context.Context) AppGatewayHostTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppGatewayHostTypePtrOutput)
-}
-
-func (in *appGatewayHostTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AppGatewayHostType] {
-	return pulumix.Output[*AppGatewayHostType]{
-		OutputState: in.ToAppGatewayHostTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The type of network connectivity used by the AppGateway.
@@ -527,12 +514,6 @@ func (in *appGatewayTypePtr) ToAppGatewayTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AppGatewayTypePtrOutput)
 }
 
-func (in *appGatewayTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AppGatewayType] {
-	return pulumix.Output[*AppGatewayType]{
-		OutputState: in.ToAppGatewayTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of hosting used by the gateway.
 type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType string
 
@@ -699,12 +680,6 @@ func (in *googleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypePtr) ToGo
 
 func (in *googleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypePtr) ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypePtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypePtrOutput)
-}
-
-func (in *googleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType] {
-	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType]{
-		OutputState: in.ToGoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -884,12 +859,6 @@ func (in *googleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusPtr) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusPtrOutput)
 }
 
-func (in *googleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus] {
-	return pulumix.Output[*GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus]{
-		OutputState: in.ToGoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The log type that this config enables.
 type GoogleIamV1AuditLogConfigLogType string
 
@@ -1062,12 +1031,6 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 
 func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
-		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

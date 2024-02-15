@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The App Engine integration mode to use for this database.
@@ -180,12 +179,6 @@ func (in *databaseAppEngineIntegrationModePtr) ToDatabaseAppEngineIntegrationMod
 
 func (in *databaseAppEngineIntegrationModePtr) ToDatabaseAppEngineIntegrationModePtrOutputWithContext(ctx context.Context) DatabaseAppEngineIntegrationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseAppEngineIntegrationModePtrOutput)
-}
-
-func (in *databaseAppEngineIntegrationModePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAppEngineIntegrationMode] {
-	return pulumix.Output[*DatabaseAppEngineIntegrationMode]{
-		OutputState: in.ToDatabaseAppEngineIntegrationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The concurrency control mode to use for this database.
@@ -362,12 +355,6 @@ func (in *databaseConcurrencyModePtr) ToDatabaseConcurrencyModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseConcurrencyModePtrOutput)
 }
 
-func (in *databaseConcurrencyModePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseConcurrencyMode] {
-	return pulumix.Output[*DatabaseConcurrencyMode]{
-		OutputState: in.ToDatabaseConcurrencyModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of delete protection for the database.
 type DatabaseDeleteProtectionState string
 
@@ -537,12 +524,6 @@ func (in *databaseDeleteProtectionStatePtr) ToDatabaseDeleteProtectionStatePtrOu
 
 func (in *databaseDeleteProtectionStatePtr) ToDatabaseDeleteProtectionStatePtrOutputWithContext(ctx context.Context) DatabaseDeleteProtectionStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseDeleteProtectionStatePtrOutput)
-}
-
-func (in *databaseDeleteProtectionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDeleteProtectionState] {
-	return pulumix.Output[*DatabaseDeleteProtectionState]{
-		OutputState: in.ToDatabaseDeleteProtectionStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether to enable the PITR feature on this database.
@@ -716,12 +697,6 @@ func (in *databasePointInTimeRecoveryEnablementPtr) ToDatabasePointInTimeRecover
 	return pulumi.ToOutputWithContext(ctx, in).(DatabasePointInTimeRecoveryEnablementPtrOutput)
 }
 
-func (in *databasePointInTimeRecoveryEnablementPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabasePointInTimeRecoveryEnablement] {
-	return pulumix.Output[*DatabasePointInTimeRecoveryEnablement]{
-		OutputState: in.ToDatabasePointInTimeRecoveryEnablementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 type DatabaseType string
 
@@ -893,12 +868,6 @@ func (in *databaseTypePtr) ToDatabaseTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypePtrOutput)
 }
 
-func (in *databaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseType] {
-	return pulumix.Output[*DatabaseType]{
-		OutputState: in.ToDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates that this field supports operations on `array_value`s.
 type GoogleFirestoreAdminV1IndexFieldArrayConfig string
 
@@ -1065,12 +1034,6 @@ func (in *googleFirestoreAdminV1IndexFieldArrayConfigPtr) ToGoogleFirestoreAdmin
 
 func (in *googleFirestoreAdminV1IndexFieldArrayConfigPtr) ToGoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput)
-}
-
-func (in *googleFirestoreAdminV1IndexFieldArrayConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1IndexFieldArrayConfig] {
-	return pulumix.Output[*GoogleFirestoreAdminV1IndexFieldArrayConfig]{
-		OutputState: in.ToGoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
@@ -1242,12 +1205,6 @@ func (in *googleFirestoreAdminV1IndexFieldOrderPtr) ToGoogleFirestoreAdminV1Inde
 
 func (in *googleFirestoreAdminV1IndexFieldOrderPtr) ToGoogleFirestoreAdminV1IndexFieldOrderPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1IndexFieldOrderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1IndexFieldOrderPtrOutput)
-}
-
-func (in *googleFirestoreAdminV1IndexFieldOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1IndexFieldOrder] {
-	return pulumix.Output[*GoogleFirestoreAdminV1IndexFieldOrder]{
-		OutputState: in.ToGoogleFirestoreAdminV1IndexFieldOrderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
@@ -1436,12 +1393,6 @@ func (in *googleFirestoreAdminV1WeeklyRecurrenceDayPtr) ToGoogleFirestoreAdminV1
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput)
 }
 
-func (in *googleFirestoreAdminV1WeeklyRecurrenceDayPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1WeeklyRecurrenceDay] {
-	return pulumix.Output[*GoogleFirestoreAdminV1WeeklyRecurrenceDay]{
-		OutputState: in.ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The API scope supported by this index.
 type IndexApiScope string
 
@@ -1608,12 +1559,6 @@ func (in *indexApiScopePtr) ToIndexApiScopePtrOutput() IndexApiScopePtrOutput {
 
 func (in *indexApiScopePtr) ToIndexApiScopePtrOutputWithContext(ctx context.Context) IndexApiScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IndexApiScopePtrOutput)
-}
-
-func (in *indexApiScopePtr) ToOutput(ctx context.Context) pulumix.Output[*IndexApiScope] {
-	return pulumix.Output[*IndexApiScope]{
-		OutputState: in.ToIndexApiScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
@@ -1788,12 +1733,6 @@ func (in *indexQueryScopePtr) ToIndexQueryScopePtrOutput() IndexQueryScopePtrOut
 
 func (in *indexQueryScopePtr) ToIndexQueryScopePtrOutputWithContext(ctx context.Context) IndexQueryScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IndexQueryScopePtrOutput)
-}
-
-func (in *indexQueryScopePtr) ToOutput(ctx context.Context) pulumix.Output[*IndexQueryScope] {
-	return pulumix.Output[*IndexQueryScope]{
-		OutputState: in.ToIndexQueryScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

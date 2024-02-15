@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
@@ -180,12 +179,6 @@ func (in *aptSettingsTypePtr) ToAptSettingsTypePtrOutput() AptSettingsTypePtrOut
 
 func (in *aptSettingsTypePtr) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AptSettingsTypePtrOutput)
-}
-
-func (in *aptSettingsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AptSettingsType] {
-	return pulumix.Output[*AptSettingsType]{
-		OutputState: in.ToAptSettingsTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
@@ -362,12 +355,6 @@ func (in *execStepConfigInterpreterPtr) ToExecStepConfigInterpreterPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ExecStepConfigInterpreterPtrOutput)
 }
 
-func (in *execStepConfigInterpreterPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecStepConfigInterpreter] {
-	return pulumix.Output[*ExecStepConfigInterpreter]{
-		OutputState: in.ToExecStepConfigInterpreterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Policy mode
 type OSPolicyMode string
 
@@ -537,12 +524,6 @@ func (in *ospolicyModePtr) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
 
 func (in *ospolicyModePtr) ToOSPolicyModePtrOutputWithContext(ctx context.Context) OSPolicyModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyModePtrOutput)
-}
-
-func (in *ospolicyModePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyMode] {
-	return pulumix.Output[*OSPolicyMode]{
-		OutputState: in.ToOSPolicyModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The script interpreter to use.
@@ -719,12 +700,6 @@ func (in *ospolicyResourceExecResourceExecInterpreterPtr) ToOSPolicyResourceExec
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceExecResourceExecInterpreterPtrOutput)
 }
 
-func (in *ospolicyResourceExecResourceExecInterpreterPtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceExecResourceExecInterpreter] {
-	return pulumix.Output[*OSPolicyResourceExecResourceExecInterpreter]{
-		OutputState: in.ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Desired state of the file.
 type OSPolicyResourceFileResourceState string
 
@@ -899,12 +874,6 @@ func (in *ospolicyResourceFileResourceStatePtr) ToOSPolicyResourceFileResourceSt
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceFileResourceStatePtrOutput)
 }
 
-func (in *ospolicyResourceFileResourceStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceFileResourceState] {
-	return pulumix.Output[*OSPolicyResourceFileResourceState]{
-		OutputState: in.ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The desired state the agent should maintain for this package.
 type OSPolicyResourcePackageResourceDesiredState string
 
@@ -1076,12 +1045,6 @@ func (in *ospolicyResourcePackageResourceDesiredStatePtr) ToOSPolicyResourcePack
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourcePackageResourceDesiredStatePtrOutput)
 }
 
-func (in *ospolicyResourcePackageResourceDesiredStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourcePackageResourceDesiredState] {
-	return pulumix.Output[*OSPolicyResourcePackageResourceDesiredState]{
-		OutputState: in.ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Type of archive files in this repository.
 type OSPolicyResourceRepositoryResourceAptRepositoryArchiveType string
 
@@ -1251,12 +1214,6 @@ func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOSPol
 
 func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput)
-}
-
-func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType] {
-	return pulumix.Output[*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType]{
-		OutputState: in.ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Post-patch reboot settings.
@@ -1433,12 +1390,6 @@ func (in *patchConfigRebootConfigPtr) ToPatchConfigRebootConfigPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PatchConfigRebootConfigPtrOutput)
 }
 
-func (in *patchConfigRebootConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*PatchConfigRebootConfig] {
-	return pulumix.Output[*PatchConfigRebootConfig]{
-		OutputState: in.ToPatchConfigRebootConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mode of the patch rollout.
 type PatchRolloutMode string
 
@@ -1608,12 +1559,6 @@ func (in *patchRolloutModePtr) ToPatchRolloutModePtrOutput() PatchRolloutModePtr
 
 func (in *patchRolloutModePtr) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PatchRolloutModePtrOutput)
-}
-
-func (in *patchRolloutModePtr) ToOutput(ctx context.Context) pulumix.Output[*PatchRolloutMode] {
-	return pulumix.Output[*PatchRolloutMode]{
-		OutputState: in.ToPatchRolloutModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The frequency unit of this recurring schedule.
@@ -1788,12 +1733,6 @@ func (in *recurringScheduleFrequencyPtr) ToRecurringScheduleFrequencyPtrOutput()
 
 func (in *recurringScheduleFrequencyPtr) ToRecurringScheduleFrequencyPtrOutputWithContext(ctx context.Context) RecurringScheduleFrequencyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecurringScheduleFrequencyPtrOutput)
-}
-
-func (in *recurringScheduleFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurringScheduleFrequency] {
-	return pulumix.Output[*RecurringScheduleFrequency]{
-		OutputState: in.ToRecurringScheduleFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. A day of the week.
@@ -1982,12 +1921,6 @@ func (in *weekDayOfMonthDayOfWeekPtr) ToWeekDayOfMonthDayOfWeekPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(WeekDayOfMonthDayOfWeekPtrOutput)
 }
 
-func (in *weekDayOfMonthDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekDayOfMonthDayOfWeek] {
-	return pulumix.Output[*WeekDayOfMonthDayOfWeek]{
-		OutputState: in.ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Day of the week.
 type WeeklyScheduleDayOfWeek string
 
@@ -2172,12 +2105,6 @@ func (in *weeklyScheduleDayOfWeekPtr) ToWeeklyScheduleDayOfWeekPtrOutput() Weekl
 
 func (in *weeklyScheduleDayOfWeekPtr) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeeklyScheduleDayOfWeekPtrOutput)
-}
-
-func (in *weeklyScheduleDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*WeeklyScheduleDayOfWeek] {
-	return pulumix.Output[*WeeklyScheduleDayOfWeek]{
-		OutputState: in.ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type WindowsUpdateSettingsClassificationsItem string
@@ -2369,12 +2296,6 @@ func (in *windowsUpdateSettingsClassificationsItemPtr) ToWindowsUpdateSettingsCl
 
 func (in *windowsUpdateSettingsClassificationsItemPtr) ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsUpdateSettingsClassificationsItemPtrOutput)
-}
-
-func (in *windowsUpdateSettingsClassificationsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsUpdateSettingsClassificationsItem] {
-	return pulumix.Output[*WindowsUpdateSettingsClassificationsItem]{
-		OutputState: in.ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WindowsUpdateSettingsClassificationsItemArrayInput is an input type that accepts WindowsUpdateSettingsClassificationsItemArray and WindowsUpdateSettingsClassificationsItemArrayOutput values.

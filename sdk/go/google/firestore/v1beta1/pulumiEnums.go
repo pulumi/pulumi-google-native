@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The field's mode.
@@ -185,12 +184,6 @@ func (in *googleFirestoreAdminV1beta1IndexFieldModePtr) ToGoogleFirestoreAdminV1
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput)
 }
 
-func (in *googleFirestoreAdminV1beta1IndexFieldModePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1beta1IndexFieldMode] {
-	return pulumix.Output[*GoogleFirestoreAdminV1beta1IndexFieldMode]{
-		OutputState: in.ToGoogleFirestoreAdminV1beta1IndexFieldModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of the index. Output only.
 type IndexStateEnum string
 
@@ -363,12 +356,6 @@ func (in *indexStateEnumPtr) ToIndexStateEnumPtrOutput() IndexStateEnumPtrOutput
 
 func (in *indexStateEnumPtr) ToIndexStateEnumPtrOutputWithContext(ctx context.Context) IndexStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IndexStateEnumPtrOutput)
-}
-
-func (in *indexStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*IndexStateEnum] {
-	return pulumix.Output[*IndexStateEnum]{
-		OutputState: in.ToIndexStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

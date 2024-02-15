@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
@@ -182,12 +181,6 @@ func (in *conversationMediumPtr) ToConversationMediumPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ConversationMediumPtrOutput)
 }
 
-func (in *conversationMediumPtr) ToOutput(ctx context.Context) pulumix.Output[*ConversationMedium] {
-	return pulumix.Output[*ConversationMedium]{
-		OutputState: in.ToConversationMediumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Default summarization model to be used.
 type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel string
 
@@ -354,12 +347,6 @@ func (in *googleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig
 
 func (in *googleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtr) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput)
-}
-
-func (in *googleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel] {
-	return pulumix.Output[*GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel]{
-		OutputState: in.ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
@@ -533,12 +520,6 @@ func (in *googleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtr) 
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput)
 }
 
-func (in *googleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium] {
-	return pulumix.Output[*GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium]{
-		OutputState: in.ToGoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of this phrase match rule group.
 type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType string
 
@@ -710,12 +691,6 @@ func (in *googleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtr) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput)
 }
 
-func (in *googleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType] {
-	return pulumix.Output[*GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType]{
-		OutputState: in.ToGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the model.
 type IssueModelModelType string
 
@@ -885,12 +860,6 @@ func (in *issueModelModelTypePtr) ToIssueModelModelTypePtrOutput() IssueModelMod
 
 func (in *issueModelModelTypePtr) ToIssueModelModelTypePtrOutputWithContext(ctx context.Context) IssueModelModelTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IssueModelModelTypePtrOutput)
-}
-
-func (in *issueModelModelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IssueModelModelType] {
-	return pulumix.Output[*IssueModelModelType]{
-		OutputState: in.ToIssueModelModelTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript.
@@ -1070,12 +1039,6 @@ func (in *phraseMatcherRoleMatchPtr) ToPhraseMatcherRoleMatchPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(PhraseMatcherRoleMatchPtrOutput)
 }
 
-func (in *phraseMatcherRoleMatchPtr) ToOutput(ctx context.Context) pulumix.Output[*PhraseMatcherRoleMatch] {
-	return pulumix.Output[*PhraseMatcherRoleMatch]{
-		OutputState: in.ToPhraseMatcherRoleMatchPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of this phrase matcher.
 type PhraseMatcherType string
 
@@ -1245,12 +1208,6 @@ func (in *phraseMatcherTypePtr) ToPhraseMatcherTypePtrOutput() PhraseMatcherType
 
 func (in *phraseMatcherTypePtr) ToPhraseMatcherTypePtrOutputWithContext(ctx context.Context) PhraseMatcherTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PhraseMatcherTypePtrOutput)
-}
-
-func (in *phraseMatcherTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PhraseMatcherType] {
-	return pulumix.Output[*PhraseMatcherType]{
-		OutputState: in.ToPhraseMatcherTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
