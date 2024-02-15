@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the entry. For details, see [`EntryType`](#entrytype).
@@ -221,12 +220,6 @@ func (in *entryTypePtr) ToEntryTypePtrOutputWithContext(ctx context.Context) Ent
 	return pulumi.ToOutputWithContext(ctx, in).(EntryTypePtrOutput)
 }
 
-func (in *entryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EntryType] {
-	return pulumix.Output[*EntryType]{
-		OutputState: in.ToEntryTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Most important inclusion of this column.
 type GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType string
 
@@ -402,12 +395,6 @@ func (in *googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr) ToGoogleCl
 
 func (in *googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput)
-}
-
-func (in *googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType] {
-	return pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType]{
-		OutputState: in.ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Looker specific column type of this column.
@@ -590,12 +577,6 @@ func (in *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput)
 }
 
-func (in *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType] {
-	return pulumix.Output[*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType]{
-		OutputState: in.ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of this view.
 type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType string
 
@@ -767,12 +748,6 @@ func (in *googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr) 
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput)
 }
 
-func (in *googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType] {
-	return pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType]{
-		OutputState: in.ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of this table.
 type GoogleCloudDatacatalogV1DatabaseTableSpecType string
 
@@ -942,12 +917,6 @@ func (in *googleCloudDatacatalogV1DatabaseTableSpecTypePtr) ToGoogleCloudDatacat
 
 func (in *googleCloudDatacatalogV1DatabaseTableSpecTypePtr) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput)
-}
-
-func (in *googleCloudDatacatalogV1DatabaseTableSpecTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecType] {
-	return pulumix.Output[*GoogleCloudDatacatalogV1DatabaseTableSpecType]{
-		OutputState: in.ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies whether the argument is input or output.
@@ -1124,12 +1093,6 @@ func (in *googleCloudDatacatalogV1RoutineSpecArgumentModePtr) ToGoogleCloudDatac
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput)
 }
 
-func (in *googleCloudDatacatalogV1RoutineSpecArgumentModePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecArgumentMode] {
-	return pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecArgumentMode]{
-		OutputState: in.ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the routine.
 type GoogleCloudDatacatalogV1RoutineSpecRoutineType string
 
@@ -1299,12 +1262,6 @@ func (in *googleCloudDatacatalogV1RoutineSpecRoutineTypePtr) ToGoogleCloudDataca
 
 func (in *googleCloudDatacatalogV1RoutineSpecRoutineTypePtr) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput)
-}
-
-func (in *googleCloudDatacatalogV1RoutineSpecRoutineTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecRoutineType] {
-	return pulumix.Output[*GoogleCloudDatacatalogV1RoutineSpecRoutineType]{
-		OutputState: in.ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the dataset.
@@ -1508,12 +1465,6 @@ func (in *googleCloudDatacatalogV1VertexDatasetSpecDataTypePtr) ToGoogleCloudDat
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput)
 }
 
-func (in *googleCloudDatacatalogV1VertexDatasetSpecDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1VertexDatasetSpecDataType] {
-	return pulumix.Output[*GoogleCloudDatacatalogV1VertexDatasetSpecDataType]{
-		OutputState: in.ToGoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the model source.
 type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType string
 
@@ -1691,12 +1642,6 @@ func (in *googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtr) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput)
 }
 
-func (in *googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType] {
-	return pulumix.Output[*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType]{
-		OutputState: in.ToGoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TaxonomyActivatedPolicyTypesItem string
 
 const (
@@ -1862,12 +1807,6 @@ func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesIte
 
 func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TaxonomyActivatedPolicyTypesItemPtrOutput)
-}
-
-func (in *taxonomyActivatedPolicyTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyActivatedPolicyTypesItem] {
-	return pulumix.Output[*TaxonomyActivatedPolicyTypesItem]{
-		OutputState: in.ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TaxonomyActivatedPolicyTypesItemArrayInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArray and TaxonomyActivatedPolicyTypesItemArrayOutput values.

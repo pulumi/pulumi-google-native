@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
 type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior string
 
@@ -362,12 +355,6 @@ func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBe
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput)
 }
 
-func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior] {
-	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior]{
-		OutputState: in.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
 type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType string
 
@@ -537,12 +524,6 @@ func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr) 
 
 func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput)
-}
-
-func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType] {
-	return pulumix.Output[*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType]{
-		OutputState: in.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The specifications for the key.
@@ -719,12 +700,6 @@ func (in *keyDataKeySpecPtr) ToKeyDataKeySpecPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(KeyDataKeySpecPtrOutput)
 }
 
-func (in *keyDataKeySpecPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyDataKeySpec] {
-	return pulumix.Output[*KeyDataKeySpec]{
-		OutputState: in.ToKeyDataKeySpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
 type KeyKeyAlgorithm string
 
@@ -896,12 +871,6 @@ func (in *keyKeyAlgorithmPtr) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(KeyKeyAlgorithmPtrOutput)
 }
 
-func (in *keyKeyAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyKeyAlgorithm] {
-	return pulumix.Output[*KeyKeyAlgorithm]{
-		OutputState: in.ToKeyKeyAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
 type KeyPrivateKeyType string
 
@@ -1071,12 +1040,6 @@ func (in *keyPrivateKeyTypePtr) ToKeyPrivateKeyTypePtrOutput() KeyPrivateKeyType
 
 func (in *keyPrivateKeyTypePtr) ToKeyPrivateKeyTypePtrOutputWithContext(ctx context.Context) KeyPrivateKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyPrivateKeyTypePtrOutput)
-}
-
-func (in *keyPrivateKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KeyPrivateKeyType] {
-	return pulumix.Output[*KeyPrivateKeyType]{
-		OutputState: in.ToKeyPrivateKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
@@ -1259,12 +1222,6 @@ func (in *organizationRoleStagePtr) ToOrganizationRoleStagePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationRoleStagePtrOutput)
 }
 
-func (in *organizationRoleStagePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationRoleStage] {
-	return pulumix.Output[*OrganizationRoleStage]{
-		OutputState: in.ToOrganizationRoleStagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
 type RoleStage string
 
@@ -1445,12 +1402,6 @@ func (in *roleStagePtr) ToRoleStagePtrOutputWithContext(ctx context.Context) Rol
 	return pulumi.ToOutputWithContext(ctx, in).(RoleStagePtrOutput)
 }
 
-func (in *roleStagePtr) ToOutput(ctx context.Context) pulumix.Output[*RoleStage] {
-	return pulumix.Output[*RoleStage]{
-		OutputState: in.ToRoleStagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The purpose of the key.
 type WorkforcePoolKeyUse string
 
@@ -1619,12 +1570,6 @@ func (in *workforcePoolKeyUsePtr) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(WorkforcePoolKeyUsePtrOutput)
 }
 
-func (in *workforcePoolKeyUsePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePoolKeyUse] {
-	return pulumix.Output[*WorkforcePoolKeyUse]{
-		OutputState: in.ToWorkforcePoolKeyUsePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The purpose of the key.
 type WorkloadIdentityPoolKeyUse string
 
@@ -1791,12 +1736,6 @@ func (in *workloadIdentityPoolKeyUsePtr) ToWorkloadIdentityPoolKeyUsePtrOutput()
 
 func (in *workloadIdentityPoolKeyUsePtr) ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyUsePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadIdentityPoolKeyUsePtrOutput)
-}
-
-func (in *workloadIdentityPoolKeyUsePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPoolKeyUse] {
-	return pulumix.Output[*WorkloadIdentityPoolKeyUse]{
-		OutputState: in.ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

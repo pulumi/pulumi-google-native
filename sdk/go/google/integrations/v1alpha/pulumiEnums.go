@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Credential type of the encrypted credential.
@@ -209,12 +208,6 @@ func (in *authConfigCredentialTypePtr) ToAuthConfigCredentialTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(AuthConfigCredentialTypePtrOutput)
 }
 
-func (in *authConfigCredentialTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigCredentialType] {
-	return pulumix.Output[*AuthConfigCredentialType]{
-		OutputState: in.ToAuthConfigCredentialTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the auth config.
 type AuthConfigStateEnum string
 
@@ -398,12 +391,6 @@ func (in *authConfigStateEnumPtr) ToAuthConfigStateEnumPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AuthConfigStateEnumPtrOutput)
 }
 
-func (in *authConfigStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigStateEnum] {
-	return pulumix.Output[*AuthConfigStateEnum]{
-		OutputState: in.ToAuthConfigStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The visibility of the auth config.
 type AuthConfigVisibility string
 
@@ -575,12 +562,6 @@ func (in *authConfigVisibilityPtr) ToAuthConfigVisibilityPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(AuthConfigVisibilityPtrOutput)
 }
 
-func (in *authConfigVisibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigVisibility] {
-	return pulumix.Output[*AuthConfigVisibility]{
-		OutputState: in.ToAuthConfigVisibilityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of the certificate
 type CertificateCertificateStatus string
 
@@ -750,12 +731,6 @@ func (in *certificateCertificateStatusPtr) ToCertificateCertificateStatusPtrOutp
 
 func (in *certificateCertificateStatusPtr) ToCertificateCertificateStatusPtrOutputWithContext(ctx context.Context) CertificateCertificateStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateCertificateStatusPtrOutput)
-}
-
-func (in *certificateCertificateStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateCertificateStatus] {
-	return pulumix.Output[*CertificateCertificateStatus]{
-		OutputState: in.ToCertificateCertificateStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Things like URL, Email, Currency, Timestamp (rather than string, int64...)
@@ -933,12 +908,6 @@ func (in *enterpriseCrmEventbusProtoAttributesDataTypePtr) ToEnterpriseCrmEventb
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoAttributesDataTypePtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoAttributesDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoAttributesDataType] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoAttributesDataType]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoAttributesDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseCrmEventbusProtoAttributesSearchable string
 
 const (
@@ -1108,12 +1077,6 @@ func (in *enterpriseCrmEventbusProtoAttributesSearchablePtr) ToEnterpriseCrmEven
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoAttributesSearchablePtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoAttributesSearchablePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoAttributesSearchable] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoAttributesSearchable]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoAttributesSearchablePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType string
 
 const (
@@ -1277,12 +1240,6 @@ func (in *enterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypePtr) T
 
 func (in *enterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypePtr) ToEnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypePtrOutput)
-}
-
-func (in *enterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Operator used to evaluate the condition. Please note that an operator with an inappropriate key/value operand will result in IllegalArgumentException, e.g. CONTAINS with boolean key/value pair.
@@ -1463,12 +1420,6 @@ func (in *enterpriseCrmEventbusProtoConditionOperatorPtr) ToEnterpriseCrmEventbu
 
 func (in *enterpriseCrmEventbusProtoConditionOperatorPtr) ToEnterpriseCrmEventbusProtoConditionOperatorPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoConditionOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoConditionOperatorPtrOutput)
-}
-
-func (in *enterpriseCrmEventbusProtoConditionOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoConditionOperator] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoConditionOperator]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoConditionOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines what happens to the task upon failure.
@@ -1656,12 +1607,6 @@ func (in *enterpriseCrmEventbusProtoFailurePolicyRetryStrategyPtr) ToEnterpriseC
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyPtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoFailurePolicyRetryStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoFailurePolicyRetryStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseCrmEventbusProtoLogSettingsSeedPeriod string
 
 const (
@@ -1832,12 +1777,6 @@ func (in *enterpriseCrmEventbusProtoLogSettingsSeedPeriodPtr) ToEnterpriseCrmEve
 
 func (in *enterpriseCrmEventbusProtoLogSettingsSeedPeriodPtr) ToEnterpriseCrmEventbusProtoLogSettingsSeedPeriodPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoLogSettingsSeedPeriodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoLogSettingsSeedPeriodPtrOutput)
-}
-
-func (in *enterpriseCrmEventbusProtoLogSettingsSeedPeriodPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoLogSettingsSeedPeriod] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoLogSettingsSeedPeriod]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoLogSettingsSeedPeriodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EnterpriseCrmEventbusProtoLogSettingsSeedScope string
@@ -2012,12 +1951,6 @@ func (in *enterpriseCrmEventbusProtoLogSettingsSeedScopePtr) ToEnterpriseCrmEven
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoLogSettingsSeedScopePtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoLogSettingsSeedScopePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoLogSettingsSeedScope] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoLogSettingsSeedScope]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoLogSettingsSeedScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Destination node where the edge ends. It can only be a task config.
 type EnterpriseCrmEventbusProtoNodeIdentifierElementType string
 
@@ -2184,12 +2117,6 @@ func (in *enterpriseCrmEventbusProtoNodeIdentifierElementTypePtr) ToEnterpriseCr
 
 func (in *enterpriseCrmEventbusProtoNodeIdentifierElementTypePtr) ToEnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrOutput)
-}
-
-func (in *enterpriseCrmEventbusProtoNodeIdentifierElementTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoNodeIdentifierElementType] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoNodeIdentifierElementType]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption string
@@ -2365,12 +2292,6 @@ func (in *enterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionPtr) T
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionPtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption string
 
 const (
@@ -2544,12 +2465,6 @@ func (in *enterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionPtr) 
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionPtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State to which the execution snapshot status will be set if the task succeeds.
 type EnterpriseCrmEventbusProtoSuccessPolicyFinalState string
 
@@ -2718,12 +2633,6 @@ func (in *enterpriseCrmEventbusProtoSuccessPolicyFinalStatePtr) ToEnterpriseCrmE
 
 func (in *enterpriseCrmEventbusProtoSuccessPolicyFinalStatePtr) ToEnterpriseCrmEventbusProtoSuccessPolicyFinalStatePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoSuccessPolicyFinalStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoSuccessPolicyFinalStatePtrOutput)
-}
-
-func (in *enterpriseCrmEventbusProtoSuccessPolicyFinalStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoSuccessPolicyFinalState] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoSuccessPolicyFinalState]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoSuccessPolicyFinalStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EnterpriseCrmEventbusProtoTaskAlertConfigMetricType string
@@ -2905,12 +2814,6 @@ func (in *enterpriseCrmEventbusProtoTaskAlertConfigMetricTypePtr) ToEnterpriseCr
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypePtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoTaskAlertConfigMetricTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskAlertConfigMetricType] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskAlertConfigMetricType]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoTaskAlertConfigMetricTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The threshold type for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
 type EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType string
 
@@ -3078,12 +2981,6 @@ func (in *enterpriseCrmEventbusProtoTaskAlertConfigThresholdTypePtr) ToEnterpris
 
 func (in *enterpriseCrmEventbusProtoTaskAlertConfigThresholdTypePtr) ToEnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypePtrOutput)
-}
-
-func (in *enterpriseCrmEventbusProtoTaskAlertConfigThresholdTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EnterpriseCrmEventbusProtoTaskMetadataCategory string
@@ -3271,12 +3168,6 @@ func (in *enterpriseCrmEventbusProtoTaskMetadataCategoryPtr) ToEnterpriseCrmEven
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoTaskMetadataCategoryPtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoTaskMetadataCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadataCategory] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadataCategory]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoTaskMetadataCategoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Controls whether JSON workflow parameters are validated against provided schemas before and/or after this task's execution.
 type EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption string
 
@@ -3452,12 +3343,6 @@ func (in *enterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPtr) 
 
 func (in *enterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPtr) ToEnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPtrOutput)
-}
-
-func (in *enterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EnterpriseCrmEventbusProtoTaskMetadataExternalCategory string
@@ -3663,12 +3548,6 @@ func (in *enterpriseCrmEventbusProtoTaskMetadataExternalCategoryPtr) ToEnterpris
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryPtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoTaskMetadataExternalCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadataExternalCategory] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadataExternalCategory]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoTaskMetadataExternalCategoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Allows author to indicate if the task is ready to use or not. If not set, then it will default to INACTIVE.
 type EnterpriseCrmEventbusProtoTaskMetadataStatus string
 
@@ -3838,12 +3717,6 @@ func (in *enterpriseCrmEventbusProtoTaskMetadataStatusPtr) ToEnterpriseCrmEventb
 
 func (in *enterpriseCrmEventbusProtoTaskMetadataStatusPtr) ToEnterpriseCrmEventbusProtoTaskMetadataStatusPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskMetadataStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoTaskMetadataStatusPtrOutput)
-}
-
-func (in *enterpriseCrmEventbusProtoTaskMetadataStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadataStatus] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadataStatus]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoTaskMetadataStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EnterpriseCrmEventbusProtoTaskMetadataSystem string
@@ -4027,12 +3900,6 @@ func (in *enterpriseCrmEventbusProtoTaskMetadataSystemPtr) ToEnterpriseCrmEventb
 
 func (in *enterpriseCrmEventbusProtoTaskMetadataSystemPtr) ToEnterpriseCrmEventbusProtoTaskMetadataSystemPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusProtoTaskMetadataSystemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoTaskMetadataSystemPtrOutput)
-}
-
-func (in *enterpriseCrmEventbusProtoTaskMetadataSystemPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadataSystem] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskMetadataSystem]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoTaskMetadataSystemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ID of the config module.
@@ -4257,12 +4124,6 @@ func (in *enterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdPtr) ToEnterpriseC
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdPtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType string
 
 const (
@@ -4457,12 +4318,6 @@ func (in *enterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypePtr) ToEnterpri
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypePtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
 type EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType string
 
@@ -4632,12 +4487,6 @@ func (in *enterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypePtr) ToEnter
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypePtrOutput)
 }
 
-func (in *enterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType] {
-	return pulumix.Output[*EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType]{
-		OutputState: in.ToEnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to include or exclude the enums matching the regex.
 type EnterpriseCrmEventbusStatsDimensionsEnumFilterType string
 
@@ -4802,12 +4651,6 @@ func (in *enterpriseCrmEventbusStatsDimensionsEnumFilterTypePtr) ToEnterpriseCrm
 
 func (in *enterpriseCrmEventbusStatsDimensionsEnumFilterTypePtr) ToEnterpriseCrmEventbusStatsDimensionsEnumFilterTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusStatsDimensionsEnumFilterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusStatsDimensionsEnumFilterTypePtrOutput)
-}
-
-func (in *enterpriseCrmEventbusStatsDimensionsEnumFilterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusStatsDimensionsEnumFilterType] {
-	return pulumix.Output[*EnterpriseCrmEventbusStatsDimensionsEnumFilterType]{
-		OutputState: in.ToEnterpriseCrmEventbusStatsDimensionsEnumFilterTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EnterpriseCrmEventbusStatsDimensionsRetryAttempt string
@@ -4980,12 +4823,6 @@ func (in *enterpriseCrmEventbusStatsDimensionsRetryAttemptPtr) ToEnterpriseCrmEv
 
 func (in *enterpriseCrmEventbusStatsDimensionsRetryAttemptPtr) ToEnterpriseCrmEventbusStatsDimensionsRetryAttemptPtrOutputWithContext(ctx context.Context) EnterpriseCrmEventbusStatsDimensionsRetryAttemptPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmEventbusStatsDimensionsRetryAttemptPtrOutput)
-}
-
-func (in *enterpriseCrmEventbusStatsDimensionsRetryAttemptPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmEventbusStatsDimensionsRetryAttempt] {
-	return pulumix.Output[*EnterpriseCrmEventbusStatsDimensionsRetryAttempt]{
-		OutputState: in.ToEnterpriseCrmEventbusStatsDimensionsRetryAttemptPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The data type of the parameter.
@@ -5187,12 +5024,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypePtr) ToEnterp
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypePtrOutput)
 }
 
-func (in *enterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Explicitly getting the type of the parameter.
 type EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType string
 
@@ -5392,12 +5223,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtr) ToEnterp
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtrOutput)
 }
 
-func (in *enterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType string
 
 const (
@@ -5566,12 +5391,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtr) ToEn
 
 func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtr) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput)
-}
-
-func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // If set, overrides the option configured in the Task implementation class.
@@ -5751,12 +5570,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionPtr) 
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionPtrOutput)
 }
 
-func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The policy dictating the execution of the next set of tasks for the current task.
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy string
 
@@ -5926,12 +5739,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyP
 
 func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyPtr) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyPtrOutput)
-}
-
-func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The policy dictating the execution strategy of this task.
@@ -6105,12 +5912,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyPtr)
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyPtrOutput)
 }
 
-func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategy] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategy]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the type of the task
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType string
 
@@ -6280,12 +6081,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypePtr) ToEnterprise
 
 func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypePtr) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypePtrOutput)
-}
-
-func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines the type of the task
@@ -6459,12 +6254,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypePtr) ToEnterprise
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypePtrOutput)
 }
 
-func (in *enterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Dictates how next tasks will be executed.
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy string
 
@@ -6634,12 +6423,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPoli
 
 func (in *enterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyPtr) ToEnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyPtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyPtrOutput)
-}
-
-func (in *enterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType string
@@ -6831,12 +6614,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypePtr) ToEnte
 
 func (in *enterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypePtr) ToEnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypePtrOutput)
-}
-
-func (in *enterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The data type of the parameter.
@@ -7038,12 +6815,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypePtr) 
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypePtrOutput)
 }
 
-func (in *enterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the input/output type for the parameter.
 type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType string
 
@@ -7217,12 +6988,6 @@ func (in *enterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypePtr)
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypePtrOutput)
 }
 
-func (in *enterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType] {
-	return pulumix.Output[*EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType]{
-		OutputState: in.ToEnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseCrmLoggingGwsFieldLimitsLogAction string
 
 const (
@@ -7388,12 +7153,6 @@ func (in *enterpriseCrmLoggingGwsFieldLimitsLogActionPtr) ToEnterpriseCrmLogging
 
 func (in *enterpriseCrmLoggingGwsFieldLimitsLogActionPtr) ToEnterpriseCrmLoggingGwsFieldLimitsLogActionPtrOutputWithContext(ctx context.Context) EnterpriseCrmLoggingGwsFieldLimitsLogActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmLoggingGwsFieldLimitsLogActionPtrOutput)
-}
-
-func (in *enterpriseCrmLoggingGwsFieldLimitsLogActionPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmLoggingGwsFieldLimitsLogAction] {
-	return pulumix.Output[*EnterpriseCrmLoggingGwsFieldLimitsLogAction]{
-		OutputState: in.ToEnterpriseCrmLoggingGwsFieldLimitsLogActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem string
@@ -7566,12 +7325,6 @@ func (in *enterpriseCrmLoggingGwsFieldLimitsLogTypeItemPtr) ToEnterpriseCrmLoggi
 
 func (in *enterpriseCrmLoggingGwsFieldLimitsLogTypeItemPtr) ToEnterpriseCrmLoggingGwsFieldLimitsLogTypeItemPtrOutputWithContext(ctx context.Context) EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemPtrOutput)
-}
-
-func (in *enterpriseCrmLoggingGwsFieldLimitsLogTypeItemPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem] {
-	return pulumix.Output[*EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem]{
-		OutputState: in.ToEnterpriseCrmLoggingGwsFieldLimitsLogTypeItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemArrayInput is an input type that accepts EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemArray and EnterpriseCrmLoggingGwsFieldLimitsLogTypeItemArrayOutput values.
@@ -7800,12 +7553,6 @@ func (in *enterpriseCrmLoggingGwsFieldLimitsShortenerTypePtr) ToEnterpriseCrmLog
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmLoggingGwsFieldLimitsShortenerTypePtrOutput)
 }
 
-func (in *enterpriseCrmLoggingGwsFieldLimitsShortenerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmLoggingGwsFieldLimitsShortenerType] {
-	return pulumix.Output[*EnterpriseCrmLoggingGwsFieldLimitsShortenerType]{
-		OutputState: in.ToEnterpriseCrmLoggingGwsFieldLimitsShortenerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem string
 
 const (
@@ -7976,12 +7723,6 @@ func (in *enterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemPtr) ToEnterpriseCrmL
 
 func (in *enterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemPtr) ToEnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemPtrOutputWithContext(ctx context.Context) EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemPtrOutput)
-}
-
-func (in *enterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem] {
-	return pulumix.Output[*EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem]{
-		OutputState: in.ToEnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemArrayInput is an input type that accepts EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemArray and EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItemArrayOutput values.
@@ -8204,12 +7945,6 @@ func (in *enterpriseCrmLoggingGwsSanitizeOptionsPrivacyPtr) ToEnterpriseCrmLoggi
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmLoggingGwsSanitizeOptionsPrivacyPtrOutput)
 }
 
-func (in *enterpriseCrmLoggingGwsSanitizeOptionsPrivacyPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy] {
-	return pulumix.Output[*EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy]{
-		OutputState: in.ToEnterpriseCrmLoggingGwsSanitizeOptionsPrivacyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType string
 
 const (
@@ -8389,12 +8124,6 @@ func (in *enterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtr) ToEnterpriseCrm
 
 func (in *enterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtr) ToEnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtrOutput)
-}
-
-func (in *enterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType] {
-	return pulumix.Output[*EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType]{
-		OutputState: in.ToEnterpriseCrmLoggingGwsSanitizeOptionsSanitizeTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of assertion to perform.
@@ -8583,12 +8312,6 @@ func (in *googleCloudIntegrationsV1alphaAssertionAssertionStrategyPtr) ToGoogleC
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaAssertionAssertionStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
 type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity string
 
@@ -8764,12 +8487,6 @@ func (in *googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityP
 
 func (in *googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtr) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput)
-}
-
-func (in *googleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Credential type associated with auth config.
@@ -8970,12 +8687,6 @@ func (in *googleCloudIntegrationsV1alphaCredentialCredentialTypePtr) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaCredentialCredentialTypePtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaCredentialCredentialTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaCredentialCredentialType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaCredentialCredentialType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaCredentialCredentialTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines what happens to the task upon failure.
 type GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy string
 
@@ -9160,12 +8871,6 @@ func (in *googleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtr) ToGoogleC
 
 func (in *googleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtr) ToGoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtrOutput)
-}
-
-func (in *googleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of metric.
@@ -9363,12 +9068,6 @@ func (in *googleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypePtr) ToG
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypePtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
 type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType string
 
@@ -9538,12 +9237,6 @@ func (in *googleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtr) 
 
 func (in *googleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtr) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtrOutput)
-}
-
-func (in *googleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the parameter.
@@ -9744,12 +9437,6 @@ func (in *googleCloudIntegrationsV1alphaIntegrationParameterDataTypePtr) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypePtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaIntegrationParameterDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationParameterDataType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationParameterDataType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaIntegrationParameterDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the input/output type for the parameter.
 type GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType string
 
@@ -9922,12 +9609,6 @@ func (in *googleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtr) 
 
 func (in *googleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtr) ToGoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrOutput)
-}
-
-func (in *googleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Mockstrategy defines how the particular task should be mocked during test execution
@@ -10107,12 +9788,6 @@ func (in *googleCloudIntegrationsV1alphaMockConfigMockStrategyPtr) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaMockConfigMockStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaMockConfigMockStrategy] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaMockConfigMockStrategy]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represent how to pass parameters to fetch access token
 type GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType string
 
@@ -10285,12 +9960,6 @@ func (in *googleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypePtr) T
 
 func (in *googleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypePtr) ToGoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypePtrOutput)
-}
-
-func (in *googleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Represent how to pass parameters to fetch access token
@@ -10467,12 +10136,6 @@ func (in *googleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypePtr) T
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypePtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represent how to pass parameters to fetch access token
 type GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType string
 
@@ -10645,12 +10308,6 @@ func (in *googleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTyp
 
 func (in *googleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypePtr) ToGoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypePtrOutput)
-}
-
-func (in *googleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Option to specify key type for all entries of the map. If provided then field types for all entries must conform to this.
@@ -10851,12 +10508,6 @@ func (in *googleCloudIntegrationsV1alphaParameterMapKeyTypePtr) ToGoogleCloudInt
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaParameterMapKeyTypePtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaParameterMapKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMapKeyType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMapKeyType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaParameterMapKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Option to specify value type for all entries of the map. If provided then field types for all entries must conform to this.
 type GoogleCloudIntegrationsV1alphaParameterMapValueType string
 
@@ -11055,12 +10706,6 @@ func (in *googleCloudIntegrationsV1alphaParameterMapValueTypePtr) ToGoogleCloudI
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaParameterMapValueTypePtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaParameterMapValueTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMapValueType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaParameterMapValueType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaParameterMapValueTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State to which the execution snapshot status will be set if the task succeeds.
 type GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState string
 
@@ -11232,12 +10877,6 @@ func (in *googleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtr) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. External task type of the task
 type GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType string
 
@@ -11407,12 +11046,6 @@ func (in *googleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtr) ToGoogleC
 
 func (in *googleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtr) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput)
-}
-
-func (in *googleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. If set, overrides the option configured in the Task implementation class.
@@ -11592,12 +11225,6 @@ func (in *googleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPtr) ToGoo
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The policy dictating the execution of the next set of tasks for the current task.
 type GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy string
 
@@ -11767,12 +11394,6 @@ func (in *googleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtr) T
 
 func (in *googleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtr) ToGoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtrOutput)
-}
-
-func (in *googleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The policy dictating the execution strategy of this task.
@@ -11949,12 +11570,6 @@ func (in *googleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyPtr) ToGo
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyPtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Dictates how next tasks will be executed.
 type GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy string
 
@@ -12124,12 +11739,6 @@ func (in *googleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtr
 
 func (in *googleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtr) ToGoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtrOutput)
-}
-
-func (in *googleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Type of trigger
@@ -12321,12 +11930,6 @@ func (in *googleCloudIntegrationsV1alphaTriggerConfigTriggerTypePtr) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypePtrOutput)
 }
 
-func (in *googleCloudIntegrationsV1alphaTriggerConfigTriggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType] {
-	return pulumix.Output[*GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType]{
-		OutputState: in.ToGoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 type TemplatesVersionDatabasePersistencePolicy string
 
@@ -12496,12 +12099,6 @@ func (in *templatesVersionDatabasePersistencePolicyPtr) ToTemplatesVersionDataba
 
 func (in *templatesVersionDatabasePersistencePolicyPtr) ToTemplatesVersionDatabasePersistencePolicyPtrOutputWithContext(ctx context.Context) TemplatesVersionDatabasePersistencePolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TemplatesVersionDatabasePersistencePolicyPtrOutput)
-}
-
-func (in *templatesVersionDatabasePersistencePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*TemplatesVersionDatabasePersistencePolicy] {
-	return pulumix.Output[*TemplatesVersionDatabasePersistencePolicy]{
-		OutputState: in.ToTemplatesVersionDatabasePersistencePolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Generated by eventbus. User should not set it as an input.
@@ -12686,12 +12283,6 @@ func (in *testCaseDatabasePersistencePolicyPtr) ToTestCaseDatabasePersistencePol
 	return pulumi.ToOutputWithContext(ctx, in).(TestCaseDatabasePersistencePolicyPtrOutput)
 }
 
-func (in *testCaseDatabasePersistencePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*TestCaseDatabasePersistencePolicy] {
-	return pulumix.Output[*TestCaseDatabasePersistencePolicy]{
-		OutputState: in.ToTestCaseDatabasePersistencePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 type VersionDatabasePersistencePolicy string
 
@@ -12861,12 +12452,6 @@ func (in *versionDatabasePersistencePolicyPtr) ToVersionDatabasePersistencePolic
 
 func (in *versionDatabasePersistencePolicyPtr) ToVersionDatabasePersistencePolicyPtrOutputWithContext(ctx context.Context) VersionDatabasePersistencePolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VersionDatabasePersistencePolicyPtrOutput)
-}
-
-func (in *versionDatabasePersistencePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*VersionDatabasePersistencePolicy] {
-	return pulumix.Output[*VersionDatabasePersistencePolicy]{
-		OutputState: in.ToVersionDatabasePersistencePolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The origin that indicates where this integration is coming from.
@@ -13046,12 +12631,6 @@ func (in *versionOriginPtr) ToVersionOriginPtrOutput() VersionOriginPtrOutput {
 
 func (in *versionOriginPtr) ToVersionOriginPtrOutputWithContext(ctx context.Context) VersionOriginPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VersionOriginPtrOutput)
-}
-
-func (in *versionOriginPtr) ToOutput(ctx context.Context) pulumix.Output[*VersionOrigin] {
-	return pulumix.Output[*VersionOrigin]{
-		OutputState: in.ToVersionOriginPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

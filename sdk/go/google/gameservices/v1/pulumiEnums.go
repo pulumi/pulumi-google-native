@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -183,12 +182,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the permission that was checked.
@@ -368,12 +361,6 @@ func (in *authorizationLoggingOptionsPermissionTypePtr) ToAuthorizationLoggingOp
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationLoggingOptionsPermissionTypePtrOutput)
 }
 
-func (in *authorizationLoggingOptionsPermissionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationLoggingOptionsPermissionType] {
-	return pulumix.Output[*AuthorizationLoggingOptionsPermissionType]{
-		OutputState: in.ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The log_name to populate in the Cloud Audit Record.
 type CloudAuditOptionsLogName string
 
@@ -543,12 +530,6 @@ func (in *cloudAuditOptionsLogNamePtr) ToCloudAuditOptionsLogNamePtrOutput() Clo
 
 func (in *cloudAuditOptionsLogNamePtr) ToCloudAuditOptionsLogNamePtrOutputWithContext(ctx context.Context) CloudAuditOptionsLogNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudAuditOptionsLogNamePtrOutput)
-}
-
-func (in *cloudAuditOptionsLogNamePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudAuditOptionsLogName] {
-	return pulumix.Output[*CloudAuditOptionsLogName]{
-		OutputState: in.ToCloudAuditOptionsLogNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Trusted attributes supplied by the IAM system.
@@ -737,12 +718,6 @@ func (in *conditionIamPtr) ToConditionIamPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionIamPtrOutput)
 }
 
-func (in *conditionIamPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionIam] {
-	return pulumix.Output[*ConditionIam]{
-		OutputState: in.ToConditionIamPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An operator to apply the subject with.
 type ConditionOp string
 
@@ -923,12 +898,6 @@ func (in *conditionOpPtr) ToConditionOpPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionOpPtrOutput)
 }
 
-func (in *conditionOpPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionOp] {
-	return pulumix.Output[*ConditionOp]{
-		OutputState: in.ToConditionOpPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
 type ConditionSys string
 
@@ -1106,12 +1075,6 @@ func (in *conditionSysPtr) ToConditionSysPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionSysPtrOutput)
 }
 
-func (in *conditionSysPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionSys] {
-	return pulumix.Output[*ConditionSys]{
-		OutputState: in.ToConditionSysPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataAccessOptionsLogMode string
 
 const (
@@ -1277,12 +1240,6 @@ func (in *dataAccessOptionsLogModePtr) ToDataAccessOptionsLogModePtrOutput() Dat
 
 func (in *dataAccessOptionsLogModePtr) ToDataAccessOptionsLogModePtrOutputWithContext(ctx context.Context) DataAccessOptionsLogModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataAccessOptionsLogModePtrOutput)
-}
-
-func (in *dataAccessOptionsLogModePtr) ToOutput(ctx context.Context) pulumix.Output[*DataAccessOptionsLogMode] {
-	return pulumix.Output[*DataAccessOptionsLogMode]{
-		OutputState: in.ToDataAccessOptionsLogModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required
@@ -1463,12 +1420,6 @@ func (in *ruleActionPtr) ToRuleActionPtrOutput() RuleActionPtrOutput {
 
 func (in *ruleActionPtr) ToRuleActionPtrOutputWithContext(ctx context.Context) RuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuleActionPtrOutput)
-}
-
-func (in *ruleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*RuleAction] {
-	return pulumix.Output[*RuleAction]{
-		OutputState: in.ToRuleActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

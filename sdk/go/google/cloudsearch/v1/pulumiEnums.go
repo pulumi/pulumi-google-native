@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The logic operator of the sub filter.
@@ -181,12 +180,6 @@ func (in *compositeFilterLogicOperatorPtr) ToCompositeFilterLogicOperatorPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(CompositeFilterLogicOperatorPtrOutput)
 }
 
-func (in *compositeFilterLogicOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*CompositeFilterLogicOperator] {
-	return pulumix.Output[*CompositeFilterLogicOperator]{
-		OutputState: in.ToCompositeFilterLogicOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ascending is the default sort order
 type SortOptionsSortOrder string
 
@@ -351,12 +344,6 @@ func (in *sortOptionsSortOrderPtr) ToSortOptionsSortOrderPtrOutput() SortOptions
 
 func (in *sortOptionsSortOrderPtr) ToSortOptionsSortOrderPtrOutputWithContext(ctx context.Context) SortOptionsSortOrderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SortOptionsSortOrderPtrOutput)
-}
-
-func (in *sortOptionsSortOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*SortOptionsSortOrder] {
-	return pulumix.Output[*SortOptionsSortOrder]{
-		OutputState: in.ToSortOptionsSortOrderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Predefined content source for Google Apps.
@@ -541,12 +528,6 @@ func (in *sourcePredefinedSourcePtr) ToSourcePredefinedSourcePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(SourcePredefinedSourcePtrOutput)
 }
 
-func (in *sourcePredefinedSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*SourcePredefinedSource] {
-	return pulumix.Output[*SourcePredefinedSource]{
-		OutputState: in.ToSourcePredefinedSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Importance of the source.
 type SourceScoringConfigSourceImportance string
 
@@ -713,12 +694,6 @@ func (in *sourceScoringConfigSourceImportancePtr) ToSourceScoringConfigSourceImp
 
 func (in *sourceScoringConfigSourceImportancePtr) ToSourceScoringConfigSourceImportancePtrOutputWithContext(ctx context.Context) SourceScoringConfigSourceImportancePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceScoringConfigSourceImportancePtrOutput)
-}
-
-func (in *sourceScoringConfigSourceImportancePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceScoringConfigSourceImportance] {
-	return pulumix.Output[*SourceScoringConfigSourceImportance]{
-		OutputState: in.ToSourceScoringConfigSourceImportancePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

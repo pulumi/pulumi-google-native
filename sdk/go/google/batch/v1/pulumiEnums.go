@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The provisioning model.
@@ -185,12 +184,6 @@ func (in *instancePolicyProvisioningModelPtr) ToInstancePolicyProvisioningModelP
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePolicyProvisioningModelPtrOutput)
 }
 
-func (in *instancePolicyProvisioningModelPtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePolicyProvisioningModel] {
-	return pulumix.Output[*InstancePolicyProvisioningModel]{
-		OutputState: in.ToInstancePolicyProvisioningModelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
 type LifecyclePolicyAction string
 
@@ -362,12 +355,6 @@ func (in *lifecyclePolicyActionPtr) ToLifecyclePolicyActionPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(LifecyclePolicyActionPtrOutput)
 }
 
-func (in *lifecyclePolicyActionPtr) ToOutput(ctx context.Context) pulumix.Output[*LifecyclePolicyAction] {
-	return pulumix.Output[*LifecyclePolicyAction]{
-		OutputState: in.ToLifecyclePolicyActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Where logs should be saved.
 type LogsPolicyDestination string
 
@@ -537,12 +524,6 @@ func (in *logsPolicyDestinationPtr) ToLogsPolicyDestinationPtrOutput() LogsPolic
 
 func (in *logsPolicyDestinationPtr) ToLogsPolicyDestinationPtrOutputWithContext(ctx context.Context) LogsPolicyDestinationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LogsPolicyDestinationPtrOutput)
-}
-
-func (in *logsPolicyDestinationPtr) ToOutput(ctx context.Context) pulumix.Output[*LogsPolicyDestination] {
-	return pulumix.Output[*LogsPolicyDestination]{
-		OutputState: in.ToLogsPolicyDestinationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The new job state.
@@ -728,12 +709,6 @@ func (in *messageNewJobStatePtr) ToMessageNewJobStatePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(MessageNewJobStatePtrOutput)
 }
 
-func (in *messageNewJobStatePtr) ToOutput(ctx context.Context) pulumix.Output[*MessageNewJobState] {
-	return pulumix.Output[*MessageNewJobState]{
-		OutputState: in.ToMessageNewJobStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The new task state.
 type MessageNewTaskState string
 
@@ -917,12 +892,6 @@ func (in *messageNewTaskStatePtr) ToMessageNewTaskStatePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(MessageNewTaskStatePtrOutput)
 }
 
-func (in *messageNewTaskStatePtr) ToOutput(ctx context.Context) pulumix.Output[*MessageNewTaskState] {
-	return pulumix.Output[*MessageNewTaskState]{
-		OutputState: in.ToMessageNewTaskStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The message type.
 type MessageType string
 
@@ -1094,12 +1063,6 @@ func (in *messageTypePtr) ToMessageTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(MessageTypePtrOutput)
 }
 
-func (in *messageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MessageType] {
-	return pulumix.Output[*MessageType]{
-		OutputState: in.ToMessageTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
 type TaskGroupSchedulingPolicy string
 
@@ -1269,12 +1232,6 @@ func (in *taskGroupSchedulingPolicyPtr) ToTaskGroupSchedulingPolicyPtrOutput() T
 
 func (in *taskGroupSchedulingPolicyPtr) ToTaskGroupSchedulingPolicyPtrOutputWithContext(ctx context.Context) TaskGroupSchedulingPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TaskGroupSchedulingPolicyPtrOutput)
-}
-
-func (in *taskGroupSchedulingPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*TaskGroupSchedulingPolicy] {
-	return pulumix.Output[*TaskGroupSchedulingPolicy]{
-		OutputState: in.ToTaskGroupSchedulingPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

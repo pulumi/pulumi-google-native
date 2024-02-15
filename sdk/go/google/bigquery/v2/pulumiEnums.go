@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. Defaults to FIXED_TYPE.
@@ -180,12 +179,6 @@ func (in *argumentArgumentKindPtr) ToArgumentArgumentKindPtrOutput() ArgumentArg
 
 func (in *argumentArgumentKindPtr) ToArgumentArgumentKindPtrOutputWithContext(ctx context.Context) ArgumentArgumentKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArgumentArgumentKindPtrOutput)
-}
-
-func (in *argumentArgumentKindPtr) ToOutput(ctx context.Context) pulumix.Output[*ArgumentArgumentKind] {
-	return pulumix.Output[*ArgumentArgumentKind]{
-		OutputState: in.ToArgumentArgumentKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Specifies whether the argument is input or output. Can be set for procedures only.
@@ -362,12 +355,6 @@ func (in *argumentModePtr) ToArgumentModePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ArgumentModePtrOutput)
 }
 
-func (in *argumentModePtr) ToOutput(ctx context.Context) pulumix.Output[*ArgumentMode] {
-	return pulumix.Output[*ArgumentMode]{
-		OutputState: in.ToArgumentModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The log type that this config enables.
 type AuditLogConfigLogType string
 
@@ -542,12 +529,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetAccessEntryTargetTypesItem string
 
 const (
@@ -716,12 +697,6 @@ func (in *datasetAccessEntryTargetTypesItemPtr) ToDatasetAccessEntryTargetTypesI
 
 func (in *datasetAccessEntryTargetTypesItemPtr) ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatasetAccessEntryTargetTypesItemPtrOutput)
-}
-
-func (in *datasetAccessEntryTargetTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DatasetAccessEntryTargetTypesItem] {
-	return pulumix.Output[*DatasetAccessEntryTargetTypesItem]{
-		OutputState: in.ToDatasetAccessEntryTargetTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatasetAccessEntryTargetTypesItemArrayInput is an input type that accepts DatasetAccessEntryTargetTypesItemArray and DatasetAccessEntryTargetTypesItemArrayOutput values.
@@ -937,12 +912,6 @@ func (in *routineDataGovernanceTypePtr) ToRoutineDataGovernanceTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(RoutineDataGovernanceTypePtrOutput)
 }
 
-func (in *routineDataGovernanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutineDataGovernanceType] {
-	return pulumix.Output[*RoutineDataGovernanceType]{
-		OutputState: in.ToRoutineDataGovernanceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The determinism level of the JavaScript UDF, if defined.
 type RoutineDeterminismLevel string
 
@@ -1112,12 +1081,6 @@ func (in *routineDeterminismLevelPtr) ToRoutineDeterminismLevelPtrOutput() Routi
 
 func (in *routineDeterminismLevelPtr) ToRoutineDeterminismLevelPtrOutputWithContext(ctx context.Context) RoutineDeterminismLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoutineDeterminismLevelPtrOutput)
-}
-
-func (in *routineDeterminismLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*RoutineDeterminismLevel] {
-	return pulumix.Output[*RoutineDeterminismLevel]{
-		OutputState: in.ToRoutineDeterminismLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
@@ -1300,12 +1263,6 @@ func (in *routineLanguagePtr) ToRoutineLanguagePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(RoutineLanguagePtrOutput)
 }
 
-func (in *routineLanguagePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutineLanguage] {
-	return pulumix.Output[*RoutineLanguage]{
-		OutputState: in.ToRoutineLanguagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of routine.
 type RoutineRoutineType string
 
@@ -1483,12 +1440,6 @@ func (in *routineRoutineTypePtr) ToRoutineRoutineTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(RoutineRoutineTypePtrOutput)
 }
 
-func (in *routineRoutineTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutineRoutineType] {
-	return pulumix.Output[*RoutineRoutineType]{
-		OutputState: in.ToRoutineRoutineTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
 type RoutineSecurityMode string
 
@@ -1658,12 +1609,6 @@ func (in *routineSecurityModePtr) ToRoutineSecurityModePtrOutput() RoutineSecuri
 
 func (in *routineSecurityModePtr) ToRoutineSecurityModePtrOutputWithContext(ctx context.Context) RoutineSecurityModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoutineSecurityModePtrOutput)
-}
-
-func (in *routineSecurityModePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutineSecurityMode] {
-	return pulumix.Output[*RoutineSecurityMode]{
-		OutputState: in.ToRoutineSecurityModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
@@ -1880,12 +1825,6 @@ func (in *standardSqlDataTypeTypeKindPtr) ToStandardSqlDataTypeTypeKindPtrOutput
 
 func (in *standardSqlDataTypeTypeKindPtr) ToStandardSqlDataTypeTypeKindPtrOutputWithContext(ctx context.Context) StandardSqlDataTypeTypeKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StandardSqlDataTypeTypeKindPtrOutput)
-}
-
-func (in *standardSqlDataTypeTypeKindPtr) ToOutput(ctx context.Context) pulumix.Output[*StandardSqlDataTypeTypeKind] {
-	return pulumix.Output[*StandardSqlDataTypeTypeKind]{
-		OutputState: in.ToStandardSqlDataTypeTypeKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
