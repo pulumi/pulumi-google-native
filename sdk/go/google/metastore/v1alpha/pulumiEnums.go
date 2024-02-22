@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the database.
 type DatabaseDumpDatabaseType string
 
@@ -357,12 +350,6 @@ func (in *databaseDumpDatabaseTypePtr) ToDatabaseDumpDatabaseTypePtrOutput() Dat
 
 func (in *databaseDumpDatabaseTypePtr) ToDatabaseDumpDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseDumpDatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseDumpDatabaseTypePtrOutput)
-}
-
-func (in *databaseDumpDatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDumpDatabaseType] {
-	return pulumix.Output[*DatabaseDumpDatabaseType]{
-		OutputState: in.ToDatabaseDumpDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The type of the database dump. If unspecified, defaults to MYSQL.
@@ -536,12 +523,6 @@ func (in *databaseDumpTypePtr) ToDatabaseDumpTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseDumpTypePtrOutput)
 }
 
-func (in *databaseDumpTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDumpType] {
-	return pulumix.Output[*DatabaseDumpType]{
-		OutputState: in.ToDatabaseDumpTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
 type HiveMetastoreConfigEndpointProtocol string
 
@@ -711,12 +692,6 @@ func (in *hiveMetastoreConfigEndpointProtocolPtr) ToHiveMetastoreConfigEndpointP
 
 func (in *hiveMetastoreConfigEndpointProtocolPtr) ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx context.Context) HiveMetastoreConfigEndpointProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HiveMetastoreConfigEndpointProtocolPtrOutput)
-}
-
-func (in *hiveMetastoreConfigEndpointProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*HiveMetastoreConfigEndpointProtocol] {
-	return pulumix.Output[*HiveMetastoreConfigEndpointProtocol]{
-		OutputState: in.ToHiveMetastoreConfigEndpointProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The day of week, when the window starts.
@@ -905,12 +880,6 @@ func (in *maintenanceWindowDayOfWeekPtr) ToMaintenanceWindowDayOfWeekPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceWindowDayOfWeekPtrOutput)
 }
 
-func (in *maintenanceWindowDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowDayOfWeek] {
-	return pulumix.Output[*MaintenanceWindowDayOfWeek]{
-		OutputState: in.ToMaintenanceWindowDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
 type ScalingConfigInstanceSize string
 
@@ -1091,12 +1060,6 @@ func (in *scalingConfigInstanceSizePtr) ToScalingConfigInstanceSizePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ScalingConfigInstanceSizePtrOutput)
 }
 
-func (in *scalingConfigInstanceSizePtr) ToOutput(ctx context.Context) pulumix.Output[*ScalingConfigInstanceSize] {
-	return pulumix.Output[*ScalingConfigInstanceSize]{
-		OutputState: in.ToScalingConfigInstanceSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The database type that the Metastore service stores its data.
 type ServiceDatabaseType string
 
@@ -1266,12 +1229,6 @@ func (in *serviceDatabaseTypePtr) ToServiceDatabaseTypePtrOutput() ServiceDataba
 
 func (in *serviceDatabaseTypePtr) ToServiceDatabaseTypePtrOutputWithContext(ctx context.Context) ServiceDatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceDatabaseTypePtrOutput)
-}
-
-func (in *serviceDatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceDatabaseType] {
-	return pulumix.Output[*ServiceDatabaseType]{
-		OutputState: in.ToServiceDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Immutable. The release channel of the service. If unspecified, defaults to STABLE.
@@ -1445,12 +1402,6 @@ func (in *serviceReleaseChannelPtr) ToServiceReleaseChannelPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceReleaseChannelPtrOutput)
 }
 
-func (in *serviceReleaseChannelPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceReleaseChannel] {
-	return pulumix.Output[*ServiceReleaseChannel]{
-		OutputState: in.ToServiceReleaseChannelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The tier of the service.
 type ServiceTier string
 
@@ -1622,12 +1573,6 @@ func (in *serviceTierPtr) ToServiceTierPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceTierPtrOutput)
 }
 
-func (in *serviceTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceTier] {
-	return pulumix.Output[*ServiceTier]{
-		OutputState: in.ToServiceTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The output format of the Dataproc Metastore service's logs.
 type TelemetryConfigLogFormat string
 
@@ -1797,12 +1742,6 @@ func (in *telemetryConfigLogFormatPtr) ToTelemetryConfigLogFormatPtrOutput() Tel
 
 func (in *telemetryConfigLogFormatPtr) ToTelemetryConfigLogFormatPtrOutputWithContext(ctx context.Context) TelemetryConfigLogFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TelemetryConfigLogFormatPtrOutput)
-}
-
-func (in *telemetryConfigLogFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*TelemetryConfigLogFormat] {
-	return pulumix.Output[*TelemetryConfigLogFormat]{
-		OutputState: in.ToTelemetryConfigLogFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

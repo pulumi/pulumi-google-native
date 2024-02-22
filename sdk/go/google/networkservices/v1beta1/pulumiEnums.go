@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of endpoint policy. This is primarily used to validate the configuration.
 type EndpointPolicyType string
 
@@ -360,12 +353,6 @@ func (in *endpointPolicyTypePtr) ToEndpointPolicyTypePtrOutput() EndpointPolicyT
 
 func (in *endpointPolicyTypePtr) ToEndpointPolicyTypePtrOutputWithContext(ctx context.Context) EndpointPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointPolicyTypePtrOutput)
-}
-
-func (in *endpointPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyType] {
-	return pulumix.Output[*EndpointPolicyType]{
-		OutputState: in.ToEndpointPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ExtensionChainExtensionSupportedEventsItem string
@@ -542,12 +529,6 @@ func (in *extensionChainExtensionSupportedEventsItemPtr) ToExtensionChainExtensi
 
 func (in *extensionChainExtensionSupportedEventsItemPtr) ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtensionChainExtensionSupportedEventsItemPtrOutput)
-}
-
-func (in *extensionChainExtensionSupportedEventsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtensionChainExtensionSupportedEventsItem] {
-	return pulumix.Output[*ExtensionChainExtensionSupportedEventsItem]{
-		OutputState: in.ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ExtensionChainExtensionSupportedEventsItemArrayInput is an input type that accepts ExtensionChainExtensionSupportedEventsItemArray and ExtensionChainExtensionSupportedEventsItemArrayOutput values.
@@ -766,12 +747,6 @@ func (in *gatewayTypePtr) ToGatewayTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayTypePtrOutput)
 }
 
-func (in *gatewayTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayType] {
-	return pulumix.Output[*GatewayType]{
-		OutputState: in.ToGatewayTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
 type GrpcRouteHeaderMatchType string
 
@@ -943,12 +918,6 @@ func (in *grpcRouteHeaderMatchTypePtr) ToGrpcRouteHeaderMatchTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(GrpcRouteHeaderMatchTypePtrOutput)
 }
 
-func (in *grpcRouteHeaderMatchTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteHeaderMatchType] {
-	return pulumix.Output[*GrpcRouteHeaderMatchType]{
-		OutputState: in.ToGrpcRouteHeaderMatchTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
 type GrpcRouteMethodMatchType string
 
@@ -1118,12 +1087,6 @@ func (in *grpcRouteMethodMatchTypePtr) ToGrpcRouteMethodMatchTypePtrOutput() Grp
 
 func (in *grpcRouteMethodMatchTypePtr) ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteMethodMatchTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GrpcRouteMethodMatchTypePtrOutput)
-}
-
-func (in *grpcRouteMethodMatchTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteMethodMatchType] {
-	return pulumix.Output[*GrpcRouteMethodMatchType]{
-		OutputState: in.ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The HTTP Status code to use for the redirect.
@@ -1306,12 +1269,6 @@ func (in *httpRouteRedirectResponseCodePtr) ToHttpRouteRedirectResponseCodePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(HttpRouteRedirectResponseCodePtrOutput)
 }
 
-func (in *httpRouteRedirectResponseCodePtr) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRedirectResponseCode] {
-	return pulumix.Output[*HttpRouteRedirectResponseCode]{
-		OutputState: in.ToHttpRouteRedirectResponseCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 type LbRouteExtensionLoadBalancingScheme string
 
@@ -1481,12 +1438,6 @@ func (in *lbRouteExtensionLoadBalancingSchemePtr) ToLbRouteExtensionLoadBalancin
 
 func (in *lbRouteExtensionLoadBalancingSchemePtr) ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbRouteExtensionLoadBalancingSchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LbRouteExtensionLoadBalancingSchemePtrOutput)
-}
-
-func (in *lbRouteExtensionLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*LbRouteExtensionLoadBalancingScheme] {
-	return pulumix.Output[*LbRouteExtensionLoadBalancingScheme]{
-		OutputState: in.ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
@@ -1660,12 +1611,6 @@ func (in *lbTrafficExtensionLoadBalancingSchemePtr) ToLbTrafficExtensionLoadBala
 	return pulumi.ToOutputWithContext(ctx, in).(LbTrafficExtensionLoadBalancingSchemePtrOutput)
 }
 
-func (in *lbTrafficExtensionLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*LbTrafficExtensionLoadBalancingScheme] {
-	return pulumix.Output[*LbTrafficExtensionLoadBalancingScheme]{
-		OutputState: in.ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
 type MetadataLabelMatcherMetadataLabelMatchCriteria string
 
@@ -1835,12 +1780,6 @@ func (in *metadataLabelMatcherMetadataLabelMatchCriteriaPtr) ToMetadataLabelMatc
 
 func (in *metadataLabelMatcherMetadataLabelMatchCriteriaPtr) ToMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutputWithContext(ctx context.Context) MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput)
-}
-
-func (in *metadataLabelMatcherMetadataLabelMatchCriteriaPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataLabelMatcherMetadataLabelMatchCriteria] {
-	return pulumix.Output[*MetadataLabelMatcherMetadataLabelMatchCriteria]{
-		OutputState: in.ToMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
@@ -2018,12 +1957,6 @@ func (in *serviceLbPolicyLoadBalancingAlgorithmPtr) ToServiceLbPolicyLoadBalanci
 
 func (in *serviceLbPolicyLoadBalancingAlgorithmPtr) ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) ServiceLbPolicyLoadBalancingAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceLbPolicyLoadBalancingAlgorithmPtrOutput)
-}
-
-func (in *serviceLbPolicyLoadBalancingAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicyLoadBalancingAlgorithm] {
-	return pulumix.Output[*ServiceLbPolicyLoadBalancingAlgorithm]{
-		OutputState: in.ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

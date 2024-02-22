@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The priority of this case.
@@ -189,12 +188,6 @@ func (in *casePriorityPtr) ToCasePriorityPtrOutput() CasePriorityPtrOutput {
 
 func (in *casePriorityPtr) ToCasePriorityPtrOutputWithContext(ctx context.Context) CasePriorityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CasePriorityPtrOutput)
-}
-
-func (in *casePriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*CasePriority] {
-	return pulumix.Output[*CasePriority]{
-		OutputState: in.ToCasePriorityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

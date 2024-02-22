@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. Type of this accelerator.
@@ -206,12 +205,6 @@ func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorConfigTypePtrOutput)
 }
 
-func (in *acceleratorConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfigType] {
-	return pulumix.Output[*AcceleratorConfigType]{
-		OutputState: in.ToAcceleratorConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
 type BootDiskDiskEncryption string
 
@@ -381,12 +374,6 @@ func (in *bootDiskDiskEncryptionPtr) ToBootDiskDiskEncryptionPtrOutput() BootDis
 
 func (in *bootDiskDiskEncryptionPtr) ToBootDiskDiskEncryptionPtrOutputWithContext(ctx context.Context) BootDiskDiskEncryptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BootDiskDiskEncryptionPtrOutput)
-}
-
-func (in *bootDiskDiskEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*BootDiskDiskEncryption] {
-	return pulumix.Output[*BootDiskDiskEncryption]{
-		OutputState: in.ToBootDiskDiskEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Indicates the type of the disk.
@@ -566,12 +553,6 @@ func (in *bootDiskDiskTypePtr) ToBootDiskDiskTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(BootDiskDiskTypePtrOutput)
 }
 
-func (in *bootDiskDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BootDiskDiskType] {
-	return pulumix.Output[*BootDiskDiskType]{
-		OutputState: in.ToBootDiskDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
 type DataDiskDiskEncryption string
 
@@ -741,12 +722,6 @@ func (in *dataDiskDiskEncryptionPtr) ToDataDiskDiskEncryptionPtrOutput() DataDis
 
 func (in *dataDiskDiskEncryptionPtr) ToDataDiskDiskEncryptionPtrOutputWithContext(ctx context.Context) DataDiskDiskEncryptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataDiskDiskEncryptionPtrOutput)
-}
-
-func (in *dataDiskDiskEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*DataDiskDiskEncryption] {
-	return pulumix.Output[*DataDiskDiskEncryption]{
-		OutputState: in.ToDataDiskDiskEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Input only. Indicates the type of the disk.
@@ -926,12 +901,6 @@ func (in *dataDiskDiskTypePtr) ToDataDiskDiskTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(DataDiskDiskTypePtrOutput)
 }
 
-func (in *dataDiskDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataDiskDiskType] {
-	return pulumix.Output[*DataDiskDiskType]{
-		OutputState: in.ToDataDiskDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 type NetworkInterfaceNicType string
 
@@ -1101,12 +1070,6 @@ func (in *networkInterfaceNicTypePtr) ToNetworkInterfaceNicTypePtrOutput() Netwo
 
 func (in *networkInterfaceNicTypePtr) ToNetworkInterfaceNicTypePtrOutputWithContext(ctx context.Context) NetworkInterfaceNicTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceNicTypePtrOutput)
-}
-
-func (in *networkInterfaceNicTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceNicType] {
-	return pulumix.Output[*NetworkInterfaceNicType]{
-		OutputState: in.ToNetworkInterfaceNicTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

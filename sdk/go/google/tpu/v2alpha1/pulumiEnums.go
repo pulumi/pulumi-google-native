@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. Type of TPU.
@@ -185,12 +184,6 @@ func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorConfigTypePtrOutput)
 }
 
-func (in *acceleratorConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfigType] {
-	return pulumix.Output[*AcceleratorConfigType]{
-		OutputState: in.ToAcceleratorConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
 type AttachedDiskMode string
 
@@ -360,12 +353,6 @@ func (in *attachedDiskModePtr) ToAttachedDiskModePtrOutput() AttachedDiskModePtr
 
 func (in *attachedDiskModePtr) ToAttachedDiskModePtrOutputWithContext(ctx context.Context) AttachedDiskModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskModePtrOutput)
-}
-
-func (in *attachedDiskModePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskMode] {
-	return pulumix.Output[*AttachedDiskMode]{
-		OutputState: in.ToAttachedDiskModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The health status of the TPU node.
@@ -543,12 +530,6 @@ func (in *nodeHealthPtr) ToNodeHealthPtrOutput() NodeHealthPtrOutput {
 
 func (in *nodeHealthPtr) ToNodeHealthPtrOutputWithContext(ctx context.Context) NodeHealthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeHealthPtrOutput)
-}
-
-func (in *nodeHealthPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeHealth] {
-	return pulumix.Output[*NodeHealth]{
-		OutputState: in.ToNodeHealthPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

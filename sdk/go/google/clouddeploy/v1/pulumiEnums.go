@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -183,12 +182,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ExecutionConfigUsagesItem string
@@ -368,12 +361,6 @@ func (in *executionConfigUsagesItemPtr) ToExecutionConfigUsagesItemPtrOutput() E
 
 func (in *executionConfigUsagesItemPtr) ToExecutionConfigUsagesItemPtrOutputWithContext(ctx context.Context) ExecutionConfigUsagesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionConfigUsagesItemPtrOutput)
-}
-
-func (in *executionConfigUsagesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionConfigUsagesItem] {
-	return pulumix.Output[*ExecutionConfigUsagesItem]{
-		OutputState: in.ToExecutionConfigUsagesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ExecutionConfigUsagesItemArrayInput is an input type that accepts ExecutionConfigUsagesItemArray and ExecutionConfigUsagesItemArrayOutput values.
@@ -590,12 +577,6 @@ func (in *retryBackoffModePtr) ToRetryBackoffModePtrOutput() RetryBackoffModePtr
 
 func (in *retryBackoffModePtr) ToRetryBackoffModePtrOutputWithContext(ctx context.Context) RetryBackoffModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RetryBackoffModePtrOutput)
-}
-
-func (in *retryBackoffModePtr) ToOutput(ctx context.Context) pulumix.Output[*RetryBackoffMode] {
-	return pulumix.Output[*RetryBackoffMode]{
-		OutputState: in.ToRetryBackoffModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

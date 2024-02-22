@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
@@ -180,12 +179,6 @@ func (in *computeEnginePreferencesLicenseTypePtr) ToComputeEnginePreferencesLice
 
 func (in *computeEnginePreferencesLicenseTypePtr) ToComputeEnginePreferencesLicenseTypePtrOutputWithContext(ctx context.Context) ComputeEnginePreferencesLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeEnginePreferencesLicenseTypePtrOutput)
-}
-
-func (in *computeEnginePreferencesLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeEnginePreferencesLicenseType] {
-	return pulumix.Output[*ComputeEnginePreferencesLicenseType]{
-		OutputState: in.ToComputeEnginePreferencesLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The payload format.
@@ -368,12 +361,6 @@ func (in *importDataFileFormatPtr) ToImportDataFileFormatPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ImportDataFileFormatPtrOutput)
 }
 
-func (in *importDataFileFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*ImportDataFileFormat] {
-	return pulumix.Output[*ImportDataFileFormat]{
-		OutputState: in.ToImportDataFileFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Report creation state.
 type ReportStateEnum string
 
@@ -548,12 +535,6 @@ func (in *reportStateEnumPtr) ToReportStateEnumPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ReportStateEnumPtrOutput)
 }
 
-func (in *reportStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ReportStateEnum] {
-	return pulumix.Output[*ReportStateEnum]{
-		OutputState: in.ToReportStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Report type.
 type ReportType string
 
@@ -720,12 +701,6 @@ func (in *reportTypePtr) ToReportTypePtrOutput() ReportTypePtrOutput {
 
 func (in *reportTypePtr) ToReportTypePtrOutputWithContext(ctx context.Context) ReportTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReportTypePtrOutput)
-}
-
-func (in *reportTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportType] {
-	return pulumix.Output[*ReportType]{
-		OutputState: in.ToReportTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
@@ -902,12 +877,6 @@ func (in *soleTenancyPreferencesCommitmentPlanPtr) ToSoleTenancyPreferencesCommi
 	return pulumi.ToOutputWithContext(ctx, in).(SoleTenancyPreferencesCommitmentPlanPtrOutput)
 }
 
-func (in *soleTenancyPreferencesCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*SoleTenancyPreferencesCommitmentPlan] {
-	return pulumix.Output[*SoleTenancyPreferencesCommitmentPlan]{
-		OutputState: in.ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sole Tenancy nodes maintenance policy.
 type SoleTenancyPreferencesHostMaintenancePolicy string
 
@@ -1080,12 +1049,6 @@ func (in *soleTenancyPreferencesHostMaintenancePolicyPtr) ToSoleTenancyPreferenc
 
 func (in *soleTenancyPreferencesHostMaintenancePolicyPtr) ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoleTenancyPreferencesHostMaintenancePolicyPtrOutput)
-}
-
-func (in *soleTenancyPreferencesHostMaintenancePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*SoleTenancyPreferencesHostMaintenancePolicy] {
-	return pulumix.Output[*SoleTenancyPreferencesHostMaintenancePolicy]{
-		OutputState: in.ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Data source type.
@@ -1265,12 +1228,6 @@ func (in *sourceTypePtr) ToSourceTypePtrOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, in).(SourceTypePtrOutput)
 }
 
-func (in *sourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceType] {
-	return pulumix.Output[*SourceType]{
-		OutputState: in.ToSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
 type VirtualMachinePreferencesCommitmentPlan string
 
@@ -1443,12 +1400,6 @@ func (in *virtualMachinePreferencesCommitmentPlanPtr) ToVirtualMachinePreference
 
 func (in *virtualMachinePreferencesCommitmentPlanPtr) ToVirtualMachinePreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesCommitmentPlanPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachinePreferencesCommitmentPlanPtrOutput)
-}
-
-func (in *virtualMachinePreferencesCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesCommitmentPlan] {
-	return pulumix.Output[*VirtualMachinePreferencesCommitmentPlan]{
-		OutputState: in.ToVirtualMachinePreferencesCommitmentPlanPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
@@ -1625,12 +1576,6 @@ func (in *virtualMachinePreferencesSizingOptimizationStrategyPtr) ToVirtualMachi
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput)
 }
 
-func (in *virtualMachinePreferencesSizingOptimizationStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesSizingOptimizationStrategy] {
-	return pulumix.Output[*VirtualMachinePreferencesSizingOptimizationStrategy]{
-		OutputState: in.ToVirtualMachinePreferencesSizingOptimizationStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Target product for assets using this preference set. Specify either target product or business goal, but not both.
 type VirtualMachinePreferencesTargetProduct string
 
@@ -1803,12 +1748,6 @@ func (in *virtualMachinePreferencesTargetProductPtr) ToVirtualMachinePreferences
 
 func (in *virtualMachinePreferencesTargetProductPtr) ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesTargetProductPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachinePreferencesTargetProductPtrOutput)
-}
-
-func (in *virtualMachinePreferencesTargetProductPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesTargetProduct] {
-	return pulumix.Output[*VirtualMachinePreferencesTargetProduct]{
-		OutputState: in.ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
@@ -1989,12 +1928,6 @@ func (in *vmwareEnginePreferencesCommitmentPlanPtr) ToVmwareEnginePreferencesCom
 
 func (in *vmwareEnginePreferencesCommitmentPlanPtr) ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) VmwareEnginePreferencesCommitmentPlanPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VmwareEnginePreferencesCommitmentPlanPtrOutput)
-}
-
-func (in *vmwareEnginePreferencesCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*VmwareEnginePreferencesCommitmentPlan] {
-	return pulumix.Output[*VmwareEnginePreferencesCommitmentPlan]{
-		OutputState: in.ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

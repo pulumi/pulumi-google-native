@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
@@ -177,12 +176,6 @@ func (in *googleCloudRunV2EmptyDirVolumeSourceMediumPtr) ToGoogleCloudRunV2Empty
 
 func (in *googleCloudRunV2EmptyDirVolumeSourceMediumPtr) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
-}
-
-func (in *googleCloudRunV2EmptyDirVolumeSourceMediumPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSourceMedium] {
-	return pulumix.Output[*GoogleCloudRunV2EmptyDirVolumeSourceMedium]{
-		OutputState: in.ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The sandbox environment to host this Revision.
@@ -356,12 +349,6 @@ func (in *googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
 }
 
-func (in *googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2RevisionTemplateExecutionEnvironment] {
-	return pulumix.Output[*GoogleCloudRunV2RevisionTemplateExecutionEnvironment]{
-		OutputState: in.ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The execution environment being used to host this Task.
 type GoogleCloudRunV2TaskTemplateExecutionEnvironment string
 
@@ -531,12 +518,6 @@ func (in *googleCloudRunV2TaskTemplateExecutionEnvironmentPtr) ToGoogleCloudRunV
 
 func (in *googleCloudRunV2TaskTemplateExecutionEnvironmentPtr) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput)
-}
-
-func (in *googleCloudRunV2TaskTemplateExecutionEnvironmentPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2TaskTemplateExecutionEnvironment] {
-	return pulumix.Output[*GoogleCloudRunV2TaskTemplateExecutionEnvironment]{
-		OutputState: in.ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The allocation type for this traffic target.
@@ -710,12 +691,6 @@ func (in *googleCloudRunV2TrafficTargetTypePtr) ToGoogleCloudRunV2TrafficTargetT
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2TrafficTargetTypePtrOutput)
 }
 
-func (in *googleCloudRunV2TrafficTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2TrafficTargetType] {
-	return pulumix.Output[*GoogleCloudRunV2TrafficTargetType]{
-		OutputState: in.ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
 type GoogleCloudRunV2VpcAccessEgress string
 
@@ -885,12 +860,6 @@ func (in *googleCloudRunV2VpcAccessEgressPtr) ToGoogleCloudRunV2VpcAccessEgressP
 
 func (in *googleCloudRunV2VpcAccessEgressPtr) ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessEgressPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2VpcAccessEgressPtrOutput)
-}
-
-func (in *googleCloudRunV2VpcAccessEgressPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRunV2VpcAccessEgress] {
-	return pulumix.Output[*GoogleCloudRunV2VpcAccessEgress]{
-		OutputState: in.ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The log type that this config enables.
@@ -1065,12 +1034,6 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 
 func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
-		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
@@ -1259,12 +1222,6 @@ func (in *jobLaunchStagePtr) ToJobLaunchStagePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(JobLaunchStagePtrOutput)
 }
 
-func (in *jobLaunchStagePtr) ToOutput(ctx context.Context) pulumix.Output[*JobLaunchStage] {
-	return pulumix.Output[*JobLaunchStage]{
-		OutputState: in.ToJobLaunchStagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 type ServiceIngress string
 
@@ -1437,12 +1394,6 @@ func (in *serviceIngressPtr) ToServiceIngressPtrOutput() ServiceIngressPtrOutput
 
 func (in *serviceIngressPtr) ToServiceIngressPtrOutputWithContext(ctx context.Context) ServiceIngressPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceIngressPtrOutput)
-}
-
-func (in *serviceIngressPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceIngress] {
-	return pulumix.Output[*ServiceIngress]{
-		OutputState: in.ToServiceIngressPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
@@ -1629,12 +1580,6 @@ func (in *serviceLaunchStagePtr) ToServiceLaunchStagePtrOutput() ServiceLaunchSt
 
 func (in *serviceLaunchStagePtr) ToServiceLaunchStagePtrOutputWithContext(ctx context.Context) ServiceLaunchStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceLaunchStagePtrOutput)
-}
-
-func (in *serviceLaunchStagePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceLaunchStage] {
-	return pulumix.Output[*ServiceLaunchStage]{
-		OutputState: in.ToServiceLaunchStagePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

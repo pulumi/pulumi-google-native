@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
@@ -185,12 +184,6 @@ func (in *accessConfigNetworkTierPtr) ToAccessConfigNetworkTierPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(AccessConfigNetworkTierPtrOutput)
 }
 
-func (in *accessConfigNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessConfigNetworkTier] {
-	return pulumix.Output[*AccessConfigNetworkTier]{
-		OutputState: in.ToAccessConfigNetworkTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 type AccessConfigType string
 
@@ -355,12 +348,6 @@ func (in *accessConfigTypePtr) ToAccessConfigTypePtrOutput() AccessConfigTypePtr
 
 func (in *accessConfigTypePtr) ToAccessConfigTypePtrOutputWithContext(ctx context.Context) AccessConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessConfigTypePtrOutput)
-}
-
-func (in *accessConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessConfigType] {
-	return pulumix.Output[*AccessConfigType]{
-		OutputState: in.ToAccessConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
@@ -533,12 +520,6 @@ func (in *addressAddressTypePtr) ToAddressAddressTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AddressAddressTypePtrOutput)
 }
 
-func (in *addressAddressTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressAddressType] {
-	return pulumix.Output[*AddressAddressType]{
-		OutputState: in.ToAddressAddressTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IP version that will be used by this address. Valid options are IPV4 or IPV6.
 type AddressIpVersion string
 
@@ -707,12 +688,6 @@ func (in *addressIpVersionPtr) ToAddressIpVersionPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AddressIpVersionPtrOutput)
 }
 
-func (in *addressIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*AddressIpVersion] {
-	return pulumix.Output[*AddressIpVersion]{
-		OutputState: in.ToAddressIpVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 type AddressIpv6EndpointType string
 
@@ -879,12 +854,6 @@ func (in *addressIpv6EndpointTypePtr) ToAddressIpv6EndpointTypePtrOutput() Addre
 
 func (in *addressIpv6EndpointTypePtr) ToAddressIpv6EndpointTypePtrOutputWithContext(ctx context.Context) AddressIpv6EndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressIpv6EndpointTypePtrOutput)
-}
-
-func (in *addressIpv6EndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressIpv6EndpointType] {
-	return pulumix.Output[*AddressIpv6EndpointType]{
-		OutputState: in.ToAddressIpv6EndpointTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
@@ -1059,12 +1028,6 @@ func (in *addressNetworkTierPtr) ToAddressNetworkTierPtrOutput() AddressNetworkT
 
 func (in *addressNetworkTierPtr) ToAddressNetworkTierPtrOutputWithContext(ctx context.Context) AddressNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressNetworkTierPtrOutput)
-}
-
-func (in *addressNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AddressNetworkTier] {
-	return pulumix.Output[*AddressNetworkTier]{
-		OutputState: in.ToAddressNetworkTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
@@ -1253,12 +1216,6 @@ func (in *addressPurposePtr) ToAddressPurposePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AddressPurposePtrOutput)
 }
 
-func (in *addressPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressPurpose] {
-	return pulumix.Output[*AddressPurpose]{
-		OutputState: in.ToAddressPurposePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
 type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface string
 
@@ -1423,12 +1380,6 @@ func (in *allocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk
 
 func (in *allocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtr) ToAllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutputWithContext(ctx context.Context) AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput)
-}
-
-func (in *allocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtr) ToOutput(ctx context.Context) pulumix.Output[*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface] {
-	return pulumix.Output[*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface]{
-		OutputState: in.ToAllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The architecture of the attached disk. Valid values are arm64 or x86_64.
@@ -1602,12 +1553,6 @@ func (in *attachedDiskInitializeParamsArchitecturePtr) ToAttachedDiskInitializeP
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInitializeParamsArchitecturePtrOutput)
 }
 
-func (in *attachedDiskInitializeParamsArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInitializeParamsArchitecture] {
-	return pulumix.Output[*AttachedDiskInitializeParamsArchitecture]{
-		OutputState: in.ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 type AttachedDiskInitializeParamsOnUpdateAction string
 
@@ -1779,12 +1724,6 @@ func (in *attachedDiskInitializeParamsOnUpdateActionPtr) ToAttachedDiskInitializ
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInitializeParamsOnUpdateActionPtrOutput)
 }
 
-func (in *attachedDiskInitializeParamsOnUpdateActionPtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInitializeParamsOnUpdateAction] {
-	return pulumix.Output[*AttachedDiskInitializeParamsOnUpdateAction]{
-		OutputState: in.ToAttachedDiskInitializeParamsOnUpdateActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use either NVME or SCSI. In certain configurations, persistent disks can use NVMe. For more information, see About persistent disks.
 type AttachedDiskInterface string
 
@@ -1949,12 +1888,6 @@ func (in *attachedDiskInterfacePtr) ToAttachedDiskInterfacePtrOutput() AttachedD
 
 func (in *attachedDiskInterfacePtr) ToAttachedDiskInterfacePtrOutputWithContext(ctx context.Context) AttachedDiskInterfacePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInterfacePtrOutput)
-}
-
-func (in *attachedDiskInterfacePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskInterface] {
-	return pulumix.Output[*AttachedDiskInterface]{
-		OutputState: in.ToAttachedDiskInterfacePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
@@ -2125,12 +2058,6 @@ func (in *attachedDiskModePtr) ToAttachedDiskModePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskModePtrOutput)
 }
 
-func (in *attachedDiskModePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskMode] {
-	return pulumix.Output[*AttachedDiskMode]{
-		OutputState: in.ToAttachedDiskModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED if the LocalSSD data has been saved to a persistent location by customer request. (see the discard_local_ssd option on Stop/Suspend). Read-only in the api.
 type AttachedDiskSavedState string
 
@@ -2299,12 +2226,6 @@ func (in *attachedDiskSavedStatePtr) ToAttachedDiskSavedStatePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskSavedStatePtrOutput)
 }
 
-func (in *attachedDiskSavedStatePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskSavedState] {
-	return pulumix.Output[*AttachedDiskSavedState]{
-		OutputState: in.ToAttachedDiskSavedStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
 type AttachedDiskType string
 
@@ -2469,12 +2390,6 @@ func (in *attachedDiskTypePtr) ToAttachedDiskTypePtrOutput() AttachedDiskTypePtr
 
 func (in *attachedDiskTypePtr) ToAttachedDiskTypePtrOutputWithContext(ctx context.Context) AttachedDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskTypePtrOutput)
-}
-
-func (in *attachedDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AttachedDiskType] {
-	return pulumix.Output[*AttachedDiskType]{
-		OutputState: in.ToAttachedDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The log type that this config enables.
@@ -2649,12 +2564,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -2834,12 +2743,6 @@ func (in *authorizationLoggingOptionsPermissionTypePtr) ToAuthorizationLoggingOp
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationLoggingOptionsPermissionTypePtrOutput)
 }
 
-func (in *authorizationLoggingOptionsPermissionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationLoggingOptionsPermissionType] {
-	return pulumix.Output[*AuthorizationLoggingOptionsPermissionType]{
-		OutputState: in.ToAuthorizationLoggingOptionsPermissionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are: * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
 type AutoscalingPolicyCpuUtilizationPredictiveMethod string
 
@@ -3006,12 +2909,6 @@ func (in *autoscalingPolicyCpuUtilizationPredictiveMethodPtr) ToAutoscalingPolic
 
 func (in *autoscalingPolicyCpuUtilizationPredictiveMethodPtr) ToAutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutputWithContext(ctx context.Context) AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput)
-}
-
-func (in *autoscalingPolicyCpuUtilizationPredictiveMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyCpuUtilizationPredictiveMethod] {
-	return pulumix.Output[*AutoscalingPolicyCpuUtilizationPredictiveMethod]{
-		OutputState: in.ToAutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines how target utilization value is expressed for a Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE.
@@ -3183,12 +3080,6 @@ func (in *autoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtr) ToAu
 
 func (in *autoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtr) ToAutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutputWithContext(ctx context.Context) AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput)
-}
-
-func (in *autoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType] {
-	return pulumix.Output[*AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType]{
-		OutputState: in.ToAutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
@@ -3365,12 +3256,6 @@ func (in *autoscalingPolicyModePtr) ToAutoscalingPolicyModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingPolicyModePtrOutput)
 }
 
-func (in *autoscalingPolicyModePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyMode] {
-	return pulumix.Output[*AutoscalingPolicyMode]{
-		OutputState: in.ToAutoscalingPolicyModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 type BackendBalancingMode string
 
@@ -3540,12 +3425,6 @@ func (in *backendBalancingModePtr) ToBackendBalancingModePtrOutput() BackendBala
 
 func (in *backendBalancingModePtr) ToBackendBalancingModePtrOutputWithContext(ctx context.Context) BackendBalancingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendBalancingModePtrOutput)
-}
-
-func (in *backendBalancingModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendBalancingMode] {
-	return pulumix.Output[*BackendBalancingMode]{
-		OutputState: in.ToBackendBalancingModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
@@ -3721,12 +3600,6 @@ func (in *backendBucketCdnPolicyCacheModePtr) ToBackendBucketCdnPolicyCacheModeP
 	return pulumi.ToOutputWithContext(ctx, in).(BackendBucketCdnPolicyCacheModePtrOutput)
 }
 
-func (in *backendBucketCdnPolicyCacheModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketCdnPolicyCacheMode] {
-	return pulumix.Output[*BackendBucketCdnPolicyCacheMode]{
-		OutputState: in.ToBackendBucketCdnPolicyCacheModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
 type BackendBucketCompressionMode string
 
@@ -3893,12 +3766,6 @@ func (in *backendBucketCompressionModePtr) ToBackendBucketCompressionModePtrOutp
 
 func (in *backendBucketCompressionModePtr) ToBackendBucketCompressionModePtrOutputWithContext(ctx context.Context) BackendBucketCompressionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendBucketCompressionModePtrOutput)
-}
-
-func (in *backendBucketCompressionModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketCompressionMode] {
-	return pulumix.Output[*BackendBucketCompressionMode]{
-		OutputState: in.ToBackendBucketCompressionModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
@@ -4074,12 +3941,6 @@ func (in *backendServiceCdnPolicyCacheModePtr) ToBackendServiceCdnPolicyCacheMod
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceCdnPolicyCacheModePtrOutput)
 }
 
-func (in *backendServiceCdnPolicyCacheModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceCdnPolicyCacheMode] {
-	return pulumix.Output[*BackendServiceCdnPolicyCacheMode]{
-		OutputState: in.ToBackendServiceCdnPolicyCacheModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
 type BackendServiceCompressionMode string
 
@@ -4246,12 +4107,6 @@ func (in *backendServiceCompressionModePtr) ToBackendServiceCompressionModePtrOu
 
 func (in *backendServiceCompressionModePtr) ToBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) BackendServiceCompressionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceCompressionModePtrOutput)
-}
-
-func (in *backendServiceCompressionModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceCompressionMode] {
-	return pulumix.Output[*BackendServiceCompressionMode]{
-		OutputState: in.ToBackendServiceCompressionModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
@@ -4422,12 +4277,6 @@ func (in *backendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthy
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput)
 }
 
-func (in *backendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends] {
-	return pulumix.Output[*BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends]{
-		OutputState: in.ToBackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 type BackendServiceConnectionTrackingPolicyTrackingMode string
 
@@ -4594,12 +4443,6 @@ func (in *backendServiceConnectionTrackingPolicyTrackingModePtr) ToBackendServic
 
 func (in *backendServiceConnectionTrackingPolicyTrackingModePtr) ToBackendServiceConnectionTrackingPolicyTrackingModePtrOutputWithContext(ctx context.Context) BackendServiceConnectionTrackingPolicyTrackingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceConnectionTrackingPolicyTrackingModePtrOutput)
-}
-
-func (in *backendServiceConnectionTrackingPolicyTrackingModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceConnectionTrackingPolicyTrackingMode] {
-	return pulumix.Output[*BackendServiceConnectionTrackingPolicyTrackingMode]{
-		OutputState: in.ToBackendServiceConnectionTrackingPolicyTrackingModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
@@ -4779,12 +4622,6 @@ func (in *backendServiceLoadBalancingSchemePtr) ToBackendServiceLoadBalancingSch
 
 func (in *backendServiceLoadBalancingSchemePtr) ToBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx context.Context) BackendServiceLoadBalancingSchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLoadBalancingSchemePtrOutput)
-}
-
-func (in *backendServiceLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLoadBalancingScheme] {
-	return pulumix.Output[*BackendServiceLoadBalancingScheme]{
-		OutputState: in.ToBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -4972,12 +4809,6 @@ func (in *backendServiceLocalityLbPolicyPtr) ToBackendServiceLocalityLbPolicyPtr
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLocalityLbPolicyPtrOutput)
 }
 
-func (in *backendServiceLocalityLbPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLocalityLbPolicy] {
-	return pulumix.Output[*BackendServiceLocalityLbPolicy]{
-		OutputState: in.ToBackendServiceLocalityLbPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
 type BackendServiceLocalityLoadBalancingPolicyConfigPolicyName string
 
@@ -5163,12 +4994,6 @@ func (in *backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ToBacken
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
 }
 
-func (in *backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLocalityLoadBalancingPolicyConfigPolicyName] {
-	return pulumix.Output[*BackendServiceLocalityLoadBalancingPolicyConfigPolicyName]{
-		OutputState: in.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
 type BackendServiceLogConfigOptionalMode string
 
@@ -5338,12 +5163,6 @@ func (in *backendServiceLogConfigOptionalModePtr) ToBackendServiceLogConfigOptio
 
 func (in *backendServiceLogConfigOptionalModePtr) ToBackendServiceLogConfigOptionalModePtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLogConfigOptionalModePtrOutput)
-}
-
-func (in *backendServiceLogConfigOptionalModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceLogConfigOptionalMode] {
-	return pulumix.Output[*BackendServiceLogConfigOptionalMode]{
-		OutputState: in.ToBackendServiceLogConfigOptionalModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
@@ -5528,12 +5347,6 @@ func (in *backendServiceProtocolPtr) ToBackendServiceProtocolPtrOutput() Backend
 
 func (in *backendServiceProtocolPtr) ToBackendServiceProtocolPtrOutputWithContext(ctx context.Context) BackendServiceProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceProtocolPtrOutput)
-}
-
-func (in *backendServiceProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceProtocol] {
-	return pulumix.Output[*BackendServiceProtocol]{
-		OutputState: in.ToBackendServiceProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
@@ -5722,12 +5535,6 @@ func (in *backendServiceSessionAffinityPtr) ToBackendServiceSessionAffinityPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceSessionAffinityPtrOutput)
 }
 
-func (in *backendServiceSessionAffinityPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceSessionAffinity] {
-	return pulumix.Output[*BackendServiceSessionAffinity]{
-		OutputState: in.ToBackendServiceSessionAffinityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This is deprecated and has no effect. Do not use.
 type ConditionIam string
 
@@ -5914,12 +5721,6 @@ func (in *conditionIamPtr) ToConditionIamPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionIamPtrOutput)
 }
 
-func (in *conditionIamPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionIam] {
-	return pulumix.Output[*ConditionIam]{
-		OutputState: in.ToConditionIamPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This is deprecated and has no effect. Do not use.
 type ConditionOp string
 
@@ -6100,12 +5901,6 @@ func (in *conditionOpPtr) ToConditionOpPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionOpPtrOutput)
 }
 
-func (in *conditionOpPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionOp] {
-	return pulumix.Output[*ConditionOp]{
-		OutputState: in.ToConditionOpPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This is deprecated and has no effect. Do not use.
 type ConditionSys string
 
@@ -6283,12 +6078,6 @@ func (in *conditionSysPtr) ToConditionSysPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionSysPtrOutput)
 }
 
-func (in *conditionSysPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionSys] {
-	return pulumix.Output[*ConditionSys]{
-		OutputState: in.ToConditionSysPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
 type DeprecationStatusState string
 
@@ -6457,12 +6246,6 @@ func (in *deprecationStatusStatePtr) ToDeprecationStatusStatePtrOutput() Depreca
 
 func (in *deprecationStatusStatePtr) ToDeprecationStatusStatePtrOutputWithContext(ctx context.Context) DeprecationStatusStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeprecationStatusStatePtrOutput)
-}
-
-func (in *deprecationStatusStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DeprecationStatusState] {
-	return pulumix.Output[*DeprecationStatusState]{
-		OutputState: in.ToDeprecationStatusStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The architecture of the disk. Valid values are ARM64 or X86_64.
@@ -6634,12 +6417,6 @@ func (in *diskArchitecturePtr) ToDiskArchitecturePtrOutput() DiskArchitecturePtr
 
 func (in *diskArchitecturePtr) ToDiskArchitecturePtrOutputWithContext(ctx context.Context) DiskArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskArchitecturePtrOutput)
-}
-
-func (in *diskArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskArchitecture] {
-	return pulumix.Output[*DiskArchitecture]{
-		OutputState: in.ToDiskArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies whether to include the disk and what image to use. Possible values are: - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks. - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks.
@@ -6825,12 +6602,6 @@ func (in *diskInstantiationConfigInstantiateFromPtr) ToDiskInstantiationConfigIn
 	return pulumi.ToOutputWithContext(ctx, in).(DiskInstantiationConfigInstantiateFromPtrOutput)
 }
 
-func (in *diskInstantiationConfigInstantiateFromPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskInstantiationConfigInstantiateFrom] {
-	return pulumix.Output[*DiskInstantiationConfigInstantiateFrom]{
-		OutputState: in.ToDiskInstantiationConfigInstantiateFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
 type DistributionPolicyTargetShape string
 
@@ -7005,12 +6776,6 @@ func (in *distributionPolicyTargetShapePtr) ToDistributionPolicyTargetShapePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(DistributionPolicyTargetShapePtrOutput)
 }
 
-func (in *distributionPolicyTargetShapePtr) ToOutput(ctx context.Context) pulumix.Output[*DistributionPolicyTargetShape] {
-	return pulumix.Output[*DistributionPolicyTargetShape]{
-		OutputState: in.ToDistributionPolicyTargetShapePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the user-supplied redundancy type of this external VPN gateway.
 type ExternalVpnGatewayRedundancyType string
 
@@ -7182,12 +6947,6 @@ func (in *externalVpnGatewayRedundancyTypePtr) ToExternalVpnGatewayRedundancyTyp
 	return pulumi.ToOutputWithContext(ctx, in).(ExternalVpnGatewayRedundancyTypePtrOutput)
 }
 
-func (in *externalVpnGatewayRedundancyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExternalVpnGatewayRedundancyType] {
-	return pulumix.Output[*ExternalVpnGatewayRedundancyType]{
-		OutputState: in.ToExternalVpnGatewayRedundancyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The file type of source file.
 type FileContentBufferFileType string
 
@@ -7354,12 +7113,6 @@ func (in *fileContentBufferFileTypePtr) ToFileContentBufferFileTypePtrOutput() F
 
 func (in *fileContentBufferFileTypePtr) ToFileContentBufferFileTypePtrOutputWithContext(ctx context.Context) FileContentBufferFileTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FileContentBufferFileTypePtrOutput)
-}
-
-func (in *fileContentBufferFileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FileContentBufferFileType] {
-	return pulumix.Output[*FileContentBufferFileType]{
-		OutputState: in.ToFileContentBufferFileTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
@@ -7530,12 +7283,6 @@ func (in *firewallDirectionPtr) ToFirewallDirectionPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallDirectionPtrOutput)
 }
 
-func (in *firewallDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallDirection] {
-	return pulumix.Output[*FirewallDirection]{
-		OutputState: in.ToFirewallDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs.
 type FirewallLogConfigMetadata string
 
@@ -7702,12 +7449,6 @@ func (in *firewallLogConfigMetadataPtr) ToFirewallLogConfigMetadataPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallLogConfigMetadataPtrOutput)
 }
 
-func (in *firewallLogConfigMetadataPtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallLogConfigMetadata] {
-	return pulumix.Output[*FirewallLogConfigMetadata]{
-		OutputState: in.ToFirewallLogConfigMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The direction in which this rule applies.
 type FirewallPolicyRuleDirection string
 
@@ -7872,12 +7613,6 @@ func (in *firewallPolicyRuleDirectionPtr) ToFirewallPolicyRuleDirectionPtrOutput
 
 func (in *firewallPolicyRuleDirectionPtr) ToFirewallPolicyRuleDirectionPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyRuleDirectionPtrOutput)
-}
-
-func (in *firewallPolicyRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyRuleDirection] {
-	return pulumix.Output[*FirewallPolicyRuleDirection]{
-		OutputState: in.ToFirewallPolicyRuleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
@@ -8056,12 +7791,6 @@ func (in *forwardingRuleIpProtocolPtr) ToForwardingRuleIpProtocolPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleIpProtocolPtrOutput)
 }
 
-func (in *forwardingRuleIpProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleIpProtocol] {
-	return pulumix.Output[*ForwardingRuleIpProtocol]{
-		OutputState: in.ToForwardingRuleIpProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
 type ForwardingRuleIpVersion string
 
@@ -8228,12 +7957,6 @@ func (in *forwardingRuleIpVersionPtr) ToForwardingRuleIpVersionPtrOutput() Forwa
 
 func (in *forwardingRuleIpVersionPtr) ToForwardingRuleIpVersionPtrOutputWithContext(ctx context.Context) ForwardingRuleIpVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleIpVersionPtrOutput)
-}
-
-func (in *forwardingRuleIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleIpVersion] {
-	return pulumix.Output[*ForwardingRuleIpVersion]{
-		OutputState: in.ToForwardingRuleIpVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
@@ -8410,12 +8133,6 @@ func (in *forwardingRuleLoadBalancingSchemePtr) ToForwardingRuleLoadBalancingSch
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleLoadBalancingSchemePtrOutput)
 }
 
-func (in *forwardingRuleLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleLoadBalancingScheme] {
-	return pulumix.Output[*ForwardingRuleLoadBalancingScheme]{
-		OutputState: in.ToForwardingRuleLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
 type ForwardingRuleNetworkTier string
 
@@ -8588,12 +8305,6 @@ func (in *forwardingRuleNetworkTierPtr) ToForwardingRuleNetworkTierPtrOutput() F
 
 func (in *forwardingRuleNetworkTierPtr) ToForwardingRuleNetworkTierPtrOutputWithContext(ctx context.Context) ForwardingRuleNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleNetworkTierPtrOutput)
-}
-
-func (in *forwardingRuleNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRuleNetworkTier] {
-	return pulumix.Output[*ForwardingRuleNetworkTier]{
-		OutputState: in.ToForwardingRuleNetworkTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ForwardingRulePscConnectionStatus string
@@ -8774,12 +8485,6 @@ func (in *forwardingRulePscConnectionStatusPtr) ToForwardingRulePscConnectionSta
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRulePscConnectionStatusPtrOutput)
 }
 
-func (in *forwardingRulePscConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRulePscConnectionStatus] {
-	return pulumix.Output[*ForwardingRulePscConnectionStatus]{
-		OutputState: in.ToForwardingRulePscConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type GRPCHealthCheckPortSpecification string
 
@@ -8949,12 +8654,6 @@ func (in *grpchealthCheckPortSpecificationPtr) ToGRPCHealthCheckPortSpecificatio
 
 func (in *grpchealthCheckPortSpecificationPtr) ToGRPCHealthCheckPortSpecificationPtrOutputWithContext(ctx context.Context) GRPCHealthCheckPortSpecificationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GRPCHealthCheckPortSpecificationPtrOutput)
-}
-
-func (in *grpchealthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*GRPCHealthCheckPortSpecification] {
-	return pulumix.Output[*GRPCHealthCheckPortSpecification]{
-		OutputState: in.ToGRPCHealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
@@ -9127,12 +8826,6 @@ func (in *globalAddressAddressTypePtr) ToGlobalAddressAddressTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressAddressTypePtrOutput)
 }
 
-func (in *globalAddressAddressTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressAddressType] {
-	return pulumix.Output[*GlobalAddressAddressType]{
-		OutputState: in.ToGlobalAddressAddressTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IP version that will be used by this address. Valid options are IPV4 or IPV6.
 type GlobalAddressIpVersion string
 
@@ -9301,12 +8994,6 @@ func (in *globalAddressIpVersionPtr) ToGlobalAddressIpVersionPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressIpVersionPtrOutput)
 }
 
-func (in *globalAddressIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressIpVersion] {
-	return pulumix.Output[*GlobalAddressIpVersion]{
-		OutputState: in.ToGlobalAddressIpVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 type GlobalAddressIpv6EndpointType string
 
@@ -9473,12 +9160,6 @@ func (in *globalAddressIpv6EndpointTypePtr) ToGlobalAddressIpv6EndpointTypePtrOu
 
 func (in *globalAddressIpv6EndpointTypePtr) ToGlobalAddressIpv6EndpointTypePtrOutputWithContext(ctx context.Context) GlobalAddressIpv6EndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressIpv6EndpointTypePtrOutput)
-}
-
-func (in *globalAddressIpv6EndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressIpv6EndpointType] {
-	return pulumix.Output[*GlobalAddressIpv6EndpointType]{
-		OutputState: in.ToGlobalAddressIpv6EndpointTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
@@ -9653,12 +9334,6 @@ func (in *globalAddressNetworkTierPtr) ToGlobalAddressNetworkTierPtrOutput() Glo
 
 func (in *globalAddressNetworkTierPtr) ToGlobalAddressNetworkTierPtrOutputWithContext(ctx context.Context) GlobalAddressNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressNetworkTierPtrOutput)
-}
-
-func (in *globalAddressNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressNetworkTier] {
-	return pulumix.Output[*GlobalAddressNetworkTier]{
-		OutputState: in.ToGlobalAddressNetworkTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
@@ -9847,12 +9522,6 @@ func (in *globalAddressPurposePtr) ToGlobalAddressPurposePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressPurposePtrOutput)
 }
 
-func (in *globalAddressPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalAddressPurpose] {
-	return pulumix.Output[*GlobalAddressPurpose]{
-		OutputState: in.ToGlobalAddressPurposePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 type GlobalForwardingRuleIpProtocol string
 
@@ -10029,12 +9698,6 @@ func (in *globalForwardingRuleIpProtocolPtr) ToGlobalForwardingRuleIpProtocolPtr
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleIpProtocolPtrOutput)
 }
 
-func (in *globalForwardingRuleIpProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleIpProtocol] {
-	return pulumix.Output[*GlobalForwardingRuleIpProtocol]{
-		OutputState: in.ToGlobalForwardingRuleIpProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
 type GlobalForwardingRuleIpVersion string
 
@@ -10201,12 +9864,6 @@ func (in *globalForwardingRuleIpVersionPtr) ToGlobalForwardingRuleIpVersionPtrOu
 
 func (in *globalForwardingRuleIpVersionPtr) ToGlobalForwardingRuleIpVersionPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleIpVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleIpVersionPtrOutput)
-}
-
-func (in *globalForwardingRuleIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleIpVersion] {
-	return pulumix.Output[*GlobalForwardingRuleIpVersion]{
-		OutputState: in.ToGlobalForwardingRuleIpVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
@@ -10383,12 +10040,6 @@ func (in *globalForwardingRuleLoadBalancingSchemePtr) ToGlobalForwardingRuleLoad
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleLoadBalancingSchemePtrOutput)
 }
 
-func (in *globalForwardingRuleLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleLoadBalancingScheme] {
-	return pulumix.Output[*GlobalForwardingRuleLoadBalancingScheme]{
-		OutputState: in.ToGlobalForwardingRuleLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
 type GlobalForwardingRuleNetworkTier string
 
@@ -10561,12 +10212,6 @@ func (in *globalForwardingRuleNetworkTierPtr) ToGlobalForwardingRuleNetworkTierP
 
 func (in *globalForwardingRuleNetworkTierPtr) ToGlobalForwardingRuleNetworkTierPtrOutputWithContext(ctx context.Context) GlobalForwardingRuleNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleNetworkTierPtrOutput)
-}
-
-func (in *globalForwardingRuleNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRuleNetworkTier] {
-	return pulumix.Output[*GlobalForwardingRuleNetworkTier]{
-		OutputState: in.ToGlobalForwardingRuleNetworkTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type GlobalForwardingRulePscConnectionStatus string
@@ -10745,12 +10390,6 @@ func (in *globalForwardingRulePscConnectionStatusPtr) ToGlobalForwardingRulePscC
 
 func (in *globalForwardingRulePscConnectionStatusPtr) ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) GlobalForwardingRulePscConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRulePscConnectionStatusPtrOutput)
-}
-
-func (in *globalForwardingRulePscConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRulePscConnectionStatus] {
-	return pulumix.Output[*GlobalForwardingRulePscConnectionStatus]{
-		OutputState: in.ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -10934,12 +10573,6 @@ func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToGlobalNetworkEndpo
 
 func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToGlobalNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput)
-}
-
-func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpointGroupNetworkEndpointType] {
-	return pulumix.Output[*GlobalNetworkEndpointGroupNetworkEndpointType]{
-		OutputState: in.ToGlobalNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
@@ -11126,12 +10759,6 @@ func (in *guestOsFeatureTypePtr) ToGuestOsFeatureTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(GuestOsFeatureTypePtrOutput)
 }
 
-func (in *guestOsFeatureTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GuestOsFeatureType] {
-	return pulumix.Output[*GuestOsFeatureType]{
-		OutputState: in.ToGuestOsFeatureTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type HTTP2HealthCheckPortSpecification string
 
@@ -11303,12 +10930,6 @@ func (in *http2healthCheckPortSpecificationPtr) ToHTTP2HealthCheckPortSpecificat
 	return pulumi.ToOutputWithContext(ctx, in).(HTTP2HealthCheckPortSpecificationPtrOutput)
 }
 
-func (in *http2healthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTP2HealthCheckPortSpecification] {
-	return pulumix.Output[*HTTP2HealthCheckPortSpecification]{
-		OutputState: in.ToHTTP2HealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 type HTTP2HealthCheckProxyHeader string
 
@@ -11473,12 +11094,6 @@ func (in *http2healthCheckProxyHeaderPtr) ToHTTP2HealthCheckProxyHeaderPtrOutput
 
 func (in *http2healthCheckProxyHeaderPtr) ToHTTP2HealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTP2HealthCheckProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTP2HealthCheckProxyHeaderPtrOutput)
-}
-
-func (in *http2healthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTP2HealthCheckProxyHeader] {
-	return pulumix.Output[*HTTP2HealthCheckProxyHeader]{
-		OutputState: in.ToHTTP2HealthCheckProxyHeaderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
@@ -11652,12 +11267,6 @@ func (in *httphealthCheckPortSpecificationPtr) ToHTTPHealthCheckPortSpecificatio
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPHealthCheckPortSpecificationPtrOutput)
 }
 
-func (in *httphealthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPHealthCheckPortSpecification] {
-	return pulumix.Output[*HTTPHealthCheckPortSpecification]{
-		OutputState: in.ToHTTPHealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 type HTTPHealthCheckProxyHeader string
 
@@ -11822,12 +11431,6 @@ func (in *httphealthCheckProxyHeaderPtr) ToHTTPHealthCheckProxyHeaderPtrOutput()
 
 func (in *httphealthCheckProxyHeaderPtr) ToHTTPHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTPHealthCheckProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPHealthCheckProxyHeaderPtrOutput)
-}
-
-func (in *httphealthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPHealthCheckProxyHeader] {
-	return pulumix.Output[*HTTPHealthCheckProxyHeader]{
-		OutputState: in.ToHTTPHealthCheckProxyHeaderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
@@ -12001,12 +11604,6 @@ func (in *httpshealthCheckPortSpecificationPtr) ToHTTPSHealthCheckPortSpecificat
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPSHealthCheckPortSpecificationPtrOutput)
 }
 
-func (in *httpshealthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPSHealthCheckPortSpecification] {
-	return pulumix.Output[*HTTPSHealthCheckPortSpecification]{
-		OutputState: in.ToHTTPSHealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 type HTTPSHealthCheckProxyHeader string
 
@@ -12171,12 +11768,6 @@ func (in *httpshealthCheckProxyHeaderPtr) ToHTTPSHealthCheckProxyHeaderPtrOutput
 
 func (in *httpshealthCheckProxyHeaderPtr) ToHTTPSHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) HTTPSHealthCheckProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPSHealthCheckProxyHeaderPtrOutput)
-}
-
-func (in *httpshealthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPSHealthCheckProxyHeader] {
-	return pulumix.Output[*HTTPSHealthCheckProxyHeader]{
-		OutputState: in.ToHTTPSHealthCheckProxyHeaderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
@@ -12353,12 +11944,6 @@ func (in *healthCheckTypePtr) ToHealthCheckTypePtrOutput() HealthCheckTypePtrOut
 
 func (in *healthCheckTypePtr) ToHealthCheckTypePtrOutputWithContext(ctx context.Context) HealthCheckTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HealthCheckTypePtrOutput)
-}
-
-func (in *healthCheckTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HealthCheckType] {
-	return pulumix.Output[*HealthCheckType]{
-		OutputState: in.ToHealthCheckTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
@@ -12538,12 +12123,6 @@ func (in *httpRedirectActionRedirectResponseCodePtr) ToHttpRedirectActionRedirec
 	return pulumi.ToOutputWithContext(ctx, in).(HttpRedirectActionRedirectResponseCodePtrOutput)
 }
 
-func (in *httpRedirectActionRedirectResponseCodePtr) ToOutput(ctx context.Context) pulumix.Output[*HttpRedirectActionRedirectResponseCode] {
-	return pulumix.Output[*HttpRedirectActionRedirectResponseCode]{
-		OutputState: in.ToHttpRedirectActionRedirectResponseCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The architecture of the image. Valid values are ARM64 or X86_64.
 type ImageArchitecture string
 
@@ -12715,12 +12294,6 @@ func (in *imageArchitecturePtr) ToImageArchitecturePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ImageArchitecturePtrOutput)
 }
 
-func (in *imageArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageArchitecture] {
-	return pulumix.Output[*ImageArchitecture]{
-		OutputState: in.ToImageArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 type ImageRawDiskContainerType string
 
@@ -12883,12 +12456,6 @@ func (in *imageRawDiskContainerTypePtr) ToImageRawDiskContainerTypePtrOutput() I
 
 func (in *imageRawDiskContainerTypePtr) ToImageRawDiskContainerTypePtrOutputWithContext(ctx context.Context) ImageRawDiskContainerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImageRawDiskContainerTypePtrOutput)
-}
-
-func (in *imageRawDiskContainerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageRawDiskContainerType] {
-	return pulumix.Output[*ImageRawDiskContainerType]{
-		OutputState: in.ToImageRawDiskContainerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the image used to create this disk. The default and only valid value is RAW.
@@ -13055,12 +12622,6 @@ func (in *imageSourceTypePtr) ToImageSourceTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ImageSourceTypePtrOutput)
 }
 
-func (in *imageSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageSourceType] {
-	return pulumix.Output[*ImageSourceType]{
-		OutputState: in.ToImageSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair.
 type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair string
 
@@ -13225,12 +12786,6 @@ func (in *instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr) ToI
 
 func (in *instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput)
-}
-
-func (in *instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair] {
-	return pulumix.Output[*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair]{
-		OutputState: in.ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Pagination behavior of the listManagedInstances API method for this managed instance group.
@@ -13401,12 +12956,6 @@ func (in *instanceGroupManagerListManagedInstancesResultsPtr) ToInstanceGroupMan
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerListManagedInstancesResultsPtrOutput)
 }
 
-func (in *instanceGroupManagerListManagedInstancesResultsPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerListManagedInstancesResults] {
-	return pulumix.Output[*InstanceGroupManagerListManagedInstancesResults]{
-		OutputState: in.ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled.
 type InstanceGroupManagerUpdatePolicyInstanceRedistributionType string
 
@@ -13573,12 +13122,6 @@ func (in *instanceGroupManagerUpdatePolicyInstanceRedistributionTypePtr) ToInsta
 
 func (in *instanceGroupManagerUpdatePolicyInstanceRedistributionTypePtr) ToInstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput)
-}
-
-func (in *instanceGroupManagerUpdatePolicyInstanceRedistributionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyInstanceRedistributionType] {
-	return pulumix.Output[*InstanceGroupManagerUpdatePolicyInstanceRedistributionType]{
-		OutputState: in.ToInstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
@@ -13755,12 +13298,6 @@ func (in *instanceGroupManagerUpdatePolicyMinimalActionPtr) ToInstanceGroupManag
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput)
 }
 
-func (in *instanceGroupManagerUpdatePolicyMinimalActionPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyMinimalAction] {
-	return pulumix.Output[*InstanceGroupManagerUpdatePolicyMinimalAction]{
-		OutputState: in.ToInstanceGroupManagerUpdatePolicyMinimalActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 type InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction string
 
@@ -13935,12 +13472,6 @@ func (in *instanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtr) ToInst
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput)
 }
 
-func (in *instanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction] {
-	return pulumix.Output[*InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction]{
-		OutputState: in.ToInstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // What action should be used to replace instances. See minimal_action.REPLACE
 type InstanceGroupManagerUpdatePolicyReplacementMethod string
 
@@ -14109,12 +13640,6 @@ func (in *instanceGroupManagerUpdatePolicyReplacementMethodPtr) ToInstanceGroupM
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput)
 }
 
-func (in *instanceGroupManagerUpdatePolicyReplacementMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyReplacementMethod] {
-	return pulumix.Output[*InstanceGroupManagerUpdatePolicyReplacementMethod]{
-		OutputState: in.ToInstanceGroupManagerUpdatePolicyReplacementMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
 type InstanceGroupManagerUpdatePolicyType string
 
@@ -14281,12 +13806,6 @@ func (in *instanceGroupManagerUpdatePolicyTypePtr) ToInstanceGroupManagerUpdateP
 
 func (in *instanceGroupManagerUpdatePolicyTypePtr) ToInstanceGroupManagerUpdatePolicyTypePtrOutputWithContext(ctx context.Context) InstanceGroupManagerUpdatePolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyTypePtrOutput)
-}
-
-func (in *instanceGroupManagerUpdatePolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerUpdatePolicyType] {
-	return pulumix.Output[*InstanceGroupManagerUpdatePolicyType]{
-		OutputState: in.ToInstanceGroupManagerUpdatePolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
@@ -14460,12 +13979,6 @@ func (in *instanceKeyRevocationActionTypePtr) ToInstanceKeyRevocationActionTypeP
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceKeyRevocationActionTypePtrOutput)
 }
 
-func (in *instanceKeyRevocationActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceKeyRevocationActionType] {
-	return pulumix.Output[*InstanceKeyRevocationActionType]{
-		OutputState: in.ToInstanceKeyRevocationActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 type InstancePrivateIpv6GoogleAccess string
 
@@ -14635,12 +14148,6 @@ func (in *instancePrivateIpv6GoogleAccessPtr) ToInstancePrivateIpv6GoogleAccessP
 
 func (in *instancePrivateIpv6GoogleAccessPtr) ToInstancePrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) InstancePrivateIpv6GoogleAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePrivateIpv6GoogleAccessPtrOutput)
-}
-
-func (in *instancePrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePrivateIpv6GoogleAccess] {
-	return pulumix.Output[*InstancePrivateIpv6GoogleAccess]{
-		OutputState: in.ToInstancePrivateIpv6GoogleAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
@@ -14814,12 +14321,6 @@ func (in *instancePropertiesKeyRevocationActionTypePtr) ToInstancePropertiesKeyR
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePropertiesKeyRevocationActionTypePtrOutput)
 }
 
-func (in *instancePropertiesKeyRevocationActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePropertiesKeyRevocationActionType] {
-	return pulumix.Output[*InstancePropertiesKeyRevocationActionType]{
-		OutputState: in.ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
 type InstancePropertiesPrivateIpv6GoogleAccess string
 
@@ -14989,12 +14490,6 @@ func (in *instancePropertiesPrivateIpv6GoogleAccessPtr) ToInstancePropertiesPriv
 
 func (in *instancePropertiesPrivateIpv6GoogleAccessPtr) ToInstancePropertiesPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) InstancePropertiesPrivateIpv6GoogleAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePropertiesPrivateIpv6GoogleAccessPtrOutput)
-}
-
-func (in *instancePropertiesPrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePropertiesPrivateIpv6GoogleAccess] {
-	return pulumix.Output[*InstancePropertiesPrivateIpv6GoogleAccess]{
-		OutputState: in.ToInstancePropertiesPrivateIpv6GoogleAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s
@@ -15195,12 +14690,6 @@ func (in *interconnectAttachmentBandwidthPtr) ToInterconnectAttachmentBandwidthP
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentBandwidthPtrOutput)
 }
 
-func (in *interconnectAttachmentBandwidthPtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentBandwidth] {
-	return pulumix.Output[*InterconnectAttachmentBandwidth]{
-		OutputState: in.ToInterconnectAttachmentBandwidthPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
 type InterconnectAttachmentEdgeAvailabilityDomain string
 
@@ -15367,12 +14856,6 @@ func (in *interconnectAttachmentEdgeAvailabilityDomainPtr) ToInterconnectAttachm
 
 func (in *interconnectAttachmentEdgeAvailabilityDomainPtr) ToInterconnectAttachmentEdgeAvailabilityDomainPtrOutputWithContext(ctx context.Context) InterconnectAttachmentEdgeAvailabilityDomainPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentEdgeAvailabilityDomainPtrOutput)
-}
-
-func (in *interconnectAttachmentEdgeAvailabilityDomainPtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentEdgeAvailabilityDomain] {
-	return pulumix.Output[*InterconnectAttachmentEdgeAvailabilityDomain]{
-		OutputState: in.ToInterconnectAttachmentEdgeAvailabilityDomainPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN attachment must be created with this option.
@@ -15543,12 +15026,6 @@ func (in *interconnectAttachmentEncryptionPtr) ToInterconnectAttachmentEncryptio
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentEncryptionPtrOutput)
 }
 
-func (in *interconnectAttachmentEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentEncryption] {
-	return pulumix.Output[*InterconnectAttachmentEncryption]{
-		OutputState: in.ToInterconnectAttachmentEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
 type InterconnectAttachmentStackType string
 
@@ -15715,12 +15192,6 @@ func (in *interconnectAttachmentStackTypePtr) ToInterconnectAttachmentStackTypeP
 
 func (in *interconnectAttachmentStackTypePtr) ToInterconnectAttachmentStackTypePtrOutputWithContext(ctx context.Context) InterconnectAttachmentStackTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentStackTypePtrOutput)
-}
-
-func (in *interconnectAttachmentStackTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentStackType] {
-	return pulumix.Output[*InterconnectAttachmentStackType]{
-		OutputState: in.ToInterconnectAttachmentStackTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
@@ -15894,12 +15365,6 @@ func (in *interconnectAttachmentTypePtr) ToInterconnectAttachmentTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentTypePtrOutput)
 }
 
-func (in *interconnectAttachmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectAttachmentType] {
-	return pulumix.Output[*InterconnectAttachmentType]{
-		OutputState: in.ToInterconnectAttachmentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
 type InterconnectInterconnectType string
 
@@ -16071,12 +15536,6 @@ func (in *interconnectInterconnectTypePtr) ToInterconnectInterconnectTypePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectInterconnectTypePtrOutput)
 }
 
-func (in *interconnectInterconnectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectInterconnectType] {
-	return pulumix.Output[*InterconnectInterconnectType]{
-		OutputState: in.ToInterconnectInterconnectTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
 type InterconnectLinkType string
 
@@ -16245,12 +15704,6 @@ func (in *interconnectLinkTypePtr) ToInterconnectLinkTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectLinkTypePtrOutput)
 }
 
-func (in *interconnectLinkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectLinkType] {
-	return pulumix.Output[*InterconnectLinkType]{
-		OutputState: in.ToInterconnectLinkTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InterconnectRequestedFeaturesItem string
 
 const (
@@ -16413,12 +15866,6 @@ func (in *interconnectRequestedFeaturesItemPtr) ToInterconnectRequestedFeaturesI
 
 func (in *interconnectRequestedFeaturesItemPtr) ToInterconnectRequestedFeaturesItemPtrOutputWithContext(ctx context.Context) InterconnectRequestedFeaturesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectRequestedFeaturesItemPtrOutput)
-}
-
-func (in *interconnectRequestedFeaturesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*InterconnectRequestedFeaturesItem] {
-	return pulumix.Output[*InterconnectRequestedFeaturesItem]{
-		OutputState: in.ToInterconnectRequestedFeaturesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InterconnectRequestedFeaturesItemArrayInput is an input type that accepts InterconnectRequestedFeaturesItemArray and InterconnectRequestedFeaturesItemArrayOutput values.
@@ -16637,12 +16084,6 @@ func (in *logConfigCloudAuditOptionsLogNamePtr) ToLogConfigCloudAuditOptionsLogN
 	return pulumi.ToOutputWithContext(ctx, in).(LogConfigCloudAuditOptionsLogNamePtrOutput)
 }
 
-func (in *logConfigCloudAuditOptionsLogNamePtr) ToOutput(ctx context.Context) pulumix.Output[*LogConfigCloudAuditOptionsLogName] {
-	return pulumix.Output[*LogConfigCloudAuditOptionsLogName]{
-		OutputState: in.ToLogConfigCloudAuditOptionsLogNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This is deprecated and has no effect. Do not use.
 type LogConfigDataAccessOptionsLogMode string
 
@@ -16809,12 +16250,6 @@ func (in *logConfigDataAccessOptionsLogModePtr) ToLogConfigDataAccessOptionsLogM
 
 func (in *logConfigDataAccessOptionsLogModePtr) ToLogConfigDataAccessOptionsLogModePtrOutputWithContext(ctx context.Context) LogConfigDataAccessOptionsLogModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LogConfigDataAccessOptionsLogModePtrOutput)
-}
-
-func (in *logConfigDataAccessOptionsLogModePtr) ToOutput(ctx context.Context) pulumix.Output[*LogConfigDataAccessOptionsLogMode] {
-	return pulumix.Output[*LogConfigDataAccessOptionsLogMode]{
-		OutputState: in.ToLogConfigDataAccessOptionsLogModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
@@ -16988,12 +16423,6 @@ func (in *metadataFilterFilterMatchCriteriaPtr) ToMetadataFilterFilterMatchCrite
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataFilterFilterMatchCriteriaPtrOutput)
 }
 
-func (in *metadataFilterFilterMatchCriteriaPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataFilterFilterMatchCriteria] {
-	return pulumix.Output[*MetadataFilterFilterMatchCriteria]{
-		OutputState: in.ToMetadataFilterFilterMatchCriteriaPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkAttachmentConnectionPreference string
 
 const (
@@ -17159,12 +16588,6 @@ func (in *networkAttachmentConnectionPreferencePtr) ToNetworkAttachmentConnectio
 
 func (in *networkAttachmentConnectionPreferencePtr) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkAttachmentConnectionPreferencePtrOutput)
-}
-
-func (in *networkAttachmentConnectionPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachmentConnectionPreference] {
-	return pulumix.Output[*NetworkAttachmentConnectionPreference]{
-		OutputState: in.ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -17350,12 +16773,6 @@ func (in *networkEndpointGroupNetworkEndpointTypePtr) ToNetworkEndpointGroupNetw
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkEndpointGroupNetworkEndpointTypePtrOutput)
 }
 
-func (in *networkEndpointGroupNetworkEndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointGroupNetworkEndpointType] {
-	return pulumix.Output[*NetworkEndpointGroupNetworkEndpointType]{
-		OutputState: in.ToNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 type NetworkInterfaceNicType string
 
@@ -17527,12 +16944,6 @@ func (in *networkInterfaceNicTypePtr) ToNetworkInterfaceNicTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceNicTypePtrOutput)
 }
 
-func (in *networkInterfaceNicTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceNicType] {
-	return pulumix.Output[*NetworkInterfaceNicType]{
-		OutputState: in.ToNetworkInterfaceNicTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 type NetworkInterfaceStackType string
 
@@ -17701,12 +17112,6 @@ func (in *networkInterfaceStackTypePtr) ToNetworkInterfaceStackTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceStackTypePtrOutput)
 }
 
-func (in *networkInterfaceStackTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceStackType] {
-	return pulumix.Output[*NetworkInterfaceStackType]{
-		OutputState: in.ToNetworkInterfaceStackTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
 type NetworkNetworkFirewallPolicyEnforcementOrder string
 
@@ -17871,12 +17276,6 @@ func (in *networkNetworkFirewallPolicyEnforcementOrderPtr) ToNetworkNetworkFirew
 
 func (in *networkNetworkFirewallPolicyEnforcementOrderPtr) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
-}
-
-func (in *networkNetworkFirewallPolicyEnforcementOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkNetworkFirewallPolicyEnforcementOrder] {
-	return pulumix.Output[*NetworkNetworkFirewallPolicyEnforcementOrder]{
-		OutputState: in.ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type NetworkPerformanceConfigTotalEgressBandwidthTier string
@@ -18044,12 +17443,6 @@ func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToNetworkPerforma
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
 }
 
-func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPerformanceConfigTotalEgressBandwidthTier] {
-	return pulumix.Output[*NetworkPerformanceConfigTotalEgressBandwidthTier]{
-		OutputState: in.ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
 type NetworkRoutingConfigRoutingMode string
 
@@ -18214,12 +17607,6 @@ func (in *networkRoutingConfigRoutingModePtr) ToNetworkRoutingConfigRoutingModeP
 
 func (in *networkRoutingConfigRoutingModePtr) ToNetworkRoutingConfigRoutingModePtrOutputWithContext(ctx context.Context) NetworkRoutingConfigRoutingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRoutingConfigRoutingModePtrOutput)
-}
-
-func (in *networkRoutingConfigRoutingModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRoutingConfigRoutingMode] {
-	return pulumix.Output[*NetworkRoutingConfigRoutingMode]{
-		OutputState: in.ToNetworkRoutingConfigRoutingModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see Autoscaler modes.
@@ -18395,12 +17782,6 @@ func (in *nodeGroupAutoscalingPolicyModePtr) ToNodeGroupAutoscalingPolicyModePtr
 	return pulumi.ToOutputWithContext(ctx, in).(NodeGroupAutoscalingPolicyModePtrOutput)
 }
 
-func (in *nodeGroupAutoscalingPolicyModePtr) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupAutoscalingPolicyMode] {
-	return pulumix.Output[*NodeGroupAutoscalingPolicyMode]{
-		OutputState: in.ToNodeGroupAutoscalingPolicyModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
 type NodeGroupMaintenancePolicy string
 
@@ -18572,12 +17953,6 @@ func (in *nodeGroupMaintenancePolicyPtr) ToNodeGroupMaintenancePolicyPtrOutput()
 
 func (in *nodeGroupMaintenancePolicyPtr) ToNodeGroupMaintenancePolicyPtrOutputWithContext(ctx context.Context) NodeGroupMaintenancePolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeGroupMaintenancePolicyPtrOutput)
-}
-
-func (in *nodeGroupMaintenancePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupMaintenancePolicy] {
-	return pulumix.Output[*NodeGroupMaintenancePolicy]{
-		OutputState: in.ToNodeGroupMaintenancePolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type NodeGroupStatus string
@@ -18757,12 +18132,6 @@ func (in *nodeTemplateCpuOvercommitTypePtr) ToNodeTemplateCpuOvercommitTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(NodeTemplateCpuOvercommitTypePtrOutput)
 }
 
-func (in *nodeTemplateCpuOvercommitTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NodeTemplateCpuOvercommitType] {
-	return pulumix.Output[*NodeTemplateCpuOvercommitType]{
-		OutputState: in.ToNodeTemplateCpuOvercommitTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
 type PacketMirroringEnable string
 
@@ -18927,12 +18296,6 @@ func (in *packetMirroringEnablePtr) ToPacketMirroringEnablePtrOutput() PacketMir
 
 func (in *packetMirroringEnablePtr) ToPacketMirroringEnablePtrOutputWithContext(ctx context.Context) PacketMirroringEnablePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PacketMirroringEnablePtrOutput)
-}
-
-func (in *packetMirroringEnablePtr) ToOutput(ctx context.Context) pulumix.Output[*PacketMirroringEnable] {
-	return pulumix.Output[*PacketMirroringEnable]{
-		OutputState: in.ToPacketMirroringEnablePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
@@ -19106,12 +18469,6 @@ func (in *packetMirroringFilterDirectionPtr) ToPacketMirroringFilterDirectionPtr
 	return pulumi.ToOutputWithContext(ctx, in).(PacketMirroringFilterDirectionPtrOutput)
 }
 
-func (in *packetMirroringFilterDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*PacketMirroringFilterDirection] {
-	return pulumix.Output[*PacketMirroringFilterDirection]{
-		OutputState: in.ToPacketMirroringFilterDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2.
 type PublicAdvertisedPrefixPdpScope string
 
@@ -19281,12 +18638,6 @@ func (in *publicAdvertisedPrefixPdpScopePtr) ToPublicAdvertisedPrefixPdpScopePtr
 
 func (in *publicAdvertisedPrefixPdpScopePtr) ToPublicAdvertisedPrefixPdpScopePtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPdpScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicAdvertisedPrefixPdpScopePtrOutput)
-}
-
-func (in *publicAdvertisedPrefixPdpScopePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicAdvertisedPrefixPdpScope] {
-	return pulumix.Output[*PublicAdvertisedPrefixPdpScope]{
-		OutputState: in.ToPublicAdvertisedPrefixPdpScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
@@ -19478,12 +18829,6 @@ func (in *publicAdvertisedPrefixStatusPtr) ToPublicAdvertisedPrefixStatusPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(PublicAdvertisedPrefixStatusPtrOutput)
 }
 
-func (in *publicAdvertisedPrefixStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicAdvertisedPrefixStatus] {
-	return pulumix.Output[*PublicAdvertisedPrefixStatus]{
-		OutputState: in.ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
 type RegionBackendServiceCompressionMode string
 
@@ -19650,12 +18995,6 @@ func (in *regionBackendServiceCompressionModePtr) ToRegionBackendServiceCompress
 
 func (in *regionBackendServiceCompressionModePtr) ToRegionBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) RegionBackendServiceCompressionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceCompressionModePtrOutput)
-}
-
-func (in *regionBackendServiceCompressionModePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceCompressionMode] {
-	return pulumix.Output[*RegionBackendServiceCompressionMode]{
-		OutputState: in.ToRegionBackendServiceCompressionModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
@@ -19835,12 +19174,6 @@ func (in *regionBackendServiceLoadBalancingSchemePtr) ToRegionBackendServiceLoad
 
 func (in *regionBackendServiceLoadBalancingSchemePtr) ToRegionBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx context.Context) RegionBackendServiceLoadBalancingSchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceLoadBalancingSchemePtrOutput)
-}
-
-func (in *regionBackendServiceLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceLoadBalancingScheme] {
-	return pulumix.Output[*RegionBackendServiceLoadBalancingScheme]{
-		OutputState: in.ToRegionBackendServiceLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -20028,12 +19361,6 @@ func (in *regionBackendServiceLocalityLbPolicyPtr) ToRegionBackendServiceLocalit
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceLocalityLbPolicyPtrOutput)
 }
 
-func (in *regionBackendServiceLocalityLbPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceLocalityLbPolicy] {
-	return pulumix.Output[*RegionBackendServiceLocalityLbPolicy]{
-		OutputState: in.ToRegionBackendServiceLocalityLbPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 type RegionBackendServiceProtocol string
 
@@ -20216,12 +19543,6 @@ func (in *regionBackendServiceProtocolPtr) ToRegionBackendServiceProtocolPtrOutp
 
 func (in *regionBackendServiceProtocolPtr) ToRegionBackendServiceProtocolPtrOutputWithContext(ctx context.Context) RegionBackendServiceProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceProtocolPtrOutput)
-}
-
-func (in *regionBackendServiceProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceProtocol] {
-	return pulumix.Output[*RegionBackendServiceProtocol]{
-		OutputState: in.ToRegionBackendServiceProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
@@ -20410,12 +19731,6 @@ func (in *regionBackendServiceSessionAffinityPtr) ToRegionBackendServiceSessionA
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceSessionAffinityPtrOutput)
 }
 
-func (in *regionBackendServiceSessionAffinityPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceSessionAffinity] {
-	return pulumix.Output[*RegionBackendServiceSessionAffinity]{
-		OutputState: in.ToRegionBackendServiceSessionAffinityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
 type RegionCommitmentCategory string
 
@@ -20584,12 +19899,6 @@ func (in *regionCommitmentCategoryPtr) ToRegionCommitmentCategoryPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(RegionCommitmentCategoryPtrOutput)
 }
 
-func (in *regionCommitmentCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitmentCategory] {
-	return pulumix.Output[*RegionCommitmentCategory]{
-		OutputState: in.ToRegionCommitmentCategoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 type RegionCommitmentPlan string
 
@@ -20756,12 +20065,6 @@ func (in *regionCommitmentPlanPtr) ToRegionCommitmentPlanPtrOutput() RegionCommi
 
 func (in *regionCommitmentPlanPtr) ToRegionCommitmentPlanPtrOutputWithContext(ctx context.Context) RegionCommitmentPlanPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionCommitmentPlanPtrOutput)
-}
-
-func (in *regionCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitmentPlan] {
-	return pulumix.Output[*RegionCommitmentPlan]{
-		OutputState: in.ToRegionCommitmentPlanPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
@@ -20958,12 +20261,6 @@ func (in *regionCommitmentTypePtr) ToRegionCommitmentTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(RegionCommitmentTypePtrOutput)
 }
 
-func (in *regionCommitmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitmentType] {
-	return pulumix.Output[*RegionCommitmentType]{
-		OutputState: in.ToRegionCommitmentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The architecture of the disk. Valid values are ARM64 or X86_64.
 type RegionDiskArchitecture string
 
@@ -21135,12 +20432,6 @@ func (in *regionDiskArchitecturePtr) ToRegionDiskArchitecturePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskArchitecturePtrOutput)
 }
 
-func (in *regionDiskArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskArchitecture] {
-	return pulumix.Output[*RegionDiskArchitecture]{
-		OutputState: in.ToRegionDiskArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is only allowed with regional HealthCheckService.
 type RegionHealthCheckServiceHealthStatusAggregationPolicy string
 
@@ -21307,12 +20598,6 @@ func (in *regionHealthCheckServiceHealthStatusAggregationPolicyPtr) ToRegionHeal
 
 func (in *regionHealthCheckServiceHealthStatusAggregationPolicyPtr) ToRegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput)
-}
-
-func (in *regionHealthCheckServiceHealthStatusAggregationPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheckServiceHealthStatusAggregationPolicy] {
-	return pulumix.Output[*RegionHealthCheckServiceHealthStatusAggregationPolicy]{
-		OutputState: in.ToRegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
@@ -21491,12 +20776,6 @@ func (in *regionHealthCheckTypePtr) ToRegionHealthCheckTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckTypePtrOutput)
 }
 
-func (in *regionHealthCheckTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionHealthCheckType] {
-	return pulumix.Output[*RegionHealthCheckType]{
-		OutputState: in.ToRegionHealthCheckTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Pagination behavior of the listManagedInstances API method for this managed instance group.
 type RegionInstanceGroupManagerListManagedInstancesResults string
 
@@ -21663,12 +20942,6 @@ func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToRegionInst
 
 func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput)
-}
-
-func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceGroupManagerListManagedInstancesResults] {
-	return pulumix.Output[*RegionInstanceGroupManagerListManagedInstancesResults]{
-		OutputState: in.ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -21854,12 +21127,6 @@ func (in *regionNetworkEndpointGroupNetworkEndpointTypePtr) ToRegionNetworkEndpo
 	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput)
 }
 
-func (in *regionNetworkEndpointGroupNetworkEndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroupNetworkEndpointType] {
-	return pulumix.Output[*RegionNetworkEndpointGroupNetworkEndpointType]{
-		OutputState: in.ToRegionNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
 type RegionSecurityPolicyType string
 
@@ -22026,12 +21293,6 @@ func (in *regionSecurityPolicyTypePtr) ToRegionSecurityPolicyTypePtrOutput() Reg
 
 func (in *regionSecurityPolicyTypePtr) ToRegionSecurityPolicyTypePtrOutputWithContext(ctx context.Context) RegionSecurityPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionSecurityPolicyTypePtrOutput)
-}
-
-func (in *regionSecurityPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionSecurityPolicyType] {
-	return pulumix.Output[*RegionSecurityPolicyType]{
-		OutputState: in.ToRegionSecurityPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
@@ -22204,12 +21465,6 @@ func (in *regionSslCertificateTypePtr) ToRegionSslCertificateTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(RegionSslCertificateTypePtrOutput)
 }
 
-func (in *regionSslCertificateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionSslCertificateType] {
-	return pulumix.Output[*RegionSslCertificateType]{
-		OutputState: in.ToRegionSslCertificateTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
 type RegionSslPolicyMinTlsVersion string
 
@@ -22379,12 +21634,6 @@ func (in *regionSslPolicyMinTlsVersionPtr) ToRegionSslPolicyMinTlsVersionPtrOutp
 
 func (in *regionSslPolicyMinTlsVersionPtr) ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) RegionSslPolicyMinTlsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionSslPolicyMinTlsVersionPtrOutput)
-}
-
-func (in *regionSslPolicyMinTlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionSslPolicyMinTlsVersion] {
-	return pulumix.Output[*RegionSslPolicyMinTlsVersion]{
-		OutputState: in.ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
@@ -22561,12 +21810,6 @@ func (in *regionSslPolicyProfilePtr) ToRegionSslPolicyProfilePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(RegionSslPolicyProfilePtrOutput)
 }
 
-func (in *regionSslPolicyProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionSslPolicyProfile] {
-	return pulumix.Output[*RegionSslPolicyProfile]{
-		OutputState: in.ToRegionSslPolicyProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied.
 type RegionTargetHttpsProxyQuicOverride string
 
@@ -22738,12 +21981,6 @@ func (in *regionTargetHttpsProxyQuicOverridePtr) ToRegionTargetHttpsProxyQuicOve
 	return pulumi.ToOutputWithContext(ctx, in).(RegionTargetHttpsProxyQuicOverridePtrOutput)
 }
 
-func (in *regionTargetHttpsProxyQuicOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpsProxyQuicOverride] {
-	return pulumix.Output[*RegionTargetHttpsProxyQuicOverride]{
-		OutputState: in.ToRegionTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 type RegionTargetTcpProxyProxyHeader string
 
@@ -22908,12 +22145,6 @@ func (in *regionTargetTcpProxyProxyHeaderPtr) ToRegionTargetTcpProxyProxyHeaderP
 
 func (in *regionTargetTcpProxyProxyHeaderPtr) ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx context.Context) RegionTargetTcpProxyProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionTargetTcpProxyProxyHeaderPtrOutput)
-}
-
-func (in *regionTargetTcpProxyProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetTcpProxyProxyHeader] {
-	return pulumix.Output[*RegionTargetTcpProxyProxyHeader]{
-		OutputState: in.ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
@@ -23089,12 +22320,6 @@ func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityCon
 	return pulumi.ToOutputWithContext(ctx, in).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
-func (in *reservationAffinityConsumeReservationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
-	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
-		OutputState: in.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
 type ResourceCommitmentType string
 
@@ -23267,12 +22492,6 @@ func (in *resourceCommitmentTypePtr) ToResourceCommitmentTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceCommitmentTypePtrOutput)
 }
 
-func (in *resourceCommitmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceCommitmentType] {
-	return pulumix.Output[*ResourceCommitmentType]{
-		OutputState: in.ToResourceCommitmentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies network collocation
 type ResourcePolicyGroupPlacementPolicyCollocation string
 
@@ -23437,12 +22656,6 @@ func (in *resourcePolicyGroupPlacementPolicyCollocationPtr) ToResourcePolicyGrou
 
 func (in *resourcePolicyGroupPlacementPolicyCollocationPtr) ToResourcePolicyGroupPlacementPolicyCollocationPtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyCollocationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourcePolicyGroupPlacementPolicyCollocationPtrOutput)
-}
-
-func (in *resourcePolicyGroupPlacementPolicyCollocationPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyGroupPlacementPolicyCollocation] {
-	return pulumix.Output[*ResourcePolicyGroupPlacementPolicyCollocation]{
-		OutputState: in.ToResourcePolicyGroupPlacementPolicyCollocationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
@@ -23611,12 +22824,6 @@ func (in *resourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteP
 
 func (in *resourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtr) ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutputWithContext(ctx context.Context) ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutput)
-}
-
-func (in *resourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete] {
-	return pulumix.Output[*ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete]{
-		OutputState: in.ToResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
@@ -23797,12 +23004,6 @@ func (in *resourcePolicyWeeklyCycleDayOfWeekDayPtr) ToResourcePolicyWeeklyCycleD
 	return pulumi.ToOutputWithContext(ctx, in).(ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput)
 }
 
-func (in *resourcePolicyWeeklyCycleDayOfWeekDayPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourcePolicyWeeklyCycleDayOfWeekDay] {
-	return pulumix.Output[*ResourcePolicyWeeklyCycleDayOfWeekDay]{
-		OutputState: in.ToResourcePolicyWeeklyCycleDayOfWeekDayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // User-specified flag to indicate which mode to use for advertisement. The options are DEFAULT or CUSTOM.
 type RouterBgpAdvertiseMode string
 
@@ -23969,12 +23170,6 @@ func (in *routerBgpAdvertiseModePtr) ToRouterBgpAdvertiseModePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpAdvertiseModePtrOutput)
 }
 
-func (in *routerBgpAdvertiseModePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpAdvertiseMode] {
-	return pulumix.Output[*RouterBgpAdvertiseMode]{
-		OutputState: in.ToRouterBgpAdvertiseModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterBgpAdvertisedGroupsItem string
 
 const (
@@ -24137,12 +23332,6 @@ func (in *routerBgpAdvertisedGroupsItemPtr) ToRouterBgpAdvertisedGroupsItemPtrOu
 
 func (in *routerBgpAdvertisedGroupsItemPtr) ToRouterBgpAdvertisedGroupsItemPtrOutputWithContext(ctx context.Context) RouterBgpAdvertisedGroupsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpAdvertisedGroupsItemPtrOutput)
-}
-
-func (in *routerBgpAdvertisedGroupsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpAdvertisedGroupsItem] {
-	return pulumix.Output[*RouterBgpAdvertisedGroupsItem]{
-		OutputState: in.ToRouterBgpAdvertisedGroupsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RouterBgpAdvertisedGroupsItemArrayInput is an input type that accepts RouterBgpAdvertisedGroupsItemArray and RouterBgpAdvertisedGroupsItemArrayOutput values.
@@ -24356,12 +23545,6 @@ func (in *routerBgpPeerAdvertiseModePtr) ToRouterBgpPeerAdvertiseModePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerAdvertiseModePtrOutput)
 }
 
-func (in *routerBgpPeerAdvertiseModePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerAdvertiseMode] {
-	return pulumix.Output[*RouterBgpPeerAdvertiseMode]{
-		OutputState: in.ToRouterBgpPeerAdvertiseModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterBgpPeerAdvertisedGroupsItem string
 
 const (
@@ -24524,12 +23707,6 @@ func (in *routerBgpPeerAdvertisedGroupsItemPtr) ToRouterBgpPeerAdvertisedGroupsI
 
 func (in *routerBgpPeerAdvertisedGroupsItemPtr) ToRouterBgpPeerAdvertisedGroupsItemPtrOutputWithContext(ctx context.Context) RouterBgpPeerAdvertisedGroupsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerAdvertisedGroupsItemPtrOutput)
-}
-
-func (in *routerBgpPeerAdvertisedGroupsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerAdvertisedGroupsItem] {
-	return pulumix.Output[*RouterBgpPeerAdvertisedGroupsItem]{
-		OutputState: in.ToRouterBgpPeerAdvertisedGroupsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RouterBgpPeerAdvertisedGroupsItemArrayInput is an input type that accepts RouterBgpPeerAdvertisedGroupsItemArray and RouterBgpPeerAdvertisedGroupsItemArrayOutput values.
@@ -24745,12 +23922,6 @@ func (in *routerBgpPeerBfdSessionInitializationModePtr) ToRouterBgpPeerBfdSessio
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerBfdSessionInitializationModePtrOutput)
 }
 
-func (in *routerBgpPeerBfdSessionInitializationModePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerBfdSessionInitializationMode] {
-	return pulumix.Output[*RouterBgpPeerBfdSessionInitializationMode]{
-		OutputState: in.ToRouterBgpPeerBfdSessionInitializationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 type RouterBgpPeerEnable string
 
@@ -24915,12 +24086,6 @@ func (in *routerBgpPeerEnablePtr) ToRouterBgpPeerEnablePtrOutput() RouterBgpPeer
 
 func (in *routerBgpPeerEnablePtr) ToRouterBgpPeerEnablePtrOutputWithContext(ctx context.Context) RouterBgpPeerEnablePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerEnablePtrOutput)
-}
-
-func (in *routerBgpPeerEnablePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterBgpPeerEnable] {
-	return pulumix.Output[*RouterBgpPeerEnable]{
-		OutputState: in.ToRouterBgpPeerEnablePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
@@ -25097,12 +24262,6 @@ func (in *routerNatAutoNetworkTierPtr) ToRouterNatAutoNetworkTierPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatAutoNetworkTierPtrOutput)
 }
 
-func (in *routerNatAutoNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatAutoNetworkTier] {
-	return pulumix.Output[*RouterNatAutoNetworkTier]{
-		OutputState: in.ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterNatEndpointTypesItem string
 
 const (
@@ -25271,12 +24430,6 @@ func (in *routerNatEndpointTypesItemPtr) ToRouterNatEndpointTypesItemPtrOutput()
 
 func (in *routerNatEndpointTypesItemPtr) ToRouterNatEndpointTypesItemPtrOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatEndpointTypesItemPtrOutput)
-}
-
-func (in *routerNatEndpointTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatEndpointTypesItem] {
-	return pulumix.Output[*RouterNatEndpointTypesItem]{
-		OutputState: in.ToRouterNatEndpointTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RouterNatEndpointTypesItemArrayInput is an input type that accepts RouterNatEndpointTypesItemArray and RouterNatEndpointTypesItemArrayOutput values.
@@ -25495,12 +24648,6 @@ func (in *routerNatLogConfigFilterPtr) ToRouterNatLogConfigFilterPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatLogConfigFilterPtrOutput)
 }
 
-func (in *routerNatLogConfigFilterPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatLogConfigFilter] {
-	return pulumix.Output[*RouterNatLogConfigFilter]{
-		OutputState: in.ToRouterNatLogConfigFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.
 type RouterNatNatIpAllocateOption string
 
@@ -25667,12 +24814,6 @@ func (in *routerNatNatIpAllocateOptionPtr) ToRouterNatNatIpAllocateOptionPtrOutp
 
 func (in *routerNatNatIpAllocateOptionPtr) ToRouterNatNatIpAllocateOptionPtrOutputWithContext(ctx context.Context) RouterNatNatIpAllocateOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatNatIpAllocateOptionPtrOutput)
-}
-
-func (in *routerNatNatIpAllocateOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatNatIpAllocateOption] {
-	return pulumix.Output[*RouterNatNatIpAllocateOption]{
-		OutputState: in.ToRouterNatNatIpAllocateOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
@@ -25846,12 +24987,6 @@ func (in *routerNatSourceSubnetworkIpRangesToNatPtr) ToRouterNatSourceSubnetwork
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatSourceSubnetworkIpRangesToNatPtrOutput)
 }
 
-func (in *routerNatSourceSubnetworkIpRangesToNatPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatSourceSubnetworkIpRangesToNat] {
-	return pulumix.Output[*RouterNatSourceSubnetworkIpRangesToNat]{
-		OutputState: in.ToRouterNatSourceSubnetworkIpRangesToNatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterNatSubnetworkToNatSourceIpRangesToNatItem string
 
 const (
@@ -26020,12 +25155,6 @@ func (in *routerNatSubnetworkToNatSourceIpRangesToNatItemPtr) ToRouterNatSubnetw
 
 func (in *routerNatSubnetworkToNatSourceIpRangesToNatItemPtr) ToRouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutputWithContext(ctx context.Context) RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput)
-}
-
-func (in *routerNatSubnetworkToNatSourceIpRangesToNatItemPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatSubnetworkToNatSourceIpRangesToNatItem] {
-	return pulumix.Output[*RouterNatSubnetworkToNatSourceIpRangesToNatItem]{
-		OutputState: in.ToRouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayInput is an input type that accepts RouterNatSubnetworkToNatSourceIpRangesToNatItemArray and RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput values.
@@ -26241,12 +25370,6 @@ func (in *routerNatTypePtr) ToRouterNatTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatTypePtrOutput)
 }
 
-func (in *routerNatTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouterNatType] {
-	return pulumix.Output[*RouterNatType]{
-		OutputState: in.ToRouterNatTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This is deprecated and has no effect. Do not use.
 type RuleAction string
 
@@ -26427,12 +25550,6 @@ func (in *ruleActionPtr) ToRuleActionPtrOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, in).(RuleActionPtrOutput)
 }
 
-func (in *ruleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*RuleAction] {
-	return pulumix.Output[*RuleAction]{
-		OutputState: in.ToRuleActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type SSLHealthCheckPortSpecification string
 
@@ -26604,12 +25721,6 @@ func (in *sslhealthCheckPortSpecificationPtr) ToSSLHealthCheckPortSpecificationP
 	return pulumi.ToOutputWithContext(ctx, in).(SSLHealthCheckPortSpecificationPtrOutput)
 }
 
-func (in *sslhealthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*SSLHealthCheckPortSpecification] {
-	return pulumix.Output[*SSLHealthCheckPortSpecification]{
-		OutputState: in.ToSSLHealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 type SSLHealthCheckProxyHeader string
 
@@ -26774,12 +25885,6 @@ func (in *sslhealthCheckProxyHeaderPtr) ToSSLHealthCheckProxyHeaderPtrOutput() S
 
 func (in *sslhealthCheckProxyHeaderPtr) ToSSLHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) SSLHealthCheckProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SSLHealthCheckProxyHeaderPtrOutput)
-}
-
-func (in *sslhealthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*SSLHealthCheckProxyHeader] {
-	return pulumix.Output[*SSLHealthCheckProxyHeader]{
-		OutputState: in.ToSSLHealthCheckProxyHeaderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the termination action for the instance.
@@ -26953,12 +26058,6 @@ func (in *schedulingInstanceTerminationActionPtr) ToSchedulingInstanceTerminatio
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingInstanceTerminationActionPtrOutput)
 }
 
-func (in *schedulingInstanceTerminationActionPtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingInstanceTerminationAction] {
-	return pulumix.Output[*SchedulingInstanceTerminationAction]{
-		OutputState: in.ToSchedulingInstanceTerminationActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
 type SchedulingNodeAffinityOperator string
 
@@ -27129,12 +26228,6 @@ func (in *schedulingNodeAffinityOperatorPtr) ToSchedulingNodeAffinityOperatorPtr
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingNodeAffinityOperatorPtrOutput)
 }
 
-func (in *schedulingNodeAffinityOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingNodeAffinityOperator] {
-	return pulumix.Output[*SchedulingNodeAffinityOperator]{
-		OutputState: in.ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 type SchedulingOnHostMaintenance string
 
@@ -27301,12 +26394,6 @@ func (in *schedulingOnHostMaintenancePtr) ToSchedulingOnHostMaintenancePtrOutput
 
 func (in *schedulingOnHostMaintenancePtr) ToSchedulingOnHostMaintenancePtrOutputWithContext(ctx context.Context) SchedulingOnHostMaintenancePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingOnHostMaintenancePtrOutput)
-}
-
-func (in *schedulingOnHostMaintenancePtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingOnHostMaintenance] {
-	return pulumix.Output[*SchedulingOnHostMaintenance]{
-		OutputState: in.ToSchedulingOnHostMaintenancePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the provisioning model of the instance.
@@ -27477,12 +26564,6 @@ func (in *schedulingProvisioningModelPtr) ToSchedulingProvisioningModelPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingProvisioningModelPtrOutput)
 }
 
-func (in *schedulingProvisioningModelPtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingProvisioningModel] {
-	return pulumix.Output[*SchedulingProvisioningModel]{
-		OutputState: in.ToSchedulingProvisioningModelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility string
 
@@ -27647,12 +26728,6 @@ func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisib
 
 func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtr) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput)
-}
-
-func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility] {
-	return pulumix.Output[*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility]{
-		OutputState: in.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SecurityPolicyAdvancedOptionsConfigJsonParsing string
@@ -27822,12 +26897,6 @@ func (in *securityPolicyAdvancedOptionsConfigJsonParsingPtr) ToSecurityPolicyAdv
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput)
 }
 
-func (in *securityPolicyAdvancedOptionsConfigJsonParsingPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyAdvancedOptionsConfigJsonParsing] {
-	return pulumix.Output[*SecurityPolicyAdvancedOptionsConfigJsonParsing]{
-		OutputState: in.ToSecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityPolicyAdvancedOptionsConfigLogLevel string
 
 const (
@@ -27991,12 +27060,6 @@ func (in *securityPolicyAdvancedOptionsConfigLogLevelPtr) ToSecurityPolicyAdvanc
 
 func (in *securityPolicyAdvancedOptionsConfigLogLevelPtr) ToSecurityPolicyAdvancedOptionsConfigLogLevelPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput)
-}
-
-func (in *securityPolicyAdvancedOptionsConfigLogLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyAdvancedOptionsConfigLogLevel] {
-	return pulumix.Output[*SecurityPolicyAdvancedOptionsConfigLogLevel]{
-		OutputState: in.ToSecurityPolicyAdvancedOptionsConfigLogLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SecurityPolicyDdosProtectionConfigDdosProtection string
@@ -28164,12 +27227,6 @@ func (in *securityPolicyDdosProtectionConfigDdosProtectionPtr) ToSecurityPolicyD
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput)
 }
 
-func (in *securityPolicyDdosProtectionConfigDdosProtectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyDdosProtectionConfigDdosProtection] {
-	return pulumix.Output[*SecurityPolicyDdosProtectionConfigDdosProtection]{
-		OutputState: in.ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 type SecurityPolicyRuleMatcherVersionedExpr string
 
@@ -28333,12 +27390,6 @@ func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcher
 
 func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcherVersionedExprPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherVersionedExprPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
-}
-
-func (in *securityPolicyRuleMatcherVersionedExprPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleMatcherVersionedExpr] {
-	return pulumix.Output[*SecurityPolicyRuleMatcherVersionedExpr]{
-		OutputState: in.ToSecurityPolicyRuleMatcherVersionedExprPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The match operator for the field.
@@ -28516,12 +27567,6 @@ func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToS
 
 func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
-}
-
-func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp] {
-	return pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp]{
-		OutputState: in.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
@@ -28702,12 +27747,6 @@ func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr) ToSecurityPolicyRul
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
 }
 
-func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKey] {
-	return pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKey]{
-		OutputState: in.ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType string
 
@@ -28886,12 +27925,6 @@ func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePt
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput)
 }
 
-func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType] {
-	return pulumix.Output[*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType]{
-		OutputState: in.ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the redirect action.
 type SecurityPolicyRuleRedirectOptionsType string
 
@@ -29056,12 +28089,6 @@ func (in *securityPolicyRuleRedirectOptionsTypePtr) ToSecurityPolicyRuleRedirect
 
 func (in *securityPolicyRuleRedirectOptionsTypePtr) ToSecurityPolicyRuleRedirectOptionsTypePtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRedirectOptionsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleRedirectOptionsTypePtrOutput)
-}
-
-func (in *securityPolicyRuleRedirectOptionsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRedirectOptionsType] {
-	return pulumix.Output[*SecurityPolicyRuleRedirectOptionsType]{
-		OutputState: in.ToSecurityPolicyRuleRedirectOptionsTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
@@ -29230,12 +28257,6 @@ func (in *securityPolicyTypePtr) ToSecurityPolicyTypePtrOutput() SecurityPolicyT
 
 func (in *securityPolicyTypePtr) ToSecurityPolicyTypePtrOutputWithContext(ctx context.Context) SecurityPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyTypePtrOutput)
-}
-
-func (in *securityPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyType] {
-	return pulumix.Output[*SecurityPolicyType]{
-		OutputState: in.ToSecurityPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
@@ -29408,12 +28429,6 @@ func (in *securityPolicyUserDefinedFieldBasePtr) ToSecurityPolicyUserDefinedFiel
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyUserDefinedFieldBasePtrOutput)
 }
 
-func (in *securityPolicyUserDefinedFieldBasePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyUserDefinedFieldBase] {
-	return pulumix.Output[*SecurityPolicyUserDefinedFieldBase]{
-		OutputState: in.ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerBindingType string
 
 const (
@@ -29583,12 +28598,6 @@ func (in *serverBindingTypePtr) ToServerBindingTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ServerBindingTypePtrOutput)
 }
 
-func (in *serverBindingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServerBindingType] {
-	return pulumix.Output[*ServerBindingType]{
-		OutputState: in.ToServerBindingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
 type ServiceAttachmentConnectionPreference string
 
@@ -29755,12 +28764,6 @@ func (in *serviceAttachmentConnectionPreferencePtr) ToServiceAttachmentConnectio
 
 func (in *serviceAttachmentConnectionPreferencePtr) ToServiceAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) ServiceAttachmentConnectionPreferencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceAttachmentConnectionPreferencePtrOutput)
-}
-
-func (in *serviceAttachmentConnectionPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachmentConnectionPreference] {
-	return pulumix.Output[*ServiceAttachmentConnectionPreference]{
-		OutputState: in.ToServiceAttachmentConnectionPreferencePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of sharing for this shared-reservation
@@ -29937,12 +28940,6 @@ func (in *shareSettingsShareTypePtr) ToShareSettingsShareTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ShareSettingsShareTypePtrOutput)
 }
 
-func (in *shareSettingsShareTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ShareSettingsShareType] {
-	return pulumix.Output[*ShareSettingsShareType]{
-		OutputState: in.ToShareSettingsShareTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the type of the snapshot.
 type SnapshotSnapshotType string
 
@@ -30107,12 +29104,6 @@ func (in *snapshotSnapshotTypePtr) ToSnapshotSnapshotTypePtrOutput() SnapshotSna
 
 func (in *snapshotSnapshotTypePtr) ToSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) SnapshotSnapshotTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SnapshotSnapshotTypePtrOutput)
-}
-
-func (in *snapshotSnapshotTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SnapshotSnapshotType] {
-	return pulumix.Output[*SnapshotSnapshotType]{
-		OutputState: in.ToSnapshotSnapshotTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
@@ -30285,12 +29276,6 @@ func (in *sslCertificateTypePtr) ToSslCertificateTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SslCertificateTypePtrOutput)
 }
 
-func (in *sslCertificateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SslCertificateType] {
-	return pulumix.Output[*SslCertificateType]{
-		OutputState: in.ToSslCertificateTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
 type SslPolicyMinTlsVersion string
 
@@ -30460,12 +29445,6 @@ func (in *sslPolicyMinTlsVersionPtr) ToSslPolicyMinTlsVersionPtrOutput() SslPoli
 
 func (in *sslPolicyMinTlsVersionPtr) ToSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) SslPolicyMinTlsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslPolicyMinTlsVersionPtrOutput)
-}
-
-func (in *sslPolicyMinTlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*SslPolicyMinTlsVersion] {
-	return pulumix.Output[*SslPolicyMinTlsVersion]{
-		OutputState: in.ToSslPolicyMinTlsVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
@@ -30642,12 +29621,6 @@ func (in *sslPolicyProfilePtr) ToSslPolicyProfilePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(SslPolicyProfilePtrOutput)
 }
 
-func (in *sslPolicyProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*SslPolicyProfile] {
-	return pulumix.Output[*SslPolicyProfile]{
-		OutputState: in.ToSslPolicyProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
 type SubnetworkIpv6AccessType string
 
@@ -30814,12 +29787,6 @@ func (in *subnetworkIpv6AccessTypePtr) ToSubnetworkIpv6AccessTypePtrOutput() Sub
 
 func (in *subnetworkIpv6AccessTypePtr) ToSubnetworkIpv6AccessTypePtrOutputWithContext(ctx context.Context) SubnetworkIpv6AccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkIpv6AccessTypePtrOutput)
-}
-
-func (in *subnetworkIpv6AccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkIpv6AccessType] {
-	return pulumix.Output[*SubnetworkIpv6AccessType]{
-		OutputState: in.ToSubnetworkIpv6AccessTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
@@ -30996,12 +29963,6 @@ func (in *subnetworkLogConfigAggregationIntervalPtr) ToSubnetworkLogConfigAggreg
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkLogConfigAggregationIntervalPtrOutput)
 }
 
-func (in *subnetworkLogConfigAggregationIntervalPtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkLogConfigAggregationInterval] {
-	return pulumix.Output[*SubnetworkLogConfigAggregationInterval]{
-		OutputState: in.ToSubnetworkLogConfigAggregationIntervalPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 type SubnetworkLogConfigMetadata string
 
@@ -31168,12 +30129,6 @@ func (in *subnetworkLogConfigMetadataPtr) ToSubnetworkLogConfigMetadataPtrOutput
 
 func (in *subnetworkLogConfigMetadataPtr) ToSubnetworkLogConfigMetadataPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigMetadataPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkLogConfigMetadataPtrOutput)
-}
-
-func (in *subnetworkLogConfigMetadataPtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkLogConfigMetadata] {
-	return pulumix.Output[*SubnetworkLogConfigMetadata]{
-		OutputState: in.ToSubnetworkLogConfigMetadataPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This field is for internal use. This field can be both set at resource creation time and updated using patch.
@@ -31345,12 +30300,6 @@ func (in *subnetworkPrivateIpv6GoogleAccessPtr) ToSubnetworkPrivateIpv6GoogleAcc
 
 func (in *subnetworkPrivateIpv6GoogleAccessPtr) ToSubnetworkPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) SubnetworkPrivateIpv6GoogleAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkPrivateIpv6GoogleAccessPtrOutput)
-}
-
-func (in *subnetworkPrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkPrivateIpv6GoogleAccess] {
-	return pulumix.Output[*SubnetworkPrivateIpv6GoogleAccess]{
-		OutputState: in.ToSubnetworkPrivateIpv6GoogleAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
@@ -31536,12 +30485,6 @@ func (in *subnetworkPurposePtr) ToSubnetworkPurposePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkPurposePtrOutput)
 }
 
-func (in *subnetworkPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkPurpose] {
-	return pulumix.Output[*SubnetworkPurpose]{
-		OutputState: in.ToSubnetworkPurposePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
 type SubnetworkRole string
 
@@ -31708,12 +30651,6 @@ func (in *subnetworkRolePtr) ToSubnetworkRolePtrOutput() SubnetworkRolePtrOutput
 
 func (in *subnetworkRolePtr) ToSubnetworkRolePtrOutputWithContext(ctx context.Context) SubnetworkRolePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkRolePtrOutput)
-}
-
-func (in *subnetworkRolePtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkRole] {
-	return pulumix.Output[*SubnetworkRole]{
-		OutputState: in.ToSubnetworkRolePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
@@ -31884,12 +30821,6 @@ func (in *subnetworkStackTypePtr) ToSubnetworkStackTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkStackTypePtrOutput)
 }
 
-func (in *subnetworkStackTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkStackType] {
-	return pulumix.Output[*SubnetworkStackType]{
-		OutputState: in.ToSubnetworkStackTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubsettingPolicy string
 
 const (
@@ -32055,12 +30986,6 @@ func (in *subsettingPolicyPtr) ToSubsettingPolicyPtrOutput() SubsettingPolicyPtr
 
 func (in *subsettingPolicyPtr) ToSubsettingPolicyPtrOutputWithContext(ctx context.Context) SubsettingPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubsettingPolicyPtrOutput)
-}
-
-func (in *subsettingPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*SubsettingPolicy] {
-	return pulumix.Output[*SubsettingPolicy]{
-		OutputState: in.ToSubsettingPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
@@ -32234,12 +31159,6 @@ func (in *tcphealthCheckPortSpecificationPtr) ToTCPHealthCheckPortSpecificationP
 	return pulumi.ToOutputWithContext(ctx, in).(TCPHealthCheckPortSpecificationPtrOutput)
 }
 
-func (in *tcphealthCheckPortSpecificationPtr) ToOutput(ctx context.Context) pulumix.Output[*TCPHealthCheckPortSpecification] {
-	return pulumix.Output[*TCPHealthCheckPortSpecification]{
-		OutputState: in.ToTCPHealthCheckPortSpecificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 type TCPHealthCheckProxyHeader string
 
@@ -32404,12 +31323,6 @@ func (in *tcphealthCheckProxyHeaderPtr) ToTCPHealthCheckProxyHeaderPtrOutput() T
 
 func (in *tcphealthCheckProxyHeaderPtr) ToTCPHealthCheckProxyHeaderPtrOutputWithContext(ctx context.Context) TCPHealthCheckProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TCPHealthCheckProxyHeaderPtrOutput)
-}
-
-func (in *tcphealthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*TCPHealthCheckProxyHeader] {
-	return pulumix.Output[*TCPHealthCheckProxyHeader]{
-		OutputState: in.ToTCPHealthCheckProxyHeaderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied.
@@ -32583,12 +31496,6 @@ func (in *targetHttpsProxyQuicOverridePtr) ToTargetHttpsProxyQuicOverridePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(TargetHttpsProxyQuicOverridePtrOutput)
 }
 
-func (in *targetHttpsProxyQuicOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxyQuicOverride] {
-	return pulumix.Output[*TargetHttpsProxyQuicOverride]{
-		OutputState: in.ToTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
 type TargetInstanceNatPolicy string
 
@@ -32752,12 +31659,6 @@ func (in *targetInstanceNatPolicyPtr) ToTargetInstanceNatPolicyPtrOutput() Targe
 
 func (in *targetInstanceNatPolicyPtr) ToTargetInstanceNatPolicyPtrOutputWithContext(ctx context.Context) TargetInstanceNatPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetInstanceNatPolicyPtrOutput)
-}
-
-func (in *targetInstanceNatPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetInstanceNatPolicy] {
-	return pulumix.Output[*TargetInstanceNatPolicy]{
-		OutputState: in.ToTargetInstanceNatPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
@@ -32946,12 +31847,6 @@ func (in *targetPoolSessionAffinityPtr) ToTargetPoolSessionAffinityPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(TargetPoolSessionAffinityPtrOutput)
 }
 
-func (in *targetPoolSessionAffinityPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetPoolSessionAffinity] {
-	return pulumix.Output[*TargetPoolSessionAffinity]{
-		OutputState: in.ToTargetPoolSessionAffinityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 type TargetSslProxyProxyHeader string
 
@@ -33116,12 +32011,6 @@ func (in *targetSslProxyProxyHeaderPtr) ToTargetSslProxyProxyHeaderPtrOutput() T
 
 func (in *targetSslProxyProxyHeaderPtr) ToTargetSslProxyProxyHeaderPtrOutputWithContext(ctx context.Context) TargetSslProxyProxyHeaderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetSslProxyProxyHeaderPtrOutput)
-}
-
-func (in *targetSslProxyProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetSslProxyProxyHeader] {
-	return pulumix.Output[*TargetSslProxyProxyHeader]{
-		OutputState: in.ToTargetSslProxyProxyHeaderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -33290,12 +32179,6 @@ func (in *targetTcpProxyProxyHeaderPtr) ToTargetTcpProxyProxyHeaderPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(TargetTcpProxyProxyHeaderPtrOutput)
 }
 
-func (in *targetTcpProxyProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetTcpProxyProxyHeader] {
-	return pulumix.Output[*TargetTcpProxyProxyHeader]{
-		OutputState: in.ToTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
 type VpnGatewayStackType string
 
@@ -33462,12 +32345,6 @@ func (in *vpnGatewayStackTypePtr) ToVpnGatewayStackTypePtrOutput() VpnGatewaySta
 
 func (in *vpnGatewayStackTypePtr) ToVpnGatewayStackTypePtrOutputWithContext(ctx context.Context) VpnGatewayStackTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VpnGatewayStackTypePtrOutput)
-}
-
-func (in *vpnGatewayStackTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VpnGatewayStackType] {
-	return pulumix.Output[*VpnGatewayStackType]{
-		OutputState: in.ToVpnGatewayStackTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
