@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The type of IPv6 access for a cluster.
@@ -185,12 +184,6 @@ func (in *gceClusterConfigPrivateIpv6GoogleAccessPtr) ToGceClusterConfigPrivateI
 	return pulumi.ToOutputWithContext(ctx, in).(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput)
 }
 
-func (in *gceClusterConfigPrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*GceClusterConfigPrivateIpv6GoogleAccess] {
-	return pulumix.Output[*GceClusterConfigPrivateIpv6GoogleAccess]{
-		OutputState: in.ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GkeNodePoolTargetRolesItem string
 
 const (
@@ -365,12 +358,6 @@ func (in *gkeNodePoolTargetRolesItemPtr) ToGkeNodePoolTargetRolesItemPtrOutput()
 
 func (in *gkeNodePoolTargetRolesItemPtr) ToGkeNodePoolTargetRolesItemPtrOutputWithContext(ctx context.Context) GkeNodePoolTargetRolesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GkeNodePoolTargetRolesItemPtrOutput)
-}
-
-func (in *gkeNodePoolTargetRolesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*GkeNodePoolTargetRolesItem] {
-	return pulumix.Output[*GkeNodePoolTargetRolesItem]{
-		OutputState: in.ToGkeNodePoolTargetRolesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GkeNodePoolTargetRolesItemArrayInput is an input type that accepts GkeNodePoolTargetRolesItemArray and GkeNodePoolTargetRolesItemArrayOutput values.
@@ -592,12 +579,6 @@ func (in *instanceGroupConfigPreemptibilityPtr) ToInstanceGroupConfigPreemptibil
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupConfigPreemptibilityPtrOutput)
 }
 
-func (in *instanceGroupConfigPreemptibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupConfigPreemptibility] {
-	return pulumix.Output[*InstanceGroupConfigPreemptibility]{
-		OutputState: in.ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Kernel
 type JupyterConfigKernel string
 
@@ -767,12 +748,6 @@ func (in *jupyterConfigKernelPtr) ToJupyterConfigKernelPtrOutput() JupyterConfig
 
 func (in *jupyterConfigKernelPtr) ToJupyterConfigKernelPtrOutputWithContext(ctx context.Context) JupyterConfigKernelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JupyterConfigKernelPtrOutput)
-}
-
-func (in *jupyterConfigKernelPtr) ToOutput(ctx context.Context) pulumix.Output[*JupyterConfigKernel] {
-	return pulumix.Output[*JupyterConfigKernel]{
-		OutputState: in.ToJupyterConfigKernelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. A standard set of metrics is collected unless metricOverrides are specified for the metric source (see Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) for more information).
@@ -964,12 +939,6 @@ func (in *metricMetricSourcePtr) ToMetricMetricSourcePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(MetricMetricSourcePtrOutput)
 }
 
-func (in *metricMetricSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricMetricSource] {
-	return pulumix.Output[*MetricMetricSource]{
-		OutputState: in.ToMetricMetricSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeGroupRolesItem string
 
 const (
@@ -1135,12 +1104,6 @@ func (in *nodeGroupRolesItemPtr) ToNodeGroupRolesItemPtrOutput() NodeGroupRolesI
 
 func (in *nodeGroupRolesItemPtr) ToNodeGroupRolesItemPtrOutputWithContext(ctx context.Context) NodeGroupRolesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeGroupRolesItemPtrOutput)
-}
-
-func (in *nodeGroupRolesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeGroupRolesItem] {
-	return pulumix.Output[*NodeGroupRolesItem]{
-		OutputState: in.ToNodeGroupRolesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NodeGroupRolesItemArrayInput is an input type that accepts NodeGroupRolesItemArray and NodeGroupRolesItemArrayOutput values.
@@ -1361,12 +1324,6 @@ func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityCon
 	return pulumi.ToOutputWithContext(ctx, in).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
-func (in *reservationAffinityConsumeReservationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
-	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
-		OutputState: in.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SoftwareConfigOptionalComponentsItem string
 
 const (
@@ -1571,12 +1528,6 @@ func (in *softwareConfigOptionalComponentsItemPtr) ToSoftwareConfigOptionalCompo
 
 func (in *softwareConfigOptionalComponentsItemPtr) ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareConfigOptionalComponentsItemPtrOutput)
-}
-
-func (in *softwareConfigOptionalComponentsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareConfigOptionalComponentsItem] {
-	return pulumix.Output[*SoftwareConfigOptionalComponentsItem]{
-		OutputState: in.ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SoftwareConfigOptionalComponentsItemArrayInput is an input type that accepts SoftwareConfigOptionalComponentsItemArray and SoftwareConfigOptionalComponentsItemArrayOutput values.

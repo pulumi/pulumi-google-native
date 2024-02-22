@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The algorithm to use for autoscaling.
@@ -182,12 +181,6 @@ func (in *autoscalingSettingsAlgorithmPtr) ToAutoscalingSettingsAlgorithmPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingSettingsAlgorithmPtrOutput)
 }
 
-func (in *autoscalingSettingsAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingSettingsAlgorithm] {
-	return pulumix.Output[*AutoscalingSettingsAlgorithm]{
-		OutputState: in.ToAutoscalingSettingsAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataSamplingConfigBehaviorsItem string
 
 const (
@@ -359,12 +352,6 @@ func (in *dataSamplingConfigBehaviorsItemPtr) ToDataSamplingConfigBehaviorsItemP
 
 func (in *dataSamplingConfigBehaviorsItemPtr) ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(ctx context.Context) DataSamplingConfigBehaviorsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataSamplingConfigBehaviorsItemPtrOutput)
-}
-
-func (in *dataSamplingConfigBehaviorsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DataSamplingConfigBehaviorsItem] {
-	return pulumix.Output[*DataSamplingConfigBehaviorsItem]{
-		OutputState: in.ToDataSamplingConfigBehaviorsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DataSamplingConfigBehaviorsItemArrayInput is an input type that accepts DataSamplingConfigBehaviorsItemArray and DataSamplingConfigBehaviorsItemArrayOutput values.
@@ -583,12 +570,6 @@ func (in *environmentFlexResourceSchedulingGoalPtr) ToEnvironmentFlexResourceSch
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentFlexResourceSchedulingGoalPtrOutput)
 }
 
-func (in *environmentFlexResourceSchedulingGoalPtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentFlexResourceSchedulingGoal] {
-	return pulumix.Output[*EnvironmentFlexResourceSchedulingGoal]{
-		OutputState: in.ToEnvironmentFlexResourceSchedulingGoalPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Executions stage states allow the same set of values as JobState.
 type ExecutionStageStateExecutionStageState string
 
@@ -790,12 +771,6 @@ func (in *executionStageStateExecutionStageStatePtr) ToExecutionStageStateExecut
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionStageStateExecutionStageStatePtrOutput)
 }
 
-func (in *executionStageStateExecutionStageStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionStageStateExecutionStageState] {
-	return pulumix.Output[*ExecutionStageStateExecutionStageState]{
-		OutputState: in.ToExecutionStageStateExecutionStageStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of transform this stage is executing.
 type ExecutionStageSummaryKind string
 
@@ -983,12 +958,6 @@ func (in *executionStageSummaryKindPtr) ToExecutionStageSummaryKindPtrOutput() E
 
 func (in *executionStageSummaryKindPtr) ToExecutionStageSummaryKindPtrOutputWithContext(ctx context.Context) ExecutionStageSummaryKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionStageSummaryKindPtrOutput)
-}
-
-func (in *executionStageSummaryKindPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionStageSummaryKind] {
-	return pulumix.Output[*ExecutionStageSummaryKind]{
-		OutputState: in.ToExecutionStageSummaryKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
@@ -1192,12 +1161,6 @@ func (in *jobCurrentStatePtr) ToJobCurrentStatePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(JobCurrentStatePtrOutput)
 }
 
-func (in *jobCurrentStatePtr) ToOutput(ctx context.Context) pulumix.Output[*JobCurrentState] {
-	return pulumix.Output[*JobCurrentState]{
-		OutputState: in.ToJobCurrentStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
 type JobRequestedState string
 
@@ -1399,12 +1362,6 @@ func (in *jobRequestedStatePtr) ToJobRequestedStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(JobRequestedStatePtrOutput)
 }
 
-func (in *jobRequestedStatePtr) ToOutput(ctx context.Context) pulumix.Output[*JobRequestedState] {
-	return pulumix.Output[*JobRequestedState]{
-		OutputState: in.ToJobRequestedStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of Dataflow job.
 type JobType string
 
@@ -1576,12 +1533,6 @@ func (in *jobTypePtr) ToJobTypePtrOutputWithContext(ctx context.Context) JobType
 	return pulumi.ToOutputWithContext(ctx, in).(JobTypePtrOutput)
 }
 
-func (in *jobTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobType] {
-	return pulumix.Output[*JobType]{
-		OutputState: in.ToJobTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Configuration for VM IPs.
 type RuntimeEnvironmentIpConfiguration string
 
@@ -1751,12 +1702,6 @@ func (in *runtimeEnvironmentIpConfigurationPtr) ToRuntimeEnvironmentIpConfigurat
 
 func (in *runtimeEnvironmentIpConfigurationPtr) ToRuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx context.Context) RuntimeEnvironmentIpConfigurationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuntimeEnvironmentIpConfigurationPtrOutput)
-}
-
-func (in *runtimeEnvironmentIpConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*RuntimeEnvironmentIpConfiguration] {
-	return pulumix.Output[*RuntimeEnvironmentIpConfiguration]{
-		OutputState: in.ToRuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The support status for this SDK version.
@@ -1934,12 +1879,6 @@ func (in *sdkVersionSdkSupportStatusPtr) ToSdkVersionSdkSupportStatusPtrOutput()
 
 func (in *sdkVersionSdkSupportStatusPtr) ToSdkVersionSdkSupportStatusPtrOutputWithContext(ctx context.Context) SdkVersionSdkSupportStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SdkVersionSdkSupportStatusPtrOutput)
-}
-
-func (in *sdkVersionSdkSupportStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SdkVersionSdkSupportStatus] {
-	return pulumix.Output[*SdkVersionSdkSupportStatus]{
-		OutputState: in.ToSdkVersionSdkSupportStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of transform.
@@ -2131,12 +2070,6 @@ func (in *transformSummaryKindPtr) ToTransformSummaryKindPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(TransformSummaryKindPtrOutput)
 }
 
-func (in *transformSummaryKindPtr) ToOutput(ctx context.Context) pulumix.Output[*TransformSummaryKind] {
-	return pulumix.Output[*TransformSummaryKind]{
-		OutputState: in.ToTransformSummaryKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
 type WorkerPoolDefaultPackageSet string
 
@@ -2311,12 +2244,6 @@ func (in *workerPoolDefaultPackageSetPtr) ToWorkerPoolDefaultPackageSetPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(WorkerPoolDefaultPackageSetPtrOutput)
 }
 
-func (in *workerPoolDefaultPackageSetPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolDefaultPackageSet] {
-	return pulumix.Output[*WorkerPoolDefaultPackageSet]{
-		OutputState: in.ToWorkerPoolDefaultPackageSetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for VM IPs.
 type WorkerPoolIpConfiguration string
 
@@ -2486,12 +2413,6 @@ func (in *workerPoolIpConfigurationPtr) ToWorkerPoolIpConfigurationPtrOutput() W
 
 func (in *workerPoolIpConfigurationPtr) ToWorkerPoolIpConfigurationPtrOutputWithContext(ctx context.Context) WorkerPoolIpConfigurationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkerPoolIpConfigurationPtrOutput)
-}
-
-func (in *workerPoolIpConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolIpConfiguration] {
-	return pulumix.Output[*WorkerPoolIpConfiguration]{
-		OutputState: in.ToWorkerPoolIpConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
@@ -2666,12 +2587,6 @@ func (in *workerPoolTeardownPolicyPtr) ToWorkerPoolTeardownPolicyPtrOutput() Wor
 
 func (in *workerPoolTeardownPolicyPtr) ToWorkerPoolTeardownPolicyPtrOutputWithContext(ctx context.Context) WorkerPoolTeardownPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkerPoolTeardownPolicyPtrOutput)
-}
-
-func (in *workerPoolTeardownPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolTeardownPolicy] {
-	return pulumix.Output[*WorkerPoolTeardownPolicy]{
-		OutputState: in.ToWorkerPoolTeardownPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

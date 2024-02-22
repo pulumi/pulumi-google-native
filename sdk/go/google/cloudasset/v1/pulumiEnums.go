@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Asset content type. If not specified, no content but the asset name and type will be returned.
@@ -192,12 +191,6 @@ func (in *feedContentTypePtr) ToFeedContentTypePtrOutput() FeedContentTypePtrOut
 
 func (in *feedContentTypePtr) ToFeedContentTypePtrOutputWithContext(ctx context.Context) FeedContentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FeedContentTypePtrOutput)
-}
-
-func (in *feedContentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FeedContentType] {
-	return pulumix.Output[*FeedContentType]{
-		OutputState: in.ToFeedContentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

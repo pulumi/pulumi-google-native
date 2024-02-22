@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
 type FilterProtocolVersion string
 
@@ -357,12 +350,6 @@ func (in *filterProtocolVersionPtr) ToFilterProtocolVersionPtrOutput() FilterPro
 
 func (in *filterProtocolVersionPtr) ToFilterProtocolVersionPtrOutputWithContext(ctx context.Context) FilterProtocolVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FilterProtocolVersionPtrOutput)
-}
-
-func (in *filterProtocolVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*FilterProtocolVersion] {
-	return pulumix.Output[*FilterProtocolVersion]{
-		OutputState: in.ToFilterProtocolVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type InternalRangeOverlapsItem string
@@ -533,12 +520,6 @@ func (in *internalRangeOverlapsItemPtr) ToInternalRangeOverlapsItemPtrOutput() I
 
 func (in *internalRangeOverlapsItemPtr) ToInternalRangeOverlapsItemPtrOutputWithContext(ctx context.Context) InternalRangeOverlapsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InternalRangeOverlapsItemPtrOutput)
-}
-
-func (in *internalRangeOverlapsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeOverlapsItem] {
-	return pulumix.Output[*InternalRangeOverlapsItem]{
-		OutputState: in.ToInternalRangeOverlapsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InternalRangeOverlapsItemArrayInput is an input type that accepts InternalRangeOverlapsItemArray and InternalRangeOverlapsItemArrayOutput values.
@@ -760,12 +741,6 @@ func (in *internalRangePeeringPtr) ToInternalRangePeeringPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(InternalRangePeeringPtrOutput)
 }
 
-func (in *internalRangePeeringPtr) ToOutput(ctx context.Context) pulumix.Output[*InternalRangePeering] {
-	return pulumix.Output[*InternalRangePeering]{
-		OutputState: in.ToInternalRangePeeringPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of usage set for this InternalRange.
 type InternalRangeUsage string
 
@@ -937,12 +912,6 @@ func (in *internalRangeUsagePtr) ToInternalRangeUsagePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(InternalRangeUsagePtrOutput)
 }
 
-func (in *internalRangeUsagePtr) ToOutput(ctx context.Context) pulumix.Output[*InternalRangeUsage] {
-	return pulumix.Output[*InternalRangeUsage]{
-		OutputState: in.ToInternalRangeUsagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Other routes that will be referenced to determine the next hop of the packet.
 type PolicyBasedRouteNextHopOtherRoutes string
 
@@ -1109,12 +1078,6 @@ func (in *policyBasedRouteNextHopOtherRoutesPtr) ToPolicyBasedRouteNextHopOtherR
 
 func (in *policyBasedRouteNextHopOtherRoutesPtr) ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(ctx context.Context) PolicyBasedRouteNextHopOtherRoutesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyBasedRouteNextHopOtherRoutesPtrOutput)
-}
-
-func (in *policyBasedRouteNextHopOtherRoutesPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyBasedRouteNextHopOtherRoutes] {
-	return pulumix.Output[*PolicyBasedRouteNextHopOtherRoutes]{
-		OutputState: in.ToPolicyBasedRouteNextHopOtherRoutesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

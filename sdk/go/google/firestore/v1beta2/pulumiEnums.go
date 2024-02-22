@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates that this field supports operations on `array_value`s.
@@ -177,12 +176,6 @@ func (in *googleFirestoreAdminV1beta2IndexFieldArrayConfigPtr) ToGoogleFirestore
 
 func (in *googleFirestoreAdminV1beta2IndexFieldArrayConfigPtr) ToGoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput)
-}
-
-func (in *googleFirestoreAdminV1beta2IndexFieldArrayConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldArrayConfig] {
-	return pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldArrayConfig]{
-		OutputState: in.ToGoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
@@ -356,12 +349,6 @@ func (in *googleFirestoreAdminV1beta2IndexFieldOrderPtr) ToGoogleFirestoreAdminV
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput)
 }
 
-func (in *googleFirestoreAdminV1beta2IndexFieldOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldOrder] {
-	return pulumix.Output[*GoogleFirestoreAdminV1beta2IndexFieldOrder]{
-		OutputState: in.ToGoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
 type IndexQueryScope string
 
@@ -531,12 +518,6 @@ func (in *indexQueryScopePtr) ToIndexQueryScopePtrOutput() IndexQueryScopePtrOut
 
 func (in *indexQueryScopePtr) ToIndexQueryScopePtrOutputWithContext(ctx context.Context) IndexQueryScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IndexQueryScopePtrOutput)
-}
-
-func (in *indexQueryScopePtr) ToOutput(ctx context.Context) pulumix.Output[*IndexQueryScope] {
-	return pulumix.Output[*IndexQueryScope]{
-		OutputState: in.ToIndexQueryScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

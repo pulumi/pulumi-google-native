@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The optimization goal of the metric.
@@ -180,12 +179,6 @@ func (in *googleCloudMlV1_StudyConfig_MetricSpecGoalPtr) ToGoogleCloudMlV1_Study
 
 func (in *googleCloudMlV1_StudyConfig_MetricSpecGoalPtr) ToGoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutput)
-}
-
-func (in *googleCloudMlV1_StudyConfig_MetricSpecGoalPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfig_MetricSpecGoal] {
-	return pulumix.Output[*GoogleCloudMlV1_StudyConfig_MetricSpecGoal]{
-		OutputState: in.ToGoogleCloudMlV1_StudyConfig_MetricSpecGoalPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // How the parameter should be scaled. Leave unset for categorical parameters.
@@ -360,12 +353,6 @@ func (in *googleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtr) ToGoogleCloudMl
 
 func (in *googleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtr) ToGoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput)
-}
-
-func (in *googleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType] {
-	return pulumix.Output[*GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType]{
-		OutputState: in.ToGoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The type of the parameter.
@@ -543,12 +530,6 @@ func (in *googleCloudMlV1_StudyConfig_ParameterSpecTypePtr) ToGoogleCloudMlV1_St
 
 func (in *googleCloudMlV1_StudyConfig_ParameterSpecTypePtr) ToGoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutput)
-}
-
-func (in *googleCloudMlV1_StudyConfig_ParameterSpecTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1_StudyConfig_ParameterSpecType] {
-	return pulumix.Output[*GoogleCloudMlV1_StudyConfig_ParameterSpecType]{
-		OutputState: in.ToGoogleCloudMlV1_StudyConfig_ParameterSpecTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of accelerator to use.
@@ -749,12 +730,6 @@ func (in *googleCloudMlV1__AcceleratorConfigTypePtr) ToGoogleCloudMlV1__Accelera
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1__AcceleratorConfigTypePtrOutput)
 }
 
-func (in *googleCloudMlV1__AcceleratorConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__AcceleratorConfigType] {
-	return pulumix.Output[*GoogleCloudMlV1__AcceleratorConfigType]{
-		OutputState: in.ToGoogleCloudMlV1__AcceleratorConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
 type GoogleCloudMlV1__HyperparameterSpecAlgorithm string
 
@@ -924,12 +899,6 @@ func (in *googleCloudMlV1__HyperparameterSpecAlgorithmPtr) ToGoogleCloudMlV1__Hy
 
 func (in *googleCloudMlV1__HyperparameterSpecAlgorithmPtr) ToGoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput)
-}
-
-func (in *googleCloudMlV1__HyperparameterSpecAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__HyperparameterSpecAlgorithm] {
-	return pulumix.Output[*GoogleCloudMlV1__HyperparameterSpecAlgorithm]{
-		OutputState: in.ToGoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
@@ -1103,12 +1072,6 @@ func (in *googleCloudMlV1__HyperparameterSpecGoalPtr) ToGoogleCloudMlV1__Hyperpa
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput)
 }
 
-func (in *googleCloudMlV1__HyperparameterSpecGoalPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__HyperparameterSpecGoal] {
-	return pulumix.Output[*GoogleCloudMlV1__HyperparameterSpecGoal]{
-		OutputState: in.ToGoogleCloudMlV1__HyperparameterSpecGoalPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // metric name.
 type GoogleCloudMlV1__MetricSpecName string
 
@@ -1278,12 +1241,6 @@ func (in *googleCloudMlV1__MetricSpecNamePtr) ToGoogleCloudMlV1__MetricSpecNameP
 
 func (in *googleCloudMlV1__MetricSpecNamePtr) ToGoogleCloudMlV1__MetricSpecNamePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__MetricSpecNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1__MetricSpecNamePtrOutput)
-}
-
-func (in *googleCloudMlV1__MetricSpecNamePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__MetricSpecName] {
-	return pulumix.Output[*GoogleCloudMlV1__MetricSpecName]{
-		OutputState: in.ToGoogleCloudMlV1__MetricSpecNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
@@ -1458,12 +1415,6 @@ func (in *googleCloudMlV1__ParameterSpecScaleTypePtr) ToGoogleCloudMlV1__Paramet
 
 func (in *googleCloudMlV1__ParameterSpecScaleTypePtr) ToGoogleCloudMlV1__ParameterSpecScaleTypePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput)
-}
-
-func (in *googleCloudMlV1__ParameterSpecScaleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__ParameterSpecScaleType] {
-	return pulumix.Output[*GoogleCloudMlV1__ParameterSpecScaleType]{
-		OutputState: in.ToGoogleCloudMlV1__ParameterSpecScaleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The type of the parameter.
@@ -1641,12 +1592,6 @@ func (in *googleCloudMlV1__ParameterSpecTypePtr) ToGoogleCloudMlV1__ParameterSpe
 
 func (in *googleCloudMlV1__ParameterSpecTypePtr) ToGoogleCloudMlV1__ParameterSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ParameterSpecTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1__ParameterSpecTypePtrOutput)
-}
-
-func (in *googleCloudMlV1__ParameterSpecTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__ParameterSpecType] {
-	return pulumix.Output[*GoogleCloudMlV1__ParameterSpecType]{
-		OutputState: in.ToGoogleCloudMlV1__ParameterSpecTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The format of the input data files.
@@ -1829,12 +1774,6 @@ func (in *googleCloudMlV1__PredictionInputDataFormatPtr) ToGoogleCloudMlV1__Pred
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1__PredictionInputDataFormatPtrOutput)
 }
 
-func (in *googleCloudMlV1__PredictionInputDataFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__PredictionInputDataFormat] {
-	return pulumix.Output[*GoogleCloudMlV1__PredictionInputDataFormat]{
-		OutputState: in.ToGoogleCloudMlV1__PredictionInputDataFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Format of the output data files, defaults to JSON.
 type GoogleCloudMlV1__PredictionInputOutputDataFormat string
 
@@ -2015,12 +1954,6 @@ func (in *googleCloudMlV1__PredictionInputOutputDataFormatPtr) ToGoogleCloudMlV1
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput)
 }
 
-func (in *googleCloudMlV1__PredictionInputOutputDataFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__PredictionInputOutputDataFormat] {
-	return pulumix.Output[*GoogleCloudMlV1__PredictionInputOutputDataFormat]{
-		OutputState: in.ToGoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The search algorithm specified for the study.
 type GoogleCloudMlV1__StudyConfigAlgorithm string
 
@@ -2193,12 +2126,6 @@ func (in *googleCloudMlV1__StudyConfigAlgorithmPtr) ToGoogleCloudMlV1__StudyConf
 
 func (in *googleCloudMlV1__StudyConfigAlgorithmPtr) ToGoogleCloudMlV1__StudyConfigAlgorithmPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput)
-}
-
-func (in *googleCloudMlV1__StudyConfigAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__StudyConfigAlgorithm] {
-	return pulumix.Output[*GoogleCloudMlV1__StudyConfigAlgorithm]{
-		OutputState: in.ToGoogleCloudMlV1__StudyConfigAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Specifies the machine types, the number of replicas for workers and parameter servers.
@@ -2381,12 +2308,6 @@ func (in *googleCloudMlV1__TrainingInputScaleTierPtr) ToGoogleCloudMlV1__Trainin
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudMlV1__TrainingInputScaleTierPtrOutput)
 }
 
-func (in *googleCloudMlV1__TrainingInputScaleTierPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudMlV1__TrainingInputScaleTier] {
-	return pulumix.Output[*GoogleCloudMlV1__TrainingInputScaleTier]{
-		OutputState: in.ToGoogleCloudMlV1__TrainingInputScaleTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The log type that this config enables.
 type GoogleIamV1__AuditLogConfigLogType string
 
@@ -2559,12 +2480,6 @@ func (in *googleIamV1__AuditLogConfigLogTypePtr) ToGoogleIamV1__AuditLogConfigLo
 
 func (in *googleIamV1__AuditLogConfigLogTypePtr) ToGoogleIamV1__AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1__AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1__AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *googleIamV1__AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1__AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1__AuditLogConfigLogType]{
-		OutputState: in.ToGoogleIamV1__AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The detailed state of a trial.
@@ -2744,12 +2659,6 @@ func (in *trialStateEnumPtr) ToTrialStateEnumPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(TrialStateEnumPtrOutput)
 }
 
-func (in *trialStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*TrialStateEnum] {
-	return pulumix.Output[*TrialStateEnum]{
-		OutputState: in.ToTrialStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
 type VersionFramework string
 
@@ -2922,12 +2831,6 @@ func (in *versionFrameworkPtr) ToVersionFrameworkPtrOutput() VersionFrameworkPtr
 
 func (in *versionFrameworkPtr) ToVersionFrameworkPtrOutputWithContext(ctx context.Context) VersionFrameworkPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VersionFrameworkPtrOutput)
-}
-
-func (in *versionFrameworkPtr) ToOutput(ctx context.Context) pulumix.Output[*VersionFramework] {
-	return pulumix.Output[*VersionFramework]{
-		OutputState: in.ToVersionFrameworkPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

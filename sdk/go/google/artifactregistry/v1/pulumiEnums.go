@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // One of the publicly available Docker repositories supported by Artifact Registry.
@@ -177,12 +176,6 @@ func (in *dockerRepositoryPublicRepositoryPtr) ToDockerRepositoryPublicRepositor
 
 func (in *dockerRepositoryPublicRepositoryPtr) ToDockerRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) DockerRepositoryPublicRepositoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DockerRepositoryPublicRepositoryPtrOutput)
-}
-
-func (in *dockerRepositoryPublicRepositoryPtr) ToOutput(ctx context.Context) pulumix.Output[*DockerRepositoryPublicRepository] {
-	return pulumix.Output[*DockerRepositoryPublicRepository]{
-		OutputState: in.ToDockerRepositoryPublicRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A common public repository base for Apt.
@@ -357,12 +350,6 @@ func (in *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPub
 
 func (in *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtr) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtrOutput)
-}
-
-func (in *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase] {
-	return pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase]{
-		OutputState: in.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBasePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A common public repository base for Yum.
@@ -548,12 +535,6 @@ func (in *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPub
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBasePtrOutput)
 }
 
-func (in *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBasePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase] {
-	return pulumix.Output[*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase]{
-		OutputState: in.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBasePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Version policy defines the versions that the registry will accept.
 type MavenRepositoryConfigVersionPolicy string
 
@@ -725,12 +706,6 @@ func (in *mavenRepositoryConfigVersionPolicyPtr) ToMavenRepositoryConfigVersionP
 	return pulumi.ToOutputWithContext(ctx, in).(MavenRepositoryConfigVersionPolicyPtrOutput)
 }
 
-func (in *mavenRepositoryConfigVersionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*MavenRepositoryConfigVersionPolicy] {
-	return pulumix.Output[*MavenRepositoryConfigVersionPolicy]{
-		OutputState: in.ToMavenRepositoryConfigVersionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // One of the publicly available Maven repositories supported by Artifact Registry.
 type MavenRepositoryPublicRepository string
 
@@ -897,12 +872,6 @@ func (in *mavenRepositoryPublicRepositoryPtr) ToMavenRepositoryPublicRepositoryP
 
 func (in *mavenRepositoryPublicRepositoryPtr) ToMavenRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) MavenRepositoryPublicRepositoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MavenRepositoryPublicRepositoryPtrOutput)
-}
-
-func (in *mavenRepositoryPublicRepositoryPtr) ToOutput(ctx context.Context) pulumix.Output[*MavenRepositoryPublicRepository] {
-	return pulumix.Output[*MavenRepositoryPublicRepository]{
-		OutputState: in.ToMavenRepositoryPublicRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // One of the publicly available Npm repositories supported by Artifact Registry.
@@ -1073,12 +1042,6 @@ func (in *npmRepositoryPublicRepositoryPtr) ToNpmRepositoryPublicRepositoryPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(NpmRepositoryPublicRepositoryPtrOutput)
 }
 
-func (in *npmRepositoryPublicRepositoryPtr) ToOutput(ctx context.Context) pulumix.Output[*NpmRepositoryPublicRepository] {
-	return pulumix.Output[*NpmRepositoryPublicRepository]{
-		OutputState: in.ToNpmRepositoryPublicRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // One of the publicly available Python repositories supported by Artifact Registry.
 type PythonRepositoryPublicRepository string
 
@@ -1245,12 +1208,6 @@ func (in *pythonRepositoryPublicRepositoryPtr) ToPythonRepositoryPublicRepositor
 
 func (in *pythonRepositoryPublicRepositoryPtr) ToPythonRepositoryPublicRepositoryPtrOutputWithContext(ctx context.Context) PythonRepositoryPublicRepositoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PythonRepositoryPublicRepositoryPtrOutput)
-}
-
-func (in *pythonRepositoryPublicRepositoryPtr) ToOutput(ctx context.Context) pulumix.Output[*PythonRepositoryPublicRepository] {
-	return pulumix.Output[*PythonRepositoryPublicRepository]{
-		OutputState: in.ToPythonRepositoryPublicRepositoryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The format of packages that are stored in the repository.
@@ -1445,12 +1402,6 @@ func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RepositoryFormatPtrOutput)
 }
 
-func (in *repositoryFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*RepositoryFormat] {
-	return pulumix.Output[*RepositoryFormat]{
-		OutputState: in.ToRepositoryFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The mode of the repository.
 type RepositoryMode string
 
@@ -1623,12 +1574,6 @@ func (in *repositoryModePtr) ToRepositoryModePtrOutput() RepositoryModePtrOutput
 
 func (in *repositoryModePtr) ToRepositoryModePtrOutputWithContext(ctx context.Context) RepositoryModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RepositoryModePtrOutput)
-}
-
-func (in *repositoryModePtr) ToOutput(ctx context.Context) pulumix.Output[*RepositoryMode] {
-	return pulumix.Output[*RepositoryMode]{
-		OutputState: in.ToRepositoryModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

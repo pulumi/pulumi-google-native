@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -183,12 +182,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Lowest threat severity that this endpoint will alert on.
@@ -369,12 +362,6 @@ func (in *endpointSeverityPtr) ToEndpointSeverityPtrOutput() EndpointSeverityPtr
 
 func (in *endpointSeverityPtr) ToEndpointSeverityPtrOutputWithContext(ctx context.Context) EndpointSeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointSeverityPtrOutput)
-}
-
-func (in *endpointSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointSeverity] {
-	return pulumix.Output[*EndpointSeverity]{
-		OutputState: in.ToEndpointSeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
