@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of this accelerator.
@@ -212,12 +211,6 @@ func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorConfigTypePtrOutput)
 }
 
-func (in *acceleratorConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AcceleratorConfigType] {
-	return pulumix.Output[*AcceleratorConfigType]{
-		OutputState: in.ToAcceleratorConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of Job to be used on this execution.
 type ExecutionTemplateJobType string
 
@@ -387,12 +380,6 @@ func (in *executionTemplateJobTypePtr) ToExecutionTemplateJobTypePtrOutput() Exe
 
 func (in *executionTemplateJobTypePtr) ToExecutionTemplateJobTypePtrOutputWithContext(ctx context.Context) ExecutionTemplateJobTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionTemplateJobTypePtrOutput)
-}
-
-func (in *executionTemplateJobTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionTemplateJobType] {
-	return pulumix.Output[*ExecutionTemplateJobType]{
-		OutputState: in.ToExecutionTemplateJobTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
@@ -578,12 +565,6 @@ func (in *executionTemplateScaleTierPtr) ToExecutionTemplateScaleTierPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionTemplateScaleTierPtrOutput)
 }
 
-func (in *executionTemplateScaleTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ExecutionTemplateScaleTier] {
-	return pulumix.Output[*ExecutionTemplateScaleTier]{
-		OutputState: in.ToExecutionTemplateScaleTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
 type InstanceBootDiskType string
 
@@ -759,12 +740,6 @@ func (in *instanceBootDiskTypePtr) ToInstanceBootDiskTypePtrOutput() InstanceBoo
 
 func (in *instanceBootDiskTypePtr) ToInstanceBootDiskTypePtrOutputWithContext(ctx context.Context) InstanceBootDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceBootDiskTypePtrOutput)
-}
-
-func (in *instanceBootDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceBootDiskType] {
-	return pulumix.Output[*InstanceBootDiskType]{
-		OutputState: in.ToInstanceBootDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
@@ -944,12 +919,6 @@ func (in *instanceDataDiskTypePtr) ToInstanceDataDiskTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceDataDiskTypePtrOutput)
 }
 
-func (in *instanceDataDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceDataDiskType] {
-	return pulumix.Output[*InstanceDataDiskType]{
-		OutputState: in.ToInstanceDataDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
 type InstanceDiskEncryption string
 
@@ -1121,12 +1090,6 @@ func (in *instanceDiskEncryptionPtr) ToInstanceDiskEncryptionPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceDiskEncryptionPtrOutput)
 }
 
-func (in *instanceDiskEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceDiskEncryption] {
-	return pulumix.Output[*InstanceDiskEncryption]{
-		OutputState: in.ToInstanceDiskEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 type InstanceNicType string
 
@@ -1296,12 +1259,6 @@ func (in *instanceNicTypePtr) ToInstanceNicTypePtrOutput() InstanceNicTypePtrOut
 
 func (in *instanceNicTypePtr) ToInstanceNicTypePtrOutputWithContext(ctx context.Context) InstanceNicTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceNicTypePtrOutput)
-}
-
-func (in *instanceNicTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceNicType] {
-	return pulumix.Output[*InstanceNicType]{
-		OutputState: in.ToInstanceNicTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
@@ -1481,12 +1438,6 @@ func (in *localDiskInitializeParamsDiskTypePtr) ToLocalDiskInitializeParamsDiskT
 	return pulumi.ToOutputWithContext(ctx, in).(LocalDiskInitializeParamsDiskTypePtrOutput)
 }
 
-func (in *localDiskInitializeParamsDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LocalDiskInitializeParamsDiskType] {
-	return pulumix.Output[*LocalDiskInitializeParamsDiskType]{
-		OutputState: in.ToLocalDiskInitializeParamsDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Type of reservation to consume
 type ReservationAffinityConsumeReservationType string
 
@@ -1659,12 +1610,6 @@ func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityCon
 
 func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReservationAffinityConsumeReservationTypePtrOutput)
-}
-
-func (in *reservationAffinityConsumeReservationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReservationAffinityConsumeReservationType] {
-	return pulumix.Output[*ReservationAffinityConsumeReservationType]{
-		OutputState: in.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Accelerator model.
@@ -1868,12 +1813,6 @@ func (in *runtimeAcceleratorConfigTypePtr) ToRuntimeAcceleratorConfigTypePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(RuntimeAcceleratorConfigTypePtrOutput)
 }
 
-func (in *runtimeAcceleratorConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RuntimeAcceleratorConfigType] {
-	return pulumix.Output[*RuntimeAcceleratorConfigType]{
-		OutputState: in.ToRuntimeAcceleratorConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of access mode this instance.
 type RuntimeAccessConfigAccessType string
 
@@ -2045,12 +1984,6 @@ func (in *runtimeAccessConfigAccessTypePtr) ToRuntimeAccessConfigAccessTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(RuntimeAccessConfigAccessTypePtrOutput)
 }
 
-func (in *runtimeAccessConfigAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RuntimeAccessConfigAccessType] {
-	return pulumix.Output[*RuntimeAccessConfigAccessType]{
-		OutputState: in.ToRuntimeAccessConfigAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Behavior for the post startup script.
 type RuntimeSoftwareConfigPostStartupScriptBehavior string
 
@@ -2220,12 +2153,6 @@ func (in *runtimeSoftwareConfigPostStartupScriptBehaviorPtr) ToRuntimeSoftwareCo
 
 func (in *runtimeSoftwareConfigPostStartupScriptBehaviorPtr) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput)
-}
-
-func (in *runtimeSoftwareConfigPostStartupScriptBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*RuntimeSoftwareConfigPostStartupScriptBehavior] {
-	return pulumix.Output[*RuntimeSoftwareConfigPostStartupScriptBehavior]{
-		OutputState: in.ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ScheduleStateEnum string
@@ -2408,12 +2335,6 @@ func (in *scheduleStateEnumPtr) ToScheduleStateEnumPtrOutput() ScheduleStateEnum
 
 func (in *scheduleStateEnumPtr) ToScheduleStateEnumPtrOutputWithContext(ctx context.Context) ScheduleStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleStateEnumPtrOutput)
-}
-
-func (in *scheduleStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleStateEnum] {
-	return pulumix.Output[*ScheduleStateEnum]{
-		OutputState: in.ToScheduleStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of this accelerator.
@@ -2605,12 +2526,6 @@ func (in *schedulerAcceleratorConfigTypePtr) ToSchedulerAcceleratorConfigTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulerAcceleratorConfigTypePtrOutput)
 }
 
-func (in *schedulerAcceleratorConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulerAcceleratorConfigType] {
-	return pulumix.Output[*SchedulerAcceleratorConfigType]{
-		OutputState: in.ToSchedulerAcceleratorConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Action. Rolloback or Upgrade.
 type UpgradeHistoryEntryAction string
 
@@ -2780,12 +2695,6 @@ func (in *upgradeHistoryEntryActionPtr) ToUpgradeHistoryEntryActionPtrOutput() U
 
 func (in *upgradeHistoryEntryActionPtr) ToUpgradeHistoryEntryActionPtrOutputWithContext(ctx context.Context) UpgradeHistoryEntryActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeHistoryEntryActionPtrOutput)
-}
-
-func (in *upgradeHistoryEntryActionPtr) ToOutput(ctx context.Context) pulumix.Output[*UpgradeHistoryEntryAction] {
-	return pulumix.Output[*UpgradeHistoryEntryAction]{
-		OutputState: in.ToUpgradeHistoryEntryActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The state of this instance upgrade history entry.
@@ -2962,12 +2871,6 @@ func (in *upgradeHistoryEntryStatePtr) ToUpgradeHistoryEntryStatePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeHistoryEntryStatePtrOutput)
 }
 
-func (in *upgradeHistoryEntryStatePtr) ToOutput(ctx context.Context) pulumix.Output[*UpgradeHistoryEntryState] {
-	return pulumix.Output[*UpgradeHistoryEntryState]{
-		OutputState: in.ToUpgradeHistoryEntryStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 type VirtualMachineConfigNicType string
 
@@ -3137,12 +3040,6 @@ func (in *virtualMachineConfigNicTypePtr) ToVirtualMachineConfigNicTypePtrOutput
 
 func (in *virtualMachineConfigNicTypePtr) ToVirtualMachineConfigNicTypePtrOutputWithContext(ctx context.Context) VirtualMachineConfigNicTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineConfigNicTypePtrOutput)
-}
-
-func (in *virtualMachineConfigNicTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineConfigNicType] {
-	return pulumix.Output[*VirtualMachineConfigNicType]{
-		OutputState: in.ToVirtualMachineConfigNicTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

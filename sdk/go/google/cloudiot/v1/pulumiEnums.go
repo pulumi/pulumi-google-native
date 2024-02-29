@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
@@ -188,12 +187,6 @@ func (in *deviceLogLevelPtr) ToDeviceLogLevelPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DeviceLogLevelPtrOutput)
 }
 
-func (in *deviceLogLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DeviceLogLevel] {
-	return pulumix.Output[*DeviceLogLevel]{
-		OutputState: in.ToDeviceLogLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates how to authorize and/or authenticate devices to access the gateway.
 type GatewayConfigGatewayAuthMethod string
 
@@ -368,12 +361,6 @@ func (in *gatewayConfigGatewayAuthMethodPtr) ToGatewayConfigGatewayAuthMethodPtr
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayConfigGatewayAuthMethodPtrOutput)
 }
 
-func (in *gatewayConfigGatewayAuthMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayConfigGatewayAuthMethod] {
-	return pulumix.Output[*GatewayConfigGatewayAuthMethod]{
-		OutputState: in.ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the device is a gateway.
 type GatewayConfigGatewayType string
 
@@ -543,12 +530,6 @@ func (in *gatewayConfigGatewayTypePtr) ToGatewayConfigGatewayTypePtrOutput() Gat
 
 func (in *gatewayConfigGatewayTypePtr) ToGatewayConfigGatewayTypePtrOutputWithContext(ctx context.Context) GatewayConfigGatewayTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayConfigGatewayTypePtrOutput)
-}
-
-func (in *gatewayConfigGatewayTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayConfigGatewayType] {
-	return pulumix.Output[*GatewayConfigGatewayType]{
-		OutputState: in.ToGatewayConfigGatewayTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
@@ -722,12 +703,6 @@ func (in *httpConfigHttpEnabledStatePtr) ToHttpConfigHttpEnabledStatePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(HttpConfigHttpEnabledStatePtrOutput)
 }
 
-func (in *httpConfigHttpEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*HttpConfigHttpEnabledState] {
-	return pulumix.Output[*HttpConfigHttpEnabledState]{
-		OutputState: in.ToHttpConfigHttpEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
 type MqttConfigMqttEnabledState string
 
@@ -899,12 +874,6 @@ func (in *mqttConfigMqttEnabledStatePtr) ToMqttConfigMqttEnabledStatePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(MqttConfigMqttEnabledStatePtrOutput)
 }
 
-func (in *mqttConfigMqttEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*MqttConfigMqttEnabledState] {
-	return pulumix.Output[*MqttConfigMqttEnabledState]{
-		OutputState: in.ToMqttConfigMqttEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The certificate format.
 type PublicKeyCertificateFormat string
 
@@ -1071,12 +1040,6 @@ func (in *publicKeyCertificateFormatPtr) ToPublicKeyCertificateFormatPtrOutput()
 
 func (in *publicKeyCertificateFormatPtr) ToPublicKeyCertificateFormatPtrOutputWithContext(ctx context.Context) PublicKeyCertificateFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicKeyCertificateFormatPtrOutput)
-}
-
-func (in *publicKeyCertificateFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicKeyCertificateFormat] {
-	return pulumix.Output[*PublicKeyCertificateFormat]{
-		OutputState: in.ToPublicKeyCertificateFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The format of the key.
@@ -1256,12 +1219,6 @@ func (in *publicKeyCredentialFormatPtr) ToPublicKeyCredentialFormatPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(PublicKeyCredentialFormatPtrOutput)
 }
 
-func (in *publicKeyCredentialFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicKeyCredentialFormat] {
-	return pulumix.Output[*PublicKeyCredentialFormat]{
-		OutputState: in.ToPublicKeyCredentialFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
 type RegistryLogLevel string
 
@@ -1437,12 +1394,6 @@ func (in *registryLogLevelPtr) ToRegistryLogLevelPtrOutput() RegistryLogLevelPtr
 
 func (in *registryLogLevelPtr) ToRegistryLogLevelPtrOutputWithContext(ctx context.Context) RegistryLogLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegistryLogLevelPtrOutput)
-}
-
-func (in *registryLogLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*RegistryLogLevel] {
-	return pulumix.Output[*RegistryLogLevel]{
-		OutputState: in.ToRegistryLogLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

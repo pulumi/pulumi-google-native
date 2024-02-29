@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The dialect of the Cloud Spanner Database.
@@ -182,12 +181,6 @@ func (in *databaseDatabaseDialectPtr) ToDatabaseDatabaseDialectPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseDatabaseDialectPtrOutput)
 }
 
-func (in *databaseDatabaseDialectPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseDatabaseDialect] {
-	return pulumix.Output[*DatabaseDatabaseDialect]{
-		OutputState: in.ToDatabaseDatabaseDialectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
 type FreeInstanceMetadataExpireBehavior string
 
@@ -359,12 +352,6 @@ func (in *freeInstanceMetadataExpireBehaviorPtr) ToFreeInstanceMetadataExpireBeh
 	return pulumi.ToOutputWithContext(ctx, in).(FreeInstanceMetadataExpireBehaviorPtrOutput)
 }
 
-func (in *freeInstanceMetadataExpireBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*FreeInstanceMetadataExpireBehavior] {
-	return pulumix.Output[*FreeInstanceMetadataExpireBehavior]{
-		OutputState: in.ToFreeInstanceMetadataExpireBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The `InstanceType` of the current instance.
 type InstanceInstanceType string
 
@@ -534,12 +521,6 @@ func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutput() InstanceIns
 
 func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutputWithContext(ctx context.Context) InstanceInstanceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceInstanceTypePtrOutput)
-}
-
-func (in *instanceInstanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceInstanceType] {
-	return pulumix.Output[*InstanceInstanceType]{
-		OutputState: in.ToInstanceInstanceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of replica.
@@ -714,12 +695,6 @@ func (in *replicaInfoTypePtr) ToReplicaInfoTypePtrOutput() ReplicaInfoTypePtrOut
 
 func (in *replicaInfoTypePtr) ToReplicaInfoTypePtrOutputWithContext(ctx context.Context) ReplicaInfoTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicaInfoTypePtrOutput)
-}
-
-func (in *replicaInfoTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicaInfoType] {
-	return pulumix.Output[*ReplicaInfoType]{
-		OutputState: in.ToReplicaInfoTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

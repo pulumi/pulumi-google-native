@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
@@ -177,12 +176,6 @@ func (in *basicLevelCombiningFunctionPtr) ToBasicLevelCombiningFunctionPtrOutput
 
 func (in *basicLevelCombiningFunctionPtr) ToBasicLevelCombiningFunctionPtrOutputWithContext(ctx context.Context) BasicLevelCombiningFunctionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BasicLevelCombiningFunctionPtrOutput)
-}
-
-func (in *basicLevelCombiningFunctionPtr) ToOutput(ctx context.Context) pulumix.Output[*BasicLevelCombiningFunction] {
-	return pulumix.Output[*BasicLevelCombiningFunction]{
-		OutputState: in.ToBasicLevelCombiningFunctionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DevicePolicyAllowedDeviceManagementLevelsItem string
@@ -356,12 +349,6 @@ func (in *devicePolicyAllowedDeviceManagementLevelsItemPtr) ToDevicePolicyAllowe
 
 func (in *devicePolicyAllowedDeviceManagementLevelsItemPtr) ToDevicePolicyAllowedDeviceManagementLevelsItemPtrOutputWithContext(ctx context.Context) DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput)
-}
-
-func (in *devicePolicyAllowedDeviceManagementLevelsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicyAllowedDeviceManagementLevelsItem] {
-	return pulumix.Output[*DevicePolicyAllowedDeviceManagementLevelsItem]{
-		OutputState: in.ToDevicePolicyAllowedDeviceManagementLevelsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DevicePolicyAllowedDeviceManagementLevelsItemArrayInput is an input type that accepts DevicePolicyAllowedDeviceManagementLevelsItemArray and DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput values.
@@ -580,12 +567,6 @@ func (in *devicePolicyAllowedEncryptionStatusesItemPtr) ToDevicePolicyAllowedEnc
 
 func (in *devicePolicyAllowedEncryptionStatusesItemPtr) ToDevicePolicyAllowedEncryptionStatusesItemPtrOutputWithContext(ctx context.Context) DevicePolicyAllowedEncryptionStatusesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DevicePolicyAllowedEncryptionStatusesItemPtrOutput)
-}
-
-func (in *devicePolicyAllowedEncryptionStatusesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicyAllowedEncryptionStatusesItem] {
-	return pulumix.Output[*DevicePolicyAllowedEncryptionStatusesItem]{
-		OutputState: in.ToDevicePolicyAllowedEncryptionStatusesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DevicePolicyAllowedEncryptionStatusesItemArrayInput is an input type that accepts DevicePolicyAllowedEncryptionStatusesItemArray and DevicePolicyAllowedEncryptionStatusesItemArrayOutput values.
@@ -816,12 +797,6 @@ func (in *osConstraintOsTypePtr) ToOsConstraintOsTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(OsConstraintOsTypePtrOutput)
 }
 
-func (in *osConstraintOsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsConstraintOsType] {
-	return pulumix.Output[*OsConstraintOsType]{
-		OutputState: in.ToOsConstraintOsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
 type ServicePerimeterPerimeterType string
 
@@ -988,12 +963,6 @@ func (in *servicePerimeterPerimeterTypePtr) ToServicePerimeterPerimeterTypePtrOu
 
 func (in *servicePerimeterPerimeterTypePtr) ToServicePerimeterPerimeterTypePtrOutputWithContext(ctx context.Context) ServicePerimeterPerimeterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServicePerimeterPerimeterTypePtrOutput)
-}
-
-func (in *servicePerimeterPerimeterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterPerimeterType] {
-	return pulumix.Output[*ServicePerimeterPerimeterType]{
-		OutputState: in.ToServicePerimeterPerimeterTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

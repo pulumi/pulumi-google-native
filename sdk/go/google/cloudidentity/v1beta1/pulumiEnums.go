@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DeviceClientTypesItem string
@@ -188,12 +187,6 @@ func (in *deviceClientTypesItemPtr) ToDeviceClientTypesItemPtrOutput() DeviceCli
 
 func (in *deviceClientTypesItemPtr) ToDeviceClientTypesItemPtrOutputWithContext(ctx context.Context) DeviceClientTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeviceClientTypesItemPtrOutput)
-}
-
-func (in *deviceClientTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DeviceClientTypesItem] {
-	return pulumix.Output[*DeviceClientTypesItem]{
-		OutputState: in.ToDeviceClientTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DeviceClientTypesItemArrayInput is an input type that accepts DeviceClientTypesItemArray and DeviceClientTypesItemArrayOutput values.
@@ -408,12 +401,6 @@ func (in *dynamicGroupQueryResourceTypePtr) ToDynamicGroupQueryResourceTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicGroupQueryResourceTypePtrOutput)
 }
 
-func (in *dynamicGroupQueryResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DynamicGroupQueryResourceType] {
-	return pulumix.Output[*DynamicGroupQueryResourceType]{
-		OutputState: in.ToDynamicGroupQueryResourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Inbound SSO behavior.
 type InboundSsoAssignmentSsoMode string
 
@@ -588,12 +575,6 @@ func (in *inboundSsoAssignmentSsoModePtr) ToInboundSsoAssignmentSsoModePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(InboundSsoAssignmentSsoModePtrOutput)
 }
 
-func (in *inboundSsoAssignmentSsoModePtr) ToOutput(ctx context.Context) pulumix.Output[*InboundSsoAssignmentSsoMode] {
-	return pulumix.Output[*InboundSsoAssignmentSsoMode]{
-		OutputState: in.ToInboundSsoAssignmentSsoModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // When to redirect sign-ins to the IdP.
 type SignInBehaviorRedirectCondition string
 
@@ -760,12 +741,6 @@ func (in *signInBehaviorRedirectConditionPtr) ToSignInBehaviorRedirectConditionP
 
 func (in *signInBehaviorRedirectConditionPtr) ToSignInBehaviorRedirectConditionPtrOutputWithContext(ctx context.Context) SignInBehaviorRedirectConditionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SignInBehaviorRedirectConditionPtrOutput)
-}
-
-func (in *signInBehaviorRedirectConditionPtr) ToOutput(ctx context.Context) pulumix.Output[*SignInBehaviorRedirectCondition] {
-	return pulumix.Output[*SignInBehaviorRedirectCondition]{
-		OutputState: in.ToSignInBehaviorRedirectConditionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
