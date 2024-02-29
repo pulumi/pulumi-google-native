@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
@@ -180,12 +179,6 @@ func (in *instanceTypePtr) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
 
 func (in *instanceTypePtr) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTypePtrOutput)
-}
-
-func (in *instanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceType] {
-	return pulumix.Output[*InstanceType]{
-		OutputState: in.ToInstanceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

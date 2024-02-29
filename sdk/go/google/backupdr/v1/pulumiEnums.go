@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of the ManagementServer resource.
 type ManagementServerType string
 
@@ -359,12 +352,6 @@ func (in *managementServerTypePtr) ToManagementServerTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ManagementServerTypePtrOutput)
 }
 
-func (in *managementServerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagementServerType] {
-	return pulumix.Output[*ManagementServerType]{
-		OutputState: in.ToManagementServerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The network connect mode of the ManagementServer instance. For this version, only PRIVATE_SERVICE_ACCESS is supported.
 type NetworkConfigPeeringMode string
 
@@ -531,12 +518,6 @@ func (in *networkConfigPeeringModePtr) ToNetworkConfigPeeringModePtrOutput() Net
 
 func (in *networkConfigPeeringModePtr) ToNetworkConfigPeeringModePtrOutputWithContext(ctx context.Context) NetworkConfigPeeringModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigPeeringModePtrOutput)
-}
-
-func (in *networkConfigPeeringModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigPeeringMode] {
-	return pulumix.Output[*NetworkConfigPeeringMode]{
-		OutputState: in.ToNetworkConfigPeeringModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -183,12 +182,6 @@ func (in *apigatewayAuditLogConfigLogTypePtr) ToApigatewayAuditLogConfigLogTypeP
 
 func (in *apigatewayAuditLogConfigLogTypePtr) ToApigatewayAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) ApigatewayAuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApigatewayAuditLogConfigLogTypePtrOutput)
-}
-
-func (in *apigatewayAuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApigatewayAuditLogConfigLogType] {
-	return pulumix.Output[*ApigatewayAuditLogConfigLogType]{
-		OutputState: in.ToApigatewayAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Instance type.
 type InstanceType string
 
@@ -365,12 +358,6 @@ func (in *instanceTypePtr) ToInstanceTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTypePtrOutput)
 }
 
-func (in *instanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceType] {
-	return pulumix.Output[*InstanceType]{
-		OutputState: in.ToInstanceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and the corresponding tenant project from a predefined list of available connection modes. If this field is unspecified for a private instance, VPC peering is used.
 type NetworkConfigConnectionType string
 
@@ -540,12 +527,6 @@ func (in *networkConfigConnectionTypePtr) ToNetworkConfigConnectionTypePtrOutput
 
 func (in *networkConfigConnectionTypePtr) ToNetworkConfigConnectionTypePtrOutputWithContext(ctx context.Context) NetworkConfigConnectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigConnectionTypePtrOutput)
-}
-
-func (in *networkConfigConnectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigConnectionType] {
-	return pulumix.Output[*NetworkConfigConnectionType]{
-		OutputState: in.ToNetworkConfigConnectionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

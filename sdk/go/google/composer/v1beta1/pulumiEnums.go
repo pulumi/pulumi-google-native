@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -185,12 +184,6 @@ func (in *environmentConfigEnvironmentSizePtr) ToEnvironmentConfigEnvironmentSiz
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentConfigEnvironmentSizePtrOutput)
 }
 
-func (in *environmentConfigEnvironmentSizePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigEnvironmentSize] {
-	return pulumix.Output[*EnvironmentConfigEnvironmentSize]{
-		OutputState: in.ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
 type EnvironmentConfigResilienceMode string
 
@@ -357,12 +350,6 @@ func (in *environmentConfigResilienceModePtr) ToEnvironmentConfigResilienceModeP
 
 func (in *environmentConfigResilienceModePtr) ToEnvironmentConfigResilienceModePtrOutputWithContext(ctx context.Context) EnvironmentConfigResilienceModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentConfigResilienceModePtrOutput)
-}
-
-func (in *environmentConfigResilienceModePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigResilienceMode] {
-	return pulumix.Output[*EnvironmentConfigResilienceMode]{
-		OutputState: in.ToEnvironmentConfigResilienceModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current state of the environment.
@@ -545,12 +532,6 @@ func (in *environmentStateEnumPtr) ToEnvironmentStateEnumPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentStateEnumPtrOutput)
 }
 
-func (in *environmentStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentStateEnum] {
-	return pulumix.Output[*EnvironmentStateEnum]{
-		OutputState: in.ToEnvironmentStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
 type NetworkingConfigConnectionType string
 
@@ -720,12 +701,6 @@ func (in *networkingConfigConnectionTypePtr) ToNetworkingConfigConnectionTypePtr
 
 func (in *networkingConfigConnectionTypePtr) ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx context.Context) NetworkingConfigConnectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkingConfigConnectionTypePtrOutput)
-}
-
-func (in *networkingConfigConnectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkingConfigConnectionType] {
-	return pulumix.Output[*NetworkingConfigConnectionType]{
-		OutputState: in.ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

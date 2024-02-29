@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
 type EndpointNetworkType string
 
@@ -360,12 +353,6 @@ func (in *endpointNetworkTypePtr) ToEndpointNetworkTypePtrOutput() EndpointNetwo
 
 func (in *endpointNetworkTypePtr) ToEndpointNetworkTypePtrOutputWithContext(ctx context.Context) EndpointNetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointNetworkTypePtrOutput)
-}
-
-func (in *endpointNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointNetworkType] {
-	return pulumix.Output[*EndpointNetworkType]{
-		OutputState: in.ToEndpointNetworkTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

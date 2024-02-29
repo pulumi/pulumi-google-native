@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of an annotation.
@@ -180,12 +179,6 @@ func (in *annotationTypePtr) ToAnnotationTypePtrOutput() AnnotationTypePtrOutput
 
 func (in *annotationTypePtr) ToAnnotationTypePtrOutputWithContext(ctx context.Context) AnnotationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AnnotationTypePtrOutput)
-}
-
-func (in *annotationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AnnotationType] {
-	return pulumix.Output[*AnnotationType]{
-		OutputState: in.ToAnnotationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
