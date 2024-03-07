@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // String mnemonic specifying the DNSSEC algorithm of this key.
@@ -183,12 +182,6 @@ func (in *dnsKeySpecAlgorithmPtr) ToDnsKeySpecAlgorithmPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DnsKeySpecAlgorithmPtrOutput)
 }
 
-func (in *dnsKeySpecAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*DnsKeySpecAlgorithm] {
-	return pulumix.Output[*DnsKeySpecAlgorithm]{
-		OutputState: in.ToDnsKeySpecAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
 type DnsKeySpecKeyType string
 
@@ -353,12 +346,6 @@ func (in *dnsKeySpecKeyTypePtr) ToDnsKeySpecKeyTypePtrOutput() DnsKeySpecKeyType
 
 func (in *dnsKeySpecKeyTypePtr) ToDnsKeySpecKeyTypePtrOutputWithContext(ctx context.Context) DnsKeySpecKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DnsKeySpecKeyTypePtrOutput)
-}
-
-func (in *dnsKeySpecKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DnsKeySpecKeyType] {
-	return pulumix.Output[*DnsKeySpecKeyType]{
-		OutputState: in.ToDnsKeySpecKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The log type that this config enables.
@@ -535,12 +522,6 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
-		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
 type ManagedZoneDnsSecConfigNonExistence string
 
@@ -705,12 +686,6 @@ func (in *managedZoneDnsSecConfigNonExistencePtr) ToManagedZoneDnsSecConfigNonEx
 
 func (in *managedZoneDnsSecConfigNonExistencePtr) ToManagedZoneDnsSecConfigNonExistencePtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigNonExistencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedZoneDnsSecConfigNonExistencePtrOutput)
-}
-
-func (in *managedZoneDnsSecConfigNonExistencePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneDnsSecConfigNonExistence] {
-	return pulumix.Output[*ManagedZoneDnsSecConfigNonExistence]{
-		OutputState: in.ToManagedZoneDnsSecConfigNonExistencePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies whether DNSSEC is enabled, and what mode it is in.
@@ -884,12 +859,6 @@ func (in *managedZoneDnsSecConfigStatePtr) ToManagedZoneDnsSecConfigStatePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedZoneDnsSecConfigStatePtrOutput)
 }
 
-func (in *managedZoneDnsSecConfigStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneDnsSecConfigState] {
-	return pulumix.Output[*ManagedZoneDnsSecConfigState]{
-		OutputState: in.ToManagedZoneDnsSecConfigStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 type ManagedZoneForwardingConfigNameServerTargetForwardingPath string
 
@@ -1058,12 +1027,6 @@ func (in *managedZoneForwardingConfigNameServerTargetForwardingPathPtr) ToManage
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput)
 }
 
-func (in *managedZoneForwardingConfigNameServerTargetForwardingPathPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneForwardingConfigNameServerTargetForwardingPath] {
-	return pulumix.Output[*ManagedZoneForwardingConfigNameServerTargetForwardingPath]{
-		OutputState: in.ToManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
 type ManagedZoneVisibility string
 
@@ -1228,12 +1191,6 @@ func (in *managedZoneVisibilityPtr) ToManagedZoneVisibilityPtrOutput() ManagedZo
 
 func (in *managedZoneVisibilityPtr) ToManagedZoneVisibilityPtrOutputWithContext(ctx context.Context) ManagedZoneVisibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedZoneVisibilityPtrOutput)
-}
-
-func (in *managedZoneVisibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneVisibility] {
-	return pulumix.Output[*ManagedZoneVisibility]{
-		OutputState: in.ToManagedZoneVisibilityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
@@ -1404,12 +1361,6 @@ func (in *policyAlternativeNameServerConfigTargetNameServerForwardingPathPtr) To
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput)
 }
 
-func (in *policyAlternativeNameServerConfigTargetNameServerForwardingPathPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyAlternativeNameServerConfigTargetNameServerForwardingPath] {
-	return pulumix.Output[*PolicyAlternativeNameServerConfigTargetNameServerForwardingPath]{
-		OutputState: in.ToPolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The protocol of the load balancer to health check.
 type RRSetRoutingPolicyLoadBalancerTargetIpProtocol string
 
@@ -1576,12 +1527,6 @@ func (in *rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtr) ToRRSetRoutingPolic
 
 func (in *rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtr) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput)
-}
-
-func (in *rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*RRSetRoutingPolicyLoadBalancerTargetIpProtocol] {
-	return pulumix.Output[*RRSetRoutingPolicyLoadBalancerTargetIpProtocol]{
-		OutputState: in.ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer.
@@ -1754,12 +1699,6 @@ func (in *rrsetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtr) ToRRSetRoutin
 	return pulumi.ToOutputWithContext(ctx, in).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput)
 }
 
-func (in *rrsetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType] {
-	return pulumix.Output[*RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType]{
-		OutputState: in.ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Answer this query with a behavior rather than DNS data.
 type ResponsePolicyRuleBehavior string
 
@@ -1925,12 +1864,6 @@ func (in *responsePolicyRuleBehaviorPtr) ToResponsePolicyRuleBehaviorPtrOutput()
 
 func (in *responsePolicyRuleBehaviorPtr) ToResponsePolicyRuleBehaviorPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResponsePolicyRuleBehaviorPtrOutput)
-}
-
-func (in *responsePolicyRuleBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicyRuleBehavior] {
-	return pulumix.Output[*ResponsePolicyRuleBehavior]{
-		OutputState: in.ToResponsePolicyRuleBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

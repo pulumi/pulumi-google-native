@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Mount permissions.
@@ -182,12 +181,6 @@ func (in *allowedClientMountPermissionsPtr) ToAllowedClientMountPermissionsPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(AllowedClientMountPermissionsPtrOutput)
 }
 
-func (in *allowedClientMountPermissionsPtr) ToOutput(ctx context.Context) pulumix.Output[*AllowedClientMountPermissions] {
-	return pulumix.Output[*AllowedClientMountPermissions]{
-		OutputState: in.ToAllowedClientMountPermissionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of network configuration on the instance.
 type InstanceConfigNetworkConfig string
 
@@ -359,12 +352,6 @@ func (in *instanceConfigNetworkConfigPtr) ToInstanceConfigNetworkConfigPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceConfigNetworkConfigPtrOutput)
 }
 
-func (in *instanceConfigNetworkConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceConfigNetworkConfig] {
-	return pulumix.Output[*InstanceConfigNetworkConfig]{
-		OutputState: in.ToInstanceConfigNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of network.
 type LogicalNetworkInterfaceNetworkType string
 
@@ -534,12 +521,6 @@ func (in *logicalNetworkInterfaceNetworkTypePtr) ToLogicalNetworkInterfaceNetwor
 
 func (in *logicalNetworkInterfaceNetworkTypePtr) ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx context.Context) LogicalNetworkInterfaceNetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LogicalNetworkInterfaceNetworkTypePtrOutput)
-}
-
-func (in *logicalNetworkInterfaceNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LogicalNetworkInterfaceNetworkType] {
-	return pulumix.Output[*LogicalNetworkInterfaceNetworkType]{
-		OutputState: in.ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Interconnect bandwidth. Set only when type is CLIENT.
@@ -719,12 +700,6 @@ func (in *networkConfigBandwidthPtr) ToNetworkConfigBandwidthPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigBandwidthPtrOutput)
 }
 
-func (in *networkConfigBandwidthPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigBandwidth] {
-	return pulumix.Output[*NetworkConfigBandwidth]{
-		OutputState: in.ToNetworkConfigBandwidthPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Service CIDR, if any.
 type NetworkConfigServiceCidr string
 
@@ -902,12 +877,6 @@ func (in *networkConfigServiceCidrPtr) ToNetworkConfigServiceCidrPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigServiceCidrPtrOutput)
 }
 
-func (in *networkConfigServiceCidrPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigServiceCidr] {
-	return pulumix.Output[*NetworkConfigServiceCidr]{
-		OutputState: in.ToNetworkConfigServiceCidrPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of this network, either Client or Private.
 type NetworkConfigType string
 
@@ -1077,12 +1046,6 @@ func (in *networkConfigTypePtr) ToNetworkConfigTypePtrOutput() NetworkConfigType
 
 func (in *networkConfigTypePtr) ToNetworkConfigTypePtrOutputWithContext(ctx context.Context) NetworkConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigTypePtrOutput)
-}
-
-func (in *networkConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigType] {
-	return pulumix.Output[*NetworkConfigType]{
-		OutputState: in.ToNetworkConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Export permissions.
@@ -1256,12 +1219,6 @@ func (in *nfsExportPermissionsPtr) ToNfsExportPermissionsPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(NfsExportPermissionsPtrOutput)
 }
 
-func (in *nfsExportPermissionsPtr) ToOutput(ctx context.Context) pulumix.Output[*NfsExportPermissions] {
-	return pulumix.Output[*NfsExportPermissions]{
-		OutputState: in.ToNfsExportPermissionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The storage type of the underlying volume.
 type NfsShareStorageType string
 
@@ -1431,12 +1388,6 @@ func (in *nfsShareStorageTypePtr) ToNfsShareStorageTypePtrOutput() NfsShareStora
 
 func (in *nfsShareStorageTypePtr) ToNfsShareStorageTypePtrOutputWithContext(ctx context.Context) NfsShareStorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NfsShareStorageTypePtrOutput)
-}
-
-func (in *nfsShareStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NfsShareStorageType] {
-	return pulumix.Output[*NfsShareStorageType]{
-		OutputState: in.ToNfsShareStorageTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Performance tier of the Volume. Default is SHARED.
@@ -1613,12 +1564,6 @@ func (in *volumeConfigPerformanceTierPtr) ToVolumeConfigPerformanceTierPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeConfigPerformanceTierPtrOutput)
 }
 
-func (in *volumeConfigPerformanceTierPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigPerformanceTier] {
-	return pulumix.Output[*VolumeConfigPerformanceTier]{
-		OutputState: in.ToVolumeConfigPerformanceTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Volume protocol.
 type VolumeConfigProtocol string
 
@@ -1790,12 +1735,6 @@ func (in *volumeConfigProtocolPtr) ToVolumeConfigProtocolPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeConfigProtocolPtrOutput)
 }
 
-func (in *volumeConfigProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigProtocol] {
-	return pulumix.Output[*VolumeConfigProtocol]{
-		OutputState: in.ToVolumeConfigProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of this Volume.
 type VolumeConfigType string
 
@@ -1965,12 +1904,6 @@ func (in *volumeConfigTypePtr) ToVolumeConfigTypePtrOutput() VolumeConfigTypePtr
 
 func (in *volumeConfigTypePtr) ToVolumeConfigTypePtrOutputWithContext(ctx context.Context) VolumeConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeConfigTypePtrOutput)
-}
-
-func (in *volumeConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeConfigType] {
-	return pulumix.Output[*VolumeConfigType]{
-		OutputState: in.ToVolumeConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

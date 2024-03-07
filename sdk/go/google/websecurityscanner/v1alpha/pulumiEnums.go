@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ScanConfigTargetPlatformsItem string
@@ -185,12 +184,6 @@ func (in *scanConfigTargetPlatformsItemPtr) ToScanConfigTargetPlatformsItemPtrOu
 
 func (in *scanConfigTargetPlatformsItemPtr) ToScanConfigTargetPlatformsItemPtrOutputWithContext(ctx context.Context) ScanConfigTargetPlatformsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigTargetPlatformsItemPtrOutput)
-}
-
-func (in *scanConfigTargetPlatformsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigTargetPlatformsItem] {
-	return pulumix.Output[*ScanConfigTargetPlatformsItem]{
-		OutputState: in.ToScanConfigTargetPlatformsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScanConfigTargetPlatformsItemArrayInput is an input type that accepts ScanConfigTargetPlatformsItemArray and ScanConfigTargetPlatformsItemArrayOutput values.
@@ -412,12 +405,6 @@ func (in *scanConfigUserAgentPtr) ToScanConfigUserAgentPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigUserAgentPtrOutput)
 }
 
-func (in *scanConfigUserAgentPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigUserAgent] {
-	return pulumix.Output[*ScanConfigUserAgent]{
-		OutputState: in.ToScanConfigUserAgentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The execution state of the ScanRun.
 type ScanRunExecutionState string
 
@@ -592,12 +579,6 @@ func (in *scanRunExecutionStatePtr) ToScanRunExecutionStatePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ScanRunExecutionStatePtrOutput)
 }
 
-func (in *scanRunExecutionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ScanRunExecutionState] {
-	return pulumix.Output[*ScanRunExecutionState]{
-		OutputState: in.ToScanRunExecutionStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The result state of the ScanRun. This field is only available after the execution state reaches "FINISHED".
 type ScanRunResultState string
 
@@ -770,12 +751,6 @@ func (in *scanRunResultStatePtr) ToScanRunResultStatePtrOutput() ScanRunResultSt
 
 func (in *scanRunResultStatePtr) ToScanRunResultStatePtrOutputWithContext(ctx context.Context) ScanRunResultStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanRunResultStatePtrOutput)
-}
-
-func (in *scanRunResultStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ScanRunResultState] {
-	return pulumix.Output[*ScanRunResultState]{
-		OutputState: in.ToScanRunResultStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

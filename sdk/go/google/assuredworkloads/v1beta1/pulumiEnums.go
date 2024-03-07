@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
@@ -186,12 +185,6 @@ func (in *googleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType
 
 func (in *googleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtr) ToGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutput)
-}
-
-func (in *googleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType] {
-	return pulumix.Output[*GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType]{
-		OutputState: in.ToGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Immutable. Compliance Regime associated with this workload.
@@ -413,12 +406,6 @@ func (in *workloadComplianceRegimePtr) ToWorkloadComplianceRegimePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadComplianceRegimePtrOutput)
 }
 
-func (in *workloadComplianceRegimePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadComplianceRegime] {
-	return pulumix.Output[*WorkloadComplianceRegime]{
-		OutputState: in.ToWorkloadComplianceRegimePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Partner regime associated with this workload.
 type WorkloadPartner string
 
@@ -593,12 +580,6 @@ func (in *workloadPartnerPtr) ToWorkloadPartnerPtrOutput() WorkloadPartnerPtrOut
 
 func (in *workloadPartnerPtr) ToWorkloadPartnerPtrOutputWithContext(ctx context.Context) WorkloadPartnerPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadPartnerPtrOutput)
-}
-
-func (in *workloadPartnerPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadPartner] {
-	return pulumix.Output[*WorkloadPartner]{
-		OutputState: in.ToWorkloadPartnerPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

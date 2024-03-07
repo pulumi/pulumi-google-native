@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type WorkerPoolRegionsItem string
@@ -185,12 +184,6 @@ func (in *workerPoolRegionsItemPtr) ToWorkerPoolRegionsItemPtrOutput() WorkerPoo
 
 func (in *workerPoolRegionsItemPtr) ToWorkerPoolRegionsItemPtrOutputWithContext(ctx context.Context) WorkerPoolRegionsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkerPoolRegionsItemPtrOutput)
-}
-
-func (in *workerPoolRegionsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolRegionsItem] {
-	return pulumix.Output[*WorkerPoolRegionsItem]{
-		OutputState: in.ToWorkerPoolRegionsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkerPoolRegionsItemArrayInput is an input type that accepts WorkerPoolRegionsItemArray and WorkerPoolRegionsItemArrayOutput values.

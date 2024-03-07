@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The type of how to aggregate answers.
@@ -182,12 +181,6 @@ func (in *googleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregati
 
 func (in *googleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtr) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput)
-}
-
-func (in *googleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType] {
-	return pulumix.Output[*GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType]{
-		OutputState: in.ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
@@ -393,12 +386,6 @@ func (in *googleCloudDatalabelingV1beta1InputConfigAnnotationTypePtr) ToGoogleCl
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput)
 }
 
-func (in *googleCloudDatalabelingV1beta1InputConfigAnnotationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfigAnnotationType] {
-	return pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfigAnnotationType]{
-		OutputState: in.ToGoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Data type must be specifed when user tries to import data.
 type GoogleCloudDatalabelingV1beta1InputConfigDataType string
 
@@ -576,12 +563,6 @@ func (in *googleCloudDatalabelingV1beta1InputConfigDataTypePtr) ToGoogleCloudDat
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput)
 }
 
-func (in *googleCloudDatalabelingV1beta1InputConfigDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfigDataType] {
-	return pulumix.Output[*GoogleCloudDatalabelingV1beta1InputConfigDataType]{
-		OutputState: in.ToGoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The data type of this instruction.
 type InstructionDataType string
 
@@ -757,12 +738,6 @@ func (in *instructionDataTypePtr) ToInstructionDataTypePtrOutput() InstructionDa
 
 func (in *instructionDataTypePtr) ToInstructionDataTypePtrOutputWithContext(ctx context.Context) InstructionDataTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstructionDataTypePtrOutput)
-}
-
-func (in *instructionDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstructionDataType] {
-	return pulumix.Output[*InstructionDataType]{
-		OutputState: in.ToInstructionDataTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

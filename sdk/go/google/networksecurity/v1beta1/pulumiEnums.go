@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
@@ -182,12 +181,6 @@ func (in *addressGroupTypePtr) ToAddressGroupTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AddressGroupTypePtrOutput)
 }
 
-func (in *addressGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressGroupType] {
-	return pulumix.Output[*AddressGroupType]{
-		OutputState: in.ToAddressGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
 type AuthorizationPolicyAction string
 
@@ -357,12 +350,6 @@ func (in *authorizationPolicyActionPtr) ToAuthorizationPolicyActionPtrOutput() A
 
 func (in *authorizationPolicyActionPtr) ToAuthorizationPolicyActionPtrOutputWithContext(ctx context.Context) AuthorizationPolicyActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationPolicyActionPtrOutput)
-}
-
-func (in *authorizationPolicyActionPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationPolicyAction] {
-	return pulumix.Output[*AuthorizationPolicyAction]{
-		OutputState: in.ToAuthorizationPolicyActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The log type that this config enables.
@@ -539,12 +526,6 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
-	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
-		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
 type MTLSPolicyClientValidationMode string
 
@@ -714,12 +695,6 @@ func (in *mtlspolicyClientValidationModePtr) ToMTLSPolicyClientValidationModePtr
 
 func (in *mtlspolicyClientValidationModePtr) ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx context.Context) MTLSPolicyClientValidationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MTLSPolicyClientValidationModePtrOutput)
-}
-
-func (in *mtlspolicyClientValidationModePtr) ToOutput(ctx context.Context) pulumix.Output[*MTLSPolicyClientValidationMode] {
-	return pulumix.Output[*MTLSPolicyClientValidationMode]{
-		OutputState: in.ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
@@ -893,12 +868,6 @@ func (in *organizationAddressGroupTypePtr) ToOrganizationAddressGroupTypePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationAddressGroupTypePtrOutput)
 }
 
-func (in *organizationAddressGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationAddressGroupType] {
-	return pulumix.Output[*OrganizationAddressGroupType]{
-		OutputState: in.ToOrganizationAddressGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Profile which tells what the primitive action should be.
 type RuleBasicProfile string
 
@@ -1070,12 +1039,6 @@ func (in *ruleBasicProfilePtr) ToRuleBasicProfilePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RuleBasicProfilePtrOutput)
 }
 
-func (in *ruleBasicProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*RuleBasicProfile] {
-	return pulumix.Output[*RuleBasicProfile]{
-		OutputState: in.ToRuleBasicProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The single ProfileType that the SecurityProfile resource configures.
 type SecurityProfileType string
 
@@ -1242,12 +1205,6 @@ func (in *securityProfileTypePtr) ToSecurityProfileTypePtrOutput() SecurityProfi
 
 func (in *securityProfileTypePtr) ToSecurityProfileTypePtrOutputWithContext(ctx context.Context) SecurityProfileTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityProfileTypePtrOutput)
-}
-
-func (in *securityProfileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityProfileType] {
-	return pulumix.Output[*SecurityProfileType]{
-		OutputState: in.ToSecurityProfileTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Threat action override.
@@ -1425,12 +1382,6 @@ func (in *severityOverrideActionPtr) ToSeverityOverrideActionPtrOutput() Severit
 
 func (in *severityOverrideActionPtr) ToSeverityOverrideActionPtrOutputWithContext(ctx context.Context) SeverityOverrideActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SeverityOverrideActionPtrOutput)
-}
-
-func (in *severityOverrideActionPtr) ToOutput(ctx context.Context) pulumix.Output[*SeverityOverrideAction] {
-	return pulumix.Output[*SeverityOverrideAction]{
-		OutputState: in.ToSeverityOverrideActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Severity level to match.
@@ -1613,12 +1564,6 @@ func (in *severityOverrideSeverityPtr) ToSeverityOverrideSeverityPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(SeverityOverrideSeverityPtrOutput)
 }
 
-func (in *severityOverrideSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*SeverityOverrideSeverity] {
-	return pulumix.Output[*SeverityOverrideSeverity]{
-		OutputState: in.ToSeverityOverrideSeverityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Threat action override. For some threat types, only a subset of actions applies.
 type ThreatOverrideAction string
 
@@ -1794,12 +1739,6 @@ func (in *threatOverrideActionPtr) ToThreatOverrideActionPtrOutput() ThreatOverr
 
 func (in *threatOverrideActionPtr) ToThreatOverrideActionPtrOutputWithContext(ctx context.Context) ThreatOverrideActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ThreatOverrideActionPtrOutput)
-}
-
-func (in *threatOverrideActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ThreatOverrideAction] {
-	return pulumix.Output[*ThreatOverrideAction]{
-		OutputState: in.ToThreatOverrideActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
@@ -1979,12 +1918,6 @@ func (in *tlsInspectionPolicyMinTlsVersionPtr) ToTlsInspectionPolicyMinTlsVersio
 	return pulumi.ToOutputWithContext(ctx, in).(TlsInspectionPolicyMinTlsVersionPtrOutput)
 }
 
-func (in *tlsInspectionPolicyMinTlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyMinTlsVersion] {
-	return pulumix.Output[*TlsInspectionPolicyMinTlsVersion]{
-		OutputState: in.ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
 type TlsInspectionPolicyTlsFeatureProfile string
 
@@ -2160,12 +2093,6 @@ func (in *tlsInspectionPolicyTlsFeatureProfilePtr) ToTlsInspectionPolicyTlsFeatu
 
 func (in *tlsInspectionPolicyTlsFeatureProfilePtr) ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TlsInspectionPolicyTlsFeatureProfilePtrOutput)
-}
-
-func (in *tlsInspectionPolicyTlsFeatureProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile] {
-	return pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile]{
-		OutputState: in.ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
