@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -183,12 +182,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Immutable. The immutable purpose of this CryptoKey.
@@ -369,12 +362,6 @@ func (in *cryptoKeyPurposePtr) ToCryptoKeyPurposePtrOutput() CryptoKeyPurposePtr
 
 func (in *cryptoKeyPurposePtr) ToCryptoKeyPurposePtrOutputWithContext(ctx context.Context) CryptoKeyPurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyPurposePtrOutput)
-}
-
-func (in *cryptoKeyPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyPurpose] {
-	return pulumix.Output[*CryptoKeyPurpose]{
-		OutputState: in.ToCryptoKeyPurposePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current state of the CryptoKeyVersion.
@@ -570,12 +557,6 @@ func (in *cryptoKeyVersionStateEnumPtr) ToCryptoKeyVersionStateEnumPtrOutput() C
 
 func (in *cryptoKeyVersionStateEnumPtr) ToCryptoKeyVersionStateEnumPtrOutputWithContext(ctx context.Context) CryptoKeyVersionStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyVersionStateEnumPtrOutput)
-}
-
-func (in *cryptoKeyVersionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionStateEnum] {
-	return pulumix.Output[*CryptoKeyVersionStateEnum]{
-		OutputState: in.ToCryptoKeyVersionStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
@@ -845,12 +826,6 @@ func (in *cryptoKeyVersionTemplateAlgorithmPtr) ToCryptoKeyVersionTemplateAlgori
 	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyVersionTemplateAlgorithmPtrOutput)
 }
 
-func (in *cryptoKeyVersionTemplateAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionTemplateAlgorithm] {
-	return pulumix.Output[*CryptoKeyVersionTemplateAlgorithm]{
-		OutputState: in.ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
 type CryptoKeyVersionTemplateProtectionLevel string
 
@@ -1028,12 +1003,6 @@ func (in *cryptoKeyVersionTemplateProtectionLevelPtr) ToCryptoKeyVersionTemplate
 	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyVersionTemplateProtectionLevelPtrOutput)
 }
 
-func (in *cryptoKeyVersionTemplateProtectionLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionTemplateProtectionLevel] {
-	return pulumix.Output[*CryptoKeyVersionTemplateProtectionLevel]{
-		OutputState: in.ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
 type EkmConnectionKeyManagementMode string
 
@@ -1203,12 +1172,6 @@ func (in *ekmConnectionKeyManagementModePtr) ToEkmConnectionKeyManagementModePtr
 
 func (in *ekmConnectionKeyManagementModePtr) ToEkmConnectionKeyManagementModePtrOutputWithContext(ctx context.Context) EkmConnectionKeyManagementModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EkmConnectionKeyManagementModePtrOutput)
-}
-
-func (in *ekmConnectionKeyManagementModePtr) ToOutput(ctx context.Context) pulumix.Output[*EkmConnectionKeyManagementMode] {
-	return pulumix.Output[*EkmConnectionKeyManagementMode]{
-		OutputState: in.ToEkmConnectionKeyManagementModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Immutable. The wrapping method to be used for incoming key material.
@@ -1394,12 +1357,6 @@ func (in *importJobImportMethodPtr) ToImportJobImportMethodPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ImportJobImportMethodPtrOutput)
 }
 
-func (in *importJobImportMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*ImportJobImportMethod] {
-	return pulumix.Output[*ImportJobImportMethod]{
-		OutputState: in.ToImportJobImportMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
 type ImportJobProtectionLevel string
 
@@ -1575,12 +1532,6 @@ func (in *importJobProtectionLevelPtr) ToImportJobProtectionLevelPtrOutput() Imp
 
 func (in *importJobProtectionLevelPtr) ToImportJobProtectionLevelPtrOutputWithContext(ctx context.Context) ImportJobProtectionLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImportJobProtectionLevelPtrOutput)
-}
-
-func (in *importJobProtectionLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ImportJobProtectionLevel] {
-	return pulumix.Output[*ImportJobProtectionLevel]{
-		OutputState: in.ToImportJobProtectionLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

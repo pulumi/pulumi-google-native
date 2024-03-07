@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The logs to use as input for the Replay.
@@ -177,12 +176,6 @@ func (in *googleCloudPolicysimulatorV1betaReplayConfigLogSourcePtr) ToGoogleClou
 
 func (in *googleCloudPolicysimulatorV1betaReplayConfigLogSourcePtr) ToGoogleCloudPolicysimulatorV1betaReplayConfigLogSourcePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1betaReplayConfigLogSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudPolicysimulatorV1betaReplayConfigLogSourcePtrOutput)
-}
-
-func (in *googleCloudPolicysimulatorV1betaReplayConfigLogSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudPolicysimulatorV1betaReplayConfigLogSource] {
-	return pulumix.Output[*GoogleCloudPolicysimulatorV1betaReplayConfigLogSource]{
-		OutputState: in.ToGoogleCloudPolicysimulatorV1betaReplayConfigLogSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

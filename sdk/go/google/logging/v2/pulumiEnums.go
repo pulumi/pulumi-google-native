@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Deprecated. This field is unused.
@@ -182,12 +181,6 @@ func (in *billingAccountSinkOutputVersionFormatPtr) ToBillingAccountSinkOutputVe
 	return pulumi.ToOutputWithContext(ctx, in).(BillingAccountSinkOutputVersionFormatPtrOutput)
 }
 
-func (in *billingAccountSinkOutputVersionFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountSinkOutputVersionFormat] {
-	return pulumix.Output[*BillingAccountSinkOutputVersionFormat]{
-		OutputState: in.ToBillingAccountSinkOutputVersionFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Deprecated. This field is unused.
 type FolderSinkOutputVersionFormat string
 
@@ -357,12 +350,6 @@ func (in *folderSinkOutputVersionFormatPtr) ToFolderSinkOutputVersionFormatPtrOu
 
 func (in *folderSinkOutputVersionFormatPtr) ToFolderSinkOutputVersionFormatPtrOutputWithContext(ctx context.Context) FolderSinkOutputVersionFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FolderSinkOutputVersionFormatPtrOutput)
-}
-
-func (in *folderSinkOutputVersionFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*FolderSinkOutputVersionFormat] {
-	return pulumix.Output[*FolderSinkOutputVersionFormat]{
-		OutputState: in.ToFolderSinkOutputVersionFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The type of data in this index.
@@ -536,12 +523,6 @@ func (in *indexConfigTypePtr) ToIndexConfigTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(IndexConfigTypePtrOutput)
 }
 
-func (in *indexConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IndexConfigType] {
-	return pulumix.Output[*IndexConfigType]{
-		OutputState: in.ToIndexConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of data that can be assigned to the label.
 type LabelDescriptorValueType string
 
@@ -711,12 +692,6 @@ func (in *labelDescriptorValueTypePtr) ToLabelDescriptorValueTypePtrOutput() Lab
 
 func (in *labelDescriptorValueTypePtr) ToLabelDescriptorValueTypePtrOutputWithContext(ctx context.Context) LabelDescriptorValueTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LabelDescriptorValueTypePtrOutput)
-}
-
-func (in *labelDescriptorValueTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LabelDescriptorValueType] {
-	return pulumix.Output[*LabelDescriptorValueType]{
-		OutputState: in.ToLabelDescriptorValueTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The launch stage of the metric definition.
@@ -905,12 +880,6 @@ func (in *metricDescriptorLaunchStagePtr) ToMetricDescriptorLaunchStagePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorLaunchStagePtrOutput)
 }
 
-func (in *metricDescriptorLaunchStagePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorLaunchStage] {
-	return pulumix.Output[*MetricDescriptorLaunchStage]{
-		OutputState: in.ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Deprecated. Must use the MetricDescriptor.launch_stage instead.
 type MetricDescriptorMetadataLaunchStage string
 
@@ -1097,12 +1066,6 @@ func (in *metricDescriptorMetadataLaunchStagePtr) ToMetricDescriptorMetadataLaun
 	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorMetadataLaunchStagePtrOutput)
 }
 
-func (in *metricDescriptorMetadataLaunchStagePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetadataLaunchStage] {
-	return pulumix.Output[*MetricDescriptorMetadataLaunchStage]{
-		OutputState: in.ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
 type MetricDescriptorMetricKind string
 
@@ -1275,12 +1238,6 @@ func (in *metricDescriptorMetricKindPtr) ToMetricDescriptorMetricKindPtrOutput()
 
 func (in *metricDescriptorMetricKindPtr) ToMetricDescriptorMetricKindPtrOutputWithContext(ctx context.Context) MetricDescriptorMetricKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorMetricKindPtrOutput)
-}
-
-func (in *metricDescriptorMetricKindPtr) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetricKind] {
-	return pulumix.Output[*MetricDescriptorMetricKind]{
-		OutputState: in.ToMetricDescriptorMetricKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.
@@ -1466,12 +1423,6 @@ func (in *metricDescriptorValueTypePtr) ToMetricDescriptorValueTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorValueTypePtrOutput)
 }
 
-func (in *metricDescriptorValueTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorValueType] {
-	return pulumix.Output[*MetricDescriptorValueType]{
-		OutputState: in.ToMetricDescriptorValueTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.
 type MetricVersion string
 
@@ -1638,12 +1589,6 @@ func (in *metricVersionPtr) ToMetricVersionPtrOutput() MetricVersionPtrOutput {
 
 func (in *metricVersionPtr) ToMetricVersionPtrOutputWithContext(ctx context.Context) MetricVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricVersionPtrOutput)
-}
-
-func (in *metricVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*MetricVersion] {
-	return pulumix.Output[*MetricVersion]{
-		OutputState: in.ToMetricVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Deprecated. This field is unused.
@@ -1817,12 +1762,6 @@ func (in *organizationSinkOutputVersionFormatPtr) ToOrganizationSinkOutputVersio
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationSinkOutputVersionFormatPtrOutput)
 }
 
-func (in *organizationSinkOutputVersionFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSinkOutputVersionFormat] {
-	return pulumix.Output[*OrganizationSinkOutputVersionFormat]{
-		OutputState: in.ToOrganizationSinkOutputVersionFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Deprecated. This field is unused.
 type SinkOutputVersionFormat string
 
@@ -1992,12 +1931,6 @@ func (in *sinkOutputVersionFormatPtr) ToSinkOutputVersionFormatPtrOutput() SinkO
 
 func (in *sinkOutputVersionFormatPtr) ToSinkOutputVersionFormatPtrOutputWithContext(ctx context.Context) SinkOutputVersionFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SinkOutputVersionFormatPtrOutput)
-}
-
-func (in *sinkOutputVersionFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*SinkOutputVersionFormat] {
-	return pulumix.Output[*SinkOutputVersionFormat]{
-		OutputState: in.ToSinkOutputVersionFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Controls export of scan configurations and results to Security Command Center.
@@ -182,12 +181,6 @@ func (in *scanConfigExportToSecurityCommandCenterPtr) ToScanConfigExportToSecuri
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigExportToSecurityCommandCenterPtrOutput)
 }
 
-func (in *scanConfigExportToSecurityCommandCenterPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigExportToSecurityCommandCenter] {
-	return pulumix.Output[*ScanConfigExportToSecurityCommandCenter]{
-		OutputState: in.ToScanConfigExportToSecurityCommandCenterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The risk level selected for the scan
 type ScanConfigRiskLevel string
 
@@ -357,12 +350,6 @@ func (in *scanConfigRiskLevelPtr) ToScanConfigRiskLevelPtrOutput() ScanConfigRis
 
 func (in *scanConfigRiskLevelPtr) ToScanConfigRiskLevelPtrOutputWithContext(ctx context.Context) ScanConfigRiskLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigRiskLevelPtrOutput)
-}
-
-func (in *scanConfigRiskLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigRiskLevel] {
-	return pulumix.Output[*ScanConfigRiskLevel]{
-		OutputState: in.ToScanConfigRiskLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The user agent used during scanning.
@@ -537,12 +524,6 @@ func (in *scanConfigUserAgentPtr) ToScanConfigUserAgentPtrOutput() ScanConfigUse
 
 func (in *scanConfigUserAgentPtr) ToScanConfigUserAgentPtrOutputWithContext(ctx context.Context) ScanConfigUserAgentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigUserAgentPtrOutput)
-}
-
-func (in *scanConfigUserAgentPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigUserAgent] {
-	return pulumix.Output[*ScanConfigUserAgent]{
-		OutputState: in.ToScanConfigUserAgentPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
