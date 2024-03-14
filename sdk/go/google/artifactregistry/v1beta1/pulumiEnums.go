@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The format of packages that are stored in the repository.
@@ -195,12 +194,6 @@ func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutput() RepositoryFormatPtr
 
 func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RepositoryFormatPtrOutput)
-}
-
-func (in *repositoryFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*RepositoryFormat] {
-	return pulumix.Output[*RepositoryFormat]{
-		OutputState: in.ToRepositoryFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

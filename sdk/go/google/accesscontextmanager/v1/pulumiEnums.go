@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 type AuthorizedOrgsDescAssetType string
 
@@ -360,12 +353,6 @@ func (in *authorizedOrgsDescAssetTypePtr) ToAuthorizedOrgsDescAssetTypePtrOutput
 
 func (in *authorizedOrgsDescAssetTypePtr) ToAuthorizedOrgsDescAssetTypePtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAssetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizedOrgsDescAssetTypePtrOutput)
-}
-
-func (in *authorizedOrgsDescAssetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizedOrgsDescAssetType] {
-	return pulumix.Output[*AuthorizedOrgsDescAssetType]{
-		OutputState: in.ToAuthorizedOrgsDescAssetTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The direction of the authorization relationship between this organization and the organizations listed in the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate traffic in the organizations listed in the `orgs` field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in this organization. For the authorization relationship to take effect, all of the organizations must authorize and specify the appropriate relationship direction. For example, if organization A authorized organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the authorization direction in their `AuthorizedOrgsDesc` resource.
@@ -539,12 +526,6 @@ func (in *authorizedOrgsDescAuthorizationDirectionPtr) ToAuthorizedOrgsDescAutho
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizedOrgsDescAuthorizationDirectionPtrOutput)
 }
 
-func (in *authorizedOrgsDescAuthorizationDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizedOrgsDescAuthorizationDirection] {
-	return pulumix.Output[*AuthorizedOrgsDescAuthorizationDirection]{
-		OutputState: in.ToAuthorizedOrgsDescAuthorizationDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
 type AuthorizedOrgsDescAuthorizationType string
 
@@ -713,12 +694,6 @@ func (in *authorizedOrgsDescAuthorizationTypePtr) ToAuthorizedOrgsDescAuthorizat
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizedOrgsDescAuthorizationTypePtrOutput)
 }
 
-func (in *authorizedOrgsDescAuthorizationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizedOrgsDescAuthorizationType] {
-	return pulumix.Output[*AuthorizedOrgsDescAuthorizationType]{
-		OutputState: in.ToAuthorizedOrgsDescAuthorizationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
 type BasicLevelCombiningFunction string
 
@@ -885,12 +860,6 @@ func (in *basicLevelCombiningFunctionPtr) ToBasicLevelCombiningFunctionPtrOutput
 
 func (in *basicLevelCombiningFunctionPtr) ToBasicLevelCombiningFunctionPtrOutputWithContext(ctx context.Context) BasicLevelCombiningFunctionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BasicLevelCombiningFunctionPtrOutput)
-}
-
-func (in *basicLevelCombiningFunctionPtr) ToOutput(ctx context.Context) pulumix.Output[*BasicLevelCombiningFunction] {
-	return pulumix.Output[*BasicLevelCombiningFunction]{
-		OutputState: in.ToBasicLevelCombiningFunctionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DevicePolicyAllowedDeviceManagementLevelsItem string
@@ -1064,12 +1033,6 @@ func (in *devicePolicyAllowedDeviceManagementLevelsItemPtr) ToDevicePolicyAllowe
 
 func (in *devicePolicyAllowedDeviceManagementLevelsItemPtr) ToDevicePolicyAllowedDeviceManagementLevelsItemPtrOutputWithContext(ctx context.Context) DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput)
-}
-
-func (in *devicePolicyAllowedDeviceManagementLevelsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicyAllowedDeviceManagementLevelsItem] {
-	return pulumix.Output[*DevicePolicyAllowedDeviceManagementLevelsItem]{
-		OutputState: in.ToDevicePolicyAllowedDeviceManagementLevelsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DevicePolicyAllowedDeviceManagementLevelsItemArrayInput is an input type that accepts DevicePolicyAllowedDeviceManagementLevelsItemArray and DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput values.
@@ -1288,12 +1251,6 @@ func (in *devicePolicyAllowedEncryptionStatusesItemPtr) ToDevicePolicyAllowedEnc
 
 func (in *devicePolicyAllowedEncryptionStatusesItemPtr) ToDevicePolicyAllowedEncryptionStatusesItemPtrOutputWithContext(ctx context.Context) DevicePolicyAllowedEncryptionStatusesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DevicePolicyAllowedEncryptionStatusesItemPtrOutput)
-}
-
-func (in *devicePolicyAllowedEncryptionStatusesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicyAllowedEncryptionStatusesItem] {
-	return pulumix.Output[*DevicePolicyAllowedEncryptionStatusesItem]{
-		OutputState: in.ToDevicePolicyAllowedEncryptionStatusesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DevicePolicyAllowedEncryptionStatusesItemArrayInput is an input type that accepts DevicePolicyAllowedEncryptionStatusesItemArray and DevicePolicyAllowedEncryptionStatusesItemArrayOutput values.
@@ -1515,12 +1472,6 @@ func (in *egressFromIdentityTypePtr) ToEgressFromIdentityTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(EgressFromIdentityTypePtrOutput)
 }
 
-func (in *egressFromIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EgressFromIdentityType] {
-	return pulumix.Output[*EgressFromIdentityType]{
-		OutputState: in.ToEgressFromIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
 type EgressFromSourceRestriction string
 
@@ -1690,12 +1641,6 @@ func (in *egressFromSourceRestrictionPtr) ToEgressFromSourceRestrictionPtrOutput
 
 func (in *egressFromSourceRestrictionPtr) ToEgressFromSourceRestrictionPtrOutputWithContext(ctx context.Context) EgressFromSourceRestrictionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EgressFromSourceRestrictionPtrOutput)
-}
-
-func (in *egressFromSourceRestrictionPtr) ToOutput(ctx context.Context) pulumix.Output[*EgressFromSourceRestriction] {
-	return pulumix.Output[*EgressFromSourceRestriction]{
-		OutputState: in.ToEgressFromSourceRestrictionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
@@ -1870,12 +1815,6 @@ func (in *ingressFromIdentityTypePtr) ToIngressFromIdentityTypePtrOutput() Ingre
 
 func (in *ingressFromIdentityTypePtr) ToIngressFromIdentityTypePtrOutputWithContext(ctx context.Context) IngressFromIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IngressFromIdentityTypePtrOutput)
-}
-
-func (in *ingressFromIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IngressFromIdentityType] {
-	return pulumix.Output[*IngressFromIdentityType]{
-		OutputState: in.ToIngressFromIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The allowed OS type.
@@ -2061,12 +2000,6 @@ func (in *osConstraintOsTypePtr) ToOsConstraintOsTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(OsConstraintOsTypePtrOutput)
 }
 
-func (in *osConstraintOsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsConstraintOsType] {
-	return pulumix.Output[*OsConstraintOsType]{
-		OutputState: in.ToOsConstraintOsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
 type ServicePerimeterPerimeterType string
 
@@ -2233,12 +2166,6 @@ func (in *servicePerimeterPerimeterTypePtr) ToServicePerimeterPerimeterTypePtrOu
 
 func (in *servicePerimeterPerimeterTypePtr) ToServicePerimeterPerimeterTypePtrOutputWithContext(ctx context.Context) ServicePerimeterPerimeterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServicePerimeterPerimeterTypePtrOutput)
-}
-
-func (in *servicePerimeterPerimeterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterPerimeterType] {
-	return pulumix.Output[*ServicePerimeterPerimeterType]{
-		OutputState: in.ToServicePerimeterPerimeterTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

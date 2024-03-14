@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
@@ -186,12 +185,6 @@ func (in *googleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtr)
 
 func (in *googleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtr) ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput)
-}
-
-func (in *googleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState] {
-	return pulumix.Output[*GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState]{
-		OutputState: in.ToGoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

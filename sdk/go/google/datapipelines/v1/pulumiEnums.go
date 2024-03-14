@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
@@ -182,12 +181,6 @@ func (in *googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtr)
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtrOutput)
 }
 
-func (in *googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoal]{
-		OutputState: in.ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for VM IPs.
 type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration string
 
@@ -359,12 +352,6 @@ func (in *googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguratio
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationPtrOutput)
 }
 
-func (in *googleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration]{
-		OutputState: in.ToGoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for VM IPs.
 type GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration string
 
@@ -534,12 +521,6 @@ func (in *googleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtr) ToGoog
 
 func (in *googleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtr) ToGoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx context.Context) GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutput)
-}
-
-func (in *googleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration] {
-	return pulumix.Output[*GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration]{
-		OutputState: in.ToGoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through UpdatePipeline requests.
@@ -722,12 +703,6 @@ func (in *pipelineStateEnumPtr) ToPipelineStateEnumPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(PipelineStateEnumPtrOutput)
 }
 
-func (in *pipelineStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*PipelineStateEnum] {
-	return pulumix.Output[*PipelineStateEnum]{
-		OutputState: in.ToPipelineStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
 type PipelineType string
 
@@ -897,12 +872,6 @@ func (in *pipelineTypePtr) ToPipelineTypePtrOutput() PipelineTypePtrOutput {
 
 func (in *pipelineTypePtr) ToPipelineTypePtrOutputWithContext(ctx context.Context) PipelineTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PipelineTypePtrOutput)
-}
-
-func (in *pipelineTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PipelineType] {
-	return pulumix.Output[*PipelineType]{
-		OutputState: in.ToPipelineTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

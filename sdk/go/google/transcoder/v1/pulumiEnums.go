@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
@@ -182,12 +181,6 @@ func (in *animationFadeFadeTypePtr) ToAnimationFadeFadeTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AnimationFadeFadeTypePtrOutput)
 }
 
-func (in *animationFadeFadeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AnimationFadeFadeType] {
-	return pulumix.Output[*AnimationFadeFadeType]{
-		OutputState: in.ToAnimationFadeFadeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
 type DashConfigSegmentReferenceScheme string
 
@@ -357,12 +350,6 @@ func (in *dashConfigSegmentReferenceSchemePtr) ToDashConfigSegmentReferenceSchem
 
 func (in *dashConfigSegmentReferenceSchemePtr) ToDashConfigSegmentReferenceSchemePtrOutputWithContext(ctx context.Context) DashConfigSegmentReferenceSchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DashConfigSegmentReferenceSchemePtrOutput)
-}
-
-func (in *dashConfigSegmentReferenceSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*DashConfigSegmentReferenceScheme] {
-	return pulumix.Output[*DashConfigSegmentReferenceScheme]{
-		OutputState: in.ToDashConfigSegmentReferenceSchemePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
@@ -536,12 +523,6 @@ func (in *jobModePtr) ToJobModePtrOutputWithContext(ctx context.Context) JobMode
 	return pulumi.ToOutputWithContext(ctx, in).(JobModePtrOutput)
 }
 
-func (in *jobModePtr) ToOutput(ctx context.Context) pulumix.Output[*JobMode] {
-	return pulumix.Output[*JobMode]{
-		OutputState: in.ToJobModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The optimization strategy of the job. The default is `AUTODETECT`.
 type JobOptimization string
 
@@ -713,12 +694,6 @@ func (in *jobOptimizationPtr) ToJobOptimizationPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(JobOptimizationPtrOutput)
 }
 
-func (in *jobOptimizationPtr) ToOutput(ctx context.Context) pulumix.Output[*JobOptimization] {
-	return pulumix.Output[*JobOptimization]{
-		OutputState: in.ToJobOptimizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Type of the manifest.
 type ManifestType string
 
@@ -888,12 +863,6 @@ func (in *manifestTypePtr) ToManifestTypePtrOutput() ManifestTypePtrOutput {
 
 func (in *manifestTypePtr) ToManifestTypePtrOutputWithContext(ctx context.Context) ManifestTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManifestTypePtrOutput)
-}
-
-func (in *manifestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManifestType] {
-	return pulumix.Output[*ManifestType]{
-		OutputState: in.ToManifestTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

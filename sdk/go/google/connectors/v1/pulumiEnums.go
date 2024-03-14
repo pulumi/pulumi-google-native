@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -183,12 +182,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
-}
-
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of authentication configured.
@@ -374,12 +367,6 @@ func (in *authConfigAuthTypePtr) ToAuthConfigAuthTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AuthConfigAuthTypePtrOutput)
 }
 
-func (in *authConfigAuthTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthConfigAuthType] {
-	return pulumix.Output[*AuthConfigAuthType]{
-		OutputState: in.ToAuthConfigAuthTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Eventing enablement type. Will be nil if eventing is not enabled.
 type ConnectionEventingEnablementType string
 
@@ -549,12 +536,6 @@ func (in *connectionEventingEnablementTypePtr) ToConnectionEventingEnablementTyp
 
 func (in *connectionEventingEnablementTypePtr) ToConnectionEventingEnablementTypePtrOutputWithContext(ctx context.Context) ConnectionEventingEnablementTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionEventingEnablementTypePtrOutput)
-}
-
-func (in *connectionEventingEnablementTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionEventingEnablementType] {
-	return pulumix.Output[*ConnectionEventingEnablementType]{
-		OutputState: in.ToConnectionEventingEnablementTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Type of the custom connector.
@@ -728,12 +709,6 @@ func (in *customConnectorCustomConnectorTypePtr) ToCustomConnectorCustomConnecto
 	return pulumi.ToOutputWithContext(ctx, in).(CustomConnectorCustomConnectorTypePtrOutput)
 }
 
-func (in *customConnectorCustomConnectorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomConnectorCustomConnectorType] {
-	return pulumix.Output[*CustomConnectorCustomConnectorType]{
-		OutputState: in.ToCustomConnectorCustomConnectorTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type.
 type EncryptionKeyType string
 
@@ -905,12 +880,6 @@ func (in *encryptionKeyTypePtr) ToEncryptionKeyTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionKeyTypePtrOutput)
 }
 
-func (in *encryptionKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeyType] {
-	return pulumix.Output[*EncryptionKeyType]{
-		OutputState: in.ToEncryptionKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // type of the destination
 type EventSubscriptionDestinationType string
 
@@ -1077,12 +1046,6 @@ func (in *eventSubscriptionDestinationTypePtr) ToEventSubscriptionDestinationTyp
 
 func (in *eventSubscriptionDestinationTypePtr) ToEventSubscriptionDestinationTypePtrOutputWithContext(ctx context.Context) EventSubscriptionDestinationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EventSubscriptionDestinationTypePtrOutput)
-}
-
-func (in *eventSubscriptionDestinationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EventSubscriptionDestinationType] {
-	return pulumix.Output[*EventSubscriptionDestinationType]{
-		OutputState: in.ToEventSubscriptionDestinationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Type of the JMS Source. i.e. Queue or Topic
@@ -1256,12 +1219,6 @@ func (in *jmstypePtr) ToJMSTypePtrOutputWithContext(ctx context.Context) JMSType
 	return pulumi.ToOutputWithContext(ctx, in).(JMSTypePtrOutput)
 }
 
-func (in *jmstypePtr) ToOutput(ctx context.Context) pulumix.Output[*JMSType] {
-	return pulumix.Output[*JMSType]{
-		OutputState: in.ToJMSTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of Client Cert (PEM/JKS/.. etc.)
 type SslConfigClientCertType string
 
@@ -1430,12 +1387,6 @@ func (in *sslConfigClientCertTypePtr) ToSslConfigClientCertTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SslConfigClientCertTypePtrOutput)
 }
 
-func (in *sslConfigClientCertTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SslConfigClientCertType] {
-	return pulumix.Output[*SslConfigClientCertType]{
-		OutputState: in.ToSslConfigClientCertTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of Server Cert (PEM/JKS/.. etc.)
 type SslConfigServerCertType string
 
@@ -1602,12 +1553,6 @@ func (in *sslConfigServerCertTypePtr) ToSslConfigServerCertTypePtrOutput() SslCo
 
 func (in *sslConfigServerCertTypePtr) ToSslConfigServerCertTypePtrOutputWithContext(ctx context.Context) SslConfigServerCertTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslConfigServerCertTypePtrOutput)
-}
-
-func (in *sslConfigServerCertTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SslConfigServerCertType] {
-	return pulumix.Output[*SslConfigServerCertType]{
-		OutputState: in.ToSslConfigServerCertTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Trust Model of the SSL connection
@@ -1781,12 +1726,6 @@ func (in *sslConfigTrustModelPtr) ToSslConfigTrustModelPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(SslConfigTrustModelPtrOutput)
 }
 
-func (in *sslConfigTrustModelPtr) ToOutput(ctx context.Context) pulumix.Output[*SslConfigTrustModel] {
-	return pulumix.Output[*SslConfigTrustModel]{
-		OutputState: in.ToSslConfigTrustModelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Controls the ssl type for the given connector version.
 type SslConfigType string
 
@@ -1956,12 +1895,6 @@ func (in *sslConfigTypePtr) ToSslConfigTypePtrOutput() SslConfigTypePtrOutput {
 
 func (in *sslConfigTypePtr) ToSslConfigTypePtrOutputWithContext(ctx context.Context) SslConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslConfigTypePtrOutput)
-}
-
-func (in *sslConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SslConfigType] {
-	return pulumix.Output[*SslConfigType]{
-		OutputState: in.ToSslConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

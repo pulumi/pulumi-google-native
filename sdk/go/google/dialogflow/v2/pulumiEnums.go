@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
@@ -180,12 +179,6 @@ func (in *conversationConversationStagePtr) ToConversationConversationStagePtrOu
 
 func (in *conversationConversationStagePtr) ToConversationConversationStagePtrOutputWithContext(ctx context.Context) ConversationConversationStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConversationConversationStagePtrOutput)
-}
-
-func (in *conversationConversationStagePtr) ToOutput(ctx context.Context) pulumix.Output[*ConversationConversationStage] {
-	return pulumix.Output[*ConversationConversationStage]{
-		OutputState: in.ToConversationConversationStagePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DocumentKnowledgeTypesItem string
@@ -362,12 +355,6 @@ func (in *documentKnowledgeTypesItemPtr) ToDocumentKnowledgeTypesItemPtrOutput()
 
 func (in *documentKnowledgeTypesItemPtr) ToDocumentKnowledgeTypesItemPtrOutputWithContext(ctx context.Context) DocumentKnowledgeTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DocumentKnowledgeTypesItemPtrOutput)
-}
-
-func (in *documentKnowledgeTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DocumentKnowledgeTypesItem] {
-	return pulumix.Output[*DocumentKnowledgeTypesItem]{
-		OutputState: in.ToDocumentKnowledgeTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DocumentKnowledgeTypesItemArrayInput is an input type that accepts DocumentKnowledgeTypesItemArray and DocumentKnowledgeTypesItemArrayOutput values.
@@ -583,12 +570,6 @@ func (in *entityTypeAutoExpansionModePtr) ToEntityTypeAutoExpansionModePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypeAutoExpansionModePtrOutput)
 }
 
-func (in *entityTypeAutoExpansionModePtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTypeAutoExpansionMode] {
-	return pulumix.Output[*EntityTypeAutoExpansionMode]{
-		OutputState: in.ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Indicates the kind of entity type.
 type EntityTypeKind string
 
@@ -763,12 +744,6 @@ func (in *entityTypeKindPtr) ToEntityTypeKindPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypeKindPtrOutput)
 }
 
-func (in *entityTypeKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTypeKind] {
-	return pulumix.Output[*EntityTypeKind]{
-		OutputState: in.ToEntityTypeKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Type of the article suggestion model. If not provided, model_type is used.
 type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType string
 
@@ -940,12 +915,6 @@ func (in *googleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput)
 }
 
-func (in *googleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType] {
-	return pulumix.Output[*GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType]{
-		OutputState: in.ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the feature that enabled for fulfillment.
 type GoogleCloudDialogflowV2FulfillmentFeatureType string
 
@@ -1112,12 +1081,6 @@ func (in *googleCloudDialogflowV2FulfillmentFeatureTypePtr) ToGoogleCloudDialogf
 
 func (in *googleCloudDialogflowV2FulfillmentFeatureTypePtr) ToGoogleCloudDialogflowV2FulfillmentFeatureTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentFeatureTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2FulfillmentFeatureTypePtrOutput)
-}
-
-func (in *googleCloudDialogflowV2FulfillmentFeatureTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2FulfillmentFeatureType] {
-	return pulumix.Output[*GoogleCloudDialogflowV2FulfillmentFeatureType]{
-		OutputState: in.ToGoogleCloudDialogflowV2FulfillmentFeatureTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem string
@@ -1300,12 +1263,6 @@ func (in *googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigS
 
 func (in *googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemPtr) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemPtrOutput)
-}
-
-func (in *googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem] {
-	return pulumix.Output[*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItem]{
-		OutputState: in.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemArrayInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemArray and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSectionsSectionTypesItemArrayOutput values.
@@ -1524,12 +1481,6 @@ func (in *googleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCa
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput)
 }
 
-func (in *googleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint] {
-	return pulumix.Output[*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint]{
-		OutputState: in.ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Settings for displaying the image. Applies to every image in items.
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions string
 
@@ -1707,12 +1658,6 @@ func (in *googleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOpti
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput)
 }
 
-func (in *googleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions] {
-	return pulumix.Output[*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions]{
-		OutputState: in.ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Defines text alignment for all cells in this column.
 type GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment string
 
@@ -1887,12 +1832,6 @@ func (in *googleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignmen
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput)
 }
 
-func (in *googleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignmentPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment] {
-	return pulumix.Output[*GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment]{
-		OutputState: in.ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. What type of media is the content (ie "audio").
 type GoogleCloudDialogflowV2IntentMessageMediaContentMediaType string
 
@@ -2059,12 +1998,6 @@ func (in *googleCloudDialogflowV2IntentMessageMediaContentMediaTypePtr) ToGoogle
 
 func (in *googleCloudDialogflowV2IntentMessageMediaContentMediaTypePtr) ToGoogleCloudDialogflowV2IntentMessageMediaContentMediaTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageMediaContentMediaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2IntentMessageMediaContentMediaTypePtrOutput)
-}
-
-func (in *googleCloudDialogflowV2IntentMessageMediaContentMediaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2IntentMessageMediaContentMediaType] {
-	return pulumix.Output[*GoogleCloudDialogflowV2IntentMessageMediaContentMediaType]{
-		OutputState: in.ToGoogleCloudDialogflowV2IntentMessageMediaContentMediaTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. The platform that this message is intended for.
@@ -2259,12 +2192,6 @@ func (in *googleCloudDialogflowV2IntentMessagePlatformPtr) ToGoogleCloudDialogfl
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2IntentMessagePlatformPtrOutput)
 }
 
-func (in *googleCloudDialogflowV2IntentMessagePlatformPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2IntentMessagePlatform] {
-	return pulumix.Output[*GoogleCloudDialogflowV2IntentMessagePlatform]{
-		OutputState: in.ToGoogleCloudDialogflowV2IntentMessagePlatformPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of the training phrase.
 type GoogleCloudDialogflowV2IntentTrainingPhraseType string
 
@@ -2434,12 +2361,6 @@ func (in *googleCloudDialogflowV2IntentTrainingPhraseTypePtr) ToGoogleCloudDialo
 
 func (in *googleCloudDialogflowV2IntentTrainingPhraseTypePtr) ToGoogleCloudDialogflowV2IntentTrainingPhraseTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentTrainingPhraseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2IntentTrainingPhraseTypePtrOutput)
-}
-
-func (in *googleCloudDialogflowV2IntentTrainingPhraseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2IntentTrainingPhraseType] {
-	return pulumix.Output[*GoogleCloudDialogflowV2IntentTrainingPhraseType]{
-		OutputState: in.ToGoogleCloudDialogflowV2IntentTrainingPhraseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Format of message.
@@ -2613,12 +2534,6 @@ func (in *googleCloudDialogflowV2NotificationConfigMessageFormatPtr) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrOutput)
 }
 
-func (in *googleCloudDialogflowV2NotificationConfigMessageFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2NotificationConfigMessageFormat] {
-	return pulumix.Output[*GoogleCloudDialogflowV2NotificationConfigMessageFormat]{
-		OutputState: in.ToGoogleCloudDialogflowV2NotificationConfigMessageFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Type of the smart reply model. If not provided, model_type is used.
 type GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType string
 
@@ -2788,12 +2703,6 @@ func (in *googleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtr) To
 
 func (in *googleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtr) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput)
-}
-
-func (in *googleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType] {
-	return pulumix.Output[*GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType]{
-		OutputState: in.ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
@@ -2968,12 +2877,6 @@ func (in *googleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtr) ToGoog
 
 func (in *googleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtr) ToGoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput)
-}
-
-func (in *googleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant] {
-	return pulumix.Output[*GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant]{
-		OutputState: in.ToGoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of Human Agent Assistant API feature to request.
@@ -3151,12 +3054,6 @@ func (in *googleCloudDialogflowV2SuggestionFeatureTypePtr) ToGoogleCloudDialogfl
 
 func (in *googleCloudDialogflowV2SuggestionFeatureTypePtr) ToGoogleCloudDialogflowV2SuggestionFeatureTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SuggestionFeatureTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2SuggestionFeatureTypePtrOutput)
-}
-
-func (in *googleCloudDialogflowV2SuggestionFeatureTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2SuggestionFeatureType] {
-	return pulumix.Output[*GoogleCloudDialogflowV2SuggestionFeatureType]{
-		OutputState: in.ToGoogleCloudDialogflowV2SuggestionFeatureTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Audio encoding of the synthesized audio content.
@@ -3339,12 +3236,6 @@ func (in *googleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncodingPtr) ToG
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncodingPtrOutput)
 }
 
-func (in *googleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncodingPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding] {
-	return pulumix.Output[*GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding]{
-		OutputState: in.ToGoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncodingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
 type GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender string
 
@@ -3517,12 +3408,6 @@ func (in *googleCloudDialogflowV2VoiceSelectionParamsSsmlGenderPtr) ToGoogleClou
 
 func (in *googleCloudDialogflowV2VoiceSelectionParamsSsmlGenderPtr) ToGoogleCloudDialogflowV2VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGenderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGenderPtrOutput)
-}
-
-func (in *googleCloudDialogflowV2VoiceSelectionParamsSsmlGenderPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender] {
-	return pulumix.Output[*GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender]{
-		OutputState: in.ToGoogleCloudDialogflowV2VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type IntentDefaultResponsePlatformsItem string
@@ -3714,12 +3599,6 @@ func (in *intentDefaultResponsePlatformsItemPtr) ToIntentDefaultResponsePlatform
 
 func (in *intentDefaultResponsePlatformsItemPtr) ToIntentDefaultResponsePlatformsItemPtrOutputWithContext(ctx context.Context) IntentDefaultResponsePlatformsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntentDefaultResponsePlatformsItemPtrOutput)
-}
-
-func (in *intentDefaultResponsePlatformsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*IntentDefaultResponsePlatformsItem] {
-	return pulumix.Output[*IntentDefaultResponsePlatformsItem]{
-		OutputState: in.ToIntentDefaultResponsePlatformsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IntentDefaultResponsePlatformsItemArrayInput is an input type that accepts IntentDefaultResponsePlatformsItemArray and IntentDefaultResponsePlatformsItemArrayOutput values.
@@ -3938,12 +3817,6 @@ func (in *intentWebhookStatePtr) ToIntentWebhookStatePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(IntentWebhookStatePtrOutput)
 }
 
-func (in *intentWebhookStatePtr) ToOutput(ctx context.Context) pulumix.Output[*IntentWebhookState] {
-	return pulumix.Output[*IntentWebhookState]{
-		OutputState: in.ToIntentWebhookStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
 type ParticipantRole string
 
@@ -4118,12 +3991,6 @@ func (in *participantRolePtr) ToParticipantRolePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ParticipantRolePtrOutput)
 }
 
-func (in *participantRolePtr) ToOutput(ctx context.Context) pulumix.Output[*ParticipantRole] {
-	return pulumix.Output[*ParticipantRole]{
-		OutputState: in.ToParticipantRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Indicates whether the additional data should override or supplement the custom entity type definition.
 type SessionEntityTypeEntityOverrideMode string
 
@@ -4293,12 +4160,6 @@ func (in *sessionEntityTypeEntityOverrideModePtr) ToSessionEntityTypeEntityOverr
 
 func (in *sessionEntityTypeEntityOverrideModePtr) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SessionEntityTypeEntityOverrideModePtrOutput)
-}
-
-func (in *sessionEntityTypeEntityOverrideModePtr) ToOutput(ctx context.Context) pulumix.Output[*SessionEntityTypeEntityOverrideMode] {
-	return pulumix.Output[*SessionEntityTypeEntityOverrideMode]{
-		OutputState: in.ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
