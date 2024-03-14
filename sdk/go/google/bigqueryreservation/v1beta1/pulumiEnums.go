@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Capacity commitment commitment plan.
@@ -188,12 +187,6 @@ func (in *capacityCommitmentPlanPtr) ToCapacityCommitmentPlanPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CapacityCommitmentPlanPtrOutput)
 }
 
-func (in *capacityCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitmentPlan] {
-	return pulumix.Output[*CapacityCommitmentPlan]{
-		OutputState: in.ToCapacityCommitmentPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
 type CapacityCommitmentRenewalPlan string
 
@@ -369,12 +362,6 @@ func (in *capacityCommitmentRenewalPlanPtr) ToCapacityCommitmentRenewalPlanPtrOu
 
 func (in *capacityCommitmentRenewalPlanPtr) ToCapacityCommitmentRenewalPlanPtrOutputWithContext(ctx context.Context) CapacityCommitmentRenewalPlanPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CapacityCommitmentRenewalPlanPtrOutput)
-}
-
-func (in *capacityCommitmentRenewalPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitmentRenewalPlan] {
-	return pulumix.Output[*CapacityCommitmentRenewalPlan]{
-		OutputState: in.ToCapacityCommitmentRenewalPlanPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

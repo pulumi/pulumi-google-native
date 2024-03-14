@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The alias kind.
@@ -183,12 +182,6 @@ func (in *aliasContextKindPtr) ToAliasContextKindPtrOutput() AliasContextKindPtr
 
 func (in *aliasContextKindPtr) ToAliasContextKindPtrOutputWithContext(ctx context.Context) AliasContextKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AliasContextKindPtrOutput)
-}
-
-func (in *aliasContextKindPtr) ToOutput(ctx context.Context) pulumix.Output[*AliasContextKind] {
-	return pulumix.Output[*AliasContextKind]{
-		OutputState: in.ToAliasContextKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provides the state of this Vulnerability assessment.
@@ -368,12 +361,6 @@ func (in *assessmentStatePtr) ToAssessmentStatePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentStatePtrOutput)
 }
 
-func (in *assessmentStatePtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentState] {
-	return pulumix.Output[*AssessmentState]{
-		OutputState: in.ToAssessmentStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the key, either stored in `public_key` or referenced in `key_id`.
 type BuildSignatureKeyType string
 
@@ -543,12 +530,6 @@ func (in *buildSignatureKeyTypePtr) ToBuildSignatureKeyTypePtrOutput() BuildSign
 
 func (in *buildSignatureKeyTypePtr) ToBuildSignatureKeyTypePtrOutputWithContext(ctx context.Context) BuildSignatureKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BuildSignatureKeyTypePtrOutput)
-}
-
-func (in *buildSignatureKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BuildSignatureKeyType] {
-	return pulumix.Output[*BuildSignatureKeyType]{
-		OutputState: in.ToBuildSignatureKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defined in CVSS v3, CVSS v2
@@ -723,12 +704,6 @@ func (in *cvssattackComplexityPtr) ToCVSSAttackComplexityPtrOutput() CVSSAttackC
 
 func (in *cvssattackComplexityPtr) ToCVSSAttackComplexityPtrOutputWithContext(ctx context.Context) CVSSAttackComplexityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSAttackComplexityPtrOutput)
-}
-
-func (in *cvssattackComplexityPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSAttackComplexity] {
-	return pulumix.Output[*CVSSAttackComplexity]{
-		OutputState: in.ToCVSSAttackComplexityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
@@ -908,12 +883,6 @@ func (in *cvssattackVectorPtr) ToCVSSAttackVectorPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSAttackVectorPtrOutput)
 }
 
-func (in *cvssattackVectorPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSAttackVector] {
-	return pulumix.Output[*CVSSAttackVector]{
-		OutputState: in.ToCVSSAttackVectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defined in CVSS v2
 type CVSSAuthentication string
 
@@ -1086,12 +1055,6 @@ func (in *cvssauthenticationPtr) ToCVSSAuthenticationPtrOutput() CVSSAuthenticat
 
 func (in *cvssauthenticationPtr) ToCVSSAuthenticationPtrOutputWithContext(ctx context.Context) CVSSAuthenticationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSAuthenticationPtrOutput)
-}
-
-func (in *cvssauthenticationPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSAuthentication] {
-	return pulumix.Output[*CVSSAuthentication]{
-		OutputState: in.ToCVSSAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defined in CVSS v3, CVSS v2
@@ -1274,12 +1237,6 @@ func (in *cvssavailabilityImpactPtr) ToCVSSAvailabilityImpactPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSAvailabilityImpactPtrOutput)
 }
 
-func (in *cvssavailabilityImpactPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSAvailabilityImpact] {
-	return pulumix.Output[*CVSSAvailabilityImpact]{
-		OutputState: in.ToCVSSAvailabilityImpactPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defined in CVSS v3, CVSS v2
 type CVSSConfidentialityImpact string
 
@@ -1458,12 +1415,6 @@ func (in *cvssconfidentialityImpactPtr) ToCVSSConfidentialityImpactPtrOutput() C
 
 func (in *cvssconfidentialityImpactPtr) ToCVSSConfidentialityImpactPtrOutputWithContext(ctx context.Context) CVSSConfidentialityImpactPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSConfidentialityImpactPtrOutput)
-}
-
-func (in *cvssconfidentialityImpactPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSConfidentialityImpact] {
-	return pulumix.Output[*CVSSConfidentialityImpact]{
-		OutputState: in.ToCVSSConfidentialityImpactPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defined in CVSS v3, CVSS v2
@@ -1646,12 +1597,6 @@ func (in *cvssintegrityImpactPtr) ToCVSSIntegrityImpactPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSIntegrityImpactPtrOutput)
 }
 
-func (in *cvssintegrityImpactPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSIntegrityImpact] {
-	return pulumix.Output[*CVSSIntegrityImpact]{
-		OutputState: in.ToCVSSIntegrityImpactPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defined in CVSS v3
 type CVSSPrivilegesRequired string
 
@@ -1826,12 +1771,6 @@ func (in *cvssprivilegesRequiredPtr) ToCVSSPrivilegesRequiredPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSPrivilegesRequiredPtrOutput)
 }
 
-func (in *cvssprivilegesRequiredPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSPrivilegesRequired] {
-	return pulumix.Output[*CVSSPrivilegesRequired]{
-		OutputState: in.ToCVSSPrivilegesRequiredPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defined in CVSS v3
 type CVSSScope string
 
@@ -2001,12 +1940,6 @@ func (in *cvssscopePtr) ToCVSSScopePtrOutput() CVSSScopePtrOutput {
 
 func (in *cvssscopePtr) ToCVSSScopePtrOutputWithContext(ctx context.Context) CVSSScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSScopePtrOutput)
-}
-
-func (in *cvssscopePtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSScope] {
-	return pulumix.Output[*CVSSScope]{
-		OutputState: in.ToCVSSScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defined in CVSS v3
@@ -2180,12 +2113,6 @@ func (in *cvssuserInteractionPtr) ToCVSSUserInteractionPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSUserInteractionPtrOutput)
 }
 
-func (in *cvssuserInteractionPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSUserInteraction] {
-	return pulumix.Output[*CVSSUserInteraction]{
-		OutputState: in.ToCVSSUserInteractionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CVSSv3AttackComplexity string
 
 const (
@@ -2351,12 +2278,6 @@ func (in *cvssv3AttackComplexityPtr) ToCVSSv3AttackComplexityPtrOutput() CVSSv3A
 
 func (in *cvssv3AttackComplexityPtr) ToCVSSv3AttackComplexityPtrOutputWithContext(ctx context.Context) CVSSv3AttackComplexityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSv3AttackComplexityPtrOutput)
-}
-
-func (in *cvssv3AttackComplexityPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3AttackComplexity] {
-	return pulumix.Output[*CVSSv3AttackComplexity]{
-		OutputState: in.ToCVSSv3AttackComplexityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
@@ -2531,12 +2452,6 @@ func (in *cvssv3AttackVectorPtr) ToCVSSv3AttackVectorPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSv3AttackVectorPtrOutput)
 }
 
-func (in *cvssv3AttackVectorPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3AttackVector] {
-	return pulumix.Output[*CVSSv3AttackVector]{
-		OutputState: in.ToCVSSv3AttackVectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CVSSv3AvailabilityImpact string
 
 const (
@@ -2704,12 +2619,6 @@ func (in *cvssv3AvailabilityImpactPtr) ToCVSSv3AvailabilityImpactPtrOutput() CVS
 
 func (in *cvssv3AvailabilityImpactPtr) ToCVSSv3AvailabilityImpactPtrOutputWithContext(ctx context.Context) CVSSv3AvailabilityImpactPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSv3AvailabilityImpactPtrOutput)
-}
-
-func (in *cvssv3AvailabilityImpactPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3AvailabilityImpact] {
-	return pulumix.Output[*CVSSv3AvailabilityImpact]{
-		OutputState: in.ToCVSSv3AvailabilityImpactPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type CVSSv3ConfidentialityImpact string
@@ -2881,12 +2790,6 @@ func (in *cvssv3ConfidentialityImpactPtr) ToCVSSv3ConfidentialityImpactPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSv3ConfidentialityImpactPtrOutput)
 }
 
-func (in *cvssv3ConfidentialityImpactPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3ConfidentialityImpact] {
-	return pulumix.Output[*CVSSv3ConfidentialityImpact]{
-		OutputState: in.ToCVSSv3ConfidentialityImpactPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CVSSv3IntegrityImpact string
 
 const (
@@ -3054,12 +2957,6 @@ func (in *cvssv3IntegrityImpactPtr) ToCVSSv3IntegrityImpactPtrOutput() CVSSv3Int
 
 func (in *cvssv3IntegrityImpactPtr) ToCVSSv3IntegrityImpactPtrOutputWithContext(ctx context.Context) CVSSv3IntegrityImpactPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSv3IntegrityImpactPtrOutput)
-}
-
-func (in *cvssv3IntegrityImpactPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3IntegrityImpact] {
-	return pulumix.Output[*CVSSv3IntegrityImpact]{
-		OutputState: in.ToCVSSv3IntegrityImpactPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type CVSSv3PrivilegesRequired string
@@ -3231,12 +3128,6 @@ func (in *cvssv3PrivilegesRequiredPtr) ToCVSSv3PrivilegesRequiredPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSv3PrivilegesRequiredPtrOutput)
 }
 
-func (in *cvssv3PrivilegesRequiredPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3PrivilegesRequired] {
-	return pulumix.Output[*CVSSv3PrivilegesRequired]{
-		OutputState: in.ToCVSSv3PrivilegesRequiredPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CVSSv3Scope string
 
 const (
@@ -3404,12 +3295,6 @@ func (in *cvssv3ScopePtr) ToCVSSv3ScopePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSv3ScopePtrOutput)
 }
 
-func (in *cvssv3ScopePtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3Scope] {
-	return pulumix.Output[*CVSSv3Scope]{
-		OutputState: in.ToCVSSv3ScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CVSSv3UserInteraction string
 
 const (
@@ -3575,12 +3460,6 @@ func (in *cvssv3UserInteractionPtr) ToCVSSv3UserInteractionPtrOutput() CVSSv3Use
 
 func (in *cvssv3UserInteractionPtr) ToCVSSv3UserInteractionPtrOutputWithContext(ctx context.Context) CVSSv3UserInteractionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSv3UserInteractionPtrOutput)
-}
-
-func (in *cvssv3UserInteractionPtr) ToOutput(ctx context.Context) pulumix.Output[*CVSSv3UserInteraction] {
-	return pulumix.Output[*CVSSv3UserInteraction]{
-		OutputState: in.ToCVSSv3UserInteractionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Platform hosting this deployment.
@@ -3755,12 +3634,6 @@ func (in *deploymentPlatformPtr) ToDeploymentPlatformPtrOutput() DeploymentPlatf
 
 func (in *deploymentPlatformPtr) ToDeploymentPlatformPtrOutputWithContext(ctx context.Context) DeploymentPlatformPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentPlatformPtrOutput)
-}
-
-func (in *deploymentPlatformPtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentPlatform] {
-	return pulumix.Output[*DeploymentPlatform]{
-		OutputState: in.ToDeploymentPlatformPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of discovery for the resource.
@@ -3946,12 +3819,6 @@ func (in *discoveredAnalysisStatusPtr) ToDiscoveredAnalysisStatusPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DiscoveredAnalysisStatusPtrOutput)
 }
 
-func (in *discoveredAnalysisStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*DiscoveredAnalysisStatus] {
-	return pulumix.Output[*DiscoveredAnalysisStatus]{
-		OutputState: in.ToDiscoveredAnalysisStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether the resource is continuously analyzed.
 type DiscoveredContinuousAnalysis string
 
@@ -4121,12 +3988,6 @@ func (in *discoveredContinuousAnalysisPtr) ToDiscoveredContinuousAnalysisPtrOutp
 
 func (in *discoveredContinuousAnalysisPtr) ToDiscoveredContinuousAnalysisPtrOutputWithContext(ctx context.Context) DiscoveredContinuousAnalysisPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiscoveredContinuousAnalysisPtrOutput)
-}
-
-func (in *discoveredContinuousAnalysisPtr) ToOutput(ctx context.Context) pulumix.Output[*DiscoveredContinuousAnalysis] {
-	return pulumix.Output[*DiscoveredContinuousAnalysis]{
-		OutputState: in.ToDiscoveredContinuousAnalysisPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Immutable. The kind of analysis that is handled by this discovery.
@@ -4336,12 +4197,6 @@ func (in *discoveryAnalysisKindPtr) ToDiscoveryAnalysisKindPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(DiscoveryAnalysisKindPtrOutput)
 }
 
-func (in *discoveryAnalysisKindPtr) ToOutput(ctx context.Context) pulumix.Output[*DiscoveryAnalysisKind] {
-	return pulumix.Output[*DiscoveryAnalysisKind]{
-		OutputState: in.ToDiscoveryAnalysisKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The CPU architecture for which packages in this distribution channel were built.
 type DistributionArchitecture string
 
@@ -4511,12 +4366,6 @@ func (in *distributionArchitecturePtr) ToDistributionArchitecturePtrOutput() Dis
 
 func (in *distributionArchitecturePtr) ToDistributionArchitecturePtrOutputWithContext(ctx context.Context) DistributionArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DistributionArchitecturePtrOutput)
-}
-
-func (in *distributionArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*DistributionArchitecture] {
-	return pulumix.Output[*DistributionArchitecture]{
-		OutputState: in.ToDistributionArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
@@ -4694,12 +4543,6 @@ func (in *externalRefCategoryPtr) ToExternalRefCategoryPtrOutput() ExternalRefCa
 
 func (in *externalRefCategoryPtr) ToExternalRefCategoryPtrOutputWithContext(ctx context.Context) ExternalRefCategoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExternalRefCategoryPtrOutput)
-}
-
-func (in *externalRefCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*ExternalRefCategory] {
-	return pulumix.Output[*ExternalRefCategory]{
-		OutputState: in.ToExternalRefCategoryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This field provides information about the type of file identified
@@ -4900,12 +4743,6 @@ func (in *fileNoteFileTypePtr) ToFileNoteFileTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(FileNoteFileTypePtrOutput)
 }
 
-func (in *fileNoteFileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FileNoteFileType] {
-	return pulumix.Output[*FileNoteFileType]{
-		OutputState: in.ToFileNoteFileTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
 type GenericSignedAttestationContentType string
 
@@ -5072,12 +4909,6 @@ func (in *genericSignedAttestationContentTypePtr) ToGenericSignedAttestationCont
 
 func (in *genericSignedAttestationContentTypePtr) ToGenericSignedAttestationContentTypePtrOutputWithContext(ctx context.Context) GenericSignedAttestationContentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GenericSignedAttestationContentTypePtrOutput)
-}
-
-func (in *genericSignedAttestationContentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GenericSignedAttestationContentType] {
-	return pulumix.Output[*GenericSignedAttestationContentType]{
-		OutputState: in.ToGenericSignedAttestationContentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
@@ -5260,12 +5091,6 @@ func (in *grafeasV1beta1VulnerabilityDetailsEffectiveSeverityPtr) ToGrafeasV1bet
 	return pulumi.ToOutputWithContext(ctx, in).(GrafeasV1beta1VulnerabilityDetailsEffectiveSeverityPtrOutput)
 }
 
-func (in *grafeasV1beta1VulnerabilityDetailsEffectiveSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity] {
-	return pulumix.Output[*GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity]{
-		OutputState: in.ToGrafeasV1beta1VulnerabilityDetailsEffectiveSeverityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The type of hash that was performed.
 type HashType string
 
@@ -5438,12 +5263,6 @@ func (in *hashTypePtr) ToHashTypePtrOutput() HashTypePtrOutput {
 
 func (in *hashTypePtr) ToHashTypePtrOutputWithContext(ctx context.Context) HashTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HashTypePtrOutput)
-}
-
-func (in *hashTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HashType] {
-	return pulumix.Output[*HashType]{
-		OutputState: in.ToHashTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The justification type for this vulnerability.
@@ -5624,12 +5443,6 @@ func (in *justificationJustificationTypePtr) ToJustificationJustificationTypePtr
 
 func (in *justificationJustificationTypePtr) ToJustificationJustificationTypePtrOutputWithContext(ctx context.Context) JustificationJustificationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JustificationJustificationTypePtrOutput)
-}
-
-func (in *justificationJustificationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JustificationJustificationType] {
-	return pulumix.Output[*JustificationJustificationType]{
-		OutputState: in.ToJustificationJustificationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The recovered Dockerfile directive used to construct this layer.
@@ -5848,12 +5661,6 @@ func (in *layerDirectivePtr) ToLayerDirectivePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(LayerDirectivePtrOutput)
 }
 
-func (in *layerDirectivePtr) ToOutput(ctx context.Context) pulumix.Output[*LayerDirective] {
-	return pulumix.Output[*LayerDirective]{
-		OutputState: in.ToLayerDirectivePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
 type PackageArchitecture string
 
@@ -6025,12 +5832,6 @@ func (in *packageArchitecturePtr) ToPackageArchitecturePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PackageArchitecturePtrOutput)
 }
 
-func (in *packageArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*PackageArchitecture] {
-	return pulumix.Output[*PackageArchitecture]{
-		OutputState: in.ToPackageArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
 type PgpSignedAttestationContentType string
 
@@ -6197,12 +5998,6 @@ func (in *pgpSignedAttestationContentTypePtr) ToPgpSignedAttestationContentTypeP
 
 func (in *pgpSignedAttestationContentTypePtr) ToPgpSignedAttestationContentTypePtrOutputWithContext(ctx context.Context) PgpSignedAttestationContentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PgpSignedAttestationContentTypePtrOutput)
-}
-
-func (in *pgpSignedAttestationContentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PgpSignedAttestationContentType] {
-	return pulumix.Output[*PgpSignedAttestationContentType]{
-		OutputState: in.ToPgpSignedAttestationContentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of relationship between the source and target SPDX elements
@@ -6499,12 +6294,6 @@ func (in *relationshipNoteTypePtr) ToRelationshipNoteTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(RelationshipNoteTypePtrOutput)
 }
 
-func (in *relationshipNoteTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RelationshipNoteType] {
-	return pulumix.Output[*RelationshipNoteType]{
-		OutputState: in.ToRelationshipNoteTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of remediation that can be applied.
 type RemediationRemediationType string
 
@@ -6685,12 +6474,6 @@ func (in *remediationRemediationTypePtr) ToRemediationRemediationTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(RemediationRemediationTypePtrOutput)
 }
 
-func (in *remediationRemediationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RemediationRemediationType] {
-	return pulumix.Output[*RemediationRemediationType]{
-		OutputState: in.ToRemediationRemediationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The progress of the SBOM generation.
 type SBOMStatusSbomState string
 
@@ -6860,12 +6643,6 @@ func (in *sbomstatusSbomStatePtr) ToSBOMStatusSbomStatePtrOutput() SBOMStatusSbo
 
 func (in *sbomstatusSbomStatePtr) ToSBOMStatusSbomStatePtrOutputWithContext(ctx context.Context) SBOMStatusSbomStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SBOMStatusSbomStatePtrOutput)
-}
-
-func (in *sbomstatusSbomStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SBOMStatusSbomState] {
-	return pulumix.Output[*SBOMStatusSbomState]{
-		OutputState: in.ToSBOMStatusSbomStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
@@ -7040,12 +6817,6 @@ func (in *versionKindPtr) ToVersionKindPtrOutput() VersionKindPtrOutput {
 
 func (in *versionKindPtr) ToVersionKindPtrOutputWithContext(ctx context.Context) VersionKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VersionKindPtrOutput)
-}
-
-func (in *versionKindPtr) ToOutput(ctx context.Context) pulumix.Output[*VersionKind] {
-	return pulumix.Output[*VersionKind]{
-		OutputState: in.ToVersionKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provides the state of this Vulnerability assessment.
@@ -7225,12 +6996,6 @@ func (in *vexAssessmentStatePtr) ToVexAssessmentStatePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(VexAssessmentStatePtrOutput)
 }
 
-func (in *vexAssessmentStatePtr) ToOutput(ctx context.Context) pulumix.Output[*VexAssessmentState] {
-	return pulumix.Output[*VexAssessmentState]{
-		OutputState: in.ToVexAssessmentStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CVSS version used to populate cvss_score and severity.
 type VulnerabilityCvssVersion string
 
@@ -7397,12 +7162,6 @@ func (in *vulnerabilityCvssVersionPtr) ToVulnerabilityCvssVersionPtrOutput() Vul
 
 func (in *vulnerabilityCvssVersionPtr) ToVulnerabilityCvssVersionPtrOutputWithContext(ctx context.Context) VulnerabilityCvssVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VulnerabilityCvssVersionPtrOutput)
-}
-
-func (in *vulnerabilityCvssVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*VulnerabilityCvssVersion] {
-	return pulumix.Output[*VulnerabilityCvssVersion]{
-		OutputState: in.ToVulnerabilityCvssVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Note provider assigned impact of the vulnerability.
@@ -7583,12 +7342,6 @@ func (in *vulnerabilitySeverityPtr) ToVulnerabilitySeverityPtrOutput() Vulnerabi
 
 func (in *vulnerabilitySeverityPtr) ToVulnerabilitySeverityPtrOutputWithContext(ctx context.Context) VulnerabilitySeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VulnerabilitySeverityPtrOutput)
-}
-
-func (in *vulnerabilitySeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*VulnerabilitySeverity] {
-	return pulumix.Output[*VulnerabilitySeverity]{
-		OutputState: in.ToVulnerabilitySeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
