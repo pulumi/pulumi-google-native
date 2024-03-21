@@ -217,7 +217,7 @@ class AppGatewayIamPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["app_gateway_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["appGatewayId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AppGatewayIamPolicy, __self__).__init__(
             'google-native:beyondcorp/v1:AppGatewayIamPolicy',

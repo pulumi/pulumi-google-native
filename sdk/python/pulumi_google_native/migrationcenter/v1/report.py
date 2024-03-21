@@ -239,7 +239,7 @@ class Report(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["summary"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "report_config_id", "report_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "reportConfigId", "reportId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Report, __self__).__init__(
             'google-native:migrationcenter/v1:Report',

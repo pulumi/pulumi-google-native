@@ -185,7 +185,7 @@ class CutoverJob(pulumi.CustomResource):
             __props__.__dict__["state_message"] = None
             __props__.__dict__["state_time"] = None
             __props__.__dict__["steps"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cutover_job_id", "location", "migrating_vm_id", "project", "source_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cutoverJobId", "location", "migratingVmId", "project", "sourceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CutoverJob, __self__).__init__(
             'google-native:vmmigration/v1:CutoverJob',

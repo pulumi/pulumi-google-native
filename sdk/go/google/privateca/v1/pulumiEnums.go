@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Immutable. The Tier of this CaPool.
 type CaPoolTier string
 
@@ -362,12 +355,6 @@ func (in *caPoolTierPtr) ToCaPoolTierPtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CaPoolTierPtrOutput)
 }
 
-func (in *caPoolTierPtr) ToOutput(ctx context.Context) pulumix.Output[*CaPoolTier] {
-	return pulumix.Output[*CaPoolTier]{
-		OutputState: in.ToCaPoolTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Immutable. The Type of this CertificateAuthority.
 type CertificateAuthorityType string
 
@@ -537,12 +524,6 @@ func (in *certificateAuthorityTypePtr) ToCertificateAuthorityTypePtrOutput() Cer
 
 func (in *certificateAuthorityTypePtr) ToCertificateAuthorityTypePtrOutputWithContext(ctx context.Context) CertificateAuthorityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateAuthorityTypePtrOutput)
-}
-
-func (in *certificateAuthorityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateAuthorityType] {
-	return pulumix.Output[*CertificateAuthorityType]{
-		OutputState: in.ToCertificateAuthorityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type CertificateExtensionConstraintsKnownExtensionsItem string
@@ -725,12 +706,6 @@ func (in *certificateExtensionConstraintsKnownExtensionsItemPtr) ToCertificateEx
 
 func (in *certificateExtensionConstraintsKnownExtensionsItemPtr) ToCertificateExtensionConstraintsKnownExtensionsItemPtrOutputWithContext(ctx context.Context) CertificateExtensionConstraintsKnownExtensionsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateExtensionConstraintsKnownExtensionsItemPtrOutput)
-}
-
-func (in *certificateExtensionConstraintsKnownExtensionsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateExtensionConstraintsKnownExtensionsItem] {
-	return pulumix.Output[*CertificateExtensionConstraintsKnownExtensionsItem]{
-		OutputState: in.ToCertificateExtensionConstraintsKnownExtensionsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CertificateExtensionConstraintsKnownExtensionsItemArrayInput is an input type that accepts CertificateExtensionConstraintsKnownExtensionsItemArray and CertificateExtensionConstraintsKnownExtensionsItemArrayOutput values.
@@ -949,12 +924,6 @@ func (in *certificateSubjectModePtr) ToCertificateSubjectModePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateSubjectModePtrOutput)
 }
 
-func (in *certificateSubjectModePtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateSubjectMode] {
-	return pulumix.Output[*CertificateSubjectMode]{
-		OutputState: in.ToCertificateSubjectModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
 type EcKeyTypeSignatureAlgorithm string
 
@@ -1127,12 +1096,6 @@ func (in *ecKeyTypeSignatureAlgorithmPtr) ToEcKeyTypeSignatureAlgorithmPtrOutput
 
 func (in *ecKeyTypeSignatureAlgorithmPtr) ToEcKeyTypeSignatureAlgorithmPtrOutputWithContext(ctx context.Context) EcKeyTypeSignatureAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EcKeyTypeSignatureAlgorithmPtrOutput)
-}
-
-func (in *ecKeyTypeSignatureAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*EcKeyTypeSignatureAlgorithm] {
-	return pulumix.Output[*EcKeyTypeSignatureAlgorithm]{
-		OutputState: in.ToEcKeyTypeSignatureAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
@@ -1324,12 +1287,6 @@ func (in *keyVersionSpecAlgorithmPtr) ToKeyVersionSpecAlgorithmPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(KeyVersionSpecAlgorithmPtrOutput)
 }
 
-func (in *keyVersionSpecAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyVersionSpecAlgorithm] {
-	return pulumix.Output[*KeyVersionSpecAlgorithm]{
-		OutputState: in.ToKeyVersionSpecAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The format of the public key.
 type PublicKeyFormat string
 
@@ -1496,12 +1453,6 @@ func (in *publicKeyFormatPtr) ToPublicKeyFormatPtrOutput() PublicKeyFormatPtrOut
 
 func (in *publicKeyFormatPtr) ToPublicKeyFormatPtrOutputWithContext(ctx context.Context) PublicKeyFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicKeyFormatPtrOutput)
-}
-
-func (in *publicKeyFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicKeyFormat] {
-	return pulumix.Output[*PublicKeyFormat]{
-		OutputState: in.ToPublicKeyFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
@@ -1673,12 +1624,6 @@ func (in *publishingOptionsEncodingFormatPtr) ToPublishingOptionsEncodingFormatP
 
 func (in *publishingOptionsEncodingFormatPtr) ToPublishingOptionsEncodingFormatPtrOutputWithContext(ctx context.Context) PublishingOptionsEncodingFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublishingOptionsEncodingFormatPtrOutput)
-}
-
-func (in *publishingOptionsEncodingFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*PublishingOptionsEncodingFormat] {
-	return pulumix.Output[*PublishingOptionsEncodingFormat]{
-		OutputState: in.ToPublishingOptionsEncodingFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

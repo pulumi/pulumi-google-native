@@ -286,7 +286,7 @@ class DeveloperApp(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["credentials"] = None
             __props__.__dict__["last_modified_at"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["developer_id", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["developerId", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DeveloperApp, __self__).__init__(
             'google-native:apigee/v1:DeveloperApp',

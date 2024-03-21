@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The state of the Conversation.
@@ -180,12 +179,6 @@ func (in *conversationStateEnumPtr) ToConversationStateEnumPtrOutput() Conversat
 
 func (in *conversationStateEnumPtr) ToConversationStateEnumPtrOutputWithContext(ctx context.Context) ConversationStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConversationStateEnumPtrOutput)
-}
-
-func (in *conversationStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ConversationStateEnum] {
-	return pulumix.Output[*ConversationStateEnum]{
-		OutputState: in.ToConversationStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem string
@@ -365,12 +358,6 @@ func (in *googleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedRea
 
 func (in *googleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtr) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtrOutput)
-}
-
-func (in *googleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem]{
-		OutputState: in.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArray and GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayOutput values.

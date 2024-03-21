@@ -128,7 +128,7 @@ class FolderReplay(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["results_summary"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folder_id", "location"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folderId", "location"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(FolderReplay, __self__).__init__(
             'google-native:policysimulator/v1beta1:FolderReplay',

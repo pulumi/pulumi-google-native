@@ -367,7 +367,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["memcache_nodes"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instanceId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Instance, __self__).__init__(
             'google-native:memcache/v1:Instance',

@@ -233,7 +233,7 @@ class LakeContentitemIamPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["contentitem_id", "lake_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["contentitemId", "lakeId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(LakeContentitemIamPolicy, __self__).__init__(
             'google-native:dataplex/v1:LakeContentitemIamPolicy',

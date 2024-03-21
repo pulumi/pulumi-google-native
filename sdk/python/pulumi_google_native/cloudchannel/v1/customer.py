@@ -268,7 +268,7 @@ class Customer(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["account_id", "channel_partner_link_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["accountId", "channelPartnerLinkId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Customer, __self__).__init__(
             'google-native:cloudchannel/v1:Customer',

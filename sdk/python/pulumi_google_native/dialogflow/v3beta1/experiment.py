@@ -430,7 +430,7 @@ class Experiment(pulumi.CustomResource):
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["state"] = state
             __props__.__dict__["variants_history"] = variants_history
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["agent_id", "environment_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["agentId", "environmentId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Experiment, __self__).__init__(
             'google-native:dialogflow/v3beta1:Experiment',

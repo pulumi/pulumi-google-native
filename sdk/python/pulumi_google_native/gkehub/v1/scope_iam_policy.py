@@ -217,7 +217,7 @@ class ScopeIamPolicy(pulumi.CustomResource):
             __props__.__dict__["scope_id"] = scope_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "scope_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "scopeId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ScopeIamPolicy, __self__).__init__(
             'google-native:gkehub/v1:ScopeIamPolicy',

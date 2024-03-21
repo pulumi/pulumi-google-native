@@ -163,7 +163,7 @@ class Policy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["platform_id", "policy_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["platformId", "policyId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Policy, __self__).__init__(
             'google-native:binaryauthorization/v1:Policy',

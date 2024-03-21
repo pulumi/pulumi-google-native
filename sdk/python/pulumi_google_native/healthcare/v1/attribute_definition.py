@@ -270,7 +270,7 @@ class AttributeDefinition(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["attribute_definition_id", "consent_store_id", "dataset_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["attributeDefinitionId", "consentStoreId", "datasetId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AttributeDefinition, __self__).__init__(
             'google-native:healthcare/v1:AttributeDefinition',

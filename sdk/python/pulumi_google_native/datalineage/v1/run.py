@@ -253,7 +253,7 @@ class Run(pulumi.CustomResource):
             if state is None and not opts.urn:
                 raise TypeError("Missing required property 'state'")
             __props__.__dict__["state"] = state
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "process_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "processId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Run, __self__).__init__(
             'google-native:datalineage/v1:Run',

@@ -177,7 +177,7 @@ class Subscription(pulumi.CustomResource):
                 raise TypeError("Missing required property 'subscription_id'")
             __props__.__dict__["subscription_id"] = subscription_id
             __props__.__dict__["topic"] = topic
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "subscription_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "subscriptionId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Subscription, __self__).__init__(
             'google-native:pubsub/v1beta2:Subscription',

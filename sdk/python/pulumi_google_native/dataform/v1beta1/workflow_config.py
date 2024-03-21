@@ -218,7 +218,7 @@ class WorkflowConfig(pulumi.CustomResource):
             __props__.__dict__["workflow_config_id"] = workflow_config_id
             __props__.__dict__["name"] = None
             __props__.__dict__["recent_scheduled_execution_records"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id", "workflow_config_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repositoryId", "workflowConfigId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(WorkflowConfig, __self__).__init__(
             'google-native:dataform/v1beta1:WorkflowConfig',

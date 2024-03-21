@@ -228,7 +228,7 @@ class Runtime(pulumi.CustomResource):
             __props__.__dict__["runtime_migration_eligibility"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "runtime_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "runtimeId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Runtime, __self__).__init__(
             'google-native:notebooks/v1:Runtime',

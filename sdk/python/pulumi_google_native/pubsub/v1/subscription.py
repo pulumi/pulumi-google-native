@@ -420,7 +420,7 @@ class Subscription(pulumi.CustomResource):
             __props__.__dict__["topic"] = topic
             __props__.__dict__["state"] = None
             __props__.__dict__["topic_message_retention_duration"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "subscription_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "subscriptionId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Subscription, __self__).__init__(
             'google-native:pubsub/v1:Subscription',

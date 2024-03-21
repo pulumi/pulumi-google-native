@@ -335,7 +335,7 @@ class Deployment(pulumi.CustomResource):
             __props__.__dict__["revision_create_time"] = None
             __props__.__dict__["revision_id"] = None
             __props__.__dict__["revision_update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["api_deployment_id", "api_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiDeploymentId", "apiId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Deployment, __self__).__init__(
             'google-native:apigeeregistry/v1:Deployment',

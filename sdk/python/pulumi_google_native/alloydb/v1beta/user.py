@@ -215,7 +215,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["user_type"] = user_type
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cluster_id", "location", "project", "user_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["clusterId", "location", "project", "userId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(User, __self__).__init__(
             'google-native:alloydb/v1beta:User',

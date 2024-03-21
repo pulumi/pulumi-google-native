@@ -218,7 +218,7 @@ class ManagementDnsZoneBinding(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "management_dns_zone_binding_id", "private_cloud_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "managementDnsZoneBindingId", "privateCloudId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ManagementDnsZoneBinding, __self__).__init__(
             'google-native:vmwareengine/v1:ManagementDnsZoneBinding',

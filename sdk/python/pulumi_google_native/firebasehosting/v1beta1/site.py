@@ -145,7 +145,7 @@ class Site(pulumi.CustomResource):
             __props__.__dict__["default_url"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["type"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "site_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "siteId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Site, __self__).__init__(
             'google-native:firebasehosting/v1beta1:Site',

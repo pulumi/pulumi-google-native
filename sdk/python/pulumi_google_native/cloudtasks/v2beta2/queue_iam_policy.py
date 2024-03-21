@@ -176,7 +176,7 @@ class QueueIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'queue_id'")
             __props__.__dict__["queue_id"] = queue_id
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "queue_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "queueId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(QueueIamPolicy, __self__).__init__(
             'google-native:cloudtasks/v2beta2:QueueIamPolicy',

@@ -182,7 +182,7 @@ class EndpointAttachment(pulumi.CustomResource):
             __props__.__dict__["endpoint_ip"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["endpoint_attachment_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["endpointAttachmentId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(EndpointAttachment, __self__).__init__(
             'google-native:connectors/v1:EndpointAttachment',

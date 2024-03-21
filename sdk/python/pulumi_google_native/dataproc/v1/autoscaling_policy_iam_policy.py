@@ -176,7 +176,7 @@ class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["autoscaling_policy_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["autoscalingPolicyId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AutoscalingPolicyIamPolicy, __self__).__init__(
             'google-native:dataproc/v1:AutoscalingPolicyIamPolicy',

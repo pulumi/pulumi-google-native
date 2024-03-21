@@ -253,7 +253,7 @@ class ResourceRecordSet(pulumi.CustomResource):
             __props__.__dict__["signature_rrdatas"] = signature_rrdatas
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["type"] = type
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["managed_zone", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["managedZone", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ResourceRecordSet, __self__).__init__(
             'google-native:dns/v1beta2:ResourceRecordSet',

@@ -250,7 +250,7 @@ class ManagementServer(pulumi.CustomResource):
             __props__.__dict__["update_time"] = None
             __props__.__dict__["workforce_identity_based_management_uri"] = None
             __props__.__dict__["workforce_identity_based_oauth2_client_id"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "management_server_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "managementServerId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ManagementServer, __self__).__init__(
             'google-native:backupdr/v1:ManagementServer',

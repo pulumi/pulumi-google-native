@@ -203,7 +203,7 @@ class OrganizationPartnerTenantIamPolicy(pulumi.CustomResource):
             __props__.__dict__["partner_tenant_id"] = partner_tenant_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id", "partner_tenant_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId", "partnerTenantId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationPartnerTenantIamPolicy, __self__).__init__(
             'google-native:beyondcorp/v1:OrganizationPartnerTenantIamPolicy',

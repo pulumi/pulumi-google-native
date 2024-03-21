@@ -368,7 +368,7 @@ class Release(pulumi.CustomResource):
             __props__.__dict__["target_renders"] = None
             __props__.__dict__["target_snapshots"] = None
             __props__.__dict__["uid"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["delivery_pipeline_id", "location", "project", "release_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["deliveryPipelineId", "location", "project", "releaseId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Release, __self__).__init__(
             'google-native:clouddeploy/v1:Release',

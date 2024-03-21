@@ -487,7 +487,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["status_message"] = None
             __props__.__dict__["update_info"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cluster_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["clusterId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(NodePool, __self__).__init__(
             'google-native:container/v1:NodePool',

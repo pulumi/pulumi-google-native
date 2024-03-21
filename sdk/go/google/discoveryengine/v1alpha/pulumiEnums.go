@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The state of the Conversation.
@@ -180,12 +179,6 @@ func (in *conversationStateEnumPtr) ToConversationStateEnumPtrOutput() Conversat
 
 func (in *conversationStateEnumPtr) ToConversationStateEnumPtrOutputWithContext(ctx context.Context) ConversationStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConversationStateEnumPtrOutput)
-}
-
-func (in *conversationStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ConversationStateEnum] {
-	return pulumix.Output[*ConversationStateEnum]{
-		OutputState: in.ToConversationStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
@@ -362,12 +355,6 @@ func (in *dataStoreContentConfigPtr) ToDataStoreContentConfigPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(DataStoreContentConfigPtrOutput)
 }
 
-func (in *dataStoreContentConfigPtr) ToOutput(ctx context.Context) pulumix.Output[*DataStoreContentConfig] {
-	return pulumix.Output[*DataStoreContentConfig]{
-		OutputState: in.ToDataStoreContentConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The industry vertical that the data store registers.
 type DataStoreIndustryVertical string
 
@@ -537,12 +524,6 @@ func (in *dataStoreIndustryVerticalPtr) ToDataStoreIndustryVerticalPtrOutput() D
 
 func (in *dataStoreIndustryVerticalPtr) ToDataStoreIndustryVerticalPtrOutputWithContext(ctx context.Context) DataStoreIndustryVerticalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataStoreIndustryVerticalPtrOutput)
-}
-
-func (in *dataStoreIndustryVerticalPtr) ToOutput(ctx context.Context) pulumix.Output[*DataStoreIndustryVertical] {
-	return pulumix.Output[*DataStoreIndustryVertical]{
-		OutputState: in.ToDataStoreIndustryVerticalPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DataStoreSolutionTypesItem string
@@ -716,12 +697,6 @@ func (in *dataStoreSolutionTypesItemPtr) ToDataStoreSolutionTypesItemPtrOutput()
 
 func (in *dataStoreSolutionTypesItemPtr) ToDataStoreSolutionTypesItemPtrOutputWithContext(ctx context.Context) DataStoreSolutionTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataStoreSolutionTypesItemPtrOutput)
-}
-
-func (in *dataStoreSolutionTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*DataStoreSolutionTypesItem] {
-	return pulumix.Output[*DataStoreSolutionTypesItem]{
-		OutputState: in.ToDataStoreSolutionTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DataStoreSolutionTypesItemArrayInput is an input type that accepts DataStoreSolutionTypesItemArray and DataStoreSolutionTypesItemArrayOutput values.
@@ -940,12 +915,6 @@ func (in *engineIndustryVerticalPtr) ToEngineIndustryVerticalPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(EngineIndustryVerticalPtrOutput)
 }
 
-func (in *engineIndustryVerticalPtr) ToOutput(ctx context.Context) pulumix.Output[*EngineIndustryVertical] {
-	return pulumix.Output[*EngineIndustryVertical]{
-		OutputState: in.ToEngineIndustryVerticalPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The solutions of the engine.
 type EngineSolutionType string
 
@@ -1120,12 +1089,6 @@ func (in *engineSolutionTypePtr) ToEngineSolutionTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(EngineSolutionTypePtrOutput)
 }
 
-func (in *engineSolutionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EngineSolutionType] {
-	return pulumix.Output[*EngineSolutionType]{
-		OutputState: in.ToEngineSolutionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The training state that the engine is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train engine in order to control cost. If not specified: the default value for `CreateEngine` method is `TRAINING`. The default value for `UpdateEngine` method is to keep the state the same as before.
 type GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState string
 
@@ -1297,12 +1260,6 @@ func (in *googleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStatePtrOutput)
 }
 
-func (in *googleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStatePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState]{
-		OutputState: in.ToGoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem string
 
 const (
@@ -1468,12 +1425,6 @@ func (in *googleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsI
 
 func (in *googleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtr) ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtrOutput)
-}
-
-func (in *googleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem]{
-		OutputState: in.ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArray and GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItemArrayOutput values.
@@ -1692,12 +1643,6 @@ func (in *googleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtr
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtrOutput)
 }
 
-func (in *googleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier]{
-		OutputState: in.ToGoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem string
 
 const (
@@ -1875,12 +1820,6 @@ func (in *googleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedRe
 
 func (in *googleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtr) ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutput)
-}
-
-func (in *googleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem] {
-	return pulumix.Output[*GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem]{
-		OutputState: in.ToGoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArray and GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItemArrayOutput values.

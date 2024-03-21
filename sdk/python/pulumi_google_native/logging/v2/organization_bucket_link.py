@@ -198,7 +198,7 @@ class OrganizationBucketLink(pulumi.CustomResource):
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["lifecycle_state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bucket_id", "link_id", "location", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bucketId", "linkId", "location", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationBucketLink, __self__).__init__(
             'google-native:logging/v2:OrganizationBucketLink',

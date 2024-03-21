@@ -196,7 +196,7 @@ class WorkloadIdentityPoolKey(pulumi.CustomResource):
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "provider_id", "workload_identity_pool_id", "workload_identity_pool_provider_key_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "providerId", "workloadIdentityPoolId", "workloadIdentityPoolProviderKeyId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(WorkloadIdentityPoolKey, __self__).__init__(
             'google-native:iam/v1:WorkloadIdentityPoolKey',

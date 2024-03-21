@@ -300,7 +300,7 @@ class Rule(pulumi.CustomResource):
             __props__.__dict__["tls_inspection_enabled"] = tls_inspection_enabled
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["gateway_security_policy_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["gatewaySecurityPolicyId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Rule, __self__).__init__(
             'google-native:networksecurity/v1beta1:Rule',

@@ -217,7 +217,7 @@ class RegistrationIamPolicy(pulumi.CustomResource):
             __props__.__dict__["registration_id"] = registration_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "registration_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "registrationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RegistrationIamPolicy, __self__).__init__(
             'google-native:domains/v1:RegistrationIamPolicy',

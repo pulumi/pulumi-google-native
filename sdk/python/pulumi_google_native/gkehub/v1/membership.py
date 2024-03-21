@@ -248,7 +248,7 @@ class Membership(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["unique_id"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "membership_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "membershipId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Membership, __self__).__init__(
             'google-native:gkehub/v1:Membership',

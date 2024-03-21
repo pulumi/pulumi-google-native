@@ -259,7 +259,7 @@ class Share(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance_id", "location", "project", "share_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instanceId", "location", "project", "shareId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Share, __self__).__init__(
             'google-native:file/v1beta1:Share',

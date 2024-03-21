@@ -211,7 +211,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["restore_info"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["version_retention_period"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instanceId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Database, __self__).__init__(
             'google-native:spanner/v1:Database',

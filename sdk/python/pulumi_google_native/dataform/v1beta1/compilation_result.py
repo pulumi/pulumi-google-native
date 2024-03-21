@@ -202,7 +202,7 @@ class CompilationResult(pulumi.CustomResource):
             __props__.__dict__["dataform_core_version"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["resolved_git_commit_sha"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repositoryId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CompilationResult, __self__).__init__(
             'google-native:dataform/v1beta1:CompilationResult',

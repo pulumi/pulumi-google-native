@@ -213,7 +213,7 @@ class DicomStore(pulumi.CustomResource):
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
             __props__.__dict__["stream_configs"] = stream_configs
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["datasetId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DicomStore, __self__).__init__(
             'google-native:healthcare/v1beta1:DicomStore',

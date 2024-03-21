@@ -329,7 +329,7 @@ class Rollout(pulumi.CustomResource):
             __props__.__dict__["rolled_back_by_rollouts"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["delivery_pipeline_id", "location", "project", "release_id", "rollout_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["deliveryPipelineId", "location", "project", "releaseId", "rolloutId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Rollout, __self__).__init__(
             'google-native:clouddeploy/v1:Rollout',

@@ -205,7 +205,7 @@ class PrivateConnection(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "private_connection_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "privateConnectionId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(PrivateConnection, __self__).__init__(
             'google-native:datastream/v1alpha1:PrivateConnection',

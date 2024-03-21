@@ -162,7 +162,7 @@ class HcxActivationKey(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["hcx_activation_key_id", "location", "private_cloud_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["hcxActivationKeyId", "location", "privateCloudId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(HcxActivationKey, __self__).__init__(
             'google-native:vmwareengine/v1:HcxActivationKey',

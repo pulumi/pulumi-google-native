@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Immutable. The blockchain type of the node.
@@ -177,12 +176,6 @@ func (in *blockchainNodeBlockchainTypePtr) ToBlockchainNodeBlockchainTypePtrOutp
 
 func (in *blockchainNodeBlockchainTypePtr) ToBlockchainNodeBlockchainTypePtrOutputWithContext(ctx context.Context) BlockchainNodeBlockchainTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BlockchainNodeBlockchainTypePtrOutput)
-}
-
-func (in *blockchainNodeBlockchainTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BlockchainNodeBlockchainType] {
-	return pulumix.Output[*BlockchainNodeBlockchainType]{
-		OutputState: in.ToBlockchainNodeBlockchainTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Immutable. The consensus client.
@@ -356,12 +349,6 @@ func (in *ethereumDetailsConsensusClientPtr) ToEthereumDetailsConsensusClientPtr
 	return pulumi.ToOutputWithContext(ctx, in).(EthereumDetailsConsensusClientPtrOutput)
 }
 
-func (in *ethereumDetailsConsensusClientPtr) ToOutput(ctx context.Context) pulumix.Output[*EthereumDetailsConsensusClient] {
-	return pulumix.Output[*EthereumDetailsConsensusClient]{
-		OutputState: in.ToEthereumDetailsConsensusClientPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The execution client
 type EthereumDetailsExecutionClient string
 
@@ -531,12 +518,6 @@ func (in *ethereumDetailsExecutionClientPtr) ToEthereumDetailsExecutionClientPtr
 
 func (in *ethereumDetailsExecutionClientPtr) ToEthereumDetailsExecutionClientPtrOutputWithContext(ctx context.Context) EthereumDetailsExecutionClientPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EthereumDetailsExecutionClientPtrOutput)
-}
-
-func (in *ethereumDetailsExecutionClientPtr) ToOutput(ctx context.Context) pulumix.Output[*EthereumDetailsExecutionClient] {
-	return pulumix.Output[*EthereumDetailsExecutionClient]{
-		OutputState: in.ToEthereumDetailsExecutionClientPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Immutable. The Ethereum environment being accessed.
@@ -716,12 +697,6 @@ func (in *ethereumDetailsNetworkPtr) ToEthereumDetailsNetworkPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(EthereumDetailsNetworkPtrOutput)
 }
 
-func (in *ethereumDetailsNetworkPtr) ToOutput(ctx context.Context) pulumix.Output[*EthereumDetailsNetwork] {
-	return pulumix.Output[*EthereumDetailsNetwork]{
-		OutputState: in.ToEthereumDetailsNetworkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The type of Ethereum node.
 type EthereumDetailsNodeType string
 
@@ -896,12 +871,6 @@ func (in *ethereumDetailsNodeTypePtr) ToEthereumDetailsNodeTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(EthereumDetailsNodeTypePtrOutput)
 }
 
-func (in *ethereumDetailsNodeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EthereumDetailsNodeType] {
-	return pulumix.Output[*EthereumDetailsNodeType]{
-		OutputState: in.ToEthereumDetailsNodeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. Blockchain garbage collection mode.
 type GethDetailsGarbageCollectionMode string
 
@@ -1071,12 +1040,6 @@ func (in *gethDetailsGarbageCollectionModePtr) ToGethDetailsGarbageCollectionMod
 
 func (in *gethDetailsGarbageCollectionModePtr) ToGethDetailsGarbageCollectionModePtrOutputWithContext(ctx context.Context) GethDetailsGarbageCollectionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GethDetailsGarbageCollectionModePtrOutput)
-}
-
-func (in *gethDetailsGarbageCollectionModePtr) ToOutput(ctx context.Context) pulumix.Output[*GethDetailsGarbageCollectionMode] {
-	return pulumix.Output[*GethDetailsGarbageCollectionMode]{
-		OutputState: in.ToGethDetailsGarbageCollectionModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -218,7 +218,7 @@ class TableIamPolicy(pulumi.CustomResource):
             __props__.__dict__["table_id"] = table_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "project", "table_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["datasetId", "project", "tableId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TableIamPolicy, __self__).__init__(
             'google-native:bigquery/v2:TableIamPolicy',

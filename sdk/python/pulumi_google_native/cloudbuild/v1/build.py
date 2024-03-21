@@ -399,7 +399,7 @@ class Build(pulumi.CustomResource):
             __props__.__dict__["status_detail"] = None
             __props__.__dict__["timing"] = None
             __props__.__dict__["warnings"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "project_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "projectId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Build, __self__).__init__(
             'google-native:cloudbuild/v1:Build',

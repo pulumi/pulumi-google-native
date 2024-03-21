@@ -243,7 +243,7 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["pem_certificate"] = None
             __props__.__dict__["san_dnsnames"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["certificate_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["certificateId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Certificate, __self__).__init__(
             'google-native:certificatemanager/v1:Certificate',

@@ -313,7 +313,7 @@ class Spec(pulumi.CustomResource):
             __props__.__dict__["revision_id"] = None
             __props__.__dict__["revision_update_time"] = None
             __props__.__dict__["size_bytes"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["api_id", "api_spec_id", "location", "project", "version_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiId", "apiSpecId", "location", "project", "versionId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Spec, __self__).__init__(
             'google-native:apigeeregistry/v1:Spec',

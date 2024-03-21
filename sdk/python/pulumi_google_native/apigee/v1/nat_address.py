@@ -118,7 +118,7 @@ class NatAddress(pulumi.CustomResource):
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance_id", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instanceId", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(NatAddress, __self__).__init__(
             'google-native:apigee/v1:NatAddress',

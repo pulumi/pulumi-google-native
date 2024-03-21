@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The encoding of messages validated against `schema`.
@@ -182,12 +181,6 @@ func (in *schemaSettingsEncodingPtr) ToSchemaSettingsEncodingPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaSettingsEncodingPtrOutput)
 }
 
-func (in *schemaSettingsEncodingPtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaSettingsEncoding] {
-	return pulumix.Output[*SchemaSettingsEncoding]{
-		OutputState: in.ToSchemaSettingsEncodingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the schema definition.
 type SchemaType string
 
@@ -357,12 +350,6 @@ func (in *schemaTypePtr) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
 
 func (in *schemaTypePtr) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaTypePtrOutput)
-}
-
-func (in *schemaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaType] {
-	return pulumix.Output[*SchemaType]{
-		OutputState: in.ToSchemaTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -163,7 +163,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billing_account_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billingAccountId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(BillingAccountExclusion, __self__).__init__(
             'google-native:logging/v2:BillingAccountExclusion',

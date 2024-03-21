@@ -251,7 +251,7 @@ class VersionArtifact(pulumi.CustomResource):
             __props__.__dict__["hash"] = None
             __props__.__dict__["size_bytes"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["api_id", "artifact_id", "location", "project", "version_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiId", "artifactId", "location", "project", "versionId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(VersionArtifact, __self__).__init__(
             'google-native:apigeeregistry/v1:VersionArtifact',

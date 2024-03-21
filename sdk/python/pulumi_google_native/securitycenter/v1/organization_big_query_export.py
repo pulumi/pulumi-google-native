@@ -185,7 +185,7 @@ class OrganizationBigQueryExport(pulumi.CustomResource):
             __props__.__dict__["most_recent_editor"] = None
             __props__.__dict__["principal"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["big_query_export_id", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bigQueryExportId", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationBigQueryExport, __self__).__init__(
             'google-native:securitycenter/v1:OrganizationBigQueryExport',

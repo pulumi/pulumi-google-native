@@ -217,7 +217,7 @@ class ServerTlsPolicyIamPolicy(pulumi.CustomResource):
             __props__.__dict__["server_tls_policy_id"] = server_tls_policy_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "server_tls_policy_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "serverTlsPolicyId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServerTlsPolicyIamPolicy, __self__).__init__(
             'google-native:networksecurity/v1beta1:ServerTlsPolicyIamPolicy',

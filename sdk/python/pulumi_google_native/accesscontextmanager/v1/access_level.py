@@ -183,7 +183,7 @@ class AccessLevel(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["title"] = title
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["access_policy_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["accessPolicyId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AccessLevel, __self__).__init__(
             'google-native:accesscontextmanager/v1:AccessLevel',

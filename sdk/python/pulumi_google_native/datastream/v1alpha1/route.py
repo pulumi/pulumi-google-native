@@ -238,7 +238,7 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "private_connection_id", "project", "route_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "privateConnectionId", "project", "routeId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Route, __self__).__init__(
             'google-native:datastream/v1alpha1:Route',

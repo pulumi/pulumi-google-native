@@ -145,7 +145,7 @@ class Study(pulumi.CustomResource):
             __props__.__dict__["inactive_reason"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "study_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "studyId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Study, __self__).__init__(
             'google-native:ml/v1:Study',

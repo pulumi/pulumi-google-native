@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Edition of the capacity commitment.
@@ -183,12 +182,6 @@ func (in *capacityCommitmentEditionPtr) ToCapacityCommitmentEditionPtrOutput() C
 
 func (in *capacityCommitmentEditionPtr) ToCapacityCommitmentEditionPtrOutputWithContext(ctx context.Context) CapacityCommitmentEditionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CapacityCommitmentEditionPtrOutput)
-}
-
-func (in *capacityCommitmentEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitmentEdition] {
-	return pulumix.Output[*CapacityCommitmentEdition]{
-		OutputState: in.ToCapacityCommitmentEditionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Capacity commitment commitment plan.
@@ -383,12 +376,6 @@ func (in *capacityCommitmentPlanPtr) ToCapacityCommitmentPlanPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CapacityCommitmentPlanPtrOutput)
 }
 
-func (in *capacityCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitmentPlan] {
-	return pulumix.Output[*CapacityCommitmentPlan]{
-		OutputState: in.ToCapacityCommitmentPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
 type CapacityCommitmentRenewalPlan string
 
@@ -581,12 +568,6 @@ func (in *capacityCommitmentRenewalPlanPtr) ToCapacityCommitmentRenewalPlanPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(CapacityCommitmentRenewalPlanPtrOutput)
 }
 
-func (in *capacityCommitmentRenewalPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitmentRenewalPlan] {
-	return pulumix.Output[*CapacityCommitmentRenewalPlan]{
-		OutputState: in.ToCapacityCommitmentRenewalPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Edition of the reservation.
 type ReservationEdition string
 
@@ -759,12 +740,6 @@ func (in *reservationEditionPtr) ToReservationEditionPtrOutput() ReservationEdit
 
 func (in *reservationEditionPtr) ToReservationEditionPtrOutputWithContext(ctx context.Context) ReservationEditionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReservationEditionPtrOutput)
-}
-
-func (in *reservationEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*ReservationEdition] {
-	return pulumix.Output[*ReservationEdition]{
-		OutputState: in.ToReservationEditionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

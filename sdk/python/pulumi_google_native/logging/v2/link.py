@@ -195,7 +195,7 @@ class Link(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["lifecycle_state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bucket_id", "link_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bucketId", "linkId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Link, __self__).__init__(
             'google-native:logging/v2:Link',

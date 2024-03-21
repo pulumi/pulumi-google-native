@@ -217,7 +217,7 @@ class ReusableConfigIamPolicy(pulumi.CustomResource):
             __props__.__dict__["reusable_config_id"] = reusable_config_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "reusable_config_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "reusableConfigId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ReusableConfigIamPolicy, __self__).__init__(
             'google-native:privateca/v1beta1:ReusableConfigIamPolicy',

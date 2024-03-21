@@ -180,7 +180,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workload_identity_pool_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workloadIdentityPoolId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(WorkloadIdentityPool, __self__).__init__(
             'google-native:iam/v1:WorkloadIdentityPool',

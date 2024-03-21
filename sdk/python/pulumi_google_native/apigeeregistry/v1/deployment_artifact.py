@@ -251,7 +251,7 @@ class DeploymentArtifact(pulumi.CustomResource):
             __props__.__dict__["hash"] = None
             __props__.__dict__["size_bytes"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["api_id", "artifact_id", "deployment_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiId", "artifactId", "deploymentId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DeploymentArtifact, __self__).__init__(
             'google-native:apigeeregistry/v1:DeploymentArtifact',

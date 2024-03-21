@@ -193,7 +193,7 @@ class ReferenceImage(pulumi.CustomResource):
             if uri is None and not opts.urn:
                 raise TypeError("Missing required property 'uri'")
             __props__.__dict__["uri"] = uri
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "product_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "productId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ReferenceImage, __self__).__init__(
             'google-native:vision/v1:ReferenceImage',

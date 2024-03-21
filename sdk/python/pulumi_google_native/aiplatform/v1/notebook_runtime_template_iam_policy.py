@@ -176,7 +176,7 @@ class NotebookRuntimeTemplateIamPolicy(pulumi.CustomResource):
             __props__.__dict__["notebook_runtime_template_id"] = notebook_runtime_template_id
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "notebook_runtime_template_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "notebookRuntimeTemplateId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(NotebookRuntimeTemplateIamPolicy, __self__).__init__(
             'google-native:aiplatform/v1:NotebookRuntimeTemplateIamPolicy',

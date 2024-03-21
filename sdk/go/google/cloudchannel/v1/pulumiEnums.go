@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Required. State of the channel partner link.
@@ -188,12 +187,6 @@ func (in *channelPartnerLinkLinkStatePtr) ToChannelPartnerLinkLinkStatePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ChannelPartnerLinkLinkStatePtrOutput)
 }
 
-func (in *channelPartnerLinkLinkStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ChannelPartnerLinkLinkState] {
-	return pulumix.Output[*ChannelPartnerLinkLinkState]{
-		OutputState: in.ToChannelPartnerLinkLinkStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
 type GoogleCloudChannelV1ConditionalOverrideRebillingBasis string
 
@@ -363,12 +356,6 @@ func (in *googleCloudChannelV1ConditionalOverrideRebillingBasisPtr) ToGoogleClou
 
 func (in *googleCloudChannelV1ConditionalOverrideRebillingBasisPtr) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput)
-}
-
-func (in *googleCloudChannelV1ConditionalOverrideRebillingBasisPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1ConditionalOverrideRebillingBasis] {
-	return pulumix.Output[*GoogleCloudChannelV1ConditionalOverrideRebillingBasis]{
-		OutputState: in.ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Period Type.
@@ -543,12 +530,6 @@ func (in *googleCloudChannelV1PeriodPeriodTypePtr) ToGoogleCloudChannelV1PeriodP
 
 func (in *googleCloudChannelV1PeriodPeriodTypePtr) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudChannelV1PeriodPeriodTypePtrOutput)
-}
-
-func (in *googleCloudChannelV1PeriodPeriodTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1PeriodPeriodType] {
-	return pulumix.Output[*GoogleCloudChannelV1PeriodPeriodType]{
-		OutputState: in.ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes how a reseller will be billed.
@@ -731,12 +712,6 @@ func (in *googleCloudChannelV1RenewalSettingsPaymentPlanPtr) ToGoogleCloudChanne
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput)
 }
 
-func (in *googleCloudChannelV1RenewalSettingsPaymentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1RenewalSettingsPaymentPlan] {
-	return pulumix.Output[*GoogleCloudChannelV1RenewalSettingsPaymentPlan]{
-		OutputState: in.ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
 type GoogleCloudChannelV1RepricingConfigRebillingBasis string
 
@@ -906,12 +881,6 @@ func (in *googleCloudChannelV1RepricingConfigRebillingBasisPtr) ToGoogleCloudCha
 
 func (in *googleCloudChannelV1RepricingConfigRebillingBasisPtr) ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput)
-}
-
-func (in *googleCloudChannelV1RepricingConfigRebillingBasisPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudChannelV1RepricingConfigRebillingBasis] {
-	return pulumix.Output[*GoogleCloudChannelV1RepricingConfigRebillingBasis]{
-		OutputState: in.ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

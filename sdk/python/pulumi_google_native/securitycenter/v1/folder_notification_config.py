@@ -186,7 +186,7 @@ class FolderNotificationConfig(pulumi.CustomResource):
             __props__.__dict__["pubsub_topic"] = pubsub_topic
             __props__.__dict__["streaming_config"] = streaming_config
             __props__.__dict__["service_account"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["config_id", "folder_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["configId", "folderId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(FolderNotificationConfig, __self__).__init__(
             'google-native:securitycenter/v1:FolderNotificationConfig',

@@ -141,7 +141,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["topic"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "snapshot_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "snapshotId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Snapshot, __self__).__init__(
             'google-native:pubsub/v1:Snapshot',

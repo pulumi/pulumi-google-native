@@ -181,7 +181,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
             __props__.__dict__["authorization_type"] = authorization_type
             __props__.__dict__["name"] = name
             __props__.__dict__["orgs"] = orgs
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["access_policy_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["accessPolicyId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AuthorizedOrgsDesc, __self__).__init__(
             'google-native:accesscontextmanager/v1:AuthorizedOrgsDesc',

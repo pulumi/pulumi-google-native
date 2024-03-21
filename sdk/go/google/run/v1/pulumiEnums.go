@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The mode of the certificate.
 type DomainMappingSpecCertificateMode string
 
@@ -359,12 +352,6 @@ func (in *domainMappingSpecCertificateModePtr) ToDomainMappingSpecCertificateMod
 
 func (in *domainMappingSpecCertificateModePtr) ToDomainMappingSpecCertificateModePtrOutputWithContext(ctx context.Context) DomainMappingSpecCertificateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DomainMappingSpecCertificateModePtrOutput)
-}
-
-func (in *domainMappingSpecCertificateModePtr) ToOutput(ctx context.Context) pulumix.Output[*DomainMappingSpecCertificateMode] {
-	return pulumix.Output[*DomainMappingSpecCertificateMode]{
-		OutputState: in.ToDomainMappingSpecCertificateModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Resource record type. Example: `AAAA`.

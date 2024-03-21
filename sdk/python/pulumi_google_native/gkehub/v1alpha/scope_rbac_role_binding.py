@@ -242,7 +242,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "rbacrolebinding_id", "scope_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "rbacrolebindingId", "scopeId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ScopeRbacRoleBinding, __self__).__init__(
             'google-native:gkehub/v1alpha:ScopeRbacRoleBinding',

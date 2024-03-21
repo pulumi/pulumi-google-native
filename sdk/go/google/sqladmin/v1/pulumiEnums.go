@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The unit that 'retained_backups' represents.
@@ -177,12 +176,6 @@ func (in *backupRetentionSettingsRetentionUnitPtr) ToBackupRetentionSettingsRete
 
 func (in *backupRetentionSettingsRetentionUnitPtr) ToBackupRetentionSettingsRetentionUnitPtrOutputWithContext(ctx context.Context) BackupRetentionSettingsRetentionUnitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupRetentionSettingsRetentionUnitPtrOutput)
-}
-
-func (in *backupRetentionSettingsRetentionUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*BackupRetentionSettingsRetentionUnit] {
-	return pulumix.Output[*BackupRetentionSettingsRetentionUnit]{
-		OutputState: in.ToBackupRetentionSettingsRetentionUnitPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
@@ -354,12 +347,6 @@ func (in *backupRunBackupKindPtr) ToBackupRunBackupKindPtrOutput() BackupRunBack
 
 func (in *backupRunBackupKindPtr) ToBackupRunBackupKindPtrOutputWithContext(ctx context.Context) BackupRunBackupKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupRunBackupKindPtrOutput)
-}
-
-func (in *backupRunBackupKindPtr) ToOutput(ctx context.Context) pulumix.Output[*BackupRunBackupKind] {
-	return pulumix.Output[*BackupRunBackupKind]{
-		OutputState: in.ToBackupRunBackupKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of this run.
@@ -559,12 +546,6 @@ func (in *backupRunTypePtr) ToBackupRunTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(BackupRunTypePtrOutput)
 }
 
-func (in *backupRunTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BackupRunType] {
-	return pulumix.Output[*BackupRunType]{
-		OutputState: in.ToBackupRunTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
 type InstanceBackendType string
 
@@ -737,12 +718,6 @@ func (in *instanceBackendTypePtr) ToInstanceBackendTypePtrOutput() InstanceBacke
 
 func (in *instanceBackendTypePtr) ToInstanceBackendTypePtrOutputWithContext(ctx context.Context) InstanceBackendTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceBackendTypePtrOutput)
-}
-
-func (in *instanceBackendTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceBackendType] {
-	return pulumix.Output[*InstanceBackendType]{
-		OutputState: in.ToInstanceBackendTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
@@ -1018,12 +993,6 @@ func (in *instanceDatabaseVersionPtr) ToInstanceDatabaseVersionPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceDatabaseVersionPtrOutput)
 }
 
-func (in *instanceDatabaseVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceDatabaseVersion] {
-	return pulumix.Output[*InstanceDatabaseVersion]{
-		OutputState: in.ToInstanceDatabaseVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The instance type.
 type InstanceInstanceType string
 
@@ -1198,12 +1167,6 @@ func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceInstanceTypePtrOutput)
 }
 
-func (in *instanceInstanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceInstanceType] {
-	return pulumix.Output[*InstanceInstanceType]{
-		OutputState: in.ToInstanceInstanceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceSqlNetworkArchitecture string
 
 const (
@@ -1371,12 +1334,6 @@ func (in *instanceSqlNetworkArchitecturePtr) ToInstanceSqlNetworkArchitecturePtr
 
 func (in *instanceSqlNetworkArchitecturePtr) ToInstanceSqlNetworkArchitecturePtrOutputWithContext(ctx context.Context) InstanceSqlNetworkArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceSqlNetworkArchitecturePtrOutput)
-}
-
-func (in *instanceSqlNetworkArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceSqlNetworkArchitecture] {
-	return pulumix.Output[*InstanceSqlNetworkArchitecture]{
-		OutputState: in.ToInstanceSqlNetworkArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current serving state of the Cloud SQL instance.
@@ -1565,12 +1522,6 @@ func (in *instanceStateEnumPtr) ToInstanceStateEnumPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceStateEnumPtrOutput)
 }
 
-func (in *instanceStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceStateEnum] {
-	return pulumix.Output[*InstanceStateEnum]{
-		OutputState: in.ToInstanceStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceSuspensionReasonItem string
 
 const (
@@ -1745,12 +1696,6 @@ func (in *instanceSuspensionReasonItemPtr) ToInstanceSuspensionReasonItemPtrOutp
 
 func (in *instanceSuspensionReasonItemPtr) ToInstanceSuspensionReasonItemPtrOutputWithContext(ctx context.Context) InstanceSuspensionReasonItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceSuspensionReasonItemPtrOutput)
-}
-
-func (in *instanceSuspensionReasonItemPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceSuspensionReasonItem] {
-	return pulumix.Output[*InstanceSuspensionReasonItem]{
-		OutputState: in.ToInstanceSuspensionReasonItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceSuspensionReasonItemArrayInput is an input type that accepts InstanceSuspensionReasonItemArray and InstanceSuspensionReasonItemArrayOutput values.
@@ -1972,12 +1917,6 @@ func (in *ipConfigurationSslModePtr) ToIpConfigurationSslModePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(IpConfigurationSslModePtrOutput)
 }
 
-func (in *ipConfigurationSslModePtr) ToOutput(ctx context.Context) pulumix.Output[*IpConfigurationSslMode] {
-	return pulumix.Output[*IpConfigurationSslMode]{
-		OutputState: in.ToIpConfigurationSslModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
 type IpMappingType string
 
@@ -2155,12 +2094,6 @@ func (in *ipMappingTypePtr) ToIpMappingTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(IpMappingTypePtrOutput)
 }
 
-func (in *ipMappingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IpMappingType] {
-	return pulumix.Output[*IpMappingType]{
-		OutputState: in.ToIpMappingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
 type MaintenanceWindowUpdateTrack string
 
@@ -2335,12 +2268,6 @@ func (in *maintenanceWindowUpdateTrackPtr) ToMaintenanceWindowUpdateTrackPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceWindowUpdateTrackPtrOutput)
 }
 
-func (in *maintenanceWindowUpdateTrackPtr) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowUpdateTrack] {
-	return pulumix.Output[*MaintenanceWindowUpdateTrack]{
-		OutputState: in.ToMaintenanceWindowUpdateTrackPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The complexity of the password.
 type PasswordValidationPolicyComplexity string
 
@@ -2507,12 +2434,6 @@ func (in *passwordValidationPolicyComplexityPtr) ToPasswordValidationPolicyCompl
 
 func (in *passwordValidationPolicyComplexityPtr) ToPasswordValidationPolicyComplexityPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyComplexityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PasswordValidationPolicyComplexityPtrOutput)
-}
-
-func (in *passwordValidationPolicyComplexityPtr) ToOutput(ctx context.Context) pulumix.Output[*PasswordValidationPolicyComplexity] {
-	return pulumix.Output[*PasswordValidationPolicyComplexity]{
-		OutputState: in.ToPasswordValidationPolicyComplexityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
@@ -2689,12 +2610,6 @@ func (in *settingsActivationPolicyPtr) ToSettingsActivationPolicyPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsActivationPolicyPtrOutput)
 }
 
-func (in *settingsActivationPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsActivationPolicy] {
-	return pulumix.Output[*SettingsActivationPolicy]{
-		OutputState: in.ToSettingsActivationPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 type SettingsAvailabilityType string
 
@@ -2866,12 +2781,6 @@ func (in *settingsAvailabilityTypePtr) ToSettingsAvailabilityTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsAvailabilityTypePtrOutput)
 }
 
-func (in *settingsAvailabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsAvailabilityType] {
-	return pulumix.Output[*SettingsAvailabilityType]{
-		OutputState: in.ToSettingsAvailabilityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
 type SettingsConnectorEnforcement string
 
@@ -3041,12 +2950,6 @@ func (in *settingsConnectorEnforcementPtr) ToSettingsConnectorEnforcementPtrOutp
 
 func (in *settingsConnectorEnforcementPtr) ToSettingsConnectorEnforcementPtrOutputWithContext(ctx context.Context) SettingsConnectorEnforcementPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsConnectorEnforcementPtrOutput)
-}
-
-func (in *settingsConnectorEnforcementPtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsConnectorEnforcement] {
-	return pulumix.Output[*SettingsConnectorEnforcement]{
-		OutputState: in.ToSettingsConnectorEnforcementPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
@@ -3223,12 +3126,6 @@ func (in *settingsDataDiskTypePtr) ToSettingsDataDiskTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsDataDiskTypePtrOutput)
 }
 
-func (in *settingsDataDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsDataDiskType] {
-	return pulumix.Output[*SettingsDataDiskType]{
-		OutputState: in.ToSettingsDataDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The edition of the instance.
 type SettingsEdition string
 
@@ -3398,12 +3295,6 @@ func (in *settingsEditionPtr) ToSettingsEditionPtrOutput() SettingsEditionPtrOut
 
 func (in *settingsEditionPtr) ToSettingsEditionPtrOutputWithContext(ctx context.Context) SettingsEditionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsEditionPtrOutput)
-}
-
-func (in *settingsEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsEdition] {
-	return pulumix.Output[*SettingsEdition]{
-		OutputState: in.ToSettingsEditionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
@@ -3577,12 +3468,6 @@ func (in *settingsPricingPlanPtr) ToSettingsPricingPlanPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsPricingPlanPtrOutput)
 }
 
-func (in *settingsPricingPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsPricingPlan] {
-	return pulumix.Output[*SettingsPricingPlan]{
-		OutputState: in.ToSettingsPricingPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
 type SettingsReplicationType string
 
@@ -3754,12 +3639,6 @@ func (in *settingsReplicationTypePtr) ToSettingsReplicationTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsReplicationTypePtrOutput)
 }
 
-func (in *settingsReplicationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsReplicationType] {
-	return pulumix.Output[*SettingsReplicationType]{
-		OutputState: in.ToSettingsReplicationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
 type SqlOutOfDiskReportSqlOutOfDiskState string
 
@@ -3929,12 +3808,6 @@ func (in *sqlOutOfDiskReportSqlOutOfDiskStatePtr) ToSqlOutOfDiskReportSqlOutOfDi
 
 func (in *sqlOutOfDiskReportSqlOutOfDiskStatePtr) ToSqlOutOfDiskReportSqlOutOfDiskStatePtrOutputWithContext(ctx context.Context) SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput)
-}
-
-func (in *sqlOutOfDiskReportSqlOutOfDiskStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlOutOfDiskReportSqlOutOfDiskState] {
-	return pulumix.Output[*SqlOutOfDiskReportSqlOutOfDiskState]{
-		OutputState: in.ToSqlOutOfDiskReportSqlOutOfDiskStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Dual password status for the user.
@@ -4109,12 +3982,6 @@ func (in *userDualPasswordTypePtr) ToUserDualPasswordTypePtrOutput() UserDualPas
 
 func (in *userDualPasswordTypePtr) ToUserDualPasswordTypePtrOutputWithContext(ctx context.Context) UserDualPasswordTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserDualPasswordTypePtrOutput)
-}
-
-func (in *userDualPasswordTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UserDualPasswordType] {
-	return pulumix.Output[*UserDualPasswordType]{
-		OutputState: in.ToUserDualPasswordTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
@@ -4295,12 +4162,6 @@ func (in *userTypePtr) ToUserTypePtrOutput() UserTypePtrOutput {
 
 func (in *userTypePtr) ToUserTypePtrOutputWithContext(ctx context.Context) UserTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserTypePtrOutput)
-}
-
-func (in *userTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UserType] {
-	return pulumix.Output[*UserType]{
-		OutputState: in.ToUserTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

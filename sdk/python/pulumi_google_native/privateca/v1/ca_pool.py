@@ -222,7 +222,7 @@ class CaPool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'tier'")
             __props__.__dict__["tier"] = tier
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["ca_pool_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["caPoolId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CaPool, __self__).__init__(
             'google-native:privateca/v1:CaPool',

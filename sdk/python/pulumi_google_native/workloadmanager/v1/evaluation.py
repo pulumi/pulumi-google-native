@@ -285,7 +285,7 @@ class Evaluation(pulumi.CustomResource):
             __props__.__dict__["resource_status"] = None
             __props__.__dict__["rule_versions"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["evaluation_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["evaluationId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Evaluation, __self__).__init__(
             'google-native:workloadmanager/v1:Evaluation',

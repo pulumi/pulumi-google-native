@@ -233,7 +233,7 @@ class DatasetAnnotationStoreIamPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["annotation_store_id", "dataset_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["annotationStoreId", "datasetId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DatasetAnnotationStoreIamPolicy, __self__).__init__(
             'google-native:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy',

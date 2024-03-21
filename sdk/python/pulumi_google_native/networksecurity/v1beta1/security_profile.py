@@ -224,7 +224,7 @@ class SecurityProfile(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "organization_id", "security_profile_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "organizationId", "securityProfileId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SecurityProfile, __self__).__init__(
             'google-native:networksecurity/v1beta1:SecurityProfile',

@@ -222,7 +222,7 @@ class Budget(pulumi.CustomResource):
             __props__.__dict__["ownership_scope"] = ownership_scope
             __props__.__dict__["threshold_rules"] = threshold_rules
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billing_account_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billingAccountId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Budget, __self__).__init__(
             'google-native:billingbudgets/v1:Budget',

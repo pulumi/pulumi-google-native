@@ -233,7 +233,7 @@ class Run(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["experiment_id", "location", "project", "tensorboard_id", "tensorboard_run_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["experimentId", "location", "project", "tensorboardId", "tensorboardRunId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Run, __self__).__init__(
             'google-native:aiplatform/v1:Run',

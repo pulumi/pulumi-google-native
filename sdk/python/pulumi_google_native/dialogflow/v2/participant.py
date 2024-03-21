@@ -215,7 +215,7 @@ class Participant(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["role"] = role
             __props__.__dict__["sip_recording_media_label"] = sip_recording_media_label
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["conversation_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["conversationId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Participant, __self__).__init__(
             'google-native:dialogflow/v2:Participant',

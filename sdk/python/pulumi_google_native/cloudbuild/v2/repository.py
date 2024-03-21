@@ -215,7 +215,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["webhook_id"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["connection_id", "location", "project", "repository_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["connectionId", "location", "project", "repositoryId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Repository, __self__).__init__(
             'google-native:cloudbuild/v2:Repository',

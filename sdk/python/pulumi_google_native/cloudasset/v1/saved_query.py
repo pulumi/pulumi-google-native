@@ -205,7 +205,7 @@ class SavedQuery(pulumi.CustomResource):
             __props__.__dict__["creator"] = None
             __props__.__dict__["last_update_time"] = None
             __props__.__dict__["last_updater"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["saved_query_id", "v1_id", "v1_id1"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["savedQueryId", "v1Id", "v1Id1"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SavedQuery, __self__).__init__(
             'google-native:cloudasset/v1:SavedQuery',

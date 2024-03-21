@@ -202,7 +202,7 @@ class WorkforcePoolIamPolicy(pulumi.CustomResource):
             if workforce_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workforce_pool_id'")
             __props__.__dict__["workforce_pool_id"] = workforce_pool_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "workforce_pool_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "workforcePoolId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(WorkforcePoolIamPolicy, __self__).__init__(
             'google-native:iam/v1:WorkforcePoolIamPolicy',

@@ -233,7 +233,7 @@ class InstanceNamespaceIamPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance_id", "location", "namespace_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instanceId", "location", "namespaceId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(InstanceNamespaceIamPolicy, __self__).__init__(
             'google-native:datafusion/v1beta1:InstanceNamespaceIamPolicy',

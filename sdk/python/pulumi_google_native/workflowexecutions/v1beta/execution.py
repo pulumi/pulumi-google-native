@@ -166,7 +166,7 @@ class Execution(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["workflow_revision_id"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workflow_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workflowId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Execution, __self__).__init__(
             'google-native:workflowexecutions/v1beta:Execution',

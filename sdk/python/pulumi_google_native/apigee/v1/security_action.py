@@ -308,7 +308,7 @@ class SecurityAction(pulumi.CustomResource):
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "organization_id", "security_action_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environmentId", "organizationId", "securityActionId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SecurityAction, __self__).__init__(
             'google-native:apigee/v1:SecurityAction',

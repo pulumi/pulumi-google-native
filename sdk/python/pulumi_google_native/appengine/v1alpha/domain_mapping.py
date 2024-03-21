@@ -166,7 +166,7 @@ class DomainMapping(pulumi.CustomResource):
             __props__.__dict__["ssl_settings"] = ssl_settings
             __props__.__dict__["name"] = None
             __props__.__dict__["resource_records"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["app_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["appId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DomainMapping, __self__).__init__(
             'google-native:appengine/v1alpha:DomainMapping',

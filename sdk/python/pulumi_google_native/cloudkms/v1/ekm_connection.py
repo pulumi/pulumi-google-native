@@ -203,7 +203,7 @@ class EkmConnection(pulumi.CustomResource):
             __props__.__dict__["service_resolvers"] = service_resolvers
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["ekm_connection_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["ekmConnectionId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(EkmConnection, __self__).__init__(
             'google-native:cloudkms/v1:EkmConnection',

@@ -115,7 +115,7 @@ class Topic(pulumi.CustomResource):
             if topic_id is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_id'")
             __props__.__dict__["topic_id"] = topic_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "topic_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "topicId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Topic, __self__).__init__(
             'google-native:pubsub/v1beta2:Topic',

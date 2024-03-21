@@ -207,7 +207,7 @@ class Lake(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["lake_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["lakeId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Lake, __self__).__init__(
             'google-native:dataplex/v1:Lake',

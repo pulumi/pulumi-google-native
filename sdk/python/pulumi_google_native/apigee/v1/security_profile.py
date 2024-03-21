@@ -236,7 +236,7 @@ class SecurityProfile(pulumi.CustomResource):
             __props__.__dict__["revision_id"] = None
             __props__.__dict__["revision_publish_time"] = None
             __props__.__dict__["revision_update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id", "security_profile_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId", "securityProfileId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SecurityProfile, __self__).__init__(
             'google-native:apigee/v1:SecurityProfile',

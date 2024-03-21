@@ -163,7 +163,7 @@ class IngressRule(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["priority"] = priority
             __props__.__dict__["source_range"] = source_range
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["app_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["appId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(IngressRule, __self__).__init__(
             'google-native:appengine/v1:IngressRule',

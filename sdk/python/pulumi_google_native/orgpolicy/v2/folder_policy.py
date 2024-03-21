@@ -170,7 +170,7 @@ class FolderPolicy(pulumi.CustomResource):
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["name"] = name
             __props__.__dict__["spec"] = spec
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folder_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folderId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(FolderPolicy, __self__).__init__(
             'google-native:orgpolicy/v2:FolderPolicy',

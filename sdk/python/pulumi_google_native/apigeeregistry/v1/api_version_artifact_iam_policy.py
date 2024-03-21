@@ -208,7 +208,7 @@ class ApiVersionArtifactIamPolicy(pulumi.CustomResource):
             if version_id is None and not opts.urn:
                 raise TypeError("Missing required property 'version_id'")
             __props__.__dict__["version_id"] = version_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["api_id", "artifact_id", "location", "project", "version_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiId", "artifactId", "location", "project", "versionId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ApiVersionArtifactIamPolicy, __self__).__init__(
             'google-native:apigeeregistry/v1:ApiVersionArtifactIamPolicy',

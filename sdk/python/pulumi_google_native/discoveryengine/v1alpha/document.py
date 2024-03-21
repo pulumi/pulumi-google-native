@@ -306,7 +306,7 @@ class Document(pulumi.CustomResource):
             __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["struct_data"] = struct_data
             __props__.__dict__["derived_struct_data"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["branch_id", "collection_id", "data_store_id", "document_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["branchId", "collectionId", "dataStoreId", "documentId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Document, __self__).__init__(
             'google-native:discoveryengine/v1alpha:Document',

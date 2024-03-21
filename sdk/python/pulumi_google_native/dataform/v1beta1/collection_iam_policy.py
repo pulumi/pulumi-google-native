@@ -176,7 +176,7 @@ class CollectionIamPolicy(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collection_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collectionId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CollectionIamPolicy, __self__).__init__(
             'google-native:dataform/v1beta1:CollectionIamPolicy',

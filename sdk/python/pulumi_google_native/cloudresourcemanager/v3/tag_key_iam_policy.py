@@ -187,7 +187,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
             __props__.__dict__["tag_key_id"] = tag_key_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["tag_key_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["tagKeyId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TagKeyIamPolicy, __self__).__init__(
             'google-native:cloudresourcemanager/v3:TagKeyIamPolicy',

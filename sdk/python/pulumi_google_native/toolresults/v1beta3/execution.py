@@ -284,7 +284,7 @@ class Execution(pulumi.CustomResource):
             __props__.__dict__["specification"] = specification
             __props__.__dict__["state"] = state
             __props__.__dict__["test_execution_matrix_id"] = test_execution_matrix_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["history_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["historyId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Execution, __self__).__init__(
             'google-native:toolresults/v1beta3:Execution',

@@ -168,7 +168,7 @@ class OrganizationSecurityHealthAnalyticsSettingCustomModule(pulumi.CustomResour
             __props__.__dict__["ancestor_module"] = None
             __props__.__dict__["last_editor"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationSecurityHealthAnalyticsSettingCustomModule, __self__).__init__(
             'google-native:securitycenter/v1:OrganizationSecurityHealthAnalyticsSettingCustomModule',

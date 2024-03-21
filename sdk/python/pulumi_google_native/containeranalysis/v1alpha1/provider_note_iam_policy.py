@@ -162,7 +162,7 @@ class ProviderNoteIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'provider_id'")
             __props__.__dict__["provider_id"] = provider_id
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["note_id", "provider_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["noteId", "providerId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ProviderNoteIamPolicy, __self__).__init__(
             'google-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy',

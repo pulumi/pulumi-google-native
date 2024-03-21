@@ -153,7 +153,7 @@ class Entry(pulumi.CustomResource):
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["api_id", "keyvaluemap_id", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiId", "keyvaluemapId", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Entry, __self__).__init__(
             'google-native:apigee/v1:Entry',

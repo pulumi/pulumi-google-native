@@ -202,7 +202,7 @@ class ModelIamPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["model_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["modelId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ModelIamPolicy, __self__).__init__(
             'google-native:ml/v1:ModelIamPolicy',

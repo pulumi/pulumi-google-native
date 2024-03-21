@@ -192,7 +192,7 @@ class GlossaryEntry(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["terms_pair"] = terms_pair
             __props__.__dict__["terms_set"] = terms_set
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["glossary_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["glossaryId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(GlossaryEntry, __self__).__init__(
             'google-native:translate/v3:GlossaryEntry',

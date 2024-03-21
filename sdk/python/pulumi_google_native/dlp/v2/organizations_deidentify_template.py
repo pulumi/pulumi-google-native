@@ -194,7 +194,7 @@ class OrganizationsDeidentifyTemplate(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationsDeidentifyTemplate, __self__).__init__(
             'google-native:dlp/v2:OrganizationsDeidentifyTemplate',

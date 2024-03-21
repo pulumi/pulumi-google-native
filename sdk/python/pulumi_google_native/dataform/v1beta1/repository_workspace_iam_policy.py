@@ -192,7 +192,7 @@ class RepositoryWorkspaceIamPolicy(pulumi.CustomResource):
             if workspace_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workspace_id'")
             __props__.__dict__["workspace_id"] = workspace_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id", "workspace_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repositoryId", "workspaceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RepositoryWorkspaceIamPolicy, __self__).__init__(
             'google-native:dataform/v1beta1:RepositoryWorkspaceIamPolicy',

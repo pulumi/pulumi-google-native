@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Optional. The type of disk provisioning to use for the VM.
@@ -185,12 +184,6 @@ func (in *bootDiskDefaultsDiskTypePtr) ToBootDiskDefaultsDiskTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(BootDiskDefaultsDiskTypePtrOutput)
 }
 
-func (in *bootDiskDefaultsDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BootDiskDefaultsDiskType] {
-	return pulumix.Output[*BootDiskDefaultsDiskType]{
-		OutputState: in.ToBootDiskDefaultsDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The disk type to use in the VM.
 type ComputeEngineTargetDefaultsDiskType string
 
@@ -365,12 +358,6 @@ func (in *computeEngineTargetDefaultsDiskTypePtr) ToComputeEngineTargetDefaultsD
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeEngineTargetDefaultsDiskTypePtrOutput)
 }
 
-func (in *computeEngineTargetDefaultsDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeEngineTargetDefaultsDiskType] {
-	return pulumix.Output[*ComputeEngineTargetDefaultsDiskType]{
-		OutputState: in.ToComputeEngineTargetDefaultsDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The license type to use in OS adaptation.
 type ComputeEngineTargetDefaultsLicenseType string
 
@@ -540,12 +527,6 @@ func (in *computeEngineTargetDefaultsLicenseTypePtr) ToComputeEngineTargetDefaul
 
 func (in *computeEngineTargetDefaultsLicenseTypePtr) ToComputeEngineTargetDefaultsLicenseTypePtrOutputWithContext(ctx context.Context) ComputeEngineTargetDefaultsLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeEngineTargetDefaultsLicenseTypePtrOutput)
-}
-
-func (in *computeEngineTargetDefaultsLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeEngineTargetDefaultsLicenseType] {
-	return pulumix.Output[*ComputeEngineTargetDefaultsLicenseType]{
-		OutputState: in.ToComputeEngineTargetDefaultsLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
@@ -719,12 +700,6 @@ func (in *computeSchedulingOnHostMaintenancePtr) ToComputeSchedulingOnHostMainte
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeSchedulingOnHostMaintenancePtrOutput)
 }
 
-func (in *computeSchedulingOnHostMaintenancePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeSchedulingOnHostMaintenance] {
-	return pulumix.Output[*ComputeSchedulingOnHostMaintenance]{
-		OutputState: in.ToComputeSchedulingOnHostMaintenancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
 type ComputeSchedulingRestartType string
 
@@ -896,12 +871,6 @@ func (in *computeSchedulingRestartTypePtr) ToComputeSchedulingRestartTypePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeSchedulingRestartTypePtrOutput)
 }
 
-func (in *computeSchedulingRestartTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeSchedulingRestartType] {
-	return pulumix.Output[*ComputeSchedulingRestartType]{
-		OutputState: in.ToComputeSchedulingRestartTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The target type of this group.
 type GroupMigrationTargetType string
 
@@ -1071,12 +1040,6 @@ func (in *groupMigrationTargetTypePtr) ToGroupMigrationTargetTypePtrOutput() Gro
 
 func (in *groupMigrationTargetTypePtr) ToGroupMigrationTargetTypePtrOutputWithContext(ctx context.Context) GroupMigrationTargetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GroupMigrationTargetTypePtrOutput)
-}
-
-func (in *groupMigrationTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GroupMigrationTargetType] {
-	return pulumix.Output[*GroupMigrationTargetType]{
-		OutputState: in.ToGroupMigrationTargetTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The disk type to use.
@@ -1253,12 +1216,6 @@ func (in *persistentDiskDefaultsDiskTypePtr) ToPersistentDiskDefaultsDiskTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(PersistentDiskDefaultsDiskTypePtrOutput)
 }
 
-func (in *persistentDiskDefaultsDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PersistentDiskDefaultsDiskType] {
-	return pulumix.Output[*PersistentDiskDefaultsDiskType]{
-		OutputState: in.ToPersistentDiskDefaultsDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operator to use for the node resources specified in the `values` parameter.
 type SchedulingNodeAffinityOperator string
 
@@ -1428,12 +1385,6 @@ func (in *schedulingNodeAffinityOperatorPtr) ToSchedulingNodeAffinityOperatorPtr
 
 func (in *schedulingNodeAffinityOperatorPtr) ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx context.Context) SchedulingNodeAffinityOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingNodeAffinityOperatorPtrOutput)
-}
-
-func (in *schedulingNodeAffinityOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*SchedulingNodeAffinityOperator] {
-	return pulumix.Output[*SchedulingNodeAffinityOperator]{
-		OutputState: in.ToSchedulingNodeAffinityOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Time frame of the report.
@@ -1610,12 +1561,6 @@ func (in *utilizationReportTimeFramePtr) ToUtilizationReportTimeFramePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(UtilizationReportTimeFramePtrOutput)
 }
 
-func (in *utilizationReportTimeFramePtr) ToOutput(ctx context.Context) pulumix.Output[*UtilizationReportTimeFrame] {
-	return pulumix.Output[*UtilizationReportTimeFrame]{
-		OutputState: in.ToUtilizationReportTimeFramePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The power state of the VM at the moment list was taken.
 type VmwareVmDetailsPowerState string
 
@@ -1788,12 +1733,6 @@ func (in *vmwareVmDetailsPowerStatePtr) ToVmwareVmDetailsPowerStatePtrOutput() V
 
 func (in *vmwareVmDetailsPowerStatePtr) ToVmwareVmDetailsPowerStatePtrOutputWithContext(ctx context.Context) VmwareVmDetailsPowerStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VmwareVmDetailsPowerStatePtrOutput)
-}
-
-func (in *vmwareVmDetailsPowerStatePtr) ToOutput(ctx context.Context) pulumix.Output[*VmwareVmDetailsPowerState] {
-	return pulumix.Output[*VmwareVmDetailsPowerState]{
-		OutputState: in.ToVmwareVmDetailsPowerStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

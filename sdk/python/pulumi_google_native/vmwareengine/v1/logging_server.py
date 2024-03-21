@@ -242,7 +242,7 @@ class LoggingServer(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "logging_server_id", "private_cloud_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "loggingServerId", "privateCloudId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(LoggingServer, __self__).__init__(
             'google-native:vmwareengine/v1:LoggingServer',

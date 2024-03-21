@@ -217,7 +217,7 @@ class ServiceLbPolicyIamPolicy(pulumi.CustomResource):
             __props__.__dict__["service_lb_policy_id"] = service_lb_policy_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "service_lb_policy_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "serviceLbPolicyId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServiceLbPolicyIamPolicy, __self__).__init__(
             'google-native:networkservices/v1beta1:ServiceLbPolicyIamPolicy',

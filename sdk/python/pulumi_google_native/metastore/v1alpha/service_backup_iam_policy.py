@@ -233,7 +233,7 @@ class ServiceBackupIamPolicy(pulumi.CustomResource):
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backup_id", "location", "project", "service_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backupId", "location", "project", "serviceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServiceBackupIamPolicy, __self__).__init__(
             'google-native:metastore/v1alpha:ServiceBackupIamPolicy',

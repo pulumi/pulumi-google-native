@@ -619,7 +619,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["trigger_template"] = trigger_template
             __props__.__dict__["webhook_config"] = webhook_config
             __props__.__dict__["create_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "project_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "projectId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Trigger, __self__).__init__(
             'google-native:cloudbuild/v1:Trigger',

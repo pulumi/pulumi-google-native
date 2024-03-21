@@ -207,7 +207,7 @@ class SessionEntityType(pulumi.CustomResource):
             if session_id is None and not opts.urn:
                 raise TypeError("Missing required property 'session_id'")
             __props__.__dict__["session_id"] = session_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["agent_id", "environment_id", "location", "project", "session_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["agentId", "environmentId", "location", "project", "sessionId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SessionEntityType, __self__).__init__(
             'google-native:dialogflow/v3:SessionEntityType',

@@ -233,7 +233,7 @@ class DataTaxonomyAttributeIamPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["attribute_id", "data_taxonomy_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["attributeId", "dataTaxonomyId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DataTaxonomyAttributeIamPolicy, __self__).__init__(
             'google-native:dataplex/v1:DataTaxonomyAttributeIamPolicy',

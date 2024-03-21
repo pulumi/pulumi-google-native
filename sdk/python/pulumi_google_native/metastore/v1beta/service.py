@@ -426,7 +426,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["state_message"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "service_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "serviceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Service, __self__).__init__(
             'google-native:metastore/v1beta:Service',

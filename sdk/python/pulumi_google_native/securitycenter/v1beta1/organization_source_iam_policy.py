@@ -203,7 +203,7 @@ class OrganizationSourceIamPolicy(pulumi.CustomResource):
             __props__.__dict__["source_id"] = source_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id", "source_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId", "sourceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationSourceIamPolicy, __self__).__init__(
             'google-native:securitycenter/v1beta1:OrganizationSourceIamPolicy',

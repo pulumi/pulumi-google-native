@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The employer's company size.
@@ -195,12 +194,6 @@ func (in *companySizePtr) ToCompanySizePtrOutput() CompanySizePtrOutput {
 
 func (in *companySizePtr) ToCompanySizePtrOutputWithContext(ctx context.Context) CompanySizePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CompanySizePtrOutput)
-}
-
-func (in *companySizePtr) ToOutput(ctx context.Context) pulumix.Output[*CompanySize] {
-	return pulumix.Output[*CompanySize]{
-		OutputState: in.ToCompanySizePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
@@ -392,12 +385,6 @@ func (in *compensationEntryTypePtr) ToCompensationEntryTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(CompensationEntryTypePtrOutput)
 }
 
-func (in *compensationEntryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CompensationEntryType] {
-	return pulumix.Output[*CompensationEntryType]{
-		OutputState: in.ToCompensationEntryTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
 type CompensationEntryUnit string
 
@@ -582,12 +569,6 @@ func (in *compensationEntryUnitPtr) ToCompensationEntryUnitPtrOutput() Compensat
 
 func (in *compensationEntryUnitPtr) ToCompensationEntryUnitPtrOutputWithContext(ctx context.Context) CompensationEntryUnitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CompensationEntryUnitPtrOutput)
-}
-
-func (in *compensationEntryUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*CompensationEntryUnit] {
-	return pulumix.Output[*CompensationEntryUnit]{
-		OutputState: in.ToCompensationEntryUnitPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type JobDegreeTypesItem string
@@ -776,12 +757,6 @@ func (in *jobDegreeTypesItemPtr) ToJobDegreeTypesItemPtrOutput() JobDegreeTypesI
 
 func (in *jobDegreeTypesItemPtr) ToJobDegreeTypesItemPtrOutputWithContext(ctx context.Context) JobDegreeTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobDegreeTypesItemPtrOutput)
-}
-
-func (in *jobDegreeTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*JobDegreeTypesItem] {
-	return pulumix.Output[*JobDegreeTypesItem]{
-		OutputState: in.ToJobDegreeTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // JobDegreeTypesItemArrayInput is an input type that accepts JobDegreeTypesItemArray and JobDegreeTypesItemArrayOutput values.
@@ -1021,12 +996,6 @@ func (in *jobEmploymentTypesItemPtr) ToJobEmploymentTypesItemPtrOutput() JobEmpl
 
 func (in *jobEmploymentTypesItemPtr) ToJobEmploymentTypesItemPtrOutputWithContext(ctx context.Context) JobEmploymentTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobEmploymentTypesItemPtrOutput)
-}
-
-func (in *jobEmploymentTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*JobEmploymentTypesItem] {
-	return pulumix.Output[*JobEmploymentTypesItem]{
-		OutputState: in.ToJobEmploymentTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // JobEmploymentTypesItemArrayInput is an input type that accepts JobEmploymentTypesItemArray and JobEmploymentTypesItemArrayOutput values.
@@ -1271,12 +1240,6 @@ func (in *jobJobBenefitsItemPtr) ToJobJobBenefitsItemPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(JobJobBenefitsItemPtrOutput)
 }
 
-func (in *jobJobBenefitsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*JobJobBenefitsItem] {
-	return pulumix.Output[*JobJobBenefitsItem]{
-		OutputState: in.ToJobJobBenefitsItemPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobJobBenefitsItemArrayInput is an input type that accepts JobJobBenefitsItemArray and JobJobBenefitsItemArrayOutput values.
 // You can construct a concrete instance of `JobJobBenefitsItemArrayInput` via:
 //
@@ -1502,12 +1465,6 @@ func (in *jobJobLevelPtr) ToJobJobLevelPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(JobJobLevelPtrOutput)
 }
 
-func (in *jobJobLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*JobJobLevel] {
-	return pulumix.Output[*JobJobLevel]{
-		OutputState: in.ToJobJobLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended.
 type JobPostingRegion string
 
@@ -1680,12 +1637,6 @@ func (in *jobPostingRegionPtr) ToJobPostingRegionPtrOutput() JobPostingRegionPtr
 
 func (in *jobPostingRegionPtr) ToJobPostingRegionPtrOutputWithContext(ctx context.Context) JobPostingRegionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobPostingRegionPtrOutput)
-}
-
-func (in *jobPostingRegionPtr) ToOutput(ctx context.Context) pulumix.Output[*JobPostingRegion] {
-	return pulumix.Output[*JobPostingRegion]{
-		OutputState: in.ToJobPostingRegionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
@@ -1862,12 +1813,6 @@ func (in *jobVisibilityPtr) ToJobVisibilityPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(JobVisibilityPtrOutput)
 }
 
-func (in *jobVisibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*JobVisibility] {
-	return pulumix.Output[*JobVisibility]{
-		OutputState: in.ToJobVisibilityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
 type ProcessingOptionsHtmlSanitization string
 
@@ -2037,12 +1982,6 @@ func (in *processingOptionsHtmlSanitizationPtr) ToProcessingOptionsHtmlSanitizat
 
 func (in *processingOptionsHtmlSanitizationPtr) ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(ctx context.Context) ProcessingOptionsHtmlSanitizationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProcessingOptionsHtmlSanitizationPtrOutput)
-}
-
-func (in *processingOptionsHtmlSanitizationPtr) ToOutput(ctx context.Context) pulumix.Output[*ProcessingOptionsHtmlSanitization] {
-	return pulumix.Output[*ProcessingOptionsHtmlSanitization]{
-		OutputState: in.ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

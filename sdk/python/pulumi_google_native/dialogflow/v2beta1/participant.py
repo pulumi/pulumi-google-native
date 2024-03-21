@@ -195,7 +195,7 @@ class Participant(pulumi.CustomResource):
             __props__.__dict__["obfuscated_external_user_id"] = obfuscated_external_user_id
             __props__.__dict__["project"] = project
             __props__.__dict__["role"] = role
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["conversation_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["conversationId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Participant, __self__).__init__(
             'google-native:dialogflow/v2beta1:Participant',

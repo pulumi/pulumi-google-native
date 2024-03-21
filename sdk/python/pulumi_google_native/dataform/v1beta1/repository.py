@@ -260,7 +260,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["set_authenticated_user_admin"] = set_authenticated_user_admin
             __props__.__dict__["workspace_compilation_overrides"] = workspace_compilation_overrides
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repositoryId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Repository, __self__).__init__(
             'google-native:dataform/v1beta1:Repository',

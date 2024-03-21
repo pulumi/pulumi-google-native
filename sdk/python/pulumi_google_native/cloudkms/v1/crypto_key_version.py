@@ -186,7 +186,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["protection_level"] = None
             __props__.__dict__["reimport_eligible"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["crypto_key_id", "key_ring_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cryptoKeyId", "keyRingId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CryptoKeyVersion, __self__).__init__(
             'google-native:cloudkms/v1:CryptoKeyVersion',

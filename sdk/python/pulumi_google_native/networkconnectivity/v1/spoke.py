@@ -323,7 +323,7 @@ class Spoke(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["unique_id"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "spoke_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "spokeId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Spoke, __self__).__init__(
             'google-native:networkconnectivity/v1:Spoke',

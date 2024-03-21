@@ -179,7 +179,7 @@ class Evaluation(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["raw_human_eval_template_csv"] = None
             __props__.__dict__["smart_reply_metrics"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["conversation_model_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["conversationModelId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Evaluation, __self__).__init__(
             'google-native:dialogflow/v2:Evaluation',

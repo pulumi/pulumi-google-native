@@ -177,7 +177,7 @@ class EntryGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["data_catalog_timestamps"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["entry_group_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["entryGroupId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(EntryGroup, __self__).__init__(
             'google-native:datacatalog/v1:EntryGroup',

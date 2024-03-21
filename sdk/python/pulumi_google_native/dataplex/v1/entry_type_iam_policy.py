@@ -217,7 +217,7 @@ class EntryTypeIamPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["entry_type_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["entryTypeId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(EntryTypeIamPolicy, __self__).__init__(
             'google-native:dataplex/v1:EntryTypeIamPolicy',

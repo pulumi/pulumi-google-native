@@ -124,7 +124,7 @@ class SshPublicKey(pulumi.CustomResource):
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["user_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["userId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SshPublicKey, __self__).__init__(
             'google-native:oslogin/v1:SshPublicKey',

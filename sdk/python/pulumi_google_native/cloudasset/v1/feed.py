@@ -264,7 +264,7 @@ class Feed(pulumi.CustomResource):
             if v1_id1 is None and not opts.urn:
                 raise TypeError("Missing required property 'v1_id1'")
             __props__.__dict__["v1_id1"] = v1_id1
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["v1_id", "v1_id1"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["v1Id", "v1Id1"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Feed, __self__).__init__(
             'google-native:cloudasset/v1:Feed',

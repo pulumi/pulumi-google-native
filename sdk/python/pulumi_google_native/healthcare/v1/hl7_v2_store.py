@@ -233,7 +233,7 @@ class Hl7V2Store(pulumi.CustomResource):
             __props__.__dict__["parser_config"] = parser_config
             __props__.__dict__["project"] = project
             __props__.__dict__["reject_duplicate_message"] = reject_duplicate_message
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["datasetId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Hl7V2Store, __self__).__init__(
             'google-native:healthcare/v1:Hl7V2Store',
