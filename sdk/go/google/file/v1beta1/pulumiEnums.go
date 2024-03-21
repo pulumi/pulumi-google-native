@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
@@ -180,12 +179,6 @@ func (in *instanceProtocolPtr) ToInstanceProtocolPtrOutput() InstanceProtocolPtr
 
 func (in *instanceProtocolPtr) ToInstanceProtocolPtrOutputWithContext(ctx context.Context) InstanceProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceProtocolPtrOutput)
-}
-
-func (in *instanceProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceProtocol] {
-	return pulumix.Output[*InstanceProtocol]{
-		OutputState: in.ToInstanceProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The service tier of the instance.
@@ -377,12 +370,6 @@ func (in *instanceTierPtr) ToInstanceTierPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTierPtrOutput)
 }
 
-func (in *instanceTierPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceTier] {
-	return pulumix.Output[*InstanceTier]{
-		OutputState: in.ToInstanceTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
 type NetworkConfigConnectMode string
 
@@ -554,12 +541,6 @@ func (in *networkConfigConnectModePtr) ToNetworkConfigConnectModePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigConnectModePtrOutput)
 }
 
-func (in *networkConfigConnectModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigConnectMode] {
-	return pulumix.Output[*NetworkConfigConnectMode]{
-		OutputState: in.ToNetworkConfigConnectModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkConfigModesItem string
 
 const (
@@ -725,12 +706,6 @@ func (in *networkConfigModesItemPtr) ToNetworkConfigModesItemPtrOutput() Network
 
 func (in *networkConfigModesItemPtr) ToNetworkConfigModesItemPtrOutputWithContext(ctx context.Context) NetworkConfigModesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigModesItemPtrOutput)
-}
-
-func (in *networkConfigModesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfigModesItem] {
-	return pulumix.Output[*NetworkConfigModesItem]{
-		OutputState: in.ToNetworkConfigModesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkConfigModesItemArrayInput is an input type that accepts NetworkConfigModesItemArray and NetworkConfigModesItemArrayOutput values.
@@ -949,12 +924,6 @@ func (in *nfsExportOptionsAccessModePtr) ToNfsExportOptionsAccessModePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(NfsExportOptionsAccessModePtrOutput)
 }
 
-func (in *nfsExportOptionsAccessModePtr) ToOutput(ctx context.Context) pulumix.Output[*NfsExportOptionsAccessMode] {
-	return pulumix.Output[*NfsExportOptionsAccessMode]{
-		OutputState: in.ToNfsExportOptionsAccessModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NfsExportOptionsSecurityFlavorsItem string
 
 const (
@@ -1129,12 +1098,6 @@ func (in *nfsExportOptionsSecurityFlavorsItemPtr) ToNfsExportOptionsSecurityFlav
 
 func (in *nfsExportOptionsSecurityFlavorsItemPtr) ToNfsExportOptionsSecurityFlavorsItemPtrOutputWithContext(ctx context.Context) NfsExportOptionsSecurityFlavorsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NfsExportOptionsSecurityFlavorsItemPtrOutput)
-}
-
-func (in *nfsExportOptionsSecurityFlavorsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*NfsExportOptionsSecurityFlavorsItem] {
-	return pulumix.Output[*NfsExportOptionsSecurityFlavorsItem]{
-		OutputState: in.ToNfsExportOptionsSecurityFlavorsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NfsExportOptionsSecurityFlavorsItemArrayInput is an input type that accepts NfsExportOptionsSecurityFlavorsItemArray and NfsExportOptionsSecurityFlavorsItemArrayOutput values.
@@ -1351,12 +1314,6 @@ func (in *nfsExportOptionsSquashModePtr) ToNfsExportOptionsSquashModePtrOutput()
 
 func (in *nfsExportOptionsSquashModePtr) ToNfsExportOptionsSquashModePtrOutputWithContext(ctx context.Context) NfsExportOptionsSquashModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NfsExportOptionsSquashModePtrOutput)
-}
-
-func (in *nfsExportOptionsSquashModePtr) ToOutput(ctx context.Context) pulumix.Output[*NfsExportOptionsSquashMode] {
-	return pulumix.Output[*NfsExportOptionsSquashMode]{
-		OutputState: in.ToNfsExportOptionsSquashModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

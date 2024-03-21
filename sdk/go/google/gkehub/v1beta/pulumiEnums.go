@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Mode of operation for binauthz policy evaluation.
 type BinaryAuthorizationConfigEvaluationMode string
 
@@ -362,12 +355,6 @@ func (in *binaryAuthorizationConfigEvaluationModePtr) ToBinaryAuthorizationConfi
 	return pulumi.ToOutputWithContext(ctx, in).(BinaryAuthorizationConfigEvaluationModePtrOutput)
 }
 
-func (in *binaryAuthorizationConfigEvaluationModePtr) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorizationConfigEvaluationMode] {
-	return pulumix.Output[*BinaryAuthorizationConfigEvaluationMode]{
-		OutputState: in.ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigManagementPolicyControllerMonitoringBackendsItem string
 
 const (
@@ -536,12 +523,6 @@ func (in *configManagementPolicyControllerMonitoringBackendsItemPtr) ToConfigMan
 
 func (in *configManagementPolicyControllerMonitoringBackendsItemPtr) ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput)
-}
-
-func (in *configManagementPolicyControllerMonitoringBackendsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigManagementPolicyControllerMonitoringBackendsItem] {
-	return pulumix.Output[*ConfigManagementPolicyControllerMonitoringBackendsItem]{
-		OutputState: in.ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigManagementPolicyControllerMonitoringBackendsItemArrayInput is an input type that accepts ConfigManagementPolicyControllerMonitoringBackendsItemArray and ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput values.
@@ -760,12 +741,6 @@ func (in *fleetObservabilityRoutingConfigModePtr) ToFleetObservabilityRoutingCon
 	return pulumi.ToOutputWithContext(ctx, in).(FleetObservabilityRoutingConfigModePtrOutput)
 }
 
-func (in *fleetObservabilityRoutingConfigModePtr) ToOutput(ctx context.Context) pulumix.Output[*FleetObservabilityRoutingConfigMode] {
-	return pulumix.Output[*FleetObservabilityRoutingConfigMode]{
-		OutputState: in.ToFleetObservabilityRoutingConfigModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Deprecated: This field will be ignored and should not be set. Customer's billing structure.
 type MultiClusterIngressFeatureSpecBilling string
 
@@ -935,12 +910,6 @@ func (in *multiClusterIngressFeatureSpecBillingPtr) ToMultiClusterIngressFeature
 
 func (in *multiClusterIngressFeatureSpecBillingPtr) ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecBillingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MultiClusterIngressFeatureSpecBillingPtrOutput)
-}
-
-func (in *multiClusterIngressFeatureSpecBillingPtr) ToOutput(ctx context.Context) pulumix.Output[*MultiClusterIngressFeatureSpecBilling] {
-	return pulumix.Output[*MultiClusterIngressFeatureSpecBilling]{
-		OutputState: in.ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Immutable. The on prem cluster's type.
@@ -1120,12 +1089,6 @@ func (in *onPremClusterClusterTypePtr) ToOnPremClusterClusterTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(OnPremClusterClusterTypePtrOutput)
 }
 
-func (in *onPremClusterClusterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OnPremClusterClusterType] {
-	return pulumix.Output[*OnPremClusterClusterType]{
-		OutputState: in.ToOnPremClusterClusterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
 type PolicyControllerHubConfigInstallSpec string
 
@@ -1303,12 +1266,6 @@ func (in *policyControllerHubConfigInstallSpecPtr) ToPolicyControllerHubConfigIn
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyControllerHubConfigInstallSpecPtrOutput)
 }
 
-func (in *policyControllerHubConfigInstallSpecPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerHubConfigInstallSpec] {
-	return pulumix.Output[*PolicyControllerHubConfigInstallSpec]{
-		OutputState: in.ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyControllerMonitoringConfigBackendsItem string
 
 const (
@@ -1477,12 +1434,6 @@ func (in *policyControllerMonitoringConfigBackendsItemPtr) ToPolicyControllerMon
 
 func (in *policyControllerMonitoringConfigBackendsItemPtr) ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyControllerMonitoringConfigBackendsItemPtrOutput)
-}
-
-func (in *policyControllerMonitoringConfigBackendsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerMonitoringConfigBackendsItem] {
-	return pulumix.Output[*PolicyControllerMonitoringConfigBackendsItem]{
-		OutputState: in.ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PolicyControllerMonitoringConfigBackendsItemArrayInput is an input type that accepts PolicyControllerMonitoringConfigBackendsItemArray and PolicyControllerMonitoringConfigBackendsItemArrayOutput values.
@@ -1701,12 +1652,6 @@ func (in *policyControllerTemplateLibraryConfigInstallationPtr) ToPolicyControll
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyControllerTemplateLibraryConfigInstallationPtrOutput)
 }
 
-func (in *policyControllerTemplateLibraryConfigInstallationPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerTemplateLibraryConfigInstallation] {
-	return pulumix.Output[*PolicyControllerTemplateLibraryConfigInstallation]{
-		OutputState: in.ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // predefined_role is the Kubernetes default role to use
 type RolePredefinedRole string
 
@@ -1884,12 +1829,6 @@ func (in *rolePredefinedRolePtr) ToRolePredefinedRolePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(RolePredefinedRolePtrOutput)
 }
 
-func (in *rolePredefinedRolePtr) ToOutput(ctx context.Context) pulumix.Output[*RolePredefinedRole] {
-	return pulumix.Output[*RolePredefinedRole]{
-		OutputState: in.ToRolePredefinedRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets which mode to use for Security Posture features.
 type SecurityPostureConfigMode string
 
@@ -2059,12 +1998,6 @@ func (in *securityPostureConfigModePtr) ToSecurityPostureConfigModePtrOutput() S
 
 func (in *securityPostureConfigModePtr) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPostureConfigModePtrOutput)
-}
-
-func (in *securityPostureConfigModePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigMode] {
-	return pulumix.Output[*SecurityPostureConfigMode]{
-		OutputState: in.ToSecurityPostureConfigModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sets which mode to use for vulnerability scanning.
@@ -2241,12 +2174,6 @@ func (in *securityPostureConfigVulnerabilityModePtr) ToSecurityPostureConfigVuln
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPostureConfigVulnerabilityModePtrOutput)
 }
 
-func (in *securityPostureConfigVulnerabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigVulnerabilityMode] {
-	return pulumix.Output[*SecurityPostureConfigVulnerabilityMode]{
-		OutputState: in.ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Deprecated: use `management` instead Enables automatic control plane management.
 type ServiceMeshMembershipSpecControlPlane string
 
@@ -2418,12 +2345,6 @@ func (in *serviceMeshMembershipSpecControlPlanePtr) ToServiceMeshMembershipSpecC
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceMeshMembershipSpecControlPlanePtrOutput)
 }
 
-func (in *serviceMeshMembershipSpecControlPlanePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecControlPlane] {
-	return pulumix.Output[*ServiceMeshMembershipSpecControlPlane]{
-		OutputState: in.ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enables automatic Service Mesh management.
 type ServiceMeshMembershipSpecManagement string
 
@@ -2593,12 +2514,6 @@ func (in *serviceMeshMembershipSpecManagementPtr) ToServiceMeshMembershipSpecMan
 
 func (in *serviceMeshMembershipSpecManagementPtr) ToServiceMeshMembershipSpecManagementPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecManagementPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceMeshMembershipSpecManagementPtrOutput)
-}
-
-func (in *serviceMeshMembershipSpecManagementPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecManagement] {
-	return pulumix.Output[*ServiceMeshMembershipSpecManagement]{
-		OutputState: in.ToServiceMeshMembershipSpecManagementPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

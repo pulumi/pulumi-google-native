@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Project lifecycle state. Read-only.
 type ProjectLifecycleState string
 
@@ -363,12 +356,6 @@ func (in *projectLifecycleStatePtr) ToProjectLifecycleStatePtrOutput() ProjectLi
 
 func (in *projectLifecycleStatePtr) ToProjectLifecycleStatePtrOutputWithContext(ctx context.Context) ProjectLifecycleStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProjectLifecycleStatePtrOutput)
-}
-
-func (in *projectLifecycleStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProjectLifecycleState] {
-	return pulumix.Output[*ProjectLifecycleState]{
-		OutputState: in.ToProjectLifecycleStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

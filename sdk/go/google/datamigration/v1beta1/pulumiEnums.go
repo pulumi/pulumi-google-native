@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
 type CloudSqlSettingsActivationPolicy string
 
@@ -362,12 +355,6 @@ func (in *cloudSqlSettingsActivationPolicyPtr) ToCloudSqlSettingsActivationPolic
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsActivationPolicyPtrOutput)
 }
 
-func (in *cloudSqlSettingsActivationPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsActivationPolicy] {
-	return pulumix.Output[*CloudSqlSettingsActivationPolicy]{
-		OutputState: in.ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of storage: `PD_SSD` (default) or `PD_HDD`.
 type CloudSqlSettingsDataDiskType string
 
@@ -537,12 +524,6 @@ func (in *cloudSqlSettingsDataDiskTypePtr) ToCloudSqlSettingsDataDiskTypePtrOutp
 
 func (in *cloudSqlSettingsDataDiskTypePtr) ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsDataDiskTypePtrOutput)
-}
-
-func (in *cloudSqlSettingsDataDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDataDiskType] {
-	return pulumix.Output[*CloudSqlSettingsDataDiskType]{
-		OutputState: in.ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The database engine type and version.
@@ -719,12 +700,6 @@ func (in *cloudSqlSettingsDatabaseVersionPtr) ToCloudSqlSettingsDatabaseVersionP
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsDatabaseVersionPtrOutput)
 }
 
-func (in *cloudSqlSettingsDatabaseVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudSqlSettingsDatabaseVersion] {
-	return pulumix.Output[*CloudSqlSettingsDatabaseVersion]{
-		OutputState: in.ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The database provider.
 type ConnectionProfileProvider string
 
@@ -894,12 +869,6 @@ func (in *connectionProfileProviderPtr) ToConnectionProfileProviderPtrOutput() C
 
 func (in *connectionProfileProviderPtr) ToConnectionProfileProviderPtrOutputWithContext(ctx context.Context) ConnectionProfileProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionProfileProviderPtrOutput)
-}
-
-func (in *connectionProfileProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileProvider] {
-	return pulumix.Output[*ConnectionProfileProvider]{
-		OutputState: in.ToConnectionProfileProviderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current connection profile state (e.g. DRAFT, READY, or FAILED).
@@ -1088,12 +1057,6 @@ func (in *connectionProfileStateEnumPtr) ToConnectionProfileStateEnumPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionProfileStateEnumPtrOutput)
 }
 
-func (in *connectionProfileStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileStateEnum] {
-	return pulumix.Output[*ConnectionProfileStateEnum]{
-		OutputState: in.ToConnectionProfileStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The database engine.
 type DatabaseTypeEngine string
 
@@ -1260,12 +1223,6 @@ func (in *databaseTypeEnginePtr) ToDatabaseTypeEnginePtrOutput() DatabaseTypeEng
 
 func (in *databaseTypeEnginePtr) ToDatabaseTypeEnginePtrOutputWithContext(ctx context.Context) DatabaseTypeEnginePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypeEnginePtrOutput)
-}
-
-func (in *databaseTypeEnginePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTypeEngine] {
-	return pulumix.Output[*DatabaseTypeEngine]{
-		OutputState: in.ToDatabaseTypeEnginePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The database provider.
@@ -1437,12 +1394,6 @@ func (in *databaseTypeProviderPtr) ToDatabaseTypeProviderPtrOutput() DatabaseTyp
 
 func (in *databaseTypeProviderPtr) ToDatabaseTypeProviderPtrOutputWithContext(ctx context.Context) DatabaseTypeProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypeProviderPtrOutput)
-}
-
-func (in *databaseTypeProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTypeProvider] {
-	return pulumix.Output[*DatabaseTypeProvider]{
-		OutputState: in.ToDatabaseTypeProviderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current migration job state.
@@ -1655,12 +1606,6 @@ func (in *migrationJobStateEnumPtr) ToMigrationJobStateEnumPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(MigrationJobStateEnumPtrOutput)
 }
 
-func (in *migrationJobStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*MigrationJobStateEnum] {
-	return pulumix.Output[*MigrationJobStateEnum]{
-		OutputState: in.ToMigrationJobStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The migration job type.
 type MigrationJobType string
 
@@ -1830,12 +1775,6 @@ func (in *migrationJobTypePtr) ToMigrationJobTypePtrOutput() MigrationJobTypePtr
 
 func (in *migrationJobTypePtr) ToMigrationJobTypePtrOutputWithContext(ctx context.Context) MigrationJobTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MigrationJobTypePtrOutput)
-}
-
-func (in *migrationJobTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MigrationJobType] {
-	return pulumix.Output[*MigrationJobType]{
-		OutputState: in.ToMigrationJobTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Action to take when users access resources that require authentication. Defaults to redirect.
@@ -180,12 +179,6 @@ func (in *apiConfigHandlerAuthFailActionPtr) ToApiConfigHandlerAuthFailActionPtr
 
 func (in *apiConfigHandlerAuthFailActionPtr) ToApiConfigHandlerAuthFailActionPtrOutputWithContext(ctx context.Context) ApiConfigHandlerAuthFailActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApiConfigHandlerAuthFailActionPtrOutput)
-}
-
-func (in *apiConfigHandlerAuthFailActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerAuthFailAction] {
-	return pulumix.Output[*ApiConfigHandlerAuthFailAction]{
-		OutputState: in.ToApiConfigHandlerAuthFailActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Level of login required to access this resource. Defaults to optional.
@@ -360,12 +353,6 @@ func (in *apiConfigHandlerLoginPtr) ToApiConfigHandlerLoginPtrOutput() ApiConfig
 
 func (in *apiConfigHandlerLoginPtr) ToApiConfigHandlerLoginPtrOutputWithContext(ctx context.Context) ApiConfigHandlerLoginPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApiConfigHandlerLoginPtrOutput)
-}
-
-func (in *apiConfigHandlerLoginPtr) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerLogin] {
-	return pulumix.Output[*ApiConfigHandlerLogin]{
-		OutputState: in.ToApiConfigHandlerLoginPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Security (HTTPS) enforcement for this URL.
@@ -545,12 +532,6 @@ func (in *apiConfigHandlerSecurityLevelPtr) ToApiConfigHandlerSecurityLevelPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(ApiConfigHandlerSecurityLevelPtrOutput)
 }
 
-func (in *apiConfigHandlerSecurityLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigHandlerSecurityLevel] {
-	return pulumix.Output[*ApiConfigHandlerSecurityLevel]{
-		OutputState: in.ToApiConfigHandlerSecurityLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the Cloud Firestore or Cloud Datastore database associated with this application.
 type AppDatabaseType string
 
@@ -723,12 +704,6 @@ func (in *appDatabaseTypePtr) ToAppDatabaseTypePtrOutput() AppDatabaseTypePtrOut
 
 func (in *appDatabaseTypePtr) ToAppDatabaseTypePtrOutputWithContext(ctx context.Context) AppDatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppDatabaseTypePtrOutput)
-}
-
-func (in *appDatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AppDatabaseType] {
-	return pulumix.Output[*AppDatabaseType]{
-		OutputState: in.ToAppDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Serving status of this application.
@@ -905,12 +880,6 @@ func (in *appServingStatusPtr) ToAppServingStatusPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AppServingStatusPtrOutput)
 }
 
-func (in *appServingStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*AppServingStatus] {
-	return pulumix.Output[*AppServingStatus]{
-		OutputState: in.ToAppServingStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
 type EndpointsApiServiceRolloutStrategy string
 
@@ -1080,12 +1049,6 @@ func (in *endpointsApiServiceRolloutStrategyPtr) ToEndpointsApiServiceRolloutStr
 
 func (in *endpointsApiServiceRolloutStrategyPtr) ToEndpointsApiServiceRolloutStrategyPtrOutputWithContext(ctx context.Context) EndpointsApiServiceRolloutStrategyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointsApiServiceRolloutStrategyPtrOutput)
-}
-
-func (in *endpointsApiServiceRolloutStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointsApiServiceRolloutStrategy] {
-	return pulumix.Output[*EndpointsApiServiceRolloutStrategy]{
-		OutputState: in.ToEndpointsApiServiceRolloutStrategyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Error condition this handler applies to.
@@ -1265,12 +1228,6 @@ func (in *errorHandlerErrorCodePtr) ToErrorHandlerErrorCodePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ErrorHandlerErrorCodePtrOutput)
 }
 
-func (in *errorHandlerErrorCodePtr) ToOutput(ctx context.Context) pulumix.Output[*ErrorHandlerErrorCode] {
-	return pulumix.Output[*ErrorHandlerErrorCode]{
-		OutputState: in.ToErrorHandlerErrorCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The action to take on matched requests.
 type IngressRuleAction string
 
@@ -1439,12 +1396,6 @@ func (in *ingressRuleActionPtr) ToIngressRuleActionPtrOutput() IngressRuleAction
 
 func (in *ingressRuleActionPtr) ToIngressRuleActionPtrOutputWithContext(ctx context.Context) IngressRuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IngressRuleActionPtrOutput)
-}
-
-func (in *ingressRuleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*IngressRuleAction] {
-	return pulumix.Output[*IngressRuleAction]{
-		OutputState: in.ToIngressRuleActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The IP mode for instances. Only applicable in the App Engine flexible environment.
@@ -1618,12 +1569,6 @@ func (in *networkInstanceIpModePtr) ToNetworkInstanceIpModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInstanceIpModePtrOutput)
 }
 
-func (in *networkInstanceIpModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkInstanceIpMode] {
-	return pulumix.Output[*NetworkInstanceIpMode]{
-		OutputState: in.ToNetworkInstanceIpModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
 type SslSettingsSslManagementType string
 
@@ -1795,12 +1740,6 @@ func (in *sslSettingsSslManagementTypePtr) ToSslSettingsSslManagementTypePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(SslSettingsSslManagementTypePtrOutput)
 }
 
-func (in *sslSettingsSslManagementTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SslSettingsSslManagementType] {
-	return pulumix.Output[*SslSettingsSslManagementType]{
-		OutputState: in.ToSslSettingsSslManagementTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Action to take when users access resources that require authentication. Defaults to redirect.
 type UrlMapAuthFailAction string
 
@@ -1970,12 +1909,6 @@ func (in *urlMapAuthFailActionPtr) ToUrlMapAuthFailActionPtrOutput() UrlMapAuthF
 
 func (in *urlMapAuthFailActionPtr) ToUrlMapAuthFailActionPtrOutputWithContext(ctx context.Context) UrlMapAuthFailActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UrlMapAuthFailActionPtrOutput)
-}
-
-func (in *urlMapAuthFailActionPtr) ToOutput(ctx context.Context) pulumix.Output[*UrlMapAuthFailAction] {
-	return pulumix.Output[*UrlMapAuthFailAction]{
-		OutputState: in.ToUrlMapAuthFailActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
@@ -2150,12 +2083,6 @@ func (in *urlMapLoginPtr) ToUrlMapLoginPtrOutput() UrlMapLoginPtrOutput {
 
 func (in *urlMapLoginPtr) ToUrlMapLoginPtrOutputWithContext(ctx context.Context) UrlMapLoginPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UrlMapLoginPtrOutput)
-}
-
-func (in *urlMapLoginPtr) ToOutput(ctx context.Context) pulumix.Output[*UrlMapLogin] {
-	return pulumix.Output[*UrlMapLogin]{
-		OutputState: in.ToUrlMapLoginPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // 30x code to use when performing redirects for the secure field. Defaults to 302.
@@ -2335,12 +2262,6 @@ func (in *urlMapRedirectHttpResponseCodePtr) ToUrlMapRedirectHttpResponseCodePtr
 	return pulumi.ToOutputWithContext(ctx, in).(UrlMapRedirectHttpResponseCodePtrOutput)
 }
 
-func (in *urlMapRedirectHttpResponseCodePtr) ToOutput(ctx context.Context) pulumix.Output[*UrlMapRedirectHttpResponseCode] {
-	return pulumix.Output[*UrlMapRedirectHttpResponseCode]{
-		OutputState: in.ToUrlMapRedirectHttpResponseCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Security (HTTPS) enforcement for this URL.
 type UrlMapSecurityLevel string
 
@@ -2516,12 +2437,6 @@ func (in *urlMapSecurityLevelPtr) ToUrlMapSecurityLevelPtrOutput() UrlMapSecurit
 
 func (in *urlMapSecurityLevelPtr) ToUrlMapSecurityLevelPtrOutputWithContext(ctx context.Context) UrlMapSecurityLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UrlMapSecurityLevelPtrOutput)
-}
-
-func (in *urlMapSecurityLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*UrlMapSecurityLevel] {
-	return pulumix.Output[*UrlMapSecurityLevel]{
-		OutputState: in.ToUrlMapSecurityLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type VersionInboundServicesItem string
@@ -2710,12 +2625,6 @@ func (in *versionInboundServicesItemPtr) ToVersionInboundServicesItemPtrOutput()
 
 func (in *versionInboundServicesItemPtr) ToVersionInboundServicesItemPtrOutputWithContext(ctx context.Context) VersionInboundServicesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VersionInboundServicesItemPtrOutput)
-}
-
-func (in *versionInboundServicesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*VersionInboundServicesItem] {
-	return pulumix.Output[*VersionInboundServicesItem]{
-		OutputState: in.ToVersionInboundServicesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VersionInboundServicesItemArrayInput is an input type that accepts VersionInboundServicesItemArray and VersionInboundServicesItemArrayOutput values.
@@ -2934,12 +2843,6 @@ func (in *versionServingStatusPtr) ToVersionServingStatusPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(VersionServingStatusPtrOutput)
 }
 
-func (in *versionServingStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*VersionServingStatus] {
-	return pulumix.Output[*VersionServingStatus]{
-		OutputState: in.ToVersionServingStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The egress setting for the connector, controlling what traffic is diverted through it.
 type VpcAccessConnectorEgressSetting string
 
@@ -3108,12 +3011,6 @@ func (in *vpcAccessConnectorEgressSettingPtr) ToVpcAccessConnectorEgressSettingP
 
 func (in *vpcAccessConnectorEgressSettingPtr) ToVpcAccessConnectorEgressSettingPtrOutputWithContext(ctx context.Context) VpcAccessConnectorEgressSettingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VpcAccessConnectorEgressSettingPtrOutput)
-}
-
-func (in *vpcAccessConnectorEgressSettingPtr) ToOutput(ctx context.Context) pulumix.Output[*VpcAccessConnectorEgressSetting] {
-	return pulumix.Output[*VpcAccessConnectorEgressSetting]{
-		OutputState: in.ToVpcAccessConnectorEgressSettingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
