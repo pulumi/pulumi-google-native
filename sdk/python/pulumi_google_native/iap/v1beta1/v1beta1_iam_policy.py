@@ -146,7 +146,7 @@ class V1beta1IamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'v1beta1_id'")
             __props__.__dict__["v1beta1_id"] = v1beta1_id
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["v1beta1_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["v1beta1Id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(V1beta1IamPolicy, __self__).__init__(
             'google-native:iap/v1beta1:V1beta1IamPolicy',

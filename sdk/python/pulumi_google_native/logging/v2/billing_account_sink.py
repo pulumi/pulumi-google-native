@@ -313,7 +313,7 @@ class BillingAccountSink(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["writer_identity"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billing_account_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billingAccountId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(BillingAccountSink, __self__).__init__(
             'google-native:logging/v2:BillingAccountSink',

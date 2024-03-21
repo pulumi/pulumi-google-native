@@ -237,7 +237,7 @@ class GameServerDeploymentIamPolicy(pulumi.CustomResource):
             __props__.__dict__["rules"] = rules
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["game_server_deployment_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["gameServerDeploymentId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(GameServerDeploymentIamPolicy, __self__).__init__(
             'google-native:gameservices/v1beta:GameServerDeploymentIamPolicy',

@@ -217,7 +217,7 @@ class ServiceConnectionMapIamPolicy(pulumi.CustomResource):
             __props__.__dict__["service_connection_map_id"] = service_connection_map_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "service_connection_map_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "serviceConnectionMapId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServiceConnectionMapIamPolicy, __self__).__init__(
             'google-native:networkconnectivity/v1:ServiceConnectionMapIamPolicy',

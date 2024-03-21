@@ -497,7 +497,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tenant_project_id"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["workforce_identity_service_endpoint"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instanceId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Instance, __self__).__init__(
             'google-native:datafusion/v1beta1:Instance',

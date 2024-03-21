@@ -443,7 +443,7 @@ class ApiProduct(pulumi.CustomResource):
             __props__.__dict__["quota_interval"] = quota_interval
             __props__.__dict__["quota_time_unit"] = quota_time_unit
             __props__.__dict__["scopes"] = scopes
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ApiProduct, __self__).__init__(
             'google-native:apigee/v1:ApiProduct',

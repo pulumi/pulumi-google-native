@@ -225,7 +225,7 @@ class DatacenterConnector(pulumi.CustomResource):
             __props__.__dict__["state_time"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["upgrade_status"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["datacenter_connector_id", "location", "project", "source_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["datacenterConnectorId", "location", "project", "sourceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DatacenterConnector, __self__).__init__(
             'google-native:vmmigration/v1alpha1:DatacenterConnector',

@@ -474,7 +474,7 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["resource_monitoring_enabled"] = None
             __props__.__dict__["resources"] = None
             __props__.__dict__["saa_enrollment_response"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Workload, __self__).__init__(
             'google-native:assuredworkloads/v1beta1:Workload',

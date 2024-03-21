@@ -241,7 +241,7 @@ class TargetServer(pulumi.CustomResource):
             __props__.__dict__["port"] = port
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["s_sl_info"] = s_sl_info
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environmentId", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TargetServer, __self__).__init__(
             'google-native:apigee/v1:TargetServer',

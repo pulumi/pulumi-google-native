@@ -248,7 +248,7 @@ class Annotation(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["resource_annotation"] = resource_annotation
             __props__.__dict__["text_annotation"] = text_annotation
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["annotation_store_id", "dataset_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["annotationStoreId", "datasetId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Annotation, __self__).__init__(
             'google-native:healthcare/v1beta1:Annotation',

@@ -155,7 +155,7 @@ class Reservation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'reservation_id'")
             __props__.__dict__["reservation_id"] = reservation_id
             __props__.__dict__["throughput_capacity"] = throughput_capacity
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "reservation_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "reservationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Reservation, __self__).__init__(
             'google-native:pubsublite/v1:Reservation',

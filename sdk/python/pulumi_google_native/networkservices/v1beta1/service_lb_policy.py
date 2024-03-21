@@ -240,7 +240,7 @@ class ServiceLbPolicy(pulumi.CustomResource):
             __props__.__dict__["service_lb_policy_id"] = service_lb_policy_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "service_lb_policy_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "serviceLbPolicyId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServiceLbPolicy, __self__).__init__(
             'google-native:networkservices/v1beta1:ServiceLbPolicy',

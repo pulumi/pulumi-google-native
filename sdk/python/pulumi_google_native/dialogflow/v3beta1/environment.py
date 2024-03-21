@@ -235,7 +235,7 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["version_configs"] = version_configs
             __props__.__dict__["webhook_config"] = webhook_config
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["agent_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["agentId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Environment, __self__).__init__(
             'google-native:dialogflow/v3beta1:Environment',

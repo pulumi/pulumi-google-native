@@ -220,7 +220,7 @@ class ImportDataFile(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["import_data_file_id", "import_job_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["importDataFileId", "importJobId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ImportDataFile, __self__).__init__(
             'google-native:migrationcenter/v1alpha1:ImportDataFile',

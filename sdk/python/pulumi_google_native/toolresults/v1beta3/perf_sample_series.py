@@ -157,7 +157,7 @@ class PerfSampleSeries(pulumi.CustomResource):
                 raise TypeError("Missing required property 'step_id'")
             __props__.__dict__["step_id"] = step_id
             __props__.__dict__["sample_series_id"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["execution_id", "history_id", "project", "step_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["executionId", "historyId", "project", "stepId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(PerfSampleSeries, __self__).__init__(
             'google-native:toolresults/v1beta3:PerfSampleSeries',

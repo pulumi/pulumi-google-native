@@ -161,7 +161,7 @@ class SnapshotIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'snapshot_id'")
             __props__.__dict__["snapshot_id"] = snapshot_id
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "snapshot_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "snapshotId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SnapshotIamPolicy, __self__).__init__(
             'google-native:pubsub/v1:SnapshotIamPolicy',

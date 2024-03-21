@@ -176,7 +176,7 @@ class RuntimeIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'runtime_id'")
             __props__.__dict__["runtime_id"] = runtime_id
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "runtime_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "runtimeId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RuntimeIamPolicy, __self__).__init__(
             'google-native:notebooks/v1:RuntimeIamPolicy',

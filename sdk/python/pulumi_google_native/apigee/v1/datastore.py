@@ -149,7 +149,7 @@ class Datastore(pulumi.CustomResource):
             __props__.__dict__["last_update_time"] = None
             __props__.__dict__["org"] = None
             __props__.__dict__["self"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Datastore, __self__).__init__(
             'google-native:apigee/v1:Datastore',

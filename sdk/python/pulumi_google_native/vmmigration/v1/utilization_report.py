@@ -223,7 +223,7 @@ class UtilizationReport(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_time"] = None
             __props__.__dict__["vm_count"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "source_id", "utilization_report_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "sourceId", "utilizationReportId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(UtilizationReport, __self__).__init__(
             'google-native:vmmigration/v1:UtilizationReport',

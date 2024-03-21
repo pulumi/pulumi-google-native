@@ -233,7 +233,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["api_id", "config_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiId", "configId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ApiConfigIamPolicy, __self__).__init__(
             'google-native:apigateway/v1beta:ApiConfigIamPolicy',

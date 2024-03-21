@@ -259,7 +259,7 @@ class TestCase(pulumi.CustomResource):
             __props__.__dict__["test_case_conversation_turns"] = test_case_conversation_turns
             __props__.__dict__["test_config"] = test_config
             __props__.__dict__["creation_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["agent_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["agentId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TestCase, __self__).__init__(
             'google-native:dialogflow/v3:TestCase',

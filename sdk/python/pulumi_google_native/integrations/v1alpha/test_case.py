@@ -395,7 +395,7 @@ class TestCase(pulumi.CustomResource):
             __props__.__dict__["version_id"] = version_id
             __props__.__dict__["workflow_id"] = workflow_id
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["integration_id", "location", "project", "test_case_id", "version_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["integrationId", "location", "project", "testCaseId", "versionId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TestCase, __self__).__init__(
             'google-native:integrations/v1alpha:TestCase',

@@ -499,7 +499,7 @@ class MappingRule(pulumi.CustomResource):
             __props__.__dict__["state"] = state
             __props__.__dict__["revision_create_time"] = None
             __props__.__dict__["revision_id"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["conversion_workspace_id", "location", "mapping_rule_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["conversionWorkspaceId", "location", "mappingRuleId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(MappingRule, __self__).__init__(
             'google-native:datamigration/v1:MappingRule',

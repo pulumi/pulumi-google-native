@@ -233,7 +233,7 @@ class WorkstationClusterWorkstationConfigIamPolicy(pulumi.CustomResource):
             if workstation_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workstation_config_id'")
             __props__.__dict__["workstation_config_id"] = workstation_config_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workstation_cluster_id", "workstation_config_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workstationClusterId", "workstationConfigId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(WorkstationClusterWorkstationConfigIamPolicy, __self__).__init__(
             'google-native:workstations/v1beta:WorkstationClusterWorkstationConfigIamPolicy',

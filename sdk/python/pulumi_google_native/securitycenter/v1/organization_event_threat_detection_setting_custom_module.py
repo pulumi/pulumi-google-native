@@ -205,7 +205,7 @@ class OrganizationEventThreatDetectionSettingCustomModule(pulumi.CustomResource)
             __props__.__dict__["type"] = type
             __props__.__dict__["last_editor"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationEventThreatDetectionSettingCustomModule, __self__).__init__(
             'google-native:securitycenter/v1:OrganizationEventThreatDetectionSettingCustomModule',

@@ -220,7 +220,7 @@ class MetadataSchema(pulumi.CustomResource):
             __props__.__dict__["schema_version"] = schema_version
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "metadata_store_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "metadataStoreId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(MetadataSchema, __self__).__init__(
             'google-native:aiplatform/v1:MetadataSchema',

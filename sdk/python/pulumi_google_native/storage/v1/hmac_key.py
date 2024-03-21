@@ -129,7 +129,7 @@ class HmacKey(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["time_created"] = None
             __props__.__dict__["updated"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "service_account_email"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "serviceAccountEmail"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(HmacKey, __self__).__init__(
             'google-native:storage/v1:HmacKey',

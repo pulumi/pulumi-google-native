@@ -487,7 +487,7 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["last_migration_time"] = None
             __props__.__dict__["last_use_time"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["model_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["modelId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Version, __self__).__init__(
             'google-native:ml/v1:Version',

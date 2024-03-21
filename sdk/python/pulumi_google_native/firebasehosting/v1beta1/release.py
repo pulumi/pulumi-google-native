@@ -183,7 +183,7 @@ class Release(pulumi.CustomResource):
             __props__.__dict__["release_time"] = None
             __props__.__dict__["release_user"] = None
             __props__.__dict__["version"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["channel_id", "project", "site_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["channelId", "project", "siteId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Release, __self__).__init__(
             'google-native:firebasehosting/v1beta1:Release',

@@ -248,7 +248,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["runtime_version"] = None
             __props__.__dict__["service_attachment"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Instance, __self__).__init__(
             'google-native:apigee/v1:Instance',

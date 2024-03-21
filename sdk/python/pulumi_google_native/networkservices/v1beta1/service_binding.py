@@ -199,7 +199,7 @@ class ServiceBinding(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["service_id"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "service_binding_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "serviceBindingId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServiceBinding, __self__).__init__(
             'google-native:networkservices/v1beta1:ServiceBinding',

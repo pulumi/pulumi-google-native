@@ -222,7 +222,7 @@ class CustomConstraint(pulumi.CustomResource):
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["resource_types"] = resource_types
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CustomConstraint, __self__).__init__(
             'google-native:orgpolicy/v2:CustomConstraint',

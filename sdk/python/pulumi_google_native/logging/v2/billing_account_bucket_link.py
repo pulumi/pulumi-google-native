@@ -198,7 +198,7 @@ class BillingAccountBucketLink(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["create_time"] = None
             __props__.__dict__["lifecycle_state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billing_account_id", "bucket_id", "link_id", "location"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billingAccountId", "bucketId", "linkId", "location"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(BillingAccountBucketLink, __self__).__init__(
             'google-native:logging/v2:BillingAccountBucketLink',

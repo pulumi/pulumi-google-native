@@ -799,7 +799,7 @@ class Product(pulumi.CustomResource):
             __props__.__dict__["uri"] = uri
             __props__.__dict__["local_inventories"] = None
             __props__.__dict__["variants"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["branch_id", "catalog_id", "location", "product_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["branchId", "catalogId", "location", "productId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Product, __self__).__init__(
             'google-native:retail/v2alpha:Product',

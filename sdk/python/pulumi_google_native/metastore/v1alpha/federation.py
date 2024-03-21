@@ -221,7 +221,7 @@ class Federation(pulumi.CustomResource):
             __props__.__dict__["state_message"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["federation_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["federationId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Federation, __self__).__init__(
             'google-native:metastore/v1alpha:Federation',

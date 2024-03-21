@@ -238,7 +238,7 @@ class ReleaseConfig(pulumi.CustomResource):
             __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["name"] = None
             __props__.__dict__["recent_scheduled_release_records"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "release_config_id", "repository_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "releaseConfigId", "repositoryId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ReleaseConfig, __self__).__init__(
             'google-native:dataform/v1beta1:ReleaseConfig',

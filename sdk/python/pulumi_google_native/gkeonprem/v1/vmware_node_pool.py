@@ -281,7 +281,7 @@ class VmwareNodePool(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "vmware_cluster_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "vmwareClusterId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(VmwareNodePool, __self__).__init__(
             'google-native:gkeonprem/v1:VmwareNodePool',

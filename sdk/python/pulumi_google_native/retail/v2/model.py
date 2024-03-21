@@ -302,7 +302,7 @@ class Model(pulumi.CustomResource):
             __props__.__dict__["serving_state"] = None
             __props__.__dict__["tuning_operation"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["catalog_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["catalogId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Model, __self__).__init__(
             'google-native:retail/v2:Model',

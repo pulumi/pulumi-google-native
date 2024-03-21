@@ -181,7 +181,7 @@ class WorkforcePoolKey(pulumi.CustomResource):
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "provider_id", "workforce_pool_id", "workforce_pool_provider_key_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "providerId", "workforcePoolId", "workforcePoolProviderKeyId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(WorkforcePoolKey, __self__).__init__(
             'google-native:iam/v1:WorkforcePoolKey',

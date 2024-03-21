@@ -177,7 +177,7 @@ class InstanceBackupIamPolicy(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backup_id", "instance_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backupId", "instanceId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(InstanceBackupIamPolicy, __self__).__init__(
             'google-native:spanner/v1:InstanceBackupIamPolicy',

@@ -215,7 +215,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'response_policy'")
             __props__.__dict__["response_policy"] = response_policy
             __props__.__dict__["rule_name"] = rule_name
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "response_policy"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "responsePolicy"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ResponsePolicyRule, __self__).__init__(
             'google-native:dns/v1beta2:ResponsePolicyRule',

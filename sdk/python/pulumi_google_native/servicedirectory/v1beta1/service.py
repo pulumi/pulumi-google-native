@@ -176,7 +176,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["endpoints"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "namespace_id", "project", "service_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "namespaceId", "project", "serviceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Service, __self__).__init__(
             'google-native:servicedirectory/v1beta1:Service',

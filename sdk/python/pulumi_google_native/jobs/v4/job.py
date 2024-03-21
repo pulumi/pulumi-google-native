@@ -632,7 +632,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["derived_info"] = None
             __props__.__dict__["posting_create_time"] = None
             __props__.__dict__["posting_update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "tenant_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "tenantId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Job, __self__).__init__(
             'google-native:jobs/v4:Job',

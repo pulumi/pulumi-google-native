@@ -184,7 +184,7 @@ class Attestor(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["user_owned_grafeas_note"] = user_owned_grafeas_note
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["attestor_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["attestorId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Attestor, __self__).__init__(
             'google-native:binaryauthorization/v1:Attestor',

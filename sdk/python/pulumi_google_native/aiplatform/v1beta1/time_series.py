@@ -292,7 +292,7 @@ class TimeSeries(pulumi.CustomResource):
             __props__.__dict__["metadata"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["experiment_id", "location", "project", "run_id", "tensorboard_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["experimentId", "location", "project", "runId", "tensorboardId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TimeSeries, __self__).__init__(
             'google-native:aiplatform/v1beta1:TimeSeries',
